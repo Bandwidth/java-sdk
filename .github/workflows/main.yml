@@ -38,10 +38,6 @@ jobs:
       run: gpg --quiet --batch --yes --passphrase="$key_passphrase" --output ./secrets/private.key --decrypt ./secrets/private.key.enc
       env:
         key_passphrase: ${{ secrets.PRIVATE_KEY_PASSPHRASE }}
-    - name: Import keys
-      run: |
-        gpg --import ./secrets/private.key
-        gpg --import ./secrets/public.key
     - uses: docker://maven:latest
       with: 
         args: gpg --import ./secrets/private.key
