@@ -296,7 +296,7 @@ void uploadMediaAsync(
 ```java
 String userId = "userId";
 String mediaId = "mediaId";
-long contentLength = 167;
+long contentLength = 88;
 String body = "body";
 String contentType = "Content-Type";
 String cacheControl = "Cache-Control";
