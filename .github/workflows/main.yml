@@ -1,0 +1,47 @@
+name: Deploy
+
+on: 
+  push:
+    branches:
+      - master
+    tags:
+      - v*
+      
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
+    - name: Run a multi-line script
+      run: |
+        cat << EOF > tempsettings.xml
+            <settings>
+              <servers>
+                  <server>
+                    <id>ossrh</id>
+                    <username>$mvn_username</username>
+                    <password>$mvn_password</password>
+                  </server>
+              </servers>
+            </settings>
+      env:
+        mvn_password: ${{ secrets.MVN_PASSWORD }}
+        mvn_username: ${{ secrets.MVN_USERNAME }}
+    - name: Decrypt private key
+      run: gpg --quiet --batch --yes --passphrase="$key_passphrase" --output ./secrets/private.key --decrypt ./secrets/private.key.enc
+      env:
+        key_passphrase: ${{ secrets.PRIVATE_KEY_PASSPHRASE }}
+    - uses: docker://maven:latest
+      with: 
+        args: gpg --import ./secrets/private.key
+    - name: Run the maven deploy
+      run: mvn --settings ./tempsettings.xml deploy
