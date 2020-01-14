@@ -34,7 +34,11 @@ public class Response {
             @XmlElement(name = Pause.TYPE_NAME, type = Pause.class),
             @XmlElement(name = Forward.TYPE_NAME, type = Forward.class),
             @XmlElement(name = SendDtmf.TYPE_NAME, type = SendDtmf.class),
-            @XmlElement(name = Record.TYPE_NAME, type = Record.class)
+            @XmlElement(name = Record.TYPE_NAME, type = Record.class),
+            @XmlElement(name = StartRecording.TYPE_NAME, type = StartRecording.class),
+            @XmlElement(name = StopRecording.TYPE_NAME, type = StopRecording.class),
+            @XmlElement(name = PauseRecording.TYPE_NAME, type = PauseRecording.class),
+            @XmlElement(name = ResumeRecording.TYPE_NAME, type = ResumeRecording.class)
     })
     private final List<Verb> verbs = new ArrayList<>();
 
