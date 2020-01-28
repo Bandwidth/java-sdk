@@ -10,12 +10,12 @@ Install the SDK by adding the following dependency in your project's pom.xml fil
 <dependency>
   <groupId>com.bandwidth.sdk</groupId>
   <artifactId>bandwidth-sdk</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
 </dependency>
 ```
 
 You can also view the package at:
-https://mvnrepository.com/artifact/com.bandwidth.sdk/bandwidth-sdk/1.1.0
+https://mvnrepository.com/artifact/com.bandwidth.sdk/bandwidth-sdk/1.1.1
 
 ## Initialize the API Client
 
