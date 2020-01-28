@@ -21,7 +21,7 @@ public class BandwidthMessage {
             String owner,
             String applicationId,
             String time,
-            String segmentCount,
+            Integer segmentCount,
             String direction,
             List<String> to,
             String from,
@@ -45,7 +45,7 @@ public class BandwidthMessage {
     private String owner;
     private String applicationId;
     private String time;
-    private String segmentCount;
+    private Integer segmentCount;
     private String direction;
     private List<String> to;
     private String from;
@@ -116,14 +116,14 @@ public class BandwidthMessage {
      * Getter for SegmentCount.
      */
     @JsonGetter("segmentCount")
-    public String getSegmentCount() { 
+    public Integer getSegmentCount() { 
         return this.segmentCount;
     }
     /**
      * Setter for SegmentCount.
      */
     @JsonSetter("segmentCount")
-    public void setSegmentCount(String value) { 
+    public void setSegmentCount(Integer value) { 
         this.segmentCount = value;
     }
 
@@ -239,7 +239,7 @@ public class BandwidthMessage {
         private String owner;
         private String applicationId;
         private String time;
-        private String segmentCount;
+        private Integer segmentCount;
         private String direction;
         private List<String> to;
         private String from;
@@ -265,7 +265,7 @@ public class BandwidthMessage {
             time = value;
             return this;
         }
-        public Builder segmentCount(String value) {
+        public Builder segmentCount(Integer value) {
             segmentCount = value;
             return this;
         }
