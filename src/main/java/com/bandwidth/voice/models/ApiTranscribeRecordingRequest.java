@@ -8,77 +8,59 @@ package com.bandwidth.voice.models;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
-public class ApiModifyCallRequest {
+public class ApiTranscribeRecordingRequest {
     /**
      * Default constructor
      */
-    public ApiModifyCallRequest() {
+    public ApiTranscribeRecordingRequest() {
     }
 
-    public ApiModifyCallRequest(
-            String redirectUrl,
-            State1Enum state,
-            RedirectMethodEnum redirectMethod,
+    public ApiTranscribeRecordingRequest(
+            String callbackUrl,
+            CallbackMethodEnum callbackMethod,
             String username,
             String password,
             String tag) {
-        this.state = state;
-        this.redirectUrl = redirectUrl;
-        this.redirectMethod = redirectMethod;
+        this.callbackUrl = callbackUrl;
+        this.callbackMethod = callbackMethod;
         this.username = username;
         this.password = password;
         this.tag = tag;
     }
 
-    private State1Enum state;
-    private String redirectUrl;
-    private RedirectMethodEnum redirectMethod;
+    private String callbackUrl;
+    private CallbackMethodEnum callbackMethod;
     private String username;
     private String password;
     private String tag;
     /**
-     * Getter for State.
+     * Getter for CallbackUrl.
      */
-    @JsonGetter("state")
-    public State1Enum getState() { 
-        return this.state;
+    @JsonGetter("callbackUrl")
+    public String getCallbackUrl() { 
+        return this.callbackUrl;
     }
     /**
-     * Setter for State.
+     * Setter for CallbackUrl.
      */
-    @JsonSetter("state")
-    public void setState(State1Enum value) { 
-        this.state = value;
-    }
-
-    /**
-     * Getter for RedirectUrl.
-     */
-    @JsonGetter("redirectUrl")
-    public String getRedirectUrl() { 
-        return this.redirectUrl;
-    }
-    /**
-     * Setter for RedirectUrl.
-     */
-    @JsonSetter("redirectUrl")
-    public void setRedirectUrl(String value) { 
-        this.redirectUrl = value;
+    @JsonSetter("callbackUrl")
+    public void setCallbackUrl(String value) { 
+        this.callbackUrl = value;
     }
 
     /**
-     * Getter for RedirectMethod.
+     * Getter for CallbackMethod.
      */
-    @JsonGetter("redirectMethod")
-    public RedirectMethodEnum getRedirectMethod() { 
-        return this.redirectMethod;
+    @JsonGetter("callbackMethod")
+    public CallbackMethodEnum getCallbackMethod() { 
+        return this.callbackMethod;
     }
     /**
-     * Setter for RedirectMethod.
+     * Setter for CallbackMethod.
      */
-    @JsonSetter("redirectMethod")
-    public void setRedirectMethod(RedirectMethodEnum value) { 
-        this.redirectMethod = value;
+    @JsonSetter("callbackMethod")
+    public void setCallbackMethod(CallbackMethodEnum value) { 
+        this.callbackMethod = value;
     }
 
     /**
@@ -128,9 +110,9 @@ public class ApiModifyCallRequest {
 
  
     public Builder toBuilder() {
-        Builder builder = new Builder(redirectUrl)
-            .state(getState())
-            .redirectMethod(getRedirectMethod())
+        Builder builder = new Builder()
+            .callbackUrl(getCallbackUrl())
+            .callbackMethod(getCallbackMethod())
             .username(getUsername())
             .password(getPassword())
             .tag(getTag());
@@ -138,30 +120,20 @@ public class ApiModifyCallRequest {
     }
 
     public static class Builder {
-        private String redirectUrl;
-        private State1Enum state;
-        private RedirectMethodEnum redirectMethod;
+        private String callbackUrl;
+        private CallbackMethodEnum callbackMethod;
         private String username;
         private String password;
         private String tag;
 
-        public Builder() {
-                    }
+        public Builder() { }
 
-        public Builder(String redirectUrl) {
-            this.redirectUrl = redirectUrl;
-        }
-
-        public Builder redirectUrl(String value) {
-            redirectUrl = value;
+        public Builder callbackUrl(String value) {
+            callbackUrl = value;
             return this;
         }
-        public Builder state(State1Enum value) {
-            state = value;
-            return this;
-        }
-        public Builder redirectMethod(RedirectMethodEnum value) {
-            redirectMethod = value;
+        public Builder callbackMethod(CallbackMethodEnum value) {
+            callbackMethod = value;
             return this;
         }
         public Builder username(String value) {
@@ -177,10 +149,9 @@ public class ApiModifyCallRequest {
             return this;
         }
 
-        public ApiModifyCallRequest build() {
-            return new ApiModifyCallRequest(redirectUrl,
-                state,
-                redirectMethod,
+        public ApiTranscribeRecordingRequest build() {
+            return new ApiTranscribeRecordingRequest(callbackUrl,
+                callbackMethod,
                 username,
                 password,
                 tag);

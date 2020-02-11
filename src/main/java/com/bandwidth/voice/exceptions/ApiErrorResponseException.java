@@ -9,34 +9,33 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.bandwidth.http.client.HttpContext;
 import com.bandwidth.exceptions.*;
-import com.bandwidth.voice.models.*;
 
-public class ErrorResponseException
+public class ApiErrorResponseException
         extends ApiException {
     /**
      * Initialization constructor
      * @param   reason  The reason for throwing exception
      * @param   context The http context of the API exception
      */
-    public ErrorResponseException(String reason, HttpContext context) {
+    public ApiErrorResponseException(String reason, HttpContext context) {
         super(reason, context);
     }
 
-    private TypeEnum type;
+    private String type;
     private String description;
     private String id;
     /**
      * Getter for Type.
      */
     @JsonGetter("type")
-    public TypeEnum getType() { 
+    public String getType() { 
         return this.type;
     }
     /**
      * Setter for Type.
      */
     @JsonSetter("type")
-    private void setType(TypeEnum value) { 
+    private void setType(String value) { 
         this.type = value;
     }
 

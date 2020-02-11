@@ -20,6 +20,7 @@ public class ApiCallResponse {
     }
 
     public ApiCallResponse(
+            String accountId,
             String callId,
             String applicationId,
             String to,
@@ -34,6 +35,7 @@ public class ApiCallResponse {
             String username,
             String password,
             String tag) {
+        this.accountId = accountId;
         this.callId = callId;
         this.applicationId = applicationId;
         this.to = to;
@@ -50,6 +52,7 @@ public class ApiCallResponse {
         this.tag = tag;
     }
 
+    private String accountId;
     private String callId;
     private String applicationId;
     private String to;
@@ -64,6 +67,21 @@ public class ApiCallResponse {
     private String username;
     private String password;
     private String tag;
+    /**
+     * Getter for AccountId.
+     */
+    @JsonGetter("accountId")
+    public String getAccountId() { 
+        return this.accountId;
+    }
+    /**
+     * Setter for AccountId.
+     */
+    @JsonSetter("accountId")
+    public void setAccountId(String value) { 
+        this.accountId = value;
+    }
+
     /**
      * Getter for CallId.
      */
@@ -278,7 +296,8 @@ public class ApiCallResponse {
 
  
     public Builder toBuilder() {
-        Builder builder = new Builder(callId,
+        Builder builder = new Builder(accountId,
+            callId,
             applicationId,
             to,
             from,
@@ -296,6 +315,7 @@ public class ApiCallResponse {
     }
 
     public static class Builder {
+        private String accountId;
         private String callId;
         private String applicationId;
         private String to;
@@ -314,7 +334,8 @@ public class ApiCallResponse {
         public Builder() {
                     }
 
-        public Builder(String callId,
+        public Builder(String accountId,
+                String callId,
                 String applicationId,
                 String to,
                 String from,
@@ -322,6 +343,7 @@ public class ApiCallResponse {
                 String answerUrl,
                 AnswerMethodEnum answerMethod,
                 DisconnectMethodEnum disconnectMethod) {
+            this.accountId = accountId;
             this.callId = callId;
             this.applicationId = applicationId;
             this.to = to;
@@ -332,6 +354,10 @@ public class ApiCallResponse {
             this.disconnectMethod = disconnectMethod;
         }
 
+        public Builder accountId(String value) {
+            accountId = value;
+            return this;
+        }
         public Builder callId(String value) {
             callId = value;
             return this;
@@ -390,7 +416,8 @@ public class ApiCallResponse {
         }
 
         public ApiCallResponse build() {
-            return new ApiCallResponse(callId,
+            return new ApiCallResponse(accountId,
+                callId,
                 applicationId,
                 to,
                 from,

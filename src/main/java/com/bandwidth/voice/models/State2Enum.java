@@ -9,28 +9,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
-public enum State1Enum {
-    ACTIVE,
+public enum State2Enum {
+    NOT_RECORDING,
 
-    COMPLETED;
+    PAUSED,
+
+    RECORDING;
 
 
-    private static TreeMap<String, State1Enum> valueMap = new TreeMap<String, State1Enum>();
+    private static TreeMap<String, State2Enum> valueMap = new TreeMap<String, State2Enum>();
     private String value;
 
     static {
-        ACTIVE.value = "active";
-        COMPLETED.value = "completed";
+        NOT_RECORDING.value = "NOT_RECORDING";
+        PAUSED.value = "PAUSED";
+        RECORDING.value = "RECORDING";
 
-        valueMap.put("active", ACTIVE);
-        valueMap.put("completed", COMPLETED);
+        valueMap.put("NOT_RECORDING", NOT_RECORDING);
+        valueMap.put("PAUSED", PAUSED);
+        valueMap.put("RECORDING", RECORDING);
     }
 
     /**
      * Returns the enum member associated with the given string value
      * @return The enum member against the given string value */
     @com.fasterxml.jackson.annotation.JsonCreator
-    public static State1Enum fromString(String toConvert) {
+    public static State2Enum fromString(String toConvert) {
         return valueMap.get(toConvert);
     }
 
@@ -51,14 +55,14 @@ public enum State1Enum {
     }
 
     /**
-     * Convert list of State1Enum values to list of string values
-     * @param toConvert The list of State1Enum values to convert
+     * Convert list of State2Enum values to list of string values
+     * @param toConvert The list of State2Enum values to convert
      * @return List of representative string values */
-    public static List<String> toValue(List<State1Enum> toConvert) {
+    public static List<String> toValue(List<State2Enum> toConvert) {
         if(toConvert == null)
             return null;
         List<String> convertedValues = new ArrayList<String>();
-        for (State1Enum enumValue : toConvert) {
+        for (State2Enum enumValue : toConvert) {
             convertedValues.add(enumValue.value);
         }
         return convertedValues;
