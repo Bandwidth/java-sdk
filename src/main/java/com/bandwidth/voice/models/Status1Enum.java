@@ -9,48 +9,48 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
-public enum TypeEnum {
-    VALIDATION,
+public enum Status1Enum {
+    REQUESTED,
 
-    AUTHENTICATIONERROR,
+    NONE,
 
-    AUTHORIZATIONERROR,
+    PROCESSING,
 
-    INTERNALERROR,
+    AVAILABLE,
 
     ERROR,
 
-    RATELIMITEXCEEDED,
+    TIMEOUT,
 
-    SYSTEMOVERLOADED;
+    FILESIZETOOBIG;
 
 
-    private static TreeMap<String, TypeEnum> valueMap = new TreeMap<String, TypeEnum>();
+    private static TreeMap<String, Status1Enum> valueMap = new TreeMap<String, Status1Enum>();
     private String value;
 
     static {
-        VALIDATION.value = "validation";
-        AUTHENTICATIONERROR.value = "authentication-error";
-        AUTHORIZATIONERROR.value = "authorization-error";
-        INTERNALERROR.value = "internal-error";
+        REQUESTED.value = "requested";
+        NONE.value = "none";
+        PROCESSING.value = "processing";
+        AVAILABLE.value = "available";
         ERROR.value = "error";
-        RATELIMITEXCEEDED.value = "rate-limit-exceeded";
-        SYSTEMOVERLOADED.value = "system-overloaded";
+        TIMEOUT.value = "timeout";
+        FILESIZETOOBIG.value = "file-size-too-big";
 
-        valueMap.put("validation", VALIDATION);
-        valueMap.put("authentication-error", AUTHENTICATIONERROR);
-        valueMap.put("authorization-error", AUTHORIZATIONERROR);
-        valueMap.put("internal-error", INTERNALERROR);
+        valueMap.put("requested", REQUESTED);
+        valueMap.put("none", NONE);
+        valueMap.put("processing", PROCESSING);
+        valueMap.put("available", AVAILABLE);
         valueMap.put("error", ERROR);
-        valueMap.put("rate-limit-exceeded", RATELIMITEXCEEDED);
-        valueMap.put("system-overloaded", SYSTEMOVERLOADED);
+        valueMap.put("timeout", TIMEOUT);
+        valueMap.put("file-size-too-big", FILESIZETOOBIG);
     }
 
     /**
      * Returns the enum member associated with the given string value
      * @return The enum member against the given string value */
     @com.fasterxml.jackson.annotation.JsonCreator
-    public static TypeEnum fromString(String toConvert) {
+    public static Status1Enum fromString(String toConvert) {
         return valueMap.get(toConvert);
     }
 
@@ -71,14 +71,14 @@ public enum TypeEnum {
     }
 
     /**
-     * Convert list of TypeEnum values to list of string values
-     * @param toConvert The list of TypeEnum values to convert
+     * Convert list of Status1Enum values to list of string values
+     * @param toConvert The list of Status1Enum values to convert
      * @return List of representative string values */
-    public static List<String> toValue(List<TypeEnum> toConvert) {
+    public static List<String> toValue(List<Status1Enum> toConvert) {
         if(toConvert == null)
             return null;
         List<String> convertedValues = new ArrayList<String>();
-        for (TypeEnum enumValue : toConvert) {
+        for (Status1Enum enumValue : toConvert) {
             convertedValues.add(enumValue.value);
         }
         return convertedValues;

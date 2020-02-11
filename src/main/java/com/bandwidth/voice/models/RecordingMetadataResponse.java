@@ -16,6 +16,7 @@ public class RecordingMetadataResponse {
     }
 
     public RecordingMetadataResponse(
+            String applicationId,
             String accountId,
             String callId,
             String recordingId,
@@ -27,9 +28,10 @@ public class RecordingMetadataResponse {
             Long startTime,
             Long endTime,
             FileFormatEnum fileFormat,
-            TranscriptionStatusEnum transcriptionStatus,
+            StatusEnum status,
             String mediaUrl,
-            String transcriptionUrl) {
+            Transcription transcription) {
+        this.applicationId = applicationId;
         this.accountId = accountId;
         this.callId = callId;
         this.recordingId = recordingId;
@@ -41,11 +43,12 @@ public class RecordingMetadataResponse {
         this.startTime = startTime;
         this.endTime = endTime;
         this.fileFormat = fileFormat;
-        this.transcriptionStatus = transcriptionStatus;
+        this.status = status;
         this.mediaUrl = mediaUrl;
-        this.transcriptionUrl = transcriptionUrl;
+        this.transcription = transcription;
     }
 
+    private String applicationId;
     private String accountId;
     private String callId;
     private String recordingId;
@@ -57,9 +60,24 @@ public class RecordingMetadataResponse {
     private Long startTime;
     private Long endTime;
     private FileFormatEnum fileFormat;
-    private TranscriptionStatusEnum transcriptionStatus;
+    private StatusEnum status;
     private String mediaUrl;
-    private String transcriptionUrl;
+    private Transcription transcription;
+    /**
+     * Getter for ApplicationId.
+     */
+    @JsonGetter("applicationId")
+    public String getApplicationId() { 
+        return this.applicationId;
+    }
+    /**
+     * Setter for ApplicationId.
+     */
+    @JsonSetter("applicationId")
+    public void setApplicationId(String value) { 
+        this.applicationId = value;
+    }
+
     /**
      * Getter for AccountId.
      */
@@ -137,6 +155,7 @@ public class RecordingMetadataResponse {
 
     /**
      * Getter for Duration.
+     * Format is ISO-8601
      */
     @JsonGetter("duration")
     public String getDuration() { 
@@ -144,6 +163,7 @@ public class RecordingMetadataResponse {
     }
     /**
      * Setter for Duration.
+     * Format is ISO-8601
      */
     @JsonSetter("duration")
     public void setDuration(String value) { 
@@ -226,18 +246,18 @@ public class RecordingMetadataResponse {
     }
 
     /**
-     * Getter for TranscriptionStatus.
+     * Getter for Status.
      */
-    @JsonGetter("transcriptionStatus")
-    public TranscriptionStatusEnum getTranscriptionStatus() { 
-        return this.transcriptionStatus;
+    @JsonGetter("status")
+    public StatusEnum getStatus() { 
+        return this.status;
     }
     /**
-     * Setter for TranscriptionStatus.
+     * Setter for Status.
      */
-    @JsonSetter("transcriptionStatus")
-    public void setTranscriptionStatus(TranscriptionStatusEnum value) { 
-        this.transcriptionStatus = value;
+    @JsonSetter("status")
+    public void setStatus(StatusEnum value) { 
+        this.status = value;
     }
 
     /**
@@ -256,23 +276,24 @@ public class RecordingMetadataResponse {
     }
 
     /**
-     * Getter for TranscriptionUrl.
+     * Getter for Transcription.
      */
-    @JsonGetter("transcriptionUrl")
-    public String getTranscriptionUrl() { 
-        return this.transcriptionUrl;
+    @JsonGetter("transcription")
+    public Transcription getTranscription() { 
+        return this.transcription;
     }
     /**
-     * Setter for TranscriptionUrl.
+     * Setter for Transcription.
      */
-    @JsonSetter("transcriptionUrl")
-    public void setTranscriptionUrl(String value) { 
-        this.transcriptionUrl = value;
+    @JsonSetter("transcription")
+    public void setTranscription(Transcription value) { 
+        this.transcription = value;
     }
 
  
     public Builder toBuilder() {
         Builder builder = new Builder()
+            .applicationId(getApplicationId())
             .accountId(getAccountId())
             .callId(getCallId())
             .recordingId(getRecordingId())
@@ -284,13 +305,14 @@ public class RecordingMetadataResponse {
             .startTime(getStartTime())
             .endTime(getEndTime())
             .fileFormat(getFileFormat())
-            .transcriptionStatus(getTranscriptionStatus())
+            .status(getStatus())
             .mediaUrl(getMediaUrl())
-            .transcriptionUrl(getTranscriptionUrl());
+            .transcription(getTranscription());
             return builder;
     }
 
     public static class Builder {
+        private String applicationId;
         private String accountId;
         private String callId;
         private String recordingId;
@@ -302,12 +324,16 @@ public class RecordingMetadataResponse {
         private Long startTime;
         private Long endTime;
         private FileFormatEnum fileFormat;
-        private TranscriptionStatusEnum transcriptionStatus;
+        private StatusEnum status;
         private String mediaUrl;
-        private String transcriptionUrl;
+        private Transcription transcription;
 
         public Builder() { }
 
+        public Builder applicationId(String value) {
+            applicationId = value;
+            return this;
+        }
         public Builder accountId(String value) {
             accountId = value;
             return this;
@@ -352,21 +378,22 @@ public class RecordingMetadataResponse {
             fileFormat = value;
             return this;
         }
-        public Builder transcriptionStatus(TranscriptionStatusEnum value) {
-            transcriptionStatus = value;
+        public Builder status(StatusEnum value) {
+            status = value;
             return this;
         }
         public Builder mediaUrl(String value) {
             mediaUrl = value;
             return this;
         }
-        public Builder transcriptionUrl(String value) {
-            transcriptionUrl = value;
+        public Builder transcription(Transcription value) {
+            transcription = value;
             return this;
         }
 
         public RecordingMetadataResponse build() {
-            return new RecordingMetadataResponse(accountId,
+            return new RecordingMetadataResponse(applicationId,
+                accountId,
                 callId,
                 recordingId,
                 to,
@@ -377,9 +404,9 @@ public class RecordingMetadataResponse {
                 startTime,
                 endTime,
                 fileFormat,
-                transcriptionStatus,
+                status,
                 mediaUrl,
-                transcriptionUrl);
+                transcription);
         }
     }
 }

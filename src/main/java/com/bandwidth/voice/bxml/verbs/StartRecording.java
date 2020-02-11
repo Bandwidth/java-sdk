@@ -17,6 +17,25 @@ import javax.xml.bind.annotation.XmlType;
 public class StartRecording implements Verb {
     public static final String TYPE_NAME = "StartRecording";
 
+
+    /**
+     * <i>(optional)</i> A boolean value.  If true, the recording will be submitted for transcription upon completion.  Defaults to false.
+     */
+    @XmlAttribute
+    private boolean transcribe;
+
+    /**
+     * <i>(optional)</i> URL to send the transcriptionAvailable event to.
+     */
+    @XmlAttribute
+    private URI transcriptionAvailableUrl;
+
+    /**
+     * <i>(optional)</i> The HTTP method to use for the request to transcriptionAvailableUrl. GET or POST. Default Value is POST.
+     */
+    @XmlAttribute
+    private Method transcriptionAvailableMethod;
+
     /**
      * <i>(optional)</i> URL to send the Record Complete event to once it has ended. Accepts BXML.
      */
@@ -64,6 +83,36 @@ public class StartRecording implements Verb {
     protected String fileFormat;
 
     public static class StartRecordingBuilder {
+
+        /**
+         * <b>(required)</b> URL to send the transcriptionAvailable event to.
+         */
+        public StartRecordingBuilder transcriptionAvailableUrl(URI uri ){
+            this.transcriptionAvailableUrl = uri;
+            return this;
+        }
+
+        /**
+         * <b>(required)</b> URL to send the transcriptionAvailable event to.
+         */
+        public StartRecordingBuilder transcriptionAvailableUrl(String uri){
+            return transcriptionAvailableUrl(URI.create(uri));
+        }
+
+        /**
+         * <i>(optional)</i> The HTTP method to use for the request to transcriptionAvailableUrl. GET or POST. Default Value is POST.
+         */
+        public StartRecordingBuilder transcriptionAvailableMethod(Method method){
+            this.transcriptionAvailableMethod = method;
+            return this;
+        }
+
+        /**
+         * <i>(optional)</i> The HTTP method to use for the request to transcriptionAvailableUrl. GET or POST. Default Value is POST.  Converts String to Method using Method.fromValue(method)
+         */
+        public StartRecordingBuilder transcriptionAvailableMethod(String method){
+            return transcriptionAvailableMethod(Method.fromValue(method));
+        }
 
         /**
          * <b>(required)</b> URL to send the Recording Available event to once it has been processed. Does not accept BXML.

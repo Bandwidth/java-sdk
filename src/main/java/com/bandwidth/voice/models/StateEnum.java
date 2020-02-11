@@ -10,20 +10,24 @@ import java.util.List;
 import java.util.TreeMap;
 
 public enum StateEnum {
-    ACTIVE,
+    DISCONNECTED,
 
-    COMPLETED;
+    ANSWERED,
+
+    INITIATED;
 
 
     private static TreeMap<String, StateEnum> valueMap = new TreeMap<String, StateEnum>();
     private String value;
 
     static {
-        ACTIVE.value = "active";
-        COMPLETED.value = "completed";
+        DISCONNECTED.value = "DISCONNECTED";
+        ANSWERED.value = "ANSWERED";
+        INITIATED.value = "INITIATED";
 
-        valueMap.put("active", ACTIVE);
-        valueMap.put("completed", COMPLETED);
+        valueMap.put("DISCONNECTED", DISCONNECTED);
+        valueMap.put("ANSWERED", ANSWERED);
+        valueMap.put("INITIATED", INITIATED);
     }
 
     /**

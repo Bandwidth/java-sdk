@@ -9,32 +9,40 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
-public enum TranscriptionStatusEnum {
-    NONE,
+public enum StatusEnum {
+    PROCESSING,
 
-    REQUESTED,
+    PARTIAL,
 
-    AVAILABLE;
+    COMPLETE,
+
+    DELETED,
+
+    ERROR;
 
 
-    private static TreeMap<String, TranscriptionStatusEnum> valueMap = new TreeMap<String, TranscriptionStatusEnum>();
+    private static TreeMap<String, StatusEnum> valueMap = new TreeMap<String, StatusEnum>();
     private String value;
 
     static {
-        NONE.value = "none";
-        REQUESTED.value = "requested";
-        AVAILABLE.value = "available";
+        PROCESSING.value = "processing";
+        PARTIAL.value = "partial";
+        COMPLETE.value = "complete";
+        DELETED.value = "deleted";
+        ERROR.value = "error";
 
-        valueMap.put("none", NONE);
-        valueMap.put("requested", REQUESTED);
-        valueMap.put("available", AVAILABLE);
+        valueMap.put("processing", PROCESSING);
+        valueMap.put("partial", PARTIAL);
+        valueMap.put("complete", COMPLETE);
+        valueMap.put("deleted", DELETED);
+        valueMap.put("error", ERROR);
     }
 
     /**
      * Returns the enum member associated with the given string value
      * @return The enum member against the given string value */
     @com.fasterxml.jackson.annotation.JsonCreator
-    public static TranscriptionStatusEnum fromString(String toConvert) {
+    public static StatusEnum fromString(String toConvert) {
         return valueMap.get(toConvert);
     }
 
@@ -55,14 +63,14 @@ public enum TranscriptionStatusEnum {
     }
 
     /**
-     * Convert list of TranscriptionStatusEnum values to list of string values
-     * @param toConvert The list of TranscriptionStatusEnum values to convert
+     * Convert list of StatusEnum values to list of string values
+     * @param toConvert The list of StatusEnum values to convert
      * @return List of representative string values */
-    public static List<String> toValue(List<TranscriptionStatusEnum> toConvert) {
+    public static List<String> toValue(List<StatusEnum> toConvert) {
         if(toConvert == null)
             return null;
         List<String> convertedValues = new ArrayList<String>();
-        for (TranscriptionStatusEnum enumValue : toConvert) {
+        for (StatusEnum enumValue : toConvert) {
             convertedValues.add(enumValue.value);
         }
         return convertedValues;

@@ -16,23 +16,23 @@ public class ModifyCallRecordingState {
     }
 
     public ModifyCallRecordingState(
-            State1Enum state) {
+            State2Enum state) {
         this.state = state;
     }
 
-    private State1Enum state;
+    private State2Enum state;
     /**
      * Getter for State.
      */
     @JsonGetter("state")
-    public State1Enum getState() { 
+    public State2Enum getState() { 
         return this.state;
     }
     /**
      * Setter for State.
      */
     @JsonSetter("state")
-    public void setState(State1Enum value) { 
+    public void setState(State2Enum value) { 
         this.state = value;
     }
 
@@ -44,11 +44,11 @@ public class ModifyCallRecordingState {
     }
 
     public static class Builder {
-        private State1Enum state;
+        private State2Enum state;
 
         public Builder() { }
 
-        public Builder state(State1Enum value) {
+        public Builder state(State2Enum value) {
             state = value;
             return this;
         }

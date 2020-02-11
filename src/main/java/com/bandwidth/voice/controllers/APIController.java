@@ -29,7 +29,7 @@ public final class APIController extends BaseController {
 
 
     /**
-     * Creates a call request
+     * Creates an outbound call
      * @param    accountId    Required parameter: Example: 
      * @param    body    Optional parameter: Example: 
      * @return    Returns the ApiResponse<ApiCallResponse> response from the API call
@@ -48,7 +48,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Creates a call request
+     * Creates an outbound call
      * @param    accountId    Required parameter: Example: 
      * @param    body    Optional parameter: Example: 
      * @return    Returns the ApiResponse<ApiCallResponse> response from the API call 
@@ -108,22 +108,25 @@ public final class APIController extends BaseController {
         int _responseCode = _response.getStatusCode();
 
         if (_responseCode == 400) {
-            throw new ErrorResponseException("Something didn't look right about that request. Please fix it before trying again.", _context);
+            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", _context);
         }
         if (_responseCode == 401) {
-            throw new ApiException("Please authenticate yourself", _context);
+            throw new ApiException("Please authenticate yourself.", _context);
         }
         if (_responseCode == 403) {
-            throw new ErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
+            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
+        }
+        if (_responseCode == 404) {
+            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", _context);
         }
         if (_responseCode == 415) {
-            throw new ErrorResponseException("We don't support that media type. Please send us `application/json`.", _context);
+            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", _context);
         }
         if (_responseCode == 429) {
-            throw new ErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
+            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
         }
         if (_responseCode == 500) {
-            throw new ErrorResponseException("Something unexpected happened. Please try again.", _context);
+            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", _context);
         }
         //handle errors defined at the API level
         validateResponse(_response, _context);
@@ -134,6 +137,116 @@ public final class APIController extends BaseController {
                 ApiCallResponse.class);
 
         return new ApiResponse<ApiCallResponse>(_response.getStatusCode(), _response.getHeaders(), _result);
+    }
+
+    /**
+     * Returns near-realtime metadata about the specified call
+     * @param    accountId    Required parameter: Example: 
+     * @param    callId    Required parameter: Example: 
+     * @return    Returns the ApiResponse<ApiCallStateResponse> response from the API call
+     */
+    public ApiResponse<ApiCallStateResponse> getCallState(
+            final String accountId,
+            final String callId
+    ) throws ApiException, IOException {
+        HttpRequest _request = _buildGetCallStateRequest(accountId, callId);
+        authManagers.get("voice").apply(_request);
+
+        HttpResponse _response = getClientInstance().executeAsString(_request);
+        HttpContext _context = new HttpContext(_request, _response);
+
+        return _handleGetCallStateResponse(_context);
+    }
+
+    /**
+     * Returns near-realtime metadata about the specified call
+     * @param    accountId    Required parameter: Example: 
+     * @param    callId    Required parameter: Example: 
+     * @return    Returns the ApiResponse<ApiCallStateResponse> response from the API call 
+     */
+    public CompletableFuture<ApiResponse<ApiCallStateResponse>> getCallStateAsync(
+            final String accountId,
+            final String callId
+    ) {
+        return makeHttpCallAsync(() -> _buildGetCallStateRequest(accountId, callId),
+                _req -> authManagers.get("voice").applyAsync(_req)
+                    .thenCompose(_request -> getClientInstance().executeAsStringAsync(_request)),
+                _context -> _handleGetCallStateResponse(_context));
+    }
+
+    /**
+     * Builds the HttpRequest object for getCallState
+     */
+    private HttpRequest _buildGetCallStateRequest(
+            final String accountId,
+            final String callId
+    ) {
+        //the base uri for api requests
+        String _baseUri = config.getBaseUri(Server.VOICEDEFAULT);
+
+        //prepare query string for API call
+        StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/api/v2/accounts/{accountId}/calls/{callId}");
+
+        //process template parameters
+        Map<String, Object> _templateParameters = new HashMap<String, Object>();
+        _templateParameters.put("accountId", accountId);
+        _templateParameters.put("callId", callId);
+        ApiHelper.appendUrlWithTemplateParameters(_queryBuilder, _templateParameters, true);
+        //validate and preprocess url
+        String _queryUrl = ApiHelper.cleanUrl(_queryBuilder);
+
+        //load all headers for the outgoing API request
+        Headers _headers = new Headers();
+        _headers.add("user-agent", BaseController.userAgent);
+        _headers.add("accept", "application/json");
+
+        //prepare and invoke the API call request to fetch the response
+        HttpRequest _request = getClientInstance().get(_queryUrl, _headers, null);
+
+        return _request;
+    }
+
+    /**
+     * Processes the response for getCallState
+     * @return An object of type ApiCallStateResponse
+     */
+    private ApiResponse<ApiCallStateResponse> _handleGetCallStateResponse(HttpContext _context)
+            throws ApiException, IOException {
+        HttpResponse _response = _context.getResponse();
+
+        //Error handling using HTTP status codes
+        int _responseCode = _response.getStatusCode();
+
+        if (_responseCode == 400) {
+            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", _context);
+        }
+        if (_responseCode == 401) {
+            throw new ApiException("Please authenticate yourself.", _context);
+        }
+        if (_responseCode == 403) {
+            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
+        }
+        if (_responseCode == 404) {
+            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", _context);
+        }
+        if (_responseCode == 415) {
+            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", _context);
+        }
+        if (_responseCode == 429) {
+            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
+        }
+        if (_responseCode == 500) {
+            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", _context);
+        }
+        //handle errors defined at the API level
+        validateResponse(_response, _context);
+
+        //extract result from the http response
+        String _responseBody = ((HttpStringResponse)_response).getBody();
+        ApiCallStateResponse _result = ApiHelper.deserialize(_responseBody,
+                ApiCallStateResponse.class);
+
+        return new ApiResponse<ApiCallStateResponse>(_response.getStatusCode(), _response.getHeaders(), _result);
     }
 
     /**
@@ -221,25 +334,25 @@ public final class APIController extends BaseController {
         int _responseCode = _response.getStatusCode();
 
         if (_responseCode == 400) {
-            throw new ApiException("The call can't be modified in its current state", _context);
+            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", _context);
         }
         if (_responseCode == 401) {
-            throw new ApiException("Please authenticate yourself", _context);
+            throw new ApiException("Please authenticate yourself.", _context);
         }
         if (_responseCode == 403) {
-            throw new ErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
+            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
         }
         if (_responseCode == 404) {
-            throw new ApiException("The call never existed, no longer exists, or is inaccessible to you", _context);
+            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", _context);
         }
         if (_responseCode == 415) {
-            throw new ErrorResponseException("We don't support that media type. Please send us `application/json`.", _context);
+            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", _context);
         }
         if (_responseCode == 429) {
-            throw new ErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
+            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
         }
         if (_responseCode == 500) {
-            throw new ErrorResponseException("Something unexpected happened. Please try again.", _context);
+            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", _context);
         }
         //handle errors defined at the API level
         validateResponse(_response, _context);
@@ -332,25 +445,25 @@ public final class APIController extends BaseController {
         int _responseCode = _response.getStatusCode();
 
         if (_responseCode == 400) {
-            throw new ApiException("The call can't be modified in its current state", _context);
+            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", _context);
         }
         if (_responseCode == 401) {
-            throw new ApiException("Please authenticate yourself", _context);
+            throw new ApiException("Please authenticate yourself.", _context);
         }
         if (_responseCode == 403) {
-            throw new ErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
+            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
         }
         if (_responseCode == 404) {
-            throw new ApiException("The call never existed, no longer exists, or is inaccessible to you", _context);
+            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", _context);
         }
         if (_responseCode == 415) {
-            throw new ErrorResponseException("We don't support that media type. Please send us `application/json`.", _context);
+            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", _context);
         }
         if (_responseCode == 429) {
-            throw new ErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
+            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
         }
         if (_responseCode == 500) {
-            throw new ErrorResponseException("Something unexpected happened. Please try again.", _context);
+            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", _context);
         }
         //handle errors defined at the API level
         validateResponse(_response, _context);
@@ -362,13 +475,21 @@ public final class APIController extends BaseController {
      * Returns a (potentially empty) list of metadata for the recordings that took place during the specified call
      * @param    accountId    Required parameter: Example: 
      * @param    callId    Required parameter: Example: 
+     * @param    from    Optional parameter: Example: 
+     * @param    to    Optional parameter: Example: 
+     * @param    minStartTime    Optional parameter: Example: 
+     * @param    maxStartTime    Optional parameter: Example: 
      * @return    Returns the ApiResponse<List<RecordingMetadataResponse>> response from the API call
      */
     public ApiResponse<List<RecordingMetadataResponse>> getQueryMetadataForAccountAndCall(
             final String accountId,
-            final String callId
+            final String callId,
+            final String from,
+            final String to,
+            final String minStartTime,
+            final String maxStartTime
     ) throws ApiException, IOException {
-        HttpRequest _request = _buildGetQueryMetadataForAccountAndCallRequest(accountId, callId);
+        HttpRequest _request = _buildGetQueryMetadataForAccountAndCallRequest(accountId, callId, from, to, minStartTime, maxStartTime);
         authManagers.get("voice").apply(_request);
 
         HttpResponse _response = getClientInstance().executeAsString(_request);
@@ -381,13 +502,21 @@ public final class APIController extends BaseController {
      * Returns a (potentially empty) list of metadata for the recordings that took place during the specified call
      * @param    accountId    Required parameter: Example: 
      * @param    callId    Required parameter: Example: 
+     * @param    from    Optional parameter: Example: 
+     * @param    to    Optional parameter: Example: 
+     * @param    minStartTime    Optional parameter: Example: 
+     * @param    maxStartTime    Optional parameter: Example: 
      * @return    Returns the ApiResponse<List<RecordingMetadataResponse>> response from the API call 
      */
     public CompletableFuture<ApiResponse<List<RecordingMetadataResponse>>> getQueryMetadataForAccountAndCallAsync(
             final String accountId,
-            final String callId
+            final String callId,
+            final String from,
+            final String to,
+            final String minStartTime,
+            final String maxStartTime
     ) {
-        return makeHttpCallAsync(() -> _buildGetQueryMetadataForAccountAndCallRequest(accountId, callId),
+        return makeHttpCallAsync(() -> _buildGetQueryMetadataForAccountAndCallRequest(accountId, callId, from, to, minStartTime, maxStartTime),
                 _req -> authManagers.get("voice").applyAsync(_req)
                     .thenCompose(_request -> getClientInstance().executeAsStringAsync(_request)),
                 _context -> _handleGetQueryMetadataForAccountAndCallResponse(_context));
@@ -398,7 +527,11 @@ public final class APIController extends BaseController {
      */
     private HttpRequest _buildGetQueryMetadataForAccountAndCallRequest(
             final String accountId,
-            final String callId
+            final String callId,
+            final String from,
+            final String to,
+            final String minStartTime,
+            final String maxStartTime
     ) {
         //the base uri for api requests
         String _baseUri = config.getBaseUri(Server.VOICEDEFAULT);
@@ -411,6 +544,14 @@ public final class APIController extends BaseController {
         _templateParameters.put("accountId", accountId);
         _templateParameters.put("callId", callId);
         ApiHelper.appendUrlWithTemplateParameters(_queryBuilder, _templateParameters, true);
+
+        //process query parameters
+        Map<String, Object> _queryParameters = new HashMap<String, Object>();
+        _queryParameters.put("from", from);
+        _queryParameters.put("to", to);
+        _queryParameters.put("minStartTime", minStartTime);
+        _queryParameters.put("maxStartTime", maxStartTime);
+        ApiHelper.appendUrlWithQueryParameters(_queryBuilder, _queryParameters);
         //validate and preprocess url
         String _queryUrl = ApiHelper.cleanUrl(_queryBuilder);
 
@@ -437,22 +578,25 @@ public final class APIController extends BaseController {
         int _responseCode = _response.getStatusCode();
 
         if (_responseCode == 400) {
-            throw new ErrorResponseException("Something didn't look right about that request. Please fix it before trying again.", _context);
+            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", _context);
         }
         if (_responseCode == 401) {
-            throw new ApiException("Please authenticate yourself", _context);
+            throw new ApiException("Please authenticate yourself.", _context);
         }
         if (_responseCode == 403) {
-            throw new ErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
+            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
+        }
+        if (_responseCode == 404) {
+            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", _context);
         }
         if (_responseCode == 415) {
-            throw new ErrorResponseException("We don't support that media type. Please send us `application/json`.", _context);
+            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", _context);
         }
         if (_responseCode == 429) {
-            throw new ErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
+            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
         }
         if (_responseCode == 500) {
-            throw new ErrorResponseException("Something unexpected happened. Please try again.", _context);
+            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", _context);
         }
         //handle errors defined at the API level
         validateResponse(_response, _context);
@@ -549,25 +693,25 @@ public final class APIController extends BaseController {
         int _responseCode = _response.getStatusCode();
 
         if (_responseCode == 400) {
-            throw new ErrorResponseException("Something didn't look right about that request. Please fix it before trying again.", _context);
+            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", _context);
         }
         if (_responseCode == 401) {
-            throw new ApiException("Please authenticate yourself", _context);
+            throw new ApiException("Please authenticate yourself.", _context);
         }
         if (_responseCode == 403) {
-            throw new ErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
+            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
         }
         if (_responseCode == 404) {
-            throw new ApiException("The recording never existed, no longer exists, or is inaccessible to you", _context);
+            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", _context);
         }
         if (_responseCode == 415) {
-            throw new ErrorResponseException("We don't support that media type. Please send us `application/json`.", _context);
+            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", _context);
         }
         if (_responseCode == 429) {
-            throw new ErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
+            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
         }
         if (_responseCode == 500) {
-            throw new ErrorResponseException("Something unexpected happened. Please try again.", _context);
+            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", _context);
         }
         //handle errors defined at the API level
         validateResponse(_response, _context);
@@ -664,25 +808,25 @@ public final class APIController extends BaseController {
         int _responseCode = _response.getStatusCode();
 
         if (_responseCode == 400) {
-            throw new ErrorResponseException("Something didn't look right about that request. Please fix it before trying again.", _context);
+            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", _context);
         }
         if (_responseCode == 401) {
-            throw new ApiException("Please authenticate yourself", _context);
+            throw new ApiException("Please authenticate yourself.", _context);
         }
         if (_responseCode == 403) {
-            throw new ErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
+            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
         }
         if (_responseCode == 404) {
-            throw new ApiException("The recording never existed, no longer exists, or is inaccessible to you", _context);
+            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", _context);
         }
         if (_responseCode == 415) {
-            throw new ErrorResponseException("We don't support that media type. Please send us `application/json`.", _context);
+            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", _context);
         }
         if (_responseCode == 429) {
-            throw new ErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
+            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
         }
         if (_responseCode == 500) {
-            throw new ErrorResponseException("Something unexpected happened. Please try again.", _context);
+            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", _context);
         }
         //handle errors defined at the API level
         validateResponse(_response, _context);
@@ -774,25 +918,25 @@ public final class APIController extends BaseController {
         int _responseCode = _response.getStatusCode();
 
         if (_responseCode == 400) {
-            throw new ErrorResponseException("Something didn't look right about that request. Please fix it before trying again.", _context);
+            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", _context);
         }
         if (_responseCode == 401) {
-            throw new ApiException("Please authenticate yourself", _context);
+            throw new ApiException("Please authenticate yourself.", _context);
         }
         if (_responseCode == 403) {
-            throw new ErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
+            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
         }
         if (_responseCode == 404) {
-            throw new ApiException("The recording never existed, no longer exists, or is inaccessible to you", _context);
+            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", _context);
         }
         if (_responseCode == 415) {
-            throw new ErrorResponseException("We don't support that media type. Please send us `application/json`.", _context);
+            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", _context);
         }
         if (_responseCode == 429) {
-            throw new ErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
+            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
         }
         if (_responseCode == 500) {
-            throw new ErrorResponseException("Something unexpected happened. Please try again.", _context);
+            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", _context);
         }
         //handle errors defined at the API level
         validateResponse(_response, _context);
@@ -803,14 +947,478 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Returns a (potentially empty; capped at 1000) list of metadata for the recordings associated with the specified account
+     * Deletes the specified recording's media
      * @param    accountId    Required parameter: Example: 
+     * @param    callId    Required parameter: Example: 
+     * @param    recordingId    Required parameter: Example: 
+     * @return    Returns the ApiResponse<Void> response from the API call
+     */
+    public ApiResponse<Void> deleteRecordingMedia(
+            final String accountId,
+            final String callId,
+            final String recordingId
+    ) throws ApiException, IOException {
+        HttpRequest _request = _buildDeleteRecordingMediaRequest(accountId, callId, recordingId);
+        authManagers.get("voice").apply(_request);
+
+        HttpResponse _response = getClientInstance().executeAsString(_request);
+        HttpContext _context = new HttpContext(_request, _response);
+
+        return _handleDeleteRecordingMediaResponse(_context);
+    }
+
+    /**
+     * Deletes the specified recording's media
+     * @param    accountId    Required parameter: Example: 
+     * @param    callId    Required parameter: Example: 
+     * @param    recordingId    Required parameter: Example: 
+     * @return    Returns the ApiResponse<Void> response from the API call 
+     */
+    public CompletableFuture<ApiResponse<Void>> deleteRecordingMediaAsync(
+            final String accountId,
+            final String callId,
+            final String recordingId
+    ) {
+        return makeHttpCallAsync(() -> _buildDeleteRecordingMediaRequest(accountId, callId, recordingId),
+                _req -> authManagers.get("voice").applyAsync(_req)
+                    .thenCompose(_request -> getClientInstance().executeAsStringAsync(_request)),
+                _context -> _handleDeleteRecordingMediaResponse(_context));
+    }
+
+    /**
+     * Builds the HttpRequest object for deleteRecordingMedia
+     */
+    private HttpRequest _buildDeleteRecordingMediaRequest(
+            final String accountId,
+            final String callId,
+            final String recordingId
+    ) {
+        //the base uri for api requests
+        String _baseUri = config.getBaseUri(Server.VOICEDEFAULT);
+
+        //prepare query string for API call
+        StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/api/v2/accounts/{accountId}/calls/{callId}/recordings/{recordingId}/media");
+
+        //process template parameters
+        Map<String, Object> _templateParameters = new HashMap<String, Object>();
+        _templateParameters.put("accountId", accountId);
+        _templateParameters.put("callId", callId);
+        _templateParameters.put("recordingId", recordingId);
+        ApiHelper.appendUrlWithTemplateParameters(_queryBuilder, _templateParameters, true);
+        //validate and preprocess url
+        String _queryUrl = ApiHelper.cleanUrl(_queryBuilder);
+
+        //load all headers for the outgoing API request
+        Headers _headers = new Headers();
+        _headers.add("user-agent", BaseController.userAgent);
+
+        //prepare and invoke the API call request to fetch the response
+        HttpRequest _request = getClientInstance().delete(_queryUrl, _headers, null);
+
+        return _request;
+    }
+
+    /**
+     * Processes the response for deleteRecordingMedia
+     * @return An object of type void
+     */
+    private ApiResponse<Void> _handleDeleteRecordingMediaResponse(HttpContext _context)
+            throws ApiException, IOException {
+        HttpResponse _response = _context.getResponse();
+
+        //Error handling using HTTP status codes
+        int _responseCode = _response.getStatusCode();
+
+        if (_responseCode == 400) {
+            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", _context);
+        }
+        if (_responseCode == 401) {
+            throw new ApiException("Please authenticate yourself.", _context);
+        }
+        if (_responseCode == 403) {
+            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
+        }
+        if (_responseCode == 404) {
+            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", _context);
+        }
+        if (_responseCode == 415) {
+            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", _context);
+        }
+        if (_responseCode == 429) {
+            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
+        }
+        if (_responseCode == 500) {
+            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", _context);
+        }
+        //handle errors defined at the API level
+        validateResponse(_response, _context);
+
+        return new ApiResponse<Void>(_response.getStatusCode(), _response.getHeaders(), null);
+    }
+
+    /**
+     * Downloads the specified transcription
+     * @param    accountId    Required parameter: Example: 
+     * @param    callId    Required parameter: Example: 
+     * @param    recordingId    Required parameter: Example: 
+     * @return    Returns the ApiResponse<TranscriptionResponse> response from the API call
+     */
+    public ApiResponse<TranscriptionResponse> getRecordingTranscription(
+            final String accountId,
+            final String callId,
+            final String recordingId
+    ) throws ApiException, IOException {
+        HttpRequest _request = _buildGetRecordingTranscriptionRequest(accountId, callId, recordingId);
+        authManagers.get("voice").apply(_request);
+
+        HttpResponse _response = getClientInstance().executeAsString(_request);
+        HttpContext _context = new HttpContext(_request, _response);
+
+        return _handleGetRecordingTranscriptionResponse(_context);
+    }
+
+    /**
+     * Downloads the specified transcription
+     * @param    accountId    Required parameter: Example: 
+     * @param    callId    Required parameter: Example: 
+     * @param    recordingId    Required parameter: Example: 
+     * @return    Returns the ApiResponse<TranscriptionResponse> response from the API call 
+     */
+    public CompletableFuture<ApiResponse<TranscriptionResponse>> getRecordingTranscriptionAsync(
+            final String accountId,
+            final String callId,
+            final String recordingId
+    ) {
+        return makeHttpCallAsync(() -> _buildGetRecordingTranscriptionRequest(accountId, callId, recordingId),
+                _req -> authManagers.get("voice").applyAsync(_req)
+                    .thenCompose(_request -> getClientInstance().executeAsStringAsync(_request)),
+                _context -> _handleGetRecordingTranscriptionResponse(_context));
+    }
+
+    /**
+     * Builds the HttpRequest object for getRecordingTranscription
+     */
+    private HttpRequest _buildGetRecordingTranscriptionRequest(
+            final String accountId,
+            final String callId,
+            final String recordingId
+    ) {
+        //the base uri for api requests
+        String _baseUri = config.getBaseUri(Server.VOICEDEFAULT);
+
+        //prepare query string for API call
+        StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/api/v2/accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription");
+
+        //process template parameters
+        Map<String, Object> _templateParameters = new HashMap<String, Object>();
+        _templateParameters.put("accountId", accountId);
+        _templateParameters.put("callId", callId);
+        _templateParameters.put("recordingId", recordingId);
+        ApiHelper.appendUrlWithTemplateParameters(_queryBuilder, _templateParameters, true);
+        //validate and preprocess url
+        String _queryUrl = ApiHelper.cleanUrl(_queryBuilder);
+
+        //load all headers for the outgoing API request
+        Headers _headers = new Headers();
+        _headers.add("user-agent", BaseController.userAgent);
+        _headers.add("accept", "application/json");
+
+        //prepare and invoke the API call request to fetch the response
+        HttpRequest _request = getClientInstance().get(_queryUrl, _headers, null);
+
+        return _request;
+    }
+
+    /**
+     * Processes the response for getRecordingTranscription
+     * @return An object of type TranscriptionResponse
+     */
+    private ApiResponse<TranscriptionResponse> _handleGetRecordingTranscriptionResponse(HttpContext _context)
+            throws ApiException, IOException {
+        HttpResponse _response = _context.getResponse();
+
+        //Error handling using HTTP status codes
+        int _responseCode = _response.getStatusCode();
+
+        if (_responseCode == 400) {
+            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", _context);
+        }
+        if (_responseCode == 401) {
+            throw new ApiException("Please authenticate yourself.", _context);
+        }
+        if (_responseCode == 403) {
+            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
+        }
+        if (_responseCode == 404) {
+            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", _context);
+        }
+        if (_responseCode == 415) {
+            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", _context);
+        }
+        if (_responseCode == 429) {
+            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
+        }
+        if (_responseCode == 500) {
+            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", _context);
+        }
+        //handle errors defined at the API level
+        validateResponse(_response, _context);
+
+        //extract result from the http response
+        String _responseBody = ((HttpStringResponse)_response).getBody();
+        TranscriptionResponse _result = ApiHelper.deserialize(_responseBody,
+                TranscriptionResponse.class);
+
+        return new ApiResponse<TranscriptionResponse>(_response.getStatusCode(), _response.getHeaders(), _result);
+    }
+
+    /**
+     * Requests that the specified recording be transcribed
+     * @param    accountId    Required parameter: Example: 
+     * @param    callId    Required parameter: Example: 
+     * @param    recordingId    Required parameter: Example: 
+     * @param    body    Optional parameter: Example: 
+     * @return    Returns the ApiResponse<Void> response from the API call
+     */
+    public ApiResponse<Void> createTranscribeRecording(
+            final String accountId,
+            final String callId,
+            final String recordingId,
+            final ApiTranscribeRecordingRequest body
+    ) throws ApiException, IOException {
+        HttpRequest _request = _buildCreateTranscribeRecordingRequest(accountId, callId, recordingId, body);
+        authManagers.get("voice").apply(_request);
+
+        HttpResponse _response = getClientInstance().executeAsString(_request);
+        HttpContext _context = new HttpContext(_request, _response);
+
+        return _handleCreateTranscribeRecordingResponse(_context);
+    }
+
+    /**
+     * Requests that the specified recording be transcribed
+     * @param    accountId    Required parameter: Example: 
+     * @param    callId    Required parameter: Example: 
+     * @param    recordingId    Required parameter: Example: 
+     * @param    body    Optional parameter: Example: 
+     * @return    Returns the ApiResponse<Void> response from the API call 
+     */
+    public CompletableFuture<ApiResponse<Void>> createTranscribeRecordingAsync(
+            final String accountId,
+            final String callId,
+            final String recordingId,
+            final ApiTranscribeRecordingRequest body
+    ) {
+        return makeHttpCallAsync(() -> _buildCreateTranscribeRecordingRequest(accountId, callId, recordingId, body),
+                _req -> authManagers.get("voice").applyAsync(_req)
+                    .thenCompose(_request -> getClientInstance().executeAsStringAsync(_request)),
+                _context -> _handleCreateTranscribeRecordingResponse(_context));
+    }
+
+    /**
+     * Builds the HttpRequest object for createTranscribeRecording
+     */
+    private HttpRequest _buildCreateTranscribeRecordingRequest(
+            final String accountId,
+            final String callId,
+            final String recordingId,
+            final ApiTranscribeRecordingRequest body
+    ) throws JsonProcessingException {
+        //the base uri for api requests
+        String _baseUri = config.getBaseUri(Server.VOICEDEFAULT);
+
+        //prepare query string for API call
+        StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/api/v2/accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription");
+
+        //process template parameters
+        Map<String, Object> _templateParameters = new HashMap<String, Object>();
+        _templateParameters.put("accountId", accountId);
+        _templateParameters.put("callId", callId);
+        _templateParameters.put("recordingId", recordingId);
+        ApiHelper.appendUrlWithTemplateParameters(_queryBuilder, _templateParameters, true);
+        //validate and preprocess url
+        String _queryUrl = ApiHelper.cleanUrl(_queryBuilder);
+
+        //load all headers for the outgoing API request
+        Headers _headers = new Headers();
+        _headers.add("user-agent", BaseController.userAgent);
+        _headers.add("content-type", "application/json");
+
+        //prepare and invoke the API call request to fetch the response
+        String _bodyJson = ApiHelper.serialize(body);
+        HttpRequest _request = getClientInstance().postBody(_queryUrl, _headers, _bodyJson);
+
+        return _request;
+    }
+
+    /**
+     * Processes the response for createTranscribeRecording
+     * @return An object of type void
+     */
+    private ApiResponse<Void> _handleCreateTranscribeRecordingResponse(HttpContext _context)
+            throws ApiException, IOException {
+        HttpResponse _response = _context.getResponse();
+
+        //Error handling using HTTP status codes
+        int _responseCode = _response.getStatusCode();
+
+        if (_responseCode == 400) {
+            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", _context);
+        }
+        if (_responseCode == 401) {
+            throw new ApiException("Please authenticate yourself.", _context);
+        }
+        if (_responseCode == 403) {
+            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
+        }
+        if (_responseCode == 404) {
+            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", _context);
+        }
+        if (_responseCode == 410) {
+            throw new ApiErrorResponseException("The media for this recording has been deleted, so we can't transcribe it", _context);
+        }
+        if (_responseCode == 415) {
+            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", _context);
+        }
+        if (_responseCode == 429) {
+            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
+        }
+        if (_responseCode == 500) {
+            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", _context);
+        }
+        //handle errors defined at the API level
+        validateResponse(_response, _context);
+
+        return new ApiResponse<Void>(_response.getStatusCode(), _response.getHeaders(), null);
+    }
+
+    /**
+     * Deletes the specified recording's transcription
+     * @param    accountId    Required parameter: Example: 
+     * @param    callId    Required parameter: Example: 
+     * @param    recordingId    Required parameter: Example: 
+     * @return    Returns the ApiResponse<Void> response from the API call
+     */
+    public ApiResponse<Void> deleteRecordingTranscription(
+            final String accountId,
+            final String callId,
+            final String recordingId
+    ) throws ApiException, IOException {
+        HttpRequest _request = _buildDeleteRecordingTranscriptionRequest(accountId, callId, recordingId);
+        authManagers.get("voice").apply(_request);
+
+        HttpResponse _response = getClientInstance().executeAsString(_request);
+        HttpContext _context = new HttpContext(_request, _response);
+
+        return _handleDeleteRecordingTranscriptionResponse(_context);
+    }
+
+    /**
+     * Deletes the specified recording's transcription
+     * @param    accountId    Required parameter: Example: 
+     * @param    callId    Required parameter: Example: 
+     * @param    recordingId    Required parameter: Example: 
+     * @return    Returns the ApiResponse<Void> response from the API call 
+     */
+    public CompletableFuture<ApiResponse<Void>> deleteRecordingTranscriptionAsync(
+            final String accountId,
+            final String callId,
+            final String recordingId
+    ) {
+        return makeHttpCallAsync(() -> _buildDeleteRecordingTranscriptionRequest(accountId, callId, recordingId),
+                _req -> authManagers.get("voice").applyAsync(_req)
+                    .thenCompose(_request -> getClientInstance().executeAsStringAsync(_request)),
+                _context -> _handleDeleteRecordingTranscriptionResponse(_context));
+    }
+
+    /**
+     * Builds the HttpRequest object for deleteRecordingTranscription
+     */
+    private HttpRequest _buildDeleteRecordingTranscriptionRequest(
+            final String accountId,
+            final String callId,
+            final String recordingId
+    ) {
+        //the base uri for api requests
+        String _baseUri = config.getBaseUri(Server.VOICEDEFAULT);
+
+        //prepare query string for API call
+        StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/api/v2/accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription");
+
+        //process template parameters
+        Map<String, Object> _templateParameters = new HashMap<String, Object>();
+        _templateParameters.put("accountId", accountId);
+        _templateParameters.put("callId", callId);
+        _templateParameters.put("recordingId", recordingId);
+        ApiHelper.appendUrlWithTemplateParameters(_queryBuilder, _templateParameters, true);
+        //validate and preprocess url
+        String _queryUrl = ApiHelper.cleanUrl(_queryBuilder);
+
+        //load all headers for the outgoing API request
+        Headers _headers = new Headers();
+        _headers.add("user-agent", BaseController.userAgent);
+
+        //prepare and invoke the API call request to fetch the response
+        HttpRequest _request = getClientInstance().delete(_queryUrl, _headers, null);
+
+        return _request;
+    }
+
+    /**
+     * Processes the response for deleteRecordingTranscription
+     * @return An object of type void
+     */
+    private ApiResponse<Void> _handleDeleteRecordingTranscriptionResponse(HttpContext _context)
+            throws ApiException, IOException {
+        HttpResponse _response = _context.getResponse();
+
+        //Error handling using HTTP status codes
+        int _responseCode = _response.getStatusCode();
+
+        if (_responseCode == 400) {
+            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", _context);
+        }
+        if (_responseCode == 401) {
+            throw new ApiException("Please authenticate yourself.", _context);
+        }
+        if (_responseCode == 403) {
+            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
+        }
+        if (_responseCode == 404) {
+            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", _context);
+        }
+        if (_responseCode == 415) {
+            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", _context);
+        }
+        if (_responseCode == 429) {
+            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
+        }
+        if (_responseCode == 500) {
+            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", _context);
+        }
+        //handle errors defined at the API level
+        validateResponse(_response, _context);
+
+        return new ApiResponse<Void>(_response.getStatusCode(), _response.getHeaders(), null);
+    }
+
+    /**
+     * Returns a list of metadata for the recordings associated with the specified account. The list can be filtered by the optional from, to, minStartTime, and maxStartTime arguments. The list is capped at 1000 entries and may be empty if no recordings match the specified criteria.
+     * @param    accountId    Required parameter: Example: 
+     * @param    from    Optional parameter: Example: 
+     * @param    to    Optional parameter: Example: 
+     * @param    minStartTime    Optional parameter: Example: 
+     * @param    maxStartTime    Optional parameter: Example: 
      * @return    Returns the ApiResponse<List<RecordingMetadataResponse>> response from the API call
      */
     public ApiResponse<List<RecordingMetadataResponse>> getQueryMetadataForAccount(
-            final String accountId
+            final String accountId,
+            final String from,
+            final String to,
+            final String minStartTime,
+            final String maxStartTime
     ) throws ApiException, IOException {
-        HttpRequest _request = _buildGetQueryMetadataForAccountRequest(accountId);
+        HttpRequest _request = _buildGetQueryMetadataForAccountRequest(accountId, from, to, minStartTime, maxStartTime);
         authManagers.get("voice").apply(_request);
 
         HttpResponse _response = getClientInstance().executeAsString(_request);
@@ -820,14 +1428,22 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Returns a (potentially empty; capped at 1000) list of metadata for the recordings associated with the specified account
+     * Returns a list of metadata for the recordings associated with the specified account. The list can be filtered by the optional from, to, minStartTime, and maxStartTime arguments. The list is capped at 1000 entries and may be empty if no recordings match the specified criteria.
      * @param    accountId    Required parameter: Example: 
+     * @param    from    Optional parameter: Example: 
+     * @param    to    Optional parameter: Example: 
+     * @param    minStartTime    Optional parameter: Example: 
+     * @param    maxStartTime    Optional parameter: Example: 
      * @return    Returns the ApiResponse<List<RecordingMetadataResponse>> response from the API call 
      */
     public CompletableFuture<ApiResponse<List<RecordingMetadataResponse>>> getQueryMetadataForAccountAsync(
-            final String accountId
+            final String accountId,
+            final String from,
+            final String to,
+            final String minStartTime,
+            final String maxStartTime
     ) {
-        return makeHttpCallAsync(() -> _buildGetQueryMetadataForAccountRequest(accountId),
+        return makeHttpCallAsync(() -> _buildGetQueryMetadataForAccountRequest(accountId, from, to, minStartTime, maxStartTime),
                 _req -> authManagers.get("voice").applyAsync(_req)
                     .thenCompose(_request -> getClientInstance().executeAsStringAsync(_request)),
                 _context -> _handleGetQueryMetadataForAccountResponse(_context));
@@ -837,7 +1453,11 @@ public final class APIController extends BaseController {
      * Builds the HttpRequest object for getQueryMetadataForAccount
      */
     private HttpRequest _buildGetQueryMetadataForAccountRequest(
-            final String accountId
+            final String accountId,
+            final String from,
+            final String to,
+            final String minStartTime,
+            final String maxStartTime
     ) {
         //the base uri for api requests
         String _baseUri = config.getBaseUri(Server.VOICEDEFAULT);
@@ -849,6 +1469,14 @@ public final class APIController extends BaseController {
         Map<String, Object> _templateParameters = new HashMap<String, Object>();
         _templateParameters.put("accountId", accountId);
         ApiHelper.appendUrlWithTemplateParameters(_queryBuilder, _templateParameters, true);
+
+        //process query parameters
+        Map<String, Object> _queryParameters = new HashMap<String, Object>();
+        _queryParameters.put("from", from);
+        _queryParameters.put("to", to);
+        _queryParameters.put("minStartTime", minStartTime);
+        _queryParameters.put("maxStartTime", maxStartTime);
+        ApiHelper.appendUrlWithQueryParameters(_queryBuilder, _queryParameters);
         //validate and preprocess url
         String _queryUrl = ApiHelper.cleanUrl(_queryBuilder);
 
@@ -875,22 +1503,25 @@ public final class APIController extends BaseController {
         int _responseCode = _response.getStatusCode();
 
         if (_responseCode == 400) {
-            throw new ErrorResponseException("Something didn't look right about that request. Please fix it before trying again.", _context);
+            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", _context);
         }
         if (_responseCode == 401) {
-            throw new ApiException("Please authenticate yourself", _context);
+            throw new ApiException("Please authenticate yourself.", _context);
         }
         if (_responseCode == 403) {
-            throw new ErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
+            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", _context);
+        }
+        if (_responseCode == 404) {
+            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", _context);
         }
         if (_responseCode == 415) {
-            throw new ErrorResponseException("We don't support that media type. Please send us `application/json`.", _context);
+            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", _context);
         }
         if (_responseCode == 429) {
-            throw new ErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
+            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", _context);
         }
         if (_responseCode == 500) {
-            throw new ErrorResponseException("Something unexpected happened. Please try again.", _context);
+            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", _context);
         }
         //handle errors defined at the API level
         validateResponse(_response, _context);

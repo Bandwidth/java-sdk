@@ -9,28 +9,52 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
-public enum State1Enum {
-    ACTIVE,
+public enum CallbackMethodEnum {
+    GET,
 
-    COMPLETED;
+    HEAD,
+
+    POST,
+
+    PUT,
+
+    PATCH,
+
+    DELETE,
+
+    OPTIONS,
+
+    TRACE;
 
 
-    private static TreeMap<String, State1Enum> valueMap = new TreeMap<String, State1Enum>();
+    private static TreeMap<String, CallbackMethodEnum> valueMap = new TreeMap<String, CallbackMethodEnum>();
     private String value;
 
     static {
-        ACTIVE.value = "active";
-        COMPLETED.value = "completed";
+        GET.value = "GET";
+        HEAD.value = "HEAD";
+        POST.value = "POST";
+        PUT.value = "PUT";
+        PATCH.value = "PATCH";
+        DELETE.value = "DELETE";
+        OPTIONS.value = "OPTIONS";
+        TRACE.value = "TRACE";
 
-        valueMap.put("active", ACTIVE);
-        valueMap.put("completed", COMPLETED);
+        valueMap.put("GET", GET);
+        valueMap.put("HEAD", HEAD);
+        valueMap.put("POST", POST);
+        valueMap.put("PUT", PUT);
+        valueMap.put("PATCH", PATCH);
+        valueMap.put("DELETE", DELETE);
+        valueMap.put("OPTIONS", OPTIONS);
+        valueMap.put("TRACE", TRACE);
     }
 
     /**
      * Returns the enum member associated with the given string value
      * @return The enum member against the given string value */
     @com.fasterxml.jackson.annotation.JsonCreator
-    public static State1Enum fromString(String toConvert) {
+    public static CallbackMethodEnum fromString(String toConvert) {
         return valueMap.get(toConvert);
     }
 
@@ -51,14 +75,14 @@ public enum State1Enum {
     }
 
     /**
-     * Convert list of State1Enum values to list of string values
-     * @param toConvert The list of State1Enum values to convert
+     * Convert list of CallbackMethodEnum values to list of string values
+     * @param toConvert The list of CallbackMethodEnum values to convert
      * @return List of representative string values */
-    public static List<String> toValue(List<State1Enum> toConvert) {
+    public static List<String> toValue(List<CallbackMethodEnum> toConvert) {
         if(toConvert == null)
             return null;
         List<String> convertedValues = new ArrayList<String>();
-        for (State1Enum enumValue : toConvert) {
+        for (CallbackMethodEnum enumValue : toConvert) {
             convertedValues.add(enumValue.value);
         }
         return convertedValues;
