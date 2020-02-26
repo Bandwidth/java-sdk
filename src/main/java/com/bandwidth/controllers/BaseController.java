@@ -12,13 +12,16 @@ import java.util.concurrent.CompletionException;
 
 import com.bandwidth.AuthManager;
 import com.bandwidth.Configuration;
-import com.bandwidth.exceptions.*;
+import com.bandwidth.exceptions.ApiException;
 import com.bandwidth.http.client.HttpClient;
 import com.bandwidth.http.client.HttpContext;
 import com.bandwidth.http.request.HttpRequest;
 import com.bandwidth.http.response.HttpResponse;
 import com.bandwidth.http.response.ApiResponse;
 
+/**
+ * Base class for all Controllers.
+ */
 public abstract class BaseController {
 
     /**
@@ -108,9 +111,9 @@ public abstract class BaseController {
      */
     public <T> CompletableFuture<ApiResponse<T>> makeHttpCallAsync(RequestSupplier requestSupplier,
             RequestExecutor requestExecutor, ResponseHandler<T> responseHandler) {
-        final HttpRequest _request;
+        final HttpRequest request;
         try {
-            _request = requestSupplier.supply();
+            request = requestSupplier.supply();
         } catch (Exception e) {
             CompletableFuture<ApiResponse<T>> futureResponse = new CompletableFuture<>();
             futureResponse.completeExceptionally(e);
@@ -118,10 +121,10 @@ public abstract class BaseController {
         }
 
         // Invoke request and get response
-        return requestExecutor.execute(_request).thenApplyAsync(_response -> {
-            HttpContext _context = new HttpContext(_request, _response);
+        return requestExecutor.execute(request).thenApplyAsync(response -> {
+            HttpContext context = new HttpContext(request, response);
             try {
-                return responseHandler.handle(_context);
+                return responseHandler.handle(context);
             } catch (Exception e) {
                 throw new CompletionException(e);
             }

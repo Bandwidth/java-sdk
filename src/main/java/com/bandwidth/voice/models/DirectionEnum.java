@@ -9,13 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+/**
+ * DirectionEnum to be used.
+ */
 public enum DirectionEnum {
     INBOUND,
 
     OUTBOUND;
 
 
-    private static TreeMap<String, DirectionEnum> valueMap = new TreeMap<String, DirectionEnum>();
+    private static TreeMap<String, DirectionEnum> valueMap = new TreeMap<>();
     private String value;
 
     static {
@@ -57,7 +60,7 @@ public enum DirectionEnum {
     public static List<String> toValue(List<DirectionEnum> toConvert) {
         if(toConvert == null)
             return null;
-        List<String> convertedValues = new ArrayList<String>();
+        List<String> convertedValues = new ArrayList<>();
         for (DirectionEnum enumValue : toConvert) {
             convertedValues.add(enumValue.value);
         }

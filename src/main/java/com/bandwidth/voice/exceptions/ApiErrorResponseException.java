@@ -8,10 +8,15 @@ package com.bandwidth.voice.exceptions;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.bandwidth.http.client.HttpContext;
-import com.bandwidth.exceptions.*;
+import com.bandwidth.exceptions.ApiException;
 
+
+/**
+ * This is a model class for ApiErrorResponseException type.
+ */
 public class ApiErrorResponseException
         extends ApiException {
+    private static final long serialVersionUID = -6902078605493274625L;
     /**
      * Initialization constructor
      * @param   reason  The reason for throwing exception
@@ -28,14 +33,14 @@ public class ApiErrorResponseException
      * Getter for Type.
      */
     @JsonGetter("type")
-    public String getType() { 
+    public String getType() {
         return this.type;
     }
     /**
      * Setter for Type.
      */
     @JsonSetter("type")
-    private void setType(String value) { 
+    private void setType(String value) {
         this.type = value;
     }
 
@@ -43,14 +48,14 @@ public class ApiErrorResponseException
      * Getter for Description.
      */
     @JsonGetter("description")
-    public String getDescription() { 
+    public String getDescription() {
         return this.description;
     }
     /**
      * Setter for Description.
      */
     @JsonSetter("description")
-    private void setDescription(String value) { 
+    private void setDescription(String value) {
         this.description = value;
     }
 
@@ -58,16 +63,17 @@ public class ApiErrorResponseException
      * Getter for Id.
      */
     @JsonGetter("id")
-    public String getId() { 
+    public String getId() {
         return this.id;
     }
     /**
      * Setter for Id.
      */
     @JsonSetter("id")
-    private void setId(String value) { 
+    private void setId(String value) {
         this.id = value;
     }
 
  
+
 }

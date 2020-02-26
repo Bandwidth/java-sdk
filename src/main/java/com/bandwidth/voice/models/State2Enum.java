@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+/**
+ * State2Enum to be used.
+ */
 public enum State2Enum {
     NOT_RECORDING,
 
@@ -17,7 +20,7 @@ public enum State2Enum {
     RECORDING;
 
 
-    private static TreeMap<String, State2Enum> valueMap = new TreeMap<String, State2Enum>();
+    private static TreeMap<String, State2Enum> valueMap = new TreeMap<>();
     private String value;
 
     static {
@@ -61,7 +64,7 @@ public enum State2Enum {
     public static List<String> toValue(List<State2Enum> toConvert) {
         if(toConvert == null)
             return null;
-        List<String> convertedValues = new ArrayList<String>();
+        List<String> convertedValues = new ArrayList<>();
         for (State2Enum enumValue : toConvert) {
             convertedValues.add(enumValue.value);
         }

@@ -8,10 +8,17 @@ package com.bandwidth;
 import java.util.Map;
 import java.util.HashMap;
 
-import com.bandwidth.controllers.*;
-import com.bandwidth.http.client.HttpClient;
-import com.bandwidth.http.client.OkClient;
 
+import com.bandwidth.http.client.HttpClient;
+import com.bandwidth.http.client.HttpClientConfiguration;
+import com.bandwidth.http.client.OkClient;
+import com.bandwidth.http.client.ReadonlyHttpClientConfiguration;
+
+/**
+ * Gateway class for the library.
+ * This class acts as a factory for Controllers.
+ * It holds the state of the SDK.
+ */
 public final class BandwidthClient implements Configuration {
 
     private MessagingClient messagingClient;
@@ -34,16 +41,21 @@ public final class BandwidthClient implements Configuration {
     }
 
 
+    /**
+     * Shutdown the underlying HttpClient instance
+     */
     public static void shutdown() {
         OkClient.shutdown();
     }
 
     private BandwidthClient(Environment environment, String messagingBasicAuthUserName,
             String messagingBasicAuthPassword, String voiceBasicAuthUserName, String voiceBasicAuthPassword,
-            HttpClient httpClient, long timeout, Map<String, AuthManager> authManagers) {
+            HttpClient httpClient, long timeout, ReadonlyHttpClientConfiguration httpClientConfig,
+            Map<String, AuthManager> authManagers) {
         this.environment = environment;
         this.httpClient = httpClient;
         this.timeout = timeout;
+        this.httpClientConfig = httpClientConfig;
 
         this.authManagers = (authManagers == null) ? new HashMap<>() : new HashMap<>(authManagers);
         if (this.authManagers.containsKey("messaging")) {
@@ -66,6 +78,7 @@ public final class BandwidthClient implements Configuration {
         }
 
 
+
         messagingClient = new MessagingClient(this);
         voiceClient = new VoiceClient(this);
     }
@@ -84,6 +97,11 @@ public final class BandwidthClient implements Configuration {
      * The timeout to use for making HTTP requests.
      */
     private final long timeout;
+
+    /**
+     * Http Client Configuration instance.
+     */
+    private final ReadonlyHttpClientConfiguration httpClientConfig;
 
     /**
      * Map of authentication Managers.
@@ -122,6 +140,14 @@ public final class BandwidthClient implements Configuration {
      */
     public long getTimeout() {
         return timeout;
+    }
+
+    /**
+     * Http Client Configuration instance.
+     * @return httpClientConfig
+     */
+    public ReadonlyHttpClientConfiguration getHttpClientConfig() {
+        return httpClientConfig;
     }
 
     private String getMessagingBasicAuthUserName() {
@@ -170,7 +196,7 @@ public final class BandwidthClient implements Configuration {
      */
     public String getBaseUri(Server server) {
         StringBuilder baseUrl = new StringBuilder(environmentMapper(environment, server));
-        Map<String, Object> parameters = new HashMap<String, Object>();
+        Map<String, Object> parameters = new HashMap<>();
         ApiHelper.appendUrlWithTemplateParameters(baseUrl, parameters, false);
         return baseUrl.toString();
     }
@@ -205,6 +231,11 @@ public final class BandwidthClient implements Configuration {
     }
 
     
+    /**
+     * Builds a new {@link BandwidthClient.Builder} object.
+     * Creates the instance with the state of the current client.
+     * @return a new {@link BandwidthClient.Builder} object
+     */
     public Builder newBuilder() {
         Builder builder = new Builder();
         builder.environment = getEnvironment();
@@ -215,9 +246,13 @@ public final class BandwidthClient implements Configuration {
         builder.httpClient = getHttpClient();
         builder.timeout = getTimeout();
         builder.authManagers = authManagers;
+        builder.setHttpClientConfig(httpClientConfig);
         return builder;
     }
 
+    /**
+     * Class to build instances of {@link BandwidthClient}
+     */
     public static class Builder {
         private Environment environment = Environment.PRODUCTION;
         private String messagingBasicAuthUserName = "TODO: Replace";
@@ -227,6 +262,8 @@ public final class BandwidthClient implements Configuration {
         private HttpClient httpClient;
         private long timeout = 0;
         private Map<String, AuthManager> authManagers = null;
+
+        private HttpClientConfiguration httpClientConfig;
 
     /**
      * The username and password to use with basic authentication
@@ -278,16 +315,23 @@ public final class BandwidthClient implements Configuration {
             }
             return this;
         }
+
+        private void setHttpClientConfig(ReadonlyHttpClientConfiguration httpClientConfig) {
+            this.timeout = httpClientConfig.getTimeout();
+        }
+
         /**
          * Builds a new BandwidthClient object using the set fields.
          * @return BandwidthClient
          */
         public BandwidthClient build() {
-            httpClient = new OkClient(timeout);
+            httpClientConfig = new HttpClientConfiguration();
+            httpClientConfig.setTimeout(timeout);
+            httpClient = new OkClient(httpClientConfig);
 
             return new BandwidthClient(environment, messagingBasicAuthUserName, messagingBasicAuthPassword,
-                    voiceBasicAuthUserName, voiceBasicAuthPassword, httpClient, timeout, authManagers);
+                    voiceBasicAuthUserName, voiceBasicAuthPassword, httpClient, timeout, httpClientConfig,
+                    authManagers);
         }
-
     }
 }

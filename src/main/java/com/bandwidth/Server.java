@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+/**
+ * Server to be used.
+ */
 public enum Server {
     ENUM_DEFAULT,
 
@@ -17,7 +20,7 @@ public enum Server {
     VOICEDEFAULT;
 
 
-    private static TreeMap<String, Server> valueMap = new TreeMap<String, Server>();
+    private static TreeMap<String, Server> valueMap = new TreeMap<>();
     private String value;
 
     static {
@@ -61,7 +64,7 @@ public enum Server {
     public static List<String> toValue(List<Server> toConvert) {
         if(toConvert == null)
             return null;
-        List<String> convertedValues = new ArrayList<String>();
+        List<String> convertedValues = new ArrayList<>();
         for (Server enumValue : toConvert) {
             convertedValues.add(enumValue.value);
         }

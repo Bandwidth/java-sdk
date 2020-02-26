@@ -5,10 +5,14 @@
  */
 package com.bandwidth.messaging.models;
 
-import java.util.*;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+
+/**
+ * This is a model class for MessageRequest type.
+ */
 public class MessageRequest {
     /**
      * Default constructor
@@ -16,6 +20,15 @@ public class MessageRequest {
     public MessageRequest() {
     }
 
+    /**
+     * Initialization constructor.
+     * @param applicationId
+     * @param to
+     * @param from
+     * @param text
+     * @param media
+     * @param tag
+     */
     public MessageRequest(
             String applicationId,
             List<String> to,
@@ -41,14 +54,14 @@ public class MessageRequest {
      * Getter for ApplicationId.
      */
     @JsonGetter("applicationId")
-    public String getApplicationId() { 
+    public String getApplicationId() {
         return this.applicationId;
     }
     /**
      * Setter for ApplicationId.
      */
     @JsonSetter("applicationId")
-    public void setApplicationId(String value) { 
+    public void setApplicationId(String value) {
         this.applicationId = value;
     }
 
@@ -56,14 +69,14 @@ public class MessageRequest {
      * Getter for To.
      */
     @JsonGetter("to")
-    public List<String> getTo() { 
+    public List<String> getTo() {
         return this.to;
     }
     /**
      * Setter for To.
      */
     @JsonSetter("to")
-    public void setTo(List<String> value) { 
+    public void setTo(List<String> value) {
         this.to = value;
     }
 
@@ -71,14 +84,14 @@ public class MessageRequest {
      * Getter for From.
      */
     @JsonGetter("from")
-    public String getFrom() { 
+    public String getFrom() {
         return this.from;
     }
     /**
      * Setter for From.
      */
     @JsonSetter("from")
-    public void setFrom(String value) { 
+    public void setFrom(String value) {
         this.from = value;
     }
 
@@ -86,14 +99,14 @@ public class MessageRequest {
      * Getter for Text.
      */
     @JsonGetter("text")
-    public String getText() { 
+    public String getText() {
         return this.text;
     }
     /**
      * Setter for Text.
      */
     @JsonSetter("text")
-    public void setText(String value) { 
+    public void setText(String value) {
         this.text = value;
     }
 
@@ -101,14 +114,14 @@ public class MessageRequest {
      * Getter for Media.
      */
     @JsonGetter("media")
-    public List<String> getMedia() { 
+    public List<String> getMedia() {
         return this.media;
     }
     /**
      * Setter for Media.
      */
     @JsonSetter("media")
-    public void setMedia(List<String> value) { 
+    public void setMedia(List<String> value) {
         this.media = value;
     }
 
@@ -116,18 +129,24 @@ public class MessageRequest {
      * Getter for Tag.
      */
     @JsonGetter("tag")
-    public String getTag() { 
+    public String getTag() {
         return this.tag;
     }
     /**
      * Setter for Tag.
      */
     @JsonSetter("tag")
-    public void setTag(String value) { 
+    public void setTag(String value) {
         this.tag = value;
     }
 
  
+
+    /**
+     * Builds a new {@link MessageRequest.Builder} object.
+     * Creates the instance with the state of the current model.
+     * @return a new {@link MessageRequest.Builder} object
+     */
     public Builder toBuilder() {
         Builder builder = new Builder()
             .applicationId(getApplicationId())
@@ -139,6 +158,9 @@ public class MessageRequest {
             return builder;
     }
 
+    /**
+     * Class to build instances of {@link MessageRequest}
+     */
     public static class Builder {
         private String applicationId;
         private List<String> to;
@@ -147,33 +169,72 @@ public class MessageRequest {
         private List<String> media;
         private String tag;
 
-        public Builder() { }
-
-        public Builder applicationId(String value) {
-            applicationId = value;
-            return this;
-        }
-        public Builder to(List<String> value) {
-            to = value;
-            return this;
-        }
-        public Builder from(String value) {
-            from = value;
-            return this;
-        }
-        public Builder text(String value) {
-            text = value;
-            return this;
-        }
-        public Builder media(List<String> value) {
-            media = value;
-            return this;
-        }
-        public Builder tag(String value) {
-            tag = value;
-            return this;
+        /**
+         * Initialization constructor
+         */
+        public Builder() {
+           
         }
 
+        /**
+         * Setter for applicationId
+         * @param applicationId
+         * @return Builder
+         */
+        public Builder applicationId(String applicationId) {
+            this.applicationId = applicationId;
+            return this;
+        }
+        /**
+         * Setter for to
+         * @param to
+         * @return Builder
+         */
+        public Builder to(List<String> to) {
+            this.to = to;
+            return this;
+        }
+        /**
+         * Setter for from
+         * @param from
+         * @return Builder
+         */
+        public Builder from(String from) {
+            this.from = from;
+            return this;
+        }
+        /**
+         * Setter for text
+         * @param text
+         * @return Builder
+         */
+        public Builder text(String text) {
+            this.text = text;
+            return this;
+        }
+        /**
+         * Setter for media
+         * @param media
+         * @return Builder
+         */
+        public Builder media(List<String> media) {
+            this.media = media;
+            return this;
+        }
+        /**
+         * Setter for tag
+         * @param tag
+         * @return Builder
+         */
+        public Builder tag(String tag) {
+            this.tag = tag;
+            return this;
+        }
+
+        /**
+         * Builds a new {@link MessageRequest} object using the set fields.
+         * @return {@link MessageRequest}
+         */
         public MessageRequest build() {
             return new MessageRequest(applicationId,
                 to,

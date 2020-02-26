@@ -9,13 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+/**
+ * State1Enum to be used.
+ */
 public enum State1Enum {
     ACTIVE,
 
     COMPLETED;
 
 
-    private static TreeMap<String, State1Enum> valueMap = new TreeMap<String, State1Enum>();
+    private static TreeMap<String, State1Enum> valueMap = new TreeMap<>();
     private String value;
 
     static {
@@ -57,7 +60,7 @@ public enum State1Enum {
     public static List<String> toValue(List<State1Enum> toConvert) {
         if(toConvert == null)
             return null;
-        List<String> convertedValues = new ArrayList<String>();
+        List<String> convertedValues = new ArrayList<>();
         for (State1Enum enumValue : toConvert) {
             convertedValues.add(enumValue.value);
         }

@@ -8,6 +8,10 @@ package com.bandwidth.messaging.models;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+
+/**
+ * This is a model class for Tag type.
+ */
 public class Tag {
     /**
      * Default constructor
@@ -15,6 +19,11 @@ public class Tag {
     public Tag() {
     }
 
+    /**
+     * Initialization constructor.
+     * @param key
+     * @param value
+     */
     public Tag(
             String key,
             String value) {
@@ -28,14 +37,14 @@ public class Tag {
      * Getter for Key.
      */
     @JsonGetter("key")
-    public String getKey() { 
+    public String getKey() {
         return this.key;
     }
     /**
      * Setter for Key.
      */
     @JsonSetter("key")
-    public void setKey(String value) { 
+    public void setKey(String value) {
         this.key = value;
     }
 
@@ -43,18 +52,24 @@ public class Tag {
      * Getter for Value.
      */
     @JsonGetter("value")
-    public String getValue() { 
+    public String getValue() {
         return this.value;
     }
     /**
      * Setter for Value.
      */
     @JsonSetter("value")
-    public void setValue(String value) { 
+    public void setValue(String value) {
         this.value = value;
     }
 
  
+
+    /**
+     * Builds a new {@link Tag.Builder} object.
+     * Creates the instance with the state of the current model.
+     * @return a new {@link Tag.Builder} object
+     */
     public Builder toBuilder() {
         Builder builder = new Builder()
             .key(getKey())
@@ -62,21 +77,43 @@ public class Tag {
             return builder;
     }
 
+    /**
+     * Class to build instances of {@link Tag}
+     */
     public static class Builder {
         private String key;
         private String value;
 
-        public Builder() { }
+        /**
+         * Initialization constructor
+         */
+        public Builder() {
+           
+        }
 
-        public Builder key(String value) {
-            key = value;
+        /**
+         * Setter for key
+         * @param key
+         * @return Builder
+         */
+        public Builder key(String key) {
+            this.key = key;
             return this;
         }
+        /**
+         * Setter for value
+         * @param value
+         * @return Builder
+         */
         public Builder value(String value) {
-            value = value;
+            this.value = value;
             return this;
         }
 
+        /**
+         * Builds a new {@link Tag} object using the set fields.
+         * @return {@link Tag}
+         */
         public Tag build() {
             return new Tag(key,
                 value);

@@ -5,7 +5,11 @@
  */
 package com.bandwidth;
 
+import com.bandwidth.http.client.ReadonlyHttpClientConfiguration;
 
+/**
+ * Configuration Interface for the library.
+ */
 public interface Configuration {
 
     /**
@@ -19,6 +23,12 @@ public interface Configuration {
      * @return a copy of timeout
      */
     long getTimeout();
+
+    /**
+     * Http Client Configuration instance.
+     * @return a copy of httpClientConfig
+     */
+    ReadonlyHttpClientConfiguration getHttpClientConfig();
 
     /**
      * The credentials to use with basic authentication

@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+/**
+ * Status1Enum to be used.
+ */
 public enum Status1Enum {
     REQUESTED,
 
@@ -25,7 +28,7 @@ public enum Status1Enum {
     FILESIZETOOBIG;
 
 
-    private static TreeMap<String, Status1Enum> valueMap = new TreeMap<String, Status1Enum>();
+    private static TreeMap<String, Status1Enum> valueMap = new TreeMap<>();
     private String value;
 
     static {
@@ -77,7 +80,7 @@ public enum Status1Enum {
     public static List<String> toValue(List<Status1Enum> toConvert) {
         if(toConvert == null)
             return null;
-        List<String> convertedValues = new ArrayList<String>();
+        List<String> convertedValues = new ArrayList<>();
         for (Status1Enum enumValue : toConvert) {
             convertedValues.add(enumValue.value);
         }

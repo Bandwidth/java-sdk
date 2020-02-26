@@ -5,13 +5,19 @@
  */
 package com.bandwidth.messaging.controllers;
 
-import java.io.*;
-import java.util.*;
-import java.util.concurrent.*;
+import java.io.InputStream;
+import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.bandwidth.*;
+import com.bandwidth.ApiHelper;
+import com.bandwidth.AuthManager;
+import com.bandwidth.Configuration;
 import com.bandwidth.controllers.*;
-import com.bandwidth.exceptions.*;
+import com.bandwidth.exceptions.ApiException;
 import com.bandwidth.http.client.HttpClient;
 import com.bandwidth.http.client.HttpContext;
 import com.bandwidth.http.Headers;
@@ -19,10 +25,25 @@ import com.bandwidth.http.request.HttpRequest;
 import com.bandwidth.http.response.ApiResponse;
 import com.bandwidth.http.response.HttpResponse;
 import com.bandwidth.http.response.HttpStringResponse;
-import com.bandwidth.messaging.exceptions.*;
-import com.bandwidth.messaging.models.*;
+import com.bandwidth.messaging.exceptions.GenericClientException;
+import com.bandwidth.messaging.exceptions.PathClientException;
+import com.bandwidth.messaging.models.BandwidthMessage;
+import com.bandwidth.messaging.models.Media;
+import com.bandwidth.messaging.models.MessageRequest;
+import com.bandwidth.Server;
+import com.bandwidth.utilities.FileWrapper;
 
+/**
+ * This class lists all the endpoints of the groups.
+ */
 public final class APIController extends BaseController {
+
+    /**
+     * Initializes the controller.
+     * @param config
+     * @param httpClient
+     * @param authManagers
+     */
     public APIController(Configuration config, HttpClient httpClient, Map<String, AuthManager> authManagers) {
         super(config, httpClient, authManagers);
     }
@@ -30,16 +51,15 @@ public final class APIController extends BaseController {
 
     /**
      * getMessage
-     * @return    Returns the ApiResponse<Void> response from the API call
      */
     public ApiResponse<Void> getMessage() throws ApiException, IOException {
-        HttpRequest _request = _buildGetMessageRequest();
-        authManagers.get("messaging").apply(_request);
+        HttpRequest request = buildGetMessageRequest();
+        authManagers.get("messaging").apply(request);
 
-        HttpResponse _response = getClientInstance().executeAsString(_request);
-        HttpContext _context = new HttpContext(_request, _response);
+        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpContext context = new HttpContext(request, response);
 
-        return _handleGetMessageResponse(_context);
+        return handleGetMessageResponse(context);
     }
 
     /**
@@ -47,67 +67,67 @@ public final class APIController extends BaseController {
      * @return    Returns the ApiResponse<Void> response from the API call 
      */
     public CompletableFuture<ApiResponse<Void>> getMessageAsync() {
-        return makeHttpCallAsync(() -> _buildGetMessageRequest(),
-                _req -> authManagers.get("messaging").applyAsync(_req)
-                    .thenCompose(_request -> getClientInstance().executeAsStringAsync(_request)),
-                _context -> _handleGetMessageResponse(_context));
+        return makeHttpCallAsync(() -> buildGetMessageRequest(),
+                req -> authManagers.get("messaging").applyAsync(req)
+                    .thenCompose(request -> getClientInstance().executeAsStringAsync(request)),
+                context -> handleGetMessageResponse(context));
     }
 
     /**
      * Builds the HttpRequest object for getMessage
      */
-    private HttpRequest _buildGetMessageRequest() {
+    private HttpRequest buildGetMessageRequest() {
         //the base uri for api requests
-        String _baseUri = config.getBaseUri(Server.MESSAGINGDEFAULT);
+        String baseUri = config.getBaseUri(Server.MESSAGINGDEFAULT);
 
         //prepare query string for API call
-        StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/ping");
+        StringBuilder queryBuilder = new StringBuilder(baseUri + "/ping");
         //validate and preprocess url
-        String _queryUrl = ApiHelper.cleanUrl(_queryBuilder);
+        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
 
         //load all headers for the outgoing API request
-        Headers _headers = new Headers();
-        _headers.add("user-agent", BaseController.userAgent);
+        Headers headers = new Headers();
+        headers.add("user-agent", BaseController.userAgent);
 
         //prepare and invoke the API call request to fetch the response
-        HttpRequest _request = getClientInstance().get(_queryUrl, _headers, null);
+        HttpRequest request = getClientInstance().get(queryUrl, headers, null);
 
-        return _request;
+        return request;
     }
 
     /**
      * Processes the response for getMessage
      * @return An object of type void
      */
-    private ApiResponse<Void> _handleGetMessageResponse(HttpContext _context)
+    private ApiResponse<Void> handleGetMessageResponse(HttpContext context)
             throws ApiException, IOException {
-        HttpResponse _response = _context.getResponse();
+        HttpResponse response = context.getResponse();
 
         //Error handling using HTTP status codes
-        int _responseCode = _response.getStatusCode();
+        int responseCode = response.getStatusCode();
 
-        if (_responseCode == 400) {
-            throw new GenericClientException("400 Request is malformed or invalid", _context);
+        if (responseCode == 400) {
+            throw new GenericClientException("400 Request is malformed or invalid", context);
         }
-        if (_responseCode == 401) {
-            throw new PathClientException("401 The specified user does not have access to the account", _context);
+        if (responseCode == 401) {
+            throw new PathClientException("401 The specified user does not have access to the account", context);
         }
-        if (_responseCode == 403) {
-            throw new PathClientException("403 The user does not have access to this API", _context);
+        if (responseCode == 403) {
+            throw new PathClientException("403 The user does not have access to this API", context);
         }
-        if (_responseCode == 404) {
-            throw new PathClientException("404 Path not found", _context);
+        if (responseCode == 404) {
+            throw new PathClientException("404 Path not found", context);
         }
-        if (_responseCode == 415) {
-            throw new GenericClientException("415 The content-type of the request is incorrect", _context);
+        if (responseCode == 415) {
+            throw new GenericClientException("415 The content-type of the request is incorrect", context);
         }
-        if (_responseCode == 429) {
-            throw new GenericClientException("429 The rate limit has been reached", _context);
+        if (responseCode == 429) {
+            throw new GenericClientException("429 The rate limit has been reached", context);
         }
         //handle errors defined at the API level
-        validateResponse(_response, _context);
+        validateResponse(response, context);
 
-        return new ApiResponse<Void>(_response.getStatusCode(), _response.getHeaders(), null);
+        return new ApiResponse<Void>(response.getStatusCode(), response.getHeaders(), null);
     }
 
     /**
@@ -118,15 +138,14 @@ public final class APIController extends BaseController {
      */
     public ApiResponse<List<Media>> listMedia(
             final String userId,
-            final String continuationToken
-    ) throws ApiException, IOException {
-        HttpRequest _request = _buildListMediaRequest(userId, continuationToken);
-        authManagers.get("messaging").apply(_request);
+            final String continuationToken) throws ApiException, IOException {
+        HttpRequest request = buildListMediaRequest(userId, continuationToken);
+        authManagers.get("messaging").apply(request);
 
-        HttpResponse _response = getClientInstance().executeAsString(_request);
-        HttpContext _context = new HttpContext(_request, _response);
+        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpContext context = new HttpContext(request, response);
 
-        return _handleListMediaResponse(_context);
+        return handleListMediaResponse(context);
     }
 
     /**
@@ -137,83 +156,81 @@ public final class APIController extends BaseController {
      */
     public CompletableFuture<ApiResponse<List<Media>>> listMediaAsync(
             final String userId,
-            final String continuationToken
-    ) {
-        return makeHttpCallAsync(() -> _buildListMediaRequest(userId, continuationToken),
-                _req -> authManagers.get("messaging").applyAsync(_req)
-                    .thenCompose(_request -> getClientInstance().executeAsStringAsync(_request)),
-                _context -> _handleListMediaResponse(_context));
+            final String continuationToken) {
+        return makeHttpCallAsync(() -> buildListMediaRequest(userId, continuationToken),
+                req -> authManagers.get("messaging").applyAsync(req)
+                    .thenCompose(request -> getClientInstance().executeAsStringAsync(request)),
+                context -> handleListMediaResponse(context));
     }
 
     /**
      * Builds the HttpRequest object for listMedia
      */
-    private HttpRequest _buildListMediaRequest(
+    private HttpRequest buildListMediaRequest(
             final String userId,
-            final String continuationToken
-    ) {
+            final String continuationToken) {
         //the base uri for api requests
-        String _baseUri = config.getBaseUri(Server.MESSAGINGDEFAULT);
+        String baseUri = config.getBaseUri(Server.MESSAGINGDEFAULT);
 
         //prepare query string for API call
-        StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/users/{userId}/media");
+        StringBuilder queryBuilder = new StringBuilder(baseUri + "/users/{userId}/media");
 
         //process template parameters
-        Map<String, Object> _templateParameters = new HashMap<String, Object>();
-        _templateParameters.put("userId", userId);
-        ApiHelper.appendUrlWithTemplateParameters(_queryBuilder, _templateParameters, true);
+        Map<String, Object> templateParameters = new HashMap<>();
+        templateParameters.put("userId", userId);
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
         //validate and preprocess url
-        String _queryUrl = ApiHelper.cleanUrl(_queryBuilder);
+        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
 
         //load all headers for the outgoing API request
-        Headers _headers = new Headers();
-        _headers.add("Continuation-Token", continuationToken);
-        _headers.add("user-agent", BaseController.userAgent);
-        _headers.add("accept", "application/json");
+        Headers headers = new Headers();
+        headers.add("Continuation-Token", continuationToken);
+        headers.add("user-agent", BaseController.userAgent);
+        headers.add("accept", "application/json");
 
         //prepare and invoke the API call request to fetch the response
-        HttpRequest _request = getClientInstance().get(_queryUrl, _headers, null);
+        HttpRequest request = getClientInstance().get(queryUrl, headers, null);
 
-        return _request;
+        return request;
     }
 
     /**
      * Processes the response for listMedia
      * @return An object of type List<Media>
      */
-    private ApiResponse<List<Media>> _handleListMediaResponse(HttpContext _context)
+    private ApiResponse<List<Media>> handleListMediaResponse(HttpContext context)
             throws ApiException, IOException {
-        HttpResponse _response = _context.getResponse();
+        HttpResponse response = context.getResponse();
 
         //Error handling using HTTP status codes
-        int _responseCode = _response.getStatusCode();
+        int responseCode = response.getStatusCode();
 
-        if (_responseCode == 400) {
-            throw new GenericClientException("400 Request is malformed or invalid", _context);
+        if (responseCode == 400) {
+            throw new GenericClientException("400 Request is malformed or invalid", context);
         }
-        if (_responseCode == 401) {
-            throw new PathClientException("401 The specified user does not have access to the account", _context);
+        if (responseCode == 401) {
+            throw new PathClientException("401 The specified user does not have access to the account", context);
         }
-        if (_responseCode == 403) {
-            throw new PathClientException("403 The user does not have access to this API", _context);
+        if (responseCode == 403) {
+            throw new PathClientException("403 The user does not have access to this API", context);
         }
-        if (_responseCode == 404) {
-            throw new PathClientException("404 Path not found", _context);
+        if (responseCode == 404) {
+            throw new PathClientException("404 Path not found", context);
         }
-        if (_responseCode == 415) {
-            throw new GenericClientException("415 The content-type of the request is incorrect", _context);
+        if (responseCode == 415) {
+            throw new GenericClientException("415 The content-type of the request is incorrect", context);
         }
-        if (_responseCode == 429) {
-            throw new GenericClientException("429 The rate limit has been reached", _context);
+        if (responseCode == 429) {
+            throw new GenericClientException("429 The rate limit has been reached", context);
         }
         //handle errors defined at the API level
-        validateResponse(_response, _context);
+        validateResponse(response, context);
 
         //extract result from the http response
-        String _responseBody = ((HttpStringResponse)_response).getBody();
-        List<Media> _result = ApiHelper.deserializeArray(_responseBody,
+        String responseBody = ((HttpStringResponse)response).getBody();
+        List<Media> result = ApiHelper.deserializeArray(responseBody,
                 Media[].class);
-        return new ApiResponse<List<Media>>(_response.getStatusCode(), _response.getHeaders(), _result);
+        return new ApiResponse<List<Media>>(response.getStatusCode(), response.getHeaders(), result);
     }
 
     /**
@@ -224,15 +241,14 @@ public final class APIController extends BaseController {
      */
     public ApiResponse<InputStream> getMedia(
             final String userId,
-            final String mediaId
-    ) throws ApiException, IOException {
-        HttpRequest _request = _buildGetMediaRequest(userId, mediaId);
-        authManagers.get("messaging").apply(_request);
+            final String mediaId) throws ApiException, IOException {
+        HttpRequest request = buildGetMediaRequest(userId, mediaId);
+        authManagers.get("messaging").apply(request);
 
-        HttpResponse _response = getClientInstance().executeAsBinary(_request);
-        HttpContext _context = new HttpContext(_request, _response);
+        HttpResponse response = getClientInstance().executeAsBinary(request);
+        HttpContext context = new HttpContext(request, response);
 
-        return _handleGetMediaResponse(_context);
+        return handleGetMediaResponse(context);
     }
 
     /**
@@ -243,80 +259,78 @@ public final class APIController extends BaseController {
      */
     public CompletableFuture<ApiResponse<InputStream>> getMediaAsync(
             final String userId,
-            final String mediaId
-    ) {
-        return makeHttpCallAsync(() -> _buildGetMediaRequest(userId, mediaId),
-                _req -> authManagers.get("messaging").applyAsync(_req)
-                    .thenCompose(_request -> getClientInstance().executeAsStringAsync(_request)),
-                _context -> _handleGetMediaResponse(_context));
+            final String mediaId) {
+        return makeHttpCallAsync(() -> buildGetMediaRequest(userId, mediaId),
+                req -> authManagers.get("messaging").applyAsync(req)
+                    .thenCompose(request -> getClientInstance().executeAsStringAsync(request)),
+                context -> handleGetMediaResponse(context));
     }
 
     /**
      * Builds the HttpRequest object for getMedia
      */
-    private HttpRequest _buildGetMediaRequest(
+    private HttpRequest buildGetMediaRequest(
             final String userId,
-            final String mediaId
-    ) {
+            final String mediaId) {
         //the base uri for api requests
-        String _baseUri = config.getBaseUri(Server.MESSAGINGDEFAULT);
+        String baseUri = config.getBaseUri(Server.MESSAGINGDEFAULT);
 
         //prepare query string for API call
-        StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/users/{userId}/media/{mediaId}");
+        StringBuilder queryBuilder = new StringBuilder(baseUri + "/users/{userId}/media/{mediaId}");
 
         //process template parameters
-        Map<String, Object> _templateParameters = new HashMap<String, Object>();
-        _templateParameters.put("userId", userId);
-        _templateParameters.put("mediaId", mediaId);
-        ApiHelper.appendUrlWithTemplateParameters(_queryBuilder, _templateParameters, true);
+        Map<String, Object> templateParameters = new HashMap<>();
+        templateParameters.put("userId", userId);
+        templateParameters.put("mediaId", mediaId);
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
         //validate and preprocess url
-        String _queryUrl = ApiHelper.cleanUrl(_queryBuilder);
+        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
 
         //load all headers for the outgoing API request
-        Headers _headers = new Headers();
-        _headers.add("user-agent", BaseController.userAgent);
+        Headers headers = new Headers();
+        headers.add("user-agent", BaseController.userAgent);
 
         //prepare and invoke the API call request to fetch the response
-        HttpRequest _request = getClientInstance().get(_queryUrl, _headers, null);
+        HttpRequest request = getClientInstance().get(queryUrl, headers, null);
 
-        return _request;
+        return request;
     }
 
     /**
      * Processes the response for getMedia
      * @return An object of type InputStream
      */
-    private ApiResponse<InputStream> _handleGetMediaResponse(HttpContext _context)
+    private ApiResponse<InputStream> handleGetMediaResponse(HttpContext context)
             throws ApiException, IOException {
-        HttpResponse _response = _context.getResponse();
+        HttpResponse response = context.getResponse();
 
         //Error handling using HTTP status codes
-        int _responseCode = _response.getStatusCode();
+        int responseCode = response.getStatusCode();
 
-        if (_responseCode == 400) {
-            throw new GenericClientException("400 Request is malformed or invalid", _context);
+        if (responseCode == 400) {
+            throw new GenericClientException("400 Request is malformed or invalid", context);
         }
-        if (_responseCode == 401) {
-            throw new PathClientException("401 The specified user does not have access to the account", _context);
+        if (responseCode == 401) {
+            throw new PathClientException("401 The specified user does not have access to the account", context);
         }
-        if (_responseCode == 403) {
-            throw new PathClientException("403 The user does not have access to this API", _context);
+        if (responseCode == 403) {
+            throw new PathClientException("403 The user does not have access to this API", context);
         }
-        if (_responseCode == 404) {
-            throw new PathClientException("404 Path not found", _context);
+        if (responseCode == 404) {
+            throw new PathClientException("404 Path not found", context);
         }
-        if (_responseCode == 415) {
-            throw new GenericClientException("415 The content-type of the request is incorrect", _context);
+        if (responseCode == 415) {
+            throw new GenericClientException("415 The content-type of the request is incorrect", context);
         }
-        if (_responseCode == 429) {
-            throw new GenericClientException("429 The rate limit has been reached", _context);
+        if (responseCode == 429) {
+            throw new GenericClientException("429 The rate limit has been reached", context);
         }
         //handle errors defined at the API level
-        validateResponse(_response, _context);
+        validateResponse(response, context);
 
         //extract result from the http response
-        InputStream _result = _response.getRawBody();
-        return new ApiResponse<InputStream>(_response.getStatusCode(), _response.getHeaders(), _result);
+        InputStream result = response.getRawBody();
+        return new ApiResponse<InputStream>(response.getStatusCode(), response.getHeaders(), result);
     }
 
     /**
@@ -325,25 +339,23 @@ public final class APIController extends BaseController {
      * @param    mediaId    Required parameter: Example: 
      * @param    contentLength    Required parameter: Example: 
      * @param    body    Required parameter: Example: 
-     * @param    contentType    Optional parameter: Example: 
+     * @param    contentType    Optional parameter: Example: application/octet-stream
      * @param    cacheControl    Optional parameter: Example: 
-     * @return    Returns the ApiResponse<Void> response from the API call
      */
     public ApiResponse<Void> uploadMedia(
             final String userId,
             final String mediaId,
             final long contentLength,
-            final String body,
+            final FileWrapper body,
             final String contentType,
-            final String cacheControl
-    ) throws ApiException, IOException {
-        HttpRequest _request = _buildUploadMediaRequest(userId, mediaId, contentLength, body, contentType, cacheControl);
-        authManagers.get("messaging").apply(_request);
+            final String cacheControl) throws ApiException, IOException {
+        HttpRequest request = buildUploadMediaRequest(userId, mediaId, contentLength, body, contentType, cacheControl);
+        authManagers.get("messaging").apply(request);
 
-        HttpResponse _response = getClientInstance().executeAsString(_request);
-        HttpContext _context = new HttpContext(_request, _response);
+        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpContext context = new HttpContext(request, response);
 
-        return _handleUploadMediaResponse(_context);
+        return handleUploadMediaResponse(context);
     }
 
     /**
@@ -352,7 +364,7 @@ public final class APIController extends BaseController {
      * @param    mediaId    Required parameter: Example: 
      * @param    contentLength    Required parameter: Example: 
      * @param    body    Required parameter: Example: 
-     * @param    contentType    Optional parameter: Example: 
+     * @param    contentType    Optional parameter: Example: application/octet-stream
      * @param    cacheControl    Optional parameter: Example: 
      * @return    Returns the ApiResponse<Void> response from the API call 
      */
@@ -360,107 +372,102 @@ public final class APIController extends BaseController {
             final String userId,
             final String mediaId,
             final long contentLength,
-            final String body,
+            final FileWrapper body,
             final String contentType,
-            final String cacheControl
-    ) {
-        return makeHttpCallAsync(() -> _buildUploadMediaRequest(userId, mediaId, contentLength, body, contentType, cacheControl),
-                _req -> authManagers.get("messaging").applyAsync(_req)
-                    .thenCompose(_request -> getClientInstance().executeAsStringAsync(_request)),
-                _context -> _handleUploadMediaResponse(_context));
+            final String cacheControl) {
+        return makeHttpCallAsync(() -> buildUploadMediaRequest(userId, mediaId, contentLength, body, contentType, cacheControl),
+                req -> authManagers.get("messaging").applyAsync(req)
+                    .thenCompose(request -> getClientInstance().executeAsStringAsync(request)),
+                context -> handleUploadMediaResponse(context));
     }
 
     /**
      * Builds the HttpRequest object for uploadMedia
      */
-    private HttpRequest _buildUploadMediaRequest(
+    private HttpRequest buildUploadMediaRequest(
             final String userId,
             final String mediaId,
             final long contentLength,
-            final String body,
+            final FileWrapper body,
             final String contentType,
-            final String cacheControl
-    ) {
+            final String cacheControl) {
         //the base uri for api requests
-        String _baseUri = config.getBaseUri(Server.MESSAGINGDEFAULT);
+        String baseUri = config.getBaseUri(Server.MESSAGINGDEFAULT);
 
         //prepare query string for API call
-        StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/users/{userId}/media/{mediaId}");
+        StringBuilder queryBuilder = new StringBuilder(baseUri + "/users/{userId}/media/{mediaId}");
 
         //process template parameters
-        Map<String, Object> _templateParameters = new HashMap<String, Object>();
-        _templateParameters.put("userId", userId);
-        _templateParameters.put("mediaId", mediaId);
-        ApiHelper.appendUrlWithTemplateParameters(_queryBuilder, _templateParameters, true);
+        Map<String, Object> templateParameters = new HashMap<>();
+        templateParameters.put("userId", userId);
+        templateParameters.put("mediaId", mediaId);
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
         //validate and preprocess url
-        String _queryUrl = ApiHelper.cleanUrl(_queryBuilder);
+        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
 
         //load all headers for the outgoing API request
-        Headers _headers = new Headers();
-        _headers.add("Content-Length", Long.toString(contentLength));
-        _headers.add("Content-Type", contentType);
-        _headers.add("Cache-Control", cacheControl);
-        _headers.add("user-agent", BaseController.userAgent);
+        Headers headers = new Headers();
+        headers.add("Content-Length", Long.toString(contentLength));
+        headers.add("Content-Type", (contentType != null) ? contentType : "application/octet-stream");
+        headers.add("Cache-Control", cacheControl);
+        headers.add("user-agent", BaseController.userAgent);
 
         //prepare and invoke the API call request to fetch the response
-        String _bodyJson = body;
-        HttpRequest _request = getClientInstance().putBody(_queryUrl, _headers, _bodyJson);
+        HttpRequest request = getClientInstance().putBody(queryUrl, headers, body);
 
-        return _request;
+        return request;
     }
 
     /**
      * Processes the response for uploadMedia
      * @return An object of type void
      */
-    private ApiResponse<Void> _handleUploadMediaResponse(HttpContext _context)
+    private ApiResponse<Void> handleUploadMediaResponse(HttpContext context)
             throws ApiException, IOException {
-        HttpResponse _response = _context.getResponse();
+        HttpResponse response = context.getResponse();
 
         //Error handling using HTTP status codes
-        int _responseCode = _response.getStatusCode();
+        int responseCode = response.getStatusCode();
 
-        if (_responseCode == 400) {
-            throw new GenericClientException("400 Request is malformed or invalid", _context);
+        if (responseCode == 400) {
+            throw new GenericClientException("400 Request is malformed or invalid", context);
         }
-        if (_responseCode == 401) {
-            throw new PathClientException("401 The specified user does not have access to the account", _context);
+        if (responseCode == 401) {
+            throw new PathClientException("401 The specified user does not have access to the account", context);
         }
-        if (_responseCode == 403) {
-            throw new PathClientException("403 The user does not have access to this API", _context);
+        if (responseCode == 403) {
+            throw new PathClientException("403 The user does not have access to this API", context);
         }
-        if (_responseCode == 404) {
-            throw new PathClientException("404 Path not found", _context);
+        if (responseCode == 404) {
+            throw new PathClientException("404 Path not found", context);
         }
-        if (_responseCode == 415) {
-            throw new GenericClientException("415 The content-type of the request is incorrect", _context);
+        if (responseCode == 415) {
+            throw new GenericClientException("415 The content-type of the request is incorrect", context);
         }
-        if (_responseCode == 429) {
-            throw new GenericClientException("429 The rate limit has been reached", _context);
+        if (responseCode == 429) {
+            throw new GenericClientException("429 The rate limit has been reached", context);
         }
         //handle errors defined at the API level
-        validateResponse(_response, _context);
+        validateResponse(response, context);
 
-        return new ApiResponse<Void>(_response.getStatusCode(), _response.getHeaders(), null);
+        return new ApiResponse<Void>(response.getStatusCode(), response.getHeaders(), null);
     }
 
     /**
      * deleteMedia
      * @param    userId    Required parameter: Example: 
      * @param    mediaId    Required parameter: Example: 
-     * @return    Returns the ApiResponse<Void> response from the API call
      */
     public ApiResponse<Void> deleteMedia(
             final String userId,
-            final String mediaId
-    ) throws ApiException, IOException {
-        HttpRequest _request = _buildDeleteMediaRequest(userId, mediaId);
-        authManagers.get("messaging").apply(_request);
+            final String mediaId) throws ApiException, IOException {
+        HttpRequest request = buildDeleteMediaRequest(userId, mediaId);
+        authManagers.get("messaging").apply(request);
 
-        HttpResponse _response = getClientInstance().executeAsString(_request);
-        HttpContext _context = new HttpContext(_request, _response);
+        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpContext context = new HttpContext(request, response);
 
-        return _handleDeleteMediaResponse(_context);
+        return handleDeleteMediaResponse(context);
     }
 
     /**
@@ -471,78 +478,76 @@ public final class APIController extends BaseController {
      */
     public CompletableFuture<ApiResponse<Void>> deleteMediaAsync(
             final String userId,
-            final String mediaId
-    ) {
-        return makeHttpCallAsync(() -> _buildDeleteMediaRequest(userId, mediaId),
-                _req -> authManagers.get("messaging").applyAsync(_req)
-                    .thenCompose(_request -> getClientInstance().executeAsStringAsync(_request)),
-                _context -> _handleDeleteMediaResponse(_context));
+            final String mediaId) {
+        return makeHttpCallAsync(() -> buildDeleteMediaRequest(userId, mediaId),
+                req -> authManagers.get("messaging").applyAsync(req)
+                    .thenCompose(request -> getClientInstance().executeAsStringAsync(request)),
+                context -> handleDeleteMediaResponse(context));
     }
 
     /**
      * Builds the HttpRequest object for deleteMedia
      */
-    private HttpRequest _buildDeleteMediaRequest(
+    private HttpRequest buildDeleteMediaRequest(
             final String userId,
-            final String mediaId
-    ) {
+            final String mediaId) {
         //the base uri for api requests
-        String _baseUri = config.getBaseUri(Server.MESSAGINGDEFAULT);
+        String baseUri = config.getBaseUri(Server.MESSAGINGDEFAULT);
 
         //prepare query string for API call
-        StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/users/{userId}/media/{mediaId}");
+        StringBuilder queryBuilder = new StringBuilder(baseUri + "/users/{userId}/media/{mediaId}");
 
         //process template parameters
-        Map<String, Object> _templateParameters = new HashMap<String, Object>();
-        _templateParameters.put("userId", userId);
-        _templateParameters.put("mediaId", mediaId);
-        ApiHelper.appendUrlWithTemplateParameters(_queryBuilder, _templateParameters, true);
+        Map<String, Object> templateParameters = new HashMap<>();
+        templateParameters.put("userId", userId);
+        templateParameters.put("mediaId", mediaId);
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
         //validate and preprocess url
-        String _queryUrl = ApiHelper.cleanUrl(_queryBuilder);
+        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
 
         //load all headers for the outgoing API request
-        Headers _headers = new Headers();
-        _headers.add("user-agent", BaseController.userAgent);
+        Headers headers = new Headers();
+        headers.add("user-agent", BaseController.userAgent);
 
         //prepare and invoke the API call request to fetch the response
-        HttpRequest _request = getClientInstance().delete(_queryUrl, _headers, null);
+        HttpRequest request = getClientInstance().delete(queryUrl, headers, null);
 
-        return _request;
+        return request;
     }
 
     /**
      * Processes the response for deleteMedia
      * @return An object of type void
      */
-    private ApiResponse<Void> _handleDeleteMediaResponse(HttpContext _context)
+    private ApiResponse<Void> handleDeleteMediaResponse(HttpContext context)
             throws ApiException, IOException {
-        HttpResponse _response = _context.getResponse();
+        HttpResponse response = context.getResponse();
 
         //Error handling using HTTP status codes
-        int _responseCode = _response.getStatusCode();
+        int responseCode = response.getStatusCode();
 
-        if (_responseCode == 400) {
-            throw new GenericClientException("400 Request is malformed or invalid", _context);
+        if (responseCode == 400) {
+            throw new GenericClientException("400 Request is malformed or invalid", context);
         }
-        if (_responseCode == 401) {
-            throw new PathClientException("401 The specified user does not have access to the account", _context);
+        if (responseCode == 401) {
+            throw new PathClientException("401 The specified user does not have access to the account", context);
         }
-        if (_responseCode == 403) {
-            throw new PathClientException("403 The user does not have access to this API", _context);
+        if (responseCode == 403) {
+            throw new PathClientException("403 The user does not have access to this API", context);
         }
-        if (_responseCode == 404) {
-            throw new PathClientException("404 Path not found", _context);
+        if (responseCode == 404) {
+            throw new PathClientException("404 Path not found", context);
         }
-        if (_responseCode == 415) {
-            throw new GenericClientException("415 The content-type of the request is incorrect", _context);
+        if (responseCode == 415) {
+            throw new GenericClientException("415 The content-type of the request is incorrect", context);
         }
-        if (_responseCode == 429) {
-            throw new GenericClientException("429 The rate limit has been reached", _context);
+        if (responseCode == 429) {
+            throw new GenericClientException("429 The rate limit has been reached", context);
         }
         //handle errors defined at the API level
-        validateResponse(_response, _context);
+        validateResponse(response, context);
 
-        return new ApiResponse<Void>(_response.getStatusCode(), _response.getHeaders(), null);
+        return new ApiResponse<Void>(response.getStatusCode(), response.getHeaders(), null);
     }
 
     /**
@@ -553,15 +558,14 @@ public final class APIController extends BaseController {
      */
     public ApiResponse<BandwidthMessage> createMessage(
             final String userId,
-            final MessageRequest body
-    ) throws ApiException, IOException {
-        HttpRequest _request = _buildCreateMessageRequest(userId, body);
-        authManagers.get("messaging").apply(_request);
+            final MessageRequest body) throws ApiException, IOException {
+        HttpRequest request = buildCreateMessageRequest(userId, body);
+        authManagers.get("messaging").apply(request);
 
-        HttpResponse _response = getClientInstance().executeAsString(_request);
-        HttpContext _context = new HttpContext(_request, _response);
+        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpContext context = new HttpContext(request, response);
 
-        return _handleCreateMessageResponse(_context);
+        return handleCreateMessageResponse(context);
     }
 
     /**
@@ -572,85 +576,83 @@ public final class APIController extends BaseController {
      */
     public CompletableFuture<ApiResponse<BandwidthMessage>> createMessageAsync(
             final String userId,
-            final MessageRequest body
-    ) {
-        return makeHttpCallAsync(() -> _buildCreateMessageRequest(userId, body),
-                _req -> authManagers.get("messaging").applyAsync(_req)
-                    .thenCompose(_request -> getClientInstance().executeAsStringAsync(_request)),
-                _context -> _handleCreateMessageResponse(_context));
+            final MessageRequest body) {
+        return makeHttpCallAsync(() -> buildCreateMessageRequest(userId, body),
+                req -> authManagers.get("messaging").applyAsync(req)
+                    .thenCompose(request -> getClientInstance().executeAsStringAsync(request)),
+                context -> handleCreateMessageResponse(context));
     }
 
     /**
      * Builds the HttpRequest object for createMessage
      */
-    private HttpRequest _buildCreateMessageRequest(
+    private HttpRequest buildCreateMessageRequest(
             final String userId,
-            final MessageRequest body
-    ) throws JsonProcessingException {
+            final MessageRequest body) throws JsonProcessingException {
         //the base uri for api requests
-        String _baseUri = config.getBaseUri(Server.MESSAGINGDEFAULT);
+        String baseUri = config.getBaseUri(Server.MESSAGINGDEFAULT);
 
         //prepare query string for API call
-        StringBuilder _queryBuilder = new StringBuilder(_baseUri + "/users/{userId}/messages");
+        StringBuilder queryBuilder = new StringBuilder(baseUri + "/users/{userId}/messages");
 
         //process template parameters
-        Map<String, Object> _templateParameters = new HashMap<String, Object>();
-        _templateParameters.put("userId", userId);
-        ApiHelper.appendUrlWithTemplateParameters(_queryBuilder, _templateParameters, true);
+        Map<String, Object> templateParameters = new HashMap<>();
+        templateParameters.put("userId", userId);
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
         //validate and preprocess url
-        String _queryUrl = ApiHelper.cleanUrl(_queryBuilder);
+        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
 
         //load all headers for the outgoing API request
-        Headers _headers = new Headers();
-        _headers.add("user-agent", BaseController.userAgent);
-        _headers.add("accept", "application/json");
-        _headers.add("content-type", "application/json");
+        Headers headers = new Headers();
+        headers.add("user-agent", BaseController.userAgent);
+        headers.add("accept", "application/json");
+        headers.add("content-type", "application/json");
 
         //prepare and invoke the API call request to fetch the response
-        String _bodyJson = ApiHelper.serialize(body);
-        HttpRequest _request = getClientInstance().postBody(_queryUrl, _headers, _bodyJson);
+        String bodyJson = ApiHelper.serialize(body);
+        HttpRequest request = getClientInstance().postBody(queryUrl, headers, bodyJson);
 
-        return _request;
+        return request;
     }
 
     /**
      * Processes the response for createMessage
      * @return An object of type BandwidthMessage
      */
-    private ApiResponse<BandwidthMessage> _handleCreateMessageResponse(HttpContext _context)
+    private ApiResponse<BandwidthMessage> handleCreateMessageResponse(HttpContext context)
             throws ApiException, IOException {
-        HttpResponse _response = _context.getResponse();
+        HttpResponse response = context.getResponse();
 
         //Error handling using HTTP status codes
-        int _responseCode = _response.getStatusCode();
+        int responseCode = response.getStatusCode();
 
-        if (_responseCode == 400) {
-            throw new GenericClientException("400 Request is malformed or invalid", _context);
+        if (responseCode == 400) {
+            throw new GenericClientException("400 Request is malformed or invalid", context);
         }
-        if (_responseCode == 401) {
-            throw new PathClientException("401 The specified user does not have access to the account", _context);
+        if (responseCode == 401) {
+            throw new PathClientException("401 The specified user does not have access to the account", context);
         }
-        if (_responseCode == 403) {
-            throw new PathClientException("403 The user does not have access to this API", _context);
+        if (responseCode == 403) {
+            throw new PathClientException("403 The user does not have access to this API", context);
         }
-        if (_responseCode == 404) {
-            throw new PathClientException("404 Path not found", _context);
+        if (responseCode == 404) {
+            throw new PathClientException("404 Path not found", context);
         }
-        if (_responseCode == 415) {
-            throw new GenericClientException("415 The content-type of the request is incorrect", _context);
+        if (responseCode == 415) {
+            throw new GenericClientException("415 The content-type of the request is incorrect", context);
         }
-        if (_responseCode == 429) {
-            throw new GenericClientException("429 The rate limit has been reached", _context);
+        if (responseCode == 429) {
+            throw new GenericClientException("429 The rate limit has been reached", context);
         }
         //handle errors defined at the API level
-        validateResponse(_response, _context);
+        validateResponse(response, context);
 
         //extract result from the http response
-        String _responseBody = ((HttpStringResponse)_response).getBody();
-        BandwidthMessage _result = ApiHelper.deserialize(_responseBody,
+        String responseBody = ((HttpStringResponse)response).getBody();
+        BandwidthMessage result = ApiHelper.deserialize(responseBody,
                 BandwidthMessage.class);
 
-        return new ApiResponse<BandwidthMessage>(_response.getStatusCode(), _response.getHeaders(), _result);
+        return new ApiResponse<BandwidthMessage>(response.getStatusCode(), response.getHeaders(), result);
     }
 
 }

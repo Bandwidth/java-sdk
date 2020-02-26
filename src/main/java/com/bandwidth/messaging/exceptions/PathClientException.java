@@ -8,10 +8,15 @@ package com.bandwidth.messaging.exceptions;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.bandwidth.http.client.HttpContext;
-import com.bandwidth.exceptions.*;
+import com.bandwidth.exceptions.ApiException;
 
+
+/**
+ * This is a model class for PathClientException type.
+ */
 public class PathClientException
         extends ApiException {
+    private static final long serialVersionUID = 1307400998576290229L;
     /**
      * Initialization constructor
      * @param   reason  The reason for throwing exception
@@ -30,14 +35,14 @@ public class PathClientException
      * Getter for Timestamp.
      */
     @JsonGetter("timestamp")
-    public String getTimestamp() { 
+    public String getTimestamp() {
         return this.timestamp;
     }
     /**
      * Setter for Timestamp.
      */
     @JsonSetter("timestamp")
-    private void setTimestamp(String value) { 
+    private void setTimestamp(String value) {
         this.timestamp = value;
     }
 
@@ -45,14 +50,14 @@ public class PathClientException
      * Getter for Status.
      */
     @JsonGetter("status")
-    public Integer getStatus() { 
+    public Integer getStatus() {
         return this.status;
     }
     /**
      * Setter for Status.
      */
     @JsonSetter("status")
-    private void setStatus(Integer value) { 
+    private void setStatus(Integer value) {
         this.status = value;
     }
 
@@ -60,14 +65,14 @@ public class PathClientException
      * Getter for Error.
      */
     @JsonGetter("error")
-    public String getError() { 
+    public String getError() {
         return this.error;
     }
     /**
      * Setter for Error.
      */
     @JsonSetter("error")
-    private void setError(String value) { 
+    private void setError(String value) {
         this.error = value;
     }
 
@@ -75,14 +80,14 @@ public class PathClientException
      * Getter for Message.
      */
     @JsonGetter("message")
-    public String getMessage() { 
+    public String getMessage() {
         return this.message;
     }
     /**
      * Setter for Message.
      */
     @JsonSetter("message")
-    private void setMessage(String value) { 
+    private void setMessage(String value) {
         this.message = value;
     }
 
@@ -90,16 +95,17 @@ public class PathClientException
      * Getter for Path.
      */
     @JsonGetter("path")
-    public String getPath() { 
+    public String getPath() {
         return this.path;
     }
     /**
      * Setter for Path.
      */
     @JsonSetter("path")
-    private void setPath(String value) { 
+    private void setPath(String value) {
         this.path = value;
     }
 
  
+
 }

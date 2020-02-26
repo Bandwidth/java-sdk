@@ -5,10 +5,14 @@
  */
 package com.bandwidth.messaging.models;
 
-import java.util.*;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+
+/**
+ * This is a model class for Media type.
+ */
 public class Media {
     /**
      * Default constructor
@@ -16,6 +20,19 @@ public class Media {
     public Media() {
     }
 
+    /**
+     * Initialization constructor.
+     * @param inputStream
+     * @param content
+     * @param url
+     * @param contentLength
+     * @param contentType
+     * @param tags
+     * @param userId
+     * @param mediaName
+     * @param mediaId
+     * @param cacheControl
+     */
     public Media(
             Object inputStream,
             String content,
@@ -53,14 +70,14 @@ public class Media {
      * Getter for InputStream.
      */
     @JsonGetter("inputStream")
-    public Object getInputStream() { 
+    public Object getInputStream() {
         return this.inputStream;
     }
     /**
      * Setter for InputStream.
      */
     @JsonSetter("inputStream")
-    public void setInputStream(Object value) { 
+    public void setInputStream(Object value) {
         this.inputStream = value;
     }
 
@@ -68,14 +85,14 @@ public class Media {
      * Getter for Content.
      */
     @JsonGetter("content")
-    public String getContent() { 
+    public String getContent() {
         return this.content;
     }
     /**
      * Setter for Content.
      */
     @JsonSetter("content")
-    public void setContent(String value) { 
+    public void setContent(String value) {
         this.content = value;
     }
 
@@ -83,14 +100,14 @@ public class Media {
      * Getter for Url.
      */
     @JsonGetter("url")
-    public String getUrl() { 
+    public String getUrl() {
         return this.url;
     }
     /**
      * Setter for Url.
      */
     @JsonSetter("url")
-    public void setUrl(String value) { 
+    public void setUrl(String value) {
         this.url = value;
     }
 
@@ -98,14 +115,14 @@ public class Media {
      * Getter for ContentLength.
      */
     @JsonGetter("contentLength")
-    public String getContentLength() { 
+    public String getContentLength() {
         return this.contentLength;
     }
     /**
      * Setter for ContentLength.
      */
     @JsonSetter("contentLength")
-    public void setContentLength(String value) { 
+    public void setContentLength(String value) {
         this.contentLength = value;
     }
 
@@ -113,14 +130,14 @@ public class Media {
      * Getter for ContentType.
      */
     @JsonGetter("contentType")
-    public String getContentType() { 
+    public String getContentType() {
         return this.contentType;
     }
     /**
      * Setter for ContentType.
      */
     @JsonSetter("contentType")
-    public void setContentType(String value) { 
+    public void setContentType(String value) {
         this.contentType = value;
     }
 
@@ -128,14 +145,14 @@ public class Media {
      * Getter for Tags.
      */
     @JsonGetter("tags")
-    public List<Tag> getTags() { 
+    public List<Tag> getTags() {
         return this.tags;
     }
     /**
      * Setter for Tags.
      */
     @JsonSetter("tags")
-    public void setTags(List<Tag> value) { 
+    public void setTags(List<Tag> value) {
         this.tags = value;
     }
 
@@ -143,14 +160,14 @@ public class Media {
      * Getter for UserId.
      */
     @JsonGetter("userId")
-    public String getUserId() { 
+    public String getUserId() {
         return this.userId;
     }
     /**
      * Setter for UserId.
      */
     @JsonSetter("userId")
-    public void setUserId(String value) { 
+    public void setUserId(String value) {
         this.userId = value;
     }
 
@@ -158,14 +175,14 @@ public class Media {
      * Getter for MediaName.
      */
     @JsonGetter("mediaName")
-    public String getMediaName() { 
+    public String getMediaName() {
         return this.mediaName;
     }
     /**
      * Setter for MediaName.
      */
     @JsonSetter("mediaName")
-    public void setMediaName(String value) { 
+    public void setMediaName(String value) {
         this.mediaName = value;
     }
 
@@ -173,14 +190,14 @@ public class Media {
      * Getter for MediaId.
      */
     @JsonGetter("mediaId")
-    public String getMediaId() { 
+    public String getMediaId() {
         return this.mediaId;
     }
     /**
      * Setter for MediaId.
      */
     @JsonSetter("mediaId")
-    public void setMediaId(String value) { 
+    public void setMediaId(String value) {
         this.mediaId = value;
     }
 
@@ -188,18 +205,24 @@ public class Media {
      * Getter for CacheControl.
      */
     @JsonGetter("cacheControl")
-    public String getCacheControl() { 
+    public String getCacheControl() {
         return this.cacheControl;
     }
     /**
      * Setter for CacheControl.
      */
     @JsonSetter("cacheControl")
-    public void setCacheControl(String value) { 
+    public void setCacheControl(String value) {
         this.cacheControl = value;
     }
 
  
+
+    /**
+     * Builds a new {@link Media.Builder} object.
+     * Creates the instance with the state of the current model.
+     * @return a new {@link Media.Builder} object
+     */
     public Builder toBuilder() {
         Builder builder = new Builder()
             .inputStream(getInputStream())
@@ -215,6 +238,9 @@ public class Media {
             return builder;
     }
 
+    /**
+     * Class to build instances of {@link Media}
+     */
     public static class Builder {
         private Object inputStream;
         private String content;
@@ -227,49 +253,108 @@ public class Media {
         private String mediaId;
         private String cacheControl;
 
-        public Builder() { }
-
-        public Builder inputStream(Object value) {
-            inputStream = value;
-            return this;
-        }
-        public Builder content(String value) {
-            content = value;
-            return this;
-        }
-        public Builder url(String value) {
-            url = value;
-            return this;
-        }
-        public Builder contentLength(String value) {
-            contentLength = value;
-            return this;
-        }
-        public Builder contentType(String value) {
-            contentType = value;
-            return this;
-        }
-        public Builder tags(List<Tag> value) {
-            tags = value;
-            return this;
-        }
-        public Builder userId(String value) {
-            userId = value;
-            return this;
-        }
-        public Builder mediaName(String value) {
-            mediaName = value;
-            return this;
-        }
-        public Builder mediaId(String value) {
-            mediaId = value;
-            return this;
-        }
-        public Builder cacheControl(String value) {
-            cacheControl = value;
-            return this;
+        /**
+         * Initialization constructor
+         */
+        public Builder() {
+           
         }
 
+        /**
+         * Setter for inputStream
+         * @param inputStream
+         * @return Builder
+         */
+        public Builder inputStream(Object inputStream) {
+            this.inputStream = inputStream;
+            return this;
+        }
+        /**
+         * Setter for content
+         * @param content
+         * @return Builder
+         */
+        public Builder content(String content) {
+            this.content = content;
+            return this;
+        }
+        /**
+         * Setter for url
+         * @param url
+         * @return Builder
+         */
+        public Builder url(String url) {
+            this.url = url;
+            return this;
+        }
+        /**
+         * Setter for contentLength
+         * @param contentLength
+         * @return Builder
+         */
+        public Builder contentLength(String contentLength) {
+            this.contentLength = contentLength;
+            return this;
+        }
+        /**
+         * Setter for contentType
+         * @param contentType
+         * @return Builder
+         */
+        public Builder contentType(String contentType) {
+            this.contentType = contentType;
+            return this;
+        }
+        /**
+         * Setter for tags
+         * @param tags
+         * @return Builder
+         */
+        public Builder tags(List<Tag> tags) {
+            this.tags = tags;
+            return this;
+        }
+        /**
+         * Setter for userId
+         * @param userId
+         * @return Builder
+         */
+        public Builder userId(String userId) {
+            this.userId = userId;
+            return this;
+        }
+        /**
+         * Setter for mediaName
+         * @param mediaName
+         * @return Builder
+         */
+        public Builder mediaName(String mediaName) {
+            this.mediaName = mediaName;
+            return this;
+        }
+        /**
+         * Setter for mediaId
+         * @param mediaId
+         * @return Builder
+         */
+        public Builder mediaId(String mediaId) {
+            this.mediaId = mediaId;
+            return this;
+        }
+        /**
+         * Setter for cacheControl
+         * @param cacheControl
+         * @return Builder
+         */
+        public Builder cacheControl(String cacheControl) {
+            this.cacheControl = cacheControl;
+            return this;
+        }
+
+        /**
+         * Builds a new {@link Media} object using the set fields.
+         * @return {@link Media}
+         */
         public Media build() {
             return new Media(inputStream,
                 content,

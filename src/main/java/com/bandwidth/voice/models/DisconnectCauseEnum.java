@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+/**
+ * DisconnectCauseEnum to be used.
+ */
 public enum DisconnectCauseEnum {
     BUSY,
 
@@ -33,7 +36,7 @@ public enum DisconnectCauseEnum {
     UNKNOWN;
 
 
-    private static TreeMap<String, DisconnectCauseEnum> valueMap = new TreeMap<String, DisconnectCauseEnum>();
+    private static TreeMap<String, DisconnectCauseEnum> valueMap = new TreeMap<>();
     private String value;
 
     static {
@@ -93,7 +96,7 @@ public enum DisconnectCauseEnum {
     public static List<String> toValue(List<DisconnectCauseEnum> toConvert) {
         if(toConvert == null)
             return null;
-        List<String> convertedValues = new ArrayList<String>();
+        List<String> convertedValues = new ArrayList<>();
         for (DisconnectCauseEnum enumValue : toConvert) {
             convertedValues.add(enumValue.value);
         }

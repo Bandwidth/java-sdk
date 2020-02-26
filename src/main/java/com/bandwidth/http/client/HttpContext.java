@@ -8,13 +8,21 @@ package com.bandwidth.http.client;
 import com.bandwidth.http.request.HttpRequest;
 import com.bandwidth.http.response.HttpResponse;
 
+/**
+ * Class to wrap the request sent to the server and the response received from the server
+ */
 public class HttpContext {
-    private HttpRequest _request;
-    private HttpResponse _response;
+    private HttpRequest request;
+    private HttpResponse response;
 
+    /**
+     * Initialization constructor
+     * @param request
+     * @param response
+     */
     public HttpContext(HttpRequest request, HttpResponse response) {
-        _request = request;
-        _response = response;
+        this.request = request;
+        this.response = response;
     }
 
     /**
@@ -22,7 +30,7 @@ public class HttpContext {
      * @return HttpRequest request
      */
     public HttpRequest getRequest() {
-        return _request;
+        return request;
     }
 
     /**
@@ -30,6 +38,6 @@ public class HttpContext {
      * @return HttpResponse response
      */
     public HttpResponse getResponse() {
-        return _response;
+        return response;
     }
 }

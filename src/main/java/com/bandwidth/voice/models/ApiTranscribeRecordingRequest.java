@@ -8,6 +8,10 @@ package com.bandwidth.voice.models;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+
+/**
+ * This is a model class for ApiTranscribeRecordingRequest type.
+ */
 public class ApiTranscribeRecordingRequest {
     /**
      * Default constructor
@@ -15,6 +19,14 @@ public class ApiTranscribeRecordingRequest {
     public ApiTranscribeRecordingRequest() {
     }
 
+    /**
+     * Initialization constructor.
+     * @param callbackUrl
+     * @param callbackMethod
+     * @param username
+     * @param password
+     * @param tag
+     */
     public ApiTranscribeRecordingRequest(
             String callbackUrl,
             CallbackMethodEnum callbackMethod,
@@ -37,14 +49,14 @@ public class ApiTranscribeRecordingRequest {
      * Getter for CallbackUrl.
      */
     @JsonGetter("callbackUrl")
-    public String getCallbackUrl() { 
+    public String getCallbackUrl() {
         return this.callbackUrl;
     }
     /**
      * Setter for CallbackUrl.
      */
     @JsonSetter("callbackUrl")
-    public void setCallbackUrl(String value) { 
+    public void setCallbackUrl(String value) {
         this.callbackUrl = value;
     }
 
@@ -52,14 +64,14 @@ public class ApiTranscribeRecordingRequest {
      * Getter for CallbackMethod.
      */
     @JsonGetter("callbackMethod")
-    public CallbackMethodEnum getCallbackMethod() { 
+    public CallbackMethodEnum getCallbackMethod() {
         return this.callbackMethod;
     }
     /**
      * Setter for CallbackMethod.
      */
     @JsonSetter("callbackMethod")
-    public void setCallbackMethod(CallbackMethodEnum value) { 
+    public void setCallbackMethod(CallbackMethodEnum value) {
         this.callbackMethod = value;
     }
 
@@ -67,14 +79,14 @@ public class ApiTranscribeRecordingRequest {
      * Getter for Username.
      */
     @JsonGetter("username")
-    public String getUsername() { 
+    public String getUsername() {
         return this.username;
     }
     /**
      * Setter for Username.
      */
     @JsonSetter("username")
-    public void setUsername(String value) { 
+    public void setUsername(String value) {
         this.username = value;
     }
 
@@ -82,14 +94,14 @@ public class ApiTranscribeRecordingRequest {
      * Getter for Password.
      */
     @JsonGetter("password")
-    public String getPassword() { 
+    public String getPassword() {
         return this.password;
     }
     /**
      * Setter for Password.
      */
     @JsonSetter("password")
-    public void setPassword(String value) { 
+    public void setPassword(String value) {
         this.password = value;
     }
 
@@ -97,18 +109,24 @@ public class ApiTranscribeRecordingRequest {
      * Getter for Tag.
      */
     @JsonGetter("tag")
-    public String getTag() { 
+    public String getTag() {
         return this.tag;
     }
     /**
      * Setter for Tag.
      */
     @JsonSetter("tag")
-    public void setTag(String value) { 
+    public void setTag(String value) {
         this.tag = value;
     }
 
  
+
+    /**
+     * Builds a new {@link ApiTranscribeRecordingRequest.Builder} object.
+     * Creates the instance with the state of the current model.
+     * @return a new {@link ApiTranscribeRecordingRequest.Builder} object
+     */
     public Builder toBuilder() {
         Builder builder = new Builder()
             .callbackUrl(getCallbackUrl())
@@ -119,6 +137,9 @@ public class ApiTranscribeRecordingRequest {
             return builder;
     }
 
+    /**
+     * Class to build instances of {@link ApiTranscribeRecordingRequest}
+     */
     public static class Builder {
         private String callbackUrl;
         private CallbackMethodEnum callbackMethod;
@@ -126,29 +147,63 @@ public class ApiTranscribeRecordingRequest {
         private String password;
         private String tag;
 
-        public Builder() { }
-
-        public Builder callbackUrl(String value) {
-            callbackUrl = value;
-            return this;
-        }
-        public Builder callbackMethod(CallbackMethodEnum value) {
-            callbackMethod = value;
-            return this;
-        }
-        public Builder username(String value) {
-            username = value;
-            return this;
-        }
-        public Builder password(String value) {
-            password = value;
-            return this;
-        }
-        public Builder tag(String value) {
-            tag = value;
-            return this;
+        /**
+         * Initialization constructor
+         */
+        public Builder() {
+           
         }
 
+        /**
+         * Setter for callbackUrl
+         * @param callbackUrl
+         * @return Builder
+         */
+        public Builder callbackUrl(String callbackUrl) {
+            this.callbackUrl = callbackUrl;
+            return this;
+        }
+        /**
+         * Setter for callbackMethod
+         * @param callbackMethod
+         * @return Builder
+         */
+        public Builder callbackMethod(CallbackMethodEnum callbackMethod) {
+            this.callbackMethod = callbackMethod;
+            return this;
+        }
+        /**
+         * Setter for username
+         * @param username
+         * @return Builder
+         */
+        public Builder username(String username) {
+            this.username = username;
+            return this;
+        }
+        /**
+         * Setter for password
+         * @param password
+         * @return Builder
+         */
+        public Builder password(String password) {
+            this.password = password;
+            return this;
+        }
+        /**
+         * Setter for tag
+         * @param tag
+         * @return Builder
+         */
+        public Builder tag(String tag) {
+            this.tag = tag;
+            return this;
+        }
+
+        /**
+         * Builds a new {@link ApiTranscribeRecordingRequest} object using the set fields.
+         * @return {@link ApiTranscribeRecordingRequest}
+         */
         public ApiTranscribeRecordingRequest build() {
             return new ApiTranscribeRecordingRequest(callbackUrl,
                 callbackMethod,

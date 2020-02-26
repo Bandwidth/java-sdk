@@ -9,13 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+/**
+ * RedirectMethodEnum to be used.
+ */
 public enum RedirectMethodEnum {
     POST,
 
     GET;
 
 
-    private static TreeMap<String, RedirectMethodEnum> valueMap = new TreeMap<String, RedirectMethodEnum>();
+    private static TreeMap<String, RedirectMethodEnum> valueMap = new TreeMap<>();
     private String value;
 
     static {
@@ -57,7 +60,7 @@ public enum RedirectMethodEnum {
     public static List<String> toValue(List<RedirectMethodEnum> toConvert) {
         if(toConvert == null)
             return null;
-        List<String> convertedValues = new ArrayList<String>();
+        List<String> convertedValues = new ArrayList<>();
         for (RedirectMethodEnum enumValue : toConvert) {
             convertedValues.add(enumValue.value);
         }

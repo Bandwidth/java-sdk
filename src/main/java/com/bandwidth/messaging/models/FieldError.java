@@ -8,6 +8,10 @@ package com.bandwidth.messaging.models;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+
+/**
+ * This is a model class for FieldError type.
+ */
 public class FieldError {
     /**
      * Default constructor
@@ -15,6 +19,11 @@ public class FieldError {
     public FieldError() {
     }
 
+    /**
+     * Initialization constructor.
+     * @param fieldName
+     * @param description
+     */
     public FieldError(
             String fieldName,
             String description) {
@@ -28,14 +37,14 @@ public class FieldError {
      * Getter for FieldName.
      */
     @JsonGetter("fieldName")
-    public String getFieldName() { 
+    public String getFieldName() {
         return this.fieldName;
     }
     /**
      * Setter for FieldName.
      */
     @JsonSetter("fieldName")
-    public void setFieldName(String value) { 
+    public void setFieldName(String value) {
         this.fieldName = value;
     }
 
@@ -43,18 +52,24 @@ public class FieldError {
      * Getter for Description.
      */
     @JsonGetter("description")
-    public String getDescription() { 
+    public String getDescription() {
         return this.description;
     }
     /**
      * Setter for Description.
      */
     @JsonSetter("description")
-    public void setDescription(String value) { 
+    public void setDescription(String value) {
         this.description = value;
     }
 
  
+
+    /**
+     * Builds a new {@link FieldError.Builder} object.
+     * Creates the instance with the state of the current model.
+     * @return a new {@link FieldError.Builder} object
+     */
     public Builder toBuilder() {
         Builder builder = new Builder()
             .fieldName(getFieldName())
@@ -62,21 +77,43 @@ public class FieldError {
             return builder;
     }
 
+    /**
+     * Class to build instances of {@link FieldError}
+     */
     public static class Builder {
         private String fieldName;
         private String description;
 
-        public Builder() { }
-
-        public Builder fieldName(String value) {
-            fieldName = value;
-            return this;
-        }
-        public Builder description(String value) {
-            description = value;
-            return this;
+        /**
+         * Initialization constructor
+         */
+        public Builder() {
+           
         }
 
+        /**
+         * Setter for fieldName
+         * @param fieldName
+         * @return Builder
+         */
+        public Builder fieldName(String fieldName) {
+            this.fieldName = fieldName;
+            return this;
+        }
+        /**
+         * Setter for description
+         * @param description
+         * @return Builder
+         */
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        /**
+         * Builds a new {@link FieldError} object using the set fields.
+         * @return {@link FieldError}
+         */
         public FieldError build() {
             return new FieldError(fieldName,
                 description);

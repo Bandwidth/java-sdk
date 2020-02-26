@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+/**
+ * StatusEnum to be used.
+ */
 public enum StatusEnum {
     PROCESSING,
 
@@ -21,7 +24,7 @@ public enum StatusEnum {
     ERROR;
 
 
-    private static TreeMap<String, StatusEnum> valueMap = new TreeMap<String, StatusEnum>();
+    private static TreeMap<String, StatusEnum> valueMap = new TreeMap<>();
     private String value;
 
     static {
@@ -69,7 +72,7 @@ public enum StatusEnum {
     public static List<String> toValue(List<StatusEnum> toConvert) {
         if(toConvert == null)
             return null;
-        List<String> convertedValues = new ArrayList<String>();
+        List<String> convertedValues = new ArrayList<>();
         for (StatusEnum enumValue : toConvert) {
             convertedValues.add(enumValue.value);
         }
