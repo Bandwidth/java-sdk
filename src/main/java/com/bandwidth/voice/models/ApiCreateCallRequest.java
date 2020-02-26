@@ -8,6 +8,10 @@ package com.bandwidth.voice.models;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+
+/**
+ * This is a model class for ApiCreateCallRequest type.
+ */
 public class ApiCreateCallRequest {
     /**
      * Default constructor
@@ -15,6 +19,20 @@ public class ApiCreateCallRequest {
     public ApiCreateCallRequest() {
     }
 
+    /**
+     * Initialization constructor.
+     * @param from
+     * @param to
+     * @param answerUrl
+     * @param applicationId
+     * @param callTimeout
+     * @param username
+     * @param password
+     * @param answerMethod
+     * @param disconnectUrl
+     * @param disconnectMethod
+     * @param tag
+     */
     public ApiCreateCallRequest(
             String from,
             String to,
@@ -56,7 +74,7 @@ public class ApiCreateCallRequest {
      * Format is E164
      */
     @JsonGetter("from")
-    public String getFrom() { 
+    public String getFrom() {
         return this.from;
     }
     /**
@@ -64,7 +82,7 @@ public class ApiCreateCallRequest {
      * Format is E164
      */
     @JsonSetter("from")
-    public void setFrom(String value) { 
+    public void setFrom(String value) {
         this.from = value;
     }
 
@@ -73,7 +91,7 @@ public class ApiCreateCallRequest {
      * Format is E164
      */
     @JsonGetter("to")
-    public String getTo() { 
+    public String getTo() {
         return this.to;
     }
     /**
@@ -81,7 +99,7 @@ public class ApiCreateCallRequest {
      * Format is E164
      */
     @JsonSetter("to")
-    public void setTo(String value) { 
+    public void setTo(String value) {
         this.to = value;
     }
 
@@ -89,14 +107,14 @@ public class ApiCreateCallRequest {
      * Getter for CallTimeout.
      */
     @JsonGetter("callTimeout")
-    public Double getCallTimeout() { 
+    public Double getCallTimeout() {
         return this.callTimeout;
     }
     /**
      * Setter for CallTimeout.
      */
     @JsonSetter("callTimeout")
-    public void setCallTimeout(Double value) { 
+    public void setCallTimeout(Double value) {
         this.callTimeout = value;
     }
 
@@ -104,14 +122,14 @@ public class ApiCreateCallRequest {
      * Getter for AnswerUrl.
      */
     @JsonGetter("answerUrl")
-    public String getAnswerUrl() { 
+    public String getAnswerUrl() {
         return this.answerUrl;
     }
     /**
      * Setter for AnswerUrl.
      */
     @JsonSetter("answerUrl")
-    public void setAnswerUrl(String value) { 
+    public void setAnswerUrl(String value) {
         this.answerUrl = value;
     }
 
@@ -119,14 +137,14 @@ public class ApiCreateCallRequest {
      * Getter for Username.
      */
     @JsonGetter("username")
-    public String getUsername() { 
+    public String getUsername() {
         return this.username;
     }
     /**
      * Setter for Username.
      */
     @JsonSetter("username")
-    public void setUsername(String value) { 
+    public void setUsername(String value) {
         this.username = value;
     }
 
@@ -134,14 +152,14 @@ public class ApiCreateCallRequest {
      * Getter for Password.
      */
     @JsonGetter("password")
-    public String getPassword() { 
+    public String getPassword() {
         return this.password;
     }
     /**
      * Setter for Password.
      */
     @JsonSetter("password")
-    public void setPassword(String value) { 
+    public void setPassword(String value) {
         this.password = value;
     }
 
@@ -149,14 +167,14 @@ public class ApiCreateCallRequest {
      * Getter for AnswerMethod.
      */
     @JsonGetter("answerMethod")
-    public AnswerMethodEnum getAnswerMethod() { 
+    public AnswerMethodEnum getAnswerMethod() {
         return this.answerMethod;
     }
     /**
      * Setter for AnswerMethod.
      */
     @JsonSetter("answerMethod")
-    public void setAnswerMethod(AnswerMethodEnum value) { 
+    public void setAnswerMethod(AnswerMethodEnum value) {
         this.answerMethod = value;
     }
 
@@ -164,14 +182,14 @@ public class ApiCreateCallRequest {
      * Getter for DisconnectUrl.
      */
     @JsonGetter("disconnectUrl")
-    public String getDisconnectUrl() { 
+    public String getDisconnectUrl() {
         return this.disconnectUrl;
     }
     /**
      * Setter for DisconnectUrl.
      */
     @JsonSetter("disconnectUrl")
-    public void setDisconnectUrl(String value) { 
+    public void setDisconnectUrl(String value) {
         this.disconnectUrl = value;
     }
 
@@ -179,14 +197,14 @@ public class ApiCreateCallRequest {
      * Getter for DisconnectMethod.
      */
     @JsonGetter("disconnectMethod")
-    public DisconnectMethodEnum getDisconnectMethod() { 
+    public DisconnectMethodEnum getDisconnectMethod() {
         return this.disconnectMethod;
     }
     /**
      * Setter for DisconnectMethod.
      */
     @JsonSetter("disconnectMethod")
-    public void setDisconnectMethod(DisconnectMethodEnum value) { 
+    public void setDisconnectMethod(DisconnectMethodEnum value) {
         this.disconnectMethod = value;
     }
 
@@ -194,14 +212,14 @@ public class ApiCreateCallRequest {
      * Getter for Tag.
      */
     @JsonGetter("tag")
-    public String getTag() { 
+    public String getTag() {
         return this.tag;
     }
     /**
      * Setter for Tag.
      */
     @JsonSetter("tag")
-    public void setTag(String value) { 
+    public void setTag(String value) {
         this.tag = value;
     }
 
@@ -209,18 +227,24 @@ public class ApiCreateCallRequest {
      * Getter for ApplicationId.
      */
     @JsonGetter("applicationId")
-    public String getApplicationId() { 
+    public String getApplicationId() {
         return this.applicationId;
     }
     /**
      * Setter for ApplicationId.
      */
     @JsonSetter("applicationId")
-    public void setApplicationId(String value) { 
+    public void setApplicationId(String value) {
         this.applicationId = value;
     }
 
  
+
+    /**
+     * Builds a new {@link ApiCreateCallRequest.Builder} object.
+     * Creates the instance with the state of the current model.
+     * @return a new {@link ApiCreateCallRequest.Builder} object
+     */
     public Builder toBuilder() {
         Builder builder = new Builder(from,
             to,
@@ -236,6 +260,9 @@ public class ApiCreateCallRequest {
             return builder;
     }
 
+    /**
+     * Class to build instances of {@link ApiCreateCallRequest}
+     */
     public static class Builder {
         private String from;
         private String to;
@@ -249,9 +276,16 @@ public class ApiCreateCallRequest {
         private DisconnectMethodEnum disconnectMethod;
         private String tag;
 
+        /**
+         * Initialization constructor
+         */
         public Builder() {
-                    }
+            
+        }
 
+        /**
+         * Initialization constructor
+         */
         public Builder(String from,
                 String to,
                 String answerUrl,
@@ -262,51 +296,110 @@ public class ApiCreateCallRequest {
             this.applicationId = applicationId;
         }
 
-        public Builder from(String value) {
-            from = value;
+        /**
+         * Setter for from
+         * @param from
+         * @return Builder
+         */
+        public Builder from(String from) {
+            this.from = from;
             return this;
         }
-        public Builder to(String value) {
-            to = value;
+        /**
+         * Setter for to
+         * @param to
+         * @return Builder
+         */
+        public Builder to(String to) {
+            this.to = to;
             return this;
         }
-        public Builder answerUrl(String value) {
-            answerUrl = value;
+        /**
+         * Setter for answerUrl
+         * @param answerUrl
+         * @return Builder
+         */
+        public Builder answerUrl(String answerUrl) {
+            this.answerUrl = answerUrl;
             return this;
         }
-        public Builder applicationId(String value) {
-            applicationId = value;
+        /**
+         * Setter for applicationId
+         * @param applicationId
+         * @return Builder
+         */
+        public Builder applicationId(String applicationId) {
+            this.applicationId = applicationId;
             return this;
         }
-        public Builder callTimeout(Double value) {
-            callTimeout = value;
+        /**
+         * Setter for callTimeout
+         * @param callTimeout
+         * @return Builder
+         */
+        public Builder callTimeout(Double callTimeout) {
+            this.callTimeout = callTimeout;
             return this;
         }
-        public Builder username(String value) {
-            username = value;
+        /**
+         * Setter for username
+         * @param username
+         * @return Builder
+         */
+        public Builder username(String username) {
+            this.username = username;
             return this;
         }
-        public Builder password(String value) {
-            password = value;
+        /**
+         * Setter for password
+         * @param password
+         * @return Builder
+         */
+        public Builder password(String password) {
+            this.password = password;
             return this;
         }
-        public Builder answerMethod(AnswerMethodEnum value) {
-            answerMethod = value;
+        /**
+         * Setter for answerMethod
+         * @param answerMethod
+         * @return Builder
+         */
+        public Builder answerMethod(AnswerMethodEnum answerMethod) {
+            this.answerMethod = answerMethod;
             return this;
         }
-        public Builder disconnectUrl(String value) {
-            disconnectUrl = value;
+        /**
+         * Setter for disconnectUrl
+         * @param disconnectUrl
+         * @return Builder
+         */
+        public Builder disconnectUrl(String disconnectUrl) {
+            this.disconnectUrl = disconnectUrl;
             return this;
         }
-        public Builder disconnectMethod(DisconnectMethodEnum value) {
-            disconnectMethod = value;
+        /**
+         * Setter for disconnectMethod
+         * @param disconnectMethod
+         * @return Builder
+         */
+        public Builder disconnectMethod(DisconnectMethodEnum disconnectMethod) {
+            this.disconnectMethod = disconnectMethod;
             return this;
         }
-        public Builder tag(String value) {
-            tag = value;
+        /**
+         * Setter for tag
+         * @param tag
+         * @return Builder
+         */
+        public Builder tag(String tag) {
+            this.tag = tag;
             return this;
         }
 
+        /**
+         * Builds a new {@link ApiCreateCallRequest} object using the set fields.
+         * @return {@link ApiCreateCallRequest}
+         */
         public ApiCreateCallRequest build() {
             return new ApiCreateCallRequest(from,
                 to,

@@ -10,8 +10,12 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.bandwidth.DateTimeHelper;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 
+
+/**
+ * This is a model class for ApiCallStateResponse type.
+ */
 public class ApiCallStateResponse {
     /**
      * Default constructor
@@ -19,6 +23,24 @@ public class ApiCallStateResponse {
     public ApiCallStateResponse() {
     }
 
+    /**
+     * Initialization constructor.
+     * @param callId
+     * @param parentCallId
+     * @param applicationId
+     * @param accountId
+     * @param to
+     * @param from
+     * @param direction
+     * @param state
+     * @param startTime
+     * @param answerTime
+     * @param endTime
+     * @param disconnectCause
+     * @param errorMessage
+     * @param errorId
+     * @param lastUpdate
+     */
     public ApiCallStateResponse(
             String callId,
             String parentCallId,
@@ -28,13 +50,13 @@ public class ApiCallStateResponse {
             String from,
             String direction,
             StateEnum state,
-            ZonedDateTime startTime,
-            ZonedDateTime answerTime,
-            ZonedDateTime endTime,
+            LocalDateTime startTime,
+            LocalDateTime answerTime,
+            LocalDateTime endTime,
             DisconnectCauseEnum disconnectCause,
             String errorMessage,
             String errorId,
-            ZonedDateTime lastUpdate) {
+            LocalDateTime lastUpdate) {
         this.callId = callId;
         this.parentCallId = parentCallId;
         this.applicationId = applicationId;
@@ -60,25 +82,25 @@ public class ApiCallStateResponse {
     private String from;
     private String direction;
     private StateEnum state;
-    private ZonedDateTime startTime;
-    private ZonedDateTime answerTime;
-    private ZonedDateTime endTime;
+    private LocalDateTime startTime;
+    private LocalDateTime answerTime;
+    private LocalDateTime endTime;
     private DisconnectCauseEnum disconnectCause;
     private String errorMessage;
     private String errorId;
-    private ZonedDateTime lastUpdate;
+    private LocalDateTime lastUpdate;
     /**
      * Getter for CallId.
      */
     @JsonGetter("callId")
-    public String getCallId() { 
+    public String getCallId() {
         return this.callId;
     }
     /**
      * Setter for CallId.
      */
     @JsonSetter("callId")
-    public void setCallId(String value) { 
+    public void setCallId(String value) {
         this.callId = value;
     }
 
@@ -86,14 +108,14 @@ public class ApiCallStateResponse {
      * Getter for ParentCallId.
      */
     @JsonGetter("parentCallId")
-    public String getParentCallId() { 
+    public String getParentCallId() {
         return this.parentCallId;
     }
     /**
      * Setter for ParentCallId.
      */
     @JsonSetter("parentCallId")
-    public void setParentCallId(String value) { 
+    public void setParentCallId(String value) {
         this.parentCallId = value;
     }
 
@@ -101,14 +123,14 @@ public class ApiCallStateResponse {
      * Getter for ApplicationId.
      */
     @JsonGetter("applicationId")
-    public String getApplicationId() { 
+    public String getApplicationId() {
         return this.applicationId;
     }
     /**
      * Setter for ApplicationId.
      */
     @JsonSetter("applicationId")
-    public void setApplicationId(String value) { 
+    public void setApplicationId(String value) {
         this.applicationId = value;
     }
 
@@ -116,14 +138,14 @@ public class ApiCallStateResponse {
      * Getter for AccountId.
      */
     @JsonGetter("accountId")
-    public String getAccountId() { 
+    public String getAccountId() {
         return this.accountId;
     }
     /**
      * Setter for AccountId.
      */
     @JsonSetter("accountId")
-    public void setAccountId(String value) { 
+    public void setAccountId(String value) {
         this.accountId = value;
     }
 
@@ -131,14 +153,14 @@ public class ApiCallStateResponse {
      * Getter for To.
      */
     @JsonGetter("to")
-    public String getTo() { 
+    public String getTo() {
         return this.to;
     }
     /**
      * Setter for To.
      */
     @JsonSetter("to")
-    public void setTo(String value) { 
+    public void setTo(String value) {
         this.to = value;
     }
 
@@ -146,14 +168,14 @@ public class ApiCallStateResponse {
      * Getter for From.
      */
     @JsonGetter("from")
-    public String getFrom() { 
+    public String getFrom() {
         return this.from;
     }
     /**
      * Setter for From.
      */
     @JsonSetter("from")
-    public void setFrom(String value) { 
+    public void setFrom(String value) {
         this.from = value;
     }
 
@@ -161,14 +183,14 @@ public class ApiCallStateResponse {
      * Getter for Direction.
      */
     @JsonGetter("direction")
-    public String getDirection() { 
+    public String getDirection() {
         return this.direction;
     }
     /**
      * Setter for Direction.
      */
     @JsonSetter("direction")
-    public void setDirection(String value) { 
+    public void setDirection(String value) {
         this.direction = value;
     }
 
@@ -176,14 +198,14 @@ public class ApiCallStateResponse {
      * Getter for State.
      */
     @JsonGetter("state")
-    public StateEnum getState() { 
+    public StateEnum getState() {
         return this.state;
     }
     /**
      * Setter for State.
      */
     @JsonSetter("state")
-    public void setState(StateEnum value) { 
+    public void setState(StateEnum value) {
         this.state = value;
     }
 
@@ -192,7 +214,7 @@ public class ApiCallStateResponse {
      */
     @JsonGetter("startTime")
     @JsonSerialize(using=DateTimeHelper.Rfc8601DateTimeSerializer.class)
-    public ZonedDateTime getStartTime() { 
+    public LocalDateTime getStartTime() {
         return this.startTime;
     }
     /**
@@ -200,7 +222,7 @@ public class ApiCallStateResponse {
      */
     @JsonSetter("startTime")
     @JsonDeserialize(using=DateTimeHelper.Rfc8601DateTimeDeserializer.class)
-    public void setStartTime(ZonedDateTime value) { 
+    public void setStartTime(LocalDateTime value) {
         this.startTime = value;
     }
 
@@ -209,7 +231,7 @@ public class ApiCallStateResponse {
      */
     @JsonGetter("answerTime")
     @JsonSerialize(using=DateTimeHelper.Rfc8601DateTimeSerializer.class)
-    public ZonedDateTime getAnswerTime() { 
+    public LocalDateTime getAnswerTime() {
         return this.answerTime;
     }
     /**
@@ -217,7 +239,7 @@ public class ApiCallStateResponse {
      */
     @JsonSetter("answerTime")
     @JsonDeserialize(using=DateTimeHelper.Rfc8601DateTimeDeserializer.class)
-    public void setAnswerTime(ZonedDateTime value) { 
+    public void setAnswerTime(LocalDateTime value) {
         this.answerTime = value;
     }
 
@@ -226,7 +248,7 @@ public class ApiCallStateResponse {
      */
     @JsonGetter("endTime")
     @JsonSerialize(using=DateTimeHelper.Rfc8601DateTimeSerializer.class)
-    public ZonedDateTime getEndTime() { 
+    public LocalDateTime getEndTime() {
         return this.endTime;
     }
     /**
@@ -234,7 +256,7 @@ public class ApiCallStateResponse {
      */
     @JsonSetter("endTime")
     @JsonDeserialize(using=DateTimeHelper.Rfc8601DateTimeDeserializer.class)
-    public void setEndTime(ZonedDateTime value) { 
+    public void setEndTime(LocalDateTime value) {
         this.endTime = value;
     }
 
@@ -242,14 +264,14 @@ public class ApiCallStateResponse {
      * Getter for DisconnectCause.
      */
     @JsonGetter("disconnectCause")
-    public DisconnectCauseEnum getDisconnectCause() { 
+    public DisconnectCauseEnum getDisconnectCause() {
         return this.disconnectCause;
     }
     /**
      * Setter for DisconnectCause.
      */
     @JsonSetter("disconnectCause")
-    public void setDisconnectCause(DisconnectCauseEnum value) { 
+    public void setDisconnectCause(DisconnectCauseEnum value) {
         this.disconnectCause = value;
     }
 
@@ -257,14 +279,14 @@ public class ApiCallStateResponse {
      * Getter for ErrorMessage.
      */
     @JsonGetter("errorMessage")
-    public String getErrorMessage() { 
+    public String getErrorMessage() {
         return this.errorMessage;
     }
     /**
      * Setter for ErrorMessage.
      */
     @JsonSetter("errorMessage")
-    public void setErrorMessage(String value) { 
+    public void setErrorMessage(String value) {
         this.errorMessage = value;
     }
 
@@ -272,14 +294,14 @@ public class ApiCallStateResponse {
      * Getter for ErrorId.
      */
     @JsonGetter("errorId")
-    public String getErrorId() { 
+    public String getErrorId() {
         return this.errorId;
     }
     /**
      * Setter for ErrorId.
      */
     @JsonSetter("errorId")
-    public void setErrorId(String value) { 
+    public void setErrorId(String value) {
         this.errorId = value;
     }
 
@@ -288,7 +310,7 @@ public class ApiCallStateResponse {
      */
     @JsonGetter("lastUpdate")
     @JsonSerialize(using=DateTimeHelper.Rfc8601DateTimeSerializer.class)
-    public ZonedDateTime getLastUpdate() { 
+    public LocalDateTime getLastUpdate() {
         return this.lastUpdate;
     }
     /**
@@ -296,11 +318,17 @@ public class ApiCallStateResponse {
      */
     @JsonSetter("lastUpdate")
     @JsonDeserialize(using=DateTimeHelper.Rfc8601DateTimeDeserializer.class)
-    public void setLastUpdate(ZonedDateTime value) { 
+    public void setLastUpdate(LocalDateTime value) {
         this.lastUpdate = value;
     }
 
  
+
+    /**
+     * Builds a new {@link ApiCallStateResponse.Builder} object.
+     * Creates the instance with the state of the current model.
+     * @return a new {@link ApiCallStateResponse.Builder} object
+     */
     public Builder toBuilder() {
         Builder builder = new Builder()
             .callId(getCallId())
@@ -321,6 +349,9 @@ public class ApiCallStateResponse {
             return builder;
     }
 
+    /**
+     * Class to build instances of {@link ApiCallStateResponse}
+     */
     public static class Builder {
         private String callId;
         private String parentCallId;
@@ -330,77 +361,161 @@ public class ApiCallStateResponse {
         private String from;
         private String direction;
         private StateEnum state;
-        private ZonedDateTime startTime;
-        private ZonedDateTime answerTime;
-        private ZonedDateTime endTime;
+        private LocalDateTime startTime;
+        private LocalDateTime answerTime;
+        private LocalDateTime endTime;
         private DisconnectCauseEnum disconnectCause;
         private String errorMessage;
         private String errorId;
-        private ZonedDateTime lastUpdate;
+        private LocalDateTime lastUpdate;
 
-        public Builder() { }
-
-        public Builder callId(String value) {
-            callId = value;
-            return this;
-        }
-        public Builder parentCallId(String value) {
-            parentCallId = value;
-            return this;
-        }
-        public Builder applicationId(String value) {
-            applicationId = value;
-            return this;
-        }
-        public Builder accountId(String value) {
-            accountId = value;
-            return this;
-        }
-        public Builder to(String value) {
-            to = value;
-            return this;
-        }
-        public Builder from(String value) {
-            from = value;
-            return this;
-        }
-        public Builder direction(String value) {
-            direction = value;
-            return this;
-        }
-        public Builder state(StateEnum value) {
-            state = value;
-            return this;
-        }
-        public Builder startTime(ZonedDateTime value) {
-            startTime = value;
-            return this;
-        }
-        public Builder answerTime(ZonedDateTime value) {
-            answerTime = value;
-            return this;
-        }
-        public Builder endTime(ZonedDateTime value) {
-            endTime = value;
-            return this;
-        }
-        public Builder disconnectCause(DisconnectCauseEnum value) {
-            disconnectCause = value;
-            return this;
-        }
-        public Builder errorMessage(String value) {
-            errorMessage = value;
-            return this;
-        }
-        public Builder errorId(String value) {
-            errorId = value;
-            return this;
-        }
-        public Builder lastUpdate(ZonedDateTime value) {
-            lastUpdate = value;
-            return this;
+        /**
+         * Initialization constructor
+         */
+        public Builder() {
+           
         }
 
+        /**
+         * Setter for callId
+         * @param callId
+         * @return Builder
+         */
+        public Builder callId(String callId) {
+            this.callId = callId;
+            return this;
+        }
+        /**
+         * Setter for parentCallId
+         * @param parentCallId
+         * @return Builder
+         */
+        public Builder parentCallId(String parentCallId) {
+            this.parentCallId = parentCallId;
+            return this;
+        }
+        /**
+         * Setter for applicationId
+         * @param applicationId
+         * @return Builder
+         */
+        public Builder applicationId(String applicationId) {
+            this.applicationId = applicationId;
+            return this;
+        }
+        /**
+         * Setter for accountId
+         * @param accountId
+         * @return Builder
+         */
+        public Builder accountId(String accountId) {
+            this.accountId = accountId;
+            return this;
+        }
+        /**
+         * Setter for to
+         * @param to
+         * @return Builder
+         */
+        public Builder to(String to) {
+            this.to = to;
+            return this;
+        }
+        /**
+         * Setter for from
+         * @param from
+         * @return Builder
+         */
+        public Builder from(String from) {
+            this.from = from;
+            return this;
+        }
+        /**
+         * Setter for direction
+         * @param direction
+         * @return Builder
+         */
+        public Builder direction(String direction) {
+            this.direction = direction;
+            return this;
+        }
+        /**
+         * Setter for state
+         * @param state
+         * @return Builder
+         */
+        public Builder state(StateEnum state) {
+            this.state = state;
+            return this;
+        }
+        /**
+         * Setter for startTime
+         * @param startTime
+         * @return Builder
+         */
+        public Builder startTime(LocalDateTime startTime) {
+            this.startTime = startTime;
+            return this;
+        }
+        /**
+         * Setter for answerTime
+         * @param answerTime
+         * @return Builder
+         */
+        public Builder answerTime(LocalDateTime answerTime) {
+            this.answerTime = answerTime;
+            return this;
+        }
+        /**
+         * Setter for endTime
+         * @param endTime
+         * @return Builder
+         */
+        public Builder endTime(LocalDateTime endTime) {
+            this.endTime = endTime;
+            return this;
+        }
+        /**
+         * Setter for disconnectCause
+         * @param disconnectCause
+         * @return Builder
+         */
+        public Builder disconnectCause(DisconnectCauseEnum disconnectCause) {
+            this.disconnectCause = disconnectCause;
+            return this;
+        }
+        /**
+         * Setter for errorMessage
+         * @param errorMessage
+         * @return Builder
+         */
+        public Builder errorMessage(String errorMessage) {
+            this.errorMessage = errorMessage;
+            return this;
+        }
+        /**
+         * Setter for errorId
+         * @param errorId
+         * @return Builder
+         */
+        public Builder errorId(String errorId) {
+            this.errorId = errorId;
+            return this;
+        }
+        /**
+         * Setter for lastUpdate
+         * @param lastUpdate
+         * @return Builder
+         */
+        public Builder lastUpdate(LocalDateTime lastUpdate) {
+            this.lastUpdate = lastUpdate;
+            return this;
+        }
+
+        /**
+         * Builds a new {@link ApiCallStateResponse} object using the set fields.
+         * @return {@link ApiCallStateResponse}
+         */
         public ApiCallStateResponse build() {
             return new ApiCallStateResponse(callId,
                 parentCallId,

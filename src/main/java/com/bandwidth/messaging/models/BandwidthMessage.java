@@ -5,10 +5,14 @@
  */
 package com.bandwidth.messaging.models;
 
-import java.util.*;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+
+/**
+ * This is a model class for BandwidthMessage type.
+ */
 public class BandwidthMessage {
     /**
      * Default constructor
@@ -16,6 +20,20 @@ public class BandwidthMessage {
     public BandwidthMessage() {
     }
 
+    /**
+     * Initialization constructor.
+     * @param id
+     * @param owner
+     * @param applicationId
+     * @param time
+     * @param segmentCount
+     * @param direction
+     * @param to
+     * @param from
+     * @param media
+     * @param text
+     * @param tag
+     */
     public BandwidthMessage(
             String id,
             String owner,
@@ -56,14 +74,14 @@ public class BandwidthMessage {
      * Getter for Id.
      */
     @JsonGetter("id")
-    public String getId() { 
+    public String getId() {
         return this.id;
     }
     /**
      * Setter for Id.
      */
     @JsonSetter("id")
-    public void setId(String value) { 
+    public void setId(String value) {
         this.id = value;
     }
 
@@ -71,14 +89,14 @@ public class BandwidthMessage {
      * Getter for Owner.
      */
     @JsonGetter("owner")
-    public String getOwner() { 
+    public String getOwner() {
         return this.owner;
     }
     /**
      * Setter for Owner.
      */
     @JsonSetter("owner")
-    public void setOwner(String value) { 
+    public void setOwner(String value) {
         this.owner = value;
     }
 
@@ -86,14 +104,14 @@ public class BandwidthMessage {
      * Getter for ApplicationId.
      */
     @JsonGetter("applicationId")
-    public String getApplicationId() { 
+    public String getApplicationId() {
         return this.applicationId;
     }
     /**
      * Setter for ApplicationId.
      */
     @JsonSetter("applicationId")
-    public void setApplicationId(String value) { 
+    public void setApplicationId(String value) {
         this.applicationId = value;
     }
 
@@ -101,14 +119,14 @@ public class BandwidthMessage {
      * Getter for Time.
      */
     @JsonGetter("time")
-    public String getTime() { 
+    public String getTime() {
         return this.time;
     }
     /**
      * Setter for Time.
      */
     @JsonSetter("time")
-    public void setTime(String value) { 
+    public void setTime(String value) {
         this.time = value;
     }
 
@@ -116,14 +134,14 @@ public class BandwidthMessage {
      * Getter for SegmentCount.
      */
     @JsonGetter("segmentCount")
-    public Integer getSegmentCount() { 
+    public Integer getSegmentCount() {
         return this.segmentCount;
     }
     /**
      * Setter for SegmentCount.
      */
     @JsonSetter("segmentCount")
-    public void setSegmentCount(Integer value) { 
+    public void setSegmentCount(Integer value) {
         this.segmentCount = value;
     }
 
@@ -131,14 +149,14 @@ public class BandwidthMessage {
      * Getter for Direction.
      */
     @JsonGetter("direction")
-    public String getDirection() { 
+    public String getDirection() {
         return this.direction;
     }
     /**
      * Setter for Direction.
      */
     @JsonSetter("direction")
-    public void setDirection(String value) { 
+    public void setDirection(String value) {
         this.direction = value;
     }
 
@@ -146,14 +164,14 @@ public class BandwidthMessage {
      * Getter for To.
      */
     @JsonGetter("to")
-    public List<String> getTo() { 
+    public List<String> getTo() {
         return this.to;
     }
     /**
      * Setter for To.
      */
     @JsonSetter("to")
-    public void setTo(List<String> value) { 
+    public void setTo(List<String> value) {
         this.to = value;
     }
 
@@ -161,14 +179,14 @@ public class BandwidthMessage {
      * Getter for From.
      */
     @JsonGetter("from")
-    public String getFrom() { 
+    public String getFrom() {
         return this.from;
     }
     /**
      * Setter for From.
      */
     @JsonSetter("from")
-    public void setFrom(String value) { 
+    public void setFrom(String value) {
         this.from = value;
     }
 
@@ -176,14 +194,14 @@ public class BandwidthMessage {
      * Getter for Media.
      */
     @JsonGetter("media")
-    public List<String> getMedia() { 
+    public List<String> getMedia() {
         return this.media;
     }
     /**
      * Setter for Media.
      */
     @JsonSetter("media")
-    public void setMedia(List<String> value) { 
+    public void setMedia(List<String> value) {
         this.media = value;
     }
 
@@ -191,14 +209,14 @@ public class BandwidthMessage {
      * Getter for Text.
      */
     @JsonGetter("text")
-    public String getText() { 
+    public String getText() {
         return this.text;
     }
     /**
      * Setter for Text.
      */
     @JsonSetter("text")
-    public void setText(String value) { 
+    public void setText(String value) {
         this.text = value;
     }
 
@@ -206,18 +224,24 @@ public class BandwidthMessage {
      * Getter for Tag.
      */
     @JsonGetter("tag")
-    public String getTag() { 
+    public String getTag() {
         return this.tag;
     }
     /**
      * Setter for Tag.
      */
     @JsonSetter("tag")
-    public void setTag(String value) { 
+    public void setTag(String value) {
         this.tag = value;
     }
 
  
+
+    /**
+     * Builds a new {@link BandwidthMessage.Builder} object.
+     * Creates the instance with the state of the current model.
+     * @return a new {@link BandwidthMessage.Builder} object
+     */
     public Builder toBuilder() {
         Builder builder = new Builder()
             .id(getId())
@@ -234,6 +258,9 @@ public class BandwidthMessage {
             return builder;
     }
 
+    /**
+     * Class to build instances of {@link BandwidthMessage}
+     */
     public static class Builder {
         private String id;
         private String owner;
@@ -247,53 +274,117 @@ public class BandwidthMessage {
         private String text;
         private String tag;
 
-        public Builder() { }
-
-        public Builder id(String value) {
-            id = value;
-            return this;
-        }
-        public Builder owner(String value) {
-            owner = value;
-            return this;
-        }
-        public Builder applicationId(String value) {
-            applicationId = value;
-            return this;
-        }
-        public Builder time(String value) {
-            time = value;
-            return this;
-        }
-        public Builder segmentCount(Integer value) {
-            segmentCount = value;
-            return this;
-        }
-        public Builder direction(String value) {
-            direction = value;
-            return this;
-        }
-        public Builder to(List<String> value) {
-            to = value;
-            return this;
-        }
-        public Builder from(String value) {
-            from = value;
-            return this;
-        }
-        public Builder media(List<String> value) {
-            media = value;
-            return this;
-        }
-        public Builder text(String value) {
-            text = value;
-            return this;
-        }
-        public Builder tag(String value) {
-            tag = value;
-            return this;
+        /**
+         * Initialization constructor
+         */
+        public Builder() {
+           
         }
 
+        /**
+         * Setter for id
+         * @param id
+         * @return Builder
+         */
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        /**
+         * Setter for owner
+         * @param owner
+         * @return Builder
+         */
+        public Builder owner(String owner) {
+            this.owner = owner;
+            return this;
+        }
+        /**
+         * Setter for applicationId
+         * @param applicationId
+         * @return Builder
+         */
+        public Builder applicationId(String applicationId) {
+            this.applicationId = applicationId;
+            return this;
+        }
+        /**
+         * Setter for time
+         * @param time
+         * @return Builder
+         */
+        public Builder time(String time) {
+            this.time = time;
+            return this;
+        }
+        /**
+         * Setter for segmentCount
+         * @param segmentCount
+         * @return Builder
+         */
+        public Builder segmentCount(Integer segmentCount) {
+            this.segmentCount = segmentCount;
+            return this;
+        }
+        /**
+         * Setter for direction
+         * @param direction
+         * @return Builder
+         */
+        public Builder direction(String direction) {
+            this.direction = direction;
+            return this;
+        }
+        /**
+         * Setter for to
+         * @param to
+         * @return Builder
+         */
+        public Builder to(List<String> to) {
+            this.to = to;
+            return this;
+        }
+        /**
+         * Setter for from
+         * @param from
+         * @return Builder
+         */
+        public Builder from(String from) {
+            this.from = from;
+            return this;
+        }
+        /**
+         * Setter for media
+         * @param media
+         * @return Builder
+         */
+        public Builder media(List<String> media) {
+            this.media = media;
+            return this;
+        }
+        /**
+         * Setter for text
+         * @param text
+         * @return Builder
+         */
+        public Builder text(String text) {
+            this.text = text;
+            return this;
+        }
+        /**
+         * Setter for tag
+         * @param tag
+         * @return Builder
+         */
+        public Builder tag(String tag) {
+            this.tag = tag;
+            return this;
+        }
+
+        /**
+         * Builds a new {@link BandwidthMessage} object using the set fields.
+         * @return {@link BandwidthMessage}
+         */
         public BandwidthMessage build() {
             return new BandwidthMessage(id,
                 owner,

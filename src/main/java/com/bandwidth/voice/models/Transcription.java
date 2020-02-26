@@ -8,6 +8,10 @@ package com.bandwidth.voice.models;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+
+/**
+ * This is a model class for Transcription type.
+ */
 public class Transcription {
     /**
      * Default constructor
@@ -15,6 +19,13 @@ public class Transcription {
     public Transcription() {
     }
 
+    /**
+     * Initialization constructor.
+     * @param id
+     * @param status
+     * @param completedTime
+     * @param url
+     */
     public Transcription(
             String id,
             Status1Enum status,
@@ -34,14 +45,14 @@ public class Transcription {
      * Getter for Id.
      */
     @JsonGetter("id")
-    public String getId() { 
+    public String getId() {
         return this.id;
     }
     /**
      * Setter for Id.
      */
     @JsonSetter("id")
-    public void setId(String value) { 
+    public void setId(String value) {
         this.id = value;
     }
 
@@ -49,14 +60,14 @@ public class Transcription {
      * Getter for Status.
      */
     @JsonGetter("status")
-    public Status1Enum getStatus() { 
+    public Status1Enum getStatus() {
         return this.status;
     }
     /**
      * Setter for Status.
      */
     @JsonSetter("status")
-    public void setStatus(Status1Enum value) { 
+    public void setStatus(Status1Enum value) {
         this.status = value;
     }
 
@@ -64,14 +75,14 @@ public class Transcription {
      * Getter for CompletedTime.
      */
     @JsonGetter("completedTime")
-    public String getCompletedTime() { 
+    public String getCompletedTime() {
         return this.completedTime;
     }
     /**
      * Setter for CompletedTime.
      */
     @JsonSetter("completedTime")
-    public void setCompletedTime(String value) { 
+    public void setCompletedTime(String value) {
         this.completedTime = value;
     }
 
@@ -79,18 +90,24 @@ public class Transcription {
      * Getter for Url.
      */
     @JsonGetter("url")
-    public String getUrl() { 
+    public String getUrl() {
         return this.url;
     }
     /**
      * Setter for Url.
      */
     @JsonSetter("url")
-    public void setUrl(String value) { 
+    public void setUrl(String value) {
         this.url = value;
     }
 
  
+
+    /**
+     * Builds a new {@link Transcription.Builder} object.
+     * Creates the instance with the state of the current model.
+     * @return a new {@link Transcription.Builder} object
+     */
     public Builder toBuilder() {
         Builder builder = new Builder()
             .id(getId())
@@ -100,31 +117,63 @@ public class Transcription {
             return builder;
     }
 
+    /**
+     * Class to build instances of {@link Transcription}
+     */
     public static class Builder {
         private String id;
         private Status1Enum status;
         private String completedTime;
         private String url;
 
-        public Builder() { }
-
-        public Builder id(String value) {
-            id = value;
-            return this;
-        }
-        public Builder status(Status1Enum value) {
-            status = value;
-            return this;
-        }
-        public Builder completedTime(String value) {
-            completedTime = value;
-            return this;
-        }
-        public Builder url(String value) {
-            url = value;
-            return this;
+        /**
+         * Initialization constructor
+         */
+        public Builder() {
+           
         }
 
+        /**
+         * Setter for id
+         * @param id
+         * @return Builder
+         */
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        /**
+         * Setter for status
+         * @param status
+         * @return Builder
+         */
+        public Builder status(Status1Enum status) {
+            this.status = status;
+            return this;
+        }
+        /**
+         * Setter for completedTime
+         * @param completedTime
+         * @return Builder
+         */
+        public Builder completedTime(String completedTime) {
+            this.completedTime = completedTime;
+            return this;
+        }
+        /**
+         * Setter for url
+         * @param url
+         * @return Builder
+         */
+        public Builder url(String url) {
+            this.url = url;
+            return this;
+        }
+
+        /**
+         * Builds a new {@link Transcription} object using the set fields.
+         * @return {@link Transcription}
+         */
         public Transcription build() {
             return new Transcription(id,
                 status,

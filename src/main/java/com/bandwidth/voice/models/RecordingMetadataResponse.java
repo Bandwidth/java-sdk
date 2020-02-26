@@ -8,6 +8,10 @@ package com.bandwidth.voice.models;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+
+/**
+ * This is a model class for RecordingMetadataResponse type.
+ */
 public class RecordingMetadataResponse {
     /**
      * Default constructor
@@ -15,6 +19,24 @@ public class RecordingMetadataResponse {
     public RecordingMetadataResponse() {
     }
 
+    /**
+     * Initialization constructor.
+     * @param applicationId
+     * @param accountId
+     * @param callId
+     * @param recordingId
+     * @param to
+     * @param from
+     * @param duration
+     * @param direction
+     * @param channels
+     * @param startTime
+     * @param endTime
+     * @param fileFormat
+     * @param status
+     * @param mediaUrl
+     * @param transcription
+     */
     public RecordingMetadataResponse(
             String applicationId,
             String accountId,
@@ -67,14 +89,14 @@ public class RecordingMetadataResponse {
      * Getter for ApplicationId.
      */
     @JsonGetter("applicationId")
-    public String getApplicationId() { 
+    public String getApplicationId() {
         return this.applicationId;
     }
     /**
      * Setter for ApplicationId.
      */
     @JsonSetter("applicationId")
-    public void setApplicationId(String value) { 
+    public void setApplicationId(String value) {
         this.applicationId = value;
     }
 
@@ -82,14 +104,14 @@ public class RecordingMetadataResponse {
      * Getter for AccountId.
      */
     @JsonGetter("accountId")
-    public String getAccountId() { 
+    public String getAccountId() {
         return this.accountId;
     }
     /**
      * Setter for AccountId.
      */
     @JsonSetter("accountId")
-    public void setAccountId(String value) { 
+    public void setAccountId(String value) {
         this.accountId = value;
     }
 
@@ -97,14 +119,14 @@ public class RecordingMetadataResponse {
      * Getter for CallId.
      */
     @JsonGetter("callId")
-    public String getCallId() { 
+    public String getCallId() {
         return this.callId;
     }
     /**
      * Setter for CallId.
      */
     @JsonSetter("callId")
-    public void setCallId(String value) { 
+    public void setCallId(String value) {
         this.callId = value;
     }
 
@@ -112,14 +134,14 @@ public class RecordingMetadataResponse {
      * Getter for RecordingId.
      */
     @JsonGetter("recordingId")
-    public String getRecordingId() { 
+    public String getRecordingId() {
         return this.recordingId;
     }
     /**
      * Setter for RecordingId.
      */
     @JsonSetter("recordingId")
-    public void setRecordingId(String value) { 
+    public void setRecordingId(String value) {
         this.recordingId = value;
     }
 
@@ -127,14 +149,14 @@ public class RecordingMetadataResponse {
      * Getter for To.
      */
     @JsonGetter("to")
-    public String getTo() { 
+    public String getTo() {
         return this.to;
     }
     /**
      * Setter for To.
      */
     @JsonSetter("to")
-    public void setTo(String value) { 
+    public void setTo(String value) {
         this.to = value;
     }
 
@@ -142,14 +164,14 @@ public class RecordingMetadataResponse {
      * Getter for From.
      */
     @JsonGetter("from")
-    public String getFrom() { 
+    public String getFrom() {
         return this.from;
     }
     /**
      * Setter for From.
      */
     @JsonSetter("from")
-    public void setFrom(String value) { 
+    public void setFrom(String value) {
         this.from = value;
     }
 
@@ -158,7 +180,7 @@ public class RecordingMetadataResponse {
      * Format is ISO-8601
      */
     @JsonGetter("duration")
-    public String getDuration() { 
+    public String getDuration() {
         return this.duration;
     }
     /**
@@ -166,7 +188,7 @@ public class RecordingMetadataResponse {
      * Format is ISO-8601
      */
     @JsonSetter("duration")
-    public void setDuration(String value) { 
+    public void setDuration(String value) {
         this.duration = value;
     }
 
@@ -174,14 +196,14 @@ public class RecordingMetadataResponse {
      * Getter for Direction.
      */
     @JsonGetter("direction")
-    public DirectionEnum getDirection() { 
+    public DirectionEnum getDirection() {
         return this.direction;
     }
     /**
      * Setter for Direction.
      */
     @JsonSetter("direction")
-    public void setDirection(DirectionEnum value) { 
+    public void setDirection(DirectionEnum value) {
         this.direction = value;
     }
 
@@ -189,14 +211,14 @@ public class RecordingMetadataResponse {
      * Getter for Channels.
      */
     @JsonGetter("channels")
-    public Integer getChannels() { 
+    public Integer getChannels() {
         return this.channels;
     }
     /**
      * Setter for Channels.
      */
     @JsonSetter("channels")
-    public void setChannels(Integer value) { 
+    public void setChannels(Integer value) {
         this.channels = value;
     }
 
@@ -204,14 +226,14 @@ public class RecordingMetadataResponse {
      * Getter for StartTime.
      */
     @JsonGetter("startTime")
-    public Long getStartTime() { 
+    public Long getStartTime() {
         return this.startTime;
     }
     /**
      * Setter for StartTime.
      */
     @JsonSetter("startTime")
-    public void setStartTime(Long value) { 
+    public void setStartTime(Long value) {
         this.startTime = value;
     }
 
@@ -219,14 +241,14 @@ public class RecordingMetadataResponse {
      * Getter for EndTime.
      */
     @JsonGetter("endTime")
-    public Long getEndTime() { 
+    public Long getEndTime() {
         return this.endTime;
     }
     /**
      * Setter for EndTime.
      */
     @JsonSetter("endTime")
-    public void setEndTime(Long value) { 
+    public void setEndTime(Long value) {
         this.endTime = value;
     }
 
@@ -234,14 +256,14 @@ public class RecordingMetadataResponse {
      * Getter for FileFormat.
      */
     @JsonGetter("fileFormat")
-    public FileFormatEnum getFileFormat() { 
+    public FileFormatEnum getFileFormat() {
         return this.fileFormat;
     }
     /**
      * Setter for FileFormat.
      */
     @JsonSetter("fileFormat")
-    public void setFileFormat(FileFormatEnum value) { 
+    public void setFileFormat(FileFormatEnum value) {
         this.fileFormat = value;
     }
 
@@ -249,14 +271,14 @@ public class RecordingMetadataResponse {
      * Getter for Status.
      */
     @JsonGetter("status")
-    public StatusEnum getStatus() { 
+    public StatusEnum getStatus() {
         return this.status;
     }
     /**
      * Setter for Status.
      */
     @JsonSetter("status")
-    public void setStatus(StatusEnum value) { 
+    public void setStatus(StatusEnum value) {
         this.status = value;
     }
 
@@ -264,14 +286,14 @@ public class RecordingMetadataResponse {
      * Getter for MediaUrl.
      */
     @JsonGetter("mediaUrl")
-    public String getMediaUrl() { 
+    public String getMediaUrl() {
         return this.mediaUrl;
     }
     /**
      * Setter for MediaUrl.
      */
     @JsonSetter("mediaUrl")
-    public void setMediaUrl(String value) { 
+    public void setMediaUrl(String value) {
         this.mediaUrl = value;
     }
 
@@ -279,18 +301,24 @@ public class RecordingMetadataResponse {
      * Getter for Transcription.
      */
     @JsonGetter("transcription")
-    public Transcription getTranscription() { 
+    public Transcription getTranscription() {
         return this.transcription;
     }
     /**
      * Setter for Transcription.
      */
     @JsonSetter("transcription")
-    public void setTranscription(Transcription value) { 
+    public void setTranscription(Transcription value) {
         this.transcription = value;
     }
 
  
+
+    /**
+     * Builds a new {@link RecordingMetadataResponse.Builder} object.
+     * Creates the instance with the state of the current model.
+     * @return a new {@link RecordingMetadataResponse.Builder} object
+     */
     public Builder toBuilder() {
         Builder builder = new Builder()
             .applicationId(getApplicationId())
@@ -311,6 +339,9 @@ public class RecordingMetadataResponse {
             return builder;
     }
 
+    /**
+     * Class to build instances of {@link RecordingMetadataResponse}
+     */
     public static class Builder {
         private String applicationId;
         private String accountId;
@@ -328,69 +359,153 @@ public class RecordingMetadataResponse {
         private String mediaUrl;
         private Transcription transcription;
 
-        public Builder() { }
-
-        public Builder applicationId(String value) {
-            applicationId = value;
-            return this;
-        }
-        public Builder accountId(String value) {
-            accountId = value;
-            return this;
-        }
-        public Builder callId(String value) {
-            callId = value;
-            return this;
-        }
-        public Builder recordingId(String value) {
-            recordingId = value;
-            return this;
-        }
-        public Builder to(String value) {
-            to = value;
-            return this;
-        }
-        public Builder from(String value) {
-            from = value;
-            return this;
-        }
-        public Builder duration(String value) {
-            duration = value;
-            return this;
-        }
-        public Builder direction(DirectionEnum value) {
-            direction = value;
-            return this;
-        }
-        public Builder channels(Integer value) {
-            channels = value;
-            return this;
-        }
-        public Builder startTime(Long value) {
-            startTime = value;
-            return this;
-        }
-        public Builder endTime(Long value) {
-            endTime = value;
-            return this;
-        }
-        public Builder fileFormat(FileFormatEnum value) {
-            fileFormat = value;
-            return this;
-        }
-        public Builder status(StatusEnum value) {
-            status = value;
-            return this;
-        }
-        public Builder mediaUrl(String value) {
-            mediaUrl = value;
-            return this;
-        }
-        public Builder transcription(Transcription value) {
-            transcription = value;
-            return this;
+        /**
+         * Initialization constructor
+         */
+        public Builder() {
+           
         }
 
+        /**
+         * Setter for applicationId
+         * @param applicationId
+         * @return Builder
+         */
+        public Builder applicationId(String applicationId) {
+            this.applicationId = applicationId;
+            return this;
+        }
+        /**
+         * Setter for accountId
+         * @param accountId
+         * @return Builder
+         */
+        public Builder accountId(String accountId) {
+            this.accountId = accountId;
+            return this;
+        }
+        /**
+         * Setter for callId
+         * @param callId
+         * @return Builder
+         */
+        public Builder callId(String callId) {
+            this.callId = callId;
+            return this;
+        }
+        /**
+         * Setter for recordingId
+         * @param recordingId
+         * @return Builder
+         */
+        public Builder recordingId(String recordingId) {
+            this.recordingId = recordingId;
+            return this;
+        }
+        /**
+         * Setter for to
+         * @param to
+         * @return Builder
+         */
+        public Builder to(String to) {
+            this.to = to;
+            return this;
+        }
+        /**
+         * Setter for from
+         * @param from
+         * @return Builder
+         */
+        public Builder from(String from) {
+            this.from = from;
+            return this;
+        }
+        /**
+         * Setter for duration
+         * @param duration
+         * @return Builder
+         */
+        public Builder duration(String duration) {
+            this.duration = duration;
+            return this;
+        }
+        /**
+         * Setter for direction
+         * @param direction
+         * @return Builder
+         */
+        public Builder direction(DirectionEnum direction) {
+            this.direction = direction;
+            return this;
+        }
+        /**
+         * Setter for channels
+         * @param channels
+         * @return Builder
+         */
+        public Builder channels(Integer channels) {
+            this.channels = channels;
+            return this;
+        }
+        /**
+         * Setter for startTime
+         * @param startTime
+         * @return Builder
+         */
+        public Builder startTime(Long startTime) {
+            this.startTime = startTime;
+            return this;
+        }
+        /**
+         * Setter for endTime
+         * @param endTime
+         * @return Builder
+         */
+        public Builder endTime(Long endTime) {
+            this.endTime = endTime;
+            return this;
+        }
+        /**
+         * Setter for fileFormat
+         * @param fileFormat
+         * @return Builder
+         */
+        public Builder fileFormat(FileFormatEnum fileFormat) {
+            this.fileFormat = fileFormat;
+            return this;
+        }
+        /**
+         * Setter for status
+         * @param status
+         * @return Builder
+         */
+        public Builder status(StatusEnum status) {
+            this.status = status;
+            return this;
+        }
+        /**
+         * Setter for mediaUrl
+         * @param mediaUrl
+         * @return Builder
+         */
+        public Builder mediaUrl(String mediaUrl) {
+            this.mediaUrl = mediaUrl;
+            return this;
+        }
+        /**
+         * Setter for transcription
+         * @param transcription
+         * @return Builder
+         */
+        public Builder transcription(Transcription transcription) {
+            this.transcription = transcription;
+            return this;
+        }
+
+        /**
+         * Builds a new {@link RecordingMetadataResponse} object using the set fields.
+         * @return {@link RecordingMetadataResponse}
+         */
         public RecordingMetadataResponse build() {
             return new RecordingMetadataResponse(applicationId,
                 accountId,

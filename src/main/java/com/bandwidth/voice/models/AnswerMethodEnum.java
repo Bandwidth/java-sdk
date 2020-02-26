@@ -9,13 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+/**
+ * AnswerMethodEnum to be used.
+ */
 public enum AnswerMethodEnum {
     POST,
 
     GET;
 
 
-    private static TreeMap<String, AnswerMethodEnum> valueMap = new TreeMap<String, AnswerMethodEnum>();
+    private static TreeMap<String, AnswerMethodEnum> valueMap = new TreeMap<>();
     private String value;
 
     static {
@@ -57,7 +60,7 @@ public enum AnswerMethodEnum {
     public static List<String> toValue(List<AnswerMethodEnum> toConvert) {
         if(toConvert == null)
             return null;
-        List<String> convertedValues = new ArrayList<String>();
+        List<String> convertedValues = new ArrayList<>();
         for (AnswerMethodEnum enumValue : toConvert) {
             convertedValues.add(enumValue.value);
         }

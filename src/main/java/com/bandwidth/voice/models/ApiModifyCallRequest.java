@@ -8,6 +8,10 @@ package com.bandwidth.voice.models;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+
+/**
+ * This is a model class for ApiModifyCallRequest type.
+ */
 public class ApiModifyCallRequest {
     /**
      * Default constructor
@@ -15,6 +19,15 @@ public class ApiModifyCallRequest {
     public ApiModifyCallRequest() {
     }
 
+    /**
+     * Initialization constructor.
+     * @param redirectUrl
+     * @param state
+     * @param redirectMethod
+     * @param username
+     * @param password
+     * @param tag
+     */
     public ApiModifyCallRequest(
             String redirectUrl,
             State1Enum state,
@@ -40,14 +53,14 @@ public class ApiModifyCallRequest {
      * Getter for State.
      */
     @JsonGetter("state")
-    public State1Enum getState() { 
+    public State1Enum getState() {
         return this.state;
     }
     /**
      * Setter for State.
      */
     @JsonSetter("state")
-    public void setState(State1Enum value) { 
+    public void setState(State1Enum value) {
         this.state = value;
     }
 
@@ -55,14 +68,14 @@ public class ApiModifyCallRequest {
      * Getter for RedirectUrl.
      */
     @JsonGetter("redirectUrl")
-    public String getRedirectUrl() { 
+    public String getRedirectUrl() {
         return this.redirectUrl;
     }
     /**
      * Setter for RedirectUrl.
      */
     @JsonSetter("redirectUrl")
-    public void setRedirectUrl(String value) { 
+    public void setRedirectUrl(String value) {
         this.redirectUrl = value;
     }
 
@@ -70,14 +83,14 @@ public class ApiModifyCallRequest {
      * Getter for RedirectMethod.
      */
     @JsonGetter("redirectMethod")
-    public RedirectMethodEnum getRedirectMethod() { 
+    public RedirectMethodEnum getRedirectMethod() {
         return this.redirectMethod;
     }
     /**
      * Setter for RedirectMethod.
      */
     @JsonSetter("redirectMethod")
-    public void setRedirectMethod(RedirectMethodEnum value) { 
+    public void setRedirectMethod(RedirectMethodEnum value) {
         this.redirectMethod = value;
     }
 
@@ -85,14 +98,14 @@ public class ApiModifyCallRequest {
      * Getter for Username.
      */
     @JsonGetter("username")
-    public String getUsername() { 
+    public String getUsername() {
         return this.username;
     }
     /**
      * Setter for Username.
      */
     @JsonSetter("username")
-    public void setUsername(String value) { 
+    public void setUsername(String value) {
         this.username = value;
     }
 
@@ -100,14 +113,14 @@ public class ApiModifyCallRequest {
      * Getter for Password.
      */
     @JsonGetter("password")
-    public String getPassword() { 
+    public String getPassword() {
         return this.password;
     }
     /**
      * Setter for Password.
      */
     @JsonSetter("password")
-    public void setPassword(String value) { 
+    public void setPassword(String value) {
         this.password = value;
     }
 
@@ -115,18 +128,24 @@ public class ApiModifyCallRequest {
      * Getter for Tag.
      */
     @JsonGetter("tag")
-    public String getTag() { 
+    public String getTag() {
         return this.tag;
     }
     /**
      * Setter for Tag.
      */
     @JsonSetter("tag")
-    public void setTag(String value) { 
+    public void setTag(String value) {
         this.tag = value;
     }
 
  
+
+    /**
+     * Builds a new {@link ApiModifyCallRequest.Builder} object.
+     * Creates the instance with the state of the current model.
+     * @return a new {@link ApiModifyCallRequest.Builder} object
+     */
     public Builder toBuilder() {
         Builder builder = new Builder(redirectUrl)
             .state(getState())
@@ -137,6 +156,9 @@ public class ApiModifyCallRequest {
             return builder;
     }
 
+    /**
+     * Class to build instances of {@link ApiModifyCallRequest}
+     */
     public static class Builder {
         private String redirectUrl;
         private State1Enum state;
@@ -145,38 +167,79 @@ public class ApiModifyCallRequest {
         private String password;
         private String tag;
 
+        /**
+         * Initialization constructor
+         */
         public Builder() {
-                    }
+            
+        }
 
+        /**
+         * Initialization constructor
+         */
         public Builder(String redirectUrl) {
             this.redirectUrl = redirectUrl;
         }
 
-        public Builder redirectUrl(String value) {
-            redirectUrl = value;
+        /**
+         * Setter for redirectUrl
+         * @param redirectUrl
+         * @return Builder
+         */
+        public Builder redirectUrl(String redirectUrl) {
+            this.redirectUrl = redirectUrl;
             return this;
         }
-        public Builder state(State1Enum value) {
-            state = value;
+        /**
+         * Setter for state
+         * @param state
+         * @return Builder
+         */
+        public Builder state(State1Enum state) {
+            this.state = state;
             return this;
         }
-        public Builder redirectMethod(RedirectMethodEnum value) {
-            redirectMethod = value;
+        /**
+         * Setter for redirectMethod
+         * @param redirectMethod
+         * @return Builder
+         */
+        public Builder redirectMethod(RedirectMethodEnum redirectMethod) {
+            this.redirectMethod = redirectMethod;
             return this;
         }
-        public Builder username(String value) {
-            username = value;
+        /**
+         * Setter for username
+         * @param username
+         * @return Builder
+         */
+        public Builder username(String username) {
+            this.username = username;
             return this;
         }
-        public Builder password(String value) {
-            password = value;
+        /**
+         * Setter for password
+         * @param password
+         * @return Builder
+         */
+        public Builder password(String password) {
+            this.password = password;
             return this;
         }
-        public Builder tag(String value) {
-            tag = value;
+        /**
+         * Setter for tag
+         * @param tag
+         * @return Builder
+         */
+        public Builder tag(String tag) {
+            this.tag = tag;
             return this;
         }
 
+        /**
+         * Builds a new {@link ApiModifyCallRequest} object using the set fields.
+         * @return {@link ApiModifyCallRequest}
+         */
         public ApiModifyCallRequest build() {
             return new ApiModifyCallRequest(redirectUrl,
                 state,

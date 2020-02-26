@@ -8,6 +8,10 @@ package com.bandwidth.messaging.models;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+
+/**
+ * This is a model class for BandwidthCallbackMessage type.
+ */
 public class BandwidthCallbackMessage {
     /**
      * Default constructor
@@ -15,6 +19,15 @@ public class BandwidthCallbackMessage {
     public BandwidthCallbackMessage() {
     }
 
+    /**
+     * Initialization constructor.
+     * @param time
+     * @param type
+     * @param to
+     * @param errorCode
+     * @param description
+     * @param message
+     */
     public BandwidthCallbackMessage(
             String time,
             String type,
@@ -40,14 +53,14 @@ public class BandwidthCallbackMessage {
      * Getter for Time.
      */
     @JsonGetter("time")
-    public String getTime() { 
+    public String getTime() {
         return this.time;
     }
     /**
      * Setter for Time.
      */
     @JsonSetter("time")
-    public void setTime(String value) { 
+    public void setTime(String value) {
         this.time = value;
     }
 
@@ -55,14 +68,14 @@ public class BandwidthCallbackMessage {
      * Getter for Type.
      */
     @JsonGetter("type")
-    public String getType() { 
+    public String getType() {
         return this.type;
     }
     /**
      * Setter for Type.
      */
     @JsonSetter("type")
-    public void setType(String value) { 
+    public void setType(String value) {
         this.type = value;
     }
 
@@ -70,14 +83,14 @@ public class BandwidthCallbackMessage {
      * Getter for To.
      */
     @JsonGetter("to")
-    public String getTo() { 
+    public String getTo() {
         return this.to;
     }
     /**
      * Setter for To.
      */
     @JsonSetter("to")
-    public void setTo(String value) { 
+    public void setTo(String value) {
         this.to = value;
     }
 
@@ -85,14 +98,14 @@ public class BandwidthCallbackMessage {
      * Getter for ErrorCode.
      */
     @JsonGetter("errorCode")
-    public String getErrorCode() { 
+    public String getErrorCode() {
         return this.errorCode;
     }
     /**
      * Setter for ErrorCode.
      */
     @JsonSetter("errorCode")
-    public void setErrorCode(String value) { 
+    public void setErrorCode(String value) {
         this.errorCode = value;
     }
 
@@ -100,14 +113,14 @@ public class BandwidthCallbackMessage {
      * Getter for Description.
      */
     @JsonGetter("description")
-    public String getDescription() { 
+    public String getDescription() {
         return this.description;
     }
     /**
      * Setter for Description.
      */
     @JsonSetter("description")
-    public void setDescription(String value) { 
+    public void setDescription(String value) {
         this.description = value;
     }
 
@@ -115,18 +128,24 @@ public class BandwidthCallbackMessage {
      * Getter for Message.
      */
     @JsonGetter("message")
-    public BandwidthMessage getMessage() { 
+    public BandwidthMessage getMessage() {
         return this.message;
     }
     /**
      * Setter for Message.
      */
     @JsonSetter("message")
-    public void setMessage(BandwidthMessage value) { 
+    public void setMessage(BandwidthMessage value) {
         this.message = value;
     }
 
  
+
+    /**
+     * Builds a new {@link BandwidthCallbackMessage.Builder} object.
+     * Creates the instance with the state of the current model.
+     * @return a new {@link BandwidthCallbackMessage.Builder} object
+     */
     public Builder toBuilder() {
         Builder builder = new Builder()
             .time(getTime())
@@ -138,6 +157,9 @@ public class BandwidthCallbackMessage {
             return builder;
     }
 
+    /**
+     * Class to build instances of {@link BandwidthCallbackMessage}
+     */
     public static class Builder {
         private String time;
         private String type;
@@ -146,33 +168,72 @@ public class BandwidthCallbackMessage {
         private String description;
         private BandwidthMessage message;
 
-        public Builder() { }
-
-        public Builder time(String value) {
-            time = value;
-            return this;
-        }
-        public Builder type(String value) {
-            type = value;
-            return this;
-        }
-        public Builder to(String value) {
-            to = value;
-            return this;
-        }
-        public Builder errorCode(String value) {
-            errorCode = value;
-            return this;
-        }
-        public Builder description(String value) {
-            description = value;
-            return this;
-        }
-        public Builder message(BandwidthMessage value) {
-            message = value;
-            return this;
+        /**
+         * Initialization constructor
+         */
+        public Builder() {
+           
         }
 
+        /**
+         * Setter for time
+         * @param time
+         * @return Builder
+         */
+        public Builder time(String time) {
+            this.time = time;
+            return this;
+        }
+        /**
+         * Setter for type
+         * @param type
+         * @return Builder
+         */
+        public Builder type(String type) {
+            this.type = type;
+            return this;
+        }
+        /**
+         * Setter for to
+         * @param to
+         * @return Builder
+         */
+        public Builder to(String to) {
+            this.to = to;
+            return this;
+        }
+        /**
+         * Setter for errorCode
+         * @param errorCode
+         * @return Builder
+         */
+        public Builder errorCode(String errorCode) {
+            this.errorCode = errorCode;
+            return this;
+        }
+        /**
+         * Setter for description
+         * @param description
+         * @return Builder
+         */
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+        /**
+         * Setter for message
+         * @param message
+         * @return Builder
+         */
+        public Builder message(BandwidthMessage message) {
+            this.message = message;
+            return this;
+        }
+
+        /**
+         * Builds a new {@link BandwidthCallbackMessage} object using the set fields.
+         * @return {@link BandwidthCallbackMessage}
+         */
         public BandwidthCallbackMessage build() {
             return new BandwidthCallbackMessage(time,
                 type,

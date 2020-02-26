@@ -8,6 +8,10 @@ package com.bandwidth.voice.models;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+
+/**
+ * This is a model class for ModifyCallRecordingState type.
+ */
 public class ModifyCallRecordingState {
     /**
      * Default constructor
@@ -15,6 +19,10 @@ public class ModifyCallRecordingState {
     public ModifyCallRecordingState() {
     }
 
+    /**
+     * Initialization constructor.
+     * @param state
+     */
     public ModifyCallRecordingState(
             State2Enum state) {
         this.state = state;
@@ -25,34 +33,57 @@ public class ModifyCallRecordingState {
      * Getter for State.
      */
     @JsonGetter("state")
-    public State2Enum getState() { 
+    public State2Enum getState() {
         return this.state;
     }
     /**
      * Setter for State.
      */
     @JsonSetter("state")
-    public void setState(State2Enum value) { 
+    public void setState(State2Enum value) {
         this.state = value;
     }
 
  
+
+    /**
+     * Builds a new {@link ModifyCallRecordingState.Builder} object.
+     * Creates the instance with the state of the current model.
+     * @return a new {@link ModifyCallRecordingState.Builder} object
+     */
     public Builder toBuilder() {
         Builder builder = new Builder()
             .state(getState());
             return builder;
     }
 
+    /**
+     * Class to build instances of {@link ModifyCallRecordingState}
+     */
     public static class Builder {
         private State2Enum state;
 
-        public Builder() { }
+        /**
+         * Initialization constructor
+         */
+        public Builder() {
+           
+        }
 
-        public Builder state(State2Enum value) {
-            state = value;
+        /**
+         * Setter for state
+         * @param state
+         * @return Builder
+         */
+        public Builder state(State2Enum state) {
+            this.state = state;
             return this;
         }
 
+        /**
+         * Builds a new {@link ModifyCallRecordingState} object using the set fields.
+         * @return {@link ModifyCallRecordingState}
+         */
         public ModifyCallRecordingState build() {
             return new ModifyCallRecordingState(state);
         }

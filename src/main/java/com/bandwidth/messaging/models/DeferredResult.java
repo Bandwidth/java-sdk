@@ -8,6 +8,10 @@ package com.bandwidth.messaging.models;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+
+/**
+ * This is a model class for DeferredResult type.
+ */
 public class DeferredResult {
     /**
      * Default constructor
@@ -15,6 +19,11 @@ public class DeferredResult {
     public DeferredResult() {
     }
 
+    /**
+     * Initialization constructor.
+     * @param result
+     * @param setOrExpired
+     */
     public DeferredResult(
             Object result,
             Boolean setOrExpired) {
@@ -28,14 +37,14 @@ public class DeferredResult {
      * Getter for Result.
      */
     @JsonGetter("result")
-    public Object getResult() { 
+    public Object getResult() {
         return this.result;
     }
     /**
      * Setter for Result.
      */
     @JsonSetter("result")
-    public void setResult(Object value) { 
+    public void setResult(Object value) {
         this.result = value;
     }
 
@@ -43,18 +52,24 @@ public class DeferredResult {
      * Getter for SetOrExpired.
      */
     @JsonGetter("setOrExpired")
-    public Boolean getSetOrExpired() { 
+    public Boolean getSetOrExpired() {
         return this.setOrExpired;
     }
     /**
      * Setter for SetOrExpired.
      */
     @JsonSetter("setOrExpired")
-    public void setSetOrExpired(Boolean value) { 
+    public void setSetOrExpired(Boolean value) {
         this.setOrExpired = value;
     }
 
  
+
+    /**
+     * Builds a new {@link DeferredResult.Builder} object.
+     * Creates the instance with the state of the current model.
+     * @return a new {@link DeferredResult.Builder} object
+     */
     public Builder toBuilder() {
         Builder builder = new Builder()
             .result(getResult())
@@ -62,21 +77,43 @@ public class DeferredResult {
             return builder;
     }
 
+    /**
+     * Class to build instances of {@link DeferredResult}
+     */
     public static class Builder {
         private Object result;
         private Boolean setOrExpired;
 
-        public Builder() { }
-
-        public Builder result(Object value) {
-            result = value;
-            return this;
-        }
-        public Builder setOrExpired(Boolean value) {
-            setOrExpired = value;
-            return this;
+        /**
+         * Initialization constructor
+         */
+        public Builder() {
+           
         }
 
+        /**
+         * Setter for result
+         * @param result
+         * @return Builder
+         */
+        public Builder result(Object result) {
+            this.result = result;
+            return this;
+        }
+        /**
+         * Setter for setOrExpired
+         * @param setOrExpired
+         * @return Builder
+         */
+        public Builder setOrExpired(Boolean setOrExpired) {
+            this.setOrExpired = setOrExpired;
+            return this;
+        }
+
+        /**
+         * Builds a new {@link DeferredResult} object using the set fields.
+         * @return {@link DeferredResult}
+         */
         public DeferredResult build() {
             return new DeferredResult(result,
                 setOrExpired);

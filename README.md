@@ -1,64 +1,101 @@
-# Getting Started with bandwidth
+# Bandwidth Java SDK
+  
+Bandwidth's API docs can be found at https://dev.bandwidth.com
 
-Bandwidth's set of APIs
+Java specific docs can be found at https://dev.bandwidth.com/sdks/java.html
 
-## Install the Package
+## Download & Install
 
-Install the SDK by adding the following dependency in your project's pom.xml file:
+Maven:
 
 ```xml
+<!-- https://mvnrepository.com/artifact/com.bandwidth.sdk/bandwidth-sdk -->
 <dependency>
-  <groupId>com.bandwidth.sdk</groupId>
-  <artifactId>bandwidth-sdk</artifactId>
-  <version>1.2.0</version>
+    <groupId>com.bandwidth.sdk</groupId>
+    <artifactId>bandwidth-sdk</artifactId>
+    <version>1.0.0</version>
 </dependency>
 ```
 
-You can also view the package at:
-https://mvnrepository.com/artifact/com.bandwidth.sdk/bandwidth-sdk/1.2.0
-
-## Initialize the API Client
-
-The following parameters are configurable for the API Client.
-
-| Parameter | Type | Description |
-|  --- | --- | --- |
-| `messagingBasicAuthUserName` | `String` | The username to use with basic authentication |
-| `messagingBasicAuthPassword` | `String` | The password to use with basic authentication |
-| `voiceBasicAuthUserName` | `String` | The username to use with basic authentication |
-| `voiceBasicAuthPassword` | `String` | The password to use with basic authentication |
-| `environment` | Environment | The API environment. <br> **Default: `Environment.PRODUCTION`** |
-
-The API client can be initialized as following.
+## Initialize Bandwidth Client
 
 ```java
-BandwidthClient client = new BandwidthClient.Builder()
-    // Set authentication parameters
-    .messagingBasicAuthUserName("MessagingBasicAuthUserName")
-    .messagingBasicAuthPassword("MessagingBasicAuthPassword")
-    .voiceBasicAuthUserName("VoiceBasicAuthUserName")
-    .voiceBasicAuthPassword("VoiceBasicAuthPassword")
 
-    // Set the environment
-    .environment(Environments.PRODUCTION)
-    .build();
+//Set the voice client configuration with credentials
+BandwidthClient client = new BandwidthClient.Builder()
+            .messagingBasicAuthCredentials("MESSAGING_API_TOKEN", "MESSAGING_API_SECRET")
+            .voiceBasicAuthCredentials("VOICE_API_USERNAME", "VOICE_API_PASSWORD")
+            .environment(Environment.PRODUCTION)
+            .build();
+
+//Fully qualified name to remove confilicts
+com.bandwidth.messaging.controllers.APIController messagingController = client.getMessagingClient().getAPIController();
+com.bandwidth.voice.controllers.APIController voiceController = client.getVoiceClient().getAPIController();
+
 ```
 
-API calls return an `ApiResponse` object that includes the following fields:
+## Create Phone Call
 
-| Field | Description |
-|  --- | --- |
-| `getStatusCode` | Status code of the HTTP response |
-| `getHeaders` | Headers of the HTTP response as a Hash |
-| `getResult` | The deserialized body of the HTTP response as a String |
+```java
+import com.bandwidth.voice.models.ApiCreateCallRequest;
 
-## Authorization
+//Create the ApiCreateCallRequst object and populate.
+ApiCreateCallRequest callRequest = new ApiCreateCallRequest();
 
-This API does not require authentication.
+callRequest.setApplicationId("application.Id");
+callRequest.setTo("+19999999999");
+callRequest.setAnswerUrl("https://test.com");
+callRequest.setFrom("+17777777777");
 
-## API Reference
+//The voice client createCall can throw these exceptions.
+try {
+    ApiResponse<ApiCallResponse> response = voiceController.createCall("account.id", callRequest);
+    System.out.println(response.getResult().getCallId());
+} catch (IOException | ApiException e) {
+    //Handle
+}
 
-### List of APIs
+```
 
-*
+## Generate BXML
 
+```java
+import com.bandwidth.sdk.voice.models.verbs.*;
+
+//Create a Bandwidth XML (BXML) SpeakSentence Verb.  Supply the sentence to be spoken.
+SpeakSentence speakSentence = SpeakSentence.builder()
+	.text("Hello World")
+	.build();
+
+//Create the response object and add the speakSentence verb to the response.
+Response response = Response.builder().build().add(speakSentence);
+
+//view the BXML
+System.out.println( response.toXml() )
+
+```
+
+## Send Text Message
+
+```java
+import com.bandwidth.messaging.models.MessageRequest;
+
+MessageRequest messageRequest = new MessageRequest();
+
+List<String> toNumbers = new ArrayList<>();
+
+toNumbers.add("+12345678902");
+
+messageRequest.setApplicationId(MSG_APPLICATION_ID);
+messageRequest.setText("Hey, check this out!");
+messageRequest.setFrom("+12345678901");
+messageRequest.setTo( toNumbers );
+messageRequest.setTag("test tag");
+
+try {
+    ApiResponse<BandwidthMessage> response = messagingController.createMessage(accountId, messageRequest);
+    System.out.println(response.getResult().getId());
+} catch (ApiException  | IOException e){
+    //Handle
+}
+```

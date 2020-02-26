@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+/**
+ * CallbackMethodEnum to be used.
+ */
 public enum CallbackMethodEnum {
     GET,
 
@@ -27,7 +30,7 @@ public enum CallbackMethodEnum {
     TRACE;
 
 
-    private static TreeMap<String, CallbackMethodEnum> valueMap = new TreeMap<String, CallbackMethodEnum>();
+    private static TreeMap<String, CallbackMethodEnum> valueMap = new TreeMap<>();
     private String value;
 
     static {
@@ -81,7 +84,7 @@ public enum CallbackMethodEnum {
     public static List<String> toValue(List<CallbackMethodEnum> toConvert) {
         if(toConvert == null)
             return null;
-        List<String> convertedValues = new ArrayList<String>();
+        List<String> convertedValues = new ArrayList<>();
         for (CallbackMethodEnum enumValue : toConvert) {
             convertedValues.add(enumValue.value);
         }

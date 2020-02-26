@@ -10,8 +10,12 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.bandwidth.DateTimeHelper;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 
+
+/**
+ * This is a model class for ApiCallResponse type.
+ */
 public class ApiCallResponse {
     /**
      * Default constructor
@@ -19,6 +23,24 @@ public class ApiCallResponse {
     public ApiCallResponse() {
     }
 
+    /**
+     * Initialization constructor.
+     * @param accountId
+     * @param callId
+     * @param applicationId
+     * @param to
+     * @param from
+     * @param callUrl
+     * @param answerUrl
+     * @param answerMethod
+     * @param disconnectMethod
+     * @param startTime
+     * @param callTimeout
+     * @param disconnectUrl
+     * @param username
+     * @param password
+     * @param tag
+     */
     public ApiCallResponse(
             String accountId,
             String callId,
@@ -29,7 +51,7 @@ public class ApiCallResponse {
             String answerUrl,
             AnswerMethodEnum answerMethod,
             DisconnectMethodEnum disconnectMethod,
-            ZonedDateTime startTime,
+            LocalDateTime startTime,
             Double callTimeout,
             String disconnectUrl,
             String username,
@@ -57,7 +79,7 @@ public class ApiCallResponse {
     private String applicationId;
     private String to;
     private String from;
-    private ZonedDateTime startTime;
+    private LocalDateTime startTime;
     private String callUrl;
     private Double callTimeout;
     private String answerUrl;
@@ -71,14 +93,14 @@ public class ApiCallResponse {
      * Getter for AccountId.
      */
     @JsonGetter("accountId")
-    public String getAccountId() { 
+    public String getAccountId() {
         return this.accountId;
     }
     /**
      * Setter for AccountId.
      */
     @JsonSetter("accountId")
-    public void setAccountId(String value) { 
+    public void setAccountId(String value) {
         this.accountId = value;
     }
 
@@ -86,14 +108,14 @@ public class ApiCallResponse {
      * Getter for CallId.
      */
     @JsonGetter("callId")
-    public String getCallId() { 
+    public String getCallId() {
         return this.callId;
     }
     /**
      * Setter for CallId.
      */
     @JsonSetter("callId")
-    public void setCallId(String value) { 
+    public void setCallId(String value) {
         this.callId = value;
     }
 
@@ -101,14 +123,14 @@ public class ApiCallResponse {
      * Getter for ApplicationId.
      */
     @JsonGetter("applicationId")
-    public String getApplicationId() { 
+    public String getApplicationId() {
         return this.applicationId;
     }
     /**
      * Setter for ApplicationId.
      */
     @JsonSetter("applicationId")
-    public void setApplicationId(String value) { 
+    public void setApplicationId(String value) {
         this.applicationId = value;
     }
 
@@ -116,14 +138,14 @@ public class ApiCallResponse {
      * Getter for To.
      */
     @JsonGetter("to")
-    public String getTo() { 
+    public String getTo() {
         return this.to;
     }
     /**
      * Setter for To.
      */
     @JsonSetter("to")
-    public void setTo(String value) { 
+    public void setTo(String value) {
         this.to = value;
     }
 
@@ -131,14 +153,14 @@ public class ApiCallResponse {
      * Getter for From.
      */
     @JsonGetter("from")
-    public String getFrom() { 
+    public String getFrom() {
         return this.from;
     }
     /**
      * Setter for From.
      */
     @JsonSetter("from")
-    public void setFrom(String value) { 
+    public void setFrom(String value) {
         this.from = value;
     }
 
@@ -147,7 +169,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("startTime")
     @JsonSerialize(using=DateTimeHelper.Rfc8601DateTimeSerializer.class)
-    public ZonedDateTime getStartTime() { 
+    public LocalDateTime getStartTime() {
         return this.startTime;
     }
     /**
@@ -155,7 +177,7 @@ public class ApiCallResponse {
      */
     @JsonSetter("startTime")
     @JsonDeserialize(using=DateTimeHelper.Rfc8601DateTimeDeserializer.class)
-    public void setStartTime(ZonedDateTime value) { 
+    public void setStartTime(LocalDateTime value) {
         this.startTime = value;
     }
 
@@ -163,14 +185,14 @@ public class ApiCallResponse {
      * Getter for CallUrl.
      */
     @JsonGetter("callUrl")
-    public String getCallUrl() { 
+    public String getCallUrl() {
         return this.callUrl;
     }
     /**
      * Setter for CallUrl.
      */
     @JsonSetter("callUrl")
-    public void setCallUrl(String value) { 
+    public void setCallUrl(String value) {
         this.callUrl = value;
     }
 
@@ -178,14 +200,14 @@ public class ApiCallResponse {
      * Getter for CallTimeout.
      */
     @JsonGetter("callTimeout")
-    public Double getCallTimeout() { 
+    public Double getCallTimeout() {
         return this.callTimeout;
     }
     /**
      * Setter for CallTimeout.
      */
     @JsonSetter("callTimeout")
-    public void setCallTimeout(Double value) { 
+    public void setCallTimeout(Double value) {
         this.callTimeout = value;
     }
 
@@ -193,14 +215,14 @@ public class ApiCallResponse {
      * Getter for AnswerUrl.
      */
     @JsonGetter("answerUrl")
-    public String getAnswerUrl() { 
+    public String getAnswerUrl() {
         return this.answerUrl;
     }
     /**
      * Setter for AnswerUrl.
      */
     @JsonSetter("answerUrl")
-    public void setAnswerUrl(String value) { 
+    public void setAnswerUrl(String value) {
         this.answerUrl = value;
     }
 
@@ -208,14 +230,14 @@ public class ApiCallResponse {
      * Getter for AnswerMethod.
      */
     @JsonGetter("answerMethod")
-    public AnswerMethodEnum getAnswerMethod() { 
+    public AnswerMethodEnum getAnswerMethod() {
         return this.answerMethod;
     }
     /**
      * Setter for AnswerMethod.
      */
     @JsonSetter("answerMethod")
-    public void setAnswerMethod(AnswerMethodEnum value) { 
+    public void setAnswerMethod(AnswerMethodEnum value) {
         this.answerMethod = value;
     }
 
@@ -223,14 +245,14 @@ public class ApiCallResponse {
      * Getter for DisconnectUrl.
      */
     @JsonGetter("disconnectUrl")
-    public String getDisconnectUrl() { 
+    public String getDisconnectUrl() {
         return this.disconnectUrl;
     }
     /**
      * Setter for DisconnectUrl.
      */
     @JsonSetter("disconnectUrl")
-    public void setDisconnectUrl(String value) { 
+    public void setDisconnectUrl(String value) {
         this.disconnectUrl = value;
     }
 
@@ -238,14 +260,14 @@ public class ApiCallResponse {
      * Getter for DisconnectMethod.
      */
     @JsonGetter("disconnectMethod")
-    public DisconnectMethodEnum getDisconnectMethod() { 
+    public DisconnectMethodEnum getDisconnectMethod() {
         return this.disconnectMethod;
     }
     /**
      * Setter for DisconnectMethod.
      */
     @JsonSetter("disconnectMethod")
-    public void setDisconnectMethod(DisconnectMethodEnum value) { 
+    public void setDisconnectMethod(DisconnectMethodEnum value) {
         this.disconnectMethod = value;
     }
 
@@ -253,14 +275,14 @@ public class ApiCallResponse {
      * Getter for Username.
      */
     @JsonGetter("username")
-    public String getUsername() { 
+    public String getUsername() {
         return this.username;
     }
     /**
      * Setter for Username.
      */
     @JsonSetter("username")
-    public void setUsername(String value) { 
+    public void setUsername(String value) {
         this.username = value;
     }
 
@@ -268,14 +290,14 @@ public class ApiCallResponse {
      * Getter for Password.
      */
     @JsonGetter("password")
-    public String getPassword() { 
+    public String getPassword() {
         return this.password;
     }
     /**
      * Setter for Password.
      */
     @JsonSetter("password")
-    public void setPassword(String value) { 
+    public void setPassword(String value) {
         this.password = value;
     }
 
@@ -283,18 +305,24 @@ public class ApiCallResponse {
      * Getter for Tag.
      */
     @JsonGetter("tag")
-    public String getTag() { 
+    public String getTag() {
         return this.tag;
     }
     /**
      * Setter for Tag.
      */
     @JsonSetter("tag")
-    public void setTag(String value) { 
+    public void setTag(String value) {
         this.tag = value;
     }
 
  
+
+    /**
+     * Builds a new {@link ApiCallResponse.Builder} object.
+     * Creates the instance with the state of the current model.
+     * @return a new {@link ApiCallResponse.Builder} object
+     */
     public Builder toBuilder() {
         Builder builder = new Builder(accountId,
             callId,
@@ -314,6 +342,9 @@ public class ApiCallResponse {
             return builder;
     }
 
+    /**
+     * Class to build instances of {@link ApiCallResponse}
+     */
     public static class Builder {
         private String accountId;
         private String callId;
@@ -324,16 +355,23 @@ public class ApiCallResponse {
         private String answerUrl;
         private AnswerMethodEnum answerMethod;
         private DisconnectMethodEnum disconnectMethod;
-        private ZonedDateTime startTime;
+        private LocalDateTime startTime;
         private Double callTimeout;
         private String disconnectUrl;
         private String username;
         private String password;
         private String tag;
 
+        /**
+         * Initialization constructor
+         */
         public Builder() {
-                    }
+            
+        }
 
+        /**
+         * Initialization constructor
+         */
         public Builder(String accountId,
                 String callId,
                 String applicationId,
@@ -354,67 +392,146 @@ public class ApiCallResponse {
             this.disconnectMethod = disconnectMethod;
         }
 
-        public Builder accountId(String value) {
-            accountId = value;
+        /**
+         * Setter for accountId
+         * @param accountId
+         * @return Builder
+         */
+        public Builder accountId(String accountId) {
+            this.accountId = accountId;
             return this;
         }
-        public Builder callId(String value) {
-            callId = value;
+        /**
+         * Setter for callId
+         * @param callId
+         * @return Builder
+         */
+        public Builder callId(String callId) {
+            this.callId = callId;
             return this;
         }
-        public Builder applicationId(String value) {
-            applicationId = value;
+        /**
+         * Setter for applicationId
+         * @param applicationId
+         * @return Builder
+         */
+        public Builder applicationId(String applicationId) {
+            this.applicationId = applicationId;
             return this;
         }
-        public Builder to(String value) {
-            to = value;
+        /**
+         * Setter for to
+         * @param to
+         * @return Builder
+         */
+        public Builder to(String to) {
+            this.to = to;
             return this;
         }
-        public Builder from(String value) {
-            from = value;
+        /**
+         * Setter for from
+         * @param from
+         * @return Builder
+         */
+        public Builder from(String from) {
+            this.from = from;
             return this;
         }
-        public Builder callUrl(String value) {
-            callUrl = value;
+        /**
+         * Setter for callUrl
+         * @param callUrl
+         * @return Builder
+         */
+        public Builder callUrl(String callUrl) {
+            this.callUrl = callUrl;
             return this;
         }
-        public Builder answerUrl(String value) {
-            answerUrl = value;
+        /**
+         * Setter for answerUrl
+         * @param answerUrl
+         * @return Builder
+         */
+        public Builder answerUrl(String answerUrl) {
+            this.answerUrl = answerUrl;
             return this;
         }
-        public Builder answerMethod(AnswerMethodEnum value) {
-            answerMethod = value;
+        /**
+         * Setter for answerMethod
+         * @param answerMethod
+         * @return Builder
+         */
+        public Builder answerMethod(AnswerMethodEnum answerMethod) {
+            this.answerMethod = answerMethod;
             return this;
         }
-        public Builder disconnectMethod(DisconnectMethodEnum value) {
-            disconnectMethod = value;
+        /**
+         * Setter for disconnectMethod
+         * @param disconnectMethod
+         * @return Builder
+         */
+        public Builder disconnectMethod(DisconnectMethodEnum disconnectMethod) {
+            this.disconnectMethod = disconnectMethod;
             return this;
         }
-        public Builder startTime(ZonedDateTime value) {
-            startTime = value;
+        /**
+         * Setter for startTime
+         * @param startTime
+         * @return Builder
+         */
+        public Builder startTime(LocalDateTime startTime) {
+            this.startTime = startTime;
             return this;
         }
-        public Builder callTimeout(Double value) {
-            callTimeout = value;
+        /**
+         * Setter for callTimeout
+         * @param callTimeout
+         * @return Builder
+         */
+        public Builder callTimeout(Double callTimeout) {
+            this.callTimeout = callTimeout;
             return this;
         }
-        public Builder disconnectUrl(String value) {
-            disconnectUrl = value;
+        /**
+         * Setter for disconnectUrl
+         * @param disconnectUrl
+         * @return Builder
+         */
+        public Builder disconnectUrl(String disconnectUrl) {
+            this.disconnectUrl = disconnectUrl;
             return this;
         }
-        public Builder username(String value) {
-            username = value;
+        /**
+         * Setter for username
+         * @param username
+         * @return Builder
+         */
+        public Builder username(String username) {
+            this.username = username;
             return this;
         }
-        public Builder password(String value) {
-            password = value;
+        /**
+         * Setter for password
+         * @param password
+         * @return Builder
+         */
+        public Builder password(String password) {
+            this.password = password;
             return this;
         }
-        public Builder tag(String value) {
-            tag = value;
+        /**
+         * Setter for tag
+         * @param tag
+         * @return Builder
+         */
+        public Builder tag(String tag) {
+            this.tag = tag;
             return this;
         }
 
+        /**
+         * Builds a new {@link ApiCallResponse} object using the set fields.
+         * @return {@link ApiCallResponse}
+         */
         public ApiCallResponse build() {
             return new ApiCallResponse(accountId,
                 callId,

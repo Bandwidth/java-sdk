@@ -5,15 +5,20 @@
  */
 package com.bandwidth.messaging.exceptions;
 
-import java.util.*;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.bandwidth.http.client.HttpContext;
-import com.bandwidth.exceptions.*;
-import com.bandwidth.messaging.models.*;
+import com.bandwidth.exceptions.ApiException;
+import com.bandwidth.messaging.models.FieldError;
 
+
+/**
+ * This is a model class for GenericClientException type.
+ */
 public class GenericClientException
         extends ApiException {
+    private static final long serialVersionUID = -4651771181595010980L;
     /**
      * Initialization constructor
      * @param   reason  The reason for throwing exception
@@ -30,14 +35,14 @@ public class GenericClientException
      * Getter for Type.
      */
     @JsonGetter("type")
-    public String getType() { 
+    public String getType() {
         return this.type;
     }
     /**
      * Setter for Type.
      */
     @JsonSetter("type")
-    private void setType(String value) { 
+    private void setType(String value) {
         this.type = value;
     }
 
@@ -45,14 +50,14 @@ public class GenericClientException
      * Getter for Description.
      */
     @JsonGetter("description")
-    public String getDescription() { 
+    public String getDescription() {
         return this.description;
     }
     /**
      * Setter for Description.
      */
     @JsonSetter("description")
-    private void setDescription(String value) { 
+    private void setDescription(String value) {
         this.description = value;
     }
 
@@ -60,16 +65,17 @@ public class GenericClientException
      * Getter for FieldErrors.
      */
     @JsonGetter("fieldErrors")
-    public List<FieldError> getFieldErrors() { 
+    public List<FieldError> getFieldErrors() {
         return this.fieldErrors;
     }
     /**
      * Setter for FieldErrors.
      */
     @JsonSetter("fieldErrors")
-    private void setFieldErrors(List<FieldError> value) { 
+    private void setFieldErrors(List<FieldError> value) {
         this.fieldErrors = value;
     }
 
  
+
 }

@@ -9,13 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+/**
+ * FileFormatEnum to be used.
+ */
 public enum FileFormatEnum {
     MP3,
 
     WAV;
 
 
-    private static TreeMap<String, FileFormatEnum> valueMap = new TreeMap<String, FileFormatEnum>();
+    private static TreeMap<String, FileFormatEnum> valueMap = new TreeMap<>();
     private String value;
 
     static {
@@ -57,7 +60,7 @@ public enum FileFormatEnum {
     public static List<String> toValue(List<FileFormatEnum> toConvert) {
         if(toConvert == null)
             return null;
-        List<String> convertedValues = new ArrayList<String>();
+        List<String> convertedValues = new ArrayList<>();
         for (FileFormatEnum enumValue : toConvert) {
             convertedValues.add(enumValue.value);
         }

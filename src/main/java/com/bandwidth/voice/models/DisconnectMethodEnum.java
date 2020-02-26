@@ -9,13 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+/**
+ * DisconnectMethodEnum to be used.
+ */
 public enum DisconnectMethodEnum {
     POST,
 
     GET;
 
 
-    private static TreeMap<String, DisconnectMethodEnum> valueMap = new TreeMap<String, DisconnectMethodEnum>();
+    private static TreeMap<String, DisconnectMethodEnum> valueMap = new TreeMap<>();
     private String value;
 
     static {
@@ -57,7 +60,7 @@ public enum DisconnectMethodEnum {
     public static List<String> toValue(List<DisconnectMethodEnum> toConvert) {
         if(toConvert == null)
             return null;
-        List<String> convertedValues = new ArrayList<String>();
+        List<String> convertedValues = new ArrayList<>();
         for (DisconnectMethodEnum enumValue : toConvert) {
             convertedValues.add(enumValue.value);
         }

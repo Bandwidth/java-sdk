@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+/**
+ * StateEnum to be used.
+ */
 public enum StateEnum {
     DISCONNECTED,
 
@@ -17,7 +20,7 @@ public enum StateEnum {
     INITIATED;
 
 
-    private static TreeMap<String, StateEnum> valueMap = new TreeMap<String, StateEnum>();
+    private static TreeMap<String, StateEnum> valueMap = new TreeMap<>();
     private String value;
 
     static {
@@ -61,7 +64,7 @@ public enum StateEnum {
     public static List<String> toValue(List<StateEnum> toConvert) {
         if(toConvert == null)
             return null;
-        List<String> convertedValues = new ArrayList<String>();
+        List<String> convertedValues = new ArrayList<>();
         for (StateEnum enumValue : toConvert) {
             convertedValues.add(enumValue.value);
         }
