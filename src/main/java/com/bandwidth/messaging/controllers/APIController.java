@@ -25,8 +25,7 @@ import com.bandwidth.http.request.HttpRequest;
 import com.bandwidth.http.response.ApiResponse;
 import com.bandwidth.http.response.HttpResponse;
 import com.bandwidth.http.response.HttpStringResponse;
-import com.bandwidth.messaging.exceptions.GenericClientException;
-import com.bandwidth.messaging.exceptions.PathClientException;
+import com.bandwidth.messaging.exceptions.MessagingException;
 import com.bandwidth.messaging.models.BandwidthMessage;
 import com.bandwidth.messaging.models.Media;
 import com.bandwidth.messaging.models.MessageRequest;
@@ -48,87 +47,6 @@ public final class APIController extends BaseController {
         super(config, httpClient, authManagers);
     }
 
-
-    /**
-     * getMessage
-     */
-    public ApiResponse<Void> getMessage() throws ApiException, IOException {
-        HttpRequest request = buildGetMessageRequest();
-        authManagers.get("messaging").apply(request);
-
-        HttpResponse response = getClientInstance().executeAsString(request);
-        HttpContext context = new HttpContext(request, response);
-
-        return handleGetMessageResponse(context);
-    }
-
-    /**
-     * getMessage
-     * @return    Returns the ApiResponse<Void> response from the API call 
-     */
-    public CompletableFuture<ApiResponse<Void>> getMessageAsync() {
-        return makeHttpCallAsync(() -> buildGetMessageRequest(),
-                req -> authManagers.get("messaging").applyAsync(req)
-                    .thenCompose(request -> getClientInstance().executeAsStringAsync(request)),
-                context -> handleGetMessageResponse(context));
-    }
-
-    /**
-     * Builds the HttpRequest object for getMessage
-     */
-    private HttpRequest buildGetMessageRequest() {
-        //the base uri for api requests
-        String baseUri = config.getBaseUri(Server.MESSAGINGDEFAULT);
-
-        //prepare query string for API call
-        StringBuilder queryBuilder = new StringBuilder(baseUri + "/ping");
-        //validate and preprocess url
-        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
-
-        //load all headers for the outgoing API request
-        Headers headers = new Headers();
-        headers.add("user-agent", BaseController.userAgent);
-
-        //prepare and invoke the API call request to fetch the response
-        HttpRequest request = getClientInstance().get(queryUrl, headers, null);
-
-        return request;
-    }
-
-    /**
-     * Processes the response for getMessage
-     * @return An object of type void
-     */
-    private ApiResponse<Void> handleGetMessageResponse(HttpContext context)
-            throws ApiException, IOException {
-        HttpResponse response = context.getResponse();
-
-        //Error handling using HTTP status codes
-        int responseCode = response.getStatusCode();
-
-        if (responseCode == 400) {
-            throw new GenericClientException("400 Request is malformed or invalid", context);
-        }
-        if (responseCode == 401) {
-            throw new PathClientException("401 The specified user does not have access to the account", context);
-        }
-        if (responseCode == 403) {
-            throw new PathClientException("403 The user does not have access to this API", context);
-        }
-        if (responseCode == 404) {
-            throw new PathClientException("404 Path not found", context);
-        }
-        if (responseCode == 415) {
-            throw new GenericClientException("415 The content-type of the request is incorrect", context);
-        }
-        if (responseCode == 429) {
-            throw new GenericClientException("429 The rate limit has been reached", context);
-        }
-        //handle errors defined at the API level
-        validateResponse(response, context);
-
-        return new ApiResponse<Void>(response.getStatusCode(), response.getHeaders(), null);
-    }
 
     /**
      * listMedia
@@ -206,22 +124,22 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new GenericClientException("400 Request is malformed or invalid", context);
+            throw new MessagingException("400 Request is malformed or invalid", context);
         }
         if (responseCode == 401) {
-            throw new PathClientException("401 The specified user does not have access to the account", context);
+            throw new MessagingException("401 The specified user does not have access to the account", context);
         }
         if (responseCode == 403) {
-            throw new PathClientException("403 The user does not have access to this API", context);
+            throw new MessagingException("403 The user does not have access to this API", context);
         }
         if (responseCode == 404) {
-            throw new PathClientException("404 Path not found", context);
+            throw new MessagingException("404 Path not found", context);
         }
         if (responseCode == 415) {
-            throw new GenericClientException("415 The content-type of the request is incorrect", context);
+            throw new MessagingException("415 The content-type of the request is incorrect", context);
         }
         if (responseCode == 429) {
-            throw new GenericClientException("429 The rate limit has been reached", context);
+            throw new MessagingException("429 The rate limit has been reached", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -308,22 +226,22 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new GenericClientException("400 Request is malformed or invalid", context);
+            throw new MessagingException("400 Request is malformed or invalid", context);
         }
         if (responseCode == 401) {
-            throw new PathClientException("401 The specified user does not have access to the account", context);
+            throw new MessagingException("401 The specified user does not have access to the account", context);
         }
         if (responseCode == 403) {
-            throw new PathClientException("403 The user does not have access to this API", context);
+            throw new MessagingException("403 The user does not have access to this API", context);
         }
         if (responseCode == 404) {
-            throw new PathClientException("404 Path not found", context);
+            throw new MessagingException("404 Path not found", context);
         }
         if (responseCode == 415) {
-            throw new GenericClientException("415 The content-type of the request is incorrect", context);
+            throw new MessagingException("415 The content-type of the request is incorrect", context);
         }
         if (responseCode == 429) {
-            throw new GenericClientException("429 The rate limit has been reached", context);
+            throw new MessagingException("429 The rate limit has been reached", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -430,22 +348,22 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new GenericClientException("400 Request is malformed or invalid", context);
+            throw new MessagingException("400 Request is malformed or invalid", context);
         }
         if (responseCode == 401) {
-            throw new PathClientException("401 The specified user does not have access to the account", context);
+            throw new MessagingException("401 The specified user does not have access to the account", context);
         }
         if (responseCode == 403) {
-            throw new PathClientException("403 The user does not have access to this API", context);
+            throw new MessagingException("403 The user does not have access to this API", context);
         }
         if (responseCode == 404) {
-            throw new PathClientException("404 Path not found", context);
+            throw new MessagingException("404 Path not found", context);
         }
         if (responseCode == 415) {
-            throw new GenericClientException("415 The content-type of the request is incorrect", context);
+            throw new MessagingException("415 The content-type of the request is incorrect", context);
         }
         if (responseCode == 429) {
-            throw new GenericClientException("429 The rate limit has been reached", context);
+            throw new MessagingException("429 The rate limit has been reached", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -527,22 +445,22 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new GenericClientException("400 Request is malformed or invalid", context);
+            throw new MessagingException("400 Request is malformed or invalid", context);
         }
         if (responseCode == 401) {
-            throw new PathClientException("401 The specified user does not have access to the account", context);
+            throw new MessagingException("401 The specified user does not have access to the account", context);
         }
         if (responseCode == 403) {
-            throw new PathClientException("403 The user does not have access to this API", context);
+            throw new MessagingException("403 The user does not have access to this API", context);
         }
         if (responseCode == 404) {
-            throw new PathClientException("404 Path not found", context);
+            throw new MessagingException("404 Path not found", context);
         }
         if (responseCode == 415) {
-            throw new GenericClientException("415 The content-type of the request is incorrect", context);
+            throw new MessagingException("415 The content-type of the request is incorrect", context);
         }
         if (responseCode == 429) {
-            throw new GenericClientException("429 The rate limit has been reached", context);
+            throw new MessagingException("429 The rate limit has been reached", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -627,22 +545,22 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new GenericClientException("400 Request is malformed or invalid", context);
+            throw new MessagingException("400 Request is malformed or invalid", context);
         }
         if (responseCode == 401) {
-            throw new PathClientException("401 The specified user does not have access to the account", context);
+            throw new MessagingException("401 The specified user does not have access to the account", context);
         }
         if (responseCode == 403) {
-            throw new PathClientException("403 The user does not have access to this API", context);
+            throw new MessagingException("403 The user does not have access to this API", context);
         }
         if (responseCode == 404) {
-            throw new PathClientException("404 Path not found", context);
+            throw new MessagingException("404 Path not found", context);
         }
         if (responseCode == 415) {
-            throw new GenericClientException("415 The content-type of the request is incorrect", context);
+            throw new MessagingException("415 The content-type of the request is incorrect", context);
         }
         if (responseCode == 429) {
-            throw new GenericClientException("429 The rate limit has been reached", context);
+            throw new MessagingException("429 The rate limit has been reached", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);

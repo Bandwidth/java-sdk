@@ -28,7 +28,7 @@ public abstract class BaseController {
      * Protected variables to hold an instance of Configuration
      */
     protected final Configuration config;
-    protected static final String userAgent = "APIMATIC 2.0";
+    protected static final String userAgent = "java-sdk-refs/tags/java2.0.0";
 
 
     protected Map<String, AuthManager> authManagers;

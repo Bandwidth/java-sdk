@@ -5,32 +5,29 @@
  */
 package com.bandwidth.messaging.exceptions;
 
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.bandwidth.http.client.HttpContext;
 import com.bandwidth.exceptions.ApiException;
-import com.bandwidth.messaging.models.FieldError;
 
 
 /**
- * This is a model class for GenericClientException type.
+ * This is a model class for MessagingException type.
  */
-public class GenericClientException
+public class MessagingException
         extends ApiException {
-    private static final long serialVersionUID = -4651771181595010980L;
+    private static final long serialVersionUID = -3671985694245769587L;
     /**
      * Initialization constructor
      * @param   reason  The reason for throwing exception
      * @param   context The http context of the API exception
      */
-    public GenericClientException(String reason, HttpContext context) {
+    public MessagingException(String reason, HttpContext context) {
         super(reason, context);
     }
 
     private String type;
     private String description;
-    private List<FieldError> fieldErrors;
     /**
      * Getter for Type.
      */
@@ -59,21 +56,6 @@ public class GenericClientException
     @JsonSetter("description")
     private void setDescription(String value) {
         this.description = value;
-    }
-
-    /**
-     * Getter for FieldErrors.
-     */
-    @JsonGetter("fieldErrors")
-    public List<FieldError> getFieldErrors() {
-        return this.fieldErrors;
-    }
-    /**
-     * Setter for FieldErrors.
-     */
-    @JsonSetter("fieldErrors")
-    private void setFieldErrors(List<FieldError> value) {
-        this.fieldErrors = value;
     }
 
  
