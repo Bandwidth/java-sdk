@@ -30,10 +30,22 @@ public class PhoneNumber {
     private URI transferAnswerUrl;
 
     /**
-     * <i>(optional)</i> The HTTP method to use for the request to transferAnswerUrl. GET or POST. Default value is POST.
+     * <i>(optional)</i> The HTTP method to use for the request to transferAnswerMethod . GET or POST. Default value is POST.
      */
     @XmlAttribute
     private Method transferAnswerMethod;
+
+    /**
+     * <i>(optional)</i> URL, if any, to send the <i>Transfer Disconnect</i> event to and request BXML to be executed for the called party before the call is bridged
+     */
+    @XmlAttribute
+    private URI transferDisconnectUrl ;
+
+    /**
+     * <i>(optional)</i> URL, if any, to send the <i>Transfer Answer</i> event to and request BXML to be executed for the called party before the call is bridged
+     */
+    @XmlAttribute
+    private Method transferDisconnectMethod  ;
 
     /**
      * <i>(optional)</i>  The username to send in the HTTP request to transferAnswerUrl.
@@ -75,6 +87,21 @@ public class PhoneNumber {
         }
 
         /**
+         * <i>(optional)</i> The HTTP method to use for the request to transferDisconnectUrl . GET or POST. Default value is POST.
+         */
+        public PhoneNumberBuilder transferDisconnectUrl (String uri){
+            return this.transferDisconnectUrl (URI.create(uri));
+        }
+
+        /**
+         * <i>(optional)</i> The HTTP method to use for the request to transferDisconnectUrl . GET or POST. Default value is POST.
+         */
+        public PhoneNumberBuilder transferDisconnectUrl (URI uri){
+            this.transferDisconnectUrl  = uri;
+            return this;
+        }
+
+        /**
          * <i>(optional)</i> The HTTP method to use for the request to transferAnswerUrl. GET or POST. Default value is POST.
          */
         public PhoneNumberBuilder transferAnswerMethod(String method){
@@ -86,6 +113,21 @@ public class PhoneNumber {
          */
         public PhoneNumberBuilder transferAnswerMethod(Method method){
             this.transferAnswerMethod = method;
+            return this;
+        }
+
+        /**
+         * <i>(optional)</i> The HTTP method to use for the request to transferDisconnectUrl. GET or POST. Default value is POST.
+         */
+        public PhoneNumberBuilder transferDisconnectMethod (String method){
+            return this.transferDisconnectMethod (Method.fromValue(method));
+        }
+
+        /**
+         * <i>(optional)</i> The HTTP method to use for the request to transferDisconnectUrl. GET or POST. Default value is POST.
+         */
+        public PhoneNumberBuilder transferDisconnectMethod (Method method){
+            this.transferDisconnectMethod  = method;
             return this;
         }
     }
