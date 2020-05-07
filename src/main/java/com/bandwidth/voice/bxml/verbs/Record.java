@@ -23,6 +23,14 @@ public class Record implements Verb {
     private boolean transcribe;
 
     /**
+     * (optional) Length of silence after which to end the recording (in seconds).
+     * Max is equivalent to the maximum maxDuration value. Default value is 0, which
+     * means no timeout.
+     */
+    @XmlAttribute
+    private Integer silenceTimeout;
+
+    /**
      * <i>(optional)</i> URL to send the transcriptionAvailable event to.
      */
     @XmlAttribute
@@ -90,7 +98,7 @@ public class Record implements Verb {
      * <i>(optional)</i> Maximum length of recording (in seconds). Max 10800 (3 hours). Default value is 60.
      */
     @XmlAttribute
-    protected int maxDuration;
+    protected Integer maxDuration;
 
     /**
      * <i>(optional)</i> The audio format that the recording will be saved as: mp3 or wav. Default value is wav.

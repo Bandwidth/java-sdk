@@ -20,7 +20,6 @@ import com.bandwidth.http.client.ReadonlyHttpClientConfiguration;
  * It holds the state of the SDK.
  */
 public final class BandwidthClient implements Configuration {
-
     private MessagingClient messagingClient;
     private VoiceClient voiceClient;
 
@@ -59,20 +58,20 @@ public final class BandwidthClient implements Configuration {
 
         this.authManagers = (authManagers == null) ? new HashMap<>() : new HashMap<>(authManagers);
         if (this.authManagers.containsKey("messaging")) {
-            this.messagingBasicAuthManager = (MessagingBasicAuthManager)this.authManagers.get("Messaging");
+            this.messagingBasicAuthManager = (MessagingBasicAuthManager)this.authManagers.get("messaging");
         }
         if (!this.authManagers.containsKey("messaging")
                 || getMessagingBasicAuthCredentials().getMessagingBasicAuthUserName() != messagingBasicAuthUserName
-                || getMessagingBasicAuthCredentials().getMessagingBasicAuthPassword() != messagingBasicAuthUserName) {
+                || getMessagingBasicAuthCredentials().getMessagingBasicAuthPassword() != messagingBasicAuthPassword) {
             this.messagingBasicAuthManager = new MessagingBasicAuthManager(messagingBasicAuthUserName, messagingBasicAuthPassword);
             this.authManagers.put("messaging", messagingBasicAuthManager);
         }
         if (this.authManagers.containsKey("voice")) {
-            this.voiceBasicAuthManager = (VoiceBasicAuthManager)this.authManagers.get("Voice");
+            this.voiceBasicAuthManager = (VoiceBasicAuthManager)this.authManagers.get("voice");
         }
         if (!this.authManagers.containsKey("voice")
                 || getVoiceBasicAuthCredentials().getVoiceBasicAuthUserName() != voiceBasicAuthUserName
-                || getVoiceBasicAuthCredentials().getVoiceBasicAuthPassword() != voiceBasicAuthUserName) {
+                || getVoiceBasicAuthCredentials().getVoiceBasicAuthPassword() != voiceBasicAuthPassword) {
             this.voiceBasicAuthManager = new VoiceBasicAuthManager(voiceBasicAuthUserName, voiceBasicAuthPassword);
             this.authManagers.put("voice", voiceBasicAuthManager);
         }
@@ -165,6 +164,7 @@ public final class BandwidthClient implements Configuration {
     public MessagingBasicAuthCredentials getMessagingBasicAuthCredentials() {
         return messagingBasicAuthManager;
     }
+
     private String getVoiceBasicAuthUserName() {
         return getVoiceBasicAuthCredentials().getVoiceBasicAuthUserName();
     }
@@ -265,38 +265,38 @@ public final class BandwidthClient implements Configuration {
 
         private HttpClientConfiguration httpClientConfig;
 
-    /**
-     * The username and password to use with basic authentication
-     * @param messagingBasicAuthUserName
-     * @param messagingBasicAuthPassword
-     */
-    public Builder messagingBasicAuthCredentials(String messagingBasicAuthUserName, String messagingBasicAuthPassword) {
-        if (messagingBasicAuthUserName == null) {
-            throw new NullPointerException("Username cannot be null.");
+        /**
+         * The username and password to use with basic authentication
+         * @param messagingBasicAuthUserName
+         * @param messagingBasicAuthPassword
+         */
+        public Builder messagingBasicAuthCredentials(String messagingBasicAuthUserName, String messagingBasicAuthPassword) {
+            if (messagingBasicAuthUserName == null) {
+                throw new NullPointerException("Username cannot be null.");
+            }
+            if (messagingBasicAuthPassword == null) {
+                throw new NullPointerException("Password cannot be null.");
+            }
+            this.messagingBasicAuthUserName = messagingBasicAuthUserName;
+            this.messagingBasicAuthPassword = messagingBasicAuthPassword;
+            return this;
         }
-        if (messagingBasicAuthPassword == null) {
-            throw new NullPointerException("Password cannot be null.");
+        /**
+         * The username and password to use with basic authentication
+         * @param voiceBasicAuthUserName
+         * @param voiceBasicAuthPassword
+         */
+        public Builder voiceBasicAuthCredentials(String voiceBasicAuthUserName, String voiceBasicAuthPassword) {
+            if (voiceBasicAuthUserName == null) {
+                throw new NullPointerException("Username cannot be null.");
+            }
+            if (voiceBasicAuthPassword == null) {
+                throw new NullPointerException("Password cannot be null.");
+            }
+            this.voiceBasicAuthUserName = voiceBasicAuthUserName;
+            this.voiceBasicAuthPassword = voiceBasicAuthPassword;
+            return this;
         }
-        this.messagingBasicAuthUserName = messagingBasicAuthUserName;
-        this.messagingBasicAuthPassword = messagingBasicAuthPassword;
-        return this;
-    }
-    /**
-     * The username and password to use with basic authentication
-     * @param voiceBasicAuthUserName
-     * @param voiceBasicAuthPassword
-     */
-    public Builder voiceBasicAuthCredentials(String voiceBasicAuthUserName, String voiceBasicAuthPassword) {
-        if (voiceBasicAuthUserName == null) {
-            throw new NullPointerException("Username cannot be null.");
-        }
-        if (voiceBasicAuthPassword == null) {
-            throw new NullPointerException("Password cannot be null.");
-        }
-        this.voiceBasicAuthUserName = voiceBasicAuthUserName;
-        this.voiceBasicAuthPassword = voiceBasicAuthPassword;
-        return this;
-    }
         /**
          * Current API environment
          * @param environment

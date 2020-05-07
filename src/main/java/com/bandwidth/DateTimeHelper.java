@@ -6,14 +6,17 @@
 package com.bandwidth;
 
 import java.io.IOException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.LocalDate;
-import java.time.Instant;
-import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
@@ -91,7 +94,7 @@ public class DateTimeHelper {
      * @return The converted String
      */
     public static String toRfc1123DateTime(LocalDateTime value) {
-        return RFC1123_DATE_TIME_FORMATTER.format(value);
+        return RFC1123_DATE_TIME_FORMATTER.format(value.atZone(ZoneId.of("GMT")));
     }
 
     /**
@@ -116,10 +119,16 @@ public class DateTimeHelper {
      * @return The parsed DateTime object
      */
     public static LocalDateTime fromRfc8601DateTime(String date) {
-        try {
-            return LocalDateTime.parse(date, DateTimeFormatter.ISO_DATE_TIME);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("The value '" + date + "' was not a valid RFC3339 datetime string.", e);
+        LocalDateTime localDateTime = LocalDateTime.parse(date, DateTimeFormatter.ISO_DATE_TIME); 
+        Pattern pattern = Pattern.compile("(Z|([+-])(\\d{2}:\\d{2}))$");
+        Matcher patternMatcher = pattern.matcher(date);
+        if (patternMatcher.find()) {
+            OffsetDateTime timeUtc = localDateTime.atOffset(ZoneOffset.UTC);
+            String offsetInfo = patternMatcher.group(1);
+            OffsetDateTime offsetTime = timeUtc.withOffsetSameInstant(ZoneOffset.of(offsetInfo));
+            return LocalDateTime.from(offsetTime);
+        } else {
+            return localDateTime;
         }
     }
 
@@ -129,7 +138,7 @@ public class DateTimeHelper {
      * @return The converted String
      */
     public static String toRfc8601DateTime(LocalDateTime value) {
-        return value.toString();
+        return value.atOffset(OffsetDateTime.now().getOffset()).toString();
     }
 
     /**
