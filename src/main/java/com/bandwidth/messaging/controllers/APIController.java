@@ -12,11 +12,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.bandwidth.*;
 import com.bandwidth.ApiHelper;
 import com.bandwidth.AuthManager;
 import com.bandwidth.Configuration;
-import com.bandwidth.controllers.*;
+import com.bandwidth.controllers.BaseController;
 import com.bandwidth.exceptions.ApiException;
 import com.bandwidth.http.client.HttpClient;
 import com.bandwidth.http.client.HttpContext;
@@ -325,7 +324,7 @@ public final class APIController extends BaseController {
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
-        headers.add("Content-Length", Long.toString(contentLength));
+        headers.add("Content-Length", String.valueOf(contentLength));
         headers.add("Content-Type", (contentType != null) ? contentType : "application/octet-stream");
         headers.add("Cache-Control", cacheControl);
         headers.add("user-agent", BaseController.userAgent);

@@ -95,7 +95,8 @@ public class Response {
 
         while(matcherSpeakSentence.find()){
             Matcher matcher = XML_PATTERN.matcher(matcherSpeakSentence.group());
-            matcherSpeakSentence.appendReplacement(sb, matcher.replaceAll("<$1>"));
+            String replaced = matcher.replaceAll("<$1>").replaceAll("\\?", "\\?");
+            matcherSpeakSentence.appendReplacement(sb, replaced);
         }
 
         matcherSpeakSentence.appendTail(sb);

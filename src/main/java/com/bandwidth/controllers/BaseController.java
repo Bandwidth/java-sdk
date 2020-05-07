@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
+
 import com.bandwidth.AuthManager;
 import com.bandwidth.Configuration;
 import com.bandwidth.exceptions.ApiException;
@@ -28,7 +29,7 @@ public abstract class BaseController {
      * Protected variables to hold an instance of Configuration
      */
     protected final Configuration config;
-    protected static final String userAgent = "java-sdk-refs/tags/java2.0.0";
+    protected static final String userAgent = "java-sdk-refs/tags/java3.0.0";
 
 
     protected Map<String, AuthManager> authManagers;
