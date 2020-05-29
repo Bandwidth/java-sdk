@@ -40,6 +40,12 @@ public interface Configuration {
      * The credentials to use with basic authentication
      * @return basicAuthCredentials
      */
+    TwoFactorAuthBasicAuthCredentials getTwoFactorAuthBasicAuthCredentials();
+
+    /**
+     * The credentials to use with basic authentication
+     * @return basicAuthCredentials
+     */
     VoiceBasicAuthCredentials getVoiceBasicAuthCredentials();
 
     /**

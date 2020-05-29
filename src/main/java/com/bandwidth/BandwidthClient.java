@@ -21,6 +21,7 @@ import com.bandwidth.http.client.ReadonlyHttpClientConfiguration;
  */
 public final class BandwidthClient implements Configuration {
     private MessagingClient messagingClient;
+    private TwoFactorAuthClient twoFactorAuthClient;
     private VoiceClient voiceClient;
 
     /**
@@ -29,6 +30,14 @@ public final class BandwidthClient implements Configuration {
      */
     public MessagingClient getMessagingClient() {
         return messagingClient;
+    }
+
+    /**
+     * Provides access to twoFactorAuthClient Client
+     * @return Returns the TwoFactorAuthClient instance
+     */
+    public TwoFactorAuthClient getTwoFactorAuthClient() {
+        return twoFactorAuthClient;
     }
 
     /**
@@ -48,7 +57,8 @@ public final class BandwidthClient implements Configuration {
     }
 
     private BandwidthClient(Environment environment, String messagingBasicAuthUserName,
-            String messagingBasicAuthPassword, String voiceBasicAuthUserName, String voiceBasicAuthPassword,
+            String messagingBasicAuthPassword, String twoFactorAuthBasicAuthUserName,
+            String twoFactorAuthBasicAuthPassword, String voiceBasicAuthUserName, String voiceBasicAuthPassword,
             HttpClient httpClient, long timeout, ReadonlyHttpClientConfiguration httpClientConfig,
             Map<String, AuthManager> authManagers) {
         this.environment = environment;
@@ -66,6 +76,15 @@ public final class BandwidthClient implements Configuration {
             this.messagingBasicAuthManager = new MessagingBasicAuthManager(messagingBasicAuthUserName, messagingBasicAuthPassword);
             this.authManagers.put("messaging", messagingBasicAuthManager);
         }
+        if (this.authManagers.containsKey("twoFactorAuth")) {
+            this.twoFactorAuthBasicAuthManager = (TwoFactorAuthBasicAuthManager)this.authManagers.get("twoFactorAuth");
+        }
+        if (!this.authManagers.containsKey("twoFactorAuth")
+                || getTwoFactorAuthBasicAuthCredentials().getTwoFactorAuthBasicAuthUserName() != twoFactorAuthBasicAuthUserName
+                || getTwoFactorAuthBasicAuthCredentials().getTwoFactorAuthBasicAuthPassword() != twoFactorAuthBasicAuthPassword) {
+            this.twoFactorAuthBasicAuthManager = new TwoFactorAuthBasicAuthManager(twoFactorAuthBasicAuthUserName, twoFactorAuthBasicAuthPassword);
+            this.authManagers.put("twoFactorAuth", twoFactorAuthBasicAuthManager);
+        }
         if (this.authManagers.containsKey("voice")) {
             this.voiceBasicAuthManager = (VoiceBasicAuthManager)this.authManagers.get("voice");
         }
@@ -79,6 +98,7 @@ public final class BandwidthClient implements Configuration {
 
 
         messagingClient = new MessagingClient(this);
+        twoFactorAuthClient = new TwoFactorAuthClient(this);
         voiceClient = new VoiceClient(this);
     }
 
@@ -111,6 +131,11 @@ public final class BandwidthClient implements Configuration {
      * MessagingBasicAuthManager
      */
     private MessagingBasicAuthManager messagingBasicAuthManager;
+
+    /**
+     * TwoFactorAuthBasicAuthManager
+     */
+    private TwoFactorAuthBasicAuthManager twoFactorAuthBasicAuthManager;
 
     /**
      * VoiceBasicAuthManager
@@ -163,6 +188,22 @@ public final class BandwidthClient implements Configuration {
      */
     public MessagingBasicAuthCredentials getMessagingBasicAuthCredentials() {
         return messagingBasicAuthManager;
+    }
+
+    private String getTwoFactorAuthBasicAuthUserName() {
+        return getTwoFactorAuthBasicAuthCredentials().getTwoFactorAuthBasicAuthUserName();
+    }
+
+    private String getTwoFactorAuthBasicAuthPassword() {
+        return getTwoFactorAuthBasicAuthCredentials().getTwoFactorAuthBasicAuthPassword();
+    }
+
+    /**
+     * The credentials to use with basic authentication
+     * @return twoFactorAuthBasicAuthCredentials
+     */
+    public TwoFactorAuthBasicAuthCredentials getTwoFactorAuthBasicAuthCredentials() {
+        return twoFactorAuthBasicAuthManager;
     }
 
     private String getVoiceBasicAuthUserName() {
@@ -223,6 +264,9 @@ public final class BandwidthClient implements Configuration {
             if (server.equals(Server.MESSAGINGDEFAULT)) {
                 return "https://messaging.bandwidth.com/api/v2";
             }
+            if (server.equals(Server.TWOFACTORAUTHDEFAULT)) {
+                return "https://mfa.bandwidth.com/api/v1/";
+            }
             if (server.equals(Server.VOICEDEFAULT)) {
                 return "https://voice.bandwidth.com";
             }
@@ -241,6 +285,8 @@ public final class BandwidthClient implements Configuration {
         builder.environment = getEnvironment();
         builder.messagingBasicAuthUserName = getMessagingBasicAuthUserName();
         builder.messagingBasicAuthPassword = getMessagingBasicAuthPassword();
+        builder.twoFactorAuthBasicAuthUserName = getTwoFactorAuthBasicAuthUserName();
+        builder.twoFactorAuthBasicAuthPassword = getTwoFactorAuthBasicAuthPassword();
         builder.voiceBasicAuthUserName = getVoiceBasicAuthUserName();
         builder.voiceBasicAuthPassword = getVoiceBasicAuthPassword();
         builder.httpClient = getHttpClient();
@@ -257,6 +303,8 @@ public final class BandwidthClient implements Configuration {
         private Environment environment = Environment.PRODUCTION;
         private String messagingBasicAuthUserName = "TODO: Replace";
         private String messagingBasicAuthPassword = "TODO: Replace";
+        private String twoFactorAuthBasicAuthUserName = "TODO: Replace";
+        private String twoFactorAuthBasicAuthPassword = "TODO: Replace";
         private String voiceBasicAuthUserName = "TODO: Replace";
         private String voiceBasicAuthPassword = "TODO: Replace";
         private HttpClient httpClient;
@@ -279,6 +327,22 @@ public final class BandwidthClient implements Configuration {
             }
             this.messagingBasicAuthUserName = messagingBasicAuthUserName;
             this.messagingBasicAuthPassword = messagingBasicAuthPassword;
+            return this;
+        }
+        /**
+         * The username and password to use with basic authentication
+         * @param twoFactorAuthBasicAuthUserName
+         * @param twoFactorAuthBasicAuthPassword
+         */
+        public Builder twoFactorAuthBasicAuthCredentials(String twoFactorAuthBasicAuthUserName, String twoFactorAuthBasicAuthPassword) {
+            if (twoFactorAuthBasicAuthUserName == null) {
+                throw new NullPointerException("Username cannot be null.");
+            }
+            if (twoFactorAuthBasicAuthPassword == null) {
+                throw new NullPointerException("Password cannot be null.");
+            }
+            this.twoFactorAuthBasicAuthUserName = twoFactorAuthBasicAuthUserName;
+            this.twoFactorAuthBasicAuthPassword = twoFactorAuthBasicAuthPassword;
             return this;
         }
         /**
@@ -330,8 +394,8 @@ public final class BandwidthClient implements Configuration {
             httpClient = new OkClient(httpClientConfig);
 
             return new BandwidthClient(environment, messagingBasicAuthUserName, messagingBasicAuthPassword,
-                    voiceBasicAuthUserName, voiceBasicAuthPassword, httpClient, timeout, httpClientConfig,
-                    authManagers);
+                    twoFactorAuthBasicAuthUserName, twoFactorAuthBasicAuthPassword, voiceBasicAuthUserName,
+                    voiceBasicAuthPassword, httpClient, timeout, httpClientConfig, authManagers);
         }
     }
 }
