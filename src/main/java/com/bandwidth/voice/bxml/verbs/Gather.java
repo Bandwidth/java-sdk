@@ -4,7 +4,7 @@ package com.bandwidth.voice.bxml.verbs;
 import lombok.Builder;
 
 import java.net.URI;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAttribute;
@@ -25,7 +25,7 @@ public class Gather implements Verb {
      */
     @XmlElements({@XmlElement(name = PlayAudio.TYPE_NAME, type = PlayAudio.class),
                   @XmlElement(name = SpeakSentence.TYPE_NAME, type = SpeakSentence.class)})
-    private AudioProducer audioProducer;
+    private List<AudioProducer> audioProducer;
 
 
     /**
@@ -107,6 +107,23 @@ public class Gather implements Verb {
         public GatherBuilder gatherUrl(URI url){
             this.gatherUrl = url;
             return this;
+        }
+
+        /**
+         * <i>(optional)</i> Using the AudioProducers inside the Gather verb will play the media(s) until a digit is received.
+         */
+        public GatherBuilder audioProducer(List<AudioProducer> audioProducers){
+            this.audioProducer = audioProducers;
+            return this;
+        }
+
+        /**
+         * <i>(optional)</i> Using the AudioProducer inside the Gather verb will play the media until a digit is received.
+         */
+        public GatherBuilder audioProducer(AudioProducer audioProducer){
+            List<AudioProducer> list = new ArrayList<>();
+            list.add(audioProducer);
+            return this.audioProducer(list);
         }
 
         /**
