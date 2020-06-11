@@ -13,40 +13,32 @@ import java.util.TreeMap;
  * Status1Enum to be used.
  */
 public enum Status1Enum {
-    REQUESTED,
-
-    NONE,
-
     PROCESSING,
 
-    AVAILABLE,
+    PARTIAL,
 
-    ERROR,
+    COMPLETE,
 
-    TIMEOUT,
+    DELETED,
 
-    FILESIZETOOBIG;
+    ERROR;
 
 
     private static TreeMap<String, Status1Enum> valueMap = new TreeMap<>();
     private String value;
 
     static {
-        REQUESTED.value = "requested";
-        NONE.value = "none";
         PROCESSING.value = "processing";
-        AVAILABLE.value = "available";
+        PARTIAL.value = "partial";
+        COMPLETE.value = "complete";
+        DELETED.value = "deleted";
         ERROR.value = "error";
-        TIMEOUT.value = "timeout";
-        FILESIZETOOBIG.value = "file-size-too-big";
 
-        valueMap.put("requested", REQUESTED);
-        valueMap.put("none", NONE);
         valueMap.put("processing", PROCESSING);
-        valueMap.put("available", AVAILABLE);
+        valueMap.put("partial", PARTIAL);
+        valueMap.put("complete", COMPLETE);
+        valueMap.put("deleted", DELETED);
         valueMap.put("error", ERROR);
-        valueMap.put("timeout", TIMEOUT);
-        valueMap.put("file-size-too-big", FILESIZETOOBIG);
     }
 
     /**

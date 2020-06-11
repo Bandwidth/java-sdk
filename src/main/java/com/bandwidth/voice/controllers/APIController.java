@@ -31,6 +31,7 @@ import com.bandwidth.voice.models.ApiCallStateResponse;
 import com.bandwidth.voice.models.ApiCreateCallRequest;
 import com.bandwidth.voice.models.ApiModifyCallRequest;
 import com.bandwidth.voice.models.ApiTranscribeRecordingRequest;
+import com.bandwidth.voice.models.CallEngineModifyConferenceRequest;
 import com.bandwidth.voice.models.ModifyCallRecordingState;
 import com.bandwidth.voice.models.RecordingMetadataResponse;
 import com.bandwidth.voice.models.TranscriptionResponse;
@@ -128,13 +129,13 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", context);
+            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
-            throw new ApiException("Please authenticate yourself.", context);
+            throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", context);
+            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
             throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
@@ -235,13 +236,13 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", context);
+            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
-            throw new ApiException("Please authenticate yourself.", context);
+            throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", context);
+            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
             throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
@@ -347,13 +348,13 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", context);
+            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
-            throw new ApiException("Please authenticate yourself.", context);
+            throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", context);
+            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
             throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
@@ -454,13 +455,13 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", context);
+            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
-            throw new ApiException("Please authenticate yourself.", context);
+            throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", context);
+            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
             throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
@@ -584,13 +585,13 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", context);
+            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
-            throw new ApiException("Please authenticate yourself.", context);
+            throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", context);
+            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
             throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
@@ -696,13 +697,13 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", context);
+            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
-            throw new ApiException("Please authenticate yourself.", context);
+            throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", context);
+            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
             throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
@@ -807,13 +808,13 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", context);
+            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
-            throw new ApiException("Please authenticate yourself.", context);
+            throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", context);
+            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
             throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
@@ -914,13 +915,13 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", context);
+            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
-            throw new ApiException("Please authenticate yourself.", context);
+            throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", context);
+            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
             throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
@@ -1022,13 +1023,13 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", context);
+            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
-            throw new ApiException("Please authenticate yourself.", context);
+            throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", context);
+            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
             throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
@@ -1130,13 +1131,13 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", context);
+            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
-            throw new ApiException("Please authenticate yourself.", context);
+            throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", context);
+            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
             throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
@@ -1248,13 +1249,13 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", context);
+            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
-            throw new ApiException("Please authenticate yourself.", context);
+            throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", context);
+            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
             throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
@@ -1357,13 +1358,120 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", context);
+            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
-            throw new ApiException("Please authenticate yourself.", context);
+            throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", context);
+            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+        }
+        if (responseCode == 404) {
+            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+        }
+        if (responseCode == 415) {
+            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+        }
+        if (responseCode == 429) {
+            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+        }
+        if (responseCode == 500) {
+            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+        }
+        //handle errors defined at the API level
+        validateResponse(response, context);
+
+        return new ApiResponse<Void>(response.getStatusCode(), response.getHeaders(), null);
+    }
+
+    /**
+     * Modify the conference state
+     * @param    accountId    Required parameter: Example: 
+     * @param    conferenceId    Required parameter: Example: 
+     * @param    body    Optional parameter: Example: 
+     */
+    public ApiResponse<Void> modifyConference(
+            final String accountId,
+            final String conferenceId,
+            final CallEngineModifyConferenceRequest body) throws ApiException, IOException {
+        HttpRequest request = buildModifyConferenceRequest(accountId, conferenceId, body);
+        authManagers.get("voice").apply(request);
+
+        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpContext context = new HttpContext(request, response);
+
+        return handleModifyConferenceResponse(context);
+    }
+
+    /**
+     * Modify the conference state
+     * @param    accountId    Required parameter: Example: 
+     * @param    conferenceId    Required parameter: Example: 
+     * @param    body    Optional parameter: Example: 
+     * @return    Returns the ApiResponse<Void> response from the API call 
+     */
+    public CompletableFuture<ApiResponse<Void>> modifyConferenceAsync(
+            final String accountId,
+            final String conferenceId,
+            final CallEngineModifyConferenceRequest body) {
+        return makeHttpCallAsync(() -> buildModifyConferenceRequest(accountId, conferenceId, body),
+                req -> authManagers.get("voice").applyAsync(req)
+                    .thenCompose(request -> getClientInstance().executeAsStringAsync(request)),
+                context -> handleModifyConferenceResponse(context));
+    }
+
+    /**
+     * Builds the HttpRequest object for modifyConference
+     */
+    private HttpRequest buildModifyConferenceRequest(
+            final String accountId,
+            final String conferenceId,
+            final CallEngineModifyConferenceRequest body) throws JsonProcessingException {
+        //the base uri for api requests
+        String baseUri = config.getBaseUri(Server.VOICEDEFAULT);
+
+        //prepare query string for API call
+        StringBuilder queryBuilder = new StringBuilder(baseUri + "/api/v2/accounts/{accountId}/conferences/{conferenceId}");
+
+        //process template parameters
+        Map<String, Object> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", accountId);
+        templateParameters.put("conferenceId", conferenceId);
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
+        //validate and preprocess url
+        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
+
+        //load all headers for the outgoing API request
+        Headers headers = new Headers();
+        headers.add("user-agent", BaseController.userAgent);
+        headers.add("content-type", "application/json");
+
+        //prepare and invoke the API call request to fetch the response
+        String bodyJson = ApiHelper.serialize(body);
+        HttpRequest request = getClientInstance().postBody(queryUrl, headers, bodyJson);
+
+        return request;
+    }
+
+    /**
+     * Processes the response for modifyConference
+     * @return An object of type void
+     */
+    private ApiResponse<Void> handleModifyConferenceResponse(HttpContext context)
+            throws ApiException, IOException {
+        HttpResponse response = context.getResponse();
+
+        //Error handling using HTTP status codes
+        int responseCode = response.getStatusCode();
+
+        if (responseCode == 400) {
+            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+        }
+        if (responseCode == 401) {
+            throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
+        }
+        if (responseCode == 403) {
+            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
             throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
@@ -1481,13 +1589,13 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Either your request is invalid or you're requesting it at a bad time. Please fix it before trying again.", context);
+            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
-            throw new ApiException("Please authenticate yourself.", context);
+            throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("Your credentials are invalid. Please use your API credentials for the Bandwidth Dashboard.", context);
+            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
             throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);

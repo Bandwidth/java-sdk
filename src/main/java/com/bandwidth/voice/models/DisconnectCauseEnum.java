@@ -33,7 +33,9 @@ public enum DisconnectCauseEnum {
 
     NODECAPACITYEXCEEDED,
 
-    UNKNOWN;
+    UNKNOWN,
+
+    APPLICATIONERROR;
 
 
     private static TreeMap<String, DisconnectCauseEnum> valueMap = new TreeMap<>();
@@ -51,6 +53,7 @@ public enum DisconnectCauseEnum {
         ACCOUNTLIMIT.value = "account-limit";
         NODECAPACITYEXCEEDED.value = "node-capacity-exceeded";
         UNKNOWN.value = "unknown";
+        APPLICATIONERROR.value = "application-error";
 
         valueMap.put("busy", BUSY);
         valueMap.put("callback-error", CALLBACKERROR);
@@ -63,6 +66,7 @@ public enum DisconnectCauseEnum {
         valueMap.put("account-limit", ACCOUNTLIMIT);
         valueMap.put("node-capacity-exceeded", NODECAPACITYEXCEEDED);
         valueMap.put("unknown", UNKNOWN);
+        valueMap.put("application-error", APPLICATIONERROR);
     }
 
     /**

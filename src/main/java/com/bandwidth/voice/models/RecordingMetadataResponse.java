@@ -50,7 +50,7 @@ public class RecordingMetadataResponse {
             Long startTime,
             Long endTime,
             FileFormatEnum fileFormat,
-            StatusEnum status,
+            Status1Enum status,
             String mediaUrl,
             Transcription transcription) {
         this.applicationId = applicationId;
@@ -82,7 +82,7 @@ public class RecordingMetadataResponse {
     private Long startTime;
     private Long endTime;
     private FileFormatEnum fileFormat;
-    private StatusEnum status;
+    private Status1Enum status;
     private String mediaUrl;
     private Transcription transcription;
     /**
@@ -271,14 +271,14 @@ public class RecordingMetadataResponse {
      * Getter for Status.
      */
     @JsonGetter("status")
-    public StatusEnum getStatus() {
+    public Status1Enum getStatus() {
         return this.status;
     }
     /**
      * Setter for Status.
      */
     @JsonSetter("status")
-    public void setStatus(StatusEnum value) {
+    public void setStatus(Status1Enum value) {
         this.status = value;
     }
 
@@ -355,7 +355,7 @@ public class RecordingMetadataResponse {
         private Long startTime;
         private Long endTime;
         private FileFormatEnum fileFormat;
-        private StatusEnum status;
+        private Status1Enum status;
         private String mediaUrl;
         private Transcription transcription;
 
@@ -479,7 +479,7 @@ public class RecordingMetadataResponse {
          * @param status
          * @return Builder
          */
-        public Builder status(StatusEnum status) {
+        public Builder status(Status1Enum status) {
             this.status = status;
             return this;
         }

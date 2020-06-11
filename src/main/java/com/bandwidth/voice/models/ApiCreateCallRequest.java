@@ -32,6 +32,8 @@ public class ApiCreateCallRequest {
      * @param disconnectUrl
      * @param disconnectMethod
      * @param tag
+     * @param obfuscatedTo
+     * @param obfuscatedFrom
      */
     public ApiCreateCallRequest(
             String from,
@@ -44,7 +46,9 @@ public class ApiCreateCallRequest {
             AnswerMethodEnum answerMethod,
             String disconnectUrl,
             DisconnectMethodEnum disconnectMethod,
-            String tag) {
+            String tag,
+            String obfuscatedTo,
+            String obfuscatedFrom) {
         this.from = from;
         this.to = to;
         this.callTimeout = callTimeout;
@@ -56,6 +60,8 @@ public class ApiCreateCallRequest {
         this.disconnectMethod = disconnectMethod;
         this.tag = tag;
         this.applicationId = applicationId;
+        this.obfuscatedTo = obfuscatedTo;
+        this.obfuscatedFrom = obfuscatedFrom;
     }
 
     private String from;
@@ -69,6 +75,8 @@ public class ApiCreateCallRequest {
     private DisconnectMethodEnum disconnectMethod;
     private String tag;
     private String applicationId;
+    private String obfuscatedTo;
+    private String obfuscatedFrom;
     /**
      * Getter for From.
      * Format is E164
@@ -238,6 +246,36 @@ public class ApiCreateCallRequest {
         this.applicationId = value;
     }
 
+    /**
+     * Getter for ObfuscatedTo.
+     */
+    @JsonGetter("obfuscatedTo")
+    public String getObfuscatedTo() {
+        return this.obfuscatedTo;
+    }
+    /**
+     * Setter for ObfuscatedTo.
+     */
+    @JsonSetter("obfuscatedTo")
+    public void setObfuscatedTo(String value) {
+        this.obfuscatedTo = value;
+    }
+
+    /**
+     * Getter for ObfuscatedFrom.
+     */
+    @JsonGetter("obfuscatedFrom")
+    public String getObfuscatedFrom() {
+        return this.obfuscatedFrom;
+    }
+    /**
+     * Setter for ObfuscatedFrom.
+     */
+    @JsonSetter("obfuscatedFrom")
+    public void setObfuscatedFrom(String value) {
+        this.obfuscatedFrom = value;
+    }
+
  
 
     /**
@@ -256,7 +294,9 @@ public class ApiCreateCallRequest {
             .answerMethod(getAnswerMethod())
             .disconnectUrl(getDisconnectUrl())
             .disconnectMethod(getDisconnectMethod())
-            .tag(getTag());
+            .tag(getTag())
+            .obfuscatedTo(getObfuscatedTo())
+            .obfuscatedFrom(getObfuscatedFrom());
             return builder;
     }
 
@@ -275,6 +315,8 @@ public class ApiCreateCallRequest {
         private String disconnectUrl;
         private DisconnectMethodEnum disconnectMethod;
         private String tag;
+        private String obfuscatedTo;
+        private String obfuscatedFrom;
 
         /**
          * Initialization constructor
@@ -395,6 +437,24 @@ public class ApiCreateCallRequest {
             this.tag = tag;
             return this;
         }
+        /**
+         * Setter for obfuscatedTo
+         * @param obfuscatedTo
+         * @return Builder
+         */
+        public Builder obfuscatedTo(String obfuscatedTo) {
+            this.obfuscatedTo = obfuscatedTo;
+            return this;
+        }
+        /**
+         * Setter for obfuscatedFrom
+         * @param obfuscatedFrom
+         * @return Builder
+         */
+        public Builder obfuscatedFrom(String obfuscatedFrom) {
+            this.obfuscatedFrom = obfuscatedFrom;
+            return this;
+        }
 
         /**
          * Builds a new {@link ApiCreateCallRequest} object using the set fields.
@@ -411,7 +471,9 @@ public class ApiCreateCallRequest {
                 answerMethod,
                 disconnectUrl,
                 disconnectMethod,
-                tag);
+                tag,
+                obfuscatedTo,
+                obfuscatedFrom);
         }
     }
 }

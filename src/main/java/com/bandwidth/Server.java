@@ -19,7 +19,9 @@ public enum Server {
 
     TWOFACTORAUTHDEFAULT,
 
-    VOICEDEFAULT;
+    VOICEDEFAULT,
+
+    WEBRTCDEFAULT;
 
 
     private static TreeMap<String, Server> valueMap = new TreeMap<>();
@@ -30,11 +32,13 @@ public enum Server {
         MESSAGINGDEFAULT.value = "MessagingDefault";
         TWOFACTORAUTHDEFAULT.value = "TwoFactorAuthDefault";
         VOICEDEFAULT.value = "VoiceDefault";
+        WEBRTCDEFAULT.value = "WebRtcDefault";
 
         valueMap.put("default", ENUM_DEFAULT);
         valueMap.put("MessagingDefault", MESSAGINGDEFAULT);
         valueMap.put("TwoFactorAuthDefault", TWOFACTORAUTHDEFAULT);
         valueMap.put("VoiceDefault", VOICEDEFAULT);
+        valueMap.put("WebRtcDefault", WEBRTCDEFAULT);
     }
 
     /**
