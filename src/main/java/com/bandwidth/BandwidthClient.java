@@ -23,6 +23,7 @@ public final class BandwidthClient implements Configuration {
     private MessagingClient messagingClient;
     private TwoFactorAuthClient twoFactorAuthClient;
     private VoiceClient voiceClient;
+    private WebRtcClient webRtcClient;
 
     /**
      * Provides access to messagingClient Client
@@ -48,6 +49,14 @@ public final class BandwidthClient implements Configuration {
         return voiceClient;
     }
 
+    /**
+     * Provides access to webRtcClient Client
+     * @return Returns the WebRtcClient instance
+     */
+    public WebRtcClient getWebRtcClient() {
+        return webRtcClient;
+    }
+
 
     /**
      * Shutdown the underlying HttpClient instance
@@ -56,12 +65,13 @@ public final class BandwidthClient implements Configuration {
         OkClient.shutdown();
     }
 
-    private BandwidthClient(Environment environment, String messagingBasicAuthUserName,
+    private BandwidthClient(Environment environment, String webRtcServer, String messagingBasicAuthUserName,
             String messagingBasicAuthPassword, String twoFactorAuthBasicAuthUserName,
             String twoFactorAuthBasicAuthPassword, String voiceBasicAuthUserName, String voiceBasicAuthPassword,
-            HttpClient httpClient, long timeout, ReadonlyHttpClientConfiguration httpClientConfig,
-            Map<String, AuthManager> authManagers) {
+            String webRtcBasicAuthUserName, String webRtcBasicAuthPassword, HttpClient httpClient, long timeout,
+            ReadonlyHttpClientConfiguration httpClientConfig, Map<String, AuthManager> authManagers) {
         this.environment = environment;
+        this.webRtcServer = webRtcServer;
         this.httpClient = httpClient;
         this.timeout = timeout;
         this.httpClientConfig = httpClientConfig;
@@ -94,18 +104,33 @@ public final class BandwidthClient implements Configuration {
             this.voiceBasicAuthManager = new VoiceBasicAuthManager(voiceBasicAuthUserName, voiceBasicAuthPassword);
             this.authManagers.put("voice", voiceBasicAuthManager);
         }
+        if (this.authManagers.containsKey("webRtc")) {
+            this.webRtcBasicAuthManager = (WebRtcBasicAuthManager)this.authManagers.get("webRtc");
+        }
+        if (!this.authManagers.containsKey("webRtc")
+                || getWebRtcBasicAuthCredentials().getWebRtcBasicAuthUserName() != webRtcBasicAuthUserName
+                || getWebRtcBasicAuthCredentials().getWebRtcBasicAuthPassword() != webRtcBasicAuthPassword) {
+            this.webRtcBasicAuthManager = new WebRtcBasicAuthManager(webRtcBasicAuthUserName, webRtcBasicAuthPassword);
+            this.authManagers.put("webRtc", webRtcBasicAuthManager);
+        }
 
 
 
         messagingClient = new MessagingClient(this);
         twoFactorAuthClient = new TwoFactorAuthClient(this);
         voiceClient = new VoiceClient(this);
+        webRtcClient = new WebRtcClient(this);
     }
 
     /**
      * Current API environment
      */
     private final Environment environment;
+
+    /**
+     * webRtcServer value
+     */
+    private final String webRtcServer;
 
     /**
      * The HTTP Client instance to use for making HTTP requests.
@@ -143,11 +168,24 @@ public final class BandwidthClient implements Configuration {
     private VoiceBasicAuthManager voiceBasicAuthManager;
 
     /**
+     * WebRtcBasicAuthManager
+     */
+    private WebRtcBasicAuthManager webRtcBasicAuthManager;
+
+    /**
      * Current API environment
      * @return environment
      */
     public Environment getEnvironment() {
         return environment;
+    }
+
+    /**
+     * webRtcServer value
+     * @return webRtcServer
+     */
+    public String getWebRtcServer() {
+        return webRtcServer;
     }
 
     /**
@@ -222,6 +260,22 @@ public final class BandwidthClient implements Configuration {
         return voiceBasicAuthManager;
     }
 
+    private String getWebRtcBasicAuthUserName() {
+        return getWebRtcBasicAuthCredentials().getWebRtcBasicAuthUserName();
+    }
+
+    private String getWebRtcBasicAuthPassword() {
+        return getWebRtcBasicAuthCredentials().getWebRtcBasicAuthPassword();
+    }
+
+    /**
+     * The credentials to use with basic authentication
+     * @return webRtcBasicAuthCredentials
+     */
+    public WebRtcBasicAuthCredentials getWebRtcBasicAuthCredentials() {
+        return webRtcBasicAuthManager;
+    }
+
     /**
      * The list of auth managers
      * @return authManagers
@@ -238,6 +292,7 @@ public final class BandwidthClient implements Configuration {
     public String getBaseUri(Server server) {
         StringBuilder baseUrl = new StringBuilder(environmentMapper(environment, server));
         Map<String, Object> parameters = new HashMap<>();
+        parameters.put("WebRtcServer", webRtcServer);
         ApiHelper.appendUrlWithTemplateParameters(baseUrl, parameters, false);
         return baseUrl.toString();
     }
@@ -270,6 +325,9 @@ public final class BandwidthClient implements Configuration {
             if (server.equals(Server.VOICEDEFAULT)) {
                 return "https://voice.bandwidth.com";
             }
+            if (server.equals(Server.WEBRTCDEFAULT)) {
+                return "{WebRtcServer}/v1";
+            }
         }
         return "api.bandwidth.com";
     }
@@ -283,12 +341,15 @@ public final class BandwidthClient implements Configuration {
     public Builder newBuilder() {
         Builder builder = new Builder();
         builder.environment = getEnvironment();
+        builder.webRtcServer = getWebRtcServer();
         builder.messagingBasicAuthUserName = getMessagingBasicAuthUserName();
         builder.messagingBasicAuthPassword = getMessagingBasicAuthPassword();
         builder.twoFactorAuthBasicAuthUserName = getTwoFactorAuthBasicAuthUserName();
         builder.twoFactorAuthBasicAuthPassword = getTwoFactorAuthBasicAuthPassword();
         builder.voiceBasicAuthUserName = getVoiceBasicAuthUserName();
         builder.voiceBasicAuthPassword = getVoiceBasicAuthPassword();
+        builder.webRtcBasicAuthUserName = getWebRtcBasicAuthUserName();
+        builder.webRtcBasicAuthPassword = getWebRtcBasicAuthPassword();
         builder.httpClient = getHttpClient();
         builder.timeout = getTimeout();
         builder.authManagers = authManagers;
@@ -301,12 +362,15 @@ public final class BandwidthClient implements Configuration {
      */
     public static class Builder {
         private Environment environment = Environment.PRODUCTION;
+        private String webRtcServer = "https://api.webrtc.bandwidth.com";
         private String messagingBasicAuthUserName = "TODO: Replace";
         private String messagingBasicAuthPassword = "TODO: Replace";
         private String twoFactorAuthBasicAuthUserName = "TODO: Replace";
         private String twoFactorAuthBasicAuthPassword = "TODO: Replace";
         private String voiceBasicAuthUserName = "TODO: Replace";
         private String voiceBasicAuthPassword = "TODO: Replace";
+        private String webRtcBasicAuthUserName = "TODO: Replace";
+        private String webRtcBasicAuthPassword = "TODO: Replace";
         private HttpClient httpClient;
         private long timeout = 0;
         private Map<String, AuthManager> authManagers = null;
@@ -362,11 +426,35 @@ public final class BandwidthClient implements Configuration {
             return this;
         }
         /**
+         * The username and password to use with basic authentication
+         * @param webRtcBasicAuthUserName
+         * @param webRtcBasicAuthPassword
+         */
+        public Builder webRtcBasicAuthCredentials(String webRtcBasicAuthUserName, String webRtcBasicAuthPassword) {
+            if (webRtcBasicAuthUserName == null) {
+                throw new NullPointerException("Username cannot be null.");
+            }
+            if (webRtcBasicAuthPassword == null) {
+                throw new NullPointerException("Password cannot be null.");
+            }
+            this.webRtcBasicAuthUserName = webRtcBasicAuthUserName;
+            this.webRtcBasicAuthPassword = webRtcBasicAuthPassword;
+            return this;
+        }
+        /**
          * Current API environment
          * @param environment
          */
         public Builder environment(Environment environment) {
             this.environment = environment;
+            return this;
+        }
+        /**
+         * webRtcServer value
+         * @param webRtcServer
+         */
+        public Builder webRtcServer(String webRtcServer) {
+            this.webRtcServer = webRtcServer;
             return this;
         }
         /**
@@ -393,9 +481,10 @@ public final class BandwidthClient implements Configuration {
             httpClientConfig.setTimeout(timeout);
             httpClient = new OkClient(httpClientConfig);
 
-            return new BandwidthClient(environment, messagingBasicAuthUserName, messagingBasicAuthPassword,
-                    twoFactorAuthBasicAuthUserName, twoFactorAuthBasicAuthPassword, voiceBasicAuthUserName,
-                    voiceBasicAuthPassword, httpClient, timeout, httpClientConfig, authManagers);
+            return new BandwidthClient(environment, webRtcServer, messagingBasicAuthUserName,
+                    messagingBasicAuthPassword, twoFactorAuthBasicAuthUserName, twoFactorAuthBasicAuthPassword,
+                    voiceBasicAuthUserName, voiceBasicAuthPassword, webRtcBasicAuthUserName, webRtcBasicAuthPassword,
+                    httpClient, timeout, httpClientConfig, authManagers);
         }
     }
 }

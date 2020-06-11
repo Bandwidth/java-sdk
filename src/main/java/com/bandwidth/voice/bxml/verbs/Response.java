@@ -38,7 +38,8 @@ public class Response {
             @XmlElement(name = StartRecording.TYPE_NAME, type = StartRecording.class),
             @XmlElement(name = StopRecording.TYPE_NAME, type = StopRecording.class),
             @XmlElement(name = PauseRecording.TYPE_NAME, type = PauseRecording.class),
-            @XmlElement(name = ResumeRecording.TYPE_NAME, type = ResumeRecording.class)
+            @XmlElement(name = ResumeRecording.TYPE_NAME, type = ResumeRecording.class),
+            @XmlElement(name = Conference.TYPE_NAME, type = Conference.class)
     })
     private final List<Verb> verbs = new ArrayList<>();
 
