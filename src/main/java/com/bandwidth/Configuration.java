@@ -19,12 +19,6 @@ public interface Configuration {
     Environment getEnvironment();
 
     /**
-     * webRtcServer value
-     * @return a copy of webRtcServer
-     */
-    String getWebRtcServer();
-
-    /**
      * The timeout to use for making HTTP requests.
      * @return a copy of timeout
      */
@@ -53,12 +47,6 @@ public interface Configuration {
      * @return basicAuthCredentials
      */
     VoiceBasicAuthCredentials getVoiceBasicAuthCredentials();
-
-    /**
-     * The credentials to use with basic authentication
-     * @return basicAuthCredentials
-     */
-    WebRtcBasicAuthCredentials getWebRtcBasicAuthCredentials();
 
     /**
      * Get base URI by current environment
