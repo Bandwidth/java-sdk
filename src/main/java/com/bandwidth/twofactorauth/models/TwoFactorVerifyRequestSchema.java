@@ -24,19 +24,25 @@ public class TwoFactorVerifyRequestSchema {
      * @param to
      * @param from
      * @param applicationId
-     * @param scope
+     * @param digits
+     * @param expirationTimeInMinutes
      * @param code
+     * @param scope
      */
     public TwoFactorVerifyRequestSchema(
             String to,
             String from,
             String applicationId,
-            String scope,
-            String code) {
+            double digits,
+            double expirationTimeInMinutes,
+            String code,
+            String scope) {
         this.to = to;
         this.from = from;
         this.applicationId = applicationId;
         this.scope = scope;
+        this.digits = digits;
+        this.expirationTimeInMinutes = expirationTimeInMinutes;
         this.code = code;
     }
 
@@ -44,9 +50,12 @@ public class TwoFactorVerifyRequestSchema {
     private String from;
     private String applicationId;
     private String scope;
+    private double digits;
+    private double expirationTimeInMinutes;
     private String code;
     /**
      * Getter for To.
+     * The phone number to send the 2fa code to.
      */
     @JsonGetter("to")
     public String getTo() {
@@ -54,6 +63,7 @@ public class TwoFactorVerifyRequestSchema {
     }
     /**
      * Setter for To.
+     * The phone number to send the 2fa code to.
      */
     @JsonSetter("to")
     public void setTo(String value) {
@@ -62,6 +72,7 @@ public class TwoFactorVerifyRequestSchema {
 
     /**
      * Getter for From.
+     * The application phone number, the sender of the 2fa code.
      */
     @JsonGetter("from")
     public String getFrom() {
@@ -69,6 +80,7 @@ public class TwoFactorVerifyRequestSchema {
     }
     /**
      * Setter for From.
+     * The application phone number, the sender of the 2fa code.
      */
     @JsonSetter("from")
     public void setFrom(String value) {
@@ -77,6 +89,7 @@ public class TwoFactorVerifyRequestSchema {
 
     /**
      * Getter for ApplicationId.
+     * The application unique ID, obtained from Bandwidth.
      */
     @JsonGetter("applicationId")
     public String getApplicationId() {
@@ -84,6 +97,7 @@ public class TwoFactorVerifyRequestSchema {
     }
     /**
      * Setter for ApplicationId.
+     * The application unique ID, obtained from Bandwidth.
      */
     @JsonSetter("applicationId")
     public void setApplicationId(String value) {
@@ -92,6 +106,7 @@ public class TwoFactorVerifyRequestSchema {
 
     /**
      * Getter for Scope.
+     * An optional field to denote what scope or action the 2fa code is addressing.  If not supplied, defaults to "2FA".
      */
     @JsonGetter("scope")
     public String getScope() {
@@ -99,6 +114,7 @@ public class TwoFactorVerifyRequestSchema {
     }
     /**
      * Setter for Scope.
+     * An optional field to denote what scope or action the 2fa code is addressing.  If not supplied, defaults to "2FA".
      */
     @JsonSetter("scope")
     public void setScope(String value) {
@@ -106,7 +122,42 @@ public class TwoFactorVerifyRequestSchema {
     }
 
     /**
+     * Getter for Digits.
+     * The number of digits for your 2fa code.  The valid number ranges from 2 to 8, inclusively.
+     */
+    @JsonGetter("digits")
+    public double getDigits() {
+        return this.digits;
+    }
+    /**
+     * Setter for Digits.
+     * The number of digits for your 2fa code.  The valid number ranges from 2 to 8, inclusively.
+     */
+    @JsonSetter("digits")
+    public void setDigits(double value) {
+        this.digits = value;
+    }
+
+    /**
+     * Getter for ExpirationTimeInMinutes.
+     * The time period, in minutes, to validate the 2fa code.  By setting this to 3 minutes, it will mean any code generated within the last 3 minutes are still valid.  The valid range for expiration time is between 0 and 15 minutes, exclusively and inclusively, respectively.
+     */
+    @JsonGetter("expirationTimeInMinutes")
+    public double getExpirationTimeInMinutes() {
+        return this.expirationTimeInMinutes;
+    }
+    /**
+     * Setter for ExpirationTimeInMinutes.
+     * The time period, in minutes, to validate the 2fa code.  By setting this to 3 minutes, it will mean any code generated within the last 3 minutes are still valid.  The valid range for expiration time is between 0 and 15 minutes, exclusively and inclusively, respectively.
+     */
+    @JsonSetter("expirationTimeInMinutes")
+    public void setExpirationTimeInMinutes(double value) {
+        this.expirationTimeInMinutes = value;
+    }
+
+    /**
      * Getter for Code.
+     * The generated 2fa code to check if valid
      */
     @JsonGetter("code")
     public String getCode() {
@@ -114,6 +165,7 @@ public class TwoFactorVerifyRequestSchema {
     }
     /**
      * Setter for Code.
+     * The generated 2fa code to check if valid
      */
     @JsonSetter("code")
     public void setCode(String value) {
@@ -128,12 +180,13 @@ public class TwoFactorVerifyRequestSchema {
      * @return a new {@link TwoFactorVerifyRequestSchema.Builder} object
      */
     public Builder toBuilder() {
-        Builder builder = new Builder()
-            .to(getTo())
-            .from(getFrom())
-            .applicationId(getApplicationId())
-            .scope(getScope())
-            .code(getCode());
+        Builder builder = new Builder(to,
+            from,
+            applicationId,
+            digits,
+            expirationTimeInMinutes,
+            code)
+            .scope(getScope());
             return builder;
     }
 
@@ -144,14 +197,33 @@ public class TwoFactorVerifyRequestSchema {
         private String to;
         private String from;
         private String applicationId;
-        private String scope;
+        private double digits;
+        private double expirationTimeInMinutes;
         private String code;
+        private String scope;
 
         /**
          * Initialization constructor
          */
         public Builder() {
-           
+            
+        }
+
+        /**
+         * Initialization constructor
+         */
+        public Builder(String to,
+                String from,
+                String applicationId,
+                double digits,
+                double expirationTimeInMinutes,
+                String code) {
+            this.to = to;
+            this.from = from;
+            this.applicationId = applicationId;
+            this.digits = digits;
+            this.expirationTimeInMinutes = expirationTimeInMinutes;
+            this.code = code;
         }
 
         /**
@@ -182,12 +254,21 @@ public class TwoFactorVerifyRequestSchema {
             return this;
         }
         /**
-         * Setter for scope
-         * @param scope
+         * Setter for digits
+         * @param digits
          * @return Builder
          */
-        public Builder scope(String scope) {
-            this.scope = scope;
+        public Builder digits(double digits) {
+            this.digits = digits;
+            return this;
+        }
+        /**
+         * Setter for expirationTimeInMinutes
+         * @param expirationTimeInMinutes
+         * @return Builder
+         */
+        public Builder expirationTimeInMinutes(double expirationTimeInMinutes) {
+            this.expirationTimeInMinutes = expirationTimeInMinutes;
             return this;
         }
         /**
@@ -199,6 +280,15 @@ public class TwoFactorVerifyRequestSchema {
             this.code = code;
             return this;
         }
+        /**
+         * Setter for scope
+         * @param scope
+         * @return Builder
+         */
+        public Builder scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
 
         /**
          * Builds a new {@link TwoFactorVerifyRequestSchema} object using the set fields.
@@ -208,8 +298,10 @@ public class TwoFactorVerifyRequestSchema {
             return new TwoFactorVerifyRequestSchema(to,
                 from,
                 applicationId,
-                scope,
-                code);
+                digits,
+                expirationTimeInMinutes,
+                code,
+                scope);
         }
     }
 }

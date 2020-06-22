@@ -23,6 +23,7 @@ import com.bandwidth.http.response.ApiResponse;
 import com.bandwidth.http.response.HttpResponse;
 import com.bandwidth.http.response.HttpStringResponse;
 import com.bandwidth.Server;
+import com.bandwidth.twofactorauth.exceptions.InvalidRequestException;
 import com.bandwidth.twofactorauth.models.TwoFactorCodeRequestSchema;
 import com.bandwidth.twofactorauth.models.TwoFactorMessagingResponse;
 import com.bandwidth.twofactorauth.models.TwoFactorVerifyCodeResponse;
@@ -118,6 +119,12 @@ public final class APIController extends BaseController {
             throws ApiException, IOException {
         HttpResponse response = context.getResponse();
 
+        //Error handling using HTTP status codes
+        int responseCode = response.getStatusCode();
+
+        if (responseCode == 400) {
+            throw new InvalidRequestException("client request error", context);
+        }
         //handle errors defined at the API level
         validateResponse(response, context);
 
@@ -202,6 +209,12 @@ public final class APIController extends BaseController {
             throws ApiException, IOException {
         HttpResponse response = context.getResponse();
 
+        //Error handling using HTTP status codes
+        int responseCode = response.getStatusCode();
+
+        if (responseCode == 400) {
+            throw new InvalidRequestException("client request error", context);
+        }
         //handle errors defined at the API level
         validateResponse(response, context);
 
@@ -286,6 +299,12 @@ public final class APIController extends BaseController {
             throws ApiException, IOException {
         HttpResponse response = context.getResponse();
 
+        //Error handling using HTTP status codes
+        int responseCode = response.getStatusCode();
+
+        if (responseCode == 400) {
+            throw new InvalidRequestException("client request error", context);
+        }
         //handle errors defined at the API level
         validateResponse(response, context);
 

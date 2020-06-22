@@ -24,25 +24,34 @@ public class TwoFactorCodeRequestSchema {
      * @param to
      * @param from
      * @param applicationId
+     * @param message
+     * @param digits
      * @param scope
      */
     public TwoFactorCodeRequestSchema(
             String to,
             String from,
             String applicationId,
+            String message,
+            double digits,
             String scope) {
         this.to = to;
         this.from = from;
         this.applicationId = applicationId;
         this.scope = scope;
+        this.message = message;
+        this.digits = digits;
     }
 
     private String to;
     private String from;
     private String applicationId;
     private String scope;
+    private String message;
+    private double digits;
     /**
      * Getter for To.
+     * The phone number to send the 2fa code to.
      */
     @JsonGetter("to")
     public String getTo() {
@@ -50,6 +59,7 @@ public class TwoFactorCodeRequestSchema {
     }
     /**
      * Setter for To.
+     * The phone number to send the 2fa code to.
      */
     @JsonSetter("to")
     public void setTo(String value) {
@@ -58,6 +68,7 @@ public class TwoFactorCodeRequestSchema {
 
     /**
      * Getter for From.
+     * The application phone number, the sender of the 2fa code.
      */
     @JsonGetter("from")
     public String getFrom() {
@@ -65,6 +76,7 @@ public class TwoFactorCodeRequestSchema {
     }
     /**
      * Setter for From.
+     * The application phone number, the sender of the 2fa code.
      */
     @JsonSetter("from")
     public void setFrom(String value) {
@@ -73,6 +85,7 @@ public class TwoFactorCodeRequestSchema {
 
     /**
      * Getter for ApplicationId.
+     * The application unique ID, obtained from Bandwidth.
      */
     @JsonGetter("applicationId")
     public String getApplicationId() {
@@ -80,6 +93,7 @@ public class TwoFactorCodeRequestSchema {
     }
     /**
      * Setter for ApplicationId.
+     * The application unique ID, obtained from Bandwidth.
      */
     @JsonSetter("applicationId")
     public void setApplicationId(String value) {
@@ -88,6 +102,7 @@ public class TwoFactorCodeRequestSchema {
 
     /**
      * Getter for Scope.
+     * An optional field to denote what scope or action the 2fa code is addressing.  If not supplied, defaults to "2FA".
      */
     @JsonGetter("scope")
     public String getScope() {
@@ -95,10 +110,45 @@ public class TwoFactorCodeRequestSchema {
     }
     /**
      * Setter for Scope.
+     * An optional field to denote what scope or action the 2fa code is addressing.  If not supplied, defaults to "2FA".
      */
     @JsonSetter("scope")
     public void setScope(String value) {
         this.scope = value;
+    }
+
+    /**
+     * Getter for Message.
+     * The message format of the 2fa code.  There are three values that the system will replace "{CODE}", "{NAME}", "{SCOPE}".  The "{SCOPE}" and "{NAME} value template are optional, while "{CODE}" must be supplied.  As the name would suggest, code will be replace with the actual 2fa code.  Name is replaced with the application name, configured during provisioning of 2fa.  The scope value is the same value sent during the call and partitioned by the server.
+     */
+    @JsonGetter("message")
+    public String getMessage() {
+        return this.message;
+    }
+    /**
+     * Setter for Message.
+     * The message format of the 2fa code.  There are three values that the system will replace "{CODE}", "{NAME}", "{SCOPE}".  The "{SCOPE}" and "{NAME} value template are optional, while "{CODE}" must be supplied.  As the name would suggest, code will be replace with the actual 2fa code.  Name is replaced with the application name, configured during provisioning of 2fa.  The scope value is the same value sent during the call and partitioned by the server.
+     */
+    @JsonSetter("message")
+    public void setMessage(String value) {
+        this.message = value;
+    }
+
+    /**
+     * Getter for Digits.
+     * The number of digits for your 2fa code.  The valid number ranges from 2 to 8, inclusively.
+     */
+    @JsonGetter("digits")
+    public double getDigits() {
+        return this.digits;
+    }
+    /**
+     * Setter for Digits.
+     * The number of digits for your 2fa code.  The valid number ranges from 2 to 8, inclusively.
+     */
+    @JsonSetter("digits")
+    public void setDigits(double value) {
+        this.digits = value;
     }
 
  
@@ -109,10 +159,11 @@ public class TwoFactorCodeRequestSchema {
      * @return a new {@link TwoFactorCodeRequestSchema.Builder} object
      */
     public Builder toBuilder() {
-        Builder builder = new Builder()
-            .to(getTo())
-            .from(getFrom())
-            .applicationId(getApplicationId())
+        Builder builder = new Builder(to,
+            from,
+            applicationId,
+            message,
+            digits)
             .scope(getScope());
             return builder;
     }
@@ -124,13 +175,30 @@ public class TwoFactorCodeRequestSchema {
         private String to;
         private String from;
         private String applicationId;
+        private String message;
+        private double digits;
         private String scope;
 
         /**
          * Initialization constructor
          */
         public Builder() {
-           
+            
+        }
+
+        /**
+         * Initialization constructor
+         */
+        public Builder(String to,
+                String from,
+                String applicationId,
+                String message,
+                double digits) {
+            this.to = to;
+            this.from = from;
+            this.applicationId = applicationId;
+            this.message = message;
+            this.digits = digits;
         }
 
         /**
@@ -161,6 +229,24 @@ public class TwoFactorCodeRequestSchema {
             return this;
         }
         /**
+         * Setter for message
+         * @param message
+         * @return Builder
+         */
+        public Builder message(String message) {
+            this.message = message;
+            return this;
+        }
+        /**
+         * Setter for digits
+         * @param digits
+         * @return Builder
+         */
+        public Builder digits(double digits) {
+            this.digits = digits;
+            return this;
+        }
+        /**
          * Setter for scope
          * @param scope
          * @return Builder
@@ -178,6 +264,8 @@ public class TwoFactorCodeRequestSchema {
             return new TwoFactorCodeRequestSchema(to,
                 from,
                 applicationId,
+                message,
+                digits,
                 scope);
         }
     }
