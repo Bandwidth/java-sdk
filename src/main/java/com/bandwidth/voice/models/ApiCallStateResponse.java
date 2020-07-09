@@ -346,7 +346,7 @@ public class ApiCallStateResponse {
             .errorMessage(getErrorMessage())
             .errorId(getErrorId())
             .lastUpdate(getLastUpdate());
-            return builder;
+        return builder;
     }
 
     /**
@@ -369,12 +369,7 @@ public class ApiCallStateResponse {
         private String errorId;
         private LocalDateTime lastUpdate;
 
-        /**
-         * Initialization constructor
-         */
-        public Builder() {
-           
-        }
+
 
         /**
          * Setter for callId
@@ -385,6 +380,7 @@ public class ApiCallStateResponse {
             this.callId = callId;
             return this;
         }
+
         /**
          * Setter for parentCallId
          * @param parentCallId
@@ -394,6 +390,7 @@ public class ApiCallStateResponse {
             this.parentCallId = parentCallId;
             return this;
         }
+
         /**
          * Setter for applicationId
          * @param applicationId
@@ -403,6 +400,7 @@ public class ApiCallStateResponse {
             this.applicationId = applicationId;
             return this;
         }
+
         /**
          * Setter for accountId
          * @param accountId
@@ -412,6 +410,7 @@ public class ApiCallStateResponse {
             this.accountId = accountId;
             return this;
         }
+
         /**
          * Setter for to
          * @param to
@@ -421,6 +420,7 @@ public class ApiCallStateResponse {
             this.to = to;
             return this;
         }
+
         /**
          * Setter for from
          * @param from
@@ -430,6 +430,7 @@ public class ApiCallStateResponse {
             this.from = from;
             return this;
         }
+
         /**
          * Setter for direction
          * @param direction
@@ -439,6 +440,7 @@ public class ApiCallStateResponse {
             this.direction = direction;
             return this;
         }
+
         /**
          * Setter for state
          * @param state
@@ -448,6 +450,7 @@ public class ApiCallStateResponse {
             this.state = state;
             return this;
         }
+
         /**
          * Setter for startTime
          * @param startTime
@@ -457,6 +460,7 @@ public class ApiCallStateResponse {
             this.startTime = startTime;
             return this;
         }
+
         /**
          * Setter for answerTime
          * @param answerTime
@@ -466,6 +470,7 @@ public class ApiCallStateResponse {
             this.answerTime = answerTime;
             return this;
         }
+
         /**
          * Setter for endTime
          * @param endTime
@@ -475,6 +480,7 @@ public class ApiCallStateResponse {
             this.endTime = endTime;
             return this;
         }
+
         /**
          * Setter for disconnectCause
          * @param disconnectCause
@@ -484,6 +490,7 @@ public class ApiCallStateResponse {
             this.disconnectCause = disconnectCause;
             return this;
         }
+
         /**
          * Setter for errorMessage
          * @param errorMessage
@@ -493,6 +500,7 @@ public class ApiCallStateResponse {
             this.errorMessage = errorMessage;
             return this;
         }
+
         /**
          * Setter for errorId
          * @param errorId
@@ -502,6 +510,7 @@ public class ApiCallStateResponse {
             this.errorId = errorId;
             return this;
         }
+
         /**
          * Setter for lastUpdate
          * @param lastUpdate

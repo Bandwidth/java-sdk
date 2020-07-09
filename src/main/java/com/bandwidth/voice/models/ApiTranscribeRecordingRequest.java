@@ -134,7 +134,7 @@ public class ApiTranscribeRecordingRequest {
             .username(getUsername())
             .password(getPassword())
             .tag(getTag());
-            return builder;
+        return builder;
     }
 
     /**
@@ -147,12 +147,7 @@ public class ApiTranscribeRecordingRequest {
         private String password;
         private String tag;
 
-        /**
-         * Initialization constructor
-         */
-        public Builder() {
-           
-        }
+
 
         /**
          * Setter for callbackUrl
@@ -163,6 +158,7 @@ public class ApiTranscribeRecordingRequest {
             this.callbackUrl = callbackUrl;
             return this;
         }
+
         /**
          * Setter for callbackMethod
          * @param callbackMethod
@@ -172,6 +168,7 @@ public class ApiTranscribeRecordingRequest {
             this.callbackMethod = callbackMethod;
             return this;
         }
+
         /**
          * Setter for username
          * @param username
@@ -181,6 +178,7 @@ public class ApiTranscribeRecordingRequest {
             this.username = username;
             return this;
         }
+
         /**
          * Setter for password
          * @param password
@@ -190,6 +188,7 @@ public class ApiTranscribeRecordingRequest {
             this.password = password;
             return this;
         }
+
         /**
          * Setter for tag
          * @param tag

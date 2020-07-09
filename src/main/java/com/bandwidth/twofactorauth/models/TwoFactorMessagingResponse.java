@@ -54,7 +54,7 @@ public class TwoFactorMessagingResponse {
     public Builder toBuilder() {
         Builder builder = new Builder()
             .messageId(getMessageId());
-            return builder;
+        return builder;
     }
 
     /**
@@ -63,12 +63,7 @@ public class TwoFactorMessagingResponse {
     public static class Builder {
         private String messageId;
 
-        /**
-         * Initialization constructor
-         */
-        public Builder() {
-           
-        }
+
 
         /**
          * Setter for messageId

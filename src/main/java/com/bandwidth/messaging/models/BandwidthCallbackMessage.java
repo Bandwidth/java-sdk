@@ -154,7 +154,7 @@ public class BandwidthCallbackMessage {
             .errorCode(getErrorCode())
             .description(getDescription())
             .message(getMessage());
-            return builder;
+        return builder;
     }
 
     /**
@@ -168,12 +168,7 @@ public class BandwidthCallbackMessage {
         private String description;
         private BandwidthMessage message;
 
-        /**
-         * Initialization constructor
-         */
-        public Builder() {
-           
-        }
+
 
         /**
          * Setter for time
@@ -184,6 +179,7 @@ public class BandwidthCallbackMessage {
             this.time = time;
             return this;
         }
+
         /**
          * Setter for type
          * @param type
@@ -193,6 +189,7 @@ public class BandwidthCallbackMessage {
             this.type = type;
             return this;
         }
+
         /**
          * Setter for to
          * @param to
@@ -202,6 +199,7 @@ public class BandwidthCallbackMessage {
             this.to = to;
             return this;
         }
+
         /**
          * Setter for errorCode
          * @param errorCode
@@ -211,6 +209,7 @@ public class BandwidthCallbackMessage {
             this.errorCode = errorCode;
             return this;
         }
+
         /**
          * Setter for description
          * @param description
@@ -220,6 +219,7 @@ public class BandwidthCallbackMessage {
             this.description = description;
             return this;
         }
+
         /**
          * Setter for message
          * @param message

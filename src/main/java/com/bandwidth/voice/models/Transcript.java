@@ -74,7 +74,7 @@ public class Transcript {
         Builder builder = new Builder()
             .text(getText())
             .confidence(getConfidence());
-            return builder;
+        return builder;
     }
 
     /**
@@ -84,12 +84,7 @@ public class Transcript {
         private String text;
         private Double confidence;
 
-        /**
-         * Initialization constructor
-         */
-        public Builder() {
-           
-        }
+
 
         /**
          * Setter for text
@@ -100,6 +95,7 @@ public class Transcript {
             this.text = text;
             return this;
         }
+
         /**
          * Setter for confidence
          * @param confidence

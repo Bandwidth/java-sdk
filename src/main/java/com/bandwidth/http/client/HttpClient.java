@@ -8,6 +8,7 @@ package com.bandwidth.http.client;
 import java.io.IOException;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import com.bandwidth.http.Headers;
@@ -51,60 +52,60 @@ public interface HttpClient {
     /**
      * Create a simple HTTP GET request
      */
-    public HttpRequest get(String queryUrl,
-                    Headers headers, List<SimpleEntry<String, Object>> parameters);
+    public HttpRequest get(StringBuilder queryUrlBuilder, Headers headers,
+            Map<String, Object> queryParams, List<SimpleEntry<String, Object>> parameters);
 
     /**
     * Create a simple HTTP HEAD request
     */
-    public HttpRequest head(String queryUrl,
-            Headers headers, List<SimpleEntry<String, Object>> parameters);
+    public HttpRequest head(StringBuilder queryUrlBuilder, Headers headers,
+            Map<String, Object> queryParams, List<SimpleEntry<String, Object>> parameters);
 
     /**
      * Create an HTTP POST request with parameters
      */
-    public HttpRequest post(String queryUrl,
-                     Headers headers, List<SimpleEntry<String, Object>> parameters);
+    public HttpRequest post(StringBuilder queryUrlBuilder, Headers headers,
+            Map<String, Object> queryParams, List<SimpleEntry<String, Object>> parameters);
 
     /**
      * Create an HTTP POST request with body
      */
-    public HttpBodyRequest postBody(String queryUrl,
-                             Headers headers, Object body);
+    public HttpBodyRequest postBody(StringBuilder queryUrlBuilder,
+            Headers headers, Map<String, Object> queryParams, Object body);
 
     /**
      * Create an HTTP PUT request with parameters
      */
-    public HttpRequest put(String queryUrl,
-                    Headers headers, List<SimpleEntry<String, Object>> parameters);
+    public HttpRequest put(StringBuilder queryUrlBuilder, Headers headers,
+            Map<String, Object> queryParams, List<SimpleEntry<String, Object>> parameters);
 
     /**
      * Create an HTTP PUT request with body
      */
-    HttpBodyRequest putBody(String queryUrl,
-                            Headers headers, Object body);
+    HttpBodyRequest putBody(StringBuilder queryUrlBuilder,
+            Headers headers, Map<String, Object> queryParams, Object body);
 
     /**
      * Create an HTTP PATCH request with parameters
      */
-    public HttpRequest patch(String queryUrl,
-                      Headers headers, List<SimpleEntry<String, Object>> parameters);
+    public HttpRequest patch(StringBuilder queryUrlBuilder, Headers headers,
+            Map<String, Object> queryParams, List<SimpleEntry<String, Object>> parameters);
 
     /**
      * Create an HTTP PATCH request with body
      */
-    public HttpBodyRequest patchBody(String queryUrl,
-                              Headers headers, Object body);
+    public HttpBodyRequest patchBody(StringBuilder queryUrlBuilder,
+            Headers headers, Map<String, Object> queryParams, Object body);
 
     /**
      * Create an HTTP DELETE request with parameters
      */
-    HttpRequest delete(String queryUrl,
-                       Headers headers, List<SimpleEntry<String, Object>> parameters);
+    HttpRequest delete(StringBuilder queryUrlBuilder, Headers headers,
+            Map<String, Object> queryParams, List<SimpleEntry<String, Object>> parameters);
 
     /**
      * Create an HTTP DELETE request with body
      */
-    public HttpBodyRequest deleteBody(String queryUrl,
-                               Headers headers, Object body);
+    public HttpBodyRequest deleteBody(StringBuilder queryUrlBuilder,
+            Headers headers, Map<String, Object> queryParams, Object body);
 }

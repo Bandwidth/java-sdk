@@ -11,10 +11,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
+import com.bandwidth.ApiHelper;
 import com.bandwidth.http.Headers;
 import com.bandwidth.http.request.HttpBodyRequest;
 import com.bandwidth.http.request.HttpMethod;
@@ -219,8 +221,6 @@ public class OkClient implements HttpClient {
      * @return              The converted okhttp request
      */
     private static okhttp3.Request convertRequest(HttpRequest httpRequest) {
-        String url = httpRequest.getQueryUrl();
-
         okhttp3.RequestBody requestBody;
 
         if (httpRequest instanceof HttpBodyRequest) {
@@ -333,6 +333,14 @@ public class OkClient implements HttpClient {
             requestHeaders = createRequestHeaders(httpRequest.getHeaders());
         }
 
+        StringBuilder urlBuilder = new StringBuilder(httpRequest.getQueryUrl());
+
+        // set query parameters
+        ApiHelper.appendUrlWithQueryParameters(urlBuilder, httpRequest.getQueryParameters());
+
+        //validate and preprocess url
+        String url = ApiHelper.cleanUrl(urlBuilder);
+
         // build the request
         okhttp3.Request okHttpRequest = new okhttp3.Request.Builder()
                 .method(httpRequest.getHttpMethod().toString(), requestBody).headers(requestHeaders.build()).url(url)
@@ -377,73 +385,82 @@ public class OkClient implements HttpClient {
     /**
      * Create a simple HTTP GET request
      */
-    public HttpRequest get(String queryUrl, Headers headers, List<SimpleEntry<String, Object>> parameters) {
-        return new HttpRequest(HttpMethod.GET, queryUrl, headers, parameters);
+    public HttpRequest get(StringBuilder queryUrlBuilder, Headers headers, 
+            Map<String, Object> queryParams, List<SimpleEntry<String, Object>> parameters) {
+        return new HttpRequest(HttpMethod.GET, queryUrlBuilder, headers, queryParams, parameters);
     }
 
     /**
      * Create a simple HTTP HEAD request
      */
-    public HttpRequest head(String queryUrl, Headers headers, List<SimpleEntry<String, Object>> parameters) {
-        return new HttpRequest(HttpMethod.HEAD, queryUrl, headers, parameters);
+    public HttpRequest head(StringBuilder queryUrlBuilder, Headers headers, 
+            Map<String, Object> queryParams, List<SimpleEntry<String, Object>> parameters) {
+        return new HttpRequest(HttpMethod.HEAD, queryUrlBuilder, headers, queryParams, parameters);
     }
 
     /**
      * Create an HTTP POST request with parameters
      */
-    public HttpRequest post(String queryUrl, Headers headers, List<SimpleEntry<String, Object>> parameters) {
-        return new HttpRequest(HttpMethod.POST, queryUrl, headers, parameters);
+    public HttpRequest post(StringBuilder queryUrlBuilder, Headers headers, 
+            Map<String, Object> queryParams, List<SimpleEntry<String, Object>> parameters) {
+        return new HttpRequest(HttpMethod.POST, queryUrlBuilder, headers, queryParams, parameters);
     }
 
     /**
      * Create an HTTP POST request with body
      */
-    public HttpBodyRequest postBody(String queryUrl, Headers headers, Object body) {
-        return new HttpBodyRequest(HttpMethod.POST, queryUrl, headers, body);
+    public HttpBodyRequest postBody(StringBuilder queryUrlBuilder, Headers headers, 
+            Map<String, Object> queryParams, Object body) {
+        return new HttpBodyRequest(HttpMethod.POST, queryUrlBuilder, headers, queryParams, body);
     }
 
 
     /**
      * Create an HTTP PUT request with parameters
      */
-    public HttpRequest put(String queryUrl, Headers headers,
-            List<SimpleEntry<String, Object>> parameters) {
-        return new HttpRequest(HttpMethod.PUT, queryUrl, headers, parameters);
+    public HttpRequest put(StringBuilder queryUrlBuilder, Headers headers, 
+            Map<String, Object> queryParams, List<SimpleEntry<String, Object>> parameters) {
+        return new HttpRequest(HttpMethod.PUT, queryUrlBuilder, headers, queryParams, parameters);
     }
 
     /**
      * Create an HTTP PUT request with body
      */
-    public HttpBodyRequest putBody(String queryUrl, Headers headers, Object body) {
-        return new HttpBodyRequest(HttpMethod.PUT, queryUrl, headers, body);
+    public HttpBodyRequest putBody(StringBuilder queryUrlBuilder, Headers headers, 
+            Map<String, Object> queryParams, Object body) {
+        return new HttpBodyRequest(HttpMethod.PUT, queryUrlBuilder, headers, queryParams, body);
     }
 
     /**
      * Create an HTTP PATCH request with parameters
      */
-    public HttpRequest patch(String queryUrl, Headers headers, List<SimpleEntry<String, Object>> parameters) {
-        return new HttpRequest(HttpMethod.PATCH, queryUrl, headers, parameters);
+    public HttpRequest patch(StringBuilder queryUrlBuilder, Headers headers, 
+            Map<String, Object> queryParams, List<SimpleEntry<String, Object>> parameters) {
+        return new HttpRequest(HttpMethod.PATCH, queryUrlBuilder, headers, queryParams, parameters);
     }
 
     /**
      * Create an HTTP PATCH request with body
      */
-    public HttpBodyRequest patchBody(String queryUrl, Headers headers, Object body) {
-        return new HttpBodyRequest(HttpMethod.PATCH, queryUrl, headers, body);
+    public HttpBodyRequest patchBody(StringBuilder queryUrlBuilder, Headers headers, 
+            Map<String, Object> queryParams, Object body) {
+        return new HttpBodyRequest(HttpMethod.PATCH, queryUrlBuilder, headers, queryParams, body);
     }
 
     /**
      * Create an HTTP DELETE request with parameters
      */
-    public HttpRequest delete(String queryUrl, Headers headers, List<SimpleEntry<String, Object>> parameters) {
-        return new HttpRequest(HttpMethod.DELETE, queryUrl, headers, parameters);
+    public HttpRequest delete(StringBuilder queryUrlBuilder, Headers headers, 
+            Map<String, Object> queryParams, List<SimpleEntry<String, Object>> parameters) {
+        return new HttpRequest(HttpMethod.DELETE, queryUrlBuilder, headers, queryParams, parameters);
     }
 
     /**
      * Create an HTTP DELETE request with body
      */
-    public HttpBodyRequest deleteBody(String queryUrl, Headers headers, Object body) {
-        return new HttpBodyRequest(HttpMethod.DELETE, queryUrl, headers, body);
+    public HttpBodyRequest deleteBody(StringBuilder queryUrlBuilder, Headers headers, 
+            Map<String, Object> queryParams, Object body) {
+        return new HttpBodyRequest(HttpMethod.DELETE, queryUrlBuilder, headers, queryParams, body);
     }
 
 }

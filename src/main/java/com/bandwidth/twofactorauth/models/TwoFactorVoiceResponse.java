@@ -54,7 +54,7 @@ public class TwoFactorVoiceResponse {
     public Builder toBuilder() {
         Builder builder = new Builder()
             .callId(getCallId());
-            return builder;
+        return builder;
     }
 
     /**
@@ -63,12 +63,7 @@ public class TwoFactorVoiceResponse {
     public static class Builder {
         private String callId;
 
-        /**
-         * Initialization constructor
-         */
-        public Builder() {
-           
-        }
+
 
         /**
          * Setter for callId

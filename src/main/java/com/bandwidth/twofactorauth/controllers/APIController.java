@@ -6,6 +6,7 @@
 package com.bandwidth.twofactorauth.controllers;
 
 import java.io.IOException;
+import java.util.AbstractMap.SimpleEntry;
 import java.util.concurrent.CompletableFuture;
 import java.util.HashMap;
 import java.util.Map;
@@ -92,11 +93,9 @@ public final class APIController extends BaseController {
         StringBuilder queryBuilder = new StringBuilder(baseUri + "/accounts/{accountId}/code/voice");
 
         //process template parameters
-        Map<String, Object> templateParameters = new HashMap<>();
-        templateParameters.put("accountId", accountId);
-        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
-        //validate and preprocess url
-        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", new SimpleEntry<Object, Boolean>(accountId, true));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
@@ -106,7 +105,7 @@ public final class APIController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         String bodyJson = ApiHelper.serialize(body);
-        HttpRequest request = getClientInstance().postBody(queryUrl, headers, bodyJson);
+        HttpRequest request = getClientInstance().postBody(queryBuilder, headers, null, bodyJson);
 
         return request;
     }
@@ -182,11 +181,9 @@ public final class APIController extends BaseController {
         StringBuilder queryBuilder = new StringBuilder(baseUri + "/accounts/{accountId}/code/messaging");
 
         //process template parameters
-        Map<String, Object> templateParameters = new HashMap<>();
-        templateParameters.put("accountId", accountId);
-        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
-        //validate and preprocess url
-        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", new SimpleEntry<Object, Boolean>(accountId, true));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
@@ -196,7 +193,7 @@ public final class APIController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         String bodyJson = ApiHelper.serialize(body);
-        HttpRequest request = getClientInstance().postBody(queryUrl, headers, bodyJson);
+        HttpRequest request = getClientInstance().postBody(queryBuilder, headers, null, bodyJson);
 
         return request;
     }
@@ -272,11 +269,9 @@ public final class APIController extends BaseController {
         StringBuilder queryBuilder = new StringBuilder(baseUri + "/accounts/{accountId}/code/verify");
 
         //process template parameters
-        Map<String, Object> templateParameters = new HashMap<>();
-        templateParameters.put("accountId", accountId);
-        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
-        //validate and preprocess url
-        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", new SimpleEntry<Object, Boolean>(accountId, true));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
@@ -286,7 +281,7 @@ public final class APIController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         String bodyJson = ApiHelper.serialize(body);
-        HttpRequest request = getClientInstance().postBody(queryUrl, headers, bodyJson);
+        HttpRequest request = getClientInstance().postBody(queryBuilder, headers, null, bodyJson);
 
         return request;
     }

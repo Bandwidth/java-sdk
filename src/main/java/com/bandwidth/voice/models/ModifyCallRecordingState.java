@@ -54,7 +54,7 @@ public class ModifyCallRecordingState {
     public Builder toBuilder() {
         Builder builder = new Builder()
             .state(getState());
-            return builder;
+        return builder;
     }
 
     /**
@@ -63,12 +63,7 @@ public class ModifyCallRecordingState {
     public static class Builder {
         private State2Enum state;
 
-        /**
-         * Initialization constructor
-         */
-        public Builder() {
-           
-        }
+
 
         /**
          * Setter for state

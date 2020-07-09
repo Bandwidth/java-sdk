@@ -235,7 +235,7 @@ public class Media {
             .mediaName(getMediaName())
             .mediaId(getMediaId())
             .cacheControl(getCacheControl());
-            return builder;
+        return builder;
     }
 
     /**
@@ -253,12 +253,7 @@ public class Media {
         private String mediaId;
         private String cacheControl;
 
-        /**
-         * Initialization constructor
-         */
-        public Builder() {
-           
-        }
+
 
         /**
          * Setter for inputStream
@@ -269,6 +264,7 @@ public class Media {
             this.inputStream = inputStream;
             return this;
         }
+
         /**
          * Setter for content
          * @param content
@@ -278,6 +274,7 @@ public class Media {
             this.content = content;
             return this;
         }
+
         /**
          * Setter for url
          * @param url
@@ -287,6 +284,7 @@ public class Media {
             this.url = url;
             return this;
         }
+
         /**
          * Setter for contentLength
          * @param contentLength
@@ -296,6 +294,7 @@ public class Media {
             this.contentLength = contentLength;
             return this;
         }
+
         /**
          * Setter for contentType
          * @param contentType
@@ -305,6 +304,7 @@ public class Media {
             this.contentType = contentType;
             return this;
         }
+
         /**
          * Setter for tags
          * @param tags
@@ -314,6 +314,7 @@ public class Media {
             this.tags = tags;
             return this;
         }
+
         /**
          * Setter for userId
          * @param userId
@@ -323,6 +324,7 @@ public class Media {
             this.userId = userId;
             return this;
         }
+
         /**
          * Setter for mediaName
          * @param mediaName
@@ -332,6 +334,7 @@ public class Media {
             this.mediaName = mediaName;
             return this;
         }
+
         /**
          * Setter for mediaId
          * @param mediaId
@@ -341,6 +344,7 @@ public class Media {
             this.mediaId = mediaId;
             return this;
         }
+
         /**
          * Setter for cacheControl
          * @param cacheControl

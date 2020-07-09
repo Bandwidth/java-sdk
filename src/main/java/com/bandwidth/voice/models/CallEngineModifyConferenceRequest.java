@@ -54,7 +54,7 @@ public class CallEngineModifyConferenceRequest {
     public Builder toBuilder() {
         Builder builder = new Builder()
             .status(getStatus());
-            return builder;
+        return builder;
     }
 
     /**
@@ -63,12 +63,7 @@ public class CallEngineModifyConferenceRequest {
     public static class Builder {
         private StatusEnum status;
 
-        /**
-         * Initialization constructor
-         */
-        public Builder() {
-           
-        }
+
 
         /**
          * Setter for status

@@ -255,7 +255,7 @@ public class BandwidthMessage {
             .media(getMedia())
             .text(getText())
             .tag(getTag());
-            return builder;
+        return builder;
     }
 
     /**
@@ -274,12 +274,7 @@ public class BandwidthMessage {
         private String text;
         private String tag;
 
-        /**
-         * Initialization constructor
-         */
-        public Builder() {
-           
-        }
+
 
         /**
          * Setter for id
@@ -290,6 +285,7 @@ public class BandwidthMessage {
             this.id = id;
             return this;
         }
+
         /**
          * Setter for owner
          * @param owner
@@ -299,6 +295,7 @@ public class BandwidthMessage {
             this.owner = owner;
             return this;
         }
+
         /**
          * Setter for applicationId
          * @param applicationId
@@ -308,6 +305,7 @@ public class BandwidthMessage {
             this.applicationId = applicationId;
             return this;
         }
+
         /**
          * Setter for time
          * @param time
@@ -317,6 +315,7 @@ public class BandwidthMessage {
             this.time = time;
             return this;
         }
+
         /**
          * Setter for segmentCount
          * @param segmentCount
@@ -326,6 +325,7 @@ public class BandwidthMessage {
             this.segmentCount = segmentCount;
             return this;
         }
+
         /**
          * Setter for direction
          * @param direction
@@ -335,6 +335,7 @@ public class BandwidthMessage {
             this.direction = direction;
             return this;
         }
+
         /**
          * Setter for to
          * @param to
@@ -344,6 +345,7 @@ public class BandwidthMessage {
             this.to = to;
             return this;
         }
+
         /**
          * Setter for from
          * @param from
@@ -353,6 +355,7 @@ public class BandwidthMessage {
             this.from = from;
             return this;
         }
+
         /**
          * Setter for media
          * @param media
@@ -362,6 +365,7 @@ public class BandwidthMessage {
             this.media = media;
             return this;
         }
+
         /**
          * Setter for text
          * @param text
@@ -371,6 +375,7 @@ public class BandwidthMessage {
             this.text = text;
             return this;
         }
+
         /**
          * Setter for tag
          * @param tag

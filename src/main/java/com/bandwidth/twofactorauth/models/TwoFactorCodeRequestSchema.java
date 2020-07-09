@@ -165,7 +165,7 @@ public class TwoFactorCodeRequestSchema {
             message,
             digits)
             .scope(getScope());
-            return builder;
+        return builder;
     }
 
     /**
@@ -183,7 +183,6 @@ public class TwoFactorCodeRequestSchema {
          * Initialization constructor
          */
         public Builder() {
-            
         }
 
         /**
@@ -210,6 +209,7 @@ public class TwoFactorCodeRequestSchema {
             this.to = to;
             return this;
         }
+
         /**
          * Setter for from
          * @param from
@@ -219,6 +219,7 @@ public class TwoFactorCodeRequestSchema {
             this.from = from;
             return this;
         }
+
         /**
          * Setter for applicationId
          * @param applicationId
@@ -228,6 +229,7 @@ public class TwoFactorCodeRequestSchema {
             this.applicationId = applicationId;
             return this;
         }
+
         /**
          * Setter for message
          * @param message
@@ -237,6 +239,7 @@ public class TwoFactorCodeRequestSchema {
             this.message = message;
             return this;
         }
+
         /**
          * Setter for digits
          * @param digits
@@ -246,6 +249,7 @@ public class TwoFactorCodeRequestSchema {
             this.digits = digits;
             return this;
         }
+
         /**
          * Setter for scope
          * @param scope

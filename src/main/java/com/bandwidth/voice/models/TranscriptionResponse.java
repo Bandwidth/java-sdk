@@ -55,7 +55,7 @@ public class TranscriptionResponse {
     public Builder toBuilder() {
         Builder builder = new Builder()
             .transcripts(getTranscripts());
-            return builder;
+        return builder;
     }
 
     /**
@@ -64,12 +64,7 @@ public class TranscriptionResponse {
     public static class Builder {
         private List<Transcript> transcripts;
 
-        /**
-         * Initialization constructor
-         */
-        public Builder() {
-           
-        }
+
 
         /**
          * Setter for transcripts

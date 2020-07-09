@@ -220,8 +220,8 @@ public class ApiHelper {
      * @param   queryBuilder The query string builder to replace the template parameters
      * @param   parameters The parameters to replace in the URL
      */
-    public static void appendUrlWithTemplateParameters(StringBuilder queryBuilder, Map<String, Object> parameters,
-            boolean encode) {
+    public static void appendUrlWithTemplateParameters(StringBuilder queryBuilder, 
+        Map<String, SimpleEntry<Object, Boolean>> parameters) {
         // Perform parameter validation
         if (null == queryBuilder) {
             throw new IllegalArgumentException("Given value for parameter \"queryBuilder\" is invalid." );
@@ -232,22 +232,24 @@ public class ApiHelper {
         }
 
         // Iterate and append parameters
-        for (Map.Entry<String, Object> pair : parameters.entrySet()) {
+        for (Map.Entry<String, SimpleEntry<Object, Boolean>> pair : parameters.entrySet()) {
         
             String replaceValue = "";
+            Object element = pair.getValue().getKey();
+            boolean shouldEncode = pair.getValue().getValue();
             
             // Load element value as string
-            if (null == pair.getValue()) {
+            if (null == element) {
                 replaceValue = "";
             }
-            else if (pair.getValue() instanceof Collection<?>) {
-                replaceValue = flattenCollection("", (Collection<?>) pair.getValue(), "%s%s%s", '/');
+            else if (element instanceof Collection<?>) {
+                replaceValue = flattenCollection("", (Collection<?>) element, shouldEncode, "%s%s%s", '/');
             }
             else {
-                if (encode) {
-                    replaceValue = tryUrlEncode(pair.getValue().toString());
+                if (shouldEncode) {
+                    replaceValue = tryUrlEncode(element.toString());
                 } else {
-                    replaceValue = pair.getValue().toString();
+                    replaceValue = element.toString();
                 }
             }
 
@@ -263,10 +265,10 @@ public class ApiHelper {
      */
     public static void appendUrlWithQueryParameters(StringBuilder queryBuilder, Map<String, Object> parameters) {
         // Perform parameter validation
-        if (null == queryBuilder) {
+        if (queryBuilder == null) {
             throw new IllegalArgumentException("Given value for parameter \"queryBuilder\" is invalid.");
         }
-        if (null == parameters) {
+        if (parameters == null || parameters.isEmpty()) {
             return;
         }
         
@@ -409,7 +411,7 @@ public class ApiHelper {
      * @param   separator Separator to use for string concatenation
      * @return  Representative string made up of array elements
      */
-    private static String flattenCollection(String elemName, Collection<?> array, String fmt, char separator) {
+    private static String flattenCollection(String elemName, Collection<?> array, boolean encode, String fmt, char separator) {
         StringBuilder builder = new StringBuilder();
 
         // Append all elements of the array into a string
@@ -422,7 +424,9 @@ public class ApiHelper {
             } else {
                 elemValue = element.toString();
             }
-            elemValue = tryUrlEncode(elemValue);
+            if (encode) {
+                elemValue = tryUrlEncode(elemValue);
+            }
             builder.append(String.format(fmt, elemName, elemValue, separator));
         }
 
