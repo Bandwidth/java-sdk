@@ -74,7 +74,7 @@ public class Tag {
         Builder builder = new Builder()
             .key(getKey())
             .value(getValue());
-            return builder;
+        return builder;
     }
 
     /**
@@ -84,12 +84,7 @@ public class Tag {
         private String key;
         private String value;
 
-        /**
-         * Initialization constructor
-         */
-        public Builder() {
-           
-        }
+
 
         /**
          * Setter for key
@@ -100,6 +95,7 @@ public class Tag {
             this.key = key;
             return this;
         }
+
         /**
          * Setter for value
          * @param value

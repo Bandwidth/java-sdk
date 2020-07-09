@@ -74,7 +74,7 @@ public class DeferredResult {
         Builder builder = new Builder()
             .result(getResult())
             .setOrExpired(getSetOrExpired());
-            return builder;
+        return builder;
     }
 
     /**
@@ -84,12 +84,7 @@ public class DeferredResult {
         private Object result;
         private Boolean setOrExpired;
 
-        /**
-         * Initialization constructor
-         */
-        public Builder() {
-           
-        }
+
 
         /**
          * Setter for result
@@ -100,6 +95,7 @@ public class DeferredResult {
             this.result = result;
             return this;
         }
+
         /**
          * Setter for setOrExpired
          * @param setOrExpired

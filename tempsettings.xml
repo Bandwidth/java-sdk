@@ -1,0 +1,9 @@
+<settings>
+  <servers>
+      <server>
+        <id>ossrh</id>
+        <username>DX-Bandwidth</username>
+        <password>%Lr^+:VscpNzkx_Q2wnE</password>
+      </server>
+  </servers>
+</settings>

@@ -114,7 +114,7 @@ public class Transcription {
             .status(getStatus())
             .completedTime(getCompletedTime())
             .url(getUrl());
-            return builder;
+        return builder;
     }
 
     /**
@@ -126,12 +126,7 @@ public class Transcription {
         private String completedTime;
         private String url;
 
-        /**
-         * Initialization constructor
-         */
-        public Builder() {
-           
-        }
+
 
         /**
          * Setter for id
@@ -142,6 +137,7 @@ public class Transcription {
             this.id = id;
             return this;
         }
+
         /**
          * Setter for status
          * @param status
@@ -151,6 +147,7 @@ public class Transcription {
             this.status = status;
             return this;
         }
+
         /**
          * Setter for completedTime
          * @param completedTime
@@ -160,6 +157,7 @@ public class Transcription {
             this.completedTime = completedTime;
             return this;
         }
+
         /**
          * Setter for url
          * @param url

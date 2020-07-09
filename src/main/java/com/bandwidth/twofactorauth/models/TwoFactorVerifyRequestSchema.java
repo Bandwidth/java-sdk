@@ -187,7 +187,7 @@ public class TwoFactorVerifyRequestSchema {
             expirationTimeInMinutes,
             code)
             .scope(getScope());
-            return builder;
+        return builder;
     }
 
     /**
@@ -206,7 +206,6 @@ public class TwoFactorVerifyRequestSchema {
          * Initialization constructor
          */
         public Builder() {
-            
         }
 
         /**
@@ -235,6 +234,7 @@ public class TwoFactorVerifyRequestSchema {
             this.to = to;
             return this;
         }
+
         /**
          * Setter for from
          * @param from
@@ -244,6 +244,7 @@ public class TwoFactorVerifyRequestSchema {
             this.from = from;
             return this;
         }
+
         /**
          * Setter for applicationId
          * @param applicationId
@@ -253,6 +254,7 @@ public class TwoFactorVerifyRequestSchema {
             this.applicationId = applicationId;
             return this;
         }
+
         /**
          * Setter for digits
          * @param digits
@@ -262,6 +264,7 @@ public class TwoFactorVerifyRequestSchema {
             this.digits = digits;
             return this;
         }
+
         /**
          * Setter for expirationTimeInMinutes
          * @param expirationTimeInMinutes
@@ -271,6 +274,7 @@ public class TwoFactorVerifyRequestSchema {
             this.expirationTimeInMinutes = expirationTimeInMinutes;
             return this;
         }
+
         /**
          * Setter for code
          * @param code
@@ -280,6 +284,7 @@ public class TwoFactorVerifyRequestSchema {
             this.code = code;
             return this;
         }
+
         /**
          * Setter for scope
          * @param scope

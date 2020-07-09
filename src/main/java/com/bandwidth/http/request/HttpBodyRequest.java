@@ -5,6 +5,7 @@
  */
 package com.bandwidth.http.request;
 
+import java.util.Map;
 import com.bandwidth.http.Headers;
 
 /**
@@ -25,8 +26,9 @@ public class HttpBodyRequest extends HttpRequest {
      * @param headers  The key-value map of all http headers to be sent
      * @param body     The object to be sent as body after serialization
      */
-    public HttpBodyRequest(HttpMethod method, String queryUrl, Headers headers, Object body) {
-        super(method, queryUrl, headers, null);
+    public HttpBodyRequest(HttpMethod method, StringBuilder queryUrlBuilder, Headers headers, 
+             Map<String, Object> queryParams, Object body) {
+        super(method, queryUrlBuilder, headers, queryParams, null);
         this.body = body!=null ? body : "";
     }
 

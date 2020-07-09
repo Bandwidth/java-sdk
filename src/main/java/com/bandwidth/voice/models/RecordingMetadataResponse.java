@@ -336,7 +336,7 @@ public class RecordingMetadataResponse {
             .status(getStatus())
             .mediaUrl(getMediaUrl())
             .transcription(getTranscription());
-            return builder;
+        return builder;
     }
 
     /**
@@ -359,12 +359,7 @@ public class RecordingMetadataResponse {
         private String mediaUrl;
         private Transcription transcription;
 
-        /**
-         * Initialization constructor
-         */
-        public Builder() {
-           
-        }
+
 
         /**
          * Setter for applicationId
@@ -375,6 +370,7 @@ public class RecordingMetadataResponse {
             this.applicationId = applicationId;
             return this;
         }
+
         /**
          * Setter for accountId
          * @param accountId
@@ -384,6 +380,7 @@ public class RecordingMetadataResponse {
             this.accountId = accountId;
             return this;
         }
+
         /**
          * Setter for callId
          * @param callId
@@ -393,6 +390,7 @@ public class RecordingMetadataResponse {
             this.callId = callId;
             return this;
         }
+
         /**
          * Setter for recordingId
          * @param recordingId
@@ -402,6 +400,7 @@ public class RecordingMetadataResponse {
             this.recordingId = recordingId;
             return this;
         }
+
         /**
          * Setter for to
          * @param to
@@ -411,6 +410,7 @@ public class RecordingMetadataResponse {
             this.to = to;
             return this;
         }
+
         /**
          * Setter for from
          * @param from
@@ -420,6 +420,7 @@ public class RecordingMetadataResponse {
             this.from = from;
             return this;
         }
+
         /**
          * Setter for duration
          * @param duration
@@ -429,6 +430,7 @@ public class RecordingMetadataResponse {
             this.duration = duration;
             return this;
         }
+
         /**
          * Setter for direction
          * @param direction
@@ -438,6 +440,7 @@ public class RecordingMetadataResponse {
             this.direction = direction;
             return this;
         }
+
         /**
          * Setter for channels
          * @param channels
@@ -447,6 +450,7 @@ public class RecordingMetadataResponse {
             this.channels = channels;
             return this;
         }
+
         /**
          * Setter for startTime
          * @param startTime
@@ -456,6 +460,7 @@ public class RecordingMetadataResponse {
             this.startTime = startTime;
             return this;
         }
+
         /**
          * Setter for endTime
          * @param endTime
@@ -465,6 +470,7 @@ public class RecordingMetadataResponse {
             this.endTime = endTime;
             return this;
         }
+
         /**
          * Setter for fileFormat
          * @param fileFormat
@@ -474,6 +480,7 @@ public class RecordingMetadataResponse {
             this.fileFormat = fileFormat;
             return this;
         }
+
         /**
          * Setter for status
          * @param status
@@ -483,6 +490,7 @@ public class RecordingMetadataResponse {
             this.status = status;
             return this;
         }
+
         /**
          * Setter for mediaUrl
          * @param mediaUrl
@@ -492,6 +500,7 @@ public class RecordingMetadataResponse {
             this.mediaUrl = mediaUrl;
             return this;
         }
+
         /**
          * Setter for transcription
          * @param transcription

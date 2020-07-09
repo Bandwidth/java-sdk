@@ -7,6 +7,7 @@ package com.bandwidth.voice.controllers;
 
 import java.io.InputStream;
 import java.io.IOException;
+import java.util.AbstractMap.SimpleEntry;
 import java.util.concurrent.CompletableFuture;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +33,8 @@ import com.bandwidth.voice.models.ApiCreateCallRequest;
 import com.bandwidth.voice.models.ApiModifyCallRequest;
 import com.bandwidth.voice.models.ApiTranscribeRecordingRequest;
 import com.bandwidth.voice.models.CallEngineModifyConferenceRequest;
+import com.bandwidth.voice.models.ConferenceDetail;
+import com.bandwidth.voice.models.ConferenceMemberDetail;
 import com.bandwidth.voice.models.ModifyCallRecordingState;
 import com.bandwidth.voice.models.RecordingMetadataResponse;
 import com.bandwidth.voice.models.TranscriptionResponse;
@@ -98,11 +101,9 @@ public final class APIController extends BaseController {
         StringBuilder queryBuilder = new StringBuilder(baseUri + "/api/v2/accounts/{accountId}/calls");
 
         //process template parameters
-        Map<String, Object> templateParameters = new HashMap<>();
-        templateParameters.put("accountId", accountId);
-        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
-        //validate and preprocess url
-        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", new SimpleEntry<Object, Boolean>(accountId, true));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
@@ -112,7 +113,7 @@ public final class APIController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         String bodyJson = ApiHelper.serialize(body);
-        HttpRequest request = getClientInstance().postBody(queryUrl, headers, bodyJson);
+        HttpRequest request = getClientInstance().postBody(queryBuilder, headers, null, bodyJson);
 
         return request;
     }
@@ -206,12 +207,10 @@ public final class APIController extends BaseController {
         StringBuilder queryBuilder = new StringBuilder(baseUri + "/api/v2/accounts/{accountId}/calls/{callId}");
 
         //process template parameters
-        Map<String, Object> templateParameters = new HashMap<>();
-        templateParameters.put("accountId", accountId);
-        templateParameters.put("callId", callId);
-        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
-        //validate and preprocess url
-        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", new SimpleEntry<Object, Boolean>(accountId, true));
+        templateParameters.put("callId", new SimpleEntry<Object, Boolean>(callId, true));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
@@ -219,7 +218,7 @@ public final class APIController extends BaseController {
         headers.add("accept", "application/json");
 
         //prepare and invoke the API call request to fetch the response
-        HttpRequest request = getClientInstance().get(queryUrl, headers, null);
+        HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
 
         return request;
     }
@@ -317,12 +316,10 @@ public final class APIController extends BaseController {
         StringBuilder queryBuilder = new StringBuilder(baseUri + "/api/v2/accounts/{accountId}/calls/{callId}");
 
         //process template parameters
-        Map<String, Object> templateParameters = new HashMap<>();
-        templateParameters.put("accountId", accountId);
-        templateParameters.put("callId", callId);
-        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
-        //validate and preprocess url
-        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", new SimpleEntry<Object, Boolean>(accountId, true));
+        templateParameters.put("callId", new SimpleEntry<Object, Boolean>(callId, true));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
@@ -331,7 +328,7 @@ public final class APIController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         String bodyJson = ApiHelper.serialize(body);
-        HttpRequest request = getClientInstance().postBody(queryUrl, headers, bodyJson);
+        HttpRequest request = getClientInstance().postBody(queryBuilder, headers, null, bodyJson);
 
         return request;
     }
@@ -424,12 +421,10 @@ public final class APIController extends BaseController {
         StringBuilder queryBuilder = new StringBuilder(baseUri + "/api/v2/accounts/{accountId}/calls/{callId}/recording");
 
         //process template parameters
-        Map<String, Object> templateParameters = new HashMap<>();
-        templateParameters.put("accountId", accountId);
-        templateParameters.put("callId", callId);
-        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
-        //validate and preprocess url
-        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", new SimpleEntry<Object, Boolean>(accountId, true));
+        templateParameters.put("callId", new SimpleEntry<Object, Boolean>(callId, true));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
@@ -438,7 +433,7 @@ public final class APIController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         String bodyJson = ApiHelper.serialize(body);
-        HttpRequest request = getClientInstance().putBody(queryUrl, headers, bodyJson);
+        HttpRequest request = getClientInstance().putBody(queryBuilder, headers, null, bodyJson);
 
         return request;
     }
@@ -547,20 +542,17 @@ public final class APIController extends BaseController {
         StringBuilder queryBuilder = new StringBuilder(baseUri + "/api/v2/accounts/{accountId}/calls/{callId}/recordings");
 
         //process template parameters
-        Map<String, Object> templateParameters = new HashMap<>();
-        templateParameters.put("accountId", accountId);
-        templateParameters.put("callId", callId);
-        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", new SimpleEntry<Object, Boolean>(accountId, true));
+        templateParameters.put("callId", new SimpleEntry<Object, Boolean>(callId, true));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
-        //process query parameters
+        //load all query parameters
         Map<String, Object> queryParameters = new HashMap<>();
         queryParameters.put("from", from);
         queryParameters.put("to", to);
         queryParameters.put("minStartTime", minStartTime);
         queryParameters.put("maxStartTime", maxStartTime);
-        ApiHelper.appendUrlWithQueryParameters(queryBuilder, queryParameters);
-        //validate and preprocess url
-        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
@@ -568,7 +560,7 @@ public final class APIController extends BaseController {
         headers.add("accept", "application/json");
 
         //prepare and invoke the API call request to fetch the response
-        HttpRequest request = getClientInstance().get(queryUrl, headers, null);
+        HttpRequest request = getClientInstance().get(queryBuilder, headers, queryParameters, null);
 
         return request;
     }
@@ -666,13 +658,11 @@ public final class APIController extends BaseController {
         StringBuilder queryBuilder = new StringBuilder(baseUri + "/api/v2/accounts/{accountId}/calls/{callId}/recordings/{recordingId}");
 
         //process template parameters
-        Map<String, Object> templateParameters = new HashMap<>();
-        templateParameters.put("accountId", accountId);
-        templateParameters.put("callId", callId);
-        templateParameters.put("recordingId", recordingId);
-        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
-        //validate and preprocess url
-        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", new SimpleEntry<Object, Boolean>(accountId, true));
+        templateParameters.put("callId", new SimpleEntry<Object, Boolean>(callId, true));
+        templateParameters.put("recordingId", new SimpleEntry<Object, Boolean>(recordingId, true));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
@@ -680,7 +670,7 @@ public final class APIController extends BaseController {
         headers.add("accept", "application/json");
 
         //prepare and invoke the API call request to fetch the response
-        HttpRequest request = getClientInstance().get(queryUrl, headers, null);
+        HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
 
         return request;
     }
@@ -778,20 +768,18 @@ public final class APIController extends BaseController {
         StringBuilder queryBuilder = new StringBuilder(baseUri + "/api/v2/accounts/{accountId}/calls/{callId}/recordings/{recordingId}");
 
         //process template parameters
-        Map<String, Object> templateParameters = new HashMap<>();
-        templateParameters.put("accountId", accountId);
-        templateParameters.put("callId", callId);
-        templateParameters.put("recordingId", recordingId);
-        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
-        //validate and preprocess url
-        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", new SimpleEntry<Object, Boolean>(accountId, true));
+        templateParameters.put("callId", new SimpleEntry<Object, Boolean>(callId, true));
+        templateParameters.put("recordingId", new SimpleEntry<Object, Boolean>(recordingId, true));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
         headers.add("user-agent", BaseController.userAgent);
 
         //prepare and invoke the API call request to fetch the response
-        HttpRequest request = getClientInstance().delete(queryUrl, headers, null);
+        HttpRequest request = getClientInstance().delete(queryBuilder, headers, null, null);
 
         return request;
     }
@@ -885,20 +873,18 @@ public final class APIController extends BaseController {
         StringBuilder queryBuilder = new StringBuilder(baseUri + "/api/v2/accounts/{accountId}/calls/{callId}/recordings/{recordingId}/media");
 
         //process template parameters
-        Map<String, Object> templateParameters = new HashMap<>();
-        templateParameters.put("accountId", accountId);
-        templateParameters.put("callId", callId);
-        templateParameters.put("recordingId", recordingId);
-        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
-        //validate and preprocess url
-        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", new SimpleEntry<Object, Boolean>(accountId, true));
+        templateParameters.put("callId", new SimpleEntry<Object, Boolean>(callId, true));
+        templateParameters.put("recordingId", new SimpleEntry<Object, Boolean>(recordingId, true));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
         headers.add("user-agent", BaseController.userAgent);
 
         //prepare and invoke the API call request to fetch the response
-        HttpRequest request = getClientInstance().get(queryUrl, headers, null);
+        HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
 
         return request;
     }
@@ -993,20 +979,18 @@ public final class APIController extends BaseController {
         StringBuilder queryBuilder = new StringBuilder(baseUri + "/api/v2/accounts/{accountId}/calls/{callId}/recordings/{recordingId}/media");
 
         //process template parameters
-        Map<String, Object> templateParameters = new HashMap<>();
-        templateParameters.put("accountId", accountId);
-        templateParameters.put("callId", callId);
-        templateParameters.put("recordingId", recordingId);
-        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
-        //validate and preprocess url
-        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", new SimpleEntry<Object, Boolean>(accountId, true));
+        templateParameters.put("callId", new SimpleEntry<Object, Boolean>(callId, true));
+        templateParameters.put("recordingId", new SimpleEntry<Object, Boolean>(recordingId, true));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
         headers.add("user-agent", BaseController.userAgent);
 
         //prepare and invoke the API call request to fetch the response
-        HttpRequest request = getClientInstance().delete(queryUrl, headers, null);
+        HttpRequest request = getClientInstance().delete(queryBuilder, headers, null, null);
 
         return request;
     }
@@ -1100,13 +1084,11 @@ public final class APIController extends BaseController {
         StringBuilder queryBuilder = new StringBuilder(baseUri + "/api/v2/accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription");
 
         //process template parameters
-        Map<String, Object> templateParameters = new HashMap<>();
-        templateParameters.put("accountId", accountId);
-        templateParameters.put("callId", callId);
-        templateParameters.put("recordingId", recordingId);
-        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
-        //validate and preprocess url
-        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", new SimpleEntry<Object, Boolean>(accountId, true));
+        templateParameters.put("callId", new SimpleEntry<Object, Boolean>(callId, true));
+        templateParameters.put("recordingId", new SimpleEntry<Object, Boolean>(recordingId, true));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
@@ -1114,7 +1096,7 @@ public final class APIController extends BaseController {
         headers.add("accept", "application/json");
 
         //prepare and invoke the API call request to fetch the response
-        HttpRequest request = getClientInstance().get(queryUrl, headers, null);
+        HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
 
         return request;
     }
@@ -1217,13 +1199,11 @@ public final class APIController extends BaseController {
         StringBuilder queryBuilder = new StringBuilder(baseUri + "/api/v2/accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription");
 
         //process template parameters
-        Map<String, Object> templateParameters = new HashMap<>();
-        templateParameters.put("accountId", accountId);
-        templateParameters.put("callId", callId);
-        templateParameters.put("recordingId", recordingId);
-        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
-        //validate and preprocess url
-        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", new SimpleEntry<Object, Boolean>(accountId, true));
+        templateParameters.put("callId", new SimpleEntry<Object, Boolean>(callId, true));
+        templateParameters.put("recordingId", new SimpleEntry<Object, Boolean>(recordingId, true));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
@@ -1232,7 +1212,7 @@ public final class APIController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         String bodyJson = ApiHelper.serialize(body);
-        HttpRequest request = getClientInstance().postBody(queryUrl, headers, bodyJson);
+        HttpRequest request = getClientInstance().postBody(queryBuilder, headers, null, bodyJson);
 
         return request;
     }
@@ -1328,20 +1308,18 @@ public final class APIController extends BaseController {
         StringBuilder queryBuilder = new StringBuilder(baseUri + "/api/v2/accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription");
 
         //process template parameters
-        Map<String, Object> templateParameters = new HashMap<>();
-        templateParameters.put("accountId", accountId);
-        templateParameters.put("callId", callId);
-        templateParameters.put("recordingId", recordingId);
-        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
-        //validate and preprocess url
-        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", new SimpleEntry<Object, Boolean>(accountId, true));
+        templateParameters.put("callId", new SimpleEntry<Object, Boolean>(callId, true));
+        templateParameters.put("recordingId", new SimpleEntry<Object, Boolean>(recordingId, true));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
         headers.add("user-agent", BaseController.userAgent);
 
         //prepare and invoke the API call request to fetch the response
-        HttpRequest request = getClientInstance().delete(queryUrl, headers, null);
+        HttpRequest request = getClientInstance().delete(queryBuilder, headers, null, null);
 
         return request;
     }
@@ -1382,6 +1360,111 @@ public final class APIController extends BaseController {
         validateResponse(response, context);
 
         return new ApiResponse<Void>(response.getStatusCode(), response.getHeaders(), null);
+    }
+
+    /**
+     * Returns information about the specified conference
+     * @param    accountId    Required parameter: Example: 
+     * @param    conferenceId    Required parameter: Example: 
+     * @return    Returns the ApiResponse<ConferenceDetail> response from the API call
+     */
+    public ApiResponse<ConferenceDetail> getConferenceById(
+            final String accountId,
+            final String conferenceId) throws ApiException, IOException {
+        HttpRequest request = buildGetConferenceByIdRequest(accountId, conferenceId);
+        authManagers.get("voice").apply(request);
+
+        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpContext context = new HttpContext(request, response);
+
+        return handleGetConferenceByIdResponse(context);
+    }
+
+    /**
+     * Returns information about the specified conference
+     * @param    accountId    Required parameter: Example: 
+     * @param    conferenceId    Required parameter: Example: 
+     * @return    Returns the ApiResponse<ConferenceDetail> response from the API call 
+     */
+    public CompletableFuture<ApiResponse<ConferenceDetail>> getConferenceByIdAsync(
+            final String accountId,
+            final String conferenceId) {
+        return makeHttpCallAsync(() -> buildGetConferenceByIdRequest(accountId, conferenceId),
+                req -> authManagers.get("voice").applyAsync(req)
+                    .thenCompose(request -> getClientInstance().executeAsStringAsync(request)),
+                context -> handleGetConferenceByIdResponse(context));
+    }
+
+    /**
+     * Builds the HttpRequest object for getConferenceById
+     */
+    private HttpRequest buildGetConferenceByIdRequest(
+            final String accountId,
+            final String conferenceId) {
+        //the base uri for api requests
+        String baseUri = config.getBaseUri(Server.VOICEDEFAULT);
+
+        //prepare query string for API call
+        StringBuilder queryBuilder = new StringBuilder(baseUri + "/api/v2/accounts/{accountId}/conferences/{conferenceId}");
+
+        //process template parameters
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", new SimpleEntry<Object, Boolean>(accountId, true));
+        templateParameters.put("conferenceId", new SimpleEntry<Object, Boolean>(conferenceId, true));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
+
+        //load all headers for the outgoing API request
+        Headers headers = new Headers();
+        headers.add("user-agent", BaseController.userAgent);
+        headers.add("accept", "application/json");
+
+        //prepare and invoke the API call request to fetch the response
+        HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
+
+        return request;
+    }
+
+    /**
+     * Processes the response for getConferenceById
+     * @return An object of type ConferenceDetail
+     */
+    private ApiResponse<ConferenceDetail> handleGetConferenceByIdResponse(HttpContext context)
+            throws ApiException, IOException {
+        HttpResponse response = context.getResponse();
+
+        //Error handling using HTTP status codes
+        int responseCode = response.getStatusCode();
+
+        if (responseCode == 400) {
+            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+        }
+        if (responseCode == 401) {
+            throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
+        }
+        if (responseCode == 403) {
+            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+        }
+        if (responseCode == 404) {
+            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+        }
+        if (responseCode == 415) {
+            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+        }
+        if (responseCode == 429) {
+            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+        }
+        if (responseCode == 500) {
+            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+        }
+        //handle errors defined at the API level
+        validateResponse(response, context);
+
+        //extract result from the http response
+        String responseBody = ((HttpStringResponse)response).getBody();
+        ConferenceDetail result = ApiHelper.deserialize(responseBody,
+                ConferenceDetail.class);
+
+        return new ApiResponse<ConferenceDetail>(response.getStatusCode(), response.getHeaders(), result);
     }
 
     /**
@@ -1434,12 +1517,10 @@ public final class APIController extends BaseController {
         StringBuilder queryBuilder = new StringBuilder(baseUri + "/api/v2/accounts/{accountId}/conferences/{conferenceId}");
 
         //process template parameters
-        Map<String, Object> templateParameters = new HashMap<>();
-        templateParameters.put("accountId", accountId);
-        templateParameters.put("conferenceId", conferenceId);
-        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
-        //validate and preprocess url
-        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", new SimpleEntry<Object, Boolean>(accountId, true));
+        templateParameters.put("conferenceId", new SimpleEntry<Object, Boolean>(conferenceId, true));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
@@ -1448,7 +1529,7 @@ public final class APIController extends BaseController {
 
         //prepare and invoke the API call request to fetch the response
         String bodyJson = ApiHelper.serialize(body);
-        HttpRequest request = getClientInstance().postBody(queryUrl, headers, bodyJson);
+        HttpRequest request = getClientInstance().postBody(queryBuilder, headers, null, bodyJson);
 
         return request;
     }
@@ -1489,6 +1570,117 @@ public final class APIController extends BaseController {
         validateResponse(response, context);
 
         return new ApiResponse<Void>(response.getStatusCode(), response.getHeaders(), null);
+    }
+
+    /**
+     * Returns information about the specified conference member
+     * @param    accountId    Required parameter: Example: 
+     * @param    conferenceId    Required parameter: Example: 
+     * @param    memberId    Required parameter: Example: 
+     * @return    Returns the ApiResponse<ConferenceMemberDetail> response from the API call
+     */
+    public ApiResponse<ConferenceMemberDetail> getConferenceMember(
+            final String accountId,
+            final String conferenceId,
+            final String memberId) throws ApiException, IOException {
+        HttpRequest request = buildGetConferenceMemberRequest(accountId, conferenceId, memberId);
+        authManagers.get("voice").apply(request);
+
+        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpContext context = new HttpContext(request, response);
+
+        return handleGetConferenceMemberResponse(context);
+    }
+
+    /**
+     * Returns information about the specified conference member
+     * @param    accountId    Required parameter: Example: 
+     * @param    conferenceId    Required parameter: Example: 
+     * @param    memberId    Required parameter: Example: 
+     * @return    Returns the ApiResponse<ConferenceMemberDetail> response from the API call 
+     */
+    public CompletableFuture<ApiResponse<ConferenceMemberDetail>> getConferenceMemberAsync(
+            final String accountId,
+            final String conferenceId,
+            final String memberId) {
+        return makeHttpCallAsync(() -> buildGetConferenceMemberRequest(accountId, conferenceId, memberId),
+                req -> authManagers.get("voice").applyAsync(req)
+                    .thenCompose(request -> getClientInstance().executeAsStringAsync(request)),
+                context -> handleGetConferenceMemberResponse(context));
+    }
+
+    /**
+     * Builds the HttpRequest object for getConferenceMember
+     */
+    private HttpRequest buildGetConferenceMemberRequest(
+            final String accountId,
+            final String conferenceId,
+            final String memberId) {
+        //the base uri for api requests
+        String baseUri = config.getBaseUri(Server.VOICEDEFAULT);
+
+        //prepare query string for API call
+        StringBuilder queryBuilder = new StringBuilder(baseUri + "/api/v2/accounts/{accountId}/conferences/{conferenceId}/members/{memberId}");
+
+        //process template parameters
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", new SimpleEntry<Object, Boolean>(accountId, true));
+        templateParameters.put("conferenceId", new SimpleEntry<Object, Boolean>(conferenceId, true));
+        templateParameters.put("memberId", new SimpleEntry<Object, Boolean>(memberId, true));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
+
+        //load all headers for the outgoing API request
+        Headers headers = new Headers();
+        headers.add("user-agent", BaseController.userAgent);
+        headers.add("accept", "application/json");
+
+        //prepare and invoke the API call request to fetch the response
+        HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
+
+        return request;
+    }
+
+    /**
+     * Processes the response for getConferenceMember
+     * @return An object of type ConferenceMemberDetail
+     */
+    private ApiResponse<ConferenceMemberDetail> handleGetConferenceMemberResponse(HttpContext context)
+            throws ApiException, IOException {
+        HttpResponse response = context.getResponse();
+
+        //Error handling using HTTP status codes
+        int responseCode = response.getStatusCode();
+
+        if (responseCode == 400) {
+            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+        }
+        if (responseCode == 401) {
+            throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
+        }
+        if (responseCode == 403) {
+            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+        }
+        if (responseCode == 404) {
+            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+        }
+        if (responseCode == 415) {
+            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+        }
+        if (responseCode == 429) {
+            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+        }
+        if (responseCode == 500) {
+            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+        }
+        //handle errors defined at the API level
+        validateResponse(response, context);
+
+        //extract result from the http response
+        String responseBody = ((HttpStringResponse)response).getBody();
+        ConferenceMemberDetail result = ApiHelper.deserialize(responseBody,
+                ConferenceMemberDetail.class);
+
+        return new ApiResponse<ConferenceMemberDetail>(response.getStatusCode(), response.getHeaders(), result);
     }
 
     /**
@@ -1552,19 +1744,16 @@ public final class APIController extends BaseController {
         StringBuilder queryBuilder = new StringBuilder(baseUri + "/api/v2/accounts/{accountId}/recordings");
 
         //process template parameters
-        Map<String, Object> templateParameters = new HashMap<>();
-        templateParameters.put("accountId", accountId);
-        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters, true);
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId", new SimpleEntry<Object, Boolean>(accountId, true));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
-        //process query parameters
+        //load all query parameters
         Map<String, Object> queryParameters = new HashMap<>();
         queryParameters.put("from", from);
         queryParameters.put("to", to);
         queryParameters.put("minStartTime", minStartTime);
         queryParameters.put("maxStartTime", maxStartTime);
-        ApiHelper.appendUrlWithQueryParameters(queryBuilder, queryParameters);
-        //validate and preprocess url
-        String queryUrl = ApiHelper.cleanUrl(queryBuilder);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
@@ -1572,7 +1761,7 @@ public final class APIController extends BaseController {
         headers.add("accept", "application/json");
 
         //prepare and invoke the API call request to fetch the response
-        HttpRequest request = getClientInstance().get(queryUrl, headers, null);
+        HttpRequest request = getClientInstance().get(queryBuilder, headers, queryParameters, null);
 
         return request;
     }

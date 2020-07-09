@@ -297,7 +297,7 @@ public class ApiCreateCallRequest {
             .tag(getTag())
             .obfuscatedTo(getObfuscatedTo())
             .obfuscatedFrom(getObfuscatedFrom());
-            return builder;
+        return builder;
     }
 
     /**
@@ -322,7 +322,6 @@ public class ApiCreateCallRequest {
          * Initialization constructor
          */
         public Builder() {
-            
         }
 
         /**
@@ -347,6 +346,7 @@ public class ApiCreateCallRequest {
             this.from = from;
             return this;
         }
+
         /**
          * Setter for to
          * @param to
@@ -356,6 +356,7 @@ public class ApiCreateCallRequest {
             this.to = to;
             return this;
         }
+
         /**
          * Setter for answerUrl
          * @param answerUrl
@@ -365,6 +366,7 @@ public class ApiCreateCallRequest {
             this.answerUrl = answerUrl;
             return this;
         }
+
         /**
          * Setter for applicationId
          * @param applicationId
@@ -374,6 +376,7 @@ public class ApiCreateCallRequest {
             this.applicationId = applicationId;
             return this;
         }
+
         /**
          * Setter for callTimeout
          * @param callTimeout
@@ -383,6 +386,7 @@ public class ApiCreateCallRequest {
             this.callTimeout = callTimeout;
             return this;
         }
+
         /**
          * Setter for username
          * @param username
@@ -392,6 +396,7 @@ public class ApiCreateCallRequest {
             this.username = username;
             return this;
         }
+
         /**
          * Setter for password
          * @param password
@@ -401,6 +406,7 @@ public class ApiCreateCallRequest {
             this.password = password;
             return this;
         }
+
         /**
          * Setter for answerMethod
          * @param answerMethod
@@ -410,6 +416,7 @@ public class ApiCreateCallRequest {
             this.answerMethod = answerMethod;
             return this;
         }
+
         /**
          * Setter for disconnectUrl
          * @param disconnectUrl
@@ -419,6 +426,7 @@ public class ApiCreateCallRequest {
             this.disconnectUrl = disconnectUrl;
             return this;
         }
+
         /**
          * Setter for disconnectMethod
          * @param disconnectMethod
@@ -428,6 +436,7 @@ public class ApiCreateCallRequest {
             this.disconnectMethod = disconnectMethod;
             return this;
         }
+
         /**
          * Setter for tag
          * @param tag
@@ -437,6 +446,7 @@ public class ApiCreateCallRequest {
             this.tag = tag;
             return this;
         }
+
         /**
          * Setter for obfuscatedTo
          * @param obfuscatedTo
@@ -446,6 +456,7 @@ public class ApiCreateCallRequest {
             this.obfuscatedTo = obfuscatedTo;
             return this;
         }
+
         /**
          * Setter for obfuscatedFrom
          * @param obfuscatedFrom

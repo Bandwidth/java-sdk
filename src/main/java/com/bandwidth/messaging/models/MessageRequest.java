@@ -155,7 +155,7 @@ public class MessageRequest {
             .text(getText())
             .media(getMedia())
             .tag(getTag());
-            return builder;
+        return builder;
     }
 
     /**
@@ -169,12 +169,7 @@ public class MessageRequest {
         private List<String> media;
         private String tag;
 
-        /**
-         * Initialization constructor
-         */
-        public Builder() {
-           
-        }
+
 
         /**
          * Setter for applicationId
@@ -185,6 +180,7 @@ public class MessageRequest {
             this.applicationId = applicationId;
             return this;
         }
+
         /**
          * Setter for to
          * @param to
@@ -194,6 +190,7 @@ public class MessageRequest {
             this.to = to;
             return this;
         }
+
         /**
          * Setter for from
          * @param from
@@ -203,6 +200,7 @@ public class MessageRequest {
             this.from = from;
             return this;
         }
+
         /**
          * Setter for text
          * @param text
@@ -212,6 +210,7 @@ public class MessageRequest {
             this.text = text;
             return this;
         }
+
         /**
          * Setter for media
          * @param media
@@ -221,6 +220,7 @@ public class MessageRequest {
             this.media = media;
             return this;
         }
+
         /**
          * Setter for tag
          * @param tag

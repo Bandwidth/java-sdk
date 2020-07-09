@@ -54,7 +54,7 @@ public class TwoFactorVerifyCodeResponse {
     public Builder toBuilder() {
         Builder builder = new Builder()
             .valid(getValid());
-            return builder;
+        return builder;
     }
 
     /**
@@ -63,12 +63,7 @@ public class TwoFactorVerifyCodeResponse {
     public static class Builder {
         private Boolean valid;
 
-        /**
-         * Initialization constructor
-         */
-        public Builder() {
-           
-        }
+
 
         /**
          * Setter for valid

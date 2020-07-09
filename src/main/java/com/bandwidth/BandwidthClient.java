@@ -5,8 +5,9 @@
  */
 package com.bandwidth;
 
-import java.util.Map;
+import java.util.AbstractMap.SimpleEntry;
 import java.util.HashMap;
+import java.util.Map;
 
 
 import com.bandwidth.http.client.HttpClient;
@@ -237,8 +238,8 @@ public final class BandwidthClient implements Configuration {
      */
     public String getBaseUri(Server server) {
         StringBuilder baseUrl = new StringBuilder(environmentMapper(environment, server));
-        Map<String, Object> parameters = new HashMap<>();
-        ApiHelper.appendUrlWithTemplateParameters(baseUrl, parameters, false);
+        Map<String, SimpleEntry<Object, Boolean>> parameters = new HashMap<>();
+        ApiHelper.appendUrlWithTemplateParameters(baseUrl, parameters);
         return baseUrl.toString();
     }
 

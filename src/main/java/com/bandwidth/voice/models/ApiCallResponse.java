@@ -339,7 +339,7 @@ public class ApiCallResponse {
             .username(getUsername())
             .password(getPassword())
             .tag(getTag());
-            return builder;
+        return builder;
     }
 
     /**
@@ -366,7 +366,6 @@ public class ApiCallResponse {
          * Initialization constructor
          */
         public Builder() {
-            
         }
 
         /**
@@ -401,6 +400,7 @@ public class ApiCallResponse {
             this.accountId = accountId;
             return this;
         }
+
         /**
          * Setter for callId
          * @param callId
@@ -410,6 +410,7 @@ public class ApiCallResponse {
             this.callId = callId;
             return this;
         }
+
         /**
          * Setter for applicationId
          * @param applicationId
@@ -419,6 +420,7 @@ public class ApiCallResponse {
             this.applicationId = applicationId;
             return this;
         }
+
         /**
          * Setter for to
          * @param to
@@ -428,6 +430,7 @@ public class ApiCallResponse {
             this.to = to;
             return this;
         }
+
         /**
          * Setter for from
          * @param from
@@ -437,6 +440,7 @@ public class ApiCallResponse {
             this.from = from;
             return this;
         }
+
         /**
          * Setter for callUrl
          * @param callUrl
@@ -446,6 +450,7 @@ public class ApiCallResponse {
             this.callUrl = callUrl;
             return this;
         }
+
         /**
          * Setter for answerUrl
          * @param answerUrl
@@ -455,6 +460,7 @@ public class ApiCallResponse {
             this.answerUrl = answerUrl;
             return this;
         }
+
         /**
          * Setter for answerMethod
          * @param answerMethod
@@ -464,6 +470,7 @@ public class ApiCallResponse {
             this.answerMethod = answerMethod;
             return this;
         }
+
         /**
          * Setter for disconnectMethod
          * @param disconnectMethod
@@ -473,6 +480,7 @@ public class ApiCallResponse {
             this.disconnectMethod = disconnectMethod;
             return this;
         }
+
         /**
          * Setter for startTime
          * @param startTime
@@ -482,6 +490,7 @@ public class ApiCallResponse {
             this.startTime = startTime;
             return this;
         }
+
         /**
          * Setter for callTimeout
          * @param callTimeout
@@ -491,6 +500,7 @@ public class ApiCallResponse {
             this.callTimeout = callTimeout;
             return this;
         }
+
         /**
          * Setter for disconnectUrl
          * @param disconnectUrl
@@ -500,6 +510,7 @@ public class ApiCallResponse {
             this.disconnectUrl = disconnectUrl;
             return this;
         }
+
         /**
          * Setter for username
          * @param username
@@ -509,6 +520,7 @@ public class ApiCallResponse {
             this.username = username;
             return this;
         }
+
         /**
          * Setter for password
          * @param password
@@ -518,6 +530,7 @@ public class ApiCallResponse {
             this.password = password;
             return this;
         }
+
         /**
          * Setter for tag
          * @param tag

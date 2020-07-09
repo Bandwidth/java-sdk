@@ -153,7 +153,7 @@ public class ApiModifyCallRequest {
             .username(getUsername())
             .password(getPassword())
             .tag(getTag());
-            return builder;
+        return builder;
     }
 
     /**
@@ -171,7 +171,6 @@ public class ApiModifyCallRequest {
          * Initialization constructor
          */
         public Builder() {
-            
         }
 
         /**
@@ -190,6 +189,7 @@ public class ApiModifyCallRequest {
             this.redirectUrl = redirectUrl;
             return this;
         }
+
         /**
          * Setter for state
          * @param state
@@ -199,6 +199,7 @@ public class ApiModifyCallRequest {
             this.state = state;
             return this;
         }
+
         /**
          * Setter for redirectMethod
          * @param redirectMethod
@@ -208,6 +209,7 @@ public class ApiModifyCallRequest {
             this.redirectMethod = redirectMethod;
             return this;
         }
+
         /**
          * Setter for username
          * @param username
@@ -217,6 +219,7 @@ public class ApiModifyCallRequest {
             this.username = username;
             return this;
         }
+
         /**
          * Setter for password
          * @param password
@@ -226,6 +229,7 @@ public class ApiModifyCallRequest {
             this.password = password;
             return this;
         }
+
         /**
          * Setter for tag
          * @param tag
