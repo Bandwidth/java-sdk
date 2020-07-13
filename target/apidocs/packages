@@ -1,4 +1,12 @@
 com.bandwidth
+com.bandwidth.webrtc.exceptions
+com.bandwidth.webrtc.models
+com.bandwidth.webrtc.models
+com.bandwidth.webrtc.models
+com.bandwidth.webrtc.models
+com.bandwidth.webrtc.models
+com.bandwidth.webrtc.models
+com.bandwidth.webrtc.controllers
 com.bandwidth
 com.bandwidth.messaging.exceptions
 com.bandwidth.messaging.models
@@ -9,6 +17,7 @@ com.bandwidth.messaging.models
 com.bandwidth.messaging.models
 com.bandwidth.messaging.controllers
 com.bandwidth.exceptions
+com.bandwidth
 com.bandwidth.twofactorauth.exceptions
 com.bandwidth.twofactorauth.models
 com.bandwidth.twofactorauth.models
@@ -96,7 +105,9 @@ com.bandwidth.controllers
 com.bandwidth
 com.bandwidth
 com.bandwidth
+com.bandwidth
 com.bandwidth.utilities
+com.bandwidth
 com.bandwidth
 com.bandwidth
 com.bandwidth

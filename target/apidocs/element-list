@@ -17,3 +17,6 @@ com.bandwidth.voice.bxml.verbs.adapter
 com.bandwidth.voice.controllers
 com.bandwidth.voice.exceptions
 com.bandwidth.voice.models
+com.bandwidth.webrtc.controllers
+com.bandwidth.webrtc.exceptions
+com.bandwidth.webrtc.models
