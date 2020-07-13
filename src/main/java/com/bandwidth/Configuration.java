@@ -49,6 +49,12 @@ public interface Configuration {
     VoiceBasicAuthCredentials getVoiceBasicAuthCredentials();
 
     /**
+     * The credentials to use with basic authentication
+     * @return basicAuthCredentials
+     */
+    WebRtcBasicAuthCredentials getWebRtcBasicAuthCredentials();
+
+    /**
      * Get base URI by current environment
      * @param server Server for which to get the base URI
      * @return Processed base URI
