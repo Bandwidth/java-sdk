@@ -21,7 +21,9 @@ public enum Status1Enum {
 
     DELETED,
 
-    ERROR;
+    ERROR,
+
+    ALREADYINPROGRESS;
 
 
     private static TreeMap<String, Status1Enum> valueMap = new TreeMap<>();
@@ -33,12 +35,14 @@ public enum Status1Enum {
         COMPLETE.value = "complete";
         DELETED.value = "deleted";
         ERROR.value = "error";
+        ALREADYINPROGRESS.value = "already-in-progress";
 
         valueMap.put("processing", PROCESSING);
         valueMap.put("partial", PARTIAL);
         valueMap.put("complete", COMPLETE);
         valueMap.put("deleted", DELETED);
         valueMap.put("error", ERROR);
+        valueMap.put("already-in-progress", ALREADYINPROGRESS);
     }
 
     /**

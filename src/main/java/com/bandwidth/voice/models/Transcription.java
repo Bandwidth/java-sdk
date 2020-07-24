@@ -28,7 +28,7 @@ public class Transcription {
      */
     public Transcription(
             String id,
-            Status2Enum status,
+            Status3Enum status,
             String completedTime,
             String url) {
         this.id = id;
@@ -38,7 +38,7 @@ public class Transcription {
     }
 
     private String id;
-    private Status2Enum status;
+    private Status3Enum status;
     private String completedTime;
     private String url;
     /**
@@ -60,14 +60,14 @@ public class Transcription {
      * Getter for Status.
      */
     @JsonGetter("status")
-    public Status2Enum getStatus() {
+    public Status3Enum getStatus() {
         return this.status;
     }
     /**
      * Setter for Status.
      */
     @JsonSetter("status")
-    public void setStatus(Status2Enum value) {
+    public void setStatus(Status3Enum value) {
         this.status = value;
     }
 
@@ -122,7 +122,7 @@ public class Transcription {
      */
     public static class Builder {
         private String id;
-        private Status2Enum status;
+        private Status3Enum status;
         private String completedTime;
         private String url;
 
@@ -143,7 +143,7 @@ public class Transcription {
          * @param status
          * @return Builder
          */
-        public Builder status(Status2Enum status) {
+        public Builder status(Status3Enum status) {
             this.status = status;
             return this;
         }

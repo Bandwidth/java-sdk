@@ -24,9 +24,12 @@ public class RecordingMetadataResponse {
      * @param applicationId
      * @param accountId
      * @param callId
+     * @param parentCallId
      * @param recordingId
      * @param to
      * @param from
+     * @param transferCallerId
+     * @param transferTo
      * @param duration
      * @param direction
      * @param channels
@@ -41,9 +44,12 @@ public class RecordingMetadataResponse {
             String applicationId,
             String accountId,
             String callId,
+            String parentCallId,
             String recordingId,
             String to,
             String from,
+            String transferCallerId,
+            String transferTo,
             String duration,
             DirectionEnum direction,
             Integer channels,
@@ -56,9 +62,12 @@ public class RecordingMetadataResponse {
         this.applicationId = applicationId;
         this.accountId = accountId;
         this.callId = callId;
+        this.parentCallId = parentCallId;
         this.recordingId = recordingId;
         this.to = to;
         this.from = from;
+        this.transferCallerId = transferCallerId;
+        this.transferTo = transferTo;
         this.duration = duration;
         this.direction = direction;
         this.channels = channels;
@@ -73,9 +82,12 @@ public class RecordingMetadataResponse {
     private String applicationId;
     private String accountId;
     private String callId;
+    private String parentCallId;
     private String recordingId;
     private String to;
     private String from;
+    private String transferCallerId;
+    private String transferTo;
     private String duration;
     private DirectionEnum direction;
     private Integer channels;
@@ -131,6 +143,21 @@ public class RecordingMetadataResponse {
     }
 
     /**
+     * Getter for ParentCallId.
+     */
+    @JsonGetter("parentCallId")
+    public String getParentCallId() {
+        return this.parentCallId;
+    }
+    /**
+     * Setter for ParentCallId.
+     */
+    @JsonSetter("parentCallId")
+    public void setParentCallId(String value) {
+        this.parentCallId = value;
+    }
+
+    /**
      * Getter for RecordingId.
      */
     @JsonGetter("recordingId")
@@ -173,6 +200,36 @@ public class RecordingMetadataResponse {
     @JsonSetter("from")
     public void setFrom(String value) {
         this.from = value;
+    }
+
+    /**
+     * Getter for TransferCallerId.
+     */
+    @JsonGetter("transferCallerId")
+    public String getTransferCallerId() {
+        return this.transferCallerId;
+    }
+    /**
+     * Setter for TransferCallerId.
+     */
+    @JsonSetter("transferCallerId")
+    public void setTransferCallerId(String value) {
+        this.transferCallerId = value;
+    }
+
+    /**
+     * Getter for TransferTo.
+     */
+    @JsonGetter("transferTo")
+    public String getTransferTo() {
+        return this.transferTo;
+    }
+    /**
+     * Setter for TransferTo.
+     */
+    @JsonSetter("transferTo")
+    public void setTransferTo(String value) {
+        this.transferTo = value;
     }
 
     /**
@@ -324,9 +381,12 @@ public class RecordingMetadataResponse {
             .applicationId(getApplicationId())
             .accountId(getAccountId())
             .callId(getCallId())
+            .parentCallId(getParentCallId())
             .recordingId(getRecordingId())
             .to(getTo())
             .from(getFrom())
+            .transferCallerId(getTransferCallerId())
+            .transferTo(getTransferTo())
             .duration(getDuration())
             .direction(getDirection())
             .channels(getChannels())
@@ -346,9 +406,12 @@ public class RecordingMetadataResponse {
         private String applicationId;
         private String accountId;
         private String callId;
+        private String parentCallId;
         private String recordingId;
         private String to;
         private String from;
+        private String transferCallerId;
+        private String transferTo;
         private String duration;
         private DirectionEnum direction;
         private Integer channels;
@@ -392,6 +455,16 @@ public class RecordingMetadataResponse {
         }
 
         /**
+         * Setter for parentCallId
+         * @param parentCallId
+         * @return Builder
+         */
+        public Builder parentCallId(String parentCallId) {
+            this.parentCallId = parentCallId;
+            return this;
+        }
+
+        /**
          * Setter for recordingId
          * @param recordingId
          * @return Builder
@@ -418,6 +491,26 @@ public class RecordingMetadataResponse {
          */
         public Builder from(String from) {
             this.from = from;
+            return this;
+        }
+
+        /**
+         * Setter for transferCallerId
+         * @param transferCallerId
+         * @return Builder
+         */
+        public Builder transferCallerId(String transferCallerId) {
+            this.transferCallerId = transferCallerId;
+            return this;
+        }
+
+        /**
+         * Setter for transferTo
+         * @param transferTo
+         * @return Builder
+         */
+        public Builder transferTo(String transferTo) {
+            this.transferTo = transferTo;
             return this;
         }
 
@@ -519,9 +612,12 @@ public class RecordingMetadataResponse {
             return new RecordingMetadataResponse(applicationId,
                 accountId,
                 callId,
+                parentCallId,
                 recordingId,
                 to,
                 from,
+                transferCallerId,
+                transferTo,
                 duration,
                 direction,
                 channels,
