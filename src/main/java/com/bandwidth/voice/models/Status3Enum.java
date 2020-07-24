@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.TreeMap;
 
 /**
- * Status2Enum to be used.
+ * Status3Enum to be used.
  */
-public enum Status2Enum {
+public enum Status3Enum {
     NONE,
 
     PROCESSING,
@@ -28,7 +28,7 @@ public enum Status2Enum {
     FILESIZETOOSMALL;
 
 
-    private static TreeMap<String, Status2Enum> valueMap = new TreeMap<>();
+    private static TreeMap<String, Status3Enum> valueMap = new TreeMap<>();
     private String value;
 
     static {
@@ -53,7 +53,7 @@ public enum Status2Enum {
      * Returns the enum member associated with the given string value
      * @return The enum member against the given string value */
     @com.fasterxml.jackson.annotation.JsonCreator
-    public static Status2Enum fromString(String toConvert) {
+    public static Status3Enum fromString(String toConvert) {
         return valueMap.get(toConvert);
     }
 
@@ -74,14 +74,14 @@ public enum Status2Enum {
     }
 
     /**
-     * Convert list of Status2Enum values to list of string values
-     * @param toConvert The list of Status2Enum values to convert
+     * Convert list of Status3Enum values to list of string values
+     * @param toConvert The list of Status3Enum values to convert
      * @return List of representative string values */
-    public static List<String> toValue(List<Status2Enum> toConvert) {
+    public static List<String> toValue(List<Status3Enum> toConvert) {
         if(toConvert == null)
             return null;
         List<String> convertedValues = new ArrayList<>();
-        for (Status2Enum enumValue : toConvert) {
+        for (Status3Enum enumValue : toConvert) {
             convertedValues.add(enumValue.value);
         }
         return convertedValues;

@@ -21,14 +21,30 @@ public class CallEngineModifyConferenceRequest {
 
     /**
      * Initialization constructor.
+     * @param redirectUrl
      * @param status
+     * @param redirectMethod
+     * @param username
+     * @param password
      */
     public CallEngineModifyConferenceRequest(
-            StatusEnum status) {
+            String redirectUrl,
+            StatusEnum status,
+            RedirectMethodEnum redirectMethod,
+            String username,
+            String password) {
         this.status = status;
+        this.redirectUrl = redirectUrl;
+        this.redirectMethod = redirectMethod;
+        this.username = username;
+        this.password = password;
     }
 
     private StatusEnum status;
+    private String redirectUrl;
+    private RedirectMethodEnum redirectMethod;
+    private String username;
+    private String password;
     /**
      * Getter for Status.
      */
@@ -44,6 +60,66 @@ public class CallEngineModifyConferenceRequest {
         this.status = value;
     }
 
+    /**
+     * Getter for RedirectUrl.
+     */
+    @JsonGetter("redirectUrl")
+    public String getRedirectUrl() {
+        return this.redirectUrl;
+    }
+    /**
+     * Setter for RedirectUrl.
+     */
+    @JsonSetter("redirectUrl")
+    public void setRedirectUrl(String value) {
+        this.redirectUrl = value;
+    }
+
+    /**
+     * Getter for RedirectMethod.
+     */
+    @JsonGetter("redirectMethod")
+    public RedirectMethodEnum getRedirectMethod() {
+        return this.redirectMethod;
+    }
+    /**
+     * Setter for RedirectMethod.
+     */
+    @JsonSetter("redirectMethod")
+    public void setRedirectMethod(RedirectMethodEnum value) {
+        this.redirectMethod = value;
+    }
+
+    /**
+     * Getter for Username.
+     */
+    @JsonGetter("username")
+    public String getUsername() {
+        return this.username;
+    }
+    /**
+     * Setter for Username.
+     */
+    @JsonSetter("username")
+    public void setUsername(String value) {
+        this.username = value;
+    }
+
+    /**
+     * Getter for Password.
+     */
+    @JsonGetter("password")
+    public String getPassword() {
+        return this.password;
+    }
+    /**
+     * Setter for Password.
+     */
+    @JsonSetter("password")
+    public void setPassword(String value) {
+        this.password = value;
+    }
+
  
 
     /**
@@ -52,8 +128,11 @@ public class CallEngineModifyConferenceRequest {
      * @return a new {@link CallEngineModifyConferenceRequest.Builder} object
      */
     public Builder toBuilder() {
-        Builder builder = new Builder()
-            .status(getStatus());
+        Builder builder = new Builder(redirectUrl)
+            .status(getStatus())
+            .redirectMethod(getRedirectMethod())
+            .username(getUsername())
+            .password(getPassword());
         return builder;
     }
 
@@ -61,9 +140,34 @@ public class CallEngineModifyConferenceRequest {
      * Class to build instances of {@link CallEngineModifyConferenceRequest}
      */
     public static class Builder {
+        private String redirectUrl;
         private StatusEnum status;
+        private RedirectMethodEnum redirectMethod;
+        private String username;
+        private String password;
 
+        /**
+         * Initialization constructor
+         */
+        public Builder() {
+        }
 
+        /**
+         * Initialization constructor
+         */
+        public Builder(String redirectUrl) {
+            this.redirectUrl = redirectUrl;
+        }
+
+        /**
+         * Setter for redirectUrl
+         * @param redirectUrl
+         * @return Builder
+         */
+        public Builder redirectUrl(String redirectUrl) {
+            this.redirectUrl = redirectUrl;
+            return this;
+        }
 
         /**
          * Setter for status
@@ -76,11 +180,45 @@ public class CallEngineModifyConferenceRequest {
         }
 
         /**
+         * Setter for redirectMethod
+         * @param redirectMethod
+         * @return Builder
+         */
+        public Builder redirectMethod(RedirectMethodEnum redirectMethod) {
+            this.redirectMethod = redirectMethod;
+            return this;
+        }
+
+        /**
+         * Setter for username
+         * @param username
+         * @return Builder
+         */
+        public Builder username(String username) {
+            this.username = username;
+            return this;
+        }
+
+        /**
+         * Setter for password
+         * @param password
+         * @return Builder
+         */
+        public Builder password(String password) {
+            this.password = password;
+            return this;
+        }
+
+        /**
          * Builds a new {@link CallEngineModifyConferenceRequest} object using the set fields.
          * @return {@link CallEngineModifyConferenceRequest}
          */
         public CallEngineModifyConferenceRequest build() {
-            return new CallEngineModifyConferenceRequest(status);
+            return new CallEngineModifyConferenceRequest(redirectUrl,
+                status,
+                redirectMethod,
+                username,
+                password);
         }
     }
 }
