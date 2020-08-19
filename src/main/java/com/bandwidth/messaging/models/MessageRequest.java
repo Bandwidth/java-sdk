@@ -61,8 +61,8 @@ public class MessageRequest {
      * Setter for ApplicationId.
      */
     @JsonSetter("applicationId")
-    public void setApplicationId(String value) {
-        this.applicationId = value;
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
     }
 
     /**
@@ -76,8 +76,8 @@ public class MessageRequest {
      * Setter for To.
      */
     @JsonSetter("to")
-    public void setTo(List<String> value) {
-        this.to = value;
+    public void setTo(List<String> to) {
+        this.to = to;
     }
 
     /**
@@ -91,8 +91,8 @@ public class MessageRequest {
      * Setter for From.
      */
     @JsonSetter("from")
-    public void setFrom(String value) {
-        this.from = value;
+    public void setFrom(String from) {
+        this.from = from;
     }
 
     /**
@@ -106,8 +106,8 @@ public class MessageRequest {
      * Setter for Text.
      */
     @JsonSetter("text")
-    public void setText(String value) {
-        this.text = value;
+    public void setText(String text) {
+        this.text = text;
     }
 
     /**
@@ -121,8 +121,8 @@ public class MessageRequest {
      * Setter for Media.
      */
     @JsonSetter("media")
-    public void setMedia(List<String> value) {
-        this.media = value;
+    public void setMedia(List<String> media) {
+        this.media = media;
     }
 
     /**
@@ -136,8 +136,8 @@ public class MessageRequest {
      * Setter for Tag.
      */
     @JsonSetter("tag")
-    public void setTag(String value) {
-        this.tag = value;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
  

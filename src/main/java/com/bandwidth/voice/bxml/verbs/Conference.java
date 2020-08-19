@@ -73,6 +73,19 @@ public class Conference implements Verb {
     @XmlAttribute
     protected String password;
 
+    @XmlAttribute
+    protected String fallbackUsername;
+
+    @XmlAttribute
+    protected String fallbackPassword;
+
+    @XmlAttribute
+    protected URI conferenceEventFallbackUrl;
+
+    @XmlAttribute
+    protected Method conferenceEventFallbackMethod;
+
+
     /**
      * <i>(optional)</i> A custom string that will be sent with this and all future callbacks unless overwritten by a future tag attribute or cleared.
      * <br/>
@@ -86,14 +99,12 @@ public class Conference implements Verb {
     public static class ConferenceBuilder{
 
         /**
-         * URL of audio to play
          */
         public ConferenceBuilder conferenceEventUrl(String uri){
             return this.conferenceEventUrl(URI.create(uri));
         }
 
         /**
-         * URL of audio to play
          */
         public ConferenceBuilder conferenceEventUrl(URI uri){
             this.conferenceEventUrl = uri;
@@ -112,6 +123,25 @@ public class Conference implements Verb {
          */
         public ConferenceBuilder conferenceEventMethod(Method method){
             this.conferenceEventMethod = method;
+            return this;
+        }
+
+
+        public ConferenceBuilder conferenceEventFallbackUrl(String uri){
+            return this.conferenceEventFallbackUrl(URI.create(uri));
+        }
+
+        public ConferenceBuilder conferenceEventFallbackUrl(URI uri){
+            this.conferenceEventFallbackUrl = uri;
+            return this;
+        }
+
+        public ConferenceBuilder conferenceEventFallbackMethod(String method){
+            return this.conferenceEventFallbackMethod(Method.fromValue(method));
+        }
+
+        public ConferenceBuilder conferenceEventFallbackMethod(Method method){
+            this.conferenceEventFallbackMethod = method;
             return this;
         }
 

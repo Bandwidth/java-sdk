@@ -60,8 +60,8 @@ public class BandwidthCallbackMessage {
      * Setter for Time.
      */
     @JsonSetter("time")
-    public void setTime(String value) {
-        this.time = value;
+    public void setTime(String time) {
+        this.time = time;
     }
 
     /**
@@ -75,8 +75,8 @@ public class BandwidthCallbackMessage {
      * Setter for Type.
      */
     @JsonSetter("type")
-    public void setType(String value) {
-        this.type = value;
+    public void setType(String type) {
+        this.type = type;
     }
 
     /**
@@ -90,8 +90,8 @@ public class BandwidthCallbackMessage {
      * Setter for To.
      */
     @JsonSetter("to")
-    public void setTo(String value) {
-        this.to = value;
+    public void setTo(String to) {
+        this.to = to;
     }
 
     /**
@@ -105,8 +105,8 @@ public class BandwidthCallbackMessage {
      * Setter for ErrorCode.
      */
     @JsonSetter("errorCode")
-    public void setErrorCode(String value) {
-        this.errorCode = value;
+    public void setErrorCode(String errorCode) {
+        this.errorCode = errorCode;
     }
 
     /**
@@ -120,8 +120,8 @@ public class BandwidthCallbackMessage {
      * Setter for Description.
      */
     @JsonSetter("description")
-    public void setDescription(String value) {
-        this.description = value;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     /**
@@ -135,8 +135,8 @@ public class BandwidthCallbackMessage {
      * Setter for Message.
      */
     @JsonSetter("message")
-    public void setMessage(BandwidthMessage value) {
-        this.message = value;
+    public void setMessage(BandwidthMessage message) {
+        this.message = message;
     }
 
  

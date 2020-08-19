@@ -120,6 +120,18 @@ public class Transfer implements Verb {
     @XmlAttribute
     private String diversionReason;
 
+    @XmlAttribute
+    protected String fallbackUsername;
+
+    @XmlAttribute
+    protected String fallbackPassword;
+
+    @XmlAttribute
+    protected URI transferCompleteFallbackUrl;
+
+    @XmlAttribute
+    protected Method transferCompleteFallbackMethod;
+
     public static class TransferBuilder {
 
         /**
@@ -137,6 +149,15 @@ public class Transfer implements Verb {
             return transferCompleteUrl(URI.create(uri));
         }
 
+        public TransferBuilder transferCompleteFallbackUrl(URI uri){
+            this.transferCompleteFallbackUrl = uri;
+            return this;
+        }
+
+        public TransferBuilder transferCompleteFallbackUrl(String uri){
+            return transferCompleteFallbackUrl(URI.create(uri));
+        }
+
         /**
          * <i>(optional)</i> The HTTP method to use for the request to transferCompleteUrl. GET or POST. Default value is POST.
          */
@@ -152,6 +173,14 @@ public class Transfer implements Verb {
             return transferCompleteMethod(Method.fromValue(method));
         }
 
+        public TransferBuilder transferCompleteFallbackMethod(Method method){
+            this.transferCompleteFallbackMethod = method;
+            return this;
+        }
+
+        public TransferBuilder transferCompleteFallbackMethod(String method){
+            return transferCompleteFallbackMethod(Method.fromValue(method));
+        }
 
         /**
          * A collection of phone numbers to transfer the call to. The first to answer will be transferred.

@@ -63,8 +63,8 @@ public class Participant {
      * Unique id of the participant
      */
     @JsonSetter("id")
-    public void setId(String value) {
-        this.id = value;
+    public void setId(String id) {
+        this.id = id;
     }
 
     /**
@@ -80,8 +80,8 @@ public class Participant {
      * Full callback url to use for notifications about this participant
      */
     @JsonSetter("callbackUrl")
-    public void setCallbackUrl(String value) {
-        this.callbackUrl = value;
+    public void setCallbackUrl(String callbackUrl) {
+        this.callbackUrl = callbackUrl;
     }
 
     /**
@@ -97,8 +97,8 @@ public class Participant {
      * Defines if this participant can publish audio or video
      */
     @JsonSetter("publishPermissions")
-    public void setPublishPermissions(List<PublishPermissionEnum> value) {
-        this.publishPermissions = value;
+    public void setPublishPermissions(List<PublishPermissionEnum> publishPermissions) {
+        this.publishPermissions = publishPermissions;
     }
 
     /**
@@ -116,8 +116,8 @@ public class Participant {
      * Capped to one
      */
     @JsonSetter("sessions")
-    public void setSessions(List<String> value) {
-        this.sessions = value;
+    public void setSessions(List<String> sessions) {
+        this.sessions = sessions;
     }
 
     /**
@@ -131,8 +131,8 @@ public class Participant {
      * Setter for Subscriptions.
      */
     @JsonSetter("subscriptions")
-    public void setSubscriptions(Subscriptions value) {
-        this.subscriptions = value;
+    public void setSubscriptions(Subscriptions subscriptions) {
+        this.subscriptions = subscriptions;
     }
 
     /**
@@ -148,8 +148,8 @@ public class Participant {
      * User defined tag to associate with the participant
      */
     @JsonSetter("tag")
-    public void setTag(String value) {
-        this.tag = value;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
  

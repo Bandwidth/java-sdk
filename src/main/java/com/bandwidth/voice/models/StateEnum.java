@@ -24,13 +24,13 @@ public enum StateEnum {
     private String value;
 
     static {
-        DISCONNECTED.value = "DISCONNECTED";
-        ANSWERED.value = "ANSWERED";
-        INITIATED.value = "INITIATED";
+        DISCONNECTED.value = "disconnected";
+        ANSWERED.value = "answered";
+        INITIATED.value = "initiated";
 
-        valueMap.put("DISCONNECTED", DISCONNECTED);
-        valueMap.put("ANSWERED", ANSWERED);
-        valueMap.put("INITIATED", INITIATED);
+        valueMap.put("disconnected", DISCONNECTED);
+        valueMap.put("answered", ANSWERED);
+        valueMap.put("initiated", INITIATED);
     }
 
     /**

@@ -44,8 +44,8 @@ public class DeferredResult {
      * Setter for Result.
      */
     @JsonSetter("result")
-    public void setResult(Object value) {
-        this.result = value;
+    public void setResult(Object result) {
+        this.result = result;
     }
 
     /**
@@ -59,8 +59,8 @@ public class DeferredResult {
      * Setter for SetOrExpired.
      */
     @JsonSetter("setOrExpired")
-    public void setSetOrExpired(Boolean value) {
-        this.setOrExpired = value;
+    public void setSetOrExpired(Boolean setOrExpired) {
+        this.setOrExpired = setOrExpired;
     }
 
  

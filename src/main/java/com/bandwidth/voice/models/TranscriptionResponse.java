@@ -41,8 +41,8 @@ public class TranscriptionResponse {
      * Setter for Transcripts.
      */
     @JsonSetter("transcripts")
-    public void setTranscripts(List<Transcript> value) {
-        this.transcripts = value;
+    public void setTranscripts(List<Transcript> transcripts) {
+        this.transcripts = transcripts;
     }
 
  

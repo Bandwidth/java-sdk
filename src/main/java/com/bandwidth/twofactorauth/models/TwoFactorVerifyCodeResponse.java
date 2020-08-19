@@ -40,8 +40,8 @@ public class TwoFactorVerifyCodeResponse {
      * Setter for Valid.
      */
     @JsonSetter("valid")
-    public void setValid(Boolean value) {
-        this.valid = value;
+    public void setValid(Boolean valid) {
+        this.valid = valid;
     }
 
  

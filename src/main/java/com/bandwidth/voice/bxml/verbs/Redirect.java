@@ -51,6 +51,18 @@ public class Redirect implements Verb {
     @XmlAttribute
     protected String password;
 
+    @XmlAttribute
+    protected String fallbackUsername;
+
+    @XmlAttribute
+    protected String fallbackPassword;
+
+    @XmlAttribute
+    protected URI redirectFallbackUrl;
+
+    @XmlAttribute
+    protected Method redirectFallbackMethod;
+
     public static class RedirectBuilder {
 
         /**
@@ -68,6 +80,15 @@ public class Redirect implements Verb {
             return redirectUrl(URI.create(uri));
         }
 
+        public RedirectBuilder redirectFallbackUrl(URI uri ){
+            this.redirectUrl = uri;
+            return this;
+        }
+
+        public RedirectBuilder redirectFallbackUrl(String uri){
+            return redirectUrl(URI.create(uri));
+        }
+
         /**
          * <i>(optional)</i> The HTTP method to use for the request to redirectUrl. GET or POST. Default Value is POST.
          */
@@ -81,6 +102,15 @@ public class Redirect implements Verb {
          */
         public RedirectBuilder redirectMethod(String method){
             return redirectMethod(Method.fromValue(method));
+        }
+
+        public RedirectBuilder redirectFallbackMethod(Method method){
+            this.redirectFallbackMethod = method;
+            return this;
+        }
+
+        public RedirectBuilder redirectFallbackMethod(String method){
+            return redirectFallbackMethod(Method.fromValue(method));
         }
     }
 }

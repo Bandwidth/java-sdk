@@ -52,8 +52,8 @@ public class Transcription {
      * Setter for Id.
      */
     @JsonSetter("id")
-    public void setId(String value) {
-        this.id = value;
+    public void setId(String id) {
+        this.id = id;
     }
 
     /**
@@ -67,8 +67,8 @@ public class Transcription {
      * Setter for Status.
      */
     @JsonSetter("status")
-    public void setStatus(Status3Enum value) {
-        this.status = value;
+    public void setStatus(Status3Enum status) {
+        this.status = status;
     }
 
     /**
@@ -82,8 +82,8 @@ public class Transcription {
      * Setter for CompletedTime.
      */
     @JsonSetter("completedTime")
-    public void setCompletedTime(String value) {
-        this.completedTime = value;
+    public void setCompletedTime(String completedTime) {
+        this.completedTime = completedTime;
     }
 
     /**
@@ -97,8 +97,8 @@ public class Transcription {
      * Setter for Url.
      */
     @JsonSetter("url")
-    public void setUrl(String value) {
-        this.url = value;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
  

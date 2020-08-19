@@ -100,8 +100,8 @@ public class ApiCallStateResponse {
      * Setter for CallId.
      */
     @JsonSetter("callId")
-    public void setCallId(String value) {
-        this.callId = value;
+    public void setCallId(String callId) {
+        this.callId = callId;
     }
 
     /**
@@ -115,8 +115,8 @@ public class ApiCallStateResponse {
      * Setter for ParentCallId.
      */
     @JsonSetter("parentCallId")
-    public void setParentCallId(String value) {
-        this.parentCallId = value;
+    public void setParentCallId(String parentCallId) {
+        this.parentCallId = parentCallId;
     }
 
     /**
@@ -130,8 +130,8 @@ public class ApiCallStateResponse {
      * Setter for ApplicationId.
      */
     @JsonSetter("applicationId")
-    public void setApplicationId(String value) {
-        this.applicationId = value;
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
     }
 
     /**
@@ -145,8 +145,8 @@ public class ApiCallStateResponse {
      * Setter for AccountId.
      */
     @JsonSetter("accountId")
-    public void setAccountId(String value) {
-        this.accountId = value;
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
     /**
@@ -160,8 +160,8 @@ public class ApiCallStateResponse {
      * Setter for To.
      */
     @JsonSetter("to")
-    public void setTo(String value) {
-        this.to = value;
+    public void setTo(String to) {
+        this.to = to;
     }
 
     /**
@@ -175,8 +175,8 @@ public class ApiCallStateResponse {
      * Setter for From.
      */
     @JsonSetter("from")
-    public void setFrom(String value) {
-        this.from = value;
+    public void setFrom(String from) {
+        this.from = from;
     }
 
     /**
@@ -190,8 +190,8 @@ public class ApiCallStateResponse {
      * Setter for Direction.
      */
     @JsonSetter("direction")
-    public void setDirection(String value) {
-        this.direction = value;
+    public void setDirection(String direction) {
+        this.direction = direction;
     }
 
     /**
@@ -205,8 +205,8 @@ public class ApiCallStateResponse {
      * Setter for State.
      */
     @JsonSetter("state")
-    public void setState(StateEnum value) {
-        this.state = value;
+    public void setState(StateEnum state) {
+        this.state = state;
     }
 
     /**
@@ -222,8 +222,8 @@ public class ApiCallStateResponse {
      */
     @JsonSetter("startTime")
     @JsonDeserialize(using=DateTimeHelper.Rfc8601DateTimeDeserializer.class)
-    public void setStartTime(LocalDateTime value) {
-        this.startTime = value;
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
     }
 
     /**
@@ -239,8 +239,8 @@ public class ApiCallStateResponse {
      */
     @JsonSetter("answerTime")
     @JsonDeserialize(using=DateTimeHelper.Rfc8601DateTimeDeserializer.class)
-    public void setAnswerTime(LocalDateTime value) {
-        this.answerTime = value;
+    public void setAnswerTime(LocalDateTime answerTime) {
+        this.answerTime = answerTime;
     }
 
     /**
@@ -256,8 +256,8 @@ public class ApiCallStateResponse {
      */
     @JsonSetter("endTime")
     @JsonDeserialize(using=DateTimeHelper.Rfc8601DateTimeDeserializer.class)
-    public void setEndTime(LocalDateTime value) {
-        this.endTime = value;
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
     }
 
     /**
@@ -271,8 +271,8 @@ public class ApiCallStateResponse {
      * Setter for DisconnectCause.
      */
     @JsonSetter("disconnectCause")
-    public void setDisconnectCause(DisconnectCauseEnum value) {
-        this.disconnectCause = value;
+    public void setDisconnectCause(DisconnectCauseEnum disconnectCause) {
+        this.disconnectCause = disconnectCause;
     }
 
     /**
@@ -286,8 +286,8 @@ public class ApiCallStateResponse {
      * Setter for ErrorMessage.
      */
     @JsonSetter("errorMessage")
-    public void setErrorMessage(String value) {
-        this.errorMessage = value;
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 
     /**
@@ -301,8 +301,8 @@ public class ApiCallStateResponse {
      * Setter for ErrorId.
      */
     @JsonSetter("errorId")
-    public void setErrorId(String value) {
-        this.errorId = value;
+    public void setErrorId(String errorId) {
+        this.errorId = errorId;
     }
 
     /**
@@ -318,8 +318,8 @@ public class ApiCallStateResponse {
      */
     @JsonSetter("lastUpdate")
     @JsonDeserialize(using=DateTimeHelper.Rfc8601DateTimeDeserializer.class)
-    public void setLastUpdate(LocalDateTime value) {
-        this.lastUpdate = value;
+    public void setLastUpdate(LocalDateTime lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 
  

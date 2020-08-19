@@ -46,8 +46,8 @@ public class Session {
      * Unique id of the session
      */
     @JsonSetter("id")
-    public void setId(String value) {
-        this.id = value;
+    public void setId(String id) {
+        this.id = id;
     }
 
     /**
@@ -63,8 +63,8 @@ public class Session {
      * User defined tag to associate with the session
      */
     @JsonSetter("tag")
-    public void setTag(String value) {
-        this.tag = value;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
  

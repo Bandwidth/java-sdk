@@ -26,18 +26,21 @@ public class ApiTranscribeRecordingRequest {
      * @param username
      * @param password
      * @param tag
+     * @param callbackTimeout
      */
     public ApiTranscribeRecordingRequest(
             String callbackUrl,
             CallbackMethodEnum callbackMethod,
             String username,
             String password,
-            String tag) {
+            String tag,
+            Double callbackTimeout) {
         this.callbackUrl = callbackUrl;
         this.callbackMethod = callbackMethod;
         this.username = username;
         this.password = password;
         this.tag = tag;
+        this.callbackTimeout = callbackTimeout;
     }
 
     private String callbackUrl;
@@ -45,6 +48,7 @@ public class ApiTranscribeRecordingRequest {
     private String username;
     private String password;
     private String tag;
+    private Double callbackTimeout;
     /**
      * Getter for CallbackUrl.
      */
@@ -56,8 +60,8 @@ public class ApiTranscribeRecordingRequest {
      * Setter for CallbackUrl.
      */
     @JsonSetter("callbackUrl")
-    public void setCallbackUrl(String value) {
-        this.callbackUrl = value;
+    public void setCallbackUrl(String callbackUrl) {
+        this.callbackUrl = callbackUrl;
     }
 
     /**
@@ -71,8 +75,8 @@ public class ApiTranscribeRecordingRequest {
      * Setter for CallbackMethod.
      */
     @JsonSetter("callbackMethod")
-    public void setCallbackMethod(CallbackMethodEnum value) {
-        this.callbackMethod = value;
+    public void setCallbackMethod(CallbackMethodEnum callbackMethod) {
+        this.callbackMethod = callbackMethod;
     }
 
     /**
@@ -86,8 +90,8 @@ public class ApiTranscribeRecordingRequest {
      * Setter for Username.
      */
     @JsonSetter("username")
-    public void setUsername(String value) {
-        this.username = value;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -101,8 +105,8 @@ public class ApiTranscribeRecordingRequest {
      * Setter for Password.
      */
     @JsonSetter("password")
-    public void setPassword(String value) {
-        this.password = value;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     /**
@@ -116,8 +120,23 @@ public class ApiTranscribeRecordingRequest {
      * Setter for Tag.
      */
     @JsonSetter("tag")
-    public void setTag(String value) {
-        this.tag = value;
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    /**
+     * Getter for CallbackTimeout.
+     */
+    @JsonGetter("callbackTimeout")
+    public Double getCallbackTimeout() {
+        return this.callbackTimeout;
+    }
+    /**
+     * Setter for CallbackTimeout.
+     */
+    @JsonSetter("callbackTimeout")
+    public void setCallbackTimeout(Double callbackTimeout) {
+        this.callbackTimeout = callbackTimeout;
     }
 
  
@@ -133,7 +152,8 @@ public class ApiTranscribeRecordingRequest {
             .callbackMethod(getCallbackMethod())
             .username(getUsername())
             .password(getPassword())
-            .tag(getTag());
+            .tag(getTag())
+            .callbackTimeout(getCallbackTimeout());
         return builder;
     }
 
@@ -146,6 +166,7 @@ public class ApiTranscribeRecordingRequest {
         private String username;
         private String password;
         private String tag;
+        private Double callbackTimeout;
 
 
 
@@ -200,6 +221,16 @@ public class ApiTranscribeRecordingRequest {
         }
 
         /**
+         * Setter for callbackTimeout
+         * @param callbackTimeout
+         * @return Builder
+         */
+        public Builder callbackTimeout(Double callbackTimeout) {
+            this.callbackTimeout = callbackTimeout;
+            return this;
+        }
+
+        /**
          * Builds a new {@link ApiTranscribeRecordingRequest} object using the set fields.
          * @return {@link ApiTranscribeRecordingRequest}
          */
@@ -208,7 +239,8 @@ public class ApiTranscribeRecordingRequest {
                 callbackMethod,
                 username,
                 password,
-                tag);
+                tag,
+                callbackTimeout);
         }
     }
 }

@@ -46,8 +46,8 @@ public class AccountsParticipantsResponse {
      * A participant object
      */
     @JsonSetter("participant")
-    public void setParticipant(Participant value) {
-        this.participant = value;
+    public void setParticipant(Participant participant) {
+        this.participant = participant;
     }
 
     /**
@@ -65,8 +65,8 @@ public class AccountsParticipantsResponse {
      * This should be passed to the participant so that they can connect to the platform
      */
     @JsonSetter("token")
-    public void setToken(String value) {
-        this.token = value;
+    public void setToken(String token) {
+        this.token = token;
     }
 
  

@@ -19,6 +19,12 @@ public interface Configuration {
     Environment getEnvironment();
 
     /**
+     * baseUrl value
+     * @return a copy of baseUrl
+     */
+    String getBaseUrl();
+
+    /**
      * The timeout to use for making HTTP requests.
      * @return a copy of timeout
      */

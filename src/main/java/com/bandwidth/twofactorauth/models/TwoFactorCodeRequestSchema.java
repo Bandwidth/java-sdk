@@ -62,8 +62,8 @@ public class TwoFactorCodeRequestSchema {
      * The phone number to send the 2fa code to.
      */
     @JsonSetter("to")
-    public void setTo(String value) {
-        this.to = value;
+    public void setTo(String to) {
+        this.to = to;
     }
 
     /**
@@ -79,8 +79,8 @@ public class TwoFactorCodeRequestSchema {
      * The application phone number, the sender of the 2fa code.
      */
     @JsonSetter("from")
-    public void setFrom(String value) {
-        this.from = value;
+    public void setFrom(String from) {
+        this.from = from;
     }
 
     /**
@@ -96,8 +96,8 @@ public class TwoFactorCodeRequestSchema {
      * The application unique ID, obtained from Bandwidth.
      */
     @JsonSetter("applicationId")
-    public void setApplicationId(String value) {
-        this.applicationId = value;
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
     }
 
     /**
@@ -113,8 +113,8 @@ public class TwoFactorCodeRequestSchema {
      * An optional field to denote what scope or action the 2fa code is addressing.  If not supplied, defaults to "2FA".
      */
     @JsonSetter("scope")
-    public void setScope(String value) {
-        this.scope = value;
+    public void setScope(String scope) {
+        this.scope = scope;
     }
 
     /**
@@ -130,8 +130,8 @@ public class TwoFactorCodeRequestSchema {
      * The message format of the 2fa code.  There are three values that the system will replace "{CODE}", "{NAME}", "{SCOPE}".  The "{SCOPE}" and "{NAME} value template are optional, while "{CODE}" must be supplied.  As the name would suggest, code will be replace with the actual 2fa code.  Name is replaced with the application name, configured during provisioning of 2fa.  The scope value is the same value sent during the call and partitioned by the server.
      */
     @JsonSetter("message")
-    public void setMessage(String value) {
-        this.message = value;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     /**
@@ -147,8 +147,8 @@ public class TwoFactorCodeRequestSchema {
      * The number of digits for your 2fa code.  The valid number ranges from 2 to 8, inclusively.
      */
     @JsonSetter("digits")
-    public void setDigits(double value) {
-        this.digits = value;
+    public void setDigits(double digits) {
+        this.digits = digits;
     }
 
  

@@ -28,6 +28,30 @@ public class Bridge implements Verb {
     @XmlValue
     private String callId;
 
+    @XmlAttribute
+    private URI bridgeCompleteFallbackUrl;
+
+    @XmlAttribute
+    private Method bridgeCompleteFallbackMethod;
+
+
+    @XmlAttribute
+    private URI bridgeTargetCompleteFallbackUrl;
+
+
+    @XmlAttribute
+    private Method bridgeTargetCompleteFallbackMethod;
+
+    
+    @XmlAttribute
+    private String fallbackUsername;
+
+
+    @XmlAttribute
+    private String fallbackPassword;
+
+
+
     /**
      * (optional) URL to send the Bridge Complete event to and request new BXML.
      * If this attribute is specified, then Verbs following the <Bridge> verb will be ignored and the BXML returned in this callback is executed on the call.
@@ -98,6 +122,42 @@ public class Bridge implements Verb {
             return this;
         }
 
+        
+        public BridgeBuilder bridgeCompleteFallbackUrl(String url){
+            return this.bridgeCompleteFallbackUrl(URI.create(url));
+        }
+
+        public BridgeBuilder bridgeCompleteFallbackUrl(URI url){
+            this.bridgeCompleteFallbackUrl = url;
+            return this;
+        }
+
+        public BridgeBuilder bridgeCompleteFallbackMethod(String method){
+            return this.bridgeCompleteFallbackMethod(Method.fromValue(method));
+        }
+
+        public BridgeBuilder bridgeCompleteFallbackMethod(Method method){
+            this.bridgeCompleteFallbackMethod = method;
+            return this;
+        }
+
+        public BridgeBuilder bridgeTargetCompleteFallbackUrl(String url){
+            return this.bridgeTargetCompleteFallbackUrl(URI.create(url));
+        }
+
+        public BridgeBuilder bridgeTargetCompleteFallbackUrl(URI url){
+            this.bridgeTargetCompleteFallbackUrl = url;
+            return this;
+        }
+
+        public BridgeBuilder bridgeTargetCompleteFallbackMethod(String method){
+            return this.bridgeTargetCompleteFallbackMethod(Method.fromValue(method));
+        }
+
+        public BridgeBuilder bridgeTargetCompleteFallbackMethod(Method method){
+            this.bridgeTargetCompleteFallbackMethod = method;
+            return this;
+        }
 
         /**
          * <i>(optional)</i> he HTTP method to use for the request to bridgeCompleteUrl. GET or POST. Default value is POST. Converts String to Method using Method.fromValue(method)

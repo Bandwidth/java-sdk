@@ -61,8 +61,8 @@ public class ConferenceMemberDetail {
      * Setter for CallId.
      */
     @JsonSetter("callId")
-    public void setCallId(String value) {
-        this.callId = value;
+    public void setCallId(String callId) {
+        this.callId = callId;
     }
 
     /**
@@ -76,8 +76,8 @@ public class ConferenceMemberDetail {
      * Setter for ConferenceId.
      */
     @JsonSetter("conferenceId")
-    public void setConferenceId(String value) {
-        this.conferenceId = value;
+    public void setConferenceId(String conferenceId) {
+        this.conferenceId = conferenceId;
     }
 
     /**
@@ -91,8 +91,8 @@ public class ConferenceMemberDetail {
      * Setter for MemberUrl.
      */
     @JsonSetter("memberUrl")
-    public void setMemberUrl(String value) {
-        this.memberUrl = value;
+    public void setMemberUrl(String memberUrl) {
+        this.memberUrl = memberUrl;
     }
 
     /**
@@ -106,8 +106,8 @@ public class ConferenceMemberDetail {
      * Setter for Mute.
      */
     @JsonSetter("mute")
-    public void setMute(Boolean value) {
-        this.mute = value;
+    public void setMute(Boolean mute) {
+        this.mute = mute;
     }
 
     /**
@@ -121,8 +121,8 @@ public class ConferenceMemberDetail {
      * Setter for Hold.
      */
     @JsonSetter("hold")
-    public void setHold(Boolean value) {
-        this.hold = value;
+    public void setHold(Boolean hold) {
+        this.hold = hold;
     }
 
     /**
@@ -136,8 +136,8 @@ public class ConferenceMemberDetail {
      * Setter for CallIdsToCoach.
      */
     @JsonSetter("callIdsToCoach")
-    public void setCallIdsToCoach(List<String> value) {
-        this.callIdsToCoach = value;
+    public void setCallIdsToCoach(List<String> callIdsToCoach) {
+        this.callIdsToCoach = callIdsToCoach;
     }
 
  

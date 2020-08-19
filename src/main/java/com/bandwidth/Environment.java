@@ -13,7 +13,9 @@ import java.util.TreeMap;
  * Environment to be used.
  */
 public enum Environment {
-    PRODUCTION;
+    PRODUCTION,
+
+    CUSTOM;
 
 
     private static TreeMap<String, Environment> valueMap = new TreeMap<>();
@@ -21,8 +23,10 @@ public enum Environment {
 
     static {
         PRODUCTION.value = "production";
+        CUSTOM.value = "custom";
 
         valueMap.put("production", PRODUCTION);
+        valueMap.put("custom", CUSTOM);
     }
 
     /**

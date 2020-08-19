@@ -23,28 +23,44 @@ public class CallEngineModifyConferenceRequest {
      * Initialization constructor.
      * @param redirectUrl
      * @param status
+     * @param redirectFallbackUrl
      * @param redirectMethod
+     * @param redirectFallbackMethod
      * @param username
      * @param password
+     * @param fallbackUsername
+     * @param fallbackPassword
      */
     public CallEngineModifyConferenceRequest(
             String redirectUrl,
             StatusEnum status,
+            String redirectFallbackUrl,
             RedirectMethodEnum redirectMethod,
+            RedirectFallbackMethodEnum redirectFallbackMethod,
             String username,
-            String password) {
+            String password,
+            String fallbackUsername,
+            String fallbackPassword) {
         this.status = status;
         this.redirectUrl = redirectUrl;
+        this.redirectFallbackUrl = redirectFallbackUrl;
         this.redirectMethod = redirectMethod;
+        this.redirectFallbackMethod = redirectFallbackMethod;
         this.username = username;
         this.password = password;
+        this.fallbackUsername = fallbackUsername;
+        this.fallbackPassword = fallbackPassword;
     }
 
     private StatusEnum status;
     private String redirectUrl;
+    private String redirectFallbackUrl;
     private RedirectMethodEnum redirectMethod;
+    private RedirectFallbackMethodEnum redirectFallbackMethod;
     private String username;
     private String password;
+    private String fallbackUsername;
+    private String fallbackPassword;
     /**
      * Getter for Status.
      */
@@ -56,8 +72,8 @@ public class CallEngineModifyConferenceRequest {
      * Setter for Status.
      */
     @JsonSetter("status")
-    public void setStatus(StatusEnum value) {
-        this.status = value;
+    public void setStatus(StatusEnum status) {
+        this.status = status;
     }
 
     /**
@@ -71,8 +87,23 @@ public class CallEngineModifyConferenceRequest {
      * Setter for RedirectUrl.
      */
     @JsonSetter("redirectUrl")
-    public void setRedirectUrl(String value) {
-        this.redirectUrl = value;
+    public void setRedirectUrl(String redirectUrl) {
+        this.redirectUrl = redirectUrl;
+    }
+
+    /**
+     * Getter for RedirectFallbackUrl.
+     */
+    @JsonGetter("redirectFallbackUrl")
+    public String getRedirectFallbackUrl() {
+        return this.redirectFallbackUrl;
+    }
+    /**
+     * Setter for RedirectFallbackUrl.
+     */
+    @JsonSetter("redirectFallbackUrl")
+    public void setRedirectFallbackUrl(String redirectFallbackUrl) {
+        this.redirectFallbackUrl = redirectFallbackUrl;
     }
 
     /**
@@ -86,8 +117,23 @@ public class CallEngineModifyConferenceRequest {
      * Setter for RedirectMethod.
      */
     @JsonSetter("redirectMethod")
-    public void setRedirectMethod(RedirectMethodEnum value) {
-        this.redirectMethod = value;
+    public void setRedirectMethod(RedirectMethodEnum redirectMethod) {
+        this.redirectMethod = redirectMethod;
+    }
+
+    /**
+     * Getter for RedirectFallbackMethod.
+     */
+    @JsonGetter("redirectFallbackMethod")
+    public RedirectFallbackMethodEnum getRedirectFallbackMethod() {
+        return this.redirectFallbackMethod;
+    }
+    /**
+     * Setter for RedirectFallbackMethod.
+     */
+    @JsonSetter("redirectFallbackMethod")
+    public void setRedirectFallbackMethod(RedirectFallbackMethodEnum redirectFallbackMethod) {
+        this.redirectFallbackMethod = redirectFallbackMethod;
     }
 
     /**
@@ -101,8 +147,8 @@ public class CallEngineModifyConferenceRequest {
      * Setter for Username.
      */
     @JsonSetter("username")
-    public void setUsername(String value) {
-        this.username = value;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -116,8 +162,38 @@ public class CallEngineModifyConferenceRequest {
      * Setter for Password.
      */
     @JsonSetter("password")
-    public void setPassword(String value) {
-        this.password = value;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * Getter for FallbackUsername.
+     */
+    @JsonGetter("fallbackUsername")
+    public String getFallbackUsername() {
+        return this.fallbackUsername;
+    }
+    /**
+     * Setter for FallbackUsername.
+     */
+    @JsonSetter("fallbackUsername")
+    public void setFallbackUsername(String fallbackUsername) {
+        this.fallbackUsername = fallbackUsername;
+    }
+
+    /**
+     * Getter for FallbackPassword.
+     */
+    @JsonGetter("fallbackPassword")
+    public String getFallbackPassword() {
+        return this.fallbackPassword;
+    }
+    /**
+     * Setter for FallbackPassword.
+     */
+    @JsonSetter("fallbackPassword")
+    public void setFallbackPassword(String fallbackPassword) {
+        this.fallbackPassword = fallbackPassword;
     }
 
  
@@ -130,9 +206,13 @@ public class CallEngineModifyConferenceRequest {
     public Builder toBuilder() {
         Builder builder = new Builder(redirectUrl)
             .status(getStatus())
+            .redirectFallbackUrl(getRedirectFallbackUrl())
             .redirectMethod(getRedirectMethod())
+            .redirectFallbackMethod(getRedirectFallbackMethod())
             .username(getUsername())
-            .password(getPassword());
+            .password(getPassword())
+            .fallbackUsername(getFallbackUsername())
+            .fallbackPassword(getFallbackPassword());
         return builder;
     }
 
@@ -142,9 +222,13 @@ public class CallEngineModifyConferenceRequest {
     public static class Builder {
         private String redirectUrl;
         private StatusEnum status;
+        private String redirectFallbackUrl;
         private RedirectMethodEnum redirectMethod;
+        private RedirectFallbackMethodEnum redirectFallbackMethod;
         private String username;
         private String password;
+        private String fallbackUsername;
+        private String fallbackPassword;
 
         /**
          * Initialization constructor
@@ -180,12 +264,32 @@ public class CallEngineModifyConferenceRequest {
         }
 
         /**
+         * Setter for redirectFallbackUrl
+         * @param redirectFallbackUrl
+         * @return Builder
+         */
+        public Builder redirectFallbackUrl(String redirectFallbackUrl) {
+            this.redirectFallbackUrl = redirectFallbackUrl;
+            return this;
+        }
+
+        /**
          * Setter for redirectMethod
          * @param redirectMethod
          * @return Builder
          */
         public Builder redirectMethod(RedirectMethodEnum redirectMethod) {
             this.redirectMethod = redirectMethod;
+            return this;
+        }
+
+        /**
+         * Setter for redirectFallbackMethod
+         * @param redirectFallbackMethod
+         * @return Builder
+         */
+        public Builder redirectFallbackMethod(RedirectFallbackMethodEnum redirectFallbackMethod) {
+            this.redirectFallbackMethod = redirectFallbackMethod;
             return this;
         }
 
@@ -210,15 +314,39 @@ public class CallEngineModifyConferenceRequest {
         }
 
         /**
+         * Setter for fallbackUsername
+         * @param fallbackUsername
+         * @return Builder
+         */
+        public Builder fallbackUsername(String fallbackUsername) {
+            this.fallbackUsername = fallbackUsername;
+            return this;
+        }
+
+        /**
+         * Setter for fallbackPassword
+         * @param fallbackPassword
+         * @return Builder
+         */
+        public Builder fallbackPassword(String fallbackPassword) {
+            this.fallbackPassword = fallbackPassword;
+            return this;
+        }
+
+        /**
          * Builds a new {@link CallEngineModifyConferenceRequest} object using the set fields.
          * @return {@link CallEngineModifyConferenceRequest}
          */
         public CallEngineModifyConferenceRequest build() {
             return new CallEngineModifyConferenceRequest(redirectUrl,
                 status,
+                redirectFallbackUrl,
                 redirectMethod,
+                redirectFallbackMethod,
                 username,
-                password);
+                password,
+                fallbackUsername,
+                fallbackPassword);
         }
     }
 }

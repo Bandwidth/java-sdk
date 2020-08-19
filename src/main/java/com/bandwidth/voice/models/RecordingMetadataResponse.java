@@ -7,6 +7,10 @@ package com.bandwidth.voice.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.bandwidth.DateTimeHelper;
+import java.time.LocalDateTime;
 
 
 /**
@@ -53,8 +57,8 @@ public class RecordingMetadataResponse {
             String duration,
             DirectionEnum direction,
             Integer channels,
-            Long startTime,
-            Long endTime,
+            LocalDateTime startTime,
+            LocalDateTime endTime,
             FileFormatEnum fileFormat,
             Status1Enum status,
             String mediaUrl,
@@ -91,8 +95,8 @@ public class RecordingMetadataResponse {
     private String duration;
     private DirectionEnum direction;
     private Integer channels;
-    private Long startTime;
-    private Long endTime;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
     private FileFormatEnum fileFormat;
     private Status1Enum status;
     private String mediaUrl;
@@ -108,8 +112,8 @@ public class RecordingMetadataResponse {
      * Setter for ApplicationId.
      */
     @JsonSetter("applicationId")
-    public void setApplicationId(String value) {
-        this.applicationId = value;
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
     }
 
     /**
@@ -123,8 +127,8 @@ public class RecordingMetadataResponse {
      * Setter for AccountId.
      */
     @JsonSetter("accountId")
-    public void setAccountId(String value) {
-        this.accountId = value;
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
     /**
@@ -138,8 +142,8 @@ public class RecordingMetadataResponse {
      * Setter for CallId.
      */
     @JsonSetter("callId")
-    public void setCallId(String value) {
-        this.callId = value;
+    public void setCallId(String callId) {
+        this.callId = callId;
     }
 
     /**
@@ -153,8 +157,8 @@ public class RecordingMetadataResponse {
      * Setter for ParentCallId.
      */
     @JsonSetter("parentCallId")
-    public void setParentCallId(String value) {
-        this.parentCallId = value;
+    public void setParentCallId(String parentCallId) {
+        this.parentCallId = parentCallId;
     }
 
     /**
@@ -168,8 +172,8 @@ public class RecordingMetadataResponse {
      * Setter for RecordingId.
      */
     @JsonSetter("recordingId")
-    public void setRecordingId(String value) {
-        this.recordingId = value;
+    public void setRecordingId(String recordingId) {
+        this.recordingId = recordingId;
     }
 
     /**
@@ -183,8 +187,8 @@ public class RecordingMetadataResponse {
      * Setter for To.
      */
     @JsonSetter("to")
-    public void setTo(String value) {
-        this.to = value;
+    public void setTo(String to) {
+        this.to = to;
     }
 
     /**
@@ -198,8 +202,8 @@ public class RecordingMetadataResponse {
      * Setter for From.
      */
     @JsonSetter("from")
-    public void setFrom(String value) {
-        this.from = value;
+    public void setFrom(String from) {
+        this.from = from;
     }
 
     /**
@@ -213,8 +217,8 @@ public class RecordingMetadataResponse {
      * Setter for TransferCallerId.
      */
     @JsonSetter("transferCallerId")
-    public void setTransferCallerId(String value) {
-        this.transferCallerId = value;
+    public void setTransferCallerId(String transferCallerId) {
+        this.transferCallerId = transferCallerId;
     }
 
     /**
@@ -228,8 +232,8 @@ public class RecordingMetadataResponse {
      * Setter for TransferTo.
      */
     @JsonSetter("transferTo")
-    public void setTransferTo(String value) {
-        this.transferTo = value;
+    public void setTransferTo(String transferTo) {
+        this.transferTo = transferTo;
     }
 
     /**
@@ -245,8 +249,8 @@ public class RecordingMetadataResponse {
      * Format is ISO-8601
      */
     @JsonSetter("duration")
-    public void setDuration(String value) {
-        this.duration = value;
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
 
     /**
@@ -260,8 +264,8 @@ public class RecordingMetadataResponse {
      * Setter for Direction.
      */
     @JsonSetter("direction")
-    public void setDirection(DirectionEnum value) {
-        this.direction = value;
+    public void setDirection(DirectionEnum direction) {
+        this.direction = direction;
     }
 
     /**
@@ -275,38 +279,42 @@ public class RecordingMetadataResponse {
      * Setter for Channels.
      */
     @JsonSetter("channels")
-    public void setChannels(Integer value) {
-        this.channels = value;
+    public void setChannels(Integer channels) {
+        this.channels = channels;
     }
 
     /**
      * Getter for StartTime.
      */
     @JsonGetter("startTime")
-    public Long getStartTime() {
+    @JsonSerialize(using=DateTimeHelper.Rfc8601DateTimeSerializer.class)
+    public LocalDateTime getStartTime() {
         return this.startTime;
     }
     /**
      * Setter for StartTime.
      */
     @JsonSetter("startTime")
-    public void setStartTime(Long value) {
-        this.startTime = value;
+    @JsonDeserialize(using=DateTimeHelper.Rfc8601DateTimeDeserializer.class)
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
     }
 
     /**
      * Getter for EndTime.
      */
     @JsonGetter("endTime")
-    public Long getEndTime() {
+    @JsonSerialize(using=DateTimeHelper.Rfc8601DateTimeSerializer.class)
+    public LocalDateTime getEndTime() {
         return this.endTime;
     }
     /**
      * Setter for EndTime.
      */
     @JsonSetter("endTime")
-    public void setEndTime(Long value) {
-        this.endTime = value;
+    @JsonDeserialize(using=DateTimeHelper.Rfc8601DateTimeDeserializer.class)
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
     }
 
     /**
@@ -320,8 +328,8 @@ public class RecordingMetadataResponse {
      * Setter for FileFormat.
      */
     @JsonSetter("fileFormat")
-    public void setFileFormat(FileFormatEnum value) {
-        this.fileFormat = value;
+    public void setFileFormat(FileFormatEnum fileFormat) {
+        this.fileFormat = fileFormat;
     }
 
     /**
@@ -335,8 +343,8 @@ public class RecordingMetadataResponse {
      * Setter for Status.
      */
     @JsonSetter("status")
-    public void setStatus(Status1Enum value) {
-        this.status = value;
+    public void setStatus(Status1Enum status) {
+        this.status = status;
     }
 
     /**
@@ -350,8 +358,8 @@ public class RecordingMetadataResponse {
      * Setter for MediaUrl.
      */
     @JsonSetter("mediaUrl")
-    public void setMediaUrl(String value) {
-        this.mediaUrl = value;
+    public void setMediaUrl(String mediaUrl) {
+        this.mediaUrl = mediaUrl;
     }
 
     /**
@@ -365,8 +373,8 @@ public class RecordingMetadataResponse {
      * Setter for Transcription.
      */
     @JsonSetter("transcription")
-    public void setTranscription(Transcription value) {
-        this.transcription = value;
+    public void setTranscription(Transcription transcription) {
+        this.transcription = transcription;
     }
 
  
@@ -415,8 +423,8 @@ public class RecordingMetadataResponse {
         private String duration;
         private DirectionEnum direction;
         private Integer channels;
-        private Long startTime;
-        private Long endTime;
+        private LocalDateTime startTime;
+        private LocalDateTime endTime;
         private FileFormatEnum fileFormat;
         private Status1Enum status;
         private String mediaUrl;
@@ -549,7 +557,7 @@ public class RecordingMetadataResponse {
          * @param startTime
          * @return Builder
          */
-        public Builder startTime(Long startTime) {
+        public Builder startTime(LocalDateTime startTime) {
             this.startTime = startTime;
             return this;
         }
@@ -559,7 +567,7 @@ public class RecordingMetadataResponse {
          * @param endTime
          * @return Builder
          */
-        public Builder endTime(Long endTime) {
+        public Builder endTime(LocalDateTime endTime) {
             this.endTime = endTime;
             return this;
         }

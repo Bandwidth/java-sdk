@@ -77,8 +77,8 @@ public class Media {
      * Setter for InputStream.
      */
     @JsonSetter("inputStream")
-    public void setInputStream(Object value) {
-        this.inputStream = value;
+    public void setInputStream(Object inputStream) {
+        this.inputStream = inputStream;
     }
 
     /**
@@ -92,8 +92,8 @@ public class Media {
      * Setter for Content.
      */
     @JsonSetter("content")
-    public void setContent(String value) {
-        this.content = value;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     /**
@@ -107,8 +107,8 @@ public class Media {
      * Setter for Url.
      */
     @JsonSetter("url")
-    public void setUrl(String value) {
-        this.url = value;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     /**
@@ -122,8 +122,8 @@ public class Media {
      * Setter for ContentLength.
      */
     @JsonSetter("contentLength")
-    public void setContentLength(String value) {
-        this.contentLength = value;
+    public void setContentLength(String contentLength) {
+        this.contentLength = contentLength;
     }
 
     /**
@@ -137,8 +137,8 @@ public class Media {
      * Setter for ContentType.
      */
     @JsonSetter("contentType")
-    public void setContentType(String value) {
-        this.contentType = value;
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 
     /**
@@ -152,8 +152,8 @@ public class Media {
      * Setter for Tags.
      */
     @JsonSetter("tags")
-    public void setTags(List<Tag> value) {
-        this.tags = value;
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 
     /**
@@ -167,8 +167,8 @@ public class Media {
      * Setter for UserId.
      */
     @JsonSetter("userId")
-    public void setUserId(String value) {
-        this.userId = value;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     /**
@@ -182,8 +182,8 @@ public class Media {
      * Setter for MediaName.
      */
     @JsonSetter("mediaName")
-    public void setMediaName(String value) {
-        this.mediaName = value;
+    public void setMediaName(String mediaName) {
+        this.mediaName = mediaName;
     }
 
     /**
@@ -197,8 +197,8 @@ public class Media {
      * Setter for MediaId.
      */
     @JsonSetter("mediaId")
-    public void setMediaId(String value) {
-        this.mediaId = value;
+    public void setMediaId(String mediaId) {
+        this.mediaId = mediaId;
     }
 
     /**
@@ -212,8 +212,8 @@ public class Media {
      * Setter for CacheControl.
      */
     @JsonSetter("cacheControl")
-    public void setCacheControl(String value) {
-        this.cacheControl = value;
+    public void setCacheControl(String cacheControl) {
+        this.cacheControl = cacheControl;
     }
 
  

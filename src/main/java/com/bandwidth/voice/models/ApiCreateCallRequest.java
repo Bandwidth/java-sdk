@@ -26,9 +26,14 @@ public class ApiCreateCallRequest {
      * @param answerUrl
      * @param applicationId
      * @param callTimeout
+     * @param callbackTimeout
+     * @param answerFallbackUrl
      * @param username
      * @param password
+     * @param fallbackUsername
+     * @param fallbackPassword
      * @param answerMethod
+     * @param answerFallbackMethod
      * @param disconnectUrl
      * @param disconnectMethod
      * @param tag
@@ -41,9 +46,14 @@ public class ApiCreateCallRequest {
             String answerUrl,
             String applicationId,
             Double callTimeout,
+            Double callbackTimeout,
+            String answerFallbackUrl,
             String username,
             String password,
+            String fallbackUsername,
+            String fallbackPassword,
             AnswerMethodEnum answerMethod,
+            AnswerFallbackMethodEnum answerFallbackMethod,
             String disconnectUrl,
             DisconnectMethodEnum disconnectMethod,
             String tag,
@@ -52,10 +62,15 @@ public class ApiCreateCallRequest {
         this.from = from;
         this.to = to;
         this.callTimeout = callTimeout;
+        this.callbackTimeout = callbackTimeout;
         this.answerUrl = answerUrl;
+        this.answerFallbackUrl = answerFallbackUrl;
         this.username = username;
         this.password = password;
+        this.fallbackUsername = fallbackUsername;
+        this.fallbackPassword = fallbackPassword;
         this.answerMethod = answerMethod;
+        this.answerFallbackMethod = answerFallbackMethod;
         this.disconnectUrl = disconnectUrl;
         this.disconnectMethod = disconnectMethod;
         this.tag = tag;
@@ -67,10 +82,15 @@ public class ApiCreateCallRequest {
     private String from;
     private String to;
     private Double callTimeout;
+    private Double callbackTimeout;
     private String answerUrl;
+    private String answerFallbackUrl;
     private String username;
     private String password;
+    private String fallbackUsername;
+    private String fallbackPassword;
     private AnswerMethodEnum answerMethod;
+    private AnswerFallbackMethodEnum answerFallbackMethod;
     private String disconnectUrl;
     private DisconnectMethodEnum disconnectMethod;
     private String tag;
@@ -90,8 +110,8 @@ public class ApiCreateCallRequest {
      * Format is E164
      */
     @JsonSetter("from")
-    public void setFrom(String value) {
-        this.from = value;
+    public void setFrom(String from) {
+        this.from = from;
     }
 
     /**
@@ -107,8 +127,8 @@ public class ApiCreateCallRequest {
      * Format is E164
      */
     @JsonSetter("to")
-    public void setTo(String value) {
-        this.to = value;
+    public void setTo(String to) {
+        this.to = to;
     }
 
     /**
@@ -122,8 +142,23 @@ public class ApiCreateCallRequest {
      * Setter for CallTimeout.
      */
     @JsonSetter("callTimeout")
-    public void setCallTimeout(Double value) {
-        this.callTimeout = value;
+    public void setCallTimeout(Double callTimeout) {
+        this.callTimeout = callTimeout;
+    }
+
+    /**
+     * Getter for CallbackTimeout.
+     */
+    @JsonGetter("callbackTimeout")
+    public Double getCallbackTimeout() {
+        return this.callbackTimeout;
+    }
+    /**
+     * Setter for CallbackTimeout.
+     */
+    @JsonSetter("callbackTimeout")
+    public void setCallbackTimeout(Double callbackTimeout) {
+        this.callbackTimeout = callbackTimeout;
     }
 
     /**
@@ -137,8 +172,23 @@ public class ApiCreateCallRequest {
      * Setter for AnswerUrl.
      */
     @JsonSetter("answerUrl")
-    public void setAnswerUrl(String value) {
-        this.answerUrl = value;
+    public void setAnswerUrl(String answerUrl) {
+        this.answerUrl = answerUrl;
+    }
+
+    /**
+     * Getter for AnswerFallbackUrl.
+     */
+    @JsonGetter("answerFallbackUrl")
+    public String getAnswerFallbackUrl() {
+        return this.answerFallbackUrl;
+    }
+    /**
+     * Setter for AnswerFallbackUrl.
+     */
+    @JsonSetter("answerFallbackUrl")
+    public void setAnswerFallbackUrl(String answerFallbackUrl) {
+        this.answerFallbackUrl = answerFallbackUrl;
     }
 
     /**
@@ -152,8 +202,8 @@ public class ApiCreateCallRequest {
      * Setter for Username.
      */
     @JsonSetter("username")
-    public void setUsername(String value) {
-        this.username = value;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -167,8 +217,38 @@ public class ApiCreateCallRequest {
      * Setter for Password.
      */
     @JsonSetter("password")
-    public void setPassword(String value) {
-        this.password = value;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * Getter for FallbackUsername.
+     */
+    @JsonGetter("fallbackUsername")
+    public String getFallbackUsername() {
+        return this.fallbackUsername;
+    }
+    /**
+     * Setter for FallbackUsername.
+     */
+    @JsonSetter("fallbackUsername")
+    public void setFallbackUsername(String fallbackUsername) {
+        this.fallbackUsername = fallbackUsername;
+    }
+
+    /**
+     * Getter for FallbackPassword.
+     */
+    @JsonGetter("fallbackPassword")
+    public String getFallbackPassword() {
+        return this.fallbackPassword;
+    }
+    /**
+     * Setter for FallbackPassword.
+     */
+    @JsonSetter("fallbackPassword")
+    public void setFallbackPassword(String fallbackPassword) {
+        this.fallbackPassword = fallbackPassword;
     }
 
     /**
@@ -182,8 +262,23 @@ public class ApiCreateCallRequest {
      * Setter for AnswerMethod.
      */
     @JsonSetter("answerMethod")
-    public void setAnswerMethod(AnswerMethodEnum value) {
-        this.answerMethod = value;
+    public void setAnswerMethod(AnswerMethodEnum answerMethod) {
+        this.answerMethod = answerMethod;
+    }
+
+    /**
+     * Getter for AnswerFallbackMethod.
+     */
+    @JsonGetter("answerFallbackMethod")
+    public AnswerFallbackMethodEnum getAnswerFallbackMethod() {
+        return this.answerFallbackMethod;
+    }
+    /**
+     * Setter for AnswerFallbackMethod.
+     */
+    @JsonSetter("answerFallbackMethod")
+    public void setAnswerFallbackMethod(AnswerFallbackMethodEnum answerFallbackMethod) {
+        this.answerFallbackMethod = answerFallbackMethod;
     }
 
     /**
@@ -197,8 +292,8 @@ public class ApiCreateCallRequest {
      * Setter for DisconnectUrl.
      */
     @JsonSetter("disconnectUrl")
-    public void setDisconnectUrl(String value) {
-        this.disconnectUrl = value;
+    public void setDisconnectUrl(String disconnectUrl) {
+        this.disconnectUrl = disconnectUrl;
     }
 
     /**
@@ -212,8 +307,8 @@ public class ApiCreateCallRequest {
      * Setter for DisconnectMethod.
      */
     @JsonSetter("disconnectMethod")
-    public void setDisconnectMethod(DisconnectMethodEnum value) {
-        this.disconnectMethod = value;
+    public void setDisconnectMethod(DisconnectMethodEnum disconnectMethod) {
+        this.disconnectMethod = disconnectMethod;
     }
 
     /**
@@ -227,8 +322,8 @@ public class ApiCreateCallRequest {
      * Setter for Tag.
      */
     @JsonSetter("tag")
-    public void setTag(String value) {
-        this.tag = value;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
     /**
@@ -242,8 +337,8 @@ public class ApiCreateCallRequest {
      * Setter for ApplicationId.
      */
     @JsonSetter("applicationId")
-    public void setApplicationId(String value) {
-        this.applicationId = value;
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
     }
 
     /**
@@ -257,8 +352,8 @@ public class ApiCreateCallRequest {
      * Setter for ObfuscatedTo.
      */
     @JsonSetter("obfuscatedTo")
-    public void setObfuscatedTo(String value) {
-        this.obfuscatedTo = value;
+    public void setObfuscatedTo(String obfuscatedTo) {
+        this.obfuscatedTo = obfuscatedTo;
     }
 
     /**
@@ -272,8 +367,8 @@ public class ApiCreateCallRequest {
      * Setter for ObfuscatedFrom.
      */
     @JsonSetter("obfuscatedFrom")
-    public void setObfuscatedFrom(String value) {
-        this.obfuscatedFrom = value;
+    public void setObfuscatedFrom(String obfuscatedFrom) {
+        this.obfuscatedFrom = obfuscatedFrom;
     }
 
  
@@ -289,9 +384,14 @@ public class ApiCreateCallRequest {
             answerUrl,
             applicationId)
             .callTimeout(getCallTimeout())
+            .callbackTimeout(getCallbackTimeout())
+            .answerFallbackUrl(getAnswerFallbackUrl())
             .username(getUsername())
             .password(getPassword())
+            .fallbackUsername(getFallbackUsername())
+            .fallbackPassword(getFallbackPassword())
             .answerMethod(getAnswerMethod())
+            .answerFallbackMethod(getAnswerFallbackMethod())
             .disconnectUrl(getDisconnectUrl())
             .disconnectMethod(getDisconnectMethod())
             .tag(getTag())
@@ -309,9 +409,14 @@ public class ApiCreateCallRequest {
         private String answerUrl;
         private String applicationId;
         private Double callTimeout;
+        private Double callbackTimeout;
+        private String answerFallbackUrl;
         private String username;
         private String password;
+        private String fallbackUsername;
+        private String fallbackPassword;
         private AnswerMethodEnum answerMethod;
+        private AnswerFallbackMethodEnum answerFallbackMethod;
         private String disconnectUrl;
         private DisconnectMethodEnum disconnectMethod;
         private String tag;
@@ -388,6 +493,26 @@ public class ApiCreateCallRequest {
         }
 
         /**
+         * Setter for callbackTimeout
+         * @param callbackTimeout
+         * @return Builder
+         */
+        public Builder callbackTimeout(Double callbackTimeout) {
+            this.callbackTimeout = callbackTimeout;
+            return this;
+        }
+
+        /**
+         * Setter for answerFallbackUrl
+         * @param answerFallbackUrl
+         * @return Builder
+         */
+        public Builder answerFallbackUrl(String answerFallbackUrl) {
+            this.answerFallbackUrl = answerFallbackUrl;
+            return this;
+        }
+
+        /**
          * Setter for username
          * @param username
          * @return Builder
@@ -408,12 +533,42 @@ public class ApiCreateCallRequest {
         }
 
         /**
+         * Setter for fallbackUsername
+         * @param fallbackUsername
+         * @return Builder
+         */
+        public Builder fallbackUsername(String fallbackUsername) {
+            this.fallbackUsername = fallbackUsername;
+            return this;
+        }
+
+        /**
+         * Setter for fallbackPassword
+         * @param fallbackPassword
+         * @return Builder
+         */
+        public Builder fallbackPassword(String fallbackPassword) {
+            this.fallbackPassword = fallbackPassword;
+            return this;
+        }
+
+        /**
          * Setter for answerMethod
          * @param answerMethod
          * @return Builder
          */
         public Builder answerMethod(AnswerMethodEnum answerMethod) {
             this.answerMethod = answerMethod;
+            return this;
+        }
+
+        /**
+         * Setter for answerFallbackMethod
+         * @param answerFallbackMethod
+         * @return Builder
+         */
+        public Builder answerFallbackMethod(AnswerFallbackMethodEnum answerFallbackMethod) {
+            this.answerFallbackMethod = answerFallbackMethod;
             return this;
         }
 
@@ -477,9 +632,14 @@ public class ApiCreateCallRequest {
                 answerUrl,
                 applicationId,
                 callTimeout,
+                callbackTimeout,
+                answerFallbackUrl,
                 username,
                 password,
+                fallbackUsername,
+                fallbackPassword,
                 answerMethod,
+                answerFallbackMethod,
                 disconnectUrl,
                 disconnectMethod,
                 tag,

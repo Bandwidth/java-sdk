@@ -69,6 +69,18 @@ public class PhoneNumber {
     @XmlAttribute
     private String tag;
 
+    @XmlAttribute
+    protected String fallbackUsername;
+
+    @XmlAttribute
+    protected String fallbackPassword;
+
+    @XmlAttribute
+    protected URI transferAnswerFallbackUrl;
+
+    @XmlAttribute
+    protected Method transferAnswerFallbackMethod;
+
     public static class PhoneNumberBuilder{
 
         /**
@@ -83,6 +95,24 @@ public class PhoneNumber {
          */
         public PhoneNumberBuilder transferAnswerUrl(URI uri){
             this.transferAnswerUrl = uri;
+            return this;
+        }
+
+        public PhoneNumberBuilder transferAnswerFallbackUrl(String uri){
+            return this.transferAnswerFallbackUrl(URI.create(uri));
+        }
+
+        public PhoneNumberBuilder transferAnswerFallbackUrl(URI uri){
+            this.transferAnswerFallbackUrl = uri;
+            return this;
+        }
+
+        public PhoneNumberBuilder transferAnswerFallbackMethod(String method){
+            return this.transferAnswerFallbackMethod(Method.fromValue(method));
+        }
+
+        public PhoneNumberBuilder transferAnswerFallbackMethod(Method method){
+            this.transferAnswerFallbackMethod = method;
             return this;
         }
 
