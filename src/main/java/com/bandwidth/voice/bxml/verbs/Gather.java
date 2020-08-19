@@ -92,6 +92,18 @@ public class Gather implements Verb {
     @XmlAttribute
     private Integer repeatCount;
 
+    @XmlAttribute
+    protected String fallbackUsername;
+
+    @XmlAttribute
+    protected String fallbackPassword;
+
+    @XmlAttribute
+    protected URI gatherFallbackUrl;
+
+    @XmlAttribute
+    protected Method gatherFallbackMethod;
+
     public static class GatherBuilder{
 
         /**
@@ -106,6 +118,24 @@ public class Gather implements Verb {
          */
         public GatherBuilder gatherUrl(URI url){
             this.gatherUrl = url;
+            return this;
+        }
+
+        public GatherBuilder gatherFallbackUrl(String url){
+            return this.gatherFallbackUrl(URI.create(url));
+        }
+
+        public GatherBuilder gatherFallbackUrl(URI url){
+            this.gatherFallbackUrl = url;
+            return this;
+        }
+
+        public GatherBuilder gatherFallbackMethod(String method){
+            return this.gatherFallbackMethod(Method.fromValue(method));
+        }
+
+        public GatherBuilder gatherFallbackMethod(Method method){
+            this.gatherFallbackMethod = method;
             return this;
         }
 

@@ -81,8 +81,8 @@ public class BandwidthMessage {
      * Setter for Id.
      */
     @JsonSetter("id")
-    public void setId(String value) {
-        this.id = value;
+    public void setId(String id) {
+        this.id = id;
     }
 
     /**
@@ -96,8 +96,8 @@ public class BandwidthMessage {
      * Setter for Owner.
      */
     @JsonSetter("owner")
-    public void setOwner(String value) {
-        this.owner = value;
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     /**
@@ -111,8 +111,8 @@ public class BandwidthMessage {
      * Setter for ApplicationId.
      */
     @JsonSetter("applicationId")
-    public void setApplicationId(String value) {
-        this.applicationId = value;
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
     }
 
     /**
@@ -126,8 +126,8 @@ public class BandwidthMessage {
      * Setter for Time.
      */
     @JsonSetter("time")
-    public void setTime(String value) {
-        this.time = value;
+    public void setTime(String time) {
+        this.time = time;
     }
 
     /**
@@ -141,8 +141,8 @@ public class BandwidthMessage {
      * Setter for SegmentCount.
      */
     @JsonSetter("segmentCount")
-    public void setSegmentCount(Integer value) {
-        this.segmentCount = value;
+    public void setSegmentCount(Integer segmentCount) {
+        this.segmentCount = segmentCount;
     }
 
     /**
@@ -156,8 +156,8 @@ public class BandwidthMessage {
      * Setter for Direction.
      */
     @JsonSetter("direction")
-    public void setDirection(String value) {
-        this.direction = value;
+    public void setDirection(String direction) {
+        this.direction = direction;
     }
 
     /**
@@ -171,8 +171,8 @@ public class BandwidthMessage {
      * Setter for To.
      */
     @JsonSetter("to")
-    public void setTo(List<String> value) {
-        this.to = value;
+    public void setTo(List<String> to) {
+        this.to = to;
     }
 
     /**
@@ -186,8 +186,8 @@ public class BandwidthMessage {
      * Setter for From.
      */
     @JsonSetter("from")
-    public void setFrom(String value) {
-        this.from = value;
+    public void setFrom(String from) {
+        this.from = from;
     }
 
     /**
@@ -201,8 +201,8 @@ public class BandwidthMessage {
      * Setter for Media.
      */
     @JsonSetter("media")
-    public void setMedia(List<String> value) {
-        this.media = value;
+    public void setMedia(List<String> media) {
+        this.media = media;
     }
 
     /**
@@ -216,8 +216,8 @@ public class BandwidthMessage {
      * Setter for Text.
      */
     @JsonSetter("text")
-    public void setText(String value) {
-        this.text = value;
+    public void setText(String text) {
+        this.text = text;
     }
 
     /**
@@ -231,8 +231,8 @@ public class BandwidthMessage {
      * Setter for Tag.
      */
     @JsonSetter("tag")
-    public void setTag(String value) {
-        this.tag = value;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
  

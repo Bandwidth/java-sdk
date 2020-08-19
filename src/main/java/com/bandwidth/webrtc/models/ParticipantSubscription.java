@@ -42,8 +42,8 @@ public class ParticipantSubscription {
      * Participant the subscriber should be subscribed to
      */
     @JsonSetter("participantId")
-    public void setParticipantId(String value) {
-        this.participantId = value;
+    public void setParticipantId(String participantId) {
+        this.participantId = participantId;
     }
 
  

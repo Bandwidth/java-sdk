@@ -40,8 +40,8 @@ public class TwoFactorMessagingResponse {
      * Setter for MessageId.
      */
     @JsonSetter("messageId")
-    public void setMessageId(String value) {
-        this.messageId = value;
+    public void setMessageId(String messageId) {
+        this.messageId = messageId;
     }
 
  

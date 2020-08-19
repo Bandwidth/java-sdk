@@ -106,6 +106,20 @@ public class Record implements Verb {
     @XmlAttribute
     protected String fileFormat;
 
+
+    @XmlAttribute
+    protected String fallbackUsername;
+
+    @XmlAttribute
+    protected String fallbackPassword;
+
+    @XmlAttribute
+    protected URI recordCompleteFallbackUrl;
+
+    @XmlAttribute
+    protected Method recordCompleteFallbackMethod;
+
+
     public static class RecordBuilder {
 
         /**
@@ -123,6 +137,15 @@ public class Record implements Verb {
             return transcriptionAvailableUrl(URI.create(uri));
         }
 
+        public RecordBuilder recordCompleteFallbackUrl(URI uri ){
+            this.recordCompleteFallbackUrl = uri;
+            return this;
+        }
+
+        public RecordBuilder recordCompleteFallbackUrl(String uri){
+            return recordCompleteFallbackUrl(URI.create(uri));
+        }
+
         /**
          * <i>(optional)</i> The HTTP method to use for the request to transcriptionAvailableUrl. GET or POST. Default Value is POST.
          */
@@ -136,6 +159,15 @@ public class Record implements Verb {
          */
         public RecordBuilder transcriptionAvailableMethod(String method){
             return transcriptionAvailableMethod(Method.fromValue(method));
+        }
+
+        public RecordBuilder recordCompleteFallbackMethod(Method method){
+            this.recordCompleteFallbackMethod = method;
+            return this;
+        }
+
+        public RecordBuilder recordCompleteFallbackMethod(String method){
+            return recordCompleteFallbackMethod(Method.fromValue(method));
         }
 
         /**

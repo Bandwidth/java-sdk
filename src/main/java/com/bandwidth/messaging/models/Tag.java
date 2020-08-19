@@ -44,8 +44,8 @@ public class Tag {
      * Setter for Key.
      */
     @JsonSetter("key")
-    public void setKey(String value) {
-        this.key = value;
+    public void setKey(String key) {
+        this.key = key;
     }
 
     /**

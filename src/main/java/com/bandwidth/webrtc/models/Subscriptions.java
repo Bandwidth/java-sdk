@@ -49,8 +49,8 @@ public class Subscriptions {
      * If this is the only field, the subscriber will be subscribed to all participants in the session (including any participants that are later added to the session)
      */
     @JsonSetter("sessionId")
-    public void setSessionId(String value) {
-        this.sessionId = value;
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
     }
 
     /**
@@ -66,8 +66,8 @@ public class Subscriptions {
      * Subset of participants to subscribe to in the session. Optional.
      */
     @JsonSetter("participants")
-    public void setParticipants(List<ParticipantSubscription> value) {
-        this.participants = value;
+    public void setParticipants(List<ParticipantSubscription> participants) {
+        this.participants = participants;
     }
 
  

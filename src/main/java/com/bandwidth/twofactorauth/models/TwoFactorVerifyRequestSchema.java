@@ -66,8 +66,8 @@ public class TwoFactorVerifyRequestSchema {
      * The phone number to send the 2fa code to.
      */
     @JsonSetter("to")
-    public void setTo(String value) {
-        this.to = value;
+    public void setTo(String to) {
+        this.to = to;
     }
 
     /**
@@ -83,8 +83,8 @@ public class TwoFactorVerifyRequestSchema {
      * The application phone number, the sender of the 2fa code.
      */
     @JsonSetter("from")
-    public void setFrom(String value) {
-        this.from = value;
+    public void setFrom(String from) {
+        this.from = from;
     }
 
     /**
@@ -100,8 +100,8 @@ public class TwoFactorVerifyRequestSchema {
      * The application unique ID, obtained from Bandwidth.
      */
     @JsonSetter("applicationId")
-    public void setApplicationId(String value) {
-        this.applicationId = value;
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
     }
 
     /**
@@ -117,8 +117,8 @@ public class TwoFactorVerifyRequestSchema {
      * An optional field to denote what scope or action the 2fa code is addressing.  If not supplied, defaults to "2FA".
      */
     @JsonSetter("scope")
-    public void setScope(String value) {
-        this.scope = value;
+    public void setScope(String scope) {
+        this.scope = scope;
     }
 
     /**
@@ -134,8 +134,8 @@ public class TwoFactorVerifyRequestSchema {
      * The number of digits for your 2fa code.  The valid number ranges from 2 to 8, inclusively.
      */
     @JsonSetter("digits")
-    public void setDigits(double value) {
-        this.digits = value;
+    public void setDigits(double digits) {
+        this.digits = digits;
     }
 
     /**
@@ -151,8 +151,8 @@ public class TwoFactorVerifyRequestSchema {
      * The time period, in minutes, to validate the 2fa code.  By setting this to 3 minutes, it will mean any code generated within the last 3 minutes are still valid.  The valid range for expiration time is between 0 and 15 minutes, exclusively and inclusively, respectively.
      */
     @JsonSetter("expirationTimeInMinutes")
-    public void setExpirationTimeInMinutes(double value) {
-        this.expirationTimeInMinutes = value;
+    public void setExpirationTimeInMinutes(double expirationTimeInMinutes) {
+        this.expirationTimeInMinutes = expirationTimeInMinutes;
     }
 
     /**
@@ -168,8 +168,8 @@ public class TwoFactorVerifyRequestSchema {
      * The generated 2fa code to check if valid
      */
     @JsonSetter("code")
-    public void setCode(String value) {
-        this.code = value;
+    public void setCode(String code) {
+        this.code = code;
     }
 
  

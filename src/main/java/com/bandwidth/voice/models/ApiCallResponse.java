@@ -36,9 +36,14 @@ public class ApiCallResponse {
      * @param disconnectMethod
      * @param startTime
      * @param callTimeout
+     * @param callbackTimeout
+     * @param answerFallbackUrl
+     * @param answerFallbackMethod
      * @param disconnectUrl
      * @param username
      * @param password
+     * @param fallbackUsername
+     * @param fallbackPassword
      * @param tag
      */
     public ApiCallResponse(
@@ -53,9 +58,14 @@ public class ApiCallResponse {
             DisconnectMethodEnum disconnectMethod,
             LocalDateTime startTime,
             Double callTimeout,
+            Double callbackTimeout,
+            String answerFallbackUrl,
+            AnswerFallbackMethodEnum answerFallbackMethod,
             String disconnectUrl,
             String username,
             String password,
+            String fallbackUsername,
+            String fallbackPassword,
             String tag) {
         this.accountId = accountId;
         this.callId = callId;
@@ -65,12 +75,17 @@ public class ApiCallResponse {
         this.startTime = startTime;
         this.callUrl = callUrl;
         this.callTimeout = callTimeout;
+        this.callbackTimeout = callbackTimeout;
         this.answerUrl = answerUrl;
         this.answerMethod = answerMethod;
+        this.answerFallbackUrl = answerFallbackUrl;
+        this.answerFallbackMethod = answerFallbackMethod;
         this.disconnectUrl = disconnectUrl;
         this.disconnectMethod = disconnectMethod;
         this.username = username;
         this.password = password;
+        this.fallbackUsername = fallbackUsername;
+        this.fallbackPassword = fallbackPassword;
         this.tag = tag;
     }
 
@@ -82,12 +97,17 @@ public class ApiCallResponse {
     private LocalDateTime startTime;
     private String callUrl;
     private Double callTimeout;
+    private Double callbackTimeout;
     private String answerUrl;
     private AnswerMethodEnum answerMethod;
+    private String answerFallbackUrl;
+    private AnswerFallbackMethodEnum answerFallbackMethod;
     private String disconnectUrl;
     private DisconnectMethodEnum disconnectMethod;
     private String username;
     private String password;
+    private String fallbackUsername;
+    private String fallbackPassword;
     private String tag;
     /**
      * Getter for AccountId.
@@ -100,8 +120,8 @@ public class ApiCallResponse {
      * Setter for AccountId.
      */
     @JsonSetter("accountId")
-    public void setAccountId(String value) {
-        this.accountId = value;
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
     /**
@@ -115,8 +135,8 @@ public class ApiCallResponse {
      * Setter for CallId.
      */
     @JsonSetter("callId")
-    public void setCallId(String value) {
-        this.callId = value;
+    public void setCallId(String callId) {
+        this.callId = callId;
     }
 
     /**
@@ -130,8 +150,8 @@ public class ApiCallResponse {
      * Setter for ApplicationId.
      */
     @JsonSetter("applicationId")
-    public void setApplicationId(String value) {
-        this.applicationId = value;
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
     }
 
     /**
@@ -145,8 +165,8 @@ public class ApiCallResponse {
      * Setter for To.
      */
     @JsonSetter("to")
-    public void setTo(String value) {
-        this.to = value;
+    public void setTo(String to) {
+        this.to = to;
     }
 
     /**
@@ -160,8 +180,8 @@ public class ApiCallResponse {
      * Setter for From.
      */
     @JsonSetter("from")
-    public void setFrom(String value) {
-        this.from = value;
+    public void setFrom(String from) {
+        this.from = from;
     }
 
     /**
@@ -177,8 +197,8 @@ public class ApiCallResponse {
      */
     @JsonSetter("startTime")
     @JsonDeserialize(using=DateTimeHelper.Rfc8601DateTimeDeserializer.class)
-    public void setStartTime(LocalDateTime value) {
-        this.startTime = value;
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
     }
 
     /**
@@ -192,8 +212,8 @@ public class ApiCallResponse {
      * Setter for CallUrl.
      */
     @JsonSetter("callUrl")
-    public void setCallUrl(String value) {
-        this.callUrl = value;
+    public void setCallUrl(String callUrl) {
+        this.callUrl = callUrl;
     }
 
     /**
@@ -207,8 +227,23 @@ public class ApiCallResponse {
      * Setter for CallTimeout.
      */
     @JsonSetter("callTimeout")
-    public void setCallTimeout(Double value) {
-        this.callTimeout = value;
+    public void setCallTimeout(Double callTimeout) {
+        this.callTimeout = callTimeout;
+    }
+
+    /**
+     * Getter for CallbackTimeout.
+     */
+    @JsonGetter("callbackTimeout")
+    public Double getCallbackTimeout() {
+        return this.callbackTimeout;
+    }
+    /**
+     * Setter for CallbackTimeout.
+     */
+    @JsonSetter("callbackTimeout")
+    public void setCallbackTimeout(Double callbackTimeout) {
+        this.callbackTimeout = callbackTimeout;
     }
 
     /**
@@ -222,8 +257,8 @@ public class ApiCallResponse {
      * Setter for AnswerUrl.
      */
     @JsonSetter("answerUrl")
-    public void setAnswerUrl(String value) {
-        this.answerUrl = value;
+    public void setAnswerUrl(String answerUrl) {
+        this.answerUrl = answerUrl;
     }
 
     /**
@@ -237,8 +272,38 @@ public class ApiCallResponse {
      * Setter for AnswerMethod.
      */
     @JsonSetter("answerMethod")
-    public void setAnswerMethod(AnswerMethodEnum value) {
-        this.answerMethod = value;
+    public void setAnswerMethod(AnswerMethodEnum answerMethod) {
+        this.answerMethod = answerMethod;
+    }
+
+    /**
+     * Getter for AnswerFallbackUrl.
+     */
+    @JsonGetter("answerFallbackUrl")
+    public String getAnswerFallbackUrl() {
+        return this.answerFallbackUrl;
+    }
+    /**
+     * Setter for AnswerFallbackUrl.
+     */
+    @JsonSetter("answerFallbackUrl")
+    public void setAnswerFallbackUrl(String answerFallbackUrl) {
+        this.answerFallbackUrl = answerFallbackUrl;
+    }
+
+    /**
+     * Getter for AnswerFallbackMethod.
+     */
+    @JsonGetter("answerFallbackMethod")
+    public AnswerFallbackMethodEnum getAnswerFallbackMethod() {
+        return this.answerFallbackMethod;
+    }
+    /**
+     * Setter for AnswerFallbackMethod.
+     */
+    @JsonSetter("answerFallbackMethod")
+    public void setAnswerFallbackMethod(AnswerFallbackMethodEnum answerFallbackMethod) {
+        this.answerFallbackMethod = answerFallbackMethod;
     }
 
     /**
@@ -252,8 +317,8 @@ public class ApiCallResponse {
      * Setter for DisconnectUrl.
      */
     @JsonSetter("disconnectUrl")
-    public void setDisconnectUrl(String value) {
-        this.disconnectUrl = value;
+    public void setDisconnectUrl(String disconnectUrl) {
+        this.disconnectUrl = disconnectUrl;
     }
 
     /**
@@ -267,8 +332,8 @@ public class ApiCallResponse {
      * Setter for DisconnectMethod.
      */
     @JsonSetter("disconnectMethod")
-    public void setDisconnectMethod(DisconnectMethodEnum value) {
-        this.disconnectMethod = value;
+    public void setDisconnectMethod(DisconnectMethodEnum disconnectMethod) {
+        this.disconnectMethod = disconnectMethod;
     }
 
     /**
@@ -282,8 +347,8 @@ public class ApiCallResponse {
      * Setter for Username.
      */
     @JsonSetter("username")
-    public void setUsername(String value) {
-        this.username = value;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -297,8 +362,38 @@ public class ApiCallResponse {
      * Setter for Password.
      */
     @JsonSetter("password")
-    public void setPassword(String value) {
-        this.password = value;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * Getter for FallbackUsername.
+     */
+    @JsonGetter("fallbackUsername")
+    public String getFallbackUsername() {
+        return this.fallbackUsername;
+    }
+    /**
+     * Setter for FallbackUsername.
+     */
+    @JsonSetter("fallbackUsername")
+    public void setFallbackUsername(String fallbackUsername) {
+        this.fallbackUsername = fallbackUsername;
+    }
+
+    /**
+     * Getter for FallbackPassword.
+     */
+    @JsonGetter("fallbackPassword")
+    public String getFallbackPassword() {
+        return this.fallbackPassword;
+    }
+    /**
+     * Setter for FallbackPassword.
+     */
+    @JsonSetter("fallbackPassword")
+    public void setFallbackPassword(String fallbackPassword) {
+        this.fallbackPassword = fallbackPassword;
     }
 
     /**
@@ -312,8 +407,8 @@ public class ApiCallResponse {
      * Setter for Tag.
      */
     @JsonSetter("tag")
-    public void setTag(String value) {
-        this.tag = value;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
  
@@ -335,9 +430,14 @@ public class ApiCallResponse {
             disconnectMethod)
             .startTime(getStartTime())
             .callTimeout(getCallTimeout())
+            .callbackTimeout(getCallbackTimeout())
+            .answerFallbackUrl(getAnswerFallbackUrl())
+            .answerFallbackMethod(getAnswerFallbackMethod())
             .disconnectUrl(getDisconnectUrl())
             .username(getUsername())
             .password(getPassword())
+            .fallbackUsername(getFallbackUsername())
+            .fallbackPassword(getFallbackPassword())
             .tag(getTag());
         return builder;
     }
@@ -357,9 +457,14 @@ public class ApiCallResponse {
         private DisconnectMethodEnum disconnectMethod;
         private LocalDateTime startTime;
         private Double callTimeout;
+        private Double callbackTimeout;
+        private String answerFallbackUrl;
+        private AnswerFallbackMethodEnum answerFallbackMethod;
         private String disconnectUrl;
         private String username;
         private String password;
+        private String fallbackUsername;
+        private String fallbackPassword;
         private String tag;
 
         /**
@@ -502,6 +607,36 @@ public class ApiCallResponse {
         }
 
         /**
+         * Setter for callbackTimeout
+         * @param callbackTimeout
+         * @return Builder
+         */
+        public Builder callbackTimeout(Double callbackTimeout) {
+            this.callbackTimeout = callbackTimeout;
+            return this;
+        }
+
+        /**
+         * Setter for answerFallbackUrl
+         * @param answerFallbackUrl
+         * @return Builder
+         */
+        public Builder answerFallbackUrl(String answerFallbackUrl) {
+            this.answerFallbackUrl = answerFallbackUrl;
+            return this;
+        }
+
+        /**
+         * Setter for answerFallbackMethod
+         * @param answerFallbackMethod
+         * @return Builder
+         */
+        public Builder answerFallbackMethod(AnswerFallbackMethodEnum answerFallbackMethod) {
+            this.answerFallbackMethod = answerFallbackMethod;
+            return this;
+        }
+
+        /**
          * Setter for disconnectUrl
          * @param disconnectUrl
          * @return Builder
@@ -532,6 +667,26 @@ public class ApiCallResponse {
         }
 
         /**
+         * Setter for fallbackUsername
+         * @param fallbackUsername
+         * @return Builder
+         */
+        public Builder fallbackUsername(String fallbackUsername) {
+            this.fallbackUsername = fallbackUsername;
+            return this;
+        }
+
+        /**
+         * Setter for fallbackPassword
+         * @param fallbackPassword
+         * @return Builder
+         */
+        public Builder fallbackPassword(String fallbackPassword) {
+            this.fallbackPassword = fallbackPassword;
+            return this;
+        }
+
+        /**
          * Setter for tag
          * @param tag
          * @return Builder
@@ -557,9 +712,14 @@ public class ApiCallResponse {
                 disconnectMethod,
                 startTime,
                 callTimeout,
+                callbackTimeout,
+                answerFallbackUrl,
+                answerFallbackMethod,
                 disconnectUrl,
                 username,
                 password,
+                fallbackUsername,
+                fallbackPassword,
                 tag);
         }
     }

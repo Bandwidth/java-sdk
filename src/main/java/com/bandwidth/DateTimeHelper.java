@@ -119,16 +119,13 @@ public class DateTimeHelper {
      * @return The parsed DateTime object
      */
     public static LocalDateTime fromRfc8601DateTime(String date) {
-        LocalDateTime localDateTime = LocalDateTime.parse(date, DateTimeFormatter.ISO_DATE_TIME); 
         Pattern pattern = Pattern.compile("(Z|([+-])(\\d{2}:\\d{2}))$");
         Matcher patternMatcher = pattern.matcher(date);
         if (patternMatcher.find()) {
-            OffsetDateTime timeUtc = localDateTime.atOffset(ZoneOffset.UTC);
-            String offsetInfo = patternMatcher.group(1);
-            OffsetDateTime offsetTime = timeUtc.withOffsetSameInstant(ZoneOffset.of(offsetInfo));
-            return LocalDateTime.from(offsetTime);
+            OffsetDateTime parsed = OffsetDateTime.parse(date, DateTimeFormatter.ISO_DATE_TIME);
+            return LocalDateTime.from(parsed.withOffsetSameInstant(ZoneOffset.UTC));
         } else {
-            return localDateTime;
+            return LocalDateTime.parse(date, DateTimeFormatter.ISO_DATE_TIME);
         }
     }
 
@@ -138,7 +135,7 @@ public class DateTimeHelper {
      * @return The converted String
      */
     public static String toRfc8601DateTime(LocalDateTime value) {
-        return value.atOffset(OffsetDateTime.now().getOffset()).toString();
+        return value.toString() + "Z";
     }
 
     /**

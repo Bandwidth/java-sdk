@@ -44,8 +44,8 @@ public class Transcript {
      * Setter for Text.
      */
     @JsonSetter("text")
-    public void setText(String value) {
-        this.text = value;
+    public void setText(String text) {
+        this.text = text;
     }
 
     /**
@@ -59,8 +59,8 @@ public class Transcript {
      * Setter for Confidence.
      */
     @JsonSetter("confidence")
-    public void setConfidence(Double value) {
-        this.confidence = value;
+    public void setConfidence(Double confidence) {
+        this.confidence = confidence;
     }
 
  

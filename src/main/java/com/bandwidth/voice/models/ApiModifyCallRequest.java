@@ -23,31 +23,47 @@ public class ApiModifyCallRequest {
      * Initialization constructor.
      * @param redirectUrl
      * @param state
+     * @param redirectFallbackUrl
      * @param redirectMethod
+     * @param redirectFallbackMethod
      * @param username
      * @param password
+     * @param fallbackUsername
+     * @param fallbackPassword
      * @param tag
      */
     public ApiModifyCallRequest(
             String redirectUrl,
             State1Enum state,
+            String redirectFallbackUrl,
             RedirectMethodEnum redirectMethod,
+            RedirectFallbackMethodEnum redirectFallbackMethod,
             String username,
             String password,
+            String fallbackUsername,
+            String fallbackPassword,
             String tag) {
         this.state = state;
         this.redirectUrl = redirectUrl;
+        this.redirectFallbackUrl = redirectFallbackUrl;
         this.redirectMethod = redirectMethod;
+        this.redirectFallbackMethod = redirectFallbackMethod;
         this.username = username;
         this.password = password;
+        this.fallbackUsername = fallbackUsername;
+        this.fallbackPassword = fallbackPassword;
         this.tag = tag;
     }
 
     private State1Enum state;
     private String redirectUrl;
+    private String redirectFallbackUrl;
     private RedirectMethodEnum redirectMethod;
+    private RedirectFallbackMethodEnum redirectFallbackMethod;
     private String username;
     private String password;
+    private String fallbackUsername;
+    private String fallbackPassword;
     private String tag;
     /**
      * Getter for State.
@@ -60,8 +76,8 @@ public class ApiModifyCallRequest {
      * Setter for State.
      */
     @JsonSetter("state")
-    public void setState(State1Enum value) {
-        this.state = value;
+    public void setState(State1Enum state) {
+        this.state = state;
     }
 
     /**
@@ -75,8 +91,23 @@ public class ApiModifyCallRequest {
      * Setter for RedirectUrl.
      */
     @JsonSetter("redirectUrl")
-    public void setRedirectUrl(String value) {
-        this.redirectUrl = value;
+    public void setRedirectUrl(String redirectUrl) {
+        this.redirectUrl = redirectUrl;
+    }
+
+    /**
+     * Getter for RedirectFallbackUrl.
+     */
+    @JsonGetter("redirectFallbackUrl")
+    public String getRedirectFallbackUrl() {
+        return this.redirectFallbackUrl;
+    }
+    /**
+     * Setter for RedirectFallbackUrl.
+     */
+    @JsonSetter("redirectFallbackUrl")
+    public void setRedirectFallbackUrl(String redirectFallbackUrl) {
+        this.redirectFallbackUrl = redirectFallbackUrl;
     }
 
     /**
@@ -90,8 +121,23 @@ public class ApiModifyCallRequest {
      * Setter for RedirectMethod.
      */
     @JsonSetter("redirectMethod")
-    public void setRedirectMethod(RedirectMethodEnum value) {
-        this.redirectMethod = value;
+    public void setRedirectMethod(RedirectMethodEnum redirectMethod) {
+        this.redirectMethod = redirectMethod;
+    }
+
+    /**
+     * Getter for RedirectFallbackMethod.
+     */
+    @JsonGetter("redirectFallbackMethod")
+    public RedirectFallbackMethodEnum getRedirectFallbackMethod() {
+        return this.redirectFallbackMethod;
+    }
+    /**
+     * Setter for RedirectFallbackMethod.
+     */
+    @JsonSetter("redirectFallbackMethod")
+    public void setRedirectFallbackMethod(RedirectFallbackMethodEnum redirectFallbackMethod) {
+        this.redirectFallbackMethod = redirectFallbackMethod;
     }
 
     /**
@@ -105,8 +151,8 @@ public class ApiModifyCallRequest {
      * Setter for Username.
      */
     @JsonSetter("username")
-    public void setUsername(String value) {
-        this.username = value;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -120,8 +166,38 @@ public class ApiModifyCallRequest {
      * Setter for Password.
      */
     @JsonSetter("password")
-    public void setPassword(String value) {
-        this.password = value;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * Getter for FallbackUsername.
+     */
+    @JsonGetter("fallbackUsername")
+    public String getFallbackUsername() {
+        return this.fallbackUsername;
+    }
+    /**
+     * Setter for FallbackUsername.
+     */
+    @JsonSetter("fallbackUsername")
+    public void setFallbackUsername(String fallbackUsername) {
+        this.fallbackUsername = fallbackUsername;
+    }
+
+    /**
+     * Getter for FallbackPassword.
+     */
+    @JsonGetter("fallbackPassword")
+    public String getFallbackPassword() {
+        return this.fallbackPassword;
+    }
+    /**
+     * Setter for FallbackPassword.
+     */
+    @JsonSetter("fallbackPassword")
+    public void setFallbackPassword(String fallbackPassword) {
+        this.fallbackPassword = fallbackPassword;
     }
 
     /**
@@ -135,8 +211,8 @@ public class ApiModifyCallRequest {
      * Setter for Tag.
      */
     @JsonSetter("tag")
-    public void setTag(String value) {
-        this.tag = value;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
  
@@ -149,9 +225,13 @@ public class ApiModifyCallRequest {
     public Builder toBuilder() {
         Builder builder = new Builder(redirectUrl)
             .state(getState())
+            .redirectFallbackUrl(getRedirectFallbackUrl())
             .redirectMethod(getRedirectMethod())
+            .redirectFallbackMethod(getRedirectFallbackMethod())
             .username(getUsername())
             .password(getPassword())
+            .fallbackUsername(getFallbackUsername())
+            .fallbackPassword(getFallbackPassword())
             .tag(getTag());
         return builder;
     }
@@ -162,9 +242,13 @@ public class ApiModifyCallRequest {
     public static class Builder {
         private String redirectUrl;
         private State1Enum state;
+        private String redirectFallbackUrl;
         private RedirectMethodEnum redirectMethod;
+        private RedirectFallbackMethodEnum redirectFallbackMethod;
         private String username;
         private String password;
+        private String fallbackUsername;
+        private String fallbackPassword;
         private String tag;
 
         /**
@@ -201,12 +285,32 @@ public class ApiModifyCallRequest {
         }
 
         /**
+         * Setter for redirectFallbackUrl
+         * @param redirectFallbackUrl
+         * @return Builder
+         */
+        public Builder redirectFallbackUrl(String redirectFallbackUrl) {
+            this.redirectFallbackUrl = redirectFallbackUrl;
+            return this;
+        }
+
+        /**
          * Setter for redirectMethod
          * @param redirectMethod
          * @return Builder
          */
         public Builder redirectMethod(RedirectMethodEnum redirectMethod) {
             this.redirectMethod = redirectMethod;
+            return this;
+        }
+
+        /**
+         * Setter for redirectFallbackMethod
+         * @param redirectFallbackMethod
+         * @return Builder
+         */
+        public Builder redirectFallbackMethod(RedirectFallbackMethodEnum redirectFallbackMethod) {
+            this.redirectFallbackMethod = redirectFallbackMethod;
             return this;
         }
 
@@ -231,6 +335,26 @@ public class ApiModifyCallRequest {
         }
 
         /**
+         * Setter for fallbackUsername
+         * @param fallbackUsername
+         * @return Builder
+         */
+        public Builder fallbackUsername(String fallbackUsername) {
+            this.fallbackUsername = fallbackUsername;
+            return this;
+        }
+
+        /**
+         * Setter for fallbackPassword
+         * @param fallbackPassword
+         * @return Builder
+         */
+        public Builder fallbackPassword(String fallbackPassword) {
+            this.fallbackPassword = fallbackPassword;
+            return this;
+        }
+
+        /**
          * Setter for tag
          * @param tag
          * @return Builder
@@ -247,9 +371,13 @@ public class ApiModifyCallRequest {
         public ApiModifyCallRequest build() {
             return new ApiModifyCallRequest(redirectUrl,
                 state,
+                redirectFallbackUrl,
                 redirectMethod,
+                redirectFallbackMethod,
                 username,
                 password,
+                fallbackUsername,
+                fallbackPassword,
                 tag);
         }
     }

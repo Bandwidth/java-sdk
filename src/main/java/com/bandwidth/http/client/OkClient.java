@@ -32,7 +32,7 @@ import com.bandwidth.http.response.HttpStringResponse;
  */
 public class OkClient implements HttpClient {
     private final static Object syncObject = new Object();
-    private static okhttp3.OkHttpClient defaultOkHttpClient;
+    private static volatile okhttp3.OkHttpClient defaultOkHttpClient;
     
     /**
      * Private instance of the okhttp3.OkHttpClient

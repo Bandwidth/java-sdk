@@ -40,8 +40,8 @@ public class ModifyCallRecordingState {
      * Setter for State.
      */
     @JsonSetter("state")
-    public void setState(State2Enum value) {
-        this.state = value;
+    public void setState(State2Enum state) {
+        this.state = state;
     }
 
  

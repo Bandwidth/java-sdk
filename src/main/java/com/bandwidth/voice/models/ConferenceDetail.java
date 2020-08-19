@@ -8,6 +8,10 @@ package com.bandwidth.voice.models;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.bandwidth.DateTimeHelper;
+import java.time.LocalDateTime;
 
 
 /**
@@ -34,8 +38,8 @@ public class ConferenceDetail {
     public ConferenceDetail(
             String id,
             String name,
-            Long createdTime,
-            Long completedTime,
+            LocalDateTime createdTime,
+            LocalDateTime completedTime,
             String conferenceEventUrl,
             ConferenceEventMethodEnum conferenceEventMethod,
             String tag,
@@ -52,8 +56,8 @@ public class ConferenceDetail {
 
     private String id;
     private String name;
-    private Long createdTime;
-    private Long completedTime;
+    private LocalDateTime createdTime;
+    private LocalDateTime completedTime;
     private String conferenceEventUrl;
     private ConferenceEventMethodEnum conferenceEventMethod;
     private String tag;
@@ -69,8 +73,8 @@ public class ConferenceDetail {
      * Setter for Id.
      */
     @JsonSetter("id")
-    public void setId(String value) {
-        this.id = value;
+    public void setId(String id) {
+        this.id = id;
     }
 
     /**
@@ -84,38 +88,42 @@ public class ConferenceDetail {
      * Setter for Name.
      */
     @JsonSetter("name")
-    public void setName(String value) {
-        this.name = value;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
      * Getter for CreatedTime.
      */
     @JsonGetter("createdTime")
-    public Long getCreatedTime() {
+    @JsonSerialize(using=DateTimeHelper.Rfc8601DateTimeSerializer.class)
+    public LocalDateTime getCreatedTime() {
         return this.createdTime;
     }
     /**
      * Setter for CreatedTime.
      */
     @JsonSetter("createdTime")
-    public void setCreatedTime(Long value) {
-        this.createdTime = value;
+    @JsonDeserialize(using=DateTimeHelper.Rfc8601DateTimeDeserializer.class)
+    public void setCreatedTime(LocalDateTime createdTime) {
+        this.createdTime = createdTime;
     }
 
     /**
      * Getter for CompletedTime.
      */
     @JsonGetter("completedTime")
-    public Long getCompletedTime() {
+    @JsonSerialize(using=DateTimeHelper.Rfc8601DateTimeSerializer.class)
+    public LocalDateTime getCompletedTime() {
         return this.completedTime;
     }
     /**
      * Setter for CompletedTime.
      */
     @JsonSetter("completedTime")
-    public void setCompletedTime(Long value) {
-        this.completedTime = value;
+    @JsonDeserialize(using=DateTimeHelper.Rfc8601DateTimeDeserializer.class)
+    public void setCompletedTime(LocalDateTime completedTime) {
+        this.completedTime = completedTime;
     }
 
     /**
@@ -129,8 +137,8 @@ public class ConferenceDetail {
      * Setter for ConferenceEventUrl.
      */
     @JsonSetter("conferenceEventUrl")
-    public void setConferenceEventUrl(String value) {
-        this.conferenceEventUrl = value;
+    public void setConferenceEventUrl(String conferenceEventUrl) {
+        this.conferenceEventUrl = conferenceEventUrl;
     }
 
     /**
@@ -144,8 +152,8 @@ public class ConferenceDetail {
      * Setter for ConferenceEventMethod.
      */
     @JsonSetter("conferenceEventMethod")
-    public void setConferenceEventMethod(ConferenceEventMethodEnum value) {
-        this.conferenceEventMethod = value;
+    public void setConferenceEventMethod(ConferenceEventMethodEnum conferenceEventMethod) {
+        this.conferenceEventMethod = conferenceEventMethod;
     }
 
     /**
@@ -159,8 +167,8 @@ public class ConferenceDetail {
      * Setter for Tag.
      */
     @JsonSetter("tag")
-    public void setTag(String value) {
-        this.tag = value;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
     /**
@@ -174,8 +182,8 @@ public class ConferenceDetail {
      * Setter for ActiveMembers.
      */
     @JsonSetter("activeMembers")
-    public void setActiveMembers(List<ConferenceMemberDetail> value) {
-        this.activeMembers = value;
+    public void setActiveMembers(List<ConferenceMemberDetail> activeMembers) {
+        this.activeMembers = activeMembers;
     }
 
  
@@ -204,8 +212,8 @@ public class ConferenceDetail {
     public static class Builder {
         private String id;
         private String name;
-        private Long createdTime;
-        private Long completedTime;
+        private LocalDateTime createdTime;
+        private LocalDateTime completedTime;
         private String conferenceEventUrl;
         private ConferenceEventMethodEnum conferenceEventMethod;
         private String tag;
@@ -238,7 +246,7 @@ public class ConferenceDetail {
          * @param createdTime
          * @return Builder
          */
-        public Builder createdTime(Long createdTime) {
+        public Builder createdTime(LocalDateTime createdTime) {
             this.createdTime = createdTime;
             return this;
         }
@@ -248,7 +256,7 @@ public class ConferenceDetail {
          * @param completedTime
          * @return Builder
          */
-        public Builder completedTime(Long completedTime) {
+        public Builder completedTime(LocalDateTime completedTime) {
             this.completedTime = completedTime;
             return this;
         }

@@ -40,8 +40,8 @@ public class TwoFactorVoiceResponse {
      * Setter for CallId.
      */
     @JsonSetter("callId")
-    public void setCallId(String value) {
-        this.callId = value;
+    public void setCallId(String callId) {
+        this.callId = callId;
     }
 
  

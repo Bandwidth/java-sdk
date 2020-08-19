@@ -7,6 +7,10 @@ package com.bandwidth.voice.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.bandwidth.DateTimeHelper;
+import java.time.LocalDateTime;
 
 
 /**
@@ -40,8 +44,8 @@ public class ConferenceRecordingMetadataResponse {
             String recordingId,
             String duration,
             Integer channels,
-            Long startTime,
-            Long endTime,
+            LocalDateTime startTime,
+            LocalDateTime endTime,
             FileFormatEnum fileFormat,
             Status1Enum status,
             String mediaUrl) {
@@ -64,8 +68,8 @@ public class ConferenceRecordingMetadataResponse {
     private String recordingId;
     private String duration;
     private Integer channels;
-    private Long startTime;
-    private Long endTime;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
     private FileFormatEnum fileFormat;
     private Status1Enum status;
     private String mediaUrl;
@@ -80,8 +84,8 @@ public class ConferenceRecordingMetadataResponse {
      * Setter for AccountId.
      */
     @JsonSetter("accountId")
-    public void setAccountId(String value) {
-        this.accountId = value;
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
     /**
@@ -95,8 +99,8 @@ public class ConferenceRecordingMetadataResponse {
      * Setter for ConferenceId.
      */
     @JsonSetter("conferenceId")
-    public void setConferenceId(String value) {
-        this.conferenceId = value;
+    public void setConferenceId(String conferenceId) {
+        this.conferenceId = conferenceId;
     }
 
     /**
@@ -110,8 +114,8 @@ public class ConferenceRecordingMetadataResponse {
      * Setter for Name.
      */
     @JsonSetter("name")
-    public void setName(String value) {
-        this.name = value;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -125,8 +129,8 @@ public class ConferenceRecordingMetadataResponse {
      * Setter for RecordingId.
      */
     @JsonSetter("recordingId")
-    public void setRecordingId(String value) {
-        this.recordingId = value;
+    public void setRecordingId(String recordingId) {
+        this.recordingId = recordingId;
     }
 
     /**
@@ -142,8 +146,8 @@ public class ConferenceRecordingMetadataResponse {
      * Format is ISO-8601
      */
     @JsonSetter("duration")
-    public void setDuration(String value) {
-        this.duration = value;
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
 
     /**
@@ -157,38 +161,42 @@ public class ConferenceRecordingMetadataResponse {
      * Setter for Channels.
      */
     @JsonSetter("channels")
-    public void setChannels(Integer value) {
-        this.channels = value;
+    public void setChannels(Integer channels) {
+        this.channels = channels;
     }
 
     /**
      * Getter for StartTime.
      */
     @JsonGetter("startTime")
-    public Long getStartTime() {
+    @JsonSerialize(using=DateTimeHelper.Rfc8601DateTimeSerializer.class)
+    public LocalDateTime getStartTime() {
         return this.startTime;
     }
     /**
      * Setter for StartTime.
      */
     @JsonSetter("startTime")
-    public void setStartTime(Long value) {
-        this.startTime = value;
+    @JsonDeserialize(using=DateTimeHelper.Rfc8601DateTimeDeserializer.class)
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
     }
 
     /**
      * Getter for EndTime.
      */
     @JsonGetter("endTime")
-    public Long getEndTime() {
+    @JsonSerialize(using=DateTimeHelper.Rfc8601DateTimeSerializer.class)
+    public LocalDateTime getEndTime() {
         return this.endTime;
     }
     /**
      * Setter for EndTime.
      */
     @JsonSetter("endTime")
-    public void setEndTime(Long value) {
-        this.endTime = value;
+    @JsonDeserialize(using=DateTimeHelper.Rfc8601DateTimeDeserializer.class)
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
     }
 
     /**
@@ -202,8 +210,8 @@ public class ConferenceRecordingMetadataResponse {
      * Setter for FileFormat.
      */
     @JsonSetter("fileFormat")
-    public void setFileFormat(FileFormatEnum value) {
-        this.fileFormat = value;
+    public void setFileFormat(FileFormatEnum fileFormat) {
+        this.fileFormat = fileFormat;
     }
 
     /**
@@ -217,8 +225,8 @@ public class ConferenceRecordingMetadataResponse {
      * Setter for Status.
      */
     @JsonSetter("status")
-    public void setStatus(Status1Enum value) {
-        this.status = value;
+    public void setStatus(Status1Enum status) {
+        this.status = status;
     }
 
     /**
@@ -232,8 +240,8 @@ public class ConferenceRecordingMetadataResponse {
      * Setter for MediaUrl.
      */
     @JsonSetter("mediaUrl")
-    public void setMediaUrl(String value) {
-        this.mediaUrl = value;
+    public void setMediaUrl(String mediaUrl) {
+        this.mediaUrl = mediaUrl;
     }
 
  
@@ -269,8 +277,8 @@ public class ConferenceRecordingMetadataResponse {
         private String recordingId;
         private String duration;
         private Integer channels;
-        private Long startTime;
-        private Long endTime;
+        private LocalDateTime startTime;
+        private LocalDateTime endTime;
         private FileFormatEnum fileFormat;
         private Status1Enum status;
         private String mediaUrl;
@@ -342,7 +350,7 @@ public class ConferenceRecordingMetadataResponse {
          * @param startTime
          * @return Builder
          */
-        public Builder startTime(Long startTime) {
+        public Builder startTime(LocalDateTime startTime) {
             this.startTime = startTime;
             return this;
         }
@@ -352,7 +360,7 @@ public class ConferenceRecordingMetadataResponse {
          * @param endTime
          * @return Builder
          */
-        public Builder endTime(Long endTime) {
+        public Builder endTime(LocalDateTime endTime) {
             this.endTime = endTime;
             return this;
         }

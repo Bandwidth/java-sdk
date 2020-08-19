@@ -66,12 +66,13 @@ public final class BandwidthClient implements Configuration {
         OkClient.shutdown();
     }
 
-    private BandwidthClient(Environment environment, String messagingBasicAuthUserName,
+    private BandwidthClient(Environment environment, String baseUrl, String messagingBasicAuthUserName,
             String messagingBasicAuthPassword, String twoFactorAuthBasicAuthUserName,
             String twoFactorAuthBasicAuthPassword, String voiceBasicAuthUserName, String voiceBasicAuthPassword,
             String webRtcBasicAuthUserName, String webRtcBasicAuthPassword, HttpClient httpClient, long timeout,
             ReadonlyHttpClientConfiguration httpClientConfig, Map<String, AuthManager> authManagers) {
         this.environment = environment;
+        this.baseUrl = baseUrl;
         this.httpClient = httpClient;
         this.timeout = timeout;
         this.httpClientConfig = httpClientConfig;
@@ -128,6 +129,11 @@ public final class BandwidthClient implements Configuration {
     private final Environment environment;
 
     /**
+     * baseUrl value
+     */
+    private final String baseUrl;
+
+    /**
      * The HTTP Client instance to use for making HTTP requests.
      */
     private final HttpClient httpClient;
@@ -173,6 +179,14 @@ public final class BandwidthClient implements Configuration {
      */
     public Environment getEnvironment() {
         return environment;
+    }
+
+    /**
+     * baseUrl value
+     * @return baseUrl
+     */
+    public String getBaseUrl() {
+        return baseUrl;
     }
 
     /**
@@ -279,6 +293,7 @@ public final class BandwidthClient implements Configuration {
     public String getBaseUri(Server server) {
         StringBuilder baseUrl = new StringBuilder(environmentMapper(environment, server));
         Map<String, SimpleEntry<Object, Boolean>> parameters = new HashMap<>();
+        parameters.put("base_url", new SimpleEntry<Object, Boolean>(this.baseUrl, false));
         ApiHelper.appendUrlWithTemplateParameters(baseUrl, parameters);
         return baseUrl.toString();
     }
@@ -315,6 +330,23 @@ public final class BandwidthClient implements Configuration {
                 return "https://api.webrtc.bandwidth.com/v1";
             }
         }
+        if (environment.equals(Environment.CUSTOM)) {
+            if (server.equals(Server.ENUM_DEFAULT)) {
+                return "{base_url}";
+            }
+            if (server.equals(Server.MESSAGINGDEFAULT)) {
+                return "{base_url}";
+            }
+            if (server.equals(Server.TWOFACTORAUTHDEFAULT)) {
+                return "{base_url}";
+            }
+            if (server.equals(Server.VOICEDEFAULT)) {
+                return "{base_url}";
+            }
+            if (server.equals(Server.WEBRTCDEFAULT)) {
+                return "{base_url}";
+            }
+        }
         return "api.bandwidth.com";
     }
 
@@ -327,6 +359,7 @@ public final class BandwidthClient implements Configuration {
     public Builder newBuilder() {
         Builder builder = new Builder();
         builder.environment = getEnvironment();
+        builder.baseUrl = getBaseUrl();
         builder.messagingBasicAuthUserName = getMessagingBasicAuthUserName();
         builder.messagingBasicAuthPassword = getMessagingBasicAuthPassword();
         builder.twoFactorAuthBasicAuthUserName = getTwoFactorAuthBasicAuthUserName();
@@ -347,6 +380,7 @@ public final class BandwidthClient implements Configuration {
      */
     public static class Builder {
         private Environment environment = Environment.PRODUCTION;
+        private String baseUrl = "https://www.example.com";
         private String messagingBasicAuthUserName = "TODO: Replace";
         private String messagingBasicAuthPassword = "TODO: Replace";
         private String twoFactorAuthBasicAuthUserName = "TODO: Replace";
@@ -434,6 +468,14 @@ public final class BandwidthClient implements Configuration {
             return this;
         }
         /**
+         * baseUrl value
+         * @param baseUrl
+         */
+        public Builder baseUrl(String baseUrl) {
+            this.baseUrl = baseUrl;
+            return this;
+        }
+        /**
          * The timeout to use for making HTTP requests.
          * @param timeout must be greater then 0.
          */
@@ -457,7 +499,7 @@ public final class BandwidthClient implements Configuration {
             httpClientConfig.setTimeout(timeout);
             httpClient = new OkClient(httpClientConfig);
 
-            return new BandwidthClient(environment, messagingBasicAuthUserName, messagingBasicAuthPassword,
+            return new BandwidthClient(environment, baseUrl, messagingBasicAuthUserName, messagingBasicAuthPassword,
                     twoFactorAuthBasicAuthUserName, twoFactorAuthBasicAuthPassword, voiceBasicAuthUserName,
                     voiceBasicAuthPassword, webRtcBasicAuthUserName, webRtcBasicAuthPassword, httpClient, timeout,
                     httpClientConfig, authManagers);
