@@ -5,15 +5,23 @@
  */
 package com.bandwidth;
 
+/**
+ * Interface for defining the behavior of Basic Authentication.
+ */
 public interface VoiceBasicAuthCredentials {
 
     /**
-     * @return username
+     * @return basicAuthUserName
      */
-    String getVoiceBasicAuthUserName();
+    String getBasicAuthUserName();
 
     /**
-     * @return password
+     * @return basicAuthPassword
      */
-    String getVoiceBasicAuthPassword();
+    String getBasicAuthPassword();
+
+    /**
+     * @return true if credentials matched.
+     */
+    boolean equals(String basicAuthUserName, String basicAuthPassword);
 }

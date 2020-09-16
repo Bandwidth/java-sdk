@@ -11,6 +11,7 @@ import java.io.UnsupportedEncodingException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.math.BigDecimal;
 import java.net.URLEncoder;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
@@ -616,8 +617,8 @@ public class ApiHelper {
      */
     private static final Set<Object> WRAPPER_TYPES = new HashSet<Object>(Arrays.asList(
             Boolean.class, Character.class, Byte.class, Short.class, String.class,
-            Integer.class, Long.class, Float.class, Double.class, Void.class, File.class, 
-            MultipartWrapper.class, MultipartFileWrapper.class));
+            Integer.class, Long.class, Float.class, Double.class, BigDecimal.class,
+            Void.class, File.class, MultipartWrapper.class, MultipartFileWrapper.class));
 
     /**
      * Check if the given object can be wrapped directly

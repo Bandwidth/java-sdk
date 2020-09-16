@@ -5,15 +5,23 @@
  */
 package com.bandwidth;
 
+/**
+ * Interface for defining the behavior of Basic Authentication.
+ */
 public interface TwoFactorAuthBasicAuthCredentials {
 
     /**
-     * @return username
+     * @return basicAuthUserName
      */
-    String getTwoFactorAuthBasicAuthUserName();
+    String getBasicAuthUserName();
 
     /**
-     * @return password
+     * @return basicAuthPassword
      */
-    String getTwoFactorAuthBasicAuthPassword();
+    String getBasicAuthPassword();
+
+    /**
+     * @return true if credentials matched.
+     */
+    boolean equals(String basicAuthUserName, String basicAuthPassword);
 }
