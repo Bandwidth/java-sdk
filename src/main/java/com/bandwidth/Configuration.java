@@ -37,26 +37,26 @@ public interface Configuration {
     ReadonlyHttpClientConfiguration getHttpClientConfig();
 
     /**
-     * The credentials to use with basic authentication
-     * @return basicAuthCredentials
+     * The credentials to use with MessagingBasicAuth
+     * @return messagingBasicAuthCredentials
      */
     MessagingBasicAuthCredentials getMessagingBasicAuthCredentials();
 
     /**
-     * The credentials to use with basic authentication
-     * @return basicAuthCredentials
+     * The credentials to use with TwoFactorAuthBasicAuth
+     * @return twoFactorAuthBasicAuthCredentials
      */
     TwoFactorAuthBasicAuthCredentials getTwoFactorAuthBasicAuthCredentials();
 
     /**
-     * The credentials to use with basic authentication
-     * @return basicAuthCredentials
+     * The credentials to use with VoiceBasicAuth
+     * @return voiceBasicAuthCredentials
      */
     VoiceBasicAuthCredentials getVoiceBasicAuthCredentials();
 
     /**
-     * The credentials to use with basic authentication
-     * @return basicAuthCredentials
+     * The credentials to use with WebRtcBasicAuth
+     * @return webRtcBasicAuthCredentials
      */
     WebRtcBasicAuthCredentials getWebRtcBasicAuthCredentials();
 

@@ -66,11 +66,11 @@ public final class BandwidthClient implements Configuration {
         OkClient.shutdown();
     }
 
-    private BandwidthClient(Environment environment, String baseUrl, String messagingBasicAuthUserName,
+    private BandwidthClient(Environment environment, String baseUrl, HttpClient httpClient, long timeout,
+            ReadonlyHttpClientConfiguration httpClientConfig, String messagingBasicAuthUserName,
             String messagingBasicAuthPassword, String twoFactorAuthBasicAuthUserName,
             String twoFactorAuthBasicAuthPassword, String voiceBasicAuthUserName, String voiceBasicAuthPassword,
-            String webRtcBasicAuthUserName, String webRtcBasicAuthPassword, HttpClient httpClient, long timeout,
-            ReadonlyHttpClientConfiguration httpClientConfig, Map<String, AuthManager> authManagers) {
+            String webRtcBasicAuthUserName, String webRtcBasicAuthPassword, Map<String, AuthManager> authManagers) {
         this.environment = environment;
         this.baseUrl = baseUrl;
         this.httpClient = httpClient;
@@ -79,42 +79,44 @@ public final class BandwidthClient implements Configuration {
 
         this.authManagers = (authManagers == null) ? new HashMap<>() : new HashMap<>(authManagers);
         if (this.authManagers.containsKey("messaging")) {
-            this.messagingBasicAuthManager = (MessagingBasicAuthManager)this.authManagers.get("messaging");
+            this.messagingBasicAuthManager = (MessagingBasicAuthManager) this.authManagers.get("messaging");
         }
+
         if (!this.authManagers.containsKey("messaging")
-                || getMessagingBasicAuthCredentials().getMessagingBasicAuthUserName() != messagingBasicAuthUserName
-                || getMessagingBasicAuthCredentials().getMessagingBasicAuthPassword() != messagingBasicAuthPassword) {
+                || !getMessagingBasicAuthCredentials().equals(messagingBasicAuthUserName, messagingBasicAuthPassword)) {
             this.messagingBasicAuthManager = new MessagingBasicAuthManager(messagingBasicAuthUserName, messagingBasicAuthPassword);
             this.authManagers.put("messaging", messagingBasicAuthManager);
         }
+
         if (this.authManagers.containsKey("twoFactorAuth")) {
-            this.twoFactorAuthBasicAuthManager = (TwoFactorAuthBasicAuthManager)this.authManagers.get("twoFactorAuth");
+            this.twoFactorAuthBasicAuthManager = (TwoFactorAuthBasicAuthManager) this.authManagers.get("twoFactorAuth");
         }
+
         if (!this.authManagers.containsKey("twoFactorAuth")
-                || getTwoFactorAuthBasicAuthCredentials().getTwoFactorAuthBasicAuthUserName() != twoFactorAuthBasicAuthUserName
-                || getTwoFactorAuthBasicAuthCredentials().getTwoFactorAuthBasicAuthPassword() != twoFactorAuthBasicAuthPassword) {
+                || !getTwoFactorAuthBasicAuthCredentials().equals(twoFactorAuthBasicAuthUserName, twoFactorAuthBasicAuthPassword)) {
             this.twoFactorAuthBasicAuthManager = new TwoFactorAuthBasicAuthManager(twoFactorAuthBasicAuthUserName, twoFactorAuthBasicAuthPassword);
             this.authManagers.put("twoFactorAuth", twoFactorAuthBasicAuthManager);
         }
+
         if (this.authManagers.containsKey("voice")) {
-            this.voiceBasicAuthManager = (VoiceBasicAuthManager)this.authManagers.get("voice");
+            this.voiceBasicAuthManager = (VoiceBasicAuthManager) this.authManagers.get("voice");
         }
+
         if (!this.authManagers.containsKey("voice")
-                || getVoiceBasicAuthCredentials().getVoiceBasicAuthUserName() != voiceBasicAuthUserName
-                || getVoiceBasicAuthCredentials().getVoiceBasicAuthPassword() != voiceBasicAuthPassword) {
+                || !getVoiceBasicAuthCredentials().equals(voiceBasicAuthUserName, voiceBasicAuthPassword)) {
             this.voiceBasicAuthManager = new VoiceBasicAuthManager(voiceBasicAuthUserName, voiceBasicAuthPassword);
             this.authManagers.put("voice", voiceBasicAuthManager);
         }
+
         if (this.authManagers.containsKey("webRtc")) {
-            this.webRtcBasicAuthManager = (WebRtcBasicAuthManager)this.authManagers.get("webRtc");
+            this.webRtcBasicAuthManager = (WebRtcBasicAuthManager) this.authManagers.get("webRtc");
         }
+
         if (!this.authManagers.containsKey("webRtc")
-                || getWebRtcBasicAuthCredentials().getWebRtcBasicAuthUserName() != webRtcBasicAuthUserName
-                || getWebRtcBasicAuthCredentials().getWebRtcBasicAuthPassword() != webRtcBasicAuthPassword) {
+                || !getWebRtcBasicAuthCredentials().equals(webRtcBasicAuthUserName, webRtcBasicAuthPassword)) {
             this.webRtcBasicAuthManager = new WebRtcBasicAuthManager(webRtcBasicAuthUserName, webRtcBasicAuthPassword);
             this.authManagers.put("webRtc", webRtcBasicAuthManager);
         }
-
 
 
         messagingClient = new MessagingClient(this);
@@ -149,11 +151,6 @@ public final class BandwidthClient implements Configuration {
     private final ReadonlyHttpClientConfiguration httpClientConfig;
 
     /**
-     * Map of authentication Managers.
-     */
-    private Map<String, AuthManager> authManagers;
-
-    /**
      * MessagingBasicAuthManager
      */
     private MessagingBasicAuthManager messagingBasicAuthManager;
@@ -172,6 +169,11 @@ public final class BandwidthClient implements Configuration {
      * WebRtcBasicAuthManager
      */
     private WebRtcBasicAuthManager webRtcBasicAuthManager;
+
+    /**
+     * Map of authentication Managers.
+     */
+    private Map<String, AuthManager> authManagers;
 
     /**
      * Current API environment
@@ -213,64 +215,32 @@ public final class BandwidthClient implements Configuration {
         return httpClientConfig;
     }
 
-    private String getMessagingBasicAuthUserName() {
-        return getMessagingBasicAuthCredentials().getMessagingBasicAuthUserName();
-    }
-
-    private String getMessagingBasicAuthPassword() {
-        return getMessagingBasicAuthCredentials().getMessagingBasicAuthPassword();
-    }
-
     /**
-     * The credentials to use with basic authentication
+     * The credentials to use with MessagingBasicAuth
      * @return messagingBasicAuthCredentials
      */
     public MessagingBasicAuthCredentials getMessagingBasicAuthCredentials() {
         return messagingBasicAuthManager;
     }
 
-    private String getTwoFactorAuthBasicAuthUserName() {
-        return getTwoFactorAuthBasicAuthCredentials().getTwoFactorAuthBasicAuthUserName();
-    }
-
-    private String getTwoFactorAuthBasicAuthPassword() {
-        return getTwoFactorAuthBasicAuthCredentials().getTwoFactorAuthBasicAuthPassword();
-    }
-
     /**
-     * The credentials to use with basic authentication
+     * The credentials to use with TwoFactorAuthBasicAuth
      * @return twoFactorAuthBasicAuthCredentials
      */
     public TwoFactorAuthBasicAuthCredentials getTwoFactorAuthBasicAuthCredentials() {
         return twoFactorAuthBasicAuthManager;
     }
 
-    private String getVoiceBasicAuthUserName() {
-        return getVoiceBasicAuthCredentials().getVoiceBasicAuthUserName();
-    }
-
-    private String getVoiceBasicAuthPassword() {
-        return getVoiceBasicAuthCredentials().getVoiceBasicAuthPassword();
-    }
-
     /**
-     * The credentials to use with basic authentication
+     * The credentials to use with VoiceBasicAuth
      * @return voiceBasicAuthCredentials
      */
     public VoiceBasicAuthCredentials getVoiceBasicAuthCredentials() {
         return voiceBasicAuthManager;
     }
 
-    private String getWebRtcBasicAuthUserName() {
-        return getWebRtcBasicAuthCredentials().getWebRtcBasicAuthUserName();
-    }
-
-    private String getWebRtcBasicAuthPassword() {
-        return getWebRtcBasicAuthCredentials().getWebRtcBasicAuthPassword();
-    }
-
     /**
-     * The credentials to use with basic authentication
+     * The credentials to use with WebRtcBasicAuth
      * @return webRtcBasicAuthCredentials
      */
     public WebRtcBasicAuthCredentials getWebRtcBasicAuthCredentials() {
@@ -360,16 +330,16 @@ public final class BandwidthClient implements Configuration {
         Builder builder = new Builder();
         builder.environment = getEnvironment();
         builder.baseUrl = getBaseUrl();
-        builder.messagingBasicAuthUserName = getMessagingBasicAuthUserName();
-        builder.messagingBasicAuthPassword = getMessagingBasicAuthPassword();
-        builder.twoFactorAuthBasicAuthUserName = getTwoFactorAuthBasicAuthUserName();
-        builder.twoFactorAuthBasicAuthPassword = getTwoFactorAuthBasicAuthPassword();
-        builder.voiceBasicAuthUserName = getVoiceBasicAuthUserName();
-        builder.voiceBasicAuthPassword = getVoiceBasicAuthPassword();
-        builder.webRtcBasicAuthUserName = getWebRtcBasicAuthUserName();
-        builder.webRtcBasicAuthPassword = getWebRtcBasicAuthPassword();
         builder.httpClient = getHttpClient();
         builder.timeout = getTimeout();
+        builder.messagingBasicAuthUserName = getMessagingBasicAuthCredentials().getBasicAuthUserName();
+        builder.messagingBasicAuthPassword = getMessagingBasicAuthCredentials().getBasicAuthPassword();
+        builder.twoFactorAuthBasicAuthUserName = getTwoFactorAuthBasicAuthCredentials().getBasicAuthUserName();
+        builder.twoFactorAuthBasicAuthPassword = getTwoFactorAuthBasicAuthCredentials().getBasicAuthPassword();
+        builder.voiceBasicAuthUserName = getVoiceBasicAuthCredentials().getBasicAuthUserName();
+        builder.voiceBasicAuthPassword = getVoiceBasicAuthCredentials().getBasicAuthPassword();
+        builder.webRtcBasicAuthUserName = getWebRtcBasicAuthCredentials().getBasicAuthUserName();
+        builder.webRtcBasicAuthPassword = getWebRtcBasicAuthCredentials().getBasicAuthPassword();
         builder.authManagers = authManagers;
         builder.setHttpClientConfig(httpClientConfig);
         return builder;
@@ -381,6 +351,8 @@ public final class BandwidthClient implements Configuration {
     public static class Builder {
         private Environment environment = Environment.PRODUCTION;
         private String baseUrl = "https://www.example.com";
+        private HttpClient httpClient;
+        private long timeout = 0;
         private String messagingBasicAuthUserName = "TODO: Replace";
         private String messagingBasicAuthPassword = "TODO: Replace";
         private String twoFactorAuthBasicAuthUserName = "TODO: Replace";
@@ -389,76 +361,77 @@ public final class BandwidthClient implements Configuration {
         private String voiceBasicAuthPassword = "TODO: Replace";
         private String webRtcBasicAuthUserName = "TODO: Replace";
         private String webRtcBasicAuthPassword = "TODO: Replace";
-        private HttpClient httpClient;
-        private long timeout = 0;
         private Map<String, AuthManager> authManagers = null;
-
         private HttpClientConfiguration httpClientConfig;
 
         /**
-         * The username and password to use with basic authentication
+         * Credentials setter for MessagingBasicAuth
          * @param messagingBasicAuthUserName
          * @param messagingBasicAuthPassword
          */
         public Builder messagingBasicAuthCredentials(String messagingBasicAuthUserName, String messagingBasicAuthPassword) {
             if (messagingBasicAuthUserName == null) {
-                throw new NullPointerException("Username cannot be null.");
+                throw new NullPointerException("MessagingBasicAuthUserName cannot be null.");
             }
             if (messagingBasicAuthPassword == null) {
-                throw new NullPointerException("Password cannot be null.");
+                throw new NullPointerException("MessagingBasicAuthPassword cannot be null.");
             }
             this.messagingBasicAuthUserName = messagingBasicAuthUserName;
             this.messagingBasicAuthPassword = messagingBasicAuthPassword;
             return this;
         }
+
         /**
-         * The username and password to use with basic authentication
+         * Credentials setter for TwoFactorAuthBasicAuth
          * @param twoFactorAuthBasicAuthUserName
          * @param twoFactorAuthBasicAuthPassword
          */
         public Builder twoFactorAuthBasicAuthCredentials(String twoFactorAuthBasicAuthUserName, String twoFactorAuthBasicAuthPassword) {
             if (twoFactorAuthBasicAuthUserName == null) {
-                throw new NullPointerException("Username cannot be null.");
+                throw new NullPointerException("TwoFactorAuthBasicAuthUserName cannot be null.");
             }
             if (twoFactorAuthBasicAuthPassword == null) {
-                throw new NullPointerException("Password cannot be null.");
+                throw new NullPointerException("TwoFactorAuthBasicAuthPassword cannot be null.");
             }
             this.twoFactorAuthBasicAuthUserName = twoFactorAuthBasicAuthUserName;
             this.twoFactorAuthBasicAuthPassword = twoFactorAuthBasicAuthPassword;
             return this;
         }
+
         /**
-         * The username and password to use with basic authentication
+         * Credentials setter for VoiceBasicAuth
          * @param voiceBasicAuthUserName
          * @param voiceBasicAuthPassword
          */
         public Builder voiceBasicAuthCredentials(String voiceBasicAuthUserName, String voiceBasicAuthPassword) {
             if (voiceBasicAuthUserName == null) {
-                throw new NullPointerException("Username cannot be null.");
+                throw new NullPointerException("VoiceBasicAuthUserName cannot be null.");
             }
             if (voiceBasicAuthPassword == null) {
-                throw new NullPointerException("Password cannot be null.");
+                throw new NullPointerException("VoiceBasicAuthPassword cannot be null.");
             }
             this.voiceBasicAuthUserName = voiceBasicAuthUserName;
             this.voiceBasicAuthPassword = voiceBasicAuthPassword;
             return this;
         }
+
         /**
-         * The username and password to use with basic authentication
+         * Credentials setter for WebRtcBasicAuth
          * @param webRtcBasicAuthUserName
          * @param webRtcBasicAuthPassword
          */
         public Builder webRtcBasicAuthCredentials(String webRtcBasicAuthUserName, String webRtcBasicAuthPassword) {
             if (webRtcBasicAuthUserName == null) {
-                throw new NullPointerException("Username cannot be null.");
+                throw new NullPointerException("WebRtcBasicAuthUserName cannot be null.");
             }
             if (webRtcBasicAuthPassword == null) {
-                throw new NullPointerException("Password cannot be null.");
+                throw new NullPointerException("WebRtcBasicAuthPassword cannot be null.");
             }
             this.webRtcBasicAuthUserName = webRtcBasicAuthUserName;
             this.webRtcBasicAuthPassword = webRtcBasicAuthPassword;
             return this;
         }
+
         /**
          * Current API environment
          * @param environment
@@ -467,6 +440,7 @@ public final class BandwidthClient implements Configuration {
             this.environment = environment;
             return this;
         }
+
         /**
          * baseUrl value
          * @param baseUrl
@@ -475,6 +449,7 @@ public final class BandwidthClient implements Configuration {
             this.baseUrl = baseUrl;
             return this;
         }
+
         /**
          * The timeout to use for making HTTP requests.
          * @param timeout must be greater then 0.
@@ -485,6 +460,7 @@ public final class BandwidthClient implements Configuration {
             }
             return this;
         }
+
 
         private void setHttpClientConfig(ReadonlyHttpClientConfiguration httpClientConfig) {
             this.timeout = httpClientConfig.getTimeout();
@@ -499,10 +475,10 @@ public final class BandwidthClient implements Configuration {
             httpClientConfig.setTimeout(timeout);
             httpClient = new OkClient(httpClientConfig);
 
-            return new BandwidthClient(environment, baseUrl, messagingBasicAuthUserName, messagingBasicAuthPassword,
-                    twoFactorAuthBasicAuthUserName, twoFactorAuthBasicAuthPassword, voiceBasicAuthUserName,
-                    voiceBasicAuthPassword, webRtcBasicAuthUserName, webRtcBasicAuthPassword, httpClient, timeout,
-                    httpClientConfig, authManagers);
+            return new BandwidthClient(environment, baseUrl, httpClient, timeout, httpClientConfig,
+                    messagingBasicAuthUserName, messagingBasicAuthPassword, twoFactorAuthBasicAuthUserName,
+                    twoFactorAuthBasicAuthPassword, voiceBasicAuthUserName, voiceBasicAuthPassword,
+                    webRtcBasicAuthUserName, webRtcBasicAuthPassword, authManagers);
         }
     }
 }

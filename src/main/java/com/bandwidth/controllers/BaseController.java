@@ -29,7 +29,7 @@ public abstract class BaseController {
      * Protected variables to hold an instance of Configuration
      */
     protected final Configuration config;
-    protected static final String userAgent = "java-sdk-refs/tags/java3.10.0";
+    protected static final String userAgent = "java-sdk-refs/tags/java3.10.1";
 
 
     protected Map<String, AuthManager> authManagers;

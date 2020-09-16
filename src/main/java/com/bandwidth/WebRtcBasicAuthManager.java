@@ -13,31 +13,47 @@ import com.bandwidth.http.request.HttpRequest;
 /**
  * Utility class for authorization and token management
  */
- public class WebRtcBasicAuthManager implements AuthManager, WebRtcBasicAuthCredentials {
+public class WebRtcBasicAuthManager implements AuthManager, WebRtcBasicAuthCredentials {
+
+    private String basicAuthUserName;
+
+    private String basicAuthPassword;
+
+    /**
+     * @return basicAuthUserName
+     */
+    public String getBasicAuthUserName() {
+        return basicAuthUserName;
+    }
+
+    /**
+     * @return basicAuthPassword
+     */
+    public String getBasicAuthPassword() {
+        return basicAuthPassword;
+    }
+
+    /**
+     * @return true if credentials matched.
+     */
+    public boolean equals(String basicAuthUserName, String basicAuthPassword) {
+        return basicAuthUserName.equals(getBasicAuthUserName())
+                && basicAuthPassword.equals(getBasicAuthPassword());
+    }
 
     /**
      * Constructor
      */
     public WebRtcBasicAuthManager(String username, String password) {
-        this.username = username;
-        this.password = password;
+        this.basicAuthUserName = username;
+        this.basicAuthPassword = password;
     }
-
-    /**
-     * BasicAuth username to be used for requests
-     */
-    private String username;
-
-    /**
-     * BasicAuth password to be used for requests
-     */
-    private String password;
 
     /**
      * Adds authentication to the given HttpRequest
      */
     public HttpRequest apply(HttpRequest httpRequest) {
-        String authCredentials = username + ":" + password;
+        String authCredentials = basicAuthUserName + ":" + basicAuthPassword;
         httpRequest.getHeaders().add("Authorization", "Basic " + Base64.getEncoder().encodeToString(authCredentials.getBytes()));
         return httpRequest;
     }
@@ -46,22 +62,8 @@ import com.bandwidth.http.request.HttpRequest;
      * Asynchronously adds authentication to the given HttpRequest
      */
     public CompletableFuture<HttpRequest> applyAsync(HttpRequest httpRequest) {
-        String authCredentials = username + ":" + password;
+        String authCredentials = basicAuthUserName + ":" + basicAuthPassword;
         httpRequest.getHeaders().add("Authorization", "Basic " + Base64.getEncoder().encodeToString(authCredentials.getBytes()));
         return CompletableFuture.completedFuture(httpRequest);
-    }
-
-    /**
-     * @return username
-     */
-    public String getWebRtcBasicAuthUserName() {
-        return username;
-    }
-
-    /**
-     * @return password
-     */
-    public String getWebRtcBasicAuthPassword() {
-        return password;
     }
 }
