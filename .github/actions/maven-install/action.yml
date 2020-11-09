@@ -1,0 +1,6 @@
+# action.yml
+name: 'Java Install'
+description: 'Runs Maven install command which will also run the tests'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
