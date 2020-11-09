@@ -1,0 +1,20 @@
+name: Deploy to Maven
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  deploy-java:
+    name: Push the Java SDK Maven
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Java Maven Upload
+      uses: ./.github/actions/deploy-java
+      env:
+        MVN_USERNAME: ${{ secrets.MVN_USERNAME }}
+        MVN_PASSWORD: ${{ secrets.MVN_PASSWORD }}
+        GPG_KEY_PASSPHRASE: ${{ secrets.GPG_KEY_PASSPHRASE }}
