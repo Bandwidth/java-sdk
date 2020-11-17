@@ -1,0 +1,20 @@
+name: Deploy to Maven
+
+on:
+  release:
+    types:
+      - published
+jobs:
+  deploy:
+    name: Push the Java SDK Maven
+    if: ${{ !github.event.release.prerelease && github.event.release.target_commitish == 'main' }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Java Maven Upload
+      uses: ./.github/actions/deploy-maven
+      env:
+        MVN_USERNAME: ${{ secrets.MVN_USERNAME }}
+        MVN_PASSWORD: ${{ secrets.MVN_PASSWORD }}
+        GPG_KEY_PASSPHRASE: ${{ secrets.GPG_KEY_PASSPHRASE }}
