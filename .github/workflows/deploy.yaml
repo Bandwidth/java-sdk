@@ -1,13 +1,13 @@
 name: Deploy to Maven
 
 on:
-  push:
-    tags:
-      - 'v*'
-
+  release:
+    types:
+      - published
 jobs:
   deploy:
     name: Push the Java SDK Maven
+    if: ${{ !github.event.release.prerelease && github.event.release.target_commitish == 'main' }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
