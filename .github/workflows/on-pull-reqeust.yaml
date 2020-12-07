@@ -1,4 +1,4 @@
-name: Deploy to Maven
+name: Check SDK
 
 on:
     pull_request:
@@ -6,11 +6,13 @@ on:
           - main
 
 jobs:
-  deploy-java:
-    name: Push the Java SDK Maven
+  maven-install-java:
+    name: Maven Install
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v1
     - name: Java Maven Install
       uses: ./.github/actions/maven-install
+      env:
+        GPG_KEY_PASSPHRASE: ${{ secrets.PRIVATE_KEY_PASSPHRASE }}
