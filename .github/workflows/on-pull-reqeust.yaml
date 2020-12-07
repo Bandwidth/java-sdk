@@ -1,4 +1,4 @@
-name: Deploy to Maven
+name: Check SDK
 
 on:
     pull_request:
