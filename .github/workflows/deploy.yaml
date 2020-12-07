@@ -17,4 +17,4 @@ jobs:
       env:
         MVN_USERNAME: ${{ secrets.MVN_USERNAME }}
         MVN_PASSWORD: ${{ secrets.MVN_PASSWORD }}
-        GPG_KEY_PASSPHRASE: ${{ secrets.GPG_KEY_PASSPHRASE }}
+        GPG_KEY_PASSPHRASE: ${{ secrets.PRIVATE_KEY_PASSPHRASE }}

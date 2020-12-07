@@ -15,4 +15,4 @@ jobs:
     - name: Java Maven Install
       uses: ./.github/actions/maven-install
       env:
-        GPG_KEY_PASSPHRASE: ${{ secrets.GPG_KEY_PASSPHRASE }}
+        GPG_KEY_PASSPHRASE: ${{ secrets.PRIVATE_KEY_PASSPHRASE }}
