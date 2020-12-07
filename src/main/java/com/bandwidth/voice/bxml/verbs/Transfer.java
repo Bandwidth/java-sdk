@@ -28,7 +28,7 @@ public class Transfer implements Verb {
     private final List<PhoneNumber> phoneNumbers;
 
     /**
-     * A collection of SipUrs to transfer the call to. The first to answer will be transferred.
+     * A collection of SipUris to transfer the call to. The first to answer will be transferred.
      */
     @XmlElement(name = SipUri.TYPE_NAME)
     private final List<SipUri> sipUris;
