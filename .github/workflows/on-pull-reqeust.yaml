@@ -6,8 +6,8 @@ on:
           - main
 
 jobs:
-  deploy-java:
-    name: Push the Java SDK Maven
+  maven-install-java:
+    name: Maven Install
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
