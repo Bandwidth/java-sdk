@@ -4,6 +4,7 @@ package com.bandwidth.voice.bxml.verbs;
 import java.net.URI;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
 import lombok.Builder;
 
 /**
@@ -12,6 +13,12 @@ import lombok.Builder;
 @XmlType(name = SipUri.TYPE_NAME)
 public class SipUri implements Verb {
     public static final String TYPE_NAME = "SipUri";
+
+    /**
+     * SipUri to transfer to
+     */
+    @XmlValue
+    private String sipUri;
 
     /**
      * (optional) The value of the User-To-User header to send within the initial INVITE. Must include the encoding parameter as specified in RFC 7433. Only base64 and jwt encoding are currently allowed. This value, including the encoding specifier, may not exceed 256 characters.
