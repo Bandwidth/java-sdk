@@ -7,7 +7,6 @@ import javax.xml.bind.annotation.XmlType;
 import lombok.Builder;
 
 /**
- * The Pause verb is used to delay for a set period of time. Silence will be heard.
  */
 @Builder
 @XmlType(name = SipUri.TYPE_NAME)
