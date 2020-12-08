@@ -28,6 +28,12 @@ public class Transfer implements Verb {
     private final List<PhoneNumber> phoneNumbers;
 
     /**
+     * A collection of SipUris to transfer the call to. The first to answer will be transferred.
+     */
+    @XmlElement(name = SipUri.TYPE_NAME)
+    private final List<SipUri> sipUris;
+
+    /**
      * 	(optional) The caller ID to use when the call is transferred, if different. Must be in E.164 format (e.g. +15555555555).
      * <br/>
      * Note: Leave blank to pass along the number of the remote party
