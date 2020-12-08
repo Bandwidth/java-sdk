@@ -15,7 +15,7 @@ jobs:
     - name: Set release version
       run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/v}" >> $GITHUB_ENV
     - name: Java Maven Upload
-      uses: ./.github/actions/deploy-maven
+      uses: ./.github/actions/deploy
       env:
         MVN_USERNAME: ${{ secrets.MVN_USERNAME }}
         MVN_PASSWORD: ${{ secrets.MVN_PASSWORD }}
