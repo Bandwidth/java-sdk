@@ -5,7 +5,7 @@ gpg --quiet --batch --yes --passphrase=$GPG_KEY_PASSPHRASE --output ./.github/se
 gpg --import ./.github/secrets/private.key
 gpg --import ./.github/secrets/public.key
 
-ls -la
+echo $RELEASE_VERSION
 
 cat << EOF > tempsettings.xml
 <settings>
