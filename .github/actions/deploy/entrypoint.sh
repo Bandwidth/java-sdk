@@ -19,4 +19,6 @@ cat << EOF > tempsettings.xml
 </settings>
 EOF
 
+mvn versions:set -DnewVersion=$RELEASE_VERSION
+
 mvn --settings ./tempsettings.xml deploy
