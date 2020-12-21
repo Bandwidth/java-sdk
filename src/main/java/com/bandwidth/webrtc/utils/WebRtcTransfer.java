@@ -7,9 +7,17 @@ public class WebRtcTransfer {
     }
 
     public static String generateBxml(String deviceToken, String sipUri) {
-        return "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
-            + "<Response><Transfer>\n"
-            + "\t<SipUri uui=\"" + deviceToken + ";encoding=jwt\">" + sipUri + "</SipUri>\n"
-            + "</Transfer></Response>\n";
+        return generateBxml(deviceToken, sipUri, true);
+    }
+
+    public static String generateBxml(String deviceToken, String sipUri, boolean appendXmlHeader) {
+        StringBuilder rv = new StringBuilder();
+        if (appendXmlHeader) {
+            rv.append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n");
+        }
+        rv.append("<Response><Transfer>\n"
+                + "\t<SipUri uui=\"" + deviceToken + ";encoding=jwt\">" + sipUri + "</SipUri>\n"
+                + "</Transfer></Response>\n");
+        return rv.toString();
     }
 }
