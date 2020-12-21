@@ -10,9 +10,9 @@ public class WebRtcTransfer {
         return generateBxml(deviceToken, sipUri, true);
     }
 
-    public static String generateBxml(String deviceToken, String sipUri, boolean appendXmlHeader) {
+    public static String generateBxml(String deviceToken, String sipUri, boolean prependXmlHeader) {
         StringBuilder rv = new StringBuilder();
-        if (appendXmlHeader) {
+        if (prependXmlHeader) {
             rv.append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n");
         }
         rv.append("<Response><Transfer>\n"
