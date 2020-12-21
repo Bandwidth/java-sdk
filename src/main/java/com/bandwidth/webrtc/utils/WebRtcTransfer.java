@@ -8,8 +8,14 @@ public class WebRtcTransfer {
 
     public static String generateBxml(String deviceToken, String sipUri) {
         return "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
-            + "<Response><Transfer>\n"
-            + "\t<SipUri uui=\"" + deviceToken + ";encoding=jwt\">" + sipUri + "</SipUri>\n"
-            + "</Transfer></Response>\n";
+                + "<Response>"
+                + generateTransferVerb(deviceToken, sipUri)
+                + "</Response>\n";
+    }
+
+    public static String generateTransferVerb(String deviceToken, String sipUri) {
+        return "<Transfer>\n"
+                + "\t<SipUri uui=\"" + deviceToken + ";encoding=jwt\">" + sipUri + "</SipUri>\n"
+                + "</Transfer>";
     }
 }
