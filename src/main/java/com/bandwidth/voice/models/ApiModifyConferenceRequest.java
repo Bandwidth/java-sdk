@@ -10,10 +10,10 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
- * This is a model class for ApiModifyCallRequest type.
+ * This is a model class for ApiModifyConferenceRequest type.
  */
-public class ApiModifyCallRequest {
-    private State1Enum state;
+public class ApiModifyConferenceRequest {
+    private StatusEnum status;
     private String redirectUrl;
     private String redirectFallbackUrl;
     private RedirectMethodEnum redirectMethod;
@@ -22,18 +22,17 @@ public class ApiModifyCallRequest {
     private String password;
     private String fallbackUsername;
     private String fallbackPassword;
-    private String tag;
 
     /**
      * Default constructor.
      */
-    public ApiModifyCallRequest() {
+    public ApiModifyConferenceRequest() {
     }
 
     /**
      * Initialization constructor.
+     * @param status StatusEnum value for status.
      * @param redirectUrl String value for redirectUrl.
-     * @param state State1Enum value for state.
      * @param redirectFallbackUrl String value for redirectFallbackUrl.
      * @param redirectMethod RedirectMethodEnum value for redirectMethod.
      * @param redirectFallbackMethod RedirectFallbackMethodEnum value for redirectFallbackMethod.
@@ -41,20 +40,18 @@ public class ApiModifyCallRequest {
      * @param password String value for password.
      * @param fallbackUsername String value for fallbackUsername.
      * @param fallbackPassword String value for fallbackPassword.
-     * @param tag String value for tag.
      */
-    public ApiModifyCallRequest(
+    public ApiModifyConferenceRequest(
+            StatusEnum status,
             String redirectUrl,
-            State1Enum state,
             String redirectFallbackUrl,
             RedirectMethodEnum redirectMethod,
             RedirectFallbackMethodEnum redirectFallbackMethod,
             String username,
             String password,
             String fallbackUsername,
-            String fallbackPassword,
-            String tag) {
-        this.state = state;
+            String fallbackPassword) {
+        this.status = status;
         this.redirectUrl = redirectUrl;
         this.redirectFallbackUrl = redirectFallbackUrl;
         this.redirectMethod = redirectMethod;
@@ -63,25 +60,24 @@ public class ApiModifyCallRequest {
         this.password = password;
         this.fallbackUsername = fallbackUsername;
         this.fallbackPassword = fallbackPassword;
-        this.tag = tag;
     }
 
     /**
-     * Getter for State.
-     * @return Returns the State1Enum
+     * Getter for Status.
+     * @return Returns the StatusEnum
      */
-    @JsonGetter("state")
-    public State1Enum getState() {
-        return this.state;
+    @JsonGetter("status")
+    public StatusEnum getStatus() {
+        return this.status;
     }
 
     /**
-     * Setter for State.
-     * @param state Value for State1Enum
+     * Setter for Status.
+     * @param status Value for StatusEnum
      */
-    @JsonSetter("state")
-    public void setState(State1Enum state) {
-        this.state = state;
+    @JsonSetter("status")
+    public void setStatus(StatusEnum status) {
+        this.status = status;
     }
 
     /**
@@ -229,62 +225,43 @@ public class ApiModifyCallRequest {
     }
 
     /**
-     * Getter for Tag.
-     * @return Returns the String
-     */
-    @JsonGetter("tag")
-    public String getTag() {
-        return this.tag;
-    }
-
-    /**
-     * Setter for Tag.
-     * @param tag Value for String
-     */
-    @JsonSetter("tag")
-    public void setTag(String tag) {
-        this.tag = tag;
-    }
-
-    /**
-     * Converts this ApiModifyCallRequest into string format.
+     * Converts this ApiModifyConferenceRequest into string format.
      * @return String representation of this class
      */
     @Override
     public String toString() {
-        return "ApiModifyCallRequest [" + "redirectUrl=" + redirectUrl + ", state=" + state
+        return "ApiModifyConferenceRequest [" + "status=" + status + ", redirectUrl=" + redirectUrl
                 + ", redirectFallbackUrl=" + redirectFallbackUrl + ", redirectMethod="
                 + redirectMethod + ", redirectFallbackMethod=" + redirectFallbackMethod
                 + ", username=" + username + ", password=" + password + ", fallbackUsername="
-                + fallbackUsername + ", fallbackPassword=" + fallbackPassword + ", tag=" + tag
-                + "]";
+                + fallbackUsername + ", fallbackPassword=" + fallbackPassword + "]";
     }
 
     /**
-     * Builds a new {@link ApiModifyCallRequest.Builder} object.
+     * Builds a new {@link ApiModifyConferenceRequest.Builder} object.
      * Creates the instance with the state of the current model.
-     * @return a new {@link ApiModifyCallRequest.Builder} object
+     * @return a new {@link ApiModifyConferenceRequest.Builder} object
      */
     public Builder toBuilder() {
-        Builder builder = new Builder(redirectUrl)
-                .state(getState())
+        Builder builder = new Builder()
+                .status(getStatus())
+                .redirectUrl(getRedirectUrl())
                 .redirectFallbackUrl(getRedirectFallbackUrl())
                 .redirectMethod(getRedirectMethod())
                 .redirectFallbackMethod(getRedirectFallbackMethod())
                 .username(getUsername())
                 .password(getPassword())
                 .fallbackUsername(getFallbackUsername())
-                .fallbackPassword(getFallbackPassword())
-                .tag(getTag());
+                .fallbackPassword(getFallbackPassword());
         return builder;
     }
 
     /**
-     * Class to build instances of {@link ApiModifyCallRequest}.
+     * Class to build instances of {@link ApiModifyConferenceRequest}.
      */
     public static class Builder {
+        private StatusEnum status;
         private String redirectUrl;
-        private State1Enum state;
         private String redirectFallbackUrl;
         private RedirectMethodEnum redirectMethod;
         private RedirectFallbackMethodEnum redirectFallbackMethod;
@@ -292,20 +269,17 @@ public class ApiModifyCallRequest {
         private String password;
         private String fallbackUsername;
         private String fallbackPassword;
-        private String tag;
+
+
 
         /**
-         * Initialization constructor.
+         * Setter for status.
+         * @param status StatusEnum value for status.
+         * @return Builder
          */
-        public Builder() {
-        }
-
-        /**
-         * Initialization constructor.
-         * @param redirectUrl String value for redirectUrl.
-         */
-        public Builder(String redirectUrl) {
-            this.redirectUrl = redirectUrl;
+        public Builder status(StatusEnum status) {
+            this.status = status;
+            return this;
         }
 
         /**
@@ -315,16 +289,6 @@ public class ApiModifyCallRequest {
          */
         public Builder redirectUrl(String redirectUrl) {
             this.redirectUrl = redirectUrl;
-            return this;
-        }
-
-        /**
-         * Setter for state.
-         * @param state State1Enum value for state.
-         * @return Builder
-         */
-        public Builder state(State1Enum state) {
-            this.state = state;
             return this;
         }
 
@@ -399,23 +363,13 @@ public class ApiModifyCallRequest {
         }
 
         /**
-         * Setter for tag.
-         * @param tag String value for tag.
-         * @return Builder
+         * Builds a new {@link ApiModifyConferenceRequest} object using the set fields.
+         * @return {@link ApiModifyConferenceRequest}
          */
-        public Builder tag(String tag) {
-            this.tag = tag;
-            return this;
-        }
-
-        /**
-         * Builds a new {@link ApiModifyCallRequest} object using the set fields.
-         * @return {@link ApiModifyCallRequest}
-         */
-        public ApiModifyCallRequest build() {
-            return new ApiModifyCallRequest(redirectUrl, state, redirectFallbackUrl, redirectMethod,
-                    redirectFallbackMethod, username, password, fallbackUsername, fallbackPassword,
-                    tag);
+        public ApiModifyConferenceRequest build() {
+            return new ApiModifyConferenceRequest(status, redirectUrl, redirectFallbackUrl,
+                    redirectMethod, redirectFallbackMethod, username, password, fallbackUsername,
+                    fallbackPassword);
         }
     }
 }
