@@ -1,2 +1,3 @@
-src/main/java/com/bandwidth/voice/bxml/*
-src/main/java/com/bandwidth/webrtc/utils/*
+README.md
+src/main/java/com/bandwidth/voice/bxml/*.java
+src/main/java/com/bandwidth/webrtc/utils/*.java
