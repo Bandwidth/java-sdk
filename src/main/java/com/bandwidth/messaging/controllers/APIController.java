@@ -21,6 +21,7 @@ import com.bandwidth.http.response.HttpResponse;
 import com.bandwidth.http.response.HttpStringResponse;
 import com.bandwidth.messaging.exceptions.MessagingException;
 import com.bandwidth.messaging.models.BandwidthMessage;
+import com.bandwidth.messaging.models.BandwidthMessagesList;
 import com.bandwidth.messaging.models.Media;
 import com.bandwidth.messaging.models.MessageRequest;
 import com.bandwidth.utilities.FileWrapper;
@@ -486,6 +487,176 @@ public final class APIController extends BaseController {
         validateResponse(response, context);
 
         return new ApiResponse<Void>(response.getStatusCode(), response.getHeaders(), null);
+    }
+
+    /**
+     * getMessages.
+     * @param  accountId  Required parameter: Example:
+     * @param  userId  Required parameter: Example:
+     * @param  messageId  Optional parameter: Example:
+     * @param  sourceTn  Optional parameter: Example:
+     * @param  destinationTn  Optional parameter: Example:
+     * @param  messageStatus  Optional parameter: Example:
+     * @param  errorCode  Optional parameter: Example:
+     * @param  fromDateTime  Optional parameter: Example:
+     * @param  toDateTime  Optional parameter: Example:
+     * @param  pageToken  Optional parameter: Example:
+     * @param  limit  Optional parameter: Example:
+     * @return    Returns the BandwidthMessagesList wrapped in ApiResponse response from the API call
+     * @throws    ApiException    Represents error response from the server.
+     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     */
+    public ApiResponse<BandwidthMessagesList> getMessages(
+            final String accountId,
+            final String userId,
+            final String messageId,
+            final String sourceTn,
+            final String destinationTn,
+            final String messageStatus,
+            final Integer errorCode,
+            final String fromDateTime,
+            final String toDateTime,
+            final String pageToken,
+            final Integer limit) throws ApiException, IOException {
+        HttpRequest request = buildGetMessagesRequest(accountId, userId, messageId, sourceTn,
+                destinationTn, messageStatus, errorCode, fromDateTime, toDateTime, pageToken,
+                limit);
+        authManagers.get("messaging").apply(request);
+
+        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpContext context = new HttpContext(request, response);
+
+        return handleGetMessagesResponse(context);
+    }
+
+    /**
+     * getMessages.
+     * @param  accountId  Required parameter: Example:
+     * @param  userId  Required parameter: Example:
+     * @param  messageId  Optional parameter: Example:
+     * @param  sourceTn  Optional parameter: Example:
+     * @param  destinationTn  Optional parameter: Example:
+     * @param  messageStatus  Optional parameter: Example:
+     * @param  errorCode  Optional parameter: Example:
+     * @param  fromDateTime  Optional parameter: Example:
+     * @param  toDateTime  Optional parameter: Example:
+     * @param  pageToken  Optional parameter: Example:
+     * @param  limit  Optional parameter: Example:
+     * @return    Returns the BandwidthMessagesList wrapped in ApiResponse response from the API call
+     */
+    public CompletableFuture<ApiResponse<BandwidthMessagesList>> getMessagesAsync(
+            final String accountId,
+            final String userId,
+            final String messageId,
+            final String sourceTn,
+            final String destinationTn,
+            final String messageStatus,
+            final Integer errorCode,
+            final String fromDateTime,
+            final String toDateTime,
+            final String pageToken,
+            final Integer limit) {
+        return makeHttpCallAsync(() -> buildGetMessagesRequest(accountId, userId, messageId,
+                sourceTn, destinationTn, messageStatus, errorCode, fromDateTime, toDateTime,
+                pageToken, limit),
+            req -> authManagers.get("messaging").applyAsync(req)
+                .thenCompose(request -> getClientInstance()
+                        .executeAsStringAsync(request)),
+            context -> handleGetMessagesResponse(context));
+    }
+
+    /**
+     * Builds the HttpRequest object for getMessages.
+     */
+    private HttpRequest buildGetMessagesRequest(
+            final String accountId,
+            final String userId,
+            final String messageId,
+            final String sourceTn,
+            final String destinationTn,
+            final String messageStatus,
+            final Integer errorCode,
+            final String fromDateTime,
+            final String toDateTime,
+            final String pageToken,
+            final Integer limit) {
+        //the base uri for api requests
+        String baseUri = config.getBaseUri(Server.MESSAGINGDEFAULT);
+
+        //prepare query string for API call
+        final StringBuilder queryBuilder = new StringBuilder(baseUri
+                + "/users/{userId}/messages");
+
+        //process template parameters
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId",
+                new SimpleEntry<Object, Boolean>(accountId, false));
+        templateParameters.put("userId",
+                new SimpleEntry<Object, Boolean>(userId, false));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
+
+        //load all query parameters
+        Map<String, Object> queryParameters = new HashMap<>();
+        queryParameters.put("messageId", messageId);
+        queryParameters.put("sourceTn", sourceTn);
+        queryParameters.put("destinationTn", destinationTn);
+        queryParameters.put("messageStatus", messageStatus);
+        queryParameters.put("errorCode", errorCode);
+        queryParameters.put("fromDateTime", fromDateTime);
+        queryParameters.put("toDateTime", toDateTime);
+        queryParameters.put("pageToken", pageToken);
+        queryParameters.put("limit", limit);
+
+        //load all headers for the outgoing API request
+        Headers headers = new Headers();
+        headers.add("user-agent", BaseController.userAgent);
+        headers.add("accept", "application/json");
+
+        //prepare and invoke the API call request to fetch the response
+        HttpRequest request = getClientInstance().get(queryBuilder, headers, queryParameters,
+                null);
+
+        return request;
+    }
+
+    /**
+     * Processes the response for getMessages.
+     * @return An object of type BandwidthMessagesList
+     */
+    private ApiResponse<BandwidthMessagesList> handleGetMessagesResponse(
+            HttpContext context) throws ApiException, IOException {
+        HttpResponse response = context.getResponse();
+
+        //Error handling using HTTP status codes
+        int responseCode = response.getStatusCode();
+
+        if (responseCode == 400) {
+            throw new MessagingException("400 Request is malformed or invalid", context);
+        }
+        if (responseCode == 401) {
+            throw new MessagingException("401 The specified user does not have access to the account", context);
+        }
+        if (responseCode == 403) {
+            throw new MessagingException("403 The user does not have access to this API", context);
+        }
+        if (responseCode == 404) {
+            throw new MessagingException("404 Path not found", context);
+        }
+        if (responseCode == 415) {
+            throw new MessagingException("415 The content-type of the request is incorrect", context);
+        }
+        if (responseCode == 429) {
+            throw new MessagingException("429 The rate limit has been reached", context);
+        }
+        //handle errors defined at the API level
+        validateResponse(response, context);
+
+        //extract result from the http response
+        String responseBody = ((HttpStringResponse) response).getBody();
+        BandwidthMessagesList result = ApiHelper.deserialize(responseBody,
+                BandwidthMessagesList.class);
+
+        return new ApiResponse<BandwidthMessagesList>(response.getStatusCode(), response.getHeaders(), result);
     }
 
     /**
