@@ -9,6 +9,7 @@ package com.bandwidth.controllers;
 import com.bandwidth.AuthManager;
 import com.bandwidth.Configuration;
 import com.bandwidth.exceptions.ApiException;
+import com.bandwidth.http.client.HttpCallback;
 import com.bandwidth.http.client.HttpClient;
 import com.bandwidth.http.client.HttpContext;
 import com.bandwidth.http.request.HttpRequest;
@@ -30,17 +31,35 @@ public abstract class BaseController {
      */
     protected final Configuration config;
 
+    /**
+     * Protected variable to hold an instance of HttpCallback if the user provides it.
+     */
+    protected final HttpCallback httpCallback;
+
     protected Map<String, AuthManager> authManagers;
 
     private HttpClient httpClient;
-    
+
     protected BaseController(Configuration config, HttpClient httpClient,
             Map<String, AuthManager> authManagers) {
+        this(config, httpClient, authManagers, null);
+    }
+    
+    protected BaseController(Configuration config, HttpClient httpClient,
+            Map<String, AuthManager> authManagers, HttpCallback httpCallback) {
         this.config = config;
         this.httpClient = httpClient;
         this.authManagers = authManagers;
+        this.httpCallback = httpCallback;
     }
     
+    /**
+     * Get httpCallback associated with this controller.
+     * @return HttpCallback
+     */
+    public HttpCallback getHttpCallback() {
+        return httpCallback;
+    }
     
     /**
      * Shared instance of the Http client.

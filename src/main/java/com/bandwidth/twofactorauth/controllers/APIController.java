@@ -13,6 +13,7 @@ import com.bandwidth.Server;
 import com.bandwidth.controllers.BaseController;
 import com.bandwidth.exceptions.ApiException;
 import com.bandwidth.http.Headers;
+import com.bandwidth.http.client.HttpCallback;
 import com.bandwidth.http.client.HttpClient;
 import com.bandwidth.http.client.HttpContext;
 import com.bandwidth.http.request.HttpRequest;
@@ -48,6 +49,17 @@ public final class APIController extends BaseController {
         super(config, httpClient, authManagers);
     }
 
+    /**
+     * Initializes the controller with HTTPCallback.
+     * @param config    Configurations added in client.
+     * @param httpClient    Send HTTP requests and read the responses.
+     * @param authManagers    Apply authorization to requests.
+     * @param httpCallback    Callback to be called before and after the HTTP call.
+     */
+    public APIController(Configuration config, HttpClient httpClient,
+            Map<String, AuthManager> authManagers, HttpCallback httpCallback) {
+        super(config, httpClient, authManagers, httpCallback);
+    }
 
     /**
      * Two-Factor authentication with Bandwidth Voice services.
@@ -114,6 +126,11 @@ public final class APIController extends BaseController {
         String bodyJson = ApiHelper.serialize(body);
         HttpRequest request = getClientInstance().postBody(queryBuilder, headers, null, bodyJson);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -124,6 +141,11 @@ public final class APIController extends BaseController {
     private ApiResponse<TwoFactorVoiceResponse> handleCreateVoiceTwoFactorResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -207,6 +229,11 @@ public final class APIController extends BaseController {
         String bodyJson = ApiHelper.serialize(body);
         HttpRequest request = getClientInstance().postBody(queryBuilder, headers, null, bodyJson);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -217,6 +244,11 @@ public final class APIController extends BaseController {
     private ApiResponse<TwoFactorMessagingResponse> handleCreateMessagingTwoFactorResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -300,6 +332,11 @@ public final class APIController extends BaseController {
         String bodyJson = ApiHelper.serialize(body);
         HttpRequest request = getClientInstance().postBody(queryBuilder, headers, null, bodyJson);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -310,6 +347,11 @@ public final class APIController extends BaseController {
     private ApiResponse<TwoFactorVerifyCodeResponse> handleCreateVerifyTwoFactorResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();

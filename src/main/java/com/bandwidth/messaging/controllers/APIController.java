@@ -13,6 +13,7 @@ import com.bandwidth.Server;
 import com.bandwidth.controllers.BaseController;
 import com.bandwidth.exceptions.ApiException;
 import com.bandwidth.http.Headers;
+import com.bandwidth.http.client.HttpCallback;
 import com.bandwidth.http.client.HttpClient;
 import com.bandwidth.http.client.HttpContext;
 import com.bandwidth.http.request.HttpRequest;
@@ -21,6 +22,7 @@ import com.bandwidth.http.response.HttpResponse;
 import com.bandwidth.http.response.HttpStringResponse;
 import com.bandwidth.messaging.exceptions.MessagingException;
 import com.bandwidth.messaging.models.BandwidthMessage;
+import com.bandwidth.messaging.models.BandwidthMessagesList;
 import com.bandwidth.messaging.models.Media;
 import com.bandwidth.messaging.models.MessageRequest;
 import com.bandwidth.utilities.FileWrapper;
@@ -49,11 +51,23 @@ public final class APIController extends BaseController {
         super(config, httpClient, authManagers);
     }
 
+    /**
+     * Initializes the controller with HTTPCallback.
+     * @param config    Configurations added in client.
+     * @param httpClient    Send HTTP requests and read the responses.
+     * @param authManagers    Apply authorization to requests.
+     * @param httpCallback    Callback to be called before and after the HTTP call.
+     */
+    public APIController(Configuration config, HttpClient httpClient,
+            Map<String, AuthManager> authManagers, HttpCallback httpCallback) {
+        super(config, httpClient, authManagers, httpCallback);
+    }
 
     /**
      * listMedia.
-     * @param  userId  Required parameter: Example:
-     * @param  continuationToken  Optional parameter: Example:
+     * @param  userId  Required parameter: User's account ID
+     * @param  continuationToken  Optional parameter: Continuation token used to retrieve subsequent
+     *         media.
      * @return    Returns the List of Media wrapped in ApiResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
@@ -72,8 +86,9 @@ public final class APIController extends BaseController {
 
     /**
      * listMedia.
-     * @param  userId  Required parameter: Example:
-     * @param  continuationToken  Optional parameter: Example:
+     * @param  userId  Required parameter: User's account ID
+     * @param  continuationToken  Optional parameter: Continuation token used to retrieve subsequent
+     *         media.
      * @return    Returns the List of Media wrapped in ApiResponse response from the API call
      */
     public CompletableFuture<ApiResponse<List<Media>>> listMediaAsync(
@@ -114,6 +129,11 @@ public final class APIController extends BaseController {
         //prepare and invoke the API call request to fetch the response
         HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -124,6 +144,11 @@ public final class APIController extends BaseController {
     private ApiResponse<List<Media>> handleListMediaResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -158,8 +183,8 @@ public final class APIController extends BaseController {
 
     /**
      * getMedia.
-     * @param  userId  Required parameter: Example:
-     * @param  mediaId  Required parameter: Example:
+     * @param  userId  Required parameter: User's account ID
+     * @param  mediaId  Required parameter: Media ID to retrieve
      * @return    Returns the InputStream wrapped in ApiResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
@@ -178,8 +203,8 @@ public final class APIController extends BaseController {
 
     /**
      * getMedia.
-     * @param  userId  Required parameter: Example:
-     * @param  mediaId  Required parameter: Example:
+     * @param  userId  Required parameter: User's account ID
+     * @param  mediaId  Required parameter: Media ID to retrieve
      * @return    Returns the InputStream wrapped in ApiResponse response from the API call
      */
     public CompletableFuture<ApiResponse<InputStream>> getMediaAsync(
@@ -220,6 +245,11 @@ public final class APIController extends BaseController {
         //prepare and invoke the API call request to fetch the response
         HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -230,6 +260,11 @@ public final class APIController extends BaseController {
     private ApiResponse<InputStream> handleGetMediaResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -262,12 +297,13 @@ public final class APIController extends BaseController {
 
     /**
      * uploadMedia.
-     * @param  userId  Required parameter: Example:
-     * @param  mediaId  Required parameter: Example:
-     * @param  contentLength  Required parameter: Example:
+     * @param  userId  Required parameter: User's account ID
+     * @param  mediaId  Required parameter: The user supplied custom media ID
+     * @param  contentLength  Required parameter: The size of the entity-body
      * @param  body  Required parameter: Example:
-     * @param  contentType  Optional parameter: Example: application/octet-stream
-     * @param  cacheControl  Optional parameter: Example:
+     * @param  contentType  Optional parameter: The media type of the entity-body
+     * @param  cacheControl  Optional parameter: General-header field is used to specify directives
+     *         that MUST be obeyed by all caching mechanisms along the request/response chain.
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
@@ -290,12 +326,13 @@ public final class APIController extends BaseController {
 
     /**
      * uploadMedia.
-     * @param  userId  Required parameter: Example:
-     * @param  mediaId  Required parameter: Example:
-     * @param  contentLength  Required parameter: Example:
+     * @param  userId  Required parameter: User's account ID
+     * @param  mediaId  Required parameter: The user supplied custom media ID
+     * @param  contentLength  Required parameter: The size of the entity-body
      * @param  body  Required parameter: Example:
-     * @param  contentType  Optional parameter: Example: application/octet-stream
-     * @param  cacheControl  Optional parameter: Example:
+     * @param  contentType  Optional parameter: The media type of the entity-body
+     * @param  cacheControl  Optional parameter: General-header field is used to specify directives
+     *         that MUST be obeyed by all caching mechanisms along the request/response chain.
      * @return    Returns the Void wrapped in ApiResponse response from the API call
      */
     public CompletableFuture<ApiResponse<Void>> uploadMediaAsync(
@@ -349,6 +386,11 @@ public final class APIController extends BaseController {
         //prepare and invoke the API call request to fetch the response
         HttpRequest request = getClientInstance().putBody(queryBuilder, headers, null, body);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -359,6 +401,11 @@ public final class APIController extends BaseController {
     private ApiResponse<Void> handleUploadMediaResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -389,8 +436,8 @@ public final class APIController extends BaseController {
 
     /**
      * deleteMedia.
-     * @param  userId  Required parameter: Example:
-     * @param  mediaId  Required parameter: Example:
+     * @param  userId  Required parameter: User's account ID
+     * @param  mediaId  Required parameter: The media ID to delete
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
@@ -408,8 +455,8 @@ public final class APIController extends BaseController {
 
     /**
      * deleteMedia.
-     * @param  userId  Required parameter: Example:
-     * @param  mediaId  Required parameter: Example:
+     * @param  userId  Required parameter: User's account ID
+     * @param  mediaId  Required parameter: The media ID to delete
      * @return    Returns the Void wrapped in ApiResponse response from the API call
      */
     public CompletableFuture<ApiResponse<Void>> deleteMediaAsync(
@@ -450,6 +497,11 @@ public final class APIController extends BaseController {
         //prepare and invoke the API call request to fetch the response
         HttpRequest request = getClientInstance().delete(queryBuilder, headers, null, null);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -460,6 +512,11 @@ public final class APIController extends BaseController {
     private ApiResponse<Void> handleDeleteMediaResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -489,9 +546,195 @@ public final class APIController extends BaseController {
     }
 
     /**
+     * getMessages.
+     * @param  userId  Required parameter: User's account ID
+     * @param  messageId  Optional parameter: The ID of the message to search for. Special
+     *         characters need to be encoded using URL encoding
+     * @param  sourceTn  Optional parameter: The phone number that sent the message
+     * @param  destinationTn  Optional parameter: The phone number that received the message
+     * @param  messageStatus  Optional parameter: The status of the message. One of RECEIVED,
+     *         QUEUED, SENDING, SENT, FAILED, DELIVERED, DLR_EXPIRED
+     * @param  errorCode  Optional parameter: The error code of the message
+     * @param  fromDateTime  Optional parameter: The start of the date range to search in ISO 8601
+     *         format. Uses the message receive time. The date range to search in is currently 14
+     *         days.
+     * @param  toDateTime  Optional parameter: The end of the date range to search in ISO 8601
+     *         format. Uses the message receive time. The date range to search in is currently 14
+     *         days.
+     * @param  pageToken  Optional parameter: A base64 encoded value used for pagination of results
+     * @param  limit  Optional parameter: The maximum records requested in search result. Default
+     *         100. The sum of limit and after cannot be more than 10000
+     * @return    Returns the BandwidthMessagesList wrapped in ApiResponse response from the API call
+     * @throws    ApiException    Represents error response from the server.
+     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     */
+    public ApiResponse<BandwidthMessagesList> getMessages(
+            final String userId,
+            final String messageId,
+            final String sourceTn,
+            final String destinationTn,
+            final String messageStatus,
+            final Integer errorCode,
+            final String fromDateTime,
+            final String toDateTime,
+            final String pageToken,
+            final Integer limit) throws ApiException, IOException {
+        HttpRequest request = buildGetMessagesRequest(userId, messageId, sourceTn, destinationTn,
+                messageStatus, errorCode, fromDateTime, toDateTime, pageToken, limit);
+        authManagers.get("messaging").apply(request);
+
+        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpContext context = new HttpContext(request, response);
+
+        return handleGetMessagesResponse(context);
+    }
+
+    /**
+     * getMessages.
+     * @param  userId  Required parameter: User's account ID
+     * @param  messageId  Optional parameter: The ID of the message to search for. Special
+     *         characters need to be encoded using URL encoding
+     * @param  sourceTn  Optional parameter: The phone number that sent the message
+     * @param  destinationTn  Optional parameter: The phone number that received the message
+     * @param  messageStatus  Optional parameter: The status of the message. One of RECEIVED,
+     *         QUEUED, SENDING, SENT, FAILED, DELIVERED, DLR_EXPIRED
+     * @param  errorCode  Optional parameter: The error code of the message
+     * @param  fromDateTime  Optional parameter: The start of the date range to search in ISO 8601
+     *         format. Uses the message receive time. The date range to search in is currently 14
+     *         days.
+     * @param  toDateTime  Optional parameter: The end of the date range to search in ISO 8601
+     *         format. Uses the message receive time. The date range to search in is currently 14
+     *         days.
+     * @param  pageToken  Optional parameter: A base64 encoded value used for pagination of results
+     * @param  limit  Optional parameter: The maximum records requested in search result. Default
+     *         100. The sum of limit and after cannot be more than 10000
+     * @return    Returns the BandwidthMessagesList wrapped in ApiResponse response from the API call
+     */
+    public CompletableFuture<ApiResponse<BandwidthMessagesList>> getMessagesAsync(
+            final String userId,
+            final String messageId,
+            final String sourceTn,
+            final String destinationTn,
+            final String messageStatus,
+            final Integer errorCode,
+            final String fromDateTime,
+            final String toDateTime,
+            final String pageToken,
+            final Integer limit) {
+        return makeHttpCallAsync(() -> buildGetMessagesRequest(userId, messageId, sourceTn,
+                destinationTn, messageStatus, errorCode, fromDateTime, toDateTime, pageToken,
+                limit),
+            req -> authManagers.get("messaging").applyAsync(req)
+                .thenCompose(request -> getClientInstance()
+                        .executeAsStringAsync(request)),
+            context -> handleGetMessagesResponse(context));
+    }
+
+    /**
+     * Builds the HttpRequest object for getMessages.
+     */
+    private HttpRequest buildGetMessagesRequest(
+            final String userId,
+            final String messageId,
+            final String sourceTn,
+            final String destinationTn,
+            final String messageStatus,
+            final Integer errorCode,
+            final String fromDateTime,
+            final String toDateTime,
+            final String pageToken,
+            final Integer limit) {
+        //the base uri for api requests
+        String baseUri = config.getBaseUri(Server.MESSAGINGDEFAULT);
+
+        //prepare query string for API call
+        final StringBuilder queryBuilder = new StringBuilder(baseUri
+                + "/users/{userId}/messages");
+
+        //process template parameters
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("userId",
+                new SimpleEntry<Object, Boolean>(userId, false));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
+
+        //load all query parameters
+        Map<String, Object> queryParameters = new HashMap<>();
+        queryParameters.put("messageId", messageId);
+        queryParameters.put("sourceTn", sourceTn);
+        queryParameters.put("destinationTn", destinationTn);
+        queryParameters.put("messageStatus", messageStatus);
+        queryParameters.put("errorCode", errorCode);
+        queryParameters.put("fromDateTime", fromDateTime);
+        queryParameters.put("toDateTime", toDateTime);
+        queryParameters.put("pageToken", pageToken);
+        queryParameters.put("limit", limit);
+
+        //load all headers for the outgoing API request
+        Headers headers = new Headers();
+        headers.add("user-agent", BaseController.userAgent);
+        headers.add("accept", "application/json");
+
+        //prepare and invoke the API call request to fetch the response
+        HttpRequest request = getClientInstance().get(queryBuilder, headers, queryParameters,
+                null);
+
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
+        return request;
+    }
+
+    /**
+     * Processes the response for getMessages.
+     * @return An object of type BandwidthMessagesList
+     */
+    private ApiResponse<BandwidthMessagesList> handleGetMessagesResponse(
+            HttpContext context) throws ApiException, IOException {
+        HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
+
+        //Error handling using HTTP status codes
+        int responseCode = response.getStatusCode();
+
+        if (responseCode == 400) {
+            throw new MessagingException("400 Request is malformed or invalid", context);
+        }
+        if (responseCode == 401) {
+            throw new MessagingException("401 The specified user does not have access to the account", context);
+        }
+        if (responseCode == 403) {
+            throw new MessagingException("403 The user does not have access to this API", context);
+        }
+        if (responseCode == 404) {
+            throw new MessagingException("404 Path not found", context);
+        }
+        if (responseCode == 415) {
+            throw new MessagingException("415 The content-type of the request is incorrect", context);
+        }
+        if (responseCode == 429) {
+            throw new MessagingException("429 The rate limit has been reached", context);
+        }
+        //handle errors defined at the API level
+        validateResponse(response, context);
+
+        //extract result from the http response
+        String responseBody = ((HttpStringResponse) response).getBody();
+        BandwidthMessagesList result = ApiHelper.deserialize(responseBody,
+                BandwidthMessagesList.class);
+
+        return new ApiResponse<BandwidthMessagesList>(response.getStatusCode(), response.getHeaders(), result);
+    }
+
+    /**
      * createMessage.
-     * @param  userId  Required parameter: Example:
-     * @param  body  Optional parameter: Example:
+     * @param  userId  Required parameter: User's account ID
+     * @param  body  Required parameter: Example:
      * @return    Returns the BandwidthMessage wrapped in ApiResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
@@ -510,8 +753,8 @@ public final class APIController extends BaseController {
 
     /**
      * createMessage.
-     * @param  userId  Required parameter: Example:
-     * @param  body  Optional parameter: Example:
+     * @param  userId  Required parameter: User's account ID
+     * @param  body  Required parameter: Example:
      * @return    Returns the BandwidthMessage wrapped in ApiResponse response from the API call
      */
     public CompletableFuture<ApiResponse<BandwidthMessage>> createMessageAsync(
@@ -553,6 +796,11 @@ public final class APIController extends BaseController {
         String bodyJson = ApiHelper.serialize(body);
         HttpRequest request = getClientInstance().postBody(queryBuilder, headers, null, bodyJson);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -563,6 +811,11 @@ public final class APIController extends BaseController {
     private ApiResponse<BandwidthMessage> handleCreateMessageResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();

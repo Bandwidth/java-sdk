@@ -6,6 +6,7 @@
 
 package com.bandwidth;
 
+import com.bandwidth.http.client.HttpCallback;
 import com.bandwidth.http.client.HttpClient;
 import com.bandwidth.http.client.HttpClientConfiguration;
 import com.bandwidth.http.client.OkClient;
@@ -79,18 +80,24 @@ public final class BandwidthClient implements Configuration {
      */
     private Map<String, AuthManager> authManagers;
 
+    /**
+     * Callback to be called before and after the HTTP call for an endpoint is made.
+     */
+    private final HttpCallback httpCallback;
+
     private BandwidthClient(Environment environment, String baseUrl, HttpClient httpClient,
             long timeout, ReadonlyHttpClientConfiguration httpClientConfig,
             String messagingBasicAuthUserName, String messagingBasicAuthPassword,
             String twoFactorAuthBasicAuthUserName, String twoFactorAuthBasicAuthPassword,
             String voiceBasicAuthUserName, String voiceBasicAuthPassword,
             String webRtcBasicAuthUserName, String webRtcBasicAuthPassword,
-            Map<String, AuthManager> authManagers) {
+            Map<String, AuthManager> authManagers, HttpCallback httpCallback) {
         this.environment = environment;
         this.baseUrl = baseUrl;
         this.httpClient = httpClient;
         this.timeout = timeout;
         this.httpClientConfig = httpClientConfig;
+        this.httpCallback = httpCallback;
 
         this.authManagers = (authManagers == null) ? new HashMap<>() : new HashMap<>(authManagers);
         if (this.authManagers.containsKey("messaging")) {
@@ -369,6 +376,7 @@ public final class BandwidthClient implements Configuration {
         builder.webRtcBasicAuthUserName = getWebRtcBasicAuthCredentials().getBasicAuthUserName();
         builder.webRtcBasicAuthPassword = getWebRtcBasicAuthCredentials().getBasicAuthPassword();
         builder.authManagers = authManagers;
+        builder.httpCallback = httpCallback;
         builder.setHttpClientConfig(httpClientConfig);
         return builder;
     }
@@ -390,6 +398,7 @@ public final class BandwidthClient implements Configuration {
         private String webRtcBasicAuthUserName = "TODO: Replace";
         private String webRtcBasicAuthPassword = "TODO: Replace";
         private Map<String, AuthManager> authManagers = null;
+        private HttpCallback httpCallback = null;
         private HttpClientConfiguration httpClientConfig;
 
         /**
@@ -500,6 +509,16 @@ public final class BandwidthClient implements Configuration {
             return this;
         }
 
+        /**
+         * HttpCallback.
+         * @param httpCallback Callback to be called before and after the HTTP call.
+         * @return Builder
+         */
+        public Builder httpCallback(HttpCallback httpCallback) {
+            this.httpCallback = httpCallback;
+            return this;
+        }
+
 
         private void setHttpClientConfig(ReadonlyHttpClientConfiguration httpClientConfig) {
             this.timeout = httpClientConfig.getTimeout();
@@ -518,7 +537,7 @@ public final class BandwidthClient implements Configuration {
                     messagingBasicAuthUserName, messagingBasicAuthPassword,
                     twoFactorAuthBasicAuthUserName, twoFactorAuthBasicAuthPassword,
                     voiceBasicAuthUserName, voiceBasicAuthPassword, webRtcBasicAuthUserName,
-                    webRtcBasicAuthPassword, authManagers);
+                    webRtcBasicAuthPassword, authManagers, httpCallback);
         }
     }
 }
