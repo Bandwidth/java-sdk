@@ -73,6 +73,7 @@ public class BandwidthMessage {
 
     /**
      * Getter for Id.
+     * The id of the message
      * @return Returns the String
      */
     @JsonGetter("id")
@@ -82,6 +83,7 @@ public class BandwidthMessage {
 
     /**
      * Setter for Id.
+     * The id of the message
      * @param id Value for String
      */
     @JsonSetter("id")
@@ -91,6 +93,7 @@ public class BandwidthMessage {
 
     /**
      * Getter for Owner.
+     * The Bandwidth phone number associated with the message
      * @return Returns the String
      */
     @JsonGetter("owner")
@@ -100,6 +103,7 @@ public class BandwidthMessage {
 
     /**
      * Setter for Owner.
+     * The Bandwidth phone number associated with the message
      * @param owner Value for String
      */
     @JsonSetter("owner")
@@ -109,6 +113,7 @@ public class BandwidthMessage {
 
     /**
      * Getter for ApplicationId.
+     * The application ID associated with the message
      * @return Returns the String
      */
     @JsonGetter("applicationId")
@@ -118,6 +123,7 @@ public class BandwidthMessage {
 
     /**
      * Setter for ApplicationId.
+     * The application ID associated with the message
      * @param applicationId Value for String
      */
     @JsonSetter("applicationId")
@@ -127,6 +133,7 @@ public class BandwidthMessage {
 
     /**
      * Getter for Time.
+     * The datetime stamp of the message in ISO 8601
      * @return Returns the String
      */
     @JsonGetter("time")
@@ -136,6 +143,7 @@ public class BandwidthMessage {
 
     /**
      * Setter for Time.
+     * The datetime stamp of the message in ISO 8601
      * @param time Value for String
      */
     @JsonSetter("time")
@@ -145,6 +153,8 @@ public class BandwidthMessage {
 
     /**
      * Getter for SegmentCount.
+     * The number of segments the original message from the user is broken into before sending over
+     * to carrier networks
      * @return Returns the Integer
      */
     @JsonGetter("segmentCount")
@@ -154,6 +164,8 @@ public class BandwidthMessage {
 
     /**
      * Setter for SegmentCount.
+     * The number of segments the original message from the user is broken into before sending over
+     * to carrier networks
      * @param segmentCount Value for Integer
      */
     @JsonSetter("segmentCount")
@@ -163,6 +175,7 @@ public class BandwidthMessage {
 
     /**
      * Getter for Direction.
+     * The direction of the message relative to Bandwidth. Can be in or out
      * @return Returns the String
      */
     @JsonGetter("direction")
@@ -172,6 +185,7 @@ public class BandwidthMessage {
 
     /**
      * Setter for Direction.
+     * The direction of the message relative to Bandwidth. Can be in or out
      * @param direction Value for String
      */
     @JsonSetter("direction")
@@ -181,6 +195,7 @@ public class BandwidthMessage {
 
     /**
      * Getter for To.
+     * The phone number recipients of the message
      * @return Returns the List of String
      */
     @JsonGetter("to")
@@ -190,6 +205,7 @@ public class BandwidthMessage {
 
     /**
      * Setter for To.
+     * The phone number recipients of the message
      * @param to Value for List of String
      */
     @JsonSetter("to")
@@ -199,6 +215,7 @@ public class BandwidthMessage {
 
     /**
      * Getter for From.
+     * The phone number the message was sent from
      * @return Returns the String
      */
     @JsonGetter("from")
@@ -208,6 +225,7 @@ public class BandwidthMessage {
 
     /**
      * Setter for From.
+     * The phone number the message was sent from
      * @param from Value for String
      */
     @JsonSetter("from")
@@ -217,6 +235,7 @@ public class BandwidthMessage {
 
     /**
      * Getter for Media.
+     * The list of media URLs sent in the message
      * @return Returns the List of String
      */
     @JsonGetter("media")
@@ -226,6 +245,7 @@ public class BandwidthMessage {
 
     /**
      * Setter for Media.
+     * The list of media URLs sent in the message
      * @param media Value for List of String
      */
     @JsonSetter("media")
@@ -235,6 +255,7 @@ public class BandwidthMessage {
 
     /**
      * Getter for Text.
+     * The contents of the message
      * @return Returns the String
      */
     @JsonGetter("text")
@@ -244,6 +265,7 @@ public class BandwidthMessage {
 
     /**
      * Setter for Text.
+     * The contents of the message
      * @param text Value for String
      */
     @JsonSetter("text")
@@ -253,6 +275,7 @@ public class BandwidthMessage {
 
     /**
      * Getter for Tag.
+     * The custom string set by the user
      * @return Returns the String
      */
     @JsonGetter("tag")
@@ -262,6 +285,7 @@ public class BandwidthMessage {
 
     /**
      * Setter for Tag.
+     * The custom string set by the user
      * @param tag Value for String
      */
     @JsonSetter("tag")

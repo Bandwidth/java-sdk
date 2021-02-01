@@ -53,6 +53,8 @@ public class MessageRequest {
 
     /**
      * Getter for ApplicationId.
+     * The ID of the Application your from number is associated with in the Bandwidth Phone Number
+     * Dashboard.
      * @return Returns the String
      */
     @JsonGetter("applicationId")
@@ -62,6 +64,8 @@ public class MessageRequest {
 
     /**
      * Setter for ApplicationId.
+     * The ID of the Application your from number is associated with in the Bandwidth Phone Number
+     * Dashboard.
      * @param applicationId Value for String
      */
     @JsonSetter("applicationId")
@@ -71,6 +75,7 @@ public class MessageRequest {
 
     /**
      * Getter for To.
+     * The phone number(s) the message should be sent to in E164 format
      * @return Returns the List of String
      */
     @JsonGetter("to")
@@ -80,6 +85,7 @@ public class MessageRequest {
 
     /**
      * Setter for To.
+     * The phone number(s) the message should be sent to in E164 format
      * @param to Value for List of String
      */
     @JsonSetter("to")
@@ -89,6 +95,7 @@ public class MessageRequest {
 
     /**
      * Getter for From.
+     * One of your telephone numbers the message should come from in E164 format
      * @return Returns the String
      */
     @JsonGetter("from")
@@ -98,6 +105,7 @@ public class MessageRequest {
 
     /**
      * Setter for From.
+     * One of your telephone numbers the message should come from in E164 format
      * @param from Value for String
      */
     @JsonSetter("from")
@@ -107,6 +115,7 @@ public class MessageRequest {
 
     /**
      * Getter for Text.
+     * The contents of the text message. Must be 2048 characters or less.
      * @return Returns the String
      */
     @JsonGetter("text")
@@ -116,6 +125,7 @@ public class MessageRequest {
 
     /**
      * Setter for Text.
+     * The contents of the text message. Must be 2048 characters or less.
      * @param text Value for String
      */
     @JsonSetter("text")
@@ -125,6 +135,7 @@ public class MessageRequest {
 
     /**
      * Getter for Media.
+     * A list of URLs to include as media attachments as part of the message.
      * @return Returns the List of String
      */
     @JsonGetter("media")
@@ -134,6 +145,7 @@ public class MessageRequest {
 
     /**
      * Setter for Media.
+     * A list of URLs to include as media attachments as part of the message.
      * @param media Value for List of String
      */
     @JsonSetter("media")
@@ -143,6 +155,7 @@ public class MessageRequest {
 
     /**
      * Getter for Tag.
+     * A custom string that will be included in callback events of the message. Max 1024 characters
      * @return Returns the String
      */
     @JsonGetter("tag")
@@ -152,6 +165,7 @@ public class MessageRequest {
 
     /**
      * Setter for Tag.
+     * A custom string that will be included in callback events of the message. Max 1024 characters
      * @param tag Value for String
      */
     @JsonSetter("tag")
@@ -175,10 +189,7 @@ public class MessageRequest {
      * @return a new {@link MessageRequest.Builder} object
      */
     public Builder toBuilder() {
-        Builder builder = new Builder()
-                .applicationId(getApplicationId())
-                .to(getTo())
-                .from(getFrom())
+        Builder builder = new Builder(applicationId, to, from)
                 .text(getText())
                 .media(getMedia())
                 .tag(getTag());
@@ -196,7 +207,25 @@ public class MessageRequest {
         private List<String> media;
         private String tag;
 
+        /**
+         * Initialization constructor.
+         */
+        public Builder() {
+        }
 
+        /**
+         * Initialization constructor.
+         * @param applicationId String value for applicationId.
+         * @param to List of String value for to.
+         * @param from String value for from.
+         */
+        public Builder(String applicationId,
+                List<String> to,
+                String from) {
+            this.applicationId = applicationId;
+            this.to = to;
+            this.from = from;
+        }
 
         /**
          * Setter for applicationId.

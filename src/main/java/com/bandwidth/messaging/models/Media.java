@@ -177,6 +177,7 @@ public class Media {
 
     /**
      * Getter for UserId.
+     * User's account ID
      * @return Returns the String
      */
     @JsonGetter("userId")
@@ -186,6 +187,7 @@ public class Media {
 
     /**
      * Setter for UserId.
+     * User's account ID
      * @param userId Value for String
      */
     @JsonSetter("userId")

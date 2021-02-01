@@ -13,6 +13,7 @@ import com.bandwidth.Server;
 import com.bandwidth.controllers.BaseController;
 import com.bandwidth.exceptions.ApiException;
 import com.bandwidth.http.Headers;
+import com.bandwidth.http.client.HttpCallback;
 import com.bandwidth.http.client.HttpClient;
 import com.bandwidth.http.client.HttpContext;
 import com.bandwidth.http.request.HttpRequest;
@@ -57,6 +58,17 @@ public final class APIController extends BaseController {
         super(config, httpClient, authManagers);
     }
 
+    /**
+     * Initializes the controller with HTTPCallback.
+     * @param config    Configurations added in client.
+     * @param httpClient    Send HTTP requests and read the responses.
+     * @param authManagers    Apply authorization to requests.
+     * @param httpCallback    Callback to be called before and after the HTTP call.
+     */
+    public APIController(Configuration config, HttpClient httpClient,
+            Map<String, AuthManager> authManagers, HttpCallback httpCallback) {
+        super(config, httpClient, authManagers, httpCallback);
+    }
 
     /**
      * Creates an outbound call.
@@ -123,6 +135,11 @@ public final class APIController extends BaseController {
         String bodyJson = ApiHelper.serialize(body);
         HttpRequest request = getClientInstance().postBody(queryBuilder, headers, null, bodyJson);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -133,6 +150,11 @@ public final class APIController extends BaseController {
     private ApiResponse<ApiCallResponse> handleCreateCallResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -234,6 +256,11 @@ public final class APIController extends BaseController {
         //prepare and invoke the API call request to fetch the response
         HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -244,6 +271,11 @@ public final class APIController extends BaseController {
     private ApiResponse<ApiCallStateResponse> handleGetCallStateResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -350,6 +382,11 @@ public final class APIController extends BaseController {
         String bodyJson = ApiHelper.serialize(body);
         HttpRequest request = getClientInstance().postBody(queryBuilder, headers, null, bodyJson);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -360,6 +397,11 @@ public final class APIController extends BaseController {
     private ApiResponse<Void> handleModifyCallResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -462,6 +504,11 @@ public final class APIController extends BaseController {
         String bodyJson = ApiHelper.serialize(body);
         HttpRequest request = getClientInstance().putBody(queryBuilder, headers, null, bodyJson);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -472,6 +519,11 @@ public final class APIController extends BaseController {
     private ApiResponse<Void> handleModifyCallRecordingStateResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -571,6 +623,11 @@ public final class APIController extends BaseController {
         //prepare and invoke the API call request to fetch the response
         HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -581,6 +638,11 @@ public final class APIController extends BaseController {
     private ApiResponse<List<RecordingMetadataResponse>> handleGetQueryMetadataForAccountAndCallResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -689,6 +751,11 @@ public final class APIController extends BaseController {
         //prepare and invoke the API call request to fetch the response
         HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -699,6 +766,11 @@ public final class APIController extends BaseController {
     private ApiResponse<RecordingMetadataResponse> handleGetMetadataForRecordingResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -805,6 +877,11 @@ public final class APIController extends BaseController {
         //prepare and invoke the API call request to fetch the response
         HttpRequest request = getClientInstance().delete(queryBuilder, headers, null, null);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -815,6 +892,11 @@ public final class APIController extends BaseController {
     private ApiResponse<Void> handleDeleteRecordingResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -918,6 +1000,11 @@ public final class APIController extends BaseController {
         //prepare and invoke the API call request to fetch the response
         HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -928,6 +1015,11 @@ public final class APIController extends BaseController {
     private ApiResponse<InputStream> handleGetStreamRecordingMediaResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -1032,6 +1124,11 @@ public final class APIController extends BaseController {
         //prepare and invoke the API call request to fetch the response
         HttpRequest request = getClientInstance().delete(queryBuilder, headers, null, null);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -1042,6 +1139,11 @@ public final class APIController extends BaseController {
     private ApiResponse<Void> handleDeleteRecordingMediaResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -1146,6 +1248,11 @@ public final class APIController extends BaseController {
         //prepare and invoke the API call request to fetch the response
         HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -1156,6 +1263,11 @@ public final class APIController extends BaseController {
     private ApiResponse<TranscriptionResponse> handleGetRecordingTranscriptionResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -1271,6 +1383,11 @@ public final class APIController extends BaseController {
         String bodyJson = ApiHelper.serialize(body);
         HttpRequest request = getClientInstance().postBody(queryBuilder, headers, null, bodyJson);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -1281,6 +1398,11 @@ public final class APIController extends BaseController {
     private ApiResponse<Void> handleCreateTranscribeRecordingResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -1387,6 +1509,11 @@ public final class APIController extends BaseController {
         //prepare and invoke the API call request to fetch the response
         HttpRequest request = getClientInstance().delete(queryBuilder, headers, null, null);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -1397,6 +1524,11 @@ public final class APIController extends BaseController {
     private ApiResponse<Void> handleDeleteRecordingTranscriptionResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -1523,6 +1655,11 @@ public final class APIController extends BaseController {
         HttpRequest request = getClientInstance().get(queryBuilder, headers, queryParameters,
                 null);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -1533,6 +1670,11 @@ public final class APIController extends BaseController {
     private ApiResponse<List<ConferenceDetail>> handleGetConferencesByAccountResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -1633,6 +1775,11 @@ public final class APIController extends BaseController {
         //prepare and invoke the API call request to fetch the response
         HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -1643,6 +1790,11 @@ public final class APIController extends BaseController {
     private ApiResponse<ConferenceDetail> handleGetConferenceByIdResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -1749,6 +1901,11 @@ public final class APIController extends BaseController {
         String bodyJson = ApiHelper.serialize(body);
         HttpRequest request = getClientInstance().postBody(queryBuilder, headers, null, bodyJson);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -1759,6 +1916,11 @@ public final class APIController extends BaseController {
     private ApiResponse<Void> handleModifyConferenceResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -1869,6 +2031,11 @@ public final class APIController extends BaseController {
         String bodyJson = ApiHelper.serialize(body);
         HttpRequest request = getClientInstance().putBody(queryBuilder, headers, null, bodyJson);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -1879,6 +2046,11 @@ public final class APIController extends BaseController {
     private ApiResponse<Void> handleModifyConferenceMemberResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -1983,6 +2155,11 @@ public final class APIController extends BaseController {
         //prepare and invoke the API call request to fetch the response
         HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -1993,6 +2170,11 @@ public final class APIController extends BaseController {
     private ApiResponse<ConferenceMemberDetail> handleGetConferenceMemberResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -2098,6 +2280,11 @@ public final class APIController extends BaseController {
         //prepare and invoke the API call request to fetch the response
         HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -2108,6 +2295,11 @@ public final class APIController extends BaseController {
     private ApiResponse<List<ConferenceRecordingMetadataResponse>> handleGetQueryMetadataForAccountAndConferenceResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -2217,6 +2409,11 @@ public final class APIController extends BaseController {
         //prepare and invoke the API call request to fetch the response
         HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -2227,6 +2424,11 @@ public final class APIController extends BaseController {
     private ApiResponse<RecordingMetadataResponse> handleGetMetadataForConferenceRecordingResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -2336,6 +2538,11 @@ public final class APIController extends BaseController {
         //prepare and invoke the API call request to fetch the response
         HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -2346,6 +2553,11 @@ public final class APIController extends BaseController {
     private ApiResponse<InputStream> handleGetStreamConferenceRecordingMediaResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
@@ -2471,6 +2683,11 @@ public final class APIController extends BaseController {
         HttpRequest request = getClientInstance().get(queryBuilder, headers, queryParameters,
                 null);
 
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
         return request;
     }
 
@@ -2481,6 +2698,11 @@ public final class APIController extends BaseController {
     private ApiResponse<List<RecordingMetadataResponse>> handleGetQueryMetadataForAccountResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
 
         //Error handling using HTTP status codes
         int responseCode = response.getStatusCode();
