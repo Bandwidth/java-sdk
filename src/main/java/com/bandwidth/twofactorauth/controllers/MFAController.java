@@ -20,7 +20,9 @@ import com.bandwidth.http.request.HttpRequest;
 import com.bandwidth.http.response.ApiResponse;
 import com.bandwidth.http.response.HttpResponse;
 import com.bandwidth.http.response.HttpStringResponse;
-import com.bandwidth.twofactorauth.exceptions.InvalidRequestException;
+import com.bandwidth.twofactorauth.exceptions.ErrorWithRequestException;
+import com.bandwidth.twofactorauth.exceptions.ForbiddenRequestException;
+import com.bandwidth.twofactorauth.exceptions.UnauthorizedRequestException;
 import com.bandwidth.twofactorauth.models.TwoFactorCodeRequestSchema;
 import com.bandwidth.twofactorauth.models.TwoFactorMessagingResponse;
 import com.bandwidth.twofactorauth.models.TwoFactorVerifyCodeResponse;
@@ -36,7 +38,7 @@ import java.util.concurrent.CompletableFuture;
 /**
  * This class lists all the endpoints of the groups.
  */
-public final class APIController extends BaseController {
+public final class MFAController extends BaseController {
 
     /**
      * Initializes the controller.
@@ -44,7 +46,7 @@ public final class APIController extends BaseController {
      * @param httpClient    Send HTTP requests and read the responses.
      * @param authManagers    Apply authorization to requests.
      */
-    public APIController(Configuration config, HttpClient httpClient,
+    public MFAController(Configuration config, HttpClient httpClient,
             Map<String, AuthManager> authManagers) {
         super(config, httpClient, authManagers);
     }
@@ -56,13 +58,13 @@ public final class APIController extends BaseController {
      * @param authManagers    Apply authorization to requests.
      * @param httpCallback    Callback to be called before and after the HTTP call.
      */
-    public APIController(Configuration config, HttpClient httpClient,
+    public MFAController(Configuration config, HttpClient httpClient,
             Map<String, AuthManager> authManagers, HttpCallback httpCallback) {
         super(config, httpClient, authManagers, httpCallback);
     }
 
     /**
-     * Two-Factor authentication with Bandwidth Voice services.
+     * Allows a user to send a MFA code through a phone call.
      * @param  accountId  Required parameter: Bandwidth Account ID with Voice service enabled
      * @param  body  Required parameter: Example:
      * @return    Returns the TwoFactorVoiceResponse wrapped in ApiResponse response from the API call
@@ -82,7 +84,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Two-Factor authentication with Bandwidth Voice services.
+     * Allows a user to send a MFA code through a phone call.
      * @param  accountId  Required parameter: Bandwidth Account ID with Voice service enabled
      * @param  body  Required parameter: Example:
      * @return    Returns the TwoFactorVoiceResponse wrapped in ApiResponse response from the API call
@@ -151,7 +153,16 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new InvalidRequestException("client request error", context);
+            throw new ErrorWithRequestException("If there is any issue with values passed in by the user", context);
+        }
+        if (responseCode == 401) {
+            throw new UnauthorizedRequestException("Authentication is either incorrect or not present", context);
+        }
+        if (responseCode == 403) {
+            throw new ForbiddenRequestException("The user is not authorized to access this resource", context);
+        }
+        if (responseCode == 500) {
+            throw new ErrorWithRequestException("An internal server error occurred", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -165,7 +176,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Two-Factor authentication with Bandwidth messaging services.
+     * Allows a user to send a MFA code through a text message (SMS).
      * @param  accountId  Required parameter: Bandwidth Account ID with Messaging service enabled
      * @param  body  Required parameter: Example:
      * @return    Returns the TwoFactorMessagingResponse wrapped in ApiResponse response from the API call
@@ -185,7 +196,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Two-Factor authentication with Bandwidth messaging services.
+     * Allows a user to send a MFA code through a text message (SMS).
      * @param  accountId  Required parameter: Bandwidth Account ID with Messaging service enabled
      * @param  body  Required parameter: Example:
      * @return    Returns the TwoFactorMessagingResponse wrapped in ApiResponse response from the API call
@@ -254,7 +265,16 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new InvalidRequestException("client request error", context);
+            throw new ErrorWithRequestException("If there is any issue with values passed in by the user", context);
+        }
+        if (responseCode == 401) {
+            throw new UnauthorizedRequestException("Authentication is either incorrect or not present", context);
+        }
+        if (responseCode == 403) {
+            throw new ForbiddenRequestException("The user is not authorized to access this resource", context);
+        }
+        if (responseCode == 500) {
+            throw new ErrorWithRequestException("An internal server error occurred", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -268,7 +288,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Verify a previously sent two-factor authentication code.
+     * Allows a user to verify an MFA code.
      * @param  accountId  Required parameter: Bandwidth Account ID with Two-Factor enabled
      * @param  body  Required parameter: Example:
      * @return    Returns the TwoFactorVerifyCodeResponse wrapped in ApiResponse response from the API call
@@ -288,7 +308,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Verify a previously sent two-factor authentication code.
+     * Allows a user to verify an MFA code.
      * @param  accountId  Required parameter: Bandwidth Account ID with Two-Factor enabled
      * @param  body  Required parameter: Example:
      * @return    Returns the TwoFactorVerifyCodeResponse wrapped in ApiResponse response from the API call
@@ -357,7 +377,19 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new InvalidRequestException("client request error", context);
+            throw new ErrorWithRequestException("If there is any issue with values passed in by the user", context);
+        }
+        if (responseCode == 401) {
+            throw new UnauthorizedRequestException("Authentication is either incorrect or not present", context);
+        }
+        if (responseCode == 403) {
+            throw new ForbiddenRequestException("The user is not authorized to access this resource", context);
+        }
+        if (responseCode == 429) {
+            throw new ErrorWithRequestException("The user has made too many bad requests and is temporarily locked out", context);
+        }
+        if (responseCode == 500) {
+            throw new ErrorWithRequestException("An internal server error occurred", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);

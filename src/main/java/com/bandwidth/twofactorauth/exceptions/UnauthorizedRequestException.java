@@ -12,40 +12,40 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
- * This is a model class for InvalidRequestException type.
+ * This is a model class for UnauthorizedRequestException type.
  */
-public class InvalidRequestException
+public class UnauthorizedRequestException
         extends ApiException {
-    private static final long serialVersionUID = -127270268018550568L;
-    private String result;
+    private static final long serialVersionUID = -43402636942119755L;
+    private String message;
 
     /**
      * Initialization constructor.
      * @param   reason  The reason for throwing exception
      * @param   context The http context of the API exception
      */
-    public InvalidRequestException(String reason, HttpContext context) {
+    public UnauthorizedRequestException(String reason, HttpContext context) {
         super(reason, context);
     }
 
 
     /**
-     * Getter for Result.
-     * An error message pertaining to what the issue could be
+     * Getter for Message.
+     * The message containing the reason behind the request being unauthorized
      * @return   Returns the String
      */
-    @JsonGetter("result")
-    public String getResult() {
-        return this.result;
+    @JsonGetter("message")
+    public String getMessage() {
+        return this.message;
     }
 
     /**
-     * Setter for Result.
-     * An error message pertaining to what the issue could be
+     * Setter for Message.
+     * The message containing the reason behind the request being unauthorized
      * @param   value   Value for String
      */
-    @JsonSetter("result")
-    private void setResult(String value) {
-        this.result = value;
+    @JsonSetter("message")
+    private void setMessage(String value) {
+        this.message = value;
     }
 }

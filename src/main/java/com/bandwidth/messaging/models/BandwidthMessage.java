@@ -25,6 +25,7 @@ public class BandwidthMessage {
     private List<String> media;
     private String text;
     private String tag;
+    private String priority;
 
     /**
      * Default constructor.
@@ -45,6 +46,7 @@ public class BandwidthMessage {
      * @param media List of String value for media.
      * @param text String value for text.
      * @param tag String value for tag.
+     * @param priority String value for priority.
      */
     public BandwidthMessage(
             String id,
@@ -57,7 +59,8 @@ public class BandwidthMessage {
             String from,
             List<String> media,
             String text,
-            String tag) {
+            String tag,
+            String priority) {
         this.id = id;
         this.owner = owner;
         this.applicationId = applicationId;
@@ -69,6 +72,7 @@ public class BandwidthMessage {
         this.media = media;
         this.text = text;
         this.tag = tag;
+        this.priority = priority;
     }
 
     /**
@@ -294,6 +298,26 @@ public class BandwidthMessage {
     }
 
     /**
+     * Getter for Priority.
+     * The priority specified by the user
+     * @return Returns the String
+     */
+    @JsonGetter("priority")
+    public String getPriority() {
+        return this.priority;
+    }
+
+    /**
+     * Setter for Priority.
+     * The priority specified by the user
+     * @param priority Value for String
+     */
+    @JsonSetter("priority")
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
+
+    /**
      * Converts this BandwidthMessage into string format.
      * @return String representation of this class
      */
@@ -302,7 +326,7 @@ public class BandwidthMessage {
         return "BandwidthMessage [" + "id=" + id + ", owner=" + owner + ", applicationId="
                 + applicationId + ", time=" + time + ", segmentCount=" + segmentCount
                 + ", direction=" + direction + ", to=" + to + ", from=" + from + ", media=" + media
-                + ", text=" + text + ", tag=" + tag + "]";
+                + ", text=" + text + ", tag=" + tag + ", priority=" + priority + "]";
     }
 
     /**
@@ -322,7 +346,8 @@ public class BandwidthMessage {
                 .from(getFrom())
                 .media(getMedia())
                 .text(getText())
-                .tag(getTag());
+                .tag(getTag())
+                .priority(getPriority());
         return builder;
     }
 
@@ -341,6 +366,7 @@ public class BandwidthMessage {
         private List<String> media;
         private String text;
         private String tag;
+        private String priority;
 
 
 
@@ -455,12 +481,22 @@ public class BandwidthMessage {
         }
 
         /**
+         * Setter for priority.
+         * @param priority String value for priority.
+         * @return Builder
+         */
+        public Builder priority(String priority) {
+            this.priority = priority;
+            return this;
+        }
+
+        /**
          * Builds a new {@link BandwidthMessage} object using the set fields.
          * @return {@link BandwidthMessage}
          */
         public BandwidthMessage build() {
             return new BandwidthMessage(id, owner, applicationId, time, segmentCount, direction, to,
-                    from, media, text, tag);
+                    from, media, text, tag, priority);
         }
     }
 }

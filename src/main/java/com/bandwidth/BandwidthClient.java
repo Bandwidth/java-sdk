@@ -313,7 +313,7 @@ public final class BandwidthClient implements Configuration {
                 return "https://messaging.bandwidth.com/api/v2";
             }
             if (server.equals(Server.TWOFACTORAUTHDEFAULT)) {
-                return "https://mfa.bandwidth.com/api/v1/";
+                return "https://mfa.bandwidth.com/api/v1";
             }
             if (server.equals(Server.VOICEDEFAULT)) {
                 return "https://voice.bandwidth.com";
