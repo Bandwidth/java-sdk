@@ -15,22 +15,22 @@ public final class TwoFactorAuthClient {
     /**
      * Private store for controllers.
      */
-    private APIController client;
+    private MFAController mFA;
 
     /**
      * Default constructor.
      */
     public TwoFactorAuthClient(BandwidthClient config) {
         this.config = config;
-        client = new APIController(config, config.getHttpClient(), config.getAuthManagers());
+        mFA = new MFAController(config, config.getHttpClient(), config.getAuthManagers());
     }
 
     public static void shutdown() {
         OkClient.shutdown();
     }
 
-    public APIController getAPIController() {
-        return client;
+    public MFAController getMFAController() {
+        return mFA;
     }
 
     public Configuration getConfiguration() {

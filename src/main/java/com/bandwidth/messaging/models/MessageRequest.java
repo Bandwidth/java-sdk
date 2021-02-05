@@ -20,6 +20,7 @@ public class MessageRequest {
     private String text;
     private List<String> media;
     private String tag;
+    private PriorityEnum priority;
 
     /**
      * Default constructor.
@@ -35,6 +36,7 @@ public class MessageRequest {
      * @param text String value for text.
      * @param media List of String value for media.
      * @param tag String value for tag.
+     * @param priority PriorityEnum value for priority.
      */
     public MessageRequest(
             String applicationId,
@@ -42,13 +44,15 @@ public class MessageRequest {
             String from,
             String text,
             List<String> media,
-            String tag) {
+            String tag,
+            PriorityEnum priority) {
         this.applicationId = applicationId;
         this.to = to;
         this.from = from;
         this.text = text;
         this.media = media;
         this.tag = tag;
+        this.priority = priority;
     }
 
     /**
@@ -174,13 +178,36 @@ public class MessageRequest {
     }
 
     /**
+     * Getter for Priority.
+     * The message's priority, currently for toll-free or short code SMS only. Messages with a
+     * priority value of `"high"` are given preference over your other traffic.
+     * @return Returns the PriorityEnum
+     */
+    @JsonGetter("priority")
+    public PriorityEnum getPriority() {
+        return this.priority;
+    }
+
+    /**
+     * Setter for Priority.
+     * The message's priority, currently for toll-free or short code SMS only. Messages with a
+     * priority value of `"high"` are given preference over your other traffic.
+     * @param priority Value for PriorityEnum
+     */
+    @JsonSetter("priority")
+    public void setPriority(PriorityEnum priority) {
+        this.priority = priority;
+    }
+
+    /**
      * Converts this MessageRequest into string format.
      * @return String representation of this class
      */
     @Override
     public String toString() {
         return "MessageRequest [" + "applicationId=" + applicationId + ", to=" + to + ", from="
-                + from + ", text=" + text + ", media=" + media + ", tag=" + tag + "]";
+                + from + ", text=" + text + ", media=" + media + ", tag=" + tag + ", priority="
+                + priority + "]";
     }
 
     /**
@@ -192,7 +219,8 @@ public class MessageRequest {
         Builder builder = new Builder(applicationId, to, from)
                 .text(getText())
                 .media(getMedia())
-                .tag(getTag());
+                .tag(getTag())
+                .priority(getPriority());
         return builder;
     }
 
@@ -206,6 +234,7 @@ public class MessageRequest {
         private String text;
         private List<String> media;
         private String tag;
+        private PriorityEnum priority;
 
         /**
          * Initialization constructor.
@@ -288,11 +317,21 @@ public class MessageRequest {
         }
 
         /**
+         * Setter for priority.
+         * @param priority PriorityEnum value for priority.
+         * @return Builder
+         */
+        public Builder priority(PriorityEnum priority) {
+            this.priority = priority;
+            return this;
+        }
+
+        /**
          * Builds a new {@link MessageRequest} object using the set fields.
          * @return {@link MessageRequest}
          */
         public MessageRequest build() {
-            return new MessageRequest(applicationId, to, from, text, media, tag);
+            return new MessageRequest(applicationId, to, from, text, media, tag, priority);
         }
     }
 }
