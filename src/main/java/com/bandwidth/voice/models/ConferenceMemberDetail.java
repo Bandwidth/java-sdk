@@ -7,6 +7,7 @@
 package com.bandwidth.voice.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import java.util.List;
 
@@ -14,11 +15,17 @@ import java.util.List;
  * This is a model class for ConferenceMemberDetail type.
  */
 public class ConferenceMemberDetail {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String callId;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String conferenceId;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String memberUrl;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Boolean mute;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Boolean hold;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<String> callIdsToCoach;
 
     /**
@@ -29,12 +36,12 @@ public class ConferenceMemberDetail {
 
     /**
      * Initialization constructor.
-     * @param callId String value for callId.
-     * @param conferenceId String value for conferenceId.
-     * @param memberUrl String value for memberUrl.
-     * @param mute Boolean value for mute.
-     * @param hold Boolean value for hold.
-     * @param callIdsToCoach List of String value for callIdsToCoach.
+     * @param  callId  String value for callId.
+     * @param  conferenceId  String value for conferenceId.
+     * @param  memberUrl  String value for memberUrl.
+     * @param  mute  Boolean value for mute.
+     * @param  hold  Boolean value for hold.
+     * @param  callIdsToCoach  List of String value for callIdsToCoach.
      */
     public ConferenceMemberDetail(
             String callId,
@@ -57,7 +64,7 @@ public class ConferenceMemberDetail {
      */
     @JsonGetter("callId")
     public String getCallId() {
-        return this.callId;
+        return callId;
     }
 
     /**
@@ -75,7 +82,7 @@ public class ConferenceMemberDetail {
      */
     @JsonGetter("conferenceId")
     public String getConferenceId() {
-        return this.conferenceId;
+        return conferenceId;
     }
 
     /**
@@ -93,7 +100,7 @@ public class ConferenceMemberDetail {
      */
     @JsonGetter("memberUrl")
     public String getMemberUrl() {
-        return this.memberUrl;
+        return memberUrl;
     }
 
     /**
@@ -111,7 +118,7 @@ public class ConferenceMemberDetail {
      */
     @JsonGetter("mute")
     public Boolean getMute() {
-        return this.mute;
+        return mute;
     }
 
     /**
@@ -129,7 +136,7 @@ public class ConferenceMemberDetail {
      */
     @JsonGetter("hold")
     public Boolean getHold() {
-        return this.hold;
+        return hold;
     }
 
     /**
@@ -147,7 +154,7 @@ public class ConferenceMemberDetail {
      */
     @JsonGetter("callIdsToCoach")
     public List<String> getCallIdsToCoach() {
-        return this.callIdsToCoach;
+        return callIdsToCoach;
     }
 
     /**
@@ -201,7 +208,7 @@ public class ConferenceMemberDetail {
 
         /**
          * Setter for callId.
-         * @param callId String value for callId.
+         * @param  callId  String value for callId.
          * @return Builder
          */
         public Builder callId(String callId) {
@@ -211,7 +218,7 @@ public class ConferenceMemberDetail {
 
         /**
          * Setter for conferenceId.
-         * @param conferenceId String value for conferenceId.
+         * @param  conferenceId  String value for conferenceId.
          * @return Builder
          */
         public Builder conferenceId(String conferenceId) {
@@ -221,7 +228,7 @@ public class ConferenceMemberDetail {
 
         /**
          * Setter for memberUrl.
-         * @param memberUrl String value for memberUrl.
+         * @param  memberUrl  String value for memberUrl.
          * @return Builder
          */
         public Builder memberUrl(String memberUrl) {
@@ -231,7 +238,7 @@ public class ConferenceMemberDetail {
 
         /**
          * Setter for mute.
-         * @param mute Boolean value for mute.
+         * @param  mute  Boolean value for mute.
          * @return Builder
          */
         public Builder mute(Boolean mute) {
@@ -241,7 +248,7 @@ public class ConferenceMemberDetail {
 
         /**
          * Setter for hold.
-         * @param hold Boolean value for hold.
+         * @param  hold  Boolean value for hold.
          * @return Builder
          */
         public Builder hold(Boolean hold) {
@@ -251,7 +258,7 @@ public class ConferenceMemberDetail {
 
         /**
          * Setter for callIdsToCoach.
-         * @param callIdsToCoach List of String value for callIdsToCoach.
+         * @param  callIdsToCoach  List of String value for callIdsToCoach.
          * @return Builder
          */
         public Builder callIdsToCoach(List<String> callIdsToCoach) {

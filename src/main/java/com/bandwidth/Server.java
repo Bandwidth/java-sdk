@@ -14,14 +14,22 @@ import java.util.TreeMap;
  * Server to be used.
  */
 public enum Server {
+    @javax.xml.bind.annotation.XmlEnumValue("default")
     ENUM_DEFAULT,
 
+    @javax.xml.bind.annotation.XmlEnumValue("DashboardDefault")
+    DASHBOARDDEFAULT,
+
+    @javax.xml.bind.annotation.XmlEnumValue("MessagingDefault")
     MESSAGINGDEFAULT,
 
-    TWOFACTORAUTHDEFAULT,
+    @javax.xml.bind.annotation.XmlEnumValue("MultiFactorAuthDefault")
+    MULTIFACTORAUTHDEFAULT,
 
+    @javax.xml.bind.annotation.XmlEnumValue("VoiceDefault")
     VOICEDEFAULT,
 
+    @javax.xml.bind.annotation.XmlEnumValue("WebRtcDefault")
     WEBRTCDEFAULT;
 
 
@@ -30,14 +38,16 @@ public enum Server {
 
     static {
         ENUM_DEFAULT.value = "default";
+        DASHBOARDDEFAULT.value = "DashboardDefault";
         MESSAGINGDEFAULT.value = "MessagingDefault";
-        TWOFACTORAUTHDEFAULT.value = "TwoFactorAuthDefault";
+        MULTIFACTORAUTHDEFAULT.value = "MultiFactorAuthDefault";
         VOICEDEFAULT.value = "VoiceDefault";
         WEBRTCDEFAULT.value = "WebRtcDefault";
 
         valueMap.put("default", ENUM_DEFAULT);
+        valueMap.put("DashboardDefault", DASHBOARDDEFAULT);
         valueMap.put("MessagingDefault", MESSAGINGDEFAULT);
-        valueMap.put("TwoFactorAuthDefault", TWOFACTORAUTHDEFAULT);
+        valueMap.put("MultiFactorAuthDefault", MULTIFACTORAUTHDEFAULT);
         valueMap.put("VoiceDefault", VOICEDEFAULT);
         valueMap.put("WebRtcDefault", WEBRTCDEFAULT);
     }

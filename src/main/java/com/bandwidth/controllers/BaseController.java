@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
+import javax.xml.bind.JAXBException;
 
 /**
  * Base class for all Controllers.
@@ -95,8 +96,9 @@ public abstract class BaseController {
          * @return    An object of type HttpRequest
          * @throws    ApiException    Represents error response from the server.
          * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     * @throws    JAXBException    Signals that a JAXB exception occurred.
         */
-        HttpRequest supply() throws ApiException, IOException;
+        HttpRequest supply() throws ApiException, IOException, JAXBException;
     }
 
     /**
@@ -123,8 +125,9 @@ public abstract class BaseController {
          * @return   An object of type T  wrapped in ApiResponse.
          * @throws    ApiException    Represents error response from the server.
          * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     * @throws    JAXBException    Signals that a JAXB exception occurred.
          */
-        ApiResponse<T> handle(HttpContext context) throws ApiException, IOException;
+        ApiResponse<T> handle(HttpContext context) throws ApiException, IOException, JAXBException;
     }
     
     /**

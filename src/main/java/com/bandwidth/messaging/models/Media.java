@@ -7,6 +7,7 @@
 package com.bandwidth.messaging.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import java.util.List;
 
@@ -14,15 +15,25 @@ import java.util.List;
  * This is a model class for Media type.
  */
 public class Media {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Object inputStream;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String content;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String url;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String contentLength;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String contentType;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<Tag> tags;
-    private String userId;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String accountId;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String mediaName;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String mediaId;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String cacheControl;
 
     /**
@@ -33,16 +44,16 @@ public class Media {
 
     /**
      * Initialization constructor.
-     * @param inputStream Object value for inputStream.
-     * @param content String value for content.
-     * @param url String value for url.
-     * @param contentLength String value for contentLength.
-     * @param contentType String value for contentType.
-     * @param tags List of Tag value for tags.
-     * @param userId String value for userId.
-     * @param mediaName String value for mediaName.
-     * @param mediaId String value for mediaId.
-     * @param cacheControl String value for cacheControl.
+     * @param  inputStream  Object value for inputStream.
+     * @param  content  String value for content.
+     * @param  url  String value for url.
+     * @param  contentLength  String value for contentLength.
+     * @param  contentType  String value for contentType.
+     * @param  tags  List of Tag value for tags.
+     * @param  accountId  String value for accountId.
+     * @param  mediaName  String value for mediaName.
+     * @param  mediaId  String value for mediaId.
+     * @param  cacheControl  String value for cacheControl.
      */
     public Media(
             Object inputStream,
@@ -51,7 +62,7 @@ public class Media {
             String contentLength,
             String contentType,
             List<Tag> tags,
-            String userId,
+            String accountId,
             String mediaName,
             String mediaId,
             String cacheControl) {
@@ -61,7 +72,7 @@ public class Media {
         this.contentLength = contentLength;
         this.contentType = contentType;
         this.tags = tags;
-        this.userId = userId;
+        this.accountId = accountId;
         this.mediaName = mediaName;
         this.mediaId = mediaId;
         this.cacheControl = cacheControl;
@@ -73,7 +84,7 @@ public class Media {
      */
     @JsonGetter("inputStream")
     public Object getInputStream() {
-        return this.inputStream;
+        return inputStream;
     }
 
     /**
@@ -91,7 +102,7 @@ public class Media {
      */
     @JsonGetter("content")
     public String getContent() {
-        return this.content;
+        return content;
     }
 
     /**
@@ -109,7 +120,7 @@ public class Media {
      */
     @JsonGetter("url")
     public String getUrl() {
-        return this.url;
+        return url;
     }
 
     /**
@@ -127,7 +138,7 @@ public class Media {
      */
     @JsonGetter("contentLength")
     public String getContentLength() {
-        return this.contentLength;
+        return contentLength;
     }
 
     /**
@@ -145,7 +156,7 @@ public class Media {
      */
     @JsonGetter("contentType")
     public String getContentType() {
-        return this.contentType;
+        return contentType;
     }
 
     /**
@@ -163,7 +174,7 @@ public class Media {
      */
     @JsonGetter("tags")
     public List<Tag> getTags() {
-        return this.tags;
+        return tags;
     }
 
     /**
@@ -176,23 +187,23 @@ public class Media {
     }
 
     /**
-     * Getter for UserId.
+     * Getter for AccountId.
      * User's account ID
      * @return Returns the String
      */
-    @JsonGetter("userId")
-    public String getUserId() {
-        return this.userId;
+    @JsonGetter("accountId")
+    public String getAccountId() {
+        return accountId;
     }
 
     /**
-     * Setter for UserId.
+     * Setter for AccountId.
      * User's account ID
-     * @param userId Value for String
+     * @param accountId Value for String
      */
-    @JsonSetter("userId")
-    public void setUserId(String userId) {
-        this.userId = userId;
+    @JsonSetter("accountId")
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
     /**
@@ -201,7 +212,7 @@ public class Media {
      */
     @JsonGetter("mediaName")
     public String getMediaName() {
-        return this.mediaName;
+        return mediaName;
     }
 
     /**
@@ -219,7 +230,7 @@ public class Media {
      */
     @JsonGetter("mediaId")
     public String getMediaId() {
-        return this.mediaId;
+        return mediaId;
     }
 
     /**
@@ -237,7 +248,7 @@ public class Media {
      */
     @JsonGetter("cacheControl")
     public String getCacheControl() {
-        return this.cacheControl;
+        return cacheControl;
     }
 
     /**
@@ -257,8 +268,8 @@ public class Media {
     public String toString() {
         return "Media [" + "inputStream=" + inputStream + ", content=" + content + ", url=" + url
                 + ", contentLength=" + contentLength + ", contentType=" + contentType + ", tags="
-                + tags + ", userId=" + userId + ", mediaName=" + mediaName + ", mediaId=" + mediaId
-                + ", cacheControl=" + cacheControl + "]";
+                + tags + ", accountId=" + accountId + ", mediaName=" + mediaName + ", mediaId="
+                + mediaId + ", cacheControl=" + cacheControl + "]";
     }
 
     /**
@@ -274,7 +285,7 @@ public class Media {
                 .contentLength(getContentLength())
                 .contentType(getContentType())
                 .tags(getTags())
-                .userId(getUserId())
+                .accountId(getAccountId())
                 .mediaName(getMediaName())
                 .mediaId(getMediaId())
                 .cacheControl(getCacheControl());
@@ -291,7 +302,7 @@ public class Media {
         private String contentLength;
         private String contentType;
         private List<Tag> tags;
-        private String userId;
+        private String accountId;
         private String mediaName;
         private String mediaId;
         private String cacheControl;
@@ -300,7 +311,7 @@ public class Media {
 
         /**
          * Setter for inputStream.
-         * @param inputStream Object value for inputStream.
+         * @param  inputStream  Object value for inputStream.
          * @return Builder
          */
         public Builder inputStream(Object inputStream) {
@@ -310,7 +321,7 @@ public class Media {
 
         /**
          * Setter for content.
-         * @param content String value for content.
+         * @param  content  String value for content.
          * @return Builder
          */
         public Builder content(String content) {
@@ -320,7 +331,7 @@ public class Media {
 
         /**
          * Setter for url.
-         * @param url String value for url.
+         * @param  url  String value for url.
          * @return Builder
          */
         public Builder url(String url) {
@@ -330,7 +341,7 @@ public class Media {
 
         /**
          * Setter for contentLength.
-         * @param contentLength String value for contentLength.
+         * @param  contentLength  String value for contentLength.
          * @return Builder
          */
         public Builder contentLength(String contentLength) {
@@ -340,7 +351,7 @@ public class Media {
 
         /**
          * Setter for contentType.
-         * @param contentType String value for contentType.
+         * @param  contentType  String value for contentType.
          * @return Builder
          */
         public Builder contentType(String contentType) {
@@ -350,7 +361,7 @@ public class Media {
 
         /**
          * Setter for tags.
-         * @param tags List of Tag value for tags.
+         * @param  tags  List of Tag value for tags.
          * @return Builder
          */
         public Builder tags(List<Tag> tags) {
@@ -359,18 +370,18 @@ public class Media {
         }
 
         /**
-         * Setter for userId.
-         * @param userId String value for userId.
+         * Setter for accountId.
+         * @param  accountId  String value for accountId.
          * @return Builder
          */
-        public Builder userId(String userId) {
-            this.userId = userId;
+        public Builder accountId(String accountId) {
+            this.accountId = accountId;
             return this;
         }
 
         /**
          * Setter for mediaName.
-         * @param mediaName String value for mediaName.
+         * @param  mediaName  String value for mediaName.
          * @return Builder
          */
         public Builder mediaName(String mediaName) {
@@ -380,7 +391,7 @@ public class Media {
 
         /**
          * Setter for mediaId.
-         * @param mediaId String value for mediaId.
+         * @param  mediaId  String value for mediaId.
          * @return Builder
          */
         public Builder mediaId(String mediaId) {
@@ -390,7 +401,7 @@ public class Media {
 
         /**
          * Setter for cacheControl.
-         * @param cacheControl String value for cacheControl.
+         * @param  cacheControl  String value for cacheControl.
          * @return Builder
          */
         public Builder cacheControl(String cacheControl) {
@@ -403,7 +414,7 @@ public class Media {
          * @return {@link Media}
          */
         public Media build() {
-            return new Media(inputStream, content, url, contentLength, contentType, tags, userId,
+            return new Media(inputStream, content, url, contentLength, contentType, tags, accountId,
                     mediaName, mediaId, cacheControl);
         }
     }

@@ -8,6 +8,7 @@ package com.bandwidth.voice.models;
 
 import com.bandwidth.DateTimeHelper;
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -17,23 +18,41 @@ import java.time.LocalDateTime;
  * This is a model class for RecordingMetadataResponse type.
  */
 public class RecordingMetadataResponse {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String applicationId;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String accountId;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String callId;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String parentCallId;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String recordingId;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String to;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String from;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String transferCallerId;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String transferTo;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String duration;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private DirectionEnum direction;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer channels;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private LocalDateTime startTime;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private LocalDateTime endTime;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private FileFormatEnum fileFormat;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Status1Enum status;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String mediaUrl;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Transcription transcription;
 
     /**
@@ -44,24 +63,24 @@ public class RecordingMetadataResponse {
 
     /**
      * Initialization constructor.
-     * @param applicationId String value for applicationId.
-     * @param accountId String value for accountId.
-     * @param callId String value for callId.
-     * @param parentCallId String value for parentCallId.
-     * @param recordingId String value for recordingId.
-     * @param to String value for to.
-     * @param from String value for from.
-     * @param transferCallerId String value for transferCallerId.
-     * @param transferTo String value for transferTo.
-     * @param duration String value for duration.
-     * @param direction DirectionEnum value for direction.
-     * @param channels Integer value for channels.
-     * @param startTime LocalDateTime value for startTime.
-     * @param endTime LocalDateTime value for endTime.
-     * @param fileFormat FileFormatEnum value for fileFormat.
-     * @param status Status1Enum value for status.
-     * @param mediaUrl String value for mediaUrl.
-     * @param transcription Transcription value for transcription.
+     * @param  applicationId  String value for applicationId.
+     * @param  accountId  String value for accountId.
+     * @param  callId  String value for callId.
+     * @param  parentCallId  String value for parentCallId.
+     * @param  recordingId  String value for recordingId.
+     * @param  to  String value for to.
+     * @param  from  String value for from.
+     * @param  transferCallerId  String value for transferCallerId.
+     * @param  transferTo  String value for transferTo.
+     * @param  duration  String value for duration.
+     * @param  direction  DirectionEnum value for direction.
+     * @param  channels  Integer value for channels.
+     * @param  startTime  LocalDateTime value for startTime.
+     * @param  endTime  LocalDateTime value for endTime.
+     * @param  fileFormat  FileFormatEnum value for fileFormat.
+     * @param  status  Status1Enum value for status.
+     * @param  mediaUrl  String value for mediaUrl.
+     * @param  transcription  Transcription value for transcription.
      */
     public RecordingMetadataResponse(
             String applicationId,
@@ -108,7 +127,7 @@ public class RecordingMetadataResponse {
      */
     @JsonGetter("applicationId")
     public String getApplicationId() {
-        return this.applicationId;
+        return applicationId;
     }
 
     /**
@@ -126,7 +145,7 @@ public class RecordingMetadataResponse {
      */
     @JsonGetter("accountId")
     public String getAccountId() {
-        return this.accountId;
+        return accountId;
     }
 
     /**
@@ -144,7 +163,7 @@ public class RecordingMetadataResponse {
      */
     @JsonGetter("callId")
     public String getCallId() {
-        return this.callId;
+        return callId;
     }
 
     /**
@@ -162,7 +181,7 @@ public class RecordingMetadataResponse {
      */
     @JsonGetter("parentCallId")
     public String getParentCallId() {
-        return this.parentCallId;
+        return parentCallId;
     }
 
     /**
@@ -180,7 +199,7 @@ public class RecordingMetadataResponse {
      */
     @JsonGetter("recordingId")
     public String getRecordingId() {
-        return this.recordingId;
+        return recordingId;
     }
 
     /**
@@ -198,7 +217,7 @@ public class RecordingMetadataResponse {
      */
     @JsonGetter("to")
     public String getTo() {
-        return this.to;
+        return to;
     }
 
     /**
@@ -216,7 +235,7 @@ public class RecordingMetadataResponse {
      */
     @JsonGetter("from")
     public String getFrom() {
-        return this.from;
+        return from;
     }
 
     /**
@@ -234,7 +253,7 @@ public class RecordingMetadataResponse {
      */
     @JsonGetter("transferCallerId")
     public String getTransferCallerId() {
-        return this.transferCallerId;
+        return transferCallerId;
     }
 
     /**
@@ -252,7 +271,7 @@ public class RecordingMetadataResponse {
      */
     @JsonGetter("transferTo")
     public String getTransferTo() {
-        return this.transferTo;
+        return transferTo;
     }
 
     /**
@@ -271,7 +290,7 @@ public class RecordingMetadataResponse {
      */
     @JsonGetter("duration")
     public String getDuration() {
-        return this.duration;
+        return duration;
     }
 
     /**
@@ -290,7 +309,7 @@ public class RecordingMetadataResponse {
      */
     @JsonGetter("direction")
     public DirectionEnum getDirection() {
-        return this.direction;
+        return direction;
     }
 
     /**
@@ -308,7 +327,7 @@ public class RecordingMetadataResponse {
      */
     @JsonGetter("channels")
     public Integer getChannels() {
-        return this.channels;
+        return channels;
     }
 
     /**
@@ -327,7 +346,7 @@ public class RecordingMetadataResponse {
     @JsonGetter("startTime")
     @JsonSerialize(using = DateTimeHelper.Rfc8601DateTimeSerializer.class)
     public LocalDateTime getStartTime() {
-        return this.startTime;
+        return startTime;
     }
 
     /**
@@ -347,7 +366,7 @@ public class RecordingMetadataResponse {
     @JsonGetter("endTime")
     @JsonSerialize(using = DateTimeHelper.Rfc8601DateTimeSerializer.class)
     public LocalDateTime getEndTime() {
-        return this.endTime;
+        return endTime;
     }
 
     /**
@@ -366,7 +385,7 @@ public class RecordingMetadataResponse {
      */
     @JsonGetter("fileFormat")
     public FileFormatEnum getFileFormat() {
-        return this.fileFormat;
+        return fileFormat;
     }
 
     /**
@@ -384,7 +403,7 @@ public class RecordingMetadataResponse {
      */
     @JsonGetter("status")
     public Status1Enum getStatus() {
-        return this.status;
+        return status;
     }
 
     /**
@@ -402,7 +421,7 @@ public class RecordingMetadataResponse {
      */
     @JsonGetter("mediaUrl")
     public String getMediaUrl() {
-        return this.mediaUrl;
+        return mediaUrl;
     }
 
     /**
@@ -420,7 +439,7 @@ public class RecordingMetadataResponse {
      */
     @JsonGetter("transcription")
     public Transcription getTranscription() {
-        return this.transcription;
+        return transcription;
     }
 
     /**
@@ -503,7 +522,7 @@ public class RecordingMetadataResponse {
 
         /**
          * Setter for applicationId.
-         * @param applicationId String value for applicationId.
+         * @param  applicationId  String value for applicationId.
          * @return Builder
          */
         public Builder applicationId(String applicationId) {
@@ -513,7 +532,7 @@ public class RecordingMetadataResponse {
 
         /**
          * Setter for accountId.
-         * @param accountId String value for accountId.
+         * @param  accountId  String value for accountId.
          * @return Builder
          */
         public Builder accountId(String accountId) {
@@ -523,7 +542,7 @@ public class RecordingMetadataResponse {
 
         /**
          * Setter for callId.
-         * @param callId String value for callId.
+         * @param  callId  String value for callId.
          * @return Builder
          */
         public Builder callId(String callId) {
@@ -533,7 +552,7 @@ public class RecordingMetadataResponse {
 
         /**
          * Setter for parentCallId.
-         * @param parentCallId String value for parentCallId.
+         * @param  parentCallId  String value for parentCallId.
          * @return Builder
          */
         public Builder parentCallId(String parentCallId) {
@@ -543,7 +562,7 @@ public class RecordingMetadataResponse {
 
         /**
          * Setter for recordingId.
-         * @param recordingId String value for recordingId.
+         * @param  recordingId  String value for recordingId.
          * @return Builder
          */
         public Builder recordingId(String recordingId) {
@@ -553,7 +572,7 @@ public class RecordingMetadataResponse {
 
         /**
          * Setter for to.
-         * @param to String value for to.
+         * @param  to  String value for to.
          * @return Builder
          */
         public Builder to(String to) {
@@ -563,7 +582,7 @@ public class RecordingMetadataResponse {
 
         /**
          * Setter for from.
-         * @param from String value for from.
+         * @param  from  String value for from.
          * @return Builder
          */
         public Builder from(String from) {
@@ -573,7 +592,7 @@ public class RecordingMetadataResponse {
 
         /**
          * Setter for transferCallerId.
-         * @param transferCallerId String value for transferCallerId.
+         * @param  transferCallerId  String value for transferCallerId.
          * @return Builder
          */
         public Builder transferCallerId(String transferCallerId) {
@@ -583,7 +602,7 @@ public class RecordingMetadataResponse {
 
         /**
          * Setter for transferTo.
-         * @param transferTo String value for transferTo.
+         * @param  transferTo  String value for transferTo.
          * @return Builder
          */
         public Builder transferTo(String transferTo) {
@@ -593,7 +612,7 @@ public class RecordingMetadataResponse {
 
         /**
          * Setter for duration.
-         * @param duration String value for duration.
+         * @param  duration  String value for duration.
          * @return Builder
          */
         public Builder duration(String duration) {
@@ -603,7 +622,7 @@ public class RecordingMetadataResponse {
 
         /**
          * Setter for direction.
-         * @param direction DirectionEnum value for direction.
+         * @param  direction  DirectionEnum value for direction.
          * @return Builder
          */
         public Builder direction(DirectionEnum direction) {
@@ -613,7 +632,7 @@ public class RecordingMetadataResponse {
 
         /**
          * Setter for channels.
-         * @param channels Integer value for channels.
+         * @param  channels  Integer value for channels.
          * @return Builder
          */
         public Builder channels(Integer channels) {
@@ -623,7 +642,7 @@ public class RecordingMetadataResponse {
 
         /**
          * Setter for startTime.
-         * @param startTime LocalDateTime value for startTime.
+         * @param  startTime  LocalDateTime value for startTime.
          * @return Builder
          */
         public Builder startTime(LocalDateTime startTime) {
@@ -633,7 +652,7 @@ public class RecordingMetadataResponse {
 
         /**
          * Setter for endTime.
-         * @param endTime LocalDateTime value for endTime.
+         * @param  endTime  LocalDateTime value for endTime.
          * @return Builder
          */
         public Builder endTime(LocalDateTime endTime) {
@@ -643,7 +662,7 @@ public class RecordingMetadataResponse {
 
         /**
          * Setter for fileFormat.
-         * @param fileFormat FileFormatEnum value for fileFormat.
+         * @param  fileFormat  FileFormatEnum value for fileFormat.
          * @return Builder
          */
         public Builder fileFormat(FileFormatEnum fileFormat) {
@@ -653,7 +672,7 @@ public class RecordingMetadataResponse {
 
         /**
          * Setter for status.
-         * @param status Status1Enum value for status.
+         * @param  status  Status1Enum value for status.
          * @return Builder
          */
         public Builder status(Status1Enum status) {
@@ -663,7 +682,7 @@ public class RecordingMetadataResponse {
 
         /**
          * Setter for mediaUrl.
-         * @param mediaUrl String value for mediaUrl.
+         * @param  mediaUrl  String value for mediaUrl.
          * @return Builder
          */
         public Builder mediaUrl(String mediaUrl) {
@@ -673,7 +692,7 @@ public class RecordingMetadataResponse {
 
         /**
          * Setter for transcription.
-         * @param transcription Transcription value for transcription.
+         * @param  transcription  Transcription value for transcription.
          * @return Builder
          */
         public Builder transcription(Transcription transcription) {

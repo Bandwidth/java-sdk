@@ -11,7 +11,6 @@ import com.bandwidth.http.request.MultipartFileWrapper;
 import com.bandwidth.http.request.MultipartWrapper;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -22,6 +21,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import java.io.File;
 import java.io.IOException;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
@@ -41,6 +42,13 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.namespace.QName;
+import javax.xml.transform.stream.StreamSource;
 
 /**
  * This is a Helper class with commonly used utilities for the SDK.
@@ -52,7 +60,6 @@ public class ApiHelper {
         private static final long serialVersionUID = -174113593500315394L;
         {
             configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-            setSerializationInclusion(JsonInclude.Include.NON_NULL);
             configOverride(BigDecimal.class).setFormat(
                     JsonFormat.Value.forShape(JsonFormat.Shape.STRING));
         }
@@ -136,6 +143,56 @@ public class ApiHelper {
         }.writeValueAsString(obj);
     }
 
+
+    /**
+     * Xml Serialization of a given object.
+     * @param <T>       Type of object to be serialized
+     * @param obj       Object to be serialized.
+     * @param rootName  Root name for the xml
+     * @param cls       Class of object to be serialized
+     * @return          The serialized Xml String representation of the given object
+     * @throws JAXBException Signals that a JAXB exception occurred.
+     */
+    public static <T> String serializeXml(T obj, String rootName,  Class<T> cls)
+            throws JAXBException {
+        JAXBContext context = JAXBContext.newInstance(obj.getClass());
+        JAXBElement<T> elem = new JAXBElement<>(new QName(rootName), cls, obj);
+
+        StringWriter writer = new StringWriter();
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        marshaller.marshal(elem, writer);
+        return writer.toString();
+    }
+
+    /**
+     * Xml Serialization of a given object list.
+     * @param <T>       Type of object to be serialized
+     * @param objArray  Object Array to be serialized.
+     * @param rootName  Root name for the xml
+     * @param nodeName  Node name for the array nodes
+     * @param cls       Class of object to be serialized
+     * @return          The serialized Xml String representation of the given object array.
+     * @throws JAXBException Signals that a JAXB exception occurred.
+     */
+    public static <T> String serializeXmlArray(T[] objArray, String rootName, String nodeName,
+            Class<T> cls) throws JAXBException {
+        JAXBContext context = JAXBContext.newInstance(cls);
+        JAXBElement<T> jaxbElement;
+        String xmlBlock = "<" + rootName + ">\n";
+        for (T element: objArray) {
+            jaxbElement = new JAXBElement<>(new QName(nodeName), cls, element);
+            StringWriter writer = new StringWriter();
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            marshaller.setProperty(Marshaller.JAXB_FRAGMENT, true);
+            marshaller.marshal(jaxbElement, writer);
+            xmlBlock += "  " + writer.toString() + "\n";
+        }
+       
+        xmlBlock += "</" + rootName + ">";
+        return xmlBlock;  
+    }
 
     /**
      * Json deserialization of the given Json string using a specified JsonDerializer.
@@ -243,6 +300,66 @@ public class ApiHelper {
         if (!isNullOrWhiteSpace(json)) {
             mapper.readerForUpdating(obj).readValue(json);
         }
+    }
+
+    /**
+     * XML Deserialization of the given xml string.
+     * @param <T> The class of the object to deserialize into
+     * @param xml The xml string to deserialize
+     * @param cls The class of the object to deserialize into
+     * @return The deserialized object
+     * @throws JAXBException Signals that a JAXB exception occurred.
+     */
+    public static <T extends Object> T deserializeXml(String xml, Class<T> cls)
+            throws JAXBException {
+        JAXBContext jaxbContext = JAXBContext.newInstance(cls);
+        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+        StringReader reader = new StringReader(xml);
+        JAXBElement<T> jaxbElement = jaxbUnmarshaller.unmarshal(new StreamSource(reader), cls);
+        
+        return jaxbElement.getValue();
+    }
+
+    /**
+     * XML Deserialization of the given xml string.
+     * @param <T> The class of the object to deserialize into
+     * @param xml The xml string to deserialize
+     * @param cls The class of the object to deserialize into
+     * @return The deserialized object list
+     * @throws JAXBException Signals that a JAXB exception occurred.
+     */
+    public static <T extends Object> List<T> deserializeXmlArray(String xml, Class<T[]> cls)
+            throws JAXBException {
+        JAXBContext jaxbContext = JAXBContext.newInstance(cls);
+        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+        StringReader reader = new StringReader(xml);
+        JAXBElement<T[]> jaxbElement = jaxbUnmarshaller.unmarshal(new StreamSource(reader), cls);
+        
+        return Arrays.asList(jaxbElement.getValue());
+    }
+
+    /**
+     * XML Deserialization of the given xml string for simple types.
+     * @param <T> The class of the object to deserialize into
+     * @param xml  The xml string to deserialize
+     * @param cls  The class of the object to deserialize into
+     * @return     The deserialized simple types object list
+     * @throws JAXBException Signals that a JAXB exception occurred.
+     */
+    public static <T extends Object> List<T> deserializeXmlSimpleTypesArray(String xml,
+            Class<T> cls) throws JAXBException {
+        JAXBContext jaxbContext = JAXBContext.newInstance(cls);
+        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+        List<T> deserializedList = new ArrayList<>();
+        Pattern pattern = Pattern.compile("<.+?>(.+?)</.+?>");
+        Matcher patternMatcher = pattern.matcher(xml);
+        while (patternMatcher.find()) {
+            StringReader reader = new StringReader(patternMatcher.group());
+            T unmarshalledElement =
+                    jaxbUnmarshaller.unmarshal(new StreamSource(reader), cls).getValue();
+            deserializedList.add(unmarshalledElement);
+        }
+        return deserializedList;
     }
 
     /**

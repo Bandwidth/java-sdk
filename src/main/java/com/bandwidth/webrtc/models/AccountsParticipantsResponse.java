@@ -7,13 +7,16 @@
 package com.bandwidth.webrtc.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
  * This is a model class for AccountsParticipantsResponse type.
  */
 public class AccountsParticipantsResponse {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Participant participant;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String token;
 
     /**
@@ -24,8 +27,8 @@ public class AccountsParticipantsResponse {
 
     /**
      * Initialization constructor.
-     * @param participant Participant value for participant.
-     * @param token String value for token.
+     * @param  participant  Participant value for participant.
+     * @param  token  String value for token.
      */
     public AccountsParticipantsResponse(
             Participant participant,
@@ -41,7 +44,7 @@ public class AccountsParticipantsResponse {
      */
     @JsonGetter("participant")
     public Participant getParticipant() {
-        return this.participant;
+        return participant;
     }
 
     /**
@@ -62,7 +65,7 @@ public class AccountsParticipantsResponse {
      */
     @JsonGetter("token")
     public String getToken() {
-        return this.token;
+        return token;
     }
 
     /**
@@ -109,7 +112,7 @@ public class AccountsParticipantsResponse {
 
         /**
          * Setter for participant.
-         * @param participant Participant value for participant.
+         * @param  participant  Participant value for participant.
          * @return Builder
          */
         public Builder participant(Participant participant) {
@@ -119,7 +122,7 @@ public class AccountsParticipantsResponse {
 
         /**
          * Setter for token.
-         * @param token String value for token.
+         * @param  token  String value for token.
          * @return Builder
          */
         public Builder token(String token) {

@@ -38,16 +38,22 @@ public interface Configuration {
     ReadonlyHttpClientConfiguration getHttpClientConfig();
 
     /**
+     * The credentials to use with DashboardBasicAuth.
+     * @return dashboardBasicAuthCredentials
+     */
+    DashboardBasicAuthCredentials getDashboardBasicAuthCredentials();
+
+    /**
      * The credentials to use with MessagingBasicAuth.
      * @return messagingBasicAuthCredentials
      */
     MessagingBasicAuthCredentials getMessagingBasicAuthCredentials();
 
     /**
-     * The credentials to use with TwoFactorAuthBasicAuth.
-     * @return twoFactorAuthBasicAuthCredentials
+     * The credentials to use with MultiFactorAuthBasicAuth.
+     * @return multiFactorAuthBasicAuthCredentials
      */
-    TwoFactorAuthBasicAuthCredentials getTwoFactorAuthBasicAuthCredentials();
+    MultiFactorAuthBasicAuthCredentials getMultiFactorAuthBasicAuthCredentials();
 
     /**
      * The credentials to use with VoiceBasicAuth.
