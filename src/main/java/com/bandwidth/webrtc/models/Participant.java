@@ -7,6 +7,7 @@
 package com.bandwidth.webrtc.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import java.util.List;
 
@@ -14,11 +15,17 @@ import java.util.List;
  * This is a model class for Participant type.
  */
 public class Participant {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String id;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String callbackUrl;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<PublishPermissionEnum> publishPermissions;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<String> sessions;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Subscriptions subscriptions;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String tag;
 
     /**
@@ -29,12 +36,12 @@ public class Participant {
 
     /**
      * Initialization constructor.
-     * @param id String value for id.
-     * @param callbackUrl String value for callbackUrl.
-     * @param publishPermissions List of PublishPermissionEnum value for publishPermissions.
-     * @param sessions List of String value for sessions.
-     * @param subscriptions Subscriptions value for subscriptions.
-     * @param tag String value for tag.
+     * @param  id  String value for id.
+     * @param  callbackUrl  String value for callbackUrl.
+     * @param  publishPermissions  List of PublishPermissionEnum value for publishPermissions.
+     * @param  sessions  List of String value for sessions.
+     * @param  subscriptions  Subscriptions value for subscriptions.
+     * @param  tag  String value for tag.
      */
     public Participant(
             String id,
@@ -58,7 +65,7 @@ public class Participant {
      */
     @JsonGetter("id")
     public String getId() {
-        return this.id;
+        return id;
     }
 
     /**
@@ -78,7 +85,7 @@ public class Participant {
      */
     @JsonGetter("callbackUrl")
     public String getCallbackUrl() {
-        return this.callbackUrl;
+        return callbackUrl;
     }
 
     /**
@@ -98,7 +105,7 @@ public class Participant {
      */
     @JsonGetter("publishPermissions")
     public List<PublishPermissionEnum> getPublishPermissions() {
-        return this.publishPermissions;
+        return publishPermissions;
     }
 
     /**
@@ -118,7 +125,7 @@ public class Participant {
      */
     @JsonGetter("sessions")
     public List<String> getSessions() {
-        return this.sessions;
+        return sessions;
     }
 
     /**
@@ -137,7 +144,7 @@ public class Participant {
      */
     @JsonGetter("subscriptions")
     public Subscriptions getSubscriptions() {
-        return this.subscriptions;
+        return subscriptions;
     }
 
     /**
@@ -156,7 +163,7 @@ public class Participant {
      */
     @JsonGetter("tag")
     public String getTag() {
-        return this.tag;
+        return tag;
     }
 
     /**
@@ -211,7 +218,7 @@ public class Participant {
 
         /**
          * Setter for id.
-         * @param id String value for id.
+         * @param  id  String value for id.
          * @return Builder
          */
         public Builder id(String id) {
@@ -221,7 +228,7 @@ public class Participant {
 
         /**
          * Setter for callbackUrl.
-         * @param callbackUrl String value for callbackUrl.
+         * @param  callbackUrl  String value for callbackUrl.
          * @return Builder
          */
         public Builder callbackUrl(String callbackUrl) {
@@ -231,7 +238,7 @@ public class Participant {
 
         /**
          * Setter for publishPermissions.
-         * @param publishPermissions List of PublishPermissionEnum value for publishPermissions.
+         * @param  publishPermissions  List of PublishPermissionEnum value for publishPermissions.
          * @return Builder
          */
         public Builder publishPermissions(List<PublishPermissionEnum> publishPermissions) {
@@ -241,7 +248,7 @@ public class Participant {
 
         /**
          * Setter for sessions.
-         * @param sessions List of String value for sessions.
+         * @param  sessions  List of String value for sessions.
          * @return Builder
          */
         public Builder sessions(List<String> sessions) {
@@ -251,7 +258,7 @@ public class Participant {
 
         /**
          * Setter for subscriptions.
-         * @param subscriptions Subscriptions value for subscriptions.
+         * @param  subscriptions  Subscriptions value for subscriptions.
          * @return Builder
          */
         public Builder subscriptions(Subscriptions subscriptions) {
@@ -261,7 +268,7 @@ public class Participant {
 
         /**
          * Setter for tag.
-         * @param tag String value for tag.
+         * @param  tag  String value for tag.
          * @return Builder
          */
         public Builder tag(String tag) {

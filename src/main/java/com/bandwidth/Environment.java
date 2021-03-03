@@ -14,8 +14,10 @@ import java.util.TreeMap;
  * Environment to be used.
  */
 public enum Environment {
+    @javax.xml.bind.annotation.XmlEnumValue("production")
     PRODUCTION,
 
+    @javax.xml.bind.annotation.XmlEnumValue("custom")
     CUSTOM;
 
 

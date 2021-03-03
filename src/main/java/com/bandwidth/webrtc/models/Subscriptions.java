@@ -7,6 +7,7 @@
 package com.bandwidth.webrtc.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
  */
 public class Subscriptions {
     private String sessionId;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<ParticipantSubscription> participants;
 
     /**
@@ -25,8 +27,8 @@ public class Subscriptions {
 
     /**
      * Initialization constructor.
-     * @param sessionId String value for sessionId.
-     * @param participants List of ParticipantSubscription value for participants.
+     * @param  sessionId  String value for sessionId.
+     * @param  participants  List of ParticipantSubscription value for participants.
      */
     public Subscriptions(
             String sessionId,
@@ -44,7 +46,7 @@ public class Subscriptions {
      */
     @JsonGetter("sessionId")
     public String getSessionId() {
-        return this.sessionId;
+        return sessionId;
     }
 
     /**
@@ -66,7 +68,7 @@ public class Subscriptions {
      */
     @JsonGetter("participants")
     public List<ParticipantSubscription> getParticipants() {
-        return this.participants;
+        return participants;
     }
 
     /**
@@ -115,7 +117,7 @@ public class Subscriptions {
 
         /**
          * Initialization constructor.
-         * @param sessionId String value for sessionId.
+         * @param  sessionId  String value for sessionId.
          */
         public Builder(String sessionId) {
             this.sessionId = sessionId;
@@ -123,7 +125,7 @@ public class Subscriptions {
 
         /**
          * Setter for sessionId.
-         * @param sessionId String value for sessionId.
+         * @param  sessionId  String value for sessionId.
          * @return Builder
          */
         public Builder sessionId(String sessionId) {
@@ -133,7 +135,7 @@ public class Subscriptions {
 
         /**
          * Setter for participants.
-         * @param participants List of ParticipantSubscription value for participants.
+         * @param  participants  List of ParticipantSubscription value for participants.
          * @return Builder
          */
         public Builder participants(List<ParticipantSubscription> participants) {

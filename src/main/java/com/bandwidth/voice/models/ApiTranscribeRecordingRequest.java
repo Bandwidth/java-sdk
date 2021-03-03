@@ -7,17 +7,24 @@
 package com.bandwidth.voice.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
  * This is a model class for ApiTranscribeRecordingRequest type.
  */
 public class ApiTranscribeRecordingRequest {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String callbackUrl;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private CallbackMethodEnum callbackMethod;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String username;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String password;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String tag;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Double callbackTimeout;
 
     /**
@@ -28,12 +35,12 @@ public class ApiTranscribeRecordingRequest {
 
     /**
      * Initialization constructor.
-     * @param callbackUrl String value for callbackUrl.
-     * @param callbackMethod CallbackMethodEnum value for callbackMethod.
-     * @param username String value for username.
-     * @param password String value for password.
-     * @param tag String value for tag.
-     * @param callbackTimeout Double value for callbackTimeout.
+     * @param  callbackUrl  String value for callbackUrl.
+     * @param  callbackMethod  CallbackMethodEnum value for callbackMethod.
+     * @param  username  String value for username.
+     * @param  password  String value for password.
+     * @param  tag  String value for tag.
+     * @param  callbackTimeout  Double value for callbackTimeout.
      */
     public ApiTranscribeRecordingRequest(
             String callbackUrl,
@@ -56,7 +63,7 @@ public class ApiTranscribeRecordingRequest {
      */
     @JsonGetter("callbackUrl")
     public String getCallbackUrl() {
-        return this.callbackUrl;
+        return callbackUrl;
     }
 
     /**
@@ -74,7 +81,7 @@ public class ApiTranscribeRecordingRequest {
      */
     @JsonGetter("callbackMethod")
     public CallbackMethodEnum getCallbackMethod() {
-        return this.callbackMethod;
+        return callbackMethod;
     }
 
     /**
@@ -92,7 +99,7 @@ public class ApiTranscribeRecordingRequest {
      */
     @JsonGetter("username")
     public String getUsername() {
-        return this.username;
+        return username;
     }
 
     /**
@@ -110,7 +117,7 @@ public class ApiTranscribeRecordingRequest {
      */
     @JsonGetter("password")
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
     /**
@@ -128,7 +135,7 @@ public class ApiTranscribeRecordingRequest {
      */
     @JsonGetter("tag")
     public String getTag() {
-        return this.tag;
+        return tag;
     }
 
     /**
@@ -146,7 +153,7 @@ public class ApiTranscribeRecordingRequest {
      */
     @JsonGetter("callbackTimeout")
     public Double getCallbackTimeout() {
-        return this.callbackTimeout;
+        return callbackTimeout;
     }
 
     /**
@@ -200,7 +207,7 @@ public class ApiTranscribeRecordingRequest {
 
         /**
          * Setter for callbackUrl.
-         * @param callbackUrl String value for callbackUrl.
+         * @param  callbackUrl  String value for callbackUrl.
          * @return Builder
          */
         public Builder callbackUrl(String callbackUrl) {
@@ -210,7 +217,7 @@ public class ApiTranscribeRecordingRequest {
 
         /**
          * Setter for callbackMethod.
-         * @param callbackMethod CallbackMethodEnum value for callbackMethod.
+         * @param  callbackMethod  CallbackMethodEnum value for callbackMethod.
          * @return Builder
          */
         public Builder callbackMethod(CallbackMethodEnum callbackMethod) {
@@ -220,7 +227,7 @@ public class ApiTranscribeRecordingRequest {
 
         /**
          * Setter for username.
-         * @param username String value for username.
+         * @param  username  String value for username.
          * @return Builder
          */
         public Builder username(String username) {
@@ -230,7 +237,7 @@ public class ApiTranscribeRecordingRequest {
 
         /**
          * Setter for password.
-         * @param password String value for password.
+         * @param  password  String value for password.
          * @return Builder
          */
         public Builder password(String password) {
@@ -240,7 +247,7 @@ public class ApiTranscribeRecordingRequest {
 
         /**
          * Setter for tag.
-         * @param tag String value for tag.
+         * @param  tag  String value for tag.
          * @return Builder
          */
         public Builder tag(String tag) {
@@ -250,7 +257,7 @@ public class ApiTranscribeRecordingRequest {
 
         /**
          * Setter for callbackTimeout.
-         * @param callbackTimeout Double value for callbackTimeout.
+         * @param  callbackTimeout  Double value for callbackTimeout.
          * @return Builder
          */
         public Builder callbackTimeout(Double callbackTimeout) {
