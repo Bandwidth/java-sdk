@@ -8,6 +8,7 @@ package com.bandwidth.voice.models;
 
 import com.bandwidth.DateTimeHelper;
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -17,16 +18,27 @@ import java.time.LocalDateTime;
  * This is a model class for ConferenceRecordingMetadataResponse type.
  */
 public class ConferenceRecordingMetadataResponse {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String accountId;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String conferenceId;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String name;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String recordingId;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String duration;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer channels;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private LocalDateTime startTime;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private LocalDateTime endTime;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private FileFormatEnum fileFormat;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Status1Enum status;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String mediaUrl;
 
     /**
@@ -37,17 +49,17 @@ public class ConferenceRecordingMetadataResponse {
 
     /**
      * Initialization constructor.
-     * @param accountId String value for accountId.
-     * @param conferenceId String value for conferenceId.
-     * @param name String value for name.
-     * @param recordingId String value for recordingId.
-     * @param duration String value for duration.
-     * @param channels Integer value for channels.
-     * @param startTime LocalDateTime value for startTime.
-     * @param endTime LocalDateTime value for endTime.
-     * @param fileFormat FileFormatEnum value for fileFormat.
-     * @param status Status1Enum value for status.
-     * @param mediaUrl String value for mediaUrl.
+     * @param  accountId  String value for accountId.
+     * @param  conferenceId  String value for conferenceId.
+     * @param  name  String value for name.
+     * @param  recordingId  String value for recordingId.
+     * @param  duration  String value for duration.
+     * @param  channels  Integer value for channels.
+     * @param  startTime  LocalDateTime value for startTime.
+     * @param  endTime  LocalDateTime value for endTime.
+     * @param  fileFormat  FileFormatEnum value for fileFormat.
+     * @param  status  Status1Enum value for status.
+     * @param  mediaUrl  String value for mediaUrl.
      */
     public ConferenceRecordingMetadataResponse(
             String accountId,
@@ -80,7 +92,7 @@ public class ConferenceRecordingMetadataResponse {
      */
     @JsonGetter("accountId")
     public String getAccountId() {
-        return this.accountId;
+        return accountId;
     }
 
     /**
@@ -98,7 +110,7 @@ public class ConferenceRecordingMetadataResponse {
      */
     @JsonGetter("conferenceId")
     public String getConferenceId() {
-        return this.conferenceId;
+        return conferenceId;
     }
 
     /**
@@ -116,7 +128,7 @@ public class ConferenceRecordingMetadataResponse {
      */
     @JsonGetter("name")
     public String getName() {
-        return this.name;
+        return name;
     }
 
     /**
@@ -134,7 +146,7 @@ public class ConferenceRecordingMetadataResponse {
      */
     @JsonGetter("recordingId")
     public String getRecordingId() {
-        return this.recordingId;
+        return recordingId;
     }
 
     /**
@@ -153,7 +165,7 @@ public class ConferenceRecordingMetadataResponse {
      */
     @JsonGetter("duration")
     public String getDuration() {
-        return this.duration;
+        return duration;
     }
 
     /**
@@ -172,7 +184,7 @@ public class ConferenceRecordingMetadataResponse {
      */
     @JsonGetter("channels")
     public Integer getChannels() {
-        return this.channels;
+        return channels;
     }
 
     /**
@@ -191,7 +203,7 @@ public class ConferenceRecordingMetadataResponse {
     @JsonGetter("startTime")
     @JsonSerialize(using = DateTimeHelper.Rfc8601DateTimeSerializer.class)
     public LocalDateTime getStartTime() {
-        return this.startTime;
+        return startTime;
     }
 
     /**
@@ -211,7 +223,7 @@ public class ConferenceRecordingMetadataResponse {
     @JsonGetter("endTime")
     @JsonSerialize(using = DateTimeHelper.Rfc8601DateTimeSerializer.class)
     public LocalDateTime getEndTime() {
-        return this.endTime;
+        return endTime;
     }
 
     /**
@@ -230,7 +242,7 @@ public class ConferenceRecordingMetadataResponse {
      */
     @JsonGetter("fileFormat")
     public FileFormatEnum getFileFormat() {
-        return this.fileFormat;
+        return fileFormat;
     }
 
     /**
@@ -248,7 +260,7 @@ public class ConferenceRecordingMetadataResponse {
      */
     @JsonGetter("status")
     public Status1Enum getStatus() {
-        return this.status;
+        return status;
     }
 
     /**
@@ -266,7 +278,7 @@ public class ConferenceRecordingMetadataResponse {
      */
     @JsonGetter("mediaUrl")
     public String getMediaUrl() {
-        return this.mediaUrl;
+        return mediaUrl;
     }
 
     /**
@@ -332,7 +344,7 @@ public class ConferenceRecordingMetadataResponse {
 
         /**
          * Setter for accountId.
-         * @param accountId String value for accountId.
+         * @param  accountId  String value for accountId.
          * @return Builder
          */
         public Builder accountId(String accountId) {
@@ -342,7 +354,7 @@ public class ConferenceRecordingMetadataResponse {
 
         /**
          * Setter for conferenceId.
-         * @param conferenceId String value for conferenceId.
+         * @param  conferenceId  String value for conferenceId.
          * @return Builder
          */
         public Builder conferenceId(String conferenceId) {
@@ -352,7 +364,7 @@ public class ConferenceRecordingMetadataResponse {
 
         /**
          * Setter for name.
-         * @param name String value for name.
+         * @param  name  String value for name.
          * @return Builder
          */
         public Builder name(String name) {
@@ -362,7 +374,7 @@ public class ConferenceRecordingMetadataResponse {
 
         /**
          * Setter for recordingId.
-         * @param recordingId String value for recordingId.
+         * @param  recordingId  String value for recordingId.
          * @return Builder
          */
         public Builder recordingId(String recordingId) {
@@ -372,7 +384,7 @@ public class ConferenceRecordingMetadataResponse {
 
         /**
          * Setter for duration.
-         * @param duration String value for duration.
+         * @param  duration  String value for duration.
          * @return Builder
          */
         public Builder duration(String duration) {
@@ -382,7 +394,7 @@ public class ConferenceRecordingMetadataResponse {
 
         /**
          * Setter for channels.
-         * @param channels Integer value for channels.
+         * @param  channels  Integer value for channels.
          * @return Builder
          */
         public Builder channels(Integer channels) {
@@ -392,7 +404,7 @@ public class ConferenceRecordingMetadataResponse {
 
         /**
          * Setter for startTime.
-         * @param startTime LocalDateTime value for startTime.
+         * @param  startTime  LocalDateTime value for startTime.
          * @return Builder
          */
         public Builder startTime(LocalDateTime startTime) {
@@ -402,7 +414,7 @@ public class ConferenceRecordingMetadataResponse {
 
         /**
          * Setter for endTime.
-         * @param endTime LocalDateTime value for endTime.
+         * @param  endTime  LocalDateTime value for endTime.
          * @return Builder
          */
         public Builder endTime(LocalDateTime endTime) {
@@ -412,7 +424,7 @@ public class ConferenceRecordingMetadataResponse {
 
         /**
          * Setter for fileFormat.
-         * @param fileFormat FileFormatEnum value for fileFormat.
+         * @param  fileFormat  FileFormatEnum value for fileFormat.
          * @return Builder
          */
         public Builder fileFormat(FileFormatEnum fileFormat) {
@@ -422,7 +434,7 @@ public class ConferenceRecordingMetadataResponse {
 
         /**
          * Setter for status.
-         * @param status Status1Enum value for status.
+         * @param  status  Status1Enum value for status.
          * @return Builder
          */
         public Builder status(Status1Enum status) {
@@ -432,7 +444,7 @@ public class ConferenceRecordingMetadataResponse {
 
         /**
          * Setter for mediaUrl.
-         * @param mediaUrl String value for mediaUrl.
+         * @param  mediaUrl  String value for mediaUrl.
          * @return Builder
          */
         public Builder mediaUrl(String mediaUrl) {

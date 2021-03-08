@@ -7,20 +7,30 @@
 package com.bandwidth.voice.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
  * This is a model class for ApiModifyConferenceRequest type.
  */
 public class ApiModifyConferenceRequest {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private StatusEnum status;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String redirectUrl;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String redirectFallbackUrl;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private RedirectMethodEnum redirectMethod;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private RedirectFallbackMethodEnum redirectFallbackMethod;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String username;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String password;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String fallbackUsername;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String fallbackPassword;
 
     /**
@@ -31,15 +41,15 @@ public class ApiModifyConferenceRequest {
 
     /**
      * Initialization constructor.
-     * @param status StatusEnum value for status.
-     * @param redirectUrl String value for redirectUrl.
-     * @param redirectFallbackUrl String value for redirectFallbackUrl.
-     * @param redirectMethod RedirectMethodEnum value for redirectMethod.
-     * @param redirectFallbackMethod RedirectFallbackMethodEnum value for redirectFallbackMethod.
-     * @param username String value for username.
-     * @param password String value for password.
-     * @param fallbackUsername String value for fallbackUsername.
-     * @param fallbackPassword String value for fallbackPassword.
+     * @param  status  StatusEnum value for status.
+     * @param  redirectUrl  String value for redirectUrl.
+     * @param  redirectFallbackUrl  String value for redirectFallbackUrl.
+     * @param  redirectMethod  RedirectMethodEnum value for redirectMethod.
+     * @param  redirectFallbackMethod  RedirectFallbackMethodEnum value for redirectFallbackMethod.
+     * @param  username  String value for username.
+     * @param  password  String value for password.
+     * @param  fallbackUsername  String value for fallbackUsername.
+     * @param  fallbackPassword  String value for fallbackPassword.
      */
     public ApiModifyConferenceRequest(
             StatusEnum status,
@@ -68,7 +78,7 @@ public class ApiModifyConferenceRequest {
      */
     @JsonGetter("status")
     public StatusEnum getStatus() {
-        return this.status;
+        return status;
     }
 
     /**
@@ -86,7 +96,7 @@ public class ApiModifyConferenceRequest {
      */
     @JsonGetter("redirectUrl")
     public String getRedirectUrl() {
-        return this.redirectUrl;
+        return redirectUrl;
     }
 
     /**
@@ -104,7 +114,7 @@ public class ApiModifyConferenceRequest {
      */
     @JsonGetter("redirectFallbackUrl")
     public String getRedirectFallbackUrl() {
-        return this.redirectFallbackUrl;
+        return redirectFallbackUrl;
     }
 
     /**
@@ -122,7 +132,7 @@ public class ApiModifyConferenceRequest {
      */
     @JsonGetter("redirectMethod")
     public RedirectMethodEnum getRedirectMethod() {
-        return this.redirectMethod;
+        return redirectMethod;
     }
 
     /**
@@ -140,7 +150,7 @@ public class ApiModifyConferenceRequest {
      */
     @JsonGetter("redirectFallbackMethod")
     public RedirectFallbackMethodEnum getRedirectFallbackMethod() {
-        return this.redirectFallbackMethod;
+        return redirectFallbackMethod;
     }
 
     /**
@@ -158,7 +168,7 @@ public class ApiModifyConferenceRequest {
      */
     @JsonGetter("username")
     public String getUsername() {
-        return this.username;
+        return username;
     }
 
     /**
@@ -176,7 +186,7 @@ public class ApiModifyConferenceRequest {
      */
     @JsonGetter("password")
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
     /**
@@ -194,7 +204,7 @@ public class ApiModifyConferenceRequest {
      */
     @JsonGetter("fallbackUsername")
     public String getFallbackUsername() {
-        return this.fallbackUsername;
+        return fallbackUsername;
     }
 
     /**
@@ -212,7 +222,7 @@ public class ApiModifyConferenceRequest {
      */
     @JsonGetter("fallbackPassword")
     public String getFallbackPassword() {
-        return this.fallbackPassword;
+        return fallbackPassword;
     }
 
     /**
@@ -274,7 +284,7 @@ public class ApiModifyConferenceRequest {
 
         /**
          * Setter for status.
-         * @param status StatusEnum value for status.
+         * @param  status  StatusEnum value for status.
          * @return Builder
          */
         public Builder status(StatusEnum status) {
@@ -284,7 +294,7 @@ public class ApiModifyConferenceRequest {
 
         /**
          * Setter for redirectUrl.
-         * @param redirectUrl String value for redirectUrl.
+         * @param  redirectUrl  String value for redirectUrl.
          * @return Builder
          */
         public Builder redirectUrl(String redirectUrl) {
@@ -294,7 +304,7 @@ public class ApiModifyConferenceRequest {
 
         /**
          * Setter for redirectFallbackUrl.
-         * @param redirectFallbackUrl String value for redirectFallbackUrl.
+         * @param  redirectFallbackUrl  String value for redirectFallbackUrl.
          * @return Builder
          */
         public Builder redirectFallbackUrl(String redirectFallbackUrl) {
@@ -304,7 +314,7 @@ public class ApiModifyConferenceRequest {
 
         /**
          * Setter for redirectMethod.
-         * @param redirectMethod RedirectMethodEnum value for redirectMethod.
+         * @param  redirectMethod  RedirectMethodEnum value for redirectMethod.
          * @return Builder
          */
         public Builder redirectMethod(RedirectMethodEnum redirectMethod) {
@@ -314,7 +324,8 @@ public class ApiModifyConferenceRequest {
 
         /**
          * Setter for redirectFallbackMethod.
-         * @param redirectFallbackMethod RedirectFallbackMethodEnum value for redirectFallbackMethod.
+         * @param  redirectFallbackMethod  RedirectFallbackMethodEnum value for
+         *         redirectFallbackMethod.
          * @return Builder
          */
         public Builder redirectFallbackMethod(RedirectFallbackMethodEnum redirectFallbackMethod) {
@@ -324,7 +335,7 @@ public class ApiModifyConferenceRequest {
 
         /**
          * Setter for username.
-         * @param username String value for username.
+         * @param  username  String value for username.
          * @return Builder
          */
         public Builder username(String username) {
@@ -334,7 +345,7 @@ public class ApiModifyConferenceRequest {
 
         /**
          * Setter for password.
-         * @param password String value for password.
+         * @param  password  String value for password.
          * @return Builder
          */
         public Builder password(String password) {
@@ -344,7 +355,7 @@ public class ApiModifyConferenceRequest {
 
         /**
          * Setter for fallbackUsername.
-         * @param fallbackUsername String value for fallbackUsername.
+         * @param  fallbackUsername  String value for fallbackUsername.
          * @return Builder
          */
         public Builder fallbackUsername(String fallbackUsername) {
@@ -354,7 +365,7 @@ public class ApiModifyConferenceRequest {
 
         /**
          * Setter for fallbackPassword.
-         * @param fallbackPassword String value for fallbackPassword.
+         * @param  fallbackPassword  String value for fallbackPassword.
          * @return Builder
          */
         public Builder fallbackPassword(String fallbackPassword) {

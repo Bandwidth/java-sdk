@@ -6,10 +6,10 @@
 
 package com.bandwidth;
 
-import com.bandwidth.twofactorauth.controllers.*;
+import com.bandwidth.multifactorauth.controllers.*;
 import com.bandwidth.http.client.OkClient;
 
-public final class TwoFactorAuthClient {
+public final class MultiFactorAuthClient {
     private final BandwidthClient config;
 
     /**
@@ -20,7 +20,7 @@ public final class TwoFactorAuthClient {
     /**
      * Default constructor.
      */
-    public TwoFactorAuthClient(BandwidthClient config) {
+    public MultiFactorAuthClient(BandwidthClient config) {
         this.config = config;
         mFA = new MFAController(config, config.getHttpClient(), config.getAuthManagers());
     }

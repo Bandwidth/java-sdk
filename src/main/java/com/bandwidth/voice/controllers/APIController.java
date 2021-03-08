@@ -20,7 +20,7 @@ import com.bandwidth.http.request.HttpRequest;
 import com.bandwidth.http.response.ApiResponse;
 import com.bandwidth.http.response.HttpResponse;
 import com.bandwidth.http.response.HttpStringResponse;
-import com.bandwidth.voice.exceptions.ApiErrorResponseException;
+import com.bandwidth.voice.exceptions.ApiErrorResponseErrorException;
 import com.bandwidth.voice.models.ApiCallResponse;
 import com.bandwidth.voice.models.ApiCallStateResponse;
 import com.bandwidth.voice.models.ApiCreateCallRequest;
@@ -160,25 +160,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -281,25 +281,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -407,25 +407,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -529,25 +529,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -648,25 +648,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -776,25 +776,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -902,25 +902,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -1025,25 +1025,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -1149,25 +1149,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -1273,25 +1273,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -1408,28 +1408,28 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 410) {
-            throw new ApiErrorResponseException("The media for this recording has been deleted, so we can't transcribe it", context);
+            throw new ApiErrorResponseErrorException("The media for this recording has been deleted, so we can't transcribe it", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -1534,25 +1534,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -1680,25 +1680,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -1800,25 +1800,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -1926,25 +1926,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -2056,25 +2056,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -2180,25 +2180,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -2305,25 +2305,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -2434,25 +2434,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -2563,25 +2563,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -2708,25 +2708,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorResponseErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorResponseErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorResponseErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorResponseErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorResponseErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorResponseErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);

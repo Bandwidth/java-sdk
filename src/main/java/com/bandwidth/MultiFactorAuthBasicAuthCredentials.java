@@ -9,7 +9,7 @@ package com.bandwidth;
 /**
  * Interface for defining the behavior of Basic Authentication.
  */
-public interface TwoFactorAuthBasicAuthCredentials {
+public interface MultiFactorAuthBasicAuthCredentials {
 
     /**
      * String value for basicAuthUserName.

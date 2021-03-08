@@ -7,13 +7,16 @@
 package com.bandwidth.voice.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
  * This is a model class for Transcript type.
  */
 public class Transcript {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String text;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Double confidence;
 
     /**
@@ -24,8 +27,8 @@ public class Transcript {
 
     /**
      * Initialization constructor.
-     * @param text String value for text.
-     * @param confidence Double value for confidence.
+     * @param  text  String value for text.
+     * @param  confidence  Double value for confidence.
      */
     public Transcript(
             String text,
@@ -40,7 +43,7 @@ public class Transcript {
      */
     @JsonGetter("text")
     public String getText() {
-        return this.text;
+        return text;
     }
 
     /**
@@ -58,7 +61,7 @@ public class Transcript {
      */
     @JsonGetter("confidence")
     public Double getConfidence() {
-        return this.confidence;
+        return confidence;
     }
 
     /**
@@ -102,7 +105,7 @@ public class Transcript {
 
         /**
          * Setter for text.
-         * @param text String value for text.
+         * @param  text  String value for text.
          * @return Builder
          */
         public Builder text(String text) {
@@ -112,7 +115,7 @@ public class Transcript {
 
         /**
          * Setter for confidence.
-         * @param confidence Double value for confidence.
+         * @param  confidence  Double value for confidence.
          * @return Builder
          */
         public Builder confidence(Double confidence) {

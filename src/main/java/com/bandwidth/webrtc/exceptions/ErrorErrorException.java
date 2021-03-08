@@ -12,11 +12,11 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
- * This is a model class for ErrorException type.
+ * This is a model class for ErrorErrorException type.
  */
-public class ErrorException
+public class ErrorErrorException
         extends ApiException {
-    private static final long serialVersionUID = 6300991168895097478L;
+    private static final long serialVersionUID = -1260975273933949507L;
     private int code;
     private String message;
 
@@ -25,14 +25,14 @@ public class ErrorException
      * @param   reason  The reason for throwing exception
      * @param   context The http context of the API exception
      */
-    public ErrorException(String reason, HttpContext context) {
+    public ErrorErrorException(String reason, HttpContext context) {
         super(reason, context);
     }
 
 
     /**
      * Getter for Code.
-     * @return   Returns the int
+     * @return Returns the int
      */
     @JsonGetter("code")
     public int getCode() {
@@ -41,16 +41,16 @@ public class ErrorException
 
     /**
      * Setter for Code.
-     * @param   value   Value for int
+     * @param code Value for int
      */
     @JsonSetter("code")
-    private void setCode(int value) {
-        this.code = value;
+    private void setCode(int code) {
+        this.code = code;
     }
 
     /**
      * Getter for Message.
-     * @return   Returns the String
+     * @return Returns the String
      */
     @JsonGetter("message")
     public String getMessage() {
@@ -59,10 +59,10 @@ public class ErrorException
 
     /**
      * Setter for Message.
-     * @param   value   Value for String
+     * @param message Value for String
      */
     @JsonSetter("message")
-    private void setMessage(String value) {
-        this.message = value;
+    private void setMessage(String message) {
+        this.message = message;
     }
 }

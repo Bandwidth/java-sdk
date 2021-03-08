@@ -7,21 +7,31 @@
 package com.bandwidth.voice.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
  * This is a model class for ApiModifyCallRequest type.
  */
 public class ApiModifyCallRequest {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private State1Enum state;
     private String redirectUrl;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String redirectFallbackUrl;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private RedirectMethodEnum redirectMethod;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private RedirectFallbackMethodEnum redirectFallbackMethod;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String username;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String password;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String fallbackUsername;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String fallbackPassword;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String tag;
 
     /**
@@ -32,16 +42,16 @@ public class ApiModifyCallRequest {
 
     /**
      * Initialization constructor.
-     * @param redirectUrl String value for redirectUrl.
-     * @param state State1Enum value for state.
-     * @param redirectFallbackUrl String value for redirectFallbackUrl.
-     * @param redirectMethod RedirectMethodEnum value for redirectMethod.
-     * @param redirectFallbackMethod RedirectFallbackMethodEnum value for redirectFallbackMethod.
-     * @param username String value for username.
-     * @param password String value for password.
-     * @param fallbackUsername String value for fallbackUsername.
-     * @param fallbackPassword String value for fallbackPassword.
-     * @param tag String value for tag.
+     * @param  redirectUrl  String value for redirectUrl.
+     * @param  state  State1Enum value for state.
+     * @param  redirectFallbackUrl  String value for redirectFallbackUrl.
+     * @param  redirectMethod  RedirectMethodEnum value for redirectMethod.
+     * @param  redirectFallbackMethod  RedirectFallbackMethodEnum value for redirectFallbackMethod.
+     * @param  username  String value for username.
+     * @param  password  String value for password.
+     * @param  fallbackUsername  String value for fallbackUsername.
+     * @param  fallbackPassword  String value for fallbackPassword.
+     * @param  tag  String value for tag.
      */
     public ApiModifyCallRequest(
             String redirectUrl,
@@ -72,7 +82,7 @@ public class ApiModifyCallRequest {
      */
     @JsonGetter("state")
     public State1Enum getState() {
-        return this.state;
+        return state;
     }
 
     /**
@@ -90,7 +100,7 @@ public class ApiModifyCallRequest {
      */
     @JsonGetter("redirectUrl")
     public String getRedirectUrl() {
-        return this.redirectUrl;
+        return redirectUrl;
     }
 
     /**
@@ -108,7 +118,7 @@ public class ApiModifyCallRequest {
      */
     @JsonGetter("redirectFallbackUrl")
     public String getRedirectFallbackUrl() {
-        return this.redirectFallbackUrl;
+        return redirectFallbackUrl;
     }
 
     /**
@@ -126,7 +136,7 @@ public class ApiModifyCallRequest {
      */
     @JsonGetter("redirectMethod")
     public RedirectMethodEnum getRedirectMethod() {
-        return this.redirectMethod;
+        return redirectMethod;
     }
 
     /**
@@ -144,7 +154,7 @@ public class ApiModifyCallRequest {
      */
     @JsonGetter("redirectFallbackMethod")
     public RedirectFallbackMethodEnum getRedirectFallbackMethod() {
-        return this.redirectFallbackMethod;
+        return redirectFallbackMethod;
     }
 
     /**
@@ -162,7 +172,7 @@ public class ApiModifyCallRequest {
      */
     @JsonGetter("username")
     public String getUsername() {
-        return this.username;
+        return username;
     }
 
     /**
@@ -180,7 +190,7 @@ public class ApiModifyCallRequest {
      */
     @JsonGetter("password")
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
     /**
@@ -198,7 +208,7 @@ public class ApiModifyCallRequest {
      */
     @JsonGetter("fallbackUsername")
     public String getFallbackUsername() {
-        return this.fallbackUsername;
+        return fallbackUsername;
     }
 
     /**
@@ -216,7 +226,7 @@ public class ApiModifyCallRequest {
      */
     @JsonGetter("fallbackPassword")
     public String getFallbackPassword() {
-        return this.fallbackPassword;
+        return fallbackPassword;
     }
 
     /**
@@ -234,7 +244,7 @@ public class ApiModifyCallRequest {
      */
     @JsonGetter("tag")
     public String getTag() {
-        return this.tag;
+        return tag;
     }
 
     /**
@@ -302,7 +312,7 @@ public class ApiModifyCallRequest {
 
         /**
          * Initialization constructor.
-         * @param redirectUrl String value for redirectUrl.
+         * @param  redirectUrl  String value for redirectUrl.
          */
         public Builder(String redirectUrl) {
             this.redirectUrl = redirectUrl;
@@ -310,7 +320,7 @@ public class ApiModifyCallRequest {
 
         /**
          * Setter for redirectUrl.
-         * @param redirectUrl String value for redirectUrl.
+         * @param  redirectUrl  String value for redirectUrl.
          * @return Builder
          */
         public Builder redirectUrl(String redirectUrl) {
@@ -320,7 +330,7 @@ public class ApiModifyCallRequest {
 
         /**
          * Setter for state.
-         * @param state State1Enum value for state.
+         * @param  state  State1Enum value for state.
          * @return Builder
          */
         public Builder state(State1Enum state) {
@@ -330,7 +340,7 @@ public class ApiModifyCallRequest {
 
         /**
          * Setter for redirectFallbackUrl.
-         * @param redirectFallbackUrl String value for redirectFallbackUrl.
+         * @param  redirectFallbackUrl  String value for redirectFallbackUrl.
          * @return Builder
          */
         public Builder redirectFallbackUrl(String redirectFallbackUrl) {
@@ -340,7 +350,7 @@ public class ApiModifyCallRequest {
 
         /**
          * Setter for redirectMethod.
-         * @param redirectMethod RedirectMethodEnum value for redirectMethod.
+         * @param  redirectMethod  RedirectMethodEnum value for redirectMethod.
          * @return Builder
          */
         public Builder redirectMethod(RedirectMethodEnum redirectMethod) {
@@ -350,7 +360,8 @@ public class ApiModifyCallRequest {
 
         /**
          * Setter for redirectFallbackMethod.
-         * @param redirectFallbackMethod RedirectFallbackMethodEnum value for redirectFallbackMethod.
+         * @param  redirectFallbackMethod  RedirectFallbackMethodEnum value for
+         *         redirectFallbackMethod.
          * @return Builder
          */
         public Builder redirectFallbackMethod(RedirectFallbackMethodEnum redirectFallbackMethod) {
@@ -360,7 +371,7 @@ public class ApiModifyCallRequest {
 
         /**
          * Setter for username.
-         * @param username String value for username.
+         * @param  username  String value for username.
          * @return Builder
          */
         public Builder username(String username) {
@@ -370,7 +381,7 @@ public class ApiModifyCallRequest {
 
         /**
          * Setter for password.
-         * @param password String value for password.
+         * @param  password  String value for password.
          * @return Builder
          */
         public Builder password(String password) {
@@ -380,7 +391,7 @@ public class ApiModifyCallRequest {
 
         /**
          * Setter for fallbackUsername.
-         * @param fallbackUsername String value for fallbackUsername.
+         * @param  fallbackUsername  String value for fallbackUsername.
          * @return Builder
          */
         public Builder fallbackUsername(String fallbackUsername) {
@@ -390,7 +401,7 @@ public class ApiModifyCallRequest {
 
         /**
          * Setter for fallbackPassword.
-         * @param fallbackPassword String value for fallbackPassword.
+         * @param  fallbackPassword  String value for fallbackPassword.
          * @return Builder
          */
         public Builder fallbackPassword(String fallbackPassword) {
@@ -400,7 +411,7 @@ public class ApiModifyCallRequest {
 
         /**
          * Setter for tag.
-         * @param tag String value for tag.
+         * @param  tag  String value for tag.
          * @return Builder
          */
         public Builder tag(String tag) {

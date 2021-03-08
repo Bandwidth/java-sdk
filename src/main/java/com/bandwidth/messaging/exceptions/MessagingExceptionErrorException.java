@@ -12,11 +12,11 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
- * This is a model class for MessagingException type.
+ * This is a model class for MessagingExceptionErrorException type.
  */
-public class MessagingException
+public class MessagingExceptionErrorException
         extends ApiException {
-    private static final long serialVersionUID = 3829971530321243789L;
+    private static final long serialVersionUID = 5055941313450903910L;
     private String type;
     private String description;
 
@@ -25,14 +25,14 @@ public class MessagingException
      * @param   reason  The reason for throwing exception
      * @param   context The http context of the API exception
      */
-    public MessagingException(String reason, HttpContext context) {
+    public MessagingExceptionErrorException(String reason, HttpContext context) {
         super(reason, context);
     }
 
 
     /**
      * Getter for Type.
-     * @return   Returns the String
+     * @return Returns the String
      */
     @JsonGetter("type")
     public String getType() {
@@ -41,16 +41,16 @@ public class MessagingException
 
     /**
      * Setter for Type.
-     * @param   value   Value for String
+     * @param type Value for String
      */
     @JsonSetter("type")
-    private void setType(String value) {
-        this.type = value;
+    private void setType(String type) {
+        this.type = type;
     }
 
     /**
      * Getter for Description.
-     * @return   Returns the String
+     * @return Returns the String
      */
     @JsonGetter("description")
     public String getDescription() {
@@ -59,10 +59,10 @@ public class MessagingException
 
     /**
      * Setter for Description.
-     * @param   value   Value for String
+     * @param description Value for String
      */
     @JsonSetter("description")
-    private void setDescription(String value) {
-        this.description = value;
+    private void setDescription(String description) {
+        this.description = description;
     }
 }
