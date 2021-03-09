@@ -30,13 +30,13 @@ public class Participant {
 
     /**
      * Initialization constructor.
-     * @param id  String value for id.
-     * @param callbackUrl  String value for callbackUrl.
-     * @param publishPermissions  List of PublishPermissionEnum value for publishPermissions.
-     * @param sessions  List of String value for sessions.
-     * @param subscriptions  Subscriptions value for subscriptions.
-     * @param tag  String value for tag.
-     * @param deviceApiVersion  DeviceApiVersionEnum value for deviceApiVersion.
+     * @param id  tring value for id.
+     * @param callbackUrl  tring value for callbackUrl.
+     * @param publishPermissions List of PublishPermissionEnum value for publishPermissions.
+     * @param sessions List of String value for sessions.
+     * @param subscriptions Subscriptions value for subscriptions.
+     * @param tag String value for tag.
+     * @param deviceApiVersion DeviceApiVersionEnum value for deviceApiVersion.
      */
     public Participant(
             String id,
