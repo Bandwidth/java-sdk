@@ -13,7 +13,7 @@ import java.util.concurrent.CompletableFuture;
 /**
  * Utility class for authorization and token management.
  */
-public class MultiFactorAuthBasicAuthManager implements AuthManager, MultiFactorAuthBasicAuthCredentials {
+public class TwoFactorAuthBasicAuthManager implements AuthManager, TwoFactorAuthBasicAuthCredentials {
 
     private String basicAuthUserName;
 
@@ -24,7 +24,7 @@ public class MultiFactorAuthBasicAuthManager implements AuthManager, MultiFactor
      * @param username String value for username.
      * @param password String value for password.
      */
-    public MultiFactorAuthBasicAuthManager(String username, String password) {
+    public TwoFactorAuthBasicAuthManager(String username, String password) {
         this.basicAuthUserName = username;
         this.basicAuthPassword = password;
     }
@@ -57,12 +57,12 @@ public class MultiFactorAuthBasicAuthManager implements AuthManager, MultiFactor
     }
 
     /**
-     * Converts this MultiFactorAuthBasicAuthManager into string format.
+     * Converts this TwoFactorAuthBasicAuthManager into string format.
      * @return String representation of this class
      */
     @Override
     public String toString() {
-        return "MultiFactorAuthBasicAuthManager [" + "basicAuthUserName=" + basicAuthUserName
+        return "TwoFactorAuthBasicAuthManager [" + "basicAuthUserName=" + basicAuthUserName
                 + ", basicAuthPassword=" + basicAuthPassword + "]";
     }
 

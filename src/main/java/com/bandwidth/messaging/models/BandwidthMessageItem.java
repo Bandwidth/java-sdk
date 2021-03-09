@@ -7,34 +7,22 @@
 package com.bandwidth.messaging.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
  * This is a model class for BandwidthMessageItem type.
  */
 public class BandwidthMessageItem {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String messageId;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String accountId;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String sourceTn;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String destinationTn;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String messageStatus;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String messageDirection;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String messageType;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer segmentCount;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer errorCode;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String receiveTime;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String carrierName;
 
     /**
@@ -45,17 +33,17 @@ public class BandwidthMessageItem {
 
     /**
      * Initialization constructor.
-     * @param  messageId  String value for messageId.
-     * @param  accountId  String value for accountId.
-     * @param  sourceTn  String value for sourceTn.
-     * @param  destinationTn  String value for destinationTn.
-     * @param  messageStatus  String value for messageStatus.
-     * @param  messageDirection  String value for messageDirection.
-     * @param  messageType  String value for messageType.
-     * @param  segmentCount  Integer value for segmentCount.
-     * @param  errorCode  Integer value for errorCode.
-     * @param  receiveTime  String value for receiveTime.
-     * @param  carrierName  String value for carrierName.
+     * @param messageId String value for messageId.
+     * @param accountId String value for accountId.
+     * @param sourceTn String value for sourceTn.
+     * @param destinationTn String value for destinationTn.
+     * @param messageStatus String value for messageStatus.
+     * @param messageDirection String value for messageDirection.
+     * @param messageType String value for messageType.
+     * @param segmentCount Integer value for segmentCount.
+     * @param errorCode Integer value for errorCode.
+     * @param receiveTime String value for receiveTime.
+     * @param carrierName String value for carrierName.
      */
     public BandwidthMessageItem(
             String messageId,
@@ -89,7 +77,7 @@ public class BandwidthMessageItem {
      */
     @JsonGetter("messageId")
     public String getMessageId() {
-        return messageId;
+        return this.messageId;
     }
 
     /**
@@ -109,7 +97,7 @@ public class BandwidthMessageItem {
      */
     @JsonGetter("accountId")
     public String getAccountId() {
-        return accountId;
+        return this.accountId;
     }
 
     /**
@@ -129,7 +117,7 @@ public class BandwidthMessageItem {
      */
     @JsonGetter("sourceTn")
     public String getSourceTn() {
-        return sourceTn;
+        return this.sourceTn;
     }
 
     /**
@@ -149,7 +137,7 @@ public class BandwidthMessageItem {
      */
     @JsonGetter("destinationTn")
     public String getDestinationTn() {
-        return destinationTn;
+        return this.destinationTn;
     }
 
     /**
@@ -169,7 +157,7 @@ public class BandwidthMessageItem {
      */
     @JsonGetter("messageStatus")
     public String getMessageStatus() {
-        return messageStatus;
+        return this.messageStatus;
     }
 
     /**
@@ -189,7 +177,7 @@ public class BandwidthMessageItem {
      */
     @JsonGetter("messageDirection")
     public String getMessageDirection() {
-        return messageDirection;
+        return this.messageDirection;
     }
 
     /**
@@ -209,7 +197,7 @@ public class BandwidthMessageItem {
      */
     @JsonGetter("messageType")
     public String getMessageType() {
-        return messageType;
+        return this.messageType;
     }
 
     /**
@@ -229,7 +217,7 @@ public class BandwidthMessageItem {
      */
     @JsonGetter("segmentCount")
     public Integer getSegmentCount() {
-        return segmentCount;
+        return this.segmentCount;
     }
 
     /**
@@ -249,7 +237,7 @@ public class BandwidthMessageItem {
      */
     @JsonGetter("errorCode")
     public Integer getErrorCode() {
-        return errorCode;
+        return this.errorCode;
     }
 
     /**
@@ -269,7 +257,7 @@ public class BandwidthMessageItem {
      */
     @JsonGetter("receiveTime")
     public String getReceiveTime() {
-        return receiveTime;
+        return this.receiveTime;
     }
 
     /**
@@ -289,7 +277,7 @@ public class BandwidthMessageItem {
      */
     @JsonGetter("carrierName")
     public String getCarrierName() {
-        return carrierName;
+        return this.carrierName;
     }
 
     /**
@@ -356,7 +344,7 @@ public class BandwidthMessageItem {
 
         /**
          * Setter for messageId.
-         * @param  messageId  String value for messageId.
+         * @param messageId String value for messageId.
          * @return Builder
          */
         public Builder messageId(String messageId) {
@@ -366,7 +354,7 @@ public class BandwidthMessageItem {
 
         /**
          * Setter for accountId.
-         * @param  accountId  String value for accountId.
+         * @param accountId String value for accountId.
          * @return Builder
          */
         public Builder accountId(String accountId) {
@@ -376,7 +364,7 @@ public class BandwidthMessageItem {
 
         /**
          * Setter for sourceTn.
-         * @param  sourceTn  String value for sourceTn.
+         * @param sourceTn String value for sourceTn.
          * @return Builder
          */
         public Builder sourceTn(String sourceTn) {
@@ -386,7 +374,7 @@ public class BandwidthMessageItem {
 
         /**
          * Setter for destinationTn.
-         * @param  destinationTn  String value for destinationTn.
+         * @param destinationTn String value for destinationTn.
          * @return Builder
          */
         public Builder destinationTn(String destinationTn) {
@@ -396,7 +384,7 @@ public class BandwidthMessageItem {
 
         /**
          * Setter for messageStatus.
-         * @param  messageStatus  String value for messageStatus.
+         * @param messageStatus String value for messageStatus.
          * @return Builder
          */
         public Builder messageStatus(String messageStatus) {
@@ -406,7 +394,7 @@ public class BandwidthMessageItem {
 
         /**
          * Setter for messageDirection.
-         * @param  messageDirection  String value for messageDirection.
+         * @param messageDirection String value for messageDirection.
          * @return Builder
          */
         public Builder messageDirection(String messageDirection) {
@@ -416,7 +404,7 @@ public class BandwidthMessageItem {
 
         /**
          * Setter for messageType.
-         * @param  messageType  String value for messageType.
+         * @param messageType String value for messageType.
          * @return Builder
          */
         public Builder messageType(String messageType) {
@@ -426,7 +414,7 @@ public class BandwidthMessageItem {
 
         /**
          * Setter for segmentCount.
-         * @param  segmentCount  Integer value for segmentCount.
+         * @param segmentCount Integer value for segmentCount.
          * @return Builder
          */
         public Builder segmentCount(Integer segmentCount) {
@@ -436,7 +424,7 @@ public class BandwidthMessageItem {
 
         /**
          * Setter for errorCode.
-         * @param  errorCode  Integer value for errorCode.
+         * @param errorCode Integer value for errorCode.
          * @return Builder
          */
         public Builder errorCode(Integer errorCode) {
@@ -446,7 +434,7 @@ public class BandwidthMessageItem {
 
         /**
          * Setter for receiveTime.
-         * @param  receiveTime  String value for receiveTime.
+         * @param receiveTime String value for receiveTime.
          * @return Builder
          */
         public Builder receiveTime(String receiveTime) {
@@ -456,7 +444,7 @@ public class BandwidthMessageItem {
 
         /**
          * Setter for carrierName.
-         * @param  carrierName  String value for carrierName.
+         * @param carrierName String value for carrierName.
          * @return Builder
          */
         public Builder carrierName(String carrierName) {

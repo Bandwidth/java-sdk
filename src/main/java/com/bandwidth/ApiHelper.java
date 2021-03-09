@@ -11,6 +11,7 @@ import com.bandwidth.http.request.MultipartFileWrapper;
 import com.bandwidth.http.request.MultipartWrapper;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -51,6 +52,7 @@ public class ApiHelper {
         private static final long serialVersionUID = -174113593500315394L;
         {
             configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            setSerializationInclusion(JsonInclude.Include.NON_NULL);
             configOverride(BigDecimal.class).setFormat(
                     JsonFormat.Value.forShape(JsonFormat.Shape.STRING));
         }

@@ -7,24 +7,17 @@
 package com.bandwidth.messaging.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
  * This is a model class for BandwidthCallbackMessage type.
  */
 public class BandwidthCallbackMessage {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String time;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String type;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String to;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String errorCode;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String description;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private BandwidthMessage message;
 
     /**
@@ -35,12 +28,12 @@ public class BandwidthCallbackMessage {
 
     /**
      * Initialization constructor.
-     * @param  time  String value for time.
-     * @param  type  String value for type.
-     * @param  to  String value for to.
-     * @param  errorCode  String value for errorCode.
-     * @param  description  String value for description.
-     * @param  message  BandwidthMessage value for message.
+     * @param time String value for time.
+     * @param type String value for type.
+     * @param to String value for to.
+     * @param errorCode String value for errorCode.
+     * @param description String value for description.
+     * @param message BandwidthMessage value for message.
      */
     public BandwidthCallbackMessage(
             String time,
@@ -63,7 +56,7 @@ public class BandwidthCallbackMessage {
      */
     @JsonGetter("time")
     public String getTime() {
-        return time;
+        return this.time;
     }
 
     /**
@@ -81,7 +74,7 @@ public class BandwidthCallbackMessage {
      */
     @JsonGetter("type")
     public String getType() {
-        return type;
+        return this.type;
     }
 
     /**
@@ -99,7 +92,7 @@ public class BandwidthCallbackMessage {
      */
     @JsonGetter("to")
     public String getTo() {
-        return to;
+        return this.to;
     }
 
     /**
@@ -117,7 +110,7 @@ public class BandwidthCallbackMessage {
      */
     @JsonGetter("errorCode")
     public String getErrorCode() {
-        return errorCode;
+        return this.errorCode;
     }
 
     /**
@@ -135,7 +128,7 @@ public class BandwidthCallbackMessage {
      */
     @JsonGetter("description")
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     /**
@@ -153,7 +146,7 @@ public class BandwidthCallbackMessage {
      */
     @JsonGetter("message")
     public BandwidthMessage getMessage() {
-        return message;
+        return this.message;
     }
 
     /**
@@ -207,7 +200,7 @@ public class BandwidthCallbackMessage {
 
         /**
          * Setter for time.
-         * @param  time  String value for time.
+         * @param time String value for time.
          * @return Builder
          */
         public Builder time(String time) {
@@ -217,7 +210,7 @@ public class BandwidthCallbackMessage {
 
         /**
          * Setter for type.
-         * @param  type  String value for type.
+         * @param type String value for type.
          * @return Builder
          */
         public Builder type(String type) {
@@ -227,7 +220,7 @@ public class BandwidthCallbackMessage {
 
         /**
          * Setter for to.
-         * @param  to  String value for to.
+         * @param to String value for to.
          * @return Builder
          */
         public Builder to(String to) {
@@ -237,7 +230,7 @@ public class BandwidthCallbackMessage {
 
         /**
          * Setter for errorCode.
-         * @param  errorCode  String value for errorCode.
+         * @param errorCode String value for errorCode.
          * @return Builder
          */
         public Builder errorCode(String errorCode) {
@@ -247,7 +240,7 @@ public class BandwidthCallbackMessage {
 
         /**
          * Setter for description.
-         * @param  description  String value for description.
+         * @param description String value for description.
          * @return Builder
          */
         public Builder description(String description) {
@@ -257,7 +250,7 @@ public class BandwidthCallbackMessage {
 
         /**
          * Setter for message.
-         * @param  message  BandwidthMessage value for message.
+         * @param message BandwidthMessage value for message.
          * @return Builder
          */
         public Builder message(BandwidthMessage message) {

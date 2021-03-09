@@ -18,7 +18,7 @@ public enum Server {
 
     MESSAGINGDEFAULT,
 
-    MULTIFACTORAUTHDEFAULT,
+    TWOFACTORAUTHDEFAULT,
 
     VOICEDEFAULT,
 
@@ -31,13 +31,13 @@ public enum Server {
     static {
         ENUM_DEFAULT.value = "default";
         MESSAGINGDEFAULT.value = "MessagingDefault";
-        MULTIFACTORAUTHDEFAULT.value = "MultiFactorAuthDefault";
+        TWOFACTORAUTHDEFAULT.value = "TwoFactorAuthDefault";
         VOICEDEFAULT.value = "VoiceDefault";
         WEBRTCDEFAULT.value = "WebRtcDefault";
 
         valueMap.put("default", ENUM_DEFAULT);
         valueMap.put("MessagingDefault", MESSAGINGDEFAULT);
-        valueMap.put("MultiFactorAuthDefault", MULTIFACTORAUTHDEFAULT);
+        valueMap.put("TwoFactorAuthDefault", TWOFACTORAUTHDEFAULT);
         valueMap.put("VoiceDefault", VOICEDEFAULT);
         valueMap.put("WebRtcDefault", WEBRTCDEFAULT);
     }

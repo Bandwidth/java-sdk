@@ -8,7 +8,6 @@ package com.bandwidth.voice.models;
 
 import com.bandwidth.DateTimeHelper;
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -19,21 +18,13 @@ import java.util.List;
  * This is a model class for ConferenceDetail type.
  */
 public class ConferenceDetail {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String id;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String name;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private LocalDateTime createdTime;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private LocalDateTime completedTime;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String conferenceEventUrl;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private ConferenceEventMethodEnum conferenceEventMethod;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String tag;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<ConferenceMemberDetail> activeMembers;
 
     /**
@@ -44,14 +35,14 @@ public class ConferenceDetail {
 
     /**
      * Initialization constructor.
-     * @param  id  String value for id.
-     * @param  name  String value for name.
-     * @param  createdTime  LocalDateTime value for createdTime.
-     * @param  completedTime  LocalDateTime value for completedTime.
-     * @param  conferenceEventUrl  String value for conferenceEventUrl.
-     * @param  conferenceEventMethod  ConferenceEventMethodEnum value for conferenceEventMethod.
-     * @param  tag  String value for tag.
-     * @param  activeMembers  List of ConferenceMemberDetail value for activeMembers.
+     * @param id String value for id.
+     * @param name String value for name.
+     * @param createdTime LocalDateTime value for createdTime.
+     * @param completedTime LocalDateTime value for completedTime.
+     * @param conferenceEventUrl String value for conferenceEventUrl.
+     * @param conferenceEventMethod ConferenceEventMethodEnum value for conferenceEventMethod.
+     * @param tag String value for tag.
+     * @param activeMembers List of ConferenceMemberDetail value for activeMembers.
      */
     public ConferenceDetail(
             String id,
@@ -78,7 +69,7 @@ public class ConferenceDetail {
      */
     @JsonGetter("id")
     public String getId() {
-        return id;
+        return this.id;
     }
 
     /**
@@ -96,7 +87,7 @@ public class ConferenceDetail {
      */
     @JsonGetter("name")
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**
@@ -115,7 +106,7 @@ public class ConferenceDetail {
     @JsonGetter("createdTime")
     @JsonSerialize(using = DateTimeHelper.Rfc8601DateTimeSerializer.class)
     public LocalDateTime getCreatedTime() {
-        return createdTime;
+        return this.createdTime;
     }
 
     /**
@@ -135,7 +126,7 @@ public class ConferenceDetail {
     @JsonGetter("completedTime")
     @JsonSerialize(using = DateTimeHelper.Rfc8601DateTimeSerializer.class)
     public LocalDateTime getCompletedTime() {
-        return completedTime;
+        return this.completedTime;
     }
 
     /**
@@ -154,7 +145,7 @@ public class ConferenceDetail {
      */
     @JsonGetter("conferenceEventUrl")
     public String getConferenceEventUrl() {
-        return conferenceEventUrl;
+        return this.conferenceEventUrl;
     }
 
     /**
@@ -172,7 +163,7 @@ public class ConferenceDetail {
      */
     @JsonGetter("conferenceEventMethod")
     public ConferenceEventMethodEnum getConferenceEventMethod() {
-        return conferenceEventMethod;
+        return this.conferenceEventMethod;
     }
 
     /**
@@ -190,7 +181,7 @@ public class ConferenceDetail {
      */
     @JsonGetter("tag")
     public String getTag() {
-        return tag;
+        return this.tag;
     }
 
     /**
@@ -208,7 +199,7 @@ public class ConferenceDetail {
      */
     @JsonGetter("activeMembers")
     public List<ConferenceMemberDetail> getActiveMembers() {
-        return activeMembers;
+        return this.activeMembers;
     }
 
     /**
@@ -267,7 +258,7 @@ public class ConferenceDetail {
 
         /**
          * Setter for id.
-         * @param  id  String value for id.
+         * @param id String value for id.
          * @return Builder
          */
         public Builder id(String id) {
@@ -277,7 +268,7 @@ public class ConferenceDetail {
 
         /**
          * Setter for name.
-         * @param  name  String value for name.
+         * @param name String value for name.
          * @return Builder
          */
         public Builder name(String name) {
@@ -287,7 +278,7 @@ public class ConferenceDetail {
 
         /**
          * Setter for createdTime.
-         * @param  createdTime  LocalDateTime value for createdTime.
+         * @param createdTime LocalDateTime value for createdTime.
          * @return Builder
          */
         public Builder createdTime(LocalDateTime createdTime) {
@@ -297,7 +288,7 @@ public class ConferenceDetail {
 
         /**
          * Setter for completedTime.
-         * @param  completedTime  LocalDateTime value for completedTime.
+         * @param completedTime LocalDateTime value for completedTime.
          * @return Builder
          */
         public Builder completedTime(LocalDateTime completedTime) {
@@ -307,7 +298,7 @@ public class ConferenceDetail {
 
         /**
          * Setter for conferenceEventUrl.
-         * @param  conferenceEventUrl  String value for conferenceEventUrl.
+         * @param conferenceEventUrl String value for conferenceEventUrl.
          * @return Builder
          */
         public Builder conferenceEventUrl(String conferenceEventUrl) {
@@ -317,7 +308,7 @@ public class ConferenceDetail {
 
         /**
          * Setter for conferenceEventMethod.
-         * @param  conferenceEventMethod  ConferenceEventMethodEnum value for conferenceEventMethod.
+         * @param conferenceEventMethod ConferenceEventMethodEnum value for conferenceEventMethod.
          * @return Builder
          */
         public Builder conferenceEventMethod(ConferenceEventMethodEnum conferenceEventMethod) {
@@ -327,7 +318,7 @@ public class ConferenceDetail {
 
         /**
          * Setter for tag.
-         * @param  tag  String value for tag.
+         * @param tag String value for tag.
          * @return Builder
          */
         public Builder tag(String tag) {
@@ -337,7 +328,7 @@ public class ConferenceDetail {
 
         /**
          * Setter for activeMembers.
-         * @param  activeMembers  List of ConferenceMemberDetail value for activeMembers.
+         * @param activeMembers List of ConferenceMemberDetail value for activeMembers.
          * @return Builder
          */
         public Builder activeMembers(List<ConferenceMemberDetail> activeMembers) {

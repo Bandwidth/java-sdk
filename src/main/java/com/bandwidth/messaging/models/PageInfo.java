@@ -7,20 +7,15 @@
 package com.bandwidth.messaging.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
  * This is a model class for PageInfo type.
  */
 public class PageInfo {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String prevPage;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String nextPage;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String prevPageToken;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String nextPageToken;
 
     /**
@@ -31,10 +26,10 @@ public class PageInfo {
 
     /**
      * Initialization constructor.
-     * @param  prevPage  String value for prevPage.
-     * @param  nextPage  String value for nextPage.
-     * @param  prevPageToken  String value for prevPageToken.
-     * @param  nextPageToken  String value for nextPageToken.
+     * @param prevPage String value for prevPage.
+     * @param nextPage String value for nextPage.
+     * @param prevPageToken String value for prevPageToken.
+     * @param nextPageToken String value for nextPageToken.
      */
     public PageInfo(
             String prevPage,
@@ -54,7 +49,7 @@ public class PageInfo {
      */
     @JsonGetter("prevPage")
     public String getPrevPage() {
-        return prevPage;
+        return this.prevPage;
     }
 
     /**
@@ -74,7 +69,7 @@ public class PageInfo {
      */
     @JsonGetter("nextPage")
     public String getNextPage() {
-        return nextPage;
+        return this.nextPage;
     }
 
     /**
@@ -94,7 +89,7 @@ public class PageInfo {
      */
     @JsonGetter("prevPageToken")
     public String getPrevPageToken() {
-        return prevPageToken;
+        return this.prevPageToken;
     }
 
     /**
@@ -114,7 +109,7 @@ public class PageInfo {
      */
     @JsonGetter("nextPageToken")
     public String getNextPageToken() {
-        return nextPageToken;
+        return this.nextPageToken;
     }
 
     /**
@@ -164,7 +159,7 @@ public class PageInfo {
 
         /**
          * Setter for prevPage.
-         * @param  prevPage  String value for prevPage.
+         * @param prevPage String value for prevPage.
          * @return Builder
          */
         public Builder prevPage(String prevPage) {
@@ -174,7 +169,7 @@ public class PageInfo {
 
         /**
          * Setter for nextPage.
-         * @param  nextPage  String value for nextPage.
+         * @param nextPage String value for nextPage.
          * @return Builder
          */
         public Builder nextPage(String nextPage) {
@@ -184,7 +179,7 @@ public class PageInfo {
 
         /**
          * Setter for prevPageToken.
-         * @param  prevPageToken  String value for prevPageToken.
+         * @param prevPageToken String value for prevPageToken.
          * @return Builder
          */
         public Builder prevPageToken(String prevPageToken) {
@@ -194,7 +189,7 @@ public class PageInfo {
 
         /**
          * Setter for nextPageToken.
-         * @param  nextPageToken  String value for nextPageToken.
+         * @param nextPageToken String value for nextPageToken.
          * @return Builder
          */
         public Builder nextPageToken(String nextPageToken) {

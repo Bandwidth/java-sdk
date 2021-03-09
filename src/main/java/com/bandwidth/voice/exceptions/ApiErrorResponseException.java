@@ -12,11 +12,11 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
- * This is a model class for ApiErrorResponseErrorException type.
+ * This is a model class for ApiErrorResponseException type.
  */
-public class ApiErrorResponseErrorException
+public class ApiErrorResponseException
         extends ApiException {
-    private static final long serialVersionUID = -7170536725053545402L;
+    private static final long serialVersionUID = -5354659649987151873L;
     private String type;
     private String description;
     private String id;
@@ -26,14 +26,14 @@ public class ApiErrorResponseErrorException
      * @param   reason  The reason for throwing exception
      * @param   context The http context of the API exception
      */
-    public ApiErrorResponseErrorException(String reason, HttpContext context) {
+    public ApiErrorResponseException(String reason, HttpContext context) {
         super(reason, context);
     }
 
 
     /**
      * Getter for Type.
-     * @return Returns the String
+     * @return   Returns the String
      */
     @JsonGetter("type")
     public String getType() {
@@ -42,16 +42,16 @@ public class ApiErrorResponseErrorException
 
     /**
      * Setter for Type.
-     * @param type Value for String
+     * @param   value   Value for String
      */
     @JsonSetter("type")
-    private void setType(String type) {
-        this.type = type;
+    private void setType(String value) {
+        this.type = value;
     }
 
     /**
      * Getter for Description.
-     * @return Returns the String
+     * @return   Returns the String
      */
     @JsonGetter("description")
     public String getDescription() {
@@ -60,16 +60,16 @@ public class ApiErrorResponseErrorException
 
     /**
      * Setter for Description.
-     * @param description Value for String
+     * @param   value   Value for String
      */
     @JsonSetter("description")
-    private void setDescription(String description) {
-        this.description = description;
+    private void setDescription(String value) {
+        this.description = value;
     }
 
     /**
      * Getter for Id.
-     * @return Returns the String
+     * @return   Returns the String
      */
     @JsonGetter("id")
     public String getId() {
@@ -78,10 +78,10 @@ public class ApiErrorResponseErrorException
 
     /**
      * Setter for Id.
-     * @param id Value for String
+     * @param   value   Value for String
      */
     @JsonSetter("id")
-    private void setId(String id) {
-        this.id = id;
+    private void setId(String value) {
+        this.id = value;
     }
 }

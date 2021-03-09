@@ -44,10 +44,10 @@ public interface Configuration {
     MessagingBasicAuthCredentials getMessagingBasicAuthCredentials();
 
     /**
-     * The credentials to use with MultiFactorAuthBasicAuth.
-     * @return multiFactorAuthBasicAuthCredentials
+     * The credentials to use with TwoFactorAuthBasicAuth.
+     * @return twoFactorAuthBasicAuthCredentials
      */
-    MultiFactorAuthBasicAuthCredentials getMultiFactorAuthBasicAuthCredentials();
+    TwoFactorAuthBasicAuthCredentials getTwoFactorAuthBasicAuthCredentials();
 
     /**
      * The credentials to use with VoiceBasicAuth.

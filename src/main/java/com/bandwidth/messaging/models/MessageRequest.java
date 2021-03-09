@@ -7,7 +7,6 @@
 package com.bandwidth.messaging.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import java.util.List;
 
@@ -18,13 +17,9 @@ public class MessageRequest {
     private String applicationId;
     private List<String> to;
     private String from;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String text;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<String> media;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String tag;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private PriorityEnum priority;
 
     /**
@@ -35,13 +30,13 @@ public class MessageRequest {
 
     /**
      * Initialization constructor.
-     * @param  applicationId  String value for applicationId.
-     * @param  to  List of String value for to.
-     * @param  from  String value for from.
-     * @param  text  String value for text.
-     * @param  media  List of String value for media.
-     * @param  tag  String value for tag.
-     * @param  priority  PriorityEnum value for priority.
+     * @param applicationId String value for applicationId.
+     * @param to List of String value for to.
+     * @param from String value for from.
+     * @param text String value for text.
+     * @param media List of String value for media.
+     * @param tag String value for tag.
+     * @param priority PriorityEnum value for priority.
      */
     public MessageRequest(
             String applicationId,
@@ -68,7 +63,7 @@ public class MessageRequest {
      */
     @JsonGetter("applicationId")
     public String getApplicationId() {
-        return applicationId;
+        return this.applicationId;
     }
 
     /**
@@ -89,7 +84,7 @@ public class MessageRequest {
      */
     @JsonGetter("to")
     public List<String> getTo() {
-        return to;
+        return this.to;
     }
 
     /**
@@ -109,7 +104,7 @@ public class MessageRequest {
      */
     @JsonGetter("from")
     public String getFrom() {
-        return from;
+        return this.from;
     }
 
     /**
@@ -129,7 +124,7 @@ public class MessageRequest {
      */
     @JsonGetter("text")
     public String getText() {
-        return text;
+        return this.text;
     }
 
     /**
@@ -149,7 +144,7 @@ public class MessageRequest {
      */
     @JsonGetter("media")
     public List<String> getMedia() {
-        return media;
+        return this.media;
     }
 
     /**
@@ -169,7 +164,7 @@ public class MessageRequest {
      */
     @JsonGetter("tag")
     public String getTag() {
-        return tag;
+        return this.tag;
     }
 
     /**
@@ -190,7 +185,7 @@ public class MessageRequest {
      */
     @JsonGetter("priority")
     public PriorityEnum getPriority() {
-        return priority;
+        return this.priority;
     }
 
     /**
@@ -249,11 +244,13 @@ public class MessageRequest {
 
         /**
          * Initialization constructor.
-         * @param  applicationId  String value for applicationId.
-         * @param  to  List of String value for to.
-         * @param  from  String value for from.
+         * @param applicationId String value for applicationId.
+         * @param to List of String value for to.
+         * @param from String value for from.
          */
-        public Builder(String applicationId, List<String> to, String from) {
+        public Builder(String applicationId,
+                List<String> to,
+                String from) {
             this.applicationId = applicationId;
             this.to = to;
             this.from = from;
@@ -261,7 +258,7 @@ public class MessageRequest {
 
         /**
          * Setter for applicationId.
-         * @param  applicationId  String value for applicationId.
+         * @param applicationId String value for applicationId.
          * @return Builder
          */
         public Builder applicationId(String applicationId) {
@@ -271,7 +268,7 @@ public class MessageRequest {
 
         /**
          * Setter for to.
-         * @param  to  List of String value for to.
+         * @param to List of String value for to.
          * @return Builder
          */
         public Builder to(List<String> to) {
@@ -281,7 +278,7 @@ public class MessageRequest {
 
         /**
          * Setter for from.
-         * @param  from  String value for from.
+         * @param from String value for from.
          * @return Builder
          */
         public Builder from(String from) {
@@ -291,7 +288,7 @@ public class MessageRequest {
 
         /**
          * Setter for text.
-         * @param  text  String value for text.
+         * @param text String value for text.
          * @return Builder
          */
         public Builder text(String text) {
@@ -301,7 +298,7 @@ public class MessageRequest {
 
         /**
          * Setter for media.
-         * @param  media  List of String value for media.
+         * @param media List of String value for media.
          * @return Builder
          */
         public Builder media(List<String> media) {
@@ -311,7 +308,7 @@ public class MessageRequest {
 
         /**
          * Setter for tag.
-         * @param  tag  String value for tag.
+         * @param tag String value for tag.
          * @return Builder
          */
         public Builder tag(String tag) {
@@ -321,7 +318,7 @@ public class MessageRequest {
 
         /**
          * Setter for priority.
-         * @param  priority  PriorityEnum value for priority.
+         * @param priority PriorityEnum value for priority.
          * @return Builder
          */
         public Builder priority(PriorityEnum priority) {

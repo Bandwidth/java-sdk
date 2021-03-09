@@ -7,7 +7,6 @@
 package com.bandwidth.voice.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import java.util.List;
 
@@ -15,7 +14,6 @@ import java.util.List;
  * This is a model class for TranscriptionResponse type.
  */
 public class TranscriptionResponse {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<Transcript> transcripts;
 
     /**
@@ -26,7 +24,7 @@ public class TranscriptionResponse {
 
     /**
      * Initialization constructor.
-     * @param  transcripts  List of Transcript value for transcripts.
+     * @param transcripts List of Transcript value for transcripts.
      */
     public TranscriptionResponse(
             List<Transcript> transcripts) {
@@ -39,7 +37,7 @@ public class TranscriptionResponse {
      */
     @JsonGetter("transcripts")
     public List<Transcript> getTranscripts() {
-        return transcripts;
+        return this.transcripts;
     }
 
     /**
@@ -81,7 +79,7 @@ public class TranscriptionResponse {
 
         /**
          * Setter for transcripts.
-         * @param  transcripts  List of Transcript value for transcripts.
+         * @param transcripts List of Transcript value for transcripts.
          * @return Builder
          */
         public Builder transcripts(List<Transcript> transcripts) {

@@ -23,7 +23,7 @@ public class ParticipantSubscription {
 
     /**
      * Initialization constructor.
-     * @param  participantId  String value for participantId.
+     * @param participantId String value for participantId.
      */
     public ParticipantSubscription(
             String participantId) {
@@ -37,7 +37,7 @@ public class ParticipantSubscription {
      */
     @JsonGetter("participantId")
     public String getParticipantId() {
-        return participantId;
+        return this.participantId;
     }
 
     /**
@@ -83,7 +83,7 @@ public class ParticipantSubscription {
 
         /**
          * Initialization constructor.
-         * @param  participantId  String value for participantId.
+         * @param participantId String value for participantId.
          */
         public Builder(String participantId) {
             this.participantId = participantId;
@@ -91,7 +91,7 @@ public class ParticipantSubscription {
 
         /**
          * Setter for participantId.
-         * @param  participantId  String value for participantId.
+         * @param participantId String value for participantId.
          * @return Builder
          */
         public Builder participantId(String participantId) {

@@ -7,16 +7,13 @@
 package com.bandwidth.messaging.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
  * This is a model class for DeferredResult type.
  */
 public class DeferredResult {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Object result;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Boolean setOrExpired;
 
     /**
@@ -27,8 +24,8 @@ public class DeferredResult {
 
     /**
      * Initialization constructor.
-     * @param  result  Object value for result.
-     * @param  setOrExpired  Boolean value for setOrExpired.
+     * @param result Object value for result.
+     * @param setOrExpired Boolean value for setOrExpired.
      */
     public DeferredResult(
             Object result,
@@ -43,7 +40,7 @@ public class DeferredResult {
      */
     @JsonGetter("result")
     public Object getResult() {
-        return result;
+        return this.result;
     }
 
     /**
@@ -61,7 +58,7 @@ public class DeferredResult {
      */
     @JsonGetter("setOrExpired")
     public Boolean getSetOrExpired() {
-        return setOrExpired;
+        return this.setOrExpired;
     }
 
     /**
@@ -105,7 +102,7 @@ public class DeferredResult {
 
         /**
          * Setter for result.
-         * @param  result  Object value for result.
+         * @param result Object value for result.
          * @return Builder
          */
         public Builder result(Object result) {
@@ -115,7 +112,7 @@ public class DeferredResult {
 
         /**
          * Setter for setOrExpired.
-         * @param  setOrExpired  Boolean value for setOrExpired.
+         * @param setOrExpired Boolean value for setOrExpired.
          * @return Builder
          */
         public Builder setOrExpired(Boolean setOrExpired) {

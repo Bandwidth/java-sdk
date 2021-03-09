@@ -23,7 +23,7 @@ public class ModifyCallRecordingState {
 
     /**
      * Initialization constructor.
-     * @param  state  State2Enum value for state.
+     * @param state State2Enum value for state.
      */
     public ModifyCallRecordingState(
             State2Enum state) {
@@ -36,7 +36,7 @@ public class ModifyCallRecordingState {
      */
     @JsonGetter("state")
     public State2Enum getState() {
-        return state;
+        return this.state;
     }
 
     /**
@@ -81,7 +81,7 @@ public class ModifyCallRecordingState {
 
         /**
          * Initialization constructor.
-         * @param  state  State2Enum value for state.
+         * @param state State2Enum value for state.
          */
         public Builder(State2Enum state) {
             this.state = state;
@@ -89,7 +89,7 @@ public class ModifyCallRecordingState {
 
         /**
          * Setter for state.
-         * @param  state  State2Enum value for state.
+         * @param state State2Enum value for state.
          * @return Builder
          */
         public Builder state(State2Enum state) {

@@ -7,20 +7,15 @@
 package com.bandwidth.voice.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
  * This is a model class for Transcription type.
  */
 public class Transcription {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String id;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Status3Enum status;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String completedTime;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String url;
 
     /**
@@ -31,10 +26,10 @@ public class Transcription {
 
     /**
      * Initialization constructor.
-     * @param  id  String value for id.
-     * @param  status  Status3Enum value for status.
-     * @param  completedTime  String value for completedTime.
-     * @param  url  String value for url.
+     * @param id String value for id.
+     * @param status Status3Enum value for status.
+     * @param completedTime String value for completedTime.
+     * @param url String value for url.
      */
     public Transcription(
             String id,
@@ -53,7 +48,7 @@ public class Transcription {
      */
     @JsonGetter("id")
     public String getId() {
-        return id;
+        return this.id;
     }
 
     /**
@@ -71,7 +66,7 @@ public class Transcription {
      */
     @JsonGetter("status")
     public Status3Enum getStatus() {
-        return status;
+        return this.status;
     }
 
     /**
@@ -89,7 +84,7 @@ public class Transcription {
      */
     @JsonGetter("completedTime")
     public String getCompletedTime() {
-        return completedTime;
+        return this.completedTime;
     }
 
     /**
@@ -107,7 +102,7 @@ public class Transcription {
      */
     @JsonGetter("url")
     public String getUrl() {
-        return url;
+        return this.url;
     }
 
     /**
@@ -156,7 +151,7 @@ public class Transcription {
 
         /**
          * Setter for id.
-         * @param  id  String value for id.
+         * @param id String value for id.
          * @return Builder
          */
         public Builder id(String id) {
@@ -166,7 +161,7 @@ public class Transcription {
 
         /**
          * Setter for status.
-         * @param  status  Status3Enum value for status.
+         * @param status Status3Enum value for status.
          * @return Builder
          */
         public Builder status(Status3Enum status) {
@@ -176,7 +171,7 @@ public class Transcription {
 
         /**
          * Setter for completedTime.
-         * @param  completedTime  String value for completedTime.
+         * @param completedTime String value for completedTime.
          * @return Builder
          */
         public Builder completedTime(String completedTime) {
@@ -186,7 +181,7 @@ public class Transcription {
 
         /**
          * Setter for url.
-         * @param  url  String value for url.
+         * @param url String value for url.
          * @return Builder
          */
         public Builder url(String url) {

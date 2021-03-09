@@ -7,7 +7,6 @@
 package com.bandwidth.messaging.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import java.util.List;
 
@@ -15,29 +14,17 @@ import java.util.List;
  * This is a model class for BandwidthMessage type.
  */
 public class BandwidthMessage {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String id;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String owner;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String applicationId;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String time;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer segmentCount;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String direction;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<String> to;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String from;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<String> media;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String text;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String tag;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String priority;
 
     /**
@@ -48,18 +35,18 @@ public class BandwidthMessage {
 
     /**
      * Initialization constructor.
-     * @param  id  String value for id.
-     * @param  owner  String value for owner.
-     * @param  applicationId  String value for applicationId.
-     * @param  time  String value for time.
-     * @param  segmentCount  Integer value for segmentCount.
-     * @param  direction  String value for direction.
-     * @param  to  List of String value for to.
-     * @param  from  String value for from.
-     * @param  media  List of String value for media.
-     * @param  text  String value for text.
-     * @param  tag  String value for tag.
-     * @param  priority  String value for priority.
+     * @param id String value for id.
+     * @param owner String value for owner.
+     * @param applicationId String value for applicationId.
+     * @param time String value for time.
+     * @param segmentCount Integer value for segmentCount.
+     * @param direction String value for direction.
+     * @param to List of String value for to.
+     * @param from String value for from.
+     * @param media List of String value for media.
+     * @param text String value for text.
+     * @param tag String value for tag.
+     * @param priority String value for priority.
      */
     public BandwidthMessage(
             String id,
@@ -95,7 +82,7 @@ public class BandwidthMessage {
      */
     @JsonGetter("id")
     public String getId() {
-        return id;
+        return this.id;
     }
 
     /**
@@ -115,7 +102,7 @@ public class BandwidthMessage {
      */
     @JsonGetter("owner")
     public String getOwner() {
-        return owner;
+        return this.owner;
     }
 
     /**
@@ -135,7 +122,7 @@ public class BandwidthMessage {
      */
     @JsonGetter("applicationId")
     public String getApplicationId() {
-        return applicationId;
+        return this.applicationId;
     }
 
     /**
@@ -155,7 +142,7 @@ public class BandwidthMessage {
      */
     @JsonGetter("time")
     public String getTime() {
-        return time;
+        return this.time;
     }
 
     /**
@@ -176,7 +163,7 @@ public class BandwidthMessage {
      */
     @JsonGetter("segmentCount")
     public Integer getSegmentCount() {
-        return segmentCount;
+        return this.segmentCount;
     }
 
     /**
@@ -197,7 +184,7 @@ public class BandwidthMessage {
      */
     @JsonGetter("direction")
     public String getDirection() {
-        return direction;
+        return this.direction;
     }
 
     /**
@@ -217,7 +204,7 @@ public class BandwidthMessage {
      */
     @JsonGetter("to")
     public List<String> getTo() {
-        return to;
+        return this.to;
     }
 
     /**
@@ -237,7 +224,7 @@ public class BandwidthMessage {
      */
     @JsonGetter("from")
     public String getFrom() {
-        return from;
+        return this.from;
     }
 
     /**
@@ -257,7 +244,7 @@ public class BandwidthMessage {
      */
     @JsonGetter("media")
     public List<String> getMedia() {
-        return media;
+        return this.media;
     }
 
     /**
@@ -277,7 +264,7 @@ public class BandwidthMessage {
      */
     @JsonGetter("text")
     public String getText() {
-        return text;
+        return this.text;
     }
 
     /**
@@ -297,7 +284,7 @@ public class BandwidthMessage {
      */
     @JsonGetter("tag")
     public String getTag() {
-        return tag;
+        return this.tag;
     }
 
     /**
@@ -317,7 +304,7 @@ public class BandwidthMessage {
      */
     @JsonGetter("priority")
     public String getPriority() {
-        return priority;
+        return this.priority;
     }
 
     /**
@@ -385,7 +372,7 @@ public class BandwidthMessage {
 
         /**
          * Setter for id.
-         * @param  id  String value for id.
+         * @param id String value for id.
          * @return Builder
          */
         public Builder id(String id) {
@@ -395,7 +382,7 @@ public class BandwidthMessage {
 
         /**
          * Setter for owner.
-         * @param  owner  String value for owner.
+         * @param owner String value for owner.
          * @return Builder
          */
         public Builder owner(String owner) {
@@ -405,7 +392,7 @@ public class BandwidthMessage {
 
         /**
          * Setter for applicationId.
-         * @param  applicationId  String value for applicationId.
+         * @param applicationId String value for applicationId.
          * @return Builder
          */
         public Builder applicationId(String applicationId) {
@@ -415,7 +402,7 @@ public class BandwidthMessage {
 
         /**
          * Setter for time.
-         * @param  time  String value for time.
+         * @param time String value for time.
          * @return Builder
          */
         public Builder time(String time) {
@@ -425,7 +412,7 @@ public class BandwidthMessage {
 
         /**
          * Setter for segmentCount.
-         * @param  segmentCount  Integer value for segmentCount.
+         * @param segmentCount Integer value for segmentCount.
          * @return Builder
          */
         public Builder segmentCount(Integer segmentCount) {
@@ -435,7 +422,7 @@ public class BandwidthMessage {
 
         /**
          * Setter for direction.
-         * @param  direction  String value for direction.
+         * @param direction String value for direction.
          * @return Builder
          */
         public Builder direction(String direction) {
@@ -445,7 +432,7 @@ public class BandwidthMessage {
 
         /**
          * Setter for to.
-         * @param  to  List of String value for to.
+         * @param to List of String value for to.
          * @return Builder
          */
         public Builder to(List<String> to) {
@@ -455,7 +442,7 @@ public class BandwidthMessage {
 
         /**
          * Setter for from.
-         * @param  from  String value for from.
+         * @param from String value for from.
          * @return Builder
          */
         public Builder from(String from) {
@@ -465,7 +452,7 @@ public class BandwidthMessage {
 
         /**
          * Setter for media.
-         * @param  media  List of String value for media.
+         * @param media List of String value for media.
          * @return Builder
          */
         public Builder media(List<String> media) {
@@ -475,7 +462,7 @@ public class BandwidthMessage {
 
         /**
          * Setter for text.
-         * @param  text  String value for text.
+         * @param text String value for text.
          * @return Builder
          */
         public Builder text(String text) {
@@ -485,7 +472,7 @@ public class BandwidthMessage {
 
         /**
          * Setter for tag.
-         * @param  tag  String value for tag.
+         * @param tag String value for tag.
          * @return Builder
          */
         public Builder tag(String tag) {
@@ -495,7 +482,7 @@ public class BandwidthMessage {
 
         /**
          * Setter for priority.
-         * @param  priority  String value for priority.
+         * @param priority String value for priority.
          * @return Builder
          */
         public Builder priority(String priority) {

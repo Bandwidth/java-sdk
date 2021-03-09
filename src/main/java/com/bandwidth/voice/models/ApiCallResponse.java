@@ -8,7 +8,6 @@ package com.bandwidth.voice.models;
 
 import com.bandwidth.DateTimeHelper;
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -23,31 +22,20 @@ public class ApiCallResponse {
     private String applicationId;
     private String to;
     private String from;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private LocalDateTime startTime;
     private String callUrl;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Double callTimeout;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Double callbackTimeout;
     private String answerUrl;
     private AnswerMethodEnum answerMethod;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String answerFallbackUrl;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private AnswerFallbackMethodEnum answerFallbackMethod;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String disconnectUrl;
     private DisconnectMethodEnum disconnectMethod;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String username;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String password;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String fallbackUsername;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String fallbackPassword;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String tag;
 
     /**
@@ -58,26 +46,26 @@ public class ApiCallResponse {
 
     /**
      * Initialization constructor.
-     * @param  accountId  String value for accountId.
-     * @param  callId  String value for callId.
-     * @param  applicationId  String value for applicationId.
-     * @param  to  String value for to.
-     * @param  from  String value for from.
-     * @param  callUrl  String value for callUrl.
-     * @param  answerUrl  String value for answerUrl.
-     * @param  answerMethod  AnswerMethodEnum value for answerMethod.
-     * @param  disconnectMethod  DisconnectMethodEnum value for disconnectMethod.
-     * @param  startTime  LocalDateTime value for startTime.
-     * @param  callTimeout  Double value for callTimeout.
-     * @param  callbackTimeout  Double value for callbackTimeout.
-     * @param  answerFallbackUrl  String value for answerFallbackUrl.
-     * @param  answerFallbackMethod  AnswerFallbackMethodEnum value for answerFallbackMethod.
-     * @param  disconnectUrl  String value for disconnectUrl.
-     * @param  username  String value for username.
-     * @param  password  String value for password.
-     * @param  fallbackUsername  String value for fallbackUsername.
-     * @param  fallbackPassword  String value for fallbackPassword.
-     * @param  tag  String value for tag.
+     * @param accountId String value for accountId.
+     * @param callId String value for callId.
+     * @param applicationId String value for applicationId.
+     * @param to String value for to.
+     * @param from String value for from.
+     * @param callUrl String value for callUrl.
+     * @param answerUrl String value for answerUrl.
+     * @param answerMethod AnswerMethodEnum value for answerMethod.
+     * @param disconnectMethod DisconnectMethodEnum value for disconnectMethod.
+     * @param startTime LocalDateTime value for startTime.
+     * @param callTimeout Double value for callTimeout.
+     * @param callbackTimeout Double value for callbackTimeout.
+     * @param answerFallbackUrl String value for answerFallbackUrl.
+     * @param answerFallbackMethod AnswerFallbackMethodEnum value for answerFallbackMethod.
+     * @param disconnectUrl String value for disconnectUrl.
+     * @param username String value for username.
+     * @param password String value for password.
+     * @param fallbackUsername String value for fallbackUsername.
+     * @param fallbackPassword String value for fallbackPassword.
+     * @param tag String value for tag.
      */
     public ApiCallResponse(
             String accountId,
@@ -128,7 +116,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("accountId")
     public String getAccountId() {
-        return accountId;
+        return this.accountId;
     }
 
     /**
@@ -146,7 +134,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("callId")
     public String getCallId() {
-        return callId;
+        return this.callId;
     }
 
     /**
@@ -164,7 +152,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("applicationId")
     public String getApplicationId() {
-        return applicationId;
+        return this.applicationId;
     }
 
     /**
@@ -182,7 +170,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("to")
     public String getTo() {
-        return to;
+        return this.to;
     }
 
     /**
@@ -200,7 +188,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("from")
     public String getFrom() {
-        return from;
+        return this.from;
     }
 
     /**
@@ -219,7 +207,7 @@ public class ApiCallResponse {
     @JsonGetter("startTime")
     @JsonSerialize(using = DateTimeHelper.Rfc8601DateTimeSerializer.class)
     public LocalDateTime getStartTime() {
-        return startTime;
+        return this.startTime;
     }
 
     /**
@@ -238,7 +226,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("callUrl")
     public String getCallUrl() {
-        return callUrl;
+        return this.callUrl;
     }
 
     /**
@@ -256,7 +244,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("callTimeout")
     public Double getCallTimeout() {
-        return callTimeout;
+        return this.callTimeout;
     }
 
     /**
@@ -274,7 +262,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("callbackTimeout")
     public Double getCallbackTimeout() {
-        return callbackTimeout;
+        return this.callbackTimeout;
     }
 
     /**
@@ -292,7 +280,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("answerUrl")
     public String getAnswerUrl() {
-        return answerUrl;
+        return this.answerUrl;
     }
 
     /**
@@ -310,7 +298,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("answerMethod")
     public AnswerMethodEnum getAnswerMethod() {
-        return answerMethod;
+        return this.answerMethod;
     }
 
     /**
@@ -328,7 +316,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("answerFallbackUrl")
     public String getAnswerFallbackUrl() {
-        return answerFallbackUrl;
+        return this.answerFallbackUrl;
     }
 
     /**
@@ -346,7 +334,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("answerFallbackMethod")
     public AnswerFallbackMethodEnum getAnswerFallbackMethod() {
-        return answerFallbackMethod;
+        return this.answerFallbackMethod;
     }
 
     /**
@@ -364,7 +352,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("disconnectUrl")
     public String getDisconnectUrl() {
-        return disconnectUrl;
+        return this.disconnectUrl;
     }
 
     /**
@@ -382,7 +370,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("disconnectMethod")
     public DisconnectMethodEnum getDisconnectMethod() {
-        return disconnectMethod;
+        return this.disconnectMethod;
     }
 
     /**
@@ -400,7 +388,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("username")
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     /**
@@ -418,7 +406,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("password")
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     /**
@@ -436,7 +424,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("fallbackUsername")
     public String getFallbackUsername() {
-        return fallbackUsername;
+        return this.fallbackUsername;
     }
 
     /**
@@ -454,7 +442,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("fallbackPassword")
     public String getFallbackPassword() {
-        return fallbackPassword;
+        return this.fallbackPassword;
     }
 
     /**
@@ -472,7 +460,7 @@ public class ApiCallResponse {
      */
     @JsonGetter("tag")
     public String getTag() {
-        return tag;
+        return this.tag;
     }
 
     /**
@@ -557,18 +545,24 @@ public class ApiCallResponse {
 
         /**
          * Initialization constructor.
-         * @param  accountId  String value for accountId.
-         * @param  callId  String value for callId.
-         * @param  applicationId  String value for applicationId.
-         * @param  to  String value for to.
-         * @param  from  String value for from.
-         * @param  callUrl  String value for callUrl.
-         * @param  answerUrl  String value for answerUrl.
-         * @param  answerMethod  AnswerMethodEnum value for answerMethod.
-         * @param  disconnectMethod  DisconnectMethodEnum value for disconnectMethod.
+         * @param accountId String value for accountId.
+         * @param callId String value for callId.
+         * @param applicationId String value for applicationId.
+         * @param to String value for to.
+         * @param from String value for from.
+         * @param callUrl String value for callUrl.
+         * @param answerUrl String value for answerUrl.
+         * @param answerMethod AnswerMethodEnum value for answerMethod.
+         * @param disconnectMethod DisconnectMethodEnum value for disconnectMethod.
          */
-        public Builder(String accountId, String callId, String applicationId, String to,
-                String from, String callUrl, String answerUrl, AnswerMethodEnum answerMethod,
+        public Builder(String accountId,
+                String callId,
+                String applicationId,
+                String to,
+                String from,
+                String callUrl,
+                String answerUrl,
+                AnswerMethodEnum answerMethod,
                 DisconnectMethodEnum disconnectMethod) {
             this.accountId = accountId;
             this.callId = callId;
@@ -583,7 +577,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for accountId.
-         * @param  accountId  String value for accountId.
+         * @param accountId String value for accountId.
          * @return Builder
          */
         public Builder accountId(String accountId) {
@@ -593,7 +587,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for callId.
-         * @param  callId  String value for callId.
+         * @param callId String value for callId.
          * @return Builder
          */
         public Builder callId(String callId) {
@@ -603,7 +597,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for applicationId.
-         * @param  applicationId  String value for applicationId.
+         * @param applicationId String value for applicationId.
          * @return Builder
          */
         public Builder applicationId(String applicationId) {
@@ -613,7 +607,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for to.
-         * @param  to  String value for to.
+         * @param to String value for to.
          * @return Builder
          */
         public Builder to(String to) {
@@ -623,7 +617,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for from.
-         * @param  from  String value for from.
+         * @param from String value for from.
          * @return Builder
          */
         public Builder from(String from) {
@@ -633,7 +627,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for callUrl.
-         * @param  callUrl  String value for callUrl.
+         * @param callUrl String value for callUrl.
          * @return Builder
          */
         public Builder callUrl(String callUrl) {
@@ -643,7 +637,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for answerUrl.
-         * @param  answerUrl  String value for answerUrl.
+         * @param answerUrl String value for answerUrl.
          * @return Builder
          */
         public Builder answerUrl(String answerUrl) {
@@ -653,7 +647,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for answerMethod.
-         * @param  answerMethod  AnswerMethodEnum value for answerMethod.
+         * @param answerMethod AnswerMethodEnum value for answerMethod.
          * @return Builder
          */
         public Builder answerMethod(AnswerMethodEnum answerMethod) {
@@ -663,7 +657,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for disconnectMethod.
-         * @param  disconnectMethod  DisconnectMethodEnum value for disconnectMethod.
+         * @param disconnectMethod DisconnectMethodEnum value for disconnectMethod.
          * @return Builder
          */
         public Builder disconnectMethod(DisconnectMethodEnum disconnectMethod) {
@@ -673,7 +667,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for startTime.
-         * @param  startTime  LocalDateTime value for startTime.
+         * @param startTime LocalDateTime value for startTime.
          * @return Builder
          */
         public Builder startTime(LocalDateTime startTime) {
@@ -683,7 +677,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for callTimeout.
-         * @param  callTimeout  Double value for callTimeout.
+         * @param callTimeout Double value for callTimeout.
          * @return Builder
          */
         public Builder callTimeout(Double callTimeout) {
@@ -693,7 +687,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for callbackTimeout.
-         * @param  callbackTimeout  Double value for callbackTimeout.
+         * @param callbackTimeout Double value for callbackTimeout.
          * @return Builder
          */
         public Builder callbackTimeout(Double callbackTimeout) {
@@ -703,7 +697,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for answerFallbackUrl.
-         * @param  answerFallbackUrl  String value for answerFallbackUrl.
+         * @param answerFallbackUrl String value for answerFallbackUrl.
          * @return Builder
          */
         public Builder answerFallbackUrl(String answerFallbackUrl) {
@@ -713,7 +707,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for answerFallbackMethod.
-         * @param  answerFallbackMethod  AnswerFallbackMethodEnum value for answerFallbackMethod.
+         * @param answerFallbackMethod AnswerFallbackMethodEnum value for answerFallbackMethod.
          * @return Builder
          */
         public Builder answerFallbackMethod(AnswerFallbackMethodEnum answerFallbackMethod) {
@@ -723,7 +717,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for disconnectUrl.
-         * @param  disconnectUrl  String value for disconnectUrl.
+         * @param disconnectUrl String value for disconnectUrl.
          * @return Builder
          */
         public Builder disconnectUrl(String disconnectUrl) {
@@ -733,7 +727,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for username.
-         * @param  username  String value for username.
+         * @param username String value for username.
          * @return Builder
          */
         public Builder username(String username) {
@@ -743,7 +737,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for password.
-         * @param  password  String value for password.
+         * @param password String value for password.
          * @return Builder
          */
         public Builder password(String password) {
@@ -753,7 +747,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for fallbackUsername.
-         * @param  fallbackUsername  String value for fallbackUsername.
+         * @param fallbackUsername String value for fallbackUsername.
          * @return Builder
          */
         public Builder fallbackUsername(String fallbackUsername) {
@@ -763,7 +757,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for fallbackPassword.
-         * @param  fallbackPassword  String value for fallbackPassword.
+         * @param fallbackPassword String value for fallbackPassword.
          * @return Builder
          */
         public Builder fallbackPassword(String fallbackPassword) {
@@ -773,7 +767,7 @@ public class ApiCallResponse {
 
         /**
          * Setter for tag.
-         * @param  tag  String value for tag.
+         * @param tag String value for tag.
          * @return Builder
          */
         public Builder tag(String tag) {

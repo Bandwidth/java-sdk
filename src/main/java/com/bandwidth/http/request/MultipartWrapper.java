@@ -7,16 +7,13 @@
 package com.bandwidth.http.request;
 
 import com.bandwidth.http.Headers;
-import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * Class to wrap byteArray and headers to be sent as part of a multipart request.
  */
 public class MultipartWrapper {
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private byte[] byteArray;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Headers headers;
 
     /**

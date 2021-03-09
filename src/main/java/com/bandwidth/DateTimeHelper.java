@@ -6,6 +6,7 @@
 
 package com.bandwidth;
 
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -22,9 +23,7 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -63,7 +62,7 @@ public class DateTimeHelper {
      * @return The converted String
      */
     public static String toUnixTimestamp(LocalDateTime value) {
-        return value == null ? null : Long.toString(value.toEpochSecond(java.time.ZoneOffset.UTC));
+        return Long.toString(value.toEpochSecond(java.time.ZoneOffset.UTC));
     }
 
     /**
@@ -83,63 +82,6 @@ public class DateTimeHelper {
     }
 
     /**
-     * Convert a Map of DateTime objects to Unix Timestamp strings.
-     * @param values The Map of DateTime objects to convert
-     * @return The Map of converted Strings
-     */
-    public static Map<String, String> toUnixTimestamp(Map<String, LocalDateTime> values) {
-        if (values == null) {
-            return null;
-        }
-        Map<String, String> valuesAsString = new HashMap<>();
-        for (Map.Entry<String, LocalDateTime> value: values.entrySet()) {
-            valuesAsString.put(value.getKey(), toUnixTimestamp(value.getValue()));
-        }
-        return valuesAsString;
-    }
-
-    /**
-     * Convert a DateTime object to a Unix Timestamp Long.
-     * @param value The DateTime object to convert
-     * @return The converted Long
-     */
-    public static Long toUnixTimestampLong(LocalDateTime value) {
-        return value == null ? null : value.toEpochSecond(java.time.ZoneOffset.UTC);
-    }
-
-    /**
-     * Convert a List of DateTime objects to Unix Timestamp Longs.
-     * @param values The List of DateTime objects to convert
-     * @return The list of converted Longs.
-     */
-    public static List<Long> toUnixTimestampLong(List<LocalDateTime> values) {
-        if (values == null) {
-            return null;
-        }
-        List<Long> valuesAsLong = new ArrayList<>();
-        for (LocalDateTime value : values) {
-            valuesAsLong.add(toUnixTimestampLong(value));
-        }
-        return valuesAsLong;
-    }
-
-    /**
-     * Convert a Map of DateTime objects to Unix Timestamp Longs.
-     * @param values The Map of DateTime objects to convert
-     * @return The Map of converted Longs.
-     */
-    public static Map<String, Long> toUnixTimestampLong(Map<String, LocalDateTime> values) {
-        if (values == null) {
-            return null;
-        }
-        Map<String, Long> valuesAsLong = new HashMap<>();
-        for (Map.Entry<String, LocalDateTime> value: values.entrySet()) {
-            valuesAsLong.put(value.getKey(), toUnixTimestampLong(value.getValue()));
-        }
-        return valuesAsLong;
-    }
-
-    /**
      * Parse a datetime string in Rfc1123 format to a DateTime object.
      * @param date The datetime string in Rfc1123 format
      * @return The parsed DateTime object
@@ -154,8 +96,7 @@ public class DateTimeHelper {
      * @return The converted String
      */
     public static String toRfc1123DateTime(LocalDateTime value) {
-        return value == null ? null
-                : RFC1123_DATE_TIME_FORMATTER.format(value.atZone(ZoneId.of("GMT")));
+        return RFC1123_DATE_TIME_FORMATTER.format(value.atZone(ZoneId.of("GMT")));
     }
 
     /**
@@ -170,22 +111,6 @@ public class DateTimeHelper {
         List<String> valuesAsString = new ArrayList<>();
         for (LocalDateTime value: values) {
             valuesAsString.add(toRfc1123DateTime(value));
-        }
-        return valuesAsString;
-    }
-
-    /**
-     * Convert a Map of DateTime objects to Rfc1123 formatted strings.
-     * @param values The Map of DateTime objects to convert
-     * @return The Map of converted Strings
-     */
-    public static Map<String, String> toRfc1123DateTime(Map<String, LocalDateTime> values) {
-        if (values == null) {
-            return null;
-        }
-        Map<String, String> valuesAsString = new HashMap<>();
-        for (Map.Entry<String, LocalDateTime> value: values.entrySet()) {
-            valuesAsString.put(value.getKey(), toRfc1123DateTime(value.getValue()));
         }
         return valuesAsString;
     }
@@ -211,7 +136,7 @@ public class DateTimeHelper {
      * @return The converted String
      */
     public static String toRfc8601DateTime(LocalDateTime value) {
-        return value == null ? null : value.toString() + "Z";
+        return value.toString() + "Z";
     }
 
     /**
@@ -231,22 +156,6 @@ public class DateTimeHelper {
     }
 
     /**
-     * Convert a Map of DateTime objects to Rfc8601(Rfc3339) formatted strings.
-     * @param values The Map of DateTime objects to convert
-     * @return The Map of converted Strings
-     */
-    public static Map<String, String> toRfc8601DateTime(Map<String, LocalDateTime> values) {
-        if (values == null) {
-            return null;
-        }
-        Map<String, String> valuesAsString = new HashMap<>();
-        for (Map.Entry<String, LocalDateTime> value: values.entrySet()) {
-            valuesAsString.put(value.getKey(), toRfc8601DateTime(value.getValue()));
-        }
-        return valuesAsString;
-    }
-
-    /**
      * Parse a simple date string to a LocalDate object.
      * @param date The date string
      * @return The parsed LocalDate object
@@ -261,7 +170,7 @@ public class DateTimeHelper {
      * @return The converted Strings
      */
     public static String toSimpleDate(LocalDate value) {
-        return value == null ? null : value.toString();
+        return value.toString();
     }
 
     /**
@@ -281,26 +190,9 @@ public class DateTimeHelper {
     }
 
     /**
-     * Convert a Map of LocalDate objects to strings.
-     * @param values The Map of LocalDate objects to convert
-     * @return The Map of converted Strings
-     */
-    public static Map<String, String> toSimpleDate(Map<String, LocalDate> values) {
-        if (values == null) {
-            return null;
-        }
-        Map<String, String> valuesAsString = new HashMap<>();
-        for (Map.Entry<String, LocalDate> value: values.entrySet()) {
-            valuesAsString.put(value.getKey(), toSimpleDate(value.getValue()));
-        }
-        return valuesAsString;
-    }
-
-    /**
      * A class to handle deserialization of DateTime objects to Unix Timestamps.
      */
     public static class UnixTimestampDeserializer extends JsonDeserializer<LocalDateTime> {
-        @SuppressWarnings("unused")
         @Override
         public LocalDateTime deserialize(JsonParser jp, DeserializationContext ctxt)
                 throws IOException, JsonProcessingException {
@@ -312,11 +204,10 @@ public class DateTimeHelper {
      * A class to handle serialization of Unix Timestamps to DateTime objects.
      */
     public static class UnixTimestampSerializer extends JsonSerializer<LocalDateTime> {
-        @SuppressWarnings("unused")
         @Override
         public void serialize(LocalDateTime value, JsonGenerator jgen, SerializerProvider provider)
                 throws IOException, JsonProcessingException {
-            jgen.writeObject(toUnixTimestampLong(value));
+            jgen.writeNumber(toUnixTimestamp(value));
         }
     }
 
@@ -324,7 +215,6 @@ public class DateTimeHelper {
      * A class to handle deserialization of DateTime objects to Rfc1123 format strings.
      */
     public static class Rfc1123DateTimeDeserializer extends JsonDeserializer<LocalDateTime> {
-        @SuppressWarnings("unused")
         @Override
         public LocalDateTime deserialize(JsonParser jp, DeserializationContext ctxt)
                 throws IOException, JsonProcessingException {
@@ -336,7 +226,6 @@ public class DateTimeHelper {
      * A class to handle serialization of Rfc1123 format strings to DateTime objects.
      */
     public static class Rfc1123DateTimeSerializer extends JsonSerializer<LocalDateTime> {
-        @SuppressWarnings("unused")
         @Override
         public void serialize(LocalDateTime value, JsonGenerator jgen, SerializerProvider provider)
                 throws IOException, JsonProcessingException {
@@ -348,7 +237,6 @@ public class DateTimeHelper {
      * A class to handle deserialization of DateTime objects to Rfc8601(Rfc3339) format strings.
      */
     public static class Rfc8601DateTimeDeserializer extends JsonDeserializer<LocalDateTime> {
-        @SuppressWarnings("unused")
         @Override
         public LocalDateTime deserialize(JsonParser jp, DeserializationContext ctxt)
                 throws IOException, JsonProcessingException {
@@ -360,7 +248,6 @@ public class DateTimeHelper {
      * A class to handle serialization of Rfc8601(Rfc3339) format strings to DateTime objects.
      */
     public static class Rfc8601DateTimeSerializer extends JsonSerializer<LocalDateTime> {
-        @SuppressWarnings("unused")
         @Override
         public void serialize(LocalDateTime value, JsonGenerator jgen, SerializerProvider provider)
                 throws IOException, JsonProcessingException {
@@ -372,7 +259,6 @@ public class DateTimeHelper {
      * A class to handle deserialization of date strings to LocalDate objects.
      */
     public static class SimpleDateDeserializer extends JsonDeserializer<LocalDate> {
-        @SuppressWarnings("unused")
         @Override
         public LocalDate deserialize(JsonParser jp, DeserializationContext ctxt)
                 throws IOException, JsonProcessingException {
@@ -384,7 +270,6 @@ public class DateTimeHelper {
      * A class to handle serialization of LocalDate objects to date strings.
      */
     public static class SimpleDateSerializer extends JsonSerializer<LocalDate> {
-        @SuppressWarnings("unused")
         @Override
         public void serialize(LocalDate value, JsonGenerator jgen, SerializerProvider provider)
                 throws IOException, JsonProcessingException {

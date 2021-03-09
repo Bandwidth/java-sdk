@@ -7,7 +7,6 @@
 package com.bandwidth.voice.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
@@ -16,37 +15,22 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 public class ApiCreateCallRequest {
     private String from;
     private String to;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String uui;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Double callTimeout;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Double callbackTimeout;
     private String answerUrl;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String answerFallbackUrl;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String username;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String password;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String fallbackUsername;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String fallbackPassword;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private AnswerMethodEnum answerMethod;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private AnswerFallbackMethodEnum answerFallbackMethod;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String disconnectUrl;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private DisconnectMethodEnum disconnectMethod;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String tag;
     private String applicationId;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String obfuscatedTo;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String obfuscatedFrom;
 
     /**
@@ -57,25 +41,25 @@ public class ApiCreateCallRequest {
 
     /**
      * Initialization constructor.
-     * @param  from  String value for from.
-     * @param  to  String value for to.
-     * @param  answerUrl  String value for answerUrl.
-     * @param  applicationId  String value for applicationId.
-     * @param  uui  String value for uui.
-     * @param  callTimeout  Double value for callTimeout.
-     * @param  callbackTimeout  Double value for callbackTimeout.
-     * @param  answerFallbackUrl  String value for answerFallbackUrl.
-     * @param  username  String value for username.
-     * @param  password  String value for password.
-     * @param  fallbackUsername  String value for fallbackUsername.
-     * @param  fallbackPassword  String value for fallbackPassword.
-     * @param  answerMethod  AnswerMethodEnum value for answerMethod.
-     * @param  answerFallbackMethod  AnswerFallbackMethodEnum value for answerFallbackMethod.
-     * @param  disconnectUrl  String value for disconnectUrl.
-     * @param  disconnectMethod  DisconnectMethodEnum value for disconnectMethod.
-     * @param  tag  String value for tag.
-     * @param  obfuscatedTo  String value for obfuscatedTo.
-     * @param  obfuscatedFrom  String value for obfuscatedFrom.
+     * @param from String value for from.
+     * @param to String value for to.
+     * @param answerUrl String value for answerUrl.
+     * @param applicationId String value for applicationId.
+     * @param uui String value for uui.
+     * @param callTimeout Double value for callTimeout.
+     * @param callbackTimeout Double value for callbackTimeout.
+     * @param answerFallbackUrl String value for answerFallbackUrl.
+     * @param username String value for username.
+     * @param password String value for password.
+     * @param fallbackUsername String value for fallbackUsername.
+     * @param fallbackPassword String value for fallbackPassword.
+     * @param answerMethod AnswerMethodEnum value for answerMethod.
+     * @param answerFallbackMethod AnswerFallbackMethodEnum value for answerFallbackMethod.
+     * @param disconnectUrl String value for disconnectUrl.
+     * @param disconnectMethod DisconnectMethodEnum value for disconnectMethod.
+     * @param tag String value for tag.
+     * @param obfuscatedTo String value for obfuscatedTo.
+     * @param obfuscatedFrom String value for obfuscatedFrom.
      */
     public ApiCreateCallRequest(
             String from,
@@ -125,7 +109,7 @@ public class ApiCreateCallRequest {
      */
     @JsonGetter("from")
     public String getFrom() {
-        return from;
+        return this.from;
     }
 
     /**
@@ -145,7 +129,7 @@ public class ApiCreateCallRequest {
      */
     @JsonGetter("to")
     public String getTo() {
-        return to;
+        return this.to;
     }
 
     /**
@@ -168,7 +152,7 @@ public class ApiCreateCallRequest {
      */
     @JsonGetter("uui")
     public String getUui() {
-        return uui;
+        return this.uui;
     }
 
     /**
@@ -190,7 +174,7 @@ public class ApiCreateCallRequest {
      */
     @JsonGetter("callTimeout")
     public Double getCallTimeout() {
-        return callTimeout;
+        return this.callTimeout;
     }
 
     /**
@@ -208,7 +192,7 @@ public class ApiCreateCallRequest {
      */
     @JsonGetter("callbackTimeout")
     public Double getCallbackTimeout() {
-        return callbackTimeout;
+        return this.callbackTimeout;
     }
 
     /**
@@ -226,7 +210,7 @@ public class ApiCreateCallRequest {
      */
     @JsonGetter("answerUrl")
     public String getAnswerUrl() {
-        return answerUrl;
+        return this.answerUrl;
     }
 
     /**
@@ -244,7 +228,7 @@ public class ApiCreateCallRequest {
      */
     @JsonGetter("answerFallbackUrl")
     public String getAnswerFallbackUrl() {
-        return answerFallbackUrl;
+        return this.answerFallbackUrl;
     }
 
     /**
@@ -262,7 +246,7 @@ public class ApiCreateCallRequest {
      */
     @JsonGetter("username")
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     /**
@@ -280,7 +264,7 @@ public class ApiCreateCallRequest {
      */
     @JsonGetter("password")
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     /**
@@ -298,7 +282,7 @@ public class ApiCreateCallRequest {
      */
     @JsonGetter("fallbackUsername")
     public String getFallbackUsername() {
-        return fallbackUsername;
+        return this.fallbackUsername;
     }
 
     /**
@@ -316,7 +300,7 @@ public class ApiCreateCallRequest {
      */
     @JsonGetter("fallbackPassword")
     public String getFallbackPassword() {
-        return fallbackPassword;
+        return this.fallbackPassword;
     }
 
     /**
@@ -334,7 +318,7 @@ public class ApiCreateCallRequest {
      */
     @JsonGetter("answerMethod")
     public AnswerMethodEnum getAnswerMethod() {
-        return answerMethod;
+        return this.answerMethod;
     }
 
     /**
@@ -352,7 +336,7 @@ public class ApiCreateCallRequest {
      */
     @JsonGetter("answerFallbackMethod")
     public AnswerFallbackMethodEnum getAnswerFallbackMethod() {
-        return answerFallbackMethod;
+        return this.answerFallbackMethod;
     }
 
     /**
@@ -370,7 +354,7 @@ public class ApiCreateCallRequest {
      */
     @JsonGetter("disconnectUrl")
     public String getDisconnectUrl() {
-        return disconnectUrl;
+        return this.disconnectUrl;
     }
 
     /**
@@ -388,7 +372,7 @@ public class ApiCreateCallRequest {
      */
     @JsonGetter("disconnectMethod")
     public DisconnectMethodEnum getDisconnectMethod() {
-        return disconnectMethod;
+        return this.disconnectMethod;
     }
 
     /**
@@ -406,7 +390,7 @@ public class ApiCreateCallRequest {
      */
     @JsonGetter("tag")
     public String getTag() {
-        return tag;
+        return this.tag;
     }
 
     /**
@@ -424,7 +408,7 @@ public class ApiCreateCallRequest {
      */
     @JsonGetter("applicationId")
     public String getApplicationId() {
-        return applicationId;
+        return this.applicationId;
     }
 
     /**
@@ -442,7 +426,7 @@ public class ApiCreateCallRequest {
      */
     @JsonGetter("obfuscatedTo")
     public String getObfuscatedTo() {
-        return obfuscatedTo;
+        return this.obfuscatedTo;
     }
 
     /**
@@ -460,7 +444,7 @@ public class ApiCreateCallRequest {
      */
     @JsonGetter("obfuscatedFrom")
     public String getObfuscatedFrom() {
-        return obfuscatedFrom;
+        return this.obfuscatedFrom;
     }
 
     /**
@@ -546,12 +530,15 @@ public class ApiCreateCallRequest {
 
         /**
          * Initialization constructor.
-         * @param  from  String value for from.
-         * @param  to  String value for to.
-         * @param  answerUrl  String value for answerUrl.
-         * @param  applicationId  String value for applicationId.
+         * @param from String value for from.
+         * @param to String value for to.
+         * @param answerUrl String value for answerUrl.
+         * @param applicationId String value for applicationId.
          */
-        public Builder(String from, String to, String answerUrl, String applicationId) {
+        public Builder(String from,
+                String to,
+                String answerUrl,
+                String applicationId) {
             this.from = from;
             this.to = to;
             this.answerUrl = answerUrl;
@@ -560,7 +547,7 @@ public class ApiCreateCallRequest {
 
         /**
          * Setter for from.
-         * @param  from  String value for from.
+         * @param from String value for from.
          * @return Builder
          */
         public Builder from(String from) {
@@ -570,7 +557,7 @@ public class ApiCreateCallRequest {
 
         /**
          * Setter for to.
-         * @param  to  String value for to.
+         * @param to String value for to.
          * @return Builder
          */
         public Builder to(String to) {
@@ -580,7 +567,7 @@ public class ApiCreateCallRequest {
 
         /**
          * Setter for answerUrl.
-         * @param  answerUrl  String value for answerUrl.
+         * @param answerUrl String value for answerUrl.
          * @return Builder
          */
         public Builder answerUrl(String answerUrl) {
@@ -590,7 +577,7 @@ public class ApiCreateCallRequest {
 
         /**
          * Setter for applicationId.
-         * @param  applicationId  String value for applicationId.
+         * @param applicationId String value for applicationId.
          * @return Builder
          */
         public Builder applicationId(String applicationId) {
@@ -600,7 +587,7 @@ public class ApiCreateCallRequest {
 
         /**
          * Setter for uui.
-         * @param  uui  String value for uui.
+         * @param uui String value for uui.
          * @return Builder
          */
         public Builder uui(String uui) {
@@ -610,7 +597,7 @@ public class ApiCreateCallRequest {
 
         /**
          * Setter for callTimeout.
-         * @param  callTimeout  Double value for callTimeout.
+         * @param callTimeout Double value for callTimeout.
          * @return Builder
          */
         public Builder callTimeout(Double callTimeout) {
@@ -620,7 +607,7 @@ public class ApiCreateCallRequest {
 
         /**
          * Setter for callbackTimeout.
-         * @param  callbackTimeout  Double value for callbackTimeout.
+         * @param callbackTimeout Double value for callbackTimeout.
          * @return Builder
          */
         public Builder callbackTimeout(Double callbackTimeout) {
@@ -630,7 +617,7 @@ public class ApiCreateCallRequest {
 
         /**
          * Setter for answerFallbackUrl.
-         * @param  answerFallbackUrl  String value for answerFallbackUrl.
+         * @param answerFallbackUrl String value for answerFallbackUrl.
          * @return Builder
          */
         public Builder answerFallbackUrl(String answerFallbackUrl) {
@@ -640,7 +627,7 @@ public class ApiCreateCallRequest {
 
         /**
          * Setter for username.
-         * @param  username  String value for username.
+         * @param username String value for username.
          * @return Builder
          */
         public Builder username(String username) {
@@ -650,7 +637,7 @@ public class ApiCreateCallRequest {
 
         /**
          * Setter for password.
-         * @param  password  String value for password.
+         * @param password String value for password.
          * @return Builder
          */
         public Builder password(String password) {
@@ -660,7 +647,7 @@ public class ApiCreateCallRequest {
 
         /**
          * Setter for fallbackUsername.
-         * @param  fallbackUsername  String value for fallbackUsername.
+         * @param fallbackUsername String value for fallbackUsername.
          * @return Builder
          */
         public Builder fallbackUsername(String fallbackUsername) {
@@ -670,7 +657,7 @@ public class ApiCreateCallRequest {
 
         /**
          * Setter for fallbackPassword.
-         * @param  fallbackPassword  String value for fallbackPassword.
+         * @param fallbackPassword String value for fallbackPassword.
          * @return Builder
          */
         public Builder fallbackPassword(String fallbackPassword) {
@@ -680,7 +667,7 @@ public class ApiCreateCallRequest {
 
         /**
          * Setter for answerMethod.
-         * @param  answerMethod  AnswerMethodEnum value for answerMethod.
+         * @param answerMethod AnswerMethodEnum value for answerMethod.
          * @return Builder
          */
         public Builder answerMethod(AnswerMethodEnum answerMethod) {
@@ -690,7 +677,7 @@ public class ApiCreateCallRequest {
 
         /**
          * Setter for answerFallbackMethod.
-         * @param  answerFallbackMethod  AnswerFallbackMethodEnum value for answerFallbackMethod.
+         * @param answerFallbackMethod AnswerFallbackMethodEnum value for answerFallbackMethod.
          * @return Builder
          */
         public Builder answerFallbackMethod(AnswerFallbackMethodEnum answerFallbackMethod) {
@@ -700,7 +687,7 @@ public class ApiCreateCallRequest {
 
         /**
          * Setter for disconnectUrl.
-         * @param  disconnectUrl  String value for disconnectUrl.
+         * @param disconnectUrl String value for disconnectUrl.
          * @return Builder
          */
         public Builder disconnectUrl(String disconnectUrl) {
@@ -710,7 +697,7 @@ public class ApiCreateCallRequest {
 
         /**
          * Setter for disconnectMethod.
-         * @param  disconnectMethod  DisconnectMethodEnum value for disconnectMethod.
+         * @param disconnectMethod DisconnectMethodEnum value for disconnectMethod.
          * @return Builder
          */
         public Builder disconnectMethod(DisconnectMethodEnum disconnectMethod) {
@@ -720,7 +707,7 @@ public class ApiCreateCallRequest {
 
         /**
          * Setter for tag.
-         * @param  tag  String value for tag.
+         * @param tag String value for tag.
          * @return Builder
          */
         public Builder tag(String tag) {
@@ -730,7 +717,7 @@ public class ApiCreateCallRequest {
 
         /**
          * Setter for obfuscatedTo.
-         * @param  obfuscatedTo  String value for obfuscatedTo.
+         * @param obfuscatedTo String value for obfuscatedTo.
          * @return Builder
          */
         public Builder obfuscatedTo(String obfuscatedTo) {
@@ -740,7 +727,7 @@ public class ApiCreateCallRequest {
 
         /**
          * Setter for obfuscatedFrom.
-         * @param  obfuscatedFrom  String value for obfuscatedFrom.
+         * @param obfuscatedFrom String value for obfuscatedFrom.
          * @return Builder
          */
         public Builder obfuscatedFrom(String obfuscatedFrom) {

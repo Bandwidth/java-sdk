@@ -8,50 +8,29 @@ package com.bandwidth.voice.models;
 
 import com.bandwidth.DateTimeHelper;
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.time.LocalDateTime;
-import java.util.Map;
 
 /**
  * This is a model class for ApiCallStateResponse type.
  */
 public class ApiCallStateResponse {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String callId;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String parentCallId;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String applicationId;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String accountId;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String to;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String from;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String direction;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private StateEnum state;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String identity;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Map<String, String> pai;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private LocalDateTime startTime;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private LocalDateTime answerTime;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private LocalDateTime endTime;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private DisconnectCauseEnum disconnectCause;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String errorMessage;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String errorId;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private LocalDateTime lastUpdate;
 
     /**
@@ -62,23 +41,21 @@ public class ApiCallStateResponse {
 
     /**
      * Initialization constructor.
-     * @param  callId  String value for callId.
-     * @param  parentCallId  String value for parentCallId.
-     * @param  applicationId  String value for applicationId.
-     * @param  accountId  String value for accountId.
-     * @param  to  String value for to.
-     * @param  from  String value for from.
-     * @param  direction  String value for direction.
-     * @param  state  StateEnum value for state.
-     * @param  identity  String value for identity.
-     * @param  pai  Map of String, value for pai.
-     * @param  startTime  LocalDateTime value for startTime.
-     * @param  answerTime  LocalDateTime value for answerTime.
-     * @param  endTime  LocalDateTime value for endTime.
-     * @param  disconnectCause  DisconnectCauseEnum value for disconnectCause.
-     * @param  errorMessage  String value for errorMessage.
-     * @param  errorId  String value for errorId.
-     * @param  lastUpdate  LocalDateTime value for lastUpdate.
+     * @param callId String value for callId.
+     * @param parentCallId String value for parentCallId.
+     * @param applicationId String value for applicationId.
+     * @param accountId String value for accountId.
+     * @param to String value for to.
+     * @param from String value for from.
+     * @param direction String value for direction.
+     * @param state StateEnum value for state.
+     * @param startTime LocalDateTime value for startTime.
+     * @param answerTime LocalDateTime value for answerTime.
+     * @param endTime LocalDateTime value for endTime.
+     * @param disconnectCause DisconnectCauseEnum value for disconnectCause.
+     * @param errorMessage String value for errorMessage.
+     * @param errorId String value for errorId.
+     * @param lastUpdate LocalDateTime value for lastUpdate.
      */
     public ApiCallStateResponse(
             String callId,
@@ -89,8 +66,6 @@ public class ApiCallStateResponse {
             String from,
             String direction,
             StateEnum state,
-            String identity,
-            Map<String, String> pai,
             LocalDateTime startTime,
             LocalDateTime answerTime,
             LocalDateTime endTime,
@@ -106,8 +81,6 @@ public class ApiCallStateResponse {
         this.from = from;
         this.direction = direction;
         this.state = state;
-        this.identity = identity;
-        this.pai = pai;
         this.startTime = startTime;
         this.answerTime = answerTime;
         this.endTime = endTime;
@@ -123,7 +96,7 @@ public class ApiCallStateResponse {
      */
     @JsonGetter("callId")
     public String getCallId() {
-        return callId;
+        return this.callId;
     }
 
     /**
@@ -141,7 +114,7 @@ public class ApiCallStateResponse {
      */
     @JsonGetter("parentCallId")
     public String getParentCallId() {
-        return parentCallId;
+        return this.parentCallId;
     }
 
     /**
@@ -159,7 +132,7 @@ public class ApiCallStateResponse {
      */
     @JsonGetter("applicationId")
     public String getApplicationId() {
-        return applicationId;
+        return this.applicationId;
     }
 
     /**
@@ -177,7 +150,7 @@ public class ApiCallStateResponse {
      */
     @JsonGetter("accountId")
     public String getAccountId() {
-        return accountId;
+        return this.accountId;
     }
 
     /**
@@ -195,7 +168,7 @@ public class ApiCallStateResponse {
      */
     @JsonGetter("to")
     public String getTo() {
-        return to;
+        return this.to;
     }
 
     /**
@@ -213,7 +186,7 @@ public class ApiCallStateResponse {
      */
     @JsonGetter("from")
     public String getFrom() {
-        return from;
+        return this.from;
     }
 
     /**
@@ -231,7 +204,7 @@ public class ApiCallStateResponse {
      */
     @JsonGetter("direction")
     public String getDirection() {
-        return direction;
+        return this.direction;
     }
 
     /**
@@ -249,7 +222,7 @@ public class ApiCallStateResponse {
      */
     @JsonGetter("state")
     public StateEnum getState() {
-        return state;
+        return this.state;
     }
 
     /**
@@ -262,49 +235,13 @@ public class ApiCallStateResponse {
     }
 
     /**
-     * Getter for Identity.
-     * @return Returns the String
-     */
-    @JsonGetter("identity")
-    public String getIdentity() {
-        return identity;
-    }
-
-    /**
-     * Setter for Identity.
-     * @param identity Value for String
-     */
-    @JsonSetter("identity")
-    public void setIdentity(String identity) {
-        this.identity = identity;
-    }
-
-    /**
-     * Getter for Pai.
-     * @return Returns the Map of String, String
-     */
-    @JsonGetter("pai")
-    public Map<String, String> getPai() {
-        return pai;
-    }
-
-    /**
-     * Setter for Pai.
-     * @param pai Value for Map of String, String
-     */
-    @JsonSetter("pai")
-    public void setPai(Map<String, String> pai) {
-        this.pai = pai;
-    }
-
-    /**
      * Getter for StartTime.
      * @return Returns the LocalDateTime
      */
     @JsonGetter("startTime")
     @JsonSerialize(using = DateTimeHelper.Rfc8601DateTimeSerializer.class)
     public LocalDateTime getStartTime() {
-        return startTime;
+        return this.startTime;
     }
 
     /**
@@ -324,7 +261,7 @@ public class ApiCallStateResponse {
     @JsonGetter("answerTime")
     @JsonSerialize(using = DateTimeHelper.Rfc8601DateTimeSerializer.class)
     public LocalDateTime getAnswerTime() {
-        return answerTime;
+        return this.answerTime;
     }
 
     /**
@@ -344,7 +281,7 @@ public class ApiCallStateResponse {
     @JsonGetter("endTime")
     @JsonSerialize(using = DateTimeHelper.Rfc8601DateTimeSerializer.class)
     public LocalDateTime getEndTime() {
-        return endTime;
+        return this.endTime;
     }
 
     /**
@@ -363,7 +300,7 @@ public class ApiCallStateResponse {
      */
     @JsonGetter("disconnectCause")
     public DisconnectCauseEnum getDisconnectCause() {
-        return disconnectCause;
+        return this.disconnectCause;
     }
 
     /**
@@ -381,7 +318,7 @@ public class ApiCallStateResponse {
      */
     @JsonGetter("errorMessage")
     public String getErrorMessage() {
-        return errorMessage;
+        return this.errorMessage;
     }
 
     /**
@@ -399,7 +336,7 @@ public class ApiCallStateResponse {
      */
     @JsonGetter("errorId")
     public String getErrorId() {
-        return errorId;
+        return this.errorId;
     }
 
     /**
@@ -418,7 +355,7 @@ public class ApiCallStateResponse {
     @JsonGetter("lastUpdate")
     @JsonSerialize(using = DateTimeHelper.Rfc8601DateTimeSerializer.class)
     public LocalDateTime getLastUpdate() {
-        return lastUpdate;
+        return this.lastUpdate;
     }
 
     /**
@@ -439,11 +376,10 @@ public class ApiCallStateResponse {
     public String toString() {
         return "ApiCallStateResponse [" + "callId=" + callId + ", parentCallId=" + parentCallId
                 + ", applicationId=" + applicationId + ", accountId=" + accountId + ", to=" + to
-                + ", from=" + from + ", direction=" + direction + ", state=" + state + ", identity="
-                + identity + ", pai=" + pai + ", startTime=" + startTime + ", answerTime="
-                + answerTime + ", endTime=" + endTime + ", disconnectCause=" + disconnectCause
-                + ", errorMessage=" + errorMessage + ", errorId=" + errorId + ", lastUpdate="
-                + lastUpdate + "]";
+                + ", from=" + from + ", direction=" + direction + ", state=" + state
+                + ", startTime=" + startTime + ", answerTime=" + answerTime + ", endTime=" + endTime
+                + ", disconnectCause=" + disconnectCause + ", errorMessage=" + errorMessage
+                + ", errorId=" + errorId + ", lastUpdate=" + lastUpdate + "]";
     }
 
     /**
@@ -461,8 +397,6 @@ public class ApiCallStateResponse {
                 .from(getFrom())
                 .direction(getDirection())
                 .state(getState())
-                .identity(getIdentity())
-                .pai(getPai())
                 .startTime(getStartTime())
                 .answerTime(getAnswerTime())
                 .endTime(getEndTime())
@@ -485,8 +419,6 @@ public class ApiCallStateResponse {
         private String from;
         private String direction;
         private StateEnum state;
-        private String identity;
-        private Map<String, String> pai;
         private LocalDateTime startTime;
         private LocalDateTime answerTime;
         private LocalDateTime endTime;
@@ -499,7 +431,7 @@ public class ApiCallStateResponse {
 
         /**
          * Setter for callId.
-         * @param  callId  String value for callId.
+         * @param callId String value for callId.
          * @return Builder
          */
         public Builder callId(String callId) {
@@ -509,7 +441,7 @@ public class ApiCallStateResponse {
 
         /**
          * Setter for parentCallId.
-         * @param  parentCallId  String value for parentCallId.
+         * @param parentCallId String value for parentCallId.
          * @return Builder
          */
         public Builder parentCallId(String parentCallId) {
@@ -519,7 +451,7 @@ public class ApiCallStateResponse {
 
         /**
          * Setter for applicationId.
-         * @param  applicationId  String value for applicationId.
+         * @param applicationId String value for applicationId.
          * @return Builder
          */
         public Builder applicationId(String applicationId) {
@@ -529,7 +461,7 @@ public class ApiCallStateResponse {
 
         /**
          * Setter for accountId.
-         * @param  accountId  String value for accountId.
+         * @param accountId String value for accountId.
          * @return Builder
          */
         public Builder accountId(String accountId) {
@@ -539,7 +471,7 @@ public class ApiCallStateResponse {
 
         /**
          * Setter for to.
-         * @param  to  String value for to.
+         * @param to String value for to.
          * @return Builder
          */
         public Builder to(String to) {
@@ -549,7 +481,7 @@ public class ApiCallStateResponse {
 
         /**
          * Setter for from.
-         * @param  from  String value for from.
+         * @param from String value for from.
          * @return Builder
          */
         public Builder from(String from) {
@@ -559,7 +491,7 @@ public class ApiCallStateResponse {
 
         /**
          * Setter for direction.
-         * @param  direction  String value for direction.
+         * @param direction String value for direction.
          * @return Builder
          */
         public Builder direction(String direction) {
@@ -569,7 +501,7 @@ public class ApiCallStateResponse {
 
         /**
          * Setter for state.
-         * @param  state  StateEnum value for state.
+         * @param state StateEnum value for state.
          * @return Builder
          */
         public Builder state(StateEnum state) {
@@ -578,28 +510,8 @@ public class ApiCallStateResponse {
         }
 
         /**
-         * Setter for identity.
-         * @param  identity  String value for identity.
-         * @return Builder
-         */
-        public Builder identity(String identity) {
-            this.identity = identity;
-            return this;
-        }
-
-        /**
-         * Setter for pai.
-         * @param  pai  Map of String, value for pai.
-         * @return Builder
-         */
-        public Builder pai(Map<String, String> pai) {
-            this.pai = pai;
-            return this;
-        }
-
-        /**
          * Setter for startTime.
-         * @param  startTime  LocalDateTime value for startTime.
+         * @param startTime LocalDateTime value for startTime.
          * @return Builder
          */
         public Builder startTime(LocalDateTime startTime) {
@@ -609,7 +521,7 @@ public class ApiCallStateResponse {
 
         /**
          * Setter for answerTime.
-         * @param  answerTime  LocalDateTime value for answerTime.
+         * @param answerTime LocalDateTime value for answerTime.
          * @return Builder
          */
         public Builder answerTime(LocalDateTime answerTime) {
@@ -619,7 +531,7 @@ public class ApiCallStateResponse {
 
         /**
          * Setter for endTime.
-         * @param  endTime  LocalDateTime value for endTime.
+         * @param endTime LocalDateTime value for endTime.
          * @return Builder
          */
         public Builder endTime(LocalDateTime endTime) {
@@ -629,7 +541,7 @@ public class ApiCallStateResponse {
 
         /**
          * Setter for disconnectCause.
-         * @param  disconnectCause  DisconnectCauseEnum value for disconnectCause.
+         * @param disconnectCause DisconnectCauseEnum value for disconnectCause.
          * @return Builder
          */
         public Builder disconnectCause(DisconnectCauseEnum disconnectCause) {
@@ -639,7 +551,7 @@ public class ApiCallStateResponse {
 
         /**
          * Setter for errorMessage.
-         * @param  errorMessage  String value for errorMessage.
+         * @param errorMessage String value for errorMessage.
          * @return Builder
          */
         public Builder errorMessage(String errorMessage) {
@@ -649,7 +561,7 @@ public class ApiCallStateResponse {
 
         /**
          * Setter for errorId.
-         * @param  errorId  String value for errorId.
+         * @param errorId String value for errorId.
          * @return Builder
          */
         public Builder errorId(String errorId) {
@@ -659,7 +571,7 @@ public class ApiCallStateResponse {
 
         /**
          * Setter for lastUpdate.
-         * @param  lastUpdate  LocalDateTime value for lastUpdate.
+         * @param lastUpdate LocalDateTime value for lastUpdate.
          * @return Builder
          */
         public Builder lastUpdate(LocalDateTime lastUpdate) {
@@ -673,8 +585,8 @@ public class ApiCallStateResponse {
          */
         public ApiCallStateResponse build() {
             return new ApiCallStateResponse(callId, parentCallId, applicationId, accountId, to,
-                    from, direction, state, identity, pai, startTime, answerTime, endTime,
-                    disconnectCause, errorMessage, errorId, lastUpdate);
+                    from, direction, state, startTime, answerTime, endTime, disconnectCause,
+                    errorMessage, errorId, lastUpdate);
         }
     }
 }

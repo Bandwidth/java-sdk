@@ -7,16 +7,13 @@
 package com.bandwidth.webrtc.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
  * This is a model class for Session type.
  */
 public class Session {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String id;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String tag;
 
     /**
@@ -27,8 +24,8 @@ public class Session {
 
     /**
      * Initialization constructor.
-     * @param  id  String value for id.
-     * @param  tag  String value for tag.
+     * @param id String value for id.
+     * @param tag String value for tag.
      */
     public Session(
             String id,
@@ -44,7 +41,7 @@ public class Session {
      */
     @JsonGetter("id")
     public String getId() {
-        return id;
+        return this.id;
     }
 
     /**
@@ -64,7 +61,7 @@ public class Session {
      */
     @JsonGetter("tag")
     public String getTag() {
-        return tag;
+        return this.tag;
     }
 
     /**
@@ -109,7 +106,7 @@ public class Session {
 
         /**
          * Setter for id.
-         * @param  id  String value for id.
+         * @param id String value for id.
          * @return Builder
          */
         public Builder id(String id) {
@@ -119,7 +116,7 @@ public class Session {
 
         /**
          * Setter for tag.
-         * @param  tag  String value for tag.
+         * @param tag String value for tag.
          * @return Builder
          */
         public Builder tag(String tag) {

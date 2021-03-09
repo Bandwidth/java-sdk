@@ -7,16 +7,13 @@
 package com.bandwidth.messaging.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
  * This is a model class for Tag type.
  */
 public class Tag {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String key;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String value;
 
     /**
@@ -27,8 +24,8 @@ public class Tag {
 
     /**
      * Initialization constructor.
-     * @param  key  String value for key.
-     * @param  value  String value for value.
+     * @param key String value for key.
+     * @param value String value for value.
      */
     public Tag(
             String key,
@@ -43,7 +40,7 @@ public class Tag {
      */
     @JsonGetter("key")
     public String getKey() {
-        return key;
+        return this.key;
     }
 
     /**
@@ -61,7 +58,7 @@ public class Tag {
      */
     @JsonGetter("value")
     public String getValue() {
-        return value;
+        return this.value;
     }
 
     /**
@@ -105,7 +102,7 @@ public class Tag {
 
         /**
          * Setter for key.
-         * @param  key  String value for key.
+         * @param key String value for key.
          * @return Builder
          */
         public Builder key(String key) {
@@ -115,7 +112,7 @@ public class Tag {
 
         /**
          * Setter for value.
-         * @param  value  String value for value.
+         * @param value String value for value.
          * @return Builder
          */
         public Builder value(String value) {

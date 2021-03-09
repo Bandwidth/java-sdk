@@ -8,16 +8,13 @@ package com.bandwidth.http.request;
 
 import com.bandwidth.http.Headers;
 import com.bandwidth.utilities.FileWrapper;
-import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * Class to wrap file and headers to be sent as part of a multipart request.
  */
 public class MultipartFileWrapper {
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private FileWrapper fileWrapper;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Headers headers;
 
     /**

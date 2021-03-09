@@ -20,7 +20,7 @@ import com.bandwidth.http.request.HttpRequest;
 import com.bandwidth.http.response.ApiResponse;
 import com.bandwidth.http.response.HttpResponse;
 import com.bandwidth.http.response.HttpStringResponse;
-import com.bandwidth.webrtc.exceptions.ErrorErrorException;
+import com.bandwidth.webrtc.exceptions.ErrorException;
 import com.bandwidth.webrtc.models.AccountsParticipantsResponse;
 import com.bandwidth.webrtc.models.Participant;
 import com.bandwidth.webrtc.models.Session;
@@ -162,7 +162,7 @@ public final class APIController extends BaseController {
             throw new ApiException("Access Denied", context);
         }
         if ((responseCode < 200) || (responseCode > 208)) {
-            throw new ErrorErrorException("Unexpected Error", context);
+            throw new ErrorException("Unexpected Error", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -274,7 +274,7 @@ public final class APIController extends BaseController {
             throw new ApiException("Not Found", context);
         }
         if ((responseCode < 200) || (responseCode > 208)) {
-            throw new ErrorErrorException("Unexpected Error", context);
+            throw new ErrorException("Unexpected Error", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -384,7 +384,7 @@ public final class APIController extends BaseController {
             throw new ApiException("Not Found", context);
         }
         if ((responseCode < 200) || (responseCode > 208)) {
-            throw new ErrorErrorException("Unexpected Error", context);
+            throw new ErrorException("Unexpected Error", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -493,7 +493,7 @@ public final class APIController extends BaseController {
             throw new ApiException("Access Denied", context);
         }
         if ((responseCode < 200) || (responseCode > 208)) {
-            throw new ErrorErrorException("Unexpected Error", context);
+            throw new ErrorException("Unexpected Error", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -605,7 +605,7 @@ public final class APIController extends BaseController {
             throw new ApiException("Not Found", context);
         }
         if ((responseCode < 200) || (responseCode > 208)) {
-            throw new ErrorErrorException("Unexpected Error", context);
+            throw new ErrorException("Unexpected Error", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -715,7 +715,7 @@ public final class APIController extends BaseController {
             throw new ApiException("Not Found", context);
         }
         if ((responseCode < 200) || (responseCode > 208)) {
-            throw new ErrorErrorException("Unexpected Error", context);
+            throw new ErrorException("Unexpected Error", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -822,7 +822,7 @@ public final class APIController extends BaseController {
             throw new ApiException("Not Found", context);
         }
         if ((responseCode < 200) || (responseCode > 208)) {
-            throw new ErrorErrorException("Unexpected Error", context);
+            throw new ErrorException("Unexpected Error", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -947,7 +947,7 @@ public final class APIController extends BaseController {
             throw new ApiException("Not Found", context);
         }
         if ((responseCode < 200) || (responseCode > 208)) {
-            throw new ErrorErrorException("Unexpected Error", context);
+            throw new ErrorException("Unexpected Error", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -1063,7 +1063,7 @@ public final class APIController extends BaseController {
             throw new ApiException("Not Found", context);
         }
         if ((responseCode < 200) || (responseCode > 208)) {
-            throw new ErrorErrorException("Unexpected Error", context);
+            throw new ErrorException("Unexpected Error", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -1179,7 +1179,7 @@ public final class APIController extends BaseController {
             throw new ApiException("Not Found", context);
         }
         if ((responseCode < 200) || (responseCode > 208)) {
-            throw new ErrorErrorException("Unexpected Error", context);
+            throw new ErrorException("Unexpected Error", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -1312,7 +1312,7 @@ public final class APIController extends BaseController {
             throw new ApiException("Not Found", context);
         }
         if ((responseCode < 200) || (responseCode > 208)) {
-            throw new ErrorErrorException("Unexpected Error", context);
+            throw new ErrorException("Unexpected Error", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);

@@ -7,7 +7,6 @@
 package com.bandwidth.messaging.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import java.util.List;
 
@@ -15,11 +14,8 @@ import java.util.List;
  * This is a model class for BandwidthMessagesList type.
  */
 public class BandwidthMessagesList {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer totalCount;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private PageInfo pageInfo;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<BandwidthMessageItem> messages;
 
     /**
@@ -30,9 +26,9 @@ public class BandwidthMessagesList {
 
     /**
      * Initialization constructor.
-     * @param  totalCount  Integer value for totalCount.
-     * @param  pageInfo  PageInfo value for pageInfo.
-     * @param  messages  List of BandwidthMessageItem value for messages.
+     * @param totalCount Integer value for totalCount.
+     * @param pageInfo PageInfo value for pageInfo.
+     * @param messages List of BandwidthMessageItem value for messages.
      */
     public BandwidthMessagesList(
             Integer totalCount,
@@ -50,7 +46,7 @@ public class BandwidthMessagesList {
      */
     @JsonGetter("totalCount")
     public Integer getTotalCount() {
-        return totalCount;
+        return this.totalCount;
     }
 
     /**
@@ -69,7 +65,7 @@ public class BandwidthMessagesList {
      */
     @JsonGetter("pageInfo")
     public PageInfo getPageInfo() {
-        return pageInfo;
+        return this.pageInfo;
     }
 
     /**
@@ -87,7 +83,7 @@ public class BandwidthMessagesList {
      */
     @JsonGetter("messages")
     public List<BandwidthMessageItem> getMessages() {
-        return messages;
+        return this.messages;
     }
 
     /**
@@ -134,7 +130,7 @@ public class BandwidthMessagesList {
 
         /**
          * Setter for totalCount.
-         * @param  totalCount  Integer value for totalCount.
+         * @param totalCount Integer value for totalCount.
          * @return Builder
          */
         public Builder totalCount(Integer totalCount) {
@@ -144,7 +140,7 @@ public class BandwidthMessagesList {
 
         /**
          * Setter for pageInfo.
-         * @param  pageInfo  PageInfo value for pageInfo.
+         * @param pageInfo PageInfo value for pageInfo.
          * @return Builder
          */
         public Builder pageInfo(PageInfo pageInfo) {
@@ -154,7 +150,7 @@ public class BandwidthMessagesList {
 
         /**
          * Setter for messages.
-         * @param  messages  List of BandwidthMessageItem value for messages.
+         * @param messages List of BandwidthMessageItem value for messages.
          * @return Builder
          */
         public Builder messages(List<BandwidthMessageItem> messages) {

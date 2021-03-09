@@ -12,11 +12,11 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
- * This is a model class for MessagingExceptionErrorException type.
+ * This is a model class for MessagingException type.
  */
-public class MessagingExceptionErrorException
+public class MessagingException
         extends ApiException {
-    private static final long serialVersionUID = 5055941313450903910L;
+    private static final long serialVersionUID = 3829971530321243789L;
     private String type;
     private String description;
 
@@ -25,14 +25,14 @@ public class MessagingExceptionErrorException
      * @param   reason  The reason for throwing exception
      * @param   context The http context of the API exception
      */
-    public MessagingExceptionErrorException(String reason, HttpContext context) {
+    public MessagingException(String reason, HttpContext context) {
         super(reason, context);
     }
 
 
     /**
      * Getter for Type.
-     * @return Returns the String
+     * @return   Returns the String
      */
     @JsonGetter("type")
     public String getType() {
@@ -41,16 +41,16 @@ public class MessagingExceptionErrorException
 
     /**
      * Setter for Type.
-     * @param type Value for String
+     * @param   value   Value for String
      */
     @JsonSetter("type")
-    private void setType(String type) {
-        this.type = type;
+    private void setType(String value) {
+        this.type = value;
     }
 
     /**
      * Getter for Description.
-     * @return Returns the String
+     * @return   Returns the String
      */
     @JsonGetter("description")
     public String getDescription() {
@@ -59,10 +59,10 @@ public class MessagingExceptionErrorException
 
     /**
      * Setter for Description.
-     * @param description Value for String
+     * @param   value   Value for String
      */
     @JsonSetter("description")
-    private void setDescription(String description) {
-        this.description = description;
+    private void setDescription(String value) {
+        this.description = value;
     }
 }
