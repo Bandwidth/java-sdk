@@ -20,6 +20,7 @@ public class Participant {
     private List<String> sessions;
     private Subscriptions subscriptions;
     private String tag;
+    private DeviceApiVersionEnum deviceApiVersion;
 
     /**
      * Default constructor.
@@ -35,6 +36,7 @@ public class Participant {
      * @param sessions List of String value for sessions.
      * @param subscriptions Subscriptions value for subscriptions.
      * @param tag String value for tag.
+     * @param deviceApiVersion DeviceApiVersionEnum value for deviceApiVersion.
      */
     public Participant(
             String id,
@@ -42,13 +44,15 @@ public class Participant {
             List<PublishPermissionEnum> publishPermissions,
             List<String> sessions,
             Subscriptions subscriptions,
-            String tag) {
+            String tag,
+            DeviceApiVersionEnum deviceApiVersion) {
         this.id = id;
         this.callbackUrl = callbackUrl;
         this.publishPermissions = publishPermissions;
         this.sessions = sessions;
         this.subscriptions = subscriptions;
         this.tag = tag;
+        this.deviceApiVersion = deviceApiVersion;
     }
 
     /**
@@ -170,6 +174,26 @@ public class Participant {
     }
 
     /**
+     * Getter for DeviceApiVersion.
+     * Optional field to define the device api version of this participant
+     * @return Returns the DeviceApiVersionEnum
+     */
+    @JsonGetter("deviceApiVersion")
+    public DeviceApiVersionEnum getDeviceApiVersion() {
+        return this.deviceApiVersion;
+    }
+
+    /**
+     * Setter for DeviceApiVersion.
+     * Optional field to define the device api version of this participant
+     * @param deviceApiVersion Value for DeviceApiVersionEnum
+     */
+    @JsonSetter("deviceApiVersion")
+    public void setDeviceApiVersion(DeviceApiVersionEnum deviceApiVersion) {
+        this.deviceApiVersion = deviceApiVersion;
+    }
+
+    /**
      * Converts this Participant into string format.
      * @return String representation of this class
      */
@@ -177,7 +201,8 @@ public class Participant {
     public String toString() {
         return "Participant [" + "id=" + id + ", callbackUrl=" + callbackUrl
                 + ", publishPermissions=" + publishPermissions + ", sessions=" + sessions
-                + ", subscriptions=" + subscriptions + ", tag=" + tag + "]";
+                + ", subscriptions=" + subscriptions + ", tag=" + tag + ", deviceApiVersion="
+                + deviceApiVersion + "]";
     }
 
     /**
@@ -192,7 +217,8 @@ public class Participant {
                 .publishPermissions(getPublishPermissions())
                 .sessions(getSessions())
                 .subscriptions(getSubscriptions())
-                .tag(getTag());
+                .tag(getTag())
+                .deviceApiVersion(getDeviceApiVersion());
         return builder;
     }
 
@@ -206,6 +232,7 @@ public class Participant {
         private List<String> sessions;
         private Subscriptions subscriptions;
         private String tag;
+        private DeviceApiVersionEnum deviceApiVersion = DeviceApiVersionEnum.V2;
 
 
 
@@ -270,12 +297,22 @@ public class Participant {
         }
 
         /**
+         * Setter for deviceApiVersion.
+         * @param deviceApiVersion DeviceApiVersionEnum value for deviceApiVersion.
+         * @return Builder
+         */
+        public Builder deviceApiVersion(DeviceApiVersionEnum deviceApiVersion) {
+            this.deviceApiVersion = deviceApiVersion;
+            return this;
+        }
+
+        /**
          * Builds a new {@link Participant} object using the set fields.
          * @return {@link Participant}
          */
         public Participant build() {
             return new Participant(id, callbackUrl, publishPermissions, sessions, subscriptions,
-                    tag);
+                    tag, deviceApiVersion);
         }
     }
 }
