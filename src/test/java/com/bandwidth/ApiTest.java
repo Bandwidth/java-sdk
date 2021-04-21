@@ -6,13 +6,18 @@ import org.junit.Before;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 import com.bandwidth.*;
+import com.bandwidth.Environment;
 import com.bandwidth.messaging.models.*;
 import com.bandwidth.messaging.controllers.*;
 import com.bandwidth.messaging.exceptions.*;
 import com.bandwidth.exceptions.ApiException;
 import com.bandwidth.http.response.ApiResponse;
+import com.bandwidth.utilities.FileWrapper;
 
 /**
  * Integration tests for API interactions
@@ -73,8 +78,25 @@ public class ApiTest {
     }
 
     @Test
-    public void testUploadDownloadMedia() {
+    public void testUploadDownloadMedia() throws Exception {
+        String fileName = "src/test/resources/mediaUpload.png";
+        File file = new File(fileName);
+        FileInputStream inStream = new FileInputStream(fileName);
+        byte[] fileBytes = inStream.readAllBytes();
+        String fileContents = new String(fileBytes);
+        FileWrapper body = new FileWrapper(file, "image/png");
+        String accountId = System.getenv("BW_ACCOUNT_ID");
+        String mediaId = "java-media-test";
+        String fileType = "image/png";
+        String cache = "no-cache";
 
+        messagingController.uploadMedia(accountId, mediaId, fileContents.length(), body, fileType, cache);
+
+        ApiResponse<InputStream> response = messagingController.getMedia(accountId, mediaId);
+        byte[] responseBytes = response.getResult().readAllBytes();
+        String resultString = new String(responseBytes);
+
+        assertEquals("Media download not equal to media upload", fileContents, resultString);
     }
 
     @Test
