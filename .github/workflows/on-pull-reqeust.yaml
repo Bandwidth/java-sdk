@@ -24,6 +24,6 @@ jobs:
         MFA_VOICE_APPLICATION_ID: ${{ secrets.MFA_VOICE_APPLICATION_ID }}
         PHONE_NUMBER_INBOUND: ${{ secrets.PHONE_NUMBER_INBOUND }}
         PHONE_NUMBER_MFA: ${{ secrets.PHONE_NUMBER_MFA }}
-        PHONE_NUMBER_OUTBOUND: ${{ secrets.change }}
+        PHONE_NUMBER_OUTBOUND: ${{ secrets.PHONE_NUMBER_OUTBOUND }}
         VOICE_APPLICATION_ID: ${{ secrets.VOICE_APPLICATION_ID }}
         VOICE_CALLBACK_URL: ${{ secrets.VOICE_CALLBACK_URL }}
