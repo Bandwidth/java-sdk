@@ -6,8 +6,8 @@ on:
           - main
 
 jobs:
-  maven-install-java:
-    name: Maven Install
+  validate-sdk:
+    name: Validate SDK
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -16,3 +16,17 @@ jobs:
       uses: ./.github/actions/maven-install
       env:
         GPG_KEY_PASSPHRASE: ${{ secrets.PRIVATE_KEY_PASSPHRASE }}
+    - name: Run SDK Tests
+      run: mvn test
+      env:
+        BW_ACCOUNT_ID: ${{ secrets.BW_ACCOUNT_ID }}
+        BW_PASSWORD: ${{ secrets.BW_PASSWORD }}
+        BW_USERNAME: ${{ secrets.BW_USERNAME }}
+        MESSAGING_APPLICATION_ID: ${{ secrets.MESSAGING_APPLICATION_ID }}
+        MFA_MESSAGING_APPLICATION_ID: ${{ secrets.MFA_MESSAGING_APPLICATION_ID }}
+        MFA_VOICE_APPLICATION_ID: ${{ secrets.MFA_VOICE_APPLICATION_ID }}
+        PHONE_NUMBER_INBOUND: ${{ secrets.PHONE_NUMBER_INBOUND }}
+        PHONE_NUMBER_MFA: ${{ secrets.PHONE_NUMBER_MFA }}
+        PHONE_NUMBER_OUTBOUND: ${{ secrets.change }}
+        VOICE_APPLICATION_ID: ${{ secrets.VOICE_APPLICATION_ID }}
+        VOICE_CALLBACK_URL: ${{ secrets.VOICE_CALLBACK_URL }}
