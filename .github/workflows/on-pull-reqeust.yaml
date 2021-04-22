@@ -16,9 +16,6 @@ jobs:
       uses: ./.github/actions/maven-install
       env:
         GPG_KEY_PASSPHRASE: ${{ secrets.PRIVATE_KEY_PASSPHRASE }}
-    - name: Run SDK Tests
-      run: mvn test
-      env:
         BW_ACCOUNT_ID: ${{ secrets.BW_ACCOUNT_ID }}
         BW_PASSWORD: ${{ secrets.BW_PASSWORD }}
         BW_USERNAME: ${{ secrets.BW_USERNAME }}
