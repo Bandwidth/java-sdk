@@ -24,6 +24,8 @@ import com.bandwidth.messaging.exceptions.*;
 import com.bandwidth.twofactorauth.models.*;
 import com.bandwidth.twofactorauth.controllers.*;
 import com.bandwidth.twofactorauth.exceptions.*;
+import com.bandwidth.webrtc.models.*;
+import com.bandwidth.webrtc.controllers.*;
 import com.bandwidth.exceptions.ApiException;
 import com.bandwidth.http.response.ApiResponse;
 import com.bandwidth.utilities.FileWrapper;
@@ -37,6 +39,7 @@ public class ApiTest {
     private com.bandwidth.messaging.controllers.APIController messagingController;
     private com.bandwidth.voice.controllers.APIController voiceController;
     private com.bandwidth.twofactorauth.controllers.MFAController mfaController;
+    private com.bandwidth.webrtc.controllers.APIController webrtcController;
 
     @Before
     public void init() {
@@ -44,10 +47,12 @@ public class ApiTest {
             .messagingBasicAuthCredentials(System.getenv("BW_USERNAME"), System.getenv("BW_PASSWORD"))
             .voiceBasicAuthCredentials(System.getenv("BW_USERNAME"), System.getenv("BW_PASSWORD"))
             .twoFactorAuthBasicAuthCredentials(System.getenv("BW_USERNAME"), System.getenv("BW_PASSWORD"))
+            .webRtcBasicAuthCredentials(System.getenv("BW_USERNAME"), System.getenv("BW_PASSWORD"))
             .build();
         this.messagingController = client.getMessagingClient().getAPIController();
         this.voiceController = client.getVoiceClient().getAPIController();
         this.mfaController = client.getTwoFactorAuthClient().getMFAController();
+        this.webrtcController = client.getWebRtcClient().getAPIController();
     }
 
     @Test
@@ -280,6 +285,28 @@ public class ApiTest {
         body.setExpirationTimeInMinutes(expirationTimeInMinutes);
 
         mfaController.createVerifyTwoFactor(accountId, body);
+    }
+
+    @Test
+    public void testWebRtcParticipantSessionManagement() throws Exception {
+        String accountId = System.getenv("BW_ACCOUNT_ID");
+
+        Session createSessionBody = new Session();
+        createSessionBody.setTag("new-session");
+
+        ApiResponse<Session> createSessionResponse = webrtcController.createSession(accountId, createSessionBody);
+        String sessionId = createSessionResponse.getResult().getId();
+
+        Participant createParticipantBody = new Participant();
+        createParticipantBody.setCallbackUrl("https://sample.com");
+        ArrayList<PublishPermissionEnum> publishPermissions = new ArrayList<PublishPermissionEnum>();
+        publishPermissions.add(PublishPermissionEnum.AUDIO);
+        publishPermissions.add(PublishPermissionEnum.VIDEO);
+
+        ApiResponse<AccountsParticipantsResponse> createParticipantResponse = webrtcController.createParticipant(accountId, createParticipantBody);
+        String participantId = createParticipantResponse.getResult().getParticipant().getId();
+
+        webrtcController.addParticipantToSession(accountId, sessionId, participantId, null);
     }
 
     /*
