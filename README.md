@@ -1,101 +1,152 @@
 # Bandwidth Java SDK
-  
-Bandwidth's API docs can be found at https://dev.bandwidth.com
 
-Java specific docs can be found at https://dev.bandwidth.com/sdks/java.html
+## Getting Started
 
-## Download & Install
+### Installation
 
-Maven:
+Add the following dependency to your `pom.xml` file
 
-```xml
+```
 <!-- https://mvnrepository.com/artifact/com.bandwidth.sdk/bandwidth-sdk -->
 <dependency>
     <groupId>com.bandwidth.sdk</groupId>
     <artifactId>bandwidth-sdk</artifactId>
-    <version>1.0.0</version>
+    <version>{version}</version>
 </dependency>
 ```
 
-## Initialize Bandwidth Client
+### Initialize
 
-```java
-
-//Set the voice client configuration with credentials
+```
 BandwidthClient client = new BandwidthClient.Builder()
-            .messagingBasicAuthCredentials("MESSAGING_API_TOKEN", "MESSAGING_API_SECRET")
-            .voiceBasicAuthCredentials("VOICE_API_USERNAME", "VOICE_API_PASSWORD")
-            .environment(Environment.PRODUCTION)
+            .messagingBasicAuthCredentials("username", "password")
+            .voiceBasicAuthCredentials("username", "password")
+            .twoFactorAuthBasicAuthCredentials("username", "password")
+            .webRtcBasicAuthCredentials("username", "password")
             .build();
+String accountId = "12345";
+```
 
-//Fully qualified name to remove confilicts
-com.bandwidth.messaging.controllers.APIController messagingController = client.getMessagingClient().getAPIController();
+### Create A Phone Call
+
+```
 com.bandwidth.voice.controllers.APIController voiceController = client.getVoiceClient().getAPIController();
 
+String to = "+15554443333";
+String from = "+15553334444";
+String applicationId = "3-a-b-c";
+String answerUrl = "https://sample.com";
+
+ApiCreateCallRequest body = new ApiCreateCallRequest();
+body.setTo(to);
+body.setFrom(from);
+body.setApplicationId(applicationId);
+body.setAnswerUrl(answerUrl);
+
+ApiResponse<ApiCallResponse> createCallResponse = voiceController.createCall(accountId, body);
+System.out.println(createCallResponse.getResult().getCallId());
 ```
 
-## Create Phone Call
-
-```java
-import com.bandwidth.voice.models.ApiCreateCallRequest;
-
-//Create the ApiCreateCallRequst object and populate.
-ApiCreateCallRequest callRequest = new ApiCreateCallRequest();
-
-callRequest.setApplicationId("application.Id");
-callRequest.setTo("+19999999999");
-callRequest.setAnswerUrl("https://test.com");
-callRequest.setFrom("+17777777777");
-
-//The voice client createCall can throw these exceptions.
-try {
-    ApiResponse<ApiCallResponse> response = voiceController.createCall("account.id", callRequest);
-    System.out.println(response.getResult().getCallId());
-} catch (IOException | ApiException e) {
-    //Handle
-}
+### Send A Text Message
 
 ```
+String to = "+15554443333";
+ArrayList<String> toNumbers = new ArrayList<String>();
+toNumbers.add(to);
+String from = "+15553334444";
+String applicationId = "3-a-b-d";
+String text = "Hello from Java";
 
-## Generate BXML
+MessageRequest body = new MessageRequest();
+body.setTo(toNumbers);
+body.setFrom(from);
+body.setText(text);
+body.setApplicationId(applicationId);
 
-```java
-import com.bandwidth.sdk.voice.models.verbs.*;
+ApiResponse<BandwidthMessage> createMessageResponse = messagingController.createMessage(accountId, body);
+System.out.println(createMessageResponse.getResult().getMessageId());
+```
 
-//Create a Bandwidth XML (BXML) SpeakSentence Verb.  Supply the sentence to be spoken.
+### Create BXML
+
+```
 SpeakSentence speakSentence = SpeakSentence.builder()
-	.text("Hello World")
-	.build();
+    .text("Hello world")
+    .voice("susan")
+    .gender("female")
+    .locale("en_US")
+    .build();
 
-//Create the response object and add the speakSentence verb to the response.
-Response response = Response.builder().build().add(speakSentence);
-
-//view the BXML
-System.out.println( response.toXml() )
-
+String response = new Response()
+    .add(speakSentence)
+    .toBXML();
+System.out.println(response);
 ```
 
-## Send Text Message
+### Create A MFA Request
 
-```java
-import com.bandwidth.messaging.models.MessageRequest;
-
-MessageRequest messageRequest = new MessageRequest();
-
-List<String> toNumbers = new ArrayList<>();
-
-toNumbers.add("+12345678902");
-
-messageRequest.setApplicationId(MSG_APPLICATION_ID);
-messageRequest.setText("Hey, check this out!");
-messageRequest.setFrom("+12345678901");
-messageRequest.setTo( toNumbers );
-messageRequest.setTag("test tag");
-
-try {
-    ApiResponse<BandwidthMessage> response = messagingController.createMessage(accountId, messageRequest);
-    System.out.println(response.getResult().getId());
-} catch (ApiException  | IOException e){
-    //Handle
-}
 ```
+String to = "+15554443333";
+String from = "+15553334444";
+String applicationId = "3-a-c-b");
+String scope = "scope";
+int digits = 6;
+String message = "Your temporary {NAME} {SCOPE} code is {CODE}";
+
+TwoFactorCodeRequestSchema body = new TwoFactorCodeRequestSchema();
+body.setTo(to);
+body.setFrom(from);
+body.setApplicationId(applicationId);
+body.setScope(scope);
+body.setDigits(digits);
+body.setMessage(message);
+
+mfaController.createVoiceTwoFactor(accountId, body);
+
+String code = "123456"; //this is the user code to verify
+int expirationTimeInMinutes = 3;
+
+TwoFactorVerifyRequestSchema body = new TwoFactorVerifyRequestSchema();
+body.setTo(to);
+body.setApplicationId(applicationId);
+body.setScope(scope);
+body.setCode(code);
+body.setExpirationTimeInMinutes(expirationTimeInMinutes);
+
+ApiResponse<TwoFactorVerifyCodeResponse> response = mfaController.createVerifyTwoFactor(accountId, body);
+System.out.println(response.getResult().getValid());
+```
+
+### WebRtc Participant & Session Management
+
+```
+Session createSessionBody = new Session();
+createSessionBody.setTag("new-session");
+
+ApiResponse<Session> createSessionResponse = webrtcController.createSession(accountId, createSessionBody);
+String sessionId = createSessionResponse.getResult().getId();
+
+Participant createParticipantBody = new Participant();
+createParticipantBody.setCallbackUrl("https://sample.com");
+ArrayList<PublishPermissionEnum> publishPermissions = new ArrayList<PublishPermissionEnum>();
+publishPermissions.add(PublishPermissionEnum.AUDIO);
+publishPermissions.add(PublishPermissionEnum.VIDEO);
+
+ApiResponse<AccountsParticipantsResponse> createParticipantResponse = webrtcController.createParticipant(accountId, createParticipantBody);
+String participantId = createParticipantResponse.getResult().getParticipant().getId();
+
+webrtcController.addParticipantToSession(accountId, sessionId, participantId, null);
+```
+
+## Supported Java Versions
+
+This package can be used with Java >= 1.8 
+
+## Documentation
+
+Documentation for this package can be found at https://dev.bandwidth.com/sdks/java.html
+
+## Credentials
+
+Information for credentials for this package can be found at https://dev.bandwidth.com/guides/accountCredentials.html
+
