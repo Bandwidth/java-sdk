@@ -14,6 +14,7 @@ import com.bandwidth.http.client.ReadonlyHttpClientConfiguration;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
 
 /**
  * Gateway class for the library.
@@ -27,6 +28,7 @@ public final class BandwidthClient implements Configuration {
      */
     private MessagingClient messagingClient;
     private TwoFactorAuthClient twoFactorAuthClient;
+    private PhoneNumberLookupClient phoneNumberLookupClient;
     private VoiceClient voiceClient;
     private WebRtcClient webRtcClient;
 
@@ -44,11 +46,6 @@ public final class BandwidthClient implements Configuration {
      * The HTTP Client instance to use for making HTTP requests.
      */
     private final HttpClient httpClient;
-
-    /**
-     * The timeout to use for making HTTP requests.
-     */
-    private final long timeout;
 
     /**
      * Http Client Configuration instance.
@@ -86,16 +83,15 @@ public final class BandwidthClient implements Configuration {
     private final HttpCallback httpCallback;
 
     private BandwidthClient(Environment environment, String baseUrl, HttpClient httpClient,
-            long timeout, ReadonlyHttpClientConfiguration httpClientConfig,
-            String messagingBasicAuthUserName, String messagingBasicAuthPassword,
-            String twoFactorAuthBasicAuthUserName, String twoFactorAuthBasicAuthPassword,
-            String voiceBasicAuthUserName, String voiceBasicAuthPassword,
-            String webRtcBasicAuthUserName, String webRtcBasicAuthPassword,
-            Map<String, AuthManager> authManagers, HttpCallback httpCallback) {
+            ReadonlyHttpClientConfiguration httpClientConfig, String messagingBasicAuthUserName,
+            String messagingBasicAuthPassword, String twoFactorAuthBasicAuthUserName,
+            String twoFactorAuthBasicAuthPassword, String voiceBasicAuthUserName,
+            String voiceBasicAuthPassword, String webRtcBasicAuthUserName,
+            String webRtcBasicAuthPassword, Map<String, AuthManager> authManagers,
+            HttpCallback httpCallback) {
         this.environment = environment;
         this.baseUrl = baseUrl;
         this.httpClient = httpClient;
-        this.timeout = timeout;
         this.httpClientConfig = httpClientConfig;
         this.httpCallback = httpCallback;
 
@@ -151,10 +147,11 @@ public final class BandwidthClient implements Configuration {
         }
 
 
-        messagingClient = new MessagingClient(this);
-        twoFactorAuthClient = new TwoFactorAuthClient(this);
-        voiceClient = new VoiceClient(this);
-        webRtcClient = new WebRtcClient(this);
+        messagingClient = new MessagingClient(this, httpCallback);
+        twoFactorAuthClient = new TwoFactorAuthClient(this, httpCallback);
+        phoneNumberLookupClient = new PhoneNumberLookupClient(this, httpCallback);
+        voiceClient = new VoiceClient(this, httpCallback);
+        webRtcClient = new WebRtcClient(this, httpCallback);
     }
 
     /**
@@ -178,6 +175,14 @@ public final class BandwidthClient implements Configuration {
      */
     public TwoFactorAuthClient getTwoFactorAuthClient() {
         return twoFactorAuthClient;
+    }
+
+    /**
+     * Provides access to phoneNumberLookupClient Client.
+     * @return Returns the PhoneNumberLookupClient instance
+     */
+    public PhoneNumberLookupClient getPhoneNumberLookupClient() {
+        return phoneNumberLookupClient;
     }
 
     /**
@@ -218,14 +223,6 @@ public final class BandwidthClient implements Configuration {
      */
     public HttpClient getHttpClient() {
         return httpClient;
-    }
-
-    /**
-     * The timeout to use for making HTTP requests.
-     * @return timeout
-     */
-    public long getTimeout() {
-        return timeout;
     }
 
     /**
@@ -277,6 +274,18 @@ public final class BandwidthClient implements Configuration {
     }
 
     /**
+     * The timeout to use for making HTTP requests.
+     * @deprecated This method will be removed in a future version. Use
+     *             {@link #getHttpClientConfig()} instead.
+     *
+     * @return timeout
+     */
+    @Deprecated
+    public long timeout() {
+        return httpClientConfig.getTimeout();
+    }
+
+    /**
      * Get base URI by current environment.
      * @param server Server for which to get the base URI
      * @return Processed base URI
@@ -314,6 +323,9 @@ public final class BandwidthClient implements Configuration {
             }
             if (server.equals(Server.TWOFACTORAUTHDEFAULT)) {
                 return "https://mfa.bandwidth.com/api/v1";
+            }
+            if (server.equals(Server.PHONENUMBERLOOKUPDEFAULT)) {
+                return "https://uat.numbers.bandwidth.com/api/v1";
             }
             if (server.equals(Server.VOICEDEFAULT)) {
                 return "https://voice.bandwidth.com";
@@ -362,7 +374,6 @@ public final class BandwidthClient implements Configuration {
         builder.environment = getEnvironment();
         builder.baseUrl = getBaseUrl();
         builder.httpClient = getHttpClient();
-        builder.timeout = getTimeout();
         builder.messagingBasicAuthUserName =
                 getMessagingBasicAuthCredentials().getBasicAuthUserName();
         builder.messagingBasicAuthPassword =
@@ -377,7 +388,8 @@ public final class BandwidthClient implements Configuration {
         builder.webRtcBasicAuthPassword = getWebRtcBasicAuthCredentials().getBasicAuthPassword();
         builder.authManagers = authManagers;
         builder.httpCallback = httpCallback;
-        builder.setHttpClientConfig(httpClientConfig);
+        builder.httpClientConfig(configBldr -> configBldr =
+                ((HttpClientConfiguration) httpClientConfig).newBuilder());
         return builder;
     }
 
@@ -385,10 +397,10 @@ public final class BandwidthClient implements Configuration {
      * Class to build instances of {@link BandwidthClient}.
      */
     public static class Builder {
+
         private Environment environment = Environment.PRODUCTION;
         private String baseUrl = "https://www.example.com";
         private HttpClient httpClient;
-        private long timeout = 0;
         private String messagingBasicAuthUserName = "TODO: Replace";
         private String messagingBasicAuthPassword = "TODO: Replace";
         private String twoFactorAuthBasicAuthUserName = "TODO: Replace";
@@ -399,7 +411,9 @@ public final class BandwidthClient implements Configuration {
         private String webRtcBasicAuthPassword = "TODO: Replace";
         private Map<String, AuthManager> authManagers = null;
         private HttpCallback httpCallback = null;
-        private HttpClientConfiguration httpClientConfig;
+        private HttpClientConfiguration.Builder httpClientConfigBuilder =
+                new HttpClientConfiguration.Builder();
+
 
         /**
          * Credentials setter for MessagingBasicAuth.
@@ -499,13 +513,14 @@ public final class BandwidthClient implements Configuration {
 
         /**
          * The timeout to use for making HTTP requests.
+         * @deprecated This method will be removed in a future version. Use
+         *             {@link #httpClientConfig()} instead.
          * @param timeout must be greater then 0.
          * @return Builder
          */
+        @Deprecated
         public Builder timeout(long timeout) {
-            if (timeout > 0) {
-                this.timeout = timeout;
-            }
+            this.httpClientConfigBuilder.timeout(timeout);
             return this;
         }
 
@@ -519,9 +534,16 @@ public final class BandwidthClient implements Configuration {
             return this;
         }
 
-
-        private void setHttpClientConfig(ReadonlyHttpClientConfiguration httpClientConfig) {
-            this.timeout = httpClientConfig.getTimeout();
+        /**
+         * Setter for the Builder of httpClientConfiguration, takes in an operation to be performed
+         * on the builder instance of HTTP client configuration.
+         * 
+         * @param action Consumer for the builder of httpClientConfiguration.
+         * @return Builder
+         */
+        public Builder httpClientConfig(Consumer<HttpClientConfiguration.Builder> action) {
+            action.accept(httpClientConfigBuilder);
+            return this;
         }
 
         /**
@@ -529,11 +551,10 @@ public final class BandwidthClient implements Configuration {
          * @return BandwidthClient
          */
         public BandwidthClient build() {
-            httpClientConfig = new HttpClientConfiguration();
-            httpClientConfig.setTimeout(timeout);
+            HttpClientConfiguration httpClientConfig = httpClientConfigBuilder.build();
             httpClient = new OkClient(httpClientConfig);
 
-            return new BandwidthClient(environment, baseUrl, httpClient, timeout, httpClientConfig,
+            return new BandwidthClient(environment, baseUrl, httpClient, httpClientConfig,
                     messagingBasicAuthUserName, messagingBasicAuthPassword,
                     twoFactorAuthBasicAuthUserName, twoFactorAuthBasicAuthPassword,
                     voiceBasicAuthUserName, voiceBasicAuthPassword, webRtcBasicAuthUserName,

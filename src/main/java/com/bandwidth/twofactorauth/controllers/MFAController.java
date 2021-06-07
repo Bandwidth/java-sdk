@@ -77,7 +77,7 @@ public final class MFAController extends BaseController {
         HttpRequest request = buildCreateVoiceTwoFactorRequest(accountId, body);
         authManagers.get("twoFactorAuth").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleCreateVoiceTwoFactorResponse(context);
@@ -95,7 +95,7 @@ public final class MFAController extends BaseController {
         return makeHttpCallAsync(() -> buildCreateVoiceTwoFactorRequest(accountId, body),
             req -> authManagers.get("twoFactorAuth").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleCreateVoiceTwoFactorResponse(context));
     }
 
@@ -189,7 +189,7 @@ public final class MFAController extends BaseController {
         HttpRequest request = buildCreateMessagingTwoFactorRequest(accountId, body);
         authManagers.get("twoFactorAuth").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleCreateMessagingTwoFactorResponse(context);
@@ -207,7 +207,7 @@ public final class MFAController extends BaseController {
         return makeHttpCallAsync(() -> buildCreateMessagingTwoFactorRequest(accountId, body),
             req -> authManagers.get("twoFactorAuth").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleCreateMessagingTwoFactorResponse(context));
     }
 
@@ -301,7 +301,7 @@ public final class MFAController extends BaseController {
         HttpRequest request = buildCreateVerifyTwoFactorRequest(accountId, body);
         authManagers.get("twoFactorAuth").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleCreateVerifyTwoFactorResponse(context);
@@ -319,7 +319,7 @@ public final class MFAController extends BaseController {
         return makeHttpCallAsync(() -> buildCreateVerifyTwoFactorRequest(accountId, body),
             req -> authManagers.get("twoFactorAuth").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleCreateVerifyTwoFactorResponse(context));
     }
 

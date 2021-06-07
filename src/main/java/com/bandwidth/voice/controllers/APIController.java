@@ -20,22 +20,22 @@ import com.bandwidth.http.request.HttpRequest;
 import com.bandwidth.http.response.ApiResponse;
 import com.bandwidth.http.response.HttpResponse;
 import com.bandwidth.http.response.HttpStringResponse;
-import com.bandwidth.voice.exceptions.ApiErrorResponseException;
-import com.bandwidth.voice.models.ApiCallResponse;
-import com.bandwidth.voice.models.ApiCallStateResponse;
-import com.bandwidth.voice.models.ApiCreateCallRequest;
-import com.bandwidth.voice.models.ApiModifyCallRequest;
-import com.bandwidth.voice.models.ApiModifyConferenceRequest;
-import com.bandwidth.voice.models.ApiTranscribeRecordingRequest;
-import com.bandwidth.voice.models.ConferenceDetail;
-import com.bandwidth.voice.models.ConferenceMemberDetail;
-import com.bandwidth.voice.models.ConferenceRecordingMetadataResponse;
-import com.bandwidth.voice.models.ModifyCallRecordingState;
-import com.bandwidth.voice.models.RecordingMetadataResponse;
+import com.bandwidth.voice.exceptions.ApiErrorException;
+import com.bandwidth.voice.models.CallRecordingMetadata;
+import com.bandwidth.voice.models.CallState;
+import com.bandwidth.voice.models.ConferenceMemberState;
+import com.bandwidth.voice.models.ConferenceRecordingMetadata;
+import com.bandwidth.voice.models.ConferenceState;
+import com.bandwidth.voice.models.CreateCallRequest;
+import com.bandwidth.voice.models.CreateCallResponse;
+import com.bandwidth.voice.models.DynamicResponse;
+import com.bandwidth.voice.models.ModifyCallRecordingRequest;
+import com.bandwidth.voice.models.ModifyCallRequest;
+import com.bandwidth.voice.models.ModifyConferenceRequest;
+import com.bandwidth.voice.models.TranscribeRecordingRequest;
 import com.bandwidth.voice.models.TranscriptionResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.HashMap;
 import java.util.List;
@@ -73,18 +73,18 @@ public final class APIController extends BaseController {
     /**
      * Creates an outbound call.
      * @param  accountId  Required parameter: Example:
-     * @param  body  Optional parameter: Example:
-     * @return    Returns the ApiCallResponse wrapped in ApiResponse response from the API call
+     * @param  body  Required parameter: Example:
+     * @return    Returns the CreateCallResponse wrapped in ApiResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
-    public ApiResponse<ApiCallResponse> createCall(
+    public ApiResponse<CreateCallResponse> createCall(
             final String accountId,
-            final ApiCreateCallRequest body) throws ApiException, IOException {
+            final CreateCallRequest body) throws ApiException, IOException {
         HttpRequest request = buildCreateCallRequest(accountId, body);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleCreateCallResponse(context);
@@ -93,16 +93,16 @@ public final class APIController extends BaseController {
     /**
      * Creates an outbound call.
      * @param  accountId  Required parameter: Example:
-     * @param  body  Optional parameter: Example:
-     * @return    Returns the ApiCallResponse wrapped in ApiResponse response from the API call
+     * @param  body  Required parameter: Example:
+     * @return    Returns the CreateCallResponse wrapped in ApiResponse response from the API call
      */
-    public CompletableFuture<ApiResponse<ApiCallResponse>> createCallAsync(
+    public CompletableFuture<ApiResponse<CreateCallResponse>> createCallAsync(
             final String accountId,
-            final ApiCreateCallRequest body) {
+            final CreateCallRequest body) {
         return makeHttpCallAsync(() -> buildCreateCallRequest(accountId, body),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleCreateCallResponse(context));
     }
 
@@ -111,7 +111,7 @@ public final class APIController extends BaseController {
      */
     private HttpRequest buildCreateCallRequest(
             final String accountId,
-            final ApiCreateCallRequest body) throws JsonProcessingException {
+            final CreateCallRequest body) throws JsonProcessingException {
         //the base uri for api requests
         String baseUri = config.getBaseUri(Server.VOICEDEFAULT);
 
@@ -145,9 +145,9 @@ public final class APIController extends BaseController {
 
     /**
      * Processes the response for createCall.
-     * @return An object of type ApiCallResponse
+     * @return An object of type CreateCallResponse
      */
-    private ApiResponse<ApiCallResponse> handleCreateCallResponse(
+    private ApiResponse<CreateCallResponse> handleCreateCallResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
 
@@ -160,77 +160,77 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
 
         //extract result from the http response
         String responseBody = ((HttpStringResponse) response).getBody();
-        ApiCallResponse result = ApiHelper.deserialize(responseBody,
-                ApiCallResponse.class);
+        CreateCallResponse result = ApiHelper.deserialize(responseBody,
+                CreateCallResponse.class);
 
-        return new ApiResponse<ApiCallResponse>(response.getStatusCode(), response.getHeaders(), result);
+        return new ApiResponse<CreateCallResponse>(response.getStatusCode(), response.getHeaders(), result);
     }
 
     /**
      * Returns near-realtime metadata about the specified call.
      * @param  accountId  Required parameter: Example:
      * @param  callId  Required parameter: Example:
-     * @return    Returns the ApiCallStateResponse wrapped in ApiResponse response from the API call
+     * @return    Returns the CallState wrapped in ApiResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
-    public ApiResponse<ApiCallStateResponse> getCallState(
+    public ApiResponse<CallState> getCall(
             final String accountId,
             final String callId) throws ApiException, IOException {
-        HttpRequest request = buildGetCallStateRequest(accountId, callId);
+        HttpRequest request = buildGetCallRequest(accountId, callId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
-        return handleGetCallStateResponse(context);
+        return handleGetCallResponse(context);
     }
 
     /**
      * Returns near-realtime metadata about the specified call.
      * @param  accountId  Required parameter: Example:
      * @param  callId  Required parameter: Example:
-     * @return    Returns the ApiCallStateResponse wrapped in ApiResponse response from the API call
+     * @return    Returns the CallState wrapped in ApiResponse response from the API call
      */
-    public CompletableFuture<ApiResponse<ApiCallStateResponse>> getCallStateAsync(
+    public CompletableFuture<ApiResponse<CallState>> getCallAsync(
             final String accountId,
             final String callId) {
-        return makeHttpCallAsync(() -> buildGetCallStateRequest(accountId, callId),
+        return makeHttpCallAsync(() -> buildGetCallRequest(accountId, callId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
-            context -> handleGetCallStateResponse(context));
+                        .executeAsync(request, false)),
+            context -> handleGetCallResponse(context));
     }
 
     /**
-     * Builds the HttpRequest object for getCallState.
+     * Builds the HttpRequest object for getCall.
      */
-    private HttpRequest buildGetCallStateRequest(
+    private HttpRequest buildGetCallRequest(
             final String accountId,
             final String callId) {
         //the base uri for api requests
@@ -265,10 +265,10 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Processes the response for getCallState.
-     * @return An object of type ApiCallStateResponse
+     * Processes the response for getCall.
+     * @return An object of type CallState
      */
-    private ApiResponse<ApiCallStateResponse> handleGetCallStateResponse(
+    private ApiResponse<CallState> handleGetCallResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
 
@@ -281,53 +281,53 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
 
         //extract result from the http response
         String responseBody = ((HttpStringResponse) response).getBody();
-        ApiCallStateResponse result = ApiHelper.deserialize(responseBody,
-                ApiCallStateResponse.class);
+        CallState result = ApiHelper.deserialize(responseBody,
+                CallState.class);
 
-        return new ApiResponse<ApiCallStateResponse>(response.getStatusCode(), response.getHeaders(), result);
+        return new ApiResponse<CallState>(response.getStatusCode(), response.getHeaders(), result);
     }
 
     /**
      * Interrupts and replaces an active call's BXML document.
      * @param  accountId  Required parameter: Example:
      * @param  callId  Required parameter: Example:
-     * @param  body  Optional parameter: Example:
+     * @param  body  Required parameter: Example:
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
     public ApiResponse<Void> modifyCall(
             final String accountId,
             final String callId,
-            final ApiModifyCallRequest body) throws ApiException, IOException {
+            final ModifyCallRequest body) throws ApiException, IOException {
         HttpRequest request = buildModifyCallRequest(accountId, callId, body);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleModifyCallResponse(context);
@@ -337,17 +337,17 @@ public final class APIController extends BaseController {
      * Interrupts and replaces an active call's BXML document.
      * @param  accountId  Required parameter: Example:
      * @param  callId  Required parameter: Example:
-     * @param  body  Optional parameter: Example:
+     * @param  body  Required parameter: Example:
      * @return    Returns the Void wrapped in ApiResponse response from the API call
      */
     public CompletableFuture<ApiResponse<Void>> modifyCallAsync(
             final String accountId,
             final String callId,
-            final ApiModifyCallRequest body) {
+            final ModifyCallRequest body) {
         return makeHttpCallAsync(() -> buildModifyCallRequest(accountId, callId, body),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleModifyCallResponse(context));
     }
 
@@ -357,7 +357,7 @@ public final class APIController extends BaseController {
     private HttpRequest buildModifyCallRequest(
             final String accountId,
             final String callId,
-            final ApiModifyCallRequest body) throws JsonProcessingException {
+            final ModifyCallRequest body) throws JsonProcessingException {
         //the base uri for api requests
         String baseUri = config.getBaseUri(Server.VOICEDEFAULT);
 
@@ -407,25 +407,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -437,18 +437,18 @@ public final class APIController extends BaseController {
      * Pauses or resumes a recording.
      * @param  accountId  Required parameter: Example:
      * @param  callId  Required parameter: Example:
-     * @param  body  Optional parameter: Example:
+     * @param  body  Required parameter: Example:
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
     public ApiResponse<Void> modifyCallRecordingState(
             final String accountId,
             final String callId,
-            final ModifyCallRecordingState body) throws ApiException, IOException {
+            final ModifyCallRecordingRequest body) throws ApiException, IOException {
         HttpRequest request = buildModifyCallRecordingStateRequest(accountId, callId, body);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleModifyCallRecordingStateResponse(context);
@@ -458,18 +458,18 @@ public final class APIController extends BaseController {
      * Pauses or resumes a recording.
      * @param  accountId  Required parameter: Example:
      * @param  callId  Required parameter: Example:
-     * @param  body  Optional parameter: Example:
+     * @param  body  Required parameter: Example:
      * @return    Returns the Void wrapped in ApiResponse response from the API call
      */
     public CompletableFuture<ApiResponse<Void>> modifyCallRecordingStateAsync(
             final String accountId,
             final String callId,
-            final ModifyCallRecordingState body) {
+            final ModifyCallRecordingRequest body) {
         return makeHttpCallAsync(() -> buildModifyCallRecordingStateRequest(accountId, callId,
                 body),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleModifyCallRecordingStateResponse(context));
     }
 
@@ -479,7 +479,7 @@ public final class APIController extends BaseController {
     private HttpRequest buildModifyCallRecordingStateRequest(
             final String accountId,
             final String callId,
-            final ModifyCallRecordingState body) throws JsonProcessingException {
+            final ModifyCallRecordingRequest body) throws JsonProcessingException {
         //the base uri for api requests
         String baseUri = config.getBaseUri(Server.VOICEDEFAULT);
 
@@ -529,25 +529,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -560,20 +560,20 @@ public final class APIController extends BaseController {
      * specified call.
      * @param  accountId  Required parameter: Example:
      * @param  callId  Required parameter: Example:
-     * @return    Returns the List of RecordingMetadataResponse wrapped in ApiResponse response from the API call
+     * @return    Returns the List of CallRecordingMetadata wrapped in ApiResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
-    public ApiResponse<List<RecordingMetadataResponse>> getQueryMetadataForAccountAndCall(
+    public ApiResponse<List<CallRecordingMetadata>> getCallRecordings(
             final String accountId,
             final String callId) throws ApiException, IOException {
-        HttpRequest request = buildGetQueryMetadataForAccountAndCallRequest(accountId, callId);
+        HttpRequest request = buildGetCallRecordingsRequest(accountId, callId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
-        return handleGetQueryMetadataForAccountAndCallResponse(context);
+        return handleGetCallRecordingsResponse(context);
     }
 
     /**
@@ -581,23 +581,22 @@ public final class APIController extends BaseController {
      * specified call.
      * @param  accountId  Required parameter: Example:
      * @param  callId  Required parameter: Example:
-     * @return    Returns the List of RecordingMetadataResponse wrapped in ApiResponse response from the API call
+     * @return    Returns the List of CallRecordingMetadata wrapped in ApiResponse response from the API call
      */
-    public CompletableFuture<ApiResponse<List<RecordingMetadataResponse>>> getQueryMetadataForAccountAndCallAsync(
+    public CompletableFuture<ApiResponse<List<CallRecordingMetadata>>> getCallRecordingsAsync(
             final String accountId,
             final String callId) {
-        return makeHttpCallAsync(() -> buildGetQueryMetadataForAccountAndCallRequest(accountId,
-                callId),
+        return makeHttpCallAsync(() -> buildGetCallRecordingsRequest(accountId, callId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
-            context -> handleGetQueryMetadataForAccountAndCallResponse(context));
+                        .executeAsync(request, false)),
+            context -> handleGetCallRecordingsResponse(context));
     }
 
     /**
-     * Builds the HttpRequest object for getQueryMetadataForAccountAndCall.
+     * Builds the HttpRequest object for getCallRecordings.
      */
-    private HttpRequest buildGetQueryMetadataForAccountAndCallRequest(
+    private HttpRequest buildGetCallRecordingsRequest(
             final String accountId,
             final String callId) {
         //the base uri for api requests
@@ -632,10 +631,10 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Processes the response for getQueryMetadataForAccountAndCall.
-     * @return An object of type List of RecordingMetadataResponse
+     * Processes the response for getCallRecordings.
+     * @return An object of type List of CallRecordingMetadata
      */
-    private ApiResponse<List<RecordingMetadataResponse>> handleGetQueryMetadataForAccountAndCallResponse(
+    private ApiResponse<List<CallRecordingMetadata>> handleGetCallRecordingsResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
 
@@ -648,34 +647,34 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
 
         //extract result from the http response
         String responseBody = ((HttpStringResponse) response).getBody();
-        List<RecordingMetadataResponse> result = ApiHelper.deserializeArray(responseBody,
-                RecordingMetadataResponse[].class);
-        return new ApiResponse<List<RecordingMetadataResponse>>(response.getStatusCode(), response.getHeaders(), result);
+        List<CallRecordingMetadata> result = ApiHelper.deserializeArray(responseBody,
+                CallRecordingMetadata[].class);
+        return new ApiResponse<List<CallRecordingMetadata>>(response.getStatusCode(), response.getHeaders(), result);
     }
 
     /**
@@ -683,21 +682,21 @@ public final class APIController extends BaseController {
      * @param  accountId  Required parameter: Example:
      * @param  callId  Required parameter: Example:
      * @param  recordingId  Required parameter: Example:
-     * @return    Returns the RecordingMetadataResponse wrapped in ApiResponse response from the API call
+     * @return    Returns the CallRecordingMetadata wrapped in ApiResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
-    public ApiResponse<RecordingMetadataResponse> getMetadataForRecording(
+    public ApiResponse<CallRecordingMetadata> getCallRecording(
             final String accountId,
             final String callId,
             final String recordingId) throws ApiException, IOException {
-        HttpRequest request = buildGetMetadataForRecordingRequest(accountId, callId, recordingId);
+        HttpRequest request = buildGetCallRecordingRequest(accountId, callId, recordingId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
-        return handleGetMetadataForRecordingResponse(context);
+        return handleGetCallRecordingResponse(context);
     }
 
     /**
@@ -705,24 +704,23 @@ public final class APIController extends BaseController {
      * @param  accountId  Required parameter: Example:
      * @param  callId  Required parameter: Example:
      * @param  recordingId  Required parameter: Example:
-     * @return    Returns the RecordingMetadataResponse wrapped in ApiResponse response from the API call
+     * @return    Returns the CallRecordingMetadata wrapped in ApiResponse response from the API call
      */
-    public CompletableFuture<ApiResponse<RecordingMetadataResponse>> getMetadataForRecordingAsync(
+    public CompletableFuture<ApiResponse<CallRecordingMetadata>> getCallRecordingAsync(
             final String accountId,
             final String callId,
             final String recordingId) {
-        return makeHttpCallAsync(() -> buildGetMetadataForRecordingRequest(accountId, callId,
-                recordingId),
+        return makeHttpCallAsync(() -> buildGetCallRecordingRequest(accountId, callId, recordingId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
-            context -> handleGetMetadataForRecordingResponse(context));
+                        .executeAsync(request, false)),
+            context -> handleGetCallRecordingResponse(context));
     }
 
     /**
-     * Builds the HttpRequest object for getMetadataForRecording.
+     * Builds the HttpRequest object for getCallRecording.
      */
-    private HttpRequest buildGetMetadataForRecordingRequest(
+    private HttpRequest buildGetCallRecordingRequest(
             final String accountId,
             final String callId,
             final String recordingId) {
@@ -760,10 +758,10 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Processes the response for getMetadataForRecording.
-     * @return An object of type RecordingMetadataResponse
+     * Processes the response for getCallRecording.
+     * @return An object of type CallRecordingMetadata
      */
-    private ApiResponse<RecordingMetadataResponse> handleGetMetadataForRecordingResponse(
+    private ApiResponse<CallRecordingMetadata> handleGetCallRecordingResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
 
@@ -776,35 +774,35 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
 
         //extract result from the http response
         String responseBody = ((HttpStringResponse) response).getBody();
-        RecordingMetadataResponse result = ApiHelper.deserialize(responseBody,
-                RecordingMetadataResponse.class);
+        CallRecordingMetadata result = ApiHelper.deserialize(responseBody,
+                CallRecordingMetadata.class);
 
-        return new ApiResponse<RecordingMetadataResponse>(response.getStatusCode(), response.getHeaders(), result);
+        return new ApiResponse<CallRecordingMetadata>(response.getStatusCode(), response.getHeaders(), result);
     }
 
     /**
@@ -822,7 +820,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildDeleteRecordingRequest(accountId, callId, recordingId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleDeleteRecordingResponse(context);
@@ -842,7 +840,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildDeleteRecordingRequest(accountId, callId, recordingId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleDeleteRecordingResponse(context));
     }
 
@@ -902,25 +900,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -933,21 +931,21 @@ public final class APIController extends BaseController {
      * @param  accountId  Required parameter: Example:
      * @param  callId  Required parameter: Example:
      * @param  recordingId  Required parameter: Example:
-     * @return    Returns the InputStream wrapped in ApiResponse response from the API call
+     * @return    Returns the DynamicResponse wrapped in ApiResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
-    public ApiResponse<InputStream> getStreamRecordingMedia(
+    public ApiResponse<DynamicResponse> getDownloadCallRecording(
             final String accountId,
             final String callId,
             final String recordingId) throws ApiException, IOException {
-        HttpRequest request = buildGetStreamRecordingMediaRequest(accountId, callId, recordingId);
+        HttpRequest request = buildGetDownloadCallRecordingRequest(accountId, callId, recordingId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsBinary(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
-        return handleGetStreamRecordingMediaResponse(context);
+        return handleGetDownloadCallRecordingResponse(context);
     }
 
     /**
@@ -955,24 +953,24 @@ public final class APIController extends BaseController {
      * @param  accountId  Required parameter: Example:
      * @param  callId  Required parameter: Example:
      * @param  recordingId  Required parameter: Example:
-     * @return    Returns the InputStream wrapped in ApiResponse response from the API call
+     * @return    Returns the DynamicResponse wrapped in ApiResponse response from the API call
      */
-    public CompletableFuture<ApiResponse<InputStream>> getStreamRecordingMediaAsync(
+    public CompletableFuture<ApiResponse<DynamicResponse>> getDownloadCallRecordingAsync(
             final String accountId,
             final String callId,
             final String recordingId) {
-        return makeHttpCallAsync(() -> buildGetStreamRecordingMediaRequest(accountId, callId,
+        return makeHttpCallAsync(() -> buildGetDownloadCallRecordingRequest(accountId, callId,
                 recordingId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
-            context -> handleGetStreamRecordingMediaResponse(context));
+                        .executeAsync(request, false)),
+            context -> handleGetDownloadCallRecordingResponse(context));
     }
 
     /**
-     * Builds the HttpRequest object for getStreamRecordingMedia.
+     * Builds the HttpRequest object for getDownloadCallRecording.
      */
-    private HttpRequest buildGetStreamRecordingMediaRequest(
+    private HttpRequest buildGetDownloadCallRecordingRequest(
             final String accountId,
             final String callId,
             final String recordingId) {
@@ -996,6 +994,7 @@ public final class APIController extends BaseController {
         //load all headers for the outgoing API request
         Headers headers = new Headers();
         headers.add("user-agent", BaseController.userAgent);
+        headers.add("accept", "application/json");
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
@@ -1009,10 +1008,10 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Processes the response for getStreamRecordingMedia.
-     * @return An object of type InputStream
+     * Processes the response for getDownloadCallRecording.
+     * @return An object of type DynamicResponse
      */
-    private ApiResponse<InputStream> handleGetStreamRecordingMediaResponse(
+    private ApiResponse<DynamicResponse> handleGetDownloadCallRecordingResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
 
@@ -1025,32 +1024,33 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
 
         //extract result from the http response
-        InputStream result = response.getRawBody();
-        return new ApiResponse<InputStream>(response.getStatusCode(), response.getHeaders(), result);
+        DynamicResponse result = new DynamicResponse(response);
+
+        return new ApiResponse<DynamicResponse>(response.getStatusCode(), response.getHeaders(), result);
     }
 
     /**
@@ -1068,7 +1068,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildDeleteRecordingMediaRequest(accountId, callId, recordingId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleDeleteRecordingMediaResponse(context);
@@ -1089,7 +1089,7 @@ public final class APIController extends BaseController {
                 recordingId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleDeleteRecordingMediaResponse(context));
     }
 
@@ -1149,25 +1149,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -1184,17 +1184,17 @@ public final class APIController extends BaseController {
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
-    public ApiResponse<TranscriptionResponse> getRecordingTranscription(
+    public ApiResponse<TranscriptionResponse> getCallTranscription(
             final String accountId,
             final String callId,
             final String recordingId) throws ApiException, IOException {
-        HttpRequest request = buildGetRecordingTranscriptionRequest(accountId, callId, recordingId);
+        HttpRequest request = buildGetCallTranscriptionRequest(accountId, callId, recordingId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
-        return handleGetRecordingTranscriptionResponse(context);
+        return handleGetCallTranscriptionResponse(context);
     }
 
     /**
@@ -1204,22 +1204,22 @@ public final class APIController extends BaseController {
      * @param  recordingId  Required parameter: Example:
      * @return    Returns the TranscriptionResponse wrapped in ApiResponse response from the API call
      */
-    public CompletableFuture<ApiResponse<TranscriptionResponse>> getRecordingTranscriptionAsync(
+    public CompletableFuture<ApiResponse<TranscriptionResponse>> getCallTranscriptionAsync(
             final String accountId,
             final String callId,
             final String recordingId) {
-        return makeHttpCallAsync(() -> buildGetRecordingTranscriptionRequest(accountId, callId,
+        return makeHttpCallAsync(() -> buildGetCallTranscriptionRequest(accountId, callId,
                 recordingId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
-            context -> handleGetRecordingTranscriptionResponse(context));
+                        .executeAsync(request, false)),
+            context -> handleGetCallTranscriptionResponse(context));
     }
 
     /**
-     * Builds the HttpRequest object for getRecordingTranscription.
+     * Builds the HttpRequest object for getCallTranscription.
      */
-    private HttpRequest buildGetRecordingTranscriptionRequest(
+    private HttpRequest buildGetCallTranscriptionRequest(
             final String accountId,
             final String callId,
             final String recordingId) {
@@ -1257,10 +1257,10 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Processes the response for getRecordingTranscription.
+     * Processes the response for getCallTranscription.
      * @return An object of type TranscriptionResponse
      */
-    private ApiResponse<TranscriptionResponse> handleGetRecordingTranscriptionResponse(
+    private ApiResponse<TranscriptionResponse> handleGetCallTranscriptionResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
 
@@ -1273,25 +1273,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -1309,23 +1309,23 @@ public final class APIController extends BaseController {
      * @param  accountId  Required parameter: Example:
      * @param  callId  Required parameter: Example:
      * @param  recordingId  Required parameter: Example:
-     * @param  body  Optional parameter: Example:
+     * @param  body  Required parameter: Example:
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
-    public ApiResponse<Void> createTranscribeRecording(
+    public ApiResponse<Void> createTranscribeCallRecording(
             final String accountId,
             final String callId,
             final String recordingId,
-            final ApiTranscribeRecordingRequest body) throws ApiException, IOException {
-        HttpRequest request = buildCreateTranscribeRecordingRequest(accountId, callId, recordingId,
-                body);
+            final TranscribeRecordingRequest body) throws ApiException, IOException {
+        HttpRequest request = buildCreateTranscribeCallRecordingRequest(accountId, callId,
+                recordingId, body);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
-        return handleCreateTranscribeRecordingResponse(context);
+        return handleCreateTranscribeCallRecordingResponse(context);
     }
 
     /**
@@ -1333,30 +1333,30 @@ public final class APIController extends BaseController {
      * @param  accountId  Required parameter: Example:
      * @param  callId  Required parameter: Example:
      * @param  recordingId  Required parameter: Example:
-     * @param  body  Optional parameter: Example:
+     * @param  body  Required parameter: Example:
      * @return    Returns the Void wrapped in ApiResponse response from the API call
      */
-    public CompletableFuture<ApiResponse<Void>> createTranscribeRecordingAsync(
+    public CompletableFuture<ApiResponse<Void>> createTranscribeCallRecordingAsync(
             final String accountId,
             final String callId,
             final String recordingId,
-            final ApiTranscribeRecordingRequest body) {
-        return makeHttpCallAsync(() -> buildCreateTranscribeRecordingRequest(accountId, callId,
+            final TranscribeRecordingRequest body) {
+        return makeHttpCallAsync(() -> buildCreateTranscribeCallRecordingRequest(accountId, callId,
                 recordingId, body),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
-            context -> handleCreateTranscribeRecordingResponse(context));
+                        .executeAsync(request, false)),
+            context -> handleCreateTranscribeCallRecordingResponse(context));
     }
 
     /**
-     * Builds the HttpRequest object for createTranscribeRecording.
+     * Builds the HttpRequest object for createTranscribeCallRecording.
      */
-    private HttpRequest buildCreateTranscribeRecordingRequest(
+    private HttpRequest buildCreateTranscribeCallRecordingRequest(
             final String accountId,
             final String callId,
             final String recordingId,
-            final ApiTranscribeRecordingRequest body) throws JsonProcessingException {
+            final TranscribeRecordingRequest body) throws JsonProcessingException {
         //the base uri for api requests
         String baseUri = config.getBaseUri(Server.VOICEDEFAULT);
 
@@ -1392,10 +1392,10 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Processes the response for createTranscribeRecording.
+     * Processes the response for createTranscribeCallRecording.
      * @return An object of type void
      */
-    private ApiResponse<Void> handleCreateTranscribeRecordingResponse(
+    private ApiResponse<Void> handleCreateTranscribeCallRecordingResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
 
@@ -1408,28 +1408,28 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 410) {
-            throw new ApiErrorResponseException("The media for this recording has been deleted, so we can't transcribe it", context);
+            throw new ApiErrorException("The media for this recording has been deleted, so we can't transcribe it", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -1445,18 +1445,17 @@ public final class APIController extends BaseController {
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
-    public ApiResponse<Void> deleteRecordingTranscription(
+    public ApiResponse<Void> deleteCallTranscription(
             final String accountId,
             final String callId,
             final String recordingId) throws ApiException, IOException {
-        HttpRequest request = buildDeleteRecordingTranscriptionRequest(accountId, callId,
-                recordingId);
+        HttpRequest request = buildDeleteCallTranscriptionRequest(accountId, callId, recordingId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
-        return handleDeleteRecordingTranscriptionResponse(context);
+        return handleDeleteCallTranscriptionResponse(context);
     }
 
     /**
@@ -1466,22 +1465,22 @@ public final class APIController extends BaseController {
      * @param  recordingId  Required parameter: Example:
      * @return    Returns the Void wrapped in ApiResponse response from the API call
      */
-    public CompletableFuture<ApiResponse<Void>> deleteRecordingTranscriptionAsync(
+    public CompletableFuture<ApiResponse<Void>> deleteCallTranscriptionAsync(
             final String accountId,
             final String callId,
             final String recordingId) {
-        return makeHttpCallAsync(() -> buildDeleteRecordingTranscriptionRequest(accountId, callId,
+        return makeHttpCallAsync(() -> buildDeleteCallTranscriptionRequest(accountId, callId,
                 recordingId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
-            context -> handleDeleteRecordingTranscriptionResponse(context));
+                        .executeAsync(request, false)),
+            context -> handleDeleteCallTranscriptionResponse(context));
     }
 
     /**
-     * Builds the HttpRequest object for deleteRecordingTranscription.
+     * Builds the HttpRequest object for deleteCallTranscription.
      */
-    private HttpRequest buildDeleteRecordingTranscriptionRequest(
+    private HttpRequest buildDeleteCallTranscriptionRequest(
             final String accountId,
             final String callId,
             final String recordingId) {
@@ -1518,10 +1517,10 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Processes the response for deleteRecordingTranscription.
+     * Processes the response for deleteCallTranscription.
      * @return An object of type void
      */
-    private ApiResponse<Void> handleDeleteRecordingTranscriptionResponse(
+    private ApiResponse<Void> handleDeleteCallTranscriptionResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
 
@@ -1534,25 +1533,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -1563,67 +1562,67 @@ public final class APIController extends BaseController {
     /**
      * Returns information about the conferences in the account.
      * @param  accountId  Required parameter: Example:
-     * @param  pageSize  Optional parameter: Example: 1000
-     * @param  pageToken  Optional parameter: Example:
      * @param  name  Optional parameter: Example:
      * @param  minCreatedTime  Optional parameter: Example:
      * @param  maxCreatedTime  Optional parameter: Example:
-     * @return    Returns the List of ConferenceDetail wrapped in ApiResponse response from the API call
+     * @param  pageSize  Optional parameter: Example: 1000
+     * @param  pageToken  Optional parameter: Example:
+     * @return    Returns the List of ConferenceState wrapped in ApiResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
-    public ApiResponse<List<ConferenceDetail>> getConferencesByAccount(
+    public ApiResponse<List<ConferenceState>> getConferences(
             final String accountId,
-            final Integer pageSize,
-            final String pageToken,
             final String name,
             final String minCreatedTime,
-            final String maxCreatedTime) throws ApiException, IOException {
-        HttpRequest request = buildGetConferencesByAccountRequest(accountId, pageSize, pageToken,
-                name, minCreatedTime, maxCreatedTime);
+            final String maxCreatedTime,
+            final Integer pageSize,
+            final String pageToken) throws ApiException, IOException {
+        HttpRequest request = buildGetConferencesRequest(accountId, name, minCreatedTime,
+                maxCreatedTime, pageSize, pageToken);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
-        return handleGetConferencesByAccountResponse(context);
+        return handleGetConferencesResponse(context);
     }
 
     /**
      * Returns information about the conferences in the account.
      * @param  accountId  Required parameter: Example:
-     * @param  pageSize  Optional parameter: Example: 1000
-     * @param  pageToken  Optional parameter: Example:
      * @param  name  Optional parameter: Example:
      * @param  minCreatedTime  Optional parameter: Example:
      * @param  maxCreatedTime  Optional parameter: Example:
-     * @return    Returns the List of ConferenceDetail wrapped in ApiResponse response from the API call
+     * @param  pageSize  Optional parameter: Example: 1000
+     * @param  pageToken  Optional parameter: Example:
+     * @return    Returns the List of ConferenceState wrapped in ApiResponse response from the API call
      */
-    public CompletableFuture<ApiResponse<List<ConferenceDetail>>> getConferencesByAccountAsync(
+    public CompletableFuture<ApiResponse<List<ConferenceState>>> getConferencesAsync(
             final String accountId,
-            final Integer pageSize,
-            final String pageToken,
             final String name,
             final String minCreatedTime,
-            final String maxCreatedTime) {
-        return makeHttpCallAsync(() -> buildGetConferencesByAccountRequest(accountId, pageSize,
-                pageToken, name, minCreatedTime, maxCreatedTime),
+            final String maxCreatedTime,
+            final Integer pageSize,
+            final String pageToken) {
+        return makeHttpCallAsync(() -> buildGetConferencesRequest(accountId, name, minCreatedTime,
+                maxCreatedTime, pageSize, pageToken),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
-            context -> handleGetConferencesByAccountResponse(context));
+                        .executeAsync(request, false)),
+            context -> handleGetConferencesResponse(context));
     }
 
     /**
-     * Builds the HttpRequest object for getConferencesByAccount.
+     * Builds the HttpRequest object for getConferences.
      */
-    private HttpRequest buildGetConferencesByAccountRequest(
+    private HttpRequest buildGetConferencesRequest(
             final String accountId,
-            final Integer pageSize,
-            final String pageToken,
             final String name,
             final String minCreatedTime,
-            final String maxCreatedTime) {
+            final String maxCreatedTime,
+            final Integer pageSize,
+            final String pageToken) {
         //the base uri for api requests
         String baseUri = config.getBaseUri(Server.VOICEDEFAULT);
 
@@ -1639,12 +1638,12 @@ public final class APIController extends BaseController {
 
         //load all query parameters
         Map<String, Object> queryParameters = new HashMap<>();
-        queryParameters.put("pageSize",
-                (pageSize != null) ? pageSize : 1000);
-        queryParameters.put("pageToken", pageToken);
         queryParameters.put("name", name);
         queryParameters.put("minCreatedTime", minCreatedTime);
         queryParameters.put("maxCreatedTime", maxCreatedTime);
+        queryParameters.put("pageSize",
+                (pageSize != null) ? pageSize : 1000);
+        queryParameters.put("pageToken", pageToken);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
@@ -1664,10 +1663,10 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Processes the response for getConferencesByAccount.
-     * @return An object of type List of ConferenceDetail
+     * Processes the response for getConferences.
+     * @return An object of type List of ConferenceState
      */
-    private ApiResponse<List<ConferenceDetail>> handleGetConferencesByAccountResponse(
+    private ApiResponse<List<ConferenceState>> handleGetConferencesResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
 
@@ -1680,76 +1679,76 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
 
         //extract result from the http response
         String responseBody = ((HttpStringResponse) response).getBody();
-        List<ConferenceDetail> result = ApiHelper.deserializeArray(responseBody,
-                ConferenceDetail[].class);
-        return new ApiResponse<List<ConferenceDetail>>(response.getStatusCode(), response.getHeaders(), result);
+        List<ConferenceState> result = ApiHelper.deserializeArray(responseBody,
+                ConferenceState[].class);
+        return new ApiResponse<List<ConferenceState>>(response.getStatusCode(), response.getHeaders(), result);
     }
 
     /**
      * Returns information about the specified conference.
      * @param  accountId  Required parameter: Example:
      * @param  conferenceId  Required parameter: Example:
-     * @return    Returns the ConferenceDetail wrapped in ApiResponse response from the API call
+     * @return    Returns the ConferenceState wrapped in ApiResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
-    public ApiResponse<ConferenceDetail> getConferenceById(
+    public ApiResponse<ConferenceState> getConference(
             final String accountId,
             final String conferenceId) throws ApiException, IOException {
-        HttpRequest request = buildGetConferenceByIdRequest(accountId, conferenceId);
+        HttpRequest request = buildGetConferenceRequest(accountId, conferenceId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
-        return handleGetConferenceByIdResponse(context);
+        return handleGetConferenceResponse(context);
     }
 
     /**
      * Returns information about the specified conference.
      * @param  accountId  Required parameter: Example:
      * @param  conferenceId  Required parameter: Example:
-     * @return    Returns the ConferenceDetail wrapped in ApiResponse response from the API call
+     * @return    Returns the ConferenceState wrapped in ApiResponse response from the API call
      */
-    public CompletableFuture<ApiResponse<ConferenceDetail>> getConferenceByIdAsync(
+    public CompletableFuture<ApiResponse<ConferenceState>> getConferenceAsync(
             final String accountId,
             final String conferenceId) {
-        return makeHttpCallAsync(() -> buildGetConferenceByIdRequest(accountId, conferenceId),
+        return makeHttpCallAsync(() -> buildGetConferenceRequest(accountId, conferenceId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
-            context -> handleGetConferenceByIdResponse(context));
+                        .executeAsync(request, false)),
+            context -> handleGetConferenceResponse(context));
     }
 
     /**
-     * Builds the HttpRequest object for getConferenceById.
+     * Builds the HttpRequest object for getConference.
      */
-    private HttpRequest buildGetConferenceByIdRequest(
+    private HttpRequest buildGetConferenceRequest(
             final String accountId,
             final String conferenceId) {
         //the base uri for api requests
@@ -1784,10 +1783,10 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Processes the response for getConferenceById.
-     * @return An object of type ConferenceDetail
+     * Processes the response for getConference.
+     * @return An object of type ConferenceState
      */
-    private ApiResponse<ConferenceDetail> handleGetConferenceByIdResponse(
+    private ApiResponse<ConferenceState> handleGetConferenceResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
 
@@ -1800,53 +1799,53 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
 
         //extract result from the http response
         String responseBody = ((HttpStringResponse) response).getBody();
-        ConferenceDetail result = ApiHelper.deserialize(responseBody,
-                ConferenceDetail.class);
+        ConferenceState result = ApiHelper.deserialize(responseBody,
+                ConferenceState.class);
 
-        return new ApiResponse<ConferenceDetail>(response.getStatusCode(), response.getHeaders(), result);
+        return new ApiResponse<ConferenceState>(response.getStatusCode(), response.getHeaders(), result);
     }
 
     /**
      * Modify the conference state.
      * @param  accountId  Required parameter: Example:
      * @param  conferenceId  Required parameter: Example:
-     * @param  body  Optional parameter: Example:
+     * @param  body  Required parameter: Example:
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
     public ApiResponse<Void> modifyConference(
             final String accountId,
             final String conferenceId,
-            final ApiModifyConferenceRequest body) throws ApiException, IOException {
+            final ModifyConferenceRequest body) throws ApiException, IOException {
         HttpRequest request = buildModifyConferenceRequest(accountId, conferenceId, body);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleModifyConferenceResponse(context);
@@ -1856,17 +1855,17 @@ public final class APIController extends BaseController {
      * Modify the conference state.
      * @param  accountId  Required parameter: Example:
      * @param  conferenceId  Required parameter: Example:
-     * @param  body  Optional parameter: Example:
+     * @param  body  Required parameter: Example:
      * @return    Returns the Void wrapped in ApiResponse response from the API call
      */
     public CompletableFuture<ApiResponse<Void>> modifyConferenceAsync(
             final String accountId,
             final String conferenceId,
-            final ApiModifyConferenceRequest body) {
+            final ModifyConferenceRequest body) {
         return makeHttpCallAsync(() -> buildModifyConferenceRequest(accountId, conferenceId, body),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleModifyConferenceResponse(context));
     }
 
@@ -1876,7 +1875,7 @@ public final class APIController extends BaseController {
     private HttpRequest buildModifyConferenceRequest(
             final String accountId,
             final String conferenceId,
-            final ApiModifyConferenceRequest body) throws JsonProcessingException {
+            final ModifyConferenceRequest body) throws JsonProcessingException {
         //the base uri for api requests
         String baseUri = config.getBaseUri(Server.VOICEDEFAULT);
 
@@ -1926,25 +1925,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -1957,7 +1956,7 @@ public final class APIController extends BaseController {
      * @param  accountId  Required parameter: Example:
      * @param  conferenceId  Required parameter: Example:
      * @param  callId  Required parameter: Example:
-     * @param  body  Optional parameter: Example:
+     * @param  body  Required parameter: Example:
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
@@ -1965,12 +1964,12 @@ public final class APIController extends BaseController {
             final String accountId,
             final String conferenceId,
             final String callId,
-            final ConferenceMemberDetail body) throws ApiException, IOException {
+            final ConferenceMemberState body) throws ApiException, IOException {
         HttpRequest request = buildModifyConferenceMemberRequest(accountId, conferenceId, callId,
                 body);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleModifyConferenceMemberResponse(context);
@@ -1981,19 +1980,19 @@ public final class APIController extends BaseController {
      * @param  accountId  Required parameter: Example:
      * @param  conferenceId  Required parameter: Example:
      * @param  callId  Required parameter: Example:
-     * @param  body  Optional parameter: Example:
+     * @param  body  Required parameter: Example:
      * @return    Returns the Void wrapped in ApiResponse response from the API call
      */
     public CompletableFuture<ApiResponse<Void>> modifyConferenceMemberAsync(
             final String accountId,
             final String conferenceId,
             final String callId,
-            final ConferenceMemberDetail body) {
+            final ConferenceMemberState body) {
         return makeHttpCallAsync(() -> buildModifyConferenceMemberRequest(accountId, conferenceId,
                 callId, body),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleModifyConferenceMemberResponse(context));
     }
 
@@ -2004,7 +2003,7 @@ public final class APIController extends BaseController {
             final String accountId,
             final String conferenceId,
             final String callId,
-            final ConferenceMemberDetail body) throws JsonProcessingException {
+            final ConferenceMemberState body) throws JsonProcessingException {
         //the base uri for api requests
         String baseUri = config.getBaseUri(Server.VOICEDEFAULT);
 
@@ -2056,25 +2055,25 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -2087,18 +2086,18 @@ public final class APIController extends BaseController {
      * @param  accountId  Required parameter: Example:
      * @param  conferenceId  Required parameter: Example:
      * @param  memberId  Required parameter: Example:
-     * @return    Returns the ConferenceMemberDetail wrapped in ApiResponse response from the API call
+     * @return    Returns the ConferenceMemberState wrapped in ApiResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
-    public ApiResponse<ConferenceMemberDetail> getConferenceMember(
+    public ApiResponse<ConferenceMemberState> getConferenceMember(
             final String accountId,
             final String conferenceId,
             final String memberId) throws ApiException, IOException {
         HttpRequest request = buildGetConferenceMemberRequest(accountId, conferenceId, memberId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetConferenceMemberResponse(context);
@@ -2109,9 +2108,9 @@ public final class APIController extends BaseController {
      * @param  accountId  Required parameter: Example:
      * @param  conferenceId  Required parameter: Example:
      * @param  memberId  Required parameter: Example:
-     * @return    Returns the ConferenceMemberDetail wrapped in ApiResponse response from the API call
+     * @return    Returns the ConferenceMemberState wrapped in ApiResponse response from the API call
      */
-    public CompletableFuture<ApiResponse<ConferenceMemberDetail>> getConferenceMemberAsync(
+    public CompletableFuture<ApiResponse<ConferenceMemberState>> getConferenceMemberAsync(
             final String accountId,
             final String conferenceId,
             final String memberId) {
@@ -2119,7 +2118,7 @@ public final class APIController extends BaseController {
                 memberId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetConferenceMemberResponse(context));
     }
 
@@ -2165,9 +2164,9 @@ public final class APIController extends BaseController {
 
     /**
      * Processes the response for getConferenceMember.
-     * @return An object of type ConferenceMemberDetail
+     * @return An object of type ConferenceMemberState
      */
-    private ApiResponse<ConferenceMemberDetail> handleGetConferenceMemberResponse(
+    private ApiResponse<ConferenceMemberState> handleGetConferenceMemberResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
 
@@ -2180,35 +2179,35 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
 
         //extract result from the http response
         String responseBody = ((HttpStringResponse) response).getBody();
-        ConferenceMemberDetail result = ApiHelper.deserialize(responseBody,
-                ConferenceMemberDetail.class);
+        ConferenceMemberState result = ApiHelper.deserialize(responseBody,
+                ConferenceMemberState.class);
 
-        return new ApiResponse<ConferenceMemberDetail>(response.getStatusCode(), response.getHeaders(), result);
+        return new ApiResponse<ConferenceMemberState>(response.getStatusCode(), response.getHeaders(), result);
     }
 
     /**
@@ -2216,21 +2215,20 @@ public final class APIController extends BaseController {
      * specified conference.
      * @param  accountId  Required parameter: Example:
      * @param  conferenceId  Required parameter: Example:
-     * @return    Returns the List of ConferenceRecordingMetadataResponse wrapped in ApiResponse response from the API call
+     * @return    Returns the List of ConferenceRecordingMetadata wrapped in ApiResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
-    public ApiResponse<List<ConferenceRecordingMetadataResponse>> getQueryMetadataForAccountAndConference(
+    public ApiResponse<List<ConferenceRecordingMetadata>> getConferenceRecordings(
             final String accountId,
             final String conferenceId) throws ApiException, IOException {
-        HttpRequest request = buildGetQueryMetadataForAccountAndConferenceRequest(accountId,
-                conferenceId);
+        HttpRequest request = buildGetConferenceRecordingsRequest(accountId, conferenceId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
-        return handleGetQueryMetadataForAccountAndConferenceResponse(context);
+        return handleGetConferenceRecordingsResponse(context);
     }
 
     /**
@@ -2238,23 +2236,22 @@ public final class APIController extends BaseController {
      * specified conference.
      * @param  accountId  Required parameter: Example:
      * @param  conferenceId  Required parameter: Example:
-     * @return    Returns the List of ConferenceRecordingMetadataResponse wrapped in ApiResponse response from the API call
+     * @return    Returns the List of ConferenceRecordingMetadata wrapped in ApiResponse response from the API call
      */
-    public CompletableFuture<ApiResponse<List<ConferenceRecordingMetadataResponse>>> getQueryMetadataForAccountAndConferenceAsync(
+    public CompletableFuture<ApiResponse<List<ConferenceRecordingMetadata>>> getConferenceRecordingsAsync(
             final String accountId,
             final String conferenceId) {
-        return makeHttpCallAsync(() -> buildGetQueryMetadataForAccountAndConferenceRequest(
-                accountId, conferenceId),
+        return makeHttpCallAsync(() -> buildGetConferenceRecordingsRequest(accountId, conferenceId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
-            context -> handleGetQueryMetadataForAccountAndConferenceResponse(context));
+                        .executeAsync(request, false)),
+            context -> handleGetConferenceRecordingsResponse(context));
     }
 
     /**
-     * Builds the HttpRequest object for getQueryMetadataForAccountAndConference.
+     * Builds the HttpRequest object for getConferenceRecordings.
      */
-    private HttpRequest buildGetQueryMetadataForAccountAndConferenceRequest(
+    private HttpRequest buildGetConferenceRecordingsRequest(
             final String accountId,
             final String conferenceId) {
         //the base uri for api requests
@@ -2289,10 +2286,10 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Processes the response for getQueryMetadataForAccountAndConference.
-     * @return An object of type List of ConferenceRecordingMetadataResponse
+     * Processes the response for getConferenceRecordings.
+     * @return An object of type List of ConferenceRecordingMetadata
      */
-    private ApiResponse<List<ConferenceRecordingMetadataResponse>> handleGetQueryMetadataForAccountAndConferenceResponse(
+    private ApiResponse<List<ConferenceRecordingMetadata>> handleGetConferenceRecordingsResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
 
@@ -2305,34 +2302,34 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
 
         //extract result from the http response
         String responseBody = ((HttpStringResponse) response).getBody();
-        List<ConferenceRecordingMetadataResponse> result = ApiHelper.deserializeArray(responseBody,
-                ConferenceRecordingMetadataResponse[].class);
-        return new ApiResponse<List<ConferenceRecordingMetadataResponse>>(response.getStatusCode(), response.getHeaders(), result);
+        List<ConferenceRecordingMetadata> result = ApiHelper.deserializeArray(responseBody,
+                ConferenceRecordingMetadata[].class);
+        return new ApiResponse<List<ConferenceRecordingMetadata>>(response.getStatusCode(), response.getHeaders(), result);
     }
 
     /**
@@ -2340,22 +2337,22 @@ public final class APIController extends BaseController {
      * @param  accountId  Required parameter: Example:
      * @param  conferenceId  Required parameter: Example:
      * @param  recordingId  Required parameter: Example:
-     * @return    Returns the RecordingMetadataResponse wrapped in ApiResponse response from the API call
+     * @return    Returns the CallRecordingMetadata wrapped in ApiResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
-    public ApiResponse<RecordingMetadataResponse> getMetadataForConferenceRecording(
+    public ApiResponse<CallRecordingMetadata> getConferenceRecording(
             final String accountId,
             final String conferenceId,
             final String recordingId) throws ApiException, IOException {
-        HttpRequest request = buildGetMetadataForConferenceRecordingRequest(accountId, conferenceId,
+        HttpRequest request = buildGetConferenceRecordingRequest(accountId, conferenceId,
                 recordingId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
-        return handleGetMetadataForConferenceRecordingResponse(context);
+        return handleGetConferenceRecordingResponse(context);
     }
 
     /**
@@ -2363,24 +2360,24 @@ public final class APIController extends BaseController {
      * @param  accountId  Required parameter: Example:
      * @param  conferenceId  Required parameter: Example:
      * @param  recordingId  Required parameter: Example:
-     * @return    Returns the RecordingMetadataResponse wrapped in ApiResponse response from the API call
+     * @return    Returns the CallRecordingMetadata wrapped in ApiResponse response from the API call
      */
-    public CompletableFuture<ApiResponse<RecordingMetadataResponse>> getMetadataForConferenceRecordingAsync(
+    public CompletableFuture<ApiResponse<CallRecordingMetadata>> getConferenceRecordingAsync(
             final String accountId,
             final String conferenceId,
             final String recordingId) {
-        return makeHttpCallAsync(() -> buildGetMetadataForConferenceRecordingRequest(accountId,
-                conferenceId, recordingId),
+        return makeHttpCallAsync(() -> buildGetConferenceRecordingRequest(accountId, conferenceId,
+                recordingId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
-            context -> handleGetMetadataForConferenceRecordingResponse(context));
+                        .executeAsync(request, false)),
+            context -> handleGetConferenceRecordingResponse(context));
     }
 
     /**
-     * Builds the HttpRequest object for getMetadataForConferenceRecording.
+     * Builds the HttpRequest object for getConferenceRecording.
      */
-    private HttpRequest buildGetMetadataForConferenceRecordingRequest(
+    private HttpRequest buildGetConferenceRecordingRequest(
             final String accountId,
             final String conferenceId,
             final String recordingId) {
@@ -2418,10 +2415,10 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Processes the response for getMetadataForConferenceRecording.
-     * @return An object of type RecordingMetadataResponse
+     * Processes the response for getConferenceRecording.
+     * @return An object of type CallRecordingMetadata
      */
-    private ApiResponse<RecordingMetadataResponse> handleGetMetadataForConferenceRecordingResponse(
+    private ApiResponse<CallRecordingMetadata> handleGetConferenceRecordingResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
 
@@ -2434,35 +2431,35 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
 
         //extract result from the http response
         String responseBody = ((HttpStringResponse) response).getBody();
-        RecordingMetadataResponse result = ApiHelper.deserialize(responseBody,
-                RecordingMetadataResponse.class);
+        CallRecordingMetadata result = ApiHelper.deserialize(responseBody,
+                CallRecordingMetadata.class);
 
-        return new ApiResponse<RecordingMetadataResponse>(response.getStatusCode(), response.getHeaders(), result);
+        return new ApiResponse<CallRecordingMetadata>(response.getStatusCode(), response.getHeaders(), result);
     }
 
     /**
@@ -2470,22 +2467,22 @@ public final class APIController extends BaseController {
      * @param  accountId  Required parameter: Example:
      * @param  conferenceId  Required parameter: Example:
      * @param  recordingId  Required parameter: Example:
-     * @return    Returns the InputStream wrapped in ApiResponse response from the API call
+     * @return    Returns the DynamicResponse wrapped in ApiResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
-    public ApiResponse<InputStream> getStreamConferenceRecordingMedia(
+    public ApiResponse<DynamicResponse> getDownloadConferenceRecording(
             final String accountId,
             final String conferenceId,
             final String recordingId) throws ApiException, IOException {
-        HttpRequest request = buildGetStreamConferenceRecordingMediaRequest(accountId, conferenceId,
+        HttpRequest request = buildGetDownloadConferenceRecordingRequest(accountId, conferenceId,
                 recordingId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsBinary(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
-        return handleGetStreamConferenceRecordingMediaResponse(context);
+        return handleGetDownloadConferenceRecordingResponse(context);
     }
 
     /**
@@ -2493,24 +2490,24 @@ public final class APIController extends BaseController {
      * @param  accountId  Required parameter: Example:
      * @param  conferenceId  Required parameter: Example:
      * @param  recordingId  Required parameter: Example:
-     * @return    Returns the InputStream wrapped in ApiResponse response from the API call
+     * @return    Returns the DynamicResponse wrapped in ApiResponse response from the API call
      */
-    public CompletableFuture<ApiResponse<InputStream>> getStreamConferenceRecordingMediaAsync(
+    public CompletableFuture<ApiResponse<DynamicResponse>> getDownloadConferenceRecordingAsync(
             final String accountId,
             final String conferenceId,
             final String recordingId) {
-        return makeHttpCallAsync(() -> buildGetStreamConferenceRecordingMediaRequest(accountId,
+        return makeHttpCallAsync(() -> buildGetDownloadConferenceRecordingRequest(accountId,
                 conferenceId, recordingId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
-            context -> handleGetStreamConferenceRecordingMediaResponse(context));
+                        .executeAsync(request, false)),
+            context -> handleGetDownloadConferenceRecordingResponse(context));
     }
 
     /**
-     * Builds the HttpRequest object for getStreamConferenceRecordingMedia.
+     * Builds the HttpRequest object for getDownloadConferenceRecording.
      */
-    private HttpRequest buildGetStreamConferenceRecordingMediaRequest(
+    private HttpRequest buildGetDownloadConferenceRecordingRequest(
             final String accountId,
             final String conferenceId,
             final String recordingId) {
@@ -2534,6 +2531,7 @@ public final class APIController extends BaseController {
         //load all headers for the outgoing API request
         Headers headers = new Headers();
         headers.add("user-agent", BaseController.userAgent);
+        headers.add("accept", "application/json");
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
@@ -2547,10 +2545,10 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Processes the response for getStreamConferenceRecordingMedia.
-     * @return An object of type InputStream
+     * Processes the response for getDownloadConferenceRecording.
+     * @return An object of type DynamicResponse
      */
-    private ApiResponse<InputStream> handleGetStreamConferenceRecordingMediaResponse(
+    private ApiResponse<DynamicResponse> handleGetDownloadConferenceRecordingResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
 
@@ -2563,32 +2561,33 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
 
         //extract result from the http response
-        InputStream result = response.getRawBody();
-        return new ApiResponse<InputStream>(response.getStatusCode(), response.getHeaders(), result);
+        DynamicResponse result = new DynamicResponse(response);
+
+        return new ApiResponse<DynamicResponse>(response.getStatusCode(), response.getHeaders(), result);
     }
 
     /**
@@ -2600,24 +2599,24 @@ public final class APIController extends BaseController {
      * @param  to  Optional parameter: Example:
      * @param  minStartTime  Optional parameter: Example:
      * @param  maxStartTime  Optional parameter: Example:
-     * @return    Returns the List of RecordingMetadataResponse wrapped in ApiResponse response from the API call
+     * @return    Returns the List of CallRecordingMetadata wrapped in ApiResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
-    public ApiResponse<List<RecordingMetadataResponse>> getQueryMetadataForAccount(
+    public ApiResponse<List<CallRecordingMetadata>> getQueryCallRecordings(
             final String accountId,
             final String from,
             final String to,
             final String minStartTime,
             final String maxStartTime) throws ApiException, IOException {
-        HttpRequest request = buildGetQueryMetadataForAccountRequest(accountId, from, to,
-                minStartTime, maxStartTime);
+        HttpRequest request = buildGetQueryCallRecordingsRequest(accountId, from, to, minStartTime,
+                maxStartTime);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
-        return handleGetQueryMetadataForAccountResponse(context);
+        return handleGetQueryCallRecordingsResponse(context);
     }
 
     /**
@@ -2629,26 +2628,26 @@ public final class APIController extends BaseController {
      * @param  to  Optional parameter: Example:
      * @param  minStartTime  Optional parameter: Example:
      * @param  maxStartTime  Optional parameter: Example:
-     * @return    Returns the List of RecordingMetadataResponse wrapped in ApiResponse response from the API call
+     * @return    Returns the List of CallRecordingMetadata wrapped in ApiResponse response from the API call
      */
-    public CompletableFuture<ApiResponse<List<RecordingMetadataResponse>>> getQueryMetadataForAccountAsync(
+    public CompletableFuture<ApiResponse<List<CallRecordingMetadata>>> getQueryCallRecordingsAsync(
             final String accountId,
             final String from,
             final String to,
             final String minStartTime,
             final String maxStartTime) {
-        return makeHttpCallAsync(() -> buildGetQueryMetadataForAccountRequest(accountId, from, to,
+        return makeHttpCallAsync(() -> buildGetQueryCallRecordingsRequest(accountId, from, to,
                 minStartTime, maxStartTime),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
-            context -> handleGetQueryMetadataForAccountResponse(context));
+                        .executeAsync(request, false)),
+            context -> handleGetQueryCallRecordingsResponse(context));
     }
 
     /**
-     * Builds the HttpRequest object for getQueryMetadataForAccount.
+     * Builds the HttpRequest object for getQueryCallRecordings.
      */
-    private HttpRequest buildGetQueryMetadataForAccountRequest(
+    private HttpRequest buildGetQueryCallRecordingsRequest(
             final String accountId,
             final String from,
             final String to,
@@ -2692,10 +2691,10 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Processes the response for getQueryMetadataForAccount.
-     * @return An object of type List of RecordingMetadataResponse
+     * Processes the response for getQueryCallRecordings.
+     * @return An object of type List of CallRecordingMetadata
      */
-    private ApiResponse<List<RecordingMetadataResponse>> handleGetQueryMetadataForAccountResponse(
+    private ApiResponse<List<CallRecordingMetadata>> handleGetQueryCallRecordingsResponse(
             HttpContext context) throws ApiException, IOException {
         HttpResponse response = context.getResponse();
 
@@ -2708,34 +2707,34 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiErrorResponseException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
+            throw new ApiErrorException("Something's not quite right... Your request is invalid. Please fix it before trying again.", context);
         }
         if (responseCode == 401) {
             throw new ApiException("Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.", context);
         }
         if (responseCode == 403) {
-            throw new ApiErrorResponseException("User unauthorized to perform this action.", context);
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
         }
         if (responseCode == 404) {
-            throw new ApiErrorResponseException("The resource specified cannot be found or does not belong to you.", context);
+            throw new ApiErrorException("The resource specified cannot be found or does not belong to you.", context);
         }
         if (responseCode == 415) {
-            throw new ApiErrorResponseException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
+            throw new ApiErrorException("We don't support that media type. If a request body is required, please send it to us as `application/json`.", context);
         }
         if (responseCode == 429) {
-            throw new ApiErrorResponseException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
+            throw new ApiErrorException("You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.", context);
         }
         if (responseCode == 500) {
-            throw new ApiErrorResponseException("Something unexpected happened. Please try again.", context);
+            throw new ApiErrorException("Something unexpected happened. Please try again.", context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
 
         //extract result from the http response
         String responseBody = ((HttpStringResponse) response).getBody();
-        List<RecordingMetadataResponse> result = ApiHelper.deserializeArray(responseBody,
-                RecordingMetadataResponse[].class);
-        return new ApiResponse<List<RecordingMetadataResponse>>(response.getStatusCode(), response.getHeaders(), result);
+        List<CallRecordingMetadata> result = ApiHelper.deserializeArray(responseBody,
+                CallRecordingMetadata[].class);
+        return new ApiResponse<List<CallRecordingMetadata>>(response.getStatusCode(), response.getHeaders(), result);
     }
 
 }

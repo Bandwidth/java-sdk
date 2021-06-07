@@ -65,7 +65,7 @@ public final class APIController extends BaseController {
 
     /**
      * listMedia.
-     * @param  userId  Required parameter: User's account ID
+     * @param  accountId  Required parameter: User's account ID
      * @param  continuationToken  Optional parameter: Continuation token used to retrieve subsequent
      *         media.
      * @return    Returns the List of Media wrapped in ApiResponse response from the API call
@@ -73,12 +73,12 @@ public final class APIController extends BaseController {
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
     public ApiResponse<List<Media>> listMedia(
-            final String userId,
+            final String accountId,
             final String continuationToken) throws ApiException, IOException {
-        HttpRequest request = buildListMediaRequest(userId, continuationToken);
+        HttpRequest request = buildListMediaRequest(accountId, continuationToken);
         authManagers.get("messaging").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleListMediaResponse(context);
@@ -86,18 +86,18 @@ public final class APIController extends BaseController {
 
     /**
      * listMedia.
-     * @param  userId  Required parameter: User's account ID
+     * @param  accountId  Required parameter: User's account ID
      * @param  continuationToken  Optional parameter: Continuation token used to retrieve subsequent
      *         media.
      * @return    Returns the List of Media wrapped in ApiResponse response from the API call
      */
     public CompletableFuture<ApiResponse<List<Media>>> listMediaAsync(
-            final String userId,
+            final String accountId,
             final String continuationToken) {
-        return makeHttpCallAsync(() -> buildListMediaRequest(userId, continuationToken),
+        return makeHttpCallAsync(() -> buildListMediaRequest(accountId, continuationToken),
             req -> authManagers.get("messaging").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleListMediaResponse(context));
     }
 
@@ -105,19 +105,19 @@ public final class APIController extends BaseController {
      * Builds the HttpRequest object for listMedia.
      */
     private HttpRequest buildListMediaRequest(
-            final String userId,
+            final String accountId,
             final String continuationToken) {
         //the base uri for api requests
         String baseUri = config.getBaseUri(Server.MESSAGINGDEFAULT);
 
         //prepare query string for API call
         final StringBuilder queryBuilder = new StringBuilder(baseUri
-                + "/users/{userId}/media");
+                + "/users/{accountId}/media");
 
         //process template parameters
         Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
-        templateParameters.put("userId",
-                new SimpleEntry<Object, Boolean>(userId, false));
+        templateParameters.put("accountId",
+                new SimpleEntry<Object, Boolean>(accountId, false));
         ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
         //load all headers for the outgoing API request
@@ -183,19 +183,19 @@ public final class APIController extends BaseController {
 
     /**
      * getMedia.
-     * @param  userId  Required parameter: User's account ID
+     * @param  accountId  Required parameter: User's account ID
      * @param  mediaId  Required parameter: Media ID to retrieve
      * @return    Returns the InputStream wrapped in ApiResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
     public ApiResponse<InputStream> getMedia(
-            final String userId,
+            final String accountId,
             final String mediaId) throws ApiException, IOException {
-        HttpRequest request = buildGetMediaRequest(userId, mediaId);
+        HttpRequest request = buildGetMediaRequest(accountId, mediaId);
         authManagers.get("messaging").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsBinary(request);
+        HttpResponse response = getClientInstance().execute(request, true);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetMediaResponse(context);
@@ -203,17 +203,17 @@ public final class APIController extends BaseController {
 
     /**
      * getMedia.
-     * @param  userId  Required parameter: User's account ID
+     * @param  accountId  Required parameter: User's account ID
      * @param  mediaId  Required parameter: Media ID to retrieve
      * @return    Returns the InputStream wrapped in ApiResponse response from the API call
      */
     public CompletableFuture<ApiResponse<InputStream>> getMediaAsync(
-            final String userId,
+            final String accountId,
             final String mediaId) {
-        return makeHttpCallAsync(() -> buildGetMediaRequest(userId, mediaId),
+        return makeHttpCallAsync(() -> buildGetMediaRequest(accountId, mediaId),
             req -> authManagers.get("messaging").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetMediaResponse(context));
     }
 
@@ -221,19 +221,19 @@ public final class APIController extends BaseController {
      * Builds the HttpRequest object for getMedia.
      */
     private HttpRequest buildGetMediaRequest(
-            final String userId,
+            final String accountId,
             final String mediaId) {
         //the base uri for api requests
         String baseUri = config.getBaseUri(Server.MESSAGINGDEFAULT);
 
         //prepare query string for API call
         final StringBuilder queryBuilder = new StringBuilder(baseUri
-                + "/users/{userId}/media/{mediaId}");
+                + "/users/{accountId}/media/{mediaId}");
 
         //process template parameters
         Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
-        templateParameters.put("userId",
-                new SimpleEntry<Object, Boolean>(userId, false));
+        templateParameters.put("accountId",
+                new SimpleEntry<Object, Boolean>(accountId, false));
         templateParameters.put("mediaId",
                 new SimpleEntry<Object, Boolean>(mediaId, false));
         ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
@@ -297,9 +297,8 @@ public final class APIController extends BaseController {
 
     /**
      * uploadMedia.
-     * @param  userId  Required parameter: User's account ID
+     * @param  accountId  Required parameter: User's account ID
      * @param  mediaId  Required parameter: The user supplied custom media ID
-     * @param  contentLength  Required parameter: The size of the entity-body
      * @param  body  Required parameter: Example:
      * @param  contentType  Optional parameter: The media type of the entity-body
      * @param  cacheControl  Optional parameter: General-header field is used to specify directives
@@ -308,17 +307,16 @@ public final class APIController extends BaseController {
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
     public ApiResponse<Void> uploadMedia(
-            final String userId,
+            final String accountId,
             final String mediaId,
-            final long contentLength,
             final FileWrapper body,
             final String contentType,
             final String cacheControl) throws ApiException, IOException {
-        HttpRequest request = buildUploadMediaRequest(userId, mediaId, contentLength, body,
-                contentType, cacheControl);
+        HttpRequest request = buildUploadMediaRequest(accountId, mediaId, body, contentType,
+                cacheControl);
         authManagers.get("messaging").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleUploadMediaResponse(context);
@@ -326,9 +324,8 @@ public final class APIController extends BaseController {
 
     /**
      * uploadMedia.
-     * @param  userId  Required parameter: User's account ID
+     * @param  accountId  Required parameter: User's account ID
      * @param  mediaId  Required parameter: The user supplied custom media ID
-     * @param  contentLength  Required parameter: The size of the entity-body
      * @param  body  Required parameter: Example:
      * @param  contentType  Optional parameter: The media type of the entity-body
      * @param  cacheControl  Optional parameter: General-header field is used to specify directives
@@ -336,17 +333,16 @@ public final class APIController extends BaseController {
      * @return    Returns the Void wrapped in ApiResponse response from the API call
      */
     public CompletableFuture<ApiResponse<Void>> uploadMediaAsync(
-            final String userId,
+            final String accountId,
             final String mediaId,
-            final long contentLength,
             final FileWrapper body,
             final String contentType,
             final String cacheControl) {
-        return makeHttpCallAsync(() -> buildUploadMediaRequest(userId, mediaId, contentLength, body,
+        return makeHttpCallAsync(() -> buildUploadMediaRequest(accountId, mediaId, body,
                 contentType, cacheControl),
             req -> authManagers.get("messaging").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleUploadMediaResponse(context));
     }
 
@@ -354,9 +350,8 @@ public final class APIController extends BaseController {
      * Builds the HttpRequest object for uploadMedia.
      */
     private HttpRequest buildUploadMediaRequest(
-            final String userId,
+            final String accountId,
             final String mediaId,
-            final long contentLength,
             final FileWrapper body,
             final String contentType,
             final String cacheControl) {
@@ -365,19 +360,18 @@ public final class APIController extends BaseController {
 
         //prepare query string for API call
         final StringBuilder queryBuilder = new StringBuilder(baseUri
-                + "/users/{userId}/media/{mediaId}");
+                + "/users/{accountId}/media/{mediaId}");
 
         //process template parameters
         Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
-        templateParameters.put("userId",
-                new SimpleEntry<Object, Boolean>(userId, false));
+        templateParameters.put("accountId",
+                new SimpleEntry<Object, Boolean>(accountId, false));
         templateParameters.put("mediaId",
                 new SimpleEntry<Object, Boolean>(mediaId, false));
         ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
-        headers.add("Content-Length", String.valueOf(contentLength));
         headers.add("Content-Type",
                 (contentType != null) ? contentType : "application/octet-stream");
         headers.add("Cache-Control", cacheControl);
@@ -436,18 +430,18 @@ public final class APIController extends BaseController {
 
     /**
      * deleteMedia.
-     * @param  userId  Required parameter: User's account ID
+     * @param  accountId  Required parameter: User's account ID
      * @param  mediaId  Required parameter: The media ID to delete
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
     public ApiResponse<Void> deleteMedia(
-            final String userId,
+            final String accountId,
             final String mediaId) throws ApiException, IOException {
-        HttpRequest request = buildDeleteMediaRequest(userId, mediaId);
+        HttpRequest request = buildDeleteMediaRequest(accountId, mediaId);
         authManagers.get("messaging").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleDeleteMediaResponse(context);
@@ -455,17 +449,17 @@ public final class APIController extends BaseController {
 
     /**
      * deleteMedia.
-     * @param  userId  Required parameter: User's account ID
+     * @param  accountId  Required parameter: User's account ID
      * @param  mediaId  Required parameter: The media ID to delete
      * @return    Returns the Void wrapped in ApiResponse response from the API call
      */
     public CompletableFuture<ApiResponse<Void>> deleteMediaAsync(
-            final String userId,
+            final String accountId,
             final String mediaId) {
-        return makeHttpCallAsync(() -> buildDeleteMediaRequest(userId, mediaId),
+        return makeHttpCallAsync(() -> buildDeleteMediaRequest(accountId, mediaId),
             req -> authManagers.get("messaging").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleDeleteMediaResponse(context));
     }
 
@@ -473,19 +467,19 @@ public final class APIController extends BaseController {
      * Builds the HttpRequest object for deleteMedia.
      */
     private HttpRequest buildDeleteMediaRequest(
-            final String userId,
+            final String accountId,
             final String mediaId) {
         //the base uri for api requests
         String baseUri = config.getBaseUri(Server.MESSAGINGDEFAULT);
 
         //prepare query string for API call
         final StringBuilder queryBuilder = new StringBuilder(baseUri
-                + "/users/{userId}/media/{mediaId}");
+                + "/users/{accountId}/media/{mediaId}");
 
         //process template parameters
         Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
-        templateParameters.put("userId",
-                new SimpleEntry<Object, Boolean>(userId, false));
+        templateParameters.put("accountId",
+                new SimpleEntry<Object, Boolean>(accountId, false));
         templateParameters.put("mediaId",
                 new SimpleEntry<Object, Boolean>(mediaId, false));
         ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
@@ -547,13 +541,13 @@ public final class APIController extends BaseController {
 
     /**
      * getMessages.
-     * @param  userId  Required parameter: User's account ID
+     * @param  accountId  Required parameter: User's account ID
      * @param  messageId  Optional parameter: The ID of the message to search for. Special
      *         characters need to be encoded using URL encoding
      * @param  sourceTn  Optional parameter: The phone number that sent the message
      * @param  destinationTn  Optional parameter: The phone number that received the message
      * @param  messageStatus  Optional parameter: The status of the message. One of RECEIVED,
-     *         QUEUED, SENDING, SENT, FAILED, DELIVERED, DLR_EXPIRED
+     *         QUEUED, SENDING, SENT, FAILED, DELIVERED, ACCEPTED, UNDELIVERED
      * @param  errorCode  Optional parameter: The error code of the message
      * @param  fromDateTime  Optional parameter: The start of the date range to search in ISO 8601
      *         format. Uses the message receive time. The date range to search in is currently 14
@@ -569,7 +563,7 @@ public final class APIController extends BaseController {
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
     public ApiResponse<BandwidthMessagesList> getMessages(
-            final String userId,
+            final String accountId,
             final String messageId,
             final String sourceTn,
             final String destinationTn,
@@ -579,11 +573,11 @@ public final class APIController extends BaseController {
             final String toDateTime,
             final String pageToken,
             final Integer limit) throws ApiException, IOException {
-        HttpRequest request = buildGetMessagesRequest(userId, messageId, sourceTn, destinationTn,
+        HttpRequest request = buildGetMessagesRequest(accountId, messageId, sourceTn, destinationTn,
                 messageStatus, errorCode, fromDateTime, toDateTime, pageToken, limit);
         authManagers.get("messaging").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetMessagesResponse(context);
@@ -591,13 +585,13 @@ public final class APIController extends BaseController {
 
     /**
      * getMessages.
-     * @param  userId  Required parameter: User's account ID
+     * @param  accountId  Required parameter: User's account ID
      * @param  messageId  Optional parameter: The ID of the message to search for. Special
      *         characters need to be encoded using URL encoding
      * @param  sourceTn  Optional parameter: The phone number that sent the message
      * @param  destinationTn  Optional parameter: The phone number that received the message
      * @param  messageStatus  Optional parameter: The status of the message. One of RECEIVED,
-     *         QUEUED, SENDING, SENT, FAILED, DELIVERED, DLR_EXPIRED
+     *         QUEUED, SENDING, SENT, FAILED, DELIVERED, ACCEPTED, UNDELIVERED
      * @param  errorCode  Optional parameter: The error code of the message
      * @param  fromDateTime  Optional parameter: The start of the date range to search in ISO 8601
      *         format. Uses the message receive time. The date range to search in is currently 14
@@ -611,7 +605,7 @@ public final class APIController extends BaseController {
      * @return    Returns the BandwidthMessagesList wrapped in ApiResponse response from the API call
      */
     public CompletableFuture<ApiResponse<BandwidthMessagesList>> getMessagesAsync(
-            final String userId,
+            final String accountId,
             final String messageId,
             final String sourceTn,
             final String destinationTn,
@@ -621,12 +615,12 @@ public final class APIController extends BaseController {
             final String toDateTime,
             final String pageToken,
             final Integer limit) {
-        return makeHttpCallAsync(() -> buildGetMessagesRequest(userId, messageId, sourceTn,
+        return makeHttpCallAsync(() -> buildGetMessagesRequest(accountId, messageId, sourceTn,
                 destinationTn, messageStatus, errorCode, fromDateTime, toDateTime, pageToken,
                 limit),
             req -> authManagers.get("messaging").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetMessagesResponse(context));
     }
 
@@ -634,7 +628,7 @@ public final class APIController extends BaseController {
      * Builds the HttpRequest object for getMessages.
      */
     private HttpRequest buildGetMessagesRequest(
-            final String userId,
+            final String accountId,
             final String messageId,
             final String sourceTn,
             final String destinationTn,
@@ -649,12 +643,12 @@ public final class APIController extends BaseController {
 
         //prepare query string for API call
         final StringBuilder queryBuilder = new StringBuilder(baseUri
-                + "/users/{userId}/messages");
+                + "/users/{accountId}/messages");
 
         //process template parameters
         Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
-        templateParameters.put("userId",
-                new SimpleEntry<Object, Boolean>(userId, false));
+        templateParameters.put("accountId",
+                new SimpleEntry<Object, Boolean>(accountId, false));
         ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
         //load all query parameters
@@ -733,19 +727,19 @@ public final class APIController extends BaseController {
 
     /**
      * createMessage.
-     * @param  userId  Required parameter: User's account ID
+     * @param  accountId  Required parameter: User's account ID
      * @param  body  Required parameter: Example:
      * @return    Returns the BandwidthMessage wrapped in ApiResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
     public ApiResponse<BandwidthMessage> createMessage(
-            final String userId,
+            final String accountId,
             final MessageRequest body) throws ApiException, IOException {
-        HttpRequest request = buildCreateMessageRequest(userId, body);
+        HttpRequest request = buildCreateMessageRequest(accountId, body);
         authManagers.get("messaging").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleCreateMessageResponse(context);
@@ -753,17 +747,17 @@ public final class APIController extends BaseController {
 
     /**
      * createMessage.
-     * @param  userId  Required parameter: User's account ID
+     * @param  accountId  Required parameter: User's account ID
      * @param  body  Required parameter: Example:
      * @return    Returns the BandwidthMessage wrapped in ApiResponse response from the API call
      */
     public CompletableFuture<ApiResponse<BandwidthMessage>> createMessageAsync(
-            final String userId,
+            final String accountId,
             final MessageRequest body) {
-        return makeHttpCallAsync(() -> buildCreateMessageRequest(userId, body),
+        return makeHttpCallAsync(() -> buildCreateMessageRequest(accountId, body),
             req -> authManagers.get("messaging").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleCreateMessageResponse(context));
     }
 
@@ -771,19 +765,19 @@ public final class APIController extends BaseController {
      * Builds the HttpRequest object for createMessage.
      */
     private HttpRequest buildCreateMessageRequest(
-            final String userId,
+            final String accountId,
             final MessageRequest body) throws JsonProcessingException {
         //the base uri for api requests
         String baseUri = config.getBaseUri(Server.MESSAGINGDEFAULT);
 
         //prepare query string for API call
         final StringBuilder queryBuilder = new StringBuilder(baseUri
-                + "/users/{userId}/messages");
+                + "/users/{accountId}/messages");
 
         //process template parameters
         Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
-        templateParameters.put("userId",
-                new SimpleEntry<Object, Boolean>(userId, false));
+        templateParameters.put("accountId",
+                new SimpleEntry<Object, Boolean>(accountId, false));
         ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
 
         //load all headers for the outgoing API request

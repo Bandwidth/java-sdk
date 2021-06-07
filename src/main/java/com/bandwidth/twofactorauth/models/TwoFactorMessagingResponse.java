@@ -7,12 +7,14 @@
 package com.bandwidth.twofactorauth.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
  * This is a model class for TwoFactorMessagingResponse type.
  */
 public class TwoFactorMessagingResponse {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String messageId;
 
     /**
@@ -23,7 +25,7 @@ public class TwoFactorMessagingResponse {
 
     /**
      * Initialization constructor.
-     * @param messageId String value for messageId.
+     * @param  messageId  String value for messageId.
      */
     public TwoFactorMessagingResponse(
             String messageId) {
@@ -36,7 +38,7 @@ public class TwoFactorMessagingResponse {
      */
     @JsonGetter("messageId")
     public String getMessageId() {
-        return this.messageId;
+        return messageId;
     }
 
     /**
@@ -78,7 +80,7 @@ public class TwoFactorMessagingResponse {
 
         /**
          * Setter for messageId.
-         * @param messageId String value for messageId.
+         * @param  messageId  String value for messageId.
          * @return Builder
          */
         public Builder messageId(String messageId) {

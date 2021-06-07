@@ -32,7 +32,7 @@ public class MessagingException
 
     /**
      * Getter for Type.
-     * @return   Returns the String
+     * @return Returns the String
      */
     @JsonGetter("type")
     public String getType() {
@@ -41,16 +41,16 @@ public class MessagingException
 
     /**
      * Setter for Type.
-     * @param   value   Value for String
+     * @param type Value for String
      */
     @JsonSetter("type")
-    private void setType(String value) {
-        this.type = value;
+    private void setType(String type) {
+        this.type = type;
     }
 
     /**
      * Getter for Description.
-     * @return   Returns the String
+     * @return Returns the String
      */
     @JsonGetter("description")
     public String getDescription() {
@@ -59,10 +59,10 @@ public class MessagingException
 
     /**
      * Setter for Description.
-     * @param   value   Value for String
+     * @param description Value for String
      */
     @JsonSetter("description")
-    private void setDescription(String value) {
-        this.description = value;
+    private void setDescription(String description) {
+        this.description = description;
     }
 }

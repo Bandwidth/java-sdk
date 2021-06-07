@@ -32,7 +32,7 @@ public class ErrorException
 
     /**
      * Getter for Code.
-     * @return   Returns the int
+     * @return Returns the int
      */
     @JsonGetter("code")
     public int getCode() {
@@ -41,16 +41,16 @@ public class ErrorException
 
     /**
      * Setter for Code.
-     * @param   value   Value for int
+     * @param code Value for int
      */
     @JsonSetter("code")
-    private void setCode(int value) {
-        this.code = value;
+    private void setCode(int code) {
+        this.code = code;
     }
 
     /**
      * Getter for Message.
-     * @return   Returns the String
+     * @return Returns the String
      */
     @JsonGetter("message")
     public String getMessage() {
@@ -59,10 +59,10 @@ public class ErrorException
 
     /**
      * Setter for Message.
-     * @param   value   Value for String
+     * @param message Value for String
      */
     @JsonSetter("message")
-    private void setMessage(String value) {
-        this.message = value;
+    private void setMessage(String message) {
+        this.message = message;
     }
 }

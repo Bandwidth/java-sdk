@@ -32,7 +32,7 @@ public class UnauthorizedRequestException
     /**
      * Getter for Message.
      * The message containing the reason behind the request being unauthorized
-     * @return   Returns the String
+     * @return Returns the String
      */
     @JsonGetter("message")
     public String getMessage() {
@@ -42,10 +42,10 @@ public class UnauthorizedRequestException
     /**
      * Setter for Message.
      * The message containing the reason behind the request being unauthorized
-     * @param   value   Value for String
+     * @param message Value for String
      */
     @JsonSetter("message")
-    private void setMessage(String value) {
-        this.message = value;
+    private void setMessage(String message) {
+        this.message = message;
     }
 }

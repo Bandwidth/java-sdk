@@ -7,12 +7,14 @@
 package com.bandwidth.twofactorauth.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
  * This is a model class for TwoFactorVerifyCodeResponse type.
  */
 public class TwoFactorVerifyCodeResponse {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Boolean valid;
 
     /**
@@ -23,7 +25,7 @@ public class TwoFactorVerifyCodeResponse {
 
     /**
      * Initialization constructor.
-     * @param valid Boolean value for valid.
+     * @param  valid  Boolean value for valid.
      */
     public TwoFactorVerifyCodeResponse(
             Boolean valid) {
@@ -36,7 +38,7 @@ public class TwoFactorVerifyCodeResponse {
      */
     @JsonGetter("valid")
     public Boolean getValid() {
-        return this.valid;
+        return valid;
     }
 
     /**
@@ -78,7 +80,7 @@ public class TwoFactorVerifyCodeResponse {
 
         /**
          * Setter for valid.
-         * @param valid Boolean value for valid.
+         * @param  valid  Boolean value for valid.
          * @return Builder
          */
         public Builder valid(Boolean valid) {

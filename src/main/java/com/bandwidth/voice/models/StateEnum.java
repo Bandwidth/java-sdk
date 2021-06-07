@@ -14,24 +14,20 @@ import java.util.TreeMap;
  * StateEnum to be used.
  */
 public enum StateEnum {
-    DISCONNECTED,
+    ACTIVE,
 
-    ANSWERED,
-
-    INITIATED;
+    COMPLETED;
 
 
     private static TreeMap<String, StateEnum> valueMap = new TreeMap<>();
     private String value;
 
     static {
-        DISCONNECTED.value = "DISCONNECTED";
-        ANSWERED.value = "ANSWERED";
-        INITIATED.value = "INITIATED";
+        ACTIVE.value = "active";
+        COMPLETED.value = "completed";
 
-        valueMap.put("DISCONNECTED", DISCONNECTED);
-        valueMap.put("ANSWERED", ANSWERED);
-        valueMap.put("INITIATED", INITIATED);
+        valueMap.put("active", ACTIVE);
+        valueMap.put("completed", COMPLETED);
     }
 
     /**

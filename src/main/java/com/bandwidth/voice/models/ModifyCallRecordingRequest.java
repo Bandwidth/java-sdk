@@ -10,57 +10,57 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
- * This is a model class for ModifyCallRecordingState type.
+ * This is a model class for ModifyCallRecordingRequest type.
  */
-public class ModifyCallRecordingState {
-    private State2Enum state;
+public class ModifyCallRecordingRequest {
+    private State1Enum state;
 
     /**
      * Default constructor.
      */
-    public ModifyCallRecordingState() {
+    public ModifyCallRecordingRequest() {
     }
 
     /**
      * Initialization constructor.
-     * @param state State2Enum value for state.
+     * @param  state  State1Enum value for state.
      */
-    public ModifyCallRecordingState(
-            State2Enum state) {
+    public ModifyCallRecordingRequest(
+            State1Enum state) {
         this.state = state;
     }
 
     /**
      * Getter for State.
-     * @return Returns the State2Enum
+     * @return Returns the State1Enum
      */
     @JsonGetter("state")
-    public State2Enum getState() {
-        return this.state;
+    public State1Enum getState() {
+        return state;
     }
 
     /**
      * Setter for State.
-     * @param state Value for State2Enum
+     * @param state Value for State1Enum
      */
     @JsonSetter("state")
-    public void setState(State2Enum state) {
+    public void setState(State1Enum state) {
         this.state = state;
     }
 
     /**
-     * Converts this ModifyCallRecordingState into string format.
+     * Converts this ModifyCallRecordingRequest into string format.
      * @return String representation of this class
      */
     @Override
     public String toString() {
-        return "ModifyCallRecordingState [" + "state=" + state + "]";
+        return "ModifyCallRecordingRequest [" + "state=" + state + "]";
     }
 
     /**
-     * Builds a new {@link ModifyCallRecordingState.Builder} object.
+     * Builds a new {@link ModifyCallRecordingRequest.Builder} object.
      * Creates the instance with the state of the current model.
-     * @return a new {@link ModifyCallRecordingState.Builder} object
+     * @return a new {@link ModifyCallRecordingRequest.Builder} object
      */
     public Builder toBuilder() {
         Builder builder = new Builder(state);
@@ -68,10 +68,10 @@ public class ModifyCallRecordingState {
     }
 
     /**
-     * Class to build instances of {@link ModifyCallRecordingState}.
+     * Class to build instances of {@link ModifyCallRecordingRequest}.
      */
     public static class Builder {
-        private State2Enum state;
+        private State1Enum state;
 
         /**
          * Initialization constructor.
@@ -81,28 +81,28 @@ public class ModifyCallRecordingState {
 
         /**
          * Initialization constructor.
-         * @param state State2Enum value for state.
+         * @param  state  State1Enum value for state.
          */
-        public Builder(State2Enum state) {
+        public Builder(State1Enum state) {
             this.state = state;
         }
 
         /**
          * Setter for state.
-         * @param state State2Enum value for state.
+         * @param  state  State1Enum value for state.
          * @return Builder
          */
-        public Builder state(State2Enum state) {
+        public Builder state(State1Enum state) {
             this.state = state;
             return this;
         }
 
         /**
-         * Builds a new {@link ModifyCallRecordingState} object using the set fields.
-         * @return {@link ModifyCallRecordingState}
+         * Builds a new {@link ModifyCallRecordingRequest} object using the set fields.
+         * @return {@link ModifyCallRecordingRequest}
          */
-        public ModifyCallRecordingState build() {
-            return new ModifyCallRecordingState(state);
+        public ModifyCallRecordingRequest build() {
+            return new ModifyCallRecordingRequest(state);
         }
     }
 }

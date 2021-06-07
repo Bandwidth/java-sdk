@@ -6,37 +6,48 @@
 
 package com.bandwidth.webrtc.models;
 
+import com.bandwidth.internal.OptionalNullable;
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 
 /**
  * This is a model class for Participant type.
  */
 public class Participant {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String id;
-    private String callbackUrl;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private OptionalNullable<String> callbackUrl;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<PublishPermissionEnum> publishPermissions;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<String> sessions;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Subscriptions subscriptions;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String tag;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private DeviceApiVersionEnum deviceApiVersion;
 
     /**
      * Default constructor.
      */
     public Participant() {
+        deviceApiVersion = DeviceApiVersionEnum.V2;
     }
 
     /**
      * Initialization constructor.
-     * @param id String value for id.
-     * @param callbackUrl String value for callbackUrl.
-     * @param publishPermissions List of PublishPermissionEnum value for publishPermissions.
-     * @param sessions List of String value for sessions.
-     * @param subscriptions Subscriptions value for subscriptions.
-     * @param tag String value for tag.
-     * @param deviceApiVersion DeviceApiVersionEnum value for deviceApiVersion.
+     * @param  id  String value for id.
+     * @param  callbackUrl  String value for callbackUrl.
+     * @param  publishPermissions  List of PublishPermissionEnum value for publishPermissions.
+     * @param  sessions  List of String value for sessions.
+     * @param  subscriptions  Subscriptions value for subscriptions.
+     * @param  tag  String value for tag.
+     * @param  deviceApiVersion  DeviceApiVersionEnum value for deviceApiVersion.
      */
     public Participant(
             String id,
@@ -46,6 +57,21 @@ public class Participant {
             Subscriptions subscriptions,
             String tag,
             DeviceApiVersionEnum deviceApiVersion) {
+        this.id = id;
+        this.callbackUrl = OptionalNullable.of(callbackUrl);
+        this.publishPermissions = publishPermissions;
+        this.sessions = sessions;
+        this.subscriptions = subscriptions;
+        this.tag = tag;
+        this.deviceApiVersion = deviceApiVersion;
+    }
+
+    /**
+     * Internal initialization constructor.
+     */
+    protected Participant(String id, OptionalNullable<String> callbackUrl,
+            List<PublishPermissionEnum> publishPermissions, List<String> sessions,
+            Subscriptions subscriptions, String tag, DeviceApiVersionEnum deviceApiVersion) {
         this.id = id;
         this.callbackUrl = callbackUrl;
         this.publishPermissions = publishPermissions;
@@ -62,7 +88,7 @@ public class Participant {
      */
     @JsonGetter("id")
     public String getId() {
-        return this.id;
+        return id;
     }
 
     /**
@@ -76,13 +102,23 @@ public class Participant {
     }
 
     /**
+     * Internal Getter for CallbackUrl.
+     * Full callback url to use for notifications about this participant
+     * @return Returns the Internal String
+     */
+    @JsonGetter("callbackUrl")
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<String> internalGetCallbackUrl() {
+        return this.callbackUrl;
+    }
+
+    /**
      * Getter for CallbackUrl.
      * Full callback url to use for notifications about this participant
      * @return Returns the String
      */
-    @JsonGetter("callbackUrl")
     public String getCallbackUrl() {
-        return this.callbackUrl;
+        return OptionalNullable.getFrom(callbackUrl);
     }
 
     /**
@@ -92,7 +128,15 @@ public class Participant {
      */
     @JsonSetter("callbackUrl")
     public void setCallbackUrl(String callbackUrl) {
-        this.callbackUrl = callbackUrl;
+        this.callbackUrl = OptionalNullable.of(callbackUrl);
+    }
+
+    /**
+     * UnSetter for CallbackUrl.
+     * Full callback url to use for notifications about this participant
+     */
+    public void unsetCallbackUrl() {
+        callbackUrl = null;
     }
 
     /**
@@ -102,7 +146,7 @@ public class Participant {
      */
     @JsonGetter("publishPermissions")
     public List<PublishPermissionEnum> getPublishPermissions() {
-        return this.publishPermissions;
+        return publishPermissions;
     }
 
     /**
@@ -122,7 +166,7 @@ public class Participant {
      */
     @JsonGetter("sessions")
     public List<String> getSessions() {
-        return this.sessions;
+        return sessions;
     }
 
     /**
@@ -141,7 +185,7 @@ public class Participant {
      */
     @JsonGetter("subscriptions")
     public Subscriptions getSubscriptions() {
-        return this.subscriptions;
+        return subscriptions;
     }
 
     /**
@@ -160,7 +204,7 @@ public class Participant {
      */
     @JsonGetter("tag")
     public String getTag() {
-        return this.tag;
+        return tag;
     }
 
     /**
@@ -180,7 +224,7 @@ public class Participant {
      */
     @JsonGetter("deviceApiVersion")
     public DeviceApiVersionEnum getDeviceApiVersion() {
-        return this.deviceApiVersion;
+        return deviceApiVersion;
     }
 
     /**
@@ -213,12 +257,12 @@ public class Participant {
     public Builder toBuilder() {
         Builder builder = new Builder()
                 .id(getId())
-                .callbackUrl(getCallbackUrl())
                 .publishPermissions(getPublishPermissions())
                 .sessions(getSessions())
                 .subscriptions(getSubscriptions())
                 .tag(getTag())
                 .deviceApiVersion(getDeviceApiVersion());
+        builder.callbackUrl = internalGetCallbackUrl();
         return builder;
     }
 
@@ -227,7 +271,7 @@ public class Participant {
      */
     public static class Builder {
         private String id;
-        private String callbackUrl;
+        private OptionalNullable<String> callbackUrl;
         private List<PublishPermissionEnum> publishPermissions;
         private List<String> sessions;
         private Subscriptions subscriptions;
@@ -238,7 +282,7 @@ public class Participant {
 
         /**
          * Setter for id.
-         * @param id String value for id.
+         * @param  id  String value for id.
          * @return Builder
          */
         public Builder id(String id) {
@@ -248,17 +292,26 @@ public class Participant {
 
         /**
          * Setter for callbackUrl.
-         * @param callbackUrl String value for callbackUrl.
+         * @param  callbackUrl  String value for callbackUrl.
          * @return Builder
          */
         public Builder callbackUrl(String callbackUrl) {
-            this.callbackUrl = callbackUrl;
+            this.callbackUrl = OptionalNullable.of(callbackUrl);
+            return this;
+        }
+
+        /**
+         * UnSetter for callbackUrl.
+         * @return Builder
+         */
+        public Builder unsetCallbackUrl() {
+            callbackUrl = null;
             return this;
         }
 
         /**
          * Setter for publishPermissions.
-         * @param publishPermissions List of PublishPermissionEnum value for publishPermissions.
+         * @param  publishPermissions  List of PublishPermissionEnum value for publishPermissions.
          * @return Builder
          */
         public Builder publishPermissions(List<PublishPermissionEnum> publishPermissions) {
@@ -268,7 +321,7 @@ public class Participant {
 
         /**
          * Setter for sessions.
-         * @param sessions List of String value for sessions.
+         * @param  sessions  List of String value for sessions.
          * @return Builder
          */
         public Builder sessions(List<String> sessions) {
@@ -278,7 +331,7 @@ public class Participant {
 
         /**
          * Setter for subscriptions.
-         * @param subscriptions Subscriptions value for subscriptions.
+         * @param  subscriptions  Subscriptions value for subscriptions.
          * @return Builder
          */
         public Builder subscriptions(Subscriptions subscriptions) {
@@ -288,7 +341,7 @@ public class Participant {
 
         /**
          * Setter for tag.
-         * @param tag String value for tag.
+         * @param  tag  String value for tag.
          * @return Builder
          */
         public Builder tag(String tag) {
@@ -298,7 +351,7 @@ public class Participant {
 
         /**
          * Setter for deviceApiVersion.
-         * @param deviceApiVersion DeviceApiVersionEnum value for deviceApiVersion.
+         * @param  deviceApiVersion  DeviceApiVersionEnum value for deviceApiVersion.
          * @return Builder
          */
         public Builder deviceApiVersion(DeviceApiVersionEnum deviceApiVersion) {

@@ -7,22 +7,25 @@
 package com.bandwidth.http.request;
 
 import com.bandwidth.http.Headers;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * Class to wrap byteArray and headers to be sent as part of a multipart request.
  */
 public class MultipartWrapper {
 
-    private byte[] byteArray;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String serializedObj;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Headers headers;
 
     /**
      * Initialization constructor.
-     * @param byteArray Array of bytes
+     * @param serializedObj Serialized string of object to be wrapped.
      * @param headers Headers for wrapping
      */
-    public MultipartWrapper(byte[] byteArray, Headers headers) {
-        this.byteArray = byteArray;
+    public MultipartWrapper(String serializedObj, Headers headers) {
+        this.serializedObj = serializedObj;
         this.headers = headers;
     }
 
@@ -31,7 +34,7 @@ public class MultipartWrapper {
      * @return Array of bytes.
      */
     public byte[] getByteArray() {
-        return byteArray;
+        return serializedObj.getBytes();
     }
 
     /**

@@ -14,20 +14,24 @@ import java.util.TreeMap;
  * State1Enum to be used.
  */
 public enum State1Enum {
-    ACTIVE,
+    NOT_RECORDING,
 
-    COMPLETED;
+    PAUSED,
+
+    RECORDING;
 
 
     private static TreeMap<String, State1Enum> valueMap = new TreeMap<>();
     private String value;
 
     static {
-        ACTIVE.value = "active";
-        COMPLETED.value = "completed";
+        NOT_RECORDING.value = "NOT_RECORDING";
+        PAUSED.value = "PAUSED";
+        RECORDING.value = "RECORDING";
 
-        valueMap.put("active", ACTIVE);
-        valueMap.put("completed", COMPLETED);
+        valueMap.put("NOT_RECORDING", NOT_RECORDING);
+        valueMap.put("PAUSED", PAUSED);
+        valueMap.put("RECORDING", RECORDING);
     }
 
     /**

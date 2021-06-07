@@ -33,7 +33,7 @@ public class ErrorWithRequestException
     /**
      * Getter for Error.
      * An error message pertaining to what the issue could be
-     * @return   Returns the String
+     * @return Returns the String
      */
     @JsonGetter("error")
     public String getError() {
@@ -43,17 +43,17 @@ public class ErrorWithRequestException
     /**
      * Setter for Error.
      * An error message pertaining to what the issue could be
-     * @param   value   Value for String
+     * @param error Value for String
      */
     @JsonSetter("error")
-    private void setError(String value) {
-        this.error = value;
+    private void setError(String error) {
+        this.error = error;
     }
 
     /**
      * Getter for RequestId.
      * The associated requestId from AWS
-     * @return   Returns the String
+     * @return Returns the String
      */
     @JsonGetter("requestId")
     public String getRequestId() {
@@ -63,10 +63,10 @@ public class ErrorWithRequestException
     /**
      * Setter for RequestId.
      * The associated requestId from AWS
-     * @param   value   Value for String
+     * @param requestId Value for String
      */
     @JsonSetter("requestId")
-    private void setRequestId(String value) {
-        this.requestId = value;
+    private void setRequestId(String requestId) {
+        this.requestId = requestId;
     }
 }

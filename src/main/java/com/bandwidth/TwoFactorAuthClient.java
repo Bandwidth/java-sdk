@@ -6,8 +6,9 @@
 
 package com.bandwidth;
 
-import com.bandwidth.twofactorauth.controllers.*;
+import com.bandwidth.http.client.HttpCallback;
 import com.bandwidth.http.client.OkClient;
+import com.bandwidth.twofactorauth.controllers.*;
 
 public final class TwoFactorAuthClient {
     private final BandwidthClient config;
@@ -20,9 +21,10 @@ public final class TwoFactorAuthClient {
     /**
      * Default constructor.
      */
-    public TwoFactorAuthClient(BandwidthClient config) {
+    public TwoFactorAuthClient(BandwidthClient config, HttpCallback httpCallback) {
         this.config = config;
-        mFA = new MFAController(config, config.getHttpClient(), config.getAuthManagers());
+        mFA = new MFAController(config, config.getHttpClient(), config.getAuthManagers(),
+                httpCallback);
     }
 
     public static void shutdown() {

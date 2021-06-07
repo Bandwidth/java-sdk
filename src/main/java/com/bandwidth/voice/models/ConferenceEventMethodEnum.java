@@ -14,44 +14,20 @@ import java.util.TreeMap;
  * ConferenceEventMethodEnum to be used.
  */
 public enum ConferenceEventMethodEnum {
-    GET,
-
-    HEAD,
-
     POST,
 
-    PUT,
-
-    PATCH,
-
-    DELETE,
-
-    OPTIONS,
-
-    TRACE;
+    GET;
 
 
     private static TreeMap<String, ConferenceEventMethodEnum> valueMap = new TreeMap<>();
     private String value;
 
     static {
-        GET.value = "GET";
-        HEAD.value = "HEAD";
         POST.value = "POST";
-        PUT.value = "PUT";
-        PATCH.value = "PATCH";
-        DELETE.value = "DELETE";
-        OPTIONS.value = "OPTIONS";
-        TRACE.value = "TRACE";
+        GET.value = "GET";
 
-        valueMap.put("GET", GET);
-        valueMap.put("HEAD", HEAD);
         valueMap.put("POST", POST);
-        valueMap.put("PUT", PUT);
-        valueMap.put("PATCH", PATCH);
-        valueMap.put("DELETE", DELETE);
-        valueMap.put("OPTIONS", OPTIONS);
-        valueMap.put("TRACE", TRACE);
+        valueMap.put("GET", GET);
     }
 
     /**

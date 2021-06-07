@@ -6,8 +6,9 @@
 
 package com.bandwidth;
 
-import com.bandwidth.webrtc.controllers.*;
+import com.bandwidth.http.client.HttpCallback;
 import com.bandwidth.http.client.OkClient;
+import com.bandwidth.webrtc.controllers.*;
 
 public final class WebRtcClient {
     private final BandwidthClient config;
@@ -20,9 +21,10 @@ public final class WebRtcClient {
     /**
      * Default constructor.
      */
-    public WebRtcClient(BandwidthClient config) {
+    public WebRtcClient(BandwidthClient config, HttpCallback httpCallback) {
         this.config = config;
-        client = new APIController(config, config.getHttpClient(), config.getAuthManagers());
+        client = new APIController(config, config.getHttpClient(), config.getAuthManagers(),
+                httpCallback);
     }
 
     public static void shutdown() {

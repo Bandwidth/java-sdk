@@ -32,7 +32,7 @@ public class ForbiddenRequestException
     /**
      * Getter for Message.
      * The message containing the reason behind the request being forbidden
-     * @return   Returns the String
+     * @return Returns the String
      */
     @JsonGetter("Message")
     public String getMessage() {
@@ -42,10 +42,10 @@ public class ForbiddenRequestException
     /**
      * Setter for Message.
      * The message containing the reason behind the request being forbidden
-     * @param   value   Value for String
+     * @param message Value for String
      */
     @JsonSetter("Message")
-    private void setMessage(String value) {
-        this.message = value;
+    private void setMessage(String message) {
+        this.message = message;
     }
 }
