@@ -167,7 +167,8 @@ public final class BandwidthClient implements Configuration {
 
 
         messagingClient = new MessagingClient(this, httpCallback);
-        twoFactorAuthClient = new TwoFactorAuthClient(this, httpCallback);
+        //twoFactorAuthClient = new TwoFactorAuthClient(this, httpCallback);
+        twoFactorAuthClient = new TwoFactorAuthClient(this); //danger
         phoneNumberLookupClient = new PhoneNumberLookupClient(this, httpCallback);
         voiceClient = new VoiceClient(this, httpCallback);
         webRtcClient = new WebRtcClient(this, httpCallback);
