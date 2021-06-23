@@ -29,6 +29,8 @@ import com.bandwidth.webrtc.controllers.*;
 import com.bandwidth.exceptions.ApiException;
 import com.bandwidth.http.response.ApiResponse;
 import com.bandwidth.utilities.FileWrapper;
+import com.bandwidth.phonenumberlookup.models.*;
+import com.bandwidth.phonenumberlookup.controllers.*;
 
 /**
  * Integration tests for API interactions
@@ -40,6 +42,7 @@ public class ApiTest {
     private com.bandwidth.voice.controllers.APIController voiceController;
     private com.bandwidth.twofactorauth.controllers.MFAController mfaController;
     private com.bandwidth.webrtc.controllers.APIController webrtcController;
+    private com.bandwidth.phonenumberlookup.controllers.APIController phoneNumberLookupController;
 
     @Before
     public void init() {
@@ -316,7 +319,7 @@ public class ApiTest {
         String accountId = System.getenv("BW_ACCOUNT_ID");
         String checkNumber = System.getenv("PHONE_NUMBER_INBOUND");
         ArrayList<String> checkNumbers = new ArrayList<String>();
-        checkNumbers.add(checkNumbers);
+        checkNumbers.add(checkNumber);
 
         OrderRequest body = new OrderRequest();
         body.setTns(checkNumbers);
@@ -325,7 +328,7 @@ public class ApiTest {
         
         assertTrue("requestId not defined properly", requestId.length() > 0);
 
-        ApiResponse<OrderStatus> orderStatusResponse = phoneNumberLookupController.getLookupRequestStatus(accountId, requestId)
+        ApiResponse<OrderStatus> orderStatusResponse = phoneNumberLookupController.getLookupRequestStatus(accountId, requestId);
         String status = orderStatusResponse.getResult().getStatus();
 
         assertTrue("status not defined properly", status.length() > 0);
