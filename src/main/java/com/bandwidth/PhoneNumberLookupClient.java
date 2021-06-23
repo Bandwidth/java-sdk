@@ -8,9 +8,9 @@ package com.bandwidth;
 
 import com.bandwidth.http.client.HttpCallback;
 import com.bandwidth.http.client.OkClient;
-import com.bandwidth.webrtc.controllers.*;
+import com.bandwidth.phonenumberlookup.controllers.*;
 
-public final class WebRtcClient {
+public final class PhoneNumberLookupClient {
     private final BandwidthClient config;
 
     /**
@@ -21,7 +21,7 @@ public final class WebRtcClient {
     /**
      * Default constructor.
      */
-    public WebRtcClient(BandwidthClient config, HttpCallback httpCallback) {
+    public PhoneNumberLookupClient(BandwidthClient config, HttpCallback httpCallback) {
         this.config = config;
         client = new APIController(config, config.getHttpClient(), config.getAuthManagers(),
                 httpCallback);

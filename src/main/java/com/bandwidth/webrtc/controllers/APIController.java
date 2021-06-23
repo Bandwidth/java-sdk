@@ -76,7 +76,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildCreateParticipantRequest(accountId, body);
         authManagers.get("webRtc").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleCreateParticipantResponse(context);
@@ -95,7 +95,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildCreateParticipantRequest(accountId, body),
             req -> authManagers.get("webRtc").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleCreateParticipantResponse(context));
     }
 
@@ -189,7 +189,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildGetParticipantRequest(accountId, participantId);
         authManagers.get("webRtc").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetParticipantResponse(context);
@@ -207,7 +207,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildGetParticipantRequest(accountId, participantId),
             req -> authManagers.get("webRtc").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetParticipantResponse(context));
     }
 
@@ -300,7 +300,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildDeleteParticipantRequest(accountId, participantId);
         authManagers.get("webRtc").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleDeleteParticipantResponse(context);
@@ -318,7 +318,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildDeleteParticipantRequest(accountId, participantId),
             req -> authManagers.get("webRtc").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleDeleteParticipantResponse(context));
     }
 
@@ -407,7 +407,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildCreateSessionRequest(accountId, body);
         authManagers.get("webRtc").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleCreateSessionResponse(context);
@@ -426,7 +426,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildCreateSessionRequest(accountId, body),
             req -> authManagers.get("webRtc").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleCreateSessionResponse(context));
     }
 
@@ -520,7 +520,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildGetSessionRequest(accountId, sessionId);
         authManagers.get("webRtc").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetSessionResponse(context);
@@ -538,7 +538,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildGetSessionRequest(accountId, sessionId),
             req -> authManagers.get("webRtc").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetSessionResponse(context));
     }
 
@@ -631,7 +631,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildDeleteSessionRequest(accountId, sessionId);
         authManagers.get("webRtc").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleDeleteSessionResponse(context);
@@ -649,7 +649,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildDeleteSessionRequest(accountId, sessionId),
             req -> authManagers.get("webRtc").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleDeleteSessionResponse(context));
     }
 
@@ -737,7 +737,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildListSessionParticipantsRequest(accountId, sessionId);
         authManagers.get("webRtc").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleListSessionParticipantsResponse(context);
@@ -755,7 +755,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildListSessionParticipantsRequest(accountId, sessionId),
             req -> authManagers.get("webRtc").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleListSessionParticipantsResponse(context));
     }
 
@@ -852,7 +852,7 @@ public final class APIController extends BaseController {
                 participantId, body);
         authManagers.get("webRtc").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleAddParticipantToSessionResponse(context);
@@ -875,7 +875,7 @@ public final class APIController extends BaseController {
                 participantId, body),
             req -> authManagers.get("webRtc").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleAddParticipantToSessionResponse(context));
     }
 
@@ -972,7 +972,7 @@ public final class APIController extends BaseController {
                 sessionId);
         authManagers.get("webRtc").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleRemoveParticipantFromSessionResponse(context);
@@ -994,7 +994,7 @@ public final class APIController extends BaseController {
                 participantId, sessionId),
             req -> authManagers.get("webRtc").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleRemoveParticipantFromSessionResponse(context));
     }
 
@@ -1088,7 +1088,7 @@ public final class APIController extends BaseController {
                 sessionId);
         authManagers.get("webRtc").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetParticipantSubscriptionsResponse(context);
@@ -1109,7 +1109,7 @@ public final class APIController extends BaseController {
                 participantId, sessionId),
             req -> authManagers.get("webRtc").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetParticipantSubscriptionsResponse(context));
     }
 
@@ -1212,7 +1212,7 @@ public final class APIController extends BaseController {
                 sessionId, body);
         authManagers.get("webRtc").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleUpdateParticipantSubscriptionsResponse(context);
@@ -1237,7 +1237,7 @@ public final class APIController extends BaseController {
                 participantId, sessionId, body),
             req -> authManagers.get("webRtc").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleUpdateParticipantSubscriptionsResponse(context));
     }
 

@@ -6,8 +6,9 @@
 
 package com.bandwidth;
 
-import com.bandwidth.messaging.controllers.*;
+import com.bandwidth.http.client.HttpCallback;
 import com.bandwidth.http.client.OkClient;
+import com.bandwidth.messaging.controllers.*;
 
 public final class MessagingClient {
     private final BandwidthClient config;
@@ -20,9 +21,10 @@ public final class MessagingClient {
     /**
      * Default constructor.
      */
-    public MessagingClient(BandwidthClient config) {
+    public MessagingClient(BandwidthClient config, HttpCallback httpCallback) {
         this.config = config;
-        client = new APIController(config, config.getHttpClient(), config.getAuthManagers());
+        client = new APIController(config, config.getHttpClient(), config.getAuthManagers(),
+                httpCallback);
     }
 
     public static void shutdown() {

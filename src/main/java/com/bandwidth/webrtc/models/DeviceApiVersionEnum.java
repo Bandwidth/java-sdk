@@ -23,11 +23,11 @@ public enum DeviceApiVersionEnum {
     private String value;
 
     static {
-        V3.value = "v3";
-        V2.value = "v2";
+        V3.value = "V3";
+        V2.value = "V2";
 
-        valueMap.put("v3", V3);
-        valueMap.put("v2", V2);
+        valueMap.put("V3", V3);
+        valueMap.put("V2", V2);
     }
 
     /**

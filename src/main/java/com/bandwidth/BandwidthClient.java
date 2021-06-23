@@ -14,6 +14,7 @@ import com.bandwidth.http.client.ReadonlyHttpClientConfiguration;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
 
 /**
  * Gateway class for the library.
@@ -27,6 +28,7 @@ public final class BandwidthClient implements Configuration {
      */
     private MessagingClient messagingClient;
     private TwoFactorAuthClient twoFactorAuthClient;
+    private PhoneNumberLookupClient phoneNumberLookupClient;
     private VoiceClient voiceClient;
     private WebRtcClient webRtcClient;
 
@@ -46,11 +48,6 @@ public final class BandwidthClient implements Configuration {
     private final HttpClient httpClient;
 
     /**
-     * The timeout to use for making HTTP requests.
-     */
-    private final long timeout;
-
-    /**
      * Http Client Configuration instance.
      */
     private final ReadonlyHttpClientConfiguration httpClientConfig;
@@ -64,6 +61,11 @@ public final class BandwidthClient implements Configuration {
      * TwoFactorAuthBasicAuthManager.
      */
     private TwoFactorAuthBasicAuthManager twoFactorAuthBasicAuthManager;
+
+    /**
+     * PhoneNumberLookupBasicAuthManager.
+     */
+    private PhoneNumberLookupBasicAuthManager phoneNumberLookupBasicAuthManager;
 
     /**
      * VoiceBasicAuthManager.
@@ -86,16 +88,16 @@ public final class BandwidthClient implements Configuration {
     private final HttpCallback httpCallback;
 
     private BandwidthClient(Environment environment, String baseUrl, HttpClient httpClient,
-            long timeout, ReadonlyHttpClientConfiguration httpClientConfig,
-            String messagingBasicAuthUserName, String messagingBasicAuthPassword,
-            String twoFactorAuthBasicAuthUserName, String twoFactorAuthBasicAuthPassword,
-            String voiceBasicAuthUserName, String voiceBasicAuthPassword,
-            String webRtcBasicAuthUserName, String webRtcBasicAuthPassword,
-            Map<String, AuthManager> authManagers, HttpCallback httpCallback) {
+            ReadonlyHttpClientConfiguration httpClientConfig, String messagingBasicAuthUserName,
+            String messagingBasicAuthPassword, String twoFactorAuthBasicAuthUserName,
+            String twoFactorAuthBasicAuthPassword, String phoneNumberLookupBasicAuthUserName,
+            String phoneNumberLookupBasicAuthPassword, String voiceBasicAuthUserName,
+            String voiceBasicAuthPassword, String webRtcBasicAuthUserName,
+            String webRtcBasicAuthPassword, Map<String, AuthManager> authManagers,
+            HttpCallback httpCallback) {
         this.environment = environment;
         this.baseUrl = baseUrl;
         this.httpClient = httpClient;
-        this.timeout = timeout;
         this.httpClientConfig = httpClientConfig;
         this.httpCallback = httpCallback;
 
@@ -119,11 +121,24 @@ public final class BandwidthClient implements Configuration {
         }
 
         if (!this.authManagers.containsKey("twoFactorAuth")
-                || !getTwoFactorAuthBasicAuthCredentials().equals(twoFactorAuthBasicAuthUserName,
-                        twoFactorAuthBasicAuthPassword)) {
+                || !getTwoFactorAuthBasicAuthCredentials().equals(
+                        twoFactorAuthBasicAuthUserName, twoFactorAuthBasicAuthPassword)) {
             this.twoFactorAuthBasicAuthManager = new TwoFactorAuthBasicAuthManager(
                     twoFactorAuthBasicAuthUserName, twoFactorAuthBasicAuthPassword);
             this.authManagers.put("twoFactorAuth", twoFactorAuthBasicAuthManager);
+        }
+
+        if (this.authManagers.containsKey("phoneNumberLookup")) {
+            this.phoneNumberLookupBasicAuthManager =
+                    (PhoneNumberLookupBasicAuthManager) this.authManagers.get("phoneNumberLookup");
+        }
+
+        if (!this.authManagers.containsKey("phoneNumberLookup")
+                || !getPhoneNumberLookupBasicAuthCredentials().equals(
+                        phoneNumberLookupBasicAuthUserName, phoneNumberLookupBasicAuthPassword)) {
+            this.phoneNumberLookupBasicAuthManager = new PhoneNumberLookupBasicAuthManager(
+                    phoneNumberLookupBasicAuthUserName, phoneNumberLookupBasicAuthPassword);
+            this.authManagers.put("phoneNumberLookup", phoneNumberLookupBasicAuthManager);
         }
 
         if (this.authManagers.containsKey("voice")) {
@@ -151,10 +166,11 @@ public final class BandwidthClient implements Configuration {
         }
 
 
-        messagingClient = new MessagingClient(this);
-        twoFactorAuthClient = new TwoFactorAuthClient(this);
-        voiceClient = new VoiceClient(this);
-        webRtcClient = new WebRtcClient(this);
+        messagingClient = new MessagingClient(this, httpCallback);
+        twoFactorAuthClient = new TwoFactorAuthClient(this, httpCallback);
+        phoneNumberLookupClient = new PhoneNumberLookupClient(this, httpCallback);
+        voiceClient = new VoiceClient(this, httpCallback);
+        webRtcClient = new WebRtcClient(this, httpCallback);
     }
 
     /**
@@ -178,6 +194,14 @@ public final class BandwidthClient implements Configuration {
      */
     public TwoFactorAuthClient getTwoFactorAuthClient() {
         return twoFactorAuthClient;
+    }
+
+    /**
+     * Provides access to phoneNumberLookupClient Client.
+     * @return Returns the PhoneNumberLookupClient instance
+     */
+    public PhoneNumberLookupClient getPhoneNumberLookupClient() {
+        return phoneNumberLookupClient;
     }
 
     /**
@@ -221,14 +245,6 @@ public final class BandwidthClient implements Configuration {
     }
 
     /**
-     * The timeout to use for making HTTP requests.
-     * @return timeout
-     */
-    public long getTimeout() {
-        return timeout;
-    }
-
-    /**
      * Http Client Configuration instance.
      * @return httpClientConfig
      */
@@ -253,6 +269,14 @@ public final class BandwidthClient implements Configuration {
     }
 
     /**
+     * The credentials to use with PhoneNumberLookupBasicAuth.
+     * @return phoneNumberLookupBasicAuthCredentials
+     */
+    public PhoneNumberLookupBasicAuthCredentials getPhoneNumberLookupBasicAuthCredentials() {
+        return phoneNumberLookupBasicAuthManager;
+    }
+
+    /**
      * The credentials to use with VoiceBasicAuth.
      * @return voiceBasicAuthCredentials
      */
@@ -274,6 +298,18 @@ public final class BandwidthClient implements Configuration {
      */
     public Map<String, AuthManager> getAuthManagers() {
         return authManagers;
+    }
+
+    /**
+     * The timeout to use for making HTTP requests.
+     * @deprecated This method will be removed in a future version. Use
+     *             {@link #getHttpClientConfig()} instead.
+     *
+     * @return timeout
+     */
+    @Deprecated
+    public long timeout() {
+        return httpClientConfig.getTimeout();
     }
 
     /**
@@ -315,6 +351,9 @@ public final class BandwidthClient implements Configuration {
             if (server.equals(Server.TWOFACTORAUTHDEFAULT)) {
                 return "https://mfa.bandwidth.com/api/v1";
             }
+            if (server.equals(Server.PHONENUMBERLOOKUPDEFAULT)) {
+                return "https://numbers.bandwidth.com/api/v1";
+            }
             if (server.equals(Server.VOICEDEFAULT)) {
                 return "https://voice.bandwidth.com";
             }
@@ -330,6 +369,9 @@ public final class BandwidthClient implements Configuration {
                 return "{base_url}";
             }
             if (server.equals(Server.TWOFACTORAUTHDEFAULT)) {
+                return "{base_url}";
+            }
+            if (server.equals(Server.PHONENUMBERLOOKUPDEFAULT)) {
                 return "{base_url}";
             }
             if (server.equals(Server.VOICEDEFAULT)) {
@@ -362,7 +404,6 @@ public final class BandwidthClient implements Configuration {
         builder.environment = getEnvironment();
         builder.baseUrl = getBaseUrl();
         builder.httpClient = getHttpClient();
-        builder.timeout = getTimeout();
         builder.messagingBasicAuthUserName =
                 getMessagingBasicAuthCredentials().getBasicAuthUserName();
         builder.messagingBasicAuthPassword =
@@ -371,13 +412,18 @@ public final class BandwidthClient implements Configuration {
                 getTwoFactorAuthBasicAuthCredentials().getBasicAuthUserName();
         builder.twoFactorAuthBasicAuthPassword =
                 getTwoFactorAuthBasicAuthCredentials().getBasicAuthPassword();
+        builder.phoneNumberLookupBasicAuthUserName =
+                getPhoneNumberLookupBasicAuthCredentials().getBasicAuthUserName();
+        builder.phoneNumberLookupBasicAuthPassword =
+                getPhoneNumberLookupBasicAuthCredentials().getBasicAuthPassword();
         builder.voiceBasicAuthUserName = getVoiceBasicAuthCredentials().getBasicAuthUserName();
         builder.voiceBasicAuthPassword = getVoiceBasicAuthCredentials().getBasicAuthPassword();
         builder.webRtcBasicAuthUserName = getWebRtcBasicAuthCredentials().getBasicAuthUserName();
         builder.webRtcBasicAuthPassword = getWebRtcBasicAuthCredentials().getBasicAuthPassword();
         builder.authManagers = authManagers;
         builder.httpCallback = httpCallback;
-        builder.setHttpClientConfig(httpClientConfig);
+        builder.httpClientConfig(configBldr -> configBldr =
+                ((HttpClientConfiguration) httpClientConfig).newBuilder());
         return builder;
     }
 
@@ -385,21 +431,25 @@ public final class BandwidthClient implements Configuration {
      * Class to build instances of {@link BandwidthClient}.
      */
     public static class Builder {
+
         private Environment environment = Environment.PRODUCTION;
         private String baseUrl = "https://www.example.com";
         private HttpClient httpClient;
-        private long timeout = 0;
         private String messagingBasicAuthUserName = "TODO: Replace";
         private String messagingBasicAuthPassword = "TODO: Replace";
         private String twoFactorAuthBasicAuthUserName = "TODO: Replace";
         private String twoFactorAuthBasicAuthPassword = "TODO: Replace";
+        private String phoneNumberLookupBasicAuthUserName = "TODO: Replace";
+        private String phoneNumberLookupBasicAuthPassword = "TODO: Replace";
         private String voiceBasicAuthUserName = "TODO: Replace";
         private String voiceBasicAuthPassword = "TODO: Replace";
         private String webRtcBasicAuthUserName = "TODO: Replace";
         private String webRtcBasicAuthPassword = "TODO: Replace";
         private Map<String, AuthManager> authManagers = null;
         private HttpCallback httpCallback = null;
-        private HttpClientConfiguration httpClientConfig;
+        private HttpClientConfiguration.Builder httpClientConfigBuilder =
+                new HttpClientConfiguration.Builder();
+
 
         /**
          * Credentials setter for MessagingBasicAuth.
@@ -436,6 +486,25 @@ public final class BandwidthClient implements Configuration {
             }
             this.twoFactorAuthBasicAuthUserName = basicAuthUserName;
             this.twoFactorAuthBasicAuthPassword = basicAuthPassword;
+            return this;
+        }
+
+        /**
+         * Credentials setter for PhoneNumberLookupBasicAuth.
+         * @param basicAuthUserName String value for phoneNumberLookupBasicAuthUserName.
+         * @param basicAuthPassword String value for phoneNumberLookupBasicAuthPassword.
+         * @return Builder
+         */
+        public Builder phoneNumberLookupBasicAuthCredentials(String basicAuthUserName,
+                String basicAuthPassword) {
+            if (basicAuthUserName == null) {
+                throw new NullPointerException("BasicAuthUserName cannot be null.");
+            }
+            if (basicAuthPassword == null) {
+                throw new NullPointerException("BasicAuthPassword cannot be null.");
+            }
+            this.phoneNumberLookupBasicAuthUserName = basicAuthUserName;
+            this.phoneNumberLookupBasicAuthPassword = basicAuthPassword;
             return this;
         }
 
@@ -499,13 +568,14 @@ public final class BandwidthClient implements Configuration {
 
         /**
          * The timeout to use for making HTTP requests.
+         * @deprecated This method will be removed in a future version. Use
+         *             {@link #httpClientConfig(Consumer) httpClientConfig} instead.
          * @param timeout must be greater then 0.
          * @return Builder
          */
+        @Deprecated
         public Builder timeout(long timeout) {
-            if (timeout > 0) {
-                this.timeout = timeout;
-            }
+            this.httpClientConfigBuilder.timeout(timeout);
             return this;
         }
 
@@ -519,9 +589,16 @@ public final class BandwidthClient implements Configuration {
             return this;
         }
 
-
-        private void setHttpClientConfig(ReadonlyHttpClientConfiguration httpClientConfig) {
-            this.timeout = httpClientConfig.getTimeout();
+        /**
+         * Setter for the Builder of httpClientConfiguration, takes in an operation to be performed
+         * on the builder instance of HTTP client configuration.
+         * 
+         * @param action Consumer for the builder of httpClientConfiguration.
+         * @return Builder
+         */
+        public Builder httpClientConfig(Consumer<HttpClientConfiguration.Builder> action) {
+            action.accept(httpClientConfigBuilder);
+            return this;
         }
 
         /**
@@ -529,13 +606,13 @@ public final class BandwidthClient implements Configuration {
          * @return BandwidthClient
          */
         public BandwidthClient build() {
-            httpClientConfig = new HttpClientConfiguration();
-            httpClientConfig.setTimeout(timeout);
+            HttpClientConfiguration httpClientConfig = httpClientConfigBuilder.build();
             httpClient = new OkClient(httpClientConfig);
 
-            return new BandwidthClient(environment, baseUrl, httpClient, timeout, httpClientConfig,
+            return new BandwidthClient(environment, baseUrl, httpClient, httpClientConfig,
                     messagingBasicAuthUserName, messagingBasicAuthPassword,
                     twoFactorAuthBasicAuthUserName, twoFactorAuthBasicAuthPassword,
+                    phoneNumberLookupBasicAuthUserName, phoneNumberLookupBasicAuthPassword,
                     voiceBasicAuthUserName, voiceBasicAuthPassword, webRtcBasicAuthUserName,
                     webRtcBasicAuthPassword, authManagers, httpCallback);
         }

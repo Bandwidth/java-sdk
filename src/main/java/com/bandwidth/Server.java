@@ -20,6 +20,8 @@ public enum Server {
 
     TWOFACTORAUTHDEFAULT,
 
+    PHONENUMBERLOOKUPDEFAULT,
+
     VOICEDEFAULT,
 
     WEBRTCDEFAULT;
@@ -32,12 +34,14 @@ public enum Server {
         ENUM_DEFAULT.value = "default";
         MESSAGINGDEFAULT.value = "MessagingDefault";
         TWOFACTORAUTHDEFAULT.value = "TwoFactorAuthDefault";
+        PHONENUMBERLOOKUPDEFAULT.value = "PhoneNumberLookupDefault";
         VOICEDEFAULT.value = "VoiceDefault";
         WEBRTCDEFAULT.value = "WebRtcDefault";
 
         valueMap.put("default", ENUM_DEFAULT);
         valueMap.put("MessagingDefault", MESSAGINGDEFAULT);
         valueMap.put("TwoFactorAuthDefault", TWOFACTORAUTHDEFAULT);
+        valueMap.put("PhoneNumberLookupDefault", PHONENUMBERLOOKUPDEFAULT);
         valueMap.put("VoiceDefault", VOICEDEFAULT);
         valueMap.put("WebRtcDefault", WEBRTCDEFAULT);
     }

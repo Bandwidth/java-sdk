@@ -26,16 +26,17 @@ public interface Configuration {
     String getBaseUrl();
 
     /**
-     * The timeout to use for making HTTP requests.
-     * @return a copy of timeout
-     */
-    long getTimeout();
-
-    /**
-     * Http Client Configuration instance.
+     * Http Client Configuration instance. 
+     * See available [builder methods here](#httpclientconfiguration.builder-class).
      * @return a copy of httpClientConfig
      */
     ReadonlyHttpClientConfiguration getHttpClientConfig();
+
+    /**
+     * The timeout to use for making HTTP requests. The timeout to use for making HTTP requests.
+     * @return a copy of timeout
+     */
+    long timeout();
 
     /**
      * The credentials to use with MessagingBasicAuth.
@@ -48,6 +49,12 @@ public interface Configuration {
      * @return twoFactorAuthBasicAuthCredentials
      */
     TwoFactorAuthBasicAuthCredentials getTwoFactorAuthBasicAuthCredentials();
+
+    /**
+     * The credentials to use with PhoneNumberLookupBasicAuth.
+     * @return phoneNumberLookupBasicAuthCredentials
+     */
+    PhoneNumberLookupBasicAuthCredentials getPhoneNumberLookupBasicAuthCredentials();
 
     /**
      * The credentials to use with VoiceBasicAuth.
