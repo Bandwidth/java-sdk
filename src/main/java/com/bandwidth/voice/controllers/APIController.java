@@ -84,7 +84,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildCreateCallRequest(accountId, body);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleCreateCallResponse(context);
@@ -102,7 +102,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildCreateCallRequest(accountId, body),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleCreateCallResponse(context));
     }
 
@@ -205,7 +205,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildGetCallStateRequest(accountId, callId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetCallStateResponse(context);
@@ -223,7 +223,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildGetCallStateRequest(accountId, callId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetCallStateResponse(context));
     }
 
@@ -327,7 +327,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildModifyCallRequest(accountId, callId, body);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleModifyCallResponse(context);
@@ -347,7 +347,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildModifyCallRequest(accountId, callId, body),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleModifyCallResponse(context));
     }
 
@@ -448,7 +448,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildModifyCallRecordingStateRequest(accountId, callId, body);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleModifyCallRecordingStateResponse(context);
@@ -469,7 +469,7 @@ public final class APIController extends BaseController {
                 body),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleModifyCallRecordingStateResponse(context));
     }
 
@@ -570,7 +570,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildGetQueryMetadataForAccountAndCallRequest(accountId, callId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetQueryMetadataForAccountAndCallResponse(context);
@@ -590,7 +590,7 @@ public final class APIController extends BaseController {
                 callId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetQueryMetadataForAccountAndCallResponse(context));
     }
 
@@ -694,7 +694,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildGetMetadataForRecordingRequest(accountId, callId, recordingId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetMetadataForRecordingResponse(context);
@@ -715,7 +715,7 @@ public final class APIController extends BaseController {
                 recordingId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetMetadataForRecordingResponse(context));
     }
 
@@ -822,7 +822,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildDeleteRecordingRequest(accountId, callId, recordingId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleDeleteRecordingResponse(context);
@@ -842,7 +842,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildDeleteRecordingRequest(accountId, callId, recordingId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleDeleteRecordingResponse(context));
     }
 
@@ -944,7 +944,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildGetStreamRecordingMediaRequest(accountId, callId, recordingId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsBinary(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetStreamRecordingMediaResponse(context);
@@ -965,7 +965,7 @@ public final class APIController extends BaseController {
                 recordingId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetStreamRecordingMediaResponse(context));
     }
 
@@ -1068,7 +1068,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildDeleteRecordingMediaRequest(accountId, callId, recordingId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleDeleteRecordingMediaResponse(context);
@@ -1089,7 +1089,7 @@ public final class APIController extends BaseController {
                 recordingId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleDeleteRecordingMediaResponse(context));
     }
 
@@ -1191,7 +1191,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildGetRecordingTranscriptionRequest(accountId, callId, recordingId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetRecordingTranscriptionResponse(context);
@@ -1212,7 +1212,7 @@ public final class APIController extends BaseController {
                 recordingId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetRecordingTranscriptionResponse(context));
     }
 
@@ -1322,7 +1322,7 @@ public final class APIController extends BaseController {
                 body);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleCreateTranscribeRecordingResponse(context);
@@ -1345,7 +1345,7 @@ public final class APIController extends BaseController {
                 recordingId, body),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleCreateTranscribeRecordingResponse(context));
     }
 
@@ -1453,7 +1453,7 @@ public final class APIController extends BaseController {
                 recordingId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleDeleteRecordingTranscriptionResponse(context);
@@ -1474,7 +1474,7 @@ public final class APIController extends BaseController {
                 recordingId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleDeleteRecordingTranscriptionResponse(context));
     }
 
@@ -1583,7 +1583,7 @@ public final class APIController extends BaseController {
                 name, minCreatedTime, maxCreatedTime);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetConferencesByAccountResponse(context);
@@ -1610,7 +1610,7 @@ public final class APIController extends BaseController {
                 pageToken, name, minCreatedTime, maxCreatedTime),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetConferencesByAccountResponse(context));
     }
 
@@ -1724,7 +1724,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildGetConferenceByIdRequest(accountId, conferenceId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetConferenceByIdResponse(context);
@@ -1742,7 +1742,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildGetConferenceByIdRequest(accountId, conferenceId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetConferenceByIdResponse(context));
     }
 
@@ -1846,7 +1846,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildModifyConferenceRequest(accountId, conferenceId, body);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleModifyConferenceResponse(context);
@@ -1866,7 +1866,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildModifyConferenceRequest(accountId, conferenceId, body),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleModifyConferenceResponse(context));
     }
 
@@ -1970,7 +1970,7 @@ public final class APIController extends BaseController {
                 body);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleModifyConferenceMemberResponse(context);
@@ -1993,7 +1993,7 @@ public final class APIController extends BaseController {
                 callId, body),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleModifyConferenceMemberResponse(context));
     }
 
@@ -2098,7 +2098,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildGetConferenceMemberRequest(accountId, conferenceId, memberId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetConferenceMemberResponse(context);
@@ -2119,7 +2119,7 @@ public final class APIController extends BaseController {
                 memberId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetConferenceMemberResponse(context));
     }
 
@@ -2227,7 +2227,7 @@ public final class APIController extends BaseController {
                 conferenceId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetQueryMetadataForAccountAndConferenceResponse(context);
@@ -2247,7 +2247,7 @@ public final class APIController extends BaseController {
                 accountId, conferenceId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetQueryMetadataForAccountAndConferenceResponse(context));
     }
 
@@ -2352,7 +2352,7 @@ public final class APIController extends BaseController {
                 recordingId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetMetadataForConferenceRecordingResponse(context);
@@ -2373,7 +2373,7 @@ public final class APIController extends BaseController {
                 conferenceId, recordingId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetMetadataForConferenceRecordingResponse(context));
     }
 
@@ -2482,7 +2482,7 @@ public final class APIController extends BaseController {
                 recordingId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsBinary(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetStreamConferenceRecordingMediaResponse(context);
@@ -2503,7 +2503,7 @@ public final class APIController extends BaseController {
                 conferenceId, recordingId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetStreamConferenceRecordingMediaResponse(context));
     }
 
@@ -2614,7 +2614,7 @@ public final class APIController extends BaseController {
                 minStartTime, maxStartTime);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetQueryMetadataForAccountResponse(context);
@@ -2641,7 +2641,7 @@ public final class APIController extends BaseController {
                 minStartTime, maxStartTime),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetQueryMetadataForAccountResponse(context));
     }
 

@@ -6,8 +6,9 @@
 
 package com.bandwidth;
 
-import com.bandwidth.voice.controllers.*;
+import com.bandwidth.http.client.HttpCallback;
 import com.bandwidth.http.client.OkClient;
+import com.bandwidth.voice.controllers.*;
 
 public final class VoiceClient {
     private final BandwidthClient config;
@@ -20,9 +21,10 @@ public final class VoiceClient {
     /**
      * Default constructor.
      */
-    public VoiceClient(BandwidthClient config) {
+    public VoiceClient(BandwidthClient config, HttpCallback httpCallback) {
         this.config = config;
-        client = new APIController(config, config.getHttpClient(), config.getAuthManagers());
+        client = new APIController(config, config.getHttpClient(), config.getAuthManagers(),
+                httpCallback);
     }
 
     public static void shutdown() {

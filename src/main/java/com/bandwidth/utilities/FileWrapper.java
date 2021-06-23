@@ -6,6 +6,7 @@
 
 package com.bandwidth.utilities;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.io.File;
 
 /**
@@ -13,7 +14,9 @@ import java.io.File;
  */
 public class FileWrapper {
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private File file;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String contentType;
 
     /**

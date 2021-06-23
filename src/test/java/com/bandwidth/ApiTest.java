@@ -29,6 +29,8 @@ import com.bandwidth.webrtc.controllers.*;
 import com.bandwidth.exceptions.ApiException;
 import com.bandwidth.http.response.ApiResponse;
 import com.bandwidth.utilities.FileWrapper;
+import com.bandwidth.phonenumberlookup.models.*;
+import com.bandwidth.phonenumberlookup.controllers.*;
 
 /**
  * Integration tests for API interactions
@@ -40,6 +42,7 @@ public class ApiTest {
     private com.bandwidth.voice.controllers.APIController voiceController;
     private com.bandwidth.twofactorauth.controllers.MFAController mfaController;
     private com.bandwidth.webrtc.controllers.APIController webrtcController;
+    private com.bandwidth.phonenumberlookup.controllers.APIController phoneNumberLookupController;
 
     @Before
     public void init() {
@@ -48,11 +51,13 @@ public class ApiTest {
             .voiceBasicAuthCredentials(System.getenv("BW_USERNAME"), System.getenv("BW_PASSWORD"))
             .twoFactorAuthBasicAuthCredentials(System.getenv("BW_USERNAME"), System.getenv("BW_PASSWORD"))
             .webRtcBasicAuthCredentials(System.getenv("BW_USERNAME"), System.getenv("BW_PASSWORD"))
+            .phoneNumberLookupBasicAuthCredentials(System.getenv("BW_USERNAME"), System.getenv("BW_PASSWORD"))
             .build();
         this.messagingController = client.getMessagingClient().getAPIController();
         this.voiceController = client.getVoiceClient().getAPIController();
         this.mfaController = client.getTwoFactorAuthClient().getMFAController();
         this.webrtcController = client.getWebRtcClient().getAPIController();
+        this.phoneNumberLookupController = client.getPhoneNumberLookupClient().getAPIController();
     }
 
     @Test
@@ -307,6 +312,26 @@ public class ApiTest {
         String participantId = createParticipantResponse.getResult().getParticipant().getId();
 
         webrtcController.addParticipantToSession(accountId, sessionId, participantId, null);
+    }
+
+    @Test
+    public void testPhoneNumberLookup() throws Exception {
+        String accountId = System.getenv("BW_ACCOUNT_ID");
+        String checkNumber = System.getenv("PHONE_NUMBER_INBOUND");
+        ArrayList<String> checkNumbers = new ArrayList<String>();
+        checkNumbers.add(checkNumber);
+
+        OrderRequest body = new OrderRequest();
+        body.setTns(checkNumbers);
+        ApiResponse<OrderResponse> orderResponse = phoneNumberLookupController.createLookupRequest(accountId, body);
+        String requestId = orderResponse.getResult().getRequestId();
+        
+        assertTrue("requestId not defined properly", requestId.length() > 0);
+
+        ApiResponse<OrderStatus> orderStatusResponse = phoneNumberLookupController.getLookupRequestStatus(accountId, requestId);
+        String status = orderStatusResponse.getResult().getStatus();
+
+        assertTrue("status not defined properly", status.length() > 0);
     }
 
     /*

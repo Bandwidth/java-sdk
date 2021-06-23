@@ -78,7 +78,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildListMediaRequest(userId, continuationToken);
         authManagers.get("messaging").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleListMediaResponse(context);
@@ -97,7 +97,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildListMediaRequest(userId, continuationToken),
             req -> authManagers.get("messaging").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleListMediaResponse(context));
     }
 
@@ -195,7 +195,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildGetMediaRequest(userId, mediaId);
         authManagers.get("messaging").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsBinary(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetMediaResponse(context);
@@ -213,7 +213,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildGetMediaRequest(userId, mediaId),
             req -> authManagers.get("messaging").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetMediaResponse(context));
     }
 
@@ -318,7 +318,7 @@ public final class APIController extends BaseController {
                 contentType, cacheControl);
         authManagers.get("messaging").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleUploadMediaResponse(context);
@@ -346,7 +346,7 @@ public final class APIController extends BaseController {
                 contentType, cacheControl),
             req -> authManagers.get("messaging").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleUploadMediaResponse(context));
     }
 
@@ -447,7 +447,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildDeleteMediaRequest(userId, mediaId);
         authManagers.get("messaging").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleDeleteMediaResponse(context);
@@ -465,7 +465,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildDeleteMediaRequest(userId, mediaId),
             req -> authManagers.get("messaging").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleDeleteMediaResponse(context));
     }
 
@@ -583,7 +583,7 @@ public final class APIController extends BaseController {
                 messageStatus, errorCode, fromDateTime, toDateTime, pageToken, limit);
         authManagers.get("messaging").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetMessagesResponse(context);
@@ -626,7 +626,7 @@ public final class APIController extends BaseController {
                 limit),
             req -> authManagers.get("messaging").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleGetMessagesResponse(context));
     }
 
@@ -745,7 +745,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildCreateMessageRequest(userId, body);
         authManagers.get("messaging").apply(request);
 
-        HttpResponse response = getClientInstance().executeAsString(request);
+        HttpResponse response = getClientInstance().execute(request, false);
         HttpContext context = new HttpContext(request, response);
 
         return handleCreateMessageResponse(context);
@@ -763,7 +763,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildCreateMessageRequest(userId, body),
             req -> authManagers.get("messaging").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsStringAsync(request)),
+                        .executeAsync(request, false)),
             context -> handleCreateMessageResponse(context));
     }
 
