@@ -167,8 +167,7 @@ public final class BandwidthClient implements Configuration {
 
 
         messagingClient = new MessagingClient(this, httpCallback);
-        //twoFactorAuthClient = new TwoFactorAuthClient(this, httpCallback);
-        twoFactorAuthClient = new TwoFactorAuthClient(this); //danger
+        twoFactorAuthClient = new TwoFactorAuthClient(this);
         phoneNumberLookupClient = new PhoneNumberLookupClient(this, httpCallback);
         voiceClient = new VoiceClient(this, httpCallback);
         webRtcClient = new WebRtcClient(this, httpCallback);
@@ -314,6 +313,14 @@ public final class BandwidthClient implements Configuration {
     }
 
     /**
+     * The timeout to use for making HTTP requests.
+     * @return timeout
+     */
+    public long getTimeout() {
+        return timeout;
+    }
+
+    /**
      * Get base URI by current environment.
      * @param server Server for which to get the base URI
      * @return Processed base URI
@@ -405,6 +412,7 @@ public final class BandwidthClient implements Configuration {
         builder.environment = getEnvironment();
         builder.baseUrl = getBaseUrl();
         builder.httpClient = getHttpClient();
+        builder.timeout = getTimeout();
         builder.messagingBasicAuthUserName =
                 getMessagingBasicAuthCredentials().getBasicAuthUserName();
         builder.messagingBasicAuthPassword =
