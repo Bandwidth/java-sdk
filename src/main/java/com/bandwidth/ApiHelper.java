@@ -11,6 +11,7 @@ import com.bandwidth.http.request.MultipartFileWrapper;
 import com.bandwidth.http.request.MultipartWrapper;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -25,7 +26,6 @@ import java.io.UnsupportedEncodingException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
 import java.net.URLEncoder;
 import java.util.AbstractMap.SimpleEntry;
@@ -52,6 +52,7 @@ public class ApiHelper {
         private static final long serialVersionUID = -174113593500315394L;
         {
             configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            setSerializationInclusion(JsonInclude.Include.NON_NULL);
             configOverride(BigDecimal.class).setFormat(
                     JsonFormat.Value.forShape(JsonFormat.Shape.STRING));
         }
@@ -135,6 +136,7 @@ public class ApiHelper {
         }.writeValueAsString(obj);
     }
 
+
     /**
      * Json deserialization of the given Json string using a specified JsonDerializer.
      * @param   json The Json string to deserialize.
@@ -211,24 +213,6 @@ public class ApiHelper {
         }
 
         return mapper.readValue(json, typeReference);
-    }
-
-    /**
-     * Json deserialization of the given Json string.
-     * @param   json The Json string to deserialize
-     * @return  The deserialized Json as an Object
-     */
-    public static Object deserializeAsObject(String json) {
-        if (isNullOrWhiteSpace(json)) {
-            return null;
-        }
-        try {
-            return ApiHelper.deserialize(json, new TypeReference<Object>() {});
-        } catch (IOException e) {
-            // Failed to deserialize when json is not representing a JSON object.
-            // i.e. either its string or any primitive type.
-            return json;
-        }
     }
 
     /**
@@ -574,52 +558,42 @@ public class ApiHelper {
         } else {
             // Process objects
             // Invoke getter methods
-            Class<?> clazz = obj.getClass();
-            while (clazz != null) {
-                for (Method method : clazz.getDeclaredMethods()) {
-
-                    // Is a public/protected getter or internalGetter?
-                    if (method.getParameterTypes().length != 0
-                            || Modifier.isPrivate(method.getModifiers())
-                            || (!method.getName().startsWith("get")
-                                    && !method.getName().startsWith("internalGet"))) {
-                        continue;
-                    }
-
-                    // Get JsonGetter annotation
-                    Annotation getterAnnotation = method.getAnnotation(JsonGetter.class);
-                    if (getterAnnotation == null) {
-                        continue;
-                    }
-
-                    // Load key name from getter attribute name
-                    String attribName = ((JsonGetter) getterAnnotation).value();
-                    if ((objName != null) && (!objName.isEmpty())) {
-                        attribName = String.format("%s[%s]", objName, attribName);
-                    }
-
-                    try {
-                        // Load value by invoking getter method
-                        method.setAccessible(true);
-                        Object value = method.invoke(obj);
-                        JsonSerialize serializerAnnotation = method
-                                .getAnnotation(JsonSerialize.class);
-                        // Load key value pair into objectList
-                        if (serializerAnnotation != null) {
-                            loadKeyValuePairForEncoding(attribName, value, objectList, processed,
-                                    serializerAnnotation);
-                        } else {
-                            loadKeyValuePairForEncoding(attribName, value, objectList, processed);
-                        }
-                    } catch (IllegalAccessException | IllegalArgumentException
-                            | InvocationTargetException e) {
-                        // This block only calls getter methods.
-                        // These getters don't throw any exception except invocationTargetException.
-                        // The getters are public so there is no chance of an IllegalAccessException
-                        // Steps we've followed ensure that the object has the specified method.
-                    }
+            Method[] methods = obj.getClass().getMethods();
+            for (Method method : methods) {
+                // Is a getter?
+                if (method.getParameterTypes().length != 0 || !method.getName().startsWith("get")) {
+                    continue;
                 }
-                clazz = clazz.getSuperclass();
+
+                // Get Json attribute name
+                Annotation getterAnnotation = method.getAnnotation(JsonGetter.class);
+                if (getterAnnotation == null) {
+                    continue;
+                }
+
+                // Load key name
+                String attribName = ((JsonGetter) getterAnnotation).value();
+                if ((objName != null) && (!objName.isEmpty())) {
+                    attribName = String.format("%s[%s]", objName, attribName);
+                }
+
+                try {
+                    // Load key value pair
+                    Object value = method.invoke(obj);
+                    JsonSerialize serializerAnnotation = method.getAnnotation(JsonSerialize.class);
+                    if (serializerAnnotation != null) {
+                        loadKeyValuePairForEncoding(attribName, value, objectList, processed,
+                                serializerAnnotation);
+                    } else {
+                        loadKeyValuePairForEncoding(attribName, value, objectList, processed);
+                    }
+                } catch (IllegalAccessException | IllegalArgumentException
+                        | InvocationTargetException e) {
+                    // This block only calls getter methods.
+                    // These getters don't throw any exception except invocationTargetException.
+                    // The getters are public so there is no chance of an IllegalAccessException
+                    // Steps we've followed ensure that the object has the specified method.
+                }
             }
         }
     }
