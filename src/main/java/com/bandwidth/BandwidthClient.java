@@ -48,6 +48,11 @@ public final class BandwidthClient implements Configuration {
     private final HttpClient httpClient;
 
     /**
+     * The timeout to use for making HTTP requests.
+     */
+    private final long timeout;
+
+    /**
      * Http Client Configuration instance.
      */
     private final ReadonlyHttpClientConfiguration httpClientConfig;
@@ -87,7 +92,7 @@ public final class BandwidthClient implements Configuration {
      */
     private final HttpCallback httpCallback;
 
-    private BandwidthClient(Environment environment, String baseUrl, HttpClient httpClient,
+    private BandwidthClient(Environment environment, String baseUrl, HttpClient httpClient, long timeout,
             ReadonlyHttpClientConfiguration httpClientConfig, String messagingBasicAuthUserName,
             String messagingBasicAuthPassword, String twoFactorAuthBasicAuthUserName,
             String twoFactorAuthBasicAuthPassword, String phoneNumberLookupBasicAuthUserName,
@@ -97,6 +102,7 @@ public final class BandwidthClient implements Configuration {
             HttpCallback httpCallback) {
         this.environment = environment;
         this.baseUrl = baseUrl;
+        this.timeout = timeout;
         this.httpClient = httpClient;
         this.httpClientConfig = httpClientConfig;
         this.httpCallback = httpCallback;
@@ -444,6 +450,7 @@ public final class BandwidthClient implements Configuration {
         private Environment environment = Environment.PRODUCTION;
         private String baseUrl = "https://www.example.com";
         private HttpClient httpClient;
+        private long timeout = 0;
         private String messagingBasicAuthUserName = "TODO: Replace";
         private String messagingBasicAuthPassword = "TODO: Replace";
         private String twoFactorAuthBasicAuthUserName = "TODO: Replace";
@@ -618,7 +625,7 @@ public final class BandwidthClient implements Configuration {
             HttpClientConfiguration httpClientConfig = httpClientConfigBuilder.build();
             httpClient = new OkClient(httpClientConfig);
 
-            return new BandwidthClient(environment, baseUrl, httpClient, httpClientConfig,
+            return new BandwidthClient(environment, baseUrl, httpClient, timeout, httpClientConfig,
                     messagingBasicAuthUserName, messagingBasicAuthPassword,
                     twoFactorAuthBasicAuthUserName, twoFactorAuthBasicAuthPassword,
                     phoneNumberLookupBasicAuthUserName, phoneNumberLookupBasicAuthPassword,
