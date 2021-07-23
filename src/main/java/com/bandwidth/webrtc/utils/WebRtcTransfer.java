@@ -14,8 +14,9 @@ public class WebRtcTransfer {
     }
 
     public static String generateTransferVerb(String deviceToken, String voiceCallId, String sipUri) {
+        String formattedCallId = String.join("", voiceCallId.split("-", 2)[1].split("-"))
         return "<Transfer>\n"
-                + "\t<SipUri uui=\"" + voiceCallId + ";encoding=base64," + deviceToken + ";encoding=jwt\">" + sipUri + "</SipUri>\n"
+                + "\t<SipUri uui=\"" + formattedCallId + ";encoding=base64," + deviceToken + ";encoding=jwt\">" + sipUri + "</SipUri>\n"
                 + "</Transfer>";
     }
 }
