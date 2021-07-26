@@ -1,4 +1,5 @@
 package com.bandwidth.voice.bxml.verbs;
+import com.bandwidth.webrtc.utils.WebRtcTransfer;
   
 import org.junit.Test;
 import org.junit.Before;
@@ -6,6 +7,7 @@ import org.junit.Before;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+
 
 /**
  * Unit tests for BXML
@@ -461,5 +463,34 @@ public class BxmlTest {
         String expected = "<Response><StartGather/></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
+    }
+
+    @Test
+    public void testGenerateBxmlTwoParams() {
+        String response = WebRtcTransfer.generateBxml("asdf","c-93d6f3c0-be584596-0b74-4fa2-8015-d8ede84bd1a4");
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
+                + "<Response><Transfer>\n"
+                + "\t<SipUri uui=\"93d6f3c0be5845960b744fa28015d8ede84bd1a4;encoding=base64,asdf;encoding=jwt\">sip:sipx.webrtc.bandwidth.com:5060</SipUri>\n"
+                + "</Transfer></Response>\n";
+        assertEquals("BXML strings are equal", expected, response);
+    }
+
+    @Test
+    public void testGenerateBxmlThreeParams() {
+        String response = WebRtcTransfer.generateBxml("asdf","c-93d6f3c0-be584596-0b74-4fa2-8015-d8ede84bd1a4", "sip1:sipx.webrtc.bandwidth.com:5060");
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
+                + "<Response><Transfer>\n"
+                + "\t<SipUri uui=\"93d6f3c0be5845960b744fa28015d8ede84bd1a4;encoding=base64,asdf;encoding=jwt\">sip1:sipx.webrtc.bandwidth.com:5060</SipUri>\n"
+                + "</Transfer></Response>\n";
+        assertEquals("BXML strings are equal", expected, response);
+    }
+
+    @Test
+    public void testGenerateBxmlVerb() {
+        String response = WebRtcTransfer.generateTransferVerb("asdf","c-93d6f3c0-be584596-0b74-4fa2-8015-d8ede84bd1a4", "sip:sipx.webrtc.bandwidth.com:5060");
+        String expected = "<Transfer>\n"
+                + "\t<SipUri uui=\"93d6f3c0be5845960b744fa28015d8ede84bd1a4;encoding=base64,asdf;encoding=jwt\">sip:sipx.webrtc.bandwidth.com:5060</SipUri>\n"
+                + "</Transfer>";
+        assertEquals("BXML strings are equal", expected, response);
     }
 }
