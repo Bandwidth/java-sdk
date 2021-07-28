@@ -40,7 +40,7 @@ public class ApiTest {
     private BandwidthClient client;
     private com.bandwidth.messaging.controllers.APIController messagingController;
     private com.bandwidth.voice.controllers.APIController voiceController;
-    private com.bandwidth.twofactorauth.controllers.MFAController mfaController;
+    private com.bandwidth.multifactorauth.controllers.MFAController mfaController;
     private com.bandwidth.webrtc.controllers.APIController webrtcController;
     private com.bandwidth.phonenumberlookup.controllers.APIController phoneNumberLookupController;
 
@@ -136,14 +136,14 @@ public class ApiTest {
         body.setApplicationId(applicationId);
         body.setAnswerUrl(answerUrl);
 
-        ApiResponse<ApiCallResponse> createCallResponse = voiceController.createCall(accountId, body);
+        ApiResponse<CreateCallResponse> createCallResponse = voiceController.createCall(accountId, body);
         assertEquals("Application ID for create call not equal", applicationId, createCallResponse.getResult().getApplicationId());
         assertEquals("To phone number for create call not equal", to, createCallResponse.getResult().getTo());
         assertEquals("From phone number for create call not equal", from, createCallResponse.getResult().getFrom());
 
         //get call state
         String callId = createCallResponse.getResult().getCallId();
-        ApiResponse<ApiCallStateResponse> callStateResponse = voiceController.getCall(accountId, callId);
+        ApiResponse<CallState> callStateResponse = voiceController.getCall(accountId, callId);
         assertEquals("Application ID for call state not equal", applicationId, callStateResponse.getResult().getApplicationId());
         assertEquals("To phone number for call state not equal", to, callStateResponse.getResult().getTo());
         assertEquals("From phone number for call state not equal", from, callStateResponse.getResult().getFrom());
