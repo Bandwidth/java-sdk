@@ -21,9 +21,9 @@ import com.bandwidth.voice.exceptions.*;
 import com.bandwidth.messaging.models.*;
 import com.bandwidth.messaging.controllers.*;
 import com.bandwidth.messaging.exceptions.*;
-import com.bandwidth.twofactorauth.models.*;
-import com.bandwidth.twofactorauth.controllers.*;
-import com.bandwidth.twofactorauth.exceptions.*;
+import com.bandwidth.multifactorauth.models.*;
+import com.bandwidth.multifactorauth.controllers.*;
+import com.bandwidth.multifactorauth.exceptions.*;
 import com.bandwidth.webrtc.models.*;
 import com.bandwidth.webrtc.controllers.*;
 import com.bandwidth.exceptions.ApiException;
@@ -40,7 +40,7 @@ public class ApiTest {
     private BandwidthClient client;
     private com.bandwidth.messaging.controllers.APIController messagingController;
     private com.bandwidth.voice.controllers.APIController voiceController;
-    private com.bandwidth.twofactorauth.controllers.MFAController mfaController;
+    private com.bandwidth.multifactorauth.controllers.MFAController mfaController;
     private com.bandwidth.webrtc.controllers.APIController webrtcController;
     private com.bandwidth.phonenumberlookup.controllers.APIController phoneNumberLookupController;
 
@@ -49,13 +49,13 @@ public class ApiTest {
         this.client = new BandwidthClient.Builder()
             .messagingBasicAuthCredentials(System.getenv("BW_USERNAME"), System.getenv("BW_PASSWORD"))
             .voiceBasicAuthCredentials(System.getenv("BW_USERNAME"), System.getenv("BW_PASSWORD"))
-            .twoFactorAuthBasicAuthCredentials(System.getenv("BW_USERNAME"), System.getenv("BW_PASSWORD"))
+            .multiFactorAuthBasicAuthCredentials(System.getenv("BW_USERNAME"), System.getenv("BW_PASSWORD"))
             .webRtcBasicAuthCredentials(System.getenv("BW_USERNAME"), System.getenv("BW_PASSWORD"))
             .phoneNumberLookupBasicAuthCredentials(System.getenv("BW_USERNAME"), System.getenv("BW_PASSWORD"))
             .build();
         this.messagingController = client.getMessagingClient().getAPIController();
         this.voiceController = client.getVoiceClient().getAPIController();
-        this.mfaController = client.getTwoFactorAuthClient().getMFAController();
+        this.mfaController = client.getMultiFactorAuthClient().getMFAController();
         this.webrtcController = client.getWebRtcClient().getAPIController();
         this.phoneNumberLookupController = client.getPhoneNumberLookupClient().getAPIController();
     }
@@ -114,7 +114,7 @@ public class ApiTest {
         String fileType = "image/png";
         String cache = "no-cache";
 
-        messagingController.uploadMedia(accountId, mediaId, fileContents.length(), body, fileType, cache);
+        messagingController.uploadMedia(accountId, mediaId, body, fileType, cache);
 
         ApiResponse<InputStream> response = messagingController.getMedia(accountId, mediaId);
         String resultString = ApiTest.convertInputStreamToString(response.getResult());
@@ -130,27 +130,27 @@ public class ApiTest {
         String applicationId = System.getenv("VOICE_APPLICATION_ID");
         String answerUrl = System.getenv("VOICE_CALLBACK_URL");
 
-        ApiCreateCallRequest body = new ApiCreateCallRequest();
+        CreateCallRequest body = new CreateCallRequest();
         body.setTo(to);
         body.setFrom(from);
         body.setApplicationId(applicationId);
         body.setAnswerUrl(answerUrl);
 
-        ApiResponse<ApiCallResponse> createCallResponse = voiceController.createCall(accountId, body);
+        ApiResponse<CreateCallResponse> createCallResponse = voiceController.createCall(accountId, body);
         assertEquals("Application ID for create call not equal", applicationId, createCallResponse.getResult().getApplicationId());
         assertEquals("To phone number for create call not equal", to, createCallResponse.getResult().getTo());
         assertEquals("From phone number for create call not equal", from, createCallResponse.getResult().getFrom());
 
         //get call state
         String callId = createCallResponse.getResult().getCallId();
-        ApiResponse<ApiCallStateResponse> callStateResponse = voiceController.getCallState(accountId, callId);
+        ApiResponse<CallState> callStateResponse = voiceController.getCall(accountId, callId);
         assertEquals("Application ID for call state not equal", applicationId, callStateResponse.getResult().getApplicationId());
         assertEquals("To phone number for call state not equal", to, callStateResponse.getResult().getTo());
         assertEquals("From phone number for call state not equal", from, callStateResponse.getResult().getFrom());
         assertEquals("Call ID not equal", callId, callStateResponse.getResult().getCallId());
     }
 
-    @Test(expected = ApiErrorResponseException.class)
+    @Test(expected = ApiErrorException.class)
     public void testCreateCallInvalidPhoneNumber() throws Exception {
         String accountId = System.getenv("BW_ACCOUNT_ID");
         String to = "+1invalid";
@@ -158,7 +158,7 @@ public class ApiTest {
         String applicationId = System.getenv("VOICE_APPLICATION_ID");
         String answerUrl = System.getenv("VOICE_CALLBACK_URL");
 
-        ApiCreateCallRequest body = new ApiCreateCallRequest();
+        CreateCallRequest body = new CreateCallRequest();
         body.setTo(to);
         body.setFrom(from);
         body.setApplicationId(applicationId);
