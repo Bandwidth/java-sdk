@@ -6,6 +6,19 @@ on:
 jobs:
   publish:
     if: ${{ !github.event.release.prerelease && github.event.release.target_commitish == 'main' }}
+    env:
+      # Integration test environment variables.
+      BW_ACCOUNT_ID: ${{ secrets.BW_ACCOUNT_ID }}
+      BW_PASSWORD: ${{ secrets.BW_PASSWORD }}
+      BW_USERNAME: ${{ secrets.BW_USERNAME }}
+      MESSAGING_APPLICATION_ID: ${{ secrets.MESSAGING_APPLICATION_ID }}
+      MFA_MESSAGING_APPLICATION_ID: ${{ secrets.MFA_MESSAGING_APPLICATION_ID }}
+      MFA_VOICE_APPLICATION_ID: ${{ secrets.MFA_VOICE_APPLICATION_ID }}
+      PHONE_NUMBER_INBOUND: ${{ secrets.PHONE_NUMBER_INBOUND }}
+      PHONE_NUMBER_MFA: ${{ secrets.PHONE_NUMBER_MFA }}
+      PHONE_NUMBER_OUTBOUND: ${{ secrets.PHONE_NUMBER_OUTBOUND }}
+      VOICE_APPLICATION_ID: ${{ secrets.VOICE_APPLICATION_ID }}
+      VOICE_CALLBACK_URL: ${{ secrets.VOICE_CALLBACK_URL }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -22,19 +35,6 @@ jobs:
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-      env:
-        # Integration test environment variables.
-        BW_ACCOUNT_ID: ${{ secrets.BW_ACCOUNT_ID }}
-        BW_PASSWORD: ${{ secrets.BW_PASSWORD }}
-        BW_USERNAME: ${{ secrets.BW_USERNAME }}
-        MESSAGING_APPLICATION_ID: ${{ secrets.MESSAGING_APPLICATION_ID }}
-        MFA_MESSAGING_APPLICATION_ID: ${{ secrets.MFA_MESSAGING_APPLICATION_ID }}
-        MFA_VOICE_APPLICATION_ID: ${{ secrets.MFA_VOICE_APPLICATION_ID }}
-        PHONE_NUMBER_INBOUND: ${{ secrets.PHONE_NUMBER_INBOUND }}
-        PHONE_NUMBER_MFA: ${{ secrets.PHONE_NUMBER_MFA }}
-        PHONE_NUMBER_OUTBOUND: ${{ secrets.PHONE_NUMBER_OUTBOUND }}
-        VOICE_APPLICATION_ID: ${{ secrets.VOICE_APPLICATION_ID }}
-        VOICE_CALLBACK_URL: ${{ secrets.VOICE_CALLBACK_URL }}
 
     - uses: actions/checkout@v2
     - name: Set up Apache Maven Central
