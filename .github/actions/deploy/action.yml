@@ -1,6 +1,0 @@
-# action.yml
-name: 'Java Deploy'
-description: 'Deploys Java sdk to Maven'
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
