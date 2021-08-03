@@ -33,10 +33,11 @@ jobs:
         gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
         gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
+    - name: Get Maven project version
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/v}" >> $GITHUB_ENV
+
     - name: Set Maven project version
-      run: |
-        echo "RELEASE_VERSION=${GITHUB_REF#refs/*/v}" >> $GITHUB_ENV
-        mvn versions:set -DnewVersion=$RELEASE_VERSION
+      run: mvn versions:set -DnewVersion=$RELEASE_VERSION
 
     - name: Publish to Apache Maven Central
       run: mvn deploy
