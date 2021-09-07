@@ -128,7 +128,7 @@ public class ApiTest {
         String to = System.getenv("USER_NUMBER");
         String from = System.getenv("BW_NUMBER");
         String applicationId = System.getenv("BW_VOICE_APPLICATION_ID");
-        String answerUrl = System.getenv("VOICE_CALLBACK_URL");
+        String answerUrl = System.getenv("BASE_CALLBACK_URL").concat("/callbacks/outbound");
 
         CreateCallRequest body = new CreateCallRequest();
         body.setTo(to);
@@ -156,7 +156,7 @@ public class ApiTest {
         String to = "+1invalid";
         String from = System.getenv("BW_NUMBER");
         String applicationId = System.getenv("BW_VOICE_APPLICATION_ID");
-        String answerUrl = System.getenv("VOICE_CALLBACK_URL");
+        String answerUrl = System.getenv("BASE_CALLBACK_URL").concat("/callbacks/outbound");
 
         CreateCallRequest body = new CreateCallRequest();
         body.setTo(to);
