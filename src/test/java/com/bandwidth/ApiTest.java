@@ -63,11 +63,11 @@ public class ApiTest {
     @Test
     public void testCreateMessage() throws Exception {
         String accountId = System.getenv("BW_ACCOUNT_ID");
-        String to = System.getenv("PHONE_NUMBER_INBOUND");
+        String to = System.getenv("USER_NUMBER");
         ArrayList<String> toNumbers = new ArrayList<String>();
         toNumbers.add(to);
-        String from = System.getenv("PHONE_NUMBER_OUTBOUND");
-        String applicationId = System.getenv("MESSAGING_APPLICATION_ID");
+        String from = System.getenv("BW_NUMBER");
+        String applicationId = System.getenv("BW_MESSAGING_APPLICATION_ID");
         String text = "Java Test";
 
         MessageRequest body = new MessageRequest();
@@ -89,8 +89,8 @@ public class ApiTest {
         String to = "+1invalid";
         ArrayList<String> toNumbers = new ArrayList<String>();
         toNumbers.add(to);
-        String from = System.getenv("PHONE_NUMBER_OUTBOUND");
-        String applicationId = System.getenv("MESSAGING_APPLICATION_ID");
+        String from = System.getenv("BW_NUMBER");
+        String applicationId = System.getenv("BW_MESSAGING_APPLICATION_ID");
         String text = "Java Test";
 
         MessageRequest body = new MessageRequest();
@@ -125,10 +125,10 @@ public class ApiTest {
     @Test
     public void testCreateCallAndGetCallState() throws Exception {
         String accountId = System.getenv("BW_ACCOUNT_ID");
-        String to = System.getenv("PHONE_NUMBER_INBOUND");
-        String from = System.getenv("PHONE_NUMBER_OUTBOUND");
-        String applicationId = System.getenv("VOICE_APPLICATION_ID");
-        String answerUrl = System.getenv("VOICE_CALLBACK_URL");
+        String to = System.getenv("USER_NUMBER");
+        String from = System.getenv("BW_NUMBER");
+        String applicationId = System.getenv("BW_VOICE_APPLICATION_ID");
+        String answerUrl = System.getenv("BASE_CALLBACK_URL").concat("/callbacks/outbound");
 
         CreateCallRequest body = new CreateCallRequest();
         body.setTo(to);
@@ -154,9 +154,9 @@ public class ApiTest {
     public void testCreateCallInvalidPhoneNumber() throws Exception {
         String accountId = System.getenv("BW_ACCOUNT_ID");
         String to = "+1invalid";
-        String from = System.getenv("PHONE_NUMBER_OUTBOUND");
-        String applicationId = System.getenv("VOICE_APPLICATION_ID");
-        String answerUrl = System.getenv("VOICE_CALLBACK_URL");
+        String from = System.getenv("BW_NUMBER");
+        String applicationId = System.getenv("BW_VOICE_APPLICATION_ID");
+        String answerUrl = System.getenv("BASE_CALLBACK_URL").concat("/callbacks/outbound");
 
         CreateCallRequest body = new CreateCallRequest();
         body.setTo(to);
@@ -170,9 +170,9 @@ public class ApiTest {
     @Test
     public void testMfaMessaging() throws Exception {
         String accountId = System.getenv("BW_ACCOUNT_ID");
-        String to = System.getenv("PHONE_NUMBER_INBOUND");
-        String from = System.getenv("PHONE_NUMBER_MFA");
-        String applicationId = System.getenv("MFA_MESSAGING_APPLICATION_ID");
+        String to = System.getenv("USER_NUMBER");
+        String from = System.getenv("BW_NUMBER");
+        String applicationId = System.getenv("BW_MESSAGING_APPLICATION_ID");
         String scope = "scope";
         int digits = 6;
         String message = "Your temporary {NAME} {SCOPE} code is {CODE}";
@@ -192,9 +192,9 @@ public class ApiTest {
     @Test
     public void testMfaVoice() throws Exception {
         String accountId = System.getenv("BW_ACCOUNT_ID");
-        String to = System.getenv("PHONE_NUMBER_INBOUND");
-        String from = System.getenv("PHONE_NUMBER_MFA");
-        String applicationId = System.getenv("MFA_VOICE_APPLICATION_ID");
+        String to = System.getenv("USER_NUMBER");
+        String from = System.getenv("BW_NUMBER");
+        String applicationId = System.getenv("BW_VOICE_APPLICATION_ID");
         String scope = "scope";
         int digits = 6;
         String message = "Your temporary {NAME} {SCOPE} code is {CODE}";
@@ -215,8 +215,8 @@ public class ApiTest {
     public void testMfaMessagingInvalidPhoneNumber() throws Exception {
         String accountId = System.getenv("BW_ACCOUNT_ID");
         String to = "+1invalid";
-        String from = System.getenv("PHONE_NUMBER_MFA");
-        String applicationId = System.getenv("MFA_MESSAGING_APPLICATION_ID");
+        String from = System.getenv("BW_NUMBER");
+        String applicationId = System.getenv("BW_MESSAGING_APPLICATION_ID");
         String scope = "scope";
         int digits = 6;
         String message = "Your temporary {NAME} {SCOPE} code is {CODE}";
@@ -236,8 +236,8 @@ public class ApiTest {
     public void testMfaVoiceInvalidPhoneNumber() throws Exception {
         String accountId = System.getenv("BW_ACCOUNT_ID");
         String to = "+1invalid";
-        String from = System.getenv("PHONE_NUMBER_MFA");
-        String applicationId = System.getenv("MFA_VOICE_APPLICATION_ID");
+        String from = System.getenv("BW_NUMBER");
+        String applicationId = System.getenv("BW_VOICE_APPLICATION_ID");
         String scope = "scope";
         int digits = 6;
         String message = "Your temporary {NAME} {SCOPE} code is {CODE}";
@@ -256,8 +256,8 @@ public class ApiTest {
     @Test
     public void testMfaVerify() throws Exception {
         String accountId = System.getenv("BW_ACCOUNT_ID");
-        String to = System.getenv("PHONE_NUMBER_INBOUND");
-        String applicationId = System.getenv("MFA_VOICE_APPLICATION_ID");
+        String to = System.getenv("USER_NUMBER");
+        String applicationId = System.getenv("BW_VOICE_APPLICATION_ID");
         String scope = "scope";
         String code = "123456";
         int expirationTimeInMinutes = 3;
@@ -277,7 +277,7 @@ public class ApiTest {
     public void testMfaVerifyInvalidPhoneNumber() throws Exception {
         String accountId = System.getenv("BW_ACCOUNT_ID");
         String to = "+1invalid";
-        String applicationId = System.getenv("MFA_VOICE_APPLICATION_ID");
+        String applicationId = System.getenv("BW_VOICE_APPLICATION_ID");
         String scope = "scope";
         String code = "123456";
         int expirationTimeInMinutes = 3;
@@ -317,7 +317,7 @@ public class ApiTest {
     @Test
     public void testPhoneNumberLookup() throws Exception {
         String accountId = System.getenv("BW_ACCOUNT_ID");
-        String checkNumber = System.getenv("PHONE_NUMBER_INBOUND");
+        String checkNumber = System.getenv("USER_NUMBER");
         ArrayList<String> checkNumbers = new ArrayList<String>();
         checkNumbers.add(checkNumber);
 
