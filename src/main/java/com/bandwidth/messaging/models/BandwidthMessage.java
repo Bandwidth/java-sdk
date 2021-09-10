@@ -252,7 +252,9 @@ public class BandwidthMessage {
 
     /**
      * Getter for Media.
-     * The list of media URLs sent in the message
+     * The list of media URLs sent in the message. Including a `filename` field in the
+     * `Content-Disposition` header of the media linked with a URL will set the displayed file name.
+     * This is a best practice to ensure that your media has a readable file name.
      * @return Returns the List of String
      */
     @JsonGetter("media")
@@ -262,7 +264,9 @@ public class BandwidthMessage {
 
     /**
      * Setter for Media.
-     * The list of media URLs sent in the message
+     * The list of media URLs sent in the message. Including a `filename` field in the
+     * `Content-Disposition` header of the media linked with a URL will set the displayed file name.
+     * This is a best practice to ensure that your media has a readable file name.
      * @param media Value for List of String
      */
     @JsonSetter("media")

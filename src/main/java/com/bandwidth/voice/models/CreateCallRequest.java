@@ -46,6 +46,8 @@ public class CreateCallRequest {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private OptionalNullable<String> tag;
     private String applicationId;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private MachineDetectionRequest machineDetection;
 
     /**
      * Default constructor.
@@ -72,6 +74,7 @@ public class CreateCallRequest {
      * @param  disconnectUrl  String value for disconnectUrl.
      * @param  disconnectMethod  DisconnectMethodEnum value for disconnectMethod.
      * @param  tag  String value for tag.
+     * @param  machineDetection  MachineDetectionRequest value for machineDetection.
      */
     public CreateCallRequest(
             String from,
@@ -90,7 +93,8 @@ public class CreateCallRequest {
             AnswerFallbackMethodEnum answerFallbackMethod,
             String disconnectUrl,
             DisconnectMethodEnum disconnectMethod,
-            String tag) {
+            String tag,
+            MachineDetectionRequest machineDetection) {
         this.from = from;
         this.to = to;
         this.uui = OptionalNullable.of(uui);
@@ -108,6 +112,7 @@ public class CreateCallRequest {
         this.disconnectMethod = OptionalNullable.of(disconnectMethod);
         this.tag = OptionalNullable.of(tag);
         this.applicationId = applicationId;
+        this.machineDetection = machineDetection;
     }
 
     /**
@@ -121,8 +126,8 @@ public class CreateCallRequest {
             OptionalNullable<AnswerMethodEnum> answerMethod,
             OptionalNullable<AnswerFallbackMethodEnum> answerFallbackMethod,
             OptionalNullable<String> disconnectUrl,
-            OptionalNullable<DisconnectMethodEnum> disconnectMethod,
-            OptionalNullable<String> tag) {
+            OptionalNullable<DisconnectMethodEnum> disconnectMethod, OptionalNullable<String> tag,
+            MachineDetectionRequest machineDetection) {
         this.from = from;
         this.to = to;
         this.uui = uui;
@@ -140,6 +145,7 @@ public class CreateCallRequest {
         this.disconnectMethod = disconnectMethod;
         this.tag = tag;
         this.applicationId = applicationId;
+        this.machineDetection = machineDetection;
     }
 
     /**
@@ -184,10 +190,10 @@ public class CreateCallRequest {
 
     /**
      * Internal Getter for Uui.
-     * When calling a SIP URI, this will be sent as the 'User-To-User' header within the initial
-     * INVITE. It must end with an 'encoding' parameter as described in
-     * https://tools.ietf.org/html/rfc7433. This header cannot exceed 256 characters, including the
-     * encoding parameter.
+     * A comma-separated list of 'User-To-User' headers to be sent in the INVITE when calling a SIP
+     * URI. Each value must end with an 'encoding' parameter as described in
+     * https://tools.ietf.org/html/rfc7433. Only 'jwt' and 'base64' encodings are allowed. The
+     * entire value cannot exceed 350 characters, including parameters and separators.
      * @return Returns the Internal String
      */
     @JsonGetter("uui")
@@ -198,10 +204,10 @@ public class CreateCallRequest {
 
     /**
      * Getter for Uui.
-     * When calling a SIP URI, this will be sent as the 'User-To-User' header within the initial
-     * INVITE. It must end with an 'encoding' parameter as described in
-     * https://tools.ietf.org/html/rfc7433. This header cannot exceed 256 characters, including the
-     * encoding parameter.
+     * A comma-separated list of 'User-To-User' headers to be sent in the INVITE when calling a SIP
+     * URI. Each value must end with an 'encoding' parameter as described in
+     * https://tools.ietf.org/html/rfc7433. Only 'jwt' and 'base64' encodings are allowed. The
+     * entire value cannot exceed 350 characters, including parameters and separators.
      * @return Returns the String
      */
     public String getUui() {
@@ -210,10 +216,10 @@ public class CreateCallRequest {
 
     /**
      * Setter for Uui.
-     * When calling a SIP URI, this will be sent as the 'User-To-User' header within the initial
-     * INVITE. It must end with an 'encoding' parameter as described in
-     * https://tools.ietf.org/html/rfc7433. This header cannot exceed 256 characters, including the
-     * encoding parameter.
+     * A comma-separated list of 'User-To-User' headers to be sent in the INVITE when calling a SIP
+     * URI. Each value must end with an 'encoding' parameter as described in
+     * https://tools.ietf.org/html/rfc7433. Only 'jwt' and 'base64' encodings are allowed. The
+     * entire value cannot exceed 350 characters, including parameters and separators.
      * @param uui Value for String
      */
     @JsonSetter("uui")
@@ -223,10 +229,10 @@ public class CreateCallRequest {
 
     /**
      * UnSetter for Uui.
-     * When calling a SIP URI, this will be sent as the 'User-To-User' header within the initial
-     * INVITE. It must end with an 'encoding' parameter as described in
-     * https://tools.ietf.org/html/rfc7433. This header cannot exceed 256 characters, including the
-     * encoding parameter.
+     * A comma-separated list of 'User-To-User' headers to be sent in the INVITE when calling a SIP
+     * URI. Each value must end with an 'encoding' parameter as described in
+     * https://tools.ietf.org/html/rfc7433. Only 'jwt' and 'base64' encodings are allowed. The
+     * entire value cannot exceed 350 characters, including parameters and separators.
      */
     public void unsetUui() {
         uui = null;
@@ -677,6 +683,24 @@ public class CreateCallRequest {
     }
 
     /**
+     * Getter for MachineDetection.
+     * @return Returns the MachineDetectionRequest
+     */
+    @JsonGetter("machineDetection")
+    public MachineDetectionRequest getMachineDetection() {
+        return machineDetection;
+    }
+
+    /**
+     * Setter for MachineDetection.
+     * @param machineDetection Value for MachineDetectionRequest
+     */
+    @JsonSetter("machineDetection")
+    public void setMachineDetection(MachineDetectionRequest machineDetection) {
+        this.machineDetection = machineDetection;
+    }
+
+    /**
      * Converts this CreateCallRequest into string format.
      * @return String representation of this class
      */
@@ -689,7 +713,8 @@ public class CreateCallRequest {
                 + ", fallbackUsername=" + fallbackUsername + ", fallbackPassword="
                 + fallbackPassword + ", answerMethod=" + answerMethod + ", answerFallbackMethod="
                 + answerFallbackMethod + ", disconnectUrl=" + disconnectUrl + ", disconnectMethod="
-                + disconnectMethod + ", tag=" + tag + "]";
+                + disconnectMethod + ", tag=" + tag + ", machineDetection=" + machineDetection
+                + "]";
     }
 
     /**
@@ -698,7 +723,8 @@ public class CreateCallRequest {
      * @return a new {@link CreateCallRequest.Builder} object
      */
     public Builder toBuilder() {
-        Builder builder = new Builder(from, to, answerUrl, applicationId);
+        Builder builder = new Builder(from, to, answerUrl, applicationId)
+                .machineDetection(getMachineDetection());
         builder.uui = internalGetUui();
         builder.callTimeout = internalGetCallTimeout();
         builder.callbackTimeout = internalGetCallbackTimeout();
@@ -736,6 +762,7 @@ public class CreateCallRequest {
         private OptionalNullable<String> disconnectUrl;
         private OptionalNullable<DisconnectMethodEnum> disconnectMethod;
         private OptionalNullable<String> tag;
+        private MachineDetectionRequest machineDetection;
 
         /**
          * Initialization constructor.
@@ -1045,6 +1072,16 @@ public class CreateCallRequest {
         }
 
         /**
+         * Setter for machineDetection.
+         * @param  machineDetection  MachineDetectionRequest value for machineDetection.
+         * @return Builder
+         */
+        public Builder machineDetection(MachineDetectionRequest machineDetection) {
+            this.machineDetection = machineDetection;
+            return this;
+        }
+
+        /**
          * Builds a new {@link CreateCallRequest} object using the set fields.
          * @return {@link CreateCallRequest}
          */
@@ -1052,7 +1089,7 @@ public class CreateCallRequest {
             return new CreateCallRequest(from, to, answerUrl, applicationId, uui, callTimeout,
                     callbackTimeout, answerFallbackUrl, username, password, fallbackUsername,
                     fallbackPassword, answerMethod, answerFallbackMethod, disconnectUrl,
-                    disconnectMethod, tag);
+                    disconnectMethod, tag, machineDetection);
         }
     }
 }

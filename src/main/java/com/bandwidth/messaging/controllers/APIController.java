@@ -64,7 +64,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * listMedia.
+     * Gets a list of your media files. No query parameters are supported.
      * @param  accountId  Required parameter: User's account ID
      * @param  continuationToken  Optional parameter: Continuation token used to retrieve subsequent
      *         media.
@@ -85,7 +85,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * listMedia.
+     * Gets a list of your media files. No query parameters are supported.
      * @param  accountId  Required parameter: User's account ID
      * @param  continuationToken  Optional parameter: Continuation token used to retrieve subsequent
      *         media.
@@ -157,7 +157,8 @@ public final class APIController extends BaseController {
             throw new MessagingException("400 Request is malformed or invalid", context);
         }
         if (responseCode == 401) {
-            throw new MessagingException("401 The specified user does not have access to the account", context);
+            throw new MessagingException(
+                    "401 The specified user does not have access to the account", context);
         }
         if (responseCode == 403) {
             throw new MessagingException("403 The user does not have access to this API", context);
@@ -166,7 +167,8 @@ public final class APIController extends BaseController {
             throw new MessagingException("404 Path not found", context);
         }
         if (responseCode == 415) {
-            throw new MessagingException("415 The content-type of the request is incorrect", context);
+            throw new MessagingException("415 The content-type of the request is incorrect",
+                    context);
         }
         if (responseCode == 429) {
             throw new MessagingException("429 The rate limit has been reached", context);
@@ -182,7 +184,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * getMedia.
+     * Downloads a media file you previously uploaded.
      * @param  accountId  Required parameter: User's account ID
      * @param  mediaId  Required parameter: Media ID to retrieve
      * @return    Returns the InputStream wrapped in ApiResponse response from the API call
@@ -202,7 +204,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * getMedia.
+     * Downloads a media file you previously uploaded.
      * @param  accountId  Required parameter: User's account ID
      * @param  mediaId  Required parameter: Media ID to retrieve
      * @return    Returns the InputStream wrapped in ApiResponse response from the API call
@@ -273,7 +275,8 @@ public final class APIController extends BaseController {
             throw new MessagingException("400 Request is malformed or invalid", context);
         }
         if (responseCode == 401) {
-            throw new MessagingException("401 The specified user does not have access to the account", context);
+            throw new MessagingException(
+                    "401 The specified user does not have access to the account", context);
         }
         if (responseCode == 403) {
             throw new MessagingException("403 The user does not have access to this API", context);
@@ -282,7 +285,8 @@ public final class APIController extends BaseController {
             throw new MessagingException("404 Path not found", context);
         }
         if (responseCode == 415) {
-            throw new MessagingException("415 The content-type of the request is incorrect", context);
+            throw new MessagingException("415 The content-type of the request is incorrect",
+                    context);
         }
         if (responseCode == 429) {
             throw new MessagingException("429 The rate limit has been reached", context);
@@ -296,7 +300,8 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * uploadMedia.
+     * Uploads a file the normal HTTP way. You may add headers to the request in order to provide
+     * some control to your media-file.
      * @param  accountId  Required parameter: User's account ID
      * @param  mediaId  Required parameter: The user supplied custom media ID
      * @param  body  Required parameter: Example:
@@ -323,7 +328,8 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * uploadMedia.
+     * Uploads a file the normal HTTP way. You may add headers to the request in order to provide
+     * some control to your media-file.
      * @param  accountId  Required parameter: User's account ID
      * @param  mediaId  Required parameter: The user supplied custom media ID
      * @param  body  Required parameter: Example:
@@ -408,7 +414,8 @@ public final class APIController extends BaseController {
             throw new MessagingException("400 Request is malformed or invalid", context);
         }
         if (responseCode == 401) {
-            throw new MessagingException("401 The specified user does not have access to the account", context);
+            throw new MessagingException(
+                    "401 The specified user does not have access to the account", context);
         }
         if (responseCode == 403) {
             throw new MessagingException("403 The user does not have access to this API", context);
@@ -417,7 +424,8 @@ public final class APIController extends BaseController {
             throw new MessagingException("404 Path not found", context);
         }
         if (responseCode == 415) {
-            throw new MessagingException("415 The content-type of the request is incorrect", context);
+            throw new MessagingException("415 The content-type of the request is incorrect",
+                    context);
         }
         if (responseCode == 429) {
             throw new MessagingException("429 The rate limit has been reached", context);
@@ -429,7 +437,9 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * deleteMedia.
+     * Deletes a media file from Bandwidth API server. Make sure you don't have any application
+     * scripts still using the media before you delete. If you accidentally delete a media file, you
+     * can immediately upload a new file with the same name.
      * @param  accountId  Required parameter: User's account ID
      * @param  mediaId  Required parameter: The media ID to delete
      * @throws    ApiException    Represents error response from the server.
@@ -448,7 +458,9 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * deleteMedia.
+     * Deletes a media file from Bandwidth API server. Make sure you don't have any application
+     * scripts still using the media before you delete. If you accidentally delete a media file, you
+     * can immediately upload a new file with the same name.
      * @param  accountId  Required parameter: User's account ID
      * @param  mediaId  Required parameter: The media ID to delete
      * @return    Returns the Void wrapped in ApiResponse response from the API call
@@ -519,7 +531,8 @@ public final class APIController extends BaseController {
             throw new MessagingException("400 Request is malformed or invalid", context);
         }
         if (responseCode == 401) {
-            throw new MessagingException("401 The specified user does not have access to the account", context);
+            throw new MessagingException(
+                    "401 The specified user does not have access to the account", context);
         }
         if (responseCode == 403) {
             throw new MessagingException("403 The user does not have access to this API", context);
@@ -528,7 +541,8 @@ public final class APIController extends BaseController {
             throw new MessagingException("404 Path not found", context);
         }
         if (responseCode == 415) {
-            throw new MessagingException("415 The content-type of the request is incorrect", context);
+            throw new MessagingException("415 The content-type of the request is incorrect",
+                    context);
         }
         if (responseCode == 429) {
             throw new MessagingException("429 The rate limit has been reached", context);
@@ -540,7 +554,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * getMessages.
+     * Gets a list of messages based on query parameters.
      * @param  accountId  Required parameter: User's account ID
      * @param  messageId  Optional parameter: The ID of the message to search for. Special
      *         characters need to be encoded using URL encoding
@@ -584,7 +598,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * getMessages.
+     * Gets a list of messages based on query parameters.
      * @param  accountId  Required parameter: User's account ID
      * @param  messageId  Optional parameter: The ID of the message to search for. Special
      *         characters need to be encoded using URL encoding
@@ -700,7 +714,8 @@ public final class APIController extends BaseController {
             throw new MessagingException("400 Request is malformed or invalid", context);
         }
         if (responseCode == 401) {
-            throw new MessagingException("401 The specified user does not have access to the account", context);
+            throw new MessagingException(
+                    "401 The specified user does not have access to the account", context);
         }
         if (responseCode == 403) {
             throw new MessagingException("403 The user does not have access to this API", context);
@@ -709,7 +724,8 @@ public final class APIController extends BaseController {
             throw new MessagingException("404 Path not found", context);
         }
         if (responseCode == 415) {
-            throw new MessagingException("415 The content-type of the request is incorrect", context);
+            throw new MessagingException("415 The content-type of the request is incorrect",
+                    context);
         }
         if (responseCode == 429) {
             throw new MessagingException("429 The rate limit has been reached", context);
@@ -726,7 +742,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * createMessage.
+     * Endpoint for sending text messages and picture messages using V2 messaging.
      * @param  accountId  Required parameter: User's account ID
      * @param  body  Required parameter: Example:
      * @return    Returns the BandwidthMessage wrapped in ApiResponse response from the API call
@@ -746,7 +762,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * createMessage.
+     * Endpoint for sending text messages and picture messages using V2 messaging.
      * @param  accountId  Required parameter: User's account ID
      * @param  body  Required parameter: Example:
      * @return    Returns the BandwidthMessage wrapped in ApiResponse response from the API call
@@ -818,7 +834,8 @@ public final class APIController extends BaseController {
             throw new MessagingException("400 Request is malformed or invalid", context);
         }
         if (responseCode == 401) {
-            throw new MessagingException("401 The specified user does not have access to the account", context);
+            throw new MessagingException(
+                    "401 The specified user does not have access to the account", context);
         }
         if (responseCode == 403) {
             throw new MessagingException("403 The user does not have access to this API", context);
@@ -827,7 +844,8 @@ public final class APIController extends BaseController {
             throw new MessagingException("404 Path not found", context);
         }
         if (responseCode == 415) {
-            throw new MessagingException("415 The content-type of the request is incorrect", context);
+            throw new MessagingException("415 The content-type of the request is incorrect",
+                    context);
         }
         if (responseCode == 429) {
             throw new MessagingException("429 The rate limit has been reached", context);
