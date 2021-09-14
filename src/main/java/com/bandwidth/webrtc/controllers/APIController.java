@@ -62,7 +62,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Create a new participant under this account Participants are idempotent, so relevant
+     * Create a new participant under this account. Participants are idempotent, so relevant
      * parameters must be set in this function if desired.
      * @param  accountId  Required parameter: Account ID
      * @param  body  Optional parameter: Participant parameters
@@ -83,7 +83,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Create a new participant under this account Participants are idempotent, so relevant
+     * Create a new participant under this account. Participants are idempotent, so relevant
      * parameters must be set in this function if desired.
      * @param  accountId  Required parameter: Account ID
      * @param  body  Optional parameter: Participant parameters
@@ -393,7 +393,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Create a new session Sessions are idempotent, so relevant parameters must be set in this
+     * Create a new session. Sessions are idempotent, so relevant parameters must be set in this
      * function if desired.
      * @param  accountId  Required parameter: Account ID
      * @param  body  Optional parameter: Session parameters
@@ -414,7 +414,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Create a new session Sessions are idempotent, so relevant parameters must be set in this
+     * Create a new session. Sessions are idempotent, so relevant parameters must be set in this
      * function if desired.
      * @param  accountId  Required parameter: Account ID
      * @param  body  Optional parameter: Session parameters
@@ -835,7 +835,8 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Add a participant to a session Subscriptions can optionally be provided as part of this call.
+     * Add a participant to a session. Subscriptions can optionally be provided as part of this
+     * call.
      * @param  accountId  Required parameter: Account ID
      * @param  sessionId  Required parameter: Session ID
      * @param  participantId  Required parameter: Participant ID
@@ -859,7 +860,8 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Add a participant to a session Subscriptions can optionally be provided as part of this call.
+     * Add a participant to a session. Subscriptions can optionally be provided as part of this
+     * call.
      * @param  accountId  Required parameter: Account ID
      * @param  sessionId  Required parameter: Session ID
      * @param  participantId  Required parameter: Participant ID
@@ -956,7 +958,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Remove a participant from a session This will automatically remove any subscriptions the
+     * Remove a participant from a session. This will automatically remove any subscriptions the
      * participant has associated with this session.
      * @param  accountId  Required parameter: Account ID
      * @param  sessionId  Required parameter: Session ID
@@ -979,7 +981,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Remove a participant from a session This will automatically remove any subscriptions the
+     * Remove a participant from a session. This will automatically remove any subscriptions the
      * participant has associated with this session.
      * @param  accountId  Required parameter: Account ID
      * @param  sessionId  Required parameter: Session ID
@@ -1193,7 +1195,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Update a participant's subscriptions This is a full update that will replace the
+     * Update a participant's subscriptions. This is a full update that will replace the
      * participant's subscriptions. First call `getParticipantSubscriptions` if you need the current
      * subscriptions. Call this function with no `Subscriptions` object to remove all subscriptions.
      * @param  accountId  Required parameter: Account ID
@@ -1219,7 +1221,7 @@ public final class APIController extends BaseController {
     }
 
     /**
-     * Update a participant's subscriptions This is a full update that will replace the
+     * Update a participant's subscriptions. This is a full update that will replace the
      * participant's subscriptions. First call `getParticipantSubscriptions` if you need the current
      * subscriptions. Call this function with no `Subscriptions` object to remove all subscriptions.
      * @param  accountId  Required parameter: Account ID

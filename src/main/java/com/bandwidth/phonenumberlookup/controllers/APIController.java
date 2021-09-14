@@ -151,316 +151,524 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new AccountsTnlookup400ErrorException("Bad Request. Ensure that your request payload is properly formatted and that the telephone numbers used are valid.", context);
+            throw new AccountsTnlookup400ErrorException(
+                    "Bad Request. Ensure that your request payload is properly formatted and that the telephone numbers used are valid.",
+                    context);
         }
         if (responseCode == 401) {
-            throw new ApiException("Unauthorized. Ensure that you are using the proper credentials for the environment you are accessing, your user has the proper role assigned to it, and that your Bandwidth account is enabled for TN Lookup access.", context);
+            throw new ApiException(
+                    "Unauthorized. Ensure that you are using the proper credentials for the environment you are accessing, your user has the proper role assigned to it, and that your Bandwidth account is enabled for TN Lookup access.",
+                    context);
         }
         if (responseCode == 415) {
-            throw new ApiException("Invalid content-type. Ensure that your content-type header is set to application/json.", context);
+            throw new ApiException(
+                    "Invalid content-type. Ensure that your content-type header is set to application/json.",
+                    context);
         }
         if (responseCode == 429) {
-            throw new ApiException("Too Many Requests. Reduce the amount of requests that you are sending in order to avoid receiving this status code.", context);
+            throw new ApiException(
+                    "Too Many Requests. Reduce the amount of requests that you are sending in order to avoid receiving this status code.",
+                    context);
         }
         if (responseCode == 500) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 501) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 502) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 503) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 504) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 505) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 506) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 507) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 508) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 509) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 510) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 511) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 512) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 513) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 514) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 515) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 516) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 517) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 518) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 519) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 520) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 521) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 522) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 523) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 524) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 525) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 526) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 527) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 528) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 529) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 530) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 531) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 532) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 533) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 534) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 535) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 536) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 537) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 538) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 539) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 540) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 541) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 542) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 543) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 544) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 545) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 546) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 547) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 548) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 549) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 550) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 551) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 552) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 553) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 554) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 555) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 556) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 557) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 558) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 559) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 560) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 561) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 562) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 563) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 564) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 565) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 566) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 567) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 568) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 569) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 570) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 571) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 572) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 573) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 574) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 575) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 576) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 577) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 578) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 579) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 580) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 581) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 582) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 583) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 584) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 585) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 586) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 587) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 588) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 589) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 590) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 591) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 592) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 593) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 594) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 595) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 596) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 597) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 598) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 599) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);
@@ -565,316 +773,524 @@ public final class APIController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ApiException("Bad Request. Ensure that you have set the requestId as a URL path parameter.", context);
+            throw new ApiException(
+                    "Bad Request. Ensure that you have set the requestId as a URL path parameter.",
+                    context);
         }
         if (responseCode == 401) {
-            throw new ApiException("Unauthorized. Ensure that you are using the proper credentials for the environment you are accessing, your user has the proper role assigned to it, and that your Bandwidth account is enabled for TN Lookup access.", context);
+            throw new ApiException(
+                    "Unauthorized. Ensure that you are using the proper credentials for the environment you are accessing, your user has the proper role assigned to it, and that your Bandwidth account is enabled for TN Lookup access.",
+                    context);
         }
         if (responseCode == 404) {
-            throw new ApiException("RequestId not found. Ensure that the requestId used in the URL path is valid and maps to a previous request that was submitted.", context);
+            throw new ApiException(
+                    "RequestId not found. Ensure that the requestId used in the URL path is valid and maps to a previous request that was submitted.",
+                    context);
         }
         if (responseCode == 429) {
-            throw new ApiException("Too Many Requests. Reduce the amount of requests that you are sending in order to avoid receiving this status code.", context);
+            throw new ApiException(
+                    "Too Many Requests. Reduce the amount of requests that you are sending in order to avoid receiving this status code.",
+                    context);
         }
         if (responseCode == 500) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 501) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 502) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 503) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 504) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 505) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 506) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 507) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 508) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 509) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 510) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 511) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 512) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 513) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 514) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 515) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 516) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 517) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 518) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 519) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 520) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 521) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 522) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 523) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 524) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 525) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 526) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 527) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 528) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 529) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 530) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 531) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 532) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 533) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 534) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 535) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 536) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 537) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 538) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 539) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 540) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 541) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 542) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 543) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 544) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 545) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 546) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 547) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 548) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 549) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 550) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 551) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 552) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 553) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 554) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 555) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 556) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 557) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 558) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 559) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 560) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 561) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 562) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 563) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 564) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 565) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 566) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 567) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 568) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 569) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 570) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 571) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 572) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 573) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 574) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 575) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 576) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 577) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 578) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 579) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 580) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 581) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 582) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 583) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 584) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 585) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 586) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 587) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 588) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 589) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 590) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 591) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 592) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 593) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 594) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 595) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 596) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 597) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 598) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         if (responseCode == 599) {
-            throw new ApiException("Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.", context);
+            throw new ApiException(
+                    "Unexpected error. Please contact Bandwidth Support if your requests are receiving this status code for an extended period of time.",
+                    context);
         }
         //handle errors defined at the API level
         validateResponse(response, context);

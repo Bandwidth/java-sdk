@@ -150,6 +150,46 @@ public class ApiTest {
         assertEquals("Call ID not equal", callId, callStateResponse.getResult().getCallId());
     }
 
+    @Test
+    public void testCreateCallWithAmdAndGetCallState() throws Exception {
+        String accountId = System.getenv("BW_ACCOUNT_ID");
+        String to = System.getenv("USER_NUMBER");
+        String from = System.getenv("BW_NUMBER");
+        String applicationId = System.getenv("BW_VOICE_APPLICATION_ID");
+        String answerUrl = System.getenv("BASE_CALLBACK_URL").concat("/callbacks/outbound");
+        String machineDetectionUrl = System.getenv("BASE_CALLBACK_URL").concat("/callbacks/machineDetection");
+
+        MachineDetectionRequest machineDetection = new MachineDetectionRequest();
+        machineDetection.setMode(ModeEnum.ASYNC);
+        machineDetection.setCallbackUrl(machineDetectionUrl);
+        machineDetection.setCallbackMethod(CallbackMethodEnum.POST);
+        machineDetection.setDetectionTimeout(5.0);
+        machineDetection.setSilenceTimeout(5.0);
+        machineDetection.setSpeechThreshold(5.0);
+        machineDetection.setSpeechEndThreshold(5.0);
+        machineDetection.setDelayResult(Boolean.TRUE);
+
+        CreateCallRequest body = new CreateCallRequest();
+        body.setTo(to);
+        body.setFrom(from);
+        body.setApplicationId(applicationId);
+        body.setAnswerUrl(answerUrl);
+        body.setMachineDetection(machineDetection);
+
+        ApiResponse<CreateCallResponse> createCallResponse = voiceController.createCall(accountId, body);
+        assertEquals("Application ID for create call not equal", applicationId, createCallResponse.getResult().getApplicationId());
+        assertEquals("To phone number for create call not equal", to, createCallResponse.getResult().getTo());
+        assertEquals("From phone number for create call not equal", from, createCallResponse.getResult().getFrom());
+
+        //get call state
+        String callId = createCallResponse.getResult().getCallId();
+        ApiResponse<CallState> callStateResponse = voiceController.getCall(accountId, callId);
+        assertEquals("Application ID for call state not equal", applicationId, callStateResponse.getResult().getApplicationId());
+        assertEquals("To phone number for call state not equal", to, callStateResponse.getResult().getTo());
+        assertEquals("From phone number for call state not equal", from, callStateResponse.getResult().getFrom());
+        assertEquals("Call ID not equal", callId, callStateResponse.getResult().getCallId());
+    }
+
     @Test(expected = ApiErrorException.class)
     public void testCreateCallInvalidPhoneNumber() throws Exception {
         String accountId = System.getenv("BW_ACCOUNT_ID");

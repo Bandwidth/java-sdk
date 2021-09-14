@@ -39,7 +39,7 @@ public class CallState {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private OptionalNullable<String> identity;
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Map<String, String> pai;
+    private Map<String, String> stirShaken;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private LocalDateTime startTime;
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -72,7 +72,7 @@ public class CallState {
      * @param  direction  String value for direction.
      * @param  state  String value for state.
      * @param  identity  String value for identity.
-     * @param  pai  Map of String, value for pai.
+     * @param  stirShaken  Map of String, value for stirShaken.
      * @param  startTime  LocalDateTime value for startTime.
      * @param  answerTime  LocalDateTime value for answerTime.
      * @param  endTime  LocalDateTime value for endTime.
@@ -91,7 +91,7 @@ public class CallState {
             String direction,
             String state,
             String identity,
-            Map<String, String> pai,
+            Map<String, String> stirShaken,
             LocalDateTime startTime,
             LocalDateTime answerTime,
             LocalDateTime endTime,
@@ -108,7 +108,7 @@ public class CallState {
         this.direction = direction;
         this.state = state;
         this.identity = OptionalNullable.of(identity);
-        this.pai = pai;
+        this.stirShaken = stirShaken;
         this.startTime = startTime;
         this.answerTime = OptionalNullable.of(answerTime);
         this.endTime = OptionalNullable.of(endTime);
@@ -123,10 +123,11 @@ public class CallState {
      */
     protected CallState(String callId, OptionalNullable<String> parentCallId, String applicationId,
             String accountId, String to, String from, String direction, String state,
-            OptionalNullable<String> identity, Map<String, String> pai, LocalDateTime startTime,
-            OptionalNullable<LocalDateTime> answerTime, OptionalNullable<LocalDateTime> endTime,
-            OptionalNullable<String> disconnectCause, OptionalNullable<String> errorMessage,
-            OptionalNullable<String> errorId, LocalDateTime lastUpdate) {
+            OptionalNullable<String> identity, Map<String, String> stirShaken,
+            LocalDateTime startTime, OptionalNullable<LocalDateTime> answerTime,
+            OptionalNullable<LocalDateTime> endTime, OptionalNullable<String> disconnectCause,
+            OptionalNullable<String> errorMessage, OptionalNullable<String> errorId,
+            LocalDateTime lastUpdate) {
         this.callId = callId;
         this.parentCallId = parentCallId;
         this.applicationId = applicationId;
@@ -136,7 +137,7 @@ public class CallState {
         this.direction = direction;
         this.state = state;
         this.identity = identity;
-        this.pai = pai;
+        this.stirShaken = stirShaken;
         this.startTime = startTime;
         this.answerTime = answerTime;
         this.endTime = endTime;
@@ -347,21 +348,21 @@ public class CallState {
     }
 
     /**
-     * Getter for Pai.
+     * Getter for StirShaken.
      * @return Returns the Map of String, String
      */
-    @JsonGetter("pai")
-    public Map<String, String> getPai() {
-        return pai;
+    @JsonGetter("stirShaken")
+    public Map<String, String> getStirShaken() {
+        return stirShaken;
     }
 
     /**
-     * Setter for Pai.
-     * @param pai Value for Map of String, String
+     * Setter for StirShaken.
+     * @param stirShaken Value for Map of String, String
      */
-    @JsonSetter("pai")
-    public void setPai(Map<String, String> pai) {
-        this.pai = pai;
+    @JsonSetter("stirShaken")
+    public void setStirShaken(Map<String, String> stirShaken) {
+        this.stirShaken = stirShaken;
     }
 
     /**
@@ -605,10 +606,10 @@ public class CallState {
         return "CallState [" + "callId=" + callId + ", parentCallId=" + parentCallId
                 + ", applicationId=" + applicationId + ", accountId=" + accountId + ", to=" + to
                 + ", from=" + from + ", direction=" + direction + ", state=" + state + ", identity="
-                + identity + ", pai=" + pai + ", startTime=" + startTime + ", answerTime="
-                + answerTime + ", endTime=" + endTime + ", disconnectCause=" + disconnectCause
-                + ", errorMessage=" + errorMessage + ", errorId=" + errorId + ", lastUpdate="
-                + lastUpdate + "]";
+                + identity + ", stirShaken=" + stirShaken + ", startTime=" + startTime
+                + ", answerTime=" + answerTime + ", endTime=" + endTime + ", disconnectCause="
+                + disconnectCause + ", errorMessage=" + errorMessage + ", errorId=" + errorId
+                + ", lastUpdate=" + lastUpdate + "]";
     }
 
     /**
@@ -625,7 +626,7 @@ public class CallState {
                 .from(getFrom())
                 .direction(getDirection())
                 .state(getState())
-                .pai(getPai())
+                .stirShaken(getStirShaken())
                 .startTime(getStartTime())
                 .lastUpdate(getLastUpdate());
         builder.parentCallId = internalGetParentCallId();
@@ -651,7 +652,7 @@ public class CallState {
         private String direction;
         private String state;
         private OptionalNullable<String> identity;
-        private Map<String, String> pai;
+        private Map<String, String> stirShaken;
         private LocalDateTime startTime;
         private OptionalNullable<LocalDateTime> answerTime;
         private OptionalNullable<LocalDateTime> endTime;
@@ -771,12 +772,12 @@ public class CallState {
         }
 
         /**
-         * Setter for pai.
-         * @param  pai  Map of String, value for pai.
+         * Setter for stirShaken.
+         * @param  stirShaken  Map of String, value for stirShaken.
          * @return Builder
          */
-        public Builder pai(Map<String, String> pai) {
-            this.pai = pai;
+        public Builder stirShaken(Map<String, String> stirShaken) {
+            this.stirShaken = stirShaken;
             return this;
         }
 
@@ -901,7 +902,7 @@ public class CallState {
          */
         public CallState build() {
             return new CallState(callId, parentCallId, applicationId, accountId, to, from,
-                    direction, state, identity, pai, startTime, answerTime, endTime,
+                    direction, state, identity, stirShaken, startTime, answerTime, endTime,
                     disconnectCause, errorMessage, errorId, lastUpdate);
         }
     }
