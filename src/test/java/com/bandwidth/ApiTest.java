@@ -1,5 +1,7 @@
 package com.bandwidth;
 
+import com.bandwidth.voice.controllers.APIController;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.Before;
 
@@ -37,7 +39,15 @@ import com.bandwidth.phonenumberlookup.controllers.*;
  */
 public class ApiTest {
 
-    private BandwidthClient client;
+    private static final String USERNAME = System.getenv("BW_USERNAME");
+    private static final String PASSWORD = System.getenv("BW_PASSWORD");
+    private static final String ACCOUNT_ID = System.getenv("BW_ACCOUNT_ID");
+    private static final String USER_NUMBER = System.getenv("USER_NUMBER");
+    private static final String BW_NUMBER = System.getenv("BW_NUMBER");
+    private static final String MESSAGING_APPLICATION_ID = System.getenv("BW_MESSAGING_APPLICATION_ID");
+    private static final String VOICE_APPLICATION_ID = System.getenv("BW_VOICE_APPLICATION_ID");
+    private static final String BASE_CALLBACK_URL = System.getenv("BASE_CALLBACK_URL");
+
     private com.bandwidth.messaging.controllers.APIController messagingController;
     private com.bandwidth.voice.controllers.APIController voiceController;
     private com.bandwidth.multifactorauth.controllers.MFAController mfaController;
@@ -45,14 +55,14 @@ public class ApiTest {
     private com.bandwidth.phonenumberlookup.controllers.APIController phoneNumberLookupController;
 
     @Before
-    public void init() {
-        this.client = new BandwidthClient.Builder()
-            .messagingBasicAuthCredentials(System.getenv("BW_USERNAME"), System.getenv("BW_PASSWORD"))
-            .voiceBasicAuthCredentials(System.getenv("BW_USERNAME"), System.getenv("BW_PASSWORD"))
-            .multiFactorAuthBasicAuthCredentials(System.getenv("BW_USERNAME"), System.getenv("BW_PASSWORD"))
-            .webRtcBasicAuthCredentials(System.getenv("BW_USERNAME"), System.getenv("BW_PASSWORD"))
-            .phoneNumberLookupBasicAuthCredentials(System.getenv("BW_USERNAME"), System.getenv("BW_PASSWORD"))
-            .build();
+    public void initTest() {
+        BandwidthClient client = new BandwidthClient.Builder()
+                .messagingBasicAuthCredentials(USERNAME, PASSWORD)
+                .voiceBasicAuthCredentials(USERNAME, PASSWORD)
+                .multiFactorAuthBasicAuthCredentials(USERNAME, PASSWORD)
+                .webRtcBasicAuthCredentials(USERNAME, PASSWORD)
+                .phoneNumberLookupBasicAuthCredentials(USERNAME, PASSWORD)
+                .build();
         this.messagingController = client.getMessagingClient().getAPIController();
         this.voiceController = client.getVoiceClient().getAPIController();
         this.mfaController = client.getMultiFactorAuthClient().getMFAController();
@@ -62,61 +72,52 @@ public class ApiTest {
 
     @Test
     public void testCreateMessage() throws Exception {
-        String accountId = System.getenv("BW_ACCOUNT_ID");
-        String to = System.getenv("USER_NUMBER");
-        ArrayList<String> toNumbers = new ArrayList<String>();
-        toNumbers.add(to);
-        String from = System.getenv("BW_NUMBER");
-        String applicationId = System.getenv("BW_MESSAGING_APPLICATION_ID");
-        String text = "Java Test";
+        ArrayList<String> toNumbers = new ArrayList<>();
+        toNumbers.add(USER_NUMBER);
+
+        final String text = "Java Test";
 
         MessageRequest body = new MessageRequest();
         body.setTo(toNumbers);
-        body.setFrom(from);
+        body.setFrom(BW_NUMBER);
         body.setText(text);
-        body.setApplicationId(applicationId);
+        body.setApplicationId(MESSAGING_APPLICATION_ID);
 
-        ApiResponse<BandwidthMessage> response = messagingController.createMessage(accountId, body);
-        assertEquals("Application ID not equal", applicationId, response.getResult().getApplicationId());
-        assertEquals("To phone number not equal", to, response.getResult().getTo().get(0));
-        assertEquals("From phone number not equal", from, response.getResult().getFrom());
+        ApiResponse<BandwidthMessage> response = messagingController.createMessage(ACCOUNT_ID, body);
+        assertEquals("Application ID not equal", MESSAGING_APPLICATION_ID, response.getResult().getApplicationId());
+        assertEquals("To phone number not equal", USER_NUMBER, response.getResult().getTo().get(0));
+        assertEquals("From phone number not equal", BW_NUMBER, response.getResult().getFrom());
         assertEquals("Text not equal", text, response.getResult().getText());
     }
 
     @Test(expected = MessagingException.class)
     public void testCreateMessageInvalidPhoneNumber() throws Exception {
-        String accountId = System.getenv("BW_ACCOUNT_ID");
-        String to = "+1invalid";
-        ArrayList<String> toNumbers = new ArrayList<String>();
-        toNumbers.add(to);
-        String from = System.getenv("BW_NUMBER");
-        String applicationId = System.getenv("BW_MESSAGING_APPLICATION_ID");
-        String text = "Java Test";
+        ArrayList<String> toNumbers = new ArrayList<>();
+        toNumbers.add("+1invalid");
 
         MessageRequest body = new MessageRequest();
         body.setTo(toNumbers);
-        body.setFrom(from);
-        body.setText(text);
-        body.setApplicationId(applicationId);
+        body.setFrom(BW_NUMBER);
+        body.setText("Java Test");
+        body.setApplicationId(MESSAGING_APPLICATION_ID);
 
-        messagingController.createMessage(accountId, body);
+        messagingController.createMessage(ACCOUNT_ID, body);
     }
 
     @Test
     public void testUploadDownloadMedia() throws Exception {
-        String fileName = "src/test/resources/mediaUpload.png";
+        final String fileName = "src/test/resources/mediaUpload.png";
         File file = new File(fileName);
         FileInputStream inStream = new FileInputStream(fileName);
         String fileContents = ApiTest.convertInputStreamToString(inStream);
         FileWrapper body = new FileWrapper(file, "image/png");
-        String accountId = System.getenv("BW_ACCOUNT_ID");
         String mediaId = "java-media-test";
         String fileType = "image/png";
         String cache = "no-cache";
 
-        messagingController.uploadMedia(accountId, mediaId, body, fileType, cache);
+        messagingController.uploadMedia(ACCOUNT_ID, mediaId, body, fileType, cache);
 
-        ApiResponse<InputStream> response = messagingController.getMedia(accountId, mediaId);
+        ApiResponse<InputStream> response = messagingController.getMedia(ACCOUNT_ID, mediaId);
         String resultString = ApiTest.convertInputStreamToString(response.getResult());
 
         assertEquals("Media download not equal to media upload", fileContents, resultString);
@@ -124,211 +125,152 @@ public class ApiTest {
 
     @Test
     public void testCreateCallAndGetCallState() throws Exception {
-        String accountId = System.getenv("BW_ACCOUNT_ID");
-        String to = System.getenv("USER_NUMBER");
-        String from = System.getenv("BW_NUMBER");
-        String applicationId = System.getenv("BW_VOICE_APPLICATION_ID");
-        String answerUrl = System.getenv("BASE_CALLBACK_URL").concat("/callbacks/outbound");
+        String answerUrl = BASE_CALLBACK_URL.concat("/callbacks/outbound");
 
         CreateCallRequest body = new CreateCallRequest();
-        body.setTo(to);
-        body.setFrom(from);
-        body.setApplicationId(applicationId);
+        body.setTo(USER_NUMBER);
+        body.setFrom(BW_NUMBER);
+        body.setApplicationId(VOICE_APPLICATION_ID);
         body.setAnswerUrl(answerUrl);
 
-        ApiResponse<CreateCallResponse> createCallResponse = voiceController.createCall(accountId, body);
-        assertEquals("Application ID for create call not equal", applicationId, createCallResponse.getResult().getApplicationId());
-        assertEquals("To phone number for create call not equal", to, createCallResponse.getResult().getTo());
-        assertEquals("From phone number for create call not equal", from, createCallResponse.getResult().getFrom());
+        ApiResponse<CreateCallResponse> createCallResponse = voiceController.createCall(ACCOUNT_ID, body);
+        assertEquals("Application ID for create call not equal", VOICE_APPLICATION_ID, createCallResponse.getResult().getApplicationId());
+        assertEquals("To phone number for create call not equal", USER_NUMBER, createCallResponse.getResult().getTo());
+        assertEquals("From phone number for create call not equal", BW_NUMBER, createCallResponse.getResult().getFrom());
 
         //get call state
         String callId = createCallResponse.getResult().getCallId();
-        ApiResponse<CallState> callStateResponse = voiceController.getCall(accountId, callId);
-        assertEquals("Application ID for call state not equal", applicationId, callStateResponse.getResult().getApplicationId());
-        assertEquals("To phone number for call state not equal", to, callStateResponse.getResult().getTo());
-        assertEquals("From phone number for call state not equal", from, callStateResponse.getResult().getFrom());
+        ApiResponse<CallState> callStateResponse = voiceController.getCall(ACCOUNT_ID, callId);
+        assertEquals("Application ID for call state not equal", VOICE_APPLICATION_ID, callStateResponse.getResult().getApplicationId());
+        assertEquals("To phone number for call state not equal", USER_NUMBER, callStateResponse.getResult().getTo());
+        assertEquals("From phone number for call state not equal", BW_NUMBER, callStateResponse.getResult().getFrom());
         assertEquals("Call ID not equal", callId, callStateResponse.getResult().getCallId());
     }
 
     @Test(expected = ApiErrorException.class)
     public void testCreateCallInvalidPhoneNumber() throws Exception {
-        String accountId = System.getenv("BW_ACCOUNT_ID");
-        String to = "+1invalid";
-        String from = System.getenv("BW_NUMBER");
-        String applicationId = System.getenv("BW_VOICE_APPLICATION_ID");
-        String answerUrl = System.getenv("BASE_CALLBACK_URL").concat("/callbacks/outbound");
+        final String answerUrl = BASE_CALLBACK_URL.concat("/callbacks/outbound");
 
         CreateCallRequest body = new CreateCallRequest();
-        body.setTo(to);
-        body.setFrom(from);
-        body.setApplicationId(applicationId);
+        body.setTo("+1invalid");
+        body.setFrom(BW_NUMBER);
+        body.setApplicationId(VOICE_APPLICATION_ID);
         body.setAnswerUrl(answerUrl);
 
-        voiceController.createCall(accountId, body);
+        voiceController.createCall(ACCOUNT_ID, body);
     }
 
     @Test
     public void testMfaMessaging() throws Exception {
-        String accountId = System.getenv("BW_ACCOUNT_ID");
-        String to = System.getenv("USER_NUMBER");
-        String from = System.getenv("BW_NUMBER");
-        String applicationId = System.getenv("BW_MESSAGING_APPLICATION_ID");
-        String scope = "scope";
-        int digits = 6;
-        String message = "Your temporary {NAME} {SCOPE} code is {CODE}";
-        
         TwoFactorCodeRequestSchema body = new TwoFactorCodeRequestSchema();
-        body.setTo(to);
-        body.setFrom(from);
-        body.setApplicationId(applicationId);
-        body.setScope(scope);
-        body.setDigits(digits);
-        body.setMessage(message);
+        body.setTo(USER_NUMBER);
+        body.setFrom(BW_NUMBER);
+        body.setApplicationId(MESSAGING_APPLICATION_ID);
+        body.setScope("scope");
+        body.setDigits(6);
+        body.setMessage("Your temporary {NAME} {SCOPE} code is {CODE}");
 
-        ApiResponse<TwoFactorMessagingResponse> response = mfaController.createMessagingTwoFactor(accountId, body);
+        ApiResponse<TwoFactorMessagingResponse> response = mfaController.createMessagingTwoFactor(ACCOUNT_ID, body);
         assertTrue("Message ID not defined", response.getResult().getMessageId().length() > 0);
     }
 
     @Test
     public void testMfaVoice() throws Exception {
-        String accountId = System.getenv("BW_ACCOUNT_ID");
-        String to = System.getenv("USER_NUMBER");
-        String from = System.getenv("BW_NUMBER");
-        String applicationId = System.getenv("BW_VOICE_APPLICATION_ID");
-        String scope = "scope";
-        int digits = 6;
-        String message = "Your temporary {NAME} {SCOPE} code is {CODE}";
-        
         TwoFactorCodeRequestSchema body = new TwoFactorCodeRequestSchema();
-        body.setTo(to);
-        body.setFrom(from);
-        body.setApplicationId(applicationId);
-        body.setScope(scope);
-        body.setDigits(digits);
-        body.setMessage(message);
+        body.setTo(USER_NUMBER);
+        body.setFrom(BW_NUMBER);
+        body.setApplicationId(VOICE_APPLICATION_ID);
+        body.setScope("scope");
+        body.setDigits(6);
+        body.setMessage("Your temporary {NAME} {SCOPE} code is {CODE}");
 
-        ApiResponse<TwoFactorVoiceResponse> response = mfaController.createVoiceTwoFactor(accountId, body);
+        ApiResponse<TwoFactorVoiceResponse> response = mfaController.createVoiceTwoFactor(ACCOUNT_ID, body);
         assertTrue("Call ID not defined", response.getResult().getCallId().length() > 0);
     }
 
     @Test(expected = ErrorWithRequestException.class)
     public void testMfaMessagingInvalidPhoneNumber() throws Exception {
-        String accountId = System.getenv("BW_ACCOUNT_ID");
-        String to = "+1invalid";
-        String from = System.getenv("BW_NUMBER");
-        String applicationId = System.getenv("BW_MESSAGING_APPLICATION_ID");
-        String scope = "scope";
-        int digits = 6;
-        String message = "Your temporary {NAME} {SCOPE} code is {CODE}";
-        
         TwoFactorCodeRequestSchema body = new TwoFactorCodeRequestSchema();
-        body.setTo(to);
-        body.setFrom(from);
-        body.setApplicationId(applicationId);
-        body.setScope(scope);
-        body.setDigits(digits);
-        body.setMessage(message);
+        body.setTo("+1invalid");
+        body.setFrom(BW_NUMBER);
+        body.setApplicationId(MESSAGING_APPLICATION_ID);
+        body.setScope("scope");
+        body.setDigits(6);
+        body.setMessage("Your temporary {NAME} {SCOPE} code is {CODE}");
 
-        mfaController.createMessagingTwoFactor(accountId, body);
+        mfaController.createMessagingTwoFactor(ACCOUNT_ID, body);
     }
 
     @Test(expected = ErrorWithRequestException.class)
     public void testMfaVoiceInvalidPhoneNumber() throws Exception {
-        String accountId = System.getenv("BW_ACCOUNT_ID");
-        String to = "+1invalid";
-        String from = System.getenv("BW_NUMBER");
-        String applicationId = System.getenv("BW_VOICE_APPLICATION_ID");
-        String scope = "scope";
-        int digits = 6;
-        String message = "Your temporary {NAME} {SCOPE} code is {CODE}";
-        
         TwoFactorCodeRequestSchema body = new TwoFactorCodeRequestSchema();
-        body.setTo(to);
-        body.setFrom(from);
-        body.setApplicationId(applicationId);
-        body.setScope(scope);
-        body.setDigits(digits);
-        body.setMessage(message);
+        body.setTo("+1invalid");
+        body.setFrom(BW_NUMBER);
+        body.setApplicationId(VOICE_APPLICATION_ID);
+        body.setScope("scope");
+        body.setDigits(6);
+        body.setMessage("Your temporary {NAME} {SCOPE} code is {CODE}");
 
-        mfaController.createVoiceTwoFactor(accountId, body);
+        mfaController.createVoiceTwoFactor(ACCOUNT_ID, body);
     }
 
     @Test
     public void testMfaVerify() throws Exception {
-        String accountId = System.getenv("BW_ACCOUNT_ID");
-        String to = System.getenv("USER_NUMBER");
-        String applicationId = System.getenv("BW_VOICE_APPLICATION_ID");
-        String scope = "scope";
-        String code = "123456";
-        int expirationTimeInMinutes = 3;
 
         TwoFactorVerifyRequestSchema body = new TwoFactorVerifyRequestSchema();
-        body.setTo(to);
-        body.setApplicationId(applicationId);
-        body.setScope(scope);
-        body.setCode(code);
-        body.setExpirationTimeInMinutes(expirationTimeInMinutes);
+        body.setTo(USER_NUMBER);
+        body.setApplicationId(VOICE_APPLICATION_ID);
+        body.setScope("scope");
+        body.setCode("123456");
+        body.setExpirationTimeInMinutes(3);
 
-        ApiResponse<TwoFactorVerifyCodeResponse> response = mfaController.createVerifyTwoFactor(accountId, body);
+        ApiResponse<TwoFactorVerifyCodeResponse> response = mfaController.createVerifyTwoFactor(ACCOUNT_ID, body);
         assertTrue("Valid not defined as a boolean", response.getResult().getValid() == true || response.getResult().getValid() == false);
     }
 
     @Test(expected = ErrorWithRequestException.class)
     public void testMfaVerifyInvalidPhoneNumber() throws Exception {
-        String accountId = System.getenv("BW_ACCOUNT_ID");
-        String to = "+1invalid";
-        String applicationId = System.getenv("BW_VOICE_APPLICATION_ID");
-        String scope = "scope";
-        String code = "123456";
-        int expirationTimeInMinutes = 3;
-
         TwoFactorVerifyRequestSchema body = new TwoFactorVerifyRequestSchema();
-        body.setTo(to);
-        body.setApplicationId(applicationId);
-        body.setScope(scope);
-        body.setCode(code);
-        body.setExpirationTimeInMinutes(expirationTimeInMinutes);
+        body.setTo("+1invalid");
+        body.setApplicationId(VOICE_APPLICATION_ID);
+        body.setScope("scope");
+        body.setCode("123456");
+        body.setExpirationTimeInMinutes(3);
 
-        mfaController.createVerifyTwoFactor(accountId, body);
+        mfaController.createVerifyTwoFactor(ACCOUNT_ID, body);
     }
 
     @Test
     public void testWebRtcParticipantSessionManagement() throws Exception {
-        String accountId = System.getenv("BW_ACCOUNT_ID");
 
         Session createSessionBody = new Session();
         createSessionBody.setTag("new-session");
 
-        ApiResponse<Session> createSessionResponse = webrtcController.createSession(accountId, createSessionBody);
+        ApiResponse<Session> createSessionResponse = webrtcController.createSession(ACCOUNT_ID, createSessionBody);
         String sessionId = createSessionResponse.getResult().getId();
 
         Participant createParticipantBody = new Participant();
         createParticipantBody.setCallbackUrl("https://sample.com");
-        ArrayList<PublishPermissionEnum> publishPermissions = new ArrayList<PublishPermissionEnum>();
-        publishPermissions.add(PublishPermissionEnum.AUDIO);
-        publishPermissions.add(PublishPermissionEnum.VIDEO);
 
-        ApiResponse<AccountsParticipantsResponse> createParticipantResponse = webrtcController.createParticipant(accountId, createParticipantBody);
+        ApiResponse<AccountsParticipantsResponse> createParticipantResponse = webrtcController.createParticipant(ACCOUNT_ID, createParticipantBody);
         String participantId = createParticipantResponse.getResult().getParticipant().getId();
 
-        webrtcController.addParticipantToSession(accountId, sessionId, participantId, null);
+        webrtcController.addParticipantToSession(ACCOUNT_ID, sessionId, participantId, null);
     }
 
     @Test
     public void testPhoneNumberLookup() throws Exception {
-        String accountId = System.getenv("BW_ACCOUNT_ID");
-        String checkNumber = System.getenv("USER_NUMBER");
-        ArrayList<String> checkNumbers = new ArrayList<String>();
-        checkNumbers.add(checkNumber);
+        ArrayList<String> checkNumbers = new ArrayList<>();
+        checkNumbers.add(USER_NUMBER);
 
         OrderRequest body = new OrderRequest();
         body.setTns(checkNumbers);
-        ApiResponse<OrderResponse> orderResponse = phoneNumberLookupController.createLookupRequest(accountId, body);
+        ApiResponse<OrderResponse> orderResponse = phoneNumberLookupController.createLookupRequest(ACCOUNT_ID, body);
         String requestId = orderResponse.getResult().getRequestId();
         
         assertTrue("requestId not defined properly", requestId.length() > 0);
 
-        ApiResponse<OrderStatus> orderStatusResponse = phoneNumberLookupController.getLookupRequestStatus(accountId, requestId);
+        ApiResponse<OrderStatus> orderStatusResponse = phoneNumberLookupController.getLookupRequestStatus(ACCOUNT_ID, requestId);
         String status = orderStatusResponse.getResult().getStatus();
 
         assertTrue("status not defined properly", status.length() > 0);
