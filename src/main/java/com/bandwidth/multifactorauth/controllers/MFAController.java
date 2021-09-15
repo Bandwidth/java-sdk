@@ -64,7 +64,8 @@ public final class MFAController extends BaseController {
     }
 
     /**
-     * Allows a user to send a MFA code through a phone call.
+     * Multi-Factor authentication with Bandwidth Voice services. Allows for a user to send an MFA
+     * code via a phone call.
      * @param  accountId  Required parameter: Bandwidth Account ID with Voice service enabled
      * @param  body  Required parameter: Example:
      * @return    Returns the TwoFactorVoiceResponse wrapped in ApiResponse response from the API call
@@ -84,7 +85,8 @@ public final class MFAController extends BaseController {
     }
 
     /**
-     * Allows a user to send a MFA code through a phone call.
+     * Multi-Factor authentication with Bandwidth Voice services. Allows for a user to send an MFA
+     * code via a phone call.
      * @param  accountId  Required parameter: Bandwidth Account ID with Voice service enabled
      * @param  body  Required parameter: Example:
      * @return    Returns the TwoFactorVoiceResponse wrapped in ApiResponse response from the API call
@@ -153,13 +155,16 @@ public final class MFAController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ErrorWithRequestException("If there is any issue with values passed in by the user", context);
+            throw new ErrorWithRequestException(
+                    "If there is any issue with values passed in by the user", context);
         }
         if (responseCode == 401) {
-            throw new UnauthorizedRequestException("Authentication is either incorrect or not present", context);
+            throw new UnauthorizedRequestException(
+                    "Authentication is either incorrect or not present", context);
         }
         if (responseCode == 403) {
-            throw new ForbiddenRequestException("The user is not authorized to access this resource", context);
+            throw new ForbiddenRequestException(
+                    "The user is not authorized to access this resource", context);
         }
         if (responseCode == 500) {
             throw new ErrorWithRequestException("An internal server error occurred", context);
@@ -176,7 +181,8 @@ public final class MFAController extends BaseController {
     }
 
     /**
-     * Allows a user to send a MFA code through a text message (SMS).
+     * Multi-Factor authentication with Bandwidth Messaging services. Allows a user to send an MFA
+     * code via a text message (SMS).
      * @param  accountId  Required parameter: Bandwidth Account ID with Messaging service enabled
      * @param  body  Required parameter: Example:
      * @return    Returns the TwoFactorMessagingResponse wrapped in ApiResponse response from the API call
@@ -196,7 +202,8 @@ public final class MFAController extends BaseController {
     }
 
     /**
-     * Allows a user to send a MFA code through a text message (SMS).
+     * Multi-Factor authentication with Bandwidth Messaging services. Allows a user to send an MFA
+     * code via a text message (SMS).
      * @param  accountId  Required parameter: Bandwidth Account ID with Messaging service enabled
      * @param  body  Required parameter: Example:
      * @return    Returns the TwoFactorMessagingResponse wrapped in ApiResponse response from the API call
@@ -265,13 +272,16 @@ public final class MFAController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ErrorWithRequestException("If there is any issue with values passed in by the user", context);
+            throw new ErrorWithRequestException(
+                    "If there is any issue with values passed in by the user", context);
         }
         if (responseCode == 401) {
-            throw new UnauthorizedRequestException("Authentication is either incorrect or not present", context);
+            throw new UnauthorizedRequestException(
+                    "Authentication is either incorrect or not present", context);
         }
         if (responseCode == 403) {
-            throw new ForbiddenRequestException("The user is not authorized to access this resource", context);
+            throw new ForbiddenRequestException(
+                    "The user is not authorized to access this resource", context);
         }
         if (responseCode == 500) {
             throw new ErrorWithRequestException("An internal server error occurred", context);
@@ -377,16 +387,21 @@ public final class MFAController extends BaseController {
         int responseCode = response.getStatusCode();
 
         if (responseCode == 400) {
-            throw new ErrorWithRequestException("If there is any issue with values passed in by the user", context);
+            throw new ErrorWithRequestException(
+                    "If there is any issue with values passed in by the user", context);
         }
         if (responseCode == 401) {
-            throw new UnauthorizedRequestException("Authentication is either incorrect or not present", context);
+            throw new UnauthorizedRequestException(
+                    "Authentication is either incorrect or not present", context);
         }
         if (responseCode == 403) {
-            throw new ForbiddenRequestException("The user is not authorized to access this resource", context);
+            throw new ForbiddenRequestException(
+                    "The user is not authorized to access this resource", context);
         }
         if (responseCode == 429) {
-            throw new ErrorWithRequestException("The user has made too many bad requests and is temporarily locked out", context);
+            throw new ErrorWithRequestException(
+                    "The user has made too many bad requests and is temporarily locked out",
+                    context);
         }
         if (responseCode == 500) {
             throw new ErrorWithRequestException("An internal server error occurred", context);
