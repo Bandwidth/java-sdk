@@ -66,12 +66,14 @@ public class MessagingApiTests {
     public void testUploadDownloadMedia() throws Exception {
         final String fileName = "src/test/resources/mediaUpload.png";
         final String contentType = "image/png";
+
         File file = new File(fileName);
         byte[] fileContents = Files.readAllBytes(file.toPath());
-        FileWrapper body = new FileWrapper(file, "image/png");
+        FileWrapper body = new FileWrapper(file, contentType);
+
         String mediaId = "java-media-test";
 
-        controller.uploadMedia(ACCOUNT_ID, mediaId, body, "image/png", "no-cache");
+        controller.uploadMedia(ACCOUNT_ID, mediaId, body, contentType, "no-cache");
 
         InputStream response = controller.getMedia(ACCOUNT_ID, mediaId).getResult();
 
