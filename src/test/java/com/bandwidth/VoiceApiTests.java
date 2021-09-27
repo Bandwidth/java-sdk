@@ -54,7 +54,7 @@ public class VoiceApiTests {
         final String answerUrl = BASE_CALLBACK_URL.concat("/callbacks/outbound");
         final String machineDetectionUrl = BASE_CALLBACK_URL.concat("/callbacks/machineDetection");
 
-        MachineDetectionRequest machineDetection = new MachineDetectionRequest();
+        MachineDetectionConfiguration machineDetection = new MachineDetectionConfiguration();
         machineDetection.setMode(ModeEnum.ASYNC);
         machineDetection.setCallbackUrl(machineDetectionUrl);
         machineDetection.setCallbackMethod(CallbackMethodEnum.POST);
