@@ -5,7 +5,6 @@ import com.bandwidth.webrtc.controllers.APIController;
 import com.bandwidth.webrtc.models.Participant;
 import com.bandwidth.webrtc.models.Session;
 import org.junit.*;
-import static org.junit.Assert.*;
 
 import static com.bandwidth.TestingEnvironmentVariables.*;
 

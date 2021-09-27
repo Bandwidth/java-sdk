@@ -4,11 +4,8 @@ import com.bandwidth.multifactorauth.controllers.MFAController;
 
 import com.bandwidth.multifactorauth.exceptions.ErrorWithRequestException;
 import com.bandwidth.multifactorauth.models.TwoFactorCodeRequestSchema;
-import com.bandwidth.multifactorauth.models.TwoFactorVerifyCodeResponse;
 import com.bandwidth.multifactorauth.models.TwoFactorVerifyRequestSchema;
-import com.bandwidth.multifactorauth.models.TwoFactorVoiceResponse;
 import org.junit.*;
-import static org.junit.Assert.*;
 
 import static com.bandwidth.TestingEnvironmentVariables.*;
 
