@@ -13,24 +13,16 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.io.Reader;
 
-import com.bandwidth.*;
-import com.bandwidth.Environment;
 import com.bandwidth.voice.models.*;
-import com.bandwidth.voice.controllers.*;
 import com.bandwidth.voice.exceptions.*;
 import com.bandwidth.messaging.models.*;
-import com.bandwidth.messaging.controllers.*;
 import com.bandwidth.messaging.exceptions.*;
 import com.bandwidth.multifactorauth.models.*;
-import com.bandwidth.multifactorauth.controllers.*;
 import com.bandwidth.multifactorauth.exceptions.*;
 import com.bandwidth.webrtc.models.*;
-import com.bandwidth.webrtc.controllers.*;
-import com.bandwidth.exceptions.ApiException;
 import com.bandwidth.http.response.ApiResponse;
 import com.bandwidth.utilities.FileWrapper;
 import com.bandwidth.phonenumberlookup.models.*;
-import com.bandwidth.phonenumberlookup.controllers.*;
 
 /**
  * Integration tests for API interactions
@@ -159,7 +151,7 @@ public class ApiTest {
         String answerUrl = System.getenv("BASE_CALLBACK_URL").concat("/callbacks/outbound");
         String machineDetectionUrl = System.getenv("BASE_CALLBACK_URL").concat("/callbacks/machineDetection");
 
-        MachineDetectionRequest machineDetection = new MachineDetectionRequest();
+        MachineDetectionConfiguration machineDetection = new MachineDetectionConfiguration();
         machineDetection.setMode(ModeEnum.ASYNC);
         machineDetection.setCallbackUrl(machineDetectionUrl);
         machineDetection.setCallbackMethod(CallbackMethodEnum.POST);

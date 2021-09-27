@@ -47,7 +47,7 @@ public class CreateCallRequest {
     private OptionalNullable<String> tag;
     private String applicationId;
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private MachineDetectionRequest machineDetection;
+    private MachineDetectionConfiguration machineDetection;
 
     /**
      * Default constructor.
@@ -74,7 +74,7 @@ public class CreateCallRequest {
      * @param  disconnectUrl  String value for disconnectUrl.
      * @param  disconnectMethod  DisconnectMethodEnum value for disconnectMethod.
      * @param  tag  String value for tag.
-     * @param  machineDetection  MachineDetectionRequest value for machineDetection.
+     * @param  machineDetection  MachineDetectionConfiguration value for machineDetection.
      */
     public CreateCallRequest(
             String from,
@@ -94,7 +94,7 @@ public class CreateCallRequest {
             String disconnectUrl,
             DisconnectMethodEnum disconnectMethod,
             String tag,
-            MachineDetectionRequest machineDetection) {
+            MachineDetectionConfiguration machineDetection) {
         this.from = from;
         this.to = to;
         this.uui = OptionalNullable.of(uui);
@@ -127,7 +127,7 @@ public class CreateCallRequest {
             OptionalNullable<AnswerFallbackMethodEnum> answerFallbackMethod,
             OptionalNullable<String> disconnectUrl,
             OptionalNullable<DisconnectMethodEnum> disconnectMethod, OptionalNullable<String> tag,
-            MachineDetectionRequest machineDetection) {
+            MachineDetectionConfiguration machineDetection) {
         this.from = from;
         this.to = to;
         this.uui = uui;
@@ -684,10 +684,10 @@ public class CreateCallRequest {
 
     /**
      * Getter for MachineDetection.
-     * @return Returns the MachineDetectionRequest
+     * @return Returns the MachineDetectionConfiguration
      */
     @JsonGetter("machineDetection")
-    public MachineDetectionRequest getMachineDetection() {
+    public MachineDetectionConfiguration getMachineDetection() {
         return machineDetection;
     }
 
@@ -696,7 +696,7 @@ public class CreateCallRequest {
      * @param machineDetection Value for MachineDetectionRequest
      */
     @JsonSetter("machineDetection")
-    public void setMachineDetection(MachineDetectionRequest machineDetection) {
+    public void setMachineDetection(MachineDetectionConfiguration machineDetection) {
         this.machineDetection = machineDetection;
     }
 
@@ -762,7 +762,7 @@ public class CreateCallRequest {
         private OptionalNullable<String> disconnectUrl;
         private OptionalNullable<DisconnectMethodEnum> disconnectMethod;
         private OptionalNullable<String> tag;
-        private MachineDetectionRequest machineDetection;
+        private MachineDetectionConfiguration machineDetection;
 
         /**
          * Initialization constructor.
@@ -1073,10 +1073,10 @@ public class CreateCallRequest {
 
         /**
          * Setter for machineDetection.
-         * @param  machineDetection  MachineDetectionRequest value for machineDetection.
+         * @param  machineDetection  MachineDetectionConfiguration value for machineDetection.
          * @return Builder
          */
-        public Builder machineDetection(MachineDetectionRequest machineDetection) {
+        public Builder machineDetection(MachineDetectionConfiguration machineDetection) {
             this.machineDetection = machineDetection;
             return this;
         }
