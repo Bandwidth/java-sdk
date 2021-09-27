@@ -1,19 +1,14 @@
 package com.bandwidth;
 
 import com.bandwidth.voice.controllers.APIController;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.Before;
 
 import static org.junit.Assert.*;
 
+import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.IOException;
-import java.io.Reader;
 
 import com.bandwidth.*;
 import com.bandwidth.Environment;
@@ -34,19 +29,14 @@ import com.bandwidth.utilities.FileWrapper;
 import com.bandwidth.phonenumberlookup.models.*;
 import com.bandwidth.phonenumberlookup.controllers.*;
 
+import static com.bandwidth.TestingEnvironmentVariables.*;
+
 /**
  * Integration tests for API interactions
+ * ---
+ * In Progress: Breaking out into separate test classes for each API
  */
 public class ApiTest {
-
-    private static final String USERNAME = System.getenv("BW_USERNAME");
-    private static final String PASSWORD = System.getenv("BW_PASSWORD");
-    private static final String ACCOUNT_ID = System.getenv("BW_ACCOUNT_ID");
-    private static final String USER_NUMBER = System.getenv("USER_NUMBER");
-    private static final String BW_NUMBER = System.getenv("BW_NUMBER");
-    private static final String MESSAGING_APPLICATION_ID = System.getenv("BW_MESSAGING_APPLICATION_ID");
-    private static final String VOICE_APPLICATION_ID = System.getenv("BW_VOICE_APPLICATION_ID");
-    private static final String BASE_CALLBACK_URL = System.getenv("BASE_CALLBACK_URL");
 
     private com.bandwidth.messaging.controllers.APIController messagingController;
     private com.bandwidth.voice.controllers.APIController voiceController;
@@ -54,6 +44,7 @@ public class ApiTest {
     private com.bandwidth.webrtc.controllers.APIController webrtcController;
     private com.bandwidth.phonenumberlookup.controllers.APIController phoneNumberLookupController;
 
+    /*
     @Before
     public void initTest() {
         BandwidthClient client = new BandwidthClient.Builder()
@@ -69,7 +60,9 @@ public class ApiTest {
         this.webrtcController = client.getWebRtcClient().getAPIController();
         this.phoneNumberLookupController = client.getPhoneNumberLookupClient().getAPIController();
     }
+    */
 
+    /* Moved to MessagingApiTests.java
     @Test
     public void testCreateMessage() throws Exception {
         ArrayList<String> toNumbers = new ArrayList<>();
@@ -89,7 +82,9 @@ public class ApiTest {
         assertEquals("From phone number not equal", BW_NUMBER, response.getResult().getFrom());
         assertEquals("Text not equal", text, response.getResult().getText());
     }
+    */
 
+    /* Moved to MessagingApiTests.java
     @Test(expected = MessagingException.class)
     public void testCreateMessageInvalidPhoneNumber() throws Exception {
         ArrayList<String> toNumbers = new ArrayList<>();
@@ -103,26 +98,35 @@ public class ApiTest {
 
         messagingController.createMessage(ACCOUNT_ID, body);
     }
+    */
 
+    /* Moved to MessagingApiTests.java
     @Test
     public void testUploadDownloadMedia() throws Exception {
         final String fileName = "src/test/resources/mediaUpload.png";
-        File file = new File(fileName);
-        FileInputStream inStream = new FileInputStream(fileName);
-        String fileContents = ApiTest.convertInputStreamToString(inStream);
-        FileWrapper body = new FileWrapper(file, "image/png");
+        final String contentType = "image/png";
+        final File file = new File(fileName);
+        final byte[] fileContents = Files.readAllBytes(file.toPath());
+        FileWrapper body = new FileWrapper(file, contentType);
         String mediaId = "java-media-test";
-        String fileType = "image/png";
-        String cache = "no-cache";
 
-        messagingController.uploadMedia(ACCOUNT_ID, mediaId, body, fileType, cache);
+        messagingController.uploadMedia(ACCOUNT_ID, mediaId, body, contentType, "no-cache");
 
         ApiResponse<InputStream> response = messagingController.getMedia(ACCOUNT_ID, mediaId);
-        String resultString = ApiTest.convertInputStreamToString(response.getResult());
+        InputStream responseBody = response.getResult();
 
-        assertEquals("Media download not equal to media upload", fileContents, resultString);
+        int bRead;
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        while ((bRead = responseBody.read()) != -1){
+            byteArrayOutputStream.write(bRead);
+        }
+        byte[] responseContents = byteArrayOutputStream.toByteArray();
+
+        assertArrayEquals("Media download not equal to media upload", fileContents, responseContents);
     }
+    */
 
+    /* Moved to VoiceApiTests.java
     @Test
     public void testCreateCallAndGetCallState() throws Exception {
         String answerUrl = BASE_CALLBACK_URL.concat("/callbacks/outbound");
@@ -146,15 +150,13 @@ public class ApiTest {
         assertEquals("From phone number for call state not equal", BW_NUMBER, callStateResponse.getResult().getFrom());
         assertEquals("Call ID not equal", callId, callStateResponse.getResult().getCallId());
     }
+    */
 
+    /* Moved to VoiceApiTests.java
     @Test
     public void testCreateCallWithAmdAndGetCallState() throws Exception {
-        String accountId = System.getenv("BW_ACCOUNT_ID");
-        String to = System.getenv("USER_NUMBER");
-        String from = System.getenv("BW_NUMBER");
-        String applicationId = System.getenv("BW_VOICE_APPLICATION_ID");
-        String answerUrl = System.getenv("BASE_CALLBACK_URL").concat("/callbacks/outbound");
-        String machineDetectionUrl = System.getenv("BASE_CALLBACK_URL").concat("/callbacks/machineDetection");
+        final String answerUrl = BASE_CALLBACK_URL.concat("/callbacks/outbound");
+        final String machineDetectionUrl = BASE_CALLBACK_URL.concat("/callbacks/machineDetection");
 
         MachineDetectionRequest machineDetection = new MachineDetectionRequest();
         machineDetection.setMode(ModeEnum.ASYNC);
@@ -164,29 +166,31 @@ public class ApiTest {
         machineDetection.setSilenceTimeout(5.0);
         machineDetection.setSpeechThreshold(5.0);
         machineDetection.setSpeechEndThreshold(5.0);
-        machineDetection.setDelayResult(Boolean.TRUE);
+        machineDetection.setDelayResult(true);
 
         CreateCallRequest body = new CreateCallRequest();
-        body.setTo(to);
-        body.setFrom(from);
-        body.setApplicationId(applicationId);
+        body.setTo(USER_NUMBER);
+        body.setFrom(BW_NUMBER);
+        body.setApplicationId(VOICE_APPLICATION_ID);
         body.setAnswerUrl(answerUrl);
         body.setMachineDetection(machineDetection);
 
-        ApiResponse<CreateCallResponse> createCallResponse = voiceController.createCall(accountId, body);
-        assertEquals("Application ID for create call not equal", applicationId, createCallResponse.getResult().getApplicationId());
-        assertEquals("To phone number for create call not equal", to, createCallResponse.getResult().getTo());
-        assertEquals("From phone number for create call not equal", from, createCallResponse.getResult().getFrom());
+        ApiResponse<CreateCallResponse> createCallResponse = voiceController.createCall(ACCOUNT_ID, body);
+        assertEquals("Application ID for create call not equal", VOICE_APPLICATION_ID, createCallResponse.getResult().getApplicationId());
+        assertEquals("To phone number for create call not equal", USER_NUMBER, createCallResponse.getResult().getTo());
+        assertEquals("From phone number for create call not equal", BW_NUMBER, createCallResponse.getResult().getFrom());
 
         //get call state
         String callId = createCallResponse.getResult().getCallId();
-        ApiResponse<CallState> callStateResponse = voiceController.getCall(accountId, callId);
-        assertEquals("Application ID for call state not equal", applicationId, callStateResponse.getResult().getApplicationId());
-        assertEquals("To phone number for call state not equal", to, callStateResponse.getResult().getTo());
-        assertEquals("From phone number for call state not equal", from, callStateResponse.getResult().getFrom());
+        ApiResponse<CallState> callStateResponse = voiceController.getCall(ACCOUNT_ID, callId);
+        assertEquals("Application ID for call state not equal", VOICE_APPLICATION_ID, callStateResponse.getResult().getApplicationId());
+        assertEquals("To phone number for call state not equal", USER_NUMBER, callStateResponse.getResult().getTo());
+        assertEquals("From phone number for call state not equal", BW_NUMBER, callStateResponse.getResult().getFrom());
         assertEquals("Call ID not equal", callId, callStateResponse.getResult().getCallId());
     }
+    */
 
+    /* Moved to VoiceApi.java
     @Test(expected = ApiErrorException.class)
     public void testCreateCallInvalidPhoneNumber() throws Exception {
         final String answerUrl = BASE_CALLBACK_URL.concat("/callbacks/outbound");
@@ -199,7 +203,9 @@ public class ApiTest {
 
         voiceController.createCall(ACCOUNT_ID, body);
     }
+    */
 
+    /* Moved to MfaApiTests.java
     @Test
     public void testMfaMessaging() throws Exception {
         TwoFactorCodeRequestSchema body = new TwoFactorCodeRequestSchema();
@@ -211,9 +217,10 @@ public class ApiTest {
         body.setMessage("Your temporary {NAME} {SCOPE} code is {CODE}");
 
         ApiResponse<TwoFactorMessagingResponse> response = mfaController.createMessagingTwoFactor(ACCOUNT_ID, body);
-        assertTrue("Message ID not defined", response.getResult().getMessageId().length() > 0);
     }
+    */
 
+    /* Moved to MfaApiTests.java
     @Test
     public void testMfaVoice() throws Exception {
         TwoFactorCodeRequestSchema body = new TwoFactorCodeRequestSchema();
@@ -225,9 +232,10 @@ public class ApiTest {
         body.setMessage("Your temporary {NAME} {SCOPE} code is {CODE}");
 
         ApiResponse<TwoFactorVoiceResponse> response = mfaController.createVoiceTwoFactor(ACCOUNT_ID, body);
-        assertTrue("Call ID not defined", response.getResult().getCallId().length() > 0);
     }
+    */
 
+    /* Moved to MfaTests.java
     @Test(expected = ErrorWithRequestException.class)
     public void testMfaMessagingInvalidPhoneNumber() throws Exception {
         TwoFactorCodeRequestSchema body = new TwoFactorCodeRequestSchema();
@@ -240,7 +248,9 @@ public class ApiTest {
 
         mfaController.createMessagingTwoFactor(ACCOUNT_ID, body);
     }
+    */
 
+    /* Moved to MfaApiTests.java
     @Test(expected = ErrorWithRequestException.class)
     public void testMfaVoiceInvalidPhoneNumber() throws Exception {
         TwoFactorCodeRequestSchema body = new TwoFactorCodeRequestSchema();
@@ -253,7 +263,9 @@ public class ApiTest {
 
         mfaController.createVoiceTwoFactor(ACCOUNT_ID, body);
     }
+    */
 
+    /* Moved to MfaApiTests.java
     @Test
     public void testMfaVerify() throws Exception {
 
@@ -261,13 +273,14 @@ public class ApiTest {
         body.setTo(USER_NUMBER);
         body.setApplicationId(VOICE_APPLICATION_ID);
         body.setScope("scope");
-        body.setCode("123456");
+        body.setCode("1234567");
         body.setExpirationTimeInMinutes(3);
 
         ApiResponse<TwoFactorVerifyCodeResponse> response = mfaController.createVerifyTwoFactor(ACCOUNT_ID, body);
-        assertTrue("Valid not defined as a boolean", response.getResult().getValid() == true || response.getResult().getValid() == false);
     }
+    */
 
+    /* Moved to MfaApiTests.java
     @Test(expected = ErrorWithRequestException.class)
     public void testMfaVerifyInvalidPhoneNumber() throws Exception {
         TwoFactorVerifyRequestSchema body = new TwoFactorVerifyRequestSchema();
@@ -279,7 +292,9 @@ public class ApiTest {
 
         mfaController.createVerifyTwoFactor(ACCOUNT_ID, body);
     }
+    */
 
+    /* Moved to WebRtcApiTests.java
     @Test
     public void testWebRtcParticipantSessionManagement() throws Exception {
 
@@ -290,14 +305,16 @@ public class ApiTest {
         String sessionId = createSessionResponse.getResult().getId();
 
         Participant createParticipantBody = new Participant();
-        createParticipantBody.setCallbackUrl("https://sample.com");
+        createParticipantBody.setCallbackUrl(BASE_CALLBACK_URL.concat("/callbacks/webRtc"));
 
         ApiResponse<AccountsParticipantsResponse> createParticipantResponse = webrtcController.createParticipant(ACCOUNT_ID, createParticipantBody);
         String participantId = createParticipantResponse.getResult().getParticipant().getId();
 
         webrtcController.addParticipantToSession(ACCOUNT_ID, sessionId, participantId, null);
     }
+    */
 
+    /* Moved to TnLookupApiTests.java
     @Test
     public void testPhoneNumberLookup() throws Exception {
         ArrayList<String> checkNumbers = new ArrayList<>();
@@ -315,22 +332,5 @@ public class ApiTest {
 
         assertTrue("status not defined properly", status.length() > 0);
     }
-
-    /*
-     * Taken from https://mkyong.com/java/how-to-convert-inputstream-to-string-in-java/
-     */
-    private static String convertInputStreamToString(InputStream inputStream) throws IOException {
-      final char[] buffer = new char[8192];
-      final StringBuilder result = new StringBuilder();
-
-      // InputStream -> Reader
-      try (Reader reader = new InputStreamReader(inputStream)) {
-          int charsRead;
-          while ((charsRead = reader.read(buffer, 0, buffer.length)) > 0) {
-              result.append(buffer, 0, charsRead);
-          }
-      }
-
-      return result.toString();
-    }
+    */
 }

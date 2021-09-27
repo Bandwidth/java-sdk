@@ -1,4 +1,7 @@
-package com.bandwidth.voice.bxml.verbs;
+package com.bandwidth;
+
+import com.bandwidth.voice.bxml.verbs.*;
+import com.bandwidth.voice.bxml.verbs.Record;
 import com.bandwidth.webrtc.utils.WebRtcTransfer;
   
 import org.junit.Test;
