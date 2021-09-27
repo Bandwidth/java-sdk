@@ -28,7 +28,7 @@ jobs:
 
     - name: Slackbot notification
       uses: Bandwidth/build-notify-slack-action@v1.0.0
-      if: always()
+      if: failure() && !github.event.pull_request.draft
       with:
         job-status: ${{ job.status }}
         slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
