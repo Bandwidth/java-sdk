@@ -26,9 +26,12 @@ public class TnLookupApiTests {
 
     @Test
     public void testPhoneNumberLookup() throws Exception {
-        OrderRequest body = new OrderRequest();
-        body.setTns(Collections.singletonList(USER_NUMBER));
+        OrderRequest body = new OrderRequest.Builder()
+                .tns(Collections.singletonList(USER_NUMBER))
+                .build();
+
         OrderResponse orderResponse = controller.createLookupRequest(ACCOUNT_ID, body).getResult();
+
         controller.getLookupRequestStatus(ACCOUNT_ID, orderResponse.getRequestId());
     }
 }

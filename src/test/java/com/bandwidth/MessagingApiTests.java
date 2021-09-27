@@ -38,11 +38,12 @@ public class MessagingApiTests {
     public void testCreateMessage() throws Exception {
         final String text = "Java Test";
 
-        MessageRequest body = new MessageRequest();
-        body.setTo(Collections.singletonList(USER_NUMBER));
-        body.setFrom(BW_NUMBER);
-        body.setText(text);
-        body.setApplicationId(MESSAGING_APPLICATION_ID);
+        MessageRequest body = new MessageRequest.Builder()
+                .to(Collections.singletonList(USER_NUMBER))
+                .from(BW_NUMBER)
+                .text(text)
+                .applicationId(MESSAGING_APPLICATION_ID)
+                .build();
 
         BandwidthMessage response = controller.createMessage(ACCOUNT_ID, body).getResult();
         assertEquals("Application ID not equal", MESSAGING_APPLICATION_ID, response.getApplicationId());
@@ -53,11 +54,12 @@ public class MessagingApiTests {
 
     @Test(expected = MessagingException.class)
     public void testCreateMessageInvalidPhoneNumber() throws Exception {
-        MessageRequest body = new MessageRequest();
-        body.setTo(Collections.singletonList("+1invalid"));
-        body.setFrom(BW_NUMBER);
-        body.setText("Java Test");
-        body.setApplicationId(MESSAGING_APPLICATION_ID);
+        MessageRequest body = new MessageRequest.Builder()
+                .to(Collections.singletonList("+1invalid"))
+                .from(BW_NUMBER)
+                .text("Java Test")
+                .applicationId(MESSAGING_APPLICATION_ID)
+                .build();
 
         controller.createMessage(ACCOUNT_ID, body);
     }

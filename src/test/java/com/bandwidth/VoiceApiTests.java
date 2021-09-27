@@ -29,11 +29,12 @@ public class VoiceApiTests {
     public void testCreateCallAndGetCallState() throws Exception {
         final String answerUrl = BASE_CALLBACK_URL.concat("/callbacks/outbound");
 
-        CreateCallRequest body = new CreateCallRequest();
-        body.setTo(USER_NUMBER);
-        body.setFrom(BW_NUMBER);
-        body.setApplicationId(VOICE_APPLICATION_ID);
-        body.setAnswerUrl(answerUrl);
+        CreateCallRequest body = new CreateCallRequest.Builder()
+                .to(USER_NUMBER)
+                .from(BW_NUMBER)
+                .applicationId(VOICE_APPLICATION_ID)
+                .answerUrl(answerUrl)
+                .build();
 
         CreateCallResponse createCallResponse = controller.createCall(ACCOUNT_ID, body).getResult();
         assertEquals("Application ID for create call not equal", VOICE_APPLICATION_ID, createCallResponse.getApplicationId());
@@ -54,22 +55,24 @@ public class VoiceApiTests {
         final String answerUrl = BASE_CALLBACK_URL.concat("/callbacks/outbound");
         final String machineDetectionUrl = BASE_CALLBACK_URL.concat("/callbacks/machineDetection");
 
-        MachineDetectionConfiguration machineDetection = new MachineDetectionConfiguration();
-        machineDetection.setMode(ModeEnum.ASYNC);
-        machineDetection.setCallbackUrl(machineDetectionUrl);
-        machineDetection.setCallbackMethod(CallbackMethodEnum.POST);
-        machineDetection.setDetectionTimeout(5.0);
-        machineDetection.setSilenceTimeout(5.0);
-        machineDetection.setSpeechThreshold(5.0);
-        machineDetection.setSpeechEndThreshold(5.0);
-        machineDetection.setDelayResult(true);
+        MachineDetectionConfiguration machineDetectionConfiguration = new MachineDetectionConfiguration.Builder()
+                .mode(ModeEnum.ASYNC)
+                .callbackUrl(machineDetectionUrl)
+                .callbackMethod(CallbackMethodEnum.POST)
+                .detectionTimeout(5.0)
+                .silenceTimeout(5.0)
+                .speechThreshold(5.0)
+                .speechEndThreshold(5.0)
+                .delayResult(true)
+                .build();
 
-        CreateCallRequest body = new CreateCallRequest();
-        body.setTo(USER_NUMBER);
-        body.setFrom(BW_NUMBER);
-        body.setApplicationId(VOICE_APPLICATION_ID);
-        body.setAnswerUrl(answerUrl);
-        body.setMachineDetection(machineDetection);
+        CreateCallRequest body = new CreateCallRequest.Builder()
+                .to(USER_NUMBER)
+                .from(BW_NUMBER)
+                .applicationId(VOICE_APPLICATION_ID)
+                .answerUrl(answerUrl)
+                .machineDetection(machineDetectionConfiguration)
+                .build();
 
         CreateCallResponse createCallResponse = controller.createCall(ACCOUNT_ID, body).getResult();
         assertEquals("Application ID for create call not equal", VOICE_APPLICATION_ID, createCallResponse.getApplicationId());
@@ -88,11 +91,12 @@ public class VoiceApiTests {
     public void testCreateCallInvalidPhoneNumber() throws Exception {
         final String answerUrl = BASE_CALLBACK_URL.concat("/callbacks/outbound");
 
-        CreateCallRequest body = new CreateCallRequest();
-        body.setTo("+1invalid");
-        body.setFrom(BW_NUMBER);
-        body.setApplicationId(VOICE_APPLICATION_ID);
-        body.setAnswerUrl(answerUrl);
+        CreateCallRequest body = new CreateCallRequest.Builder()
+                .to("+1invalid")
+                .from(BW_NUMBER)
+                .applicationId(VOICE_APPLICATION_ID)
+                .answerUrl(answerUrl)
+                .build();
 
         controller.createCall(ACCOUNT_ID, body);
     }
