@@ -1,21 +1,29 @@
-name: Build package using Maven
+name: Test
 on:
-  pull_request:
   schedule:
-    - cron: '0 4 * * *'
+    - cron: "0 4 * * *"
+  pull_request:
+  workflow_dispatch:
+
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  test:
+    name: Test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-2016, windows-2019, ubuntu-18.04, ubuntu-20.04]
+        java-version: ['7', '8', '11', '17']
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up JDK 11
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
       uses: actions/setup-java@v2
       with:
         distribution: 'adopt'
-        java-version: '11'
+        java-version: ${{ matrix.java-version }}
 
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+    - name: Test
       env:
         BW_ACCOUNT_ID: ${{ secrets.BW_ACCOUNT_ID }}
         BW_PASSWORD: ${{ secrets.BW_PASSWORD }}
@@ -25,8 +33,9 @@ jobs:
         BW_NUMBER: ${{ secrets.BW_NUMBER }}
         USER_NUMBER: ${{ secrets.USER_NUMBER }}
         BASE_CALLBACK_URL: ${{ secrets.BASE_CALLBACK_URL }}
+      run: mvn -B package --file pom.xml
 
-    - name: Slackbot notification
+    - name: Notify Slack of Failures
       uses: Bandwidth/build-notify-slack-action@v1.0.0
       if: failure() && !github.event.pull_request.draft
       with:
