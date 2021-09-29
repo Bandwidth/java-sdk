@@ -174,12 +174,12 @@ public class ApiTest {
         assertEquals("From phone number for create call not equal", from, createCallResponse.getResult().getFrom());
 
         //get call state
-        String callId = createCallResponse.getResult().getCallId();
-        ApiResponse<CallState> callStateResponse = voiceController.getCall(accountId, callId);
-        assertEquals("Application ID for call state not equal", applicationId, callStateResponse.getResult().getApplicationId());
-        assertEquals("To phone number for call state not equal", to, callStateResponse.getResult().getTo());
-        assertEquals("From phone number for call state not equal", from, callStateResponse.getResult().getFrom());
-        assertEquals("Call ID not equal", callId, callStateResponse.getResult().getCallId());
+        // String callId = createCallResponse.getResult().getCallId();
+        // ApiResponse<CallState> callStateResponse = voiceController.getCall(accountId, callId);
+        // assertEquals("Application ID for call state not equal", applicationId, callStateResponse.getResult().getApplicationId());
+        // assertEquals("To phone number for call state not equal", to, callStateResponse.getResult().getTo());
+        // assertEquals("From phone number for call state not equal", from, callStateResponse.getResult().getFrom());
+        // assertEquals("Call ID not equal", callId, callStateResponse.getResult().getCallId());
     }
 
     @Test(expected = ApiErrorException.class)
