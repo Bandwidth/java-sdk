@@ -287,8 +287,9 @@ public class ApiTest {
 
     @Test
     public void testMfaVerify() throws Exception {
+        java.util.Random wheelOfPhoneNumbers = new java.util.Random(System.currentTimeMillis());
         String accountId = System.getenv("BW_ACCOUNT_ID");
-        String to = System.getenv("USER_NUMBER");
+        String to = "+1000" + wheelOfPhoneNumbers.nextInt(10000000);
         String applicationId = System.getenv("BW_VOICE_APPLICATION_ID");
         String scope = "scope";
         String code = "123456";
