@@ -1,5 +1,13 @@
 # Bandwidth Java SDK
 
+[![Test](https://github.com/Bandwidth/java-sdk/actions/workflows/test.yaml/badge.svg)](https://github.com/Bandwidth/java-sdk/actions/workflows/test.yaml)
+
+| **OS** | **Java** |
+|:---:|:---:|
+| Windows 2016 | 8, 11 |
+| Windows 2019 | 8, 11 |
+| Ubuntu 18.04 | 8, 11 |
+| Ubuntu 20.04 | 8, 11 |
 ## Getting Started
 
 ### Installation
