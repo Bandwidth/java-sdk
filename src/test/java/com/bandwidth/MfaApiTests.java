@@ -3,9 +3,10 @@ package com.bandwidth;
 import com.bandwidth.multifactorauth.controllers.MFAController;
 
 import com.bandwidth.multifactorauth.exceptions.ErrorWithRequestException;
-import com.bandwidth.multifactorauth.models.TwoFactorCodeRequestSchema;
-import com.bandwidth.multifactorauth.models.TwoFactorVerifyRequestSchema;
+import com.bandwidth.multifactorauth.models.*;
+
 import org.junit.*;
+import static org.junit.Assert.*;
 
 import static com.bandwidth.TestingEnvironmentVariables.*;
 
@@ -36,7 +37,9 @@ public class MfaApiTests {
                 .message("Your temporary {NAME} {SCOPE} code is {CODE}")
                 .build();
 
-        controller.createMessagingTwoFactor(ACCOUNT_ID, body);
+        TwoFactorMessagingResponse response = controller.createMessagingTwoFactor(ACCOUNT_ID, body).getResult();
+        assertNotNull("MessageID is null", response.getMessageId());
+        assertFalse("MessageID is empty", response.getMessageId().isEmpty());
     }
 
     @Test
@@ -50,7 +53,9 @@ public class MfaApiTests {
                 .message("Your temporary {NAME} {SCOPE} code is {CODE}")
                 .build();
 
-        controller.createVoiceTwoFactor(ACCOUNT_ID, body);
+        TwoFactorVoiceResponse response = controller.createVoiceTwoFactor(ACCOUNT_ID, body).getResult();
+        assertNotNull("CallID is null", response.getCallId());
+        assertFalse("CallID is empty", response.getCallId().isEmpty());
     }
 
     @Test(expected = ErrorWithRequestException.class)
@@ -84,15 +89,18 @@ public class MfaApiTests {
     @Test
     public void testMfaVerify() throws Exception {
 
+        java.util.Random wheelOfPhoneNumbers = new java.util.Random(System.currentTimeMillis());
+
         TwoFactorVerifyRequestSchema body = new TwoFactorVerifyRequestSchema.Builder()
-                .to(USER_NUMBER)
+                .to("+1000" + wheelOfPhoneNumbers.nextInt(10000000))
                 .applicationId(VOICE_APPLICATION_ID)
                 .scope("scope")
                 .code("1234567")
                 .expirationTimeInMinutes(3)
                 .build();
 
-        controller.createVerifyTwoFactor(ACCOUNT_ID, body);
+        TwoFactorVerifyCodeResponse response = controller.createVerifyTwoFactor(ACCOUNT_ID, body).getResult();
+        assertFalse("Code should be invalid", response.getValid());
     }
 
     @Test(expected = ErrorWithRequestException.class)

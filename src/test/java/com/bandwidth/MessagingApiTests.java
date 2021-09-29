@@ -65,7 +65,7 @@ public class MessagingApiTests {
     }
 
     @Test
-    public void testUploadDownloadMedia() throws Exception {
+    public void testUploadDownloadDeleteMedia() throws Exception {
         final String fileName = "src/test/resources/mediaUpload.png";
         final String contentType = "image/png";
 
@@ -73,7 +73,7 @@ public class MessagingApiTests {
         byte[] fileContents = Files.readAllBytes(file.toPath());
         FileWrapper body = new FileWrapper(file, contentType);
 
-        String mediaId = "java-media-test";
+        final String mediaId = "java-media-test";
 
         controller.uploadMedia(ACCOUNT_ID, mediaId, body, contentType, "no-cache");
 
@@ -87,5 +87,7 @@ public class MessagingApiTests {
         byte[] responseContents = byteArrayOutputStream.toByteArray();
 
         assertArrayEquals("Media download not equal to media upload", fileContents, responseContents);
+
+        controller.deleteMedia(ACCOUNT_ID, mediaId);
     }
 }
