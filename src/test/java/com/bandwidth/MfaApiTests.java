@@ -1,5 +1,6 @@
 package com.bandwidth;
 
+import com.bandwidth.http.response.ApiResponse;
 import com.bandwidth.multifactorauth.controllers.MFAController;
 
 import com.bandwidth.multifactorauth.exceptions.ErrorWithRequestException;
@@ -37,7 +38,10 @@ public class MfaApiTests {
                 .message("Your temporary {NAME} {SCOPE} code is {CODE}")
                 .build();
 
-        TwoFactorMessagingResponse response = controller.createMessagingTwoFactor(ACCOUNT_ID, body).getResult();
+        ApiResponse<TwoFactorMessagingResponse> apiResponse = controller.createMessagingTwoFactor(ACCOUNT_ID, body);
+        assertEquals("Response Code is not 200", 200, apiResponse.getStatusCode());
+
+        TwoFactorMessagingResponse response = apiResponse.getResult();
         assertNotNull("MessageID is null", response.getMessageId());
         assertFalse("MessageID is empty", response.getMessageId().isEmpty());
     }
@@ -53,12 +57,15 @@ public class MfaApiTests {
                 .message("Your temporary {NAME} {SCOPE} code is {CODE}")
                 .build();
 
-        TwoFactorVoiceResponse response = controller.createVoiceTwoFactor(ACCOUNT_ID, body).getResult();
+        ApiResponse<TwoFactorVoiceResponse> apiResponse = controller.createVoiceTwoFactor(ACCOUNT_ID, body);
+        assertEquals("Response Code is not 200", 200, apiResponse.getStatusCode());
+
+        TwoFactorVoiceResponse response = apiResponse.getResult();
         assertNotNull("CallID is null", response.getCallId());
         assertFalse("CallID is empty", response.getCallId().isEmpty());
     }
 
-    @Test(expected = ErrorWithRequestException.class)
+    @Test
     public void testMfaMessagingInvalidPhoneNumber() throws Exception {
         TwoFactorCodeRequestSchema body = new TwoFactorCodeRequestSchema.Builder()
                 .to("+1invalid")
@@ -69,10 +76,15 @@ public class MfaApiTests {
                 .message("Your temporary {NAME} {SCOPE} code is {CODE}")
                 .build();
 
-        controller.createMessagingTwoFactor(ACCOUNT_ID, body);
+        ErrorWithRequestException e = assertThrows(
+                "ErrorWithRequest Exception not thrown",
+                ErrorWithRequestException.class,
+                ()->controller.createMessagingTwoFactor(ACCOUNT_ID, body)
+                );
+        assertEquals("Response Code is not 400", 400, e.getResponseCode());
     }
 
-    @Test(expected = ErrorWithRequestException.class)
+    @Test
     public void testMfaVoiceInvalidPhoneNumber() throws Exception {
         TwoFactorCodeRequestSchema body = new TwoFactorCodeRequestSchema.Builder()
                 .to("+1invalid")
@@ -83,7 +95,12 @@ public class MfaApiTests {
                 .message("Your temporary {NAME} {SCOPE} code is {CODE}")
                 .build();
 
-        controller.createVoiceTwoFactor(ACCOUNT_ID, body);
+        ErrorWithRequestException e = assertThrows(
+                "ErrorWithRequest Exception not thrown",
+                ErrorWithRequestException.class,
+                ()->controller.createVoiceTwoFactor(ACCOUNT_ID, body)
+                );
+        assertEquals("Response Code not 400", 400, e.getResponseCode());
     }
 
     @Test
@@ -99,11 +116,14 @@ public class MfaApiTests {
                 .expirationTimeInMinutes(3)
                 .build();
 
-        TwoFactorVerifyCodeResponse response = controller.createVerifyTwoFactor(ACCOUNT_ID, body).getResult();
+        ApiResponse<TwoFactorVerifyCodeResponse> apiResponse = controller.createVerifyTwoFactor(ACCOUNT_ID, body);
+        assertEquals("Response Code is not 200", 200, apiResponse.getStatusCode());
+
+        TwoFactorVerifyCodeResponse response = apiResponse.getResult();
         assertFalse("Code should be invalid", response.getValid());
     }
 
-    @Test(expected = ErrorWithRequestException.class)
+    @Test
     public void testMfaVerifyInvalidPhoneNumber() throws Exception {
         TwoFactorVerifyRequestSchema body = new TwoFactorVerifyRequestSchema.Builder()
                 .to("+1invalid")
@@ -113,6 +133,11 @@ public class MfaApiTests {
                 .expirationTimeInMinutes(3)
                 .build();
 
-        controller.createVerifyTwoFactor(ACCOUNT_ID, body);
+        ErrorWithRequestException e = assertThrows(
+                "ErrorWithRequest Exception not thrown",
+                ErrorWithRequestException.class,
+                ()->controller.createVerifyTwoFactor(ACCOUNT_ID, body)
+                );
+        assertEquals("Response Code not 400", 400, e.getResponseCode());
     }
 }

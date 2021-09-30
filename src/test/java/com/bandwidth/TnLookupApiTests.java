@@ -1,5 +1,6 @@
 package com.bandwidth;
 
+import com.bandwidth.http.response.ApiResponse;
 import com.bandwidth.phonenumberlookup.controllers.APIController;
 
 import com.bandwidth.phonenumberlookup.models.OrderRequest;
@@ -32,7 +33,10 @@ public class TnLookupApiTests {
                 .tns(Collections.singletonList(USER_NUMBER))
                 .build();
 
-        OrderResponse orderResponse = controller.createLookupRequest(ACCOUNT_ID, body).getResult();
+        ApiResponse<OrderResponse> orderApiResponse = controller.createLookupRequest(ACCOUNT_ID, body);
+        assertEquals("Response Code is not 202", 202, orderApiResponse.getStatusCode());
+
+        OrderResponse orderResponse = orderApiResponse.getResult();
         assertNotNull("RequestID is null", orderResponse.getRequestId());
         assertFalse("RequestID is empty", orderResponse.getRequestId().isEmpty());
         assertTrue(
@@ -42,7 +46,10 @@ public class TnLookupApiTests {
                         orderResponse.getStatus().equals("FAILED")
                 );
 
-        OrderStatus statusResponse = controller.getLookupRequestStatus(ACCOUNT_ID, orderResponse.getRequestId()).getResult();
+        ApiResponse<OrderStatus> statusApiResponse = controller.getLookupRequestStatus(ACCOUNT_ID, orderResponse.getRequestId());
+        assertEquals("Response Code is not 200", 200, statusApiResponse.getStatusCode());
+
+        OrderStatus statusResponse = statusApiResponse.getResult();
         assertNotNull("RequestID is null", statusResponse.getRequestId());
         assertFalse("RequestId is empty", statusResponse.getRequestId().isEmpty());
         assertTrue(

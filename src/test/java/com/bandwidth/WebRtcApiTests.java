@@ -1,5 +1,6 @@
 package com.bandwidth;
 
+import com.bandwidth.http.response.ApiResponse;
 import com.bandwidth.webrtc.controllers.APIController;
 
 import com.bandwidth.webrtc.models.*;
@@ -28,7 +29,7 @@ public class WebRtcApiTests {
         controller = client.getWebRtcClient().getAPIController();
     }
 
-    // Break this into multiple tests when we have an actual test environment and there aren't crippling dependency issues
+    // Break this into multiple tests when we have a proper test environment and there aren't dependency issues
     @Test
     public void testWebRtcParticipantSessionManagement() throws Exception {
         // Create a participant
@@ -39,8 +40,11 @@ public class WebRtcApiTests {
                 .deviceApiVersion(DeviceApiVersionEnum.V3)
                 .build();
 
-        AccountsParticipantsResponse participantCreationResponse =
-                controller.createParticipant(ACCOUNT_ID, participantCreationRequest).getResult();
+        ApiResponse<AccountsParticipantsResponse> participantCreationApiResponse =
+                controller.createParticipant(ACCOUNT_ID, participantCreationRequest);
+        assertEquals("Response Code is not 200", 200, participantCreationApiResponse.getStatusCode());
+
+        AccountsParticipantsResponse participantCreationResponse = participantCreationApiResponse.getResult();
         assertNotNull("Participant is null", participantCreationResponse.getParticipant());
         assertNotNull("Participant ID is null", participantCreationResponse.getParticipant().getId());
         assertFalse("Participant ID is empty", participantCreationResponse.getParticipant().getId().isEmpty());
@@ -63,8 +67,11 @@ public class WebRtcApiTests {
         assertFalse("Token is empty", participantCreationResponse.getToken().isEmpty());
 
         // Get a participant
-        Participant participantFetchResponse =
-                controller.getParticipant(ACCOUNT_ID, participantCreationResponse.getParticipant().getId()).getResult();
+        ApiResponse<Participant> participantFetchApiResponse =
+                controller.getParticipant(ACCOUNT_ID, participantCreationResponse.getParticipant().getId());
+        assertEquals("Response Code is not 200", 200, participantFetchApiResponse.getStatusCode());
+
+        Participant participantFetchResponse = participantFetchApiResponse.getResult();
         assertNotNull("Participant is null", participantFetchResponse);
         assertNotNull("Participant ID is null", participantFetchResponse.getId());
         assertFalse("Participant ID is empty", participantFetchResponse.getId().isEmpty());
@@ -89,23 +96,33 @@ public class WebRtcApiTests {
                 .tag("test")
                 .build();
 
-        Session sessionCreationResponse = controller.createSession(ACCOUNT_ID, sessionCreationRequest).getResult();
+        ApiResponse<Session> sessionCreationApiResponse = controller.createSession(ACCOUNT_ID, sessionCreationRequest);
+        assertEquals("Response Code is not 200", 200, sessionCreationApiResponse.getStatusCode());
+
+        Session sessionCreationResponse = sessionCreationApiResponse.getResult();
         assertNotNull("Session ID is null", sessionCreationResponse.getId());
         assertFalse("Session ID is empty", sessionCreationResponse.getId().isEmpty());
         assertEquals("Session Tags do not match", sessionCreationRequest.getTag(), sessionCreationResponse.getTag());
 
         // Get a session
-        Session sessionFetchResponse = controller.getSession(ACCOUNT_ID, sessionCreationResponse.getId()).getResult();
+        ApiResponse<Session> sessionFetchApiResponse = controller.getSession(ACCOUNT_ID, sessionCreationResponse.getId());
+        assertEquals("Response Code is not 200", 200, sessionFetchApiResponse.getStatusCode());
+
+        Session sessionFetchResponse = sessionFetchApiResponse.getResult();
         assertEquals("Session IDs do not match", sessionCreationResponse.getId(), sessionFetchResponse.getId());
         assertEquals("Session Tags do not match", sessionCreationResponse.getTag(), sessionFetchResponse.getTag());
 
         // Add a participant to a session
-        controller.addParticipantToSession(ACCOUNT_ID, sessionCreationResponse.getId(), participantCreationResponse.getParticipant().getId(), null);
-        // expected response is an empty 204
+        ApiResponse<Void> addParticipantApiResponse =
+                controller.addParticipantToSession(ACCOUNT_ID, sessionCreationResponse.getId(), participantCreationResponse.getParticipant().getId(), null);
+        assertEquals("Response Code is not 204", 204, addParticipantApiResponse.getStatusCode());
 
         // Get session participants
-        java.util.List<Participant> sessionParticipantFetchResponse =
-                controller.listSessionParticipants(ACCOUNT_ID, sessionCreationResponse.getId()).getResult();
+        ApiResponse<java.util.List<Participant>> sessionParticipantFetchApiResponse =
+                controller.listSessionParticipants(ACCOUNT_ID, sessionCreationResponse.getId());
+        assertEquals("Response Code is not 200", 200, sessionParticipantFetchApiResponse.getStatusCode());
+
+        java.util.List<Participant> sessionParticipantFetchResponse = sessionParticipantFetchApiResponse.getResult();
         assertFalse("List of Participants is empty", sessionParticipantFetchResponse.isEmpty());
         assertEquals("List of Participants should only contain a single item", 1, sessionParticipantFetchResponse.size());
         assertEquals(
@@ -135,15 +152,18 @@ public class WebRtcApiTests {
                 );
 
         // Delete session participant
-        controller.deleteParticipant(ACCOUNT_ID, participantCreationResponse.getParticipant().getId());
-        // expected response is an empty 204
+        ApiResponse<Void> deleteSessionParticipantApiResponse =
+                controller.deleteParticipant(ACCOUNT_ID, participantCreationResponse.getParticipant().getId());
+        assertEquals("Response Code is not 204", 204, deleteSessionParticipantApiResponse.getStatusCode());
 
         // Delete session
-        controller.deleteSession(ACCOUNT_ID, sessionCreationResponse.getId());
-        // expected response is an empty 204
+        ApiResponse<Void> deleteSessionApiResponse =
+                controller.deleteSession(ACCOUNT_ID, sessionCreationResponse.getId());
+        assertEquals("Response Code is not 204", 204, deleteSessionApiResponse.getStatusCode());
 
         // Delete participant
-        controller.deleteParticipant(ACCOUNT_ID, participantCreationResponse.getParticipant().getId());
-        // expected response is an empty 204
+        ApiResponse<Void> deleteParticipantApiResponse =
+                controller.deleteParticipant(ACCOUNT_ID, participantCreationResponse.getParticipant().getId());
+        assertEquals("Response Code is not 204", 204, deleteParticipantApiResponse.getStatusCode());
     }
 }

@@ -1,5 +1,6 @@
 package com.bandwidth;
 
+import com.bandwidth.http.response.ApiResponse;
 import com.bandwidth.messaging.controllers.APIController;
 
 import com.bandwidth.messaging.models.MessageRequest;
@@ -45,14 +46,16 @@ public class MessagingApiTests {
                 .applicationId(MESSAGING_APPLICATION_ID)
                 .build();
 
-        BandwidthMessage response = controller.createMessage(ACCOUNT_ID, body).getResult();
+        ApiResponse<BandwidthMessage> apiResponse = controller.createMessage(ACCOUNT_ID, body);
+        assertEquals("Response Code is not 202", 202, apiResponse.getStatusCode());
+        BandwidthMessage response = apiResponse.getResult();
         assertEquals("Application ID not equal", MESSAGING_APPLICATION_ID, response.getApplicationId());
         assertEquals("To phone number not equal", USER_NUMBER, response.getTo().get(0));
         assertEquals("From phone number not equal", BW_NUMBER, response.getFrom());
         assertEquals("Text not equal", text, response.getText());
     }
 
-    @Test(expected = MessagingException.class)
+    @Test
     public void testCreateMessageInvalidPhoneNumber() throws Exception {
         MessageRequest body = new MessageRequest.Builder()
                 .to(Collections.singletonList("+1invalid"))
@@ -61,7 +64,12 @@ public class MessagingApiTests {
                 .applicationId(MESSAGING_APPLICATION_ID)
                 .build();
 
-        controller.createMessage(ACCOUNT_ID, body);
+        MessagingException e = assertThrows(
+                "Messaging Exception not thrown",
+                MessagingException.class,
+                () -> controller.createMessage(ACCOUNT_ID, body)
+        );
+        assertEquals("Response Code is not 400", 400, e.getResponseCode());
     }
 
     @Test
@@ -75,19 +83,24 @@ public class MessagingApiTests {
 
         final String mediaId = "java-media-test";
 
-        controller.uploadMedia(ACCOUNT_ID, mediaId, body, contentType, "no-cache");
+        ApiResponse<Void> uploadMediaApiResponse = controller.uploadMedia(ACCOUNT_ID, mediaId, body, contentType, "no-cache");
+        assertEquals("Response Code is not 204", 204, uploadMediaApiResponse.getStatusCode());
 
-        InputStream response = controller.getMedia(ACCOUNT_ID, mediaId).getResult();
+        ApiResponse<InputStream> downloadMediaApiResponse = controller.getMedia(ACCOUNT_ID, mediaId);
+        assertEquals("Response Code is not 200", 200, downloadMediaApiResponse.getStatusCode());
+
+        InputStream downloadMediaResponse = downloadMediaApiResponse.getResult();
 
         int bRead;
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        while ((bRead = response.read()) != -1){
+        while ((bRead = downloadMediaResponse.read()) != -1){
             byteArrayOutputStream.write(bRead);
         }
         byte[] responseContents = byteArrayOutputStream.toByteArray();
 
         assertArrayEquals("Media download not equal to media upload", fileContents, responseContents);
 
-        controller.deleteMedia(ACCOUNT_ID, mediaId);
+        ApiResponse<Void> deleteMediaApiResponse = controller.deleteMedia(ACCOUNT_ID, mediaId);
+        assertEquals("Response Code is not 200", 200, deleteMediaApiResponse.getStatusCode());
     }
 }

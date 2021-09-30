@@ -1,5 +1,6 @@
 package com.bandwidth;
 
+import com.bandwidth.http.response.ApiResponse;
 import com.bandwidth.voice.controllers.APIController;
 
 import com.bandwidth.voice.exceptions.ApiErrorException;
@@ -36,18 +37,23 @@ public class VoiceApiTests {
                 .answerUrl(answerUrl)
                 .build();
 
-        CreateCallResponse createCallResponse = controller.createCall(ACCOUNT_ID, body).getResult();
+        ApiResponse<CreateCallResponse> createCallApiResponse = controller.createCall(ACCOUNT_ID, body);
+        assertEquals("Response Code is not 201", 201, createCallApiResponse.getStatusCode());
+
+        CreateCallResponse createCallResponse = createCallApiResponse.getResult();
         assertEquals("Application ID for create call not equal", VOICE_APPLICATION_ID, createCallResponse.getApplicationId());
         assertEquals("To phone number for create call not equal", USER_NUMBER, createCallResponse.getTo());
         assertEquals("From phone number for create call not equal", BW_NUMBER, createCallResponse.getFrom());
 
         //get call state
-        String callId = createCallResponse.getCallId();
-        CallState callStateResponse = controller.getCall(ACCOUNT_ID, callId).getResult();
+        ApiResponse<CallState> callStateApiResponse = controller.getCall(ACCOUNT_ID, createCallResponse.getCallId());
+        assertEquals("Response Code is not 200", 200, callStateApiResponse.getStatusCode());
+
+        CallState callStateResponse = callStateApiResponse.getResult();
         assertEquals("Application ID for call state not equal", VOICE_APPLICATION_ID, callStateResponse.getApplicationId());
         assertEquals("To phone number for call state not equal", USER_NUMBER, callStateResponse.getTo());
         assertEquals("From phone number for call state not equal", BW_NUMBER, callStateResponse.getFrom());
-        assertEquals("Call ID not equal", callId, callStateResponse.getCallId());
+        assertEquals("Call ID not equal", createCallResponse.getCallId(), callStateResponse.getCallId());
     }
 
     @Test
@@ -74,20 +80,24 @@ public class VoiceApiTests {
                 .machineDetection(machineDetectionConfiguration)
                 .build();
 
-        CreateCallResponse createCallResponse = controller.createCall(ACCOUNT_ID, body).getResult();
+        ApiResponse<CreateCallResponse> createCallApiResponse = controller.createCall(ACCOUNT_ID, body);
+        assertEquals("Response Code is not 201", 201, createCallApiResponse.getStatusCode());
+
+        CreateCallResponse createCallResponse = createCallApiResponse.getResult();
         assertEquals("Application ID for create call not equal", VOICE_APPLICATION_ID, createCallResponse.getApplicationId());
         assertEquals("To phone number for create call not equal", USER_NUMBER, createCallResponse.getTo());
         assertEquals("From phone number for create call not equal", BW_NUMBER, createCallResponse.getFrom());
 
         //get call state
-        CallState callStateResponse = controller.getCall(ACCOUNT_ID, createCallResponse.getCallId()).getResult();
+        ApiResponse<CallState> callStateApiResponse = controller.getCall(ACCOUNT_ID, createCallResponse.getCallId());
+        CallState callStateResponse = callStateApiResponse.getResult();
         assertEquals("Application ID for call state not equal", VOICE_APPLICATION_ID, callStateResponse.getApplicationId());
         assertEquals("To phone number for call state not equal", USER_NUMBER, callStateResponse.getTo());
         assertEquals("From phone number for call state not equal", BW_NUMBER, callStateResponse.getFrom());
         assertEquals("Call ID not equal", createCallResponse.getCallId(), callStateResponse.getCallId());
     }
 
-    @Test(expected = ApiErrorException.class)
+    @Test
     public void testCreateCallInvalidPhoneNumber() throws Exception {
         final String answerUrl = BASE_CALLBACK_URL.concat("/callbacks/outbound");
 
@@ -98,6 +108,11 @@ public class VoiceApiTests {
                 .answerUrl(answerUrl)
                 .build();
 
-        controller.createCall(ACCOUNT_ID, body);
+        ApiErrorException e = assertThrows(
+                "ApiError Exception not thrown",
+                ApiErrorException.class,
+                ()->controller.createCall(ACCOUNT_ID, body)
+                );
+        assertEquals("Response Code is not 400", 400, e.getResponseCode());
     }
 }
