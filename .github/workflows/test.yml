@@ -13,6 +13,7 @@ jobs:
       matrix:
         os: [windows-2016, windows-2019, ubuntu-18.04, ubuntu-20.04]
         java-version: ['8', '11']
+        distribution: [ 'zulu', 'temurin' ]
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -20,7 +21,7 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v2
       with:
-        distribution: 'adopt'
+        distribution: ${{ matrix.distribution }}
         java-version: ${{ matrix.java-version }}
 
     - name: Test
