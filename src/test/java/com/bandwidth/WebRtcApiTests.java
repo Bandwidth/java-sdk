@@ -29,7 +29,7 @@ public class WebRtcApiTests {
         controller = client.getWebRtcClient().getAPIController();
     }
 
-    // Break this into multiple tests when we have a proper test environment and there aren't dependency issues
+    // Break this into multiple tests when our test environment is more robust and there aren't dependency issues
     @Test
     public void testWebRtcParticipantSessionManagement() throws Exception {
         // Create a participant
@@ -48,6 +48,7 @@ public class WebRtcApiTests {
         assertNotNull("Participant is null", participantCreationResponse.getParticipant());
         assertNotNull("Participant ID is null", participantCreationResponse.getParticipant().getId());
         assertFalse("Participant ID is empty", participantCreationResponse.getParticipant().getId().isEmpty());
+        assertEquals("Participant ID is not 36 characters", 36, participantCreationResponse.getParticipant().getId().length());
         assertEquals(
                 "Publish Permissions do not match",
                 participantCreationRequest.getPublishPermissions(),
@@ -75,6 +76,7 @@ public class WebRtcApiTests {
         assertNotNull("Participant is null", participantFetchResponse);
         assertNotNull("Participant ID is null", participantFetchResponse.getId());
         assertFalse("Participant ID is empty", participantFetchResponse.getId().isEmpty());
+        assertEquals("Participant ID is not 36 characters", participantFetchResponse.getId().length());
         assertEquals(
                 "Publish Permissions do not match",
                 participantCreationRequest.getPublishPermissions(),
@@ -102,6 +104,7 @@ public class WebRtcApiTests {
         Session sessionCreationResponse = sessionCreationApiResponse.getResult();
         assertNotNull("Session ID is null", sessionCreationResponse.getId());
         assertFalse("Session ID is empty", sessionCreationResponse.getId().isEmpty());
+        assertEquals("Session ID is not 36 characters", sessionCreationResponse.getId().length());
         assertEquals("Session Tags do not match", sessionCreationRequest.getTag(), sessionCreationResponse.getTag());
 
         // Get a session

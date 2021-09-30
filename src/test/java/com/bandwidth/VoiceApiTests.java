@@ -41,6 +41,9 @@ public class VoiceApiTests {
         assertEquals("Response Code is not 201", 201, createCallApiResponse.getStatusCode());
 
         CreateCallResponse createCallResponse = createCallApiResponse.getResult();
+        assertNotNull("Call ID is null", createCallResponse.getCallId());
+        assertFalse("Call ID is empty", createCallResponse.getCallId().isEmpty());
+        assertEquals("Call ID is not 47 characters", 47, createCallResponse.getCallId().length());
         assertEquals("Application ID for create call not equal", VOICE_APPLICATION_ID, createCallResponse.getApplicationId());
         assertEquals("To phone number for create call not equal", USER_NUMBER, createCallResponse.getTo());
         assertEquals("From phone number for create call not equal", BW_NUMBER, createCallResponse.getFrom());
@@ -84,6 +87,9 @@ public class VoiceApiTests {
         assertEquals("Response Code is not 201", 201, createCallApiResponse.getStatusCode());
 
         CreateCallResponse createCallResponse = createCallApiResponse.getResult();
+        assertNotNull("Call ID is null", createCallResponse.getCallId());
+        assertFalse("Call ID is empty", createCallResponse.getCallId().isEmpty());
+        assertEquals("Call ID is not 36 characters", 36, createCallResponse.getCallId().length());
         assertEquals("Application ID for create call not equal", VOICE_APPLICATION_ID, createCallResponse.getApplicationId());
         assertEquals("To phone number for create call not equal", USER_NUMBER, createCallResponse.getTo());
         assertEquals("From phone number for create call not equal", BW_NUMBER, createCallResponse.getFrom());

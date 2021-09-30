@@ -44,6 +44,7 @@ public class MfaApiTests {
         TwoFactorMessagingResponse response = apiResponse.getResult();
         assertNotNull("MessageID is null", response.getMessageId());
         assertFalse("MessageID is empty", response.getMessageId().isEmpty());
+        assertEquals("MessageID is not 29 characters", 29, response.getMessageId().length());
     }
 
     @Test
@@ -63,6 +64,7 @@ public class MfaApiTests {
         TwoFactorVoiceResponse response = apiResponse.getResult();
         assertNotNull("CallID is null", response.getCallId());
         assertFalse("CallID is empty", response.getCallId().isEmpty());
+        assertEquals("CallID is not 47 characters", 47, response.getCallId().length());
     }
 
     @Test

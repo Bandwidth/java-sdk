@@ -49,6 +49,9 @@ public class MessagingApiTests {
         ApiResponse<BandwidthMessage> apiResponse = controller.createMessage(ACCOUNT_ID, body);
         assertEquals("Response Code is not 202", 202, apiResponse.getStatusCode());
         BandwidthMessage response = apiResponse.getResult();
+        assertNotNull("Message ID is null", response.getId());
+        assertFalse("Message ID is empty", response.getId().isEmpty());
+        assertEquals("Message ID is not 29 characters", 29, response.getId().length());
         assertEquals("Application ID not equal", MESSAGING_APPLICATION_ID, response.getApplicationId());
         assertEquals("To phone number not equal", USER_NUMBER, response.getTo().get(0));
         assertEquals("From phone number not equal", BW_NUMBER, response.getFrom());

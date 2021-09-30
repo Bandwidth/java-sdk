@@ -39,6 +39,7 @@ public class TnLookupApiTests {
         OrderResponse orderResponse = orderApiResponse.getResult();
         assertNotNull("RequestID is null", orderResponse.getRequestId());
         assertFalse("RequestID is empty", orderResponse.getRequestId().isEmpty());
+        assertEquals("Request ID is not 36 characters", 36, orderResponse.getRequestId().length());
         assertTrue(
                 "Status is not a valid value",
                 orderResponse.getStatus().equals("COMPLETE") ||
@@ -52,6 +53,7 @@ public class TnLookupApiTests {
         OrderStatus statusResponse = statusApiResponse.getResult();
         assertNotNull("RequestID is null", statusResponse.getRequestId());
         assertFalse("RequestId is empty", statusResponse.getRequestId().isEmpty());
+        assertEquals("Request ID is not 36 characters", 36, statusResponse.getRequestId().length());
         assertTrue(
                 "Status is not a valid value",
                 statusResponse.getStatus().equals("COMPLETE") ||
