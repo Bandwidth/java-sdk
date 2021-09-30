@@ -468,7 +468,7 @@ public class BxmlTest {
     @Test
     public void testGenerateBxmlTwoParams() {
         String response = WebRtcTransfer.generateBxml("asdf","c-93d6f3c0-be584596-0b74-4fa2-8015-d8ede84bd1a4");
-        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
                 + "<Response><Transfer>\n"
                 + "\t<SipUri uui=\"93d6f3c0be5845960b744fa28015d8ede84bd1a4;encoding=base64,asdf;encoding=jwt\">sip:sipx.webrtc.bandwidth.com:5060</SipUri>\n"
                 + "</Transfer></Response>\n";
@@ -479,7 +479,7 @@ public class BxmlTest {
     public void testGenerateBxmlThreeParams() {
         String response = WebRtcTransfer.generateBxml("asdf","c-93d6f3c0-be584596-0b74-4fa2-8015-d8ede84bd1a4", "sip1:sipx.webrtc.bandwidth.com:5060");
         String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
-                + "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Transfer>\n"
+                + "<Response><Transfer>\n"
                 + "\t<SipUri uui=\"93d6f3c0be5845960b744fa28015d8ede84bd1a4;encoding=base64,asdf;encoding=jwt\">sip1:sipx.webrtc.bandwidth.com:5060</SipUri>\n"
                 + "</Transfer></Response>\n";
         assertEquals("BXML strings are equal", expected, response);
