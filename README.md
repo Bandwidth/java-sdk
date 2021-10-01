@@ -1,5 +1,13 @@
 # Bandwidth Java SDK
 
+[![Test](https://github.com/Bandwidth/java-sdk/actions/workflows/test.yaml/badge.svg)](https://github.com/Bandwidth/java-sdk/actions/workflows/test.yaml)
+
+| **OS** | **Java** | **Distribution** |
+|:---:|:---:|:---:|
+| Windows 2016 | 8, 11 | Zulu OpenJDK, Eclipse Temurin |
+| Windows 2019 | 8, 11 | Zulu OpenJDK, Eclipse Temurin |
+| Ubuntu 18.04 | 8, 11 | Zulu OpenJDK, Eclipse Temurin |
+| Ubuntu 20.04 | 8, 11 | Zulu OpenJDK, Eclipse Temurin |
 ## Getting Started
 
 ### Installation
