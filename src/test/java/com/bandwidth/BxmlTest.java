@@ -36,7 +36,7 @@ public class BxmlTest {
         String response = new Response()
             .add(bridge)
             .toBXML();
-        String expected = "<Response><Bridge bridgeCompleteFallbackUrl=\"https://test3.com\" bridgeCompleteFallbackMethod=\"GET\" bridgeTargetCompleteFallbackUrl=\"https://test4.com\" bridgeTargetCompleteFallbackMethod=\"POST\" fallbackUsername=\"fuser\" fallbackPassword=\"fpass\" bridgeCompleteUrl=\"https://test.com\" bridgeCompleteMethod=\"GET\" bridgeTargetCompleteUrl=\"https://test2.com\" bridgeTargetCompleteMethod=\"POST\" username=\"user\" password=\"pass\" tag=\"custom tag\">c-95ac8d6e-1a31c52e-b38f-4198-93c1-51633ec68f8d</Bridge></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Bridge bridgeCompleteFallbackUrl=\"https://test3.com\" bridgeCompleteFallbackMethod=\"GET\" bridgeTargetCompleteFallbackUrl=\"https://test4.com\" bridgeTargetCompleteFallbackMethod=\"POST\" fallbackUsername=\"fuser\" fallbackPassword=\"fpass\" bridgeCompleteUrl=\"https://test.com\" bridgeCompleteMethod=\"GET\" bridgeTargetCompleteUrl=\"https://test2.com\" bridgeTargetCompleteMethod=\"POST\" username=\"user\" password=\"pass\" tag=\"custom tag\">c-95ac8d6e-1a31c52e-b38f-4198-93c1-51633ec68f8d</Bridge></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -61,7 +61,7 @@ public class BxmlTest {
         String response = new Response()
             .add(conference)
             .toBXML();
-        String expected = "<Response><Conference mute=\"true\" hold=\"true\" callIdsToCoach=\"id1,id2\" conferenceEventUrl=\"https://example.com\" conferenceEventMethod=\"POST\" username=\"user\" password=\"pass\" tag=\"tag1\">my conference</Conference></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Conference mute=\"true\" hold=\"true\" callIdsToCoach=\"id1,id2\" conferenceEventUrl=\"https://example.com\" conferenceEventMethod=\"POST\" username=\"user\" password=\"pass\" tag=\"tag1\">my conference</Conference></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -78,7 +78,7 @@ public class BxmlTest {
         String response = new Response()
             .add(speakSentence)
             .toBXML();
-        String expected = "<Response><SpeakSentence voice=\"susan\" gender=\"female\" locale=\"en_US\">test</SpeakSentence></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><SpeakSentence voice=\"susan\" gender=\"female\" locale=\"en_US\">test</SpeakSentence></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -92,7 +92,7 @@ public class BxmlTest {
         String response = new Response()
             .add(speakSentence)
             .toBXML();
-        String expected = "<Response><SpeakSentence>Hello, you have reached the home of <lang xml:lang=\"es-MX\">Antonio Mendoza</lang>.Please leave a message.</SpeakSentence></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><SpeakSentence>Hello, you have reached the home of <lang xml:lang=\"es-MX\">Antonio Mendoza</lang>.Please leave a message.</SpeakSentence></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -108,7 +108,7 @@ public class BxmlTest {
         String response = new Response()
             .add(playAudio)
             .toBXML();
-        String expected = "<Response><PlayAudio username=\"user\" password=\"pass\">https://test.com</PlayAudio></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><PlayAudio username=\"user\" password=\"pass\">https://test.com</PlayAudio></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -135,7 +135,7 @@ public class BxmlTest {
         String response = new Response()
             .add(gather)
             .toBXML();
-        String expected = "<Response><Gather gatherUrl=\"https://test.com\" gatherMethod=\"GET\" username=\"user\" password=\"pass\" tag=\"tag\" terminatingDigits=\"123\" maxDigits=\"3\" interDigitTimeout=\"4.0\" firstDigitTimeout=\"5.0\" repeatCount=\"6\" fallbackUsername=\"fuser\" fallbackPassword=\"fpass\" gatherFallbackUrl=\"https://test2.com\" gatherFallbackMethod=\"POST\"/></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Gather gatherUrl=\"https://test.com\" gatherMethod=\"GET\" username=\"user\" password=\"pass\" tag=\"tag\" terminatingDigits=\"123\" maxDigits=\"3\" interDigitTimeout=\"4.0\" firstDigitTimeout=\"5.0\" repeatCount=\"6\" fallbackUsername=\"fuser\" fallbackPassword=\"fpass\" gatherFallbackUrl=\"https://test2.com\" gatherFallbackMethod=\"POST\"/></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -159,7 +159,7 @@ public class BxmlTest {
         String response = new Response()
             .add(gather)
             .toBXML();
-        String expected = "<Response><Gather><SpeakSentence>test</SpeakSentence><PlayAudio>https://test.com</PlayAudio></Gather></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Gather><SpeakSentence>test</SpeakSentence><PlayAudio>https://test.com</PlayAudio></Gather></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -177,7 +177,7 @@ public class BxmlTest {
         String response = new Response()
             .add(gather)
             .toBXML();
-        String expected = "<Response><Gather><SpeakSentence>test</SpeakSentence></Gather></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Gather><SpeakSentence>test</SpeakSentence></Gather></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -186,7 +186,7 @@ public class BxmlTest {
     public void testResponse() {
         String response = new Response()
             .toBXML();
-        String expected = "<Response/>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response/>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -199,7 +199,7 @@ public class BxmlTest {
             .add(hangup)
             .toBXML();
 
-         String expected = "<Response><Hangup/></Response>";
+         String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Hangup/></Response>";
 
          assertEquals("BXML strings not equal", expected, response);
     }
@@ -216,7 +216,7 @@ public class BxmlTest {
             .add(sendDtmf)
             .toBXML();
 
-        String expected = "<Response><SendDtmf toneDuration=\"75.0\" toneInterval=\"50.0\">321</SendDtmf></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><SendDtmf toneDuration=\"75.0\" toneInterval=\"50.0\">321</SendDtmf></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -235,7 +235,7 @@ public class BxmlTest {
             .add(forward)
             .toBXML();
 
-        String expected = "<Response><Forward to=\"+18887775555\" from=\"+8887779999\" callTimeout=\"3\" diversionTreatment=\"none\" diversionReason=\"away\"/></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Forward to=\"+18887775555\" from=\"+8887779999\" callTimeout=\"3\" diversionTreatment=\"none\" diversionReason=\"away\"/></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -250,7 +250,7 @@ public class BxmlTest {
             .add(pause)
             .toBXML();
 
-        String expected = "<Response><Pause duration=\"3.0\"/></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Pause duration=\"3.0\"/></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -273,7 +273,7 @@ public class BxmlTest {
             .add(redirect)
             .toBXML();
 
-        String expected = "<Response><Redirect redirectUrl=\"https://test2.com\" redirectMethod=\"GET\" tag=\"tag\" username=\"user\" password=\"pass\" fallbackUsername=\"fuser\" fallbackPassword=\"fpass\" redirectFallbackMethod=\"POST\"/></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Redirect redirectUrl=\"https://test2.com\" redirectMethod=\"GET\" tag=\"tag\" username=\"user\" password=\"pass\" fallbackUsername=\"fuser\" fallbackPassword=\"fpass\" redirectFallbackMethod=\"POST\"/></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -331,7 +331,7 @@ public class BxmlTest {
             .add(transfer)
             .toBXML();
 
-        String expected = "<Response><Transfer transferCallerId=\"+18888888888\" callTimeout=\"3.0\" transferCompleteUrl=\"https://testtransfer.com\" transferCompleteMethod=\"GET\" username=\"usertransfer\" password=\"passtransfer\" tag=\"tag3\" diversionTreatment=\"none\" diversionReason=\"away\" fallbackUsername=\"fuser7\" fallbackPassword=\"fpass7\" transferCompleteFallbackUrl=\"https://test7.com\" transferCompleteFallbackMethod=\"POST\"><PhoneNumber transferAnswerUrl=\"https://test.com\" transferAnswerMethod=\"GET\" username=\"user\" password=\"pass\" tag=\"tag\" fallbackUsername=\"fuser\" fallbackPassword=\"fpass\" transferAnswerFallbackUrl=\"https://test2.com\" transferAnswerFallbackMethod=\"POST\">+17776665555</PhoneNumber><SipUri uui=\"uui\" transferAnswerUrl=\"https://test3.com\" transferAnswerMethod=\"POST\" transferAnswerFallbackUrl=\"https://test4.com\" transferAnswerFallbackMethod=\"POST\" username=\"user2\" password=\"pass2\" fallbackUsername=\"fuser2\" fallbackPassword=\"fpass2\" tag=\"tag2\">sip-uri</SipUri></Transfer></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Transfer transferCallerId=\"+18888888888\" callTimeout=\"3.0\" transferCompleteUrl=\"https://testtransfer.com\" transferCompleteMethod=\"GET\" username=\"usertransfer\" password=\"passtransfer\" tag=\"tag3\" diversionTreatment=\"none\" diversionReason=\"away\" fallbackUsername=\"fuser7\" fallbackPassword=\"fpass7\" transferCompleteFallbackUrl=\"https://test7.com\" transferCompleteFallbackMethod=\"POST\"><PhoneNumber transferAnswerUrl=\"https://test.com\" transferAnswerMethod=\"GET\" username=\"user\" password=\"pass\" tag=\"tag\" fallbackUsername=\"fuser\" fallbackPassword=\"fpass\" transferAnswerFallbackUrl=\"https://test2.com\" transferAnswerFallbackMethod=\"POST\">+17776665555</PhoneNumber><SipUri uui=\"uui\" transferAnswerUrl=\"https://test3.com\" transferAnswerMethod=\"POST\" transferAnswerFallbackUrl=\"https://test4.com\" transferAnswerFallbackMethod=\"POST\" username=\"user2\" password=\"pass2\" fallbackUsername=\"fuser2\" fallbackPassword=\"fpass2\" tag=\"tag2\">sip-uri</SipUri></Transfer></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -359,7 +359,7 @@ public class BxmlTest {
             .add(record)
             .toBXML();
 
-        String expected = "<Response><Record transcribe=\"false\" recordCompleteUrl=\"https://url.com\" recordCompleteMethod=\"POST\" recordingAvailableUrl=\"https://url.com\" recordingAvailableMethod=\"POST\" tag=\"tag\" username=\"user\" password=\"pass\" terminatingDigits=\"123\" maxDuration=\"3\" fileFormat=\"wav\" fallbackUsername=\"fuser\" fallbackPassword=\"fpass\" recordCompleteFallbackUrl=\"https://test.com\" recordCompleteFallbackMethod=\"GET\"/></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Record transcribe=\"false\" recordCompleteUrl=\"https://url.com\" recordCompleteMethod=\"POST\" recordingAvailableUrl=\"https://url.com\" recordingAvailableMethod=\"POST\" tag=\"tag\" username=\"user\" password=\"pass\" terminatingDigits=\"123\" maxDuration=\"3\" fileFormat=\"wav\" fallbackUsername=\"fuser\" fallbackPassword=\"fpass\" recordCompleteFallbackUrl=\"https://test.com\" recordCompleteFallbackMethod=\"GET\"/></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -380,7 +380,7 @@ public class BxmlTest {
             .add(startRecording)
             .toBXML();
 
-        String expected = "<Response><StartRecording transcribe=\"false\" recordingAvailableUrl=\"https://url.com\" recordingAvailableMethod=\"POST\" tag=\"tag\" username=\"user\" password=\"pass\" multiChannel=\"false\" fileFormat=\"wav\"/></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StartRecording transcribe=\"false\" recordingAvailableUrl=\"https://url.com\" recordingAvailableMethod=\"POST\" tag=\"tag\" username=\"user\" password=\"pass\" multiChannel=\"false\" fileFormat=\"wav\"/></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -393,7 +393,7 @@ public class BxmlTest {
             .add(pauseRecording)
             .toBXML();
 
-        String expected = "<Response><PauseRecording/></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><PauseRecording/></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -406,7 +406,7 @@ public class BxmlTest {
             .add(resumeRecording)
             .toBXML();
 
-        String expected = "<Response><ResumeRecording/></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><ResumeRecording/></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -419,7 +419,7 @@ public class BxmlTest {
             .add(stopRecording)
             .toBXML();
 
-        String expected = "<Response><StopRecording/></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StopRecording/></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -434,7 +434,7 @@ public class BxmlTest {
             .add(ring)
             .toBXML();
 
-        String expected = "<Response><Ring duration=\"3.0\"/></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Ring duration=\"3.0\"/></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -447,7 +447,7 @@ public class BxmlTest {
             .add(stopGather)
             .toBXML();
 
-        String expected = "<Response><StopGather/></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StopGather/></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
@@ -460,7 +460,7 @@ public class BxmlTest {
             .add(startGather)
             .toBXML();
 
-        String expected = "<Response><StartGather/></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StartGather/></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }

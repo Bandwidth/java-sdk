@@ -120,7 +120,7 @@ public class Response {
                 jaxbContext = JAXBContext.newInstance(Response.class);
             }
             Marshaller marshaller = jaxbContext.createMarshaller();
-            // omits <?xml version="1.0" encoding="UTF-8"?>
+            marshaller.setProperty("com.sun.xml.bind.xmlHeaders", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
             marshaller.setProperty(Marshaller.JAXB_FRAGMENT, true);
 
             return marshaller;
