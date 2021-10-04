@@ -13,7 +13,7 @@ import static com.bandwidth.TestingEnvironmentVariables.*;
 /*
  * Integration tests between the SDK and Voice API
  */
-public class VoiceApiTests {
+public class VoiceApiTest {
 
     private APIController controller;
 
@@ -89,7 +89,7 @@ public class VoiceApiTests {
         CreateCallResponse createCallResponse = createCallApiResponse.getResult();
         assertNotNull("Call ID is null", createCallResponse.getCallId());
         assertFalse("Call ID is empty", createCallResponse.getCallId().isEmpty());
-        assertEquals("Call ID is not 36 characters", 36, createCallResponse.getCallId().length());
+        assertEquals("Call ID is not 47 characters", 47, createCallResponse.getCallId().length());
         assertEquals("Application ID for create call not equal", VOICE_APPLICATION_ID, createCallResponse.getApplicationId());
         assertEquals("To phone number for create call not equal", USER_NUMBER, createCallResponse.getTo());
         assertEquals("From phone number for create call not equal", BW_NUMBER, createCallResponse.getFrom());

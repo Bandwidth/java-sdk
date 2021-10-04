@@ -14,7 +14,7 @@ import java.util.Collections;
 
 import static com.bandwidth.TestingEnvironmentVariables.*;
 
-public class TnLookupApiTests {
+public class TnLookupApiTest {
 
     private APIController controller;
 
@@ -44,7 +44,8 @@ public class TnLookupApiTests {
                 "Status is not a valid value",
                 orderResponse.getStatus().equals("COMPLETE") ||
                         orderResponse.getStatus().equals("PARTIAL_COMPLETE") ||
-                        orderResponse.getStatus().equals("FAILED")
+                        orderResponse.getStatus().equals("FAILED") ||
+                        orderResponse.getStatus().equals("IN_PROGRESS")
                 );
 
         ApiResponse<OrderStatus> statusApiResponse = controller.getLookupRequestStatus(ACCOUNT_ID, orderResponse.getRequestId());

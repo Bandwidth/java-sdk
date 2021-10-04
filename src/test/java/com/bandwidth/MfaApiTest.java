@@ -14,7 +14,7 @@ import static com.bandwidth.TestingEnvironmentVariables.*;
 /*
  * Integration tests between the SDK and MFA API
  */
-public class MfaApiTests {
+public class MfaApiTest {
 
     private MFAController controller;
 

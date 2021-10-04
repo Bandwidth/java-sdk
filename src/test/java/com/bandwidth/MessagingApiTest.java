@@ -22,7 +22,7 @@ import static com.bandwidth.TestingEnvironmentVariables.*;
 /*
  * Integration tests between the SDK and Messaging API
  */
-public class MessagingApiTests {
+public class MessagingApiTest {
 
     private APIController controller;
 
@@ -104,6 +104,6 @@ public class MessagingApiTests {
         assertArrayEquals("Media download not equal to media upload", fileContents, responseContents);
 
         ApiResponse<Void> deleteMediaApiResponse = controller.deleteMedia(ACCOUNT_ID, mediaId);
-        assertEquals("Response Code is not 200", 200, deleteMediaApiResponse.getStatusCode());
+        assertEquals("Response Code is not 204", 204, deleteMediaApiResponse.getStatusCode());
     }
 }
