@@ -1,8 +1,13 @@
-# Ignore macOS system files
+#macOS system files
 .DS_Store
 
+#IntelliJ IDE files
 .idea
 target
+
+#Eclipse IDE files
+.classpath
+.project
 
 *.iml
 *.class
