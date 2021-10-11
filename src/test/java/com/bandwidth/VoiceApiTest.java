@@ -49,6 +49,7 @@ public class VoiceApiTest {
         assertEquals("From phone number for create call not equal", BW_NUMBER, createCallResponse.getFrom());
 
         //get call state
+        Thread.sleep(750); // Wait to get Call because of current system latency issues
         ApiResponse<CallState> callStateApiResponse = controller.getCall(ACCOUNT_ID, createCallResponse.getCallId());
         assertEquals("Response Code is not 200", 200, callStateApiResponse.getStatusCode());
 
@@ -95,6 +96,7 @@ public class VoiceApiTest {
         assertEquals("From phone number for create call not equal", BW_NUMBER, createCallResponse.getFrom());
 
         //get call state
+        Thread.sleep(750); // Wait to get Call because of current system latency issues
         ApiResponse<CallState> callStateApiResponse = controller.getCall(ACCOUNT_ID, createCallResponse.getCallId());
         CallState callStateResponse = callStateApiResponse.getResult();
         assertEquals("Application ID for call state not equal", VOICE_APPLICATION_ID, callStateResponse.getApplicationId());
