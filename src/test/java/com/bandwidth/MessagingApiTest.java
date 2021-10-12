@@ -84,7 +84,7 @@ public class MessagingApiTest {
         byte[] fileContents = Files.readAllBytes(file.toPath());
         FileWrapper body = new FileWrapper(file, contentType);
 
-        final String mediaId = "java-media-test";
+        final String mediaId = "java-media-test_" + java.util.UUID.randomUUID();
 
         ApiResponse<Void> uploadMediaApiResponse = controller.uploadMedia(ACCOUNT_ID, mediaId, body, contentType, "no-cache");
         assertEquals("Response Code is not 204", 204, uploadMediaApiResponse.getStatusCode());
