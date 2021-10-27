@@ -429,14 +429,15 @@ public class BxmlTest {
     @Test
     public void testRing() {
         Ring ring = Ring.builder()
-            .duration(3.0)
-            .build();
+                .duration(3.0)
+                .answerCall(false)
+                .build();
 
         String response = new Response()
             .add(ring)
             .toBXML();
 
-        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Ring duration=\"3.0\"/></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Ring duration=\"3.0\" answerCall=\"false\"/></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
