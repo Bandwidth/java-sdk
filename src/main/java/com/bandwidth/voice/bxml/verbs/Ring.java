@@ -25,5 +25,5 @@ public class Ring implements Verb {
      * incoming call. Default value is 'true'.
      */
     @XmlAttribute
-    private boolean answerCall;
+    private Boolean answerCall;
 }

@@ -165,7 +165,7 @@ public class BxmlTest {
 
         assertEquals("BXML strings not equal", expected, response);
     }
-    
+
     @Test
     public void testNestedGatherSingleVerb() {
         SpeakSentence speakSentence = SpeakSentence.builder()
@@ -438,6 +438,16 @@ public class BxmlTest {
             .toBXML();
 
         String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Ring duration=\"3.0\" answerCall=\"false\"/></Response>";
+
+        assertEquals("BXML strings not equal", expected, response);
+    }
+
+    @Test
+    public void testRingDefault() {
+        Ring ring = Ring.builder().build();
+        String response = new Response().add(ring).toBXML();
+
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Ring/></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }
