@@ -19,4 +19,11 @@ public class Ring implements Verb {
      */
     @XmlAttribute
     private Double duration;
+
+    /**
+     * (optional) A boolean indicating whether or not to answer the call when Ring is executed on an unanswered
+     * incoming call. Default value is 'true'.
+     */
+    @XmlAttribute
+    private boolean answerCall;
 }
