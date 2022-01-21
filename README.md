@@ -14,18 +14,21 @@
 
 Add the following dependency to your `pom.xml` file
 
-```
+```xml
+
 <!-- https://mvnrepository.com/artifact/com.bandwidth.sdk/bandwidth-sdk -->
 <dependency>
     <groupId>com.bandwidth.sdk</groupId>
     <artifactId>bandwidth-sdk</artifactId>
     <version>{version}</version>
 </dependency>
+
 ```
 
 ### Initialize
 
-```
+```java
+
 BandwidthClient client = new BandwidthClient.Builder()
             .messagingBasicAuthCredentials("username", "password")
             .voiceBasicAuthCredentials("username", "password")
@@ -33,11 +36,13 @@ BandwidthClient client = new BandwidthClient.Builder()
             .webRtcBasicAuthCredentials("username", "password")
             .build();
 String accountId = "12345";
+
 ```
 
 ### Create A Phone Call
 
-```
+```java
+
 com.bandwidth.voice.controllers.APIController voiceController = client.getVoiceClient().getAPIController();
 
 String to = "+15554443333";
@@ -53,11 +58,13 @@ body.setAnswerUrl(answerUrl);
 
 ApiResponse<ApiCallResponse> createCallResponse = voiceController.createCall(accountId, body);
 System.out.println(createCallResponse.getResult().getCallId());
+
 ```
 
 ### Send A Text Message
 
-```
+```java
+
 String to = "+15554443333";
 ArrayList<String> toNumbers = new ArrayList<String>();
 toNumbers.add(to);
@@ -73,11 +80,13 @@ body.setApplicationId(applicationId);
 
 ApiResponse<BandwidthMessage> createMessageResponse = messagingController.createMessage(accountId, body);
 System.out.println(createMessageResponse.getResult().getMessageId());
+
 ```
 
 ### Create BXML
 
-```
+```java
+
 SpeakSentence speakSentence = SpeakSentence.builder()
     .text("Hello world")
     .voice("susan")
@@ -89,11 +98,13 @@ String response = new Response()
     .add(speakSentence)
     .toBXML();
 System.out.println(response);
+
 ```
 
 ### Create A MFA Request
 
-```
+```java
+
 String to = "+15554443333";
 String from = "+15553334444";
 String applicationId = "3-a-c-b");
@@ -123,11 +134,13 @@ body.setExpirationTimeInMinutes(expirationTimeInMinutes);
 
 ApiResponse<TwoFactorVerifyCodeResponse> response = mfaController.createVerifyTwoFactor(accountId, body);
 System.out.println(response.getResult().getValid());
+
 ```
 
 ### WebRtc Participant & Session Management
 
-```
+```java
+
 Session createSessionBody = new Session();
 createSessionBody.setTag("new-session");
 
@@ -143,7 +156,11 @@ publishPermissions.add(PublishPermissionEnum.VIDEO);
 ApiResponse<AccountsParticipantsResponse> createParticipantResponse = webrtcController.createParticipant(accountId, createParticipantBody);
 String participantId = createParticipantResponse.getResult().getParticipant().getId();
 
-webrtcController.addParticipantToSession(accountId, sessionId, participantId, null);
+List<ParticipantSubscriptions> participantSubscriptions = new ArrayList<>();
+participantSubscriptions.add(new ParticipantSubscription(participantId));
+
+webrtcController.addParticipantToSession(accountId, sessionId, participantId, new Subscriptions(sessionId, participantSubscriptions));
+
 ```
 
 ## Supported Java Versions
