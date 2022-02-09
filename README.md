@@ -152,7 +152,7 @@ This package can be used with Java >= 1.8
 
 ## Documentation
 
-Documentation for this package can be found at https://dev.bandwidth.com/sdks/java.html
+Documentation for this package can be found at https://dev.bandwidth.com/sdks/java
 
 ## Credentials
 
