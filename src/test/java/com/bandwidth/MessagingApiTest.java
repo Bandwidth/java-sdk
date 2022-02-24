@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.util.Collections;
+import java.util.concurrent.CompletableFuture;
 
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -106,4 +107,36 @@ public class MessagingApiTest {
         ApiResponse<Void> deleteMediaApiResponse = controller.deleteMedia(ACCOUNT_ID, mediaId);
         assertEquals("Response Code is not 204", 204, deleteMediaApiResponse.getStatusCode());
     }
+
+     @Test
+     public void testUploadDownloadDeleteMediaAsync() throws Exception {
+         final String fileName = "src/test/resources/mediaUpload.png";
+         final String contentType = "image/png";
+
+         File file = new File(fileName);
+         byte[] fileContents = Files.readAllBytes(file.toPath());
+         FileWrapper body = new FileWrapper(file, contentType);
+
+         final String mediaId = "java-media-test_" + java.util.UUID.randomUUID();
+
+         CompletableFuture<ApiResponse<Void>> uploadMediaApiResponseAsync = controller.uploadMediaAsync(ACCOUNT_ID, mediaId, body, contentType, "no-cache");
+         assertEquals("Response Code is not 204", 204, uploadMediaApiResponseAsync.get().getStatusCode());
+
+         CompletableFuture<ApiResponse<InputStream>> asyncDownloadMediaAPiResponse = controller.getMediaAsync(ACCOUNT_ID, mediaId);
+         assertEquals("Response Code is not 200", 200, asyncDownloadMediaAPiResponse.get().getStatusCode());
+
+         InputStream asyncDownloadMediaResponse = asyncDownloadMediaAPiResponse.get().getResult();
+        
+         int asyncBRead;
+         ByteArrayOutputStream asyncByteArrayOutputStream = new ByteArrayOutputStream();
+         while ((asyncBRead = asyncDownloadMediaResponse.read()) != -1){
+             asyncByteArrayOutputStream.write(asyncBRead);
+         }
+         byte[] asyncResponseContents = asyncByteArrayOutputStream.toByteArray();
+
+         assertArrayEquals("Media download not equal to media upload", fileContents, asyncResponseContents);
+
+         CompletableFuture<ApiResponse<Void>> deleteMediaApiResponseAsync = controller.deleteMediaAsync(ACCOUNT_ID, mediaId);
+         assertEquals("Response Code is not 204", 204, deleteMediaApiResponseAsync.get().getStatusCode());
+     }
 }
