@@ -763,7 +763,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildGetCallRecordingRequest(accountId, callId, recordingId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsync(request, false)),
+                        .executeAsync(request, true)),
             context -> handleGetCallRecordingResponse(context));
     }
 
