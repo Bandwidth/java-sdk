@@ -215,7 +215,7 @@ public final class APIController extends BaseController {
         return makeHttpCallAsync(() -> buildGetMediaRequest(accountId, mediaId),
             req -> authManagers.get("messaging").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsync(request, false)),
+                        .executeAsync(request, true)),
             context -> handleGetMediaResponse(context));
     }
 
