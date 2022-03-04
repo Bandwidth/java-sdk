@@ -255,8 +255,14 @@ public class OkClient implements HttpClient {
                     httpRequest.getHeaders().add("content-type", contentType);
                 }
 
-                requestBody = okhttp3.RequestBody.create(okhttp3.MediaType.parse(contentType),
-                        ((FileWrapper) body).getFile());
+                if (file.getFile() != null) {
+                    requestBody = okhttp3.RequestBody.create(okhttp3.MediaType.parse(contentType),
+                            ((FileWrapper) body).getFile());
+                } else {
+                    requestBody = okhttp3.RequestBody.create(okhttp3.MediaType.parse(contentType),
+                            ((FileWrapper) body).getFileStream());
+                }
+
             } else {
                 // set request body
                 if (!httpRequest.getHeaders().has("content-type")) {

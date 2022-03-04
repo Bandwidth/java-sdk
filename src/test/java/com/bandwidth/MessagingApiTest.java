@@ -10,6 +10,7 @@ import com.bandwidth.utilities.FileWrapper;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.util.Collections;
@@ -86,6 +87,38 @@ public class MessagingApiTest {
         FileWrapper body = new FileWrapper(file, contentType);
 
         final String mediaId = "java-media-test_" + java.util.UUID.randomUUID();
+
+        ApiResponse<Void> uploadMediaApiResponse = controller.uploadMedia(ACCOUNT_ID, mediaId, body, contentType, "no-cache");
+        assertEquals("Response Code is not 204", 204, uploadMediaApiResponse.getStatusCode());
+
+        ApiResponse<InputStream> downloadMediaApiResponse = controller.getMedia(ACCOUNT_ID, mediaId);
+        assertEquals("Response Code is not 200", 200, downloadMediaApiResponse.getStatusCode());
+
+        InputStream downloadMediaResponse = downloadMediaApiResponse.getResult();
+
+        int bRead;
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        while ((bRead = downloadMediaResponse.read()) != -1){
+            byteArrayOutputStream.write(bRead);
+        }
+        byte[] responseContents = byteArrayOutputStream.toByteArray();
+
+        assertArrayEquals("Media download not equal to media upload", fileContents, responseContents);
+
+        ApiResponse<Void> deleteMediaApiResponse = controller.deleteMedia(ACCOUNT_ID, mediaId);
+        assertEquals("Response Code is not 204", 204, deleteMediaApiResponse.getStatusCode());
+    }
+
+    @Test
+    public void testUploadDownloadDeleteBinaryMedia() throws Exception {
+        final String fileName = "src/test/resources/mediaUpload.png";
+        final String contentType = "image/png";
+
+        File file = new File(fileName);
+        byte[] fileContents = Files.readAllBytes(file.toPath());
+        FileWrapper body = new FileWrapper(fileContents, contentType);
+
+        final String mediaId = "java-media-binary-test_" + java.util.UUID.randomUUID();
 
         ApiResponse<Void> uploadMediaApiResponse = controller.uploadMedia(ACCOUNT_ID, mediaId, body, contentType, "no-cache");
         assertEquals("Response Code is not 204", 204, uploadMediaApiResponse.getStatusCode());

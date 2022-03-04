@@ -8,14 +8,17 @@ package com.bandwidth.utilities;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.io.File;
+import java.io.FileInputStream;
 
 /**
  * Class to wrap file and contentType to be sent as part of a HTTP request.
  */
 public class FileWrapper {
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_ABSENT)
     private File file;
+    @JsonInclude(JsonInclude.Include.NON_ABSENT)
+    private byte[] fileStream;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String contentType;
 
@@ -26,6 +29,17 @@ public class FileWrapper {
      */
     public FileWrapper(File file, String contentType) {
         this.file = file;
+        this.fileStream = null;
+        this.contentType = contentType;
+    }
+    /**
+     * Initialization constructor.
+     * @param fileStream File Input Stream object to be wrapped
+     * @param contentType content type of file
+     */
+    public FileWrapper(byte[] fileStream, String contentType) {
+        this.file = null;
+        this.fileStream = fileStream;
         this.contentType = contentType;
     }
 
@@ -38,12 +52,24 @@ public class FileWrapper {
     }
 
     /**
+     * Initialization constructor.
+     * @param fileStream File object to be wrapped
+     */
+    public FileWrapper(byte[] fileStream) {
+        this.fileStream = fileStream;
+    }
+
+    /**
      * Getter for file.
      * @return File instance
      */
-    public File getFile() {
-        return file;
-    }
+    public File getFile() { return file; }
+
+    /**
+     * Getter for fileStream.
+     * @return byte[] instance
+     */
+    public byte[] getFileStream() { return fileStream; }
 
     /**
      * Getter for content type.
