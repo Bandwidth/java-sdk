@@ -25,8 +25,6 @@ public class VoiceApiTest {
     public void initTest(){
         BandwidthClient client = new BandwidthClient.Builder()
                 .voiceBasicAuthCredentials(USERNAME, PASSWORD)
-//                .environment(com.bandwidth.Environment.CUSTOM) // Optional - sets the enviroment to a custom base URL
-//                .baseUrl("https://42c9be22ebc6a0c3bdfb7248922a6687.m.pipedream.net/java") // Optional - sets the base Url
                 .build();
 
         controller = client.getVoiceClient().getAPIController();
