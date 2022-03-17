@@ -64,7 +64,7 @@ public class CreateCallRequest {
     private MachineDetectionConfiguration machineDetection;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private OptionalNullable<Integer> priority;
+    private Integer priority;
 
     /**
      * Default constructor.
@@ -132,7 +132,7 @@ public class CreateCallRequest {
         this.tag = OptionalNullable.of(tag);
         this.applicationId = applicationId;
         this.machineDetection = machineDetection;
-        this.priority = OptionalNullable.of(priority);
+        this.priority = priority;
     }
 
     /**
@@ -147,7 +147,7 @@ public class CreateCallRequest {
             OptionalNullable<AnswerFallbackMethodEnum> answerFallbackMethod,
             OptionalNullable<String> disconnectUrl,
             OptionalNullable<DisconnectMethodEnum> disconnectMethod, OptionalNullable<String> tag,
-            MachineDetectionConfiguration machineDetection, OptionalNullable<Integer> priority) {
+            MachineDetectionConfiguration machineDetection, Integer priority) {
         this.from = from;
         this.to = to;
         this.uui = uui;
@@ -726,8 +726,7 @@ public class CreateCallRequest {
      * @return Returns the Internal Integer
      */
     @JsonGetter("priority")
-    @JsonSerialize(using = OptionalNullable.Serializer.class)
-    protected OptionalNullable<Integer> internalGetPriority() {
+    protected Integer internalGetPriority() {
         return this.priority;
     }
 
@@ -736,7 +735,7 @@ public class CreateCallRequest {
      * @return Returns the Priority
      */
     @JsonGetter("priority")
-    public Integer getPriority() { return OptionalNullable.getFrom(priority); }
+    public Integer getPriority() { return this.priority; }
 
     /**
      * Setter for Priority.
@@ -744,7 +743,7 @@ public class CreateCallRequest {
      */
     @JsonSetter("priority")
     public void setPriority(Integer priority) {
-        this.priority = OptionalNullable.of(priority);
+        this.priority = priority;
     }
 
     /**
@@ -811,7 +810,7 @@ public class CreateCallRequest {
         private OptionalNullable<DisconnectMethodEnum> disconnectMethod;
         private OptionalNullable<String> tag;
         private MachineDetectionConfiguration machineDetection;
-        private OptionalNullable<Integer> priority;
+        private Integer priority;
 
         /**
          * Initialization constructor.
@@ -1136,7 +1135,7 @@ public class CreateCallRequest {
          * @return Builder
          */
         public Builder priority(Integer priority) {
-            this.priority = OptionalNullable.of(priority);
+            this.priority = priority;
             return this;
         }
 

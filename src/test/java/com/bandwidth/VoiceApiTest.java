@@ -25,6 +25,8 @@ public class VoiceApiTest {
     public void initTest(){
         BandwidthClient client = new BandwidthClient.Builder()
                 .voiceBasicAuthCredentials(USERNAME, PASSWORD)
+//                .environment(com.bandwidth.Environment.CUSTOM) // Optional - sets the enviroment to a custom base URL
+//                .baseUrl("https://42c9be22ebc6a0c3bdfb7248922a6687.m.pipedream.net/java") // Optional - sets the base Url
                 .build();
 
         controller = client.getVoiceClient().getAPIController();
@@ -112,15 +114,14 @@ public class VoiceApiTest {
     @Test
     public void testCreateCallWithPriorityAndGetCallState() throws Exception {
         final String answerUrl = BASE_CALLBACK_URL.concat("/callbacks/outbound");
-//        final Integer priority = 4;
+        final Integer priority = 4;
 
         CreateCallRequest body = new CreateCallRequest.Builder()
                 .to(USER_NUMBER)
                 .from(BW_NUMBER)
                 .applicationId(VOICE_APPLICATION_ID)
                 .answerUrl(answerUrl)
-//                .priority(priority)
-                .priority(4)
+                .priority(priority)
                 .tag("the tag")
                 .build();
 
@@ -134,8 +135,7 @@ public class VoiceApiTest {
         assertEquals("Application ID for create call not equal", VOICE_APPLICATION_ID, createCallResponse.getApplicationId());
         assertEquals("To phone number for create call not equal", USER_NUMBER, createCallResponse.getTo());
         assertEquals("From phone number for create call not equal", BW_NUMBER, createCallResponse.getFrom());
-//        assertEquals("Priority is not equal", priority, createCallResponse.getPriority());
-        assertEquals("Priority is not equal", 4, createCallResponse.getPriority());
+        assertEquals("Priority is not equal", priority, createCallResponse.getPriority());
         assertEquals("Tag is missing", "the tag", createCallResponse.getTag());
     }
 

@@ -63,7 +63,7 @@ public class CreateCallResponse {
     private OptionalNullable<String> tag;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private OptionalNullable<Integer> priority;
+    private Integer priority;
 
     /**
      * Default constructor.
@@ -137,7 +137,7 @@ public class CreateCallResponse {
         this.fallbackUsername = OptionalNullable.of(fallbackUsername);
         this.fallbackPassword = OptionalNullable.of(fallbackPassword);
         this.tag = OptionalNullable.of(tag);
-        this.priority = OptionalNullable.of(priority);
+        this.priority = priority;
     }
 
     /**
@@ -150,7 +150,7 @@ public class CreateCallResponse {
             OptionalNullable<AnswerFallbackMethodEnum> answerFallbackMethod,
             OptionalNullable<String> disconnectUrl, OptionalNullable<String> username,
             OptionalNullable<String> password, OptionalNullable<String> fallbackUsername,
-            OptionalNullable<String> fallbackPassword, OptionalNullable<String> tag, OptionalNullable<Integer> priority) {
+            OptionalNullable<String> fallbackPassword, OptionalNullable<String> tag, Integer priority) {
         this.accountId = accountId;
         this.callId = callId;
         this.applicationId = applicationId;
@@ -669,8 +669,7 @@ public class CreateCallResponse {
      * @return Returns the Internal Integer
      */
     @JsonGetter("priority")
-    @JsonSerialize(using = OptionalNullable.Serializer.class)
-    protected OptionalNullable<Integer> internalGetPriority() {
+    protected Integer internalGetPriority() {
         return this.priority;
     }
 
@@ -678,18 +677,15 @@ public class CreateCallResponse {
      * Getter for Priority.
      * @return Returns the Integer
      */
-    public OptionalNullable<Integer> getPriority() {
-        return OptionalNullable.getFrom(priority);
-    }
+    @JsonGetter("priority")
+    public Integer getPriority() { return this.priority; }
 
     /**
      * Setter for Priority.
      * @param priority Value for Integer
      */
-    @JsonSetter("tag")
-    public void setPriority(Integer priority) {
-        this.priority = OptionalNullable.of(priority);
-    }
+    @JsonSetter("priority")
+    public void setPriority(Integer priority) { this.priority = priority; }
 
     /**
      * UnSetter for Tag.
@@ -763,7 +759,7 @@ public class CreateCallResponse {
         private OptionalNullable<String> fallbackUsername;
         private OptionalNullable<String> fallbackPassword;
         private OptionalNullable<String> tag;
-        private OptionalNullable<Integer> priority;
+        private Integer priority;
 
 
         /**
@@ -1076,7 +1072,7 @@ public class CreateCallResponse {
          * @return Builder
          */
         public Builder priority(Integer priority) {
-            this.priority = OptionalNullable.of(priority);
+            this.priority = priority;
             return this;
         }
 
