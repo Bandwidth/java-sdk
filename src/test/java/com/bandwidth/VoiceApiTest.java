@@ -1,11 +1,15 @@
 package com.bandwidth;
 
 import com.bandwidth.http.response.ApiResponse;
+import com.bandwidth.internal.OptionalNullable;
 import com.bandwidth.voice.controllers.APIController;
 
 import com.bandwidth.voice.exceptions.ApiErrorException;
 import com.bandwidth.voice.models.*;
 import org.junit.*;
+
+import javax.swing.text.html.Option;
+
 import static org.junit.Assert.*;
 
 import static com.bandwidth.TestingEnvironmentVariables.*;
@@ -103,6 +107,36 @@ public class VoiceApiTest {
         assertEquals("To phone number for call state not equal", USER_NUMBER, callStateResponse.getTo());
         assertEquals("From phone number for call state not equal", BW_NUMBER, callStateResponse.getFrom());
         assertEquals("Call ID not equal", createCallResponse.getCallId(), callStateResponse.getCallId());
+    }
+
+    @Test
+    public void testCreateCallWithPriorityAndGetCallState() throws Exception {
+        final String answerUrl = BASE_CALLBACK_URL.concat("/callbacks/outbound");
+//        final Integer priority = 4;
+
+        CreateCallRequest body = new CreateCallRequest.Builder()
+                .to(USER_NUMBER)
+                .from(BW_NUMBER)
+                .applicationId(VOICE_APPLICATION_ID)
+                .answerUrl(answerUrl)
+//                .priority(priority)
+                .priority(4)
+                .tag("the tag")
+                .build();
+
+        ApiResponse<CreateCallResponse> createCallApiResponse = controller.createCall(ACCOUNT_ID, body);
+        assertEquals("Response Code is not 201", 201, createCallApiResponse.getStatusCode());
+
+        CreateCallResponse createCallResponse = createCallApiResponse.getResult();
+        assertNotNull("Call ID is null", createCallResponse.getCallId());
+        assertFalse("Call ID is empty", createCallResponse.getCallId().isEmpty());
+        assertEquals("Call ID is not 47 characters", 47, createCallResponse.getCallId().length());
+        assertEquals("Application ID for create call not equal", VOICE_APPLICATION_ID, createCallResponse.getApplicationId());
+        assertEquals("To phone number for create call not equal", USER_NUMBER, createCallResponse.getTo());
+        assertEquals("From phone number for create call not equal", BW_NUMBER, createCallResponse.getFrom());
+//        assertEquals("Priority is not equal", priority, createCallResponse.getPriority());
+        assertEquals("Priority is not equal", 4, createCallResponse.getPriority());
+        assertEquals("Tag is missing", "the tag", createCallResponse.getTag());
     }
 
     @Test

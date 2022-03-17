@@ -24,32 +24,46 @@ public class CreateCallResponse {
     private String applicationId;
     private String to;
     private String from;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private LocalDateTime startTime;
     private String callUrl;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Double callTimeout;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Double callbackTimeout;
+    private DisconnectMethodEnum disconnectMethod;
     private String answerUrl;
     private AnswerMethodEnum answerMethod;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private LocalDateTime startTime;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Double callTimeout;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Double callbackTimeout;
+
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private OptionalNullable<String> answerFallbackUrl;
+
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private OptionalNullable<AnswerFallbackMethodEnum> answerFallbackMethod;
+
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private OptionalNullable<String> disconnectUrl;
-    private DisconnectMethodEnum disconnectMethod;
+
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private OptionalNullable<String> username;
+
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private OptionalNullable<String> password;
+
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private OptionalNullable<String> fallbackUsername;
+
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private OptionalNullable<String> fallbackPassword;
+
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private OptionalNullable<String> tag;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private OptionalNullable<Integer> priority;
 
     /**
      * Default constructor.
@@ -79,6 +93,7 @@ public class CreateCallResponse {
      * @param  fallbackUsername  String value for fallbackUsername.
      * @param  fallbackPassword  String value for fallbackPassword.
      * @param  tag  String value for tag.
+     * @param  priority Integer value for priority.
      */
     public CreateCallResponse(
             String accountId,
@@ -100,7 +115,8 @@ public class CreateCallResponse {
             String password,
             String fallbackUsername,
             String fallbackPassword,
-            String tag) {
+            String tag,
+            Integer priority) {
         this.accountId = accountId;
         this.callId = callId;
         this.applicationId = applicationId;
@@ -121,6 +137,7 @@ public class CreateCallResponse {
         this.fallbackUsername = OptionalNullable.of(fallbackUsername);
         this.fallbackPassword = OptionalNullable.of(fallbackPassword);
         this.tag = OptionalNullable.of(tag);
+        this.priority = OptionalNullable.of(priority);
     }
 
     /**
@@ -133,7 +150,7 @@ public class CreateCallResponse {
             OptionalNullable<AnswerFallbackMethodEnum> answerFallbackMethod,
             OptionalNullable<String> disconnectUrl, OptionalNullable<String> username,
             OptionalNullable<String> password, OptionalNullable<String> fallbackUsername,
-            OptionalNullable<String> fallbackPassword, OptionalNullable<String> tag) {
+            OptionalNullable<String> fallbackPassword, OptionalNullable<String> tag, OptionalNullable<Integer> priority) {
         this.accountId = accountId;
         this.callId = callId;
         this.applicationId = applicationId;
@@ -154,6 +171,7 @@ public class CreateCallResponse {
         this.fallbackUsername = fallbackUsername;
         this.fallbackPassword = fallbackPassword;
         this.tag = tag;
+        this.priority = priority;
     }
 
     /**
@@ -647,6 +665,40 @@ public class CreateCallResponse {
     }
 
     /**
+     * Internal Getter for Priority.
+     * @return Returns the Internal Integer
+     */
+    @JsonGetter("priority")
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<Integer> internalGetPriority() {
+        return this.priority;
+    }
+
+    /**
+     * Getter for Priority.
+     * @return Returns the Integer
+     */
+    public OptionalNullable<Integer> getPriority() {
+        return OptionalNullable.getFrom(priority);
+    }
+
+    /**
+     * Setter for Priority.
+     * @param priority Value for Integer
+     */
+    @JsonSetter("tag")
+    public void setPriority(Integer priority) {
+        this.priority = OptionalNullable.of(priority);
+    }
+
+    /**
+     * UnSetter for Tag.
+     */
+    public void unsetPriority() {
+        priority = null;
+    }
+
+    /**
      * Converts this CreateCallResponse into string format.
      * @return String representation of this class
      */
@@ -661,7 +713,7 @@ public class CreateCallResponse {
                 + ", answerFallbackMethod=" + answerFallbackMethod + ", disconnectUrl="
                 + disconnectUrl + ", username=" + username + ", password=" + password
                 + ", fallbackUsername=" + fallbackUsername + ", fallbackPassword="
-                + fallbackPassword + ", tag=" + tag + "]";
+                + fallbackPassword + ", tag=" + tag + ", priority=" + priority + "]";
     }
 
     /**
@@ -683,6 +735,7 @@ public class CreateCallResponse {
         builder.fallbackUsername = internalGetFallbackUsername();
         builder.fallbackPassword = internalGetFallbackPassword();
         builder.tag = internalGetTag();
+        builder.priority = internalGetPriority();
         return builder;
     }
 
@@ -710,6 +763,8 @@ public class CreateCallResponse {
         private OptionalNullable<String> fallbackUsername;
         private OptionalNullable<String> fallbackPassword;
         private OptionalNullable<String> tag;
+        private OptionalNullable<Integer> priority;
+
 
         /**
          * Initialization constructor.
@@ -1016,6 +1071,25 @@ public class CreateCallResponse {
         }
 
         /**
+         * Setter for priority.
+         * @param  priority  Integer value for priority.
+         * @return Builder
+         */
+        public Builder priority(Integer priority) {
+            this.priority = OptionalNullable.of(priority);
+            return this;
+        }
+
+        /**
+         * UnSetter for tag.
+         * @return Builder
+         */
+        public Builder unsetPriority() {
+            priority = null;
+            return this;
+        }
+
+        /**
          * Builds a new {@link CreateCallResponse} object using the set fields.
          * @return {@link CreateCallResponse}
          */
@@ -1023,7 +1097,7 @@ public class CreateCallResponse {
             return new CreateCallResponse(accountId, callId, applicationId, to, from, callUrl,
                     answerUrl, answerMethod, disconnectMethod, startTime, callTimeout,
                     callbackTimeout, answerFallbackUrl, answerFallbackMethod, disconnectUrl,
-                    username, password, fallbackUsername, fallbackPassword, tag);
+                    username, password, fallbackUsername, fallbackPassword, tag, priority);
         }
     }
 }
