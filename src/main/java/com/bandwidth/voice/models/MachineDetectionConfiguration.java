@@ -27,6 +27,8 @@ public class MachineDetectionConfiguration {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Double speechEndThreshold;
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Double machineSpeechEndThreshold;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Boolean delayResult;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private OptionalNullable<String> callbackUrl;
@@ -53,20 +55,22 @@ public class MachineDetectionConfiguration {
 
     /**
      * Initialization constructor.
-     * @param  mode  ModeEnum value for mode.
-     * @param  detectionTimeout  Double value for detectionTimeout.
-     * @param  silenceTimeout  Double value for silenceTimeout.
-     * @param  speechThreshold  Double value for speechThreshold.
-     * @param  speechEndThreshold  Double value for speechEndThreshold.
-     * @param  delayResult  Boolean value for delayResult.
-     * @param  callbackUrl  String value for callbackUrl.
-     * @param  callbackMethod  CallbackMethodEnum value for callbackMethod.
-     * @param  fallbackUrl  String value for fallbackUrl.
-     * @param  fallbackMethod  FallbackMethodEnum value for fallbackMethod.
-     * @param  username  String value for username.
-     * @param  password  String value for password.
-     * @param  fallbackUsername  String value for fallbackUsername.
-     * @param  fallbackPassword  String value for fallbackPassword.
+     * 
+     * @param mode                      ModeEnum value for mode.
+     * @param detectionTimeout          Double value for detectionTimeout.
+     * @param silenceTimeout            Double value for silenceTimeout.
+     * @param speechThreshold           Double value for speechThreshold.
+     * @param speechEndThreshold        Double value for speechEndThreshold.
+     * @param machineSpeechEndThreshold Double value for machineSpeechEndThreshold.
+     * @param delayResult               Boolean value for delayResult.
+     * @param callbackUrl               String value for callbackUrl.
+     * @param callbackMethod            CallbackMethodEnum value for callbackMethod.
+     * @param fallbackUrl               String value for fallbackUrl.
+     * @param fallbackMethod            FallbackMethodEnum value for fallbackMethod.
+     * @param username                  String value for username.
+     * @param password                  String value for password.
+     * @param fallbackUsername          String value for fallbackUsername.
+     * @param fallbackPassword          String value for fallbackPassword.
      */
     public MachineDetectionConfiguration(
             ModeEnum mode,
@@ -74,6 +78,7 @@ public class MachineDetectionConfiguration {
             Double silenceTimeout,
             Double speechThreshold,
             Double speechEndThreshold,
+            Double machineSpeechEndThreshold,
             Boolean delayResult,
             String callbackUrl,
             CallbackMethodEnum callbackMethod,
@@ -88,6 +93,7 @@ public class MachineDetectionConfiguration {
         this.silenceTimeout = silenceTimeout;
         this.speechThreshold = speechThreshold;
         this.speechEndThreshold = speechEndThreshold;
+        this.machineSpeechEndThreshold = machineSpeechEndThreshold;
         this.delayResult = delayResult;
         this.callbackUrl = OptionalNullable.of(callbackUrl);
         this.callbackMethod = OptionalNullable.of(callbackMethod);
@@ -103,18 +109,19 @@ public class MachineDetectionConfiguration {
      * Internal initialization constructor.
      */
     protected MachineDetectionConfiguration(ModeEnum mode, Double detectionTimeout, Double silenceTimeout,
-                                            Double speechThreshold, Double speechEndThreshold, Boolean delayResult,
-                                            OptionalNullable<String> callbackUrl,
-                                            OptionalNullable<CallbackMethodEnum> callbackMethod,
-                                            OptionalNullable<String> fallbackUrl,
-                                            OptionalNullable<FallbackMethodEnum> fallbackMethod, OptionalNullable<String> username,
-                                            OptionalNullable<String> password, OptionalNullable<String> fallbackUsername,
-                                            OptionalNullable<String> fallbackPassword) {
+            Double speechThreshold, Double speechEndThreshold, Double machineSpeechEndThreshold, Boolean delayResult,
+            OptionalNullable<String> callbackUrl,
+            OptionalNullable<CallbackMethodEnum> callbackMethod,
+            OptionalNullable<String> fallbackUrl,
+            OptionalNullable<FallbackMethodEnum> fallbackMethod, OptionalNullable<String> username,
+            OptionalNullable<String> password, OptionalNullable<String> fallbackUsername,
+            OptionalNullable<String> fallbackPassword) {
         this.mode = mode;
         this.detectionTimeout = detectionTimeout;
         this.silenceTimeout = silenceTimeout;
         this.speechThreshold = speechThreshold;
         this.speechEndThreshold = speechEndThreshold;
+        this.machineSpeechEndThreshold = machineSpeechEndThreshold;
         this.delayResult = delayResult;
         this.callbackUrl = callbackUrl;
         this.callbackMethod = callbackMethod;
@@ -128,9 +135,13 @@ public class MachineDetectionConfiguration {
 
     /**
      * Getter for Mode.
-     * The machine detection mode. If set to 'async', the detection result will be sent in a
-     * 'machineDetectionComplete' callback. If set to 'sync', the 'answer' callback will wait for
-     * the machine detection to complete and will include its result. Default is 'async'.
+     * The machine detection mode. If set to 'async', the detection result will be
+     * sent in a
+     * 'machineDetectionComplete' callback. If set to 'sync', the 'answer' callback
+     * will wait for
+     * the machine detection to complete and will include its result. Default is
+     * 'async'.
+     * 
      * @return Returns the ModeEnum
      */
     @JsonGetter("mode")
@@ -140,9 +151,13 @@ public class MachineDetectionConfiguration {
 
     /**
      * Setter for Mode.
-     * The machine detection mode. If set to 'async', the detection result will be sent in a
-     * 'machineDetectionComplete' callback. If set to 'sync', the 'answer' callback will wait for
-     * the machine detection to complete and will include its result. Default is 'async'.
+     * The machine detection mode. If set to 'async', the detection result will be
+     * sent in a
+     * 'machineDetectionComplete' callback. If set to 'sync', the 'answer' callback
+     * will wait for
+     * the machine detection to complete and will include its result. Default is
+     * 'async'.
+     * 
      * @param mode Value for ModeEnum
      */
     @JsonSetter("mode")
@@ -153,6 +168,7 @@ public class MachineDetectionConfiguration {
     /**
      * Getter for DetectionTimeout.
      * Total amount of time (in seconds) before giving up.
+     * 
      * @return Returns the Double
      */
     @JsonGetter("detectionTimeout")
@@ -163,6 +179,7 @@ public class MachineDetectionConfiguration {
     /**
      * Setter for DetectionTimeout.
      * Total amount of time (in seconds) before giving up.
+     * 
      * @param detectionTimeout Value for Double
      */
     @JsonSetter("detectionTimeout")
@@ -172,8 +189,10 @@ public class MachineDetectionConfiguration {
 
     /**
      * Getter for SilenceTimeout.
-     * If no speech is detected in this period, a callback with a 'silence' result is sent. Default
+     * If no speech is detected in this period, a callback with a 'silence' result
+     * is sent. Default
      * is 10 seconds.
+     * 
      * @return Returns the Double
      */
     @JsonGetter("silenceTimeout")
@@ -183,8 +202,10 @@ public class MachineDetectionConfiguration {
 
     /**
      * Setter for SilenceTimeout.
-     * If no speech is detected in this period, a callback with a 'silence' result is sent. Default
+     * If no speech is detected in this period, a callback with a 'silence' result
+     * is sent. Default
      * is 10 seconds.
+     * 
      * @param silenceTimeout Value for Double
      */
     @JsonSetter("silenceTimeout")
@@ -194,11 +215,16 @@ public class MachineDetectionConfiguration {
 
     /**
      * Getter for SpeechThreshold.
-     * When speech has ended and a result couldn't be determined based on the audio content itself,
-     * this value is used to determine if the speaker is a machine based on the speech duration. If
-     * the length of the speech detected is greater than or equal to this threshold, the result will
-     * be 'answering-machine'. If the length of speech detected is below this threshold, the result
+     * When speech has ended and a result couldn't be determined based on the audio
+     * content itself,
+     * this value is used to determine if the speaker is a machine based on the
+     * speech duration. If
+     * the length of the speech detected is greater than or equal to this threshold,
+     * the result will
+     * be 'answering-machine'. If the length of speech detected is below this
+     * threshold, the result
      * will be 'human'. Default is 10 seconds.
+     * 
      * @return Returns the Double
      */
     @JsonGetter("speechThreshold")
@@ -208,11 +234,16 @@ public class MachineDetectionConfiguration {
 
     /**
      * Setter for SpeechThreshold.
-     * When speech has ended and a result couldn't be determined based on the audio content itself,
-     * this value is used to determine if the speaker is a machine based on the speech duration. If
-     * the length of the speech detected is greater than or equal to this threshold, the result will
-     * be 'answering-machine'. If the length of speech detected is below this threshold, the result
+     * When speech has ended and a result couldn't be determined based on the audio
+     * content itself,
+     * this value is used to determine if the speaker is a machine based on the
+     * speech duration. If
+     * the length of the speech detected is greater than or equal to this threshold,
+     * the result will
+     * be 'answering-machine'. If the length of speech detected is below this
+     * threshold, the result
      * will be 'human'. Default is 10 seconds.
+     * 
      * @param speechThreshold Value for Double
      */
     @JsonSetter("speechThreshold")
@@ -222,7 +253,9 @@ public class MachineDetectionConfiguration {
 
     /**
      * Getter for SpeechEndThreshold.
-     * Amount of silence (in seconds) before assuming the callee has finished speaking.
+     * Amount of silence (in seconds) before assuming the callee has finished
+     * speaking.
+     * 
      * @return Returns the Double
      */
     @JsonGetter("speechEndThreshold")
@@ -232,7 +265,9 @@ public class MachineDetectionConfiguration {
 
     /**
      * Setter for SpeechEndThreshold.
-     * Amount of silence (in seconds) before assuming the callee has finished speaking.
+     * Amount of silence (in seconds) before assuming the callee has finished
+     * speaking.
+     * 
      * @param speechEndThreshold Value for Double
      */
     @JsonSetter("speechEndThreshold")
@@ -241,10 +276,41 @@ public class MachineDetectionConfiguration {
     }
 
     /**
+     * Getter for MachineSpeechEndThreshold.
+     * When an answering machine is
+     * detected, the amount of silence (in seconds) before assuming the
+     * message has finished playing.
+     * 
+     * @return Returns the Double
+     */
+
+    @JsonGetter("machineSpeechEndThreshold")
+    public Double getMachineSpeechEndThreshold() {
+        return machineSpeechEndThreshold;
+    }
+
+    /**
+     * Setter for MachineSpeechEndThreshold
+     * When an answering machine is
+     * detected, the amount of silence (in seconds) before assuming the
+     * message has finished playing.
+     * 
+     * @param machineSpeechEndThreshold Value for Double
+     */
+    @JsonSetter("machineSpeechEndThreshold")
+    public void setMachineSpeechEndThreshold(Double machineSpeechEndThreshold) {
+        this.machineSpeechEndThreshold = machineSpeechEndThreshold;
+    }
+
+    /**
      * Getter for DelayResult.
-     * If set to 'true' and if an answering machine is detected, the 'answering-machine' callback
-     * will be delayed until the machine is done speaking or until the 'detectionTimeout' is
-     * exceeded. If false, the 'answering-machine' result is sent immediately. Default is 'false'.
+     * If set to 'true' and if an answering machine is detected, the
+     * 'answering-machine' callback
+     * will be delayed until the machine is done speaking or until the
+     * 'detectionTimeout' is
+     * exceeded. If false, the 'answering-machine' result is sent immediately.
+     * Default is 'false'.
+     * 
      * @return Returns the Boolean
      */
     @JsonGetter("delayResult")
@@ -254,9 +320,13 @@ public class MachineDetectionConfiguration {
 
     /**
      * Setter for DelayResult.
-     * If set to 'true' and if an answering machine is detected, the 'answering-machine' callback
-     * will be delayed until the machine is done speaking or until the 'detectionTimeout' is
-     * exceeded. If false, the 'answering-machine' result is sent immediately. Default is 'false'.
+     * If set to 'true' and if an answering machine is detected, the
+     * 'answering-machine' callback
+     * will be delayed until the machine is done speaking or until the
+     * 'detectionTimeout' is
+     * exceeded. If false, the 'answering-machine' result is sent immediately.
+     * Default is 'false'.
+     * 
      * @param delayResult Value for Boolean
      */
     @JsonSetter("delayResult")
@@ -266,8 +336,10 @@ public class MachineDetectionConfiguration {
 
     /**
      * Internal Getter for CallbackUrl.
-     * The URL to send the 'machineDetectionComplete' callback when the detection is completed. Only
+     * The URL to send the 'machineDetectionComplete' callback when the detection is
+     * completed. Only
      * for 'async' mode.
+     * 
      * @return Returns the Internal String
      */
     @JsonGetter("callbackUrl")
@@ -278,8 +350,10 @@ public class MachineDetectionConfiguration {
 
     /**
      * Getter for CallbackUrl.
-     * The URL to send the 'machineDetectionComplete' callback when the detection is completed. Only
+     * The URL to send the 'machineDetectionComplete' callback when the detection is
+     * completed. Only
      * for 'async' mode.
+     * 
      * @return Returns the String
      */
     public String getCallbackUrl() {
@@ -288,8 +362,10 @@ public class MachineDetectionConfiguration {
 
     /**
      * Setter for CallbackUrl.
-     * The URL to send the 'machineDetectionComplete' callback when the detection is completed. Only
+     * The URL to send the 'machineDetectionComplete' callback when the detection is
+     * completed. Only
      * for 'async' mode.
+     * 
      * @param callbackUrl Value for String
      */
     @JsonSetter("callbackUrl")
@@ -299,7 +375,8 @@ public class MachineDetectionConfiguration {
 
     /**
      * UnSetter for CallbackUrl.
-     * The URL to send the 'machineDetectionComplete' callback when the detection is completed. Only
+     * The URL to send the 'machineDetectionComplete' callback when the detection is
+     * completed. Only
      * for 'async' mode.
      */
     public void unsetCallbackUrl() {
@@ -308,6 +385,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Internal Getter for CallbackMethod.
+     * 
      * @return Returns the Internal CallbackMethodEnum
      */
     @JsonGetter("callbackMethod")
@@ -318,6 +396,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Getter for CallbackMethod.
+     * 
      * @return Returns the CallbackMethodEnum
      */
     public CallbackMethodEnum getCallbackMethod() {
@@ -326,6 +405,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Setter for CallbackMethod.
+     * 
      * @param callbackMethod Value for CallbackMethodEnum
      */
     @JsonSetter("callbackMethod")
@@ -342,6 +422,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Internal Getter for FallbackUrl.
+     * 
      * @return Returns the Internal String
      */
     @JsonGetter("fallbackUrl")
@@ -352,6 +433,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Getter for FallbackUrl.
+     * 
      * @return Returns the String
      */
     public String getFallbackUrl() {
@@ -360,6 +442,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Setter for FallbackUrl.
+     * 
      * @param fallbackUrl Value for String
      */
     @JsonSetter("fallbackUrl")
@@ -376,6 +459,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Internal Getter for FallbackMethod.
+     * 
      * @return Returns the Internal FallbackMethodEnum
      */
     @JsonGetter("fallbackMethod")
@@ -386,6 +470,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Getter for FallbackMethod.
+     * 
      * @return Returns the FallbackMethodEnum
      */
     public FallbackMethodEnum getFallbackMethod() {
@@ -394,6 +479,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Setter for FallbackMethod.
+     * 
      * @param fallbackMethod Value for FallbackMethodEnum
      */
     @JsonSetter("fallbackMethod")
@@ -410,6 +496,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Internal Getter for Username.
+     * 
      * @return Returns the Internal String
      */
     @JsonGetter("username")
@@ -420,6 +507,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Getter for Username.
+     * 
      * @return Returns the String
      */
     public String getUsername() {
@@ -428,6 +516,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Setter for Username.
+     * 
      * @param username Value for String
      */
     @JsonSetter("username")
@@ -444,6 +533,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Internal Getter for Password.
+     * 
      * @return Returns the Internal String
      */
     @JsonGetter("password")
@@ -454,6 +544,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Getter for Password.
+     * 
      * @return Returns the String
      */
     public String getPassword() {
@@ -462,6 +553,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Setter for Password.
+     * 
      * @param password Value for String
      */
     @JsonSetter("password")
@@ -478,6 +570,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Internal Getter for FallbackUsername.
+     * 
      * @return Returns the Internal String
      */
     @JsonGetter("fallbackUsername")
@@ -488,6 +581,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Getter for FallbackUsername.
+     * 
      * @return Returns the String
      */
     public String getFallbackUsername() {
@@ -496,6 +590,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Setter for FallbackUsername.
+     * 
      * @param fallbackUsername Value for String
      */
     @JsonSetter("fallbackUsername")
@@ -512,6 +607,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Internal Getter for FallbackPassword.
+     * 
      * @return Returns the Internal String
      */
     @JsonGetter("fallbackPassword")
@@ -522,6 +618,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Getter for FallbackPassword.
+     * 
      * @return Returns the String
      */
     public String getFallbackPassword() {
@@ -530,6 +627,7 @@ public class MachineDetectionConfiguration {
 
     /**
      * Setter for FallbackPassword.
+     * 
      * @param fallbackPassword Value for String
      */
     @JsonSetter("fallbackPassword")
@@ -546,23 +644,25 @@ public class MachineDetectionConfiguration {
 
     /**
      * Converts this MachineDetectionConfiguration into string format.
+     * 
      * @return String representation of this class
      */
     @Override
     public String toString() {
         return "MachineDetectionConfiguration [" + "mode=" + mode + ", detectionTimeout="
                 + detectionTimeout + ", silenceTimeout=" + silenceTimeout + ", speechThreshold="
-                + speechThreshold + ", speechEndThreshold=" + speechEndThreshold + ", delayResult="
-                + delayResult + ", callbackUrl=" + callbackUrl + ", callbackMethod="
-                + callbackMethod + ", fallbackUrl=" + fallbackUrl + ", fallbackMethod="
-                + fallbackMethod + ", username=" + username + ", password=" + password
-                + ", fallbackUsername=" + fallbackUsername + ", fallbackPassword="
+                + speechThreshold + ", speechEndThreshold=" + speechEndThreshold + ", machineSpeechEndThreshold="
+                + machineSpeechEndThreshold + ", delayResult=" + delayResult + ", callbackUrl="
+                + callbackUrl + ", callbackMethod=" + callbackMethod + ", fallbackUrl="
+                + fallbackUrl + ", fallbackMethod=" + fallbackMethod + ", username=" + username + ", password="
+                + password + ", fallbackUsername=" + fallbackUsername + ", fallbackPassword="
                 + fallbackPassword + "]";
     }
 
     /**
      * Builds a new {@link MachineDetectionConfiguration.Builder} object.
      * Creates the instance with the state of the current model.
+     * 
      * @return a new {@link MachineDetectionConfiguration.Builder} object
      */
     public Builder toBuilder() {
@@ -572,6 +672,7 @@ public class MachineDetectionConfiguration {
                 .silenceTimeout(getSilenceTimeout())
                 .speechThreshold(getSpeechThreshold())
                 .speechEndThreshold(getSpeechEndThreshold())
+                .machineSpeechEndThreshold(getMachineSpeechEndThreshold())
                 .delayResult(getDelayResult());
         builder.callbackUrl = internalGetCallbackUrl();
         builder.callbackMethod = internalGetCallbackMethod();
@@ -593,6 +694,7 @@ public class MachineDetectionConfiguration {
         private Double silenceTimeout;
         private Double speechThreshold;
         private Double speechEndThreshold;
+        private Double machineSpeechEndThreshold;
         private Boolean delayResult;
         private OptionalNullable<String> callbackUrl;
         private OptionalNullable<CallbackMethodEnum> callbackMethod;
@@ -603,11 +705,10 @@ public class MachineDetectionConfiguration {
         private OptionalNullable<String> fallbackUsername;
         private OptionalNullable<String> fallbackPassword;
 
-
-
         /**
          * Setter for mode.
-         * @param  mode  ModeEnum value for mode.
+         * 
+         * @param mode ModeEnum value for mode.
          * @return Builder
          */
         public Builder mode(ModeEnum mode) {
@@ -617,7 +718,8 @@ public class MachineDetectionConfiguration {
 
         /**
          * Setter for detectionTimeout.
-         * @param  detectionTimeout  Double value for detectionTimeout.
+         * 
+         * @param detectionTimeout Double value for detectionTimeout.
          * @return Builder
          */
         public Builder detectionTimeout(Double detectionTimeout) {
@@ -627,7 +729,8 @@ public class MachineDetectionConfiguration {
 
         /**
          * Setter for silenceTimeout.
-         * @param  silenceTimeout  Double value for silenceTimeout.
+         * 
+         * @param silenceTimeout Double value for silenceTimeout.
          * @return Builder
          */
         public Builder silenceTimeout(Double silenceTimeout) {
@@ -637,7 +740,8 @@ public class MachineDetectionConfiguration {
 
         /**
          * Setter for speechThreshold.
-         * @param  speechThreshold  Double value for speechThreshold.
+         * 
+         * @param speechThreshold Double value for speechThreshold.
          * @return Builder
          */
         public Builder speechThreshold(Double speechThreshold) {
@@ -647,7 +751,8 @@ public class MachineDetectionConfiguration {
 
         /**
          * Setter for speechEndThreshold.
-         * @param  speechEndThreshold  Double value for speechEndThreshold.
+         * 
+         * @param speechEndThreshold Double value for speechEndThreshold.
          * @return Builder
          */
         public Builder speechEndThreshold(Double speechEndThreshold) {
@@ -656,8 +761,20 @@ public class MachineDetectionConfiguration {
         }
 
         /**
+         * Setter for machineSpeechEndThreshold.
+         * 
+         * @param machineSpeechEndThreshold Double value for speechEndThreshold.
+         * @return Builder
+         */
+        public Builder machineSpeechEndThreshold(Double machineSpeechEndThreshold) {
+            this.machineSpeechEndThreshold = machineSpeechEndThreshold;
+            return this;
+        }
+
+        /**
          * Setter for delayResult.
-         * @param  delayResult  Boolean value for delayResult.
+         * 
+         * @param delayResult Boolean value for delayResult.
          * @return Builder
          */
         public Builder delayResult(Boolean delayResult) {
@@ -667,7 +784,8 @@ public class MachineDetectionConfiguration {
 
         /**
          * Setter for callbackUrl.
-         * @param  callbackUrl  String value for callbackUrl.
+         * 
+         * @param callbackUrl String value for callbackUrl.
          * @return Builder
          */
         public Builder callbackUrl(String callbackUrl) {
@@ -677,6 +795,7 @@ public class MachineDetectionConfiguration {
 
         /**
          * UnSetter for callbackUrl.
+         * 
          * @return Builder
          */
         public Builder unsetCallbackUrl() {
@@ -686,7 +805,8 @@ public class MachineDetectionConfiguration {
 
         /**
          * Setter for callbackMethod.
-         * @param  callbackMethod  CallbackMethodEnum value for callbackMethod.
+         * 
+         * @param callbackMethod CallbackMethodEnum value for callbackMethod.
          * @return Builder
          */
         public Builder callbackMethod(CallbackMethodEnum callbackMethod) {
@@ -696,6 +816,7 @@ public class MachineDetectionConfiguration {
 
         /**
          * UnSetter for callbackMethod.
+         * 
          * @return Builder
          */
         public Builder unsetCallbackMethod() {
@@ -705,7 +826,8 @@ public class MachineDetectionConfiguration {
 
         /**
          * Setter for fallbackUrl.
-         * @param  fallbackUrl  String value for fallbackUrl.
+         * 
+         * @param fallbackUrl String value for fallbackUrl.
          * @return Builder
          */
         public Builder fallbackUrl(String fallbackUrl) {
@@ -715,6 +837,7 @@ public class MachineDetectionConfiguration {
 
         /**
          * UnSetter for fallbackUrl.
+         * 
          * @return Builder
          */
         public Builder unsetFallbackUrl() {
@@ -724,7 +847,8 @@ public class MachineDetectionConfiguration {
 
         /**
          * Setter for fallbackMethod.
-         * @param  fallbackMethod  FallbackMethodEnum value for fallbackMethod.
+         * 
+         * @param fallbackMethod FallbackMethodEnum value for fallbackMethod.
          * @return Builder
          */
         public Builder fallbackMethod(FallbackMethodEnum fallbackMethod) {
@@ -734,6 +858,7 @@ public class MachineDetectionConfiguration {
 
         /**
          * UnSetter for fallbackMethod.
+         * 
          * @return Builder
          */
         public Builder unsetFallbackMethod() {
@@ -743,7 +868,8 @@ public class MachineDetectionConfiguration {
 
         /**
          * Setter for username.
-         * @param  username  String value for username.
+         * 
+         * @param username String value for username.
          * @return Builder
          */
         public Builder username(String username) {
@@ -753,6 +879,7 @@ public class MachineDetectionConfiguration {
 
         /**
          * UnSetter for username.
+         * 
          * @return Builder
          */
         public Builder unsetUsername() {
@@ -762,7 +889,8 @@ public class MachineDetectionConfiguration {
 
         /**
          * Setter for password.
-         * @param  password  String value for password.
+         * 
+         * @param password String value for password.
          * @return Builder
          */
         public Builder password(String password) {
@@ -772,6 +900,7 @@ public class MachineDetectionConfiguration {
 
         /**
          * UnSetter for password.
+         * 
          * @return Builder
          */
         public Builder unsetPassword() {
@@ -781,7 +910,8 @@ public class MachineDetectionConfiguration {
 
         /**
          * Setter for fallbackUsername.
-         * @param  fallbackUsername  String value for fallbackUsername.
+         * 
+         * @param fallbackUsername String value for fallbackUsername.
          * @return Builder
          */
         public Builder fallbackUsername(String fallbackUsername) {
@@ -791,6 +921,7 @@ public class MachineDetectionConfiguration {
 
         /**
          * UnSetter for fallbackUsername.
+         * 
          * @return Builder
          */
         public Builder unsetFallbackUsername() {
@@ -800,7 +931,8 @@ public class MachineDetectionConfiguration {
 
         /**
          * Setter for fallbackPassword.
-         * @param  fallbackPassword  String value for fallbackPassword.
+         * 
+         * @param fallbackPassword String value for fallbackPassword.
          * @return Builder
          */
         public Builder fallbackPassword(String fallbackPassword) {
@@ -810,6 +942,7 @@ public class MachineDetectionConfiguration {
 
         /**
          * UnSetter for fallbackPassword.
+         * 
          * @return Builder
          */
         public Builder unsetFallbackPassword() {
@@ -818,12 +951,15 @@ public class MachineDetectionConfiguration {
         }
 
         /**
-         * Builds a new {@link MachineDetectionConfiguration} object using the set fields.
+         * Builds a new {@link MachineDetectionConfiguration} object using the set
+         * fields.
+         * 
          * @return {@link MachineDetectionConfiguration}
          */
         public MachineDetectionConfiguration build() {
             return new MachineDetectionConfiguration(mode, detectionTimeout, silenceTimeout,
-                    speechThreshold, speechEndThreshold, delayResult, callbackUrl, callbackMethod,
+                    speechThreshold, speechEndThreshold, machineSpeechEndThreshold, delayResult, callbackUrl,
+                    callbackMethod,
                     fallbackUrl, fallbackMethod, username, password, fallbackUsername,
                     fallbackPassword);
         }
