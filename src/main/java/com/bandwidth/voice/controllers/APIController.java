@@ -463,6 +463,137 @@ public final class APIController extends BaseController {
         return new ApiResponse<Void>(response.getStatusCode(), response.getHeaders(), null);
     }
 
+/**
+     * Interrupts and replaces an active call's BXML document.
+     * @param  accountId  Required parameter: Example:
+     * @param  callId  Required parameter: Example:
+     * @param  body  Required parameter: Example: Needs to be a valid xml string
+     * @throws    ApiException    Represents error response from the server.
+     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     */
+    public ApiResponse<Void> modifyCallBxml(
+            final String accountId,
+            final String callId,
+            final String body) throws ApiException, IOException {
+        HttpRequest request = buildModifyCallBxmlRequest(accountId, callId, body);
+        authManagers.get("voice").apply(request);
+
+        HttpResponse response = getClientInstance().execute(request, false);
+        HttpContext context = new HttpContext(request, response);
+
+        return handleModifyCallBxmlResponse(context);
+    }
+
+    /**
+     * Interrupts and replaces an active call's BXML document.
+     * @param  accountId  Required parameter: Example:
+     * @param  callId  Required parameter: Example:
+     * @param  body  Required parameter: Example: valid xml string
+     * @return    Returns the Void wrapped in ApiResponse response from the API call
+     */
+    public CompletableFuture<ApiResponse<Void>> modifyCallBxmlAsync(
+            final String accountId,
+            final String callId,
+            final String body) {
+        return makeHttpCallAsync(() -> buildModifyCallBxmlRequest(accountId, callId, body),
+            req -> authManagers.get("voice").applyAsync(req)
+                .thenCompose(request -> getClientInstance()
+                        .executeAsync(request, false)),
+            context -> handleModifyCallBxmlResponse(context));
+    }
+
+    /**
+     * Builds the HttpRequest object for modifyCallBxml.
+     */
+    private HttpRequest buildModifyCallBxmlRequest(
+            final String accountId,
+            final String callId,
+            final String body) {
+        //the base uri for api requests
+        String baseUri = config.getBaseUri(Server.VOICEDEFAULT);
+
+        //prepare query string for API call
+        final StringBuilder queryBuilder = new StringBuilder(baseUri
+                + "/api/v2/accounts/{accountId}/calls/{callId}/bxml");
+
+        //process template parameters
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId",
+                new SimpleEntry<Object, Boolean>(accountId, false));
+        templateParameters.put("callId",
+                new SimpleEntry<Object, Boolean>(callId, false));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
+
+        //load all headers for the outgoing API request
+        Headers headers = new Headers();
+        headers.add("user-agent", BaseController.userAgent);
+        headers.add("content-type", "application/xml");
+
+        //prepare and invoke the API call request to fetch the response
+        HttpRequest request = getClientInstance().putBody(queryBuilder, headers, null, body);
+
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
+        return request;
+    }
+
+    /**
+     * Processes the response for modifyCallBxml.
+     * @return An object of type void
+     */
+    private ApiResponse<Void> handleModifyCallBxmlResponse(
+            HttpContext context) throws ApiException, IOException {
+        HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
+
+        //Error handling using HTTP status codes
+        int responseCode = response.getStatusCode();
+
+        if (responseCode == 400) {
+            throw new ApiErrorException(
+                    "Something's not quite right... Your request is invalid. Please fix it before trying again.",
+                    context);
+        }
+        if (responseCode == 401) {
+            throw new ApiException(
+                    "Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.",
+                    context);
+        }
+        if (responseCode == 403) {
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
+        }
+        if (responseCode == 404) {
+            throw new ApiErrorException(
+                    "The resource specified cannot be found or does not belong to you.", context);
+        }
+        if (responseCode == 415) {
+            throw new ApiErrorException(
+                    "We don't support that media type. If a request body is required, please send it to us as `application/xml`.",
+                    context);
+        }
+        if (responseCode == 429) {
+            throw new ApiErrorException(
+                    "You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.",
+                    context);
+        }
+        if (responseCode == 500) {
+            throw new ApiErrorException("Something unexpected happened. Please try again.",
+                    context);
+        }
+        //handle errors defined at the API level
+        validateResponse(response, context);
+
+        return new ApiResponse<Void>(response.getStatusCode(), response.getHeaders(), null);
+    }
+
+
     /**
      * Pauses or resumes a recording.
      * @param  accountId  Required parameter: Example:
