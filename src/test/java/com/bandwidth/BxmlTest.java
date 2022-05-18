@@ -194,6 +194,32 @@ public class BxmlTest {
     }
 
     @Test
+    public void testBxml() {
+        String bxml = new Bxml()
+                .toBXML();
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml/>";
+
+        assertEquals("BXML strings not equal", expected, bxml);
+    }
+
+    @Test
+    public void testBxmlSpeakSentence() {
+        SpeakSentence speakSentence = SpeakSentence.builder()
+                .text("test")
+                .voice("susan")
+                .gender("female")
+                .locale("en_US")
+                .build();
+
+        String bxml = new Bxml()
+                .add(speakSentence)
+                .toBXML();
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml><SpeakSentence voice=\"susan\" gender=\"female\" locale=\"en_US\">test</SpeakSentence></Bxml>";
+
+        assertEquals("BXML strings not equal", expected, bxml);
+    }
+
+    @Test
     public void testHangup() {
         Hangup hangup = Hangup.builder().build();
 
