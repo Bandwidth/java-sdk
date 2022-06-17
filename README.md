@@ -156,7 +156,7 @@ publishPermissions.add(PublishPermissionEnum.VIDEO);
 ApiResponse<AccountsParticipantsResponse> createParticipantResponse = webrtcController.createParticipant(accountId, createParticipantBody);
 String participantId = createParticipantResponse.getResult().getParticipant().getId();
 
-List<ParticipantSubscriptions> participantSubscriptions = new ArrayList<>();
+List<ParticipantSubscription> participantSubscriptions = new ArrayList<>();
 participantSubscriptions.add(new ParticipantSubscription(participantId));
 
 webrtcController.addParticipantToSession(accountId, sessionId, participantId, new Subscriptions(sessionId, participantSubscriptions));
