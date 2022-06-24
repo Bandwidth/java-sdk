@@ -13,6 +13,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import jdk.vm.ci.meta.Local;
+
 import java.time.LocalDateTime;
 import java.util.Map;
 
@@ -42,6 +44,8 @@ public class CallState {
     private Map<String, String> stirShaken;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private LocalDateTime startTime;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private LocalDateTime enqueuedTime;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private OptionalNullable<LocalDateTime> answerTime;
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -74,6 +78,7 @@ public class CallState {
      * @param  identity  String value for identity.
      * @param  stirShaken  Map of String, value for stirShaken.
      * @param  startTime  LocalDateTime value for startTime.
+     * @param  enqueuedTime LocalDateTime value for enqueuedTime.
      * @param  answerTime  LocalDateTime value for answerTime.
      * @param  endTime  LocalDateTime value for endTime.
      * @param  disconnectCause  String value for disconnectCause.
@@ -93,6 +98,7 @@ public class CallState {
             String identity,
             Map<String, String> stirShaken,
             LocalDateTime startTime,
+            LocalDateTime enqueuedTime,
             LocalDateTime answerTime,
             LocalDateTime endTime,
             String disconnectCause,
@@ -110,6 +116,7 @@ public class CallState {
         this.identity = OptionalNullable.of(identity);
         this.stirShaken = stirShaken;
         this.startTime = startTime;
+        this.enqueuedTime = enqueuedTime;
         this.answerTime = OptionalNullable.of(answerTime);
         this.endTime = OptionalNullable.of(endTime);
         this.disconnectCause = OptionalNullable.of(disconnectCause);
@@ -124,7 +131,7 @@ public class CallState {
     protected CallState(String callId, OptionalNullable<String> parentCallId, String applicationId,
             String accountId, String to, String from, String direction, String state,
             OptionalNullable<String> identity, Map<String, String> stirShaken,
-            LocalDateTime startTime, OptionalNullable<LocalDateTime> answerTime,
+            LocalDateTime startTime, LocalDateTime enqueuedTime, OptionalNullable<LocalDateTime> answerTime,
             OptionalNullable<LocalDateTime> endTime, OptionalNullable<String> disconnectCause,
             OptionalNullable<String> errorMessage, OptionalNullable<String> errorId,
             LocalDateTime lastUpdate) {
@@ -139,6 +146,7 @@ public class CallState {
         this.identity = identity;
         this.stirShaken = stirShaken;
         this.startTime = startTime;
+        this.enqueuedTime = enqueuedTime;
         this.answerTime = answerTime;
         this.endTime = endTime;
         this.disconnectCause = disconnectCause;
@@ -376,6 +384,14 @@ public class CallState {
     }
 
     /**
+     * Getter for EnqueuedTime
+     * @return Returns the LocalDateTime
+     */
+    @JsonGetter("enqueuedTime")
+    @JsonSerialize(using = DateTimeHelper.Rfc8601DateTimeSerializer.class)
+    public LocalDateTime getEnqueuedTime() { return enqueuedTime; }
+
+    /**
      * Setter for StartTime.
      * @param startTime Value for LocalDateTime
      */
@@ -383,6 +399,16 @@ public class CallState {
     @JsonDeserialize(using = DateTimeHelper.Rfc8601DateTimeDeserializer.class)
     public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
+    }
+
+    /**
+     * Setter for EnqueuedTime.
+     * @param enqueuedTime Value for LocalDateTime
+     */
+    @JsonSetter("enqueuedTime")
+    @JsonDeserialize(using = DateTimeHelper.Rfc8601DateTimeDeserializer.class)
+    public void setEnqueuedTime(LocalDateTime enqueuedTime) {
+        this.enqueuedTime = enqueuedTime;
     }
 
     /**
@@ -606,7 +632,7 @@ public class CallState {
         return "CallState [" + "callId=" + callId + ", parentCallId=" + parentCallId
                 + ", applicationId=" + applicationId + ", accountId=" + accountId + ", to=" + to
                 + ", from=" + from + ", direction=" + direction + ", state=" + state + ", identity="
-                + identity + ", stirShaken=" + stirShaken + ", startTime=" + startTime
+                + identity + ", stirShaken=" + stirShaken + ", startTime=" + startTime + ", enqueuedTime=" + enqueuedTime
                 + ", answerTime=" + answerTime + ", endTime=" + endTime + ", disconnectCause="
                 + disconnectCause + ", errorMessage=" + errorMessage + ", errorId=" + errorId
                 + ", lastUpdate=" + lastUpdate + "]";
@@ -628,6 +654,7 @@ public class CallState {
                 .state(getState())
                 .stirShaken(getStirShaken())
                 .startTime(getStartTime())
+                .enqueuedTime(getEnqueuedTime())
                 .lastUpdate(getLastUpdate());
         builder.parentCallId = internalGetParentCallId();
         builder.identity = internalGetIdentity();
@@ -654,6 +681,7 @@ public class CallState {
         private OptionalNullable<String> identity;
         private Map<String, String> stirShaken;
         private LocalDateTime startTime;
+        private LocalDateTime enqueuedTime;
         private OptionalNullable<LocalDateTime> answerTime;
         private OptionalNullable<LocalDateTime> endTime;
         private OptionalNullable<String> disconnectCause;
@@ -792,6 +820,16 @@ public class CallState {
         }
 
         /**
+         * Setter for enqueuedTime.
+         * @param  enqueuedTime  LocalDateTime value for enqueuedTime.
+         * @return Builder
+         */
+        public Builder enqueuedTime(LocalDateTime enqueuedTime) {
+            this.enqueuedTime = enqueuedTime;
+            return this;
+        }
+
+        /**
          * Setter for answerTime.
          * @param  answerTime  LocalDateTime value for answerTime.
          * @return Builder
@@ -902,7 +940,7 @@ public class CallState {
          */
         public CallState build() {
             return new CallState(callId, parentCallId, applicationId, accountId, to, from,
-                    direction, state, identity, stirShaken, startTime, answerTime, endTime,
+                    direction, state, identity, stirShaken, startTime, enqueuedTime, answerTime, endTime,
                     disconnectCause, errorMessage, errorId, lastUpdate);
         }
     }
