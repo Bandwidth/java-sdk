@@ -10,6 +10,7 @@ import org.junit.*;
 
 import javax.swing.text.html.Option;
 
+import java.time.LocalDateTime;
 import static org.junit.Assert.*;
 
 import static com.bandwidth.TestingEnvironmentVariables.*;
@@ -51,6 +52,8 @@ public class VoiceApiTest {
         assertEquals("Application ID for create call not equal", VOICE_APPLICATION_ID, createCallResponse.getApplicationId());
         assertEquals("To phone number for create call not equal", USER_NUMBER, createCallResponse.getTo());
         assertEquals("From phone number for create call not equal", BW_NUMBER, createCallResponse.getFrom());
+        assertNotNull("enqueuedTime is null", createCallResponse.getEnqueuedTime());
+        assertEquals("enqueuedTime is not a LocalDateTime object", LocalDateTime.class, createCallResponse.getEnqueuedTime().getClass());
 
         //get call state
         Thread.sleep(750); // Wait to get Call because of current system latency issues
@@ -62,6 +65,8 @@ public class VoiceApiTest {
         assertEquals("To phone number for call state not equal", USER_NUMBER, callStateResponse.getTo());
         assertEquals("From phone number for call state not equal", BW_NUMBER, callStateResponse.getFrom());
         assertEquals("Call ID not equal", createCallResponse.getCallId(), callStateResponse.getCallId());
+        assertNotNull("enqueuedTime is null", createCallResponse.getEnqueuedTime());
+        assertEquals("enqueuedTime is not a LocalDateTime object", LocalDateTime.class, createCallResponse.getEnqueuedTime().getClass());
     }
 
     @Test
