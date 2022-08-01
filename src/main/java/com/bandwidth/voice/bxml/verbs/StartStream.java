@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 @Builder
 @XmlType(name = StartStream.TYPE_NAME)
 public class StartStream implements Verb {
-    public static final String TYPE_NAME = "StartRecording";
+    public static final String TYPE_NAME = "StartStream";
 
 
     /**
