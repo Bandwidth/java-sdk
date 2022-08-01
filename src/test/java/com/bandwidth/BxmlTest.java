@@ -474,8 +474,8 @@ public class BxmlTest {
     @Test
     public void testStopStream() {
         StopStream stopStream = StopStream.builder()
-        .name("test")
-        .build();
+            .name("test")
+            .build();
 
         String response = new Response()
             .add(stopStream)
