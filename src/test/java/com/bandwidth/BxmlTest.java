@@ -473,13 +473,15 @@ public class BxmlTest {
     }    
     @Test
     public void testStopStream() {
-        StopStream stopStream = StopStream.builder().build();
+        StopStream stopStream = StopStream.builder()
+        .name("test")
+        .build();
 
         String response = new Response()
             .add(stopStream)
             .toBXML();
 
-        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StopRecording/></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StopRecording name=\"test\"/></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }    
