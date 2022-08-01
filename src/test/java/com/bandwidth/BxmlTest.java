@@ -481,7 +481,7 @@ public class BxmlTest {
             .add(stopStream)
             .toBXML();
 
-        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StopRecording name=\"test\"/></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StopStream name=\"test\"/></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }    
