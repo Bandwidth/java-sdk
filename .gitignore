@@ -8,7 +8,6 @@ target
 #Eclipse IDE files
 .classpath
 .project
-.settings
 
 *.iml
 *.class
