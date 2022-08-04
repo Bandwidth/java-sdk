@@ -460,6 +460,7 @@ public class BxmlTest {
             .username("user")
             .password("pass")
             .name("test")
+            .tracks("inbound")
             .streamEventUrl("https://url.com")
             .build();
 
@@ -467,7 +468,7 @@ public class BxmlTest {
             .add(startStream)
             .toBXML();
 
-        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StartStream name=\"test\" destination=\"https://url.com\" streamEventUrl=\"https://url.com\" streamEventMethod=\"POST\" username=\"user\" password=\"pass\"/></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StartStream name=\"test\" tracks=\"inbound\" destination=\"https://url.com\" streamEventUrl=\"https://url.com\" streamEventMethod=\"POST\" username=\"user\" password=\"pass\"/></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }    
