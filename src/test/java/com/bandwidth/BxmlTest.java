@@ -453,6 +453,41 @@ public class BxmlTest {
     }
 
     @Test
+    public void testStartStream() {
+        StartStream startStream = StartStream.builder()
+            .destination("https://url.com")
+            .streamEventMethod("POST")
+            .username("user")
+            .password("pass")
+            .name("test")
+            .tracks("inbound")
+            .streamEventUrl("https://url.com")
+            .build();
+
+        String response = new Response()
+            .add(startStream)
+            .toBXML();
+
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StartStream name=\"test\" tracks=\"inbound\" destination=\"https://url.com\" streamEventUrl=\"https://url.com\" streamEventMethod=\"POST\" username=\"user\" password=\"pass\"/></Response>";
+
+        assertEquals("BXML strings not equal", expected, response);
+    }    
+    @Test
+    public void testStopStream() {
+        StopStream stopStream = StopStream.builder()
+            .name("test")
+            .build();
+
+        String response = new Response()
+            .add(stopStream)
+            .toBXML();
+
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StopStream name=\"test\"/></Response>";
+
+        assertEquals("BXML strings not equal", expected, response);
+    }    
+
+    @Test
     public void testRing() {
         Ring ring = Ring.builder()
                 .duration(3.0)
