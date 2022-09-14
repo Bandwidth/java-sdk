@@ -454,6 +454,12 @@ public class BxmlTest {
 
     @Test
     public void testStartStream() {
+        StreamParam streamParam = StreamParam.builder()
+            .name("+17776665555")
+            .value("https://test.com")
+            .build();
+        ArrayList<StreamParam> streamParams = new ArrayList<StreamParam>();
+        streamParams.add(streamParam);    
         StartStream startStream = StartStream.builder()
             .destination("https://url.com")
             .streamEventMethod("POST")
@@ -462,13 +468,14 @@ public class BxmlTest {
             .name("test")
             .tracks("inbound")
             .streamEventUrl("https://url.com")
+            .streamParams(streamParams)
             .build();
 
         String response = new Response()
             .add(startStream)
             .toBXML();
 
-        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StartStream name=\"test\" tracks=\"inbound\" destination=\"https://url.com\" streamEventUrl=\"https://url.com\" streamEventMethod=\"POST\" username=\"user\" password=\"pass\"/></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StartStream name=\"test\" tracks=\"inbound\" destination=\"https://url.com\" streamEventUrl=\"https://url.com\" streamEventMethod=\"POST\" username=\"user\" password=\"pass\"<StreamParam name=\"test\" value=\"value\"</StreamParam></StartStream></Response>";
 
         assertEquals("BXML strings not equal", expected, response);
     }    

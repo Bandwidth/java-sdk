@@ -4,8 +4,14 @@ package com.bandwidth.voice.bxml.verbs;
 import lombok.Builder;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlElement;
+
 
 /**
  * The StartStream verb allows a segment of a call to be streamed to an external destination.
@@ -15,6 +21,11 @@ import javax.xml.bind.annotation.XmlType;
 public class StartStream implements Verb {
     public static final String TYPE_NAME = "StartStream";
 
+    /**
+     * You may specify up to 12 <StreamParam/> elements nested within a <StartStream> tag. These elements define optional user specified parameters that will be sent to the destination URL when the stream is first started.
+     */
+    @XmlElement(name = StreamParam.TYPE_NAME)
+    private final List<StreamParam> streamParams;
 
     /**
      * <i>(optional)</i> A name to refer to this stream by. Used when sending [`<StopStream>`][1]. If not provided, a random name will be generated and sent in the [`Media Stream Started`][2] webook. 
@@ -105,6 +116,22 @@ public class StartStream implements Verb {
         public StartStreamBuilder streamEventMethod(String method){
             return streamEventMethod(Method.fromValue(method));
         }
+
+        /**
+         * <i>(optional)</i> You may specify up to 12 <StreamParam/> elements nested within a <StartStream> tag. These elements define optional user specified parameters that will be sent to the destination URL when the stream is first started.
+         */
+        public StartStreamBuilder streamParams(StreamParam ... streamParams){
+            this.streamParams = Arrays.asList(streamParams);
+            return this;
+        }
+
+        /**
+         * <i>(optional)</i> You may specify up to 12 <StreamParam/> elements nested within a <StartStream> tag. These elements define optional user specified parameters that will be sent to the destination URL when the stream is first started.
+         */
+        public StartStreamBuilder streamParams(List<StreamParam> streamParams){
+            this.streamParams = streamParams;
+            return this;
+        }        
     }
 
 }
