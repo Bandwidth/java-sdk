@@ -455,8 +455,8 @@ public class BxmlTest {
     @Test
     public void testStartStream() {
         StreamParam streamParam = StreamParam.builder()
-            .name("+17776665555")
-            .value("https://test.com")
+            .name("name")
+            .value("value")
             .build();
         ArrayList<StreamParam> streamParams = new ArrayList<StreamParam>();
         streamParams.add(streamParam);    
