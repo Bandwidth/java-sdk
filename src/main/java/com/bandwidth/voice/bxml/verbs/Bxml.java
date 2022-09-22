@@ -47,7 +47,8 @@ public class Bxml {
             @XmlElement(name = Tag.TYPE_NAME, type = Tag.class),
             @XmlElement(name = SipUri.TYPE_NAME, type = SipUri.class),            
             @XmlElement(name = StartStream.TYPE_NAME, type = StartStream.class),            
-            @XmlElement(name = StopStream.TYPE_NAME, type = StopStream.class)            
+            @XmlElement(name = StopStream.TYPE_NAME, type = StopStream.class),            
+            @XmlElement(name = StreamParam.TYPE_NAME, type = StreamParam.class)            
     })
     private final List<Verb> verbs = new ArrayList<>();
 
