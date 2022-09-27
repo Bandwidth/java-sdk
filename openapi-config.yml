@@ -1,0 +1,10 @@
+artifactId: bandwidth-sdk
+artifactVersion: 9.0.0
+artifactDescription: The official client SDK for Bandwidth's Voice, Messaging, MFA, and WebRTC APIs
+artifactUrl: https://github.com/Bandwidth/java-sdk
+developerEmail: dx@bandwidth.com
+developerOrganization: Bandwidth
+groupId: com.bandwidth.sdk
+library: okhttp-gson
+licenseName: MIT
+
