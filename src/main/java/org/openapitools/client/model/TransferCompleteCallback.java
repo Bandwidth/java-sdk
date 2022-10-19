@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
  * This event is sent to the transferCompleteUrl of the A-leg&#39;s &lt;Transfer&gt; verb when the transferred call (B-leg) completes. In a simultaneous ringing scenario, only one B-leg succeeds and this event corresponds to that successful leg. If none of the calls were answered, the transferComplete event corresponds to one of the legs.
  */
 @ApiModel(description = "This event is sent to the transferCompleteUrl of the A-leg's <Transfer> verb when the transferred call (B-leg) completes. In a simultaneous ringing scenario, only one B-leg succeeds and this event corresponds to that successful leg. If none of the calls were answered, the transferComplete event corresponds to one of the legs.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-27T11:08:51.953012-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
 public class TransferCompleteCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)

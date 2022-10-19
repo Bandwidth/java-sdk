@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
  * The Conference Completed event is fired when the last member leaves the conference. The response to this event may not contain BXML.
  */
 @ApiModel(description = "The Conference Completed event is fired when the last member leaves the conference. The response to this event may not contain BXML.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-27T11:08:51.953012-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
 public class ConferenceCompletedCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)

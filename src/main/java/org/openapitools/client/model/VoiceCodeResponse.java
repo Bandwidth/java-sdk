@@ -47,7 +47,7 @@ import org.openapitools.client.JSON;
 /**
  * VoiceCodeResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-27T11:08:51.953012-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
 public class VoiceCodeResponse {
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)

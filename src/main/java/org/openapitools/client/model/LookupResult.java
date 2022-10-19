@@ -48,7 +48,7 @@ import org.openapitools.client.JSON;
  * Carrier information results for the specified telephone number.
  */
 @ApiModel(description = "Carrier information results for the specified telephone number.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-27T11:08:51.953012-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
 public class LookupResult {
   public static final String SERIALIZED_NAME_RESPONSE_CODE = "Response Code";
   @SerializedName(SERIALIZED_NAME_RESPONSE_CODE)

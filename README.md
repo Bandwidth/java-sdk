@@ -2,7 +2,7 @@
 
 Bandwidth
 - API version: 1.0.0
-  - Build date: 2022-09-27T11:08:51.953012-04:00[America/New_York]
+  - Build date: 2022-10-18T08:49:31.529519-04:00[America/New_York]
 
 Bandwidth's Communication APIs
 
@@ -144,9 +144,6 @@ Class | Method | HTTP request | Description
 *MfaApi* | [**generateMessagingCode**](docs/MfaApi.md#generateMessagingCode) | **POST** /accounts/{accountId}/code/messaging | Messaging Authentication Code
 *MfaApi* | [**generateVoiceCode**](docs/MfaApi.md#generateVoiceCode) | **POST** /accounts/{accountId}/code/voice | Voice Authentication Code
 *MfaApi* | [**verifyCode**](docs/MfaApi.md#verifyCode) | **POST** /accounts/{accountId}/code/verify | Verify Authentication Code
-*ParticipantsApi* | [**createParticipant**](docs/ParticipantsApi.md#createParticipant) | **POST** /accounts/{accountId}/participants | Create Participant
-*ParticipantsApi* | [**deleteParticipant**](docs/ParticipantsApi.md#deleteParticipant) | **DELETE** /accounts/{accountId}/participants/{participantId} | Delete Participant
-*ParticipantsApi* | [**getParticipant**](docs/ParticipantsApi.md#getParticipant) | **GET** /accounts/{accountId}/participants/{participantId} | Get Participant
 *PhoneNumberLookupApi* | [**createLookup**](docs/PhoneNumberLookupApi.md#createLookup) | **POST** /accounts/{accountId}/tnlookup | Create Lookup
 *PhoneNumberLookupApi* | [**getLookupStatus**](docs/PhoneNumberLookupApi.md#getLookupStatus) | **GET** /accounts/{accountId}/tnlookup/{requestId} | Get Lookup Request Status
 *RecordingsApi* | [**deleteCallTranscription**](docs/RecordingsApi.md#deleteCallTranscription) | **DELETE** /accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription | Delete Transcription
@@ -159,14 +156,6 @@ Class | Method | HTTP request | Description
 *RecordingsApi* | [**listCallRecordings**](docs/RecordingsApi.md#listCallRecordings) | **GET** /accounts/{accountId}/calls/{callId}/recordings | List Call Recordings
 *RecordingsApi* | [**transcribeCallRecording**](docs/RecordingsApi.md#transcribeCallRecording) | **POST** /accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription | Create Transcription Request
 *RecordingsApi* | [**updateCallRecordingState**](docs/RecordingsApi.md#updateCallRecordingState) | **PUT** /accounts/{accountId}/calls/{callId}/recording | Update Recording
-*SessionsApi* | [**addParticipantToSession**](docs/SessionsApi.md#addParticipantToSession) | **PUT** /accounts/{accountId}/sessions/{sessionId}/participants/{participantId} | Add Participant to Session
-*SessionsApi* | [**createSession**](docs/SessionsApi.md#createSession) | **POST** /accounts/{accountId}/sessions | Create Session
-*SessionsApi* | [**deleteSession**](docs/SessionsApi.md#deleteSession) | **DELETE** /accounts/{accountId}/sessions/{sessionId} | Delete Session
-*SessionsApi* | [**getParticipantSubscriptions**](docs/SessionsApi.md#getParticipantSubscriptions) | **GET** /accounts/{accountId}/sessions/{sessionId}/participants/{participantId}/subscriptions | Get Participant Subscriptions
-*SessionsApi* | [**getSession**](docs/SessionsApi.md#getSession) | **GET** /accounts/{accountId}/sessions/{sessionId} | Get Session
-*SessionsApi* | [**listSessionParticipants**](docs/SessionsApi.md#listSessionParticipants) | **GET** /accounts/{accountId}/sessions/{sessionId}/participants | List Participants in Session
-*SessionsApi* | [**removeParticipantFromSession**](docs/SessionsApi.md#removeParticipantFromSession) | **DELETE** /accounts/{accountId}/sessions/{sessionId}/participants/{participantId} | Remove Participant from Session
-*SessionsApi* | [**updateParticipantSubscriptions**](docs/SessionsApi.md#updateParticipantSubscriptions) | **PUT** /accounts/{accountId}/sessions/{sessionId}/participants/{participantId}/subscriptions | Update Participant Subscriptions
 *StatisticsApi* | [**getStatistics**](docs/StatisticsApi.md#getStatistics) | **GET** /accounts/{accountId}/statistics | Get Account Statistics
 
 
@@ -196,16 +185,12 @@ Class | Method | HTTP request | Description
  - [CreateCallResponse](docs/CreateCallResponse.md)
  - [CreateLookupResponse](docs/CreateLookupResponse.md)
  - [CreateMessageRequestError](docs/CreateMessageRequestError.md)
- - [CreateParticipantRequest](docs/CreateParticipantRequest.md)
- - [CreateParticipantResponse](docs/CreateParticipantResponse.md)
  - [DeferredResult](docs/DeferredResult.md)
- - [DeviceApiVersionEnum](docs/DeviceApiVersionEnum.md)
  - [DisconenctCallback](docs/DisconenctCallback.md)
  - [Diversion](docs/Diversion.md)
  - [DtmfCallback](docs/DtmfCallback.md)
  - [FieldError](docs/FieldError.md)
  - [FileFormatEnum](docs/FileFormatEnum.md)
- - [ForbiddenRequest](docs/ForbiddenRequest.md)
  - [GatherCallback](docs/GatherCallback.md)
  - [InitiateCallback](docs/InitiateCallback.md)
  - [ListMessageDirectionEnum](docs/ListMessageDirectionEnum.md)
@@ -230,19 +215,13 @@ Class | Method | HTTP request | Description
  - [MfaRequestError](docs/MfaRequestError.md)
  - [MfaUnauthorizedRequestError](docs/MfaUnauthorizedRequestError.md)
  - [PageInfo](docs/PageInfo.md)
- - [Participant](docs/Participant.md)
- - [ParticipantSubscription](docs/ParticipantSubscription.md)
  - [PriorityEnum](docs/PriorityEnum.md)
- - [PublishPermissionsEnum](docs/PublishPermissionsEnum.md)
  - [RecordingAvailableCallback](docs/RecordingAvailableCallback.md)
  - [RecordingCompleteCallback](docs/RecordingCompleteCallback.md)
  - [RecordingStateEnum](docs/RecordingStateEnum.md)
  - [RedirectCallback](docs/RedirectCallback.md)
  - [RedirectMethodEnum](docs/RedirectMethodEnum.md)
- - [RequestError](docs/RequestError.md)
- - [Session](docs/Session.md)
  - [StirShaken](docs/StirShaken.md)
- - [Subscriptions](docs/Subscriptions.md)
  - [Tag](docs/Tag.md)
  - [TnLookupRequestError](docs/TnLookupRequestError.md)
  - [TranscribeRecording](docs/TranscribeRecording.md)
@@ -253,7 +232,6 @@ Class | Method | HTTP request | Description
  - [TransferAnswerCallback](docs/TransferAnswerCallback.md)
  - [TransferCompleteCallback](docs/TransferCompleteCallback.md)
  - [TransferDisconnectCallback](docs/TransferDisconnectCallback.md)
- - [UnauthorizedRequest](docs/UnauthorizedRequest.md)
  - [UpdateCall](docs/UpdateCall.md)
  - [UpdateCallRecording](docs/UpdateCallRecording.md)
  - [UpdateConference](docs/UpdateConference.md)

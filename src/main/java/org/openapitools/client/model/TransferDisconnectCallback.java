@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
  * This event is sent to the transferDisconnectUrl of each &lt;PhoneNumber&gt; tag when its respective call leg ends for any reason. The event is sent in the normal case, when the transferred leg is answered and later hung up, but is also sent if the new leg was never answered in the first place, if it was rejected, and if the original call leg hung up before the transferred leg.
  */
 @ApiModel(description = "This event is sent to the transferDisconnectUrl of each <PhoneNumber> tag when its respective call leg ends for any reason. The event is sent in the normal case, when the transferred leg is answered and later hung up, but is also sent if the new leg was never answered in the first place, if it was rejected, and if the original call leg hung up before the transferred leg.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-27T11:08:51.953012-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
 public class TransferDisconnectCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)

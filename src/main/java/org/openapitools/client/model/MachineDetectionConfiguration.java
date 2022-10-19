@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
  * The machine detection request used to perform &lt;a href&#x3D;&#39;/docs/voice/guides/machineDetection&#39;&gt;machine detection&lt;/a&gt; on the call.
  */
 @ApiModel(description = "The machine detection request used to perform <a href='/docs/voice/guides/machineDetection'>machine detection</a> on the call.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-27T11:08:51.953012-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
 public class MachineDetectionConfiguration {
   public static final String SERIALIZED_NAME_MODE = "mode";
   @SerializedName(SERIALIZED_NAME_MODE)
