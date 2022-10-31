@@ -25,6 +25,4 @@ public final class TestingEnvironmentVariables {
     public static final String OPERATING_SYSTEM = System.getenv("OPERATING_SYSTEM");
     public static final String RUNNER_OS = System.getenv("RUNNER_OS");
 
-    /* This is a utility class that shouldn't be instantiated */
-    private TestingEnvironmentVariables(){}
 }
