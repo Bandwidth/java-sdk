@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
  * The Recording Available event is sent after a recording has been processed. It indicates that the recording is available for download.
  */
 @ApiModel(description = "The Recording Available event is sent after a recording has been processed. It indicates that the recording is available for download.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-27T11:08:51.953012-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
 public class RecordingAvailableCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)

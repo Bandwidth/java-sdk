@@ -1,5 +1,9 @@
 *.class
 
+#Project and VSCode Settings
+.settings
+.vscode
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 

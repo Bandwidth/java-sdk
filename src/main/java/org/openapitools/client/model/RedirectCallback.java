@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
  * The Redirect event is fired when a &lt;Redirect&gt; verb is executed. Its purpose is to get the next set of verbs from the calling application.
  */
 @ApiModel(description = "The Redirect event is fired when a <Redirect> verb is executed. Its purpose is to get the next set of verbs from the calling application.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-27T11:08:51.953012-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
 public class RedirectCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)

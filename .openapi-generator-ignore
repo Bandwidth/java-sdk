@@ -8,6 +8,8 @@
 # You can make changes and tell OpenAPI Generator to ignore just this file by uncommenting the following line:
 #ApiClient.cs
 
+pom.xml
+
 # You can match any string of characters against a directory, file or extension with a single asterisk (*):
 #foo/*/qux
 # The above matches foo/bar/qux and foo/baz/qux, but not foo/bar/baz/qux

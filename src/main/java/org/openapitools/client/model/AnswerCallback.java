@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
  * The Answer event is sent to the answerUrl specified in the createCall request when an outbound call is answered.
  */
 @ApiModel(description = "The Answer event is sent to the answerUrl specified in the createCall request when an outbound call is answered.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-27T11:08:51.953012-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
 public class AnswerCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)

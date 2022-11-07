@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
  * The Disconnect event is fired when a call ends, for any reason.
  */
 @ApiModel(description = "The Disconnect event is fired when a call ends, for any reason.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-09-27T11:08:51.953012-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
 public class DisconenctCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
