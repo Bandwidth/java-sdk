@@ -6,8 +6,8 @@
 |:---:|:---:|:---:|
 | Windows 2016 | 8, 11 | Zulu OpenJDK, Eclipse Temurin |
 | Windows 2019 | 8, 11 | Zulu OpenJDK, Eclipse Temurin |
-| Ubuntu 18.04 | 8, 11 | Zulu OpenJDK, Eclipse Temurin |
 | Ubuntu 20.04 | 8, 11 | Zulu OpenJDK, Eclipse Temurin |
+| Ubuntu 22.04 | 8, 11 | Zulu OpenJDK, Eclipse Temurin |
 ## Getting Started
 
 ### Installation
