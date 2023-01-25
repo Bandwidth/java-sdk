@@ -31,7 +31,6 @@ public class TerminalVerb extends Verb {
 
     @Override
     public String toBxml() throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
         XmlMapper xmlMapper = new XmlMapper();
         xmlMapper.writerWithDefaultPrettyPrinter();
         return xmlMapper.writer().withRootName(tag).writeValueAsString(this.content);

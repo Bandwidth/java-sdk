@@ -1,23 +1,18 @@
 package org.openapitools.client.model.bxml.verbs;
 
 import org.openapitools.client.model.bxml.TerminalVerb;
-import org.openapitools.client.model.bxml.Root;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 public class Tag extends TerminalVerb {
 
-    @JacksonXmlText()
-    private String content;
-
     public Tag() {
-        super("Tag");
+        super();
     }
 
     public Tag(String content) {
-        super("Tag");
-        this.content = content;
+        super("Tag",content);
     }
 
     @Override
@@ -28,5 +23,12 @@ public class Tag extends TerminalVerb {
     @Override
     public void setContent(String content) {
         this.content = content;
+    }
+
+    @Override
+    public String toBxml() throws JsonProcessingException {
+        XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.writerWithDefaultPrettyPrinter();
+        return xmlMapper.writer().withRootName(tag).writeValueAsString(this.content);
     }
 }
