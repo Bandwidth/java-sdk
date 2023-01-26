@@ -17,7 +17,8 @@ public class RingVerbTest {
      * Setting up Variables
      */
 
-    Ring ringVerb = new Ring("10", "false");
+    Ring ring = new Ring("10", "false");
+    Ring ring2 = new Ring();
     Verb verb = new Verb("TestVerb", "test");
 
     /**
@@ -31,16 +32,17 @@ public class RingVerbTest {
     @Test
     public void testRingVerbSerialization() throws Exception {
         String expectedBxml = "<Ring duration=\"10\" answerCall=\"false\"/>";
-        System.out.println(expectedBxml);
-        System.out.println(ringVerb.toBxml());
+        ring2.setAnswerCall("false");
+        ring2.setDuration("10");
 
-        assertThat(ringVerb, instanceOf(Ring.class));
-        assertThat(ringVerb.toBxml(), is(expectedBxml));
+        assertThat(ring, instanceOf(Ring.class));
+        assertThat(ring.toBxml(), is(expectedBxml));
+        assertThat(ring2.toBxml(), is(expectedBxml));
     };
 
     @Test
     public void testAddingVerbsToRingVerb() throws UnsupportedOperationException {
-        UnsupportedOperationException exception = Assertions.assertThrows(UnsupportedOperationException.class, () -> ringVerb.addVerb(verb));
+        UnsupportedOperationException exception = Assertions.assertThrows(UnsupportedOperationException.class, () -> ring.addVerb(verb));
         assertThat(exception, instanceOf(UnsupportedOperationException.class));
     };
 };
