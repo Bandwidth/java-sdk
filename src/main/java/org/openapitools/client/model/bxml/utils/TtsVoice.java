@@ -2,6 +2,8 @@ package org.openapitools.client.model.bxml.utils;
 
 import static org.openapitools.client.model.bxml.utils.TtsGender.FEMALE;
 import static org.openapitools.client.model.bxml.utils.TtsGender.MALE;
+import static org.openapitools.client.model.bxml.utils.TtsLocale.ARB;
+import static org.openapitools.client.model.bxml.utils.TtsLocale.CMN_CN;
 import static org.openapitools.client.model.bxml.utils.TtsLocale.DE;
 import static org.openapitools.client.model.bxml.utils.TtsLocale.EN_UK;
 import static org.openapitools.client.model.bxml.utils.TtsLocale.EN_US;
@@ -33,6 +35,8 @@ public enum TtsVoice {
     @XmlEnumValue("paola") PAOLA(IT, FEMALE, "paola", "Carla"),
     @XmlEnumValue("nadiya") NADIYA(RU, FEMALE, "nadiya", "Tatyana"),
     @XmlEnumValue("masako") MASAKO(JA, FEMALE, "masako", "Mizuki"),
+    @XmlEnumValue("zeina") ZEINA(ARB, FEMALE, "zeina", "Zeina"),
+    @XmlEnumValue("zhiyu") ZHIYU(CMN_CN, FEMALE, "zhiyu", "Zhiyu"),
     @XmlEnumValue("dave") DAVE(EN_US, MALE, "dave", "Matthew"),
     @XmlEnumValue("simon") SIMON(EN_UK, MALE, "simon", "Brian"),
     @XmlEnumValue("stefan") STEFAN(DE, MALE, "stefan", "Hans"),
@@ -73,8 +77,13 @@ public enum TtsVoice {
     }
 
     public static TtsVoice resolveGenderLocale(TtsGender gender, TtsLocale locale) {
-        return EnumFinder.of(TtsVoice.class)
+        TtsVoice voice = EnumFinder.of(TtsVoice.class)
                 .find(e -> e.locale == locale && e.gender == gender);
+                if (null == voice) {
+                    return EnumFinder.of(TtsVoice.class)
+                            .find(e -> e.locale == locale);
+                }
+                return voice;
     }
 
     @Override
