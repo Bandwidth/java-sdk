@@ -361,7 +361,7 @@
         </dependency>
     </dependencies>
     <properties>
-        <java.version>15</java.version>
+        <java.version>19</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <gson-fire-version>1.8.5</gson-fire-version>
