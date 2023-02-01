@@ -15,7 +15,9 @@ public enum TtsLocale {
     @XmlEnumValue("fr") FR("fr"),
     @XmlEnumValue("it") IT("it"),
     @XmlEnumValue("ru") RU("ru"),
-    @XmlEnumValue("ja") JA("ja");
+    @XmlEnumValue("ja") JA("ja"),
+    @XmlEnumValue("arb") ARB("arb"),
+    @XmlEnumValue("cmn-CN") CMN_CN("cmn-CN");
 
     private final String locale;
 
