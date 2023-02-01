@@ -1,44 +1,31 @@
-package org.openapitools.client.model.unit.bxml;
+/**
+ * 
+ * Unit tests for Tag Verb class
+ *
+ * @throws JAXBException if the test fails
+ */
 
-import org.openapitools.client.model.bxml.Verb;
-import org.openapitools.client.model.bxml.verbs.Tag;
+ package org.openapitools.client.model.unit.bxml;
 
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.Matchers.is;
-
-
-public class TagVerbTest {
-
-    /**
-     * Setting up Variables
-     */
-
-    Tag tagVerb = new Tag("Tag Test Content");
-    Verb verb = new Verb("TestVerb", "test");
-
-    /**
-     * 
-     *
-     * Unit tests for Tag Verb class
-     *
-     * @throws Exception if the test fails
-     */
-
-    @Test
-    public void testTagVerbSerialization() throws Exception {
-        String expectedBxml = "<Tag>Tag Test Content</Tag>";
-
-        assertThat(tagVerb, instanceOf(Tag.class));
-        assertThat(tagVerb.toBxml(), is(expectedBxml));
-    };
-
-    @Test
-    public void testAddingVerbsToTerminalVerb() throws UnsupportedOperationException {
-        UnsupportedOperationException exception = Assertions.assertThrows(UnsupportedOperationException.class, () -> tagVerb.addVerb(verb));
-        assertThat(exception, instanceOf(UnsupportedOperationException.class));
-    };
-};
+ import org.openapitools.client.model.bxml.Bxml;
+ import org.openapitools.client.model.bxml.Tag;
+ 
+ import jakarta.xml.bind.JAXBContext;
+ import jakarta.xml.bind.JAXBException;
+ 
+ import org.junit.Test;
+ 
+ import static org.hamcrest.MatcherAssert.assertThat;
+ import static org.hamcrest.Matchers.is;
+ public class TagVerbTest {
+     public JAXBContext jaxbContext;
+ 
+     @Test
+     public void tagVerbWorks() throws JAXBException {
+         jaxbContext = JAXBContext.newInstance(Bxml.class);
+         String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Tag>Tag Test Content</Tag></Bxml>";
+ 
+         assertThat(new Bxml().with(new Tag("Tag Test Content")).toBxml(jaxbContext), is(expectedBxml));
+     };
+ };
+ 
