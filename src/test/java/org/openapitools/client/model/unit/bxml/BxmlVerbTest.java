@@ -66,11 +66,10 @@ public class BxmlVerbTest {
     @Test
     public void toBxmlWithDiversionWorks() throws JAXBException {
         jaxbContext = JAXBContext.newInstance(Bxml.class);
+        String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Forward callTimeout=\"300.0\" diversionTreatment=\"NONE\" diversionReason=\"DO_NOT_DISTURB\"/></Bxml>";
         Bxml bxml = new Bxml().with(Forward.builder()
                 .diversionReason(DiversionReason.DO_NOT_DISTURB)
                 .build());
-        assertThat(bxml.toBxml(jaxbContext), 
-                containsString("diversionReason=\"do-not-disturb\""));
+        assertThat(bxml.toBxml(jaxbContext), is(expectedBxml));
     }
-
 };

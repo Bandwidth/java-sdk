@@ -66,11 +66,11 @@
      @Test
      public void toBxmlWithDiversionWorks() throws JAXBException {
          jaxbContext = JAXBContext.newInstance(Response.class);
+         String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Response><Forward callTimeout=\"300.0\" diversionTreatment=\"NONE\" diversionReason=\"DO_NOT_DISTURB\"/></Response>";
          Response response = new Response().with(Forward.builder()
                  .diversionReason(DiversionReason.DO_NOT_DISTURB)
                  .build());
-         assertThat(response.toBxml(jaxbContext), 
-                 containsString("diversionReason=\"do-not-disturb\""));
+         assertThat(response.toBxml(jaxbContext), is(expectedBxml));
      }
  
  };
