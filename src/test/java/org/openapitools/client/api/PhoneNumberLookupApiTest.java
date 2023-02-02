@@ -70,7 +70,6 @@ public class PhoneNumberLookupApiTest {
 
     @Test
     public void successfulPhoneNumberLookup() throws Exception, ApiException {
-        api.setCustomBaseUrl("https://42c9be22ebc6a0c3bdfb7248922a6687.m.pipedream.net");
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
 
