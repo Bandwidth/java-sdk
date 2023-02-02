@@ -10,29 +10,17 @@ import org.openapitools.client.model.LookupStatus;
 import org.openapitools.client.model.LookupStatusEnum;
 import org.openapitools.client.model.CreateLookupResponse;
 import org.openapitools.client.model.LookupResult;
-import org.hamcrest.beans.HasProperty;
-import org.hamcrest.core.IsInstanceOf;
-import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.net.URI;
-import java.lang.Class;
-import java.util.List;
-import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
-
-import javax.security.auth.AuthPermission;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.Matchers.hasProperty;
-import static org.hamcrest.Matchers.hasProperties;
-import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.matchesRegex;
-import static org.hamcrest.Matchers.contains;
 
 import static org.openapitools.client.utils.TestingEnvironmentVariables.*;
 
