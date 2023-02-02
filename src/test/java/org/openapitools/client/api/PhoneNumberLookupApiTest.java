@@ -70,7 +70,6 @@ public class PhoneNumberLookupApiTest {
 
     @Test
     public void successfulPhoneNumberLookup() throws Exception, ApiException {
-        api.setCustomBaseUrl("https://42c9be22ebc6a0c3bdfb7248922a6687.m.pipedream.net");
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
 
@@ -120,7 +119,6 @@ public class PhoneNumberLookupApiTest {
 
     }
 
-    @Disabled(("Temporary"))
     @Test
     public void failedPhoneNumberLookup() throws ApiException {
         Basic.setUsername(BW_USERNAME);
@@ -133,7 +131,6 @@ public class PhoneNumberLookupApiTest {
         assertThat(exception.getCode(), is(400));
     }
 
-    @Disabled(("Temporary"))
     @Test
     public void duplicatePhoneNumberLookup() throws ApiException {
         Basic.setUsername(BW_USERNAME);
@@ -147,7 +144,6 @@ public class PhoneNumberLookupApiTest {
         assertThat(exception.getCode(), is(400));
     }
 
-    @Disabled(("Temporary"))
     @Test
     public void unauthorizedRequest() throws ApiException {
         Basic.setUsername("bad_username");
