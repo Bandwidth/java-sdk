@@ -70,7 +70,7 @@ public class MfaApiTest {
         BigDecimal expirationTime = new BigDecimal(3);
 
         // Generate a random TN for the setTo - otherwise we get heavily rate limited
-        Long minTn = 1111111111;
+        Long minTn = 1111111111L;
         Long maxTn = 9999999999L;
         Random random = new Random(System.currentTimeMillis());
         Long random_int = random.nextLong(maxTn - minTn) + minTn;
