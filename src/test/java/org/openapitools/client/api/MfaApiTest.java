@@ -111,6 +111,9 @@ public class MfaApiTest {
 
     @Test
     public void unauthorizedRequest() throws ApiException {
+        Basic.setUsername(null);
+        Basic.setPassword(null);
+
         CodeRequest request = new CodeRequest();
         request.setTo(USER_NUMBER);
         request.setFrom(BW_NUMBER);
@@ -123,6 +126,7 @@ public class MfaApiTest {
                 () -> api.generateMessagingCodeWithHttpInfo(BW_ACCOUNT_ID,
                         request));
         assertThat(exception.getCode(), is(401));
+        System.out.println(exception.getCode());
     }
 
     @Test
