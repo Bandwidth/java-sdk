@@ -31,6 +31,13 @@ public class PhoneNumberLookupApiTest {
     private final PhoneNumberLookupApi api = new PhoneNumberLookupApi(defaultClient);
     LookupRequest lookupRequest = new LookupRequest();
 
+    /**
+     * Validate a LookupResult object
+     *
+     * @param result      A LookupResult object
+     * @param phoneNumber A String phone number in E164 format to check against the
+     *                    E164 format value in the result
+     */
     private void validateResult(LookupResult result, String phoneNumber) {
         if (result.getMobileCountryCode() != null || result.getMobileNetworkCode() != null) {
             assertThat(result.getMobileCountryCode(), instanceOf(String.class));
@@ -50,6 +57,13 @@ public class PhoneNumberLookupApiTest {
         assertThat(result.getE164Format(), is(phoneNumber));
     }
 
+    /**
+     * Poll for a completed TN Lookup order
+     *
+     * @param requestId String requestId to poll for
+     * @return the completed lookup status
+     * @throws Exception If status was not complete after 5 attempts
+     */
     private LookupStatus pollLookupStatus(String requestId) throws Exception {
         int attempt = 1;
         LookupStatus lookupStatus = this.api.getLookupStatus(BW_ACCOUNT_ID, requestId);
