@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -72,8 +72,8 @@ public class MfaApiTest {
         // Generate a random TN for the setTo - otherwise we get heavily rate limited
         Long minTn = 1111111111L;
         Long maxTn = 9999999999L;
-        Random random = new Random(System.currentTimeMillis());
-        Long random_int = random.nextLong(maxTn - minTn) + minTn;
+        Long random_int = ThreadLocalRandom.current().nextLong(maxTn - minTn) + minTn;
+        System.out.println(random_int);
 
         VerifyCodeRequest request = new VerifyCodeRequest();
         request.setTo("+1" + random_int.toString());
