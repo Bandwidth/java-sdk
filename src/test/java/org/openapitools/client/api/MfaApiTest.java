@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.util.Random;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -69,9 +70,10 @@ public class MfaApiTest {
         BigDecimal expirationTime = new BigDecimal(3);
 
         // Generate a random TN for the setTo - otherwise we get heavily rate limited
-        Integer minTn = 1111111111;
+        Long minTn = 1111111111;
         Long maxTn = 9999999999L;
-        Integer random_int = (int) Math.floor(Math.random() * (maxTn - minTn + 1) + minTn);
+        Random random = new Random(System.currentTimeMillis());
+        Long random_int = random.nextLong(maxTn - minTn) + minTn;
 
         VerifyCodeRequest request = new VerifyCodeRequest();
         request.setTo("+1" + random_int.toString());
