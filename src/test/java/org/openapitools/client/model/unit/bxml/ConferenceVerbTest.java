@@ -39,11 +39,10 @@ public class ConferenceVerbTest {
                                .tag("tag")
                                .callbackTimeout(5d)
                                .build();
-    public JAXBContext jaxbContext;
 
     @Test
     public void conferenceVerbWorks() throws JAXBException {
-        jaxbContext = JAXBContext.newInstance(Bxml.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
         String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Conference mute=\"true\" hold=\"false\" conferenceEventUrl=\"example.com/eventurl\" conferenceEventMethod=\"POST\" conferenceEventFallbackUrl=\"backupexample.com/eventurl\" conferenceEventFallbackMethod=\"POST\" callbackTimeout=\"5.0\" tag=\"tag\" username=\"user\" password=\"pass\" fallbackUsername=\"user\" fallbackPassword=\"pass\" callIdsToCoach=\"example-call-id\">conf1</Conference></Bxml>";
 
         assertThat(new Bxml().with(conference).toBxml(jaxbContext), is(expectedBxml));

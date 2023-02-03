@@ -28,11 +28,10 @@ public class PlayAudioVerbTest {
                                .username("user")
                                .password("pass")
                                .build();
-    public JAXBContext jaxbContext;
 
     @Test
     public void playAudioVerbWorks() throws JAXBException {
-        jaxbContext = JAXBContext.newInstance(Bxml.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
         String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><PlayAudio username=\"user\" password=\"pass\">test.com</PlayAudio></Bxml>";
 
         assertThat(new Bxml().with(playAudio).toBxml(jaxbContext), is(expectedBxml));

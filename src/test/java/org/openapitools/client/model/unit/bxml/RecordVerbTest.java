@@ -26,11 +26,10 @@ public class RecordVerbTest {
     Record record = new Record().builder()
                                .maxDuration(10)
                                .build();
-    public JAXBContext jaxbContext;
 
     @Test
     public void recordVerbWorks() throws JAXBException {
-        jaxbContext = JAXBContext.newInstance(Bxml.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
         String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Record recordCompleteMethod=\"POST\" recordCompleteFallbackMethod=\"POST\" terminatingDigits=\"#\" maxDuration=\"10\" fileFormat=\"wav\" recordingAvailableMethod=\"POST\" silenceTimeout=\"0.0\"/></Bxml>";
 
         assertThat(new Bxml().with(record).toBxml(jaxbContext), is(expectedBxml));

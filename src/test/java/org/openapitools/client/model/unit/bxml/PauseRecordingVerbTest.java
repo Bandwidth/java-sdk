@@ -19,11 +19,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 public class PauseRecordingVerbTest {
-    public JAXBContext jaxbContext;
 
     @Test
     public void pauseRecordingVerbWorks() throws JAXBException {
-        jaxbContext = JAXBContext.newInstance(Bxml.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
         String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><PauseRecording/></Bxml>";
 
         assertThat(new Bxml().with(new PauseRecording()).toBxml(jaxbContext), is(expectedBxml));

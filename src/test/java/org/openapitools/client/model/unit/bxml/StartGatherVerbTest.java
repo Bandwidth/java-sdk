@@ -33,11 +33,10 @@ public class StartGatherVerbTest {
                                .tag("tag")
                                .build();
 
-    public JAXBContext jaxbContext;
 
     @Test
     public void startGatherVerbWorks() throws JAXBException {
-        jaxbContext = JAXBContext.newInstance(Bxml.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
         String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><StartGather dtmfUrl=\"https://example.com/startgather\" dtmfMethod=\"POST\" username=\"user\" password=\"pass\" tag=\"tag\"/></Bxml>";
 
         assertThat(new Bxml().with(startGather).toBxml(jaxbContext), is(expectedBxml));

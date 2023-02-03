@@ -28,11 +28,10 @@ public class RedirectVerbTest {
                                .redirectFallbackUrl("fallback-url.com")
                                .redirectMethod("POST")
                                .build();
-    public JAXBContext jaxbContext;
 
     @Test
     public void redirectVerbWorks() throws JAXBException {
-        jaxbContext = JAXBContext.newInstance(Bxml.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
         String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Redirect redirectUrl=\"https://example.com/redirect\" redirectFallbackUrl=\"fallback-url.com\" redirectMethod=\"POST\" redirectFallbackMethod=\"POST\"/></Bxml>";
 
         assertThat(new Bxml().with(redirect).toBxml(jaxbContext), is(expectedBxml));

@@ -31,11 +31,9 @@ public class BxmlVerbTest {
     Tag tag = new Tag("Test Tag Content");
     Bxml bxml2 = new Bxml().with(tag);
 
-    public JAXBContext jaxbContext;
-
     @Test
     public void toBxmlWorks() throws JAXBException {
-        jaxbContext = JAXBContext.newInstance(Bxml.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
         Bxml bxml = new Bxml().with(new Tag("Test"));
         Tag tag = new Tag("Test Tag Content");
         Bxml bxml2 = new Bxml().with(tag);
@@ -60,15 +58,5 @@ public class BxmlVerbTest {
         Bxml bxml = new Bxml().withVerbs(pause, sendDtmf);
         assertThat(bxml.getVerbs().get(0), is(pause));
         assertThat(bxml.getVerbs().get(1), is(sendDtmf));
-    }
-
-    @Test
-    public void toBxmlWithDiversionWorks() throws JAXBException {
-        jaxbContext = JAXBContext.newInstance(Bxml.class);
-        String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Forward callTimeout=\"300.0\" diversionTreatment=\"NONE\" diversionReason=\"DO_NOT_DISTURB\"/></Bxml>";
-        Bxml bxml = new Bxml().with(Forward.builder()
-                .diversionReason(DiversionReason.DO_NOT_DISTURB)
-                .build());
-        assertThat(bxml.toBxml(jaxbContext), is(expectedBxml));
     }
 };

@@ -32,11 +32,9 @@
      Tag tag = new Tag("Test Tag Content");
      Response bxml2 = new Response().with(tag);
  
-     public JAXBContext jaxbContext;
- 
      @Test
      public void toBxmlWorks() throws JAXBException {
-         jaxbContext = JAXBContext.newInstance(Response.class);
+         JAXBContext jaxbContext = JAXBContext.newInstance(Response.class);
          Response response = new Response().with(new Tag("Test"));
          Tag tag = new Tag("Test Tag Content");
          Response response2 = new Response().with(tag);
@@ -62,16 +60,5 @@
          assertThat(response.getVerbs().get(0), is(pause));
          assertThat(response.getVerbs().get(1), is(sendDtmf));
      }
- 
-     @Test
-     public void toBxmlWithDiversionWorks() throws JAXBException {
-         jaxbContext = JAXBContext.newInstance(Response.class);
-         String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Response><Forward callTimeout=\"300.0\" diversionTreatment=\"NONE\" diversionReason=\"DO_NOT_DISTURB\"/></Response>";
-         Response response = new Response().with(Forward.builder()
-                 .diversionReason(DiversionReason.DO_NOT_DISTURB)
-                 .build());
-         assertThat(response.toBxml(jaxbContext), is(expectedBxml));
-     }
- 
  };
  

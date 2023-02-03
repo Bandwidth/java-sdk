@@ -18,11 +18,10 @@ import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 public class PauseVerbTest {
-    public JAXBContext jaxbContext;
 
     @Test
     public void pauseVerbWorks() throws JAXBException {
-        jaxbContext = JAXBContext.newInstance(Bxml.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
         String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Pause duration=\"2.0\"/></Bxml>";
 
         assertThat(new Bxml().with(new Pause(2d)).toBxml(jaxbContext), is(expectedBxml));

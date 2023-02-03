@@ -36,11 +36,10 @@ public class SpeakSentenceVerbTest {
                                                     .gender(TtsGender.FEMALE)
                                                     .build();
 
-    public JAXBContext jaxbContext;
 
     @Test
     public void speakSentenceVerbWorks() throws JAXBException {
-        jaxbContext = JAXBContext.newInstance(Bxml.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
         String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><SpeakSentence gender=\"female\" locale=\"en_UK\">Hello. Your number is &lt;say-as interpret-as=\"telephone\"&gt;asdf&lt;/say-as&gt;, lets play a game. What is 10 + 3. Press the pound key when finished.</SpeakSentence></Bxml>";
 
         assertThat(new Bxml().with(speakSentence).toBxml(jaxbContext), is(expectedBxml));

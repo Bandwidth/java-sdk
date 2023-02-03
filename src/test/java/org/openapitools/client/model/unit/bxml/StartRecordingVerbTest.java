@@ -38,11 +38,10 @@ public class StartRecordingVerbTest {
                                .multiChannel(true)
                                .build();
 
-    public JAXBContext jaxbContext;
 
     @Test
     public void startRecordingVerbWorks() throws JAXBException {
-        jaxbContext = JAXBContext.newInstance(Bxml.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
         String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><StartRecording recordingAvailableUrl=\"https://example.com\" recordingAvailableMethod=\"POST\" transcribe=\"true\" transcriptionAvailableUrl=\"transcription-example.com\" username=\"user\" password=\"pass\" tag=\"tag\" fileFormat=\"wav\" multiChannel=\"true\"/></Bxml>";
 
         assertThat(new Bxml().with(startRecording).toBxml(jaxbContext), is(expectedBxml));

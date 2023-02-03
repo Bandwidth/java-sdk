@@ -26,11 +26,10 @@ public class BridgeVerbTest {
     .bridgeCompleteUrl("https://example.com")
     .tag("test")
     .build();
-    public JAXBContext jaxbContext;
 
     @Test
     public void bridgeVerbWorks() throws JAXBException {
-        jaxbContext = JAXBContext.newInstance(Bxml.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
         String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Bridge bridgeCompleteUrl=\"https://example.com\" bridgeCompleteMethod=\"POST\" bridgeCompleteFallbackMethod=\"POST\" bridgeTargetCompleteMethod=\"POST\" bridgeTargetCompleteFallbackMethod=\"POST\" tag=\"test\">+19198675309</Bridge></Bxml>";
 
         assertThat(new Bxml().with(bridge).toBxml(jaxbContext), is(expectedBxml));

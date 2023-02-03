@@ -46,11 +46,10 @@ public class StartStreamVerbTest {
                                .streamParams(List.of(streamParam1, streamParam2))
                                .build();
 
-    public JAXBContext jaxbContext;
 
     @Test
     public void startStreamVerbWorks() throws JAXBException {
-        jaxbContext = JAXBContext.newInstance(Bxml.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
         String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><StartStream name=\"stream1\" tracks=\"INBOUND\" destination=\"testurl.com\" streamEventUrl=\"eventurl.com\" streamEventMethod=\"POST\" username=\"user\" password=\"pass\"><StreamParam name=\"name1\" value=\"value1\"/><StreamParam name=\"name2\" value=\"value2\"/></StartStream></Bxml>";
 
         assertThat(new Bxml().with(startStream).toBxml(jaxbContext), is(expectedBxml));
