@@ -12,8 +12,6 @@ import org.openapitools.client.model.MachineDetectionConfiguration;
 import org.openapitools.client.model.MachineDetectionModeEnum;
 import org.junit.BeforeClass;
 import org.junit.AfterClass;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -33,6 +31,7 @@ import static org.hamcrest.Matchers.contains;
 
 import static org.openapitools.client.utils.TestingEnvironmentVariables.*;
 
+@TestMethodOrder(OrderAnnotation.class)
 public class CallsApiTest {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
@@ -84,7 +83,7 @@ public class CallsApiTest {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
 
-        System.out.println("Answer URL: " + this.answerUrl);
+        System.out.println("Answer URL: " + answerUrl);
         MachineDetectionConfiguration machineDetection = new MachineDetectionConfiguration();
         machineDetection.setMode(MachineDetectionModeEnum.ASYNC);
         machineDetection.setDetectionTimeout(15.0);
@@ -93,12 +92,12 @@ public class CallsApiTest {
         machineDetection.setSpeechEndThreshold(5.0);
         machineDetection.setMachineSpeechEndThreshold(5.0);
         machineDetection.setDelayResult(false);
-        machineDetection.setCallbackUrl(this.machineDetectionUrl);
-        machineDetection.setCallbackMethod(this.callbackMethod);
+        machineDetection.setCallbackUrl(machineDetectionUrl);
+        machineDetection.setCallbackMethod(callbackMethod);
         machineDetection.setUsername("mySecretUsername");
         machineDetection.setPassword("mySecretPassword1!");
-        machineDetection.setFallbackUrl(this.machineDetectionCompleteUrl);
-        machineDetection.setFallbackMethod(this.callbackMethod);
+        machineDetection.setFallbackUrl(machineDetectionCompleteUrl);
+        machineDetection.setFallbackMethod(callbackMethod);
         machineDetection.setFallbackUsername("mySecretUsername");
         machineDetection.setFallbackPassword("mySecretPassword1!");
 
@@ -106,16 +105,16 @@ public class CallsApiTest {
         createCallBody.setTo(USER_NUMBER);
         createCallBody.setFrom(BW_NUMBER);
         createCallBody.setApplicationId(BW_VOICE_APPLICATION_ID);
-        createCallBody.setAnswerUrl(this.answerUrl);
-        createCallBody.setAnswerMethod(this.callbackMethod);
+        createCallBody.setAnswerUrl(answerUrl);
+        createCallBody.setAnswerMethod(callbackMethod);
         createCallBody.setUsername("mySecretUsername");
         createCallBody.setPassword("mySecretPassword1!");
-        createCallBody.setAnswerFallbackUrl(this.fallbackUrl);
-        createCallBody.setAnswerFallbackMethod(this.callbackMethod);
+        createCallBody.setAnswerFallbackUrl(fallbackUrl);
+        createCallBody.setAnswerFallbackMethod(callbackMethod);
         createCallBody.setFallbackUsername("mySecretUsername");
         createCallBody.setFallbackPassword("mySecretPassword1!");
-        createCallBody.setDisconnectUrl(this.disconnectUrl);
-        createCallBody.setDisconnectMethod(this.callbackMethod);
+        createCallBody.setDisconnectUrl(disconnectUrl);
+        createCallBody.setDisconnectMethod(callbackMethod);
         createCallBody.setCallTimeout(30.0);
         createCallBody.setCallbackTimeout(15.0);
         createCallBody.setMachineDetection(machineDetection);
