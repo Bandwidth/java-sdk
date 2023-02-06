@@ -10,8 +10,8 @@ import org.openapitools.client.model.CreateCall;
 import org.openapitools.client.model.CreateCallResponse;
 import org.openapitools.client.model.MachineDetectionConfiguration;
 import org.openapitools.client.model.MachineDetectionModeEnum;
-import org.junit.BeforeClass;
-import org.junit.AfterClass;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -50,9 +50,8 @@ public class CallsApiTest {
     private int TEST_SLEEP = 3;
     private int TEST_SLEEP_LONG = 15;
 
-    @BeforeClass
+    @BeforeAll
     public static void setupBeforeClass() throws URISyntaxException {
-        System.out.println("@BeforeClass");
         answerUrl = new URI(BASE_CALLBACK_URL);
         fallbackUrl = new URI("https://www.myFallbackServer.com/webhooks/answer");
         disconnectUrl = new URI("https://myServer.com/bandwidth/webhooks/disconnectUrl");
@@ -61,9 +60,8 @@ public class CallsApiTest {
                 "https://myFallbackServer.com/bandwidth/webhooks/machineDetectionComplete");
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDownAfterClass() {
-        System.out.println("@AfterClass");
     }
 
     /**
