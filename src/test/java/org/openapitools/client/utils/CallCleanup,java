@@ -1,0 +1,5 @@
+package org.openapitools.client.utils;
+
+public final class CallCleanup {
+
+}
