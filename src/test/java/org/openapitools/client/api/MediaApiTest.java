@@ -6,7 +6,7 @@ import org.openapitools.client.ApiClient;
 import org.openapitools.client.auth.HttpBasicAuth;
 import org.openapitools.client.model.Media;
 import org.openapitools.client.Configuration;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -25,23 +25,22 @@ import static org.openapitools.client.utils.TestingEnvironmentVariables.*;
 
 @TestMethodOrder(OrderAnnotation.class)
 public class MediaApiTest {
-
-    @BeforeClass
-    public void setupBeforeClass() {
-        this.uuid = UUID.randomUUID();
-    }
-
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
     private final MediaApi api = new MediaApi(defaultClient);
 
     private String mediaPath = "src/test/java/org/openapitools/client/fixtures/";
     private String mediaFile = "java_cat.jpeg";
-    private UUID uuid = null;
-    private String mediaId = JAVA_VERSION + "_" + RUNNER_OS + "_" + this.uuid + "_" + mediaFile;
+    private static UUID uuid;
+    private String mediaId = JAVA_VERSION + "_" + RUNNER_OS + "_" + uuid + "_" + mediaFile;
     private File media = new File(mediaPath + mediaFile);
     private String content_type = "image/jpeg";
     private String cache_control = "no-cache";
+
+    @BeforeAll
+    public static void setupBeforeClass() {
+        uuid = UUID.randomUUID();
+    }
 
     @Test
     @Order(1)
