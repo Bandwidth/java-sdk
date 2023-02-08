@@ -8,81 +8,71 @@ import org.openapitools.client.Configuration;
 import org.openapitools.client.model.CallbackMethodEnum;
 import org.openapitools.client.model.CreateCall;
 import org.openapitools.client.model.CreateCallResponse;
+import org.openapitools.client.model.CallDirectionEnum;
+import org.openapitools.client.model.CallState;
+import org.openapitools.client.model.CallStateEnum;
 import org.openapitools.client.model.MachineDetectionConfiguration;
 import org.openapitools.client.model.MachineDetectionModeEnum;
+import org.openapitools.client.model.UpdateCall;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.Assertions;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.matchesRegex;
-import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.beans.HasPropertyWithValue.hasProperty;
 
 import static org.openapitools.client.utils.TestingEnvironmentVariables.*;
+import static org.openapitools.client.utils.CallCleanup.Cleanup;
 
-@TestMethodOrder(OrderAnnotation.class)
+@TestMethodOrder(MethodOrderer.MethodName.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CallsApiTest {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private final CallsApi api = new CallsApi(defaultClient);
+    public ApiClient defaultClient = Configuration.getDefaultApiClient();
+    public HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
+    public final CallsApi api = new CallsApi(defaultClient);
 
-    private List<String> callIdList;
-    private String callId;
+    private static List<String> callIdList = new ArrayList<String>();
+    private static MachineDetectionConfiguration machineDetection = new MachineDetectionConfiguration();
+    private static CreateCall createCallBody = new CreateCall();
+    private static CreateCall createMantecaCallBody = new CreateCall();
+    private static UpdateCall updateMantecaCallBody = new UpdateCall();
+    private static UpdateCall completeMantecaCallBody = new UpdateCall();
     private static URI answerUrl;
+    private static URI mantecaAnswerUrl;
+    private static URI mantecaRedirectUrl;
     private static URI fallbackUrl;
     private static URI disconnectUrl;
     private static URI machineDetectionUrl;
     private static URI machineDetectionCompleteUrl;
-    private CallbackMethodEnum callbackMethod = CallbackMethodEnum.POST;
-    private String testCallId = "Call-Id";
-    private String testXmlBody = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml><SpeakSentence locale=\"en_US\" gender=\"female\" voice=\"susan\">This is a test bxml response</SpeakSentence><Pause duration=\"3\"/></Bxml>";
-    private int TEST_SLEEP = 3;
-    private int TEST_SLEEP_LONG = 15;
+    private static CallbackMethodEnum callbackMethod = CallbackMethodEnum.POST;
+    private static String testCallId = "Call-Id";
+    private static String testXmlBody = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml><SpeakSentence locale=\"en_US\" gender=\"female\" voice=\"susan\">This is a test bxml response</SpeakSentence><Pause duration=\"3\"/></Bxml>";
+    private static int TEST_SLEEP = 3;
 
     @BeforeAll
     public static void setupBeforeClass() throws URISyntaxException {
         answerUrl = new URI(BASE_CALLBACK_URL);
+        mantecaAnswerUrl = new URI(MANTECA_BASE_URL + "/bxml/pause");
+        mantecaRedirectUrl = new URI(MANTECA_BASE_URL + "/bxml/pause");
         fallbackUrl = new URI("https://www.myFallbackServer.com/webhooks/answer");
         disconnectUrl = new URI("https://myServer.com/bandwidth/webhooks/disconnectUrl");
         machineDetectionUrl = new URI("https://myServer.com/bandwidth/webhooks/machineDetectionComplete");
         machineDetectionCompleteUrl = new URI(
                 "https://myFallbackServer.com/bandwidth/webhooks/machineDetectionComplete");
-    }
 
-    @AfterAll
-    public static void tearDownAfterClass() {
-    }
-
-    /**
-     * Validates that an exception matches the expected format
-     *
-     * @param context            Exception to validate
-     * @param expectedException  Expected exception type
-     * @param expectedStatusCode Expected Status Code
-     */
-    public void assertApiException(ApiException context, ApiException expectedException, Integer expectedStatusCode) {
-
-    }
-
-    @Test
-    @Order(1)
-    public void createCall() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
-        System.out.println("Answer URL: " + answerUrl);
-        MachineDetectionConfiguration machineDetection = new MachineDetectionConfiguration();
         machineDetection.setMode(MachineDetectionModeEnum.ASYNC);
         machineDetection.setDetectionTimeout(15.0);
         machineDetection.setSilenceTimeout(10.0);
@@ -99,7 +89,6 @@ public class CallsApiTest {
         machineDetection.setFallbackUsername("mySecretUsername");
         machineDetection.setFallbackPassword("mySecretPassword1!");
 
-        CreateCall createCallBody = new CreateCall();
         createCallBody.setTo(USER_NUMBER);
         createCallBody.setFrom(BW_NUMBER);
         createCallBody.setApplicationId(BW_VOICE_APPLICATION_ID);
@@ -119,78 +108,250 @@ public class CallsApiTest {
         createCallBody.setPriority(5);
         createCallBody.setTag("tag_example");
 
-        System.out.println(createCallBody.toString());
+        createMantecaCallBody.setFrom(MANTECA_ACTIVE_NUMBER);
+        createMantecaCallBody.setTo(MANTECA_IDLE_NUMBER);
+        createMantecaCallBody.setApplicationId(MANTECA_APPLICATION_ID);
+        createMantecaCallBody.setAnswerUrl(mantecaAnswerUrl);
 
-        // ApiResponse<CreateCallResponse> response =
-        // api.createCallWithHttpInfo(BW_ACCOUNT_ID, createCallBody);
-        // this.callIdList.add(response.getData().getCallId());
+        updateMantecaCallBody.setState(CallStateEnum.ACTIVE);
+        updateMantecaCallBody.setRedirectUrl(mantecaRedirectUrl);
 
-        // assertThat(response.getStatusCode(), is(201));
+        completeMantecaCallBody.setState(CallStateEnum.COMPLETED);
+    }
+
+    @AfterAll
+    public void tearDownAfterClass() throws Exception {
+        TimeUnit.SECONDS.sleep(TEST_SLEEP);
+        Cleanup(this, callIdList);
+    }
+
+    @Test
+    @Order(1)
+    public void createCall() throws ApiException {
+        Basic.setUsername(BW_USERNAME);
+        Basic.setPassword(BW_PASSWORD);
+
+        ApiResponse<CreateCallResponse> response = api.createCallWithHttpInfo(BW_ACCOUNT_ID, createCallBody);
+        callIdList.add(response.getData().getCallId());
+
+        assertThat(response.getStatusCode(), is(201));
+        assertThat(response.getData(), hasProperty("callId", is(instanceOf(String.class))));
+        assertThat(response.getData(), hasProperty("accountId", is(BW_ACCOUNT_ID)));
+        assertThat(response.getData(), hasProperty("applicationId", is(BW_VOICE_APPLICATION_ID)));
+        assertThat(response.getData(), hasProperty("to", is(USER_NUMBER)));
+        assertThat(response.getData(), hasProperty("from", is(BW_NUMBER)));
     }
 
     @Test
     public void createCallBadREquest() throws ApiException {
+        Basic.setUsername(BW_USERNAME);
+        Basic.setPassword(BW_PASSWORD);
 
+        CreateCall badCallRequest = new CreateCall();
+        createCallBody.setTo("invalid_number");
+        createCallBody.setFrom(BW_NUMBER);
+        createCallBody.setApplicationId(BW_VOICE_APPLICATION_ID);
+        createCallBody.setAnswerUrl(answerUrl);
+
+        ApiException exception = Assertions.assertThrows(ApiException.class,
+                () -> api.createCallWithHttpInfo(BW_ACCOUNT_ID, badCallRequest));
+
+        assertThat(exception.getCode(), is(400));
     }
 
     @Test
     public void createCallUnauthorized() throws ApiException {
+        Basic.setUsername("bad_username");
+        Basic.setPassword("bad_password");
 
+        CreateCall badCallRequest = new CreateCall();
+        createCallBody.setTo("invalid_number");
+        createCallBody.setFrom(BW_NUMBER);
+        createCallBody.setApplicationId(BW_VOICE_APPLICATION_ID);
+        createCallBody.setAnswerUrl(answerUrl);
+
+        ApiException exception = Assertions.assertThrows(ApiException.class,
+                () -> api.createCallWithHttpInfo(BW_ACCOUNT_ID, badCallRequest));
+
+        assertThat(exception.getCode(), is(401));
     }
 
     @Test
     public void createCallForbidden() throws ApiException {
+        Basic.setUsername(FORBIDDEN_USERNAME);
+        Basic.setPassword(FORBIDDEN_PASSWORD);
 
+        CreateCall badCallRequest = new CreateCall();
+        createCallBody.setTo("invalid_number");
+        createCallBody.setFrom(BW_NUMBER);
+        createCallBody.setApplicationId(BW_VOICE_APPLICATION_ID);
+        createCallBody.setAnswerUrl(answerUrl);
+
+        ApiException exception = Assertions.assertThrows(ApiException.class,
+                () -> api.createCallWithHttpInfo(BW_ACCOUNT_ID, badCallRequest));
+
+        assertThat(exception.getCode(), is(403));
     }
 
     @Test
-    public void getCallState() throws ApiException {
+    @Order(2)
+    public void getCallState() throws ApiException, InterruptedException {
+        Basic.setUsername(BW_USERNAME);
+        Basic.setPassword(BW_PASSWORD);
 
+        TimeUnit.SECONDS.sleep(TEST_SLEEP);
+        ApiResponse<CallState> response = api.getCallStateWithHttpInfo(BW_ACCOUNT_ID, callIdList.get(0));
+
+        assertThat(response.getStatusCode(), is(200));
+        assertThat(response.getData(), hasProperty("callId", is(instanceOf(String.class))));
+        assertThat(response.getData(), hasProperty("state", is(instanceOf(String.class))));
+        assertThat(response.getData(), hasProperty("direction", is(CallDirectionEnum.OUTBOUND)));
     }
 
     @Test
     public void getCallStateUnauthorized() throws ApiException {
+        Basic.setUsername("bad_username");
+        Basic.setPassword("bad_password");
 
+        ApiException exception = Assertions.assertThrows(ApiException.class,
+                () -> api.getCallStateWithHttpInfo(BW_ACCOUNT_ID, "not a call id"));
+
+        assertThat(exception.getCode(), is(401));
     }
 
     @Test
     public void getCallStateForbidden() throws ApiException {
+        Basic.setUsername(FORBIDDEN_USERNAME);
+        Basic.setPassword(FORBIDDEN_PASSWORD);
 
+        ApiException exception = Assertions.assertThrows(ApiException.class,
+                () -> api.getCallStateWithHttpInfo(BW_ACCOUNT_ID, "not a call id"));
+
+        assertThat(exception.getCode(), is(403));
     }
 
     @Test
     public void getCallStateNotFound() throws ApiException {
+        Basic.setUsername(BW_USERNAME);
+        Basic.setPassword(BW_PASSWORD);
 
+        ApiException exception = Assertions.assertThrows(ApiException.class,
+                () -> api.getCallStateWithHttpInfo(BW_ACCOUNT_ID, "not a call id"));
+
+        assertThat(exception.getCode(), is(404));
     }
 
     @Test
-    public void updateCall() throws ApiException {
+    public void updateCall() throws ApiException, InterruptedException {
+        Basic.setUsername(BW_USERNAME);
+        Basic.setPassword(BW_PASSWORD);
 
+        // Create call
+        TimeUnit.SECONDS.sleep(TEST_SLEEP);
+        ApiResponse<CreateCallResponse> createCallResponse = api.createCallWithHttpInfo(BW_ACCOUNT_ID,
+                createMantecaCallBody);
+        callIdList.add(createCallResponse.getData().getCallId());
+
+        assertThat(createCallResponse.getStatusCode(), is(201));
+
+        // Redirect call to different url
+        TimeUnit.SECONDS.sleep(TEST_SLEEP);
+        ApiResponse<Void> updateCallResponse = api.updateCallWithHttpInfo(BW_ACCOUNT_ID,
+                createCallResponse.getData().getCallId(), updateMantecaCallBody);
+
+        assertThat(updateCallResponse.getStatusCode(), is(200));
+
+        // Complete call
+        TimeUnit.SECONDS.sleep(TEST_SLEEP);
+        ApiResponse<Void> completeCallResponse = api.updateCallWithHttpInfo(BW_ACCOUNT_ID,
+                createCallResponse.getData().getCallId(), completeMantecaCallBody);
+
+        assertThat(completeCallResponse.getStatusCode(), is(200));
     }
 
     @Test
-    public void updateCallBadRequest() throws ApiException {
+    public void updateCallBadRequest() throws ApiException, InterruptedException {
+        Basic.setUsername(BW_USERNAME);
+        Basic.setPassword(BW_PASSWORD);
 
+        UpdateCall badRequest = new UpdateCall();
+        badRequest.state(null);
+
+        // Create call
+        TimeUnit.SECONDS.sleep(TEST_SLEEP);
+        ApiResponse<CreateCallResponse> createCallResponse = api.createCallWithHttpInfo(BW_ACCOUNT_ID,
+                createMantecaCallBody);
+
+        ApiException exception = Assertions.assertThrows(ApiException.class,
+                () -> api.updateCallWithHttpInfo(BW_ACCOUNT_ID, createCallResponse.getData().getCallId(),
+                        badRequest));
+
+        assertThat(exception.getCode(), is(400));
     }
 
     @Test
     public void updateCallUnauthorized() throws ApiException {
+        Basic.setUsername("bad_username");
+        Basic.setPassword("bad_password");
+
+        ApiException exception = Assertions.assertThrows(ApiException.class,
+                () -> api.updateCallWithHttpInfo(BW_ACCOUNT_ID, testCallId,
+                        new UpdateCall().state(CallStateEnum.COMPLETED)));
+
+        assertThat(exception.getCode(), is(401));
 
     }
 
     @Test
     public void updateCallForbidden() throws ApiException {
+        Basic.setUsername(FORBIDDEN_USERNAME);
+        Basic.setPassword(FORBIDDEN_PASSWORD);
 
+        ApiException exception = Assertions.assertThrows(ApiException.class,
+                () -> api.updateCallWithHttpInfo(BW_ACCOUNT_ID, testCallId,
+                        new UpdateCall().state(CallStateEnum.COMPLETED)));
+
+        assertThat(exception.getCode(), is(403));
     }
 
     @Test
     public void updateCallNotFound() throws ApiException {
+        Basic.setUsername(BW_USERNAME);
+        Basic.setPassword(BW_PASSWORD);
 
+        ApiException exception = Assertions.assertThrows(ApiException.class,
+                () -> api.updateCallWithHttpInfo(BW_ACCOUNT_ID, testCallId,
+                        new UpdateCall().state(CallStateEnum.COMPLETED)));
+
+        assertThat(exception.getCode(), is(404));
     }
 
     @Test
-    public void updateCallBxml() throws ApiException {
+    public void updateCallBxml() throws ApiException, InterruptedException {
+        Basic.setUsername(BW_USERNAME);
+        Basic.setPassword(BW_PASSWORD);
 
+        // Create call
+        TimeUnit.SECONDS.sleep(TEST_SLEEP);
+        ApiResponse<CreateCallResponse> createCallResponse = api.createCallWithHttpInfo(BW_ACCOUNT_ID,
+                createMantecaCallBody);
+        callIdList.add(createCallResponse.getData().getCallId());
+
+        assertThat(createCallResponse.getStatusCode(), is(201));
+
+        // Redirect call to different url
+        TimeUnit.SECONDS.sleep(TEST_SLEEP);
+        ApiResponse<Void> updateCallResponse = api.updateCallBxmlWithHttpInfo(BW_ACCOUNT_ID,
+                createCallResponse.getData().getCallId(), testXmlBody);
+
+        assertThat(updateCallResponse.getStatusCode(), is(204));
+
+        // Complete call
+        TimeUnit.SECONDS.sleep(TEST_SLEEP);
+        ApiResponse<Void> completeCallResponse = api.updateCallWithHttpInfo(BW_ACCOUNT_ID,
+                createCallResponse.getData().getCallId(), completeMantecaCallBody);
+
+        assertThat(completeCallResponse.getStatusCode(), is(200));
     }
 
     @Test
@@ -200,16 +361,37 @@ public class CallsApiTest {
 
     @Test
     public void updateCallBxmlUnauthorized() throws ApiException {
+        Basic.setUsername("bad_username");
+        Basic.setPassword("bad_password");
 
+        ApiException exception = Assertions.assertThrows(ApiException.class,
+                () -> api.updateCallBxmlWithHttpInfo(BW_ACCOUNT_ID, testCallId,
+                        testXmlBody));
+
+        assertThat(exception.getCode(), is(401));
     }
 
     @Test
     public void updateCallBxmlForbidden() throws ApiException {
+        Basic.setUsername(FORBIDDEN_USERNAME);
+        Basic.setPassword(FORBIDDEN_PASSWORD);
 
+        ApiException exception = Assertions.assertThrows(ApiException.class,
+                () -> api.updateCallBxmlWithHttpInfo(BW_ACCOUNT_ID, testCallId,
+                        testXmlBody));
+
+        assertThat(exception.getCode(), is(403));
     }
 
     @Test
     public void updateCallBxmlNotFound() throws ApiException {
+        Basic.setUsername(BW_USERNAME);
+        Basic.setPassword(BW_PASSWORD);
 
+        ApiException exception = Assertions.assertThrows(ApiException.class,
+                () -> api.updateCallBxmlWithHttpInfo(BW_ACCOUNT_ID, testCallId,
+                        testXmlBody));
+
+        assertThat(exception.getCode(), is(404));
     }
 }
