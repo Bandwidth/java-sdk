@@ -28,7 +28,7 @@ public class CallCleanup {
                 testClass.Basic.setUsername(BW_USERNAME);
                 testClass.Basic.setPassword(BW_PASSWORD);
                 for (int i = 0; i < callIdList.size(); i++) {
-                    String callState = testClass.api.getCallState(BW_ACCOUNT_ID, callIdList.get(i).toString())
+                    String callState = testClass.api.getCallState(BW_ACCOUNT_ID, callIdList.get(i))
                             .getState();
                     if (!callState.equalsIgnoreCase("disconnected")) {
                         UpdateCall updateCallBody = new UpdateCall();
