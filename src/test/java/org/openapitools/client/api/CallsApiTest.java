@@ -358,7 +358,22 @@ public class CallsApiTest {
 
     @Test
     public void updateCallBxmlBadRequest() throws ApiException {
+        Basic.setUsername(BW_USERNAME);
+        Basic.setPassword(BW_PASSWORD);
 
+        ApiResponse<CreateCallResponse> createCallResponse = api.createCallWithHttpInfo(BW_ACCOUNT_ID,
+                createMantecaCallBody);
+        callIdList.add(createCallResponse.getData().getCallId());
+
+        assertThat(createCallResponse.getStatusCode(), is(201));
+        ApiException exception = Assertions.assertThrows(ApiException.class,
+                () -> api.updateCallBxmlWithHttpInfo(BW_ACCOUNT_ID,
+                        createCallResponse.getData().getCallId(), "not xml"));
+
+        ApiResponse<Void> completeCallResponse = api.updateCallWithHttpInfo(BW_ACCOUNT_ID,
+                createCallResponse.getData().getCallId(), completeMantecaCallBody);
+
+        assertThat(completeCallResponse.getStatusCode(), is(200));
     }
 
     @Test
