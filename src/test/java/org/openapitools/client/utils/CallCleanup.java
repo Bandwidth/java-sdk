@@ -27,10 +27,10 @@ public class CallCleanup {
             try {
                 testClass.Basic.setUsername(BW_USERNAME);
                 testClass.Basic.setPassword(BW_PASSWORD);
-
                 for (int i = 0; i < callIdList.size(); i++) {
-                    String callState = testClass.api.getCallState(BW_ACCOUNT_ID, callIdList.get(i)).getState();
-                    if (callState != "disconnected") {
+                    String callState = testClass.api.getCallState(BW_ACCOUNT_ID, callIdList.get(i).toString())
+                            .getState();
+                    if (!callState.equalsIgnoreCase("disconnected")) {
                         UpdateCall updateCallBody = new UpdateCall();
                         updateCallBody.setState(CallStateEnum.COMPLETED);
                         ApiResponse<Void> response = testClass.api.updateCallWithHttpInfo(BW_ACCOUNT_ID,
@@ -58,7 +58,7 @@ public class CallCleanup {
             testClass.Basic.setPassword(BW_PASSWORD);
 
             String callState = testClass.callsApi.getCallState(BW_ACCOUNT_ID, callId).getState();
-            if (callState != "disconnected") {
+            if (!callState.equalsIgnoreCase("disconnected")) {
                 UpdateCall updateCallBody = new UpdateCall();
                 updateCallBody.setState(CallStateEnum.COMPLETED);
                 ApiResponse<Void> response = testClass.callsApi.updateCallWithHttpInfo(BW_ACCOUNT_ID,

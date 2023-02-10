@@ -242,6 +242,7 @@ public class CallsApiTest {
     }
 
     @Test
+    @Order(3)
     public void updateCall() throws ApiException, InterruptedException {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
@@ -327,6 +328,7 @@ public class CallsApiTest {
     }
 
     @Test
+    @Order(4)
     public void updateCallBxml() throws ApiException, InterruptedException {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
