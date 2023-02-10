@@ -37,7 +37,7 @@ import static org.hamcrest.beans.HasPropertyWithValue.hasProperty;
 import static org.openapitools.client.utils.TestingEnvironmentVariables.*;
 import static org.openapitools.client.utils.CallCleanup.Cleanup;
 
-@TestMethodOrder(MethodOrderer.MethodName.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CallsApiTest {
     public ApiClient defaultClient = Configuration.getDefaultApiClient();
