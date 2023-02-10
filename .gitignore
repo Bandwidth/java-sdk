@@ -13,3 +13,8 @@ target
 *.class
 
 tempsettings.xml
+*.bin
+*.lock
+*.properties
+*.prefs
+.vscode/settings.json

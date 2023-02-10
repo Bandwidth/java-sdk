@@ -1143,7 +1143,7 @@ public final class APIController extends BaseController {
         HttpRequest request = buildGetDownloadCallRecordingRequest(accountId, callId, recordingId);
         authManagers.get("voice").apply(request);
 
-        HttpResponse response = getClientInstance().execute(request, false);
+        HttpResponse response = getClientInstance().execute(request, true);
         HttpContext context = new HttpContext(request, response);
 
         return handleGetDownloadCallRecordingResponse(context);
@@ -1164,7 +1164,7 @@ public final class APIController extends BaseController {
                 recordingId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
-                        .executeAsync(request, false)),
+                        .executeAsync(request, true)),
             context -> handleGetDownloadCallRecordingResponse(context));
     }
 
