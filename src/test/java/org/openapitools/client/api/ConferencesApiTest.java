@@ -79,8 +79,8 @@ public class ConferencesApiTest {
 
     @BeforeAll
     public static void setUpBeforeClass() throws URISyntaxException {
-        answerUrl = new URI(BASE_CALLBACK_URL + "/bxml/joinConferencePause");
-        conferenceRedirectUrl = new URI(BASE_CALLBACK_URL + "/bxml/pause");
+        answerUrl = new URI(MANTECA_BASE_URL + "/bxml/joinConferencePause");
+        conferenceRedirectUrl = new URI(MANTECA_BASE_URL + "/bxml/pause");
     }
 
     @AfterAll
