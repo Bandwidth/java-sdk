@@ -34,8 +34,8 @@ public class MediaApiTest {
     private static UUID uuid;
     private String mediaId = JAVA_VERSION + "_" + RUNNER_OS + "_" + uuid + "_" + mediaFile;
     private File media = new File(mediaPath + mediaFile);
-    private String content_type = "image/jpeg";
-    private String cache_control = "no-cache";
+    private String contentType = "image/jpeg";
+    private String cacheControl = "no-cache";
 
     @BeforeAll
     public static void setupBeforeClass() {
@@ -49,8 +49,8 @@ public class MediaApiTest {
         Basic.setPassword(BW_PASSWORD);
 
         ApiResponse<Void> response = api.uploadMediaWithHttpInfo(BW_ACCOUNT_ID, this.mediaId, this.media,
-                this.content_type,
-                this.cache_control);
+                this.contentType,
+                this.cacheControl);
 
         assertThat(response.getStatusCode(), is(204));
         System.out.println(this.mediaId);
