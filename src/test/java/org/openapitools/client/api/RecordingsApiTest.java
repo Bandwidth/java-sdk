@@ -11,7 +11,6 @@ import org.openapitools.client.model.CreateCallResponse;
 import org.openapitools.client.model.RecordingStateEnum;
 import org.openapitools.client.model.TranscribeRecording;
 import org.openapitools.client.model.TranscriptionList;
-import org.openapitools.client.model.TranscriptionMetadata;
 import org.openapitools.client.model.UpdateCall;
 import org.openapitools.client.model.UpdateCallRecording;
 import org.openapitools.client.utils.MantecaStatusResponse;
@@ -33,7 +32,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
