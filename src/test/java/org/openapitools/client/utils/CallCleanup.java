@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openapitools.client.api.CallsApiTest;
 import org.openapitools.client.api.ConferencesApiTest;
+import org.openapitools.client.api.RecordingsApiTest;
 import org.openapitools.client.model.CallStateEnum;
 import org.openapitools.client.model.UpdateCall;
 import org.openapitools.client.ApiException;
@@ -68,6 +69,31 @@ public class CallCleanup {
         } catch (ApiException e) {
             System.out.println("API Error: " + e.toString());
             throw new Exception("Failed to terminate all calls: [" + callId + "]");
+        }
+    }
+
+    public static final void Cleanup(RecordingsApiTest testClass, List<String> callIdList) throws Exception {
+        TimeUnit.SECONDS.sleep(TEST_SLEEP);
+
+        if (!callIdList.isEmpty()) {
+            try {
+                testClass.Basic.setUsername(BW_USERNAME);
+                testClass.Basic.setPassword(BW_PASSWORD);
+                for (int i = 0; i < callIdList.size(); i++) {
+                    String callState = testClass.callsApi.getCallState(BW_ACCOUNT_ID, callIdList.get(i).toString())
+                            .getState();
+                    if (!callState.equalsIgnoreCase("disconnected")) {
+                        UpdateCall updateCallBody = new UpdateCall();
+                        updateCallBody.setState(CallStateEnum.COMPLETED);
+                        ApiResponse<Void> response = testClass.callsApi.updateCallWithHttpInfo(BW_ACCOUNT_ID,
+                                callIdList.get(i),
+                                updateCallBody);
+                    }
+                }
+            } catch (ApiException e) {
+                System.out.println("API Error: " + e.toString());
+                throw new Exception("Failed to terminate all calls: [" + callIdList.toString() + "]");
+            }
         }
     }
 }

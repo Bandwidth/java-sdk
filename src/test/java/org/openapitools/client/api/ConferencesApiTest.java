@@ -14,6 +14,7 @@ import org.openapitools.client.model.ConferenceMember;
 import org.openapitools.client.model.RedirectMethodEnum;
 import org.openapitools.client.model.UpdateConference;
 import org.openapitools.client.model.UpdateConferenceMember;
+import org.openapitools.client.utils.MantecaStatusResponse;
 
 import com.google.gson.Gson;
 
@@ -68,14 +69,6 @@ public class ConferencesApiTest {
     private static int TEST_SLEEP = 3;
     private static int TEST_SLEEP_LONG = 10;
     private static int MAX_RETRIES = 40;
-
-    private class MantecaStatusResponse {
-        protected Boolean callRecorded;
-
-        private MantecaStatusResponse(Boolean callRecorded) {
-            this.callRecorded = callRecorded;
-        }
-    }
 
     @BeforeAll
     public static void setUpBeforeClass() throws URISyntaxException {
