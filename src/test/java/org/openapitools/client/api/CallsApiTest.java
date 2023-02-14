@@ -143,7 +143,7 @@ public class CallsApiTest {
     }
 
     @Test
-    public void createCallBadREquest() throws ApiException {
+    public void createCallBadRequest() throws ApiException {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
 
