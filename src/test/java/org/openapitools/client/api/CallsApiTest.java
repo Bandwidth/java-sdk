@@ -165,7 +165,7 @@ public class CallsApiTest {
         Basic.setPassword("bad_password");
 
         CreateCall badCallRequest = new CreateCall();
-        createCallBody.setTo("invalid_number");
+        createCallBody.setTo(USER_NUMBER);
         createCallBody.setFrom(BW_NUMBER);
         createCallBody.setApplicationId(BW_VOICE_APPLICATION_ID);
         createCallBody.setAnswerUrl(answerUrl);
@@ -182,7 +182,7 @@ public class CallsApiTest {
         Basic.setPassword(FORBIDDEN_PASSWORD);
 
         CreateCall badCallRequest = new CreateCall();
-        createCallBody.setTo("invalid_number");
+        createCallBody.setTo(USER_NUMBER);
         createCallBody.setFrom(BW_NUMBER);
         createCallBody.setApplicationId(BW_VOICE_APPLICATION_ID);
         createCallBody.setAnswerUrl(answerUrl);
@@ -214,7 +214,7 @@ public class CallsApiTest {
         Basic.setPassword("bad_password");
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.getCallStateWithHttpInfo(BW_ACCOUNT_ID, "not a call id"));
+                () -> api.getCallStateWithHttpInfo(BW_ACCOUNT_ID, callIdList.get(0)));
 
         assertThat(exception.getCode(), is(401));
     }
@@ -225,7 +225,7 @@ public class CallsApiTest {
         Basic.setPassword(FORBIDDEN_PASSWORD);
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.getCallStateWithHttpInfo(BW_ACCOUNT_ID, "not a call id"));
+                () -> api.getCallStateWithHttpInfo(BW_ACCOUNT_ID, callIdList.get(0)));
 
         assertThat(exception.getCode(), is(403));
     }
@@ -248,7 +248,6 @@ public class CallsApiTest {
         Basic.setPassword(BW_PASSWORD);
 
         // Create call
-        TimeUnit.SECONDS.sleep(TEST_SLEEP);
         ApiResponse<CreateCallResponse> createCallResponse = api.createCallWithHttpInfo(BW_ACCOUNT_ID,
                 createMantecaCallBody);
         callIdList.add(createCallResponse.getData().getCallId());
@@ -279,7 +278,6 @@ public class CallsApiTest {
         badRequest.state(null);
 
         // Create call
-        TimeUnit.SECONDS.sleep(TEST_SLEEP);
         ApiResponse<CreateCallResponse> createCallResponse = api.createCallWithHttpInfo(BW_ACCOUNT_ID,
                 createMantecaCallBody);
 
@@ -296,7 +294,7 @@ public class CallsApiTest {
         Basic.setPassword("bad_password");
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.updateCallWithHttpInfo(BW_ACCOUNT_ID, testCallId,
+                () -> api.updateCallWithHttpInfo(BW_ACCOUNT_ID, callIdList.get(0),
                         new UpdateCall().state(CallStateEnum.COMPLETED)));
 
         assertThat(exception.getCode(), is(401));
@@ -309,7 +307,8 @@ public class CallsApiTest {
         Basic.setPassword(FORBIDDEN_PASSWORD);
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.updateCallWithHttpInfo(BW_ACCOUNT_ID, testCallId,
+                () -> api.updateCallWithHttpInfo(BW_ACCOUNT_ID, callIdList.get(
+                        0),
                         new UpdateCall().state(CallStateEnum.COMPLETED)));
 
         assertThat(exception.getCode(), is(403));
@@ -334,7 +333,6 @@ public class CallsApiTest {
         Basic.setPassword(BW_PASSWORD);
 
         // Create call
-        TimeUnit.SECONDS.sleep(TEST_SLEEP);
         ApiResponse<CreateCallResponse> createCallResponse = api.createCallWithHttpInfo(BW_ACCOUNT_ID,
                 createMantecaCallBody);
         callIdList.add(createCallResponse.getData().getCallId());
@@ -369,6 +367,7 @@ public class CallsApiTest {
         ApiException exception = Assertions.assertThrows(ApiException.class,
                 () -> api.updateCallBxmlWithHttpInfo(BW_ACCOUNT_ID,
                         createCallResponse.getData().getCallId(), "not xml"));
+        assertThat(exception.getCode(), is(400));
 
         ApiResponse<Void> completeCallResponse = api.updateCallWithHttpInfo(BW_ACCOUNT_ID,
                 createCallResponse.getData().getCallId(), completeMantecaCallBody);

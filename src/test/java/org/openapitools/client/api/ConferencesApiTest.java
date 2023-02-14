@@ -89,12 +89,9 @@ public class ConferencesApiTest {
         Cleanup(this, this.callId);
     }
 
-    static final String constructMantecaJsonBody(String os, String language) {
-        return "{\"os\": \"" + os + "\", \"language\":\"JAVA" + JAVA_VERSION + "\", \"type\":\"conference\"}";
-    }
-
-    public void validateRecording(ConferenceRecordingMetadata recording, String conferenceId) {
-
+    static final String constructMantecaJsonBody() {
+        return "{\"os\": \"" + OPERATING_SYSTEM + "\", \"language\":\"JAVA" + JAVA_VERSION
+                + "\", \"type\":\"conference\"}";
     }
 
     public Boolean getTestRecordedStatus(String mantecaTestId) throws Exception {
@@ -129,7 +126,7 @@ public class ConferencesApiTest {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
 
-        String mantecaJsonBody = constructMantecaJsonBody(OPERATING_SYSTEM, JAVA_VERSION);
+        String mantecaJsonBody = constructMantecaJsonBody();
         RequestBody mantecaRequestBody = RequestBody.create(mantecaJsonBody, jsonMediaType);
 
         try {
