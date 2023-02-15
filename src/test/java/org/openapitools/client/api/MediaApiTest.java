@@ -31,15 +31,16 @@ public class MediaApiTest {
 
     private static String mediaPath = "src/test/java/org/openapitools/client/fixtures/";
     private static String mediaFile = "java_cat.jpeg";
+    private static String mediaId;
     private static UUID uuid;
-    private static String mediaId = JAVA_VERSION + "_" + RUNNER_OS + "_" + uuid + "_" + mediaFile;
     private static File media = new File(mediaPath + mediaFile);
-    private String contentType = "image/jpeg";
-    private String cacheControl = "no-cache";
+    private static String contentType = "image/jpeg";
+    private static String cacheControl = "no-cache";
 
     @BeforeAll
     public static void setupBeforeClass() {
         uuid = UUID.randomUUID();
+        mediaId = JAVA_VERSION + "_" + RUNNER_OS + "_" + uuid + "_" + mediaFile;
     }
 
     @Test
@@ -49,8 +50,8 @@ public class MediaApiTest {
         Basic.setPassword(BW_PASSWORD);
 
         ApiResponse<Void> response = api.uploadMediaWithHttpInfo(BW_ACCOUNT_ID, mediaId, media,
-                this.contentType,
-                this.cacheControl);
+                contentType,
+                cacheControl);
 
         assertThat(response.getStatusCode(), is(204));
     }
