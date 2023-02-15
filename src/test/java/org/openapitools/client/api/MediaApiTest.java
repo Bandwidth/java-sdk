@@ -29,11 +29,11 @@ public class MediaApiTest {
     HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
     private final MediaApi api = new MediaApi(defaultClient);
 
-    private String mediaPath = "src/test/java/org/openapitools/client/fixtures/";
-    private String mediaFile = "java_cat.jpeg";
+    private static String mediaPath = "src/test/java/org/openapitools/client/fixtures/";
+    private static String mediaFile = "java_cat.jpeg";
     private static UUID uuid;
-    private String mediaId = JAVA_VERSION + "_" + RUNNER_OS + "_" + uuid + "_" + mediaFile;
-    private File media = new File(mediaPath + mediaFile);
+    private static String mediaId = JAVA_VERSION + "_" + RUNNER_OS + "_" + uuid + "_" + mediaFile;
+    private static File media = new File(mediaPath + mediaFile);
     private String contentType = "image/jpeg";
     private String cacheControl = "no-cache";
 
@@ -48,12 +48,11 @@ public class MediaApiTest {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
 
-        ApiResponse<Void> response = api.uploadMediaWithHttpInfo(BW_ACCOUNT_ID, this.mediaId, this.media,
+        ApiResponse<Void> response = api.uploadMediaWithHttpInfo(BW_ACCOUNT_ID, mediaId, media,
                 this.contentType,
                 this.cacheControl);
 
         assertThat(response.getStatusCode(), is(204));
-        System.out.println(this.mediaId);
     }
 
     @Test
@@ -64,8 +63,6 @@ public class MediaApiTest {
         ApiResponse<List<Media>> response = api.listMediaWithHttpInfo(BW_ACCOUNT_ID, null);
 
         assertThat(response.getStatusCode(), is(200));
-        System.out.println(this.mediaId);
-
     }
 
     @Test
@@ -73,12 +70,11 @@ public class MediaApiTest {
     public void getMedia() throws ApiException, IOException {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
-        System.out.println(this.mediaId);
 
-        ApiResponse<File> response = api.getMediaWithHttpInfo(BW_ACCOUNT_ID, this.mediaId);
+        ApiResponse<File> response = api.getMediaWithHttpInfo(BW_ACCOUNT_ID, mediaId);
 
         assertThat(response.getStatusCode(), is(200));
-        assertThat(FileUtils.readLines(response.getData(), "utf-8"), is(FileUtils.readLines(this.media, "utf-8")));
+        assertThat(FileUtils.readLines(response.getData(), "utf-8"), is(FileUtils.readLines(media, "utf-8")));
     }
 
     @Test
@@ -87,7 +83,7 @@ public class MediaApiTest {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
 
-        ApiResponse<Void> response = api.deleteMediaWithHttpInfo(BW_ACCOUNT_ID, this.mediaId);
+        ApiResponse<Void> response = api.deleteMediaWithHttpInfo(BW_ACCOUNT_ID, mediaId);
         assertThat(response.getStatusCode(), is(204));
     }
 }
