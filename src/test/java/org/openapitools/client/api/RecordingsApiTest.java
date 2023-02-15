@@ -139,12 +139,12 @@ public class RecordingsApiTest {
         createCallBody.setAnswerUrl(answerUrl);
         createCallBody.setTag(testId);
 
-        System.out.println(testId);
-
         // Create Call
         CreateCallResponse callResponse = callsApi.createCall(BW_ACCOUNT_ID, createCallBody);
-        System.out.println(callResponse.getCallId());
         callId = callResponse.getCallId();
+
+        System.out.println(testId);
+        System.out.println(callId);
 
         // Update Recording
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
@@ -280,6 +280,11 @@ public class RecordingsApiTest {
     public void testUnauthorizedGetRecording() {
         Basic.setUsername("bad_username");
         Basic.setPassword("bad_password");
+
+        System.out.println("----------");
+        System.out.println(callId);
+        System.out.println(recordingId);
+        System.out.println("----------");
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
                 () -> recordingsApi.getCallRecording(BW_ACCOUNT_ID, callId, recordingId));
