@@ -23,6 +23,7 @@ public final class TestingEnvironmentVariables {
     public static final String MANTECA_APPLICATION_ID = System.getenv("MANTECA_APPLICATION_ID");
     public static final String JAVA_VERSION = System.getenv("JAVA_VERSION");
     public static final String OPERATING_SYSTEM = System.getenv("OPERATING_SYSTEM");
+    public static final String DISTRIBUTION = System.getenv("DISTRIBUTION");
     public static final String RUNNER_OS = System.getenv("RUNNER_OS");
 
 }

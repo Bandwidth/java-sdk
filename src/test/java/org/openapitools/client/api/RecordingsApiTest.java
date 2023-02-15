@@ -83,8 +83,9 @@ public class RecordingsApiTest {
         Cleanup(this, callId);
     }
 
-    static final String constructMantecaJsonBody(String os, String language) {
-        return "{\"os\": \"" + os + "\", \"language\":\"JAVA" + JAVA_VERSION + "\", \"type\":\"CALL\"}";
+    static final String constructMantecaJsonBody() {
+        return "{\"os\": \"" + OPERATING_SYSTEM + "\", \"language\":\"JAVA" + JAVA_VERSION + "_" + DISTRIBUTION
+                + "\", \"type\":\"CALL\"}";
     }
 
     public MantecaStatusResponse getTestStatus(String mantecaTestId) throws Exception {
@@ -119,7 +120,7 @@ public class RecordingsApiTest {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
 
-        String mantecaJsonBody = constructMantecaJsonBody(OPERATING_SYSTEM, JAVA_VERSION);
+        String mantecaJsonBody = constructMantecaJsonBody();
         RequestBody mantecaRequestBody = RequestBody.create(mantecaJsonBody, jsonMediaType);
 
         try {

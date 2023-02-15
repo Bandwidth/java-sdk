@@ -40,6 +40,9 @@ jobs:
           MANTECA_ACTIVE_NUMBER: ${{ secrets.MANTECA_ACTIVE_NUMBER }}
           MANTECA_APPLICATION_ID: ${{ secrets.MANTECA_APPLICATION_ID }}
           MANTECA_BASE_URL: ${{ secrets.MANTECA_BASE_URL }}
+          OPERATING_SYSTEM: ${{ matrix.os }}
+          JAVA_VERSION: ${{ matrix.java-version }}
+          DISTRIBUTION: ${{ matrix.distribution }}
         run: mvn -B package --file pom.xml
 
       - name: Notify Slack of Failures
