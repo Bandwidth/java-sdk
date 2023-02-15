@@ -83,6 +83,7 @@ public class MessagesApiTest {
 
         assertThat(response, instanceOf(MessagesList.class));
         assertThat(response.getTotalCount(), greaterThan(0));
+
         ListMessageItem message = response.getMessages().get(0);
         assertThat(message, instanceOf(ListMessageItem.class));
         assertThat(message.getAccountId(), is(System.getenv("BW_ACCOUNT_ID")));
@@ -169,9 +170,9 @@ public class MessagesApiTest {
 
     @Test
     public void createMessageUnauthorizedTest() {
+        Basic.setUsername("bad_username");
+        Basic.setPassword("bad_password");
 
-        Basic.setUsername("user");
-        Basic.setPassword("pass");
         messageRequest.applicationId(BW_MESSAGING_APPLICATION_ID);
         messageRequest.addToItem(USER_NUMBER);
         messageRequest.from(BW_NUMBER);
