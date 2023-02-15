@@ -37,7 +37,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -143,9 +142,6 @@ public class RecordingsApiTest {
         CreateCallResponse callResponse = callsApi.createCall(BW_ACCOUNT_ID, createCallBody);
         callId = callResponse.getCallId();
 
-        System.out.println(testId);
-        System.out.println(callId);
-
         // Update Recording
         TimeUnit.SECONDS.sleep(TEST_SLEEP * 2);
         UpdateCallRecording updateRecording = new UpdateCallRecording();
@@ -185,9 +181,6 @@ public class RecordingsApiTest {
                 .listCallRecordingsWithHttpInfo(BW_ACCOUNT_ID, callId);
         assertThat(listRecordingMetadataResponse.getStatusCode(), is(200));
         recordingId = listRecordingMetadataResponse.getData().get(0).getRecordingId();
-        System.out.println("-----recordingId");
-        System.out.println(recordingId);
-        System.out.println("-----");
 
         ApiResponse<CallRecordingMetadata> recordingMetadataResponse = recordingsApi.getCallRecordingWithHttpInfo(
                 BW_ACCOUNT_ID, callId, recordingId);
@@ -283,11 +276,6 @@ public class RecordingsApiTest {
     public void testUnauthorizedGetRecording() {
         Basic.setUsername("bad_username");
         Basic.setPassword("bad_password");
-
-        System.out.println("----------");
-        System.out.println(callId);
-        System.out.println(recordingId);
-        System.out.println("----------");
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
                 () -> recordingsApi.getCallRecording(BW_ACCOUNT_ID, callId, recordingId));
@@ -419,7 +407,6 @@ public class RecordingsApiTest {
                 () -> recordingsApi.transcribeCallRecording(BW_ACCOUNT_ID, callId,
                         recordingId, transcribeRecording));
 
-        System.out.println(exception.getCode());
         assertThat(exception.getCode(), is(403));
     }
 
