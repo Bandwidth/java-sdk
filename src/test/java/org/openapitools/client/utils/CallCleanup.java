@@ -72,28 +72,24 @@ public class CallCleanup {
         }
     }
 
-    public static final void Cleanup(RecordingsApiTest testClass, List<String> callIdList) throws Exception {
+    public static final void Cleanup(RecordingsApiTest testClass, String callId) throws Exception {
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
 
-        if (!callIdList.isEmpty()) {
-            try {
-                testClass.Basic.setUsername(BW_USERNAME);
-                testClass.Basic.setPassword(BW_PASSWORD);
-                for (int i = 0; i < callIdList.size(); i++) {
-                    String callState = testClass.callsApi.getCallState(BW_ACCOUNT_ID, callIdList.get(i).toString())
-                            .getState();
-                    if (!callState.equalsIgnoreCase("disconnected")) {
-                        UpdateCall updateCallBody = new UpdateCall();
-                        updateCallBody.setState(CallStateEnum.COMPLETED);
-                        ApiResponse<Void> response = testClass.callsApi.updateCallWithHttpInfo(BW_ACCOUNT_ID,
-                                callIdList.get(i),
-                                updateCallBody);
-                    }
-                }
-            } catch (ApiException e) {
-                System.out.println("API Error: " + e.toString());
-                throw new Exception("Failed to terminate all calls: [" + callIdList.toString() + "]");
+        try {
+            testClass.Basic.setUsername(BW_USERNAME);
+            testClass.Basic.setPassword(BW_PASSWORD);
+
+            String callState = testClass.callsApi.getCallState(BW_ACCOUNT_ID, callId).getState();
+            if (!callState.equalsIgnoreCase("disconnected")) {
+                UpdateCall updateCallBody = new UpdateCall();
+                updateCallBody.setState(CallStateEnum.COMPLETED);
+                ApiResponse<Void> response = testClass.callsApi.updateCallWithHttpInfo(BW_ACCOUNT_ID,
+                        callId,
+                        updateCallBody);
             }
+        } catch (ApiException e) {
+            System.out.println("API Error: " + e.toString());
+            throw new Exception("Failed to terminate all calls: [" + callId + "]");
         }
     }
 }
