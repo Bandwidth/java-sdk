@@ -83,14 +83,15 @@ public class MessagesApiTest {
 
         assertThat(response, instanceOf(MessagesList.class));
         assertThat(response.getTotalCount(), greaterThan(0));
-        assertThat(response.getMessages().get(0), instanceOf(ListMessageItem.class));
-        assertThat(response.getMessages().get(0).getAccountId(), is(System.getenv("BW_ACCOUNT_ID")));
-        assertThat(response.getMessages().get(0).getDestinationTn(), matchesRegex("^\\+[1-9]\\d{1,14}$"));
-        assertThat(response.getMessages().get(0).getMessageDirection(), instanceOf(ListMessageDirectionEnum.class));
-        assertThat(response.getMessages().get(0).getMessageId(), matchesRegex("^.+$"));
-        assertThat(response.getMessages().get(0).getMessageStatus(), instanceOf(MessageStatusEnum.class));
-        assertThat(response.getMessages().get(0).getMessageType(), instanceOf(MessageTypeEnum.class));
-        assertThat(response.getMessages().get(0).getSegmentCount(), greaterThan(0));
+        ListMessageItem message = response.getMessages().get(0);
+        assertThat(message, instanceOf(ListMessageItem.class));
+        assertThat(message.getAccountId(), is(System.getenv("BW_ACCOUNT_ID")));
+        assertThat(message.getDestinationTn(), matchesRegex("^\\+[1-9]\\d{1,14}$"));
+        assertThat(message.getMessageDirection(), instanceOf(ListMessageDirectionEnum.class));
+        assertThat(message.getMessageId(), matchesRegex("^.+$"));
+        assertThat(message.getMessageStatus(), instanceOf(MessageStatusEnum.class));
+        assertThat(message.getMessageType(), instanceOf(MessageTypeEnum.class));
+        assertThat(message.getSegmentCount(), greaterThan(0));
     }
 
     @Test
