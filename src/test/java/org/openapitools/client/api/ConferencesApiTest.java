@@ -61,13 +61,8 @@ public class ConferencesApiTest {
     private String conferenceId;
     private static URI answerUrl;
     private static URI conferenceRedirectUrl;
-    private static String testUpdateBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml><SpeakSentence locale=\"en_US\" gender=\"female\" voice=\"susan\">This is test BXML.</SpeakSentence></Bxml>";
     private static String updateRecordingBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml><StartRecording/><SpeakSentence locale=\"en_US\" gender=\"female\" voice=\"susan\">This should be a conference recording.</SpeakSentence><StopRecording/></Bxml>";
-    private static String testConferenceId = "conference-id";
-    private static String testMemberId = "member-id";
-    private static String testRecordId = "recording-id";
     private static int TEST_SLEEP = 3;
-    private static int TEST_SLEEP_LONG = 10;
     private static int MAX_RETRIES = 40;
 
     @BeforeAll
