@@ -56,9 +56,9 @@ public class ConferencesApiTest {
     private static final OkHttpClient mantecaClient = new OkHttpClient();
     public static final MediaType jsonMediaType = MediaType.get("application/json; charset=utf-8");
 
-    private String testId;
-    private String callId;
-    private String conferenceId;
+    private static String testId;
+    private static String callId;
+    private static String conferenceId;
     private static URI answerUrl;
     private static URI conferenceRedirectUrl;
     private static String updateRecordingBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml><StartRecording/><SpeakSentence locale=\"en_US\" gender=\"female\" voice=\"susan\">This should be a conference recording.</SpeakSentence><StopRecording/></Bxml>";
