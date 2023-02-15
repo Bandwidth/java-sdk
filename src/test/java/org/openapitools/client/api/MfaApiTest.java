@@ -72,7 +72,7 @@ public class MfaApiTest {
         // Generate a random TN for the setTo - otherwise we get heavily rate limited
         Long minTn = 1111111111L;
         Long maxTn = 9999999999L;
-        Long random_int = ThreadLocalRandom.current().nextLong(maxTn - minTn) + minTn;
+        Long randomInt = ThreadLocalRandom.current().nextLong(maxTn - minTn) + minTn;
         System.out.println(random_int);
 
         VerifyCodeRequest request = new VerifyCodeRequest();

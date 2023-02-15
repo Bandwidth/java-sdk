@@ -112,8 +112,8 @@ public class MessagesApiTest {
     @Test
     public void listMessageUnauthorizedTest() {
 
-        Basic.setUsername("user");
-        Basic.setPassword("pass");
+        Basic.setUsername("bad_username");
+        Basic.setPassword("bad_password");
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
                 () -> api.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection,
