@@ -26,8 +26,6 @@ import org.junit.jupiter.api.Test;
 
 import java.net.URI;
 
-import javax.security.auth.AuthPermission;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.Matchers.greaterThan;

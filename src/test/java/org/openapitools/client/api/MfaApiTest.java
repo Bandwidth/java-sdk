@@ -73,10 +73,9 @@ public class MfaApiTest {
         Long minTn = 1111111111L;
         Long maxTn = 9999999999L;
         Long randomInt = ThreadLocalRandom.current().nextLong(maxTn - minTn) + minTn;
-        System.out.println(random_int);
 
         VerifyCodeRequest request = new VerifyCodeRequest();
-        request.setTo("+1" + random_int.toString());
+        request.setTo("+1" + randomInt.toString());
         request.setScope("2FA");
         request.setExpirationTimeInMinutes(expirationTime);
         request.setCode("123456");
@@ -128,7 +127,6 @@ public class MfaApiTest {
                 () -> api.generateMessagingCodeWithHttpInfo(BW_ACCOUNT_ID,
                         request));
         assertThat(exception.getCode(), is(401));
-        System.out.println(exception.getCode());
     }
 
     @Test
