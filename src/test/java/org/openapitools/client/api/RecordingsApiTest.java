@@ -174,14 +174,14 @@ public class RecordingsApiTest {
         assertThat(updateCallResponse.getStatusCode(), is(200));
 
         // Make sure its been recorded by fetching the status from Manteca
-        Boolean testRecordingStatus = false;
-        for (int i = 0; i < MAX_RETRIES; i++) {
-            while (testRecordingStatus != true) {
-                TimeUnit.SECONDS.sleep(TEST_SLEEP);
-                testRecordingStatus = getTestStatus(testId).callRecorded;
-            }
+        int x = 0;
+        Boolean recordingStatus = false;
+        while (recordingStatus != true && x < MAX_RETRIES) {
+            TimeUnit.SECONDS.sleep(TEST_SLEEP);
+            recordingStatus = getTestStatus(testId).callRecorded;
+            x++;
         }
-        assertThat(testRecordingStatus, is(true));
+        assertThat(recordingStatus, is(true));
 
         // Validate the recording metadata endpoint
         ApiResponse<List<CallRecordingMetadata>> listRecordingMetadataResponse = recordingsApi
@@ -198,14 +198,14 @@ public class RecordingsApiTest {
         assertThat(requestTranscriptionResponse.getStatusCode(), is(204));
 
         // Make sure its been transcribed by fetching status from manteca
-        Boolean testTranscriptionStatus = false;
-        for (int i = 0; i < MAX_RETRIES; i++) {
-            while (testTranscriptionStatus != true) {
-                TimeUnit.SECONDS.sleep(TEST_SLEEP);
-                testTranscriptionStatus = getTestStatus(testId).callTranscribed;
-            }
+        int i = 0;
+        Boolean transcriptionStatus = false;
+        while (transcriptionStatus != true && i < MAX_RETRIES) {
+            TimeUnit.SECONDS.sleep(TEST_SLEEP);
+            transcriptionStatus = getTestStatus(testId).callTranscribed;
+            i++;
         }
-        assertThat(testTranscriptionStatus, is(true));
+        assertThat(transcriptionStatus, is(true));
 
         // Validate the transcription metadata endpoint
         ApiResponse<TranscriptionList> listTranscriptionsResponse = recordingsApi
@@ -234,7 +234,8 @@ public class RecordingsApiTest {
         Basic.setPassword(BW_PASSWORD);
 
         ApiResponse<List<CallRecordingMetadata>> response = recordingsApi
-                .listAccountCallRecordingsWithHttpInfo(BW_ACCOUNT_ID, null, null, null, null);
+                .listAccountCallRecordingsWithHttpInfo(BW_ACCOUNT_ID, null, null, null,
+                        null);
 
         assertThat(response.getStatusCode(), is(200));
     }
@@ -245,7 +246,8 @@ public class RecordingsApiTest {
         Basic.setPassword("bad_password");
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.listAccountCallRecordingsWithHttpInfo(BW_ACCOUNT_ID, null, null, null, null));
+                () -> recordingsApi.listAccountCallRecordingsWithHttpInfo(BW_ACCOUNT_ID,
+                        null, null, null, null));
 
         assertThat(exception.getCode(), is(401));
     }
@@ -256,20 +258,22 @@ public class RecordingsApiTest {
         Basic.setPassword(FORBIDDEN_PASSWORD);
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.listAccountCallRecordingsWithHttpInfo(BW_ACCOUNT_ID, null, null, null, null));
+                () -> recordingsApi.listAccountCallRecordingsWithHttpInfo(BW_ACCOUNT_ID,
+                        null, null, null, null));
 
         assertThat(exception.getCode(), is(403));
     }
 
     @Test
     public void testRecordingNotFound() {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
+    Basic.setUsername(BW_USERNAME);
+    Basic.setPassword(BW_PASSWORD);
 
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.getCallRecording(BW_ACCOUNT_ID, "not a call", "not a recording"));
+    ApiException exception = Assertions.assertThrows(ApiException.class,
+    () -> recordingsApi.getCallRecording(BW_ACCOUNT_ID, "not a call", "not a
+    recording"));
 
-        assertThat(exception.getCode(), is(404));
+    assertThat(exception.getCode(), is(404));
     }
 
     @Test
@@ -322,7 +326,8 @@ public class RecordingsApiTest {
         Basic.setPassword("bad_password");
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.downloadCallRecording(BW_ACCOUNT_ID, callId, recordingId));
+                () -> recordingsApi.downloadCallRecording(BW_ACCOUNT_ID, callId,
+                        recordingId));
 
         assertThat(exception.getCode(), is(401));
     }
@@ -333,7 +338,8 @@ public class RecordingsApiTest {
         Basic.setPassword(FORBIDDEN_PASSWORD);
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.downloadCallRecording(BW_ACCOUNT_ID, callId, recordingId));
+                () -> recordingsApi.downloadCallRecording(BW_ACCOUNT_ID, callId,
+                        recordingId));
 
         assertThat(exception.getCode(), is(403));
     }
@@ -366,7 +372,8 @@ public class RecordingsApiTest {
         Basic.setPassword("bad_password");
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.deleteCallTranscription(BW_ACCOUNT_ID, callId, recordingId));
+                () -> recordingsApi.deleteCallTranscription(BW_ACCOUNT_ID, callId,
+                        recordingId));
 
         assertThat(exception.getCode(), is(401));
     }
@@ -377,7 +384,8 @@ public class RecordingsApiTest {
         Basic.setPassword(FORBIDDEN_PASSWORD);
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.deleteCallTranscription(BW_ACCOUNT_ID, callId, recordingId));
+                () -> recordingsApi.deleteCallTranscription(BW_ACCOUNT_ID, callId,
+                        recordingId));
 
         assertThat(exception.getCode(), is(403));
     }
@@ -388,7 +396,8 @@ public class RecordingsApiTest {
         Basic.setPassword("bad_password");
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.transcribeCallRecording(BW_ACCOUNT_ID, callId, recordingId, transcribeRecording));
+                () -> recordingsApi.transcribeCallRecording(BW_ACCOUNT_ID, callId,
+                        recordingId, transcribeRecording));
 
         assertThat(exception.getCode(), is(401));
     }
@@ -399,7 +408,8 @@ public class RecordingsApiTest {
         Basic.setPassword(FORBIDDEN_PASSWORD);
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.transcribeCallRecording(BW_ACCOUNT_ID, callId, recordingId, transcribeRecording));
+                () -> recordingsApi.transcribeCallRecording(BW_ACCOUNT_ID, callId,
+                        recordingId, transcribeRecording));
 
         System.out.println(exception.getCode());
         assertThat(exception.getCode(), is(403));
@@ -411,7 +421,8 @@ public class RecordingsApiTest {
         Basic.setPassword("bad_password");
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.deleteCallTranscription(BW_ACCOUNT_ID, callId, recordingId));
+                () -> recordingsApi.deleteCallTranscription(BW_ACCOUNT_ID, callId,
+                        recordingId));
 
         assertThat(exception.getCode(), is(401));
     }
@@ -422,7 +433,8 @@ public class RecordingsApiTest {
         Basic.setPassword(FORBIDDEN_PASSWORD);
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.deleteCallTranscription(BW_ACCOUNT_ID, callId, recordingId));
+                () -> recordingsApi.deleteCallTranscription(BW_ACCOUNT_ID, callId,
+                        recordingId));
 
         assertThat(exception.getCode(), is(403));
     }
