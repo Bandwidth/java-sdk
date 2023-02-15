@@ -72,9 +72,6 @@ public class RecordingsApiTest {
     public static void setUpBeforeClass() throws URISyntaxException {
         // answerUrl = new URI(MANTECA_BASE_URL + "/bxml/startRecording");
         answerUrl = new URI(MANTECA_BASE_URL + "/bxml/startLongRecording");
-
-        transcribeRecording.callbackUrl(new URI(MANTECA_BASE_URL + "/transcriptions"));
-        transcribeRecording.setTag(testId);
     }
 
     @AfterAll
@@ -193,6 +190,10 @@ public class RecordingsApiTest {
                 BW_ACCOUNT_ID, callId, recordingId);
         assertThat(recordingMetadataResponse.getStatusCode(), is(200));
 
+        // Pass the tag to transcribeRecording to receive the callback
+        transcribeRecording.callbackUrl(new URI(MANTECA_BASE_URL + "/transcriptions"));
+        transcribeRecording.setTag(testId);
+
         ApiResponse<Void> requestTranscriptionResponse = recordingsApi.transcribeCallRecordingWithHttpInfo(
                 BW_ACCOUNT_ID, callId, recordingId, transcribeRecording);
         assertThat(requestTranscriptionResponse.getStatusCode(), is(204));
@@ -266,14 +267,13 @@ public class RecordingsApiTest {
 
     @Test
     public void testRecordingNotFound() {
-    Basic.setUsername(BW_USERNAME);
-    Basic.setPassword(BW_PASSWORD);
+        Basic.setUsername(BW_USERNAME);
+        Basic.setPassword(BW_PASSWORD);
 
-    ApiException exception = Assertions.assertThrows(ApiException.class,
-    () -> recordingsApi.getCallRecording(BW_ACCOUNT_ID, "not a call", "not a
-    recording"));
+        ApiException exception = Assertions.assertThrows(ApiException.class,
+                () -> recordingsApi.getCallRecording(BW_ACCOUNT_ID, "not a call", "not a recording"));
 
-    assertThat(exception.getCode(), is(404));
+        assertThat(exception.getCode(), is(404));
     }
 
     @Test
