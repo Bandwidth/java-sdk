@@ -43,6 +43,9 @@ jobs:
           OPERATING_SYSTEM: ${{ matrix.os }}
           JAVA_VERSION: ${{ matrix.java-version }}
           DISTRIBUTION: ${{ matrix.distribution }}
+          ATT_NUMBER: ${{ secrets.ATT_NUMBER }}
+          T_MOBILE_NUMBER: ${{ secrets.T_MOBILE_NUMBER }}
+          VZW_NUMBER: ${{ secrets.VZW_NUMBER }}
         run: mvn -B package --file pom.xml
 
       - name: Notify Slack of Failures
