@@ -19,10 +19,11 @@ public final class TestingEnvironmentVariables {
     public static final String MANTECA_ACTIVE_NUMBER = System.getenv("MANTECA_ACTIVE_NUMBER");
     public static final String MANTECA_IDLE_NUMBER = System.getenv("MANTECA_IDLE_NUMBER");
     public static final String MANTECA_BASE_URL = System.getenv("MANTECA_BASE_URL");
-    public static final String MANTECA_STATUS_URL = MANTECA_BASE_URL + "tests/";
+    public static final String MANTECA_STATUS_URL = MANTECA_BASE_URL + "/tests/";
     public static final String MANTECA_APPLICATION_ID = System.getenv("MANTECA_APPLICATION_ID");
     public static final String JAVA_VERSION = System.getenv("JAVA_VERSION");
     public static final String OPERATING_SYSTEM = System.getenv("OPERATING_SYSTEM");
+    public static final String DISTRIBUTION = System.getenv("DISTRIBUTION");
     public static final String RUNNER_OS = System.getenv("RUNNER_OS");
 
 }
