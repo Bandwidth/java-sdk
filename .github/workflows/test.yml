@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-2022, windows-2019, ubuntu-18.04, ubuntu-20.04]
-        java-version: ["11", " 17", "19"]
+        java-version: ["11", "17", "19"]
         distribution: ["zulu", "temurin"]
     steps:
       - name: Checkout
@@ -36,6 +36,14 @@ jobs:
           BASE_CALLBACK_URL: ${{ secrets.BASE_CALLBACK_URL }}
           JAVA_VERSION: ${{ matrix.java-version }}
           RUNNER_OS: ${{ matrix.os }}
+          BW_USERNAME_FORBIDDEN: ${{ secrets.BW_USERNAME_FORBIDDEN }}
+          BW_PASSWORD_FORBIDDEN: ${{ secrets.BW_PASSWORD_FORBIDDEN }}
+          MANTECA_IDLE_NUMBER: ${{ secrets.MANTECA_IDLE_NUMBER }}
+          MANTECA_ACTIVE_NUMBER: ${{ secrets.MANTECA_ACTIVE_NUMBER }}
+          MANTECA_APPLICATION_ID: ${{ secrets.MANTECA_APPLICATION_ID }}
+          MANTECA_BASE_URL: ${{ secrets.MANTECA_BASE_URL }}
+          OPERATING_SYSTEM: ${{ matrix.os }}
+          JAVA_VERSION: ${{ matrix.java-version }}
           DISTRIBUTION: ${{ matrix.distribution }}
           ATT_NUMBER: ${{ secrets.ATT_NUMBER }}
           T_MOBILE_NUMBER: ${{ secrets.T_MOBILE_NUMBER }}

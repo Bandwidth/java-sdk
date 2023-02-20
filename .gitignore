@@ -25,3 +25,6 @@ target
 .gradle
 build
 .vscode/settings.json
+
+# MacOS Files
+.DS_Store
