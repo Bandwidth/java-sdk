@@ -1,7 +1,6 @@
 package org.openapitools.client.utils;
 
 public final class TestingEnvironmentVariables {
-
     public static final String BW_USERNAME = System.getenv("BW_USERNAME");
     public static final String BW_PASSWORD = System.getenv("BW_PASSWORD");
     public static final String BW_ACCOUNT_ID = System.getenv("BW_ACCOUNT_ID");
@@ -25,5 +24,5 @@ public final class TestingEnvironmentVariables {
     public static final String OPERATING_SYSTEM = System.getenv("OPERATING_SYSTEM");
     public static final String DISTRIBUTION = System.getenv("DISTRIBUTION");
     public static final String RUNNER_OS = System.getenv("RUNNER_OS");
-
+    public static final String DISTRIBUTION = System.getenv("DISTRIBUTION");
 }
