@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.net.URI;
 import org.openapitools.client.model.CallbackMethodEnum;
@@ -42,6 +40,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -51,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateCall
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class CreateCall {
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
@@ -143,7 +142,6 @@ public class CreateCall {
    * @return to
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "+19195551234", required = true, value = "The destination to call (must be an E.164 formatted number (e.g. `+15555551212`) or a SIP URI (e.g. `sip:user@server.com`)).")
 
   public String getTo() {
     return to;
@@ -166,7 +164,6 @@ public class CreateCall {
    * @return from
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "+19195554321", required = true, value = "A Bandwidth phone number on your account the call should come from (must be in E.164 format, like `+15555551212`, or be one of the following strings: `Restricted`, `Anonymous`, `Private`, or `Unavailable`).")
 
   public String getFrom() {
     return from;
@@ -189,7 +186,6 @@ public class CreateCall {
    * @return uui
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "eyJhbGciOiJIUzI1NiJ9.WyJoaSJd.-znkjYyCkgz4djmHUPSXl9YrJ6Nix_XvmlwKGFh5ERM;encoding=jwt,aGVsbG8gd29ybGQ=;encoding=base64", value = "A comma-separated list of 'User-To-User' headers to be sent in the INVITE when calling a SIP URI. Each value must end with an 'encoding' parameter as described in <a href='https://tools.ietf.org/html/rfc7433'>RFC 7433</a>. Only 'jwt' and 'base64' encodings are allowed. The entire value cannot exceed 350 characters, including parameters and separators.")
 
   public String getUui() {
     return uui;
@@ -212,7 +208,6 @@ public class CreateCall {
    * @return applicationId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "1234-qwer-5679-tyui", required = true, value = "The id of the application associated with the `from` number.")
 
   public String getApplicationId() {
     return applicationId;
@@ -235,7 +230,6 @@ public class CreateCall {
    * @return answerUrl
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "https://www.myCallbackServer.com/webhooks/answer", required = true, value = "The full URL to send the <a href='/docs/voice/webhooks/answer'>Answer</a> event to when the called party answers. This endpoint should return the first <a href='/docs/voice/bxml'>BXML document</a> to be executed in the call.  Must use `https` if specifying `username` and `password`")
 
   public URI getAnswerUrl() {
     return answerUrl;
@@ -258,7 +252,6 @@ public class CreateCall {
    * @return answerMethod
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CallbackMethodEnum getAnswerMethod() {
     return answerMethod;
@@ -281,7 +274,6 @@ public class CreateCall {
    * @return username
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "mySecretUsername", value = "Basic auth username.")
 
   public String getUsername() {
     return username;
@@ -304,7 +296,6 @@ public class CreateCall {
    * @return password
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "mySecretPassword1!", value = "Basic auth password.")
 
   public String getPassword() {
     return password;
@@ -327,7 +318,6 @@ public class CreateCall {
    * @return answerFallbackUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "https://www.myFallbackServer.com/webhooks/answer", value = "A fallback url which, if provided, will be used to retry the `answer` webhook delivery in case `answerUrl` fails to respond  Must use `https` if specifying `fallbackUsername` and `fallbackPassword`")
 
   public URI getAnswerFallbackUrl() {
     return answerFallbackUrl;
@@ -350,7 +340,6 @@ public class CreateCall {
    * @return answerFallbackMethod
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CallbackMethodEnum getAnswerFallbackMethod() {
     return answerFallbackMethod;
@@ -373,7 +362,6 @@ public class CreateCall {
    * @return fallbackUsername
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "mySecretUsername", value = "Basic auth username.")
 
   public String getFallbackUsername() {
     return fallbackUsername;
@@ -396,7 +384,6 @@ public class CreateCall {
    * @return fallbackPassword
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "mySecretPassword1!", value = "Basic auth password.")
 
   public String getFallbackPassword() {
     return fallbackPassword;
@@ -419,7 +406,6 @@ public class CreateCall {
    * @return disconnectUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The URL to send the <a href='/docs/voice/webhooks/disconnect'>Disconnect</a> event to when the call ends. This event does not expect a BXML response.")
 
   public URI getDisconnectUrl() {
     return disconnectUrl;
@@ -442,7 +428,6 @@ public class CreateCall {
    * @return disconnectMethod
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CallbackMethodEnum getDisconnectMethod() {
     return disconnectMethod;
@@ -467,7 +452,6 @@ public class CreateCall {
    * @return callTimeout
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The timeout (in seconds) for the callee to answer the call after it starts ringing. If the call does not start ringing within 30s, the call will be cancelled regardless of this value.  Can be any numeric value (including decimals) between 1 and 300.")
 
   public Double getCallTimeout() {
     return callTimeout;
@@ -492,7 +476,6 @@ public class CreateCall {
    * @return callbackTimeout
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "This is the timeout (in seconds) to use when delivering webhooks for the call. Can be any numeric value (including decimals) between 1 and 25.")
 
   public Double getCallbackTimeout() {
     return callbackTimeout;
@@ -515,7 +498,6 @@ public class CreateCall {
    * @return machineDetection
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public MachineDetectionConfiguration getMachineDetection() {
     return machineDetection;
@@ -540,7 +522,6 @@ public class CreateCall {
    * @return priority
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The priority of this call over other calls from your account. For example, if during a call your application needs to place a new call and bridge it with the current call, you might want to create the call with priority 1 so that it will be the next call picked off your queue, ahead of other less time sensitive calls. A lower value means higher priority, so a priority 1 call takes precedence over a priority 2 call.")
 
   public Integer getPriority() {
     return priority;
@@ -563,7 +544,6 @@ public class CreateCall {
    * @return tag
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A custom string that will be sent with all webhooks for this call unless overwritten by a future <a href='/docs/voice/bxml/tag'>`<Tag>`</a> verb or `tag` attribute on another verb, or cleared.  May be cleared by setting `tag=\"\"`  Max length 256 characters.")
 
   public String getTag() {
     return tag;
@@ -703,9 +683,7 @@ public class CreateCall {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (CreateCall.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!CreateCall.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CreateCall is not found in the empty JSON string", CreateCall.openapiRequiredFields.toString()));
         }
       }
@@ -724,19 +702,19 @@ public class CreateCall {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonPrimitive()) {
+      if (!jsonObj.get("to").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
-      if ((jsonObj.get("from") != null && !jsonObj.get("from").isJsonNull()) && !jsonObj.get("from").isJsonPrimitive()) {
+      if (!jsonObj.get("from").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
       }
       if ((jsonObj.get("uui") != null && !jsonObj.get("uui").isJsonNull()) && !jsonObj.get("uui").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `uui` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uui").toString()));
       }
-      if ((jsonObj.get("applicationId") != null && !jsonObj.get("applicationId").isJsonNull()) && !jsonObj.get("applicationId").isJsonPrimitive()) {
+      if (!jsonObj.get("applicationId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
       }
-      if ((jsonObj.get("answerUrl") != null && !jsonObj.get("answerUrl").isJsonNull()) && !jsonObj.get("answerUrl").isJsonPrimitive()) {
+      if (!jsonObj.get("answerUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `answerUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("answerUrl").toString()));
       }
       if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {

@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.net.URI;
 import java.time.OffsetDateTime;
@@ -42,6 +40,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -51,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * ConferenceRecordingMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class ConferenceRecordingMetadata {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
@@ -111,7 +110,6 @@ public class ConferenceRecordingMetadata {
    * @return accountId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "920012", value = "The user account associated with the call.")
 
   public String getAccountId() {
     return accountId;
@@ -134,7 +132,6 @@ public class ConferenceRecordingMetadata {
    * @return conferenceId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9", value = "The unique, Bandwidth-generated ID of the conference that was recorded")
 
   public String getConferenceId() {
     return conferenceId;
@@ -157,7 +154,6 @@ public class ConferenceRecordingMetadata {
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "my-conference-name", value = "The user-specified name of the conference that was recorded")
 
   public String getName() {
     return name;
@@ -180,7 +176,6 @@ public class ConferenceRecordingMetadata {
    * @return recordingId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "r-fbe05094-9fd2afe9-bf5b-4c68-820a-41a01c1c5833", value = "The unique ID of this recording")
 
   public String getRecordingId() {
     return recordingId;
@@ -203,7 +198,6 @@ public class ConferenceRecordingMetadata {
    * @return duration
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "PT13.67S", value = "The duration of the recording in ISO-8601 format")
 
   public String getDuration() {
     return duration;
@@ -226,7 +220,6 @@ public class ConferenceRecordingMetadata {
    * @return channels
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "1", value = "Always `1` for conference recordings; multi-channel recordings are not supported on conferences.")
 
   public Integer getChannels() {
     return channels;
@@ -249,7 +242,6 @@ public class ConferenceRecordingMetadata {
    * @return startTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2022-06-17T22:19:40.375Z", value = "Time the call was started, in ISO 8601 format.")
 
   public OffsetDateTime getStartTime() {
     return startTime;
@@ -272,7 +264,6 @@ public class ConferenceRecordingMetadata {
    * @return endTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2022-06-17T22:20Z", value = "The time that the recording ended in ISO-8601 format")
 
   public OffsetDateTime getEndTime() {
     return endTime;
@@ -295,7 +286,6 @@ public class ConferenceRecordingMetadata {
    * @return fileFormat
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public FileFormatEnum getFileFormat() {
     return fileFormat;
@@ -318,7 +308,6 @@ public class ConferenceRecordingMetadata {
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "completed", value = "The current status of the process. For recording, current possible values are 'processing', 'partial', 'complete', 'deleted', and 'error'. For transcriptions, current possible values are 'none', 'processing', 'available', 'error', 'timeout', 'file-size-too-big', and 'file-size-too-small'. Additional states may be added in the future, so your application must be tolerant of unknown values.")
 
   public String getStatus() {
     return status;
@@ -341,7 +330,6 @@ public class ConferenceRecordingMetadata {
    * @return mediaUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "https://voice.bandwidth.com/api/v2/accounts/9900000/conferences/conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9/recordings/r-fbe05094-9fd2afe9-bf5b-4c68-820a-41a01c1c5833/media", value = "The URL that can be used to download the recording. Only present if the recording is finished and may be downloaded.")
 
   public URI getMediaUrl() {
     return mediaUrl;
@@ -453,9 +441,7 @@ public class ConferenceRecordingMetadata {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (ConferenceRecordingMetadata.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!ConferenceRecordingMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ConferenceRecordingMetadata is not found in the empty JSON string", ConferenceRecordingMetadata.openapiRequiredFields.toString()));
         }
       }

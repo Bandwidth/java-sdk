@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -38,6 +36,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -47,7 +46,7 @@ import org.openapitools.client.JSON;
 /**
  * PageInfo
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class PageInfo {
   public static final String SERIALIZED_NAME_PREV_PAGE = "prevPage";
   @SerializedName(SERIALIZED_NAME_PREV_PAGE)
@@ -79,7 +78,6 @@ public class PageInfo {
    * @return prevPage
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "https://messaging.bandwidth.com/api/v2/users/accountId/messages?messageStatus=DLR_EXPIRED&nextPage=DLAPE902", value = "The link to the previous page for pagination.")
 
   public String getPrevPage() {
     return prevPage;
@@ -102,7 +100,6 @@ public class PageInfo {
    * @return nextPage
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "https://messaging.bandwidth.com/api/v2/users/accountId/messages?messageStatus=DLR_EXPIRED&prevPage=GL83PD3C", value = "The link to the next page for pagination.")
 
   public String getNextPage() {
     return nextPage;
@@ -125,7 +122,6 @@ public class PageInfo {
    * @return prevPageToken
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "DLAPE902", value = "The isolated pagination token for the previous page.")
 
   public String getPrevPageToken() {
     return prevPageToken;
@@ -148,7 +144,6 @@ public class PageInfo {
    * @return nextPageToken
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "GL83PD3C", value = "The isolated pagination token for the next page.")
 
   public String getNextPageToken() {
     return nextPageToken;
@@ -228,9 +223,7 @@ public class PageInfo {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (PageInfo.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!PageInfo.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PageInfo is not found in the empty JSON string", PageInfo.openapiRequiredFields.toString()));
         }
       }

@@ -113,7 +113,7 @@ public class PhoneNumberLookupApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/tnlookup"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -143,20 +143,17 @@ public class PhoneNumberLookupApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createLookupValidateBeforeCall(String accountId, LookupRequest lookupRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling createLookup(Async)");
         }
-        
+
         // verify the required parameter 'lookupRequest' is set
         if (lookupRequest == null) {
             throw new ApiException("Missing the required parameter 'lookupRequest' when calling createLookup(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createLookupCall(accountId, lookupRequest, _callback);
-        return localVarCall;
+        return createLookupCall(accountId, lookupRequest, _callback);
 
     }
 
@@ -273,8 +270,8 @@ public class PhoneNumberLookupApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/tnlookup/{requestId}"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "requestId" + "\\}", localVarApiClient.escapeString(requestId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "requestId" + "}", localVarApiClient.escapeString(requestId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -291,7 +288,6 @@ public class PhoneNumberLookupApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -304,20 +300,17 @@ public class PhoneNumberLookupApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getLookupStatusValidateBeforeCall(String accountId, String requestId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getLookupStatus(Async)");
         }
-        
+
         // verify the required parameter 'requestId' is set
         if (requestId == null) {
             throw new ApiException("Missing the required parameter 'requestId' when calling getLookupStatus(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getLookupStatusCall(accountId, requestId, _callback);
-        return localVarCall;
+        return getLookupStatusCall(accountId, requestId, _callback);
 
     }
 

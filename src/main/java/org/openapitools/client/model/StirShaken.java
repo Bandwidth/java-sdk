@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -38,6 +36,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -47,7 +46,7 @@ import org.openapitools.client.JSON;
 /**
  * StirShaken
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class StirShaken {
   public static final String SERIALIZED_NAME_VERSTAT = "verstat";
   @SerializedName(SERIALIZED_NAME_VERSTAT)
@@ -75,7 +74,6 @@ public class StirShaken {
    * @return verstat
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Tn-Verification-Passed", value = "(optional) The verification status indicating whether the verification was successful or not. Possible values are TN-Verification-Passed and TN-Verification-Failed.")
 
   public String getVerstat() {
     return verstat;
@@ -98,7 +96,6 @@ public class StirShaken {
    * @return attestationIndicator
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "A", value = "(optional) The attestation level verified by Bandwidth. Possible values are A (full), B (partial) or C (gateway).")
 
   public String getAttestationIndicator() {
     return attestationIndicator;
@@ -121,7 +118,6 @@ public class StirShaken {
    * @return originatingId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "99759086-1335-11ed-9bcf-5f7d464e91af", value = "(optional) A unique origination identifier.")
 
   public String getOriginatingId() {
     return originatingId;
@@ -198,9 +194,7 @@ public class StirShaken {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (StirShaken.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!StirShaken.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in StirShaken is not found in the empty JSON string", StirShaken.openapiRequiredFields.toString()));
         }
       }

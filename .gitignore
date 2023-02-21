@@ -1,10 +1,5 @@
 *.class
 
-#Project and VSCode Settings
-.settings
-.vscode
-.idea
-
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
@@ -24,7 +19,3 @@ hs_err_pid*
 target
 .gradle
 build
-.vscode/settings.json
-
-# MacOS Files
-.DS_Store

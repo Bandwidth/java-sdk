@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.net.URI;
 import java.time.OffsetDateTime;
@@ -44,6 +42,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -53,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * CallRecordingMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class CallRecordingMetadata {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
@@ -141,7 +140,6 @@ public class CallRecordingMetadata {
    * @return applicationId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "04e88489-df02-4e34-a0ee-27a91849555f", value = "The id of the application associated with the call.")
 
   public String getApplicationId() {
     return applicationId;
@@ -164,7 +162,6 @@ public class CallRecordingMetadata {
    * @return accountId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "920012", value = "The user account associated with the call.")
 
   public String getAccountId() {
     return accountId;
@@ -187,7 +184,6 @@ public class CallRecordingMetadata {
    * @return callId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85", value = "The call id associated with the event.")
 
   public String getCallId() {
     return callId;
@@ -210,7 +206,6 @@ public class CallRecordingMetadata {
    * @return parentCallId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "c-95ac8d6e-1a31c52e-b38f-4198-93c1-51633ec68f8d", value = "(optional) If the event is related to the B leg of a <Transfer>, the call id of the original call leg that executed the <Transfer>. Otherwise, this field will not be present.")
 
   public String getParentCallId() {
     return parentCallId;
@@ -233,7 +228,6 @@ public class CallRecordingMetadata {
    * @return recordingId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "r-fbe05094-9fd2afe9-bf5b-4c68-820a-41a01c1c5833", value = "The unique ID of this recording")
 
   public String getRecordingId() {
     return recordingId;
@@ -256,7 +250,6 @@ public class CallRecordingMetadata {
    * @return to
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "+15555555555", value = "The phone number that received the call, in E.164 format (e.g. +15555555555).")
 
   public String getTo() {
     return to;
@@ -279,7 +272,6 @@ public class CallRecordingMetadata {
    * @return from
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "+15555555555", value = "The provided identifier of the caller: can be a phone number in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable, or Anonymous.")
 
   public String getFrom() {
     return from;
@@ -302,7 +294,6 @@ public class CallRecordingMetadata {
    * @return transferCallerId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "+15555555555", value = "The phone number used as the from field of the B-leg call, in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous, Private, or Unavailable.")
 
   public String getTransferCallerId() {
     return transferCallerId;
@@ -325,7 +316,6 @@ public class CallRecordingMetadata {
    * @return transferTo
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "+15555555555)", value = "The phone number used as the to field of the B-leg call, in E.164 format (e.g. +15555555555).")
 
   public String getTransferTo() {
     return transferTo;
@@ -348,7 +338,6 @@ public class CallRecordingMetadata {
    * @return duration
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "PT13.67S", value = "The duration of the recording in ISO-8601 format")
 
   public String getDuration() {
     return duration;
@@ -371,7 +360,6 @@ public class CallRecordingMetadata {
    * @return direction
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CallDirectionEnum getDirection() {
     return direction;
@@ -394,7 +382,6 @@ public class CallRecordingMetadata {
    * @return channels
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "1", value = "Always `1` for conference recordings; multi-channel recordings are not supported on conferences.")
 
   public Integer getChannels() {
     return channels;
@@ -417,7 +404,6 @@ public class CallRecordingMetadata {
    * @return startTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2022-06-17T22:19:40.375Z", value = "Time the call was started, in ISO 8601 format.")
 
   public OffsetDateTime getStartTime() {
     return startTime;
@@ -440,7 +426,6 @@ public class CallRecordingMetadata {
    * @return endTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2022-06-17T22:20Z", value = "The time that the recording ended in ISO-8601 format")
 
   public OffsetDateTime getEndTime() {
     return endTime;
@@ -463,7 +448,6 @@ public class CallRecordingMetadata {
    * @return fileFormat
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public FileFormatEnum getFileFormat() {
     return fileFormat;
@@ -486,7 +470,6 @@ public class CallRecordingMetadata {
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "completed", value = "The current status of the process. For recording, current possible values are 'processing', 'partial', 'complete', 'deleted', and 'error'. For transcriptions, current possible values are 'none', 'processing', 'available', 'error', 'timeout', 'file-size-too-big', and 'file-size-too-small'. Additional states may be added in the future, so your application must be tolerant of unknown values.")
 
   public String getStatus() {
     return status;
@@ -509,7 +492,6 @@ public class CallRecordingMetadata {
    * @return mediaUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "https://voice.bandwidth.com/api/v2/accounts/9900000/conferences/conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9/recordings/r-fbe05094-9fd2afe9-bf5b-4c68-820a-41a01c1c5833/media", value = "The URL that can be used to download the recording. Only present if the recording is finished and may be downloaded.")
 
   public URI getMediaUrl() {
     return mediaUrl;
@@ -532,7 +514,6 @@ public class CallRecordingMetadata {
    * @return transcription
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public TranscriptionMetadata getTranscription() {
     return transcription;
@@ -665,9 +646,7 @@ public class CallRecordingMetadata {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (CallRecordingMetadata.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!CallRecordingMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CallRecordingMetadata is not found in the empty JSON string", CallRecordingMetadata.openapiRequiredFields.toString()));
         }
       }

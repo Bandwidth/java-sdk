@@ -119,9 +119,9 @@ public class ConferencesApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/conferences/{conferenceId}/recordings/{recordingId}/media"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "conferenceId" + "\\}", localVarApiClient.escapeString(conferenceId.toString()))
-            .replaceAll("\\{" + "recordingId" + "\\}", localVarApiClient.escapeString(recordingId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "conferenceId" + "}", localVarApiClient.escapeString(conferenceId.toString()))
+            .replace("{" + "recordingId" + "}", localVarApiClient.escapeString(recordingId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -130,7 +130,9 @@ public class ConferencesApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "audio/vnd.wave", "audio/mpeg", "application/json"
+            "audio/vnd.wave",
+            "audio/mpeg",
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -138,7 +140,6 @@ public class ConferencesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -151,25 +152,22 @@ public class ConferencesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call downloadConferenceRecordingValidateBeforeCall(String accountId, String conferenceId, String recordingId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling downloadConferenceRecording(Async)");
         }
-        
+
         // verify the required parameter 'conferenceId' is set
         if (conferenceId == null) {
             throw new ApiException("Missing the required parameter 'conferenceId' when calling downloadConferenceRecording(Async)");
         }
-        
+
         // verify the required parameter 'recordingId' is set
         if (recordingId == null) {
             throw new ApiException("Missing the required parameter 'recordingId' when calling downloadConferenceRecording(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = downloadConferenceRecordingCall(accountId, conferenceId, recordingId, _callback);
-        return localVarCall;
+        return downloadConferenceRecordingCall(accountId, conferenceId, recordingId, _callback);
 
     }
 
@@ -297,8 +295,8 @@ public class ConferencesApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/conferences/{conferenceId}"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "conferenceId" + "\\}", localVarApiClient.escapeString(conferenceId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "conferenceId" + "}", localVarApiClient.escapeString(conferenceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -315,7 +313,6 @@ public class ConferencesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -328,20 +325,17 @@ public class ConferencesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getConferenceValidateBeforeCall(String accountId, String conferenceId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getConference(Async)");
         }
-        
+
         // verify the required parameter 'conferenceId' is set
         if (conferenceId == null) {
             throw new ApiException("Missing the required parameter 'conferenceId' when calling getConference(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getConferenceCall(accountId, conferenceId, _callback);
-        return localVarCall;
+        return getConferenceCall(accountId, conferenceId, _callback);
 
     }
 
@@ -467,9 +461,9 @@ public class ConferencesApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/conferences/{conferenceId}/members/{memberId}"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "conferenceId" + "\\}", localVarApiClient.escapeString(conferenceId.toString()))
-            .replaceAll("\\{" + "memberId" + "\\}", localVarApiClient.escapeString(memberId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "conferenceId" + "}", localVarApiClient.escapeString(conferenceId.toString()))
+            .replace("{" + "memberId" + "}", localVarApiClient.escapeString(memberId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -486,7 +480,6 @@ public class ConferencesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -499,25 +492,22 @@ public class ConferencesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getConferenceMemberValidateBeforeCall(String accountId, String conferenceId, String memberId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getConferenceMember(Async)");
         }
-        
+
         // verify the required parameter 'conferenceId' is set
         if (conferenceId == null) {
             throw new ApiException("Missing the required parameter 'conferenceId' when calling getConferenceMember(Async)");
         }
-        
+
         // verify the required parameter 'memberId' is set
         if (memberId == null) {
             throw new ApiException("Missing the required parameter 'memberId' when calling getConferenceMember(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getConferenceMemberCall(accountId, conferenceId, memberId, _callback);
-        return localVarCall;
+        return getConferenceMemberCall(accountId, conferenceId, memberId, _callback);
 
     }
 
@@ -646,9 +636,9 @@ public class ConferencesApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/conferences/{conferenceId}/recordings/{recordingId}"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "conferenceId" + "\\}", localVarApiClient.escapeString(conferenceId.toString()))
-            .replaceAll("\\{" + "recordingId" + "\\}", localVarApiClient.escapeString(recordingId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "conferenceId" + "}", localVarApiClient.escapeString(conferenceId.toString()))
+            .replace("{" + "recordingId" + "}", localVarApiClient.escapeString(recordingId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -665,7 +655,6 @@ public class ConferencesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -678,25 +667,22 @@ public class ConferencesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getConferenceRecordingValidateBeforeCall(String accountId, String conferenceId, String recordingId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getConferenceRecording(Async)");
         }
-        
+
         // verify the required parameter 'conferenceId' is set
         if (conferenceId == null) {
             throw new ApiException("Missing the required parameter 'conferenceId' when calling getConferenceRecording(Async)");
         }
-        
+
         // verify the required parameter 'recordingId' is set
         if (recordingId == null) {
             throw new ApiException("Missing the required parameter 'recordingId' when calling getConferenceRecording(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getConferenceRecordingCall(accountId, conferenceId, recordingId, _callback);
-        return localVarCall;
+        return getConferenceRecordingCall(accountId, conferenceId, recordingId, _callback);
 
     }
 
@@ -824,8 +810,8 @@ public class ConferencesApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/conferences/{conferenceId}/recordings"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "conferenceId" + "\\}", localVarApiClient.escapeString(conferenceId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "conferenceId" + "}", localVarApiClient.escapeString(conferenceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -842,7 +828,6 @@ public class ConferencesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -855,20 +840,17 @@ public class ConferencesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listConferenceRecordingsValidateBeforeCall(String accountId, String conferenceId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling listConferenceRecordings(Async)");
         }
-        
+
         // verify the required parameter 'conferenceId' is set
         if (conferenceId == null) {
             throw new ApiException("Missing the required parameter 'conferenceId' when calling listConferenceRecordings(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = listConferenceRecordingsCall(accountId, conferenceId, _callback);
-        return localVarCall;
+        return listConferenceRecordingsCall(accountId, conferenceId, _callback);
 
     }
 
@@ -997,7 +979,7 @@ public class ConferencesApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/conferences"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1034,7 +1016,6 @@ public class ConferencesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1047,15 +1028,12 @@ public class ConferencesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listConferencesValidateBeforeCall(String accountId, String name, String minCreatedTime, String maxCreatedTime, Integer pageSize, String pageToken, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling listConferences(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = listConferencesCall(accountId, name, minCreatedTime, maxCreatedTime, pageSize, pageToken, _callback);
-        return localVarCall;
+        return listConferencesCall(accountId, name, minCreatedTime, maxCreatedTime, pageSize, pageToken, _callback);
 
     }
 
@@ -1193,8 +1171,8 @@ public class ConferencesApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/conferences/{conferenceId}"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "conferenceId" + "\\}", localVarApiClient.escapeString(conferenceId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "conferenceId" + "}", localVarApiClient.escapeString(conferenceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1224,25 +1202,22 @@ public class ConferencesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateConferenceValidateBeforeCall(String accountId, String conferenceId, UpdateConference updateConference, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling updateConference(Async)");
         }
-        
+
         // verify the required parameter 'conferenceId' is set
         if (conferenceId == null) {
             throw new ApiException("Missing the required parameter 'conferenceId' when calling updateConference(Async)");
         }
-        
+
         // verify the required parameter 'updateConference' is set
         if (updateConference == null) {
             throw new ApiException("Missing the required parameter 'updateConference' when calling updateConference(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateConferenceCall(accountId, conferenceId, updateConference, _callback);
-        return localVarCall;
+        return updateConferenceCall(accountId, conferenceId, updateConference, _callback);
 
     }
 
@@ -1367,8 +1342,8 @@ public class ConferencesApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/conferences/{conferenceId}/bxml"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "conferenceId" + "\\}", localVarApiClient.escapeString(conferenceId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "conferenceId" + "}", localVarApiClient.escapeString(conferenceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1398,25 +1373,22 @@ public class ConferencesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateConferenceBxmlValidateBeforeCall(String accountId, String conferenceId, String body, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling updateConferenceBxml(Async)");
         }
-        
+
         // verify the required parameter 'conferenceId' is set
         if (conferenceId == null) {
             throw new ApiException("Missing the required parameter 'conferenceId' when calling updateConferenceBxml(Async)");
         }
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling updateConferenceBxml(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateConferenceBxmlCall(accountId, conferenceId, body, _callback);
-        return localVarCall;
+        return updateConferenceBxmlCall(accountId, conferenceId, body, _callback);
 
     }
 
@@ -1542,9 +1514,9 @@ public class ConferencesApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/conferences/{conferenceId}/members/{memberId}"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "conferenceId" + "\\}", localVarApiClient.escapeString(conferenceId.toString()))
-            .replaceAll("\\{" + "memberId" + "\\}", localVarApiClient.escapeString(memberId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "conferenceId" + "}", localVarApiClient.escapeString(conferenceId.toString()))
+            .replace("{" + "memberId" + "}", localVarApiClient.escapeString(memberId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1574,30 +1546,27 @@ public class ConferencesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateConferenceMemberValidateBeforeCall(String accountId, String conferenceId, String memberId, UpdateConferenceMember updateConferenceMember, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling updateConferenceMember(Async)");
         }
-        
+
         // verify the required parameter 'conferenceId' is set
         if (conferenceId == null) {
             throw new ApiException("Missing the required parameter 'conferenceId' when calling updateConferenceMember(Async)");
         }
-        
+
         // verify the required parameter 'memberId' is set
         if (memberId == null) {
             throw new ApiException("Missing the required parameter 'memberId' when calling updateConferenceMember(Async)");
         }
-        
+
         // verify the required parameter 'updateConferenceMember' is set
         if (updateConferenceMember == null) {
             throw new ApiException("Missing the required parameter 'updateConferenceMember' when calling updateConferenceMember(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateConferenceMemberCall(accountId, conferenceId, memberId, updateConferenceMember, _callback);
-        return localVarCall;
+        return updateConferenceMemberCall(accountId, conferenceId, memberId, updateConferenceMember, _callback);
 
     }
 

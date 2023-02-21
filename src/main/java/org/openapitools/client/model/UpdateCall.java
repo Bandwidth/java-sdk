@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.net.URI;
 import org.openapitools.client.model.CallStateEnum;
@@ -42,6 +40,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -51,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateCall
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class UpdateCall {
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
@@ -107,7 +106,6 @@ public class UpdateCall {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CallStateEnum getState() {
     return state;
@@ -130,7 +128,6 @@ public class UpdateCall {
    * @return redirectUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "https://myServer.com/bandwidth/webhooks/redirect", value = "The URL to send the [Redirect](/docs/voice/bxml/redirect) event to which will provide new BXML.  Required if `state` is `active`.  Not allowed if `state` is `completed`.")
 
   public URI getRedirectUrl() {
     return redirectUrl;
@@ -153,7 +150,6 @@ public class UpdateCall {
    * @return redirectMethod
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public RedirectMethodEnum getRedirectMethod() {
     return redirectMethod;
@@ -176,7 +172,6 @@ public class UpdateCall {
    * @return username
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "mySecretUsername", value = "Basic auth username.")
 
   public String getUsername() {
     return username;
@@ -199,7 +194,6 @@ public class UpdateCall {
    * @return password
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "mySecretPassword1!", value = "Basic auth password.")
 
   public String getPassword() {
     return password;
@@ -222,7 +216,6 @@ public class UpdateCall {
    * @return redirectFallbackUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "https://myFallbackServer.com/bandwidth/webhooks/redirect", value = "A fallback url which, if provided, will be used to retry the redirect callback delivery in case `redirectUrl` fails to respond")
 
   public URI getRedirectFallbackUrl() {
     return redirectFallbackUrl;
@@ -245,7 +238,6 @@ public class UpdateCall {
    * @return redirectFallbackMethod
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public RedirectMethodEnum getRedirectFallbackMethod() {
     return redirectFallbackMethod;
@@ -268,7 +260,6 @@ public class UpdateCall {
    * @return fallbackUsername
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "mySecretUsername", value = "Basic auth username.")
 
   public String getFallbackUsername() {
     return fallbackUsername;
@@ -291,7 +282,6 @@ public class UpdateCall {
    * @return fallbackPassword
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "mySecretPassword1!", value = "Basic auth password.")
 
   public String getFallbackPassword() {
     return fallbackPassword;
@@ -314,7 +304,6 @@ public class UpdateCall {
    * @return tag
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "My Custom Tag", value = "A custom string that will be sent with this and all future callbacks unless overwritten by a future `tag` attribute or [`<Tag>`](/docs/voice/bxml/tag) verb, or cleared.  May be cleared by setting `tag=\"\"`.  Max length 256 characters.  Not allowed if `state` is `completed`.")
 
   public String getTag() {
     return tag;
@@ -423,9 +412,7 @@ public class UpdateCall {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (UpdateCall.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!UpdateCall.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in UpdateCall is not found in the empty JSON string", UpdateCall.openapiRequiredFields.toString()));
         }
       }

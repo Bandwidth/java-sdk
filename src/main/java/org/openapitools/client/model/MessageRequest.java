@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
@@ -44,6 +42,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -53,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * MessageRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class MessageRequest {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
@@ -73,7 +72,7 @@ public class MessageRequest {
 
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
-  private List<URI> media = null;
+  private List<URI> media = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
@@ -101,7 +100,6 @@ public class MessageRequest {
    * @return applicationId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "93de2206-9669-4e07-948d-329f4b722ee2", required = true, value = "The ID of the Application your from number is associated with in the Bandwidth Phone Number Dashboard.")
 
   public String getApplicationId() {
     return applicationId;
@@ -129,7 +127,6 @@ public class MessageRequest {
    * @return to
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "[\"+15554443333\",\"+15552223333\"]", required = true, value = "The phone number(s) the message should be sent to in E164 format.")
 
   public Set<String> getTo() {
     return to;
@@ -152,7 +149,6 @@ public class MessageRequest {
    * @return from
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "+15551113333", required = true, value = "One of your telephone numbers the message should come from in E164 format.")
 
   public String getFrom() {
     return from;
@@ -175,7 +171,6 @@ public class MessageRequest {
    * @return text
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Hello world", value = "The contents of the text message. Must be 2048 characters or less.")
 
   public String getText() {
     return text;
@@ -202,11 +197,10 @@ public class MessageRequest {
   }
 
    /**
-   * A list of URLs to include as media attachments as part of the message.
+   * A list of URLs to include as media attachments as part of the message. Each URL can be at most 4096 characters.
    * @return media
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[\"https://dev.bandwidth.com/images/bandwidth-logo.png\",\"https://dev.bandwidth.com/images/github_logo.png\"]", value = "A list of URLs to include as media attachments as part of the message.")
 
   public List<URI> getMedia() {
     return media;
@@ -229,7 +223,6 @@ public class MessageRequest {
    * @return tag
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "custom string", value = "A custom string that will be included in callback events of the message. Max 1024 characters.")
 
   public String getTag() {
     return tag;
@@ -252,7 +245,6 @@ public class MessageRequest {
    * @return priority
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public PriorityEnum getPriority() {
     return priority;
@@ -275,7 +267,6 @@ public class MessageRequest {
    * @return expiration
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2021-02-01T11:29:18-05:00", value = "A string with the date/time value that the message will automatically expire by. This must be a valid RFC-3339 value, e.g., 2021-03-14T01:59:26Z or 2021-03-13T20:59:26-05:00.")
 
   public String getExpiration() {
     return expiration;
@@ -370,9 +361,7 @@ public class MessageRequest {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (MessageRequest.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!MessageRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MessageRequest is not found in the empty JSON string", MessageRequest.openapiRequiredFields.toString()));
         }
       }
@@ -391,21 +380,23 @@ public class MessageRequest {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("applicationId") != null && !jsonObj.get("applicationId").isJsonNull()) && !jsonObj.get("applicationId").isJsonPrimitive()) {
+      if (!jsonObj.get("applicationId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonArray()) {
+      // ensure the required json array is present
+      if (jsonObj.get("to") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("to").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be an array in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
-      if ((jsonObj.get("from") != null && !jsonObj.get("from").isJsonNull()) && !jsonObj.get("from").isJsonPrimitive()) {
+      if (!jsonObj.get("from").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
       }
       if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull()) && !jsonObj.get("text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("media") != null && !jsonObj.get("media").isJsonNull()) && !jsonObj.get("media").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `media` to be an array in the JSON string but got `%s`", jsonObj.get("media").toString()));
       }
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {

@@ -2,7 +2,7 @@
 
 Bandwidth
 - API version: 1.0.0
-  - Build date: 2022-10-18T08:49:31.529519-04:00[America/New_York]
+  - Build date: 2023-02-21T09:43:53.001100-05:00[America/New_York]
 
 Bandwidth's Communication APIs
 
@@ -186,12 +186,14 @@ Class | Method | HTTP request | Description
  - [CreateLookupResponse](docs/CreateLookupResponse.md)
  - [CreateMessageRequestError](docs/CreateMessageRequestError.md)
  - [DeferredResult](docs/DeferredResult.md)
- - [DisconenctCallback](docs/DisconenctCallback.md)
+ - [DisconnectCallback](docs/DisconnectCallback.md)
  - [Diversion](docs/Diversion.md)
  - [DtmfCallback](docs/DtmfCallback.md)
  - [FieldError](docs/FieldError.md)
  - [FileFormatEnum](docs/FileFormatEnum.md)
  - [GatherCallback](docs/GatherCallback.md)
+ - [InboundMessageCallback](docs/InboundMessageCallback.md)
+ - [InboundMessageCallbackMessage](docs/InboundMessageCallbackMessage.md)
  - [InitiateCallback](docs/InitiateCallback.md)
  - [ListMessageDirectionEnum](docs/ListMessageDirectionEnum.md)
  - [ListMessageItem](docs/ListMessageItem.md)
@@ -204,8 +206,14 @@ Class | Method | HTTP request | Description
  - [MachineDetectionModeEnum](docs/MachineDetectionModeEnum.md)
  - [Media](docs/Media.md)
  - [Message](docs/Message.md)
+ - [MessageDeliveredCallback](docs/MessageDeliveredCallback.md)
+ - [MessageDeliveredCallbackMessage](docs/MessageDeliveredCallbackMessage.md)
  - [MessageDirectionEnum](docs/MessageDirectionEnum.md)
+ - [MessageFailedCallback](docs/MessageFailedCallback.md)
+ - [MessageFailedCallbackMessage](docs/MessageFailedCallbackMessage.md)
  - [MessageRequest](docs/MessageRequest.md)
+ - [MessageSendingCallback](docs/MessageSendingCallback.md)
+ - [MessageSendingCallbackMessage](docs/MessageSendingCallbackMessage.md)
  - [MessageStatusEnum](docs/MessageStatusEnum.md)
  - [MessageTypeEnum](docs/MessageTypeEnum.md)
  - [MessagesList](docs/MessagesList.md)

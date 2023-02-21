@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -39,6 +37,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -48,7 +47,7 @@ import org.openapitools.client.JSON;
 /**
  * VoiceApiError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class VoiceApiError {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -76,7 +75,6 @@ public class VoiceApiError {
    * @return type
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getType() {
     return type;
@@ -99,7 +97,6 @@ public class VoiceApiError {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getDescription() {
     return description;
@@ -122,7 +119,6 @@ public class VoiceApiError {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getId() {
     return id;
@@ -210,9 +206,7 @@ public class VoiceApiError {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (VoiceApiError.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!VoiceApiError.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VoiceApiError is not found in the empty JSON string", VoiceApiError.openapiRequiredFields.toString()));
         }
       }

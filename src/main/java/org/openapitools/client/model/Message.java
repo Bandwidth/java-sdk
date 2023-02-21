@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -42,6 +40,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -51,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Message
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class Message {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -79,7 +78,7 @@ public class Message {
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
-  private Set<String> to = null;
+  private Set<String> to = new LinkedHashSet<>();
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
@@ -87,7 +86,7 @@ public class Message {
 
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
-  private Set<String> media = null;
+  private Set<String> media = new LinkedHashSet<>();
 
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
@@ -115,7 +114,6 @@ public class Message {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "1589228074636lm4k2je7j7jklbn2", value = "The id of the message.")
 
   public String getId() {
     return id;
@@ -138,7 +136,6 @@ public class Message {
    * @return owner
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "+15554443333", value = "The Bandwidth phone number associated with the message.")
 
   public String getOwner() {
     return owner;
@@ -161,7 +158,6 @@ public class Message {
    * @return applicationId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "93de2206-9669-4e07-948d-329f4b722ee2", value = "The application ID associated with the message.")
 
   public String getApplicationId() {
     return applicationId;
@@ -184,7 +180,6 @@ public class Message {
    * @return time
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2022-09-14T18:20:16.000Z", value = "The datetime stamp of the message in ISO 8601")
 
   public String getTime() {
     return time;
@@ -207,7 +202,6 @@ public class Message {
    * @return segmentCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2", value = "The number of segments the original message from the user is broken into before sending over to carrier networks.")
 
   public Integer getSegmentCount() {
     return segmentCount;
@@ -230,7 +224,6 @@ public class Message {
    * @return direction
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public MessageDirectionEnum getDirection() {
     return direction;
@@ -261,7 +254,6 @@ public class Message {
    * @return to
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[\"+15552223333\"]", value = "The phone number recipients of the message.")
 
   public Set<String> getTo() {
     return to;
@@ -284,7 +276,6 @@ public class Message {
    * @return from
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "+15553332222", value = "The phone number the message was sent from.")
 
   public String getFrom() {
     return from;
@@ -315,7 +306,6 @@ public class Message {
    * @return media
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[\"https://dev.bandwidth.com/images/bandwidth-logo.png\"]", value = "The list of media URLs sent in the message. Including a `filename` field in the `Content-Disposition` header of the media linked with a URL will set the displayed file name. This is a best practice to ensure that your media has a readable file name.")
 
   public Set<String> getMedia() {
     return media;
@@ -338,7 +328,6 @@ public class Message {
    * @return text
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Hello world", value = "The contents of the message.")
 
   public String getText() {
     return text;
@@ -361,7 +350,6 @@ public class Message {
    * @return tag
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "custom tag", value = "The custom string set by the user.")
 
   public String getTag() {
     return tag;
@@ -384,7 +372,6 @@ public class Message {
    * @return priority
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public PriorityEnum getPriority() {
     return priority;
@@ -488,9 +475,7 @@ public class Message {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (Message.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!Message.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Message is not found in the empty JSON string", Message.openapiRequiredFields.toString()));
         }
       }
@@ -514,15 +499,15 @@ public class Message {
       if ((jsonObj.get("time") != null && !jsonObj.get("time").isJsonNull()) && !jsonObj.get("time").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("time").toString()));
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("to") != null && !jsonObj.get("to").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be an array in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
       if ((jsonObj.get("from") != null && !jsonObj.get("from").isJsonNull()) && !jsonObj.get("from").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("media") != null && !jsonObj.get("media").isJsonNull()) && !jsonObj.get("media").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `media` to be an array in the JSON string but got `%s`", jsonObj.get("media").toString()));
       }
       if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull()) && !jsonObj.get("text").isJsonPrimitive()) {

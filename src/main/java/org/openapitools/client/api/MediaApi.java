@@ -113,8 +113,8 @@ public class MediaApi {
 
         // create path and map variables
         String localVarPath = "/users/{accountId}/media/{mediaId}"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "mediaId" + "\\}", localVarApiClient.escapeString(mediaId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "mediaId" + "}", localVarApiClient.escapeString(mediaId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -131,7 +131,6 @@ public class MediaApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -144,20 +143,17 @@ public class MediaApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteMediaValidateBeforeCall(String accountId, String mediaId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling deleteMedia(Async)");
         }
-        
+
         // verify the required parameter 'mediaId' is set
         if (mediaId == null) {
             throw new ApiException("Missing the required parameter 'mediaId' when calling deleteMedia(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteMediaCall(accountId, mediaId, _callback);
-        return localVarCall;
+        return deleteMediaCall(accountId, mediaId, _callback);
 
     }
 
@@ -274,8 +270,8 @@ public class MediaApi {
 
         // create path and map variables
         String localVarPath = "/users/{accountId}/media/{mediaId}"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "mediaId" + "\\}", localVarApiClient.escapeString(mediaId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "mediaId" + "}", localVarApiClient.escapeString(mediaId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -284,7 +280,8 @@ public class MediaApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/octet-stream", "application/json"
+            "application/octet-stream",
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -292,7 +289,6 @@ public class MediaApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -305,20 +301,17 @@ public class MediaApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getMediaValidateBeforeCall(String accountId, String mediaId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getMedia(Async)");
         }
-        
+
         // verify the required parameter 'mediaId' is set
         if (mediaId == null) {
             throw new ApiException("Missing the required parameter 'mediaId' when calling getMedia(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getMediaCall(accountId, mediaId, _callback);
-        return localVarCall;
+        return getMediaCall(accountId, mediaId, _callback);
 
     }
 
@@ -439,7 +432,7 @@ public class MediaApi {
 
         // create path and map variables
         String localVarPath = "/users/{accountId}/media"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -460,7 +453,6 @@ public class MediaApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -473,15 +465,12 @@ public class MediaApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listMediaValidateBeforeCall(String accountId, String continuationToken, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling listMedia(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = listMediaCall(accountId, continuationToken, _callback);
-        return localVarCall;
+        return listMediaCall(accountId, continuationToken, _callback);
 
     }
 
@@ -605,8 +594,8 @@ public class MediaApi {
 
         // create path and map variables
         String localVarPath = "/users/{accountId}/media/{mediaId}"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "mediaId" + "\\}", localVarApiClient.escapeString(mediaId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "mediaId" + "}", localVarApiClient.escapeString(mediaId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -631,7 +620,50 @@ public class MediaApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json", "application/ogg", "application/pdf", "application/rtf", "application/zip", "application/x-tar", "application/xml", "application/gzip", "application/x-bzip2", "application/x-gzip", "application/smil", "application/javascript", "audio/mp4", "audio/mpeg", "audio/ogg", "audio/flac", "audio/webm", "audio/wav", "audio/amr", "audio/3gpp", "image/bmp", "image/gif", "image/jpeg", "image/pjpeg", "image/png", "image/svg+xml", "image/tiff", "image/webp", "image/x-icon", "text/css", "text/csv", "text/calendar", "text/plain", "text/javascript", "text/vcard", "text/vnd.wap.wml", "text/xml", "video/avi", "video/mp4", "video/mpeg", "video/ogg", "video/quicktime", "video/webm", "video/x-ms-wmv"
+            "application/json",
+            "application/ogg",
+            "application/pdf",
+            "application/rtf",
+            "application/zip",
+            "application/x-tar",
+            "application/xml",
+            "application/gzip",
+            "application/x-bzip2",
+            "application/x-gzip",
+            "application/smil",
+            "application/javascript",
+            "audio/mp4",
+            "audio/mpeg",
+            "audio/ogg",
+            "audio/flac",
+            "audio/webm",
+            "audio/wav",
+            "audio/amr",
+            "audio/3gpp",
+            "image/bmp",
+            "image/gif",
+            "image/jpeg",
+            "image/pjpeg",
+            "image/png",
+            "image/svg+xml",
+            "image/tiff",
+            "image/webp",
+            "image/x-icon",
+            "text/css",
+            "text/csv",
+            "text/calendar",
+            "text/plain",
+            "text/javascript",
+            "text/vcard",
+            "text/vnd.wap.wml",
+            "text/xml",
+            "video/avi",
+            "video/mp4",
+            "video/mpeg",
+            "video/ogg",
+            "video/quicktime",
+            "video/webm",
+            "video/x-ms-wmv"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -644,31 +676,28 @@ public class MediaApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call uploadMediaValidateBeforeCall(String accountId, String mediaId, File body, String contentType, String cacheControl, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling uploadMedia(Async)");
         }
-        
+
         // verify the required parameter 'mediaId' is set
         if (mediaId == null) {
             throw new ApiException("Missing the required parameter 'mediaId' when calling uploadMedia(Async)");
         }
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling uploadMedia(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = uploadMediaCall(accountId, mediaId, body, contentType, cacheControl, _callback);
-        return localVarCall;
+        return uploadMediaCall(accountId, mediaId, body, contentType, cacheControl, _callback);
 
     }
 
     /**
      * Upload Media
-     * Upload a file. You may add headers to the request in order to provide some control to your media file.  A list of supported media types can be found [here](https://support.bandwidth.com/hc/en-us/articles/360014128994-What-MMS-file-types-are-supported-).
+     * Upload a file. You may add headers to the request in order to provide some control to your media file.  If a file is uploaded with the same name as a file that already exists under this account, the previous file will be overwritten.  A list of supported media types can be found [here](https://support.bandwidth.com/hc/en-us/articles/360014128994-What-MMS-file-types-are-supported-).
      * @param accountId Your Bandwidth Account ID. (required)
      * @param mediaId Media ID to retrieve. (required)
      * @param body  (required)
@@ -694,7 +723,7 @@ public class MediaApi {
 
     /**
      * Upload Media
-     * Upload a file. You may add headers to the request in order to provide some control to your media file.  A list of supported media types can be found [here](https://support.bandwidth.com/hc/en-us/articles/360014128994-What-MMS-file-types-are-supported-).
+     * Upload a file. You may add headers to the request in order to provide some control to your media file.  If a file is uploaded with the same name as a file that already exists under this account, the previous file will be overwritten.  A list of supported media types can be found [here](https://support.bandwidth.com/hc/en-us/articles/360014128994-What-MMS-file-types-are-supported-).
      * @param accountId Your Bandwidth Account ID. (required)
      * @param mediaId Media ID to retrieve. (required)
      * @param body  (required)
@@ -722,7 +751,7 @@ public class MediaApi {
 
     /**
      * Upload Media (asynchronously)
-     * Upload a file. You may add headers to the request in order to provide some control to your media file.  A list of supported media types can be found [here](https://support.bandwidth.com/hc/en-us/articles/360014128994-What-MMS-file-types-are-supported-).
+     * Upload a file. You may add headers to the request in order to provide some control to your media file.  If a file is uploaded with the same name as a file that already exists under this account, the previous file will be overwritten.  A list of supported media types can be found [here](https://support.bandwidth.com/hc/en-us/articles/360014128994-What-MMS-file-types-are-supported-).
      * @param accountId Your Bandwidth Account ID. (required)
      * @param mediaId Media ID to retrieve. (required)
      * @param body  (required)

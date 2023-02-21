@@ -118,9 +118,9 @@ public class RecordingsApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "callId" + "\\}", localVarApiClient.escapeString(callId.toString()))
-            .replaceAll("\\{" + "recordingId" + "\\}", localVarApiClient.escapeString(recordingId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "callId" + "}", localVarApiClient.escapeString(callId.toString()))
+            .replace("{" + "recordingId" + "}", localVarApiClient.escapeString(recordingId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -137,7 +137,6 @@ public class RecordingsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -150,25 +149,22 @@ public class RecordingsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteCallTranscriptionValidateBeforeCall(String accountId, String callId, String recordingId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling deleteCallTranscription(Async)");
         }
-        
+
         // verify the required parameter 'callId' is set
         if (callId == null) {
             throw new ApiException("Missing the required parameter 'callId' when calling deleteCallTranscription(Async)");
         }
-        
+
         // verify the required parameter 'recordingId' is set
         if (recordingId == null) {
             throw new ApiException("Missing the required parameter 'recordingId' when calling deleteCallTranscription(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteCallTranscriptionCall(accountId, callId, recordingId, _callback);
-        return localVarCall;
+        return deleteCallTranscriptionCall(accountId, callId, recordingId, _callback);
 
     }
 
@@ -293,9 +289,9 @@ public class RecordingsApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/calls/{callId}/recordings/{recordingId}"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "callId" + "\\}", localVarApiClient.escapeString(callId.toString()))
-            .replaceAll("\\{" + "recordingId" + "\\}", localVarApiClient.escapeString(recordingId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "callId" + "}", localVarApiClient.escapeString(callId.toString()))
+            .replace("{" + "recordingId" + "}", localVarApiClient.escapeString(recordingId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -312,7 +308,6 @@ public class RecordingsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -325,25 +320,22 @@ public class RecordingsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteRecordingValidateBeforeCall(String accountId, String callId, String recordingId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling deleteRecording(Async)");
         }
-        
+
         // verify the required parameter 'callId' is set
         if (callId == null) {
             throw new ApiException("Missing the required parameter 'callId' when calling deleteRecording(Async)");
         }
-        
+
         // verify the required parameter 'recordingId' is set
         if (recordingId == null) {
             throw new ApiException("Missing the required parameter 'recordingId' when calling deleteRecording(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteRecordingCall(accountId, callId, recordingId, _callback);
-        return localVarCall;
+        return deleteRecordingCall(accountId, callId, recordingId, _callback);
 
     }
 
@@ -468,9 +460,9 @@ public class RecordingsApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/calls/{callId}/recordings/{recordingId}/media"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "callId" + "\\}", localVarApiClient.escapeString(callId.toString()))
-            .replaceAll("\\{" + "recordingId" + "\\}", localVarApiClient.escapeString(recordingId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "callId" + "}", localVarApiClient.escapeString(callId.toString()))
+            .replace("{" + "recordingId" + "}", localVarApiClient.escapeString(recordingId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -487,7 +479,6 @@ public class RecordingsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -500,25 +491,22 @@ public class RecordingsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteRecordingMediaValidateBeforeCall(String accountId, String callId, String recordingId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling deleteRecordingMedia(Async)");
         }
-        
+
         // verify the required parameter 'callId' is set
         if (callId == null) {
             throw new ApiException("Missing the required parameter 'callId' when calling deleteRecordingMedia(Async)");
         }
-        
+
         // verify the required parameter 'recordingId' is set
         if (recordingId == null) {
             throw new ApiException("Missing the required parameter 'recordingId' when calling deleteRecordingMedia(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteRecordingMediaCall(accountId, callId, recordingId, _callback);
-        return localVarCall;
+        return deleteRecordingMediaCall(accountId, callId, recordingId, _callback);
 
     }
 
@@ -643,9 +631,9 @@ public class RecordingsApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/calls/{callId}/recordings/{recordingId}/media"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "callId" + "\\}", localVarApiClient.escapeString(callId.toString()))
-            .replaceAll("\\{" + "recordingId" + "\\}", localVarApiClient.escapeString(recordingId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "callId" + "}", localVarApiClient.escapeString(callId.toString()))
+            .replace("{" + "recordingId" + "}", localVarApiClient.escapeString(recordingId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -654,7 +642,9 @@ public class RecordingsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "audio/vnd.wave", "audio/mpeg", "application/json"
+            "audio/vnd.wave",
+            "audio/mpeg",
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -662,7 +652,6 @@ public class RecordingsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -675,25 +664,22 @@ public class RecordingsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call downloadCallRecordingValidateBeforeCall(String accountId, String callId, String recordingId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling downloadCallRecording(Async)");
         }
-        
+
         // verify the required parameter 'callId' is set
         if (callId == null) {
             throw new ApiException("Missing the required parameter 'callId' when calling downloadCallRecording(Async)");
         }
-        
+
         // verify the required parameter 'recordingId' is set
         if (recordingId == null) {
             throw new ApiException("Missing the required parameter 'recordingId' when calling downloadCallRecording(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = downloadCallRecordingCall(accountId, callId, recordingId, _callback);
-        return localVarCall;
+        return downloadCallRecordingCall(accountId, callId, recordingId, _callback);
 
     }
 
@@ -822,9 +808,9 @@ public class RecordingsApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/calls/{callId}/recordings/{recordingId}"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "callId" + "\\}", localVarApiClient.escapeString(callId.toString()))
-            .replaceAll("\\{" + "recordingId" + "\\}", localVarApiClient.escapeString(recordingId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "callId" + "}", localVarApiClient.escapeString(callId.toString()))
+            .replace("{" + "recordingId" + "}", localVarApiClient.escapeString(recordingId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -841,7 +827,6 @@ public class RecordingsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -854,25 +839,22 @@ public class RecordingsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCallRecordingValidateBeforeCall(String accountId, String callId, String recordingId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getCallRecording(Async)");
         }
-        
+
         // verify the required parameter 'callId' is set
         if (callId == null) {
             throw new ApiException("Missing the required parameter 'callId' when calling getCallRecording(Async)");
         }
-        
+
         // verify the required parameter 'recordingId' is set
         if (recordingId == null) {
             throw new ApiException("Missing the required parameter 'recordingId' when calling getCallRecording(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getCallRecordingCall(accountId, callId, recordingId, _callback);
-        return localVarCall;
+        return getCallRecordingCall(accountId, callId, recordingId, _callback);
 
     }
 
@@ -1001,9 +983,9 @@ public class RecordingsApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "callId" + "\\}", localVarApiClient.escapeString(callId.toString()))
-            .replaceAll("\\{" + "recordingId" + "\\}", localVarApiClient.escapeString(recordingId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "callId" + "}", localVarApiClient.escapeString(callId.toString()))
+            .replace("{" + "recordingId" + "}", localVarApiClient.escapeString(recordingId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1020,7 +1002,6 @@ public class RecordingsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1033,25 +1014,22 @@ public class RecordingsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCallTranscriptionValidateBeforeCall(String accountId, String callId, String recordingId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getCallTranscription(Async)");
         }
-        
+
         // verify the required parameter 'callId' is set
         if (callId == null) {
             throw new ApiException("Missing the required parameter 'callId' when calling getCallTranscription(Async)");
         }
-        
+
         // verify the required parameter 'recordingId' is set
         if (recordingId == null) {
             throw new ApiException("Missing the required parameter 'recordingId' when calling getCallTranscription(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getCallTranscriptionCall(accountId, callId, recordingId, _callback);
-        return localVarCall;
+        return getCallTranscriptionCall(accountId, callId, recordingId, _callback);
 
     }
 
@@ -1182,7 +1160,7 @@ public class RecordingsApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/recordings"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1215,7 +1193,6 @@ public class RecordingsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1228,15 +1205,12 @@ public class RecordingsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listAccountCallRecordingsValidateBeforeCall(String accountId, String to, String from, String minStartTime, String maxStartTime, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling listAccountCallRecordings(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = listAccountCallRecordingsCall(accountId, to, from, minStartTime, maxStartTime, _callback);
-        return localVarCall;
+        return listAccountCallRecordingsCall(accountId, to, from, minStartTime, maxStartTime, _callback);
 
     }
 
@@ -1370,8 +1344,8 @@ public class RecordingsApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/calls/{callId}/recordings"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "callId" + "\\}", localVarApiClient.escapeString(callId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "callId" + "}", localVarApiClient.escapeString(callId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1388,7 +1362,6 @@ public class RecordingsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1401,20 +1374,17 @@ public class RecordingsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listCallRecordingsValidateBeforeCall(String accountId, String callId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling listCallRecordings(Async)");
         }
-        
+
         // verify the required parameter 'callId' is set
         if (callId == null) {
             throw new ApiException("Missing the required parameter 'callId' when calling listCallRecordings(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = listCallRecordingsCall(accountId, callId, _callback);
-        return localVarCall;
+        return listCallRecordingsCall(accountId, callId, _callback);
 
     }
 
@@ -1541,9 +1511,9 @@ public class RecordingsApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "callId" + "\\}", localVarApiClient.escapeString(callId.toString()))
-            .replaceAll("\\{" + "recordingId" + "\\}", localVarApiClient.escapeString(recordingId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "callId" + "}", localVarApiClient.escapeString(callId.toString()))
+            .replace("{" + "recordingId" + "}", localVarApiClient.escapeString(recordingId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1573,30 +1543,27 @@ public class RecordingsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call transcribeCallRecordingValidateBeforeCall(String accountId, String callId, String recordingId, TranscribeRecording transcribeRecording, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling transcribeCallRecording(Async)");
         }
-        
+
         // verify the required parameter 'callId' is set
         if (callId == null) {
             throw new ApiException("Missing the required parameter 'callId' when calling transcribeCallRecording(Async)");
         }
-        
+
         // verify the required parameter 'recordingId' is set
         if (recordingId == null) {
             throw new ApiException("Missing the required parameter 'recordingId' when calling transcribeCallRecording(Async)");
         }
-        
+
         // verify the required parameter 'transcribeRecording' is set
         if (transcribeRecording == null) {
             throw new ApiException("Missing the required parameter 'transcribeRecording' when calling transcribeCallRecording(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = transcribeCallRecordingCall(accountId, callId, recordingId, transcribeRecording, _callback);
-        return localVarCall;
+        return transcribeCallRecordingCall(accountId, callId, recordingId, transcribeRecording, _callback);
 
     }
 
@@ -1724,8 +1691,8 @@ public class RecordingsApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/calls/{callId}/recording"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "callId" + "\\}", localVarApiClient.escapeString(callId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "callId" + "}", localVarApiClient.escapeString(callId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1755,25 +1722,22 @@ public class RecordingsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateCallRecordingStateValidateBeforeCall(String accountId, String callId, UpdateCallRecording updateCallRecording, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling updateCallRecordingState(Async)");
         }
-        
+
         // verify the required parameter 'callId' is set
         if (callId == null) {
             throw new ApiException("Missing the required parameter 'callId' when calling updateCallRecordingState(Async)");
         }
-        
+
         // verify the required parameter 'updateCallRecording' is set
         if (updateCallRecording == null) {
             throw new ApiException("Missing the required parameter 'updateCallRecording' when calling updateCallRecordingState(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateCallRecordingStateCall(accountId, callId, updateCallRecording, _callback);
-        return localVarCall;
+        return updateCallRecordingStateCall(accountId, callId, updateCallRecording, _callback);
 
     }
 

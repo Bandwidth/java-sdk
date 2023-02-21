@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URI;
@@ -43,6 +41,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -52,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateCallResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class CreateCallResponse {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
@@ -152,7 +151,6 @@ public class CreateCallResponse {
    * @return applicationId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "04e88489-df02-4e34-a0ee-27a91849555f", required = true, value = "The id of the application associated with the `from` number.")
 
   public String getApplicationId() {
     return applicationId;
@@ -175,7 +173,6 @@ public class CreateCallResponse {
    * @return accountId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "9900000", required = true, value = "The bandwidth account ID associated with the call")
 
   public String getAccountId() {
     return accountId;
@@ -198,7 +195,6 @@ public class CreateCallResponse {
    * @return callId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85", required = true, value = "Programmable Voice API Call ID")
 
   public String getCallId() {
     return callId;
@@ -221,7 +217,6 @@ public class CreateCallResponse {
    * @return to
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "+19195551234", required = true, value = "Recipient of the outgoing call")
 
   public String getTo() {
     return to;
@@ -244,7 +239,6 @@ public class CreateCallResponse {
    * @return from
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "+19195554321", required = true, value = "Phone number that created the outbound call")
 
   public String getFrom() {
     return from;
@@ -267,7 +261,6 @@ public class CreateCallResponse {
    * @return enqueuedTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2022-06-16T13:15:07.160Z", value = "Time the call was accepted into the queue")
 
   public OffsetDateTime getEnqueuedTime() {
     return enqueuedTime;
@@ -290,7 +283,6 @@ public class CreateCallResponse {
    * @return callUrl
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "https://voice.bandwidth.com/api/v2/accounts/9900000/calls/c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85", required = true, value = "The URL to update call state")
 
   public URI getCallUrl() {
     return callUrl;
@@ -313,7 +305,6 @@ public class CreateCallResponse {
    * @return callTimeout
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "30", value = "The timeout (in seconds) for the callee to answer the call after it starts ringing.")
 
   public Double getCallTimeout() {
     return callTimeout;
@@ -336,7 +327,6 @@ public class CreateCallResponse {
    * @return callbackTimeout
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "15", value = "This is the timeout (in seconds) to use when delivering webhooks for the call.")
 
   public Double getCallbackTimeout() {
     return callbackTimeout;
@@ -359,7 +349,6 @@ public class CreateCallResponse {
    * @return tag
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "My custom tag value", value = "Custom tag value")
 
   public String getTag() {
     return tag;
@@ -382,7 +371,6 @@ public class CreateCallResponse {
    * @return answerMethod
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
 
   public CallbackMethodEnum getAnswerMethod() {
     return answerMethod;
@@ -405,7 +393,6 @@ public class CreateCallResponse {
    * @return answerUrl
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "https://myServer.com/bandwidth/webhooks/answer", required = true, value = "URL to deliver the `answer` event webhook.")
 
   public URI getAnswerUrl() {
     return answerUrl;
@@ -428,7 +415,6 @@ public class CreateCallResponse {
    * @return answerFallbackMethod
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CallbackMethodEnum getAnswerFallbackMethod() {
     return answerFallbackMethod;
@@ -451,7 +437,6 @@ public class CreateCallResponse {
    * @return answerFallbackUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "https://myFallbackServer.com/bandwidth/webhooks/answer", value = "Fallback URL to deliver the `answer` event webhook.")
 
   public URI getAnswerFallbackUrl() {
     return answerFallbackUrl;
@@ -474,7 +459,6 @@ public class CreateCallResponse {
    * @return disconnectMethod
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
 
   public CallbackMethodEnum getDisconnectMethod() {
     return disconnectMethod;
@@ -497,7 +481,6 @@ public class CreateCallResponse {
    * @return disconnectUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "https://myServer.com/bandwidth/webhooks/disconnect", value = "URL to deliver the `disconnect` event webhook.")
 
   public URI getDisconnectUrl() {
     return disconnectUrl;
@@ -520,7 +503,6 @@ public class CreateCallResponse {
    * @return username
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "mySecretUsername", value = "Basic auth username.")
 
   public String getUsername() {
     return username;
@@ -543,7 +525,6 @@ public class CreateCallResponse {
    * @return password
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "mySecretPassword1!", value = "Basic auth password.")
 
   public String getPassword() {
     return password;
@@ -566,7 +547,6 @@ public class CreateCallResponse {
    * @return fallbackUsername
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "mySecretUsername", value = "Basic auth username.")
 
   public String getFallbackUsername() {
     return fallbackUsername;
@@ -589,7 +569,6 @@ public class CreateCallResponse {
    * @return fallbackPassword
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "mySecretPassword1!", value = "Basic auth password.")
 
   public String getFallbackPassword() {
     return fallbackPassword;
@@ -612,7 +591,6 @@ public class CreateCallResponse {
    * @return priority
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "5", value = "The priority of this call over other calls from your account.")
 
   public BigDecimal getPriority() {
     return priority;
@@ -763,9 +741,7 @@ public class CreateCallResponse {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (CreateCallResponse.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!CreateCallResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CreateCallResponse is not found in the empty JSON string", CreateCallResponse.openapiRequiredFields.toString()));
         }
       }
@@ -784,28 +760,28 @@ public class CreateCallResponse {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("applicationId") != null && !jsonObj.get("applicationId").isJsonNull()) && !jsonObj.get("applicationId").isJsonPrimitive()) {
+      if (!jsonObj.get("applicationId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
       }
-      if ((jsonObj.get("accountId") != null && !jsonObj.get("accountId").isJsonNull()) && !jsonObj.get("accountId").isJsonPrimitive()) {
+      if (!jsonObj.get("accountId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountId").toString()));
       }
-      if ((jsonObj.get("callId") != null && !jsonObj.get("callId").isJsonNull()) && !jsonObj.get("callId").isJsonPrimitive()) {
+      if (!jsonObj.get("callId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callId").toString()));
       }
-      if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonPrimitive()) {
+      if (!jsonObj.get("to").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
-      if ((jsonObj.get("from") != null && !jsonObj.get("from").isJsonNull()) && !jsonObj.get("from").isJsonPrimitive()) {
+      if (!jsonObj.get("from").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
       }
-      if ((jsonObj.get("callUrl") != null && !jsonObj.get("callUrl").isJsonNull()) && !jsonObj.get("callUrl").isJsonPrimitive()) {
+      if (!jsonObj.get("callUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callUrl").toString()));
       }
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
       }
-      if ((jsonObj.get("answerUrl") != null && !jsonObj.get("answerUrl").isJsonNull()) && !jsonObj.get("answerUrl").isJsonPrimitive()) {
+      if (!jsonObj.get("answerUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `answerUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("answerUrl").toString()));
       }
       if ((jsonObj.get("answerFallbackUrl") != null && !jsonObj.get("answerFallbackUrl").isJsonNull()) && !jsonObj.get("answerFallbackUrl").isJsonPrimitive()) {

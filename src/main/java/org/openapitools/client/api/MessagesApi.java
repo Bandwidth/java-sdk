@@ -118,7 +118,7 @@ public class MessagesApi {
 
         // create path and map variables
         String localVarPath = "/users/{accountId}/messages"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -148,20 +148,17 @@ public class MessagesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createMessageValidateBeforeCall(String accountId, MessageRequest messageRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling createMessage(Async)");
         }
-        
+
         // verify the required parameter 'messageRequest' is set
         if (messageRequest == null) {
             throw new ApiException("Missing the required parameter 'messageRequest' when calling createMessage(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createMessageCall(accountId, messageRequest, _callback);
-        return localVarCall;
+        return createMessageCall(accountId, messageRequest, _callback);
 
     }
 
@@ -294,7 +291,7 @@ public class MessagesApi {
 
         // create path and map variables
         String localVarPath = "/users/{accountId}/messages"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -363,7 +360,6 @@ public class MessagesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -376,15 +372,12 @@ public class MessagesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listMessagesValidateBeforeCall(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String sort, String pageToken, Integer limit, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling listMessages(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = listMessagesCall(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, sort, pageToken, limit, _callback);
-        return localVarCall;
+        return listMessagesCall(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, sort, pageToken, limit, _callback);
 
     }
 

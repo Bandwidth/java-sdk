@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import org.openapitools.client.model.LookupStatusEnum;
 
@@ -39,6 +37,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -48,8 +47,7 @@ import org.openapitools.client.JSON;
 /**
  * The request has been accepted for processing but not yet finished and in a terminal state (COMPLETE, PARTIAL_COMPLETE, or FAILED).
  */
-@ApiModel(description = "The request has been accepted for processing but not yet finished and in a terminal state (COMPLETE, PARTIAL_COMPLETE, or FAILED).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class CreateLookupResponse {
   public static final String SERIALIZED_NAME_REQUEST_ID = "requestId";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
@@ -73,7 +71,6 @@ public class CreateLookupResponse {
    * @return requestId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The phone number lookup request ID from Bandwidth.")
 
   public String getRequestId() {
     return requestId;
@@ -96,7 +93,6 @@ public class CreateLookupResponse {
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public LookupStatusEnum getStatus() {
     return status;
@@ -170,9 +166,7 @@ public class CreateLookupResponse {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (CreateLookupResponse.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!CreateLookupResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CreateLookupResponse is not found in the empty JSON string", CreateLookupResponse.openapiRequiredFields.toString()));
         }
       }

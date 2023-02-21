@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import org.openapitools.client.model.ListMessageDirectionEnum;
 import org.openapitools.client.model.MessageStatusEnum;
@@ -42,6 +40,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -51,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * ListMessageItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class ListMessageItem {
   public static final String SERIALIZED_NAME_MESSAGE_ID = "messageId";
   @SerializedName(SERIALIZED_NAME_MESSAGE_ID)
@@ -131,7 +130,6 @@ public class ListMessageItem {
    * @return messageId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "1589228074636lm4k2je7j7jklbn2", value = "The message id")
 
   public String getMessageId() {
     return messageId;
@@ -154,7 +152,6 @@ public class ListMessageItem {
    * @return accountId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "9900000", value = "The account id associated with this message.")
 
   public String getAccountId() {
     return accountId;
@@ -177,7 +174,6 @@ public class ListMessageItem {
    * @return sourceTn
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "+15554443333", value = "The source phone number of the message.")
 
   public String getSourceTn() {
     return sourceTn;
@@ -200,7 +196,6 @@ public class ListMessageItem {
    * @return destinationTn
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "+15554442222", value = "The recipient phone number of the message.")
 
   public String getDestinationTn() {
     return destinationTn;
@@ -223,7 +218,6 @@ public class ListMessageItem {
    * @return messageStatus
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public MessageStatusEnum getMessageStatus() {
     return messageStatus;
@@ -246,7 +240,6 @@ public class ListMessageItem {
    * @return messageDirection
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public ListMessageDirectionEnum getMessageDirection() {
     return messageDirection;
@@ -269,7 +262,6 @@ public class ListMessageItem {
    * @return messageType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public MessageTypeEnum getMessageType() {
     return messageType;
@@ -292,7 +284,6 @@ public class ListMessageItem {
    * @return segmentCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "1", value = "The number of segments the message was sent as.")
 
   public Integer getSegmentCount() {
     return segmentCount;
@@ -315,7 +306,6 @@ public class ListMessageItem {
    * @return errorCode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "9902", value = "The numeric error code of the message.")
 
   public Integer getErrorCode() {
     return errorCode;
@@ -338,7 +328,6 @@ public class ListMessageItem {
    * @return receiveTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2020-04-07T14:03:07.000Z", value = "The ISO 8601 datetime of the message.")
 
   public String getReceiveTime() {
     return receiveTime;
@@ -361,7 +350,6 @@ public class ListMessageItem {
    * @return carrierName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "other", value = "The name of the carrier. Not currently supported for MMS coming soon.")
 
   public String getCarrierName() {
     return carrierName;
@@ -384,7 +372,6 @@ public class ListMessageItem {
    * @return messageSize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "27", value = "The size of the message including message content and headers.")
 
   public Integer getMessageSize() {
     return messageSize;
@@ -407,7 +394,6 @@ public class ListMessageItem {
    * @return messageLength
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "18", value = "The length of the message content.")
 
   public Integer getMessageLength() {
     return messageLength;
@@ -430,7 +416,6 @@ public class ListMessageItem {
    * @return attachmentCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "1", value = "The number of attachments the message has.")
 
   public Integer getAttachmentCount() {
     return attachmentCount;
@@ -453,7 +438,6 @@ public class ListMessageItem {
    * @return recipientCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "1", value = "The number of recipients the message has.")
 
   public Integer getRecipientCount() {
     return recipientCount;
@@ -476,7 +460,6 @@ public class ListMessageItem {
    * @return campaignClass
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "T", value = "The campaign class of the message if it has one.")
 
   public String getCampaignClass() {
     return campaignClass;
@@ -603,9 +586,7 @@ public class ListMessageItem {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (ListMessageItem.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!ListMessageItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ListMessageItem is not found in the empty JSON string", ListMessageItem.openapiRequiredFields.toString()));
         }
       }

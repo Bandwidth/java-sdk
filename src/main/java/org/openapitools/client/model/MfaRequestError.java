@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -38,6 +36,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -47,7 +46,7 @@ import org.openapitools.client.JSON;
 /**
  * MfaRequestError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class MfaRequestError {
   public static final String SERIALIZED_NAME_ERROR = "error";
   @SerializedName(SERIALIZED_NAME_ERROR)
@@ -71,7 +70,6 @@ public class MfaRequestError {
    * @return error
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "400 Request is malformed or invalid", value = "A message describing the error with your request.")
 
   public String getError() {
     return error;
@@ -94,7 +92,6 @@ public class MfaRequestError {
    * @return requestId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "354cc8a3-6701-461e-8fa7-8671703dd898", value = "The associated requestId from AWS.")
 
   public String getRequestId() {
     return requestId;
@@ -168,9 +165,7 @@ public class MfaRequestError {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (MfaRequestError.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!MfaRequestError.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MfaRequestError is not found in the empty JSON string", MfaRequestError.openapiRequiredFields.toString()));
         }
       }

@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +39,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -50,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * ConferenceMember
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class ConferenceMember {
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
@@ -74,7 +73,7 @@ public class ConferenceMember {
 
   public static final String SERIALIZED_NAME_CALL_IDS_TO_COACH = "callIdsToCoach";
   @SerializedName(SERIALIZED_NAME_CALL_IDS_TO_COACH)
-  private List<String> callIdsToCoach = null;
+  private List<String> callIdsToCoach;
 
   public ConferenceMember() {
   }
@@ -90,7 +89,6 @@ public class ConferenceMember {
    * @return callId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85", value = "The call id associated with the event.")
 
   public String getCallId() {
     return callId;
@@ -113,7 +111,6 @@ public class ConferenceMember {
    * @return conferenceId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9", value = "The unique, Bandwidth-generated ID of the conference that was recorded")
 
   public String getConferenceId() {
     return conferenceId;
@@ -136,7 +133,6 @@ public class ConferenceMember {
    * @return memberUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "https://voice.bandwidth.com/api/v2/accounts/9900000/conferences/conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9/members/c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85", value = "A URL that may be used to retrieve information about or update the state of this conference member. This is the URL of this member's [Get Conference Member](/apis/voice/#operation/getConferenceMember) endpoint and [Modify Conference Member](/apis/voice/#operation/updateConferenceMember) endpoint.")
 
   public String getMemberUrl() {
     return memberUrl;
@@ -159,7 +155,6 @@ public class ConferenceMember {
    * @return mute
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Whether or not this member is currently muted. Members who are muted are still able to hear other participants.  If used in a PUT request, updates this member's mute status. Has no effect if omitted.")
 
   public Boolean getMute() {
     return mute;
@@ -182,7 +177,6 @@ public class ConferenceMember {
    * @return hold
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Whether or not this member is currently on hold. Members who are on hold are not able to hear or speak in the conference.  If used in a PUT request, updates this member's hold status. Has no effect if omitted.")
 
   public Boolean getHold() {
     return hold;
@@ -201,9 +195,6 @@ public class ConferenceMember {
   }
 
   public ConferenceMember addCallIdsToCoachItem(String callIdsToCoachItem) {
-    if (this.callIdsToCoach == null) {
-      this.callIdsToCoach = new ArrayList<>();
-    }
     this.callIdsToCoach.add(callIdsToCoachItem);
     return this;
   }
@@ -213,7 +204,6 @@ public class ConferenceMember {
    * @return callIdsToCoach
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[\"c-25ac29a2-1331029c-2cb0-4a07-b215-b22865662d85\"]", value = "If this member had a value set for `callIdsToCoach` in its [Conference](/docs/voice/bxml/conference) verb or this list was added with a previous PUT request to modify the member, this is that list of calls.  If present in a PUT request, modifies the calls that this member is coaching. Has no effect if omitted. See the documentation for the [Conference](/docs/voice/bxml/conference) verb for more details about coaching. Note that this will not add the matching calls to the conference; each call must individually execute a Conference verb to join.")
 
   public List<String> getCallIdsToCoach() {
     return callIdsToCoach;
@@ -310,9 +300,7 @@ public class ConferenceMember {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (ConferenceMember.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!ConferenceMember.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ConferenceMember is not found in the empty JSON string", ConferenceMember.openapiRequiredFields.toString()));
         }
       }
@@ -333,8 +321,8 @@ public class ConferenceMember {
       if ((jsonObj.get("memberUrl") != null && !jsonObj.get("memberUrl").isJsonNull()) && !jsonObj.get("memberUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `memberUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("memberUrl").toString()));
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("callIdsToCoach") != null && !jsonObj.get("callIdsToCoach").isJsonNull()) && !jsonObj.get("callIdsToCoach").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("callIdsToCoach") != null && !jsonObj.get("callIdsToCoach").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `callIdsToCoach` to be an array in the JSON string but got `%s`", jsonObj.get("callIdsToCoach").toString()));
       }
   }
