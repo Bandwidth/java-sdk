@@ -43,7 +43,6 @@ jobs:
           MANTECA_APPLICATION_ID: ${{ secrets.MANTECA_APPLICATION_ID }}
           MANTECA_BASE_URL: ${{ secrets.MANTECA_BASE_URL }}
           OPERATING_SYSTEM: ${{ matrix.os }}
-          JAVA_VERSION: ${{ matrix.java-version }}
           DISTRIBUTION: ${{ matrix.distribution }}
           ATT_NUMBER: ${{ secrets.ATT_NUMBER }}
           T_MOBILE_NUMBER: ${{ secrets.T_MOBILE_NUMBER }}
