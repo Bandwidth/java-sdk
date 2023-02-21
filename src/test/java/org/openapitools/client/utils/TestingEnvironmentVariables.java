@@ -24,5 +24,4 @@ public final class TestingEnvironmentVariables {
     public static final String OPERATING_SYSTEM = System.getenv("OPERATING_SYSTEM");
     public static final String DISTRIBUTION = System.getenv("DISTRIBUTION");
     public static final String RUNNER_OS = System.getenv("RUNNER_OS");
-    public static final String DISTRIBUTION = System.getenv("DISTRIBUTION");
 }
