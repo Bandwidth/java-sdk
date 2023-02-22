@@ -6,7 +6,7 @@
     <artifactId>bandwidth-sdk</artifactId>
     <packaging>jar</packaging>
     <name>bandwidth-sdk</name>
-    <version>9.0.0</version>
+    <version>9.0.0-beta.1</version>
     <url>https://github.com/Bandwidth/java-sdk</url>
     <description>The official client SDK for Bandwidth&#39;s Voice, Messaging, MFA, and WebRTC APIs</description>
     <scm>
@@ -22,6 +22,17 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <developers>
         <developer>
