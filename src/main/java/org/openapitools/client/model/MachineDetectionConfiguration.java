@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.net.URI;
 import org.openapitools.client.model.CallbackMethodEnum;
@@ -42,6 +40,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -51,8 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * The machine detection request used to perform &lt;a href&#x3D;&#39;/docs/voice/guides/machineDetection&#39;&gt;machine detection&lt;/a&gt; on the call.
  */
-@ApiModel(description = "The machine detection request used to perform <a href='/docs/voice/guides/machineDetection'>machine detection</a> on the call.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class MachineDetectionConfiguration {
   public static final String SERIALIZED_NAME_MODE = "mode";
   @SerializedName(SERIALIZED_NAME_MODE)
@@ -128,7 +126,6 @@ public class MachineDetectionConfiguration {
    * @return mode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public MachineDetectionModeEnum getMode() {
     return mode;
@@ -151,7 +148,6 @@ public class MachineDetectionConfiguration {
    * @return detectionTimeout
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "15", value = "The timeout used for the whole operation, in seconds. If no result is determined in this period, a callback with a `timeout` result is sent.")
 
   public Double getDetectionTimeout() {
     return detectionTimeout;
@@ -174,7 +170,6 @@ public class MachineDetectionConfiguration {
    * @return silenceTimeout
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "10", value = "If no speech is detected in this period, a callback with a 'silence' result is sent.")
 
   public Double getSilenceTimeout() {
     return silenceTimeout;
@@ -197,7 +192,6 @@ public class MachineDetectionConfiguration {
    * @return speechThreshold
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "10", value = "When speech has ended and a result couldn't be determined based on the audio content itself, this value is used to determine if the speaker is a machine based on the speech duration. If the length of the speech detected is greater than or equal to this threshold, the result will be 'answering-machine'. If the length of speech detected is below this threshold, the result will be 'human'.")
 
   public Double getSpeechThreshold() {
     return speechThreshold;
@@ -220,7 +214,6 @@ public class MachineDetectionConfiguration {
    * @return speechEndThreshold
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "5", value = "Amount of silence (in seconds) before assuming the callee has finished speaking.")
 
   public Double getSpeechEndThreshold() {
     return speechEndThreshold;
@@ -243,7 +236,6 @@ public class MachineDetectionConfiguration {
    * @return machineSpeechEndThreshold
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "5", value = "When an answering machine is detected, the amount of silence (in seconds) before assuming the message has finished playing.  If not provided it will default to the speechEndThreshold value.")
 
   public Double getMachineSpeechEndThreshold() {
     return machineSpeechEndThreshold;
@@ -266,7 +258,6 @@ public class MachineDetectionConfiguration {
    * @return delayResult
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "If set to 'true' and if an answering machine is detected, the 'answering-machine' callback will be delayed until the machine is done speaking, or an end of message tone is detected, or until the 'detectionTimeout' is exceeded. If false, the 'answering-machine' result is sent immediately.")
 
   public Boolean getDelayResult() {
     return delayResult;
@@ -289,7 +280,6 @@ public class MachineDetectionConfiguration {
    * @return callbackUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "https://myServer.com/bandwidth/webhooks/machineDetectionComplete", value = "The URL to send the 'machineDetectionComplete' webhook when the detection is completed. Only for 'async' mode.")
 
   public URI getCallbackUrl() {
     return callbackUrl;
@@ -312,7 +302,6 @@ public class MachineDetectionConfiguration {
    * @return callbackMethod
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CallbackMethodEnum getCallbackMethod() {
     return callbackMethod;
@@ -335,7 +324,6 @@ public class MachineDetectionConfiguration {
    * @return username
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "mySecretUsername", value = "Basic auth username.")
 
   public String getUsername() {
     return username;
@@ -358,7 +346,6 @@ public class MachineDetectionConfiguration {
    * @return password
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "mySecretPassword1!", value = "Basic auth password.")
 
   public String getPassword() {
     return password;
@@ -381,7 +368,6 @@ public class MachineDetectionConfiguration {
    * @return fallbackUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "https://myFallbackServer.com/bandwidth/webhooks/machineDetectionComplete", value = "A fallback URL which, if provided, will be used to retry the machine detection complete webhook delivery in case `callbackUrl` fails to respond")
 
   public URI getFallbackUrl() {
     return fallbackUrl;
@@ -404,7 +390,6 @@ public class MachineDetectionConfiguration {
    * @return fallbackMethod
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CallbackMethodEnum getFallbackMethod() {
     return fallbackMethod;
@@ -427,7 +412,6 @@ public class MachineDetectionConfiguration {
    * @return fallbackUsername
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "mySecretUsername", value = "Basic auth username.")
 
   public String getFallbackUsername() {
     return fallbackUsername;
@@ -450,7 +434,6 @@ public class MachineDetectionConfiguration {
    * @return fallbackPassword
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "mySecretPassword1!", value = "Basic auth password.")
 
   public String getFallbackPassword() {
     return fallbackPassword;
@@ -574,9 +557,7 @@ public class MachineDetectionConfiguration {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (MachineDetectionConfiguration.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!MachineDetectionConfiguration.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MachineDetectionConfiguration is not found in the empty JSON string", MachineDetectionConfiguration.openapiRequiredFields.toString()));
         }
       }

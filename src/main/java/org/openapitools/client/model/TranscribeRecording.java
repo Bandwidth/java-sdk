@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.net.URI;
 import org.openapitools.client.model.CallbackMethodEnum;
@@ -41,6 +39,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -50,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * TranscribeRecording
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class TranscribeRecording {
   public static final String SERIALIZED_NAME_CALLBACK_URL = "callbackUrl";
   @SerializedName(SERIALIZED_NAME_CALLBACK_URL)
@@ -90,7 +89,6 @@ public class TranscribeRecording {
    * @return callbackUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "https://myServer.com/bandwidth/webhooks/transcriptionAvailable", value = "The URL to send the [TranscriptionAvailable](/docs/voice/webhooks/transcriptionAvailable) event to. You should not include sensitive or personally-identifiable information in the callbackUrl field! Always use the proper username and password fields for authorization.")
 
   public URI getCallbackUrl() {
     return callbackUrl;
@@ -113,7 +111,6 @@ public class TranscribeRecording {
    * @return callbackMethod
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CallbackMethodEnum getCallbackMethod() {
     return callbackMethod;
@@ -136,7 +133,6 @@ public class TranscribeRecording {
    * @return username
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "mySecretUsername", value = "Basic auth username.")
 
   public String getUsername() {
     return username;
@@ -159,7 +155,6 @@ public class TranscribeRecording {
    * @return password
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "mySecretPassword1!", value = "Basic auth password.")
 
   public String getPassword() {
     return password;
@@ -182,7 +177,6 @@ public class TranscribeRecording {
    * @return tag
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "exampleTag", value = "(optional) The tag specified on call creation. If no tag was specified or it was previously cleared, this field will not be present.")
 
   public String getTag() {
     return tag;
@@ -207,7 +201,6 @@ public class TranscribeRecording {
    * @return callbackTimeout
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "5.5", value = "This is the timeout (in seconds) to use when delivering the webhook to `callbackUrl`. Can be any numeric value (including decimals) between 1 and 25.")
 
   public Double getCallbackTimeout() {
     return callbackTimeout;
@@ -304,9 +297,7 @@ public class TranscribeRecording {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (TranscribeRecording.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!TranscribeRecording.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in TranscribeRecording is not found in the empty JSON string", TranscribeRecording.openapiRequiredFields.toString()));
         }
       }

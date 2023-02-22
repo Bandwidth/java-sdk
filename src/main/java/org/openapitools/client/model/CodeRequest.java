@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -38,6 +36,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -47,7 +46,7 @@ import org.openapitools.client.JSON;
 /**
  * CodeRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class CodeRequest {
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
@@ -87,7 +86,6 @@ public class CodeRequest {
    * @return to
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "+19195551234", required = true, value = "The phone number to send the mfa code to.")
 
   public String getTo() {
     return to;
@@ -110,7 +108,6 @@ public class CodeRequest {
    * @return from
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "+19195554321", required = true, value = "The application phone number, the sender of the mfa code.")
 
   public String getFrom() {
     return from;
@@ -133,7 +130,6 @@ public class CodeRequest {
    * @return applicationId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "66fd98ae-ac8d-a00f-7fcd-ba3280aeb9b1", required = true, value = "The application unique ID, obtained from Bandwidth.")
 
   public String getApplicationId() {
     return applicationId;
@@ -156,7 +152,6 @@ public class CodeRequest {
    * @return scope
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2FA", value = "An optional field to denote what scope or action the mfa code is addressing.  If not supplied, defaults to \"2FA\".")
 
   public String getScope() {
     return scope;
@@ -179,7 +174,6 @@ public class CodeRequest {
    * @return message
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "Your temporary {NAME} {SCOPE} code is {CODE}", required = true, value = "The message format of the mfa code.  There are three values that the system will replace \"{CODE}\", \"{NAME}\", \"{SCOPE}\".  The \"{SCOPE}\" and \"{NAME} value template are optional, while \"{CODE}\" must be supplied.  As the name would suggest, code will be replace with the actual mfa code.  Name is replaced with the application name, configured during provisioning of mfa.  The scope value is the same value sent during the call and partitioned by the server.")
 
   public String getMessage() {
     return message;
@@ -204,7 +198,6 @@ public class CodeRequest {
    * @return digits
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "6", required = true, value = "The number of digits for your mfa code.  The valid number ranges from 2 to 8, inclusively.")
 
   public Integer getDigits() {
     return digits;
@@ -295,9 +288,7 @@ public class CodeRequest {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (CodeRequest.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!CodeRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CodeRequest is not found in the empty JSON string", CodeRequest.openapiRequiredFields.toString()));
         }
       }
@@ -316,19 +307,19 @@ public class CodeRequest {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonPrimitive()) {
+      if (!jsonObj.get("to").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
-      if ((jsonObj.get("from") != null && !jsonObj.get("from").isJsonNull()) && !jsonObj.get("from").isJsonPrimitive()) {
+      if (!jsonObj.get("from").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
       }
-      if ((jsonObj.get("applicationId") != null && !jsonObj.get("applicationId").isJsonNull()) && !jsonObj.get("applicationId").isJsonPrimitive()) {
+      if (!jsonObj.get("applicationId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
       }
       if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
       }
-      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
+      if (!jsonObj.get("message").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
       }
   }

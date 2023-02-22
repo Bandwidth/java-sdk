@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -38,6 +36,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -47,7 +46,7 @@ import org.openapitools.client.JSON;
 /**
  * Diversion
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class Diversion {
   public static final String SERIALIZED_NAME_REASON = "reason";
   @SerializedName(SERIALIZED_NAME_REASON)
@@ -91,7 +90,6 @@ public class Diversion {
    * @return reason
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "unavailable", value = "The reason for the diversion. Common values: unknown, user-busy, no-answer, unavailable, unconditional, time-of-day, do-not-disturb, deflection, follow-me, out-of-service, away.")
 
   public String getReason() {
     return reason;
@@ -114,7 +112,6 @@ public class Diversion {
    * @return privacy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "off", value = "off or full")
 
   public String getPrivacy() {
     return privacy;
@@ -137,7 +134,6 @@ public class Diversion {
    * @return screen
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "no", value = "No if the number was provided by the user, yes if the number was provided by the network")
 
   public String getScreen() {
     return screen;
@@ -160,7 +156,6 @@ public class Diversion {
    * @return counter
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2", value = "The number of diversions that have occurred")
 
   public String getCounter() {
     return counter;
@@ -183,7 +178,6 @@ public class Diversion {
    * @return limit
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "3", value = "The maximum number of diversions allowed for this session")
 
   public String getLimit() {
     return limit;
@@ -206,7 +200,6 @@ public class Diversion {
    * @return unknown
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "unknownValue", value = "The normal list of values is not exhaustive. Your application must be tolerant of unlisted keys and unlisted values of those keys.")
 
   public String getUnknown() {
     return unknown;
@@ -229,7 +222,6 @@ public class Diversion {
    * @return origTo
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "+15558884444", value = "Always present. Indicates the last telephone number that the call was diverted from.")
 
   public String getOrigTo() {
     return origTo;
@@ -318,9 +310,7 @@ public class Diversion {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (Diversion.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!Diversion.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Diversion is not found in the empty JSON string", Diversion.openapiRequiredFields.toString()));
         }
       }

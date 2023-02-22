@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +39,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -50,11 +49,11 @@ import org.openapitools.client.JSON;
 /**
  * TranscriptionList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class TranscriptionList {
   public static final String SERIALIZED_NAME_TRANSCRIPTS = "transcripts";
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTS)
-  private List<Transcription> transcripts = null;
+  private List<Transcription> transcripts = new ArrayList<>();
 
   public TranscriptionList() {
   }
@@ -78,7 +77,6 @@ public class TranscriptionList {
    * @return transcripts
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<Transcription> getTranscripts() {
     return transcripts;
@@ -149,9 +147,7 @@ public class TranscriptionList {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (TranscriptionList.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!TranscriptionList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in TranscriptionList is not found in the empty JSON string", TranscriptionList.openapiRequiredFields.toString()));
         }
       }

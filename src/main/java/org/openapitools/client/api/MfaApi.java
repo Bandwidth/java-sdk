@@ -115,7 +115,7 @@ public class MfaApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/code/messaging"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -145,20 +145,17 @@ public class MfaApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call generateMessagingCodeValidateBeforeCall(String accountId, CodeRequest codeRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling generateMessagingCode(Async)");
         }
-        
+
         // verify the required parameter 'codeRequest' is set
         if (codeRequest == null) {
             throw new ApiException("Missing the required parameter 'codeRequest' when calling generateMessagingCode(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = generateMessagingCodeCall(accountId, codeRequest, _callback);
-        return localVarCall;
+        return generateMessagingCodeCall(accountId, codeRequest, _callback);
 
     }
 
@@ -267,7 +264,7 @@ public class MfaApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/code/voice"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -297,20 +294,17 @@ public class MfaApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call generateVoiceCodeValidateBeforeCall(String accountId, CodeRequest codeRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling generateVoiceCode(Async)");
         }
-        
+
         // verify the required parameter 'codeRequest' is set
         if (codeRequest == null) {
             throw new ApiException("Missing the required parameter 'codeRequest' when calling generateVoiceCode(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = generateVoiceCodeCall(accountId, codeRequest, _callback);
-        return localVarCall;
+        return generateVoiceCodeCall(accountId, codeRequest, _callback);
 
     }
 
@@ -420,7 +414,7 @@ public class MfaApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/code/verify"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -450,20 +444,17 @@ public class MfaApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call verifyCodeValidateBeforeCall(String accountId, VerifyCodeRequest verifyCodeRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling verifyCode(Async)");
         }
-        
+
         // verify the required parameter 'verifyCodeRequest' is set
         if (verifyCodeRequest == null) {
             throw new ApiException("Missing the required parameter 'verifyCodeRequest' when calling verifyCode(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = verifyCodeCall(accountId, verifyCodeRequest, _callback);
-        return localVarCall;
+        return verifyCodeCall(accountId, verifyCodeRequest, _callback);
 
     }
 

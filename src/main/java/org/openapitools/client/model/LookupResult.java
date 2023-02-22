@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -38,6 +36,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -47,8 +46,7 @@ import org.openapitools.client.JSON;
 /**
  * Carrier information results for the specified telephone number.
  */
-@ApiModel(description = "Carrier information results for the specified telephone number.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class LookupResult {
   public static final String SERIALIZED_NAME_RESPONSE_CODE = "Response Code";
   @SerializedName(SERIALIZED_NAME_RESPONSE_CODE)
@@ -100,7 +98,6 @@ public class LookupResult {
    * @return responseCode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "0", value = "Our vendor's response code.")
 
   public Integer getResponseCode() {
     return responseCode;
@@ -123,7 +120,6 @@ public class LookupResult {
    * @return message
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "NOERROR", value = "Message associated with the response code.")
 
   public String getMessage() {
     return message;
@@ -146,7 +142,6 @@ public class LookupResult {
    * @return e164Format
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "+19195551234", value = "The telephone number in E.164 format.")
 
   public String getE164Format() {
     return e164Format;
@@ -169,7 +164,6 @@ public class LookupResult {
    * @return formatted
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "(919) 555-1234", value = "The formatted version of the telephone number.")
 
   public String getFormatted() {
     return formatted;
@@ -192,7 +186,6 @@ public class LookupResult {
    * @return country
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "US", value = "The country of the telephone number.")
 
   public String getCountry() {
     return country;
@@ -215,7 +208,6 @@ public class LookupResult {
    * @return lineType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Mobile", value = "The line type of the telephone number.")
 
   public String getLineType() {
     return lineType;
@@ -238,7 +230,6 @@ public class LookupResult {
    * @return lineProvider
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Verizon Wireless", value = "The messaging service provider of the telephone number.")
 
   public String getLineProvider() {
     return lineProvider;
@@ -261,7 +252,6 @@ public class LookupResult {
    * @return mobileCountryCode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "310", value = "The first half of the Home Network Identity (HNI).")
 
   public String getMobileCountryCode() {
     return mobileCountryCode;
@@ -284,7 +274,6 @@ public class LookupResult {
    * @return mobileNetworkCode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "010", value = "The second half of the HNI.")
 
   public String getMobileNetworkCode() {
     return mobileNetworkCode;
@@ -379,9 +368,7 @@ public class LookupResult {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (LookupResult.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!LookupResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in LookupResult is not found in the empty JSON string", LookupResult.openapiRequiredFields.toString()));
         }
       }

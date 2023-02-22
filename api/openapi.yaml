@@ -267,6 +267,8 @@ paths:
       description: |-
         Upload a file. You may add headers to the request in order to provide some control to your media file.
 
+        If a file is uploaded with the same name as a file that already exists under this account, the previous file will be overwritten.
+
         A list of supported media types can be found [here](https://support.bandwidth.com/hc/en-us/articles/360014128994-What-MMS-file-types-are-supported-).
       operationId: uploadMedia
       parameters:
@@ -561,6 +563,11 @@ paths:
       - Messages
       x-accepts: application/json
     post:
+      callbacks:
+        inboundCallback:
+          $ref: '#/components/callbacks/inboundCallback'
+        statusCallback:
+          $ref: '#/components/callbacks/statusCallback'
       description: Endpoint for sending text messages and picture messages using V2
         messaging.
       operationId: createMessage
@@ -661,6 +668,7 @@ paths:
               examples:
                 createCall Response:
                   $ref: '#/components/examples/createCallResponseExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/createCallResponse'
           description: Call Successfully Created
@@ -677,6 +685,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -686,6 +695,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -695,6 +705,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -704,6 +715,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -713,6 +725,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -722,6 +735,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -731,6 +745,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -747,6 +762,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -797,6 +813,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -806,6 +823,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -815,6 +833,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -824,6 +843,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -833,6 +853,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -842,6 +863,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -851,6 +873,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -867,6 +890,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -908,6 +932,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -917,6 +942,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -926,6 +952,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -935,6 +962,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -944,6 +972,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -953,6 +982,7 @@ paths:
               examples:
                 conflictErrorExample:
                   $ref: '#/components/examples/voiceConflictErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Conflict
@@ -962,6 +992,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -971,6 +1002,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -987,6 +1019,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -1032,6 +1065,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -1041,6 +1075,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -1050,6 +1085,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -1059,6 +1095,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -1068,6 +1105,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -1077,6 +1115,7 @@ paths:
               examples:
                 conflictErrorExample:
                   $ref: '#/components/examples/voiceConflictErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Conflict
@@ -1086,6 +1125,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -1095,6 +1135,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -1111,6 +1152,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -1198,6 +1240,7 @@ paths:
               examples:
                 listConferences Response:
                   $ref: '#/components/examples/listConferencesResponseExample'
+                  value: null
               schema:
                 items:
                   $ref: '#/components/schemas/conference'
@@ -1209,6 +1252,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -1218,6 +1262,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -1227,6 +1272,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -1236,6 +1282,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -1245,6 +1292,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -1254,6 +1302,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -1263,6 +1312,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -1279,6 +1329,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -1325,6 +1376,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -1334,6 +1386,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -1343,6 +1396,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -1352,6 +1406,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -1361,6 +1416,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -1370,6 +1426,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -1379,6 +1436,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -1395,6 +1453,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -1435,6 +1494,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -1444,6 +1504,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -1453,6 +1514,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -1462,6 +1524,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -1471,6 +1534,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -1480,6 +1544,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -1489,6 +1554,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -1505,6 +1571,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -1550,6 +1617,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -1559,6 +1627,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -1568,6 +1637,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -1577,6 +1647,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -1586,6 +1657,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -1595,6 +1667,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -1604,6 +1677,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -1620,6 +1694,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -1676,6 +1751,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -1685,6 +1761,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -1694,6 +1771,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -1703,6 +1781,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -1712,6 +1791,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -1721,6 +1801,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -1730,6 +1811,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -1746,6 +1828,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -1795,6 +1878,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -1804,6 +1888,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -1813,6 +1898,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -1822,6 +1908,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -1831,6 +1918,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -1840,6 +1928,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -1849,6 +1938,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -1865,6 +1955,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -1915,6 +2006,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -1924,6 +2016,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -1933,6 +2026,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -1942,6 +2036,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -1951,6 +2046,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -1960,6 +2056,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -1969,6 +2066,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -1985,6 +2083,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -2040,6 +2139,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -2049,6 +2149,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -2058,6 +2159,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -2067,6 +2169,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -2076,6 +2179,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -2085,6 +2189,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -2094,6 +2199,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -2110,6 +2216,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -2170,6 +2277,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -2179,6 +2287,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -2188,6 +2297,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -2197,6 +2307,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -2206,6 +2317,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -2215,6 +2327,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -2224,6 +2337,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -2240,6 +2354,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -2321,6 +2436,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -2330,6 +2446,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -2339,6 +2456,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -2348,6 +2466,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -2357,6 +2476,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -2366,6 +2486,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -2375,6 +2496,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -2391,6 +2513,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -2435,6 +2558,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -2444,6 +2568,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -2453,6 +2578,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -2462,6 +2588,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -2471,6 +2598,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -2480,6 +2608,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -2489,6 +2618,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -2505,6 +2635,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -2556,6 +2687,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -2565,6 +2697,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -2574,6 +2707,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -2583,6 +2717,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -2592,6 +2727,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -2601,6 +2737,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -2610,6 +2747,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -2626,6 +2764,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -2680,6 +2819,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -2689,6 +2829,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -2698,6 +2839,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -2707,6 +2849,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -2716,6 +2859,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -2725,6 +2869,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -2734,6 +2879,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -2750,6 +2896,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -2801,6 +2948,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -2810,6 +2958,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -2819,6 +2968,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -2828,6 +2978,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -2837,6 +2988,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -2846,6 +2998,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -2855,6 +3008,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -2871,6 +3025,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -2922,6 +3077,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -2931,6 +3087,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -2940,6 +3097,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -2949,6 +3107,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -2958,6 +3117,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -2967,6 +3127,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -2976,6 +3137,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -2992,6 +3154,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -3048,6 +3211,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -3057,6 +3221,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -3066,6 +3231,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -3075,6 +3241,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -3084,6 +3251,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -3093,6 +3261,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -3102,6 +3271,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -3118,6 +3288,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -3172,6 +3343,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -3181,6 +3353,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -3190,6 +3363,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -3199,6 +3373,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -3208,6 +3383,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -3217,6 +3393,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -3226,6 +3403,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -3242,6 +3420,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -3298,6 +3477,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -3307,6 +3487,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -3316,6 +3497,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -3325,6 +3507,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -3334,6 +3517,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -3343,6 +3527,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -3352,6 +3537,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -3368,6 +3554,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -3420,6 +3607,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -3429,6 +3617,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -3438,6 +3627,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -3447,6 +3637,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -3456,6 +3647,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -3465,6 +3657,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -3474,6 +3667,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -3490,6 +3684,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -3528,6 +3723,7 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -3537,6 +3733,7 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -3546,6 +3743,7 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -3555,6 +3753,7 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -3564,6 +3763,7 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -3573,6 +3773,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -3582,6 +3783,7 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
@@ -3598,6 +3800,7 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -3799,6 +4002,7 @@ paths:
               examples:
                 lookupResponseExample:
                   $ref: '#/components/examples/lookupInProgressExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/createLookupResponse'
           description: Accepted
@@ -3910,16 +4114,22 @@ paths:
               examples:
                 lookupInProgressExample:
                   $ref: '#/components/examples/lookupInProgressExample'
+                  value: null
                 lookupFailedExample:
                   $ref: '#/components/examples/lookupFailedExample'
+                  value: null
                 lookupSingleNumberCompleteExample:
                   $ref: '#/components/examples/lookupSingleNumberCompleteExample'
+                  value: null
                 lookupMultipleNumbersCompleteExample:
                   $ref: '#/components/examples/lookupMultipleNumbersCompleteExample'
+                  value: null
                 lookupMultipleNumbersPartialCompleteExample:
                   $ref: '#/components/examples/lookupMultipleNumbersPartialCompleteExample'
+                  value: null
                 lookupSingleNumberCompleteNoInfoExample:
                   $ref: '#/components/examples/lookupSingleNumberCompleteNoInfoExample'
+                  value: null
               schema:
                 $ref: '#/components/schemas/lookupStatus'
           description: OK
@@ -3992,6 +4202,37 @@ paths:
     - description: Production
       url: https://numbers.bandwidth.com/api/v1
 components:
+  callbacks:
+    inboundCallback:
+      '{inboundCallbackUrl}':
+        post:
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/inboundMessageCallback'
+            description: Inbound Message Callback Payload
+            required: true
+          responses:
+            "200":
+              description: OK
+    statusCallback:
+      '{statusCallbackUrl}':
+        post:
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  oneOf:
+                  - $ref: '#/components/schemas/messageSendingCallback'
+                  - $ref: '#/components/schemas/messageDeliveredCallback'
+                  - $ref: '#/components/schemas/messageFailedCallback'
+                  type: object
+            description: Status Callback Payload
+            required: true
+          responses:
+            "200":
+              description: OK
   examples:
     createCallResponseExample:
       summary: Example of a createCall Response
@@ -4815,8 +5056,10 @@ components:
           examples:
             singleNumberRequestExample:
               $ref: '#/components/examples/singleNumberRequestExample'
+              value: null
             multipleNumberRequestExample:
               $ref: '#/components/examples/multipleNumberRequestExample'
+              value: null
           schema:
             $ref: '#/components/schemas/lookupRequest'
       description: Phone number lookup request.
@@ -4911,6 +5154,7 @@ components:
           examples:
             createCall Response:
               $ref: '#/components/examples/createCallResponseExample'
+              value: null
           schema:
             $ref: '#/components/schemas/createCallResponse'
       description: Call Successfully Created
@@ -4970,6 +5214,7 @@ components:
           examples:
             listConferences Response:
               $ref: '#/components/examples/listConferencesResponseExample'
+              value: null
           schema:
             items:
               $ref: '#/components/schemas/conference'
@@ -5007,6 +5252,7 @@ components:
           examples:
             badRequestErrorExample:
               $ref: '#/components/examples/voiceBadRequestErrorExample'
+              value: null
           schema:
             $ref: '#/components/schemas/voiceApiError'
       description: Bad Request
@@ -5016,6 +5262,7 @@ components:
           examples:
             unauthorizedErrorExample:
               $ref: '#/components/examples/voiceUnauthorizedErrorExample'
+              value: null
           schema:
             $ref: '#/components/schemas/voiceApiError'
       description: Unauthorized
@@ -5025,6 +5272,7 @@ components:
           examples:
             forbiddenErrorExample:
               $ref: '#/components/examples/voiceForbiddenErrorExample'
+              value: null
           schema:
             $ref: '#/components/schemas/voiceApiError'
       description: Forbidden
@@ -5034,6 +5282,7 @@ components:
           examples:
             notFoundErrorExample:
               $ref: '#/components/examples/voiceNotFoundErrorExample'
+              value: null
           schema:
             $ref: '#/components/schemas/voiceApiError'
       description: Not Found
@@ -5043,6 +5292,7 @@ components:
           examples:
             notAllowedErrorExample:
               $ref: '#/components/examples/voiceNotAllowedErrorExample'
+              value: null
           schema:
             $ref: '#/components/schemas/voiceApiError'
       description: Method Not Allowed
@@ -5052,6 +5302,7 @@ components:
           examples:
             conflictErrorExample:
               $ref: '#/components/examples/voiceConflictErrorExample'
+              value: null
           schema:
             $ref: '#/components/schemas/voiceApiError'
       description: Conflict
@@ -5061,6 +5312,7 @@ components:
           examples:
             tooManyRequestsErrorExample:
               $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
+              value: null
           schema:
             $ref: '#/components/schemas/voiceApiError'
       description: Unsupported Media Type
@@ -5070,6 +5322,7 @@ components:
           examples:
             tooManyRequestsErrorExample:
               $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
+              value: null
           schema:
             $ref: '#/components/schemas/voiceApiError'
       description: Too Many Requests
@@ -5086,6 +5339,7 @@ components:
           examples:
             internalServerErrorExample:
               $ref: '#/components/examples/voiceInternalServerErrorExample'
+              value: null
           schema:
             $ref: '#/components/schemas/voiceApiError'
       description: Internal Server Error
@@ -5143,6 +5397,7 @@ components:
           examples:
             lookupResponseExample:
               $ref: '#/components/examples/lookupInProgressExample'
+              value: null
           schema:
             $ref: '#/components/schemas/createLookupResponse'
       description: Accepted
@@ -5152,16 +5407,22 @@ components:
           examples:
             lookupInProgressExample:
               $ref: '#/components/examples/lookupInProgressExample'
+              value: null
             lookupFailedExample:
               $ref: '#/components/examples/lookupFailedExample'
+              value: null
             lookupSingleNumberCompleteExample:
               $ref: '#/components/examples/lookupSingleNumberCompleteExample'
+              value: null
             lookupMultipleNumbersCompleteExample:
               $ref: '#/components/examples/lookupMultipleNumbersCompleteExample'
+              value: null
             lookupMultipleNumbersPartialCompleteExample:
               $ref: '#/components/examples/lookupMultipleNumbersPartialCompleteExample'
+              value: null
             lookupSingleNumberCompleteNoInfoExample:
               $ref: '#/components/examples/lookupSingleNumberCompleteNoInfoExample'
+              value: null
           schema:
             $ref: '#/components/schemas/lookupStatus'
       description: OK
@@ -5611,13 +5872,15 @@ components:
           maxLength: 2048
           type: string
         media:
-          description: A list of URLs to include as media attachments as part of the
-            message.
+          description: |-
+            A list of URLs to include as media attachments as part of the message.
+            Each URL can be at most 4096 characters.
           example:
           - https://dev.bandwidth.com/images/bandwidth-logo.png
           - https://dev.bandwidth.com/images/github_logo.png
           items:
             format: uri
+            maxLength: 4096
             type: string
           type: array
         tag:
@@ -5638,6 +5901,110 @@ components:
       - from
       - to
       title: MessageRequest
+      type: object
+    inboundMessageCallback:
+      description: Inbound Message Callback
+      properties:
+        time:
+          example: 2016-09-14T18:20:16Z
+          format: date-time
+          type: string
+        type:
+          example: message-received
+          type: string
+        to:
+          example: +15552223333
+          type: string
+        description:
+          example: Incoming message received
+          type: string
+        message:
+          $ref: '#/components/schemas/inboundMessageCallback_message'
+      required:
+      - description
+      - message
+      - time
+      - to
+      - type
+      type: object
+    messageSendingCallback:
+      description: Message Sending Callback
+      properties:
+        time:
+          example: 2016-09-14T18:20:16Z
+          format: date-time
+          type: string
+        type:
+          example: message-sending
+          type: string
+        to:
+          example: +15552223333
+          type: string
+        description:
+          example: Message is sending to carrier
+          type: string
+        message:
+          $ref: '#/components/schemas/messageSendingCallback_message'
+      required:
+      - description
+      - message
+      - time
+      - to
+      - type
+      type: object
+    messageDeliveredCallback:
+      description: Message Delivered Callback
+      properties:
+        time:
+          example: 2016-09-14T18:20:16Z
+          format: date-time
+          type: string
+        type:
+          example: message-delivered
+          type: string
+        to:
+          example: +15552223333
+          type: string
+        description:
+          example: Message delivered to carrier.
+          type: string
+        message:
+          $ref: '#/components/schemas/messageDeliveredCallback_message'
+      required:
+      - description
+      - message
+      - time
+      - to
+      - type
+      type: object
+    messageFailedCallback:
+      description: Message Failed Callback
+      properties:
+        time:
+          example: 2016-09-14T18:20:16Z
+          format: date-time
+          type: string
+        type:
+          example: message-failed
+          type: string
+        to:
+          example: +15552223333
+          type: string
+        description:
+          example: rejected-unallocated-from-number
+          type: string
+        message:
+          $ref: '#/components/schemas/messageFailedCallback_message'
+        errorCode:
+          example: 9902
+          type: integer
+      required:
+      - description
+      - errorCode
+      - message
+      - time
+      - to
+      - type
       type: object
     callbackMethodEnum:
       default: POST
@@ -7394,7 +7761,7 @@ components:
           example: completed
           type: string
       type: object
-    disconenctCallback:
+    disconnectCallback:
       description: "The Disconnect event is fired when a call ends, for any reason."
       properties:
         eventType:
@@ -9095,6 +9462,239 @@ components:
           description: A description of what validation error occurred.
           example: example error message
           type: string
+      type: object
+    inboundMessageCallback_message:
+      properties:
+        id:
+          example: 1661365814859loidf7mcwd4qacn7
+          type: string
+        owner:
+          example: +15553332222
+          type: string
+        applicationId:
+          example: 93de2206-9669-4e07-948d-329f4b722ee2
+          type: string
+        time:
+          example: 2016-09-14T18:20:16Z
+          format: date-time
+          type: string
+        segmentCount:
+          example: 1
+          type: integer
+        direction:
+          $ref: '#/components/schemas/messageDirectionEnum'
+        to:
+          example:
+          - +15552223333
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        from:
+          example: +15553332222
+          type: string
+        text:
+          example: Hello world
+          type: string
+        tag:
+          example: custom string
+          type: string
+        media:
+          example:
+          - https://dev.bandwidth.com/images/bandwidth-logo.png
+          - https://dev.bandwidth.com/images/github_logo.png
+          items:
+            format: uri
+            type: string
+          type: array
+        priority:
+          $ref: '#/components/schemas/priorityEnum'
+      required:
+      - applicationId
+      - direction
+      - from
+      - id
+      - owner
+      - segmentCount
+      - text
+      - time
+      - to
+      type: object
+    messageSendingCallback_message:
+      properties:
+        id:
+          example: 1661365814859loidf7mcwd4qacn7
+          type: string
+        owner:
+          example: +15553332222
+          type: string
+        applicationId:
+          example: 93de2206-9669-4e07-948d-329f4b722ee2
+          type: string
+        time:
+          example: 2016-09-14T18:20:16Z
+          format: date-time
+          type: string
+        segmentCount:
+          example: 1
+          type: integer
+        direction:
+          $ref: '#/components/schemas/messageDirectionEnum'
+        to:
+          example:
+          - +15552223333
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        from:
+          example: +15553332222
+          type: string
+        text:
+          example: ""
+          type: string
+        tag:
+          example: custom string
+          type: string
+        media:
+          example:
+          - https://dev.bandwidth.com/images/bandwidth-logo.png
+          - https://dev.bandwidth.com/images/github_logo.png
+          items:
+            format: uri
+            type: string
+          type: array
+        priority:
+          $ref: '#/components/schemas/priorityEnum'
+      required:
+      - applicationId
+      - direction
+      - from
+      - id
+      - media
+      - owner
+      - priority
+      - segmentCount
+      - text
+      - time
+      - to
+      type: object
+    messageDeliveredCallback_message:
+      properties:
+        id:
+          example: 1661365814859loidf7mcwd4qacn7
+          type: string
+        owner:
+          example: +15553332222
+          type: string
+        applicationId:
+          example: 93de2206-9669-4e07-948d-329f4b722ee2
+          type: string
+        time:
+          example: 2016-09-14T18:20:16Z
+          format: date-time
+          type: string
+        segmentCount:
+          example: 1
+          type: integer
+        direction:
+          $ref: '#/components/schemas/messageDirectionEnum'
+        to:
+          example:
+          - +15552223333
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        from:
+          example: +15553332222
+          type: string
+        text:
+          example: ""
+          type: string
+        tag:
+          example: custom string
+          type: string
+        media:
+          example:
+          - https://dev.bandwidth.com/images/bandwidth-logo.png
+          - https://dev.bandwidth.com/images/github_logo.png
+          items:
+            format: uri
+            type: string
+          type: array
+        priority:
+          $ref: '#/components/schemas/priorityEnum'
+      required:
+      - applicationId
+      - direction
+      - from
+      - id
+      - owner
+      - segmentCount
+      - tag
+      - text
+      - time
+      - to
+      type: object
+    messageFailedCallback_message:
+      properties:
+        id:
+          example: 1661365814859loidf7mcwd4qacn7
+          type: string
+        owner:
+          example: +15553332222
+          type: string
+        applicationId:
+          example: 93de2206-9669-4e07-948d-329f4b722ee2
+          type: string
+        time:
+          example: 2016-09-14T18:20:16Z
+          format: date-time
+          type: string
+        segmentCount:
+          example: 1
+          type: integer
+        direction:
+          $ref: '#/components/schemas/messageDirectionEnum'
+        to:
+          example:
+          - +15552223333
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        from:
+          example: +15553332222
+          type: string
+        text:
+          example: ""
+          type: string
+        tag:
+          example: custom string
+          type: string
+        media:
+          example:
+          - https://dev.bandwidth.com/images/bandwidth-logo.png
+          - https://dev.bandwidth.com/images/github_logo.png
+          items:
+            format: uri
+            type: string
+          type: array
+        priority:
+          $ref: '#/components/schemas/priorityEnum'
+      required:
+      - applicationId
+      - direction
+      - from
+      - id
+      - owner
+      - priority
+      - segmentCount
+      - tag
+      - text
+      - time
+      - to
       type: object
   securitySchemes:
     Basic:

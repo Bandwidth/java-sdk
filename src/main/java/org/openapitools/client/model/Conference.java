@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.net.URI;
 import java.time.OffsetDateTime;
@@ -45,6 +43,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -54,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * Conference
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class Conference {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -86,7 +85,7 @@ public class Conference {
 
   public static final String SERIALIZED_NAME_ACTIVE_MEMBERS = "activeMembers";
   @SerializedName(SERIALIZED_NAME_ACTIVE_MEMBERS)
-  private List<ConferenceMember> activeMembers = null;
+  private List<ConferenceMember> activeMembers;
 
   public Conference() {
   }
@@ -102,7 +101,6 @@ public class Conference {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9", value = "The Bandwidth-generated conference ID")
 
   public String getId() {
     return id;
@@ -125,7 +123,6 @@ public class Conference {
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "my-conference-name", value = "The name of the conference, as specified by your application")
 
   public String getName() {
     return name;
@@ -148,7 +145,6 @@ public class Conference {
    * @return createdTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2022-06-17T22:19:40.375Z", value = "The time the conference was initiated, in ISO 8601 format.")
 
   public OffsetDateTime getCreatedTime() {
     return createdTime;
@@ -171,7 +167,6 @@ public class Conference {
    * @return completedTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2022-06-17T22:20Z", value = "The time the conference was terminated, in ISO 8601 format.")
 
   public OffsetDateTime getCompletedTime() {
     return completedTime;
@@ -194,7 +189,6 @@ public class Conference {
    * @return conferenceEventUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "https://myServer.com/bandwidth/webhooks/conferenceEvent", value = "The URL to send the conference-related events.")
 
   public URI getConferenceEventUrl() {
     return conferenceEventUrl;
@@ -217,7 +211,6 @@ public class Conference {
    * @return conferenceEventMethod
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CallbackMethodEnum getConferenceEventMethod() {
     return conferenceEventMethod;
@@ -240,7 +233,6 @@ public class Conference {
    * @return tag
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "my custom tag", value = "The custom string attached to the conference that will be sent with callbacks.")
 
   public String getTag() {
     return tag;
@@ -259,9 +251,6 @@ public class Conference {
   }
 
   public Conference addActiveMembersItem(ConferenceMember activeMembersItem) {
-    if (this.activeMembers == null) {
-      this.activeMembers = new ArrayList<>();
-    }
     this.activeMembers.add(activeMembersItem);
     return this;
   }
@@ -271,7 +260,6 @@ public class Conference {
    * @return activeMembers
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of active members of the conference. Omitted if this is a response to the [Get Conferences endpoint](/apis/voice#tag/Conferences/operation/listConferences)")
 
   public List<ConferenceMember> getActiveMembers() {
     return activeMembers;
@@ -374,9 +362,7 @@ public class Conference {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (Conference.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!Conference.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Conference is not found in the empty JSON string", Conference.openapiRequiredFields.toString()));
         }
       }

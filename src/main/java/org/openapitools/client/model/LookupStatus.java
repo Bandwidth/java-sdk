@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +40,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -51,8 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * If requestId exists, the result for that request is returned. See the Examples for details on the various responses that you can receive. Generally, if you see a Response Code of 0 in a result for a TN, information will be available for it.  Any other Response Code will indicate no information was available for the TN.
  */
-@ApiModel(description = "If requestId exists, the result for that request is returned. See the Examples for details on the various responses that you can receive. Generally, if you see a Response Code of 0 in a result for a TN, information will be available for it.  Any other Response Code will indicate no information was available for the TN.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class LookupStatus {
   public static final String SERIALIZED_NAME_REQUEST_ID = "requestId";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
@@ -64,11 +62,11 @@ public class LookupStatus {
 
   public static final String SERIALIZED_NAME_RESULT = "result";
   @SerializedName(SERIALIZED_NAME_RESULT)
-  private List<LookupResult> result = null;
+  private List<LookupResult> result = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_FAILED_TELEPHONE_NUMBERS = "failedTelephoneNumbers";
   @SerializedName(SERIALIZED_NAME_FAILED_TELEPHONE_NUMBERS)
-  private List<String> failedTelephoneNumbers = null;
+  private List<String> failedTelephoneNumbers = new ArrayList<>();
 
   public LookupStatus() {
   }
@@ -84,7 +82,6 @@ public class LookupStatus {
    * @return requestId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "004223a0-8b17-41b1-bf81-20732adf5590", value = "The requestId.")
 
   public String getRequestId() {
     return requestId;
@@ -107,7 +104,6 @@ public class LookupStatus {
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public LookupStatusEnum getStatus() {
     return status;
@@ -138,7 +134,6 @@ public class LookupStatus {
    * @return result
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The carrier information results for the specified telephone number.")
 
   public List<LookupResult> getResult() {
     return result;
@@ -169,7 +164,6 @@ public class LookupStatus {
    * @return failedTelephoneNumbers
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[\"+191955512345\"]", value = "The telephone numbers whose lookup failed.")
 
   public List<String> getFailedTelephoneNumbers() {
     return failedTelephoneNumbers;
@@ -249,9 +243,7 @@ public class LookupStatus {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (LookupStatus.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!LookupStatus.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in LookupStatus is not found in the empty JSON string", LookupStatus.openapiRequiredFields.toString()));
         }
       }
@@ -280,8 +272,8 @@ public class LookupStatus {
           };
         }
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("failedTelephoneNumbers") != null && !jsonObj.get("failedTelephoneNumbers").isJsonNull()) && !jsonObj.get("failedTelephoneNumbers").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("failedTelephoneNumbers") != null && !jsonObj.get("failedTelephoneNumbers").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `failedTelephoneNumbers` to be an array in the JSON string but got `%s`", jsonObj.get("failedTelephoneNumbers").toString()));
       }
   }

@@ -116,7 +116,7 @@ public class CallsApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/calls"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -146,20 +146,17 @@ public class CallsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createCallValidateBeforeCall(String accountId, CreateCall createCall, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling createCall(Async)");
         }
-        
+
         // verify the required parameter 'createCall' is set
         if (createCall == null) {
             throw new ApiException("Missing the required parameter 'createCall' when calling createCall(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createCallCall(accountId, createCall, _callback);
-        return localVarCall;
+        return createCallCall(accountId, createCall, _callback);
 
     }
 
@@ -284,8 +281,8 @@ public class CallsApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/calls/{callId}"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "callId" + "\\}", localVarApiClient.escapeString(callId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "callId" + "}", localVarApiClient.escapeString(callId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -302,7 +299,6 @@ public class CallsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -315,20 +311,17 @@ public class CallsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCallStateValidateBeforeCall(String accountId, String callId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getCallState(Async)");
         }
-        
+
         // verify the required parameter 'callId' is set
         if (callId == null) {
             throw new ApiException("Missing the required parameter 'callId' when calling getCallState(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getCallStateCall(accountId, callId, _callback);
-        return localVarCall;
+        return getCallStateCall(accountId, callId, _callback);
 
     }
 
@@ -455,8 +448,8 @@ public class CallsApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/calls/{callId}"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "callId" + "\\}", localVarApiClient.escapeString(callId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "callId" + "}", localVarApiClient.escapeString(callId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -486,25 +479,22 @@ public class CallsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateCallValidateBeforeCall(String accountId, String callId, UpdateCall updateCall, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling updateCall(Async)");
         }
-        
+
         // verify the required parameter 'callId' is set
         if (callId == null) {
             throw new ApiException("Missing the required parameter 'callId' when calling updateCall(Async)");
         }
-        
+
         // verify the required parameter 'updateCall' is set
         if (updateCall == null) {
             throw new ApiException("Missing the required parameter 'updateCall' when calling updateCall(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateCallCall(accountId, callId, updateCall, _callback);
-        return localVarCall;
+        return updateCallCall(accountId, callId, updateCall, _callback);
 
     }
 
@@ -633,8 +623,8 @@ public class CallsApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/calls/{callId}/bxml"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "callId" + "\\}", localVarApiClient.escapeString(callId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "callId" + "}", localVarApiClient.escapeString(callId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -664,25 +654,22 @@ public class CallsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateCallBxmlValidateBeforeCall(String accountId, String callId, String body, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling updateCallBxml(Async)");
         }
-        
+
         // verify the required parameter 'callId' is set
         if (callId == null) {
             throw new ApiException("Missing the required parameter 'callId' when calling updateCallBxml(Async)");
         }
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling updateCallBxml(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateCallBxmlCall(accountId, callId, body, _callback);
-        return localVarCall;
+        return updateCallBxmlCall(accountId, callId, body, _callback);
 
     }
 

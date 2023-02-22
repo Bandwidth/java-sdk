@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 
@@ -39,6 +37,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -48,7 +47,7 @@ import org.openapitools.client.JSON;
 /**
  * VerifyCodeRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class VerifyCodeRequest {
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
@@ -80,7 +79,6 @@ public class VerifyCodeRequest {
    * @return to
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "+19195551234", required = true, value = "The phone number to send the mfa code to.")
 
   public String getTo() {
     return to;
@@ -103,7 +101,6 @@ public class VerifyCodeRequest {
    * @return scope
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2FA", value = "An optional field to denote what scope or action the mfa code is addressing.  If not supplied, defaults to \"2FA\".")
 
   public String getScope() {
     return scope;
@@ -128,7 +125,6 @@ public class VerifyCodeRequest {
    * @return expirationTimeInMinutes
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "3", required = true, value = "The time period, in minutes, to validate the mfa code.  By setting this to 3 minutes, it will mean any code generated within the last 3 minutes are still valid.  The valid range for expiration time is between 0 and 15 minutes, exclusively and inclusively, respectively.")
 
   public BigDecimal getExpirationTimeInMinutes() {
     return expirationTimeInMinutes;
@@ -151,7 +147,6 @@ public class VerifyCodeRequest {
    * @return code
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "123456", required = true, value = "The generated mfa code to check if valid.")
 
   public String getCode() {
     return code;
@@ -234,9 +229,7 @@ public class VerifyCodeRequest {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (VerifyCodeRequest.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!VerifyCodeRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VerifyCodeRequest is not found in the empty JSON string", VerifyCodeRequest.openapiRequiredFields.toString()));
         }
       }
@@ -255,13 +248,13 @@ public class VerifyCodeRequest {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonPrimitive()) {
+      if (!jsonObj.get("to").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
       if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
       }
-      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
+      if (!jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
   }

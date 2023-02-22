@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.HashMap;
@@ -43,6 +41,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -52,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * CallState
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class CallState {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
@@ -88,7 +87,7 @@ public class CallState {
 
   public static final String SERIALIZED_NAME_STIR_SHAKEN = "stirShaken";
   @SerializedName(SERIALIZED_NAME_STIR_SHAKEN)
-  private Map<String, String> stirShaken = null;
+  private Map<String, String> stirShaken;
 
   public static final String SERIALIZED_NAME_IDENTITY = "identity";
   @SerializedName(SERIALIZED_NAME_IDENTITY)
@@ -140,7 +139,6 @@ public class CallState {
    * @return applicationId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "04e88489-df02-4e34-a0ee-27a91849555f", value = "The application id associated with the call.")
 
   public String getApplicationId() {
     return applicationId;
@@ -163,7 +161,6 @@ public class CallState {
    * @return accountId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "9900000", value = "The account id associated with the call.")
 
   public String getAccountId() {
     return accountId;
@@ -186,7 +183,6 @@ public class CallState {
    * @return callId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85", value = "The programmable voice API call ID.")
 
   public String getCallId() {
     return callId;
@@ -209,7 +205,6 @@ public class CallState {
    * @return parentCallId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "c-25ac29a2-1331029c-2cb0-4a07-b215-b22865662d85", value = "The A-leg call id, set only if this call is the B-leg of a [`<Transfer>`](/docs/voice/bxml/transfer).")
 
   public String getParentCallId() {
     return parentCallId;
@@ -232,7 +227,6 @@ public class CallState {
    * @return to
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "+19195551234", value = "The phone number that received the call, in E.164 format (e.g. +15555555555), or if the call was to a SIP URI, the SIP URI")
 
   public String getTo() {
     return to;
@@ -255,7 +249,6 @@ public class CallState {
    * @return from
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "19195554321", value = "The phone number that made the call, in E.164 format (e.g. +15555555555).")
 
   public String getFrom() {
     return from;
@@ -278,7 +271,6 @@ public class CallState {
    * @return direction
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CallDirectionEnum getDirection() {
     return direction;
@@ -301,7 +293,6 @@ public class CallState {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "disconnected", value = "The current state of the call. Current possible values are `queued`, `initiated`, `answered` and `disconnected`. Additional states may be added in the future, so your application must be tolerant of unknown values.")
 
   public String getState() {
     return state;
@@ -320,9 +311,6 @@ public class CallState {
   }
 
   public CallState putStirShakenItem(String key, String stirShakenItem) {
-    if (this.stirShaken == null) {
-      this.stirShaken = new HashMap<>();
-    }
     this.stirShaken.put(key, stirShakenItem);
     return this;
   }
@@ -332,7 +320,6 @@ public class CallState {
    * @return stirShaken
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "{\"verstat\":\"TN-Verification-Passed\",\"attestationIndicator\":\"A\",\"originatingId\":\"abc123\"}", value = "For inbound calls, the Bandwidth STIR/SHAKEN implementation will verify the information provided in the inbound invite request `Identity` header. The verification status is stored in the call state `stirShaken` property as follows.  | Property          | Description | |:------------------|:------------| | verstat | (optional) The verification status indicating whether the verification was successful or not. Possible values are `TN-Verification-Passed` or `TN-Verification-Failed`. | | attestationIndicator | (optional) The attestation level verified by Bandwidth. Possible values are `A` (full), `B` (partial) or `C` (gateway). | | originatingId | (optional) A unique origination identifier. |  Note that these are common properties but that the `stirShaken` object is free form and can contain other key-value pairs.  More information: [Understanding STIR/SHAKEN](https://www.bandwidth.com/regulations/stir-shaken)")
 
   public Map<String, String> getStirShaken() {
     return stirShaken;
@@ -355,7 +342,6 @@ public class CallState {
    * @return identity
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "eyJhbGciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cHM6Ly9idy1zaGFrZW4tY2VydC1wdWIuczMuYW1hem9uYXdzLmNvbS9iYW5kd2lkdGgtc2hha2VuLWNlcnRfMjAyMzA3MTYucGVtIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxOTg0MjgyMDI4MCJdfSwiaWF0IjoxNjU2NTM0MzM2LCJvcmlnIjp7InRuIjoiMTkxOTQ0NDI2ODMifSwib3JpZ2lkIjoiNDk0NTlhOGEtNDJmNi0zNTFjLTkzNjEtYWRmNTdhOWUwOGNhIn0.56un9sRw_uH-sbJvnUsqdevlVxbOVjn8MVlGTlBMicjaZuRRwxfiNp-C9zYCMKTTCbc-QdYPN05F61XNVN4D3w;info=<https://bw-shaken-cert-pub.s3.amazonaws.com/bandwidth-shaken-cert_20230716.pem>;alg=ES256;ppt=shaken", value = "The value of the `Identity` header from the inbound invite request. Only present for inbound calls and if the account is configured to forward this header.")
 
   public String getIdentity() {
     return identity;
@@ -378,7 +364,6 @@ public class CallState {
    * @return enqueuedTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2022-06-16T13:15:07.160Z", value = "The time this call was placed in queue.")
 
   public OffsetDateTime getEnqueuedTime() {
     return enqueuedTime;
@@ -401,7 +386,6 @@ public class CallState {
    * @return startTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2022-06-16T13:15:07.160Z", value = "The time the call was initiated, in ISO 8601 format. `null` if the call is still in your queue.")
 
   public OffsetDateTime getStartTime() {
     return startTime;
@@ -424,7 +408,6 @@ public class CallState {
    * @return answerTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2022-06-16T13:15:18.126Z", value = "Populated once the call has been answered, with the time in ISO 8601 format.")
 
   public OffsetDateTime getAnswerTime() {
     return answerTime;
@@ -447,7 +430,6 @@ public class CallState {
    * @return endTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2022-06-16T13:15:18.314Z", value = "Populated once the call has ended, with the time in ISO 8601 format.")
 
   public OffsetDateTime getEndTime() {
     return endTime;
@@ -470,7 +452,6 @@ public class CallState {
    * @return disconnectCause
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "| Cause | Description | |:------|:------------| | `hangup`| One party hung up the call, a [`<Hangup>`](../../bxml/verbs/hangup.md) verb was executed, or there was no more BXML to execute; it indicates that the call ended normally. | | `busy` | Callee was busy. | | `timeout` | Call wasn't answered before the `callTimeout` was reached. | | `cancel` | Call was cancelled by its originator while it was ringing. | | `rejected` | Call was rejected by the callee. | | `callback-error` | BXML callback couldn't be delivered to your callback server. | | `invalid-bxml` | Invalid BXML was returned in response to a callback. | | `application-error` | An unsupported action was tried on the call, e.g. trying to play a .ogg audio. | | `account-limit` | Account rate limits were reached. | | `node-capacity-exceeded` | System maximum capacity was reached. | | `error` | Some error not described in any of the other causes happened on the call. | | `unknown` | Unknown error happened on the call. |  Note: This list is not exhaustive and other values can appear in the future.")
 
   public String getDisconnectCause() {
     return disconnectCause;
@@ -493,7 +474,6 @@ public class CallState {
    * @return errorMessage
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Populated only if the call ended with an error, with text explaining the reason.")
 
   public String getErrorMessage() {
     return errorMessage;
@@ -516,7 +496,6 @@ public class CallState {
    * @return errorId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Populated only if the call ended with an error, with a Bandwidth internal id that references the error event.")
 
   public String getErrorId() {
     return errorId;
@@ -539,7 +518,6 @@ public class CallState {
    * @return lastUpdate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2022-06-16T13:15:18.314Z", value = "The last time the call had a state update, in ISO 8601 format.")
 
   public OffsetDateTime getLastUpdate() {
     return lastUpdate;
@@ -672,9 +650,7 @@ public class CallState {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (CallState.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!CallState.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CallState is not found in the empty JSON string", CallState.openapiRequiredFields.toString()));
         }
       }

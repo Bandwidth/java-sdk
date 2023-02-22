@@ -112,7 +112,7 @@ public class StatisticsApi {
 
         // create path and map variables
         String localVarPath = "/accounts/{accountId}/statistics"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -129,7 +129,6 @@ public class StatisticsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -142,15 +141,12 @@ public class StatisticsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getStatisticsValidateBeforeCall(String accountId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getStatistics(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getStatisticsCall(accountId, _callback);
-        return localVarCall;
+        return getStatisticsCall(accountId, _callback);
 
     }
 

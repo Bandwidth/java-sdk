@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +40,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -51,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * MessagesList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-18T08:49:31.529519-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
 public class MessagesList {
   public static final String SERIALIZED_NAME_TOTAL_COUNT = "totalCount";
   @SerializedName(SERIALIZED_NAME_TOTAL_COUNT)
@@ -63,7 +62,7 @@ public class MessagesList {
 
   public static final String SERIALIZED_NAME_MESSAGES = "messages";
   @SerializedName(SERIALIZED_NAME_MESSAGES)
-  private List<ListMessageItem> messages = null;
+  private List<ListMessageItem> messages = new ArrayList<>();
 
   public MessagesList() {
   }
@@ -79,7 +78,6 @@ public class MessagesList {
    * @return totalCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "100", value = "Total number of messages matched by the search.")
 
   public Integer getTotalCount() {
     return totalCount;
@@ -102,7 +100,6 @@ public class MessagesList {
    * @return pageInfo
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public PageInfo getPageInfo() {
     return pageInfo;
@@ -133,7 +130,6 @@ public class MessagesList {
    * @return messages
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<ListMessageItem> getMessages() {
     return messages;
@@ -210,9 +206,7 @@ public class MessagesList {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (MessagesList.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!MessagesList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MessagesList is not found in the empty JSON string", MessagesList.openapiRequiredFields.toString()));
         }
       }
