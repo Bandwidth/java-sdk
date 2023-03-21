@@ -26,6 +26,7 @@ jobs:
   test_main:
     name: Test Main Branch Nightly
     runs-on: ${{ matrix.os }}
+    if: github.base_ref == 'main'
     strategy:
       matrix:
         os: [windows-2022, windows-2019, ubuntu-20.04, ubuntu-22.04]
@@ -49,6 +50,7 @@ jobs:
   test_feature:
     name: Test Feature Branch Nightly
     runs-on: ${{ matrix.os }}
+    if: github.base_ref == 'feature/openapi-generator-sdk'
     strategy:
       matrix:
         os: [windows-2022, windows-2019, ubuntu-20.04, ubuntu-22.04]
