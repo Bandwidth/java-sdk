@@ -47,7 +47,7 @@ jobs:
   test_feature:
     name: Test PR to Feature Branch
     runs-on: ${{ matrix.os }}
-    if: github.base_ref == 'feature/openapi-generator-sdk'
+    # if: github.base_ref == 'feature/openapi-generator-sdk'
     strategy:
       matrix:
         os: [windows-2022, windows-2019, ubuntu-20.04, ubuntu-22.04]
