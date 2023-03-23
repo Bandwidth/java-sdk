@@ -127,7 +127,7 @@ public class ConferencesApiTest {
                     .post(mantecaRequestBody)
                     .build();
             Call mantecaApiCall = mantecaClient.newCall(mantecaRequest);
-            testId = mantecaApiCall.execute().body().string().replace("\"", "");
+            testId = mantecaApiCall.execute().body().string();
         } catch (IOException e) {
             System.out.println(e.toString());
             throw new Exception("Failed to initialize conference tests with Manteca, aborting test run :(");
