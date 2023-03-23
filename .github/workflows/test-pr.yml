@@ -1,0 +1,72 @@
+name: Test PR
+on:
+  pull_request:
+
+env:
+  BW_ACCOUNT_ID: ${{ secrets.BW_ACCOUNT_ID }}
+  BW_PASSWORD: ${{ secrets.BW_PASSWORD }}
+  BW_USERNAME: ${{ secrets.BW_USERNAME }}
+  BW_VOICE_APPLICATION_ID: ${{ secrets.BW_VOICE_APPLICATION_ID }}
+  BW_MESSAGING_APPLICATION_ID: ${{ secrets.BW_MESSAGING_APPLICATION_ID }}
+  BW_NUMBER: ${{ secrets.BW_NUMBER }}
+  USER_NUMBER: ${{ secrets.USER_NUMBER }}
+  BASE_CALLBACK_URL: ${{ secrets.BASE_CALLBACK_URL }}
+  BW_USERNAME_FORBIDDEN: ${{ secrets.BW_USERNAME_FORBIDDEN }}
+  BW_PASSWORD_FORBIDDEN: ${{ secrets.BW_PASSWORD_FORBIDDEN }}
+  MANTECA_IDLE_NUMBER: ${{ secrets.MANTECA_IDLE_NUMBER }}
+  MANTECA_ACTIVE_NUMBER: ${{ secrets.MANTECA_ACTIVE_NUMBER }}
+  MANTECA_APPLICATION_ID: ${{ secrets.MANTECA_APPLICATION_ID }}
+  MANTECA_BASE_URL: ${{ secrets.MANTECA_BASE_URL }}
+  ATT_NUMBER: ${{ secrets.ATT_NUMBER }}
+  T_MOBILE_NUMBER: ${{ secrets.T_MOBILE_NUMBER }}
+  VZW_NUMBER: ${{ secrets.VZW_NUMBER }}
+
+jobs:
+  test_pr_main:
+    name: Test PR to Main Branch
+    runs-on: ${{ matrix.os }}
+    if: github.base_ref == 'main'
+    strategy:
+      matrix:
+        os: [windows-2022, windows-2019, ubuntu-20.04, ubuntu-22.04]
+        java-version: ['8', '11']
+        distribution: ['zulu', 'temurin']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: ${{ matrix.distribution }}
+          java-version: ${{ matrix.java-version }}
+
+      - name: Test
+        run: mvn -B package --file pom.xml
+
+  test_feature:
+    name: Test PR to Feature Branch
+    runs-on: ${{ matrix.os }}
+    if: github.base_ref == 'feature/openapi-generator-sdk'
+    strategy:
+      matrix:
+        os: [windows-2022, windows-2019, ubuntu-20.04, ubuntu-22.04]
+        java-version: ["11", "17", "19"]
+        distribution: ["zulu", "temurin"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: ${{ matrix.distribution }}
+          java-version: ${{ matrix.java-version }}
+
+      - name: Test
+        env:
+          JAVA_VERSION: ${{ matrix.java-version }}
+          RUNNER_OS: ${{ matrix.os }}
+          OPERATING_SYSTEM: ${{ matrix.os }}
+          DISTRIBUTION: ${{ matrix.distribution }}
+        run: mvn -B package --file pom.xml
