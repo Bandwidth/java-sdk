@@ -28,6 +28,7 @@ public class TranscribeRecordingRequest {
     private OptionalNullable<String> tag;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private OptionalNullable<Double> callbackTimeout;
+    private OptionalNullable<Boolean> detectLanguage;
 
     /**
      * Default constructor.
@@ -37,12 +38,14 @@ public class TranscribeRecordingRequest {
 
     /**
      * Initialization constructor.
-     * @param  callbackUrl  String value for callbackUrl.
-     * @param  callbackMethod  CallbackMethodEnum value for callbackMethod.
-     * @param  username  String value for username.
-     * @param  password  String value for password.
-     * @param  tag  String value for tag.
-     * @param  callbackTimeout  Double value for callbackTimeout.
+     * 
+     * @param callbackUrl     String value for callbackUrl.
+     * @param callbackMethod  CallbackMethodEnum value for callbackMethod.
+     * @param username        String value for username.
+     * @param password        String value for password.
+     * @param tag             String value for tag.
+     * @param callbackTimeout Double value for callbackTimeout.
+     * @param detectLanguage  Boolean value for detectLanguage
      */
     public TranscribeRecordingRequest(
             String callbackUrl,
@@ -50,13 +53,15 @@ public class TranscribeRecordingRequest {
             String username,
             String password,
             String tag,
-            Double callbackTimeout) {
+            Double callbackTimeout,
+            Boolean detectLanguage) {
         this.callbackUrl = callbackUrl;
         this.callbackMethod = OptionalNullable.of(callbackMethod);
         this.username = OptionalNullable.of(username);
         this.password = OptionalNullable.of(password);
         this.tag = OptionalNullable.of(tag);
         this.callbackTimeout = OptionalNullable.of(callbackTimeout);
+        this.detectLanguage = OptionalNullable.of(detectLanguage);
     }
 
     /**
@@ -65,17 +70,19 @@ public class TranscribeRecordingRequest {
     protected TranscribeRecordingRequest(String callbackUrl,
             OptionalNullable<CallbackMethodEnum> callbackMethod, OptionalNullable<String> username,
             OptionalNullable<String> password, OptionalNullable<String> tag,
-            OptionalNullable<Double> callbackTimeout) {
+            OptionalNullable<Double> callbackTimeout, OptionalNullable<Boolean> detectLanguage) {
         this.callbackUrl = callbackUrl;
         this.callbackMethod = callbackMethod;
         this.username = username;
         this.password = password;
         this.tag = tag;
         this.callbackTimeout = callbackTimeout;
+        this.detectLanguage = detectLanguage;
     }
 
     /**
      * Getter for CallbackUrl.
+     * 
      * @return Returns the String
      */
     @JsonGetter("callbackUrl")
@@ -85,6 +92,7 @@ public class TranscribeRecordingRequest {
 
     /**
      * Setter for CallbackUrl.
+     * 
      * @param callbackUrl Value for String
      */
     @JsonSetter("callbackUrl")
@@ -94,6 +102,7 @@ public class TranscribeRecordingRequest {
 
     /**
      * Internal Getter for CallbackMethod.
+     * 
      * @return Returns the Internal CallbackMethodEnum
      */
     @JsonGetter("callbackMethod")
@@ -104,6 +113,7 @@ public class TranscribeRecordingRequest {
 
     /**
      * Getter for CallbackMethod.
+     * 
      * @return Returns the CallbackMethodEnum
      */
     public CallbackMethodEnum getCallbackMethod() {
@@ -112,6 +122,7 @@ public class TranscribeRecordingRequest {
 
     /**
      * Setter for CallbackMethod.
+     * 
      * @param callbackMethod Value for CallbackMethodEnum
      */
     @JsonSetter("callbackMethod")
@@ -128,6 +139,7 @@ public class TranscribeRecordingRequest {
 
     /**
      * Internal Getter for Username.
+     * 
      * @return Returns the Internal String
      */
     @JsonGetter("username")
@@ -138,6 +150,7 @@ public class TranscribeRecordingRequest {
 
     /**
      * Getter for Username.
+     * 
      * @return Returns the String
      */
     public String getUsername() {
@@ -146,6 +159,7 @@ public class TranscribeRecordingRequest {
 
     /**
      * Setter for Username.
+     * 
      * @param username Value for String
      */
     @JsonSetter("username")
@@ -162,6 +176,7 @@ public class TranscribeRecordingRequest {
 
     /**
      * Internal Getter for Password.
+     * 
      * @return Returns the Internal String
      */
     @JsonGetter("password")
@@ -172,6 +187,7 @@ public class TranscribeRecordingRequest {
 
     /**
      * Getter for Password.
+     * 
      * @return Returns the String
      */
     public String getPassword() {
@@ -180,6 +196,7 @@ public class TranscribeRecordingRequest {
 
     /**
      * Setter for Password.
+     * 
      * @param password Value for String
      */
     @JsonSetter("password")
@@ -196,6 +213,7 @@ public class TranscribeRecordingRequest {
 
     /**
      * Internal Getter for Tag.
+     * 
      * @return Returns the Internal String
      */
     @JsonGetter("tag")
@@ -206,6 +224,7 @@ public class TranscribeRecordingRequest {
 
     /**
      * Getter for Tag.
+     * 
      * @return Returns the String
      */
     public String getTag() {
@@ -214,6 +233,7 @@ public class TranscribeRecordingRequest {
 
     /**
      * Setter for Tag.
+     * 
      * @param tag Value for String
      */
     @JsonSetter("tag")
@@ -230,6 +250,7 @@ public class TranscribeRecordingRequest {
 
     /**
      * Internal Getter for CallbackTimeout.
+     * 
      * @return Returns the Internal Double
      */
     @JsonGetter("callbackTimeout")
@@ -240,6 +261,7 @@ public class TranscribeRecordingRequest {
 
     /**
      * Getter for CallbackTimeout.
+     * 
      * @return Returns the Double
      */
     public Double getCallbackTimeout() {
@@ -248,6 +270,7 @@ public class TranscribeRecordingRequest {
 
     /**
      * Setter for CallbackTimeout.
+     * 
      * @param callbackTimeout Value for Double
      */
     @JsonSetter("callbackTimeout")
@@ -263,19 +286,58 @@ public class TranscribeRecordingRequest {
     }
 
     /**
+     * Internal Getter for DetectLanguage.
+     * 
+     * @return Returns the Internal Boolean
+     */
+    @JsonGetter("detectLanguage")
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<Boolean> internalGetDetectLanguage() {
+        return this.detectLanguage;
+    }
+
+    /**
+     * Getter for DetectLanguage.
+     * 
+     * @return Returns the Boolean
+     */
+    public Boolean getDetectLanguage() {
+        return OptionalNullable.getFrom(detectLanguage);
+    }
+
+    /**
+     * Setter for DetectLanguage.
+     * 
+     * @param detectLanguage Value for Boolean
+     */
+    @JsonSetter("detectLanguage")
+    public void setDetectLanguage(Boolean detectLanguage) {
+        this.detectLanguage = OptionalNullable.of(detectLanguage);
+    }
+
+    /**
+     * UnSetter for DetectLanguage.
+     */
+    public void unsetDetectLanguage() {
+        detectLanguage = null;
+    }
+
+    /**
      * Converts this TranscribeRecordingRequest into string format.
+     * 
      * @return String representation of this class
      */
     @Override
     public String toString() {
         return "TranscribeRecordingRequest [" + "callbackUrl=" + callbackUrl + ", callbackMethod="
                 + callbackMethod + ", username=" + username + ", password=" + password + ", tag="
-                + tag + ", callbackTimeout=" + callbackTimeout + "]";
+                + tag + ", callbackTimeout=" + callbackTimeout + ", detectLanguage=" + detectLanguage + "]";
     }
 
     /**
      * Builds a new {@link TranscribeRecordingRequest.Builder} object.
      * Creates the instance with the state of the current model.
+     * 
      * @return a new {@link TranscribeRecordingRequest.Builder} object
      */
     public Builder toBuilder() {
@@ -286,6 +348,7 @@ public class TranscribeRecordingRequest {
         builder.password = internalGetPassword();
         builder.tag = internalGetTag();
         builder.callbackTimeout = internalGetCallbackTimeout();
+        builder.detectLanguage = internalGetDetectLanguage();
         return builder;
     }
 
@@ -299,12 +362,12 @@ public class TranscribeRecordingRequest {
         private OptionalNullable<String> password;
         private OptionalNullable<String> tag;
         private OptionalNullable<Double> callbackTimeout;
-
-
+        private OptionalNullable<Boolean> detectLanguage;
 
         /**
          * Setter for callbackUrl.
-         * @param  callbackUrl  String value for callbackUrl.
+         * 
+         * @param callbackUrl String value for callbackUrl.
          * @return Builder
          */
         public Builder callbackUrl(String callbackUrl) {
@@ -314,7 +377,8 @@ public class TranscribeRecordingRequest {
 
         /**
          * Setter for callbackMethod.
-         * @param  callbackMethod  CallbackMethodEnum value for callbackMethod.
+         * 
+         * @param callbackMethod CallbackMethodEnum value for callbackMethod.
          * @return Builder
          */
         public Builder callbackMethod(CallbackMethodEnum callbackMethod) {
@@ -324,6 +388,7 @@ public class TranscribeRecordingRequest {
 
         /**
          * UnSetter for callbackMethod.
+         * 
          * @return Builder
          */
         public Builder unsetCallbackMethod() {
@@ -333,7 +398,8 @@ public class TranscribeRecordingRequest {
 
         /**
          * Setter for username.
-         * @param  username  String value for username.
+         * 
+         * @param username String value for username.
          * @return Builder
          */
         public Builder username(String username) {
@@ -343,6 +409,7 @@ public class TranscribeRecordingRequest {
 
         /**
          * UnSetter for username.
+         * 
          * @return Builder
          */
         public Builder unsetUsername() {
@@ -352,7 +419,8 @@ public class TranscribeRecordingRequest {
 
         /**
          * Setter for password.
-         * @param  password  String value for password.
+         * 
+         * @param password String value for password.
          * @return Builder
          */
         public Builder password(String password) {
@@ -362,6 +430,7 @@ public class TranscribeRecordingRequest {
 
         /**
          * UnSetter for password.
+         * 
          * @return Builder
          */
         public Builder unsetPassword() {
@@ -371,7 +440,8 @@ public class TranscribeRecordingRequest {
 
         /**
          * Setter for tag.
-         * @param  tag  String value for tag.
+         * 
+         * @param tag String value for tag.
          * @return Builder
          */
         public Builder tag(String tag) {
@@ -381,6 +451,7 @@ public class TranscribeRecordingRequest {
 
         /**
          * UnSetter for tag.
+         * 
          * @return Builder
          */
         public Builder unsetTag() {
@@ -390,7 +461,8 @@ public class TranscribeRecordingRequest {
 
         /**
          * Setter for callbackTimeout.
-         * @param  callbackTimeout  Double value for callbackTimeout.
+         * 
+         * @param callbackTimeout Double value for callbackTimeout.
          * @return Builder
          */
         public Builder callbackTimeout(Double callbackTimeout) {
@@ -400,6 +472,7 @@ public class TranscribeRecordingRequest {
 
         /**
          * UnSetter for callbackTimeout.
+         * 
          * @return Builder
          */
         public Builder unsetCallbackTimeout() {
@@ -408,12 +481,34 @@ public class TranscribeRecordingRequest {
         }
 
         /**
+         * Setter for detectLanguage.
+         * 
+         * @param detectLanguage Boolean value for detectLanguage.
+         * @return Builder
+         */
+        public Builder detectLanguage(Boolean detectLanguage) {
+            this.detectLanguage = OptionalNullable.of(detectLanguage);
+            return this;
+        }
+
+        /**
+         * UnSetter for detectLanguage.
+         * 
+         * @return Builder
+         */
+        public Builder unsetDetectLanguage() {
+            detectLanguage = null;
+            return this;
+        }
+
+        /**
          * Builds a new {@link TranscribeRecordingRequest} object using the set fields.
+         * 
          * @return {@link TranscribeRecordingRequest}
          */
         public TranscribeRecordingRequest build() {
             return new TranscribeRecordingRequest(callbackUrl, callbackMethod, username, password,
-                    tag, callbackTimeout);
+                    tag, callbackTimeout, detectLanguage);
         }
     }
 }
