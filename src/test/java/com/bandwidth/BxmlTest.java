@@ -583,4 +583,51 @@ public class BxmlTest {
                 + "</Transfer>";
         assertEquals("BXML strings are equal", expected, response);
     }
+
+    @Test
+    public void testStartTranscriptionBxmlVerb() {
+        CustomParam customParam1 = CustomParam.builder()
+                .name("name1")
+                .value("value1")
+                .build();
+        CustomParam customParam2 = CustomParam.builder()
+                .name("name2")
+                .value("value2")
+                .build();
+        ArrayList<CustomParam> customParams = new ArrayList<CustomParam>();
+        customParams.add(customParam1);
+        customParams.add(customParam2);
+        StartTranscription startTranscription = StartTranscription.builder()
+                .destination("https://url.com")
+                .transcriptionEventMethod("POST")
+                .username("user")
+                .password("pass")
+                .name("test_transcription")
+                .tracks("inbound")
+                .transcriptionEventUrl("https://url.com")
+                .customParams(customParams)
+                .build();
+
+        String response = new Response()
+                .add(startTranscription)
+                .toBXML();
+
+        String expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?><Response>  <StartTranscription name=\"test_transcription\" stabilized=\"true\" destination=\"https://url.com\" transcriptionEventMethod=\"POST\" transcriptionEventUrl=\"https://url.com\" tracks=\"inbound\"> <CustomParam name=\"name1\" value=\"value1\" />    <CustomParam name=\"name2\" value=\"value2\" /></StartTranscription></Response>";
+        assertEquals("BXML strings are equal", expected, response);
+    }
+
+    @Test
+    public void testStopTranscription() {
+        StopTranscription stopTranscription = StopTranscription.builder()
+                .name("test")
+                .build();
+
+        String response = new Response()
+                .add(stopTranscription)
+                .toBXML();
+
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><StopTranscription name=\"test\"/></Response>";
+
+        assertEquals("BXML strings not equal", expected, response);
+    }
 }
