@@ -2,7 +2,6 @@
 package com.bandwidth.voice.bxml.verbs;
 
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlValue;
 import javax.xml.bind.annotation.XmlAttribute;
 import lombok.Builder;
 
@@ -23,7 +22,6 @@ public class CustomParam implements Verb {
     /**
      * <b>(required)</b> The value of this parameter, up to 2048 characters.
      */
-    @XmlValue
+    @XmlAttribute
     private String value;
-
 }
