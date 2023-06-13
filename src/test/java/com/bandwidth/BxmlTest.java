@@ -612,7 +612,7 @@ public class BxmlTest {
                 .add(startTranscription)
                 .toBXML();
 
-        String expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?><Response> <StartTranscription name=\"test_transcription\" tracks=\"inbound\" destination=\"https://url.com\" transcriptionEventUrl=\"https://url.com\" transcriptionEventMethod=\"POST\" username=\"user\" password=\"pass\" <CustomParam name=\"name1\" value=\"value1\"/><CustomParam name=\"name2\" value=\"value2\"/></StartTranscription></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?><Response><StartTranscription name=\"test_transcription\" tracks=\"inbound\" destination=\"https://url.com\" transcriptionEventUrl=\"https://url.com\" transcriptionEventMethod=\"POST\" username=\"user\" password=\"pass\"><CustomParam name=\"name1\" value=\"value1\"/><CustomParam name=\"name2\" value=\"value2\"/></StartTranscription></Response>";
         assertEquals("BXML strings are equal", expected, response);
     }
 
