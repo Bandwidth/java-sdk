@@ -32,6 +32,7 @@ import java.util.concurrent.TimeUnit;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.beans.HasPropertyWithValue.hasProperty;
 
 import static org.openapitools.client.utils.TestingEnvironmentVariables.*;
@@ -202,7 +203,7 @@ public class CallsApiTest {
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
         ApiResponse<CallState> response = api.getCallStateWithHttpInfo(BW_ACCOUNT_ID, callIdList.get(0));
 
-        assertThat(response.getStatusCode(), is((200) || (404);
+        assertThat(response.getStatusCode(), anyOf(is(200),is(404)));
         assertThat(response.getData(), hasProperty("callId", is(instanceOf(String.class))));
         assertThat(response.getData(), hasProperty("state", is(instanceOf(String.class))));
         assertThat(response.getData(), hasProperty("direction", is(CallDirectionEnum.OUTBOUND)));
