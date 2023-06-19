@@ -47,7 +47,12 @@ public class Response {
             @XmlElement(name = Tag.TYPE_NAME, type = Tag.class),
             @XmlElement(name = SipUri.TYPE_NAME, type = SipUri.class),
             @XmlElement(name = StartStream.TYPE_NAME, type = StartStream.class),            
-            @XmlElement(name = StopStream.TYPE_NAME, type = StopStream.class)  
+		@XmlElement(name = StopStream.TYPE_NAME, type = StopStream.class),  
+            @XmlElement(name = StartTranscription.TYPE_NAME, type = StartTranscription.class),            
+            @XmlElement(name = StopTranscription.TYPE_NAME, type = StopTranscription.class),            
+            @XmlElement(name = CustomParam.TYPE_NAME, type = CustomParam.class),            
+
+
     })
     private final List<Verb> verbs = new ArrayList<>();
 
