@@ -14,7 +14,6 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.IOException;
@@ -24,7 +23,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The priority specified by the user.
+ * The priority specified by the user.  Not supported on MMS.
  */
 @JsonAdapter(PriorityEnum.Adapter.class)
 public enum PriorityEnum {

@@ -39,7 +39,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class RecordingsApi {
     private ApiClient localVarApiClient;
@@ -80,23 +79,23 @@ public class RecordingsApi {
 
     /**
      * Build call for deleteCallTranscription
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The transcription was successfully deleted </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> The transcription was successfully deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -171,21 +170,21 @@ public class RecordingsApi {
     /**
      * Delete Transcription
      * Deletes the specified recording&#39;s transcription.  Note: After the deletion is requested and a &#x60;204&#x60; is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The transcription was successfully deleted </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> The transcription was successfully deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -196,22 +195,22 @@ public class RecordingsApi {
     /**
      * Delete Transcription
      * Deletes the specified recording&#39;s transcription.  Note: After the deletion is requested and a &#x60;204&#x60; is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The transcription was successfully deleted </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> The transcription was successfully deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -223,23 +222,23 @@ public class RecordingsApi {
     /**
      * Delete Transcription (asynchronously)
      * Deletes the specified recording&#39;s transcription.  Note: After the deletion is requested and a &#x60;204&#x60; is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The transcription was successfully deleted </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> The transcription was successfully deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -251,23 +250,23 @@ public class RecordingsApi {
     }
     /**
      * Build call for deleteRecording
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Recording Deleted </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Recording was deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -342,21 +341,21 @@ public class RecordingsApi {
     /**
      * Delete Recording
      * Delete the recording information, media and transcription.  Note: After the deletion is requested and a &#x60;204&#x60; is returned, neither the recording metadata nor the actual media nor its transcription will be accessible anymore. However, the media of the specified recording is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Recording Deleted </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Recording was deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -367,22 +366,22 @@ public class RecordingsApi {
     /**
      * Delete Recording
      * Delete the recording information, media and transcription.  Note: After the deletion is requested and a &#x60;204&#x60; is returned, neither the recording metadata nor the actual media nor its transcription will be accessible anymore. However, the media of the specified recording is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Recording Deleted </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Recording was deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -394,23 +393,23 @@ public class RecordingsApi {
     /**
      * Delete Recording (asynchronously)
      * Delete the recording information, media and transcription.  Note: After the deletion is requested and a &#x60;204&#x60; is returned, neither the recording metadata nor the actual media nor its transcription will be accessible anymore. However, the media of the specified recording is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Recording Deleted </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Recording was deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -422,23 +421,23 @@ public class RecordingsApi {
     }
     /**
      * Build call for deleteRecordingMedia
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The recording media was successfully deleted </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> The recording media was successfully deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -513,21 +512,21 @@ public class RecordingsApi {
     /**
      * Delete Recording Media
      * Deletes the specified recording&#39;s media.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The recording media was successfully deleted </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> The recording media was successfully deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -538,22 +537,22 @@ public class RecordingsApi {
     /**
      * Delete Recording Media
      * Deletes the specified recording&#39;s media.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The recording media was successfully deleted </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> The recording media was successfully deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -565,23 +564,23 @@ public class RecordingsApi {
     /**
      * Delete Recording Media (asynchronously)
      * Deletes the specified recording&#39;s media.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The recording media was successfully deleted </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> The recording media was successfully deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -593,9 +592,9 @@ public class RecordingsApi {
     }
     /**
      * Build call for downloadCallRecording
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -609,7 +608,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -686,9 +685,9 @@ public class RecordingsApi {
     /**
      * Download Recording
      * Downloads the specified recording.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -701,7 +700,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -713,9 +712,9 @@ public class RecordingsApi {
     /**
      * Download Recording
      * Downloads the specified recording.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -728,7 +727,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -741,9 +740,9 @@ public class RecordingsApi {
     /**
      * Download Recording (asynchronously)
      * Downloads the specified recording.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -757,7 +756,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -770,9 +769,9 @@ public class RecordingsApi {
     }
     /**
      * Build call for getCallRecording
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -786,7 +785,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -861,9 +860,9 @@ public class RecordingsApi {
     /**
      * Get Call Recording
      * Returns metadata for the specified recording.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @return CallRecordingMetadata
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -876,7 +875,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -888,9 +887,9 @@ public class RecordingsApi {
     /**
      * Get Call Recording
      * Returns metadata for the specified recording.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @return ApiResponse&lt;CallRecordingMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -903,7 +902,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -916,9 +915,9 @@ public class RecordingsApi {
     /**
      * Get Call Recording (asynchronously)
      * Returns metadata for the specified recording.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -932,7 +931,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -945,9 +944,9 @@ public class RecordingsApi {
     }
     /**
      * Build call for getCallTranscription
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -961,7 +960,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1036,9 +1035,9 @@ public class RecordingsApi {
     /**
      * Get Transcription
      * Downloads the specified transcription.  If the transcribed recording was multi-channel, then there will be 2 transcripts. The caller/called party transcript will be the first item while [&#x60;&lt;PlayAudio&gt;&#x60;](/docs/voice/bxml/playAudio) and [&#x60;&lt;SpeakSentence&gt;&#x60;](/docs/voice/bxml/speakSentence) transcript will be the second item. During a [&#x60;&lt;Transfer&gt;&#x60;](/docs/voice/bxml/transfer) the A-leg transcript will be the first item while the B-leg transcript will be the second item.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @return TranscriptionList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1051,7 +1050,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1063,9 +1062,9 @@ public class RecordingsApi {
     /**
      * Get Transcription
      * Downloads the specified transcription.  If the transcribed recording was multi-channel, then there will be 2 transcripts. The caller/called party transcript will be the first item while [&#x60;&lt;PlayAudio&gt;&#x60;](/docs/voice/bxml/playAudio) and [&#x60;&lt;SpeakSentence&gt;&#x60;](/docs/voice/bxml/speakSentence) transcript will be the second item. During a [&#x60;&lt;Transfer&gt;&#x60;](/docs/voice/bxml/transfer) the A-leg transcript will be the first item while the B-leg transcript will be the second item.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @return ApiResponse&lt;TranscriptionList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1078,7 +1077,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1091,9 +1090,9 @@ public class RecordingsApi {
     /**
      * Get Transcription (asynchronously)
      * Downloads the specified transcription.  If the transcribed recording was multi-channel, then there will be 2 transcripts. The caller/called party transcript will be the first item while [&#x60;&lt;PlayAudio&gt;&#x60;](/docs/voice/bxml/playAudio) and [&#x60;&lt;SpeakSentence&gt;&#x60;](/docs/voice/bxml/speakSentence) transcript will be the second item. During a [&#x60;&lt;Transfer&gt;&#x60;](/docs/voice/bxml/transfer) the A-leg transcript will be the first item while the B-leg transcript will be the second item.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1107,7 +1106,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1120,7 +1119,7 @@ public class RecordingsApi {
     }
     /**
      * Build call for listAccountCallRecordings
-     * @param accountId Your Bandwidth Account ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param to Filter results by the &#x60;to&#x60; field. (optional)
      * @param from Filter results by the &#x60;from&#x60; field. (optional)
      * @param minStartTime Filter results to recordings which have a &#x60;startTime&#x60; after or including &#x60;minStartTime&#x60; (in ISO8601 format). (optional)
@@ -1138,7 +1137,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1217,7 +1216,7 @@ public class RecordingsApi {
     /**
      * Get Call Recordings
      * Returns a list of metadata for the recordings associated with the specified account. The list can be filtered by the optional from, to, minStartTime, and maxStartTime arguments. The list is capped at 1000 entries and may be empty if no recordings match the specified criteria.
-     * @param accountId Your Bandwidth Account ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param to Filter results by the &#x60;to&#x60; field. (optional)
      * @param from Filter results by the &#x60;from&#x60; field. (optional)
      * @param minStartTime Filter results to recordings which have a &#x60;startTime&#x60; after or including &#x60;minStartTime&#x60; (in ISO8601 format). (optional)
@@ -1234,7 +1233,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1246,7 +1245,7 @@ public class RecordingsApi {
     /**
      * Get Call Recordings
      * Returns a list of metadata for the recordings associated with the specified account. The list can be filtered by the optional from, to, minStartTime, and maxStartTime arguments. The list is capped at 1000 entries and may be empty if no recordings match the specified criteria.
-     * @param accountId Your Bandwidth Account ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param to Filter results by the &#x60;to&#x60; field. (optional)
      * @param from Filter results by the &#x60;from&#x60; field. (optional)
      * @param minStartTime Filter results to recordings which have a &#x60;startTime&#x60; after or including &#x60;minStartTime&#x60; (in ISO8601 format). (optional)
@@ -1263,7 +1262,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1276,7 +1275,7 @@ public class RecordingsApi {
     /**
      * Get Call Recordings (asynchronously)
      * Returns a list of metadata for the recordings associated with the specified account. The list can be filtered by the optional from, to, minStartTime, and maxStartTime arguments. The list is capped at 1000 entries and may be empty if no recordings match the specified criteria.
-     * @param accountId Your Bandwidth Account ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param to Filter results by the &#x60;to&#x60; field. (optional)
      * @param from Filter results by the &#x60;from&#x60; field. (optional)
      * @param minStartTime Filter results to recordings which have a &#x60;startTime&#x60; after or including &#x60;minStartTime&#x60; (in ISO8601 format). (optional)
@@ -1294,7 +1293,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1307,8 +1306,8 @@ public class RecordingsApi {
     }
     /**
      * Build call for listCallRecordings
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1322,7 +1321,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1391,8 +1390,8 @@ public class RecordingsApi {
     /**
      * List Call Recordings
      * Returns a (potentially empty) list of metadata for the recordings that took place during the specified call.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @return List&lt;CallRecordingMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1405,7 +1404,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1417,8 +1416,8 @@ public class RecordingsApi {
     /**
      * List Call Recordings
      * Returns a (potentially empty) list of metadata for the recordings that took place during the specified call.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @return ApiResponse&lt;List&lt;CallRecordingMetadata&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1431,7 +1430,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1444,8 +1443,8 @@ public class RecordingsApi {
     /**
      * List Call Recordings (asynchronously)
      * Returns a (potentially empty) list of metadata for the recordings that took place during the specified call.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1459,7 +1458,7 @@ public class RecordingsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1472,9 +1471,9 @@ public class RecordingsApi {
     }
     /**
      * Build call for transcribeCallRecording
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param transcribeRecording  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1482,14 +1481,14 @@ public class RecordingsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Transcription successfully requested </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Transcription was successfully requested. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1570,22 +1569,22 @@ public class RecordingsApi {
     /**
      * Create Transcription Request
      * Generate the transcription for a specific recording. Transcription can succeed only for recordings of length greater than 500 milliseconds and less than 4 hours.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param transcribeRecording  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Transcription successfully requested </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Transcription was successfully requested. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1596,23 +1595,23 @@ public class RecordingsApi {
     /**
      * Create Transcription Request
      * Generate the transcription for a specific recording. Transcription can succeed only for recordings of length greater than 500 milliseconds and less than 4 hours.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param transcribeRecording  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Transcription successfully requested </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Transcription was successfully requested. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1624,9 +1623,9 @@ public class RecordingsApi {
     /**
      * Create Transcription Request (asynchronously)
      * Generate the transcription for a specific recording. Transcription can succeed only for recordings of length greater than 500 milliseconds and less than 4 hours.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param transcribeRecording  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1634,14 +1633,14 @@ public class RecordingsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Transcription successfully requested </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Transcription was successfully requested. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1653,8 +1652,8 @@ public class RecordingsApi {
     }
     /**
      * Build call for updateCallRecordingState
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @param updateCallRecording  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1662,14 +1661,14 @@ public class RecordingsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Recording state successfully modified </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Recording state was successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1744,21 +1743,21 @@ public class RecordingsApi {
     /**
      * Update Recording
      * Pause or resume a recording on an active phone call.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @param updateCallRecording  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Recording state successfully modified </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Recording state was successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1769,22 +1768,22 @@ public class RecordingsApi {
     /**
      * Update Recording
      * Pause or resume a recording on an active phone call.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @param updateCallRecording  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Recording state successfully modified </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Recording state was successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1796,8 +1795,8 @@ public class RecordingsApi {
     /**
      * Update Recording (asynchronously)
      * Pause or resume a recording on an active phone call.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @param updateCallRecording  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1805,14 +1804,14 @@ public class RecordingsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Recording state successfully modified </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Recording state was successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */

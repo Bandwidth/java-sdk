@@ -41,7 +41,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class MessagesApi {
     private ApiClient localVarApiClient;
@@ -95,6 +94,7 @@ public class MessagesApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 406 </td><td> Not Acceptable </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
@@ -177,6 +177,7 @@ public class MessagesApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 406 </td><td> Not Acceptable </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
@@ -202,6 +203,7 @@ public class MessagesApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 406 </td><td> Not Acceptable </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
@@ -229,6 +231,7 @@ public class MessagesApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 406 </td><td> Not Acceptable </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
@@ -254,9 +257,11 @@ public class MessagesApi {
      * @param errorCode The error code of the message. (optional)
      * @param fromDateTime The start of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. (optional)
      * @param toDateTime The end of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. (optional)
+     * @param campaignId The campaign ID of the message. (optional)
      * @param sort The field and direction to sort by combined with a colon. Direction is either asc or desc. (optional)
      * @param pageToken A base64 encoded value used for pagination of results. (optional)
      * @param limit The maximum records requested in search result. Default 100. The sum of limit and after cannot be more than 10000. (optional)
+     * @param limitTotalCount When set to true, the response&#39;s totalCount field will have a maximum value of 10,000. When set to false, or excluded, this will give an accurate totalCount of all messages that match the provided filters. If you are experiencing latency, try using this parameter to limit your results. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -273,7 +278,7 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMessagesCall(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String sort, String pageToken, Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listMessagesCall(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://messaging.bandwidth.com/api/v2" };
@@ -339,6 +344,10 @@ public class MessagesApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("toDateTime", toDateTime));
         }
 
+        if (campaignId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignId", campaignId));
+        }
+
         if (sort != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
         }
@@ -349,6 +358,10 @@ public class MessagesApi {
 
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (limitTotalCount != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limitTotalCount", limitTotalCount));
         }
 
         final String[] localVarAccepts = {
@@ -371,13 +384,13 @@ public class MessagesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listMessagesValidateBeforeCall(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String sort, String pageToken, Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listMessagesValidateBeforeCall(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling listMessages(Async)");
         }
 
-        return listMessagesCall(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, sort, pageToken, limit, _callback);
+        return listMessagesCall(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, limitTotalCount, _callback);
 
     }
 
@@ -395,9 +408,11 @@ public class MessagesApi {
      * @param errorCode The error code of the message. (optional)
      * @param fromDateTime The start of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. (optional)
      * @param toDateTime The end of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. (optional)
+     * @param campaignId The campaign ID of the message. (optional)
      * @param sort The field and direction to sort by combined with a colon. Direction is either asc or desc. (optional)
      * @param pageToken A base64 encoded value used for pagination of results. (optional)
      * @param limit The maximum records requested in search result. Default 100. The sum of limit and after cannot be more than 10000. (optional)
+     * @param limitTotalCount When set to true, the response&#39;s totalCount field will have a maximum value of 10,000. When set to false, or excluded, this will give an accurate totalCount of all messages that match the provided filters. If you are experiencing latency, try using this parameter to limit your results. (optional)
      * @return MessagesList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -413,8 +428,8 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public MessagesList listMessages(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String sort, String pageToken, Integer limit) throws ApiException {
-        ApiResponse<MessagesList> localVarResp = listMessagesWithHttpInfo(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, sort, pageToken, limit);
+    public MessagesList listMessages(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount) throws ApiException {
+        ApiResponse<MessagesList> localVarResp = listMessagesWithHttpInfo(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, limitTotalCount);
         return localVarResp.getData();
     }
 
@@ -432,9 +447,11 @@ public class MessagesApi {
      * @param errorCode The error code of the message. (optional)
      * @param fromDateTime The start of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. (optional)
      * @param toDateTime The end of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. (optional)
+     * @param campaignId The campaign ID of the message. (optional)
      * @param sort The field and direction to sort by combined with a colon. Direction is either asc or desc. (optional)
      * @param pageToken A base64 encoded value used for pagination of results. (optional)
      * @param limit The maximum records requested in search result. Default 100. The sum of limit and after cannot be more than 10000. (optional)
+     * @param limitTotalCount When set to true, the response&#39;s totalCount field will have a maximum value of 10,000. When set to false, or excluded, this will give an accurate totalCount of all messages that match the provided filters. If you are experiencing latency, try using this parameter to limit your results. (optional)
      * @return ApiResponse&lt;MessagesList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -450,8 +467,8 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MessagesList> listMessagesWithHttpInfo(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String sort, String pageToken, Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = listMessagesValidateBeforeCall(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, sort, pageToken, limit, null);
+    public ApiResponse<MessagesList> listMessagesWithHttpInfo(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount) throws ApiException {
+        okhttp3.Call localVarCall = listMessagesValidateBeforeCall(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, limitTotalCount, null);
         Type localVarReturnType = new TypeToken<MessagesList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -470,9 +487,11 @@ public class MessagesApi {
      * @param errorCode The error code of the message. (optional)
      * @param fromDateTime The start of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. (optional)
      * @param toDateTime The end of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. (optional)
+     * @param campaignId The campaign ID of the message. (optional)
      * @param sort The field and direction to sort by combined with a colon. Direction is either asc or desc. (optional)
      * @param pageToken A base64 encoded value used for pagination of results. (optional)
      * @param limit The maximum records requested in search result. Default 100. The sum of limit and after cannot be more than 10000. (optional)
+     * @param limitTotalCount When set to true, the response&#39;s totalCount field will have a maximum value of 10,000. When set to false, or excluded, this will give an accurate totalCount of all messages that match the provided filters. If you are experiencing latency, try using this parameter to limit your results. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -489,9 +508,9 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMessagesAsync(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String sort, String pageToken, Integer limit, final ApiCallback<MessagesList> _callback) throws ApiException {
+    public okhttp3.Call listMessagesAsync(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount, final ApiCallback<MessagesList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listMessagesValidateBeforeCall(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, sort, pageToken, limit, _callback);
+        okhttp3.Call localVarCall = listMessagesValidateBeforeCall(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, limitTotalCount, _callback);
         Type localVarReturnType = new TypeToken<MessagesList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

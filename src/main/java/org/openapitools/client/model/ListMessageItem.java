@@ -14,13 +14,14 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
+import java.util.Arrays;
 import org.openapitools.client.model.ListMessageDirectionEnum;
 import org.openapitools.client.model.MessageStatusEnum;
 import org.openapitools.client.model.MessageTypeEnum;
@@ -36,6 +37,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -50,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * ListMessageItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T14:55:39.427023-04:00[America/New_York]")
 public class ListMessageItem {
   public static final String SERIALIZED_NAME_MESSAGE_ID = "messageId";
   @SerializedName(SERIALIZED_NAME_MESSAGE_ID)
@@ -90,7 +95,7 @@ public class ListMessageItem {
 
   public static final String SERIALIZED_NAME_RECEIVE_TIME = "receiveTime";
   @SerializedName(SERIALIZED_NAME_RECEIVE_TIME)
-  private String receiveTime;
+  private OffsetDateTime receiveTime;
 
   public static final String SERIALIZED_NAME_CARRIER_NAME = "carrierName";
   @SerializedName(SERIALIZED_NAME_CARRIER_NAME)
@@ -116,6 +121,10 @@ public class ListMessageItem {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_CLASS)
   private String campaignClass;
 
+  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
+  private String campaignId;
+
   public ListMessageItem() {
   }
 
@@ -130,7 +139,6 @@ public class ListMessageItem {
    * @return messageId
   **/
   @javax.annotation.Nullable
-
   public String getMessageId() {
     return messageId;
   }
@@ -152,7 +160,6 @@ public class ListMessageItem {
    * @return accountId
   **/
   @javax.annotation.Nullable
-
   public String getAccountId() {
     return accountId;
   }
@@ -174,7 +181,6 @@ public class ListMessageItem {
    * @return sourceTn
   **/
   @javax.annotation.Nullable
-
   public String getSourceTn() {
     return sourceTn;
   }
@@ -196,7 +202,6 @@ public class ListMessageItem {
    * @return destinationTn
   **/
   @javax.annotation.Nullable
-
   public String getDestinationTn() {
     return destinationTn;
   }
@@ -218,7 +223,6 @@ public class ListMessageItem {
    * @return messageStatus
   **/
   @javax.annotation.Nullable
-
   public MessageStatusEnum getMessageStatus() {
     return messageStatus;
   }
@@ -240,7 +244,6 @@ public class ListMessageItem {
    * @return messageDirection
   **/
   @javax.annotation.Nullable
-
   public ListMessageDirectionEnum getMessageDirection() {
     return messageDirection;
   }
@@ -262,7 +265,6 @@ public class ListMessageItem {
    * @return messageType
   **/
   @javax.annotation.Nullable
-
   public MessageTypeEnum getMessageType() {
     return messageType;
   }
@@ -284,7 +286,6 @@ public class ListMessageItem {
    * @return segmentCount
   **/
   @javax.annotation.Nullable
-
   public Integer getSegmentCount() {
     return segmentCount;
   }
@@ -306,7 +307,6 @@ public class ListMessageItem {
    * @return errorCode
   **/
   @javax.annotation.Nullable
-
   public Integer getErrorCode() {
     return errorCode;
   }
@@ -317,7 +317,7 @@ public class ListMessageItem {
   }
 
 
-  public ListMessageItem receiveTime(String receiveTime) {
+  public ListMessageItem receiveTime(OffsetDateTime receiveTime) {
     
     this.receiveTime = receiveTime;
     return this;
@@ -328,13 +328,12 @@ public class ListMessageItem {
    * @return receiveTime
   **/
   @javax.annotation.Nullable
-
-  public String getReceiveTime() {
+  public OffsetDateTime getReceiveTime() {
     return receiveTime;
   }
 
 
-  public void setReceiveTime(String receiveTime) {
+  public void setReceiveTime(OffsetDateTime receiveTime) {
     this.receiveTime = receiveTime;
   }
 
@@ -350,7 +349,6 @@ public class ListMessageItem {
    * @return carrierName
   **/
   @javax.annotation.Nullable
-
   public String getCarrierName() {
     return carrierName;
   }
@@ -372,7 +370,6 @@ public class ListMessageItem {
    * @return messageSize
   **/
   @javax.annotation.Nullable
-
   public Integer getMessageSize() {
     return messageSize;
   }
@@ -394,7 +391,6 @@ public class ListMessageItem {
    * @return messageLength
   **/
   @javax.annotation.Nullable
-
   public Integer getMessageLength() {
     return messageLength;
   }
@@ -416,7 +412,6 @@ public class ListMessageItem {
    * @return attachmentCount
   **/
   @javax.annotation.Nullable
-
   public Integer getAttachmentCount() {
     return attachmentCount;
   }
@@ -438,7 +433,6 @@ public class ListMessageItem {
    * @return recipientCount
   **/
   @javax.annotation.Nullable
-
   public Integer getRecipientCount() {
     return recipientCount;
   }
@@ -460,7 +454,6 @@ public class ListMessageItem {
    * @return campaignClass
   **/
   @javax.annotation.Nullable
-
   public String getCampaignClass() {
     return campaignClass;
   }
@@ -468,6 +461,27 @@ public class ListMessageItem {
 
   public void setCampaignClass(String campaignClass) {
     this.campaignClass = campaignClass;
+  }
+
+
+  public ListMessageItem campaignId(String campaignId) {
+    
+    this.campaignId = campaignId;
+    return this;
+  }
+
+   /**
+   * The campaign ID of the message if it has one.
+   * @return campaignId
+  **/
+  @javax.annotation.Nullable
+  public String getCampaignId() {
+    return campaignId;
+  }
+
+
+  public void setCampaignId(String campaignId) {
+    this.campaignId = campaignId;
   }
 
 
@@ -496,7 +510,8 @@ public class ListMessageItem {
         Objects.equals(this.messageLength, listMessageItem.messageLength) &&
         Objects.equals(this.attachmentCount, listMessageItem.attachmentCount) &&
         Objects.equals(this.recipientCount, listMessageItem.recipientCount) &&
-        Objects.equals(this.campaignClass, listMessageItem.campaignClass);
+        Objects.equals(this.campaignClass, listMessageItem.campaignClass) &&
+        Objects.equals(this.campaignId, listMessageItem.campaignId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -505,7 +520,7 @@ public class ListMessageItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(messageId, accountId, sourceTn, destinationTn, messageStatus, messageDirection, messageType, segmentCount, errorCode, receiveTime, carrierName, messageSize, messageLength, attachmentCount, recipientCount, campaignClass);
+    return Objects.hash(messageId, accountId, sourceTn, destinationTn, messageStatus, messageDirection, messageType, segmentCount, errorCode, receiveTime, carrierName, messageSize, messageLength, attachmentCount, recipientCount, campaignClass, campaignId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -535,6 +550,7 @@ public class ListMessageItem {
     sb.append("    attachmentCount: ").append(toIndentedString(attachmentCount)).append("\n");
     sb.append("    recipientCount: ").append(toIndentedString(recipientCount)).append("\n");
     sb.append("    campaignClass: ").append(toIndentedString(campaignClass)).append("\n");
+    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -573,31 +589,33 @@ public class ListMessageItem {
     openapiFields.add("attachmentCount");
     openapiFields.add("recipientCount");
     openapiFields.add("campaignClass");
+    openapiFields.add("campaignId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ListMessageItem
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ListMessageItem
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ListMessageItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ListMessageItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ListMessageItem is not found in the empty JSON string", ListMessageItem.openapiRequiredFields.toString()));
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
         if (!ListMessageItem.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ListMessageItem` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ListMessageItem` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("messageId") != null && !jsonObj.get("messageId").isJsonNull()) && !jsonObj.get("messageId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `messageId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("messageId").toString()));
       }
@@ -610,14 +628,14 @@ public class ListMessageItem {
       if ((jsonObj.get("destinationTn") != null && !jsonObj.get("destinationTn").isJsonNull()) && !jsonObj.get("destinationTn").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `destinationTn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("destinationTn").toString()));
       }
-      if ((jsonObj.get("receiveTime") != null && !jsonObj.get("receiveTime").isJsonNull()) && !jsonObj.get("receiveTime").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `receiveTime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("receiveTime").toString()));
-      }
       if ((jsonObj.get("carrierName") != null && !jsonObj.get("carrierName").isJsonNull()) && !jsonObj.get("carrierName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `carrierName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("carrierName").toString()));
       }
       if ((jsonObj.get("campaignClass") != null && !jsonObj.get("campaignClass").isJsonNull()) && !jsonObj.get("campaignClass").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignClass` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignClass").toString()));
+      }
+      if ((jsonObj.get("campaignId") != null && !jsonObj.get("campaignId").isJsonNull()) && !jsonObj.get("campaignId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
       }
   }
 
@@ -641,9 +659,9 @@ public class ListMessageItem {
 
            @Override
            public ListMessageItem read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

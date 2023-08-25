@@ -209,10 +209,8 @@ public class ConferencesApiTest {
 
         Boolean testRecordingStatus = false;
         for (int i = 0; i < MAX_RETRIES; i++) {
-            while (!testRecordingStatus) {
                 TimeUnit.SECONDS.sleep(TEST_SLEEP);
                 testRecordingStatus = getTestRecordedStatus(testId);
-            }
         }
         assertThat(testRecordingStatus, is(true));
 

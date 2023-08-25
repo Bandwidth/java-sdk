@@ -10,7 +10,7 @@ All URIs are relative to *http://localhost*
 | [**uploadMedia**](MediaApi.md#uploadMedia) | **PUT** /users/{accountId}/media/{mediaId} | Upload Media |
 
 
-<a name="deleteMedia"></a>
+<a id="deleteMedia"></a>
 # **deleteMedia**
 > deleteMedia(accountId, mediaId)
 
@@ -82,11 +82,12 @@ null (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **406** | Not Acceptable |  -  |
 | **415** | Unsupported Media Type |  -  |
 | **429** | Too Many Requests |  -  |
 | **500** | Internal Server Error |  -  |
 
-<a name="getMedia"></a>
+<a id="getMedia"></a>
 # **getMedia**
 > File getMedia(accountId, mediaId)
 
@@ -159,11 +160,12 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **406** | Not Acceptable |  -  |
 | **415** | Unsupported Media Type |  -  |
 | **429** | Too Many Requests |  -  |
 | **500** | Internal Server Error |  -  |
 
-<a name="listMedia"></a>
+<a id="listMedia"></a>
 # **listMedia**
 > List&lt;Media&gt; listMedia(accountId, continuationToken)
 
@@ -236,11 +238,12 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **406** | Not Acceptable |  -  |
 | **415** | Unsupported Media Type |  -  |
 | **429** | Too Many Requests |  -  |
 | **500** | Internal Server Error |  -  |
 
-<a name="uploadMedia"></a>
+<a id="uploadMedia"></a>
 # **uploadMedia**
 > uploadMedia(accountId, mediaId, body, contentType, cacheControl)
 
@@ -318,6 +321,7 @@ null (empty response body)
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **406** | Not Acceptable |  -  |
 | **415** | Unsupported Media Type |  -  |
 | **429** | Too Many Requests |  -  |
 | **500** | Internal Server Error |  -  |

@@ -7,7 +7,7 @@ All URIs are relative to *http://localhost*
 | [**getStatistics**](StatisticsApi.md#getStatistics) | **GET** /accounts/{accountId}/statistics | Get Account Statistics |
 
 
-<a name="getStatistics"></a>
+<a id="getStatistics"></a>
 # **getStatistics**
 > AccountStatistics getStatistics(accountId)
 
@@ -36,7 +36,7 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     StatisticsApi apiInstance = new StatisticsApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
     try {
       AccountStatistics result = apiInstance.getStatistics(accountId);
       System.out.println(result);
@@ -55,7 +55,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
 
 ### Return type
 
@@ -80,6 +80,6 @@ public class Example {
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 

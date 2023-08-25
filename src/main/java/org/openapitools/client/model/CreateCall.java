@@ -14,7 +14,6 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.net.URI;
+import java.util.Arrays;
 import org.openapitools.client.model.CallbackMethodEnum;
 import org.openapitools.client.model.MachineDetectionConfiguration;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -36,6 +36,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -50,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateCall
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T14:55:39.427023-04:00[America/New_York]")
 public class CreateCall {
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
@@ -59,6 +63,10 @@ public class CreateCall {
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
   private String from;
+
+  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
+  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  private String displayName;
 
   public static final String SERIALIZED_NAME_UUI = "uui";
   @SerializedName(SERIALIZED_NAME_UUI)
@@ -138,11 +146,10 @@ public class CreateCall {
   }
 
    /**
-   * The destination to call (must be an E.164 formatted number (e.g. &#x60;+15555551212&#x60;) or a SIP URI (e.g. &#x60;sip:user@server.com&#x60;)).
+   * The destination to call (must be an E.164 formatted number (e.g. &#x60;+15555551212&#x60;) or a SIP URI (e.g. &#x60;sip:user@server.example&#x60;)).
    * @return to
   **/
   @javax.annotation.Nonnull
-
   public String getTo() {
     return to;
   }
@@ -164,7 +171,6 @@ public class CreateCall {
    * @return from
   **/
   @javax.annotation.Nonnull
-
   public String getFrom() {
     return from;
   }
@@ -172,6 +178,27 @@ public class CreateCall {
 
   public void setFrom(String from) {
     this.from = from;
+  }
+
+
+  public CreateCall displayName(String displayName) {
+    
+    this.displayName = displayName;
+    return this;
+  }
+
+   /**
+   * The caller display name to use when the call is created.  May not exceed 256 characters nor contain control characters such as new lines.
+   * @return displayName
+  **/
+  @javax.annotation.Nullable
+  public String getDisplayName() {
+    return displayName;
+  }
+
+
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
   }
 
 
@@ -186,7 +213,6 @@ public class CreateCall {
    * @return uui
   **/
   @javax.annotation.Nullable
-
   public String getUui() {
     return uui;
   }
@@ -208,7 +234,6 @@ public class CreateCall {
    * @return applicationId
   **/
   @javax.annotation.Nonnull
-
   public String getApplicationId() {
     return applicationId;
   }
@@ -226,11 +251,10 @@ public class CreateCall {
   }
 
    /**
-   * The full URL to send the &lt;a href&#x3D;&#39;/docs/voice/webhooks/answer&#39;&gt;Answer&lt;/a&gt; event to when the called party answers. This endpoint should return the first &lt;a href&#x3D;&#39;/docs/voice/bxml&#39;&gt;BXML document&lt;/a&gt; to be executed in the call.  Must use &#x60;https&#x60; if specifying &#x60;username&#x60; and &#x60;password&#x60;
+   * The full URL to send the &lt;a href&#x3D;&#39;/docs/voice/webhooks/answer&#39;&gt;Answer&lt;/a&gt; event to when the called party answers. This endpoint should return the first &lt;a href&#x3D;&#39;/docs/voice/bxml&#39;&gt;BXML document&lt;/a&gt; to be executed in the call.  Must use &#x60;https&#x60; if specifying &#x60;username&#x60; and &#x60;password&#x60;.
    * @return answerUrl
   **/
   @javax.annotation.Nonnull
-
   public URI getAnswerUrl() {
     return answerUrl;
   }
@@ -252,7 +276,6 @@ public class CreateCall {
    * @return answerMethod
   **/
   @javax.annotation.Nullable
-
   public CallbackMethodEnum getAnswerMethod() {
     return answerMethod;
   }
@@ -274,7 +297,6 @@ public class CreateCall {
    * @return username
   **/
   @javax.annotation.Nullable
-
   public String getUsername() {
     return username;
   }
@@ -296,7 +318,6 @@ public class CreateCall {
    * @return password
   **/
   @javax.annotation.Nullable
-
   public String getPassword() {
     return password;
   }
@@ -314,11 +335,10 @@ public class CreateCall {
   }
 
    /**
-   * A fallback url which, if provided, will be used to retry the &#x60;answer&#x60; webhook delivery in case &#x60;answerUrl&#x60; fails to respond  Must use &#x60;https&#x60; if specifying &#x60;fallbackUsername&#x60; and &#x60;fallbackPassword&#x60;
+   * A fallback url which, if provided, will be used to retry the &#x60;answer&#x60; webhook delivery in case &#x60;answerUrl&#x60; fails to respond  Must use &#x60;https&#x60; if specifying &#x60;fallbackUsername&#x60; and &#x60;fallbackPassword&#x60;.
    * @return answerFallbackUrl
   **/
   @javax.annotation.Nullable
-
   public URI getAnswerFallbackUrl() {
     return answerFallbackUrl;
   }
@@ -340,7 +360,6 @@ public class CreateCall {
    * @return answerFallbackMethod
   **/
   @javax.annotation.Nullable
-
   public CallbackMethodEnum getAnswerFallbackMethod() {
     return answerFallbackMethod;
   }
@@ -362,7 +381,6 @@ public class CreateCall {
    * @return fallbackUsername
   **/
   @javax.annotation.Nullable
-
   public String getFallbackUsername() {
     return fallbackUsername;
   }
@@ -384,7 +402,6 @@ public class CreateCall {
    * @return fallbackPassword
   **/
   @javax.annotation.Nullable
-
   public String getFallbackPassword() {
     return fallbackPassword;
   }
@@ -406,7 +423,6 @@ public class CreateCall {
    * @return disconnectUrl
   **/
   @javax.annotation.Nullable
-
   public URI getDisconnectUrl() {
     return disconnectUrl;
   }
@@ -428,7 +444,6 @@ public class CreateCall {
    * @return disconnectMethod
   **/
   @javax.annotation.Nullable
-
   public CallbackMethodEnum getDisconnectMethod() {
     return disconnectMethod;
   }
@@ -452,7 +467,6 @@ public class CreateCall {
    * @return callTimeout
   **/
   @javax.annotation.Nullable
-
   public Double getCallTimeout() {
     return callTimeout;
   }
@@ -476,7 +490,6 @@ public class CreateCall {
    * @return callbackTimeout
   **/
   @javax.annotation.Nullable
-
   public Double getCallbackTimeout() {
     return callbackTimeout;
   }
@@ -498,7 +511,6 @@ public class CreateCall {
    * @return machineDetection
   **/
   @javax.annotation.Nullable
-
   public MachineDetectionConfiguration getMachineDetection() {
     return machineDetection;
   }
@@ -522,7 +534,6 @@ public class CreateCall {
    * @return priority
   **/
   @javax.annotation.Nullable
-
   public Integer getPriority() {
     return priority;
   }
@@ -544,7 +555,6 @@ public class CreateCall {
    * @return tag
   **/
   @javax.annotation.Nullable
-
   public String getTag() {
     return tag;
   }
@@ -567,6 +577,7 @@ public class CreateCall {
     CreateCall createCall = (CreateCall) o;
     return Objects.equals(this.to, createCall.to) &&
         Objects.equals(this.from, createCall.from) &&
+        Objects.equals(this.displayName, createCall.displayName) &&
         Objects.equals(this.uui, createCall.uui) &&
         Objects.equals(this.applicationId, createCall.applicationId) &&
         Objects.equals(this.answerUrl, createCall.answerUrl) &&
@@ -592,7 +603,7 @@ public class CreateCall {
 
   @Override
   public int hashCode() {
-    return Objects.hash(to, from, uui, applicationId, answerUrl, answerMethod, username, password, answerFallbackUrl, answerFallbackMethod, fallbackUsername, fallbackPassword, disconnectUrl, disconnectMethod, callTimeout, callbackTimeout, machineDetection, priority, tag);
+    return Objects.hash(to, from, displayName, uui, applicationId, answerUrl, answerMethod, username, password, answerFallbackUrl, answerFallbackMethod, fallbackUsername, fallbackPassword, disconnectUrl, disconnectMethod, callTimeout, callbackTimeout, machineDetection, priority, tag);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -608,6 +619,7 @@ public class CreateCall {
     sb.append("class CreateCall {\n");
     sb.append("    to: ").append(toIndentedString(to)).append("\n");
     sb.append("    from: ").append(toIndentedString(from)).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    uui: ").append(toIndentedString(uui)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    answerUrl: ").append(toIndentedString(answerUrl)).append("\n");
@@ -649,6 +661,7 @@ public class CreateCall {
     openapiFields = new HashSet<String>();
     openapiFields.add("to");
     openapiFields.add("from");
+    openapiFields.add("displayName");
     openapiFields.add("uui");
     openapiFields.add("applicationId");
     openapiFields.add("answerUrl");
@@ -676,37 +689,41 @@ public class CreateCall {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CreateCall
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to CreateCall
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!CreateCall.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!CreateCall.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CreateCall is not found in the empty JSON string", CreateCall.openapiRequiredFields.toString()));
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
         if (!CreateCall.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateCall` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateCall` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CreateCall.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("to").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
       if (!jsonObj.get("from").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
+      }
+      if ((jsonObj.get("displayName") != null && !jsonObj.get("displayName").isJsonNull()) && !jsonObj.get("displayName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }
       if ((jsonObj.get("uui") != null && !jsonObj.get("uui").isJsonNull()) && !jsonObj.get("uui").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `uui` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uui").toString()));
@@ -737,7 +754,7 @@ public class CreateCall {
       }
       // validate the optional field `machineDetection`
       if (jsonObj.get("machineDetection") != null && !jsonObj.get("machineDetection").isJsonNull()) {
-        MachineDetectionConfiguration.validateJsonObject(jsonObj.getAsJsonObject("machineDetection"));
+        MachineDetectionConfiguration.validateJsonElement(jsonObj.get("machineDetection"));
       }
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
@@ -764,9 +781,9 @@ public class CreateCall {
 
            @Override
            public CreateCall read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

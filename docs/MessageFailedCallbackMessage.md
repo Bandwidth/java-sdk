@@ -2,6 +2,7 @@
 
 # MessageFailedCallbackMessage
 
+Message Failed Callback Message Schema
 
 ## Properties
 

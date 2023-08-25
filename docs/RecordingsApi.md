@@ -16,7 +16,7 @@ All URIs are relative to *http://localhost*
 | [**updateCallRecordingState**](RecordingsApi.md#updateCallRecordingState) | **PUT** /accounts/{accountId}/calls/{callId}/recording | Update Recording |
 
 
-<a name="deleteCallTranscription"></a>
+<a id="deleteCallTranscription"></a>
 # **deleteCallTranscription**
 > deleteCallTranscription(accountId, callId, recordingId)
 
@@ -45,9 +45,9 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     RecordingsApi apiInstance = new RecordingsApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
-    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID
-    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID.
+    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID.
     try {
       apiInstance.deleteCallTranscription(accountId, callId, recordingId);
     } catch (ApiException e) {
@@ -65,9 +65,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
-| **callId** | **String**| Programmable Voice API Call ID | |
-| **recordingId** | **String**| Programmable Voice API Recording ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **callId** | **String**| Programmable Voice API Call ID. | |
+| **recordingId** | **String**| Programmable Voice API Recording ID. | |
 
 ### Return type
 
@@ -85,17 +85,17 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | The transcription was successfully deleted |  -  |
+| **204** | The transcription was successfully deleted. |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 
-<a name="deleteRecording"></a>
+<a id="deleteRecording"></a>
 # **deleteRecording**
 > deleteRecording(accountId, callId, recordingId)
 
@@ -124,9 +124,9 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     RecordingsApi apiInstance = new RecordingsApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
-    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID
-    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID.
+    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID.
     try {
       apiInstance.deleteRecording(accountId, callId, recordingId);
     } catch (ApiException e) {
@@ -144,9 +144,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
-| **callId** | **String**| Programmable Voice API Call ID | |
-| **recordingId** | **String**| Programmable Voice API Recording ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **callId** | **String**| Programmable Voice API Call ID. | |
+| **recordingId** | **String**| Programmable Voice API Recording ID. | |
 
 ### Return type
 
@@ -164,17 +164,17 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Recording Deleted |  -  |
+| **204** | Recording was deleted. |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 
-<a name="deleteRecordingMedia"></a>
+<a id="deleteRecordingMedia"></a>
 # **deleteRecordingMedia**
 > deleteRecordingMedia(accountId, callId, recordingId)
 
@@ -203,9 +203,9 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     RecordingsApi apiInstance = new RecordingsApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
-    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID
-    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID.
+    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID.
     try {
       apiInstance.deleteRecordingMedia(accountId, callId, recordingId);
     } catch (ApiException e) {
@@ -223,9 +223,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
-| **callId** | **String**| Programmable Voice API Call ID | |
-| **recordingId** | **String**| Programmable Voice API Recording ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **callId** | **String**| Programmable Voice API Call ID. | |
+| **recordingId** | **String**| Programmable Voice API Recording ID. | |
 
 ### Return type
 
@@ -243,17 +243,17 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | The recording media was successfully deleted |  -  |
+| **204** | The recording media was successfully deleted. |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 
-<a name="downloadCallRecording"></a>
+<a id="downloadCallRecording"></a>
 # **downloadCallRecording**
 > File downloadCallRecording(accountId, callId, recordingId)
 
@@ -282,9 +282,9 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     RecordingsApi apiInstance = new RecordingsApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
-    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID
-    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID.
+    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID.
     try {
       File result = apiInstance.downloadCallRecording(accountId, callId, recordingId);
       System.out.println(result);
@@ -303,9 +303,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
-| **callId** | **String**| Programmable Voice API Call ID | |
-| **recordingId** | **String**| Programmable Voice API Recording ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **callId** | **String**| Programmable Voice API Call ID. | |
+| **recordingId** | **String**| Programmable Voice API Recording ID. | |
 
 ### Return type
 
@@ -330,10 +330,10 @@ public class Example {
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 
-<a name="getCallRecording"></a>
+<a id="getCallRecording"></a>
 # **getCallRecording**
 > CallRecordingMetadata getCallRecording(accountId, callId, recordingId)
 
@@ -362,9 +362,9 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     RecordingsApi apiInstance = new RecordingsApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
-    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID
-    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID.
+    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID.
     try {
       CallRecordingMetadata result = apiInstance.getCallRecording(accountId, callId, recordingId);
       System.out.println(result);
@@ -383,9 +383,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
-| **callId** | **String**| Programmable Voice API Call ID | |
-| **recordingId** | **String**| Programmable Voice API Recording ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **callId** | **String**| Programmable Voice API Call ID. | |
+| **recordingId** | **String**| Programmable Voice API Recording ID. | |
 
 ### Return type
 
@@ -410,10 +410,10 @@ public class Example {
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 
-<a name="getCallTranscription"></a>
+<a id="getCallTranscription"></a>
 # **getCallTranscription**
 > TranscriptionList getCallTranscription(accountId, callId, recordingId)
 
@@ -442,9 +442,9 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     RecordingsApi apiInstance = new RecordingsApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
-    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID
-    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID.
+    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID.
     try {
       TranscriptionList result = apiInstance.getCallTranscription(accountId, callId, recordingId);
       System.out.println(result);
@@ -463,9 +463,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
-| **callId** | **String**| Programmable Voice API Call ID | |
-| **recordingId** | **String**| Programmable Voice API Recording ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **callId** | **String**| Programmable Voice API Call ID. | |
+| **recordingId** | **String**| Programmable Voice API Recording ID. | |
 
 ### Return type
 
@@ -490,10 +490,10 @@ public class Example {
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 
-<a name="listAccountCallRecordings"></a>
+<a id="listAccountCallRecordings"></a>
 # **listAccountCallRecordings**
 > List&lt;CallRecordingMetadata&gt; listAccountCallRecordings(accountId, to, from, minStartTime, maxStartTime)
 
@@ -522,7 +522,7 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     RecordingsApi apiInstance = new RecordingsApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String to = "%2b19195551234"; // String | Filter results by the `to` field.
     String from = "%2b19195554321"; // String | Filter results by the `from` field.
     String minStartTime = "2022-06-21T19:13:21Z"; // String | Filter results to recordings which have a `startTime` after or including `minStartTime` (in ISO8601 format).
@@ -545,7 +545,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
 | **to** | **String**| Filter results by the &#x60;to&#x60; field. | [optional] |
 | **from** | **String**| Filter results by the &#x60;from&#x60; field. | [optional] |
 | **minStartTime** | **String**| Filter results to recordings which have a &#x60;startTime&#x60; after or including &#x60;minStartTime&#x60; (in ISO8601 format). | [optional] |
@@ -574,10 +574,10 @@ public class Example {
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 
-<a name="listCallRecordings"></a>
+<a id="listCallRecordings"></a>
 # **listCallRecordings**
 > List&lt;CallRecordingMetadata&gt; listCallRecordings(accountId, callId)
 
@@ -606,8 +606,8 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     RecordingsApi apiInstance = new RecordingsApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
-    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID.
     try {
       List<CallRecordingMetadata> result = apiInstance.listCallRecordings(accountId, callId);
       System.out.println(result);
@@ -626,8 +626,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
-| **callId** | **String**| Programmable Voice API Call ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **callId** | **String**| Programmable Voice API Call ID. | |
 
 ### Return type
 
@@ -652,10 +652,10 @@ public class Example {
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 
-<a name="transcribeCallRecording"></a>
+<a id="transcribeCallRecording"></a>
 # **transcribeCallRecording**
 > transcribeCallRecording(accountId, callId, recordingId, transcribeRecording)
 
@@ -684,9 +684,9 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     RecordingsApi apiInstance = new RecordingsApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
-    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID
-    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID.
+    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID.
     TranscribeRecording transcribeRecording = new TranscribeRecording(); // TranscribeRecording | 
     try {
       apiInstance.transcribeCallRecording(accountId, callId, recordingId, transcribeRecording);
@@ -705,9 +705,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
-| **callId** | **String**| Programmable Voice API Call ID | |
-| **recordingId** | **String**| Programmable Voice API Recording ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **callId** | **String**| Programmable Voice API Call ID. | |
+| **recordingId** | **String**| Programmable Voice API Recording ID. | |
 | **transcribeRecording** | [**TranscribeRecording**](TranscribeRecording.md)|  | |
 
 ### Return type
@@ -726,17 +726,17 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Transcription successfully requested |  -  |
+| **204** | Transcription was successfully requested. |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 
-<a name="updateCallRecordingState"></a>
+<a id="updateCallRecordingState"></a>
 # **updateCallRecordingState**
 > updateCallRecordingState(accountId, callId, updateCallRecording)
 
@@ -765,8 +765,8 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     RecordingsApi apiInstance = new RecordingsApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
-    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID.
     UpdateCallRecording updateCallRecording = new UpdateCallRecording(); // UpdateCallRecording | 
     try {
       apiInstance.updateCallRecordingState(accountId, callId, updateCallRecording);
@@ -785,8 +785,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
-| **callId** | **String**| Programmable Voice API Call ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **callId** | **String**| Programmable Voice API Call ID. | |
 | **updateCallRecording** | [**UpdateCallRecording**](UpdateCallRecording.md)|  | |
 
 ### Return type
@@ -805,13 +805,13 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Recording state successfully modified |  -  |
+| **200** | Recording state was successfully modified. |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 

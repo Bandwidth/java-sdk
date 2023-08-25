@@ -2,6 +2,7 @@
 
 # MessageSendingCallbackMessage
 
+Message Sending Callback Message Schema
 
 ## Properties
 

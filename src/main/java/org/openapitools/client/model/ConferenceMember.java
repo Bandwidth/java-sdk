@@ -14,7 +14,6 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -49,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * ConferenceMember
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T14:55:39.427023-04:00[America/New_York]")
 public class ConferenceMember {
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
@@ -89,7 +93,6 @@ public class ConferenceMember {
    * @return callId
   **/
   @javax.annotation.Nullable
-
   public String getCallId() {
     return callId;
   }
@@ -111,7 +114,6 @@ public class ConferenceMember {
    * @return conferenceId
   **/
   @javax.annotation.Nullable
-
   public String getConferenceId() {
     return conferenceId;
   }
@@ -133,7 +135,6 @@ public class ConferenceMember {
    * @return memberUrl
   **/
   @javax.annotation.Nullable
-
   public String getMemberUrl() {
     return memberUrl;
   }
@@ -155,7 +156,6 @@ public class ConferenceMember {
    * @return mute
   **/
   @javax.annotation.Nullable
-
   public Boolean getMute() {
     return mute;
   }
@@ -177,7 +177,6 @@ public class ConferenceMember {
    * @return hold
   **/
   @javax.annotation.Nullable
-
   public Boolean getHold() {
     return hold;
   }
@@ -195,6 +194,9 @@ public class ConferenceMember {
   }
 
   public ConferenceMember addCallIdsToCoachItem(String callIdsToCoachItem) {
+    if (this.callIdsToCoach == null) {
+      this.callIdsToCoach = new ArrayList<>();
+    }
     this.callIdsToCoach.add(callIdsToCoachItem);
     return this;
   }
@@ -204,7 +206,6 @@ public class ConferenceMember {
    * @return callIdsToCoach
   **/
   @javax.annotation.Nullable
-
   public List<String> getCallIdsToCoach() {
     return callIdsToCoach;
   }
@@ -293,25 +294,26 @@ public class ConferenceMember {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ConferenceMember
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ConferenceMember
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ConferenceMember.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ConferenceMember.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ConferenceMember is not found in the empty JSON string", ConferenceMember.openapiRequiredFields.toString()));
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
         if (!ConferenceMember.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConferenceMember` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConferenceMember` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("callId") != null && !jsonObj.get("callId").isJsonNull()) && !jsonObj.get("callId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callId").toString()));
       }
@@ -322,7 +324,7 @@ public class ConferenceMember {
         throw new IllegalArgumentException(String.format("Expected the field `memberUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("memberUrl").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("callIdsToCoach") != null && !jsonObj.get("callIdsToCoach").isJsonArray()) {
+      if (jsonObj.get("callIdsToCoach") != null && !jsonObj.get("callIdsToCoach").isJsonNull() && !jsonObj.get("callIdsToCoach").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `callIdsToCoach` to be an array in the JSON string but got `%s`", jsonObj.get("callIdsToCoach").toString()));
       }
   }
@@ -347,9 +349,9 @@ public class ConferenceMember {
 
            @Override
            public ConferenceMember read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

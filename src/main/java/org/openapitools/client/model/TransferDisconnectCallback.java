@@ -14,7 +14,6 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.Arrays;
 import org.openapitools.client.model.CallDirectionEnum;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -49,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * This event is sent to the transferDisconnectUrl of each &lt;PhoneNumber&gt; tag when its respective call leg ends for any reason. The event is sent in the normal case, when the transferred leg is answered and later hung up, but is also sent if the new leg was never answered in the first place, if it was rejected, and if the original call leg hung up before the transferred leg.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T14:55:39.427023-04:00[America/New_York]")
 public class TransferDisconnectCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
@@ -57,7 +61,7 @@ public class TransferDisconnectCallback {
 
   public static final String SERIALIZED_NAME_EVENT_TIME = "eventTime";
   @SerializedName(SERIALIZED_NAME_EVENT_TIME)
-  private String eventTime;
+  private OffsetDateTime eventTime;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
@@ -145,7 +149,6 @@ public class TransferDisconnectCallback {
    * @return eventType
   **/
   @javax.annotation.Nullable
-
   public String getEventType() {
     return eventType;
   }
@@ -156,7 +159,7 @@ public class TransferDisconnectCallback {
   }
 
 
-  public TransferDisconnectCallback eventTime(String eventTime) {
+  public TransferDisconnectCallback eventTime(OffsetDateTime eventTime) {
     
     this.eventTime = eventTime;
     return this;
@@ -167,13 +170,12 @@ public class TransferDisconnectCallback {
    * @return eventTime
   **/
   @javax.annotation.Nullable
-
-  public String getEventTime() {
+  public OffsetDateTime getEventTime() {
     return eventTime;
   }
 
 
-  public void setEventTime(String eventTime) {
+  public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
@@ -189,7 +191,6 @@ public class TransferDisconnectCallback {
    * @return accountId
   **/
   @javax.annotation.Nullable
-
   public String getAccountId() {
     return accountId;
   }
@@ -211,7 +212,6 @@ public class TransferDisconnectCallback {
    * @return applicationId
   **/
   @javax.annotation.Nullable
-
   public String getApplicationId() {
     return applicationId;
   }
@@ -233,7 +233,6 @@ public class TransferDisconnectCallback {
    * @return from
   **/
   @javax.annotation.Nullable
-
   public String getFrom() {
     return from;
   }
@@ -255,7 +254,6 @@ public class TransferDisconnectCallback {
    * @return to
   **/
   @javax.annotation.Nullable
-
   public String getTo() {
     return to;
   }
@@ -277,7 +275,6 @@ public class TransferDisconnectCallback {
    * @return direction
   **/
   @javax.annotation.Nullable
-
   public CallDirectionEnum getDirection() {
     return direction;
   }
@@ -299,7 +296,6 @@ public class TransferDisconnectCallback {
    * @return callId
   **/
   @javax.annotation.Nullable
-
   public String getCallId() {
     return callId;
   }
@@ -321,7 +317,6 @@ public class TransferDisconnectCallback {
    * @return callUrl
   **/
   @javax.annotation.Nullable
-
   public String getCallUrl() {
     return callUrl;
   }
@@ -343,7 +338,6 @@ public class TransferDisconnectCallback {
    * @return parentCallId
   **/
   @javax.annotation.Nullable
-
   public String getParentCallId() {
     return parentCallId;
   }
@@ -365,7 +359,6 @@ public class TransferDisconnectCallback {
    * @return enqueuedTime
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getEnqueuedTime() {
     return enqueuedTime;
   }
@@ -387,7 +380,6 @@ public class TransferDisconnectCallback {
    * @return startTime
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getStartTime() {
     return startTime;
   }
@@ -409,7 +401,6 @@ public class TransferDisconnectCallback {
    * @return answerTime
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getAnswerTime() {
     return answerTime;
   }
@@ -431,7 +422,6 @@ public class TransferDisconnectCallback {
    * @return endTime
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getEndTime() {
     return endTime;
   }
@@ -453,7 +443,6 @@ public class TransferDisconnectCallback {
    * @return tag
   **/
   @javax.annotation.Nullable
-
   public String getTag() {
     return tag;
   }
@@ -475,7 +464,6 @@ public class TransferDisconnectCallback {
    * @return transferCallerId
   **/
   @javax.annotation.Nullable
-
   public String getTransferCallerId() {
     return transferCallerId;
   }
@@ -497,7 +485,6 @@ public class TransferDisconnectCallback {
    * @return transferTo
   **/
   @javax.annotation.Nullable
-
   public String getTransferTo() {
     return transferTo;
   }
@@ -519,7 +506,6 @@ public class TransferDisconnectCallback {
    * @return cause
   **/
   @javax.annotation.Nullable
-
   public String getCause() {
     return cause;
   }
@@ -541,7 +527,6 @@ public class TransferDisconnectCallback {
    * @return errorMessage
   **/
   @javax.annotation.Nullable
-
   public String getErrorMessage() {
     return errorMessage;
   }
@@ -563,7 +548,6 @@ public class TransferDisconnectCallback {
    * @return errorId
   **/
   @javax.annotation.Nullable
-
   public String getErrorId() {
     return errorId;
   }
@@ -694,30 +678,28 @@ public class TransferDisconnectCallback {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to TransferDisconnectCallback
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to TransferDisconnectCallback
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!TransferDisconnectCallback.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!TransferDisconnectCallback.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in TransferDisconnectCallback is not found in the empty JSON string", TransferDisconnectCallback.openapiRequiredFields.toString()));
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
         if (!TransferDisconnectCallback.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TransferDisconnectCallback` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TransferDisconnectCallback` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("eventType") != null && !jsonObj.get("eventType").isJsonNull()) && !jsonObj.get("eventType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `eventType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("eventType").toString()));
-      }
-      if ((jsonObj.get("eventTime") != null && !jsonObj.get("eventTime").isJsonNull()) && !jsonObj.get("eventTime").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `eventTime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("eventTime").toString()));
       }
       if ((jsonObj.get("accountId") != null && !jsonObj.get("accountId").isJsonNull()) && !jsonObj.get("accountId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountId").toString()));
@@ -780,9 +762,9 @@ public class TransferDisconnectCallback {
 
            @Override
            public TransferDisconnectCallback read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

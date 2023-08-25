@@ -12,7 +12,7 @@
 |**redirectMethod** | **RedirectMethodEnum** |  |  [optional] |
 |**username** | **String** | Basic auth username. |  [optional] |
 |**password** | **String** | Basic auth password. |  [optional] |
-|**redirectFallbackUrl** | **URI** | A fallback url which, if provided, will be used to retry the redirect callback delivery in case &#x60;redirectUrl&#x60; fails to respond |  [optional] |
+|**redirectFallbackUrl** | **URI** | A fallback url which, if provided, will be used to retry the redirect callback delivery in case &#x60;redirectUrl&#x60; fails to respond. |  [optional] |
 |**redirectFallbackMethod** | **RedirectMethodEnum** |  |  [optional] |
 |**fallbackUsername** | **String** | Basic auth username. |  [optional] |
 |**fallbackPassword** | **String** | Basic auth password. |  [optional] |

@@ -8,7 +8,7 @@ All URIs are relative to *http://localhost*
 | [**getLookupStatus**](PhoneNumberLookupApi.md#getLookupStatus) | **GET** /accounts/{accountId}/tnlookup/{requestId} | Get Lookup Request Status |
 
 
-<a name="createLookup"></a>
+<a id="createLookup"></a>
 # **createLookup**
 > CreateLookupResponse createLookup(accountId, lookupRequest)
 
@@ -37,7 +37,7 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     PhoneNumberLookupApi apiInstance = new PhoneNumberLookupApi(defaultClient);
-    String accountId = "9900000"; // String | The ID of the Bandwidth account that the user belongs to.
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
     LookupRequest lookupRequest = new LookupRequest(); // LookupRequest | Phone number lookup request.
     try {
       CreateLookupResponse result = apiInstance.createLookup(accountId, lookupRequest);
@@ -57,7 +57,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The ID of the Bandwidth account that the user belongs to. | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
 | **lookupRequest** | [**LookupRequest**](LookupRequest.md)| Phone number lookup request. | |
 
 ### Return type
@@ -84,7 +84,7 @@ public class Example {
 | **429** | Too Many Requests |  -  |
 | **500** | Internal Server Error |  -  |
 
-<a name="getLookupStatus"></a>
+<a id="getLookupStatus"></a>
 # **getLookupStatus**
 > LookupStatus getLookupStatus(accountId, requestId)
 
@@ -113,7 +113,7 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     PhoneNumberLookupApi apiInstance = new PhoneNumberLookupApi(defaultClient);
-    String accountId = "9900000"; // String | The ID of the Bandwidth account that the user belongs to.
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String requestId = "004223a0-8b17-41b1-bf81-20732adf5590"; // String | The phone number lookup request ID from Bandwidth.
     try {
       LookupStatus result = apiInstance.getLookupStatus(accountId, requestId);
@@ -133,7 +133,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The ID of the Bandwidth account that the user belongs to. | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
 | **requestId** | **String**| The phone number lookup request ID from Bandwidth. | |
 
 ### Return type

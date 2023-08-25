@@ -14,7 +14,6 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,6 +23,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.openapitools.client.model.CallbackMethodEnum;
 import org.openapitools.client.model.ConferenceMember;
@@ -39,6 +39,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -53,7 +57,7 @@ import org.openapitools.client.JSON;
 /**
  * Conference
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T14:55:39.427023-04:00[America/New_York]")
 public class Conference {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -97,11 +101,10 @@ public class Conference {
   }
 
    /**
-   * The Bandwidth-generated conference ID
+   * The Bandwidth-generated conference ID.
    * @return id
   **/
   @javax.annotation.Nullable
-
   public String getId() {
     return id;
   }
@@ -119,11 +122,10 @@ public class Conference {
   }
 
    /**
-   * The name of the conference, as specified by your application
+   * The name of the conference, as specified by your application.
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }
@@ -145,7 +147,6 @@ public class Conference {
    * @return createdTime
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedTime() {
     return createdTime;
   }
@@ -167,7 +168,6 @@ public class Conference {
    * @return completedTime
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCompletedTime() {
     return completedTime;
   }
@@ -189,7 +189,6 @@ public class Conference {
    * @return conferenceEventUrl
   **/
   @javax.annotation.Nullable
-
   public URI getConferenceEventUrl() {
     return conferenceEventUrl;
   }
@@ -211,7 +210,6 @@ public class Conference {
    * @return conferenceEventMethod
   **/
   @javax.annotation.Nullable
-
   public CallbackMethodEnum getConferenceEventMethod() {
     return conferenceEventMethod;
   }
@@ -233,7 +231,6 @@ public class Conference {
    * @return tag
   **/
   @javax.annotation.Nullable
-
   public String getTag() {
     return tag;
   }
@@ -251,16 +248,18 @@ public class Conference {
   }
 
   public Conference addActiveMembersItem(ConferenceMember activeMembersItem) {
+    if (this.activeMembers == null) {
+      this.activeMembers = new ArrayList<>();
+    }
     this.activeMembers.add(activeMembersItem);
     return this;
   }
 
    /**
-   * A list of active members of the conference. Omitted if this is a response to the [Get Conferences endpoint](/apis/voice#tag/Conferences/operation/listConferences)
+   * A list of active members of the conference. Omitted if this is a response to the [Get Conferences endpoint](/apis/voice#tag/Conferences/operation/listConferences).
    * @return activeMembers
   **/
   @javax.annotation.Nullable
-
   public List<ConferenceMember> getActiveMembers() {
     return activeMembers;
   }
@@ -355,25 +354,26 @@ public class Conference {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Conference
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to Conference
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Conference.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Conference.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Conference is not found in the empty JSON string", Conference.openapiRequiredFields.toString()));
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
         if (!Conference.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Conference` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Conference` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
@@ -396,7 +396,7 @@ public class Conference {
 
           // validate the optional field `activeMembers` (array)
           for (int i = 0; i < jsonArrayactiveMembers.size(); i++) {
-            ConferenceMember.validateJsonObject(jsonArrayactiveMembers.get(i).getAsJsonObject());
+            ConferenceMember.validateJsonElement(jsonArrayactiveMembers.get(i));
           };
         }
       }
@@ -422,9 +422,9 @@ public class Conference {
 
            @Override
            public Conference read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

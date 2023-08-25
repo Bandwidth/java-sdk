@@ -41,7 +41,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class MfaApi {
     private ApiClient localVarApiClient;
@@ -82,7 +81,7 @@ public class MfaApi {
 
     /**
      * Build call for generateMessagingCode
-     * @param accountId Bandwidth Account ID with Voice service enabled. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param codeRequest MFA code request body. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -162,7 +161,7 @@ public class MfaApi {
     /**
      * Messaging Authentication Code
      * Send an MFA code via text message (SMS).
-     * @param accountId Bandwidth Account ID with Voice service enabled. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param codeRequest MFA code request body. (required)
      * @return MessagingCodeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -184,7 +183,7 @@ public class MfaApi {
     /**
      * Messaging Authentication Code
      * Send an MFA code via text message (SMS).
-     * @param accountId Bandwidth Account ID with Voice service enabled. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param codeRequest MFA code request body. (required)
      * @return ApiResponse&lt;MessagingCodeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -207,7 +206,7 @@ public class MfaApi {
     /**
      * Messaging Authentication Code (asynchronously)
      * Send an MFA code via text message (SMS).
-     * @param accountId Bandwidth Account ID with Voice service enabled. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param codeRequest MFA code request body. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -231,7 +230,7 @@ public class MfaApi {
     }
     /**
      * Build call for generateVoiceCode
-     * @param accountId Bandwidth Account ID with Voice service enabled. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param codeRequest MFA code request body. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -311,7 +310,7 @@ public class MfaApi {
     /**
      * Voice Authentication Code
      * Send an MFA Code via a phone call.
-     * @param accountId Bandwidth Account ID with Voice service enabled. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param codeRequest MFA code request body. (required)
      * @return VoiceCodeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -333,7 +332,7 @@ public class MfaApi {
     /**
      * Voice Authentication Code
      * Send an MFA Code via a phone call.
-     * @param accountId Bandwidth Account ID with Voice service enabled. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param codeRequest MFA code request body. (required)
      * @return ApiResponse&lt;VoiceCodeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -356,7 +355,7 @@ public class MfaApi {
     /**
      * Voice Authentication Code (asynchronously)
      * Send an MFA Code via a phone call.
-     * @param accountId Bandwidth Account ID with Voice service enabled. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param codeRequest MFA code request body. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -380,7 +379,7 @@ public class MfaApi {
     }
     /**
      * Build call for verifyCode
-     * @param accountId Bandwidth Account ID with Voice service enabled. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param verifyCodeRequest MFA code verify request body. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -461,7 +460,7 @@ public class MfaApi {
     /**
      * Verify Authentication Code
      * Verify a previously sent MFA code.
-     * @param accountId Bandwidth Account ID with Voice service enabled. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param verifyCodeRequest MFA code verify request body. (required)
      * @return VerifyCodeResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -484,7 +483,7 @@ public class MfaApi {
     /**
      * Verify Authentication Code
      * Verify a previously sent MFA code.
-     * @param accountId Bandwidth Account ID with Voice service enabled. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param verifyCodeRequest MFA code verify request body. (required)
      * @return ApiResponse&lt;VerifyCodeResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -508,7 +507,7 @@ public class MfaApi {
     /**
      * Verify Authentication Code (asynchronously)
      * Verify a previously sent MFA code.
-     * @param accountId Bandwidth Account ID with Voice service enabled. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param verifyCodeRequest MFA code verify request body. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

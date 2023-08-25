@@ -47,9 +47,9 @@ public class CallCleanup {
     }
 
     /**
-     * Ensure that all CallIds inside of the callIdList have been hung up
+     * Ensure that the call has been hung up
      *
-     * @param callIdList List of Bandwidth call ID's
+     * @param callId Bandwidth call ID
      */
     public static final void Cleanup(ConferencesApiTest testClass, String callId) throws Exception {
         TimeUnit.SECONDS.sleep(TEST_SLEEP);

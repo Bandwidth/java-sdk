@@ -15,7 +15,7 @@ All URIs are relative to *http://localhost*
 | [**updateConferenceMember**](ConferencesApi.md#updateConferenceMember) | **PUT** /accounts/{accountId}/conferences/{conferenceId}/members/{memberId} | Update Conference Member |
 
 
-<a name="downloadConferenceRecording"></a>
+<a id="downloadConferenceRecording"></a>
 # **downloadConferenceRecording**
 > File downloadConferenceRecording(accountId, conferenceId, recordingId)
 
@@ -44,9 +44,9 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     ConferencesApi apiInstance = new ConferencesApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
-    String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID
-    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID.
+    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID.
     try {
       File result = apiInstance.downloadConferenceRecording(accountId, conferenceId, recordingId);
       System.out.println(result);
@@ -65,9 +65,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
-| **conferenceId** | **String**| Programmable Voice API Conference ID | |
-| **recordingId** | **String**| Programmable Voice API Recording ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **conferenceId** | **String**| Programmable Voice API Conference ID. | |
+| **recordingId** | **String**| Programmable Voice API Recording ID. | |
 
 ### Return type
 
@@ -92,10 +92,10 @@ public class Example {
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 
-<a name="getConference"></a>
+<a id="getConference"></a>
 # **getConference**
 > Conference getConference(accountId, conferenceId)
 
@@ -124,8 +124,8 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     ConferencesApi apiInstance = new ConferencesApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
-    String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID.
     try {
       Conference result = apiInstance.getConference(accountId, conferenceId);
       System.out.println(result);
@@ -144,8 +144,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
-| **conferenceId** | **String**| Programmable Voice API Conference ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **conferenceId** | **String**| Programmable Voice API Conference ID. | |
 
 ### Return type
 
@@ -170,10 +170,10 @@ public class Example {
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 
-<a name="getConferenceMember"></a>
+<a id="getConferenceMember"></a>
 # **getConferenceMember**
 > ConferenceMember getConferenceMember(accountId, conferenceId, memberId)
 
@@ -202,9 +202,9 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     ConferencesApi apiInstance = new ConferencesApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
-    String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID
-    String memberId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Conference Member ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID.
+    String memberId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Conference Member ID.
     try {
       ConferenceMember result = apiInstance.getConferenceMember(accountId, conferenceId, memberId);
       System.out.println(result);
@@ -223,9 +223,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
-| **conferenceId** | **String**| Programmable Voice API Conference ID | |
-| **memberId** | **String**| Programmable Voice API Conference Member ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **conferenceId** | **String**| Programmable Voice API Conference ID. | |
+| **memberId** | **String**| Programmable Voice API Conference Member ID. | |
 
 ### Return type
 
@@ -250,10 +250,10 @@ public class Example {
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 
-<a name="getConferenceRecording"></a>
+<a id="getConferenceRecording"></a>
 # **getConferenceRecording**
 > ConferenceRecordingMetadata getConferenceRecording(accountId, conferenceId, recordingId)
 
@@ -282,9 +282,9 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     ConferencesApi apiInstance = new ConferencesApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
-    String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID
-    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID.
+    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID.
     try {
       ConferenceRecordingMetadata result = apiInstance.getConferenceRecording(accountId, conferenceId, recordingId);
       System.out.println(result);
@@ -303,9 +303,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
-| **conferenceId** | **String**| Programmable Voice API Conference ID | |
-| **recordingId** | **String**| Programmable Voice API Recording ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **conferenceId** | **String**| Programmable Voice API Conference ID. | |
+| **recordingId** | **String**| Programmable Voice API Recording ID. | |
 
 ### Return type
 
@@ -330,10 +330,10 @@ public class Example {
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 
-<a name="listConferenceRecordings"></a>
+<a id="listConferenceRecordings"></a>
 # **listConferenceRecordings**
 > List&lt;ConferenceRecordingMetadata&gt; listConferenceRecordings(accountId, conferenceId)
 
@@ -362,8 +362,8 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     ConferencesApi apiInstance = new ConferencesApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
-    String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID.
     try {
       List<ConferenceRecordingMetadata> result = apiInstance.listConferenceRecordings(accountId, conferenceId);
       System.out.println(result);
@@ -382,8 +382,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
-| **conferenceId** | **String**| Programmable Voice API Conference ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **conferenceId** | **String**| Programmable Voice API Conference ID. | |
 
 ### Return type
 
@@ -408,10 +408,10 @@ public class Example {
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 
-<a name="listConferences"></a>
+<a id="listConferences"></a>
 # **listConferences**
 > List&lt;Conference&gt; listConferences(accountId, name, minCreatedTime, maxCreatedTime, pageSize, pageToken)
 
@@ -440,7 +440,7 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     ConferencesApi apiInstance = new ConferencesApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String name = "my-custom-name"; // String | Filter results by the `name` field.
     String minCreatedTime = "2022-06-21T19:13:21Z"; // String | Filter results to conferences which have a `createdTime` after or at `minCreatedTime` (in ISO8601 format).
     String maxCreatedTime = "2022-06-21T19:13:21Z"; // String | Filter results to conferences which have a `createdTime` before or at `maxCreatedTime` (in ISO8601 format).
@@ -464,7 +464,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
 | **name** | **String**| Filter results by the &#x60;name&#x60; field. | [optional] |
 | **minCreatedTime** | **String**| Filter results to conferences which have a &#x60;createdTime&#x60; after or at &#x60;minCreatedTime&#x60; (in ISO8601 format). | [optional] |
 | **maxCreatedTime** | **String**| Filter results to conferences which have a &#x60;createdTime&#x60; before or at &#x60;maxCreatedTime&#x60; (in ISO8601 format). | [optional] |
@@ -494,10 +494,10 @@ public class Example {
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 
-<a name="updateConference"></a>
+<a id="updateConference"></a>
 # **updateConference**
 > updateConference(accountId, conferenceId, updateConference)
 
@@ -526,8 +526,8 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     ConferencesApi apiInstance = new ConferencesApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
-    String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID.
     UpdateConference updateConference = new UpdateConference(); // UpdateConference | 
     try {
       apiInstance.updateConference(accountId, conferenceId, updateConference);
@@ -546,8 +546,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
-| **conferenceId** | **String**| Programmable Voice API Conference ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **conferenceId** | **String**| Programmable Voice API Conference ID. | |
 | **updateConference** | [**UpdateConference**](UpdateConference.md)|  | |
 
 ### Return type
@@ -566,17 +566,17 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Conference successfully modified |  -  |
+| **204** | Conference was successfully modified. |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 
-<a name="updateConferenceBxml"></a>
+<a id="updateConferenceBxml"></a>
 # **updateConferenceBxml**
 > updateConferenceBxml(accountId, conferenceId, body)
 
@@ -605,8 +605,8 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     ConferencesApi apiInstance = new ConferencesApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
-    String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID.
     String body = <?xml version="1.0" encoding="UTF-8"?>
 <Bxml>
     <StopRecording/>
@@ -628,8 +628,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
-| **conferenceId** | **String**| Programmable Voice API Conference ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **conferenceId** | **String**| Programmable Voice API Conference ID. | |
 | **body** | **String**|  | |
 
 ### Return type
@@ -648,17 +648,17 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Conference successfully modified |  -  |
+| **204** | Conference successfully modified. |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 
-<a name="updateConferenceMember"></a>
+<a id="updateConferenceMember"></a>
 # **updateConferenceMember**
 > updateConferenceMember(accountId, conferenceId, memberId, updateConferenceMember)
 
@@ -687,9 +687,9 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     ConferencesApi apiInstance = new ConferencesApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
-    String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID
-    String memberId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Conference Member ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID.
+    String memberId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Conference Member ID.
     UpdateConferenceMember updateConferenceMember = new UpdateConferenceMember(); // UpdateConferenceMember | 
     try {
       apiInstance.updateConferenceMember(accountId, conferenceId, memberId, updateConferenceMember);
@@ -708,9 +708,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID | |
-| **conferenceId** | **String**| Programmable Voice API Conference ID | |
-| **memberId** | **String**| Programmable Voice API Conference Member ID | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **conferenceId** | **String**| Programmable Voice API Conference ID. | |
+| **memberId** | **String**| Programmable Voice API Conference Member ID. | |
 | **updateConferenceMember** | [**UpdateConferenceMember**](UpdateConferenceMember.md)|  | |
 
 ### Return type
@@ -729,13 +729,13 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Conference member successfully modified |  -  |
+| **204** | Conference member was successfully modified. |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again <br>  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 

@@ -14,7 +14,6 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import org.openapitools.client.model.CallDirectionEnum;
@@ -37,6 +37,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -51,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * CallState
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T14:55:39.427023-04:00[America/New_York]")
 public class CallState {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
@@ -139,7 +143,6 @@ public class CallState {
    * @return applicationId
   **/
   @javax.annotation.Nullable
-
   public String getApplicationId() {
     return applicationId;
   }
@@ -161,7 +164,6 @@ public class CallState {
    * @return accountId
   **/
   @javax.annotation.Nullable
-
   public String getAccountId() {
     return accountId;
   }
@@ -183,7 +185,6 @@ public class CallState {
    * @return callId
   **/
   @javax.annotation.Nullable
-
   public String getCallId() {
     return callId;
   }
@@ -205,7 +206,6 @@ public class CallState {
    * @return parentCallId
   **/
   @javax.annotation.Nullable
-
   public String getParentCallId() {
     return parentCallId;
   }
@@ -223,11 +223,10 @@ public class CallState {
   }
 
    /**
-   * The phone number that received the call, in E.164 format (e.g. +15555555555), or if the call was to a SIP URI, the SIP URI
+   * The phone number that received the call, in E.164 format (e.g. +15555555555), or if the call was to a SIP URI, the SIP URI.
    * @return to
   **/
   @javax.annotation.Nullable
-
   public String getTo() {
     return to;
   }
@@ -249,7 +248,6 @@ public class CallState {
    * @return from
   **/
   @javax.annotation.Nullable
-
   public String getFrom() {
     return from;
   }
@@ -271,7 +269,6 @@ public class CallState {
    * @return direction
   **/
   @javax.annotation.Nullable
-
   public CallDirectionEnum getDirection() {
     return direction;
   }
@@ -293,7 +290,6 @@ public class CallState {
    * @return state
   **/
   @javax.annotation.Nullable
-
   public String getState() {
     return state;
   }
@@ -311,16 +307,18 @@ public class CallState {
   }
 
   public CallState putStirShakenItem(String key, String stirShakenItem) {
+    if (this.stirShaken == null) {
+      this.stirShaken = new HashMap<>();
+    }
     this.stirShaken.put(key, stirShakenItem);
     return this;
   }
 
    /**
-   * For inbound calls, the Bandwidth STIR/SHAKEN implementation will verify the information provided in the inbound invite request &#x60;Identity&#x60; header. The verification status is stored in the call state &#x60;stirShaken&#x60; property as follows.  | Property          | Description | |:------------------|:------------| | verstat | (optional) The verification status indicating whether the verification was successful or not. Possible values are &#x60;TN-Verification-Passed&#x60; or &#x60;TN-Verification-Failed&#x60;. | | attestationIndicator | (optional) The attestation level verified by Bandwidth. Possible values are &#x60;A&#x60; (full), &#x60;B&#x60; (partial) or &#x60;C&#x60; (gateway). | | originatingId | (optional) A unique origination identifier. |  Note that these are common properties but that the &#x60;stirShaken&#x60; object is free form and can contain other key-value pairs.  More information: [Understanding STIR/SHAKEN](https://www.bandwidth.com/regulations/stir-shaken)
+   * For inbound calls, the Bandwidth STIR/SHAKEN implementation will verify the information provided in the inbound invite request &#x60;Identity&#x60; header. The verification status is stored in the call state &#x60;stirShaken&#x60; property as follows.  | Property          | Description | |:------------------|:------------| | verstat | (optional) The verification status indicating whether the verification was successful or not. Possible values are &#x60;TN-Verification-Passed&#x60; or &#x60;TN-Verification-Failed&#x60;. | | attestationIndicator | (optional) The attestation level verified by Bandwidth. Possible values are &#x60;A&#x60; (full), &#x60;B&#x60; (partial) or &#x60;C&#x60; (gateway). | | originatingId | (optional) A unique origination identifier. |  Note that these are common properties but that the &#x60;stirShaken&#x60; object is free form and can contain other key-value pairs.  More information: [Understanding STIR/SHAKEN](https://www.bandwidth.com/regulations/stir-shaken).
    * @return stirShaken
   **/
   @javax.annotation.Nullable
-
   public Map<String, String> getStirShaken() {
     return stirShaken;
   }
@@ -342,7 +340,6 @@ public class CallState {
    * @return identity
   **/
   @javax.annotation.Nullable
-
   public String getIdentity() {
     return identity;
   }
@@ -364,7 +361,6 @@ public class CallState {
    * @return enqueuedTime
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getEnqueuedTime() {
     return enqueuedTime;
   }
@@ -386,7 +382,6 @@ public class CallState {
    * @return startTime
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getStartTime() {
     return startTime;
   }
@@ -408,7 +403,6 @@ public class CallState {
    * @return answerTime
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getAnswerTime() {
     return answerTime;
   }
@@ -430,7 +424,6 @@ public class CallState {
    * @return endTime
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getEndTime() {
     return endTime;
   }
@@ -452,7 +445,6 @@ public class CallState {
    * @return disconnectCause
   **/
   @javax.annotation.Nullable
-
   public String getDisconnectCause() {
     return disconnectCause;
   }
@@ -474,7 +466,6 @@ public class CallState {
    * @return errorMessage
   **/
   @javax.annotation.Nullable
-
   public String getErrorMessage() {
     return errorMessage;
   }
@@ -496,7 +487,6 @@ public class CallState {
    * @return errorId
   **/
   @javax.annotation.Nullable
-
   public String getErrorId() {
     return errorId;
   }
@@ -518,7 +508,6 @@ public class CallState {
    * @return lastUpdate
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getLastUpdate() {
     return lastUpdate;
   }
@@ -643,25 +632,26 @@ public class CallState {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CallState
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to CallState
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!CallState.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!CallState.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CallState is not found in the empty JSON string", CallState.openapiRequiredFields.toString()));
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
         if (!CallState.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CallState` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CallState` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("applicationId") != null && !jsonObj.get("applicationId").isJsonNull()) && !jsonObj.get("applicationId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
       }
@@ -717,9 +707,9 @@ public class CallState {
 
            @Override
            public CallState read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();
