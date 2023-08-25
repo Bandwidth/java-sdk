@@ -2,7 +2,10 @@ name: Test
 on:
   # schedule:
   #   - cron: "0 4 * * *"
-  # pull_request:
+  pull_request:
+    branches:
+      - main
+      - feature/*
   workflow_dispatch:
 
 jobs:
