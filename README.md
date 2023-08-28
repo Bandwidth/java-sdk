@@ -2,7 +2,7 @@
 
 Bandwidth
 - API version: 1.0.0
-  - Build date: 2023-02-21T09:43:53.001100-05:00[America/New_York]
+  - Build date: 2023-08-25T14:55:39.427023-04:00[America/New_York]
 
 Bandwidth's Communication APIs
 
@@ -99,7 +99,7 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     CallsApi apiInstance = new CallsApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
     CreateCall createCall = new CreateCall(); // CreateCall | JSON object containing information to create an outbound call
     try {
       CreateCallResponse result = apiInstance.createCall(accountId, createCall);
@@ -204,6 +204,7 @@ Class | Method | HTTP request | Description
  - [MachineDetectionCompleteCallback](docs/MachineDetectionCompleteCallback.md)
  - [MachineDetectionConfiguration](docs/MachineDetectionConfiguration.md)
  - [MachineDetectionModeEnum](docs/MachineDetectionModeEnum.md)
+ - [MachineDetectionResult](docs/MachineDetectionResult.md)
  - [Media](docs/Media.md)
  - [Message](docs/Message.md)
  - [MessageDeliveredCallback](docs/MessageDeliveredCallback.md)
@@ -250,9 +251,12 @@ Class | Method | HTTP request | Description
  - [VoiceCodeResponse](docs/VoiceCodeResponse.md)
 
 
+<a id="documentation-for-authorization"></a>
 ## Documentation for Authorization
 
+
 Authentication schemes defined for the API:
+<a id="Basic"></a>
 ### Basic
 
 - **Type**: HTTP basic authentication

@@ -38,7 +38,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class CallsApi {
     private ApiClient localVarApiClient;
@@ -79,7 +78,7 @@ public class CallsApi {
 
     /**
      * Build call for createCall
-     * @param accountId Your Bandwidth Account ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param createCall JSON object containing information to create an outbound call (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -94,7 +93,7 @@ public class CallsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -163,7 +162,7 @@ public class CallsApi {
     /**
      * Create Call
      * Creates an outbound phone call.  All calls are initially queued. Your outbound calls will initiated at a specific dequeueing rate, enabling your application to \&quot;fire and forget\&quot; when creating calls. Queued calls may not be modified until they are dequeued and placed, but may be removed from your queue on demand.  &lt;b&gt;Please note:&lt;/b&gt; Calls submitted to your queue will be placed approximately in order, but exact ordering is not guaranteed.
-     * @param accountId Your Bandwidth Account ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param createCall JSON object containing information to create an outbound call (required)
      * @return CreateCallResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -177,7 +176,7 @@ public class CallsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -189,7 +188,7 @@ public class CallsApi {
     /**
      * Create Call
      * Creates an outbound phone call.  All calls are initially queued. Your outbound calls will initiated at a specific dequeueing rate, enabling your application to \&quot;fire and forget\&quot; when creating calls. Queued calls may not be modified until they are dequeued and placed, but may be removed from your queue on demand.  &lt;b&gt;Please note:&lt;/b&gt; Calls submitted to your queue will be placed approximately in order, but exact ordering is not guaranteed.
-     * @param accountId Your Bandwidth Account ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param createCall JSON object containing information to create an outbound call (required)
      * @return ApiResponse&lt;CreateCallResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -203,7 +202,7 @@ public class CallsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -216,7 +215,7 @@ public class CallsApi {
     /**
      * Create Call (asynchronously)
      * Creates an outbound phone call.  All calls are initially queued. Your outbound calls will initiated at a specific dequeueing rate, enabling your application to \&quot;fire and forget\&quot; when creating calls. Queued calls may not be modified until they are dequeued and placed, but may be removed from your queue on demand.  &lt;b&gt;Please note:&lt;/b&gt; Calls submitted to your queue will be placed approximately in order, but exact ordering is not guaranteed.
-     * @param accountId Your Bandwidth Account ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param createCall JSON object containing information to create an outbound call (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -231,7 +230,7 @@ public class CallsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -244,8 +243,8 @@ public class CallsApi {
     }
     /**
      * Build call for getCallState
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -259,7 +258,7 @@ public class CallsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -328,8 +327,8 @@ public class CallsApi {
     /**
      * Get Call State Information
      * Retrieve the current state of a specific call. This information is near-realtime, so it may take a few minutes for your call to be accessible using this endpoint.  **Note**: Call information is kept for 7 days after the calls are hung up. If you attempt to retrieve information for a call that is older than 7 days, you will get an HTTP 404 response.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @return CallState
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -342,7 +341,7 @@ public class CallsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -354,8 +353,8 @@ public class CallsApi {
     /**
      * Get Call State Information
      * Retrieve the current state of a specific call. This information is near-realtime, so it may take a few minutes for your call to be accessible using this endpoint.  **Note**: Call information is kept for 7 days after the calls are hung up. If you attempt to retrieve information for a call that is older than 7 days, you will get an HTTP 404 response.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @return ApiResponse&lt;CallState&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -368,7 +367,7 @@ public class CallsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -381,8 +380,8 @@ public class CallsApi {
     /**
      * Get Call State Information (asynchronously)
      * Retrieve the current state of a specific call. This information is near-realtime, so it may take a few minutes for your call to be accessible using this endpoint.  **Note**: Call information is kept for 7 days after the calls are hung up. If you attempt to retrieve information for a call that is older than 7 days, you will get an HTTP 404 response.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -396,7 +395,7 @@ public class CallsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -409,8 +408,8 @@ public class CallsApi {
     }
     /**
      * Build call for updateCall
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @param updateCall JSON object containing information to redirect an existing call to a new BXML document (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -418,7 +417,7 @@ public class CallsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Call Successfully Modified </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Call was successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
@@ -426,7 +425,7 @@ public class CallsApi {
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 409 </td><td> Conflict </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -501,14 +500,14 @@ public class CallsApi {
     /**
      * Update Call
      * Interrupts and redirects a call to a different URL that should return a BXML document.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @param updateCall JSON object containing information to redirect an existing call to a new BXML document (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Call Successfully Modified </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Call was successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
@@ -516,7 +515,7 @@ public class CallsApi {
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 409 </td><td> Conflict </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -527,15 +526,15 @@ public class CallsApi {
     /**
      * Update Call
      * Interrupts and redirects a call to a different URL that should return a BXML document.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @param updateCall JSON object containing information to redirect an existing call to a new BXML document (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Call Successfully Modified </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Call was successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
@@ -543,7 +542,7 @@ public class CallsApi {
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 409 </td><td> Conflict </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -555,8 +554,8 @@ public class CallsApi {
     /**
      * Update Call (asynchronously)
      * Interrupts and redirects a call to a different URL that should return a BXML document.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @param updateCall JSON object containing information to redirect an existing call to a new BXML document (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -564,7 +563,7 @@ public class CallsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Call Successfully Modified </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Call was successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
@@ -572,7 +571,7 @@ public class CallsApi {
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 409 </td><td> Conflict </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -584,8 +583,8 @@ public class CallsApi {
     }
     /**
      * Build call for updateCallBxml
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @param body  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -593,7 +592,7 @@ public class CallsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Call BXML Successfully Replaced </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Call BXML was successfully replaced. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
@@ -601,7 +600,7 @@ public class CallsApi {
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 409 </td><td> Conflict </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -676,14 +675,14 @@ public class CallsApi {
     /**
      * Update Call BXML
      * Interrupts and replaces an active call&#39;s BXML document.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @param body  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Call BXML Successfully Replaced </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Call BXML was successfully replaced. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
@@ -691,7 +690,7 @@ public class CallsApi {
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 409 </td><td> Conflict </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -702,15 +701,15 @@ public class CallsApi {
     /**
      * Update Call BXML
      * Interrupts and replaces an active call&#39;s BXML document.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @param body  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Call BXML Successfully Replaced </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Call BXML was successfully replaced. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
@@ -718,7 +717,7 @@ public class CallsApi {
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 409 </td><td> Conflict </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -730,8 +729,8 @@ public class CallsApi {
     /**
      * Update Call BXML (asynchronously)
      * Interrupts and replaces an active call&#39;s BXML document.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param callId Programmable Voice API Call ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
      * @param body  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -739,7 +738,7 @@ public class CallsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Call BXML Successfully Replaced </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Call BXML was successfully replaced. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
@@ -747,7 +746,7 @@ public class CallsApi {
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 409 </td><td> Conflict </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */

@@ -50,6 +50,7 @@ docs/LookupStatusEnum.md
 docs/MachineDetectionCompleteCallback.md
 docs/MachineDetectionConfiguration.md
 docs/MachineDetectionModeEnum.md
+docs/MachineDetectionResult.md
 docs/Media.md
 docs/MediaApi.md
 docs/Message.md
@@ -177,6 +178,7 @@ src/main/java/org/openapitools/client/model/LookupStatusEnum.java
 src/main/java/org/openapitools/client/model/MachineDetectionCompleteCallback.java
 src/main/java/org/openapitools/client/model/MachineDetectionConfiguration.java
 src/main/java/org/openapitools/client/model/MachineDetectionModeEnum.java
+src/main/java/org/openapitools/client/model/MachineDetectionResult.java
 src/main/java/org/openapitools/client/model/Media.java
 src/main/java/org/openapitools/client/model/Message.java
 src/main/java/org/openapitools/client/model/MessageDeliveredCallback.java
@@ -221,3 +223,4 @@ src/main/java/org/openapitools/client/model/VerifyCodeRequest.java
 src/main/java/org/openapitools/client/model/VerifyCodeResponse.java
 src/main/java/org/openapitools/client/model/VoiceApiError.java
 src/main/java/org/openapitools/client/model/VoiceCodeResponse.java
+src/test/java/org/openapitools/client/model/MachineDetectionResultTest.java

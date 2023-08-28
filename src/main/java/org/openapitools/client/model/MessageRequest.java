@@ -14,7 +14,6 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,7 +21,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.net.URI;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -38,6 +39,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -52,7 +57,7 @@ import org.openapitools.client.JSON;
 /**
  * MessageRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T14:55:39.427023-04:00[America/New_York]")
 public class MessageRequest {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
@@ -72,7 +77,7 @@ public class MessageRequest {
 
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
-  private List<URI> media = new ArrayList<>();
+  private List<URI> media;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
@@ -84,7 +89,7 @@ public class MessageRequest {
 
   public static final String SERIALIZED_NAME_EXPIRATION = "expiration";
   @SerializedName(SERIALIZED_NAME_EXPIRATION)
-  private String expiration;
+  private OffsetDateTime expiration;
 
   public MessageRequest() {
   }
@@ -100,7 +105,6 @@ public class MessageRequest {
    * @return applicationId
   **/
   @javax.annotation.Nonnull
-
   public String getApplicationId() {
     return applicationId;
   }
@@ -118,6 +122,9 @@ public class MessageRequest {
   }
 
   public MessageRequest addToItem(String toItem) {
+    if (this.to == null) {
+      this.to = new LinkedHashSet<>();
+    }
     this.to.add(toItem);
     return this;
   }
@@ -127,7 +134,6 @@ public class MessageRequest {
    * @return to
   **/
   @javax.annotation.Nonnull
-
   public Set<String> getTo() {
     return to;
   }
@@ -149,7 +155,6 @@ public class MessageRequest {
    * @return from
   **/
   @javax.annotation.Nonnull
-
   public String getFrom() {
     return from;
   }
@@ -171,7 +176,6 @@ public class MessageRequest {
    * @return text
   **/
   @javax.annotation.Nullable
-
   public String getText() {
     return text;
   }
@@ -201,7 +205,6 @@ public class MessageRequest {
    * @return media
   **/
   @javax.annotation.Nullable
-
   public List<URI> getMedia() {
     return media;
   }
@@ -223,7 +226,6 @@ public class MessageRequest {
    * @return tag
   **/
   @javax.annotation.Nullable
-
   public String getTag() {
     return tag;
   }
@@ -245,7 +247,6 @@ public class MessageRequest {
    * @return priority
   **/
   @javax.annotation.Nullable
-
   public PriorityEnum getPriority() {
     return priority;
   }
@@ -256,24 +257,23 @@ public class MessageRequest {
   }
 
 
-  public MessageRequest expiration(String expiration) {
+  public MessageRequest expiration(OffsetDateTime expiration) {
     
     this.expiration = expiration;
     return this;
   }
 
    /**
-   * A string with the date/time value that the message will automatically expire by. This must be a valid RFC-3339 value, e.g., 2021-03-14T01:59:26Z or 2021-03-13T20:59:26-05:00.
+   * A string with the date/time value that the message will automatically expire by. This must be a valid RFC-3339 value, e.g., 2021-03-14T01:59:26Z or 2021-03-13T20:59:26-05:00. Must be a date-time in the future. Not supported on MMS.
    * @return expiration
   **/
   @javax.annotation.Nullable
-
-  public String getExpiration() {
+  public OffsetDateTime getExpiration() {
     return expiration;
   }
 
 
-  public void setExpiration(String expiration) {
+  public void setExpiration(OffsetDateTime expiration) {
     this.expiration = expiration;
   }
 
@@ -354,32 +354,33 @@ public class MessageRequest {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to MessageRequest
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to MessageRequest
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!MessageRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!MessageRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MessageRequest is not found in the empty JSON string", MessageRequest.openapiRequiredFields.toString()));
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
         if (!MessageRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MessageRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MessageRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : MessageRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("applicationId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
       }
@@ -396,14 +397,11 @@ public class MessageRequest {
         throw new IllegalArgumentException(String.format("Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonArray()) {
+      if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonNull() && !jsonObj.get("media").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `media` to be an array in the JSON string but got `%s`", jsonObj.get("media").toString()));
       }
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
-      }
-      if ((jsonObj.get("expiration") != null && !jsonObj.get("expiration").isJsonNull()) && !jsonObj.get("expiration").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `expiration` to be a primitive type in the JSON string but got `%s`", jsonObj.get("expiration").toString()));
       }
   }
 
@@ -427,9 +425,9 @@ public class MessageRequest {
 
            @Override
            public MessageRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

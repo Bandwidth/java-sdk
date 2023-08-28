@@ -48,60 +48,60 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * DeferredResult
+ * (optional) if machine detection was requested in sync mode, the result will be specified here. Possible values are the same as the async counterpart: Machine Detection Complete
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T14:55:39.427023-04:00[America/New_York]")
-public class DeferredResult {
-  public static final String SERIALIZED_NAME_RESULT = "result";
-  @SerializedName(SERIALIZED_NAME_RESULT)
-  private Object result;
+public class MachineDetectionResult {
+  public static final String SERIALIZED_NAME_VALUE = "value";
+  @SerializedName(SERIALIZED_NAME_VALUE)
+  private String value;
 
-  public static final String SERIALIZED_NAME_SET_OR_EXPIRED = "setOrExpired";
-  @SerializedName(SERIALIZED_NAME_SET_OR_EXPIRED)
-  private Boolean setOrExpired;
+  public static final String SERIALIZED_NAME_DURATION = "duration";
+  @SerializedName(SERIALIZED_NAME_DURATION)
+  private String duration;
 
-  public DeferredResult() {
+  public MachineDetectionResult() {
   }
 
-  public DeferredResult result(Object result) {
+  public MachineDetectionResult value(String value) {
     
-    this.result = result;
+    this.value = value;
     return this;
   }
 
    /**
-   * Get result
-   * @return result
+   * Possible values are answering-machine, human, silence, timeout, or error.
+   * @return value
   **/
   @javax.annotation.Nullable
-  public Object getResult() {
-    return result;
+  public String getValue() {
+    return value;
   }
 
 
-  public void setResult(Object result) {
-    this.result = result;
+  public void setValue(String value) {
+    this.value = value;
   }
 
 
-  public DeferredResult setOrExpired(Boolean setOrExpired) {
+  public MachineDetectionResult duration(String duration) {
     
-    this.setOrExpired = setOrExpired;
+    this.duration = duration;
     return this;
   }
 
    /**
-   * Get setOrExpired
-   * @return setOrExpired
+   * The amount of time it took to determine the result.
+   * @return duration
   **/
   @javax.annotation.Nullable
-  public Boolean getSetOrExpired() {
-    return setOrExpired;
+  public String getDuration() {
+    return duration;
   }
 
 
-  public void setSetOrExpired(Boolean setOrExpired) {
-    this.setOrExpired = setOrExpired;
+  public void setDuration(String duration) {
+    this.duration = duration;
   }
 
 
@@ -114,22 +114,22 @@ public class DeferredResult {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DeferredResult deferredResult = (DeferredResult) o;
-    return Objects.equals(this.result, deferredResult.result) &&
-        Objects.equals(this.setOrExpired, deferredResult.setOrExpired);
+    MachineDetectionResult machineDetectionResult = (MachineDetectionResult) o;
+    return Objects.equals(this.value, machineDetectionResult.value) &&
+        Objects.equals(this.duration, machineDetectionResult.duration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(result, setOrExpired);
+    return Objects.hash(value, duration);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DeferredResult {\n");
-    sb.append("    result: ").append(toIndentedString(result)).append("\n");
-    sb.append("    setOrExpired: ").append(toIndentedString(setOrExpired)).append("\n");
+    sb.append("class MachineDetectionResult {\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -152,8 +152,8 @@ public class DeferredResult {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("result");
-    openapiFields.add("setOrExpired");
+    openapiFields.add("value");
+    openapiFields.add("duration");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -163,45 +163,51 @@ public class DeferredResult {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to DeferredResult
+  * @throws IOException if the JSON Element is invalid with respect to MachineDetectionResult
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!DeferredResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in DeferredResult is not found in the empty JSON string", DeferredResult.openapiRequiredFields.toString()));
+        if (!MachineDetectionResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in MachineDetectionResult is not found in the empty JSON string", MachineDetectionResult.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!DeferredResult.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DeferredResult` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!MachineDetectionResult.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MachineDetectionResult` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull()) && !jsonObj.get("value").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("value").toString()));
+      }
+      if ((jsonObj.get("duration") != null && !jsonObj.get("duration").isJsonNull()) && !jsonObj.get("duration").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `duration` to be a primitive type in the JSON string but got `%s`", jsonObj.get("duration").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!DeferredResult.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'DeferredResult' and its subtypes
+       if (!MachineDetectionResult.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'MachineDetectionResult' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<DeferredResult> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(DeferredResult.class));
+       final TypeAdapter<MachineDetectionResult> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(MachineDetectionResult.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<DeferredResult>() {
+       return (TypeAdapter<T>) new TypeAdapter<MachineDetectionResult>() {
            @Override
-           public void write(JsonWriter out, DeferredResult value) throws IOException {
+           public void write(JsonWriter out, MachineDetectionResult value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public DeferredResult read(JsonReader in) throws IOException {
+           public MachineDetectionResult read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -212,18 +218,18 @@ public class DeferredResult {
   }
 
  /**
-  * Create an instance of DeferredResult given an JSON string
+  * Create an instance of MachineDetectionResult given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of DeferredResult
-  * @throws IOException if the JSON string is invalid with respect to DeferredResult
+  * @return An instance of MachineDetectionResult
+  * @throws IOException if the JSON string is invalid with respect to MachineDetectionResult
   */
-  public static DeferredResult fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, DeferredResult.class);
+  public static MachineDetectionResult fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, MachineDetectionResult.class);
   }
 
  /**
-  * Convert an instance of DeferredResult to an JSON string
+  * Convert an instance of MachineDetectionResult to an JSON string
   *
   * @return JSON string
   */

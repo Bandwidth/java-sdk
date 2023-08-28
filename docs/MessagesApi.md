@@ -8,7 +8,7 @@ All URIs are relative to *http://localhost*
 | [**listMessages**](MessagesApi.md#listMessages) | **GET** /users/{accountId}/messages | List Messages |
 
 
-<a name="createMessage"></a>
+<a id="createMessage"></a>
 # **createMessage**
 > Message createMessage(accountId, messageRequest)
 
@@ -81,13 +81,14 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **406** | Not Acceptable |  -  |
 | **415** | Unsupported Media Type |  -  |
 | **429** | Too Many Requests |  -  |
 | **500** | Internal Server Error |  -  |
 
-<a name="listMessages"></a>
+<a id="listMessages"></a>
 # **listMessages**
-> MessagesList listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, sort, pageToken, limit)
+> MessagesList listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, limitTotalCount)
 
 List Messages
 
@@ -125,11 +126,13 @@ public class Example {
     Integer errorCode = 9902; // Integer | The error code of the message.
     String fromDateTime = "2022-09-14T18:20:16.000Z"; // String | The start of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days.
     String toDateTime = "2022-09-14T18:20:16.000Z"; // String | The end of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days.
+    String campaignId = "CJEUMDK"; // String | The campaign ID of the message.
     String sort = "sourceTn:desc"; // String | The field and direction to sort by combined with a colon. Direction is either asc or desc.
     String pageToken = "gdEewhcJLQRB5"; // String | A base64 encoded value used for pagination of results.
     Integer limit = 50; // Integer | The maximum records requested in search result. Default 100. The sum of limit and after cannot be more than 10000.
+    Boolean limitTotalCount = true; // Boolean | When set to true, the response's totalCount field will have a maximum value of 10,000. When set to false, or excluded, this will give an accurate totalCount of all messages that match the provided filters. If you are experiencing latency, try using this parameter to limit your results.
     try {
-      MessagesList result = apiInstance.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, sort, pageToken, limit);
+      MessagesList result = apiInstance.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, limitTotalCount);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MessagesApi#listMessages");
@@ -157,9 +160,11 @@ public class Example {
 | **errorCode** | **Integer**| The error code of the message. | [optional] |
 | **fromDateTime** | **String**| The start of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. | [optional] |
 | **toDateTime** | **String**| The end of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. | [optional] |
+| **campaignId** | **String**| The campaign ID of the message. | [optional] |
 | **sort** | **String**| The field and direction to sort by combined with a colon. Direction is either asc or desc. | [optional] |
 | **pageToken** | **String**| A base64 encoded value used for pagination of results. | [optional] |
 | **limit** | **Integer**| The maximum records requested in search result. Default 100. The sum of limit and after cannot be more than 10000. | [optional] |
+| **limitTotalCount** | **Boolean**| When set to true, the response&#39;s totalCount field will have a maximum value of 10,000. When set to false, or excluded, this will give an accurate totalCount of all messages that match the provided filters. If you are experiencing latency, try using this parameter to limit your results. | [optional] |
 
 ### Return type
 

@@ -2,6 +2,7 @@
 
 # InboundMessageCallbackMessage
 
+Inbound Message Callback Message Schema
 
 ## Properties
 

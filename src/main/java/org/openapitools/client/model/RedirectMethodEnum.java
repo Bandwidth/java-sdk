@@ -14,7 +14,6 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.IOException;
@@ -24,7 +23,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The HTTP method to use for the request to &#x60;redirectUrl&#x60;. GET or POST. Default value is POST.&lt;br&gt;&lt;br&gt;Not allowed if &#x60;state&#x60; is &#x60;completed&#x60;
+ * The HTTP method to use for the request to &#x60;redirectUrl&#x60;. GET or POST. Default value is POST.&lt;br&gt;&lt;br&gt;Not allowed if &#x60;state&#x60; is &#x60;completed&#x60;.
  */
 @JsonAdapter(RedirectMethodEnum.Adapter.class)
 public enum RedirectMethodEnum {

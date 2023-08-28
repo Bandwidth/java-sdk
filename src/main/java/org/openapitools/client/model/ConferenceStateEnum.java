@@ -14,7 +14,6 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.IOException;
@@ -24,7 +23,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Setting the conference state to &#x60;completed&#x60; ends the conference and ejects all members
+ * Setting the conference state to &#x60;completed&#x60; ends the conference and ejects all members.
  */
 @JsonAdapter(ConferenceStateEnum.Adapter.class)
 public enum ConferenceStateEnum {

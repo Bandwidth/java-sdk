@@ -14,16 +14,15 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.net.URI;
 import java.time.OffsetDateTime;
+import java.util.Arrays;
 import org.openapitools.client.model.CallbackMethodEnum;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -37,6 +36,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -51,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateCallResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T14:55:39.427023-04:00[America/New_York]")
 public class CreateCallResponse {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
@@ -135,7 +138,7 @@ public class CreateCallResponse {
 
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
-  private BigDecimal priority;
+  private Integer priority;
 
   public CreateCallResponse() {
   }
@@ -151,7 +154,6 @@ public class CreateCallResponse {
    * @return applicationId
   **/
   @javax.annotation.Nonnull
-
   public String getApplicationId() {
     return applicationId;
   }
@@ -169,11 +171,10 @@ public class CreateCallResponse {
   }
 
    /**
-   * The bandwidth account ID associated with the call
+   * The bandwidth account ID associated with the call.
    * @return accountId
   **/
   @javax.annotation.Nonnull
-
   public String getAccountId() {
     return accountId;
   }
@@ -191,11 +192,10 @@ public class CreateCallResponse {
   }
 
    /**
-   * Programmable Voice API Call ID
+   * Programmable Voice API Call ID.
    * @return callId
   **/
   @javax.annotation.Nonnull
-
   public String getCallId() {
     return callId;
   }
@@ -213,11 +213,10 @@ public class CreateCallResponse {
   }
 
    /**
-   * Recipient of the outgoing call
+   * Recipient of the outgoing call.
    * @return to
   **/
   @javax.annotation.Nonnull
-
   public String getTo() {
     return to;
   }
@@ -235,11 +234,10 @@ public class CreateCallResponse {
   }
 
    /**
-   * Phone number that created the outbound call
+   * Phone number that created the outbound call.
    * @return from
   **/
   @javax.annotation.Nonnull
-
   public String getFrom() {
     return from;
   }
@@ -257,11 +255,10 @@ public class CreateCallResponse {
   }
 
    /**
-   * Time the call was accepted into the queue
+   * The time at which the call was accepted into the queue.
    * @return enqueuedTime
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getEnqueuedTime() {
     return enqueuedTime;
   }
@@ -279,11 +276,10 @@ public class CreateCallResponse {
   }
 
    /**
-   * The URL to update call state
+   * The URL to update this call&#39;s state.
    * @return callUrl
   **/
   @javax.annotation.Nonnull
-
   public URI getCallUrl() {
     return callUrl;
   }
@@ -305,7 +301,6 @@ public class CreateCallResponse {
    * @return callTimeout
   **/
   @javax.annotation.Nullable
-
   public Double getCallTimeout() {
     return callTimeout;
   }
@@ -327,7 +322,6 @@ public class CreateCallResponse {
    * @return callbackTimeout
   **/
   @javax.annotation.Nullable
-
   public Double getCallbackTimeout() {
     return callbackTimeout;
   }
@@ -345,11 +339,10 @@ public class CreateCallResponse {
   }
 
    /**
-   * Custom tag value
+   * Custom tag value.
    * @return tag
   **/
   @javax.annotation.Nullable
-
   public String getTag() {
     return tag;
   }
@@ -371,7 +364,6 @@ public class CreateCallResponse {
    * @return answerMethod
   **/
   @javax.annotation.Nullable
-
   public CallbackMethodEnum getAnswerMethod() {
     return answerMethod;
   }
@@ -393,7 +385,6 @@ public class CreateCallResponse {
    * @return answerUrl
   **/
   @javax.annotation.Nonnull
-
   public URI getAnswerUrl() {
     return answerUrl;
   }
@@ -415,7 +406,6 @@ public class CreateCallResponse {
    * @return answerFallbackMethod
   **/
   @javax.annotation.Nullable
-
   public CallbackMethodEnum getAnswerFallbackMethod() {
     return answerFallbackMethod;
   }
@@ -437,7 +427,6 @@ public class CreateCallResponse {
    * @return answerFallbackUrl
   **/
   @javax.annotation.Nullable
-
   public URI getAnswerFallbackUrl() {
     return answerFallbackUrl;
   }
@@ -459,7 +448,6 @@ public class CreateCallResponse {
    * @return disconnectMethod
   **/
   @javax.annotation.Nullable
-
   public CallbackMethodEnum getDisconnectMethod() {
     return disconnectMethod;
   }
@@ -481,7 +469,6 @@ public class CreateCallResponse {
    * @return disconnectUrl
   **/
   @javax.annotation.Nullable
-
   public URI getDisconnectUrl() {
     return disconnectUrl;
   }
@@ -503,7 +490,6 @@ public class CreateCallResponse {
    * @return username
   **/
   @javax.annotation.Nullable
-
   public String getUsername() {
     return username;
   }
@@ -525,7 +511,6 @@ public class CreateCallResponse {
    * @return password
   **/
   @javax.annotation.Nullable
-
   public String getPassword() {
     return password;
   }
@@ -547,7 +532,6 @@ public class CreateCallResponse {
    * @return fallbackUsername
   **/
   @javax.annotation.Nullable
-
   public String getFallbackUsername() {
     return fallbackUsername;
   }
@@ -569,7 +553,6 @@ public class CreateCallResponse {
    * @return fallbackPassword
   **/
   @javax.annotation.Nullable
-
   public String getFallbackPassword() {
     return fallbackPassword;
   }
@@ -580,7 +563,7 @@ public class CreateCallResponse {
   }
 
 
-  public CreateCallResponse priority(BigDecimal priority) {
+  public CreateCallResponse priority(Integer priority) {
     
     this.priority = priority;
     return this;
@@ -591,13 +574,12 @@ public class CreateCallResponse {
    * @return priority
   **/
   @javax.annotation.Nullable
-
-  public BigDecimal getPriority() {
+  public Integer getPriority() {
     return priority;
   }
 
 
-  public void setPriority(BigDecimal priority) {
+  public void setPriority(Integer priority) {
     this.priority = priority;
   }
 
@@ -734,32 +716,33 @@ public class CreateCallResponse {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CreateCallResponse
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to CreateCallResponse
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!CreateCallResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!CreateCallResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CreateCallResponse is not found in the empty JSON string", CreateCallResponse.openapiRequiredFields.toString()));
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
         if (!CreateCallResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateCallResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateCallResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CreateCallResponse.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("applicationId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
       }
@@ -824,9 +807,9 @@ public class CreateCallResponse {
 
            @Override
            public CreateCallResponse read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

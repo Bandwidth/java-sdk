@@ -14,7 +14,6 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.Arrays;
 import org.openapitools.client.model.MessageSendingCallbackMessage;
 
 import com.google.gson.Gson;
@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -48,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Message Sending Callback
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T14:55:39.427023-04:00[America/New_York]")
 public class MessageSendingCallback {
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)
@@ -84,7 +88,6 @@ public class MessageSendingCallback {
    * @return time
   **/
   @javax.annotation.Nonnull
-
   public OffsetDateTime getTime() {
     return time;
   }
@@ -106,7 +109,6 @@ public class MessageSendingCallback {
    * @return type
   **/
   @javax.annotation.Nonnull
-
   public String getType() {
     return type;
   }
@@ -128,7 +130,6 @@ public class MessageSendingCallback {
    * @return to
   **/
   @javax.annotation.Nonnull
-
   public String getTo() {
     return to;
   }
@@ -150,7 +151,6 @@ public class MessageSendingCallback {
    * @return description
   **/
   @javax.annotation.Nonnull
-
   public String getDescription() {
     return description;
   }
@@ -172,7 +172,6 @@ public class MessageSendingCallback {
    * @return message
   **/
   @javax.annotation.Nonnull
-
   public MessageSendingCallbackMessage getMessage() {
     return message;
   }
@@ -252,32 +251,33 @@ public class MessageSendingCallback {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to MessageSendingCallback
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to MessageSendingCallback
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!MessageSendingCallback.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!MessageSendingCallback.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MessageSendingCallback is not found in the empty JSON string", MessageSendingCallback.openapiRequiredFields.toString()));
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
         if (!MessageSendingCallback.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MessageSendingCallback` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MessageSendingCallback` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : MessageSendingCallback.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
@@ -288,7 +288,7 @@ public class MessageSendingCallback {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // validate the required field `message`
-      MessageSendingCallbackMessage.validateJsonObject(jsonObj.getAsJsonObject("message"));
+      MessageSendingCallbackMessage.validateJsonElement(jsonObj.get("message"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -311,9 +311,9 @@ public class MessageSendingCallback {
 
            @Override
            public MessageSendingCallback read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

@@ -14,7 +14,6 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.openapitools.client.model.FieldError;
 
@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -49,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * CreateMessageRequestError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T14:55:39.427023-04:00[America/New_York]")
 public class CreateMessageRequestError {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -61,7 +65,7 @@ public class CreateMessageRequestError {
 
   public static final String SERIALIZED_NAME_FIELD_ERRORS = "fieldErrors";
   @SerializedName(SERIALIZED_NAME_FIELD_ERRORS)
-  private List<FieldError> fieldErrors = new ArrayList<>();
+  private List<FieldError> fieldErrors;
 
   public CreateMessageRequestError() {
   }
@@ -77,7 +81,6 @@ public class CreateMessageRequestError {
    * @return type
   **/
   @javax.annotation.Nonnull
-
   public String getType() {
     return type;
   }
@@ -99,7 +102,6 @@ public class CreateMessageRequestError {
    * @return description
   **/
   @javax.annotation.Nonnull
-
   public String getDescription() {
     return description;
   }
@@ -129,7 +131,6 @@ public class CreateMessageRequestError {
    * @return fieldErrors
   **/
   @javax.annotation.Nullable
-
   public List<FieldError> getFieldErrors() {
     return fieldErrors;
   }
@@ -200,32 +201,33 @@ public class CreateMessageRequestError {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CreateMessageRequestError
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to CreateMessageRequestError
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!CreateMessageRequestError.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!CreateMessageRequestError.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CreateMessageRequestError is not found in the empty JSON string", CreateMessageRequestError.openapiRequiredFields.toString()));
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
         if (!CreateMessageRequestError.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateMessageRequestError` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateMessageRequestError` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CreateMessageRequestError.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
@@ -242,7 +244,7 @@ public class CreateMessageRequestError {
 
           // validate the optional field `fieldErrors` (array)
           for (int i = 0; i < jsonArrayfieldErrors.size(); i++) {
-            FieldError.validateJsonObject(jsonArrayfieldErrors.get(i).getAsJsonObject());
+            FieldError.validateJsonElement(jsonArrayfieldErrors.get(i));
           };
         }
       }
@@ -268,9 +270,9 @@ public class CreateMessageRequestError {
 
            @Override
            public CreateMessageRequestError read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

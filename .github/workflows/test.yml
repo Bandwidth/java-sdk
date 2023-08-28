@@ -2,7 +2,10 @@ name: Test
 on:
   # schedule:
   #   - cron: "0 4 * * *"
-  # pull_request:
+  pull_request:
+    branches:
+      - main
+      - feature/*
   workflow_dispatch:
 
 jobs:
@@ -50,7 +53,7 @@ jobs:
         run: mvn -B package --file pom.xml
 
       - name: Notify Slack of Failures
-        uses: Bandwidth/build-notify-slack-action@v1.0.0
+        uses: Bandwidth/build-notify-slack-action@v1.0.1
         if: failure() && !github.event.pull_request.draft
         with:
           job-status: ${{ job.status }}

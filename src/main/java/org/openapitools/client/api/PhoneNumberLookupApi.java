@@ -37,7 +37,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class PhoneNumberLookupApi {
     private ApiClient localVarApiClient;
@@ -78,7 +77,7 @@ public class PhoneNumberLookupApi {
 
     /**
      * Build call for createLookup
-     * @param accountId The ID of the Bandwidth account that the user belongs to. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param lookupRequest Phone number lookup request. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -160,7 +159,7 @@ public class PhoneNumberLookupApi {
     /**
      * Create Lookup
      * Create a Phone Number Lookup Request.
-     * @param accountId The ID of the Bandwidth account that the user belongs to. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param lookupRequest Phone number lookup request. (required)
      * @return CreateLookupResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -184,7 +183,7 @@ public class PhoneNumberLookupApi {
     /**
      * Create Lookup
      * Create a Phone Number Lookup Request.
-     * @param accountId The ID of the Bandwidth account that the user belongs to. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param lookupRequest Phone number lookup request. (required)
      * @return ApiResponse&lt;CreateLookupResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -209,7 +208,7 @@ public class PhoneNumberLookupApi {
     /**
      * Create Lookup (asynchronously)
      * Create a Phone Number Lookup Request.
-     * @param accountId The ID of the Bandwidth account that the user belongs to. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param lookupRequest Phone number lookup request. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -235,7 +234,7 @@ public class PhoneNumberLookupApi {
     }
     /**
      * Build call for getLookupStatus
-     * @param accountId The ID of the Bandwidth account that the user belongs to. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param requestId The phone number lookup request ID from Bandwidth. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -317,7 +316,7 @@ public class PhoneNumberLookupApi {
     /**
      * Get Lookup Request Status
      * Get an existing Phone Number Lookup Request.
-     * @param accountId The ID of the Bandwidth account that the user belongs to. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param requestId The phone number lookup request ID from Bandwidth. (required)
      * @return LookupStatus
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -341,7 +340,7 @@ public class PhoneNumberLookupApi {
     /**
      * Get Lookup Request Status
      * Get an existing Phone Number Lookup Request.
-     * @param accountId The ID of the Bandwidth account that the user belongs to. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param requestId The phone number lookup request ID from Bandwidth. (required)
      * @return ApiResponse&lt;LookupStatus&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -366,7 +365,7 @@ public class PhoneNumberLookupApi {
     /**
      * Get Lookup Request Status (asynchronously)
      * Get an existing Phone Number Lookup Request.
-     * @param accountId The ID of the Bandwidth account that the user belongs to. (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param requestId The phone number lookup request ID from Bandwidth. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

@@ -35,7 +35,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class StatisticsApi {
     private ApiClient localVarApiClient;
@@ -76,7 +75,7 @@ public class StatisticsApi {
 
     /**
      * Build call for getStatistics
-     * @param accountId Your Bandwidth Account ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -90,7 +89,7 @@ public class StatisticsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -153,7 +152,7 @@ public class StatisticsApi {
     /**
      * Get Account Statistics
      * Returns details about the current state of the account.
-     * @param accountId Your Bandwidth Account ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @return AccountStatistics
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -166,7 +165,7 @@ public class StatisticsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -178,7 +177,7 @@ public class StatisticsApi {
     /**
      * Get Account Statistics
      * Returns details about the current state of the account.
-     * @param accountId Your Bandwidth Account ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @return ApiResponse&lt;AccountStatistics&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -191,7 +190,7 @@ public class StatisticsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -204,7 +203,7 @@ public class StatisticsApi {
     /**
      * Get Account Statistics (asynchronously)
      * Returns details about the current state of the account.
-     * @param accountId Your Bandwidth Account ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -218,7 +217,7 @@ public class StatisticsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */

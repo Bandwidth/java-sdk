@@ -14,7 +14,6 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.net.URI;
+import java.util.Arrays;
 import org.openapitools.client.model.CallStateEnum;
 import org.openapitools.client.model.RedirectMethodEnum;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -36,6 +36,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -50,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * UpdateCall
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T14:55:39.427023-04:00[America/New_York]")
 public class UpdateCall {
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
@@ -106,7 +110,6 @@ public class UpdateCall {
    * @return state
   **/
   @javax.annotation.Nullable
-
   public CallStateEnum getState() {
     return state;
   }
@@ -128,7 +131,6 @@ public class UpdateCall {
    * @return redirectUrl
   **/
   @javax.annotation.Nullable
-
   public URI getRedirectUrl() {
     return redirectUrl;
   }
@@ -150,7 +152,6 @@ public class UpdateCall {
    * @return redirectMethod
   **/
   @javax.annotation.Nullable
-
   public RedirectMethodEnum getRedirectMethod() {
     return redirectMethod;
   }
@@ -172,7 +173,6 @@ public class UpdateCall {
    * @return username
   **/
   @javax.annotation.Nullable
-
   public String getUsername() {
     return username;
   }
@@ -194,7 +194,6 @@ public class UpdateCall {
    * @return password
   **/
   @javax.annotation.Nullable
-
   public String getPassword() {
     return password;
   }
@@ -212,11 +211,10 @@ public class UpdateCall {
   }
 
    /**
-   * A fallback url which, if provided, will be used to retry the redirect callback delivery in case &#x60;redirectUrl&#x60; fails to respond
+   * A fallback url which, if provided, will be used to retry the redirect callback delivery in case &#x60;redirectUrl&#x60; fails to respond.
    * @return redirectFallbackUrl
   **/
   @javax.annotation.Nullable
-
   public URI getRedirectFallbackUrl() {
     return redirectFallbackUrl;
   }
@@ -238,7 +236,6 @@ public class UpdateCall {
    * @return redirectFallbackMethod
   **/
   @javax.annotation.Nullable
-
   public RedirectMethodEnum getRedirectFallbackMethod() {
     return redirectFallbackMethod;
   }
@@ -260,7 +257,6 @@ public class UpdateCall {
    * @return fallbackUsername
   **/
   @javax.annotation.Nullable
-
   public String getFallbackUsername() {
     return fallbackUsername;
   }
@@ -282,7 +278,6 @@ public class UpdateCall {
    * @return fallbackPassword
   **/
   @javax.annotation.Nullable
-
   public String getFallbackPassword() {
     return fallbackPassword;
   }
@@ -304,7 +299,6 @@ public class UpdateCall {
    * @return tag
   **/
   @javax.annotation.Nullable
-
   public String getTag() {
     return tag;
   }
@@ -405,25 +399,26 @@ public class UpdateCall {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to UpdateCall
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to UpdateCall
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!UpdateCall.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!UpdateCall.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in UpdateCall is not found in the empty JSON string", UpdateCall.openapiRequiredFields.toString()));
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
         if (!UpdateCall.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdateCall` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdateCall` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("redirectUrl") != null && !jsonObj.get("redirectUrl").isJsonNull()) && !jsonObj.get("redirectUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redirectUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirectUrl").toString()));
       }
@@ -467,9 +462,9 @@ public class UpdateCall {
 
            @Override
            public UpdateCall read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

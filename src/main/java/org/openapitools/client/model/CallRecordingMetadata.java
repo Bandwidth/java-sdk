@@ -14,7 +14,6 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -23,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.time.OffsetDateTime;
+import java.util.Arrays;
 import org.openapitools.client.model.CallDirectionEnum;
 import org.openapitools.client.model.FileFormatEnum;
 import org.openapitools.client.model.TranscriptionMetadata;
@@ -38,6 +38,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -52,7 +56,7 @@ import org.openapitools.client.JSON;
 /**
  * CallRecordingMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T14:55:39.427023-04:00[America/New_York]")
 public class CallRecordingMetadata {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
@@ -140,7 +144,6 @@ public class CallRecordingMetadata {
    * @return applicationId
   **/
   @javax.annotation.Nullable
-
   public String getApplicationId() {
     return applicationId;
   }
@@ -162,7 +165,6 @@ public class CallRecordingMetadata {
    * @return accountId
   **/
   @javax.annotation.Nullable
-
   public String getAccountId() {
     return accountId;
   }
@@ -184,7 +186,6 @@ public class CallRecordingMetadata {
    * @return callId
   **/
   @javax.annotation.Nullable
-
   public String getCallId() {
     return callId;
   }
@@ -206,7 +207,6 @@ public class CallRecordingMetadata {
    * @return parentCallId
   **/
   @javax.annotation.Nullable
-
   public String getParentCallId() {
     return parentCallId;
   }
@@ -228,7 +228,6 @@ public class CallRecordingMetadata {
    * @return recordingId
   **/
   @javax.annotation.Nullable
-
   public String getRecordingId() {
     return recordingId;
   }
@@ -250,7 +249,6 @@ public class CallRecordingMetadata {
    * @return to
   **/
   @javax.annotation.Nullable
-
   public String getTo() {
     return to;
   }
@@ -272,7 +270,6 @@ public class CallRecordingMetadata {
    * @return from
   **/
   @javax.annotation.Nullable
-
   public String getFrom() {
     return from;
   }
@@ -294,7 +291,6 @@ public class CallRecordingMetadata {
    * @return transferCallerId
   **/
   @javax.annotation.Nullable
-
   public String getTransferCallerId() {
     return transferCallerId;
   }
@@ -316,7 +312,6 @@ public class CallRecordingMetadata {
    * @return transferTo
   **/
   @javax.annotation.Nullable
-
   public String getTransferTo() {
     return transferTo;
   }
@@ -338,7 +333,6 @@ public class CallRecordingMetadata {
    * @return duration
   **/
   @javax.annotation.Nullable
-
   public String getDuration() {
     return duration;
   }
@@ -360,7 +354,6 @@ public class CallRecordingMetadata {
    * @return direction
   **/
   @javax.annotation.Nullable
-
   public CallDirectionEnum getDirection() {
     return direction;
   }
@@ -382,7 +375,6 @@ public class CallRecordingMetadata {
    * @return channels
   **/
   @javax.annotation.Nullable
-
   public Integer getChannels() {
     return channels;
   }
@@ -404,7 +396,6 @@ public class CallRecordingMetadata {
    * @return startTime
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getStartTime() {
     return startTime;
   }
@@ -426,7 +417,6 @@ public class CallRecordingMetadata {
    * @return endTime
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getEndTime() {
     return endTime;
   }
@@ -448,7 +438,6 @@ public class CallRecordingMetadata {
    * @return fileFormat
   **/
   @javax.annotation.Nullable
-
   public FileFormatEnum getFileFormat() {
     return fileFormat;
   }
@@ -470,7 +459,6 @@ public class CallRecordingMetadata {
    * @return status
   **/
   @javax.annotation.Nullable
-
   public String getStatus() {
     return status;
   }
@@ -492,7 +480,6 @@ public class CallRecordingMetadata {
    * @return mediaUrl
   **/
   @javax.annotation.Nullable
-
   public URI getMediaUrl() {
     return mediaUrl;
   }
@@ -514,7 +501,6 @@ public class CallRecordingMetadata {
    * @return transcription
   **/
   @javax.annotation.Nullable
-
   public TranscriptionMetadata getTranscription() {
     return transcription;
   }
@@ -639,25 +625,26 @@ public class CallRecordingMetadata {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CallRecordingMetadata
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to CallRecordingMetadata
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!CallRecordingMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!CallRecordingMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CallRecordingMetadata is not found in the empty JSON string", CallRecordingMetadata.openapiRequiredFields.toString()));
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
         if (!CallRecordingMetadata.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CallRecordingMetadata` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CallRecordingMetadata` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("applicationId") != null && !jsonObj.get("applicationId").isJsonNull()) && !jsonObj.get("applicationId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
       }
@@ -696,7 +683,7 @@ public class CallRecordingMetadata {
       }
       // validate the optional field `transcription`
       if (jsonObj.get("transcription") != null && !jsonObj.get("transcription").isJsonNull()) {
-        TranscriptionMetadata.validateJsonObject(jsonObj.getAsJsonObject("transcription"));
+        TranscriptionMetadata.validateJsonElement(jsonObj.get("transcription"));
       }
   }
 
@@ -720,9 +707,9 @@ public class CallRecordingMetadata {
 
            @Override
            public CallRecordingMetadata read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

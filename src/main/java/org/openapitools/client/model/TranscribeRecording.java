@@ -14,7 +14,6 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.net.URI;
+import java.util.Arrays;
 import org.openapitools.client.model.CallbackMethodEnum;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -49,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * TranscribeRecording
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T14:55:39.427023-04:00[America/New_York]")
 public class TranscribeRecording {
   public static final String SERIALIZED_NAME_CALLBACK_URL = "callbackUrl";
   @SerializedName(SERIALIZED_NAME_CALLBACK_URL)
@@ -75,6 +79,10 @@ public class TranscribeRecording {
   @SerializedName(SERIALIZED_NAME_CALLBACK_TIMEOUT)
   private Double callbackTimeout = 15d;
 
+  public static final String SERIALIZED_NAME_DETECT_LANGUAGE = "detectLanguage";
+  @SerializedName(SERIALIZED_NAME_DETECT_LANGUAGE)
+  private Boolean detectLanguage = false;
+
   public TranscribeRecording() {
   }
 
@@ -89,7 +97,6 @@ public class TranscribeRecording {
    * @return callbackUrl
   **/
   @javax.annotation.Nullable
-
   public URI getCallbackUrl() {
     return callbackUrl;
   }
@@ -111,7 +118,6 @@ public class TranscribeRecording {
    * @return callbackMethod
   **/
   @javax.annotation.Nullable
-
   public CallbackMethodEnum getCallbackMethod() {
     return callbackMethod;
   }
@@ -133,7 +139,6 @@ public class TranscribeRecording {
    * @return username
   **/
   @javax.annotation.Nullable
-
   public String getUsername() {
     return username;
   }
@@ -155,7 +160,6 @@ public class TranscribeRecording {
    * @return password
   **/
   @javax.annotation.Nullable
-
   public String getPassword() {
     return password;
   }
@@ -177,7 +181,6 @@ public class TranscribeRecording {
    * @return tag
   **/
   @javax.annotation.Nullable
-
   public String getTag() {
     return tag;
   }
@@ -201,7 +204,6 @@ public class TranscribeRecording {
    * @return callbackTimeout
   **/
   @javax.annotation.Nullable
-
   public Double getCallbackTimeout() {
     return callbackTimeout;
   }
@@ -209,6 +211,27 @@ public class TranscribeRecording {
 
   public void setCallbackTimeout(Double callbackTimeout) {
     this.callbackTimeout = callbackTimeout;
+  }
+
+
+  public TranscribeRecording detectLanguage(Boolean detectLanguage) {
+    
+    this.detectLanguage = detectLanguage;
+    return this;
+  }
+
+   /**
+   * A boolean value to indicate that the recording may not be in English, and the transcription service will need to detect the dominant language the recording is in and transcribe accordingly. Current supported languages are English, French, and Spanish.
+   * @return detectLanguage
+  **/
+  @javax.annotation.Nullable
+  public Boolean getDetectLanguage() {
+    return detectLanguage;
+  }
+
+
+  public void setDetectLanguage(Boolean detectLanguage) {
+    this.detectLanguage = detectLanguage;
   }
 
 
@@ -227,7 +250,8 @@ public class TranscribeRecording {
         Objects.equals(this.username, transcribeRecording.username) &&
         Objects.equals(this.password, transcribeRecording.password) &&
         Objects.equals(this.tag, transcribeRecording.tag) &&
-        Objects.equals(this.callbackTimeout, transcribeRecording.callbackTimeout);
+        Objects.equals(this.callbackTimeout, transcribeRecording.callbackTimeout) &&
+        Objects.equals(this.detectLanguage, transcribeRecording.detectLanguage);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -236,7 +260,7 @@ public class TranscribeRecording {
 
   @Override
   public int hashCode() {
-    return Objects.hash(callbackUrl, callbackMethod, username, password, tag, callbackTimeout);
+    return Objects.hash(callbackUrl, callbackMethod, username, password, tag, callbackTimeout, detectLanguage);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -256,6 +280,7 @@ public class TranscribeRecording {
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    tag: ").append(toIndentedString(tag)).append("\n");
     sb.append("    callbackTimeout: ").append(toIndentedString(callbackTimeout)).append("\n");
+    sb.append("    detectLanguage: ").append(toIndentedString(detectLanguage)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -284,31 +309,33 @@ public class TranscribeRecording {
     openapiFields.add("password");
     openapiFields.add("tag");
     openapiFields.add("callbackTimeout");
+    openapiFields.add("detectLanguage");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to TranscribeRecording
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to TranscribeRecording
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!TranscribeRecording.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!TranscribeRecording.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in TranscribeRecording is not found in the empty JSON string", TranscribeRecording.openapiRequiredFields.toString()));
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
         if (!TranscribeRecording.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TranscribeRecording` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TranscribeRecording` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("callbackUrl") != null && !jsonObj.get("callbackUrl").isJsonNull()) && !jsonObj.get("callbackUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callbackUrl").toString()));
       }
@@ -343,9 +370,9 @@ public class TranscribeRecording {
 
            @Override
            public TranscribeRecording read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

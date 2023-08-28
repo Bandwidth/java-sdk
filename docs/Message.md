@@ -10,7 +10,7 @@
 |**id** | **String** | The id of the message. |  [optional] |
 |**owner** | **String** | The Bandwidth phone number associated with the message. |  [optional] |
 |**applicationId** | **String** | The application ID associated with the message. |  [optional] |
-|**time** | **String** | The datetime stamp of the message in ISO 8601 |  [optional] |
+|**time** | **OffsetDateTime** | The datetime stamp of the message in ISO 8601 |  [optional] |
 |**segmentCount** | **Integer** | The number of segments the original message from the user is broken into before sending over to carrier networks. |  [optional] |
 |**direction** | **MessageDirectionEnum** |  |  [optional] |
 |**to** | **Set&lt;String&gt;** | The phone number recipients of the message. |  [optional] |
@@ -19,6 +19,7 @@
 |**text** | **String** | The contents of the message. |  [optional] |
 |**tag** | **String** | The custom string set by the user. |  [optional] |
 |**priority** | **PriorityEnum** |  |  [optional] |
+|**expiration** | **OffsetDateTime** | The expiration date-time set by the user. |  [optional] |
 
 
 

@@ -2,6 +2,7 @@
 
 # MessageDeliveredCallbackMessage
 
+Message Delivered Callback Message Schema
 
 ## Properties
 

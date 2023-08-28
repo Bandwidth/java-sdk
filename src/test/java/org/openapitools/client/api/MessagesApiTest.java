@@ -56,6 +56,7 @@ public class MessagesApiTest {
     Integer errorCode = null;
     String fromDateTime = null;
     String toDateTime = null;
+    String campaignId = null;
     String sort = "sourceTn:desc";
     String pageToken = null;
     Integer limit = 50;
@@ -78,8 +79,8 @@ public class MessagesApiTest {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
         MessagesList response = api.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus,
-                messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, sort, pageToken,
-                limit);
+                messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken,
+                limit, false);
 
         assertThat(response, instanceOf(MessagesList.class));
         assertThat(response.getTotalCount(), greaterThan(0));
@@ -104,7 +105,7 @@ public class MessagesApiTest {
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
                 () -> api.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection,
-                        carrierName, messageType, errorCode, fromDateTime, toDateTime, sort, pageToken, limit));
+                        carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, false));
         assertThat(exception.getCode(), is(400));
 
     }
@@ -117,7 +118,7 @@ public class MessagesApiTest {
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
                 () -> api.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection,
-                        carrierName, messageType, errorCode, fromDateTime, toDateTime, sort, pageToken, limit));
+                        carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, false));
         assertThat(exception.getCode(), is(401));
     }
 

@@ -14,7 +14,6 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,6 +23,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,6 +40,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -52,9 +56,9 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * MessageFailedCallbackMessage
+ * Message Failed Callback Message Schema
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T14:55:39.427023-04:00[America/New_York]")
 public class MessageFailedCallbackMessage {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -98,7 +102,7 @@ public class MessageFailedCallbackMessage {
 
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
-  private List<URI> media = new ArrayList<>();
+  private List<URI> media;
 
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
@@ -118,7 +122,6 @@ public class MessageFailedCallbackMessage {
    * @return id
   **/
   @javax.annotation.Nonnull
-
   public String getId() {
     return id;
   }
@@ -140,7 +143,6 @@ public class MessageFailedCallbackMessage {
    * @return owner
   **/
   @javax.annotation.Nonnull
-
   public String getOwner() {
     return owner;
   }
@@ -162,7 +164,6 @@ public class MessageFailedCallbackMessage {
    * @return applicationId
   **/
   @javax.annotation.Nonnull
-
   public String getApplicationId() {
     return applicationId;
   }
@@ -184,7 +185,6 @@ public class MessageFailedCallbackMessage {
    * @return time
   **/
   @javax.annotation.Nonnull
-
   public OffsetDateTime getTime() {
     return time;
   }
@@ -206,7 +206,6 @@ public class MessageFailedCallbackMessage {
    * @return segmentCount
   **/
   @javax.annotation.Nonnull
-
   public Integer getSegmentCount() {
     return segmentCount;
   }
@@ -228,7 +227,6 @@ public class MessageFailedCallbackMessage {
    * @return direction
   **/
   @javax.annotation.Nonnull
-
   public MessageDirectionEnum getDirection() {
     return direction;
   }
@@ -246,6 +244,9 @@ public class MessageFailedCallbackMessage {
   }
 
   public MessageFailedCallbackMessage addToItem(String toItem) {
+    if (this.to == null) {
+      this.to = new LinkedHashSet<>();
+    }
     this.to.add(toItem);
     return this;
   }
@@ -255,7 +256,6 @@ public class MessageFailedCallbackMessage {
    * @return to
   **/
   @javax.annotation.Nonnull
-
   public Set<String> getTo() {
     return to;
   }
@@ -277,7 +277,6 @@ public class MessageFailedCallbackMessage {
    * @return from
   **/
   @javax.annotation.Nonnull
-
   public String getFrom() {
     return from;
   }
@@ -299,7 +298,6 @@ public class MessageFailedCallbackMessage {
    * @return text
   **/
   @javax.annotation.Nonnull
-
   public String getText() {
     return text;
   }
@@ -321,7 +319,6 @@ public class MessageFailedCallbackMessage {
    * @return tag
   **/
   @javax.annotation.Nonnull
-
   public String getTag() {
     return tag;
   }
@@ -351,7 +348,6 @@ public class MessageFailedCallbackMessage {
    * @return media
   **/
   @javax.annotation.Nullable
-
   public List<URI> getMedia() {
     return media;
   }
@@ -373,7 +369,6 @@ public class MessageFailedCallbackMessage {
    * @return priority
   **/
   @javax.annotation.Nonnull
-
   public PriorityEnum getPriority() {
     return priority;
   }
@@ -480,32 +475,33 @@ public class MessageFailedCallbackMessage {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to MessageFailedCallbackMessage
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to MessageFailedCallbackMessage
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!MessageFailedCallbackMessage.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!MessageFailedCallbackMessage.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MessageFailedCallbackMessage is not found in the empty JSON string", MessageFailedCallbackMessage.openapiRequiredFields.toString()));
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
         if (!MessageFailedCallbackMessage.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MessageFailedCallbackMessage` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MessageFailedCallbackMessage` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : MessageFailedCallbackMessage.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
@@ -531,7 +527,7 @@ public class MessageFailedCallbackMessage {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonArray()) {
+      if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonNull() && !jsonObj.get("media").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `media` to be an array in the JSON string but got `%s`", jsonObj.get("media").toString()));
       }
   }
@@ -556,9 +552,9 @@ public class MessageFailedCallbackMessage {
 
            @Override
            public MessageFailedCallbackMessage read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

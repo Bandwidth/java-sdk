@@ -9,7 +9,7 @@ All URIs are relative to *http://localhost*
 | [**verifyCode**](MfaApi.md#verifyCode) | **POST** /accounts/{accountId}/code/verify | Verify Authentication Code |
 
 
-<a name="generateMessagingCode"></a>
+<a id="generateMessagingCode"></a>
 # **generateMessagingCode**
 > MessagingCodeResponse generateMessagingCode(accountId, codeRequest)
 
@@ -38,7 +38,7 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     MfaApi apiInstance = new MfaApi(defaultClient);
-    String accountId = "accountId_example"; // String | Bandwidth Account ID with Voice service enabled.
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
     CodeRequest codeRequest = new CodeRequest(); // CodeRequest | MFA code request body.
     try {
       MessagingCodeResponse result = apiInstance.generateMessagingCode(accountId, codeRequest);
@@ -58,7 +58,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Bandwidth Account ID with Voice service enabled. | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
 | **codeRequest** | [**CodeRequest**](CodeRequest.md)| MFA code request body. | |
 
 ### Return type
@@ -83,7 +83,7 @@ public class Example {
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-<a name="generateVoiceCode"></a>
+<a id="generateVoiceCode"></a>
 # **generateVoiceCode**
 > VoiceCodeResponse generateVoiceCode(accountId, codeRequest)
 
@@ -112,7 +112,7 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     MfaApi apiInstance = new MfaApi(defaultClient);
-    String accountId = "accountId_example"; // String | Bandwidth Account ID with Voice service enabled.
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
     CodeRequest codeRequest = new CodeRequest(); // CodeRequest | MFA code request body.
     try {
       VoiceCodeResponse result = apiInstance.generateVoiceCode(accountId, codeRequest);
@@ -132,7 +132,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Bandwidth Account ID with Voice service enabled. | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
 | **codeRequest** | [**CodeRequest**](CodeRequest.md)| MFA code request body. | |
 
 ### Return type
@@ -157,7 +157,7 @@ public class Example {
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-<a name="verifyCode"></a>
+<a id="verifyCode"></a>
 # **verifyCode**
 > VerifyCodeResponse verifyCode(accountId, verifyCodeRequest)
 
@@ -186,7 +186,7 @@ public class Example {
     Basic.setPassword("YOUR PASSWORD");
 
     MfaApi apiInstance = new MfaApi(defaultClient);
-    String accountId = "accountId_example"; // String | Bandwidth Account ID with Voice service enabled.
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
     VerifyCodeRequest verifyCodeRequest = new VerifyCodeRequest(); // VerifyCodeRequest | MFA code verify request body.
     try {
       VerifyCodeResponse result = apiInstance.verifyCode(accountId, verifyCodeRequest);
@@ -206,7 +206,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Bandwidth Account ID with Voice service enabled. | |
+| **accountId** | **String**| Your Bandwidth Account ID. | |
 | **verifyCodeRequest** | [**VerifyCodeRequest**](VerifyCodeRequest.md)| MFA code verify request body. | |
 
 ### Return type

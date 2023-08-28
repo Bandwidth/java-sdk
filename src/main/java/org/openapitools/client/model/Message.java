@@ -14,13 +14,14 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import org.openapitools.client.model.MessageDirectionEnum;
@@ -36,6 +37,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -50,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * Message
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T14:55:39.427023-04:00[America/New_York]")
 public class Message {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -66,7 +71,7 @@ public class Message {
 
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)
-  private String time;
+  private OffsetDateTime time;
 
   public static final String SERIALIZED_NAME_SEGMENT_COUNT = "segmentCount";
   @SerializedName(SERIALIZED_NAME_SEGMENT_COUNT)
@@ -78,7 +83,7 @@ public class Message {
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
-  private Set<String> to = new LinkedHashSet<>();
+  private Set<String> to;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
@@ -86,7 +91,7 @@ public class Message {
 
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
-  private Set<String> media = new LinkedHashSet<>();
+  private Set<String> media;
 
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
@@ -99,6 +104,10 @@ public class Message {
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
   private PriorityEnum priority;
+
+  public static final String SERIALIZED_NAME_EXPIRATION = "expiration";
+  @SerializedName(SERIALIZED_NAME_EXPIRATION)
+  private OffsetDateTime expiration;
 
   public Message() {
   }
@@ -114,7 +123,6 @@ public class Message {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public String getId() {
     return id;
   }
@@ -136,7 +144,6 @@ public class Message {
    * @return owner
   **/
   @javax.annotation.Nullable
-
   public String getOwner() {
     return owner;
   }
@@ -158,7 +165,6 @@ public class Message {
    * @return applicationId
   **/
   @javax.annotation.Nullable
-
   public String getApplicationId() {
     return applicationId;
   }
@@ -169,7 +175,7 @@ public class Message {
   }
 
 
-  public Message time(String time) {
+  public Message time(OffsetDateTime time) {
     
     this.time = time;
     return this;
@@ -180,13 +186,12 @@ public class Message {
    * @return time
   **/
   @javax.annotation.Nullable
-
-  public String getTime() {
+  public OffsetDateTime getTime() {
     return time;
   }
 
 
-  public void setTime(String time) {
+  public void setTime(OffsetDateTime time) {
     this.time = time;
   }
 
@@ -202,7 +207,6 @@ public class Message {
    * @return segmentCount
   **/
   @javax.annotation.Nullable
-
   public Integer getSegmentCount() {
     return segmentCount;
   }
@@ -224,7 +228,6 @@ public class Message {
    * @return direction
   **/
   @javax.annotation.Nullable
-
   public MessageDirectionEnum getDirection() {
     return direction;
   }
@@ -254,7 +257,6 @@ public class Message {
    * @return to
   **/
   @javax.annotation.Nullable
-
   public Set<String> getTo() {
     return to;
   }
@@ -276,7 +278,6 @@ public class Message {
    * @return from
   **/
   @javax.annotation.Nullable
-
   public String getFrom() {
     return from;
   }
@@ -306,7 +307,6 @@ public class Message {
    * @return media
   **/
   @javax.annotation.Nullable
-
   public Set<String> getMedia() {
     return media;
   }
@@ -328,7 +328,6 @@ public class Message {
    * @return text
   **/
   @javax.annotation.Nullable
-
   public String getText() {
     return text;
   }
@@ -350,7 +349,6 @@ public class Message {
    * @return tag
   **/
   @javax.annotation.Nullable
-
   public String getTag() {
     return tag;
   }
@@ -372,7 +370,6 @@ public class Message {
    * @return priority
   **/
   @javax.annotation.Nullable
-
   public PriorityEnum getPriority() {
     return priority;
   }
@@ -380,6 +377,27 @@ public class Message {
 
   public void setPriority(PriorityEnum priority) {
     this.priority = priority;
+  }
+
+
+  public Message expiration(OffsetDateTime expiration) {
+    
+    this.expiration = expiration;
+    return this;
+  }
+
+   /**
+   * The expiration date-time set by the user.
+   * @return expiration
+  **/
+  @javax.annotation.Nullable
+  public OffsetDateTime getExpiration() {
+    return expiration;
+  }
+
+
+  public void setExpiration(OffsetDateTime expiration) {
+    this.expiration = expiration;
   }
 
 
@@ -404,12 +422,13 @@ public class Message {
         Objects.equals(this.media, message.media) &&
         Objects.equals(this.text, message.text) &&
         Objects.equals(this.tag, message.tag) &&
-        Objects.equals(this.priority, message.priority);
+        Objects.equals(this.priority, message.priority) &&
+        Objects.equals(this.expiration, message.expiration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, owner, applicationId, time, segmentCount, direction, to, from, media, text, tag, priority);
+    return Objects.hash(id, owner, applicationId, time, segmentCount, direction, to, from, media, text, tag, priority, expiration);
   }
 
   @Override
@@ -428,6 +447,7 @@ public class Message {
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    tag: ").append(toIndentedString(tag)).append("\n");
     sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
+    sb.append("    expiration: ").append(toIndentedString(expiration)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -462,31 +482,33 @@ public class Message {
     openapiFields.add("text");
     openapiFields.add("tag");
     openapiFields.add("priority");
+    openapiFields.add("expiration");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Message
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to Message
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Message.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Message.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Message is not found in the empty JSON string", Message.openapiRequiredFields.toString()));
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
         if (!Message.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Message` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Message` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
@@ -496,18 +518,15 @@ public class Message {
       if ((jsonObj.get("applicationId") != null && !jsonObj.get("applicationId").isJsonNull()) && !jsonObj.get("applicationId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
       }
-      if ((jsonObj.get("time") != null && !jsonObj.get("time").isJsonNull()) && !jsonObj.get("time").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("time").toString()));
-      }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("to") != null && !jsonObj.get("to").isJsonArray()) {
+      if (jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull() && !jsonObj.get("to").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be an array in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
       if ((jsonObj.get("from") != null && !jsonObj.get("from").isJsonNull()) && !jsonObj.get("from").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonArray()) {
+      if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonNull() && !jsonObj.get("media").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `media` to be an array in the JSON string but got `%s`", jsonObj.get("media").toString()));
       }
       if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull()) && !jsonObj.get("text").isJsonPrimitive()) {
@@ -538,9 +557,9 @@ public class Message {
 
            @Override
            public Message read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

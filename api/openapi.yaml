@@ -84,6 +84,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/messagingRequestError'
           description: Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/messagingRequestError'
+          description: Not Acceptable
         "415":
           content:
             application/json:
@@ -164,6 +170,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/messagingRequestError'
           description: Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/messagingRequestError'
+          description: Not Acceptable
         "415":
           content:
             application/json:
@@ -241,6 +253,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/messagingRequestError'
           description: Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/messagingRequestError'
+          description: Not Acceptable
         "415":
           content:
             application/json:
@@ -338,6 +356,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/messagingRequestError'
           description: Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/messagingRequestError'
+          description: Not Acceptable
         "415":
           content:
             application/json:
@@ -480,6 +504,15 @@ paths:
         schema:
           type: string
         style: form
+      - description: The campaign ID of the message.
+        example: CJEUMDK
+        explode: true
+        in: query
+        name: campaignId
+        required: false
+        schema:
+          type: string
+        style: form
       - description: The field and direction to sort by combined with a colon. Direction
           is either asc or desc.
         example: sourceTn:desc
@@ -508,6 +541,19 @@ paths:
         required: false
         schema:
           type: integer
+        style: form
+      - description: "When set to true, the response's totalCount field will have\
+          \ a maximum value of 10,000. When set to false, or excluded, this will give\
+          \ an accurate totalCount of all messages that match the provided filters.\
+          \ If you are experiencing latency, try using this parameter to limit your\
+          \ results."
+        example: true
+        explode: true
+        in: query
+        name: limitTotalCount
+        required: false
+        schema:
+          type: boolean
         style: form
       responses:
         "200":
@@ -614,6 +660,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/messagingRequestError'
           description: Not Found
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/messagingRequestError'
+          description: Not Acceptable
         "415":
           content:
             application/json:
@@ -650,7 +702,7 @@ paths:
         <b>Please note:</b> Calls submitted to your queue will be placed approximately in order, but exact ordering is not guaranteed.
       operationId: createCall
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -668,7 +720,6 @@ paths:
               examples:
                 createCall Response:
                   $ref: '#/components/examples/createCallResponseExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/createCallResponse'
           description: Call Successfully Created
@@ -685,7 +736,6 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -695,7 +745,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -705,7 +754,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -715,7 +763,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -725,7 +772,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -735,7 +781,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -745,13 +790,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -762,7 +806,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -782,7 +825,7 @@ paths:
         **Note**: Call information is kept for 7 days after the calls are hung up. If you attempt to retrieve information for a call that is older than 7 days, you will get an HTTP 404 response.
       operationId: getCallState
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -791,7 +834,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Call ID
+      - description: Programmable Voice API Call ID.
         example: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -813,7 +856,6 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -823,7 +865,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -833,7 +874,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -843,7 +883,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -853,7 +892,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -863,7 +901,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -873,13 +910,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -890,7 +926,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -903,7 +938,7 @@ paths:
         return a BXML document.
       operationId: updateCall
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -912,7 +947,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Call ID
+      - description: Programmable Voice API Call ID.
         example: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -925,14 +960,13 @@ paths:
         $ref: '#/components/requestBodies/updateCallRequest'
       responses:
         "200":
-          description: Call Successfully Modified
+          description: Call was successfully modified.
         "400":
           content:
             application/json:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -942,7 +976,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -952,7 +985,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -962,7 +994,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -972,7 +1003,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -982,7 +1012,6 @@ paths:
               examples:
                 conflictErrorExample:
                   $ref: '#/components/examples/voiceConflictErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Conflict
@@ -992,7 +1021,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -1002,13 +1030,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -1019,7 +1046,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -1036,7 +1062,7 @@ paths:
       description: Interrupts and replaces an active call's BXML document.
       operationId: updateCallBxml
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -1045,7 +1071,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Call ID
+      - description: Programmable Voice API Call ID.
         example: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -1058,14 +1084,13 @@ paths:
         $ref: '#/components/requestBodies/updateCallBxmlRequest'
       responses:
         "204":
-          description: Call BXML Successfully Replaced
+          description: Call BXML was successfully replaced.
         "400":
           content:
             application/json:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -1075,7 +1100,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -1085,7 +1109,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -1095,7 +1118,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -1105,7 +1127,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -1115,7 +1136,6 @@ paths:
               examples:
                 conflictErrorExample:
                   $ref: '#/components/examples/voiceConflictErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Conflict
@@ -1125,7 +1145,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -1135,13 +1154,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -1152,7 +1170,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -1172,7 +1189,7 @@ paths:
         **NOTE:** If the number of conferences in the account is bigger than `pageSize`, a `Link` header (with format `<{url}>; rel="next"`) will be returned in the response. The url can be used to retrieve the next page of conference records.
       operationId: listConferences
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -1240,7 +1257,6 @@ paths:
               examples:
                 listConferences Response:
                   $ref: '#/components/examples/listConferencesResponseExample'
-                  value: null
               schema:
                 items:
                   $ref: '#/components/schemas/conference'
@@ -1252,7 +1268,6 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -1262,7 +1277,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -1272,7 +1286,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -1282,7 +1295,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -1292,7 +1304,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -1302,7 +1313,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -1312,13 +1322,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -1329,7 +1338,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -1345,7 +1353,7 @@ paths:
       description: Returns information about the specified conference.
       operationId: getConference
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -1354,7 +1362,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Conference ID
+      - description: Programmable Voice API Conference ID.
         example: conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9
         explode: false
         in: path
@@ -1376,7 +1384,6 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -1386,7 +1393,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -1396,7 +1402,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -1406,7 +1411,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -1416,7 +1420,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -1426,7 +1429,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -1436,13 +1438,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -1453,7 +1454,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -1465,7 +1465,7 @@ paths:
       description: Update the conference state.
       operationId: updateConference
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -1474,7 +1474,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Conference ID
+      - description: Programmable Voice API Conference ID.
         example: conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9
         explode: false
         in: path
@@ -1487,14 +1487,13 @@ paths:
         $ref: '#/components/requestBodies/updateConferenceRequest'
       responses:
         "204":
-          description: Conference successfully modified
+          description: Conference was successfully modified.
         "400":
           content:
             application/json:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -1504,7 +1503,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -1514,7 +1512,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -1524,7 +1521,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -1534,7 +1530,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -1544,7 +1539,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -1554,13 +1548,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -1571,7 +1564,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -1588,7 +1580,7 @@ paths:
       description: Update the conference BXML document.
       operationId: updateConferenceBxml
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -1597,7 +1589,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Conference ID
+      - description: Programmable Voice API Conference ID.
         example: conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9
         explode: false
         in: path
@@ -1610,14 +1602,13 @@ paths:
         $ref: '#/components/requestBodies/updateConferenceBxmlRequest'
       responses:
         "204":
-          description: Conference successfully modified
+          description: Conference successfully modified.
         "400":
           content:
             application/json:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -1627,7 +1618,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -1637,7 +1627,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -1647,7 +1636,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -1657,7 +1645,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -1667,7 +1654,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -1677,13 +1663,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -1694,7 +1679,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -1711,7 +1695,7 @@ paths:
       description: Returns information about the specified conference member.
       operationId: getConferenceMember
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -1720,7 +1704,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Conference ID
+      - description: Programmable Voice API Conference ID.
         example: conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9
         explode: false
         in: path
@@ -1729,7 +1713,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Conference Member ID
+      - description: Programmable Voice API Conference Member ID.
         example: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -1751,7 +1735,6 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -1761,7 +1744,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -1771,7 +1753,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -1781,7 +1762,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -1791,7 +1771,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -1801,7 +1780,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -1811,13 +1789,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -1828,7 +1805,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -1840,7 +1816,7 @@ paths:
       description: Updates settings for a particular conference member.
       operationId: updateConferenceMember
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -1849,7 +1825,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Conference ID
+      - description: Programmable Voice API Conference ID.
         example: conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9
         explode: false
         in: path
@@ -1858,7 +1834,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Conference Member ID
+      - description: Programmable Voice API Conference Member ID.
         example: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -1871,14 +1847,13 @@ paths:
         $ref: '#/components/requestBodies/updateConferenceMemberRequest'
       responses:
         "204":
-          description: Conference member successfully modified
+          description: Conference member was successfully modified.
         "400":
           content:
             application/json:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -1888,7 +1863,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -1898,7 +1872,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -1908,7 +1881,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -1918,7 +1890,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -1928,7 +1899,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -1938,13 +1908,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -1955,7 +1924,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -1973,7 +1941,7 @@ paths:
         that took place during the specified conference.
       operationId: listConferenceRecordings
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -1982,7 +1950,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Conference ID
+      - description: Programmable Voice API Conference ID.
         example: conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9
         explode: false
         in: path
@@ -2006,7 +1974,6 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -2016,7 +1983,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -2026,7 +1992,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -2036,7 +2001,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -2046,7 +2010,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -2056,7 +2019,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -2066,13 +2028,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -2083,7 +2044,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -2099,7 +2059,7 @@ paths:
       description: Returns metadata for the specified recording.
       operationId: getConferenceRecording
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -2108,7 +2068,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Conference ID
+      - description: Programmable Voice API Conference ID.
         example: conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9
         explode: false
         in: path
@@ -2117,7 +2077,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Recording ID
+      - description: Programmable Voice API Recording ID.
         example: r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -2139,7 +2099,6 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -2149,7 +2108,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -2159,7 +2117,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -2169,7 +2126,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -2179,7 +2135,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -2189,7 +2144,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -2199,13 +2153,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -2216,7 +2169,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -2232,7 +2184,7 @@ paths:
       description: Downloads the specified recording file.
       operationId: downloadConferenceRecording
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -2241,7 +2193,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Conference ID
+      - description: Programmable Voice API Conference ID.
         example: conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9
         explode: false
         in: path
@@ -2250,7 +2202,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Recording ID
+      - description: Programmable Voice API Recording ID.
         example: r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -2277,7 +2229,6 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -2287,7 +2238,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -2297,7 +2247,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -2307,7 +2256,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -2317,7 +2265,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -2327,7 +2274,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -2337,13 +2283,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -2354,7 +2299,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -2374,7 +2318,7 @@ paths:
         empty if no recordings match the specified criteria.
       operationId: listAccountCallRecordings
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -2436,7 +2380,6 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -2446,7 +2389,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -2456,7 +2398,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -2466,7 +2407,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -2476,7 +2416,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -2486,7 +2425,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -2496,13 +2434,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -2513,7 +2450,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -2529,7 +2465,7 @@ paths:
       description: Pause or resume a recording on an active phone call.
       operationId: updateCallRecordingState
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -2538,7 +2474,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Call ID
+      - description: Programmable Voice API Call ID.
         example: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -2551,14 +2487,13 @@ paths:
         $ref: '#/components/requestBodies/updateCallRecordingRequest'
       responses:
         "200":
-          description: Recording state successfully modified
+          description: Recording state was successfully modified.
         "400":
           content:
             application/json:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -2568,7 +2503,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -2578,7 +2512,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -2588,7 +2521,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -2598,7 +2530,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -2608,7 +2539,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -2618,13 +2548,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -2635,7 +2564,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -2654,7 +2582,7 @@ paths:
         that took place during the specified call.
       operationId: listCallRecordings
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -2663,7 +2591,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Call ID
+      - description: Programmable Voice API Call ID.
         example: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -2687,7 +2615,6 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -2697,7 +2624,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -2707,7 +2633,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -2717,7 +2642,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -2727,7 +2651,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -2737,7 +2660,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -2747,13 +2669,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -2764,7 +2685,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -2783,7 +2703,7 @@ paths:
         Note: After the deletion is requested and a `204` is returned, neither the recording metadata nor the actual media nor its transcription will be accessible anymore. However, the media of the specified recording is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
       operationId: deleteRecording
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -2792,7 +2712,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Call ID
+      - description: Programmable Voice API Call ID.
         example: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -2801,7 +2721,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Recording ID
+      - description: Programmable Voice API Recording ID.
         example: r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -2812,14 +2732,13 @@ paths:
         style: simple
       responses:
         "204":
-          description: Recording Deleted
+          description: Recording was deleted.
         "400":
           content:
             application/json:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -2829,7 +2748,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -2839,7 +2757,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -2849,7 +2766,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -2859,7 +2775,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -2869,7 +2784,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -2879,13 +2793,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -2896,7 +2809,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -2908,7 +2820,7 @@ paths:
       description: Returns metadata for the specified recording.
       operationId: getCallRecording
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -2917,7 +2829,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Call ID
+      - description: Programmable Voice API Call ID.
         example: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -2926,7 +2838,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Recording ID
+      - description: Programmable Voice API Recording ID.
         example: r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -2948,7 +2860,6 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -2958,7 +2869,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -2968,7 +2878,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -2978,7 +2887,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -2988,7 +2896,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -2998,7 +2905,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -3008,13 +2914,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -3025,7 +2930,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -3041,7 +2945,7 @@ paths:
       description: Deletes the specified recording's media.
       operationId: deleteRecordingMedia
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -3050,7 +2954,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Call ID
+      - description: Programmable Voice API Call ID.
         example: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -3059,7 +2963,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Recording ID
+      - description: Programmable Voice API Recording ID.
         example: r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -3070,14 +2974,13 @@ paths:
         style: simple
       responses:
         "204":
-          description: The recording media was successfully deleted
+          description: The recording media was successfully deleted.
         "400":
           content:
             application/json:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -3087,7 +2990,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -3097,7 +2999,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -3107,7 +3008,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -3117,7 +3017,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -3127,7 +3026,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -3137,13 +3035,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -3154,7 +3051,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -3166,7 +3062,7 @@ paths:
       description: Downloads the specified recording.
       operationId: downloadCallRecording
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -3175,7 +3071,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Call ID
+      - description: Programmable Voice API Call ID.
         example: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -3184,7 +3080,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Recording ID
+      - description: Programmable Voice API Recording ID.
         example: r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -3211,7 +3107,6 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -3221,7 +3116,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -3231,7 +3125,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -3241,7 +3134,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -3251,7 +3143,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -3261,7 +3152,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -3271,13 +3161,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -3288,7 +3177,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -3307,7 +3195,7 @@ paths:
         Note: After the deletion is requested and a `204` is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
       operationId: deleteCallTranscription
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -3316,7 +3204,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Call ID
+      - description: Programmable Voice API Call ID.
         example: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -3325,7 +3213,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Recording ID
+      - description: Programmable Voice API Recording ID.
         example: r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -3336,14 +3224,13 @@ paths:
         style: simple
       responses:
         "204":
-          description: The transcription was successfully deleted
+          description: The transcription was successfully deleted.
         "400":
           content:
             application/json:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -3353,7 +3240,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -3363,7 +3249,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -3373,7 +3258,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -3383,7 +3267,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -3393,7 +3276,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -3403,13 +3285,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -3420,7 +3301,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -3437,7 +3317,7 @@ paths:
         During a [`<Transfer>`](/docs/voice/bxml/transfer) the A-leg transcript will be the first item while the B-leg transcript will be the second item.
       operationId: getCallTranscription
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -3446,7 +3326,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Call ID
+      - description: Programmable Voice API Call ID.
         example: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -3455,7 +3335,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Recording ID
+      - description: Programmable Voice API Recording ID.
         example: r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -3477,7 +3357,6 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -3487,7 +3366,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -3497,7 +3375,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -3507,7 +3384,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -3517,7 +3393,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -3527,7 +3402,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -3537,13 +3411,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -3554,7 +3427,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -3569,7 +3441,7 @@ paths:
         less than 4 hours.
       operationId: transcribeCallRecording
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -3578,7 +3450,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Call ID
+      - description: Programmable Voice API Call ID.
         example: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -3587,7 +3459,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Programmable Voice API Recording ID
+      - description: Programmable Voice API Recording ID.
         example: r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         explode: false
         in: path
@@ -3600,14 +3472,13 @@ paths:
         $ref: '#/components/requestBodies/transcribeRecordingRequest'
       responses:
         "204":
-          description: Transcription successfully requested
+          description: Transcription was successfully requested.
         "400":
           content:
             application/json:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -3617,7 +3488,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -3627,7 +3497,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -3637,7 +3506,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -3647,7 +3515,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -3657,7 +3524,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -3667,13 +3533,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -3684,7 +3549,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -3701,7 +3565,7 @@ paths:
       description: Returns details about the current state of the account.
       operationId: getStatistics
       parameters:
-      - description: Your Bandwidth Account ID
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -3723,7 +3587,6 @@ paths:
               examples:
                 badRequestErrorExample:
                   $ref: '#/components/examples/voiceBadRequestErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Bad Request
@@ -3733,7 +3596,6 @@ paths:
               examples:
                 unauthorizedErrorExample:
                   $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unauthorized
@@ -3743,7 +3605,6 @@ paths:
               examples:
                 forbiddenErrorExample:
                   $ref: '#/components/examples/voiceForbiddenErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Forbidden
@@ -3753,7 +3614,6 @@ paths:
               examples:
                 notFoundErrorExample:
                   $ref: '#/components/examples/voiceNotFoundErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Not Found
@@ -3763,7 +3623,6 @@ paths:
               examples:
                 notAllowedErrorExample:
                   $ref: '#/components/examples/voiceNotAllowedErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Method Not Allowed
@@ -3773,7 +3632,6 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Unsupported Media Type
@@ -3783,13 +3641,12 @@ paths:
               examples:
                 tooManyRequestsErrorExample:
                   $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Too Many Requests
           headers:
             Retry-After:
-              description: When you should try your request again
+              description: When you should try your request again.
               explode: false
               schema:
                 type: string
@@ -3800,7 +3657,6 @@ paths:
               examples:
                 internalServerErrorExample:
                   $ref: '#/components/examples/voiceInternalServerErrorExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/voiceApiError'
           description: Internal Server Error
@@ -3816,7 +3672,8 @@ paths:
       description: Send an MFA Code via a phone call.
       operationId: generateVoiceCode
       parameters:
-      - description: Bandwidth Account ID with Voice service enabled.
+      - description: Your Bandwidth Account ID.
+        example: "9900000"
         explode: false
         in: path
         name: accountId
@@ -3870,7 +3727,8 @@ paths:
       description: Send an MFA code via text message (SMS).
       operationId: generateMessagingCode
       parameters:
-      - description: Bandwidth Account ID with Voice service enabled.
+      - description: Your Bandwidth Account ID.
+        example: "9900000"
         explode: false
         in: path
         name: accountId
@@ -3924,7 +3782,8 @@ paths:
       description: Verify a previously sent MFA code.
       operationId: verifyCode
       parameters:
-      - description: Bandwidth Account ID with Voice service enabled.
+      - description: Your Bandwidth Account ID.
+        example: "9900000"
         explode: false
         in: path
         name: accountId
@@ -3984,7 +3843,7 @@ paths:
       description: Create a Phone Number Lookup Request.
       operationId: createLookup
       parameters:
-      - description: The ID of the Bandwidth account that the user belongs to.
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -4002,7 +3861,6 @@ paths:
               examples:
                 lookupResponseExample:
                   $ref: '#/components/examples/lookupInProgressExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/createLookupResponse'
           description: Accepted
@@ -4089,7 +3947,7 @@ paths:
       description: Get an existing Phone Number Lookup Request.
       operationId: getLookupStatus
       parameters:
-      - description: The ID of the Bandwidth account that the user belongs to.
+      - description: Your Bandwidth Account ID.
         example: "9900000"
         explode: false
         in: path
@@ -4114,22 +3972,16 @@ paths:
               examples:
                 lookupInProgressExample:
                   $ref: '#/components/examples/lookupInProgressExample'
-                  value: null
                 lookupFailedExample:
                   $ref: '#/components/examples/lookupFailedExample'
-                  value: null
                 lookupSingleNumberCompleteExample:
                   $ref: '#/components/examples/lookupSingleNumberCompleteExample'
-                  value: null
                 lookupMultipleNumbersCompleteExample:
                   $ref: '#/components/examples/lookupMultipleNumbersCompleteExample'
-                  value: null
                 lookupMultipleNumbersPartialCompleteExample:
                   $ref: '#/components/examples/lookupMultipleNumbersPartialCompleteExample'
-                  value: null
                 lookupSingleNumberCompleteNoInfoExample:
                   $ref: '#/components/examples/lookupSingleNumberCompleteNoInfoExample'
-                  value: null
               schema:
                 $ref: '#/components/schemas/lookupStatus'
           description: OK
@@ -4248,10 +4100,10 @@ components:
         callbackTimeout: 15
         tag: My custom tag value
         answerMethod: POST
-        answerUrl: https://myServer.com/bandwidth/webhooks/answer
+        answerUrl: https://myServer.example/bandwidth/webhooks/answer
         answerFallbackMethod: POST
         disconnectMethod: POST
-        disconnectUrl: https://myServer.com/bandwidth/webhooks/disconnect
+        disconnectUrl: https://myServer.example/bandwidth/webhooks/disconnect
         username: mySecretUsername
         password: '*****'
         fallbackUsername: mySecretUsername
@@ -4264,54 +4116,54 @@ components:
         name: my-conference-name
         createdTime: 2022-06-17T22:19:40.375Z
         completedTime: 2022-06-17T22:20:00.000Z
-        conferenceEventUrl: https://myServer.com/bandwidth/webhooks/conferenceEvent
+        conferenceEventUrl: https://myServer.example/bandwidth/webhooks/conferenceEvent
         conferenceEventMethod: POST
         tag: my custom tag
     voiceBadRequestErrorExample:
       summary: Example of a Bad Request (400) Error
       value:
         type: validation
-        description: "Invalid answerUrl: only http and https are allowed"
+        description: "Invalid answerUrl: only http and https are allowed."
     voiceUnauthorizedErrorExample:
       summary: Example of an Unauthorized (401) Error
       value:
         type: validation
-        description: "Invalid answerUrl: only http and https are allowed"
+        description: "Invalid answerUrl: only http and https are allowed."
     voiceForbiddenErrorExample:
       summary: Example of a Forbidden (403) Error
       value:
         type: validation
-        description: "Invalid answerUrl: only http and https are allowed"
+        description: "Invalid answerUrl: only http and https are allowed."
     voiceNotFoundErrorExample:
       summary: Example of a Not Found (404) Error
       value:
         type: validation
-        description: "Invalid answerUrl: only http and https are allowed"
+        description: "Invalid answerUrl: only http and https are allowed."
     voiceNotAllowedErrorExample:
       summary: Example of a Not Allowed (405) Error
       value:
         type: validation
-        description: "Invalid answerUrl: only http and https are allowed"
+        description: "Invalid answerUrl: only http and https are allowed."
     voiceConflictErrorExample:
       summary: Example of a Conflict (409) Error
       value:
         type: validation
-        description: "Invalid answerUrl: only http and https are allowed"
+        description: "Invalid answerUrl: only http and https are allowed."
     voiceUnsupportedMediaTypeErrorExample:
       summary: Example of an Unsupported Media Type (415) Error
       value:
         type: validation
-        description: "Invalid answerUrl: only http and https are allowed"
+        description: "Invalid answerUrl: only http and https are allowed."
     voiceTooManyRequestsErrorExample:
       summary: Example of a Too Many Requests (429) Error
       value:
         type: validation
-        description: "Invalid answerUrl: only http and https are allowed"
+        description: "Invalid answerUrl: only http and https are allowed."
     voiceInternalServerErrorExample:
       summary: Example of an Internal Server (500) Error
       value:
         type: validation
-        description: "Invalid answerUrl: only http and https are allowed"
+        description: "Invalid answerUrl: only http and https are allowed."
     singleNumberRequestExample:
       summary: Example Number Lookup Request for One Number
       value:
@@ -4565,6 +4417,16 @@ components:
       schema:
         type: string
       style: form
+    campaignId:
+      description: The campaign ID of the message.
+      example: CJEUMDK
+      explode: true
+      in: query
+      name: campaignId
+      required: false
+      schema:
+        type: string
+      style: form
     sort:
       description: The field and direction to sort by combined with a colon. Direction
         is either asc or desc.
@@ -4597,18 +4459,22 @@ components:
       schema:
         type: integer
       style: form
-    accountId1:
-      description: Your Bandwidth Account ID
-      example: "9900000"
-      explode: false
-      in: path
-      name: accountId
-      required: true
+    limitTotalCount:
+      description: "When set to true, the response's totalCount field will have a\
+        \ maximum value of 10,000. When set to false, or excluded, this will give\
+        \ an accurate totalCount of all messages that match the provided filters.\
+        \ If you are experiencing latency, try using this parameter to limit your\
+        \ results."
+      example: true
+      explode: true
+      in: query
+      name: limitTotalCount
+      required: false
       schema:
-        type: string
-      style: simple
+        type: boolean
+      style: form
     callId:
-      description: Programmable Voice API Call ID
+      description: Programmable Voice API Call ID.
       example: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
       explode: false
       in: path
@@ -4618,7 +4484,7 @@ components:
         type: string
       style: simple
     recordingId:
-      description: Programmable Voice API Recording ID
+      description: Programmable Voice API Recording ID.
       example: r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
       explode: false
       in: path
@@ -4628,7 +4494,7 @@ components:
         type: string
       style: simple
     conferenceId:
-      description: Programmable Voice API Conference ID
+      description: Programmable Voice API Conference ID.
       example: conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9
       explode: false
       in: path
@@ -4638,7 +4504,7 @@ components:
         type: string
       style: simple
     memberId:
-      description: Programmable Voice API Conference Member ID
+      description: Programmable Voice API Conference Member ID.
       example: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
       explode: false
       in: path
@@ -4745,25 +4611,6 @@ components:
       schema:
         type: string
       style: form
-    accountId2:
-      description: Bandwidth Account ID with Voice service enabled.
-      explode: false
-      in: path
-      name: accountId
-      required: true
-      schema:
-        type: string
-      style: simple
-    accountId3:
-      description: The ID of the Bandwidth account that the user belongs to.
-      example: "9900000"
-      explode: false
-      in: path
-      name: accountId
-      required: true
-      schema:
-        type: string
-      style: simple
     requestId:
       description: The phone number lookup request ID from Bandwidth.
       example: 004223a0-8b17-41b1-bf81-20732adf5590
@@ -4991,7 +4838,7 @@ components:
               value: |-
                 <?xml version=\"1.0\" encoding=\"UTF-8\"?>
                 <Bxml>
-                  <Redirect redirectUrl="https://test.com" redirectMethod="GET"/>
+                  <Redirect redirectUrl="https://test.example" redirectMethod="GET"/>
                 </Bxml>
           schema:
             description: A valid BXML document to replace the call's current BXML.
@@ -5056,10 +4903,8 @@ components:
           examples:
             singleNumberRequestExample:
               $ref: '#/components/examples/singleNumberRequestExample'
-              value: null
             multipleNumberRequestExample:
               $ref: '#/components/examples/multipleNumberRequestExample'
-              value: null
           schema:
             $ref: '#/components/schemas/lookupRequest'
       description: Phone number lookup request.
@@ -5106,6 +4951,12 @@ components:
           schema:
             $ref: '#/components/schemas/messagingRequestError'
       description: Bad Request
+    messagingNotAcceptableError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/messagingRequestError'
+      description: Not Acceptable
     createMessageBadRequestError:
       content:
         application/json:
@@ -5154,7 +5005,6 @@ components:
           examples:
             createCall Response:
               $ref: '#/components/examples/createCallResponseExample'
-              value: null
           schema:
             $ref: '#/components/schemas/createCallResponse'
       description: Call Successfully Created
@@ -5214,7 +5064,6 @@ components:
           examples:
             listConferences Response:
               $ref: '#/components/examples/listConferencesResponseExample'
-              value: null
           schema:
             items:
               $ref: '#/components/schemas/conference'
@@ -5252,7 +5101,6 @@ components:
           examples:
             badRequestErrorExample:
               $ref: '#/components/examples/voiceBadRequestErrorExample'
-              value: null
           schema:
             $ref: '#/components/schemas/voiceApiError'
       description: Bad Request
@@ -5262,7 +5110,6 @@ components:
           examples:
             unauthorizedErrorExample:
               $ref: '#/components/examples/voiceUnauthorizedErrorExample'
-              value: null
           schema:
             $ref: '#/components/schemas/voiceApiError'
       description: Unauthorized
@@ -5272,7 +5119,6 @@ components:
           examples:
             forbiddenErrorExample:
               $ref: '#/components/examples/voiceForbiddenErrorExample'
-              value: null
           schema:
             $ref: '#/components/schemas/voiceApiError'
       description: Forbidden
@@ -5282,7 +5128,6 @@ components:
           examples:
             notFoundErrorExample:
               $ref: '#/components/examples/voiceNotFoundErrorExample'
-              value: null
           schema:
             $ref: '#/components/schemas/voiceApiError'
       description: Not Found
@@ -5292,7 +5137,6 @@ components:
           examples:
             notAllowedErrorExample:
               $ref: '#/components/examples/voiceNotAllowedErrorExample'
-              value: null
           schema:
             $ref: '#/components/schemas/voiceApiError'
       description: Method Not Allowed
@@ -5302,7 +5146,6 @@ components:
           examples:
             conflictErrorExample:
               $ref: '#/components/examples/voiceConflictErrorExample'
-              value: null
           schema:
             $ref: '#/components/schemas/voiceApiError'
       description: Conflict
@@ -5312,7 +5155,6 @@ components:
           examples:
             tooManyRequestsErrorExample:
               $ref: '#/components/examples/voiceUnsupportedMediaTypeErrorExample'
-              value: null
           schema:
             $ref: '#/components/schemas/voiceApiError'
       description: Unsupported Media Type
@@ -5322,13 +5164,12 @@ components:
           examples:
             tooManyRequestsErrorExample:
               $ref: '#/components/examples/voiceTooManyRequestsErrorExample'
-              value: null
           schema:
             $ref: '#/components/schemas/voiceApiError'
       description: Too Many Requests
       headers:
         Retry-After:
-          description: When you should try your request again
+          description: When you should try your request again.
           explode: false
           schema:
             type: string
@@ -5339,7 +5180,6 @@ components:
           examples:
             internalServerErrorExample:
               $ref: '#/components/examples/voiceInternalServerErrorExample'
-              value: null
           schema:
             $ref: '#/components/schemas/voiceApiError'
       description: Internal Server Error
@@ -5397,7 +5237,6 @@ components:
           examples:
             lookupResponseExample:
               $ref: '#/components/examples/lookupInProgressExample'
-              value: null
           schema:
             $ref: '#/components/schemas/createLookupResponse'
       description: Accepted
@@ -5407,22 +5246,16 @@ components:
           examples:
             lookupInProgressExample:
               $ref: '#/components/examples/lookupInProgressExample'
-              value: null
             lookupFailedExample:
               $ref: '#/components/examples/lookupFailedExample'
-              value: null
             lookupSingleNumberCompleteExample:
               $ref: '#/components/examples/lookupSingleNumberCompleteExample'
-              value: null
             lookupMultipleNumbersCompleteExample:
               $ref: '#/components/examples/lookupMultipleNumbersCompleteExample'
-              value: null
             lookupMultipleNumbersPartialCompleteExample:
               $ref: '#/components/examples/lookupMultipleNumbersPartialCompleteExample'
-              value: null
             lookupSingleNumberCompleteNoInfoExample:
               $ref: '#/components/examples/lookupSingleNumberCompleteNoInfoExample'
-              value: null
           schema:
             $ref: '#/components/schemas/lookupStatus'
       description: OK
@@ -5498,7 +5331,10 @@ components:
       description: Internal Server Error
   schemas:
     priorityEnum:
-      description: The priority specified by the user.
+      description: |-
+        The priority specified by the user.
+
+        Not supported on MMS.
       enum:
       - default
       - high
@@ -5559,12 +5395,13 @@ components:
         messages:
         - sourceTn: +15554443333
           messageLength: 18
+          campaignId: CJEUMDK
           messageId: 1589228074636lm4k2je7j7jklbn2
           errorCode: 9902
           destinationTn: +15554442222
           segmentCount: 1
           messageStatus: RECEIVED
-          receiveTime: 2020-04-07T14:03:07.000Z
+          receiveTime: 2020-04-07T14:03:07Z
           accountId: "9900000"
           messageDirection: null
           messageType: sms
@@ -5575,12 +5412,13 @@ components:
           messageSize: 27
         - sourceTn: +15554443333
           messageLength: 18
+          campaignId: CJEUMDK
           messageId: 1589228074636lm4k2je7j7jklbn2
           errorCode: 9902
           destinationTn: +15554442222
           segmentCount: 1
           messageStatus: RECEIVED
-          receiveTime: 2020-04-07T14:03:07.000Z
+          receiveTime: 2020-04-07T14:03:07Z
           accountId: "9900000"
           messageDirection: null
           messageType: sms
@@ -5592,7 +5430,8 @@ components:
         totalCount: 100
       properties:
         totalCount:
-          description: Total number of messages matched by the search.
+          description: "The total number of messages matched by the search. When the\
+            \ request has limitTotalCount set to true this value is limited to 10,000."
           example: 100
           type: integer
         pageInfo:
@@ -5607,12 +5446,13 @@ components:
       example:
         sourceTn: +15554443333
         messageLength: 18
+        campaignId: CJEUMDK
         messageId: 1589228074636lm4k2je7j7jklbn2
         errorCode: 9902
         destinationTn: +15554442222
         segmentCount: 1
         messageStatus: RECEIVED
-        receiveTime: 2020-04-07T14:03:07.000Z
+        receiveTime: 2020-04-07T14:03:07Z
         accountId: "9900000"
         messageDirection: null
         messageType: sms
@@ -5654,7 +5494,8 @@ components:
           type: integer
         receiveTime:
           description: The ISO 8601 datetime of the message.
-          example: 2020-04-07T14:03:07.000Z
+          example: 2020-04-07T14:03:07Z
+          format: date-time
           type: string
         carrierName:
           description: The name of the carrier. Not currently supported for MMS coming
@@ -5684,6 +5525,11 @@ components:
         campaignClass:
           description: The campaign class of the message if it has one.
           example: T
+          nullable: true
+          type: string
+        campaignId:
+          description: The campaign ID of the message if it has one.
+          example: CJEUMDK
           nullable: true
           type: string
       title: listMessageItem
@@ -5772,18 +5618,19 @@ components:
     message:
       example:
         owner: +15554443333
-        from: +15553332222
-        id: 1589228074636lm4k2je7j7jklbn2
-        time: 2022-09-14T18:20:16.000Z
-        to:
-        - +15552223333
         media:
         - https://dev.bandwidth.com/images/bandwidth-logo.png
+        priority: default
+        segmentCount: 2
+        from: +15553332222
+        expiration: 2021-02-01T11:29:18-05:00
+        id: 1589228074636lm4k2je7j7jklbn2
+        time: 2022-09-14T18:20:16Z
+        to:
+        - +15552223333
         text: Hello world
         tag: custom tag
         applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
-        priority: default
-        segmentCount: 2
         direction: null
       properties:
         id:
@@ -5800,7 +5647,8 @@ components:
           type: string
         time:
           description: The datetime stamp of the message in ISO 8601
-          example: 2022-09-14T18:20:16.000Z
+          example: 2022-09-14T18:20:16Z
+          format: date-time
           type: string
         segmentCount:
           description: The number of segments the original message from the user is
@@ -5842,6 +5690,11 @@ components:
           type: string
         priority:
           $ref: '#/components/schemas/priorityEnum'
+        expiration:
+          description: The expiration date-time set by the user.
+          example: 2021-02-01T11:29:18-05:00
+          format: date-time
+          type: string
       title: Message
       type: object
     messageRequest:
@@ -5891,10 +5744,11 @@ components:
         priority:
           $ref: '#/components/schemas/priorityEnum'
         expiration:
-          description: "A string with the date/time value that the message will automatically\
-            \ expire by. This must be a valid RFC-3339 value, e.g., 2021-03-14T01:59:26Z\
-            \ or 2021-03-13T20:59:26-05:00."
+          description: |-
+            A string with the date/time value that the message will automatically expire by. This must be a valid RFC-3339 value, e.g., 2021-03-14T01:59:26Z or 2021-03-13T20:59:26-05:00. Must be a date-time in the future.
+            Not supported on MMS.
           example: 2021-02-01T11:29:18-05:00
+          format: date-time
           type: string
       required:
       - applicationId
@@ -5919,13 +5773,71 @@ components:
           example: Incoming message received
           type: string
         message:
-          $ref: '#/components/schemas/inboundMessageCallback_message'
+          $ref: '#/components/schemas/inboundMessageCallbackMessage'
       required:
       - description
       - message
       - time
       - to
       - type
+      type: object
+    inboundMessageCallbackMessage:
+      description: Inbound Message Callback Message Schema
+      properties:
+        id:
+          example: 1661365814859loidf7mcwd4qacn7
+          type: string
+        owner:
+          example: +15553332222
+          type: string
+        applicationId:
+          example: 93de2206-9669-4e07-948d-329f4b722ee2
+          type: string
+        time:
+          example: 2016-09-14T18:20:16Z
+          format: date-time
+          type: string
+        segmentCount:
+          example: 1
+          type: integer
+        direction:
+          $ref: '#/components/schemas/messageDirectionEnum'
+        to:
+          example:
+          - +15552223333
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        from:
+          example: +15553332222
+          type: string
+        text:
+          example: Hello world
+          type: string
+        tag:
+          example: custom string
+          type: string
+        media:
+          example:
+          - https://dev.bandwidth.com/images/bandwidth-logo.png
+          - https://dev.bandwidth.com/images/github_logo.png
+          items:
+            format: uri
+            type: string
+          type: array
+        priority:
+          $ref: '#/components/schemas/priorityEnum'
+      required:
+      - applicationId
+      - direction
+      - from
+      - id
+      - owner
+      - segmentCount
+      - text
+      - time
+      - to
       type: object
     messageSendingCallback:
       description: Message Sending Callback
@@ -5944,13 +5856,73 @@ components:
           example: Message is sending to carrier
           type: string
         message:
-          $ref: '#/components/schemas/messageSendingCallback_message'
+          $ref: '#/components/schemas/messageSendingCallbackMessage'
       required:
       - description
       - message
       - time
       - to
       - type
+      type: object
+    messageSendingCallbackMessage:
+      description: Message Sending Callback Message Schema
+      properties:
+        id:
+          example: 1661365814859loidf7mcwd4qacn7
+          type: string
+        owner:
+          example: +15553332222
+          type: string
+        applicationId:
+          example: 93de2206-9669-4e07-948d-329f4b722ee2
+          type: string
+        time:
+          example: 2016-09-14T18:20:16Z
+          format: date-time
+          type: string
+        segmentCount:
+          example: 1
+          type: integer
+        direction:
+          $ref: '#/components/schemas/messageDirectionEnum'
+        to:
+          example:
+          - +15552223333
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        from:
+          example: +15553332222
+          type: string
+        text:
+          example: Hello world
+          type: string
+        tag:
+          example: custom string
+          type: string
+        media:
+          example:
+          - https://dev.bandwidth.com/images/bandwidth-logo.png
+          - https://dev.bandwidth.com/images/github_logo.png
+          items:
+            format: uri
+            type: string
+          type: array
+        priority:
+          $ref: '#/components/schemas/priorityEnum'
+      required:
+      - applicationId
+      - direction
+      - from
+      - id
+      - media
+      - owner
+      - priority
+      - segmentCount
+      - text
+      - time
+      - to
       type: object
     messageDeliveredCallback:
       description: Message Delivered Callback
@@ -5969,13 +5941,72 @@ components:
           example: Message delivered to carrier.
           type: string
         message:
-          $ref: '#/components/schemas/messageDeliveredCallback_message'
+          $ref: '#/components/schemas/messageDeliveredCallbackMessage'
       required:
       - description
       - message
       - time
       - to
       - type
+      type: object
+    messageDeliveredCallbackMessage:
+      description: Message Delivered Callback Message Schema
+      properties:
+        id:
+          example: 1661365814859loidf7mcwd4qacn7
+          type: string
+        owner:
+          example: +15553332222
+          type: string
+        applicationId:
+          example: 93de2206-9669-4e07-948d-329f4b722ee2
+          type: string
+        time:
+          example: 2016-09-14T18:20:16Z
+          format: date-time
+          type: string
+        segmentCount:
+          example: 1
+          type: integer
+        direction:
+          $ref: '#/components/schemas/messageDirectionEnum'
+        to:
+          example:
+          - +15552223333
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        from:
+          example: +15553332222
+          type: string
+        text:
+          example: Hello world
+          type: string
+        tag:
+          example: custom string
+          type: string
+        media:
+          example:
+          - https://dev.bandwidth.com/images/bandwidth-logo.png
+          - https://dev.bandwidth.com/images/github_logo.png
+          items:
+            format: uri
+            type: string
+          type: array
+        priority:
+          $ref: '#/components/schemas/priorityEnum'
+      required:
+      - applicationId
+      - direction
+      - from
+      - id
+      - owner
+      - segmentCount
+      - tag
+      - text
+      - time
+      - to
       type: object
     messageFailedCallback:
       description: Message Failed Callback
@@ -5994,7 +6025,7 @@ components:
           example: rejected-unallocated-from-number
           type: string
         message:
-          $ref: '#/components/schemas/messageFailedCallback_message'
+          $ref: '#/components/schemas/messageFailedCallbackMessage'
         errorCode:
           example: 9902
           type: integer
@@ -6005,6 +6036,66 @@ components:
       - time
       - to
       - type
+      type: object
+    messageFailedCallbackMessage:
+      description: Message Failed Callback Message Schema
+      properties:
+        id:
+          example: 1661365814859loidf7mcwd4qacn7
+          type: string
+        owner:
+          example: +15553332222
+          type: string
+        applicationId:
+          example: 93de2206-9669-4e07-948d-329f4b722ee2
+          type: string
+        time:
+          example: 2016-09-14T18:20:16Z
+          format: date-time
+          type: string
+        segmentCount:
+          example: 1
+          type: integer
+        direction:
+          $ref: '#/components/schemas/messageDirectionEnum'
+        to:
+          example:
+          - +15552223333
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        from:
+          example: +15553332222
+          type: string
+        text:
+          example: Hello world
+          type: string
+        tag:
+          example: custom string
+          type: string
+        media:
+          example:
+          - https://dev.bandwidth.com/images/bandwidth-logo.png
+          - https://dev.bandwidth.com/images/github_logo.png
+          items:
+            format: uri
+            type: string
+          type: array
+        priority:
+          $ref: '#/components/schemas/priorityEnum'
+      required:
+      - applicationId
+      - direction
+      - from
+      - id
+      - owner
+      - priority
+      - segmentCount
+      - tag
+      - text
+      - time
+      - to
       type: object
     callbackMethodEnum:
       default: POST
@@ -6020,7 +6111,7 @@ components:
       default: POST
       description: |-
         The HTTP method to use for the request to `redirectUrl`. GET
-        or POST. Default value is POST.<br><br>Not allowed if `state` is `completed`
+        or POST. Default value is POST.<br><br>Not allowed if `state` is `completed`.
       enum:
       - GET
       - POST
@@ -6037,18 +6128,21 @@ components:
       enum:
       - paused
       - recording
+      example: paused
       type: string
     callDirectionEnum:
       description: The direction of the call.
       enum:
       - inbound
       - outbound
+      example: inbound
       type: string
     fileFormatEnum:
-      description: The format that the recording is stored in
+      description: The format that the recording is stored in.
       enum:
       - mp3
       - wav
+      example: wav
       type: string
     callStateEnum:
       default: active
@@ -6060,15 +6154,17 @@ components:
       enum:
       - active
       - completed
+      example: completed
       nullable: true
       type: string
     conferenceStateEnum:
       default: active
       description: Setting the conference state to `completed` ends the conference
-        and ejects all members
+        and ejects all members.
       enum:
       - active
       - completed
+      example: completed
       nullable: true
       type: string
     machineDetectionModeEnum:
@@ -6081,13 +6177,14 @@ components:
       enum:
       - sync
       - async
+      example: async
       type: string
     createCall:
       properties:
         to:
           description: |-
             The destination to call (must be an E.164 formatted number
-            (e.g. `+15555551212`) or a SIP URI (e.g. `sip:user@server.com`)).
+            (e.g. `+15555551212`) or a SIP URI (e.g. `sip:user@server.example`)).
           example: +19195551234
           type: string
         from:
@@ -6097,6 +6194,14 @@ components:
             strings: `Restricted`, `Anonymous`, `Private`, or `Unavailable`).
           example: +19195554321
           type: string
+        displayName:
+          description: "The caller display name to use when the call is created. \n\
+            May not exceed 256 characters nor contain control characters such as new\
+            \ lines."
+          example: John Doe
+          maxLength: 256
+          nullable: true
+          type: string
         uui:
           description: |-
             A comma-separated list of 'User-To-User' headers to be sent
@@ -6104,7 +6209,7 @@ components:
             parameter as described in <a href='https://tools.ietf.org/html/rfc7433'>RFC
             7433</a>. Only 'jwt' and 'base64' encodings are allowed. The entire value
             cannot exceed 350 characters, including parameters and separators.
-          example: "eyJhbGciOiJIUzI1NiJ9.WyJoaSJd.-znkjYyCkgz4djmHUPSXl9YrJ6Nix_XvmlwKGFh5ERM;encoding=jwt,aGVsbG8gd29ybGQ=;encoding=base64"
+          example: "eyJhbGciOiJIUzI1NiJ9.WyJoaSJd.-znkjYyCkgz4djmHUPSXl9YrJ6Nix_XvmlwKGFh5ERM;encoding=jwt,aGVsbG8gd29ybGQ;encoding=base64"
           nullable: true
           type: string
         applicationId:
@@ -6118,8 +6223,8 @@ components:
             first <a href='/docs/voice/bxml'>BXML document</a> to be executed in the
             call.
 
-            Must use `https` if specifying `username` and `password`
-          example: https://www.myCallbackServer.com/webhooks/answer
+            Must use `https` if specifying `username` and `password`.
+          example: https://www.myCallbackServer.example/webhooks/answer
           format: uri
           maxLength: 2048
           type: string
@@ -6142,8 +6247,8 @@ components:
             A fallback url which, if provided, will be used to retry the
             `answer` webhook delivery in case `answerUrl` fails to respond
 
-            Must use `https` if specifying `fallbackUsername` and `fallbackPassword`
-          example: https://www.myFallbackServer.com/webhooks/answer
+            Must use `https` if specifying `fallbackUsername` and `fallbackPassword`.
+          example: https://www.myFallbackServer.example/webhooks/answer
           format: uri
           maxLength: 2048
           nullable: true
@@ -6165,6 +6270,7 @@ components:
         disconnectUrl:
           description: The URL to send the <a href='/docs/voice/webhooks/disconnect'>Disconnect</a>
             event to when the call ends. This event does not expect a BXML response.
+          example: https://www.myCallbackServer.example/webhooks/disconnect
           format: uri
           maxLength: 2048
           nullable: true
@@ -6178,6 +6284,7 @@ components:
             after it starts ringing. If the call does not start ringing within 30s,
             the call will be cancelled regardless of this value.  Can be any numeric
             value (including decimals) between 1 and 300.
+          example: 30
           format: double
           maximum: 300
           minimum: 1
@@ -6189,6 +6296,7 @@ components:
             This is the timeout (in seconds) to use when delivering webhooks
             for the call. Can be any numeric value (including decimals) between 1
             and 25.
+          example: 15
           format: double
           maximum: 25
           minimum: 1
@@ -6205,6 +6313,7 @@ components:
             be the next call picked off your queue, ahead of other less time sensitive
             calls. A lower value means higher priority, so a priority 1 call takes
             precedence over a priority 2 call.
+          example: 5
           maximum: 5
           minimum: 1
           nullable: true
@@ -6218,7 +6327,8 @@ components:
             May be cleared by setting `tag=""`
 
             Max length 256 characters.
-          maximum: 256
+          example: arbitrary text here
+          maxLength: 256
           nullable: true
           type: string
       required:
@@ -6230,11 +6340,11 @@ components:
     createCallResponse:
       example:
         callId: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-        answerUrl: https://myServer.com/bandwidth/webhooks/answer
+        answerUrl: https://myServer.example/bandwidth/webhooks/answer
         callUrl: https://voice.bandwidth.com/api/v2/accounts/9900000/calls/c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         callbackTimeout: 15
         answerFallbackMethod: POST
-        answerFallbackUrl: https://myFallbackServer.com/bandwidth/webhooks/answer
+        answerFallbackUrl: https://myFallbackServer.example/bandwidth/webhooks/answer
         callTimeout: 30
         priority: 5
         disconnectMethod: POST
@@ -6242,7 +6352,7 @@ components:
         password: mySecretPassword1!
         answerMethod: POST
         enqueuedTime: 2022-06-16T13:15:07.16Z
-        disconnectUrl: https://myServer.com/bandwidth/webhooks/disconnect
+        disconnectUrl: https://myServer.example/bandwidth/webhooks/disconnect
         from: +19195554321
         fallbackPassword: mySecretPassword1!
         to: +19195551234
@@ -6256,29 +6366,29 @@ components:
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         accountId:
-          description: The bandwidth account ID associated with the call
+          description: The bandwidth account ID associated with the call.
           example: "9900000"
           type: string
         callId:
-          description: Programmable Voice API Call ID
+          description: Programmable Voice API Call ID.
           example: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
           type: string
         to:
-          description: Recipient of the outgoing call
+          description: Recipient of the outgoing call.
           example: +19195551234
           type: string
         from:
-          description: Phone number that created the outbound call
+          description: Phone number that created the outbound call.
           example: +19195554321
           type: string
         enqueuedTime:
-          description: Time the call was accepted into the queue
+          description: The time at which the call was accepted into the queue.
           example: 2022-06-16T13:15:07.16Z
           format: date-time
           nullable: true
           type: string
         callUrl:
-          description: The URL to update call state
+          description: The URL to update this call's state.
           example: https://voice.bandwidth.com/api/v2/accounts/9900000/calls/c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
           format: uri
           type: string
@@ -6295,7 +6405,7 @@ components:
           format: double
           type: number
         tag:
-          description: Custom tag value
+          description: Custom tag value.
           example: My custom tag value
           nullable: true
           type: string
@@ -6303,14 +6413,14 @@ components:
           $ref: '#/components/schemas/callbackMethodEnum'
         answerUrl:
           description: URL to deliver the `answer` event webhook.
-          example: https://myServer.com/bandwidth/webhooks/answer
+          example: https://myServer.example/bandwidth/webhooks/answer
           format: uri
           type: string
         answerFallbackMethod:
           $ref: '#/components/schemas/callbackMethodEnum'
         answerFallbackUrl:
           description: Fallback URL to deliver the `answer` event webhook.
-          example: https://myFallbackServer.com/bandwidth/webhooks/answer
+          example: https://myFallbackServer.example/bandwidth/webhooks/answer
           format: uri
           nullable: true
           type: string
@@ -6318,7 +6428,7 @@ components:
           $ref: '#/components/schemas/callbackMethodEnum'
         disconnectUrl:
           description: URL to deliver the `disconnect` event webhook.
-          example: https://myServer.com/bandwidth/webhooks/disconnect
+          example: https://myServer.example/bandwidth/webhooks/disconnect
           format: uri
           nullable: true
           type: string
@@ -6349,9 +6459,8 @@ components:
         priority:
           description: The priority of this call over other calls from your account.
           example: 5
-          format: integer
           nullable: true
-          type: number
+          type: integer
       required:
       - accountId
       - answerMethod
@@ -6385,7 +6494,7 @@ components:
         endTime: 2022-06-16T13:15:18.314Z
         errorId: errorId
         applicationId: 04e88489-df02-4e34-a0ee-27a91849555f
-        direction: null
+        direction: inbound
       properties:
         applicationId:
           description: The application id associated with the call.
@@ -6407,7 +6516,7 @@ components:
           type: string
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
-            \ +15555555555), or if the call was to a SIP URI, the SIP URI"
+            \ +15555555555), or if the call was to a SIP URI, the SIP URI."
           example: +19195551234
           type: string
         from:
@@ -6440,7 +6549,7 @@ components:
 
             Note that these are common properties but that the `stirShaken` object is free form and can contain other key-value pairs.
 
-            More information: [Understanding STIR/SHAKEN](https://www.bandwidth.com/regulations/stir-shaken)
+            More information: [Understanding STIR/SHAKEN](https://www.bandwidth.com/regulations/stir-shaken).
           example:
             verstat: TN-Verification-Passed
             attestationIndicator: A
@@ -6532,7 +6641,7 @@ components:
             Required if `state` is `active`.
 
             Not allowed if `state` is `completed`.
-          example: https://myServer.com/bandwidth/webhooks/redirect
+          example: https://myServer.example/bandwidth/webhooks/redirect
           format: uri
           nullable: true
           type: string
@@ -6553,8 +6662,8 @@ components:
         redirectFallbackUrl:
           description: |-
             A fallback url which, if provided, will be used to retry the
-            redirect callback delivery in case `redirectUrl` fails to respond
-          example: https://myFallbackServer.com/bandwidth/webhooks/redirect
+            redirect callback delivery in case `redirectUrl` fails to respond.
+          example: https://myFallbackServer.example/bandwidth/webhooks/redirect
           format: uri
           nullable: true
           type: string
@@ -6584,7 +6693,7 @@ components:
 
             Not allowed if `state` is `completed`.
           example: My Custom Tag
-          maximum: 256
+          maxLength: 256
           nullable: true
           type: string
       type: object
@@ -6631,8 +6740,8 @@ components:
         endTime: 2022-06-17T22:20:00Z
         applicationId: 04e88489-df02-4e34-a0ee-27a91849555f
         recordingId: r-fbe05094-9fd2afe9-bf5b-4c68-820a-41a01c1c5833
-        fileFormat: null
-        direction: null
+        fileFormat: wav
+        direction: inbound
         status: completed
       properties:
         applicationId:
@@ -6740,7 +6849,7 @@ components:
           memberUrl: https://voice.bandwidth.com/api/v2/accounts/9900000/conferences/conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9/members/c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
           mute: false
           hold: false
-        conferenceEventUrl: https://myServer.com/bandwidth/webhooks/conferenceEvent
+        conferenceEventUrl: https://myServer.example/bandwidth/webhooks/conferenceEvent
         completedTime: 2022-06-17T22:20:00Z
         name: my-conference-name
         createdTime: 2022-06-17T22:19:40.375Z
@@ -6748,11 +6857,11 @@ components:
         tag: my custom tag
       properties:
         id:
-          description: The Bandwidth-generated conference ID
+          description: The Bandwidth-generated conference ID.
           example: conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9
           type: string
         name:
-          description: "The name of the conference, as specified by your application"
+          description: "The name of the conference, as specified by your application."
           example: my-conference-name
           type: string
         createdTime:
@@ -6768,7 +6877,7 @@ components:
           type: string
         conferenceEventUrl:
           description: The URL to send the conference-related events.
-          example: https://myServer.com/bandwidth/webhooks/conferenceEvent
+          example: https://myServer.example/bandwidth/webhooks/conferenceEvent
           format: uri
           nullable: true
           type: string
@@ -6783,7 +6892,7 @@ components:
         activeMembers:
           description: |-
             A list of active members of the conference. Omitted if this
-            is a response to the [Get Conferences endpoint](/apis/voice#tag/Conferences/operation/listConferences)
+            is a response to the [Get Conferences endpoint](/apis/voice#tag/Conferences/operation/listConferences).
           items:
             $ref: '#/components/schemas/conferenceMember'
           nullable: true
@@ -6797,8 +6906,8 @@ components:
           description: |-
             The URL to send the [conferenceRedirect](/docs/voice/webhooks/conferenceRedirect)
             event which will provide new BXML. Not allowed if `state` is `completed`,
-            but required if `state` is `active`
-          example: https://myServer.com/bandwidth/webhooks/conferenceRedirect
+            but required if `state` is `active`.
+          example: https://myServer.example/bandwidth/webhooks/conferenceRedirect
           format: uri
           nullable: true
           type: string
@@ -6821,7 +6930,7 @@ components:
             A fallback url which, if provided, will be used to retry the
             `conferenceRedirect` webhook delivery in case `redirectUrl` fails to respond.  Not
             allowed if `state` is `completed`.
-          example: https://myFallbackServer.com/bandwidth/webhooks/conferenceRedirect
+          example: https://myFallbackServer.example/bandwidth/webhooks/conferenceRedirect
           format: uri
           nullable: true
           type: string
@@ -6936,7 +7045,7 @@ components:
         startTime: 2022-06-17T22:19:40.375Z
         endTime: 2022-06-17T22:20:00Z
         recordingId: r-fbe05094-9fd2afe9-bf5b-4c68-820a-41a01c1c5833
-        fileFormat: null
+        fileFormat: wav
         status: completed
       properties:
         accountId:
@@ -7061,7 +7170,7 @@ components:
         callbackUrl:
           description: The URL to send the 'machineDetectionComplete' webhook when
             the detection is completed. Only for 'async' mode.
-          example: https://myServer.com/bandwidth/webhooks/machineDetectionComplete
+          example: https://myServer.example/bandwidth/webhooks/machineDetectionComplete
           format: uri
           maxLength: 2048
           nullable: true
@@ -7085,7 +7194,7 @@ components:
             A fallback URL which, if provided, will be used to retry the
             machine detection complete webhook delivery in case `callbackUrl` fails
             to respond
-          example: https://myFallbackServer.com/bandwidth/webhooks/machineDetectionComplete
+          example: https://myFallbackServer.example/bandwidth/webhooks/machineDetectionComplete
           format: uri
           maxLength: 2048
           nullable: true
@@ -7113,7 +7222,7 @@ components:
             event to. You should not include sensitive or personally-identifiable
             information in the callbackUrl field! Always use the proper username and
             password fields for authorization.
-          example: https://myServer.com/bandwidth/webhooks/transcriptionAvailable
+          example: https://myServer.example/bandwidth/webhooks/transcriptionAvailable
           format: uri
           type: string
         callbackMethod:
@@ -7148,6 +7257,15 @@ components:
           minimum: 1
           nullable: true
           type: number
+        detectLanguage:
+          default: false
+          description: "A boolean value to indicate that the recording may not be\
+            \ in English, and the transcription service will need to detect the dominant\
+            \ language the recording is in and transcribe accordingly. Current supported\
+            \ languages are English, French, and Spanish."
+          example: true
+          nullable: true
+          type: boolean
       type: object
     transcriptionList:
       example:
@@ -7221,6 +7339,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         accountId:
           description: The user account associated with the call.
@@ -7276,21 +7396,7 @@ components:
           nullable: true
           type: string
         machineDetectionResult:
-          description: "(optional) if machine detection was requested in sync mode,\
-            \ the result will be specified here. Possible values are the same as the\
-            \ async counterpart: Machine Detection Complete"
-          nullable: true
-          properties:
-            value:
-              description: "Possible values are answering-machine, human, silence,\
-                \ timeout, or error."
-              example: answering-machine
-              type: string
-            duration:
-              description: The amount of time it took to determine the result.
-              example: PT4.9891287S
-              type: string
-          type: string
+          $ref: '#/components/schemas/machineDetectionResult'
       type: object
     bridgeCompleteCallback:
       description: "If the target call leaves the <Bridge>, then this callback is\
@@ -7312,6 +7418,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         accountId:
           description: The user account associated with the call.
@@ -7404,6 +7512,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         accountId:
           description: The user account associated with the call.
@@ -7481,6 +7591,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         conferenceId:
           description: "The unique, Bandwidth-generated ID of the conference that\
@@ -7521,6 +7633,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         conferenceId:
           description: "The unique, Bandwidth-generated ID of the conference that\
@@ -7560,6 +7674,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         conferenceId:
           description: "The unique, Bandwidth-generated ID of the conference that\
@@ -7614,6 +7730,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         conferenceId:
           description: "The unique, Bandwidth-generated ID of the conference that\
@@ -7663,6 +7781,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         conferenceId:
           description: "The unique, Bandwidth-generated ID of the conference that\
@@ -7698,6 +7818,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         conferenceId:
           description: "The unique, Bandwidth-generated ID of the conference that\
@@ -7777,6 +7899,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         accountId:
           description: The user account associated with the call.
@@ -7872,6 +7996,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         accountId:
           description: The user account associated with the call.
@@ -7965,6 +8091,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         accountId:
           description: The user account associated with the call.
@@ -8067,6 +8195,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         accountId:
           description: The user account associated with the call.
@@ -8126,6 +8256,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         accountId:
           description: The user account associated with the call.
@@ -8181,21 +8313,7 @@ components:
           nullable: true
           type: string
         machineDetectionResult:
-          description: "(optional) if machine detection was requested in sync mode,\
-            \ the result will be specified here. Possible values are the same as the\
-            \ async counterpart: Machine Detection Complete"
-          nullable: true
-          properties:
-            value:
-              description: "Possible values are answering-machine, human, silence,\
-                \ timeout, or error."
-              example: answering-machine
-              type: string
-            duration:
-              description: The amount of time it took to determine the result.
-              example: PT4.9891287S
-              type: string
-          type: string
+          $ref: '#/components/schemas/machineDetectionResult'
       type: object
     recordingCompleteCallback:
       description: "The Record Complete event is sent after a <Record> verb has executed\
@@ -8216,6 +8334,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         accountId:
           description: The user account associated with the call.
@@ -8333,6 +8453,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         accountId:
           description: The user account associated with the call.
@@ -8456,6 +8578,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         accountId:
           description: The user account associated with the call.
@@ -8545,6 +8669,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         accountId:
           description: The user account associated with the call.
@@ -8657,6 +8783,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         accountId:
           description: The user account associated with the call.
@@ -8743,6 +8871,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         accountId:
           description: The user account associated with the call.
@@ -8848,6 +8978,8 @@ components:
           description: "The approximate UTC date and time when the event was generated\
             \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
             \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
           type: string
         accountId:
           description: The user account associated with the call.
@@ -8956,6 +9088,8 @@ components:
       description: "The approximate UTC date and time when the event was generated\
         \ by the Bandwidth server, in ISO 8601 format. This may not be exactly the\
         \ time of event execution."
+      example: 2022-06-17T22:19:40.375Z
+      format: date-time
       type: string
     accountId:
       description: The user account associated with the call.
@@ -9117,7 +9251,7 @@ components:
           description: The amount of time it took to determine the result.
           example: PT4.9891287S
           type: string
-      type: string
+      type: object
     diversion:
       properties:
         reason:
@@ -9462,239 +9596,6 @@ components:
           description: A description of what validation error occurred.
           example: example error message
           type: string
-      type: object
-    inboundMessageCallback_message:
-      properties:
-        id:
-          example: 1661365814859loidf7mcwd4qacn7
-          type: string
-        owner:
-          example: +15553332222
-          type: string
-        applicationId:
-          example: 93de2206-9669-4e07-948d-329f4b722ee2
-          type: string
-        time:
-          example: 2016-09-14T18:20:16Z
-          format: date-time
-          type: string
-        segmentCount:
-          example: 1
-          type: integer
-        direction:
-          $ref: '#/components/schemas/messageDirectionEnum'
-        to:
-          example:
-          - +15552223333
-          items:
-            type: string
-          type: array
-          uniqueItems: true
-        from:
-          example: +15553332222
-          type: string
-        text:
-          example: Hello world
-          type: string
-        tag:
-          example: custom string
-          type: string
-        media:
-          example:
-          - https://dev.bandwidth.com/images/bandwidth-logo.png
-          - https://dev.bandwidth.com/images/github_logo.png
-          items:
-            format: uri
-            type: string
-          type: array
-        priority:
-          $ref: '#/components/schemas/priorityEnum'
-      required:
-      - applicationId
-      - direction
-      - from
-      - id
-      - owner
-      - segmentCount
-      - text
-      - time
-      - to
-      type: object
-    messageSendingCallback_message:
-      properties:
-        id:
-          example: 1661365814859loidf7mcwd4qacn7
-          type: string
-        owner:
-          example: +15553332222
-          type: string
-        applicationId:
-          example: 93de2206-9669-4e07-948d-329f4b722ee2
-          type: string
-        time:
-          example: 2016-09-14T18:20:16Z
-          format: date-time
-          type: string
-        segmentCount:
-          example: 1
-          type: integer
-        direction:
-          $ref: '#/components/schemas/messageDirectionEnum'
-        to:
-          example:
-          - +15552223333
-          items:
-            type: string
-          type: array
-          uniqueItems: true
-        from:
-          example: +15553332222
-          type: string
-        text:
-          example: ""
-          type: string
-        tag:
-          example: custom string
-          type: string
-        media:
-          example:
-          - https://dev.bandwidth.com/images/bandwidth-logo.png
-          - https://dev.bandwidth.com/images/github_logo.png
-          items:
-            format: uri
-            type: string
-          type: array
-        priority:
-          $ref: '#/components/schemas/priorityEnum'
-      required:
-      - applicationId
-      - direction
-      - from
-      - id
-      - media
-      - owner
-      - priority
-      - segmentCount
-      - text
-      - time
-      - to
-      type: object
-    messageDeliveredCallback_message:
-      properties:
-        id:
-          example: 1661365814859loidf7mcwd4qacn7
-          type: string
-        owner:
-          example: +15553332222
-          type: string
-        applicationId:
-          example: 93de2206-9669-4e07-948d-329f4b722ee2
-          type: string
-        time:
-          example: 2016-09-14T18:20:16Z
-          format: date-time
-          type: string
-        segmentCount:
-          example: 1
-          type: integer
-        direction:
-          $ref: '#/components/schemas/messageDirectionEnum'
-        to:
-          example:
-          - +15552223333
-          items:
-            type: string
-          type: array
-          uniqueItems: true
-        from:
-          example: +15553332222
-          type: string
-        text:
-          example: ""
-          type: string
-        tag:
-          example: custom string
-          type: string
-        media:
-          example:
-          - https://dev.bandwidth.com/images/bandwidth-logo.png
-          - https://dev.bandwidth.com/images/github_logo.png
-          items:
-            format: uri
-            type: string
-          type: array
-        priority:
-          $ref: '#/components/schemas/priorityEnum'
-      required:
-      - applicationId
-      - direction
-      - from
-      - id
-      - owner
-      - segmentCount
-      - tag
-      - text
-      - time
-      - to
-      type: object
-    messageFailedCallback_message:
-      properties:
-        id:
-          example: 1661365814859loidf7mcwd4qacn7
-          type: string
-        owner:
-          example: +15553332222
-          type: string
-        applicationId:
-          example: 93de2206-9669-4e07-948d-329f4b722ee2
-          type: string
-        time:
-          example: 2016-09-14T18:20:16Z
-          format: date-time
-          type: string
-        segmentCount:
-          example: 1
-          type: integer
-        direction:
-          $ref: '#/components/schemas/messageDirectionEnum'
-        to:
-          example:
-          - +15552223333
-          items:
-            type: string
-          type: array
-          uniqueItems: true
-        from:
-          example: +15553332222
-          type: string
-        text:
-          example: ""
-          type: string
-        tag:
-          example: custom string
-          type: string
-        media:
-          example:
-          - https://dev.bandwidth.com/images/bandwidth-logo.png
-          - https://dev.bandwidth.com/images/github_logo.png
-          items:
-            format: uri
-            type: string
-          type: array
-        priority:
-          $ref: '#/components/schemas/priorityEnum'
-      required:
-      - applicationId
-      - direction
-      - from
-      - id
-      - owner
-      - priority
-      - segmentCount
-      - tag
-      - text
-      - time
-      - to
       type: object
   securitySchemes:
     Basic:

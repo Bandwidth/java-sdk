@@ -40,7 +40,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class ConferencesApi {
     private ApiClient localVarApiClient;
@@ -81,9 +80,9 @@ public class ConferencesApi {
 
     /**
      * Build call for downloadConferenceRecording
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -97,7 +96,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -174,9 +173,9 @@ public class ConferencesApi {
     /**
      * Download Conference Recording
      * Downloads the specified recording file.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -189,7 +188,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -201,9 +200,9 @@ public class ConferencesApi {
     /**
      * Download Conference Recording
      * Downloads the specified recording file.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -216,7 +215,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -229,9 +228,9 @@ public class ConferencesApi {
     /**
      * Download Conference Recording (asynchronously)
      * Downloads the specified recording file.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -245,7 +244,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -258,8 +257,8 @@ public class ConferencesApi {
     }
     /**
      * Build call for getConference
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -273,7 +272,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -342,8 +341,8 @@ public class ConferencesApi {
     /**
      * Get Conference Information
      * Returns information about the specified conference.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
      * @return Conference
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -356,7 +355,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -368,8 +367,8 @@ public class ConferencesApi {
     /**
      * Get Conference Information
      * Returns information about the specified conference.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
      * @return ApiResponse&lt;Conference&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -382,7 +381,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -395,8 +394,8 @@ public class ConferencesApi {
     /**
      * Get Conference Information (asynchronously)
      * Returns information about the specified conference.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -410,7 +409,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -423,9 +422,9 @@ public class ConferencesApi {
     }
     /**
      * Build call for getConferenceMember
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
-     * @param memberId Programmable Voice API Conference Member ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
+     * @param memberId Programmable Voice API Conference Member ID. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -439,7 +438,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -514,9 +513,9 @@ public class ConferencesApi {
     /**
      * Get Conference Member
      * Returns information about the specified conference member.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
-     * @param memberId Programmable Voice API Conference Member ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
+     * @param memberId Programmable Voice API Conference Member ID. (required)
      * @return ConferenceMember
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -529,7 +528,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -541,9 +540,9 @@ public class ConferencesApi {
     /**
      * Get Conference Member
      * Returns information about the specified conference member.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
-     * @param memberId Programmable Voice API Conference Member ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
+     * @param memberId Programmable Voice API Conference Member ID. (required)
      * @return ApiResponse&lt;ConferenceMember&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -556,7 +555,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -569,9 +568,9 @@ public class ConferencesApi {
     /**
      * Get Conference Member (asynchronously)
      * Returns information about the specified conference member.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
-     * @param memberId Programmable Voice API Conference Member ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
+     * @param memberId Programmable Voice API Conference Member ID. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -585,7 +584,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -598,9 +597,9 @@ public class ConferencesApi {
     }
     /**
      * Build call for getConferenceRecording
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -614,7 +613,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -689,9 +688,9 @@ public class ConferencesApi {
     /**
      * Get Conference Recording Information
      * Returns metadata for the specified recording.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @return ConferenceRecordingMetadata
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -704,7 +703,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -716,9 +715,9 @@ public class ConferencesApi {
     /**
      * Get Conference Recording Information
      * Returns metadata for the specified recording.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @return ApiResponse&lt;ConferenceRecordingMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -731,7 +730,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -744,9 +743,9 @@ public class ConferencesApi {
     /**
      * Get Conference Recording Information (asynchronously)
      * Returns metadata for the specified recording.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
-     * @param recordingId Programmable Voice API Recording ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -760,7 +759,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -773,8 +772,8 @@ public class ConferencesApi {
     }
     /**
      * Build call for listConferenceRecordings
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -788,7 +787,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -857,8 +856,8 @@ public class ConferencesApi {
     /**
      * Get Conference Recordings
      * Returns a (potentially empty) list of metadata for the recordings that took place during the specified conference.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
      * @return List&lt;ConferenceRecordingMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -871,7 +870,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -883,8 +882,8 @@ public class ConferencesApi {
     /**
      * Get Conference Recordings
      * Returns a (potentially empty) list of metadata for the recordings that took place during the specified conference.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
      * @return ApiResponse&lt;List&lt;ConferenceRecordingMetadata&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -897,7 +896,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -910,8 +909,8 @@ public class ConferencesApi {
     /**
      * Get Conference Recordings (asynchronously)
      * Returns a (potentially empty) list of metadata for the recordings that took place during the specified conference.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -925,7 +924,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -938,7 +937,7 @@ public class ConferencesApi {
     }
     /**
      * Build call for listConferences
-     * @param accountId Your Bandwidth Account ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param name Filter results by the &#x60;name&#x60; field. (optional)
      * @param minCreatedTime Filter results to conferences which have a &#x60;createdTime&#x60; after or at &#x60;minCreatedTime&#x60; (in ISO8601 format). (optional)
      * @param maxCreatedTime Filter results to conferences which have a &#x60;createdTime&#x60; before or at &#x60;maxCreatedTime&#x60; (in ISO8601 format). (optional)
@@ -957,7 +956,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1040,7 +1039,7 @@ public class ConferencesApi {
     /**
      * Get Conferences
      * Returns a max of 1000 conferences, sorted by &#x60;createdTime&#x60; from oldest to newest.  **NOTE:** If the number of conferences in the account is bigger than &#x60;pageSize&#x60;, a &#x60;Link&#x60; header (with format &#x60;&lt;{url}&gt;; rel&#x3D;\&quot;next\&quot;&#x60;) will be returned in the response. The url can be used to retrieve the next page of conference records.
-     * @param accountId Your Bandwidth Account ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param name Filter results by the &#x60;name&#x60; field. (optional)
      * @param minCreatedTime Filter results to conferences which have a &#x60;createdTime&#x60; after or at &#x60;minCreatedTime&#x60; (in ISO8601 format). (optional)
      * @param maxCreatedTime Filter results to conferences which have a &#x60;createdTime&#x60; before or at &#x60;maxCreatedTime&#x60; (in ISO8601 format). (optional)
@@ -1058,7 +1057,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1070,7 +1069,7 @@ public class ConferencesApi {
     /**
      * Get Conferences
      * Returns a max of 1000 conferences, sorted by &#x60;createdTime&#x60; from oldest to newest.  **NOTE:** If the number of conferences in the account is bigger than &#x60;pageSize&#x60;, a &#x60;Link&#x60; header (with format &#x60;&lt;{url}&gt;; rel&#x3D;\&quot;next\&quot;&#x60;) will be returned in the response. The url can be used to retrieve the next page of conference records.
-     * @param accountId Your Bandwidth Account ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param name Filter results by the &#x60;name&#x60; field. (optional)
      * @param minCreatedTime Filter results to conferences which have a &#x60;createdTime&#x60; after or at &#x60;minCreatedTime&#x60; (in ISO8601 format). (optional)
      * @param maxCreatedTime Filter results to conferences which have a &#x60;createdTime&#x60; before or at &#x60;maxCreatedTime&#x60; (in ISO8601 format). (optional)
@@ -1088,7 +1087,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1101,7 +1100,7 @@ public class ConferencesApi {
     /**
      * Get Conferences (asynchronously)
      * Returns a max of 1000 conferences, sorted by &#x60;createdTime&#x60; from oldest to newest.  **NOTE:** If the number of conferences in the account is bigger than &#x60;pageSize&#x60;, a &#x60;Link&#x60; header (with format &#x60;&lt;{url}&gt;; rel&#x3D;\&quot;next\&quot;&#x60;) will be returned in the response. The url can be used to retrieve the next page of conference records.
-     * @param accountId Your Bandwidth Account ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
      * @param name Filter results by the &#x60;name&#x60; field. (optional)
      * @param minCreatedTime Filter results to conferences which have a &#x60;createdTime&#x60; after or at &#x60;minCreatedTime&#x60; (in ISO8601 format). (optional)
      * @param maxCreatedTime Filter results to conferences which have a &#x60;createdTime&#x60; before or at &#x60;maxCreatedTime&#x60; (in ISO8601 format). (optional)
@@ -1120,7 +1119,7 @@ public class ConferencesApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1133,8 +1132,8 @@ public class ConferencesApi {
     }
     /**
      * Build call for updateConference
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
      * @param updateConference  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1142,14 +1141,14 @@ public class ConferencesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Conference successfully modified </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Conference was successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1224,21 +1223,21 @@ public class ConferencesApi {
     /**
      * Update Conference
      * Update the conference state.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
      * @param updateConference  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Conference successfully modified </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Conference was successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1249,22 +1248,22 @@ public class ConferencesApi {
     /**
      * Update Conference
      * Update the conference state.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
      * @param updateConference  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Conference successfully modified </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Conference was successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1276,8 +1275,8 @@ public class ConferencesApi {
     /**
      * Update Conference (asynchronously)
      * Update the conference state.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
      * @param updateConference  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1285,14 +1284,14 @@ public class ConferencesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Conference successfully modified </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Conference was successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1304,8 +1303,8 @@ public class ConferencesApi {
     }
     /**
      * Build call for updateConferenceBxml
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
      * @param body  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1313,14 +1312,14 @@ public class ConferencesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Conference successfully modified </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Conference successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1395,21 +1394,21 @@ public class ConferencesApi {
     /**
      * Update Conference BXML
      * Update the conference BXML document.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
      * @param body  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Conference successfully modified </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Conference successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1420,22 +1419,22 @@ public class ConferencesApi {
     /**
      * Update Conference BXML
      * Update the conference BXML document.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
      * @param body  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Conference successfully modified </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Conference successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1447,8 +1446,8 @@ public class ConferencesApi {
     /**
      * Update Conference BXML (asynchronously)
      * Update the conference BXML document.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
      * @param body  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1456,14 +1455,14 @@ public class ConferencesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Conference successfully modified </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Conference successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1475,9 +1474,9 @@ public class ConferencesApi {
     }
     /**
      * Build call for updateConferenceMember
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
-     * @param memberId Programmable Voice API Conference Member ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
+     * @param memberId Programmable Voice API Conference Member ID. (required)
      * @param updateConferenceMember  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1485,14 +1484,14 @@ public class ConferencesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Conference member successfully modified </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Conference member was successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1573,22 +1572,22 @@ public class ConferencesApi {
     /**
      * Update Conference Member
      * Updates settings for a particular conference member.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
-     * @param memberId Programmable Voice API Conference Member ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
+     * @param memberId Programmable Voice API Conference Member ID. (required)
      * @param updateConferenceMember  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Conference member successfully modified </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Conference member was successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1599,23 +1598,23 @@ public class ConferencesApi {
     /**
      * Update Conference Member
      * Updates settings for a particular conference member.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
-     * @param memberId Programmable Voice API Conference Member ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
+     * @param memberId Programmable Voice API Conference Member ID. (required)
      * @param updateConferenceMember  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Conference member successfully modified </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Conference member was successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
@@ -1627,9 +1626,9 @@ public class ConferencesApi {
     /**
      * Update Conference Member (asynchronously)
      * Updates settings for a particular conference member.
-     * @param accountId Your Bandwidth Account ID (required)
-     * @param conferenceId Programmable Voice API Conference ID (required)
-     * @param memberId Programmable Voice API Conference Member ID (required)
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param conferenceId Programmable Voice API Conference ID. (required)
+     * @param memberId Programmable Voice API Conference Member ID. (required)
      * @param updateConferenceMember  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1637,14 +1636,14 @@ public class ConferencesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Conference member successfully modified </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Conference member was successfully modified. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again <br>  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */

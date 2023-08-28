@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**status** | **ConferenceStateEnum** |  |  [optional] |
-|**redirectUrl** | **URI** | The URL to send the [conferenceRedirect](/docs/voice/webhooks/conferenceRedirect) event which will provide new BXML. Not allowed if &#x60;state&#x60; is &#x60;completed&#x60;, but required if &#x60;state&#x60; is &#x60;active&#x60; |  [optional] |
+|**redirectUrl** | **URI** | The URL to send the [conferenceRedirect](/docs/voice/webhooks/conferenceRedirect) event which will provide new BXML. Not allowed if &#x60;state&#x60; is &#x60;completed&#x60;, but required if &#x60;state&#x60; is &#x60;active&#x60;. |  [optional] |
 |**redirectMethod** | **RedirectMethodEnum** |  |  [optional] |
 |**username** | **String** | Basic auth username. |  [optional] |
 |**password** | **String** | Basic auth password. |  [optional] |

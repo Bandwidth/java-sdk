@@ -14,13 +14,14 @@
 package org.openapitools.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
+import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -33,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -47,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * The Conference Redirect event is fired whenever an existing conference is modified via a POST request made to the /conferences/{conferenceId} endpoint. The response may be either empty or a BXML document. Only the following verbs are valid for conferences: PlayAudio, SpeakSentence, StartRecording, StopRecording, PauseRecording, ResumeRecording. Audio verbs will be heard by all members of the conference. Recordings capture audio from all members who are not muted or on hold, as well as any audio verbs that are played into the conference.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-21T09:43:53.001100-05:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-25T14:55:39.427023-04:00[America/New_York]")
 public class ConferenceRedirectCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
@@ -55,7 +60,7 @@ public class ConferenceRedirectCallback {
 
   public static final String SERIALIZED_NAME_EVENT_TIME = "eventTime";
   @SerializedName(SERIALIZED_NAME_EVENT_TIME)
-  private String eventTime;
+  private OffsetDateTime eventTime;
 
   public static final String SERIALIZED_NAME_CONFERENCE_ID = "conferenceId";
   @SerializedName(SERIALIZED_NAME_CONFERENCE_ID)
@@ -83,7 +88,6 @@ public class ConferenceRedirectCallback {
    * @return eventType
   **/
   @javax.annotation.Nullable
-
   public String getEventType() {
     return eventType;
   }
@@ -94,7 +98,7 @@ public class ConferenceRedirectCallback {
   }
 
 
-  public ConferenceRedirectCallback eventTime(String eventTime) {
+  public ConferenceRedirectCallback eventTime(OffsetDateTime eventTime) {
     
     this.eventTime = eventTime;
     return this;
@@ -105,13 +109,12 @@ public class ConferenceRedirectCallback {
    * @return eventTime
   **/
   @javax.annotation.Nullable
-
-  public String getEventTime() {
+  public OffsetDateTime getEventTime() {
     return eventTime;
   }
 
 
-  public void setEventTime(String eventTime) {
+  public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
@@ -127,7 +130,6 @@ public class ConferenceRedirectCallback {
    * @return conferenceId
   **/
   @javax.annotation.Nullable
-
   public String getConferenceId() {
     return conferenceId;
   }
@@ -149,7 +151,6 @@ public class ConferenceRedirectCallback {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }
@@ -171,7 +172,6 @@ public class ConferenceRedirectCallback {
    * @return tag
   **/
   @javax.annotation.Nullable
-
   public String getTag() {
     return tag;
   }
@@ -257,30 +257,28 @@ public class ConferenceRedirectCallback {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ConferenceRedirectCallback
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ConferenceRedirectCallback
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ConferenceRedirectCallback.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ConferenceRedirectCallback.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ConferenceRedirectCallback is not found in the empty JSON string", ConferenceRedirectCallback.openapiRequiredFields.toString()));
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
         if (!ConferenceRedirectCallback.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConferenceRedirectCallback` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConferenceRedirectCallback` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("eventType") != null && !jsonObj.get("eventType").isJsonNull()) && !jsonObj.get("eventType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `eventType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("eventType").toString()));
-      }
-      if ((jsonObj.get("eventTime") != null && !jsonObj.get("eventTime").isJsonNull()) && !jsonObj.get("eventTime").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `eventTime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("eventTime").toString()));
       }
       if ((jsonObj.get("conferenceId") != null && !jsonObj.get("conferenceId").isJsonNull()) && !jsonObj.get("conferenceId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `conferenceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conferenceId").toString()));
@@ -313,9 +311,9 @@ public class ConferenceRedirectCallback {
 
            @Override
            public ConferenceRedirectCallback read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();
