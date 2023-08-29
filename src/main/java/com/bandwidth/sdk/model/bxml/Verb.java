@@ -1,4 +1,4 @@
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
 public interface Verb {
     String getVerbName();

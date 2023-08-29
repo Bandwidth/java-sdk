@@ -2,7 +2,7 @@
  * The {@code <Ring>} verb is used to play ringing audio on a call.
  */
 
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;

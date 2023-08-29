@@ -25,8 +25,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import org.openapitools.client.model.MessageDirectionEnum;
-import org.openapitools.client.model.PriorityEnum;
+import com.bandwidth.sdk.model.MessageDirectionEnum;
+import com.bandwidth.sdk.model.PriorityEnum;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

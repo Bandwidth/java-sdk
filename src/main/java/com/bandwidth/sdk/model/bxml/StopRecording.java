@@ -2,7 +2,7 @@
  * The {@code <StopRecording>} verb is used to stop a recording that was previously started by a {@code <StartRecording>} verb.
  */
 
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -1,19 +1,19 @@
 package com.bandwidth.sdk.api;
 
-import org.openapitools.client.ApiResponse;
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.auth.HttpBasicAuth;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.model.ConferenceRecordingMetadata;
-import org.openapitools.client.model.ConferenceStateEnum;
-import org.openapitools.client.model.CreateCall;
-import org.openapitools.client.model.CreateCallResponse;
-import org.openapitools.client.model.FileFormatEnum;
-import org.openapitools.client.model.Conference;
-import org.openapitools.client.model.ConferenceMember;
-import org.openapitools.client.model.RedirectMethodEnum;
-import org.openapitools.client.model.UpdateConference;
-import org.openapitools.client.model.UpdateConferenceMember;
+import com.bandwidth.sdk.ApiResponse;
+import com.bandwidth.sdk.ApiClient;
+import com.bandwidth.sdk.auth.HttpBasicAuth;
+import com.bandwidth.sdk.Configuration;
+import com.bandwidth.sdk.model.ConferenceRecordingMetadata;
+import com.bandwidth.sdk.model.ConferenceStateEnum;
+import com.bandwidth.sdk.model.CreateCall;
+import com.bandwidth.sdk.model.CreateCallResponse;
+import com.bandwidth.sdk.model.FileFormatEnum;
+import com.bandwidth.sdk.model.Conference;
+import com.bandwidth.sdk.model.ConferenceMember;
+import com.bandwidth.sdk.model.RedirectMethodEnum;
+import com.bandwidth.sdk.model.UpdateConference;
+import com.bandwidth.sdk.model.UpdateConferenceMember;
 import com.bandwidth.sdk.utils.MantecaStatusResponse;
 
 import com.google.gson.Gson;

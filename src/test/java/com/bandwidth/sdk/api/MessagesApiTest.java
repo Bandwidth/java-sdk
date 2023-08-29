@@ -9,18 +9,18 @@
 
 package com.bandwidth.sdk.api;
 
-import org.openapitools.client.ApiException;
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.auth.HttpBasicAuth;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.model.ListMessageDirectionEnum;
-import org.openapitools.client.model.ListMessageItem;
-import org.openapitools.client.model.Message;
-import org.openapitools.client.model.MessageRequest;
-import org.openapitools.client.model.MessageStatusEnum;
-import org.openapitools.client.model.MessageTypeEnum;
-import org.openapitools.client.model.MessagesList;
-import org.openapitools.client.model.PriorityEnum;
+import com.bandwidth.sdk.ApiException;
+import com.bandwidth.sdk.ApiClient;
+import com.bandwidth.sdk.auth.HttpBasicAuth;
+import com.bandwidth.sdk.Configuration;
+import com.bandwidth.sdk.model.ListMessageDirectionEnum;
+import com.bandwidth.sdk.model.ListMessageItem;
+import com.bandwidth.sdk.model.Message;
+import com.bandwidth.sdk.model.MessageRequest;
+import com.bandwidth.sdk.model.MessageStatusEnum;
+import com.bandwidth.sdk.model.MessageTypeEnum;
+import com.bandwidth.sdk.model.MessagesList;
+import com.bandwidth.sdk.model.PriorityEnum;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

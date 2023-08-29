@@ -5,7 +5,7 @@
  *      *, #, a-d, and A-D are also supported in addition to the numeric characters 0-9.
  */
 
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;

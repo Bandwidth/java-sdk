@@ -3,7 +3,7 @@
  * 
  */
 
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;

@@ -2,7 +2,7 @@
  * The {@code <SpeakSentence>} verb is used to play speech audio on the call.
  */
 
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -12,9 +12,9 @@ import jakarta.xml.bind.annotation.XmlMixed;
 import jakarta.xml.bind.annotation.XmlType;
 import java.util.List;
 
-import org.openapitools.client.model.bxml.utils.TtsGender;
-import org.openapitools.client.model.bxml.utils.TtsLocale;
-import org.openapitools.client.model.bxml.utils.TtsVoice;
+import com.bandwidth.sdk.model.bxml.utils.TtsGender;
+import com.bandwidth.sdk.model.bxml.utils.TtsLocale;
+import com.bandwidth.sdk.model.bxml.utils.TtsVoice;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

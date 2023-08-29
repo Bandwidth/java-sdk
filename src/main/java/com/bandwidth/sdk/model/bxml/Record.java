@@ -3,13 +3,13 @@
  * This verb should probably be used if you are building a voice mail system or conference member introduction. For different use cases, you might want to take a look at {@code <StartRecording>}.
  */
 
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
-import static org.openapitools.client.model.bxml.utils.BxmlConstants.DEFAULT_CALLBACK_METHOD;
-import static org.openapitools.client.model.bxml.utils.BxmlConstants.DEFAULT_RECORD_AUDIO_FORMAT;
-import static org.openapitools.client.model.bxml.utils.BxmlConstants.DEFAULT_RECORD_MAX_DURATION;
-import static org.openapitools.client.model.bxml.utils.BxmlConstants.DEFAULT_RECORD_SILENCE_TIMEOUT;
-import static org.openapitools.client.model.bxml.utils.BxmlConstants.DEFAULT_TERMINATING_DIGITS;
+import static com.bandwidth.sdk.model.bxml.utils.BxmlConstants.DEFAULT_CALLBACK_METHOD;
+import static com.bandwidth.sdk.model.bxml.utils.BxmlConstants.DEFAULT_RECORD_AUDIO_FORMAT;
+import static com.bandwidth.sdk.model.bxml.utils.BxmlConstants.DEFAULT_RECORD_MAX_DURATION;
+import static com.bandwidth.sdk.model.bxml.utils.BxmlConstants.DEFAULT_RECORD_SILENCE_TIMEOUT;
+import static com.bandwidth.sdk.model.bxml.utils.BxmlConstants.DEFAULT_TERMINATING_DIGITS;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;

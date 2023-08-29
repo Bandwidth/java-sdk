@@ -2,9 +2,9 @@
  * The {@code <Pause>} verb is used to delay verb execution for a period of time, during which the call will be silent.
  */
 
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
-import static org.openapitools.client.model.bxml.utils.BxmlConstants.DEFAULT_PAUSE_DURATION;
+import static com.bandwidth.sdk.model.bxml.utils.BxmlConstants.DEFAULT_PAUSE_DURATION;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;

@@ -23,8 +23,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.ListMessageItem;
-import org.openapitools.client.model.PageInfo;
+import com.bandwidth.sdk.model.ListMessageItem;
+import com.bandwidth.sdk.model.PageInfo;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

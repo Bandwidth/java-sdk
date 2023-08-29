@@ -2,7 +2,7 @@
  * The {@code <StopStream>} verb is used to stop a stream that was started with a previous {@code <StartStream>} verb.
  */
 
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;

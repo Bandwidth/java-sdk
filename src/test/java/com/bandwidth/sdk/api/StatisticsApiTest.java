@@ -13,9 +13,9 @@
 
 package com.bandwidth.sdk.api;
 
-import org.openapitools.client.ApiException;
-import org.openapitools.client.model.AccountStatistics;
-import org.openapitools.client.model.VoiceApiError;
+import com.bandwidth.sdk.ApiException;
+import com.bandwidth.sdk.model.AccountStatistics;
+import com.bandwidth.sdk.model.VoiceApiError;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

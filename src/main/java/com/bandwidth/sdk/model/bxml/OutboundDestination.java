@@ -2,7 +2,7 @@
  * Represents a {@code <PhoneNumber> } or {@code <SipUri> } element inside a BXML Transfer or Forward verb
  */
 
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;

@@ -23,8 +23,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.client.model.LookupResult;
-import org.openapitools.client.model.LookupStatusEnum;
+import com.bandwidth.sdk.model.LookupResult;
+import com.bandwidth.sdk.model.LookupStatusEnum;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

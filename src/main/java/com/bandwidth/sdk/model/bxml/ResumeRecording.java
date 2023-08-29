@@ -2,7 +2,7 @@
  * The {@code <ResumeRecording>} verb is used to resume a recording that was previously paused by a {@code <PauseRecording>} verb.
  */
 
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

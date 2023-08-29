@@ -2,7 +2,7 @@
  * The {@code <PlayAudio>} verb is used to play an audio file in the call. 
  * The URL of an audio file should be included in the body of the {@code <PlayAudio>} tag. If a relative URL is given, it is resolved relative to the endpoint that returned the BXML.
  */
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;

@@ -1,18 +1,18 @@
-package org.openapitools.client.model.bxml.utils;
+package com.bandwidth.sdk.model.bxml.utils;
 
-import static org.openapitools.client.model.bxml.utils.TtsGender.FEMALE;
-import static org.openapitools.client.model.bxml.utils.TtsGender.MALE;
-import static org.openapitools.client.model.bxml.utils.TtsLocale.ARB;
-import static org.openapitools.client.model.bxml.utils.TtsLocale.CMN_CN;
-import static org.openapitools.client.model.bxml.utils.TtsLocale.DE;
-import static org.openapitools.client.model.bxml.utils.TtsLocale.EN_UK;
-import static org.openapitools.client.model.bxml.utils.TtsLocale.EN_US;
-import static org.openapitools.client.model.bxml.utils.TtsLocale.ES;
-import static org.openapitools.client.model.bxml.utils.TtsLocale.ES_MX;
-import static org.openapitools.client.model.bxml.utils.TtsLocale.FR;
-import static org.openapitools.client.model.bxml.utils.TtsLocale.IT;
-import static org.openapitools.client.model.bxml.utils.TtsLocale.JA;
-import static org.openapitools.client.model.bxml.utils.TtsLocale.RU;
+import static com.bandwidth.sdk.model.bxml.utils.TtsGender.FEMALE;
+import static com.bandwidth.sdk.model.bxml.utils.TtsGender.MALE;
+import static com.bandwidth.sdk.model.bxml.utils.TtsLocale.ARB;
+import static com.bandwidth.sdk.model.bxml.utils.TtsLocale.CMN_CN;
+import static com.bandwidth.sdk.model.bxml.utils.TtsLocale.DE;
+import static com.bandwidth.sdk.model.bxml.utils.TtsLocale.EN_UK;
+import static com.bandwidth.sdk.model.bxml.utils.TtsLocale.EN_US;
+import static com.bandwidth.sdk.model.bxml.utils.TtsLocale.ES;
+import static com.bandwidth.sdk.model.bxml.utils.TtsLocale.ES_MX;
+import static com.bandwidth.sdk.model.bxml.utils.TtsLocale.FR;
+import static com.bandwidth.sdk.model.bxml.utils.TtsLocale.IT;
+import static com.bandwidth.sdk.model.bxml.utils.TtsLocale.JA;
+import static com.bandwidth.sdk.model.bxml.utils.TtsLocale.RU;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import jakarta.xml.bind.annotation.XmlEnumValue;

@@ -2,13 +2,13 @@
  * The {@code <Gather>} verb is used to collect digits for some period of time.
  */
 
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
-import static org.openapitools.client.model.bxml.utils.BxmlConstants.DEFAULT_CALLBACK_METHOD;
-import static org.openapitools.client.model.bxml.utils.BxmlConstants.DEFAULT_FIRSTDIGIT_TIMEOUT;
-import static org.openapitools.client.model.bxml.utils.BxmlConstants.DEFAULT_INTERDIGIT_TIMEOUT;
-import static org.openapitools.client.model.bxml.utils.BxmlConstants.DEFAULT_MAX_DIGITS;
-import static org.openapitools.client.model.bxml.utils.BxmlConstants.DEFAULT_REPEAT_COUNT;
+import static com.bandwidth.sdk.model.bxml.utils.BxmlConstants.DEFAULT_CALLBACK_METHOD;
+import static com.bandwidth.sdk.model.bxml.utils.BxmlConstants.DEFAULT_FIRSTDIGIT_TIMEOUT;
+import static com.bandwidth.sdk.model.bxml.utils.BxmlConstants.DEFAULT_INTERDIGIT_TIMEOUT;
+import static com.bandwidth.sdk.model.bxml.utils.BxmlConstants.DEFAULT_MAX_DIGITS;
+import static com.bandwidth.sdk.model.bxml.utils.BxmlConstants.DEFAULT_REPEAT_COUNT;
 
 
 import jakarta.xml.bind.annotation.XmlAccessType;

@@ -3,7 +3,7 @@
  * This new tag will be sent with all future callbacks unless overwritten by a future tag attribute or {@code <Tag>} verb, or cleared.
  */
 
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;

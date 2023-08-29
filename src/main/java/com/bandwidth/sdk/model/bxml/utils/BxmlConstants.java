@@ -1,4 +1,4 @@
-package org.openapitools.client.model.bxml.utils;
+package com.bandwidth.sdk.model.bxml.utils;
 
 public final class BxmlConstants {
 
@@ -15,4 +15,3 @@ public final class BxmlConstants {
     public static final Integer DEFAULT_MAX_DIGITS = 50;
     public static final Integer DEFAULT_REPEAT_COUNT = 1;
 }
-

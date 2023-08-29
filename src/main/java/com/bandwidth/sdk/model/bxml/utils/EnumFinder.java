@@ -1,4 +1,4 @@
-package org.openapitools.client.model.bxml.utils;
+package com.bandwidth.sdk.model.bxml.utils;
 
 import java.util.Arrays;
 import java.util.List;

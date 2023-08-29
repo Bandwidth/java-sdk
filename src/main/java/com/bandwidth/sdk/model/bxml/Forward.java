@@ -3,12 +3,12 @@
  * your application will not have any control over either leg of the call. When either leg hangs up, a Disconnect event will be sent to your Call status webhook URL.
  */
 
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
-import static org.openapitools.client.model.bxml.utils.BxmlConstants.DEFAULT_CALL_TIMEOUT;
+import static com.bandwidth.sdk.model.bxml.utils.BxmlConstants.DEFAULT_CALL_TIMEOUT;
 
-import org.openapitools.client.model.DiversionReason;
-import org.openapitools.client.model.DiversionTreatment;
+import com.bandwidth.sdk.model.DiversionReason;
+import com.bandwidth.sdk.model.DiversionTreatment;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;

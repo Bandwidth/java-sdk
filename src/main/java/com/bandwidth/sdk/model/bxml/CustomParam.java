@@ -3,7 +3,7 @@
  * You may specify up to 12 {@code <CustomParam>} elements nested within a {@code <StartTranscription>} tag.
  */
 
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
 
 import jakarta.xml.bind.annotation.XmlAccessType;

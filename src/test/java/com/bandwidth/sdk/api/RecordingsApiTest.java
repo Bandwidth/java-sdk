@@ -1,19 +1,19 @@
 package com.bandwidth.sdk.api;
 
-import org.openapitools.client.ApiResponse;
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.auth.HttpBasicAuth;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.model.CallRecordingMetadata;
-import org.openapitools.client.model.CallStateEnum;
-import org.openapitools.client.model.CreateCall;
-import org.openapitools.client.model.CreateCallResponse;
-import org.openapitools.client.model.RecordingStateEnum;
-import org.openapitools.client.model.TranscribeRecording;
-import org.openapitools.client.model.TranscriptionList;
-import org.openapitools.client.model.UpdateCall;
-import org.openapitools.client.model.UpdateCallRecording;
+import com.bandwidth.sdk.ApiResponse;
+import com.bandwidth.sdk.ApiClient;
+import com.bandwidth.sdk.ApiException;
+import com.bandwidth.sdk.auth.HttpBasicAuth;
+import com.bandwidth.sdk.Configuration;
+import com.bandwidth.sdk.model.CallRecordingMetadata;
+import com.bandwidth.sdk.model.CallStateEnum;
+import com.bandwidth.sdk.model.CreateCall;
+import com.bandwidth.sdk.model.CreateCallResponse;
+import com.bandwidth.sdk.model.RecordingStateEnum;
+import com.bandwidth.sdk.model.TranscribeRecording;
+import com.bandwidth.sdk.model.TranscriptionList;
+import com.bandwidth.sdk.model.UpdateCall;
+import com.bandwidth.sdk.model.UpdateCallRecording;
 import com.bandwidth.sdk.utils.MantecaStatusResponse;
 
 import com.google.gson.Gson;

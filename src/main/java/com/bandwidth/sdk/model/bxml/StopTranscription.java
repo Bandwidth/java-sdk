@@ -2,7 +2,7 @@
  * The {@code <StopTranscription>} verb is used to stop a real-time transcription that was started with a previous {@code <StartTranscription>} verb.
  */
 
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;

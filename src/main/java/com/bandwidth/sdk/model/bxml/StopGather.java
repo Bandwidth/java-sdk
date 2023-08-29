@@ -2,7 +2,7 @@
  * The {@code <StopGather>} verb is used to stop the DTMF detection that was previously started by a {@code <StartGather>} verb.
  */
 
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;

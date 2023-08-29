@@ -1,15 +1,15 @@
 package com.bandwidth.sdk.api;
 
-import org.openapitools.client.ApiResponse;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.auth.HttpBasicAuth;
-import org.openapitools.client.model.CodeRequest;
-import org.openapitools.client.model.MessagingCodeResponse;
-import org.openapitools.client.model.VerifyCodeRequest;
-import org.openapitools.client.model.VerifyCodeResponse;
-import org.openapitools.client.model.VoiceCodeResponse;
-import org.openapitools.client.Configuration;
+import com.bandwidth.sdk.ApiResponse;
+import com.bandwidth.sdk.ApiException;
+import com.bandwidth.sdk.ApiClient;
+import com.bandwidth.sdk.auth.HttpBasicAuth;
+import com.bandwidth.sdk.model.CodeRequest;
+import com.bandwidth.sdk.model.MessagingCodeResponse;
+import com.bandwidth.sdk.model.VerifyCodeRequest;
+import com.bandwidth.sdk.model.VerifyCodeResponse;
+import com.bandwidth.sdk.model.VoiceCodeResponse;
+import com.bandwidth.sdk.Configuration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

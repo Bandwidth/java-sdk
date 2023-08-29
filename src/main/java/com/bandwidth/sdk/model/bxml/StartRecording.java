@@ -2,10 +2,10 @@
  * The {@code <StartRecording>} verb allows a segment of a call or conference to be recorded while other verbs are executing.
  */
 
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
-import static org.openapitools.client.model.bxml.utils.BxmlConstants.DEFAULT_CALLBACK_METHOD;
-import static org.openapitools.client.model.bxml.utils.BxmlConstants.DEFAULT_RECORD_AUDIO_FORMAT;
+import static com.bandwidth.sdk.model.bxml.utils.BxmlConstants.DEFAULT_CALLBACK_METHOD;
+import static com.bandwidth.sdk.model.bxml.utils.BxmlConstants.DEFAULT_RECORD_AUDIO_FORMAT;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;

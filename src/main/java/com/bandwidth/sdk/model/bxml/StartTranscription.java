@@ -2,9 +2,9 @@
  * The {@code <StartTranscription>} verb allows a segment of a call to be transcribed and optionally for the live transcription to be sent off to another destination for additional processing.
  */
 
-package org.openapitools.client.model.bxml;
+package com.bandwidth.sdk.model.bxml;
 
-import static org.openapitools.client.model.bxml.utils.BxmlConstants.DEFAULT_CALLBACK_METHOD;
+import static com.bandwidth.sdk.model.bxml.utils.BxmlConstants.DEFAULT_CALLBACK_METHOD;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -15,7 +15,7 @@ import jakarta.xml.bind.annotation.XmlType;
 import java.util.List;
 import java.util.UUID;
 
-import org.openapitools.client.model.CallDirectionEnum;
+import com.bandwidth.sdk.model.CallDirectionEnum;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

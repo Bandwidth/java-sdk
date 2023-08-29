@@ -1,11 +1,11 @@
 package com.bandwidth.sdk.api;
 
-import org.openapitools.client.ApiException;
-import org.openapitools.client.ApiResponse;
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.auth.HttpBasicAuth;
-import org.openapitools.client.model.Media;
-import org.openapitools.client.Configuration;
+import com.bandwidth.sdk.ApiException;
+import com.bandwidth.sdk.ApiResponse;
+import com.bandwidth.sdk.ApiClient;
+import com.bandwidth.sdk.auth.HttpBasicAuth;
+import com.bandwidth.sdk.model.Media;
+import com.bandwidth.sdk.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;

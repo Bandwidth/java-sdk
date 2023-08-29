@@ -1,15 +1,15 @@
 package com.bandwidth.sdk.api;
 
-import org.openapitools.client.ApiResponse;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.auth.HttpBasicAuth;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.model.LookupRequest;
-import org.openapitools.client.model.LookupStatus;
-import org.openapitools.client.model.LookupStatusEnum;
-import org.openapitools.client.model.CreateLookupResponse;
-import org.openapitools.client.model.LookupResult;
+import com.bandwidth.sdk.ApiResponse;
+import com.bandwidth.sdk.ApiException;
+import com.bandwidth.sdk.ApiClient;
+import com.bandwidth.sdk.auth.HttpBasicAuth;
+import com.bandwidth.sdk.Configuration;
+import com.bandwidth.sdk.model.LookupRequest;
+import com.bandwidth.sdk.model.LookupStatus;
+import com.bandwidth.sdk.model.LookupStatusEnum;
+import com.bandwidth.sdk.model.CreateLookupResponse;
+import com.bandwidth.sdk.model.LookupResult;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

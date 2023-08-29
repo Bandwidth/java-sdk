@@ -6,10 +6,10 @@ import java.util.concurrent.TimeUnit;
 import com.bandwidth.sdk.api.CallsApiTest;
 import com.bandwidth.sdk.api.ConferencesApiTest;
 import com.bandwidth.sdk.api.RecordingsApiTest;
-import org.openapitools.client.model.CallStateEnum;
-import org.openapitools.client.model.UpdateCall;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.ApiResponse;
+import com.bandwidth.sdk.model.CallStateEnum;
+import com.bandwidth.sdk.model.UpdateCall;
+import com.bandwidth.sdk.ApiException;
+import com.bandwidth.sdk.ApiResponse;
 
 import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 

@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import org.openapitools.client.model.FileFormatEnum;
+import com.bandwidth.sdk.model.FileFormatEnum;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

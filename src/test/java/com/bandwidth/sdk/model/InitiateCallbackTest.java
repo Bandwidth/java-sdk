@@ -22,9 +22,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
-import org.openapitools.client.model.CallDirectionEnum;
-import org.openapitools.client.model.Diversion;
-import org.openapitools.client.model.StirShaken;
+import com.bandwidth.sdk.model.CallDirectionEnum;
+import com.bandwidth.sdk.model.Diversion;
+import com.bandwidth.sdk.model.StirShaken;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
