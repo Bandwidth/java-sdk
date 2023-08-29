@@ -29,7 +29,7 @@ public class MediaApiTest {
     HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
     private final MediaApi api = new MediaApi(defaultClient);
 
-    private static String mediaPath = "src/test/java/org/openapitools/client/fixtures/";
+    private static String mediaPath = "src/test/java/com/bandwidth/sdk/fixtures/";
     private static String mediaFile = "java_cat.jpeg";
     private static String mediaId;
     private static UUID uuid;
