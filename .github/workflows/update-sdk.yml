@@ -8,7 +8,7 @@ on:
 jobs:
   update-sdk:
     name: Update SDK if Necessary
-    runs-on: ${{ fromJSON(vars.SWI_GLORG_UBUNTU_2204) }}
+    runs-on: ubuntu-latest
     outputs:
       generate: ${{ steps.compare.outputs.generate }}
     steps:
