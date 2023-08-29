@@ -21,12 +21,12 @@ Deletes a media file from Bandwidth API server. Make sure you don&#39;t have any
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.MediaApi;
+import com.bandwidth.sdk.ApiClient;
+import com.bandwidth.sdk.ApiException;
+import com.bandwidth.sdk.Configuration;
+import com.bandwidth.sdk.auth.*;
+import com.bandwidth.sdk.models.*;
+import com.bandwidth.sdk.api.MediaApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -98,12 +98,12 @@ Downloads a media file you previously uploaded.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.MediaApi;
+import com.bandwidth.sdk.ApiClient;
+import com.bandwidth.sdk.ApiException;
+import com.bandwidth.sdk.Configuration;
+import com.bandwidth.sdk.auth.*;
+import com.bandwidth.sdk.models.*;
+import com.bandwidth.sdk.api.MediaApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -176,12 +176,12 @@ Gets a list of your media files. No query parameters are supported.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.MediaApi;
+import com.bandwidth.sdk.ApiClient;
+import com.bandwidth.sdk.ApiException;
+import com.bandwidth.sdk.Configuration;
+import com.bandwidth.sdk.auth.*;
+import com.bandwidth.sdk.models.*;
+import com.bandwidth.sdk.api.MediaApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -254,12 +254,12 @@ Upload a file. You may add headers to the request in order to provide some contr
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.MediaApi;
+import com.bandwidth.sdk.ApiClient;
+import com.bandwidth.sdk.ApiException;
+import com.bandwidth.sdk.Configuration;
+import com.bandwidth.sdk.auth.*;
+import com.bandwidth.sdk.models.*;
+import com.bandwidth.sdk.api.MediaApi;
 
 public class Example {
   public static void main(String[] args) {

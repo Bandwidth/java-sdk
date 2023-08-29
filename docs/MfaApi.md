@@ -20,12 +20,12 @@ Send an MFA code via text message (SMS).
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.MfaApi;
+import com.bandwidth.sdk.ApiClient;
+import com.bandwidth.sdk.ApiException;
+import com.bandwidth.sdk.Configuration;
+import com.bandwidth.sdk.auth.*;
+import com.bandwidth.sdk.models.*;
+import com.bandwidth.sdk.api.MfaApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -94,12 +94,12 @@ Send an MFA Code via a phone call.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.MfaApi;
+import com.bandwidth.sdk.ApiClient;
+import com.bandwidth.sdk.ApiException;
+import com.bandwidth.sdk.Configuration;
+import com.bandwidth.sdk.auth.*;
+import com.bandwidth.sdk.models.*;
+import com.bandwidth.sdk.api.MfaApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -168,12 +168,12 @@ Verify a previously sent MFA code.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.MfaApi;
+import com.bandwidth.sdk.ApiClient;
+import com.bandwidth.sdk.ApiException;
+import com.bandwidth.sdk.Configuration;
+import com.bandwidth.sdk.auth.*;
+import com.bandwidth.sdk.models.*;
+import com.bandwidth.sdk.api.MfaApi;
 
 public class Example {
   public static void main(String[] args) {

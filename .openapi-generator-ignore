@@ -9,6 +9,9 @@
 #ApiClient.cs
 
 pom.xml
+.idea
+.gitignore
+.github/workflows/maven.yml
 
 # You can match any string of characters against a directory, file or extension with a single asterisk (*):
 #foo/*/qux

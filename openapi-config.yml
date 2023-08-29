@@ -4,7 +4,10 @@ artifactDescription: The official client SDK for Bandwidth's Voice, Messaging, M
 artifactUrl: https://github.com/Bandwidth/java-sdk
 developerEmail: dx@bandwidth.com
 developerOrganization: Bandwidth
+disallowAdditionalPropertiesIfNotPresent: false
 groupId: com.bandwidth.sdk
+invokerPackage: com.bandwidth.sdk
+apiPackage: com.bandwidth.sdk.api
+modelPackage: com.bandwidth.sdk.model
 library: okhttp-gson
 licenseName: MIT
-
