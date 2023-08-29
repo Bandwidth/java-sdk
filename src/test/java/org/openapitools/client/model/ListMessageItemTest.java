@@ -18,16 +18,15 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.OffsetDateTime;
+import java.util.Arrays;
 import org.openapitools.client.model.ListMessageDirectionEnum;
 import org.openapitools.client.model.MessageStatusEnum;
 import org.openapitools.client.model.MessageTypeEnum;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
 
 /**
  * Model tests for ListMessageItem
@@ -169,6 +168,14 @@ public class ListMessageItemTest {
     @Test
     public void campaignClassTest() {
         // TODO: test campaignClass
+    }
+
+    /**
+     * Test the property 'campaignId'
+     */
+    @Test
+    public void campaignIdTest() {
+        // TODO: test campaignId
     }
 
 }

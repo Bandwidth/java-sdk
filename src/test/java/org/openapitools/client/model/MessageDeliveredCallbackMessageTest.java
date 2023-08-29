@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -29,7 +30,6 @@ import org.openapitools.client.model.MessageDirectionEnum;
 import org.openapitools.client.model.PriorityEnum;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
 
 /**
  * Model tests for MessageDeliveredCallbackMessage

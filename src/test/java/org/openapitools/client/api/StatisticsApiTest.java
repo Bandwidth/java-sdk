@@ -13,7 +13,7 @@
 
 package org.openapitools.client.api;
 
-import org.openapitools.client.ApiException;
+import com.bandwidth.sdk.ApiException;
 import org.openapitools.client.model.AccountStatistics;
 import org.openapitools.client.model.VoiceApiError;
 import org.junit.jupiter.api.Disabled;
