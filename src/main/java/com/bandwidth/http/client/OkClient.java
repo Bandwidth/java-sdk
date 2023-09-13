@@ -16,10 +16,13 @@ import com.bandwidth.http.request.MultipartWrapper;
 import com.bandwidth.http.response.HttpResponse;
 import com.bandwidth.http.response.HttpStringResponse;
 import com.bandwidth.utilities.FileWrapper;
+import okhttp3.Protocol;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -46,11 +49,14 @@ public class OkClient implements HttpClient {
         okhttp3.OkHttpClient httpClientInstance = httpClientConfig.getHttpClientInstance();
         if (httpClientInstance != null) {
             if (httpClientConfig.shouldOverrideHttpClientConfigurations()) {
+                System.out.println("OkClient.java: httpClientInstance is not null");
                 applyHttpClientConfigurations(httpClientInstance, httpClientConfig);
             } else {
+                System.out.println("OkClient.java: httpClientInstance is not null 2 electric boogaloo");
                 this.client = httpClientInstance;
             }
         } else {
+            System.out.println("OkClient.java: httpClientInstance is null");
             applyHttpClientConfigurations(getDefaultOkHttpClient(), httpClientConfig);
         }
     }
@@ -73,6 +79,8 @@ public class OkClient implements HttpClient {
         }
 
         clientBuilder.addInterceptor(new HttpRedirectInterceptor(true));
+        clientBuilder.setProtocols$okhttp(Collections.singletonList(Protocol.HTTP_2));
+        System.out.println("OkClient.java: clientBuilder protocol = " + clientBuilder.getProtocols$okhttp());
         this.client = clientBuilder.build();
     }
 

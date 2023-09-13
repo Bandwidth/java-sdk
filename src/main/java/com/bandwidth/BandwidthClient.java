@@ -608,6 +608,7 @@ public final class BandwidthClient implements Configuration {
         public BandwidthClient build() {
             HttpClientConfiguration httpClientConfig = httpClientConfigBuilder.build();
             httpClient = new OkClient(httpClientConfig);
+            System.out.println("new bw client made");
 
             return new BandwidthClient(environment, baseUrl, httpClient, httpClientConfig,
                     messagingBasicAuthUserName, messagingBasicAuthPassword,
