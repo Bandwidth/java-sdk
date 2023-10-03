@@ -6,6 +6,7 @@ All URIs are relative to *http://localhost*
 |------------- | ------------- | -------------|
 | [**createCall**](CallsApi.md#createCall) | **POST** /accounts/{accountId}/calls | Create Call |
 | [**getCallState**](CallsApi.md#getCallState) | **GET** /accounts/{accountId}/calls/{callId} | Get Call State Information |
+| [**listCalls**](CallsApi.md#listCalls) | **GET** /accounts/{accountId}/calls | Get Calls |
 | [**updateCall**](CallsApi.md#updateCall) | **POST** /accounts/{accountId}/calls/{callId} | Update Call |
 | [**updateCallBxml**](CallsApi.md#updateCallBxml) | **PUT** /accounts/{accountId}/calls/{callId}/bxml | Update Call BXML |
 
@@ -157,6 +158,96 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Call found |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **415** | Unsupported Media Type |  -  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
+| **500** | Internal Server Error |  -  |
+
+<a id="listCalls"></a>
+# **listCalls**
+> List&lt;CallState&gt; listCalls(accountId, to, from, minStartTime, maxStartTime, disconnectCause, pageSize, pageToken)
+
+Get Calls
+
+Returns a max of 10000 calls, sorted by &#x60;createdTime&#x60; from oldest to newest.  **NOTE:** If the number of calls in the account is bigger than &#x60;pageSize&#x60;, a &#x60;Link&#x60; header (with format &#x60;&lt;{url}&gt;; rel&#x3D;\&quot;next\&quot;&#x60;) will be returned in the response. The url can be used to retrieve the next page of call records. Also, call information is kept for 7 days after the calls are hung up. If you attempt to retrieve information for a call that is older than 7 days, you will get an empty array [] in response.
+
+### Example
+```java
+// Import classes:
+import com.bandwidth.sdk.ApiClient;
+import com.bandwidth.sdk.ApiException;
+import com.bandwidth.sdk.Configuration;
+import com.bandwidth.sdk.auth.*;
+import com.bandwidth.sdk.models.*;
+import com.bandwidth.sdk.api.CallsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure HTTP basic authorization: Basic
+    HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
+    Basic.setUsername("YOUR USERNAME");
+    Basic.setPassword("YOUR PASSWORD");
+
+    CallsApi apiInstance = new CallsApi(defaultClient);
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String to = "%2b19195551234"; // String | Filter results by the `to` field.
+    String from = "%2b19195554321"; // String | Filter results by the `from` field.
+    String minStartTime = "2022-06-21T19:13:21Z"; // String | Filter results to calls which have a `startTime` after or including `minStartTime` (in ISO8601 format).
+    String maxStartTime = "2022-06-21T19:13:21Z"; // String | Filter results to calls which have a `startTime` before or including `maxStartTime` (in ISO8601 format).
+    String disconnectCause = "hangup"; // String | Filter results to calls with specified call Disconnect Cause.
+    Integer pageSize = 1000; // Integer | Specifies the max number of calls that will be returned.
+    String pageToken = "pageToken_example"; // String | Not intended for explicit use. To use pagination, follow the links in the `Link` header of the response, as indicated in the endpoint description.
+    try {
+      List<CallState> result = apiInstance.listCalls(accountId, to, from, minStartTime, maxStartTime, disconnectCause, pageSize, pageToken);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CallsApi#listCalls");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **to** | **String**| Filter results by the &#x60;to&#x60; field. | [optional] |
+| **from** | **String**| Filter results by the &#x60;from&#x60; field. | [optional] |
+| **minStartTime** | **String**| Filter results to calls which have a &#x60;startTime&#x60; after or including &#x60;minStartTime&#x60; (in ISO8601 format). | [optional] |
+| **maxStartTime** | **String**| Filter results to calls which have a &#x60;startTime&#x60; before or including &#x60;maxStartTime&#x60; (in ISO8601 format). | [optional] |
+| **disconnectCause** | **String**| Filter results to calls with specified call Disconnect Cause. | [optional] |
+| **pageSize** | **Integer**| Specifies the max number of calls that will be returned. | [optional] [default to 1000] |
+| **pageToken** | **String**| Not intended for explicit use. To use pagination, follow the links in the &#x60;Link&#x60; header of the response, as indicated in the endpoint description. | [optional] |
+
+### Return type
+
+[**List&lt;CallState&gt;**](CallState.md)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Calls retrieved successfully |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |

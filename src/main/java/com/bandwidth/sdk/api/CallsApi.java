@@ -407,6 +407,217 @@ public class CallsApi {
         return localVarCall;
     }
     /**
+     * Build call for listCalls
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param to Filter results by the &#x60;to&#x60; field. (optional)
+     * @param from Filter results by the &#x60;from&#x60; field. (optional)
+     * @param minStartTime Filter results to calls which have a &#x60;startTime&#x60; after or including &#x60;minStartTime&#x60; (in ISO8601 format). (optional)
+     * @param maxStartTime Filter results to calls which have a &#x60;startTime&#x60; before or including &#x60;maxStartTime&#x60; (in ISO8601 format). (optional)
+     * @param disconnectCause Filter results to calls with specified call Disconnect Cause. (optional)
+     * @param pageSize Specifies the max number of calls that will be returned. (optional, default to 1000)
+     * @param pageToken Not intended for explicit use. To use pagination, follow the links in the &#x60;Link&#x60; header of the response, as indicated in the endpoint description. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Calls retrieved successfully </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
+        <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listCallsCall(String accountId, String to, String from, String minStartTime, String maxStartTime, String disconnectCause, Integer pageSize, String pageToken, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] { "https://voice.bandwidth.com/api/v2" };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/accounts/{accountId}/calls"
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (to != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("to", to));
+        }
+
+        if (from != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("from", from));
+        }
+
+        if (minStartTime != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("minStartTime", minStartTime));
+        }
+
+        if (maxStartTime != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("maxStartTime", maxStartTime));
+        }
+
+        if (disconnectCause != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("disconnectCause", disconnectCause));
+        }
+
+        if (pageSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
+        }
+
+        if (pageToken != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageToken", pageToken));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Basic" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listCallsValidateBeforeCall(String accountId, String to, String from, String minStartTime, String maxStartTime, String disconnectCause, Integer pageSize, String pageToken, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling listCalls(Async)");
+        }
+
+        return listCallsCall(accountId, to, from, minStartTime, maxStartTime, disconnectCause, pageSize, pageToken, _callback);
+
+    }
+
+    /**
+     * Get Calls
+     * Returns a max of 10000 calls, sorted by &#x60;createdTime&#x60; from oldest to newest.  **NOTE:** If the number of calls in the account is bigger than &#x60;pageSize&#x60;, a &#x60;Link&#x60; header (with format &#x60;&lt;{url}&gt;; rel&#x3D;\&quot;next\&quot;&#x60;) will be returned in the response. The url can be used to retrieve the next page of call records. Also, call information is kept for 7 days after the calls are hung up. If you attempt to retrieve information for a call that is older than 7 days, you will get an empty array [] in response.
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param to Filter results by the &#x60;to&#x60; field. (optional)
+     * @param from Filter results by the &#x60;from&#x60; field. (optional)
+     * @param minStartTime Filter results to calls which have a &#x60;startTime&#x60; after or including &#x60;minStartTime&#x60; (in ISO8601 format). (optional)
+     * @param maxStartTime Filter results to calls which have a &#x60;startTime&#x60; before or including &#x60;maxStartTime&#x60; (in ISO8601 format). (optional)
+     * @param disconnectCause Filter results to calls with specified call Disconnect Cause. (optional)
+     * @param pageSize Specifies the max number of calls that will be returned. (optional, default to 1000)
+     * @param pageToken Not intended for explicit use. To use pagination, follow the links in the &#x60;Link&#x60; header of the response, as indicated in the endpoint description. (optional)
+     * @return List&lt;CallState&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Calls retrieved successfully </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
+        <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<CallState> listCalls(String accountId, String to, String from, String minStartTime, String maxStartTime, String disconnectCause, Integer pageSize, String pageToken) throws ApiException {
+        ApiResponse<List<CallState>> localVarResp = listCallsWithHttpInfo(accountId, to, from, minStartTime, maxStartTime, disconnectCause, pageSize, pageToken);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get Calls
+     * Returns a max of 10000 calls, sorted by &#x60;createdTime&#x60; from oldest to newest.  **NOTE:** If the number of calls in the account is bigger than &#x60;pageSize&#x60;, a &#x60;Link&#x60; header (with format &#x60;&lt;{url}&gt;; rel&#x3D;\&quot;next\&quot;&#x60;) will be returned in the response. The url can be used to retrieve the next page of call records. Also, call information is kept for 7 days after the calls are hung up. If you attempt to retrieve information for a call that is older than 7 days, you will get an empty array [] in response.
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param to Filter results by the &#x60;to&#x60; field. (optional)
+     * @param from Filter results by the &#x60;from&#x60; field. (optional)
+     * @param minStartTime Filter results to calls which have a &#x60;startTime&#x60; after or including &#x60;minStartTime&#x60; (in ISO8601 format). (optional)
+     * @param maxStartTime Filter results to calls which have a &#x60;startTime&#x60; before or including &#x60;maxStartTime&#x60; (in ISO8601 format). (optional)
+     * @param disconnectCause Filter results to calls with specified call Disconnect Cause. (optional)
+     * @param pageSize Specifies the max number of calls that will be returned. (optional, default to 1000)
+     * @param pageToken Not intended for explicit use. To use pagination, follow the links in the &#x60;Link&#x60; header of the response, as indicated in the endpoint description. (optional)
+     * @return ApiResponse&lt;List&lt;CallState&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Calls retrieved successfully </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
+        <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<CallState>> listCallsWithHttpInfo(String accountId, String to, String from, String minStartTime, String maxStartTime, String disconnectCause, Integer pageSize, String pageToken) throws ApiException {
+        okhttp3.Call localVarCall = listCallsValidateBeforeCall(accountId, to, from, minStartTime, maxStartTime, disconnectCause, pageSize, pageToken, null);
+        Type localVarReturnType = new TypeToken<List<CallState>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get Calls (asynchronously)
+     * Returns a max of 10000 calls, sorted by &#x60;createdTime&#x60; from oldest to newest.  **NOTE:** If the number of calls in the account is bigger than &#x60;pageSize&#x60;, a &#x60;Link&#x60; header (with format &#x60;&lt;{url}&gt;; rel&#x3D;\&quot;next\&quot;&#x60;) will be returned in the response. The url can be used to retrieve the next page of call records. Also, call information is kept for 7 days after the calls are hung up. If you attempt to retrieve information for a call that is older than 7 days, you will get an empty array [] in response.
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param to Filter results by the &#x60;to&#x60; field. (optional)
+     * @param from Filter results by the &#x60;from&#x60; field. (optional)
+     * @param minStartTime Filter results to calls which have a &#x60;startTime&#x60; after or including &#x60;minStartTime&#x60; (in ISO8601 format). (optional)
+     * @param maxStartTime Filter results to calls which have a &#x60;startTime&#x60; before or including &#x60;maxStartTime&#x60; (in ISO8601 format). (optional)
+     * @param disconnectCause Filter results to calls with specified call Disconnect Cause. (optional)
+     * @param pageSize Specifies the max number of calls that will be returned. (optional, default to 1000)
+     * @param pageToken Not intended for explicit use. To use pagination, follow the links in the &#x60;Link&#x60; header of the response, as indicated in the endpoint description. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Calls retrieved successfully </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
+        <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listCallsAsync(String accountId, String to, String from, String minStartTime, String maxStartTime, String disconnectCause, Integer pageSize, String pageToken, final ApiCallback<List<CallState>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listCallsValidateBeforeCall(accountId, to, from, minStartTime, maxStartTime, disconnectCause, pageSize, pageToken, _callback);
+        Type localVarReturnType = new TypeToken<List<CallState>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for updateCall
      * @param accountId Your Bandwidth Account ID. (required)
      * @param callId Programmable Voice API Call ID. (required)
