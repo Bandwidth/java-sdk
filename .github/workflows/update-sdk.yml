@@ -75,6 +75,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: 17
+          distribution: temurin
 
       - name: Clean SDK
         if: steps.build.outputs.changes
