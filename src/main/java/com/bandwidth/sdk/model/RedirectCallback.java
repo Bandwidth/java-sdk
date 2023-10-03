@@ -53,7 +53,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * The Redirect event is fired when a &lt;Redirect&gt; verb is executed. Its purpose is to get the next set of verbs from the calling application.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-29T14:24:34.966664-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-03T14:41:14.487203Z[Etc/UTC]")
 public class RedirectCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)

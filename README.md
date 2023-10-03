@@ -2,7 +2,7 @@
 
 Bandwidth
 - API version: 1.0.0
-  - Build date: 2023-08-29T14:24:34.966664-04:00[America/New_York]
+  - Build date: 2023-10-03T14:41:14.487203Z[Etc/UTC]
 
 Bandwidth's Communication APIs
 
@@ -124,6 +124,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *CallsApi* | [**createCall**](docs/CallsApi.md#createCall) | **POST** /accounts/{accountId}/calls | Create Call
 *CallsApi* | [**getCallState**](docs/CallsApi.md#getCallState) | **GET** /accounts/{accountId}/calls/{callId} | Get Call State Information
+*CallsApi* | [**listCalls**](docs/CallsApi.md#listCalls) | **GET** /accounts/{accountId}/calls | Get Calls
 *CallsApi* | [**updateCall**](docs/CallsApi.md#updateCall) | **POST** /accounts/{accountId}/calls/{callId} | Update Call
 *CallsApi* | [**updateCallBxml**](docs/CallsApi.md#updateCallBxml) | **PUT** /accounts/{accountId}/calls/{callId}/bxml | Update Call BXML
 *ConferencesApi* | [**downloadConferenceRecording**](docs/ConferencesApi.md#downloadConferenceRecording) | **GET** /accounts/{accountId}/conferences/{conferenceId}/recordings/{recordingId}/media | Download Conference Recording

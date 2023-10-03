@@ -53,7 +53,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * This event is sent to the transferCompleteUrl of the A-leg&#39;s &lt;Transfer&gt; verb when the transferred call (B-leg) completes. In a simultaneous ringing scenario, only one B-leg succeeds and this event corresponds to that successful leg. If none of the calls were answered, the transferComplete event corresponds to one of the legs.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-29T14:24:34.966664-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-03T14:41:14.487203Z[Etc/UTC]")
 public class TransferCompleteCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)

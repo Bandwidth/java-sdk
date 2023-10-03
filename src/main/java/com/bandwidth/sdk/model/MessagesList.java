@@ -54,7 +54,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * MessagesList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-29T14:24:34.966664-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-03T14:41:14.487203Z[Etc/UTC]")
 public class MessagesList {
   public static final String SERIALIZED_NAME_TOTAL_COUNT = "totalCount";
   @SerializedName(SERIALIZED_NAME_TOTAL_COUNT)
