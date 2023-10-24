@@ -53,7 +53,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * The Disconnect event is fired when a call ends, for any reason.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-29T14:24:34.966664-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-24T14:02:02.303541Z[Etc/UTC]")
 public class DisconnectCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)

@@ -51,7 +51,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * UpdateCallRecording
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-29T14:24:34.966664-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-10-24T14:02:02.303541Z[Etc/UTC]")
 public class UpdateCallRecording {
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
