@@ -202,11 +202,15 @@ public class CallsApiTest {
         ApiResponse<List<CallState>> response = api.listCallsWithHttpInfo(BW_ACCOUNT_ID, USER_NUMBER, BW_NUMBER, null, null, null, null, null);
 
         assertThat(response.getStatusCode(), is(200));
-        assertThat(response.getData(), hasProperty("callId", is(instanceOf(String.class))));
-        assertThat(response.getData(), hasProperty("accountId", is(BW_ACCOUNT_ID)));
-        assertThat(response.getData(), hasProperty("applicationId", is(BW_VOICE_APPLICATION_ID)));
-        assertThat(response.getData(), hasProperty("to", is(USER_NUMBER)));
-        assertThat(response.getData(), hasProperty("from", is(BW_NUMBER)));
+        assertThat(response.getData(), is(instanceOf(Array.class)));
+        assertThat(response.getData(0), hasProperty("accountId", is(BW_ACCOUNT_ID)));
+        assertThat(response.getData(0), hasProperty("applicationId", is(BW_VOICE_APPLICATION_ID)));
+        assertThat(response.getData(0), hasProperty("to", is(USER_NUMBER)));
+        assertThat(response.getData(0), hasProperty("from", is(BW_NUMBER)));
+        assertThat(response.getData(0), hasProperty("callId", is(instanceOf(String.class))));
+        assertThat(response.getData(0), hasProperty("state", is(instanceOf(String.class))))
+	;
+
     }
 
     // @Test
