@@ -199,7 +199,7 @@ public class CallsApiTest {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
 
-        ApiResponse<List<CallState>> response = api.listCallsWithHttpInfo(BW_ACCOUNT_ID, USER_NUMBER, BW_NUMBER);
+        ApiResponse<List<CallState>> response = api.listCallsWithHttpInfo(BW_ACCOUNT_ID, USER_NUMBER, BW_NUMBER, null, null, null, null, null);
 
         assertThat(response.getStatusCode(), is(200));
         assertThat(response.getData(), hasProperty("callId", is(instanceOf(String.class))));
