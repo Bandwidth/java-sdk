@@ -203,7 +203,6 @@ public class CallsApiTest {
         ApiResponse<List<CallState>> response = api.listCallsWithHttpInfo(BW_ACCOUNT_ID, USER_NUMBER, BW_NUMBER, null, null, null, null, null);
 
         assertThat(response.getStatusCode(), is(200));
-        System.out.println(response.getData());
         assertThat(response.getData(), is(instanceOf(ArrayList.class)));
         assertThat(response.getData().get(0), hasProperty("accountId", is(instanceOf(String.class))));
         assertThat(response.getData().get(0), hasProperty("applicationId", is(instanceOf(String.class))));
