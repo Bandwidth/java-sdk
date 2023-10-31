@@ -194,6 +194,21 @@ public class CallsApiTest {
         assertThat(exception.getCode(), is(403));
     }
 
+    @Test
+    public void getCalls() throws ApiException {
+        Basic.setUsername(BW_USERNAME);
+        Basic.setPassword(BW_PASSWORD);
+
+        ApiResponse<List<CallState>> response = api.listCallsWithHttpInfo(BW_ACCOUNT_ID, USER_NUMBER, BW_NUMBER);
+
+        assertThat(response.getStatusCode(), is(200));
+        assertThat(response.getData(), hasProperty("callId", is(instanceOf(String.class))));
+        assertThat(response.getData(), hasProperty("accountId", is(BW_ACCOUNT_ID)));
+        assertThat(response.getData(), hasProperty("applicationId", is(BW_VOICE_APPLICATION_ID)));
+        assertThat(response.getData(), hasProperty("to", is(USER_NUMBER)));
+        assertThat(response.getData(), hasProperty("from", is(BW_NUMBER)));
+    }
+
     // @Test
     // @Order(2)
     // public void getCallState() throws ApiException, InterruptedException {
