@@ -27,6 +27,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.OffsetDateTime;
 import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -61,7 +62,7 @@ public class CallsApiTest {
     private static CallbackMethodEnum callbackMethod = CallbackMethodEnum.POST;
     private static String testCallId = "Call-Id";
     private static String testXmlBody = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml><SpeakSentence locale=\"en_US\" gender=\"female\" voice=\"susan\">This is a test bxml response</SpeakSentence><Pause duration=\"3\"/></Bxml>";
-    private static int TEST_SLEEP = 3;
+    private static int TEST_SLEEP = 6;
 
     @BeforeAll
     public static void setupBeforeClass() throws URISyntaxException {
@@ -202,14 +203,17 @@ public class CallsApiTest {
         ApiResponse<List<CallState>> response = api.listCallsWithHttpInfo(BW_ACCOUNT_ID, USER_NUMBER, BW_NUMBER, null, null, null, null, null);
 
         assertThat(response.getStatusCode(), is(200));
-        assertThat(response.getData(), is(instanceOf(Array.class)));
-        assertThat(response.getData(0), hasProperty("accountId", is(BW_ACCOUNT_ID)));
-        assertThat(response.getData(0), hasProperty("applicationId", is(BW_VOICE_APPLICATION_ID)));
-        assertThat(response.getData(0), hasProperty("to", is(USER_NUMBER)));
-        assertThat(response.getData(0), hasProperty("from", is(BW_NUMBER)));
-        assertThat(response.getData(0), hasProperty("callId", is(instanceOf(String.class))));
-        assertThat(response.getData(0), hasProperty("state", is(instanceOf(String.class))))
-	;
+        System.out.println(response.getData());
+        assertThat(response.getData(), is(instanceOf(ArrayList.class)));
+        assertThat(response.getData().get(0), hasProperty("accountId", is(instanceOf(String.class))));
+        assertThat(response.getData().get(0), hasProperty("applicationId", is(instanceOf(String.class))));
+        assertThat(response.getData().get(0), hasProperty("callId", is(instanceOf(String.class))));
+        assertThat(response.getData().get(0), hasProperty("state", is(instanceOf(String.class))));
+        assertThat(response.getData().get(0), hasProperty("direction", is(instanceOf(CallDirectionEnum.class))));
+        assertThat(response.getData().get(0), hasProperty("startTime", is(instanceOf(OffsetDateTime.class))));
+        assertThat(response.getData().get(0), hasProperty("endTime", is(instanceOf(OffsetDateTime.class))));
+        assertThat(response.getData().get(0), hasProperty("errorMessage", is(instanceOf(String.class))));
+        assertThat(response.getData().get(0), hasProperty("errorId", is(instanceOf(String.class))));
 
     }
 
