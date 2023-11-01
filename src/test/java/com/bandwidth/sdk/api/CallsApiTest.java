@@ -216,20 +216,20 @@ public class CallsApiTest {
 
     }
 
-    // @Test
-    // @Order(2)
-    // public void getCallState() throws ApiException, InterruptedException {
-    //     Basic.setUsername(BW_USERNAME);
-    //     Basic.setPassword(BW_PASSWORD);
+    @Test
+    @Order(2)
+    public void getCallState() throws ApiException, InterruptedException {
+        Basic.setUsername(BW_USERNAME);
+        Basic.setPassword(BW_PASSWORD);
 
-    //     TimeUnit.SECONDS.sleep(TEST_SLEEP);
-    //     ApiResponse<CallState> response = api.getCallStateWithHttpInfo(BW_ACCOUNT_ID, callIdList.get(0));
+        TimeUnit.SECONDS.sleep(TEST_SLEEP);
+        ApiResponse<CallState> response = api.getCallStateWithHttpInfo(BW_ACCOUNT_ID, callIdList.get(0));
 
-    //     assertThat(response.getStatusCode(), anyOf(is(200),is(404)));
-    //     assertThat(response.getData(), hasProperty("callId", is(instanceOf(String.class))));
-    //     assertThat(response.getData(), hasProperty("state", is(instanceOf(String.class))));
-    //     assertThat(response.getData(), hasProperty("direction", is(CallDirectionEnum.OUTBOUND)));
-    // }
+        assertThat(response.getStatusCode(), anyOf(is(200),is(404)));
+        assertThat(response.getData(), hasProperty("callId", is(instanceOf(String.class))));
+        assertThat(response.getData(), hasProperty("state", is(instanceOf(String.class))));
+        assertThat(response.getData(), hasProperty("direction", is(CallDirectionEnum.OUTBOUND)));
+    }
 
     @Test
     public void getCallStateUnauthorized() throws ApiException {
