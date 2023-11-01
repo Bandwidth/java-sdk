@@ -62,8 +62,8 @@ public class ConferencesApiTest {
     private static URI answerUrl;
     private static URI conferenceRedirectUrl;
     private static String updateRecordingBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml><StartRecording/><SpeakSentence locale=\"en_US\" gender=\"female\" voice=\"susan\">This should be a conference recording.</SpeakSentence><StopRecording/></Bxml>";
-    private static int TEST_SLEEP = 3;
-    private static int MAX_RETRIES = 40;
+    private static int TEST_SLEEP = 6;
+    private static int MAX_RETRIES = 60;
 
     @BeforeAll
     public static void setUpBeforeClass() throws URISyntaxException {
