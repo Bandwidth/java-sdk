@@ -222,7 +222,7 @@ public class CallsApiTest {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
 
-        TimeUnit.SECONDS.sleep(TEST_SLEEP);
+        TimeUnit.SECONDS.sleep(40);
         ApiResponse<CallState> response = api.getCallStateWithHttpInfo(BW_ACCOUNT_ID, callIdList.get(0));
 
         assertThat(response.getStatusCode(), anyOf(is(200),is(404)));
