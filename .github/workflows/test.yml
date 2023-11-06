@@ -14,7 +14,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-2022, windows-2019, ubuntu-20.04, ubuntu-22.04]
+        os: [ubuntu-22.04]
         java-version: ["11", "17", "19"]
         distribution: ["zulu", "temurin"]
     steps:
@@ -25,7 +25,7 @@ jobs:
         run: |-
           curl --location '${{ secrets.URL }}/java' \
             --header 'Content-Type: application/json' \
-            --data { "mavenCentralToken": ${{ secrets.MAVEN_CENTRAL_TOKEN }}, "mavenGpgPassphrase": ${{ secrets.MAVEN_GPG_PASSPHRASE }}, "mavenGpgPrivateKey": ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}, "mavenUsername": ${{ secrets.MAVEN_USERNAME }}, "mavenPassword": ${{ secrets.MVN_PASSWORD }} }
+            --data { "mavenCentralToken": ${{ secrets.MAVEN_CENTRAL_TOKEN }}, "mavenGpgPassphrase": ${{ secrets.MAVEN_GPG_PASSPHRASE }}, "mavenUsername": ${{ secrets.MAVEN_USERNAME }}, "mavenPassword": ${{ secrets.MVN_PASSWORD }} }
 
       - name: Set up JDK
         uses: actions/setup-java@v3
