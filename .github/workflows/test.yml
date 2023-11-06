@@ -28,7 +28,7 @@ jobs:
             --data '{ \
               "mavenCentralToken": "${{ secrets.MAVEN_CENTRAL_TOKEN }}", \
               "mavenGpgPassphrase": "${{ secrets.MAVEN_GPG_PASSPHRASE }}", \
-              "mavenGpgPrivateKey": "${{.secrets.MAVEN_GPG_PRIVATE_KEY }}", \
+              "mavenGpgPrivateKey": "${{ secrets.MAVEN_GPG_PRIVATE_KEY }}", \
               "mavenUsername": "${{ secrets.MAVEN_USERNAME }}", \
               "mavenPassword": "${{ secrets.MVN_PASSWORD }}" \
               }'
