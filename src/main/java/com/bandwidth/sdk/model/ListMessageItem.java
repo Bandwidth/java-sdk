@@ -47,7 +47,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -55,7 +54,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * ListMessageItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-28T14:02:05.350608Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ListMessageItem {
   public static final String SERIALIZED_NAME_MESSAGE_ID = "messageId";
   @SerializedName(SERIALIZED_NAME_MESSAGE_ID)
@@ -665,6 +664,18 @@ public class ListMessageItem {
       }
       if ((jsonObj.get("destinationTn") != null && !jsonObj.get("destinationTn").isJsonNull()) && !jsonObj.get("destinationTn").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `destinationTn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("destinationTn").toString()));
+      }
+      // validate the optional field `messageStatus`
+      if (jsonObj.get("messageStatus") != null && !jsonObj.get("messageStatus").isJsonNull()) {
+        MessageStatusEnum.validateJsonElement(jsonObj.get("messageStatus"));
+      }
+      // validate the optional field `messageDirection`
+      if (jsonObj.get("messageDirection") != null && !jsonObj.get("messageDirection").isJsonNull()) {
+        ListMessageDirectionEnum.validateJsonElement(jsonObj.get("messageDirection"));
+      }
+      // validate the optional field `messageType`
+      if (jsonObj.get("messageType") != null && !jsonObj.get("messageType").isJsonNull()) {
+        MessageTypeEnum.validateJsonElement(jsonObj.get("messageType"));
       }
       if ((jsonObj.get("carrierName") != null && !jsonObj.get("carrierName").isJsonNull()) && !jsonObj.get("carrierName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `carrierName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("carrierName").toString()));
