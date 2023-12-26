@@ -46,7 +46,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -54,7 +53,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * The machine detection request used to perform &lt;a href&#x3D;&#39;/docs/voice/guides/machineDetection&#39;&gt;machine detection&lt;/a&gt; on the call.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-28T14:02:05.350608Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MachineDetectionConfiguration {
   public static final String SERIALIZED_NAME_MODE = "mode";
   @SerializedName(SERIALIZED_NAME_MODE)
@@ -597,8 +596,16 @@ public class MachineDetectionConfiguration {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `mode`
+      if (jsonObj.get("mode") != null && !jsonObj.get("mode").isJsonNull()) {
+        MachineDetectionModeEnum.validateJsonElement(jsonObj.get("mode"));
+      }
       if ((jsonObj.get("callbackUrl") != null && !jsonObj.get("callbackUrl").isJsonNull()) && !jsonObj.get("callbackUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callbackUrl").toString()));
+      }
+      // validate the optional field `callbackMethod`
+      if (jsonObj.get("callbackMethod") != null && !jsonObj.get("callbackMethod").isJsonNull()) {
+        CallbackMethodEnum.validateJsonElement(jsonObj.get("callbackMethod"));
       }
       if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
@@ -608,6 +615,10 @@ public class MachineDetectionConfiguration {
       }
       if ((jsonObj.get("fallbackUrl") != null && !jsonObj.get("fallbackUrl").isJsonNull()) && !jsonObj.get("fallbackUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fallbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackUrl").toString()));
+      }
+      // validate the optional field `fallbackMethod`
+      if (jsonObj.get("fallbackMethod") != null && !jsonObj.get("fallbackMethod").isJsonNull()) {
+        CallbackMethodEnum.validateJsonElement(jsonObj.get("fallbackMethod"));
       }
       if ((jsonObj.get("fallbackUsername") != null && !jsonObj.get("fallbackUsername").isJsonNull()) && !jsonObj.get("fallbackUsername").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fallbackUsername` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackUsername").toString()));

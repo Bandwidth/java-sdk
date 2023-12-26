@@ -44,7 +44,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -52,7 +51,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * The Conference Member Join event is fired whenever a caller joins a conference that specified a callbackUrl. The response may be either empty or a BXML document. Only the following verbs are valid for conferences: PlayAudio, SpeakSentence, StartRecording, StopRecording, PauseRecording, ResumeRecording. Audio verbs will be heard by all members of the conference. Recordings capture audio from all members who are not muted or on hold, as well as any audio verbs that are played into the conference.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-28T14:02:05.350608Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ConferenceMemberJoinCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)

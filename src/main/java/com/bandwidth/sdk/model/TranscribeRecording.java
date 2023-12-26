@@ -45,7 +45,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -53,7 +52,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * TranscribeRecording
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-28T14:02:05.350608Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TranscribeRecording {
   public static final String SERIALIZED_NAME_CALLBACK_URL = "callbackUrl";
   @SerializedName(SERIALIZED_NAME_CALLBACK_URL)
@@ -376,6 +375,10 @@ public class TranscribeRecording {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("callbackUrl") != null && !jsonObj.get("callbackUrl").isJsonNull()) && !jsonObj.get("callbackUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callbackUrl").toString()));
+      }
+      // validate the optional field `callbackMethod`
+      if (jsonObj.get("callbackMethod") != null && !jsonObj.get("callbackMethod").isJsonNull()) {
+        CallbackMethodEnum.validateJsonElement(jsonObj.get("callbackMethod"));
       }
       if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));

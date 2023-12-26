@@ -49,7 +49,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -57,7 +56,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * MessageRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-28T14:02:05.350608Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MessageRequest {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
@@ -440,6 +439,10 @@ public class MessageRequest {
       }
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
+      }
+      // validate the optional field `priority`
+      if (jsonObj.get("priority") != null && !jsonObj.get("priority").isJsonNull()) {
+        PriorityEnum.validateJsonElement(jsonObj.get("priority"));
       }
   }
 

@@ -2,7 +2,6 @@
 
 Bandwidth
 - API version: 1.0.0
-  - Build date: 2023-11-28T14:02:05.350608Z[Etc/UTC]
 
 Bandwidth's Communication APIs
 

@@ -47,7 +47,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -55,7 +54,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Message
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-28T14:02:05.350608Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Message {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -556,6 +555,10 @@ public class Message {
       if ((jsonObj.get("applicationId") != null && !jsonObj.get("applicationId").isJsonNull()) && !jsonObj.get("applicationId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
       }
+      // validate the optional field `direction`
+      if (jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) {
+        MessageDirectionEnum.validateJsonElement(jsonObj.get("direction"));
+      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull() && !jsonObj.get("to").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be an array in the JSON string but got `%s`", jsonObj.get("to").toString()));
@@ -572,6 +575,10 @@ public class Message {
       }
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
+      }
+      // validate the optional field `priority`
+      if (jsonObj.get("priority") != null && !jsonObj.get("priority").isJsonNull()) {
+        PriorityEnum.validateJsonElement(jsonObj.get("priority"));
       }
   }
 

@@ -43,7 +43,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -51,7 +50,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * UpdateCallRecording
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-28T14:02:05.350608Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdateCallRecording {
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
@@ -199,6 +198,8 @@ public class UpdateCallRecording {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the required field `state`
+      RecordingStateEnum.validateJsonElement(jsonObj.get("state"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

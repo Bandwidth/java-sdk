@@ -46,7 +46,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -54,7 +53,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * CreateCallResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-28T14:02:05.350608Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateCallResponse {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
@@ -802,12 +801,20 @@ public class CreateCallResponse {
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
       }
+      // validate the required field `answerMethod`
+      CallbackMethodEnum.validateJsonElement(jsonObj.get("answerMethod"));
       if (!jsonObj.get("answerUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `answerUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("answerUrl").toString()));
+      }
+      // validate the optional field `answerFallbackMethod`
+      if (jsonObj.get("answerFallbackMethod") != null && !jsonObj.get("answerFallbackMethod").isJsonNull()) {
+        CallbackMethodEnum.validateJsonElement(jsonObj.get("answerFallbackMethod"));
       }
       if ((jsonObj.get("answerFallbackUrl") != null && !jsonObj.get("answerFallbackUrl").isJsonNull()) && !jsonObj.get("answerFallbackUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `answerFallbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("answerFallbackUrl").toString()));
       }
+      // validate the required field `disconnectMethod`
+      CallbackMethodEnum.validateJsonElement(jsonObj.get("disconnectMethod"));
       if ((jsonObj.get("disconnectUrl") != null && !jsonObj.get("disconnectUrl").isJsonNull()) && !jsonObj.get("disconnectUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `disconnectUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("disconnectUrl").toString()));
       }
