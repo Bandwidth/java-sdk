@@ -50,7 +50,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -58,7 +57,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Message Failed Callback Message Schema
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-28T14:02:05.350608Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MessageFailedCallbackMessage {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -549,6 +548,8 @@ public class MessageFailedCallbackMessage {
       if (!jsonObj.get("applicationId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
       }
+      // validate the required field `direction`
+      MessageDirectionEnum.validateJsonElement(jsonObj.get("direction"));
       // ensure the required json array is present
       if (jsonObj.get("to") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
@@ -568,6 +569,8 @@ public class MessageFailedCallbackMessage {
       if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonNull() && !jsonObj.get("media").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `media` to be an array in the JSON string but got `%s`", jsonObj.get("media").toString()));
       }
+      // validate the required field `priority`
+      PriorityEnum.validateJsonElement(jsonObj.get("priority"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -46,7 +46,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -54,7 +53,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * If requestId exists, the result for that request is returned. See the Examples for details on the various responses that you can receive. Generally, if you see a Response Code of 0 in a result for a TN, information will be available for it.  Any other Response Code will indicate no information was available for the TN.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-28T14:02:05.350608Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class LookupStatus {
   public static final String SERIALIZED_NAME_REQUEST_ID = "requestId";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
@@ -296,6 +295,10 @@ public class LookupStatus {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("requestId") != null && !jsonObj.get("requestId").isJsonNull()) && !jsonObj.get("requestId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `requestId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestId").toString()));
+      }
+      // validate the optional field `status`
+      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+        LookupStatusEnum.validateJsonElement(jsonObj.get("status"));
       }
       if (jsonObj.get("result") != null && !jsonObj.get("result").isJsonNull()) {
         JsonArray jsonArrayresult = jsonObj.getAsJsonArray("result");

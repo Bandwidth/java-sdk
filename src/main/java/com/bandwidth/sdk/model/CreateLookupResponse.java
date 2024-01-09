@@ -43,7 +43,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -51,7 +50,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * The request has been accepted for processing but not yet finished and in a terminal state (COMPLETE, PARTIAL_COMPLETE, or FAILED).
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-28T14:02:05.350608Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateLookupResponse {
   public static final String SERIALIZED_NAME_REQUEST_ID = "requestId";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
@@ -221,6 +220,10 @@ public class CreateLookupResponse {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("requestId") != null && !jsonObj.get("requestId").isJsonNull()) && !jsonObj.get("requestId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `requestId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestId").toString()));
+      }
+      // validate the optional field `status`
+      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+        LookupStatusEnum.validateJsonElement(jsonObj.get("status"));
       }
   }
 

@@ -46,7 +46,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -54,7 +53,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * UpdateCall
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-28T14:02:05.350608Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdateCall {
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
@@ -457,8 +456,16 @@ public class UpdateCall {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `state`
+      if (jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) {
+        CallStateEnum.validateJsonElement(jsonObj.get("state"));
+      }
       if ((jsonObj.get("redirectUrl") != null && !jsonObj.get("redirectUrl").isJsonNull()) && !jsonObj.get("redirectUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redirectUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirectUrl").toString()));
+      }
+      // validate the optional field `redirectMethod`
+      if (jsonObj.get("redirectMethod") != null && !jsonObj.get("redirectMethod").isJsonNull()) {
+        RedirectMethodEnum.validateJsonElement(jsonObj.get("redirectMethod"));
       }
       if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
@@ -468,6 +475,10 @@ public class UpdateCall {
       }
       if ((jsonObj.get("redirectFallbackUrl") != null && !jsonObj.get("redirectFallbackUrl").isJsonNull()) && !jsonObj.get("redirectFallbackUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redirectFallbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirectFallbackUrl").toString()));
+      }
+      // validate the optional field `redirectFallbackMethod`
+      if (jsonObj.get("redirectFallbackMethod") != null && !jsonObj.get("redirectFallbackMethod").isJsonNull()) {
+        RedirectMethodEnum.validateJsonElement(jsonObj.get("redirectFallbackMethod"));
       }
       if ((jsonObj.get("fallbackUsername") != null && !jsonObj.get("fallbackUsername").isJsonNull()) && !jsonObj.get("fallbackUsername").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fallbackUsername` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackUsername").toString()));

@@ -13,7 +13,7 @@
 
 package com.bandwidth.sdk;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-28T14:02:05.350608Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Pair {
     private String name = "";
     private String value = "";

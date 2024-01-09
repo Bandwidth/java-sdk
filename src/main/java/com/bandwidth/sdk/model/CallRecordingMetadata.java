@@ -48,7 +48,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -56,7 +55,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * CallRecordingMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-28T14:02:05.350608Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CallRecordingMetadata {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
@@ -712,6 +711,14 @@ public class CallRecordingMetadata {
       }
       if ((jsonObj.get("duration") != null && !jsonObj.get("duration").isJsonNull()) && !jsonObj.get("duration").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `duration` to be a primitive type in the JSON string but got `%s`", jsonObj.get("duration").toString()));
+      }
+      // validate the optional field `direction`
+      if (jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) {
+        CallDirectionEnum.validateJsonElement(jsonObj.get("direction"));
+      }
+      // validate the optional field `fileFormat`
+      if (jsonObj.get("fileFormat") != null && !jsonObj.get("fileFormat").isJsonNull()) {
+        FileFormatEnum.validateJsonElement(jsonObj.get("fileFormat"));
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));

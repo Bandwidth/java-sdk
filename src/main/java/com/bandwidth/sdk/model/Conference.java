@@ -49,7 +49,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -57,7 +56,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Conference
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-28T14:02:05.350608Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Conference {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -420,6 +419,10 @@ public class Conference {
       }
       if ((jsonObj.get("conferenceEventUrl") != null && !jsonObj.get("conferenceEventUrl").isJsonNull()) && !jsonObj.get("conferenceEventUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `conferenceEventUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conferenceEventUrl").toString()));
+      }
+      // validate the optional field `conferenceEventMethod`
+      if (jsonObj.get("conferenceEventMethod") != null && !jsonObj.get("conferenceEventMethod").isJsonNull()) {
+        CallbackMethodEnum.validateJsonElement(jsonObj.get("conferenceEventMethod"));
       }
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
