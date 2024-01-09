@@ -53,7 +53,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * ConferenceMember
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-28T14:02:05.350608Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ConferenceMember {
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)

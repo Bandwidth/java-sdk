@@ -52,7 +52,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Create phone number lookup request.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-11-28T14:02:05.350608Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class LookupRequest {
   public static final String SERIALIZED_NAME_TNS = "tns";
   @SerializedName(SERIALIZED_NAME_TNS)
