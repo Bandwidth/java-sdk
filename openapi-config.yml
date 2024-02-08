@@ -6,11 +6,9 @@ developerEmail: dx@bandwidth.com
 developerOrganization: Bandwidth
 disallowAdditionalPropertiesIfNotPresent: false
 hideGenerationTimestamp: true
-caseInsensitiveResponseHeaders: true
 groupId: com.bandwidth.sdk
 invokerPackage: com.bandwidth.sdk
 apiPackage: com.bandwidth.sdk.api
 modelPackage: com.bandwidth.sdk.model
 library: okhttp-gson
 licenseName: MIT
-templateDir: custom_templates

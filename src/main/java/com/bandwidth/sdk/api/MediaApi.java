@@ -677,12 +677,12 @@ public class MediaApi {
             "video/webm",
             "video/x-ms-wmv"
         };
-	if (contentType == null) { 
-	    final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-	    if (localVarContentType != null) {
-		localVarHeaderParams.put("Content-Type", localVarContentType);
-	    }
-	}
+	if (contentType ==  null) {
+          final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+          if (localVarContentType != null) {
+              localVarHeaderParams.put("Content-Type", localVarContentType);
+          }
+	};
 
         String[] localVarAuthNames = new String[] { "Basic" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);

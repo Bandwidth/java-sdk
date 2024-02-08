@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.bandwidth.sdk</groupId>
   <artifactId>bandwidth-sdk</artifactId>
-  <version>9.0.0</version>
+  <version>9.1.1</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -56,7 +56,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.bandwidth.sdk:bandwidth-sdk:9.0.0"
+     implementation "com.bandwidth.sdk:bandwidth-sdk:9.1.1"
   }
 ```
 
@@ -70,7 +70,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/bandwidth-sdk-9.0.0.jar`
+* `target/bandwidth-sdk-9.1.1.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
