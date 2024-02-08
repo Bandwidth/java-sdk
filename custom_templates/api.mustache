@@ -106,7 +106,7 @@ public class {{classname}} {
     };
 
     if (contentType == null) {
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+      final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
     }
 
     String[] localVarAuthNames = new String[] { {{#authMethods}}"{{name}}"{{^-last}}, {{/-last}}{{/authMethods}} };

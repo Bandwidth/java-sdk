@@ -13,3 +13,4 @@ apiPackage: com.bandwidth.sdk.api
 modelPackage: com.bandwidth.sdk.model
 library: okhttp-gson
 licenseName: MIT
+templateDir: custom_templates
