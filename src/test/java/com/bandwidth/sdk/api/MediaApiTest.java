@@ -27,7 +27,7 @@ import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 public class MediaApiTest {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private final MediaApi api = new MediaApi(defaultClient);
+    private final MediaApi api = new MediaApi(defaultClient.setDebugging(true));
 
     private static String mediaPath = "src/test/java/com/bandwidth/sdk/fixtures/";
     private static String mediaFile = "java_cat.jpeg";

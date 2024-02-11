@@ -43,7 +43,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -65,7 +64,6 @@ public class CreateLookupResponse {
   }
 
   public CreateLookupResponse requestId(String requestId) {
-    
     this.requestId = requestId;
     return this;
   }
@@ -79,14 +77,12 @@ public class CreateLookupResponse {
     return requestId;
   }
 
-
   public void setRequestId(String requestId) {
     this.requestId = requestId;
   }
 
 
   public CreateLookupResponse status(LookupStatusEnum status) {
-    
     this.status = status;
     return this;
   }
@@ -99,7 +95,6 @@ public class CreateLookupResponse {
   public LookupStatusEnum getStatus() {
     return status;
   }
-
 
   public void setStatus(LookupStatusEnum status) {
     this.status = status;
@@ -222,6 +217,10 @@ public class CreateLookupResponse {
       if ((jsonObj.get("requestId") != null && !jsonObj.get("requestId").isJsonNull()) && !jsonObj.get("requestId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `requestId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestId").toString()));
       }
+      // validate the optional field `status`
+      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+        LookupStatusEnum.validateJsonElement(jsonObj.get("status"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -252,7 +251,12 @@ public class CreateLookupResponse {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

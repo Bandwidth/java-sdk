@@ -45,7 +45,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -63,7 +62,6 @@ public class TranscriptionList {
   }
 
   public TranscriptionList transcripts(List<Transcription> transcripts) {
-    
     this.transcripts = transcripts;
     return this;
   }
@@ -84,7 +82,6 @@ public class TranscriptionList {
   public List<Transcription> getTranscripts() {
     return transcripts;
   }
-
 
   public void setTranscripts(List<Transcription> transcripts) {
     this.transcripts = transcripts;
@@ -245,7 +242,12 @@ public class TranscriptionList {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

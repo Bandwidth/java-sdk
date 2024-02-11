@@ -48,7 +48,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -134,7 +133,6 @@ public class CallRecordingMetadata {
   }
 
   public CallRecordingMetadata applicationId(String applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
@@ -148,14 +146,12 @@ public class CallRecordingMetadata {
     return applicationId;
   }
 
-
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public CallRecordingMetadata accountId(String accountId) {
-    
     this.accountId = accountId;
     return this;
   }
@@ -169,14 +165,12 @@ public class CallRecordingMetadata {
     return accountId;
   }
 
-
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
   public CallRecordingMetadata callId(String callId) {
-    
     this.callId = callId;
     return this;
   }
@@ -190,14 +184,12 @@ public class CallRecordingMetadata {
     return callId;
   }
 
-
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
   public CallRecordingMetadata parentCallId(String parentCallId) {
-    
     this.parentCallId = parentCallId;
     return this;
   }
@@ -211,14 +203,12 @@ public class CallRecordingMetadata {
     return parentCallId;
   }
 
-
   public void setParentCallId(String parentCallId) {
     this.parentCallId = parentCallId;
   }
 
 
   public CallRecordingMetadata recordingId(String recordingId) {
-    
     this.recordingId = recordingId;
     return this;
   }
@@ -232,14 +222,12 @@ public class CallRecordingMetadata {
     return recordingId;
   }
 
-
   public void setRecordingId(String recordingId) {
     this.recordingId = recordingId;
   }
 
 
   public CallRecordingMetadata to(String to) {
-    
     this.to = to;
     return this;
   }
@@ -253,14 +241,12 @@ public class CallRecordingMetadata {
     return to;
   }
 
-
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public CallRecordingMetadata from(String from) {
-    
     this.from = from;
     return this;
   }
@@ -274,14 +260,12 @@ public class CallRecordingMetadata {
     return from;
   }
 
-
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public CallRecordingMetadata transferCallerId(String transferCallerId) {
-    
     this.transferCallerId = transferCallerId;
     return this;
   }
@@ -295,14 +279,12 @@ public class CallRecordingMetadata {
     return transferCallerId;
   }
 
-
   public void setTransferCallerId(String transferCallerId) {
     this.transferCallerId = transferCallerId;
   }
 
 
   public CallRecordingMetadata transferTo(String transferTo) {
-    
     this.transferTo = transferTo;
     return this;
   }
@@ -316,14 +298,12 @@ public class CallRecordingMetadata {
     return transferTo;
   }
 
-
   public void setTransferTo(String transferTo) {
     this.transferTo = transferTo;
   }
 
 
   public CallRecordingMetadata duration(String duration) {
-    
     this.duration = duration;
     return this;
   }
@@ -337,14 +317,12 @@ public class CallRecordingMetadata {
     return duration;
   }
 
-
   public void setDuration(String duration) {
     this.duration = duration;
   }
 
 
   public CallRecordingMetadata direction(CallDirectionEnum direction) {
-    
     this.direction = direction;
     return this;
   }
@@ -358,14 +336,12 @@ public class CallRecordingMetadata {
     return direction;
   }
 
-
   public void setDirection(CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
   public CallRecordingMetadata channels(Integer channels) {
-    
     this.channels = channels;
     return this;
   }
@@ -379,14 +355,12 @@ public class CallRecordingMetadata {
     return channels;
   }
 
-
   public void setChannels(Integer channels) {
     this.channels = channels;
   }
 
 
   public CallRecordingMetadata startTime(OffsetDateTime startTime) {
-    
     this.startTime = startTime;
     return this;
   }
@@ -400,14 +374,12 @@ public class CallRecordingMetadata {
     return startTime;
   }
 
-
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
   public CallRecordingMetadata endTime(OffsetDateTime endTime) {
-    
     this.endTime = endTime;
     return this;
   }
@@ -421,14 +393,12 @@ public class CallRecordingMetadata {
     return endTime;
   }
 
-
   public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
 
   public CallRecordingMetadata fileFormat(FileFormatEnum fileFormat) {
-    
     this.fileFormat = fileFormat;
     return this;
   }
@@ -442,14 +412,12 @@ public class CallRecordingMetadata {
     return fileFormat;
   }
 
-
   public void setFileFormat(FileFormatEnum fileFormat) {
     this.fileFormat = fileFormat;
   }
 
 
   public CallRecordingMetadata status(String status) {
-    
     this.status = status;
     return this;
   }
@@ -463,14 +431,12 @@ public class CallRecordingMetadata {
     return status;
   }
 
-
   public void setStatus(String status) {
     this.status = status;
   }
 
 
   public CallRecordingMetadata mediaUrl(URI mediaUrl) {
-    
     this.mediaUrl = mediaUrl;
     return this;
   }
@@ -484,14 +450,12 @@ public class CallRecordingMetadata {
     return mediaUrl;
   }
 
-
   public void setMediaUrl(URI mediaUrl) {
     this.mediaUrl = mediaUrl;
   }
 
 
   public CallRecordingMetadata transcription(TranscriptionMetadata transcription) {
-    
     this.transcription = transcription;
     return this;
   }
@@ -504,7 +468,6 @@ public class CallRecordingMetadata {
   public TranscriptionMetadata getTranscription() {
     return transcription;
   }
-
 
   public void setTranscription(TranscriptionMetadata transcription) {
     this.transcription = transcription;
@@ -713,6 +676,14 @@ public class CallRecordingMetadata {
       if ((jsonObj.get("duration") != null && !jsonObj.get("duration").isJsonNull()) && !jsonObj.get("duration").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `duration` to be a primitive type in the JSON string but got `%s`", jsonObj.get("duration").toString()));
       }
+      // validate the optional field `direction`
+      if (jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) {
+        CallDirectionEnum.validateJsonElement(jsonObj.get("direction"));
+      }
+      // validate the optional field `fileFormat`
+      if (jsonObj.get("fileFormat") != null && !jsonObj.get("fileFormat").isJsonNull()) {
+        FileFormatEnum.validateJsonElement(jsonObj.get("fileFormat"));
+      }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
@@ -753,7 +724,12 @@ public class CallRecordingMetadata {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

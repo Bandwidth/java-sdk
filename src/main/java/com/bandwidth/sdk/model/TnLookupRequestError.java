@@ -42,7 +42,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -60,7 +59,6 @@ public class TnLookupRequestError {
   }
 
   public TnLookupRequestError message(String message) {
-    
     this.message = message;
     return this;
   }
@@ -73,7 +71,6 @@ public class TnLookupRequestError {
   public String getMessage() {
     return message;
   }
-
 
   public void setMessage(String message) {
     this.message = message;
@@ -223,7 +220,12 @@ public class TnLookupRequestError {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

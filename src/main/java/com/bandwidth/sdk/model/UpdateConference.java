@@ -46,7 +46,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -96,7 +95,6 @@ public class UpdateConference {
   }
 
   public UpdateConference status(ConferenceStateEnum status) {
-    
     this.status = status;
     return this;
   }
@@ -110,14 +108,12 @@ public class UpdateConference {
     return status;
   }
 
-
   public void setStatus(ConferenceStateEnum status) {
     this.status = status;
   }
 
 
   public UpdateConference redirectUrl(URI redirectUrl) {
-    
     this.redirectUrl = redirectUrl;
     return this;
   }
@@ -131,14 +127,12 @@ public class UpdateConference {
     return redirectUrl;
   }
 
-
   public void setRedirectUrl(URI redirectUrl) {
     this.redirectUrl = redirectUrl;
   }
 
 
   public UpdateConference redirectMethod(RedirectMethodEnum redirectMethod) {
-    
     this.redirectMethod = redirectMethod;
     return this;
   }
@@ -152,14 +146,12 @@ public class UpdateConference {
     return redirectMethod;
   }
 
-
   public void setRedirectMethod(RedirectMethodEnum redirectMethod) {
     this.redirectMethod = redirectMethod;
   }
 
 
   public UpdateConference username(String username) {
-    
     this.username = username;
     return this;
   }
@@ -173,14 +165,12 @@ public class UpdateConference {
     return username;
   }
 
-
   public void setUsername(String username) {
     this.username = username;
   }
 
 
   public UpdateConference password(String password) {
-    
     this.password = password;
     return this;
   }
@@ -194,14 +184,12 @@ public class UpdateConference {
     return password;
   }
 
-
   public void setPassword(String password) {
     this.password = password;
   }
 
 
   public UpdateConference redirectFallbackUrl(URI redirectFallbackUrl) {
-    
     this.redirectFallbackUrl = redirectFallbackUrl;
     return this;
   }
@@ -215,14 +203,12 @@ public class UpdateConference {
     return redirectFallbackUrl;
   }
 
-
   public void setRedirectFallbackUrl(URI redirectFallbackUrl) {
     this.redirectFallbackUrl = redirectFallbackUrl;
   }
 
 
   public UpdateConference redirectFallbackMethod(RedirectMethodEnum redirectFallbackMethod) {
-    
     this.redirectFallbackMethod = redirectFallbackMethod;
     return this;
   }
@@ -236,14 +222,12 @@ public class UpdateConference {
     return redirectFallbackMethod;
   }
 
-
   public void setRedirectFallbackMethod(RedirectMethodEnum redirectFallbackMethod) {
     this.redirectFallbackMethod = redirectFallbackMethod;
   }
 
 
   public UpdateConference fallbackUsername(String fallbackUsername) {
-    
     this.fallbackUsername = fallbackUsername;
     return this;
   }
@@ -257,14 +241,12 @@ public class UpdateConference {
     return fallbackUsername;
   }
 
-
   public void setFallbackUsername(String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
   }
 
 
   public UpdateConference fallbackPassword(String fallbackPassword) {
-    
     this.fallbackPassword = fallbackPassword;
     return this;
   }
@@ -277,7 +259,6 @@ public class UpdateConference {
   public String getFallbackPassword() {
     return fallbackPassword;
   }
-
 
   public void setFallbackPassword(String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
@@ -429,8 +410,16 @@ public class UpdateConference {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `status`
+      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+        ConferenceStateEnum.validateJsonElement(jsonObj.get("status"));
+      }
       if ((jsonObj.get("redirectUrl") != null && !jsonObj.get("redirectUrl").isJsonNull()) && !jsonObj.get("redirectUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redirectUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirectUrl").toString()));
+      }
+      // validate the optional field `redirectMethod`
+      if (jsonObj.get("redirectMethod") != null && !jsonObj.get("redirectMethod").isJsonNull()) {
+        RedirectMethodEnum.validateJsonElement(jsonObj.get("redirectMethod"));
       }
       if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
@@ -440,6 +429,10 @@ public class UpdateConference {
       }
       if ((jsonObj.get("redirectFallbackUrl") != null && !jsonObj.get("redirectFallbackUrl").isJsonNull()) && !jsonObj.get("redirectFallbackUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redirectFallbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirectFallbackUrl").toString()));
+      }
+      // validate the optional field `redirectFallbackMethod`
+      if (jsonObj.get("redirectFallbackMethod") != null && !jsonObj.get("redirectFallbackMethod").isJsonNull()) {
+        RedirectMethodEnum.validateJsonElement(jsonObj.get("redirectFallbackMethod"));
       }
       if ((jsonObj.get("fallbackUsername") != null && !jsonObj.get("fallbackUsername").isJsonNull()) && !jsonObj.get("fallbackUsername").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fallbackUsername` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackUsername").toString()));
@@ -477,7 +470,12 @@ public class UpdateConference {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

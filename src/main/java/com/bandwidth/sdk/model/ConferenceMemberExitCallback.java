@@ -44,7 +44,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -90,7 +89,6 @@ public class ConferenceMemberExitCallback {
   }
 
   public ConferenceMemberExitCallback eventType(String eventType) {
-    
     this.eventType = eventType;
     return this;
   }
@@ -104,14 +102,12 @@ public class ConferenceMemberExitCallback {
     return eventType;
   }
 
-
   public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
   public ConferenceMemberExitCallback eventTime(OffsetDateTime eventTime) {
-    
     this.eventTime = eventTime;
     return this;
   }
@@ -125,14 +121,12 @@ public class ConferenceMemberExitCallback {
     return eventTime;
   }
 
-
   public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
   public ConferenceMemberExitCallback conferenceId(String conferenceId) {
-    
     this.conferenceId = conferenceId;
     return this;
   }
@@ -146,14 +140,12 @@ public class ConferenceMemberExitCallback {
     return conferenceId;
   }
 
-
   public void setConferenceId(String conferenceId) {
     this.conferenceId = conferenceId;
   }
 
 
   public ConferenceMemberExitCallback name(String name) {
-    
     this.name = name;
     return this;
   }
@@ -167,14 +159,12 @@ public class ConferenceMemberExitCallback {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
 
   public ConferenceMemberExitCallback from(String from) {
-    
     this.from = from;
     return this;
   }
@@ -188,14 +178,12 @@ public class ConferenceMemberExitCallback {
     return from;
   }
 
-
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public ConferenceMemberExitCallback to(String to) {
-    
     this.to = to;
     return this;
   }
@@ -209,14 +197,12 @@ public class ConferenceMemberExitCallback {
     return to;
   }
 
-
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public ConferenceMemberExitCallback callId(String callId) {
-    
     this.callId = callId;
     return this;
   }
@@ -230,14 +216,12 @@ public class ConferenceMemberExitCallback {
     return callId;
   }
 
-
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
   public ConferenceMemberExitCallback tag(String tag) {
-    
     this.tag = tag;
     return this;
   }
@@ -250,7 +234,6 @@ public class ConferenceMemberExitCallback {
   public String getTag() {
     return tag;
   }
-
 
   public void setTag(String tag) {
     this.tag = tag;
@@ -450,7 +433,12 @@ public class ConferenceMemberExitCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }
