@@ -20,6 +20,7 @@ import java.util.UUID;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.containsString;
 
 import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 
@@ -27,7 +28,7 @@ import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 public class MediaApiTest {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private final MediaApi api = new MediaApi(defaultClient.setDebugging(true));
+    private final MediaApi api = new MediaApi(defaultClient);
 
     private static String mediaPath = "src/test/java/com/bandwidth/sdk/fixtures/";
     private static String mediaFile = "java_cat.jpeg";
@@ -49,11 +50,15 @@ public class MediaApiTest {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
 
+        
+
+        okhttp3.Call call = api.uploadMediaValidateBeforeCall(BW_ACCOUNT_ID, mediaId, media, contentType, cacheControl, null);
         ApiResponse<Void> response = api.uploadMediaWithHttpInfo(BW_ACCOUNT_ID, mediaId, media,
                 contentType,
                 cacheControl);
 
         assertThat(response.getStatusCode(), is(204));
+        assertThat(call.request().toString(), containsString(contentType));
     }
 
     @Test

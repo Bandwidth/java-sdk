@@ -682,14 +682,14 @@ public class MediaApi {
             if (localVarContentType != null) {
                 localVarHeaderParams.put("Content-Type", localVarContentType);
             }
-	}
+	};
 
         String[] localVarAuthNames = new String[] { "Basic" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call uploadMediaValidateBeforeCall(String accountId, String mediaId, File body, String contentType, String cacheControl, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call uploadMediaValidateBeforeCall(String accountId, String mediaId, File body, String contentType, String cacheControl, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling uploadMedia(Async)");
