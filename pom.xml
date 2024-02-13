@@ -8,7 +8,7 @@
     <name>bandwidth-sdk</name>
     <version>9.1.2</version>
     <url>https://github.com/Bandwidth/java-sdk</url>
-    <description>The official client SDK for Bandwidth&#39;s Voice, Messaging, MFA, and WebRTC APIs</description>
+    <description>The official client SDK for Bandwidth's Voice, Messaging, MFA, and WebRTC APIs</description>
     <scm>
         <url>https://github.com/Bandwidth/java-sdk</url>
         <connection>scm:git:git@github.com:Bandwidth/java-sdk.git</connection>
@@ -249,8 +249,8 @@
                                 <include>.gitignore</include>
                             </includes>
                             <!-- define the steps to apply to those files -->
-                            <trimTrailingWhitespace />
-                            <endWithNewline />
+                            <trimTrailingWhitespace/>
+                            <endWithNewline/>
                             <indent>
                                 <spaces>true</spaces>                                <!-- or <tabs>true</tabs> -->
                                 <spacesPerTab>4</spacesPerTab>                                <!-- optional, default is 4 -->
@@ -269,8 +269,8 @@
                             <reflowLongStrings>true</reflowLongStrings>
                         </googleJavaFormat>
 
-                        <removeUnusedImports />
-                        <importOrder />
+                        <removeUnusedImports/>
+                        <importOrder/>
 
                     </java>
                 </configuration>
@@ -400,7 +400,7 @@
         <gson-fire-version>
             1.8.5</gson-fire-version>
         <swagger-core-version>1.6.5</swagger-core-version>
-        <okhttp-version>4.9.3</okhttp-version>
+        <okhttp-version>4.12.0</okhttp-version>
         <gson-version>2.9.0</gson-version>
         <version.commons-io>2.11.0</version.commons-io>
         <commons-lang3-version>
