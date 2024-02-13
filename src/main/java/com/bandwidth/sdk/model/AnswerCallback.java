@@ -46,7 +46,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -116,7 +115,6 @@ public class AnswerCallback {
   }
 
   public AnswerCallback eventType(String eventType) {
-    
     this.eventType = eventType;
     return this;
   }
@@ -130,14 +128,12 @@ public class AnswerCallback {
     return eventType;
   }
 
-
   public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
   public AnswerCallback eventTime(OffsetDateTime eventTime) {
-    
     this.eventTime = eventTime;
     return this;
   }
@@ -151,14 +147,12 @@ public class AnswerCallback {
     return eventTime;
   }
 
-
   public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
   public AnswerCallback accountId(String accountId) {
-    
     this.accountId = accountId;
     return this;
   }
@@ -172,14 +166,12 @@ public class AnswerCallback {
     return accountId;
   }
 
-
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
   public AnswerCallback applicationId(String applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
@@ -193,14 +185,12 @@ public class AnswerCallback {
     return applicationId;
   }
 
-
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public AnswerCallback from(String from) {
-    
     this.from = from;
     return this;
   }
@@ -214,14 +204,12 @@ public class AnswerCallback {
     return from;
   }
 
-
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public AnswerCallback to(String to) {
-    
     this.to = to;
     return this;
   }
@@ -235,14 +223,12 @@ public class AnswerCallback {
     return to;
   }
 
-
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public AnswerCallback direction(CallDirectionEnum direction) {
-    
     this.direction = direction;
     return this;
   }
@@ -256,14 +242,12 @@ public class AnswerCallback {
     return direction;
   }
 
-
   public void setDirection(CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
   public AnswerCallback callId(String callId) {
-    
     this.callId = callId;
     return this;
   }
@@ -277,14 +261,12 @@ public class AnswerCallback {
     return callId;
   }
 
-
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
   public AnswerCallback callUrl(String callUrl) {
-    
     this.callUrl = callUrl;
     return this;
   }
@@ -298,14 +280,12 @@ public class AnswerCallback {
     return callUrl;
   }
 
-
   public void setCallUrl(String callUrl) {
     this.callUrl = callUrl;
   }
 
 
   public AnswerCallback enqueuedTime(OffsetDateTime enqueuedTime) {
-    
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -319,14 +299,12 @@ public class AnswerCallback {
     return enqueuedTime;
   }
 
-
   public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
   public AnswerCallback startTime(OffsetDateTime startTime) {
-    
     this.startTime = startTime;
     return this;
   }
@@ -340,14 +318,12 @@ public class AnswerCallback {
     return startTime;
   }
 
-
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
   public AnswerCallback answerTime(OffsetDateTime answerTime) {
-    
     this.answerTime = answerTime;
     return this;
   }
@@ -361,14 +337,12 @@ public class AnswerCallback {
     return answerTime;
   }
 
-
   public void setAnswerTime(OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
   public AnswerCallback tag(String tag) {
-    
     this.tag = tag;
     return this;
   }
@@ -382,14 +356,12 @@ public class AnswerCallback {
     return tag;
   }
 
-
   public void setTag(String tag) {
     this.tag = tag;
   }
 
 
   public AnswerCallback machineDetectionResult(MachineDetectionResult machineDetectionResult) {
-    
     this.machineDetectionResult = machineDetectionResult;
     return this;
   }
@@ -402,7 +374,6 @@ public class AnswerCallback {
   public MachineDetectionResult getMachineDetectionResult() {
     return machineDetectionResult;
   }
-
 
   public void setMachineDetectionResult(MachineDetectionResult machineDetectionResult) {
     this.machineDetectionResult = machineDetectionResult;
@@ -584,6 +555,10 @@ public class AnswerCallback {
       if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
+      // validate the optional field `direction`
+      if (jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) {
+        CallDirectionEnum.validateJsonElement(jsonObj.get("direction"));
+      }
       if ((jsonObj.get("callId") != null && !jsonObj.get("callId").isJsonNull()) && !jsonObj.get("callId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callId").toString()));
       }
@@ -627,7 +602,12 @@ public class AnswerCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

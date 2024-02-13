@@ -44,7 +44,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -78,7 +77,6 @@ public class ConferenceRedirectCallback {
   }
 
   public ConferenceRedirectCallback eventType(String eventType) {
-    
     this.eventType = eventType;
     return this;
   }
@@ -92,14 +90,12 @@ public class ConferenceRedirectCallback {
     return eventType;
   }
 
-
   public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
   public ConferenceRedirectCallback eventTime(OffsetDateTime eventTime) {
-    
     this.eventTime = eventTime;
     return this;
   }
@@ -113,14 +109,12 @@ public class ConferenceRedirectCallback {
     return eventTime;
   }
 
-
   public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
   public ConferenceRedirectCallback conferenceId(String conferenceId) {
-    
     this.conferenceId = conferenceId;
     return this;
   }
@@ -134,14 +128,12 @@ public class ConferenceRedirectCallback {
     return conferenceId;
   }
 
-
   public void setConferenceId(String conferenceId) {
     this.conferenceId = conferenceId;
   }
 
 
   public ConferenceRedirectCallback name(String name) {
-    
     this.name = name;
     return this;
   }
@@ -155,14 +147,12 @@ public class ConferenceRedirectCallback {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
 
   public ConferenceRedirectCallback tag(String tag) {
-    
     this.tag = tag;
     return this;
   }
@@ -175,7 +165,6 @@ public class ConferenceRedirectCallback {
   public String getTag() {
     return tag;
   }
-
 
   public void setTag(String tag) {
     this.tag = tag;
@@ -357,7 +346,12 @@ public class ConferenceRedirectCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

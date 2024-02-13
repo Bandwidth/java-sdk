@@ -42,7 +42,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -80,7 +79,6 @@ public class CodeRequest {
   }
 
   public CodeRequest to(String to) {
-    
     this.to = to;
     return this;
   }
@@ -94,14 +92,12 @@ public class CodeRequest {
     return to;
   }
 
-
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public CodeRequest from(String from) {
-    
     this.from = from;
     return this;
   }
@@ -115,14 +111,12 @@ public class CodeRequest {
     return from;
   }
 
-
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public CodeRequest applicationId(String applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
@@ -136,14 +130,12 @@ public class CodeRequest {
     return applicationId;
   }
 
-
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public CodeRequest scope(String scope) {
-    
     this.scope = scope;
     return this;
   }
@@ -157,14 +149,12 @@ public class CodeRequest {
     return scope;
   }
 
-
   public void setScope(String scope) {
     this.scope = scope;
   }
 
 
   public CodeRequest message(String message) {
-    
     this.message = message;
     return this;
   }
@@ -178,14 +168,12 @@ public class CodeRequest {
     return message;
   }
 
-
   public void setMessage(String message) {
     this.message = message;
   }
 
 
   public CodeRequest digits(Integer digits) {
-    
     this.digits = digits;
     return this;
   }
@@ -200,7 +188,6 @@ public class CodeRequest {
   public Integer getDigits() {
     return digits;
   }
-
 
   public void setDigits(Integer digits) {
     this.digits = digits;
@@ -389,7 +376,12 @@ public class CodeRequest {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

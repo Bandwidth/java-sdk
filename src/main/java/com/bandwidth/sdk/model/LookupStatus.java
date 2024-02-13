@@ -46,7 +46,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -76,7 +75,6 @@ public class LookupStatus {
   }
 
   public LookupStatus requestId(String requestId) {
-    
     this.requestId = requestId;
     return this;
   }
@@ -90,14 +88,12 @@ public class LookupStatus {
     return requestId;
   }
 
-
   public void setRequestId(String requestId) {
     this.requestId = requestId;
   }
 
 
   public LookupStatus status(LookupStatusEnum status) {
-    
     this.status = status;
     return this;
   }
@@ -111,14 +107,12 @@ public class LookupStatus {
     return status;
   }
 
-
   public void setStatus(LookupStatusEnum status) {
     this.status = status;
   }
 
 
   public LookupStatus result(List<LookupResult> result) {
-    
     this.result = result;
     return this;
   }
@@ -140,14 +134,12 @@ public class LookupStatus {
     return result;
   }
 
-
   public void setResult(List<LookupResult> result) {
     this.result = result;
   }
 
 
   public LookupStatus failedTelephoneNumbers(List<String> failedTelephoneNumbers) {
-    
     this.failedTelephoneNumbers = failedTelephoneNumbers;
     return this;
   }
@@ -168,7 +160,6 @@ public class LookupStatus {
   public List<String> getFailedTelephoneNumbers() {
     return failedTelephoneNumbers;
   }
-
 
   public void setFailedTelephoneNumbers(List<String> failedTelephoneNumbers) {
     this.failedTelephoneNumbers = failedTelephoneNumbers;
@@ -297,6 +288,10 @@ public class LookupStatus {
       if ((jsonObj.get("requestId") != null && !jsonObj.get("requestId").isJsonNull()) && !jsonObj.get("requestId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `requestId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestId").toString()));
       }
+      // validate the optional field `status`
+      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+        LookupStatusEnum.validateJsonElement(jsonObj.get("status"));
+      }
       if (jsonObj.get("result") != null && !jsonObj.get("result").isJsonNull()) {
         JsonArray jsonArrayresult = jsonObj.getAsJsonArray("result");
         if (jsonArrayresult != null) {
@@ -345,7 +340,12 @@ public class LookupStatus {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }
