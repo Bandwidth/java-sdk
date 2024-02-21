@@ -62,7 +62,7 @@ public enum MessageStatusEnum {
 
   public static MessageStatusEnum fromValue(String value) {
     for (MessageStatusEnum b : MessageStatusEnum.values()) {
-      if (b.value.equals(value)) {
+      if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
     }

@@ -50,7 +50,7 @@ public enum FileFormatEnum {
 
   public static FileFormatEnum fromValue(String value) {
     for (FileFormatEnum b : FileFormatEnum.values()) {
-      if (b.value.equals(value)) {
+      if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
     }

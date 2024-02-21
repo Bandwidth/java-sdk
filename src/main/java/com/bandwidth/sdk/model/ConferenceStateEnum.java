@@ -50,7 +50,7 @@ public enum ConferenceStateEnum {
 
   public static ConferenceStateEnum fromValue(String value) {
     for (ConferenceStateEnum b : ConferenceStateEnum.values()) {
-      if (b.value.equals(value)) {
+      if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
     }

@@ -50,6 +50,7 @@ public class TransferVerbTest {
                                .callTimeout(15d)
                                .destinations(List.of(phonenumber))
                                .transferCallerId("+19195554321")
+                               .transferCallerDisplayName("Clark Kent")
                                .tag("test")
                                .build();
 
@@ -57,7 +58,7 @@ public class TransferVerbTest {
     public void transferVerbWorks() throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
         String expectedSipUriBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Transfer transferCallerId=\"+19195554321\" callTimeout=\"15.0\" transferCompleteMethod=\"POST\" transferCompleteFallbackMethod=\"POST\" tag=\"test\" diversionTreatment=\"NONE\" diversionReason=\"UNKNOWN\"><SipUri uui=\"test\" transferAnswerUrl=\"https://example.com/webhooks/transfer_answer\" transferAnswerMethod=\"POST\" transferAnswerFallbackMethod=\"POST\" transferDisconnectMethod=\"POST\" tag=\"test\">sip@bw.com</SipUri></Transfer></Bxml>";
-        String expectedPhoneNumberBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Transfer transferCallerId=\"+19195554321\" callTimeout=\"15.0\" transferCompleteMethod=\"POST\" transferCompleteFallbackMethod=\"POST\" tag=\"test\" diversionTreatment=\"NONE\" diversionReason=\"UNKNOWN\"><PhoneNumber transferAnswerUrl=\"https://example.com/webhooks/transfer_answer\" transferAnswerMethod=\"POST\" transferAnswerFallbackMethod=\"POST\" transferDisconnectMethod=\"POST\" tag=\"test\">+19195551234</PhoneNumber></Transfer></Bxml>";
+        String expectedPhoneNumberBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Transfer transferCallerId=\"+19195554321\" transferCallerDisplayName=\"Clark Kent\" callTimeout=\"15.0\" transferCompleteMethod=\"POST\" transferCompleteFallbackMethod=\"POST\" tag=\"test\" diversionTreatment=\"NONE\" diversionReason=\"UNKNOWN\"><PhoneNumber transferAnswerUrl=\"https://example.com/webhooks/transfer_answer\" transferAnswerMethod=\"POST\" transferAnswerFallbackMethod=\"POST\" transferDisconnectMethod=\"POST\" tag=\"test\">+19195551234</PhoneNumber></Transfer></Bxml>";
 
         assertThat(new Bxml().with(transfer1).toBxml(jaxbContext), is(expectedSipUriBxml));
         assertThat(new Bxml().with(transfer2).toBxml(jaxbContext), is(expectedPhoneNumberBxml));

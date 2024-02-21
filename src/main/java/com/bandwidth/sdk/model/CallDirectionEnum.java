@@ -50,7 +50,7 @@ public enum CallDirectionEnum {
 
   public static CallDirectionEnum fromValue(String value) {
     for (CallDirectionEnum b : CallDirectionEnum.values()) {
-      if (b.value.equals(value)) {
+      if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
     }

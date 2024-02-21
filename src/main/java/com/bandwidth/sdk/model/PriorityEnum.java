@@ -50,7 +50,7 @@ public enum PriorityEnum {
 
   public static PriorityEnum fromValue(String value) {
     for (PriorityEnum b : PriorityEnum.values()) {
-      if (b.value.equals(value)) {
+      if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
     }

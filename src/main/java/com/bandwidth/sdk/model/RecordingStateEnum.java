@@ -50,7 +50,7 @@ public enum RecordingStateEnum {
 
   public static RecordingStateEnum fromValue(String value) {
     for (RecordingStateEnum b : RecordingStateEnum.values()) {
-      if (b.value.equals(value)) {
+      if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
     }

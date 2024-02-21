@@ -50,7 +50,7 @@ public enum CallStateEnum {
 
   public static CallStateEnum fromValue(String value) {
     for (CallStateEnum b : CallStateEnum.values()) {
-      if (b.value.equals(value)) {
+      if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
     }

@@ -50,7 +50,7 @@ public enum ListMessageDirectionEnum {
 
   public static ListMessageDirectionEnum fromValue(String value) {
     for (ListMessageDirectionEnum b : ListMessageDirectionEnum.values()) {
-      if (b.value.equals(value)) {
+      if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
     }
