@@ -2,7 +2,7 @@ lazy val root = (project in file(".")).
   settings(
     organization := "com.bandwidth.sdk",
     name := "bandwidth-sdk",
-    version := "9.1.2",
+    version := "9.1.3",
     scalaVersion := "2.11.4",
     scalacOptions ++= Seq("-feature"),
     javacOptions in compile ++= Seq("-Xlint:deprecation"),
