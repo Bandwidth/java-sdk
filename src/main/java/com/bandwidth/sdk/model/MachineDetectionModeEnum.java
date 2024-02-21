@@ -50,7 +50,7 @@ public enum MachineDetectionModeEnum {
 
   public static MachineDetectionModeEnum fromValue(String value) {
     for (MachineDetectionModeEnum b : MachineDetectionModeEnum.values()) {
-      if (b.value.equals(value)) {
+      if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
     }

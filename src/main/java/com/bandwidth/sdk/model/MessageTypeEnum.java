@@ -50,7 +50,7 @@ public enum MessageTypeEnum {
 
   public static MessageTypeEnum fromValue(String value) {
     for (MessageTypeEnum b : MessageTypeEnum.values()) {
-      if (b.value.equals(value)) {
+      if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
     }

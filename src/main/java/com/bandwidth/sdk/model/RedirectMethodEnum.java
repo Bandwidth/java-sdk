@@ -50,7 +50,7 @@ public enum RedirectMethodEnum {
 
   public static RedirectMethodEnum fromValue(String value) {
     for (RedirectMethodEnum b : RedirectMethodEnum.values()) {
-      if (b.value.equals(value)) {
+      if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
     }

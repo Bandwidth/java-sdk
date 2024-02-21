@@ -36,6 +36,7 @@ public class Transfer implements Verb {
      * 
      * @param destinations (list[PhoneNumber, SipUri], optional): List of recipients to transfer a call to. Defaults to [].
      * @param transferCallerId (str, optional): The caller ID to use when the call is transferred, if different. Must be in E.164 format (e.g. +15555555555) or be one of the following strings Restricted, Anonymous, Private, or Unavailable. Leave as default to pass along the number of the remote party. Defaults to None.
+     * @param transferCallerDisplayName (str, optional): The caller display name to use when the call is transferred. May not exceed 256 characters nor contain control characters such as new lines.
      * @param callTimeout (double, optional):The timeout (in seconds) for the callee to answer the call after it starts ringing. If the call does not start ringing within 30s, the call will be cancelled regardless of this value. Range: decimal values between 1 - 300. Default value is 30 seconds. Defaults to None.
      * @param transferCompleteUrl (str, optional): URL to send the Transfer Complete event to and request new BXML. Optional but recommended. See below for further details. May be a relative URL. Defaults to None.
      * @param transferCompleteMethod (str, optional): The HTTP method to use for the request to transferCompleteUrl. GET or POST. Default value is POST. Defaults to None.
@@ -79,6 +80,9 @@ public class Transfer implements Verb {
 
     @XmlAttribute
     protected String transferCallerId;
+
+    @XmlAttribute
+    protected String transferCallerDisplayName;
 
     /**
      * Call timeout in seconds.

@@ -54,7 +54,7 @@ public enum LookupStatusEnum {
 
   public static LookupStatusEnum fromValue(String value) {
     for (LookupStatusEnum b : LookupStatusEnum.values()) {
-      if (b.value.equals(value)) {
+      if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
     }

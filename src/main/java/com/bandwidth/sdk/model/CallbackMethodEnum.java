@@ -50,7 +50,7 @@ public enum CallbackMethodEnum {
 
   public static CallbackMethodEnum fromValue(String value) {
     for (CallbackMethodEnum b : CallbackMethodEnum.values()) {
-      if (b.value.equals(value)) {
+      if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
     }
