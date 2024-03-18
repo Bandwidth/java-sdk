@@ -42,7 +42,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -50,7 +49,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Carrier information results for the specified telephone number.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-29T14:24:34.966664-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class LookupResult {
   public static final String SERIALIZED_NAME_RESPONSE_CODE = "Response Code";
   @SerializedName(SERIALIZED_NAME_RESPONSE_CODE)
@@ -92,7 +91,6 @@ public class LookupResult {
   }
 
   public LookupResult responseCode(Integer responseCode) {
-    
     this.responseCode = responseCode;
     return this;
   }
@@ -106,14 +104,12 @@ public class LookupResult {
     return responseCode;
   }
 
-
   public void setResponseCode(Integer responseCode) {
     this.responseCode = responseCode;
   }
 
 
   public LookupResult message(String message) {
-    
     this.message = message;
     return this;
   }
@@ -127,14 +123,12 @@ public class LookupResult {
     return message;
   }
 
-
   public void setMessage(String message) {
     this.message = message;
   }
 
 
   public LookupResult e164Format(String e164Format) {
-    
     this.e164Format = e164Format;
     return this;
   }
@@ -148,14 +142,12 @@ public class LookupResult {
     return e164Format;
   }
 
-
   public void setE164Format(String e164Format) {
     this.e164Format = e164Format;
   }
 
 
   public LookupResult formatted(String formatted) {
-    
     this.formatted = formatted;
     return this;
   }
@@ -169,14 +161,12 @@ public class LookupResult {
     return formatted;
   }
 
-
   public void setFormatted(String formatted) {
     this.formatted = formatted;
   }
 
 
   public LookupResult country(String country) {
-    
     this.country = country;
     return this;
   }
@@ -190,14 +180,12 @@ public class LookupResult {
     return country;
   }
 
-
   public void setCountry(String country) {
     this.country = country;
   }
 
 
   public LookupResult lineType(String lineType) {
-    
     this.lineType = lineType;
     return this;
   }
@@ -211,14 +199,12 @@ public class LookupResult {
     return lineType;
   }
 
-
   public void setLineType(String lineType) {
     this.lineType = lineType;
   }
 
 
   public LookupResult lineProvider(String lineProvider) {
-    
     this.lineProvider = lineProvider;
     return this;
   }
@@ -232,14 +218,12 @@ public class LookupResult {
     return lineProvider;
   }
 
-
   public void setLineProvider(String lineProvider) {
     this.lineProvider = lineProvider;
   }
 
 
   public LookupResult mobileCountryCode(String mobileCountryCode) {
-    
     this.mobileCountryCode = mobileCountryCode;
     return this;
   }
@@ -253,14 +237,12 @@ public class LookupResult {
     return mobileCountryCode;
   }
 
-
   public void setMobileCountryCode(String mobileCountryCode) {
     this.mobileCountryCode = mobileCountryCode;
   }
 
 
   public LookupResult mobileNetworkCode(String mobileNetworkCode) {
-    
     this.mobileNetworkCode = mobileNetworkCode;
     return this;
   }
@@ -273,7 +255,6 @@ public class LookupResult {
   public String getMobileNetworkCode() {
     return mobileNetworkCode;
   }
-
 
   public void setMobileNetworkCode(String mobileNetworkCode) {
     this.mobileNetworkCode = mobileNetworkCode;
@@ -468,7 +449,12 @@ public class LookupResult {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

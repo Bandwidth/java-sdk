@@ -45,7 +45,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -53,7 +52,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * The Redirect event is fired when a &lt;Redirect&gt; verb is executed. Its purpose is to get the next set of verbs from the calling application.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-29T14:24:34.966664-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RedirectCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
@@ -123,7 +122,6 @@ public class RedirectCallback {
   }
 
   public RedirectCallback eventType(String eventType) {
-    
     this.eventType = eventType;
     return this;
   }
@@ -137,14 +135,12 @@ public class RedirectCallback {
     return eventType;
   }
 
-
   public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
   public RedirectCallback eventTime(OffsetDateTime eventTime) {
-    
     this.eventTime = eventTime;
     return this;
   }
@@ -158,14 +154,12 @@ public class RedirectCallback {
     return eventTime;
   }
 
-
   public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
   public RedirectCallback accountId(String accountId) {
-    
     this.accountId = accountId;
     return this;
   }
@@ -179,14 +173,12 @@ public class RedirectCallback {
     return accountId;
   }
 
-
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
   public RedirectCallback applicationId(String applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
@@ -200,14 +192,12 @@ public class RedirectCallback {
     return applicationId;
   }
 
-
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public RedirectCallback from(String from) {
-    
     this.from = from;
     return this;
   }
@@ -221,14 +211,12 @@ public class RedirectCallback {
     return from;
   }
 
-
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public RedirectCallback to(String to) {
-    
     this.to = to;
     return this;
   }
@@ -242,14 +230,12 @@ public class RedirectCallback {
     return to;
   }
 
-
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public RedirectCallback direction(CallDirectionEnum direction) {
-    
     this.direction = direction;
     return this;
   }
@@ -263,14 +249,12 @@ public class RedirectCallback {
     return direction;
   }
 
-
   public void setDirection(CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
   public RedirectCallback callId(String callId) {
-    
     this.callId = callId;
     return this;
   }
@@ -284,14 +268,12 @@ public class RedirectCallback {
     return callId;
   }
 
-
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
   public RedirectCallback callUrl(String callUrl) {
-    
     this.callUrl = callUrl;
     return this;
   }
@@ -305,14 +287,12 @@ public class RedirectCallback {
     return callUrl;
   }
 
-
   public void setCallUrl(String callUrl) {
     this.callUrl = callUrl;
   }
 
 
   public RedirectCallback parentCallId(String parentCallId) {
-    
     this.parentCallId = parentCallId;
     return this;
   }
@@ -326,14 +306,12 @@ public class RedirectCallback {
     return parentCallId;
   }
 
-
   public void setParentCallId(String parentCallId) {
     this.parentCallId = parentCallId;
   }
 
 
   public RedirectCallback enqueuedTime(OffsetDateTime enqueuedTime) {
-    
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -347,14 +325,12 @@ public class RedirectCallback {
     return enqueuedTime;
   }
 
-
   public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
   public RedirectCallback startTime(OffsetDateTime startTime) {
-    
     this.startTime = startTime;
     return this;
   }
@@ -368,14 +344,12 @@ public class RedirectCallback {
     return startTime;
   }
 
-
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
   public RedirectCallback answerTime(OffsetDateTime answerTime) {
-    
     this.answerTime = answerTime;
     return this;
   }
@@ -389,14 +363,12 @@ public class RedirectCallback {
     return answerTime;
   }
 
-
   public void setAnswerTime(OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
   public RedirectCallback tag(String tag) {
-    
     this.tag = tag;
     return this;
   }
@@ -410,14 +382,12 @@ public class RedirectCallback {
     return tag;
   }
 
-
   public void setTag(String tag) {
     this.tag = tag;
   }
 
 
   public RedirectCallback transferCallerId(String transferCallerId) {
-    
     this.transferCallerId = transferCallerId;
     return this;
   }
@@ -431,14 +401,12 @@ public class RedirectCallback {
     return transferCallerId;
   }
 
-
   public void setTransferCallerId(String transferCallerId) {
     this.transferCallerId = transferCallerId;
   }
 
 
   public RedirectCallback transferTo(String transferTo) {
-    
     this.transferTo = transferTo;
     return this;
   }
@@ -451,7 +419,6 @@ public class RedirectCallback {
   public String getTransferTo() {
     return transferTo;
   }
-
 
   public void setTransferTo(String transferTo) {
     this.transferTo = transferTo;
@@ -639,6 +606,10 @@ public class RedirectCallback {
       if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
+      // validate the optional field `direction`
+      if (jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) {
+        CallDirectionEnum.validateJsonElement(jsonObj.get("direction"));
+      }
       if ((jsonObj.get("callId") != null && !jsonObj.get("callId").isJsonNull()) && !jsonObj.get("callId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callId").toString()));
       }
@@ -687,7 +658,12 @@ public class RedirectCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

@@ -50,7 +50,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -58,7 +57,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Message Delivered Callback Message Schema
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-29T14:24:34.966664-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MessageDeliveredCallbackMessage {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -112,7 +111,6 @@ public class MessageDeliveredCallbackMessage {
   }
 
   public MessageDeliveredCallbackMessage id(String id) {
-    
     this.id = id;
     return this;
   }
@@ -126,14 +124,12 @@ public class MessageDeliveredCallbackMessage {
     return id;
   }
 
-
   public void setId(String id) {
     this.id = id;
   }
 
 
   public MessageDeliveredCallbackMessage owner(String owner) {
-    
     this.owner = owner;
     return this;
   }
@@ -147,14 +143,12 @@ public class MessageDeliveredCallbackMessage {
     return owner;
   }
 
-
   public void setOwner(String owner) {
     this.owner = owner;
   }
 
 
   public MessageDeliveredCallbackMessage applicationId(String applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
@@ -168,14 +162,12 @@ public class MessageDeliveredCallbackMessage {
     return applicationId;
   }
 
-
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public MessageDeliveredCallbackMessage time(OffsetDateTime time) {
-    
     this.time = time;
     return this;
   }
@@ -189,14 +181,12 @@ public class MessageDeliveredCallbackMessage {
     return time;
   }
 
-
   public void setTime(OffsetDateTime time) {
     this.time = time;
   }
 
 
   public MessageDeliveredCallbackMessage segmentCount(Integer segmentCount) {
-    
     this.segmentCount = segmentCount;
     return this;
   }
@@ -210,14 +200,12 @@ public class MessageDeliveredCallbackMessage {
     return segmentCount;
   }
 
-
   public void setSegmentCount(Integer segmentCount) {
     this.segmentCount = segmentCount;
   }
 
 
   public MessageDeliveredCallbackMessage direction(MessageDirectionEnum direction) {
-    
     this.direction = direction;
     return this;
   }
@@ -231,14 +219,12 @@ public class MessageDeliveredCallbackMessage {
     return direction;
   }
 
-
   public void setDirection(MessageDirectionEnum direction) {
     this.direction = direction;
   }
 
 
   public MessageDeliveredCallbackMessage to(Set<String> to) {
-    
     this.to = to;
     return this;
   }
@@ -260,14 +246,12 @@ public class MessageDeliveredCallbackMessage {
     return to;
   }
 
-
   public void setTo(Set<String> to) {
     this.to = to;
   }
 
 
   public MessageDeliveredCallbackMessage from(String from) {
-    
     this.from = from;
     return this;
   }
@@ -281,14 +265,12 @@ public class MessageDeliveredCallbackMessage {
     return from;
   }
 
-
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public MessageDeliveredCallbackMessage text(String text) {
-    
     this.text = text;
     return this;
   }
@@ -302,14 +284,12 @@ public class MessageDeliveredCallbackMessage {
     return text;
   }
 
-
   public void setText(String text) {
     this.text = text;
   }
 
 
   public MessageDeliveredCallbackMessage tag(String tag) {
-    
     this.tag = tag;
     return this;
   }
@@ -323,14 +303,12 @@ public class MessageDeliveredCallbackMessage {
     return tag;
   }
 
-
   public void setTag(String tag) {
     this.tag = tag;
   }
 
 
   public MessageDeliveredCallbackMessage media(List<URI> media) {
-    
     this.media = media;
     return this;
   }
@@ -352,14 +330,12 @@ public class MessageDeliveredCallbackMessage {
     return media;
   }
 
-
   public void setMedia(List<URI> media) {
     this.media = media;
   }
 
 
   public MessageDeliveredCallbackMessage priority(PriorityEnum priority) {
-    
     this.priority = priority;
     return this;
   }
@@ -372,7 +348,6 @@ public class MessageDeliveredCallbackMessage {
   public PriorityEnum getPriority() {
     return priority;
   }
-
 
   public void setPriority(PriorityEnum priority) {
     this.priority = priority;
@@ -548,6 +523,8 @@ public class MessageDeliveredCallbackMessage {
       if (!jsonObj.get("applicationId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
       }
+      // validate the required field `direction`
+      MessageDirectionEnum.validateJsonElement(jsonObj.get("direction"));
       // ensure the required json array is present
       if (jsonObj.get("to") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
@@ -566,6 +543,10 @@ public class MessageDeliveredCallbackMessage {
       // ensure the optional json data is an array if present
       if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonNull() && !jsonObj.get("media").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `media` to be an array in the JSON string but got `%s`", jsonObj.get("media").toString()));
+      }
+      // validate the optional field `priority`
+      if (jsonObj.get("priority") != null && !jsonObj.get("priority").isJsonNull()) {
+        PriorityEnum.validateJsonElement(jsonObj.get("priority"));
       }
   }
 
@@ -597,7 +578,12 @@ public class MessageDeliveredCallbackMessage {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

@@ -42,7 +42,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -50,7 +49,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * MfaForbiddenRequestError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-29T14:24:34.966664-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MfaForbiddenRequestError {
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
@@ -60,7 +59,6 @@ public class MfaForbiddenRequestError {
   }
 
   public MfaForbiddenRequestError message(String message) {
-    
     this.message = message;
     return this;
   }
@@ -73,7 +71,6 @@ public class MfaForbiddenRequestError {
   public String getMessage() {
     return message;
   }
-
 
   public void setMessage(String message) {
     this.message = message;
@@ -223,7 +220,12 @@ public class MfaForbiddenRequestError {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

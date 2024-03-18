@@ -2,7 +2,6 @@
 
 Bandwidth
 - API version: 1.0.0
-  - Build date: 2023-08-29T14:24:34.966664-04:00[America/New_York]
 
 Bandwidth's Communication APIs
 
@@ -41,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.bandwidth.sdk</groupId>
   <artifactId>bandwidth-sdk</artifactId>
-  <version>9.0.0</version>
+  <version>9.1.3</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -57,7 +56,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.bandwidth.sdk:bandwidth-sdk:9.0.0"
+     implementation "com.bandwidth.sdk:bandwidth-sdk:9.1.3"
   }
 ```
 
@@ -71,7 +70,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/bandwidth-sdk-9.0.0.jar`
+* `target/bandwidth-sdk-9.1.3.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -124,6 +123,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *CallsApi* | [**createCall**](docs/CallsApi.md#createCall) | **POST** /accounts/{accountId}/calls | Create Call
 *CallsApi* | [**getCallState**](docs/CallsApi.md#getCallState) | **GET** /accounts/{accountId}/calls/{callId} | Get Call State Information
+*CallsApi* | [**listCalls**](docs/CallsApi.md#listCalls) | **GET** /accounts/{accountId}/calls | Get Calls
 *CallsApi* | [**updateCall**](docs/CallsApi.md#updateCall) | **POST** /accounts/{accountId}/calls/{callId} | Update Call
 *CallsApi* | [**updateCallBxml**](docs/CallsApi.md#updateCallBxml) | **PUT** /accounts/{accountId}/calls/{callId}/bxml | Update Call BXML
 *ConferencesApi* | [**downloadConferenceRecording**](docs/ConferencesApi.md#downloadConferenceRecording) | **GET** /accounts/{accountId}/conferences/{conferenceId}/recordings/{recordingId}/media | Download Conference Recording

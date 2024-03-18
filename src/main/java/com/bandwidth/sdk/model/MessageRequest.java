@@ -49,7 +49,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -57,7 +56,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * MessageRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-29T14:24:34.966664-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MessageRequest {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
@@ -95,7 +94,6 @@ public class MessageRequest {
   }
 
   public MessageRequest applicationId(String applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
@@ -109,14 +107,12 @@ public class MessageRequest {
     return applicationId;
   }
 
-
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public MessageRequest to(Set<String> to) {
-    
     this.to = to;
     return this;
   }
@@ -138,20 +134,18 @@ public class MessageRequest {
     return to;
   }
 
-
   public void setTo(Set<String> to) {
     this.to = to;
   }
 
 
   public MessageRequest from(String from) {
-    
     this.from = from;
     return this;
   }
 
    /**
-   * One of your telephone numbers the message should come from in E164 format.
+   * Either an alphanumeric sender ID or the sender&#39;s Bandwidth phone number in E.164 format, which must be hosted within Bandwidth and linked to the account that is generating the message.  Alphanumeric Sender IDs can contain up to 11 characters, upper-case letters A-Z, lower-case letters a-z, numbers 0-9, space, hyphen -, plus +, underscore _ and ampersand &amp;. Alphanumeric Sender IDs must contain at least one letter.
    * @return from
   **/
   @javax.annotation.Nonnull
@@ -159,14 +153,12 @@ public class MessageRequest {
     return from;
   }
 
-
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public MessageRequest text(String text) {
-    
     this.text = text;
     return this;
   }
@@ -180,14 +172,12 @@ public class MessageRequest {
     return text;
   }
 
-
   public void setText(String text) {
     this.text = text;
   }
 
 
   public MessageRequest media(List<URI> media) {
-    
     this.media = media;
     return this;
   }
@@ -209,14 +199,12 @@ public class MessageRequest {
     return media;
   }
 
-
   public void setMedia(List<URI> media) {
     this.media = media;
   }
 
 
   public MessageRequest tag(String tag) {
-    
     this.tag = tag;
     return this;
   }
@@ -230,14 +218,12 @@ public class MessageRequest {
     return tag;
   }
 
-
   public void setTag(String tag) {
     this.tag = tag;
   }
 
 
   public MessageRequest priority(PriorityEnum priority) {
-    
     this.priority = priority;
     return this;
   }
@@ -251,14 +237,12 @@ public class MessageRequest {
     return priority;
   }
 
-
   public void setPriority(PriorityEnum priority) {
     this.priority = priority;
   }
 
 
   public MessageRequest expiration(OffsetDateTime expiration) {
-    
     this.expiration = expiration;
     return this;
   }
@@ -271,7 +255,6 @@ public class MessageRequest {
   public OffsetDateTime getExpiration() {
     return expiration;
   }
-
 
   public void setExpiration(OffsetDateTime expiration) {
     this.expiration = expiration;
@@ -441,6 +424,10 @@ public class MessageRequest {
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
       }
+      // validate the optional field `priority`
+      if (jsonObj.get("priority") != null && !jsonObj.get("priority").isJsonNull()) {
+        PriorityEnum.validateJsonElement(jsonObj.get("priority"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -471,7 +458,12 @@ public class MessageRequest {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

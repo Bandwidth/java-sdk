@@ -18,6 +18,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.IOException;
 import com.google.gson.TypeAdapter;
+import com.google.gson.JsonElement;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
@@ -49,7 +50,7 @@ public enum ListMessageDirectionEnum {
 
   public static ListMessageDirectionEnum fromValue(String value) {
     for (ListMessageDirectionEnum b : ListMessageDirectionEnum.values()) {
-      if (b.value.equals(value)) {
+      if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
     }
@@ -67,6 +68,11 @@ public enum ListMessageDirectionEnum {
       String value = jsonReader.nextString();
       return ListMessageDirectionEnum.fromValue(value);
     }
+  }
+
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+    String value = jsonElement.getAsString();
+    ListMessageDirectionEnum.fromValue(value);
   }
 }
 

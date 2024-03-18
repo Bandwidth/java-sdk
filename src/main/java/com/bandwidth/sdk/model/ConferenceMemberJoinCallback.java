@@ -44,7 +44,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -52,7 +51,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * The Conference Member Join event is fired whenever a caller joins a conference that specified a callbackUrl. The response may be either empty or a BXML document. Only the following verbs are valid for conferences: PlayAudio, SpeakSentence, StartRecording, StopRecording, PauseRecording, ResumeRecording. Audio verbs will be heard by all members of the conference. Recordings capture audio from all members who are not muted or on hold, as well as any audio verbs that are played into the conference.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-29T14:24:34.966664-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ConferenceMemberJoinCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
@@ -90,7 +89,6 @@ public class ConferenceMemberJoinCallback {
   }
 
   public ConferenceMemberJoinCallback eventType(String eventType) {
-    
     this.eventType = eventType;
     return this;
   }
@@ -104,14 +102,12 @@ public class ConferenceMemberJoinCallback {
     return eventType;
   }
 
-
   public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
   public ConferenceMemberJoinCallback eventTime(OffsetDateTime eventTime) {
-    
     this.eventTime = eventTime;
     return this;
   }
@@ -125,14 +121,12 @@ public class ConferenceMemberJoinCallback {
     return eventTime;
   }
 
-
   public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
   public ConferenceMemberJoinCallback conferenceId(String conferenceId) {
-    
     this.conferenceId = conferenceId;
     return this;
   }
@@ -146,14 +140,12 @@ public class ConferenceMemberJoinCallback {
     return conferenceId;
   }
 
-
   public void setConferenceId(String conferenceId) {
     this.conferenceId = conferenceId;
   }
 
 
   public ConferenceMemberJoinCallback name(String name) {
-    
     this.name = name;
     return this;
   }
@@ -167,14 +159,12 @@ public class ConferenceMemberJoinCallback {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
 
   public ConferenceMemberJoinCallback from(String from) {
-    
     this.from = from;
     return this;
   }
@@ -188,14 +178,12 @@ public class ConferenceMemberJoinCallback {
     return from;
   }
 
-
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public ConferenceMemberJoinCallback to(String to) {
-    
     this.to = to;
     return this;
   }
@@ -209,14 +197,12 @@ public class ConferenceMemberJoinCallback {
     return to;
   }
 
-
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public ConferenceMemberJoinCallback callId(String callId) {
-    
     this.callId = callId;
     return this;
   }
@@ -230,14 +216,12 @@ public class ConferenceMemberJoinCallback {
     return callId;
   }
 
-
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
   public ConferenceMemberJoinCallback tag(String tag) {
-    
     this.tag = tag;
     return this;
   }
@@ -250,7 +234,6 @@ public class ConferenceMemberJoinCallback {
   public String getTag() {
     return tag;
   }
-
 
   public void setTag(String tag) {
     this.tag = tag;
@@ -450,7 +433,12 @@ public class ConferenceMemberJoinCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

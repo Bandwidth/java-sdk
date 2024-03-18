@@ -49,7 +49,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -57,7 +56,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Conference
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-29T14:24:34.966664-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Conference {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -95,7 +94,6 @@ public class Conference {
   }
 
   public Conference id(String id) {
-    
     this.id = id;
     return this;
   }
@@ -109,14 +107,12 @@ public class Conference {
     return id;
   }
 
-
   public void setId(String id) {
     this.id = id;
   }
 
 
   public Conference name(String name) {
-    
     this.name = name;
     return this;
   }
@@ -130,14 +126,12 @@ public class Conference {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
 
   public Conference createdTime(OffsetDateTime createdTime) {
-    
     this.createdTime = createdTime;
     return this;
   }
@@ -151,14 +145,12 @@ public class Conference {
     return createdTime;
   }
 
-
   public void setCreatedTime(OffsetDateTime createdTime) {
     this.createdTime = createdTime;
   }
 
 
   public Conference completedTime(OffsetDateTime completedTime) {
-    
     this.completedTime = completedTime;
     return this;
   }
@@ -172,14 +164,12 @@ public class Conference {
     return completedTime;
   }
 
-
   public void setCompletedTime(OffsetDateTime completedTime) {
     this.completedTime = completedTime;
   }
 
 
   public Conference conferenceEventUrl(URI conferenceEventUrl) {
-    
     this.conferenceEventUrl = conferenceEventUrl;
     return this;
   }
@@ -193,14 +183,12 @@ public class Conference {
     return conferenceEventUrl;
   }
 
-
   public void setConferenceEventUrl(URI conferenceEventUrl) {
     this.conferenceEventUrl = conferenceEventUrl;
   }
 
 
   public Conference conferenceEventMethod(CallbackMethodEnum conferenceEventMethod) {
-    
     this.conferenceEventMethod = conferenceEventMethod;
     return this;
   }
@@ -214,14 +202,12 @@ public class Conference {
     return conferenceEventMethod;
   }
 
-
   public void setConferenceEventMethod(CallbackMethodEnum conferenceEventMethod) {
     this.conferenceEventMethod = conferenceEventMethod;
   }
 
 
   public Conference tag(String tag) {
-    
     this.tag = tag;
     return this;
   }
@@ -235,14 +221,12 @@ public class Conference {
     return tag;
   }
 
-
   public void setTag(String tag) {
     this.tag = tag;
   }
 
 
   public Conference activeMembers(List<ConferenceMember> activeMembers) {
-    
     this.activeMembers = activeMembers;
     return this;
   }
@@ -263,7 +247,6 @@ public class Conference {
   public List<ConferenceMember> getActiveMembers() {
     return activeMembers;
   }
-
 
   public void setActiveMembers(List<ConferenceMember> activeMembers) {
     this.activeMembers = activeMembers;
@@ -421,6 +404,10 @@ public class Conference {
       if ((jsonObj.get("conferenceEventUrl") != null && !jsonObj.get("conferenceEventUrl").isJsonNull()) && !jsonObj.get("conferenceEventUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `conferenceEventUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conferenceEventUrl").toString()));
       }
+      // validate the optional field `conferenceEventMethod`
+      if (jsonObj.get("conferenceEventMethod") != null && !jsonObj.get("conferenceEventMethod").isJsonNull()) {
+        CallbackMethodEnum.validateJsonElement(jsonObj.get("conferenceEventMethod"));
+      }
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
       }
@@ -468,7 +455,12 @@ public class Conference {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

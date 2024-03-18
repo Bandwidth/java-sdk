@@ -42,7 +42,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -50,7 +49,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * MessagingCodeResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-08-29T14:24:34.966664-04:00[America/New_York]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MessagingCodeResponse {
   public static final String SERIALIZED_NAME_MESSAGE_ID = "messageId";
   @SerializedName(SERIALIZED_NAME_MESSAGE_ID)
@@ -60,7 +59,6 @@ public class MessagingCodeResponse {
   }
 
   public MessagingCodeResponse messageId(String messageId) {
-    
     this.messageId = messageId;
     return this;
   }
@@ -73,7 +71,6 @@ public class MessagingCodeResponse {
   public String getMessageId() {
     return messageId;
   }
-
 
   public void setMessageId(String messageId) {
     this.messageId = messageId;
@@ -223,7 +220,12 @@ public class MessagingCodeResponse {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }
