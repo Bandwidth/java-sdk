@@ -122,11 +122,11 @@ public class Transfer implements Verb {
 
     @XmlAttribute
     @Default
-    protected DiversionTreatment diversionTreatment = DiversionTreatment.NONE;
+    protected DiversionTreatment diversionTreatment = DiversionTreatment.none;
 
     @XmlAttribute
     @Default
-    protected DiversionReason diversionReason = DiversionReason.UNKNOWN;
+    protected DiversionReason diversionReason = DiversionReason.unknown;
 
     @Override
     public String getVerbName() {

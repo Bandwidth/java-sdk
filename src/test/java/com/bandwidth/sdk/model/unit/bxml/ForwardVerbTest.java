@@ -29,15 +29,15 @@ public class ForwardVerbTest {
                                .to("+19195554321")
                                .from("19195554322")
                                .callTimeout(15d)
-                               .diversionTreatment(DiversionTreatment.PROPAGATE)
-                               .diversionReason(DiversionReason.AWAY)
+                               .diversionTreatment(DiversionTreatment.propagate)
+                               .diversionReason(DiversionReason.away)
                                .uui("93d6f3c0be5845960b744fa28015d8ede84bd1a4;encoding=base64,asdf;encoding=jwt")
                                .build();
 
     @Test
     public void forwardVerbWorks() throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
-        String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Forward to=\"+19195554321\" from=\"19195554322\" uui=\"93d6f3c0be5845960b744fa28015d8ede84bd1a4;encoding=base64,asdf;encoding=jwt\" callTimeout=\"15.0\" diversionTreatment=\"PROPAGATE\" diversionReason=\"AWAY\"/></Bxml>";
+        String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Forward to=\"+19195554321\" from=\"19195554322\" uui=\"93d6f3c0be5845960b744fa28015d8ede84bd1a4;encoding=base64,asdf;encoding=jwt\" callTimeout=\"15.0\" diversionTreatment=\"propagate\" diversionReason=\"away\"/></Bxml>";
 
         assertThat(new Bxml().with(forward).toBxml(jaxbContext), is(expectedBxml));
     }

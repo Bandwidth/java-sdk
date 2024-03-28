@@ -10,9 +10,9 @@ import lombok.Getter;
 
 @Getter
 public enum DiversionTreatment {
-    NONE("none"),
-    PROPAGATE("propagate"),
-    STACK("stack"),
+    none("none"),
+    propagate("propagate"),
+    stack("stack"),
     ;
 
     private static final Map<String, DiversionTreatment> DESERIALIZATION_MAP =
