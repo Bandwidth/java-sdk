@@ -73,11 +73,11 @@ public class Forward implements Verb {
 
     @XmlAttribute
     @Builder.Default
-    private DiversionTreatment diversionTreatment = DiversionTreatment.NONE;
+    private DiversionTreatment diversionTreatment = DiversionTreatment.none;
 
     @XmlAttribute
     @Builder.Default
-    private DiversionReason diversionReason = DiversionReason.UNKNOWN;
+    private DiversionReason diversionReason = DiversionReason.unknown;
 
     @Override
     public String getVerbName() {
