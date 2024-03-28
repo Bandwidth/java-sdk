@@ -15,7 +15,7 @@ package com.bandwidth.sdk;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Configuration {
-    public static final String VERSION = "9.1.3";
+    public static final String VERSION = "9.1.4";
 
     private static ApiClient defaultApiClient = new ApiClient();
 
