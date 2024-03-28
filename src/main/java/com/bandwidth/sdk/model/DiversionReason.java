@@ -10,17 +10,17 @@ import lombok.Getter;
 
 @Getter
 public enum DiversionReason {
-    AWAY("away"),
-    DEFLECTION("deflection"),
-    DO_NOT_DISTURB("do-not-disturb"),
-    FOLLOW_ME("follow-me"),
-    NO_ANSWER("no-answer"),
-    OUT_OF_SERVICE("out-of-service"),
-    TIME_OF_DAY("time-of-day"),
-    UNAVAILABLE("unavailable"),
-    UNCONDITIONAL("unconditional"),
-    UNKNOWN("unknown"),
-    USER_BUSY("user-busy"),
+    away("away"),
+    deflection("deflection"),
+    do_not_disturb("do-not-disturb"),
+    follow_me("follow-me"),
+    no_answer("no-answer"),
+    out_of_service("out-of-service"),
+    time_of_day("time-of-day"),
+    unavailable("unavailable"),
+    unconditional("unconditional"),
+    unknown("unknown"),
+    user_busy("user-busy"),
     ;
 
     private static final Map<String, DiversionReason> DESERIALIZATION_MAP =
