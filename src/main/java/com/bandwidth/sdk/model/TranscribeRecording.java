@@ -45,6 +45,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -86,6 +87,7 @@ public class TranscribeRecording {
   }
 
   public TranscribeRecording callbackUrl(URI callbackUrl) {
+    
     this.callbackUrl = callbackUrl;
     return this;
   }
@@ -99,12 +101,14 @@ public class TranscribeRecording {
     return callbackUrl;
   }
 
+
   public void setCallbackUrl(URI callbackUrl) {
     this.callbackUrl = callbackUrl;
   }
 
 
   public TranscribeRecording callbackMethod(CallbackMethodEnum callbackMethod) {
+    
     this.callbackMethod = callbackMethod;
     return this;
   }
@@ -118,12 +122,14 @@ public class TranscribeRecording {
     return callbackMethod;
   }
 
+
   public void setCallbackMethod(CallbackMethodEnum callbackMethod) {
     this.callbackMethod = callbackMethod;
   }
 
 
   public TranscribeRecording username(String username) {
+    
     this.username = username;
     return this;
   }
@@ -137,12 +143,14 @@ public class TranscribeRecording {
     return username;
   }
 
+
   public void setUsername(String username) {
     this.username = username;
   }
 
 
   public TranscribeRecording password(String password) {
+    
     this.password = password;
     return this;
   }
@@ -156,12 +164,14 @@ public class TranscribeRecording {
     return password;
   }
 
+
   public void setPassword(String password) {
     this.password = password;
   }
 
 
   public TranscribeRecording tag(String tag) {
+    
     this.tag = tag;
     return this;
   }
@@ -175,12 +185,14 @@ public class TranscribeRecording {
     return tag;
   }
 
+
   public void setTag(String tag) {
     this.tag = tag;
   }
 
 
   public TranscribeRecording callbackTimeout(Double callbackTimeout) {
+    
     this.callbackTimeout = callbackTimeout;
     return this;
   }
@@ -196,12 +208,14 @@ public class TranscribeRecording {
     return callbackTimeout;
   }
 
+
   public void setCallbackTimeout(Double callbackTimeout) {
     this.callbackTimeout = callbackTimeout;
   }
 
 
   public TranscribeRecording detectLanguage(Boolean detectLanguage) {
+    
     this.detectLanguage = detectLanguage;
     return this;
   }
@@ -214,6 +228,7 @@ public class TranscribeRecording {
   public Boolean getDetectLanguage() {
     return detectLanguage;
   }
+
 
   public void setDetectLanguage(Boolean detectLanguage) {
     this.detectLanguage = detectLanguage;
@@ -362,10 +377,6 @@ public class TranscribeRecording {
       if ((jsonObj.get("callbackUrl") != null && !jsonObj.get("callbackUrl").isJsonNull()) && !jsonObj.get("callbackUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callbackUrl").toString()));
       }
-      // validate the optional field `callbackMethod`
-      if (jsonObj.get("callbackMethod") != null && !jsonObj.get("callbackMethod").isJsonNull()) {
-        CallbackMethodEnum.validateJsonElement(jsonObj.get("callbackMethod"));
-      }
       if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
       }
@@ -405,12 +416,7 @@ public class TranscribeRecording {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
