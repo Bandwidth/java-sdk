@@ -46,6 +46,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -143,6 +144,7 @@ public class CreateCallResponse {
   }
 
   public CreateCallResponse applicationId(String applicationId) {
+    
     this.applicationId = applicationId;
     return this;
   }
@@ -156,12 +158,14 @@ public class CreateCallResponse {
     return applicationId;
   }
 
+
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public CreateCallResponse accountId(String accountId) {
+    
     this.accountId = accountId;
     return this;
   }
@@ -175,12 +179,14 @@ public class CreateCallResponse {
     return accountId;
   }
 
+
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
   public CreateCallResponse callId(String callId) {
+    
     this.callId = callId;
     return this;
   }
@@ -194,12 +200,14 @@ public class CreateCallResponse {
     return callId;
   }
 
+
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
   public CreateCallResponse to(String to) {
+    
     this.to = to;
     return this;
   }
@@ -213,12 +221,14 @@ public class CreateCallResponse {
     return to;
   }
 
+
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public CreateCallResponse from(String from) {
+    
     this.from = from;
     return this;
   }
@@ -232,12 +242,14 @@ public class CreateCallResponse {
     return from;
   }
 
+
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public CreateCallResponse enqueuedTime(OffsetDateTime enqueuedTime) {
+    
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -251,12 +263,14 @@ public class CreateCallResponse {
     return enqueuedTime;
   }
 
+
   public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
   public CreateCallResponse callUrl(URI callUrl) {
+    
     this.callUrl = callUrl;
     return this;
   }
@@ -270,12 +284,14 @@ public class CreateCallResponse {
     return callUrl;
   }
 
+
   public void setCallUrl(URI callUrl) {
     this.callUrl = callUrl;
   }
 
 
   public CreateCallResponse callTimeout(Double callTimeout) {
+    
     this.callTimeout = callTimeout;
     return this;
   }
@@ -289,12 +305,14 @@ public class CreateCallResponse {
     return callTimeout;
   }
 
+
   public void setCallTimeout(Double callTimeout) {
     this.callTimeout = callTimeout;
   }
 
 
   public CreateCallResponse callbackTimeout(Double callbackTimeout) {
+    
     this.callbackTimeout = callbackTimeout;
     return this;
   }
@@ -308,12 +326,14 @@ public class CreateCallResponse {
     return callbackTimeout;
   }
 
+
   public void setCallbackTimeout(Double callbackTimeout) {
     this.callbackTimeout = callbackTimeout;
   }
 
 
   public CreateCallResponse tag(String tag) {
+    
     this.tag = tag;
     return this;
   }
@@ -327,12 +347,14 @@ public class CreateCallResponse {
     return tag;
   }
 
+
   public void setTag(String tag) {
     this.tag = tag;
   }
 
 
   public CreateCallResponse answerMethod(CallbackMethodEnum answerMethod) {
+    
     this.answerMethod = answerMethod;
     return this;
   }
@@ -346,12 +368,14 @@ public class CreateCallResponse {
     return answerMethod;
   }
 
+
   public void setAnswerMethod(CallbackMethodEnum answerMethod) {
     this.answerMethod = answerMethod;
   }
 
 
   public CreateCallResponse answerUrl(URI answerUrl) {
+    
     this.answerUrl = answerUrl;
     return this;
   }
@@ -365,12 +389,14 @@ public class CreateCallResponse {
     return answerUrl;
   }
 
+
   public void setAnswerUrl(URI answerUrl) {
     this.answerUrl = answerUrl;
   }
 
 
   public CreateCallResponse answerFallbackMethod(CallbackMethodEnum answerFallbackMethod) {
+    
     this.answerFallbackMethod = answerFallbackMethod;
     return this;
   }
@@ -384,12 +410,14 @@ public class CreateCallResponse {
     return answerFallbackMethod;
   }
 
+
   public void setAnswerFallbackMethod(CallbackMethodEnum answerFallbackMethod) {
     this.answerFallbackMethod = answerFallbackMethod;
   }
 
 
   public CreateCallResponse answerFallbackUrl(URI answerFallbackUrl) {
+    
     this.answerFallbackUrl = answerFallbackUrl;
     return this;
   }
@@ -403,12 +431,14 @@ public class CreateCallResponse {
     return answerFallbackUrl;
   }
 
+
   public void setAnswerFallbackUrl(URI answerFallbackUrl) {
     this.answerFallbackUrl = answerFallbackUrl;
   }
 
 
   public CreateCallResponse disconnectMethod(CallbackMethodEnum disconnectMethod) {
+    
     this.disconnectMethod = disconnectMethod;
     return this;
   }
@@ -422,12 +452,14 @@ public class CreateCallResponse {
     return disconnectMethod;
   }
 
+
   public void setDisconnectMethod(CallbackMethodEnum disconnectMethod) {
     this.disconnectMethod = disconnectMethod;
   }
 
 
   public CreateCallResponse disconnectUrl(URI disconnectUrl) {
+    
     this.disconnectUrl = disconnectUrl;
     return this;
   }
@@ -441,12 +473,14 @@ public class CreateCallResponse {
     return disconnectUrl;
   }
 
+
   public void setDisconnectUrl(URI disconnectUrl) {
     this.disconnectUrl = disconnectUrl;
   }
 
 
   public CreateCallResponse username(String username) {
+    
     this.username = username;
     return this;
   }
@@ -460,12 +494,14 @@ public class CreateCallResponse {
     return username;
   }
 
+
   public void setUsername(String username) {
     this.username = username;
   }
 
 
   public CreateCallResponse password(String password) {
+    
     this.password = password;
     return this;
   }
@@ -479,12 +515,14 @@ public class CreateCallResponse {
     return password;
   }
 
+
   public void setPassword(String password) {
     this.password = password;
   }
 
 
   public CreateCallResponse fallbackUsername(String fallbackUsername) {
+    
     this.fallbackUsername = fallbackUsername;
     return this;
   }
@@ -498,12 +536,14 @@ public class CreateCallResponse {
     return fallbackUsername;
   }
 
+
   public void setFallbackUsername(String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
   }
 
 
   public CreateCallResponse fallbackPassword(String fallbackPassword) {
+    
     this.fallbackPassword = fallbackPassword;
     return this;
   }
@@ -517,12 +557,14 @@ public class CreateCallResponse {
     return fallbackPassword;
   }
 
+
   public void setFallbackPassword(String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
   }
 
 
   public CreateCallResponse priority(Integer priority) {
+    
     this.priority = priority;
     return this;
   }
@@ -535,6 +577,7 @@ public class CreateCallResponse {
   public Integer getPriority() {
     return priority;
   }
+
 
   public void setPriority(Integer priority) {
     this.priority = priority;
@@ -759,20 +802,12 @@ public class CreateCallResponse {
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
       }
-      // validate the required field `answerMethod`
-      CallbackMethodEnum.validateJsonElement(jsonObj.get("answerMethod"));
       if (!jsonObj.get("answerUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `answerUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("answerUrl").toString()));
-      }
-      // validate the optional field `answerFallbackMethod`
-      if (jsonObj.get("answerFallbackMethod") != null && !jsonObj.get("answerFallbackMethod").isJsonNull()) {
-        CallbackMethodEnum.validateJsonElement(jsonObj.get("answerFallbackMethod"));
       }
       if ((jsonObj.get("answerFallbackUrl") != null && !jsonObj.get("answerFallbackUrl").isJsonNull()) && !jsonObj.get("answerFallbackUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `answerFallbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("answerFallbackUrl").toString()));
       }
-      // validate the required field `disconnectMethod`
-      CallbackMethodEnum.validateJsonElement(jsonObj.get("disconnectMethod"));
       if ((jsonObj.get("disconnectUrl") != null && !jsonObj.get("disconnectUrl").isJsonNull()) && !jsonObj.get("disconnectUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `disconnectUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("disconnectUrl").toString()));
       }
@@ -818,12 +853,7 @@ public class CreateCallResponse {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

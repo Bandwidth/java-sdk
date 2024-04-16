@@ -45,6 +45,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -70,6 +71,7 @@ public class UpdateConferenceMember {
   }
 
   public UpdateConferenceMember mute(Boolean mute) {
+    
     this.mute = mute;
     return this;
   }
@@ -83,12 +85,14 @@ public class UpdateConferenceMember {
     return mute;
   }
 
+
   public void setMute(Boolean mute) {
     this.mute = mute;
   }
 
 
   public UpdateConferenceMember hold(Boolean hold) {
+    
     this.hold = hold;
     return this;
   }
@@ -102,12 +106,14 @@ public class UpdateConferenceMember {
     return hold;
   }
 
+
   public void setHold(Boolean hold) {
     this.hold = hold;
   }
 
 
   public UpdateConferenceMember callIdsToCoach(List<String> callIdsToCoach) {
+    
     this.callIdsToCoach = callIdsToCoach;
     return this;
   }
@@ -128,6 +134,7 @@ public class UpdateConferenceMember {
   public List<String> getCallIdsToCoach() {
     return callIdsToCoach;
   }
+
 
   public void setCallIdsToCoach(List<String> callIdsToCoach) {
     this.callIdsToCoach = callIdsToCoach;
@@ -295,12 +302,7 @@ public class UpdateConferenceMember {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

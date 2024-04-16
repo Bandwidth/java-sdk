@@ -42,6 +42,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -63,6 +64,7 @@ public class MachineDetectionResult {
   }
 
   public MachineDetectionResult value(String value) {
+    
     this.value = value;
     return this;
   }
@@ -76,12 +78,14 @@ public class MachineDetectionResult {
     return value;
   }
 
+
   public void setValue(String value) {
     this.value = value;
   }
 
 
   public MachineDetectionResult duration(String duration) {
+    
     this.duration = duration;
     return this;
   }
@@ -94,6 +98,7 @@ public class MachineDetectionResult {
   public String getDuration() {
     return duration;
   }
+
 
   public void setDuration(String duration) {
     this.duration = duration;
@@ -249,12 +254,7 @@ public class MachineDetectionResult {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
