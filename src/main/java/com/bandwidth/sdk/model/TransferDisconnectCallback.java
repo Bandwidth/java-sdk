@@ -45,6 +45,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -138,6 +139,7 @@ public class TransferDisconnectCallback {
   }
 
   public TransferDisconnectCallback eventType(String eventType) {
+    
     this.eventType = eventType;
     return this;
   }
@@ -151,12 +153,14 @@ public class TransferDisconnectCallback {
     return eventType;
   }
 
+
   public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
   public TransferDisconnectCallback eventTime(OffsetDateTime eventTime) {
+    
     this.eventTime = eventTime;
     return this;
   }
@@ -170,12 +174,14 @@ public class TransferDisconnectCallback {
     return eventTime;
   }
 
+
   public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
   public TransferDisconnectCallback accountId(String accountId) {
+    
     this.accountId = accountId;
     return this;
   }
@@ -189,12 +195,14 @@ public class TransferDisconnectCallback {
     return accountId;
   }
 
+
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
   public TransferDisconnectCallback applicationId(String applicationId) {
+    
     this.applicationId = applicationId;
     return this;
   }
@@ -208,12 +216,14 @@ public class TransferDisconnectCallback {
     return applicationId;
   }
 
+
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public TransferDisconnectCallback from(String from) {
+    
     this.from = from;
     return this;
   }
@@ -227,12 +237,14 @@ public class TransferDisconnectCallback {
     return from;
   }
 
+
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public TransferDisconnectCallback to(String to) {
+    
     this.to = to;
     return this;
   }
@@ -246,12 +258,14 @@ public class TransferDisconnectCallback {
     return to;
   }
 
+
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public TransferDisconnectCallback direction(CallDirectionEnum direction) {
+    
     this.direction = direction;
     return this;
   }
@@ -265,12 +279,14 @@ public class TransferDisconnectCallback {
     return direction;
   }
 
+
   public void setDirection(CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
   public TransferDisconnectCallback callId(String callId) {
+    
     this.callId = callId;
     return this;
   }
@@ -284,12 +300,14 @@ public class TransferDisconnectCallback {
     return callId;
   }
 
+
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
   public TransferDisconnectCallback callUrl(String callUrl) {
+    
     this.callUrl = callUrl;
     return this;
   }
@@ -303,12 +321,14 @@ public class TransferDisconnectCallback {
     return callUrl;
   }
 
+
   public void setCallUrl(String callUrl) {
     this.callUrl = callUrl;
   }
 
 
   public TransferDisconnectCallback parentCallId(String parentCallId) {
+    
     this.parentCallId = parentCallId;
     return this;
   }
@@ -322,12 +342,14 @@ public class TransferDisconnectCallback {
     return parentCallId;
   }
 
+
   public void setParentCallId(String parentCallId) {
     this.parentCallId = parentCallId;
   }
 
 
   public TransferDisconnectCallback enqueuedTime(OffsetDateTime enqueuedTime) {
+    
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -341,12 +363,14 @@ public class TransferDisconnectCallback {
     return enqueuedTime;
   }
 
+
   public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
   public TransferDisconnectCallback startTime(OffsetDateTime startTime) {
+    
     this.startTime = startTime;
     return this;
   }
@@ -360,12 +384,14 @@ public class TransferDisconnectCallback {
     return startTime;
   }
 
+
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
   public TransferDisconnectCallback answerTime(OffsetDateTime answerTime) {
+    
     this.answerTime = answerTime;
     return this;
   }
@@ -379,12 +405,14 @@ public class TransferDisconnectCallback {
     return answerTime;
   }
 
+
   public void setAnswerTime(OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
   public TransferDisconnectCallback endTime(OffsetDateTime endTime) {
+    
     this.endTime = endTime;
     return this;
   }
@@ -398,12 +426,14 @@ public class TransferDisconnectCallback {
     return endTime;
   }
 
+
   public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
 
   public TransferDisconnectCallback tag(String tag) {
+    
     this.tag = tag;
     return this;
   }
@@ -417,12 +447,14 @@ public class TransferDisconnectCallback {
     return tag;
   }
 
+
   public void setTag(String tag) {
     this.tag = tag;
   }
 
 
   public TransferDisconnectCallback transferCallerId(String transferCallerId) {
+    
     this.transferCallerId = transferCallerId;
     return this;
   }
@@ -436,12 +468,14 @@ public class TransferDisconnectCallback {
     return transferCallerId;
   }
 
+
   public void setTransferCallerId(String transferCallerId) {
     this.transferCallerId = transferCallerId;
   }
 
 
   public TransferDisconnectCallback transferTo(String transferTo) {
+    
     this.transferTo = transferTo;
     return this;
   }
@@ -455,12 +489,14 @@ public class TransferDisconnectCallback {
     return transferTo;
   }
 
+
   public void setTransferTo(String transferTo) {
     this.transferTo = transferTo;
   }
 
 
   public TransferDisconnectCallback cause(String cause) {
+    
     this.cause = cause;
     return this;
   }
@@ -474,12 +510,14 @@ public class TransferDisconnectCallback {
     return cause;
   }
 
+
   public void setCause(String cause) {
     this.cause = cause;
   }
 
 
   public TransferDisconnectCallback errorMessage(String errorMessage) {
+    
     this.errorMessage = errorMessage;
     return this;
   }
@@ -493,12 +531,14 @@ public class TransferDisconnectCallback {
     return errorMessage;
   }
 
+
   public void setErrorMessage(String errorMessage) {
     this.errorMessage = errorMessage;
   }
 
 
   public TransferDisconnectCallback errorId(String errorId) {
+    
     this.errorId = errorId;
     return this;
   }
@@ -511,6 +551,7 @@ public class TransferDisconnectCallback {
   public String getErrorId() {
     return errorId;
   }
+
 
   public void setErrorId(String errorId) {
     this.errorId = errorId;
@@ -710,10 +751,6 @@ public class TransferDisconnectCallback {
       if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
-      // validate the optional field `direction`
-      if (jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) {
-        CallDirectionEnum.validateJsonElement(jsonObj.get("direction"));
-      }
       if ((jsonObj.get("callId") != null && !jsonObj.get("callId").isJsonNull()) && !jsonObj.get("callId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callId").toString()));
       }
@@ -771,12 +808,7 @@ public class TransferDisconnectCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

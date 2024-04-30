@@ -49,6 +49,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -94,6 +95,7 @@ public class MessageRequest {
   }
 
   public MessageRequest applicationId(String applicationId) {
+    
     this.applicationId = applicationId;
     return this;
   }
@@ -107,12 +109,14 @@ public class MessageRequest {
     return applicationId;
   }
 
+
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public MessageRequest to(Set<String> to) {
+    
     this.to = to;
     return this;
   }
@@ -134,12 +138,14 @@ public class MessageRequest {
     return to;
   }
 
+
   public void setTo(Set<String> to) {
     this.to = to;
   }
 
 
   public MessageRequest from(String from) {
+    
     this.from = from;
     return this;
   }
@@ -153,12 +159,14 @@ public class MessageRequest {
     return from;
   }
 
+
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public MessageRequest text(String text) {
+    
     this.text = text;
     return this;
   }
@@ -172,12 +180,14 @@ public class MessageRequest {
     return text;
   }
 
+
   public void setText(String text) {
     this.text = text;
   }
 
 
   public MessageRequest media(List<URI> media) {
+    
     this.media = media;
     return this;
   }
@@ -199,12 +209,14 @@ public class MessageRequest {
     return media;
   }
 
+
   public void setMedia(List<URI> media) {
     this.media = media;
   }
 
 
   public MessageRequest tag(String tag) {
+    
     this.tag = tag;
     return this;
   }
@@ -218,12 +230,14 @@ public class MessageRequest {
     return tag;
   }
 
+
   public void setTag(String tag) {
     this.tag = tag;
   }
 
 
   public MessageRequest priority(PriorityEnum priority) {
+    
     this.priority = priority;
     return this;
   }
@@ -237,12 +251,14 @@ public class MessageRequest {
     return priority;
   }
 
+
   public void setPriority(PriorityEnum priority) {
     this.priority = priority;
   }
 
 
   public MessageRequest expiration(OffsetDateTime expiration) {
+    
     this.expiration = expiration;
     return this;
   }
@@ -255,6 +271,7 @@ public class MessageRequest {
   public OffsetDateTime getExpiration() {
     return expiration;
   }
+
 
   public void setExpiration(OffsetDateTime expiration) {
     this.expiration = expiration;
@@ -424,10 +441,6 @@ public class MessageRequest {
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
       }
-      // validate the optional field `priority`
-      if (jsonObj.get("priority") != null && !jsonObj.get("priority").isJsonNull()) {
-        PriorityEnum.validateJsonElement(jsonObj.get("priority"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -458,12 +471,7 @@ public class MessageRequest {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

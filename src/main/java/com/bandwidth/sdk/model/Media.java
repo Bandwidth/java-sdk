@@ -42,6 +42,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -67,6 +68,7 @@ public class Media {
   }
 
   public Media content(String content) {
+    
     this.content = content;
     return this;
   }
@@ -80,12 +82,14 @@ public class Media {
     return content;
   }
 
+
   public void setContent(String content) {
     this.content = content;
   }
 
 
   public Media contentLength(Integer contentLength) {
+    
     this.contentLength = contentLength;
     return this;
   }
@@ -99,12 +103,14 @@ public class Media {
     return contentLength;
   }
 
+
   public void setContentLength(Integer contentLength) {
     this.contentLength = contentLength;
   }
 
 
   public Media mediaName(String mediaName) {
+    
     this.mediaName = mediaName;
     return this;
   }
@@ -117,6 +123,7 @@ public class Media {
   public String getMediaName() {
     return mediaName;
   }
+
 
   public void setMediaName(String mediaName) {
     this.mediaName = mediaName;
@@ -275,12 +282,7 @@ public class Media {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
