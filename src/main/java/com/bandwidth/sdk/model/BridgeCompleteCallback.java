@@ -45,6 +45,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -122,6 +123,7 @@ public class BridgeCompleteCallback {
   }
 
   public BridgeCompleteCallback eventType(String eventType) {
+    
     this.eventType = eventType;
     return this;
   }
@@ -135,12 +137,14 @@ public class BridgeCompleteCallback {
     return eventType;
   }
 
+
   public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
   public BridgeCompleteCallback eventTime(OffsetDateTime eventTime) {
+    
     this.eventTime = eventTime;
     return this;
   }
@@ -154,12 +158,14 @@ public class BridgeCompleteCallback {
     return eventTime;
   }
 
+
   public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
   public BridgeCompleteCallback accountId(String accountId) {
+    
     this.accountId = accountId;
     return this;
   }
@@ -173,12 +179,14 @@ public class BridgeCompleteCallback {
     return accountId;
   }
 
+
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
   public BridgeCompleteCallback applicationId(String applicationId) {
+    
     this.applicationId = applicationId;
     return this;
   }
@@ -192,12 +200,14 @@ public class BridgeCompleteCallback {
     return applicationId;
   }
 
+
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public BridgeCompleteCallback from(String from) {
+    
     this.from = from;
     return this;
   }
@@ -211,12 +221,14 @@ public class BridgeCompleteCallback {
     return from;
   }
 
+
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public BridgeCompleteCallback to(String to) {
+    
     this.to = to;
     return this;
   }
@@ -230,12 +242,14 @@ public class BridgeCompleteCallback {
     return to;
   }
 
+
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public BridgeCompleteCallback direction(CallDirectionEnum direction) {
+    
     this.direction = direction;
     return this;
   }
@@ -249,12 +263,14 @@ public class BridgeCompleteCallback {
     return direction;
   }
 
+
   public void setDirection(CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
   public BridgeCompleteCallback callId(String callId) {
+    
     this.callId = callId;
     return this;
   }
@@ -268,12 +284,14 @@ public class BridgeCompleteCallback {
     return callId;
   }
 
+
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
   public BridgeCompleteCallback callUrl(String callUrl) {
+    
     this.callUrl = callUrl;
     return this;
   }
@@ -287,12 +305,14 @@ public class BridgeCompleteCallback {
     return callUrl;
   }
 
+
   public void setCallUrl(String callUrl) {
     this.callUrl = callUrl;
   }
 
 
   public BridgeCompleteCallback enqueuedTime(OffsetDateTime enqueuedTime) {
+    
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -306,12 +326,14 @@ public class BridgeCompleteCallback {
     return enqueuedTime;
   }
 
+
   public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
   public BridgeCompleteCallback startTime(OffsetDateTime startTime) {
+    
     this.startTime = startTime;
     return this;
   }
@@ -325,12 +347,14 @@ public class BridgeCompleteCallback {
     return startTime;
   }
 
+
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
   public BridgeCompleteCallback answerTime(OffsetDateTime answerTime) {
+    
     this.answerTime = answerTime;
     return this;
   }
@@ -344,12 +368,14 @@ public class BridgeCompleteCallback {
     return answerTime;
   }
 
+
   public void setAnswerTime(OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
   public BridgeCompleteCallback tag(String tag) {
+    
     this.tag = tag;
     return this;
   }
@@ -363,12 +389,14 @@ public class BridgeCompleteCallback {
     return tag;
   }
 
+
   public void setTag(String tag) {
     this.tag = tag;
   }
 
 
   public BridgeCompleteCallback cause(String cause) {
+    
     this.cause = cause;
     return this;
   }
@@ -382,12 +410,14 @@ public class BridgeCompleteCallback {
     return cause;
   }
 
+
   public void setCause(String cause) {
     this.cause = cause;
   }
 
 
   public BridgeCompleteCallback errorMessage(String errorMessage) {
+    
     this.errorMessage = errorMessage;
     return this;
   }
@@ -401,12 +431,14 @@ public class BridgeCompleteCallback {
     return errorMessage;
   }
 
+
   public void setErrorMessage(String errorMessage) {
     this.errorMessage = errorMessage;
   }
 
 
   public BridgeCompleteCallback errorId(String errorId) {
+    
     this.errorId = errorId;
     return this;
   }
@@ -419,6 +451,7 @@ public class BridgeCompleteCallback {
   public String getErrorId() {
     return errorId;
   }
+
 
   public void setErrorId(String errorId) {
     this.errorId = errorId;
@@ -606,10 +639,6 @@ public class BridgeCompleteCallback {
       if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
-      // validate the optional field `direction`
-      if (jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) {
-        CallDirectionEnum.validateJsonElement(jsonObj.get("direction"));
-      }
       if ((jsonObj.get("callId") != null && !jsonObj.get("callId").isJsonNull()) && !jsonObj.get("callId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callId").toString()));
       }
@@ -658,12 +687,7 @@ public class BridgeCompleteCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

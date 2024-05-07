@@ -43,6 +43,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -72,6 +73,7 @@ public class TranscriptionMetadata {
   }
 
   public TranscriptionMetadata id(String id) {
+    
     this.id = id;
     return this;
   }
@@ -85,12 +87,14 @@ public class TranscriptionMetadata {
     return id;
   }
 
+
   public void setId(String id) {
     this.id = id;
   }
 
 
   public TranscriptionMetadata status(String status) {
+    
     this.status = status;
     return this;
   }
@@ -104,12 +108,14 @@ public class TranscriptionMetadata {
     return status;
   }
 
+
   public void setStatus(String status) {
     this.status = status;
   }
 
 
   public TranscriptionMetadata completedTime(String completedTime) {
+    
     this.completedTime = completedTime;
     return this;
   }
@@ -123,12 +129,14 @@ public class TranscriptionMetadata {
     return completedTime;
   }
 
+
   public void setCompletedTime(String completedTime) {
     this.completedTime = completedTime;
   }
 
 
   public TranscriptionMetadata url(URI url) {
+    
     this.url = url;
     return this;
   }
@@ -141,6 +149,7 @@ public class TranscriptionMetadata {
   public URI getUrl() {
     return url;
   }
+
 
   public void setUrl(URI url) {
     this.url = url;
@@ -308,12 +317,7 @@ public class TranscriptionMetadata {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
