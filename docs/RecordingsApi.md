@@ -4,96 +4,17 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteCallTranscription**](RecordingsApi.md#deleteCallTranscription) | **DELETE** /accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription | Delete Transcription |
 | [**deleteRecording**](RecordingsApi.md#deleteRecording) | **DELETE** /accounts/{accountId}/calls/{callId}/recordings/{recordingId} | Delete Recording |
 | [**deleteRecordingMedia**](RecordingsApi.md#deleteRecordingMedia) | **DELETE** /accounts/{accountId}/calls/{callId}/recordings/{recordingId}/media | Delete Recording Media |
+| [**deleteRecordingTranscription**](RecordingsApi.md#deleteRecordingTranscription) | **DELETE** /accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription | Delete Transcription |
 | [**downloadCallRecording**](RecordingsApi.md#downloadCallRecording) | **GET** /accounts/{accountId}/calls/{callId}/recordings/{recordingId}/media | Download Recording |
 | [**getCallRecording**](RecordingsApi.md#getCallRecording) | **GET** /accounts/{accountId}/calls/{callId}/recordings/{recordingId} | Get Call Recording |
-| [**getCallTranscription**](RecordingsApi.md#getCallTranscription) | **GET** /accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription | Get Transcription |
+| [**getRecordingTranscription**](RecordingsApi.md#getRecordingTranscription) | **GET** /accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription | Get Transcription |
 | [**listAccountCallRecordings**](RecordingsApi.md#listAccountCallRecordings) | **GET** /accounts/{accountId}/recordings | Get Call Recordings |
 | [**listCallRecordings**](RecordingsApi.md#listCallRecordings) | **GET** /accounts/{accountId}/calls/{callId}/recordings | List Call Recordings |
 | [**transcribeCallRecording**](RecordingsApi.md#transcribeCallRecording) | **POST** /accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription | Create Transcription Request |
 | [**updateCallRecordingState**](RecordingsApi.md#updateCallRecordingState) | **PUT** /accounts/{accountId}/calls/{callId}/recording | Update Recording |
 
-
-<a id="deleteCallTranscription"></a>
-# **deleteCallTranscription**
-> deleteCallTranscription(accountId, callId, recordingId)
-
-Delete Transcription
-
-Deletes the specified recording&#39;s transcription.  Note: After the deletion is requested and a &#x60;204&#x60; is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
-
-### Example
-```java
-// Import classes:
-import com.bandwidth.sdk.ApiClient;
-import com.bandwidth.sdk.ApiException;
-import com.bandwidth.sdk.Configuration;
-import com.bandwidth.sdk.auth.*;
-import com.bandwidth.sdk.models.*;
-import com.bandwidth.sdk.api.RecordingsApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
-    
-    // Configure HTTP basic authorization: Basic
-    HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    Basic.setUsername("YOUR USERNAME");
-    Basic.setPassword("YOUR PASSWORD");
-
-    RecordingsApi apiInstance = new RecordingsApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID.
-    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID.
-    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID.
-    try {
-      apiInstance.deleteCallTranscription(accountId, callId, recordingId);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling RecordingsApi#deleteCallTranscription");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID. | |
-| **callId** | **String**| Programmable Voice API Call ID. | |
-| **recordingId** | **String**| Programmable Voice API Recording ID. | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[Basic](../README.md#Basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | The transcription was successfully deleted. |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **405** | Method Not Allowed |  -  |
-| **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
-| **500** | Internal Server Error |  -  |
 
 <a id="deleteRecording"></a>
 # **deleteRecording**
@@ -244,6 +165,85 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | The recording media was successfully deleted. |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **415** | Unsupported Media Type |  -  |
+| **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
+| **500** | Internal Server Error |  -  |
+
+<a id="deleteRecordingTranscription"></a>
+# **deleteRecordingTranscription**
+> deleteRecordingTranscription(accountId, callId, recordingId)
+
+Delete Transcription
+
+Deletes the specified recording&#39;s transcription.  Note: After the deletion is requested and a &#x60;204&#x60; is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
+
+### Example
+```java
+// Import classes:
+import com.bandwidth.sdk.ApiClient;
+import com.bandwidth.sdk.ApiException;
+import com.bandwidth.sdk.Configuration;
+import com.bandwidth.sdk.auth.*;
+import com.bandwidth.sdk.models.*;
+import com.bandwidth.sdk.api.RecordingsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure HTTP basic authorization: Basic
+    HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
+    Basic.setUsername("YOUR USERNAME");
+    Basic.setPassword("YOUR PASSWORD");
+
+    RecordingsApi apiInstance = new RecordingsApi(defaultClient);
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID.
+    String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID.
+    try {
+      apiInstance.deleteRecordingTranscription(accountId, callId, recordingId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling RecordingsApi#deleteRecordingTranscription");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **callId** | **String**| Programmable Voice API Call ID. | |
+| **recordingId** | **String**| Programmable Voice API Recording ID. | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | The transcription was successfully deleted. |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
@@ -413,13 +413,13 @@ public class Example {
 | **429** | Too Many Requests |  * Retry-After - When you should try your request again. <br>  |
 | **500** | Internal Server Error |  -  |
 
-<a id="getCallTranscription"></a>
-# **getCallTranscription**
-> TranscriptionList getCallTranscription(accountId, callId, recordingId)
+<a id="getRecordingTranscription"></a>
+# **getRecordingTranscription**
+> RecordingTranscriptions getRecordingTranscription(accountId, callId, recordingId)
 
 Get Transcription
 
-Downloads the specified transcription.  If the transcribed recording was multi-channel, then there will be 2 transcripts. The caller/called party transcript will be the first item while [&#x60;&lt;PlayAudio&gt;&#x60;](/docs/voice/bxml/playAudio) and [&#x60;&lt;SpeakSentence&gt;&#x60;](/docs/voice/bxml/speakSentence) transcript will be the second item. During a [&#x60;&lt;Transfer&gt;&#x60;](/docs/voice/bxml/transfer) the A-leg transcript will be the first item while the B-leg transcript will be the second item.
+Downloads the specified transcription. If the recording was multi-channel, then there will be 2 transcripts. The caller/called party transcript will be the first item while [&#x60;&lt;PlayAudio&gt;&#x60;](/docs/voice/bxml/playAudio) and [&#x60;&lt;SpeakSentence&gt;&#x60;](/docs/voice/bxml/speakSentence) transcript will be the second item. During a [&#x60;&lt;Transfer&gt;&#x60;](/docs/voice/bxml/transfer) the A-leg transcript will be the first item while the B-leg transcript will be the second item.
 
 ### Example
 ```java
@@ -446,10 +446,10 @@ public class Example {
     String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID.
     String recordingId = "r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Recording ID.
     try {
-      TranscriptionList result = apiInstance.getCallTranscription(accountId, callId, recordingId);
+      RecordingTranscriptions result = apiInstance.getRecordingTranscription(accountId, callId, recordingId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling RecordingsApi#getCallTranscription");
+      System.err.println("Exception when calling RecordingsApi#getRecordingTranscription");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -469,7 +469,7 @@ public class Example {
 
 ### Return type
 
-[**TranscriptionList**](TranscriptionList.md)
+[**RecordingTranscriptions**](RecordingTranscriptions.md)
 
 ### Authorization
 
@@ -483,7 +483,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Transcription found |  -  |
+| **200** | Transcription found. |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |

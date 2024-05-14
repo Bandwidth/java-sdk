@@ -146,17 +146,20 @@ Class | Method | HTTP request | Description
 *MfaApi* | [**verifyCode**](docs/MfaApi.md#verifyCode) | **POST** /accounts/{accountId}/code/verify | Verify Authentication Code
 *PhoneNumberLookupApi* | [**createLookup**](docs/PhoneNumberLookupApi.md#createLookup) | **POST** /accounts/{accountId}/tnlookup | Create Lookup
 *PhoneNumberLookupApi* | [**getLookupStatus**](docs/PhoneNumberLookupApi.md#getLookupStatus) | **GET** /accounts/{accountId}/tnlookup/{requestId} | Get Lookup Request Status
-*RecordingsApi* | [**deleteCallTranscription**](docs/RecordingsApi.md#deleteCallTranscription) | **DELETE** /accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription | Delete Transcription
 *RecordingsApi* | [**deleteRecording**](docs/RecordingsApi.md#deleteRecording) | **DELETE** /accounts/{accountId}/calls/{callId}/recordings/{recordingId} | Delete Recording
 *RecordingsApi* | [**deleteRecordingMedia**](docs/RecordingsApi.md#deleteRecordingMedia) | **DELETE** /accounts/{accountId}/calls/{callId}/recordings/{recordingId}/media | Delete Recording Media
+*RecordingsApi* | [**deleteRecordingTranscription**](docs/RecordingsApi.md#deleteRecordingTranscription) | **DELETE** /accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription | Delete Transcription
 *RecordingsApi* | [**downloadCallRecording**](docs/RecordingsApi.md#downloadCallRecording) | **GET** /accounts/{accountId}/calls/{callId}/recordings/{recordingId}/media | Download Recording
 *RecordingsApi* | [**getCallRecording**](docs/RecordingsApi.md#getCallRecording) | **GET** /accounts/{accountId}/calls/{callId}/recordings/{recordingId} | Get Call Recording
-*RecordingsApi* | [**getCallTranscription**](docs/RecordingsApi.md#getCallTranscription) | **GET** /accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription | Get Transcription
+*RecordingsApi* | [**getRecordingTranscription**](docs/RecordingsApi.md#getRecordingTranscription) | **GET** /accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription | Get Transcription
 *RecordingsApi* | [**listAccountCallRecordings**](docs/RecordingsApi.md#listAccountCallRecordings) | **GET** /accounts/{accountId}/recordings | Get Call Recordings
 *RecordingsApi* | [**listCallRecordings**](docs/RecordingsApi.md#listCallRecordings) | **GET** /accounts/{accountId}/calls/{callId}/recordings | List Call Recordings
 *RecordingsApi* | [**transcribeCallRecording**](docs/RecordingsApi.md#transcribeCallRecording) | **POST** /accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription | Create Transcription Request
 *RecordingsApi* | [**updateCallRecordingState**](docs/RecordingsApi.md#updateCallRecordingState) | **PUT** /accounts/{accountId}/calls/{callId}/recording | Update Recording
 *StatisticsApi* | [**getStatistics**](docs/StatisticsApi.md#getStatistics) | **GET** /accounts/{accountId}/statistics | Get Account Statistics
+*TranscriptionsApi* | [**deleteRealTimeTranscription**](docs/TranscriptionsApi.md#deleteRealTimeTranscription) | **DELETE** /accounts/{accountId}/calls/{callId}/transcriptions/{transcriptionId} | Delete a specific transcription
+*TranscriptionsApi* | [**getRealTimeTranscription**](docs/TranscriptionsApi.md#getRealTimeTranscription) | **GET** /accounts/{accountId}/calls/{callId}/transcriptions/{transcriptionId} | Retrieve a specific transcription
+*TranscriptionsApi* | [**listRealTimeTranscriptions**](docs/TranscriptionsApi.md#listRealTimeTranscriptions) | **GET** /accounts/{accountId}/calls/{callId}/transcriptions | Enumerate transcriptions made with StartTranscription
 
 
 ## Documentation for Models
@@ -169,6 +172,9 @@ Class | Method | HTTP request | Description
  - [CallRecordingMetadata](docs/CallRecordingMetadata.md)
  - [CallState](docs/CallState.md)
  - [CallStateEnum](docs/CallStateEnum.md)
+ - [CallTranscription](docs/CallTranscription.md)
+ - [CallTranscriptionMetadata](docs/CallTranscriptionMetadata.md)
+ - [CallTranscriptionResponse](docs/CallTranscriptionResponse.md)
  - [CallbackMethodEnum](docs/CallbackMethodEnum.md)
  - [CodeRequest](docs/CodeRequest.md)
  - [Conference](docs/Conference.md)
@@ -228,6 +234,8 @@ Class | Method | HTTP request | Description
  - [RecordingAvailableCallback](docs/RecordingAvailableCallback.md)
  - [RecordingCompleteCallback](docs/RecordingCompleteCallback.md)
  - [RecordingStateEnum](docs/RecordingStateEnum.md)
+ - [RecordingTranscriptionMetadata](docs/RecordingTranscriptionMetadata.md)
+ - [RecordingTranscriptions](docs/RecordingTranscriptions.md)
  - [RedirectCallback](docs/RedirectCallback.md)
  - [RedirectMethodEnum](docs/RedirectMethodEnum.md)
  - [StirShaken](docs/StirShaken.md)
@@ -236,8 +244,6 @@ Class | Method | HTTP request | Description
  - [TranscribeRecording](docs/TranscribeRecording.md)
  - [Transcription](docs/Transcription.md)
  - [TranscriptionAvailableCallback](docs/TranscriptionAvailableCallback.md)
- - [TranscriptionList](docs/TranscriptionList.md)
- - [TranscriptionMetadata](docs/TranscriptionMetadata.md)
  - [TransferAnswerCallback](docs/TransferAnswerCallback.md)
  - [TransferCompleteCallback](docs/TransferCompleteCallback.md)
  - [TransferDisconnectCallback](docs/TransferDisconnectCallback.md)

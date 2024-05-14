@@ -47,6 +47,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -148,6 +149,7 @@ public class RecordingCompleteCallback {
   }
 
   public RecordingCompleteCallback eventType(String eventType) {
+    
     this.eventType = eventType;
     return this;
   }
@@ -161,12 +163,14 @@ public class RecordingCompleteCallback {
     return eventType;
   }
 
+
   public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
   public RecordingCompleteCallback eventTime(OffsetDateTime eventTime) {
+    
     this.eventTime = eventTime;
     return this;
   }
@@ -180,12 +184,14 @@ public class RecordingCompleteCallback {
     return eventTime;
   }
 
+
   public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
   public RecordingCompleteCallback accountId(String accountId) {
+    
     this.accountId = accountId;
     return this;
   }
@@ -199,12 +205,14 @@ public class RecordingCompleteCallback {
     return accountId;
   }
 
+
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
   public RecordingCompleteCallback applicationId(String applicationId) {
+    
     this.applicationId = applicationId;
     return this;
   }
@@ -218,12 +226,14 @@ public class RecordingCompleteCallback {
     return applicationId;
   }
 
+
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public RecordingCompleteCallback from(String from) {
+    
     this.from = from;
     return this;
   }
@@ -237,12 +247,14 @@ public class RecordingCompleteCallback {
     return from;
   }
 
+
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public RecordingCompleteCallback to(String to) {
+    
     this.to = to;
     return this;
   }
@@ -256,12 +268,14 @@ public class RecordingCompleteCallback {
     return to;
   }
 
+
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public RecordingCompleteCallback direction(CallDirectionEnum direction) {
+    
     this.direction = direction;
     return this;
   }
@@ -275,12 +289,14 @@ public class RecordingCompleteCallback {
     return direction;
   }
 
+
   public void setDirection(CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
   public RecordingCompleteCallback callId(String callId) {
+    
     this.callId = callId;
     return this;
   }
@@ -294,12 +310,14 @@ public class RecordingCompleteCallback {
     return callId;
   }
 
+
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
   public RecordingCompleteCallback callUrl(String callUrl) {
+    
     this.callUrl = callUrl;
     return this;
   }
@@ -313,12 +331,14 @@ public class RecordingCompleteCallback {
     return callUrl;
   }
 
+
   public void setCallUrl(String callUrl) {
     this.callUrl = callUrl;
   }
 
 
   public RecordingCompleteCallback parentCallId(String parentCallId) {
+    
     this.parentCallId = parentCallId;
     return this;
   }
@@ -332,12 +352,14 @@ public class RecordingCompleteCallback {
     return parentCallId;
   }
 
+
   public void setParentCallId(String parentCallId) {
     this.parentCallId = parentCallId;
   }
 
 
   public RecordingCompleteCallback recordingId(String recordingId) {
+    
     this.recordingId = recordingId;
     return this;
   }
@@ -351,12 +373,14 @@ public class RecordingCompleteCallback {
     return recordingId;
   }
 
+
   public void setRecordingId(String recordingId) {
     this.recordingId = recordingId;
   }
 
 
   public RecordingCompleteCallback mediaUrl(URI mediaUrl) {
+    
     this.mediaUrl = mediaUrl;
     return this;
   }
@@ -370,12 +394,14 @@ public class RecordingCompleteCallback {
     return mediaUrl;
   }
 
+
   public void setMediaUrl(URI mediaUrl) {
     this.mediaUrl = mediaUrl;
   }
 
 
   public RecordingCompleteCallback enqueuedTime(OffsetDateTime enqueuedTime) {
+    
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -389,12 +415,14 @@ public class RecordingCompleteCallback {
     return enqueuedTime;
   }
 
+
   public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
   public RecordingCompleteCallback startTime(OffsetDateTime startTime) {
+    
     this.startTime = startTime;
     return this;
   }
@@ -408,12 +436,14 @@ public class RecordingCompleteCallback {
     return startTime;
   }
 
+
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
   public RecordingCompleteCallback answerTime(OffsetDateTime answerTime) {
+    
     this.answerTime = answerTime;
     return this;
   }
@@ -427,12 +457,14 @@ public class RecordingCompleteCallback {
     return answerTime;
   }
 
+
   public void setAnswerTime(OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
   public RecordingCompleteCallback endTime(OffsetDateTime endTime) {
+    
     this.endTime = endTime;
     return this;
   }
@@ -446,12 +478,14 @@ public class RecordingCompleteCallback {
     return endTime;
   }
 
+
   public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
 
   public RecordingCompleteCallback duration(String duration) {
+    
     this.duration = duration;
     return this;
   }
@@ -465,12 +499,14 @@ public class RecordingCompleteCallback {
     return duration;
   }
 
+
   public void setDuration(String duration) {
     this.duration = duration;
   }
 
 
   public RecordingCompleteCallback fileFormat(FileFormatEnum fileFormat) {
+    
     this.fileFormat = fileFormat;
     return this;
   }
@@ -484,12 +520,14 @@ public class RecordingCompleteCallback {
     return fileFormat;
   }
 
+
   public void setFileFormat(FileFormatEnum fileFormat) {
     this.fileFormat = fileFormat;
   }
 
 
   public RecordingCompleteCallback channels(Integer channels) {
+    
     this.channels = channels;
     return this;
   }
@@ -503,12 +541,14 @@ public class RecordingCompleteCallback {
     return channels;
   }
 
+
   public void setChannels(Integer channels) {
     this.channels = channels;
   }
 
 
   public RecordingCompleteCallback tag(String tag) {
+    
     this.tag = tag;
     return this;
   }
@@ -522,12 +562,14 @@ public class RecordingCompleteCallback {
     return tag;
   }
 
+
   public void setTag(String tag) {
     this.tag = tag;
   }
 
 
   public RecordingCompleteCallback transferCallerId(String transferCallerId) {
+    
     this.transferCallerId = transferCallerId;
     return this;
   }
@@ -541,12 +583,14 @@ public class RecordingCompleteCallback {
     return transferCallerId;
   }
 
+
   public void setTransferCallerId(String transferCallerId) {
     this.transferCallerId = transferCallerId;
   }
 
 
   public RecordingCompleteCallback transferTo(String transferTo) {
+    
     this.transferTo = transferTo;
     return this;
   }
@@ -559,6 +603,7 @@ public class RecordingCompleteCallback {
   public String getTransferTo() {
     return transferTo;
   }
+
 
   public void setTransferTo(String transferTo) {
     this.transferTo = transferTo;
@@ -764,10 +809,6 @@ public class RecordingCompleteCallback {
       if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
-      // validate the optional field `direction`
-      if (jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) {
-        CallDirectionEnum.validateJsonElement(jsonObj.get("direction"));
-      }
       if ((jsonObj.get("callId") != null && !jsonObj.get("callId").isJsonNull()) && !jsonObj.get("callId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callId").toString()));
       }
@@ -785,10 +826,6 @@ public class RecordingCompleteCallback {
       }
       if ((jsonObj.get("duration") != null && !jsonObj.get("duration").isJsonNull()) && !jsonObj.get("duration").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `duration` to be a primitive type in the JSON string but got `%s`", jsonObj.get("duration").toString()));
-      }
-      // validate the optional field `fileFormat`
-      if (jsonObj.get("fileFormat") != null && !jsonObj.get("fileFormat").isJsonNull()) {
-        FileFormatEnum.validateJsonElement(jsonObj.get("fileFormat"));
       }
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
@@ -829,12 +866,7 @@ public class RecordingCompleteCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

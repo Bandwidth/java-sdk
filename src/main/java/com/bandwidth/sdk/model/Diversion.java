@@ -42,6 +42,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -83,6 +84,7 @@ public class Diversion {
   }
 
   public Diversion reason(String reason) {
+    
     this.reason = reason;
     return this;
   }
@@ -96,12 +98,14 @@ public class Diversion {
     return reason;
   }
 
+
   public void setReason(String reason) {
     this.reason = reason;
   }
 
 
   public Diversion privacy(String privacy) {
+    
     this.privacy = privacy;
     return this;
   }
@@ -115,12 +119,14 @@ public class Diversion {
     return privacy;
   }
 
+
   public void setPrivacy(String privacy) {
     this.privacy = privacy;
   }
 
 
   public Diversion screen(String screen) {
+    
     this.screen = screen;
     return this;
   }
@@ -134,12 +140,14 @@ public class Diversion {
     return screen;
   }
 
+
   public void setScreen(String screen) {
     this.screen = screen;
   }
 
 
   public Diversion counter(String counter) {
+    
     this.counter = counter;
     return this;
   }
@@ -153,12 +161,14 @@ public class Diversion {
     return counter;
   }
 
+
   public void setCounter(String counter) {
     this.counter = counter;
   }
 
 
   public Diversion limit(String limit) {
+    
     this.limit = limit;
     return this;
   }
@@ -172,12 +182,14 @@ public class Diversion {
     return limit;
   }
 
+
   public void setLimit(String limit) {
     this.limit = limit;
   }
 
 
   public Diversion unknown(String unknown) {
+    
     this.unknown = unknown;
     return this;
   }
@@ -191,12 +203,14 @@ public class Diversion {
     return unknown;
   }
 
+
   public void setUnknown(String unknown) {
     this.unknown = unknown;
   }
 
 
   public Diversion origTo(String origTo) {
+    
     this.origTo = origTo;
     return this;
   }
@@ -209,6 +223,7 @@ public class Diversion {
   public String getOrigTo() {
     return origTo;
   }
+
 
   public void setOrigTo(String origTo) {
     this.origTo = origTo;
@@ -394,12 +409,7 @@ public class Diversion {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

@@ -44,6 +44,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -61,6 +62,7 @@ public class LookupRequest {
   }
 
   public LookupRequest tns(List<String> tns) {
+    
     this.tns = tns;
     return this;
   }
@@ -81,6 +83,7 @@ public class LookupRequest {
   public List<String> getTns() {
     return tns;
   }
+
 
   public void setTns(List<String> tns) {
     this.tns = tns;
@@ -241,12 +244,7 @@ public class LookupRequest {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

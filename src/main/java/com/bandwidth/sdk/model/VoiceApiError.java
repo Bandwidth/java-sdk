@@ -43,6 +43,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -68,6 +69,7 @@ public class VoiceApiError {
   }
 
   public VoiceApiError type(String type) {
+    
     this.type = type;
     return this;
   }
@@ -81,12 +83,14 @@ public class VoiceApiError {
     return type;
   }
 
+
   public void setType(String type) {
     this.type = type;
   }
 
 
   public VoiceApiError description(String description) {
+    
     this.description = description;
     return this;
   }
@@ -100,12 +104,14 @@ public class VoiceApiError {
     return description;
   }
 
+
   public void setDescription(String description) {
     this.description = description;
   }
 
 
   public VoiceApiError id(String id) {
+    
     this.id = id;
     return this;
   }
@@ -118,6 +124,7 @@ public class VoiceApiError {
   public String getId() {
     return id;
   }
+
 
   public void setId(String id) {
     this.id = id;
@@ -290,12 +297,7 @@ public class VoiceApiError {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
