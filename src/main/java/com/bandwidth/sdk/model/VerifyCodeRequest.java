@@ -43,6 +43,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -72,6 +73,7 @@ public class VerifyCodeRequest {
   }
 
   public VerifyCodeRequest to(String to) {
+    
     this.to = to;
     return this;
   }
@@ -85,12 +87,14 @@ public class VerifyCodeRequest {
     return to;
   }
 
+
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public VerifyCodeRequest scope(String scope) {
+    
     this.scope = scope;
     return this;
   }
@@ -104,12 +108,14 @@ public class VerifyCodeRequest {
     return scope;
   }
 
+
   public void setScope(String scope) {
     this.scope = scope;
   }
 
 
   public VerifyCodeRequest expirationTimeInMinutes(BigDecimal expirationTimeInMinutes) {
+    
     this.expirationTimeInMinutes = expirationTimeInMinutes;
     return this;
   }
@@ -125,12 +131,14 @@ public class VerifyCodeRequest {
     return expirationTimeInMinutes;
   }
 
+
   public void setExpirationTimeInMinutes(BigDecimal expirationTimeInMinutes) {
     this.expirationTimeInMinutes = expirationTimeInMinutes;
   }
 
 
   public VerifyCodeRequest code(String code) {
+    
     this.code = code;
     return this;
   }
@@ -143,6 +151,7 @@ public class VerifyCodeRequest {
   public String getCode() {
     return code;
   }
+
 
   public void setCode(String code) {
     this.code = code;
@@ -317,12 +326,7 @@ public class VerifyCodeRequest {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
