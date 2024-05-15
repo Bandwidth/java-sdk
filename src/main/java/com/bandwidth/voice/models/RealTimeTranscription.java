@@ -7,7 +7,6 @@
 package com.bandwidth.voice.models;
 
 import com.bandwidth.DateTimeHelper;
-import com.bandwidth.internal.OptionalNullable;
 import com.bandwidth.voice.models.Tracks;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -122,7 +121,7 @@ public class RealTimeTranscription {
      * @return Returns the String
      */
     @JsonGetter("tracks")
-    public tracks getTracks() {
+    public Tracks getTracks() {
         return tracks;
     }
 
