@@ -3114,7 +3114,7 @@ public final class APIController extends BaseController {
             final String accountId,
             final String callId,
             final String transcriptionId) {
-        return makeHttpCallAsync(() -> buildDeleteTranscriptionRequest(accountId, callId, transciptionId),
+        return makeHttpCallAsync(() -> buildDeleteTranscriptionRequest(accountId, callId, transcriptionId),
             req -> authManagers.get("voice").applyAsync(req)
                 .thenCompose(request -> getClientInstance()
                         .executeAsync(request, false)),

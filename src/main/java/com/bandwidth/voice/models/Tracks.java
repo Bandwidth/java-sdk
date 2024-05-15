@@ -15,13 +15,13 @@ import com.fasterxml.jackson.annotation.JsonSetter;
  */
 public class Tracks {
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String reason;
+    private String detectedLanguage;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String track;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String text;
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Double Confidence;
+    private Double confidence;
 
     /**
      * Default constructor.
@@ -40,7 +40,7 @@ public class Tracks {
             String detectedLanguage,
             String track,
             String text,
-            Double Confidence) {
+            Double confidence) {
         this.detectedLanguage = detectedLanguage;
         this.track = track;
         this.text = text;
@@ -115,7 +115,7 @@ public class Tracks {
      * @param confidence Value for String
      */
     @JsonSetter("confidence")
-    public void setConfidence(Double Confidence) {
+    public void setConfidence(Double confidence) {
         this.confidence = confidence;
     }
 
@@ -150,7 +150,7 @@ public class Tracks {
         private String detectedLanguage;
         private String track;
         private String text;
-        private Double Confidence;
+        private Double confidence;
 
 
 
@@ -189,7 +189,7 @@ public class Tracks {
          * @param  confidence  String value for confidence.
          * @return Builder
          */
-        public Builder confidence(Double Confidence) {
+        public Builder confidence(Double confidence) {
             this.confidence = confidence;
             return this;
         }

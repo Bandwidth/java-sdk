@@ -53,16 +53,6 @@ public class RealTimeTranscription {
     }
 
     /**
-     * Internal initialization constructor.
-     */
-    protected RealTimeTranscription(String accountId, String callId, String transcriptionId, Tracks tracks) {
-        this.accountId = accountId;
-        this.callId = callId;
-        this.transcriptionId = transcriptionId;
-        this.tracks = tracks;
-    }
-
-    /**
      * Getter for AccountId.
      * @return Returns the String
      */
