@@ -34,6 +34,8 @@ import com.bandwidth.voice.models.ModifyCallRequest;
 import com.bandwidth.voice.models.ModifyConferenceRequest;
 import com.bandwidth.voice.models.TranscribeRecordingRequest;
 import com.bandwidth.voice.models.TranscriptionResponse;
+import com.bandwidth.voice.models.RealTimeTranscription;
+import com.bandwidth.voice.models.RealTimeTranscription;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import java.io.IOException;
 import java.util.AbstractMap.SimpleEntry;
@@ -3081,3 +3083,408 @@ public final class APIController extends BaseController {
     }
 
 }
+    /**
+     * Delete the specified transcription that was created on this call via startTranscription.
+     * @param  accountId  Required parameter: Example:
+     * @param  callId  Required parameter: Example:
+     * @param  transcriptionId  Required parameter: Example:
+     * @throws    ApiException    Represents error response from the server.
+     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     */
+    public ApiResponse<Void> deleteTranscription(
+            final String accountId,
+            final String callId,
+            final String transcriptionId) throws ApiException, IOException {
+        HttpRequest request = buildDeleteTranscriptionRequest(accountId, callId, transcriptionId);
+        authManagers.get("voice").apply(request);
+
+        HttpResponse response = getClientInstance().execute(request, false);
+        HttpContext context = new HttpContext(request, response);
+
+        return handleDeleteTranscriptionResponse(context);
+    }
+
+    /**
+     * Delete the specified transcription that was created on this call via startTranscription.
+     * @param  accountId  Required parameter: Example:
+     * @param  callId  Required parameter: Example:
+     * @param  transcriptioId  Required parameter: Example:
+     * @return    Returns the Void wrapped in ApiResponse response from the API call
+     */
+    public CompletableFuture<ApiResponse<Void>> deleteTranscriptionAsync(
+            final String accountId,
+            final String callId,
+            final String transcriptionId) {
+        return makeHttpCallAsync(() -> buildDeleteTranscriptionRequest(accountId, callId, transciptionId),
+            req -> authManagers.get("voice").applyAsync(req)
+                .thenCompose(request -> getClientInstance()
+                        .executeAsync(request, false)),
+            context -> handleDeleteTranscriptionResponse(context));
+    }
+
+    /**
+     * Builds the HttpRequest object for deleteTranscription.
+     */
+    private HttpRequest buildDeleteTranscriptionRequest(
+            final String accountId,
+            final String callId,
+            final String transcriptionId) {
+        //the base uri for api requests
+        String baseUri = config.getBaseUri(Server.VOICEDEFAULT);
+
+        //prepare query string for API call
+        final StringBuilder queryBuilder = new StringBuilder(baseUri
+                + "/api/v2/accounts/{accountId}/calls/{callId}/transcriptions/{transcriptionId}");
+
+        //process template parameters
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId",
+                new SimpleEntry<Object, Boolean>(accountId, false));
+        templateParameters.put("callId",
+                new SimpleEntry<Object, Boolean>(callId, false));
+        templateParameters.put("transcriptionId",
+                new SimpleEntry<Object, Boolean>(transcriptionId, false));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
+
+        //load all headers for the outgoing API request
+        Headers headers = new Headers();
+        headers.add("user-agent", BaseController.userAgent);
+
+        //prepare and invoke the API call request to fetch the response
+        HttpRequest request = getClientInstance().delete(queryBuilder, headers, null, null);
+
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
+        return request;
+    }
+
+    /**
+     * Processes the response for deleteTranscription.
+     * @return An object of type void
+     */
+    private ApiResponse<Void> handleDeleteTranscriptionResponse(
+            HttpContext context) throws ApiException, IOException {
+        HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
+
+        //Error handling using HTTP status codes
+        int responseCode = response.getStatusCode();
+
+        if (responseCode == 400) {
+            throw new ApiErrorException(
+                    "Something's not quite right... Your request is invalid. Please fix it before trying again.",
+                    context);
+        }
+        if (responseCode == 401) {
+            throw new ApiException(
+                    "Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.",
+                    context);
+        }
+        if (responseCode == 403) {
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
+        }
+        if (responseCode == 404) {
+            throw new ApiErrorException(
+                    "The resource specified cannot be found or does not belong to you.", context);
+        }
+        if (responseCode == 415) {
+            throw new ApiErrorException(
+                    "We don't support that media type. If a request body is required, please send it to us as `application/json`.",
+                    context);
+        }
+        if (responseCode == 429) {
+            throw new ApiErrorException(
+                    "You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.",
+                    context);
+        }
+        if (responseCode == 500) {
+            throw new ApiErrorException("Something unexpected happened. Please try again.",
+                    context);
+        }
+        //handle errors defined at the API level
+        validateResponse(response, context);
+
+        return new ApiResponse<Void>(response.getStatusCode(), response.getHeaders(), null);
+    }
+
+
+    /**
+     * Retrieve the specified transcription that was created on this call via startTranscription.
+
+     * @param  accountId  Required parameter: Example:
+     * @param  callId  Required parameter: Example:
+     * @param  transcriptionId  Required parameter: Example:
+     * @return    Returns the RealTimeTranscription wrapped in ApiResponse response from the API call
+     * @throws    ApiException    Represents error response from the server.
+     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     */
+    public ApiResponse<RealTimeTranscription> getTranscription(
+            final String accountId,
+            final String callId,
+	    final String transcriptionId) throws ApiException, IOException {
+        HttpRequest request = buildGetTranscriptionRequest(accountId, callId, transcriptionId);
+        authManagers.get("voice").apply(request);
+
+        HttpResponse response = getClientInstance().execute(request, false);
+        HttpContext context = new HttpContext(request, response);
+
+        return handleGetTranscriptionResponse(context);
+    }
+
+    /**
+     * Retrieve the specified transcription that was created on this call via startTranscription.
+     * @param  accountId  Required parameter: Example:
+     * @param  callId  Required parameter: Example:
+     * @param  transcriptionId  Required parameter: Example:
+     * @return    Returns the RealTimeTranscription wrapped in ApiResponse response from the API call
+     */
+    public CompletableFuture<ApiResponse<RealTimeTranscription>> getTranscriptionAsync(
+            final String accountId,
+            final String callId,
+	    final String transcriptionId) {
+        return makeHttpCallAsync(() -> buildGetTranscriptionRequest(accountId, callId, transcriptionId),
+            req -> authManagers.get("voice").applyAsync(req)
+                .thenCompose(request -> getClientInstance()
+                        .executeAsync(request, false)),
+            context -> handleGetTranscriptionResponse(context));
+    }
+
+    /**
+     * Builds the HttpRequest object for getTranscription.
+     */
+    private HttpRequest buildGetTranscriptionRequest(
+            final String accountId,
+            final String callId,
+	    final String transcriptionId) {
+        //the base uri for api requests
+        String baseUri = config.getBaseUri(Server.VOICEDEFAULT);
+
+        //prepare query string for API call
+        final StringBuilder queryBuilder = new StringBuilder(baseUri
+                + "/api/v2/accounts/{accountId}/calls/{callId}/transcriptions/{transcriptionId}");
+
+        //process template parameters
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId",
+                new SimpleEntry<Object, Boolean>(accountId, false));
+        templateParameters.put("callId",
+                new SimpleEntry<Object, Boolean>(callId, false));
+        templateParameters.put("transcriptionId",
+                new SimpleEntry<Object, Boolean>(transcriptionId, false));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
+
+        //load all headers for the outgoing API request
+        Headers headers = new Headers();
+        headers.add("user-agent", BaseController.userAgent);
+        headers.add("accept", "application/json");
+
+        //prepare and invoke the API call request to fetch the response
+        HttpRequest request = getClientInstance().get(queryBuilder, headers, null, null);
+
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
+        return request;
+    }
+
+    /**
+     * Processes the response for getTranscription.
+     * @return An object of type RealTimeTranscription
+     */
+    private ApiResponse<RealTimeTranscription> handleGetTranscriptionResponse(
+            HttpContext context) throws ApiException, IOException {
+        HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
+
+        //Error handling using HTTP status codes
+        int responseCode = response.getStatusCode();
+
+        if (responseCode == 400) {
+            throw new ApiErrorException(
+                    "Something's not quite right... Your request is invalid. Please fix it before trying again.",
+                    context);
+        }
+        if (responseCode == 401) {
+            throw new ApiException(
+                    "Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.",
+                    context);
+        }
+        if (responseCode == 403) {
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
+        }
+        if (responseCode == 404) {
+            throw new ApiErrorException(
+                    "The resource specified cannot be found or does not belong to you.", context);
+        }
+        if (responseCode == 415) {
+            throw new ApiErrorException(
+                    "We don't support that media type. If a request body is required, please send it to us as `application/json`.",
+                    context);
+        }
+        if (responseCode == 429) {
+            throw new ApiErrorException(
+                    "You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.",
+                    context);
+        }
+        if (responseCode == 500) {
+            throw new ApiErrorException("Something unexpected happened. Please try again.",
+                    context);
+        }
+        //handle errors defined at the API level
+        validateResponse(response, context);
+
+        //extract result from the http response
+        String responseBody = ((HttpStringResponse) response).getBody();
+        RealTimeTranscription result = ApiHelper.deserialize(responseBody,
+                RealTimeTranscription.class);
+
+        return new ApiResponse<RealTimeTranscription>(response.getStatusCode(), response.getHeaders(), result);
+    }
+
+    /**
+     * Returns information about the transcriptions in the account.
+     * @param  accountId  Required parameter: Example:
+     * @param  callId  Required parameter: Example:
+     * @return    Returns the List of TranscriptionsItem wrapped in ApiResponse response from the API call
+     * @throws    ApiException    Represents error response from the server.
+     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     */
+    public ApiResponse<List<TranscriptionsItem>> listTranscriptions(
+            final String accountId,
+            final String callId,
+            ) throws ApiException, IOException {
+        HttpRequest request = buildListTranscriptionsRequest(accountId, callId);
+        authManagers.get("voice").apply(request);
+
+        HttpResponse response = getClientInstance().execute(request, false);
+        HttpContext context = new HttpContext(request, response);
+
+        return handleListTranscriptionsResponse(context);
+    }
+
+    /**
+     * Returns information about the transcriptions in the account.
+     * @param  accountId  Required parameter: Example:
+     * @param  callId  Required parameter: Example:
+     * @return    Returns the List of TranscriptionsItem wrapped in ApiResponse response from the API call
+     */
+    public CompletableFuture<ApiResponse<List<TranscriptionsItem>>> listTranscriptionsAsync(
+            final String accountId,
+            final String callId) {
+        return makeHttpCallAsync(() -> buildListTranscriptionsRequest(accountId, callId),
+            req -> authManagers.get("voice").applyAsync(req)
+                .thenCompose(request -> getClientInstance()
+                        .executeAsync(request, false)),
+            context -> handleListTranscriptionsResponse(context));
+    }
+
+    /**
+     * Builds the HttpRequest object for listTranscriptions.
+     */
+    private HttpRequest buildListTranscriptionsRequest(
+            final String accountId,
+            final String callId) {
+        //the base uri for api requests
+        String baseUri = config.getBaseUri(Server.VOICEDEFAULT);
+
+        //prepare query string for API call
+        final StringBuilder queryBuilder = new StringBuilder(baseUri
+                + "/api/v2/accounts/{accountId}/calls/{callId}/transcriptions");
+
+        //process template parameters
+        Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
+        templateParameters.put("accountId",
+                new SimpleEntry<Object, Boolean>(accountId, false));
+        ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
+
+        //load all query parameters
+        Map<String, Object> queryParameters = new HashMap<>();
+        queryParameters.put("callId", callId);
+
+        //load all headers for the outgoing API request
+        Headers headers = new Headers();
+        headers.add("user-agent", BaseController.userAgent);
+        headers.add("accept", "application/json");
+
+        //prepare and invoke the API call request to fetch the response
+        HttpRequest request = getClientInstance().get(queryBuilder, headers, queryParameters,
+                null);
+
+        // Invoke the callback before request if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onBeforeRequest(request);
+        }
+
+        return request;
+    }
+
+    /**
+     * Processes the response for listTranscriptions.
+     * @return An object of type List of TranscriptionsItem 
+     */
+    private ApiResponse<List<TranscriptionsItem>> handleListTranscriptionsResponse(
+            HttpContext context) throws ApiException, IOException {
+        HttpResponse response = context.getResponse();
+
+        //invoke the callback after response if its not null
+        if (getHttpCallback() != null) {
+            getHttpCallback().onAfterResponse(context);
+        }
+
+        //Error handling using HTTP status codes
+        int responseCode = response.getStatusCode();
+
+        if (responseCode == 400) {
+            throw new ApiErrorException(
+                    "Something's not quite right... Your request is invalid. Please fix it before trying again.",
+                    context);
+        }
+        if (responseCode == 401) {
+            throw new ApiException(
+                    "Your credentials are invalid. Please use your Bandwidth dashboard credentials to authenticate to the API.",
+                    context);
+        }
+        if (responseCode == 403) {
+            throw new ApiErrorException("User unauthorized to perform this action.", context);
+        }
+        if (responseCode == 404) {
+            throw new ApiErrorException(
+                    "The resource specified cannot be found or does not belong to you.", context);
+        }
+        if (responseCode == 415) {
+            throw new ApiErrorException(
+                    "We don't support that media type. If a request body is required, please send it to us as `application/json`.",
+                    context);
+        }
+        if (responseCode == 429) {
+            throw new ApiErrorException(
+                    "You're sending requests to this endpoint too frequently. Please slow your request rate down and try again.",
+                    context);
+        }
+        if (responseCode == 500) {
+            throw new ApiErrorException("Something unexpected happened. Please try again.",
+                    context);
+        }
+        //handle errors defined at the API level
+        validateResponse(response, context);
+
+        //extract result from the http response
+        String responseBody = ((HttpStringResponse) response).getBody();
+        List<TranscriptionsItem> result = ApiHelper.deserializeArray(responseBody,
+                TranscriptionsItem[].class);
+        return new ApiResponse<List<TranscriptionsItem>>(response.getStatusCode(), response.getHeaders(), result);
+    }
+
