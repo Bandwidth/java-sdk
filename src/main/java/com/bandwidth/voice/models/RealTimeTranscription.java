@@ -8,6 +8,7 @@ package com.bandwidth.voice.models;
 
 import com.bandwidth.DateTimeHelper;
 import com.bandwidth.internal.OptionalNullable;
+import com.bandwidth.voice.models.Tracks;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -27,7 +28,7 @@ public class RealTimeTranscription {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String transcriptionId;
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private tracks tracks;
+    private Tracks tracks;
     /**
      * Default constructor.
      */
@@ -45,7 +46,7 @@ public class RealTimeTranscription {
             String accountId,
             String callId,
             String transcriptionId,
-	    tracks tracks) {
+	    Tracks tracks) {
         this.accountId = accountId;
         this.callId = callId;
         this.transcriptionId = transcriptionId;
@@ -55,7 +56,7 @@ public class RealTimeTranscription {
     /**
      * Internal initialization constructor.
      */
-    protected RealTimeTranscription(String accountId, String callId, String transcriptionId, tracks tracks) {
+    protected RealTimeTranscription(String accountId, String callId, String transcriptionId, Tracks tracks) {
         this.accountId = accountId;
         this.callId = callId;
         this.transcriptionId = transcriptionId;
@@ -130,7 +131,7 @@ public class RealTimeTranscription {
      * @param tracks Value for String
      */
     @JsonSetter("tracks")
-    public void setTracks(tracks tracks) {
+    public void setTracks(Tracks tracks) {
         this.tracks = tracks;
     }
 
@@ -164,7 +165,7 @@ public class RealTimeTranscription {
         private String accountId;
         private String callId;
         private String transcriptionId;
-        private tracks tracks;
+        private Tracks tracks;
 
         /**
          * Setter for accountId.
@@ -201,7 +202,7 @@ public class RealTimeTranscription {
          * @param  tracks  tracks value for tracks.
          * @return Builder
          */
-        public Builder tracks(tracks tracks) {
+        public Builder tracks(Tracks tracks) {
             this.tracks = tracks;
             return this;
         }

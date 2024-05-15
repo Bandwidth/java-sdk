@@ -35,7 +35,7 @@ import com.bandwidth.voice.models.ModifyConferenceRequest;
 import com.bandwidth.voice.models.TranscribeRecordingRequest;
 import com.bandwidth.voice.models.TranscriptionResponse;
 import com.bandwidth.voice.models.RealTimeTranscription;
-import com.bandwidth.voice.models.RealTimeTranscription;
+import com.bandwidth.voice.models.TranscriptionsItem;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import java.io.IOException;
 import java.util.AbstractMap.SimpleEntry;
