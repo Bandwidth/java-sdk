@@ -31,7 +31,7 @@ public class TranscriptionsItem {
      */
     public TranscriptionsItem(
             String transcriptionId,
-            String transcriptionUrl,
+            String transcriptionUrl) {
         this.transcriptionId = transcriptionId;
         this.transcriptionUrl = transcriptionUrl;
     }
@@ -93,7 +93,7 @@ public class TranscriptionsItem {
     public Builder toBuilder() {
         Builder builder = new Builder()
                 .transcriptionId(getTranscriptionId())
-                .transcriptionUrl(getTranscriptionUrl())
+      	        .transcriptionUrl(getTranscriptionUrl());
         return builder;
     }
 

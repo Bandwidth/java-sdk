@@ -3082,7 +3082,6 @@ public final class APIController extends BaseController {
         return new ApiResponse<List<CallRecordingMetadata>>(response.getStatusCode(), response.getHeaders(), result);
     }
 
-}
     /**
      * Delete the specified transcription that was created on this call via startTranscription.
      * @param  accountId  Required parameter: Example:
@@ -3364,7 +3363,7 @@ public final class APIController extends BaseController {
      */
     public ApiResponse<List<TranscriptionsItem>> listTranscriptions(
             final String accountId,
-            final String callId,
+            final String callId
             ) throws ApiException, IOException {
         HttpRequest request = buildListTranscriptionsRequest(accountId, callId);
         authManagers.get("voice").apply(request);
@@ -3488,3 +3487,5 @@ public final class APIController extends BaseController {
         return new ApiResponse<List<TranscriptionsItem>>(response.getStatusCode(), response.getHeaders(), result);
     }
 
+
+}

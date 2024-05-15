@@ -45,7 +45,7 @@ public class RealTimeTranscription {
             String accountId,
             String callId,
             String transcriptionId,
-	    tracks tracks,
+	    tracks tracks) {
         this.accountId = accountId;
         this.callId = callId;
         this.transcriptionId = transcriptionId;
@@ -153,7 +153,7 @@ public class RealTimeTranscription {
                 .accountId(getAccountId())
                 .callId(getCallId())
                 .transcriptionId(getTranscriptionId())
-                .tracks(getTracks())
+	        .tracks(getTracks());
         return builder;
     }
 
