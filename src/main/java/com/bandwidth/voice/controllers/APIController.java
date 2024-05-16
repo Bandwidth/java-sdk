@@ -3407,11 +3407,9 @@ public final class APIController extends BaseController {
         Map<String, SimpleEntry<Object, Boolean>> templateParameters = new HashMap<>();
         templateParameters.put("accountId",
                 new SimpleEntry<Object, Boolean>(accountId, false));
+        templateParameters.put("callId",
+                new SimpleEntry<Object, Boolean>(callId, false));
         ApiHelper.appendUrlWithTemplateParameters(queryBuilder, templateParameters);
-
-        //load all query parameters
-        Map<String, Object> queryParameters = new HashMap<>();
-        queryParameters.put("callId", callId);
 
         //load all headers for the outgoing API request
         Headers headers = new Headers();
@@ -3419,7 +3417,7 @@ public final class APIController extends BaseController {
         headers.add("accept", "application/json");
 
         //prepare and invoke the API call request to fetch the response
-        HttpRequest request = getClientInstance().get(queryBuilder, headers, queryParameters,
+        HttpRequest request = getClientInstance().get(queryBuilder, headers, null,
                 null);
 
         // Invoke the callback before request if its not null
