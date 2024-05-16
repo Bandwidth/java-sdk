@@ -11,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
- * This is a model class for Tracks type.
+ * This is a model class for Track type.
  */
-public class Tracks {
+public class Track {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String detectedLanguage;
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -26,7 +26,7 @@ public class Tracks {
     /**
      * Default constructor.
      */
-    public Tracks() {
+    public Track() {
     }
 
     /**
@@ -36,7 +36,7 @@ public class Tracks {
      * @param  text  String value for text.
      * @param  confidence  Double value for confidence.
      */
-    public Tracks(
+    public Track(
             String detectedLanguage,
             String track,
             String text,
@@ -120,19 +120,19 @@ public class Tracks {
     }
 
     /**
-     * Converts this Tracks into string format.
+     * Converts this Track into string format.
      * @return String representation of this class
      */
     @Override
     public String toString() {
-        return "Tracks [" + "detectedLanguage=" + detectedLanguage + ", track=" + track + ", text=" + text
+        return "Track [" + "detectedLanguage=" + detectedLanguage + ", track=" + track + ", text=" + text
                 + ", confidence=" + confidence + "]";
     }
 
     /**
-     * Builds a new {@link Tracks.Builder} object.
+     * Builds a new {@link Track.Builder} object.
      * Creates the instance with the state of the current model.
-     * @return a new {@link Tracks.Builder} object
+     * @return a new {@link Track.Builder} object
      */
     public Builder toBuilder() {
         Builder builder = new Builder()
@@ -144,7 +144,7 @@ public class Tracks {
     }
 
     /**
-     * Class to build instances of {@link Tracks}.
+     * Class to build instances of {@link Track}.
      */
     public static class Builder {
         private String detectedLanguage;
@@ -195,11 +195,11 @@ public class Tracks {
         }
 
         /**
-         * Builds a new {@link Tracks} object using the set fields.
-         * @return {@link Tracks}
+         * Builds a new {@link Track} object using the set fields.
+         * @return {@link Track}
          */
-        public Tracks build() {
-            return new Tracks(detectedLanguage, track, text, confidence);
+        public Track build() {
+            return new Track(detectedLanguage, track, text, confidence);
         }
     }
 }

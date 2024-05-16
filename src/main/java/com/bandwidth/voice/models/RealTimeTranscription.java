@@ -7,7 +7,7 @@
 package com.bandwidth.voice.models;
 
 import com.bandwidth.DateTimeHelper;
-import com.bandwidth.voice.models.Tracks;
+import com.bandwidth.voice.models.Track;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -28,7 +28,7 @@ public class RealTimeTranscription {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String transcriptionId;
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<Tracks> tracks;
+    private List<Track> tracks;
     /**
      * Default constructor.
      */
@@ -46,7 +46,7 @@ public class RealTimeTranscription {
             String accountId,
             String callId,
             String transcriptionId,
-	    List<Tracks> tracks) {
+	    List<Track> tracks) {
         this.accountId = accountId;
         this.callId = callId;
         this.transcriptionId = transcriptionId;
@@ -112,7 +112,7 @@ public class RealTimeTranscription {
      * @return Returns the String
      */
     @JsonGetter("tracks")
-    public List<Tracks> getTracks() {
+    public List<Track> getTracks() {
         return tracks;
     }
 
@@ -121,7 +121,7 @@ public class RealTimeTranscription {
      * @param tracks Value for String
      */
     @JsonSetter("tracks")
-    public void setTracks(List<Tracks> tracks) {
+    public void setTracks(List<Track> tracks) {
         this.tracks = tracks;
     }
 
@@ -155,7 +155,7 @@ public class RealTimeTranscription {
         private String accountId;
         private String callId;
         private String transcriptionId;
-        private List<Tracks> tracks;
+        private List<Track> tracks;
 
         /**
          * Setter for accountId.
@@ -192,7 +192,7 @@ public class RealTimeTranscription {
          * @param  tracks  tracks value for tracks.
          * @return Builder
          */
-        public Builder tracks(List<Tracks> tracks) {
+        public Builder tracks(List<Track> tracks) {
             this.tracks = tracks;
             return this;
         }
