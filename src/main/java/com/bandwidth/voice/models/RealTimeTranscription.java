@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.time.LocalDateTime;
 import java.util.Map;
+import java.util.List;
 
 /**
  * This is a model class for RealTimeTranscription type.
@@ -27,7 +28,7 @@ public class RealTimeTranscription {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String transcriptionId;
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Tracks tracks;
+    private List<Tracks> tracks;
     /**
      * Default constructor.
      */
@@ -45,7 +46,7 @@ public class RealTimeTranscription {
             String accountId,
             String callId,
             String transcriptionId,
-	    Tracks tracks) {
+	    List<Tracks> tracks) {
         this.accountId = accountId;
         this.callId = callId;
         this.transcriptionId = transcriptionId;
@@ -111,7 +112,7 @@ public class RealTimeTranscription {
      * @return Returns the String
      */
     @JsonGetter("tracks")
-    public Tracks getTracks() {
+    public List<Tracks> getTracks() {
         return tracks;
     }
 
@@ -120,7 +121,7 @@ public class RealTimeTranscription {
      * @param tracks Value for String
      */
     @JsonSetter("tracks")
-    public void setTracks(Tracks tracks) {
+    public void setTracks(List<Tracks> tracks) {
         this.tracks = tracks;
     }
 
@@ -154,7 +155,7 @@ public class RealTimeTranscription {
         private String accountId;
         private String callId;
         private String transcriptionId;
-        private Tracks tracks;
+        private List<Tracks> tracks;
 
         /**
          * Setter for accountId.
@@ -191,7 +192,7 @@ public class RealTimeTranscription {
          * @param  tracks  tracks value for tracks.
          * @return Builder
          */
-        public Builder tracks(Tracks tracks) {
+        public Builder tracks(List<Tracks> tracks) {
             this.tracks = tracks;
             return this;
         }
