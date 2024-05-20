@@ -10,74 +10,117 @@
  * Do not edit the class manually.
  */
 
-
 package com.bandwidth.sdk.api;
 
+import com.bandwidth.sdk.ApiResponse;
 import com.bandwidth.sdk.ApiException;
+import com.bandwidth.sdk.ApiClient;
+import com.bandwidth.sdk.auth.HttpBasicAuth;
+import com.bandwidth.sdk.Configuration;
+import com.bandwidth.sdk.model.CallbackMethodEnum;
+import com.bandwidth.sdk.model.CreateCall;
+import com.bandwidth.sdk.model.CreateCallResponse;
+import com.bandwidth.sdk.model.CallDirectionEnum;
+import com.bandwidth.sdk.model.CallState;
+import com.bandwidth.sdk.model.CallStateEnum;
+import com.bandwidth.sdk.model.UpdateCall;
 import com.bandwidth.sdk.model.CallTranscriptionMetadata;
 import com.bandwidth.sdk.model.CallTranscriptionResponse;
 import com.bandwidth.sdk.model.VoiceApiError;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.Assertions;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
+import java.time.OffsetDateTime;
+import java.util.concurrent.TimeUnit;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.anyOf;
+import static org.hamcrest.beans.HasPropertyWithValue.hasProperty;
+
+import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
+
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+
 
 /**
  * API tests for TranscriptionsApi
  */
-@Disabled
 public class TranscriptionsApiTest {
 
-    private final TranscriptionsApi api = new TranscriptionsApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
+    private final CallsApi callsApi = new CallsApi(defaultClient);
+    private final TranscriptionsApi transcriptionsApi = new TranscriptionsApi(defaultClient);
 
-    /**
-     * Delete a specific transcription
-     *
-     * Delete the specified transcription that was created on this call via [startTranscription](/docs/voice/bxml/startTranscription).  Note: After the deletion is requested and a &#x60;204&#x60; is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
-     *
-     * @throws ApiException if the Api call fails
-     */
+
+    private static CreateCall createMantecaCallBody = new CreateCall();
+    private static UpdateCall completeMantecaCallBody = new UpdateCall();
+    private static URI mantecaAnswerUrl;
+    private static String bxmlBody = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml><SpeakSentence locale=\"en_US\" gender=\"female\" voice=\"susan\">This is a bxml start transcription test.</SpeakSentence><StartTranscription tracks=\"both\"></StartTranscription><SpeakSentence voice=\"bridget\">Ideally this part is being transcribed.</SpeakSentence><Pause duration=\"3\"/></Response></Bxml>";
+    private static int TEST_SLEEP = 6;
+
+
     @Test
-    public void deleteRealTimeTranscriptionTest() throws ApiException {
-        String accountId = null;
-        String callId = null;
-        String transcriptionId = null;
-        api.deleteRealTimeTranscription(accountId, callId, transcriptionId);
-        // TODO: test validations
-    }
+    public void getAndDeleteRealTimeTranscriptionsTest() throws ApiException, InterruptedException, URISyntaxException {
+        Basic.setUsername(BW_USERNAME);
+        Basic.setPassword(BW_PASSWORD);
+        mantecaAnswerUrl = new URI(MANTECA_BASE_URL + "/bxml/pause");
 
-    /**
-     * Retrieve a specific transcription
-     *
-     * Retrieve the specified transcription that was created on this call via [startTranscription](/docs/voice/bxml/startTranscription).
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void getRealTimeTranscriptionTest() throws ApiException {
-        String accountId = null;
-        String callId = null;
-        String transcriptionId = null;
-        CallTranscriptionResponse response = api.getRealTimeTranscription(accountId, callId, transcriptionId);
-        // TODO: test validations
-    }
+        createMantecaCallBody.setFrom(MANTECA_ACTIVE_NUMBER);
+        createMantecaCallBody.setTo(MANTECA_IDLE_NUMBER);
+        createMantecaCallBody.setApplicationId(MANTECA_APPLICATION_ID);
+        createMantecaCallBody.setAnswerUrl(mantecaAnswerUrl);
+        completeMantecaCallBody.setState(CallStateEnum.COMPLETED);
 
-    /**
-     * Enumerate transcriptions made with StartTranscription
-     *
-     * Enumerates the transcriptions created on this call via [startTranscription](/docs/voice/bxml/startTranscription).
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void listRealTimeTranscriptionsTest() throws ApiException {
-        String accountId = null;
-        String callId = null;
-        List<CallTranscriptionMetadata> response = api.listRealTimeTranscriptions(accountId, callId);
-        // TODO: test validations
-    }
 
+        // Create call
+        TimeUnit.SECONDS.sleep(TEST_SLEEP);
+        ApiResponse<CreateCallResponse> createCallResponse = callsApi.createCallWithHttpInfo(BW_ACCOUNT_ID,
+                createMantecaCallBody);
+
+        assertThat(createCallResponse.getStatusCode(), is(201));
+
+        // Redirect call to different url
+        TimeUnit.SECONDS.sleep(TEST_SLEEP);
+        ApiResponse<Void> updateCallResponse = callsApi.updateCallBxmlWithHttpInfo(BW_ACCOUNT_ID,
+                createCallResponse.getData().getCallId(), bxmlBody);
+
+        assertThat(updateCallResponse.getStatusCode(), is(204));
+
+        // Complete call
+        TimeUnit.SECONDS.sleep(TEST_SLEEP);
+        ApiResponse<Void> completeCallResponse = callsApi.updateCallWithHttpInfo(BW_ACCOUNT_ID,
+                createCallResponse.getData().getCallId(), completeMantecaCallBody);
+
+        assertThat(completeCallResponse.getStatusCode(), is(200));
+
+
+        ApiResponse<List<CallTranscriptionMetadata>> listRealTimeTranscriptionResponse = transcriptionsApi.listRealTimeTranscriptionsWithHttpInfo(BW_ACCOUNT_ID, createCallResponse.getData().getCallId());
+
+        String transcriptionId = listRealTimeTranscriptionResponse.getData().get(0).getTranscriptionId();
+        TimeUnit.SECONDS.sleep(TEST_SLEEP);
+
+        ApiResponse<CallTranscriptionResponse> getRealTimeTranscriptionResponse = transcriptionsApi.getRealTimeTranscriptionWithHttpInfo(BW_ACCOUNT_ID, createCallResponse.getData().getCallId(), transcriptionId);
+
+        assertThat(getRealTimeTranscriptionResponse.getStatusCode(), is(200));
+
+
+        ApiResponse<Void> deleteRealTimeTranscriptionResponse = transcriptionsApi.deleteRealTimeTranscriptionWithHttpInfo(BW_ACCOUNT_ID, createCallResponse.getData().getCallId(), transcriptionId);
+
+        assertThat(deleteRealTimeTranscriptionResponse.getStatusCode(), is(204));
+
+    }
 }
+
+
