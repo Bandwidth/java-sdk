@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.bandwidth.sdk</groupId>
   <artifactId>bandwidth-sdk</artifactId>
-  <version>9.1.5</version>
+  <version>10.0.0</version>
   <scope>compile</scope>
 </dependency>
 ```
