@@ -67,7 +67,7 @@ public class TranscriptionsApiTest {
     private static CreateCall createMantecaCallBody = new CreateCall();
     private static UpdateCall completeMantecaCallBody = new UpdateCall();
     private static URI mantecaAnswerUrl;
-    private static String bxmlBody = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml><SpeakSentence locale=\"en_US\" gender=\"female\" voice=\"susan\">This is a bxml start transcription test.</SpeakSentence><StartTranscription tracks=\"both\"></StartTranscription><SpeakSentence voice=\"bridget\">Ideally this part is being transcribed.</SpeakSentence><Pause duration=\"3\"/></Response></Bxml>";
+    private static String bxmlBody = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml><SpeakSentence locale=\"en_US\" gender=\"female\" voice=\"susan\">This is a bxml start transcription test.</SpeakSentence><StartTranscription tracks=\"both\"></StartTranscription><SpeakSentence voice=\"bridget\">Ideally this part is being transcribed.</SpeakSentence><Pause duration=\"3\"/></Bxml>";
     private static int TEST_SLEEP = 6;
 
 
@@ -86,8 +86,7 @@ public class TranscriptionsApiTest {
 
         // This is just creating the call, modifying with StartTranscript, and ending it so we can test the transcription below.
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
-        ApiResponse<CreateCallResponse> createCallResponse = callsApi.createCallWithHttpInfo(BW_ACCOUNT_ID,
-                createMantecaCallBody);
+        ApiResponse<CreateCallResponse> createCallResponse = callsApi.createCallWithHttpInfo(BW_ACCOUNT_ID, createMantecaCallBody);
 
         assertThat(createCallResponse.getStatusCode(), is(201));
 
