@@ -67,7 +67,7 @@ public class TranscriptionsApiTest {
     private static CreateCall createMantecaCallBody = new CreateCall();
     private static UpdateCall completeMantecaCallBody = new UpdateCall();
     private static URI mantecaAnswerUrl;
-    private static String bxmlBody = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml><SpeakSentence locale=\"en_US\" gender=\"female\" voice=\"susan\">This is a bxml start transcription test.</SpeakSentence><StartTranscription tracks=\"both\"></StartTranscription><SpeakSentence voice=\"bridget\">Ideally this part is being transcribed.</SpeakSentence><Pause duration=\"3\"/></Bxml>";
+    private static String bxmlBody = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml><SpeakSentence locale=\"en_US\" gender=\"female\" voice=\"susan\">This is a bxml start transcription test.</SpeakSentence><StartTranscription tracks=\"outbound\"></StartTranscription><SpeakSentence voice=\"bridget\">Ideally this part is being transcribed.</SpeakSentence><Pause duration=\"3\"/></Bxml>";
     private static int TEST_SLEEP = 10;
     private static int TEST_SLEEP_LONG = 60;
 
@@ -118,11 +118,13 @@ public class TranscriptionsApiTest {
 
         assertThat(getRealTimeTranscriptionResponse.getStatusCode(), is(200));
         assertThat(getRealTimeTranscriptionResponse.getData(), hasProperty("transcriptionId", is(instanceOf(String.class))));
+        assertThat(getRealTimeTranscriptionResponse.getData().getTracks(), hasProperty("track", is("outbound")));
+        assertThat(getRealTimeTranscriptionResponse.getData().getTracks(), hasProperty("confidence", is(instanceOf(String.class))));
 
 
         ApiResponse<Void> deleteRealTimeTranscriptionResponse = transcriptionsApi.deleteRealTimeTranscriptionWithHttpInfo(BW_ACCOUNT_ID, createCallResponse.getData().getCallId(), transcriptionId);
 
-        assertThat(deleteRealTimeTranscriptionResponse.getStatusCode(), is(200));
+        assertThat(deleteRealTimeTranscriptionResponse.getStatusCode(), is(200)); // This should be 204 but there is currently a bug in the API to be fixed in VAPI-1863
 
     }
 }
