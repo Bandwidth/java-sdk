@@ -11,6 +11,9 @@ docs/CallDirectionEnum.md
 docs/CallRecordingMetadata.md
 docs/CallState.md
 docs/CallStateEnum.md
+docs/CallTranscription.md
+docs/CallTranscriptionMetadata.md
+docs/CallTranscriptionResponse.md
 docs/CallbackMethodEnum.md
 docs/CallsApi.md
 docs/CodeRequest.md
@@ -76,6 +79,8 @@ docs/PriorityEnum.md
 docs/RecordingAvailableCallback.md
 docs/RecordingCompleteCallback.md
 docs/RecordingStateEnum.md
+docs/RecordingTranscriptionMetadata.md
+docs/RecordingTranscriptions.md
 docs/RecordingsApi.md
 docs/RedirectCallback.md
 docs/RedirectMethodEnum.md
@@ -86,8 +91,7 @@ docs/TnLookupRequestError.md
 docs/TranscribeRecording.md
 docs/Transcription.md
 docs/TranscriptionAvailableCallback.md
-docs/TranscriptionList.md
-docs/TranscriptionMetadata.md
+docs/TranscriptionsApi.md
 docs/TransferAnswerCallback.md
 docs/TransferCompleteCallback.md
 docs/TransferDisconnectCallback.md
@@ -128,6 +132,7 @@ src/main/java/com/bandwidth/sdk/api/MfaApi.java
 src/main/java/com/bandwidth/sdk/api/PhoneNumberLookupApi.java
 src/main/java/com/bandwidth/sdk/api/RecordingsApi.java
 src/main/java/com/bandwidth/sdk/api/StatisticsApi.java
+src/main/java/com/bandwidth/sdk/api/TranscriptionsApi.java
 src/main/java/com/bandwidth/sdk/auth/ApiKeyAuth.java
 src/main/java/com/bandwidth/sdk/auth/Authentication.java
 src/main/java/com/bandwidth/sdk/auth/HttpBasicAuth.java
@@ -141,6 +146,9 @@ src/main/java/com/bandwidth/sdk/model/CallDirectionEnum.java
 src/main/java/com/bandwidth/sdk/model/CallRecordingMetadata.java
 src/main/java/com/bandwidth/sdk/model/CallState.java
 src/main/java/com/bandwidth/sdk/model/CallStateEnum.java
+src/main/java/com/bandwidth/sdk/model/CallTranscription.java
+src/main/java/com/bandwidth/sdk/model/CallTranscriptionMetadata.java
+src/main/java/com/bandwidth/sdk/model/CallTranscriptionResponse.java
 src/main/java/com/bandwidth/sdk/model/CallbackMethodEnum.java
 src/main/java/com/bandwidth/sdk/model/CodeRequest.java
 src/main/java/com/bandwidth/sdk/model/Conference.java
@@ -200,6 +208,8 @@ src/main/java/com/bandwidth/sdk/model/PriorityEnum.java
 src/main/java/com/bandwidth/sdk/model/RecordingAvailableCallback.java
 src/main/java/com/bandwidth/sdk/model/RecordingCompleteCallback.java
 src/main/java/com/bandwidth/sdk/model/RecordingStateEnum.java
+src/main/java/com/bandwidth/sdk/model/RecordingTranscriptionMetadata.java
+src/main/java/com/bandwidth/sdk/model/RecordingTranscriptions.java
 src/main/java/com/bandwidth/sdk/model/RedirectCallback.java
 src/main/java/com/bandwidth/sdk/model/RedirectMethodEnum.java
 src/main/java/com/bandwidth/sdk/model/StirShaken.java
@@ -208,8 +218,6 @@ src/main/java/com/bandwidth/sdk/model/TnLookupRequestError.java
 src/main/java/com/bandwidth/sdk/model/TranscribeRecording.java
 src/main/java/com/bandwidth/sdk/model/Transcription.java
 src/main/java/com/bandwidth/sdk/model/TranscriptionAvailableCallback.java
-src/main/java/com/bandwidth/sdk/model/TranscriptionList.java
-src/main/java/com/bandwidth/sdk/model/TranscriptionMetadata.java
 src/main/java/com/bandwidth/sdk/model/TransferAnswerCallback.java
 src/main/java/com/bandwidth/sdk/model/TransferCompleteCallback.java
 src/main/java/com/bandwidth/sdk/model/TransferDisconnectCallback.java
@@ -221,3 +229,9 @@ src/main/java/com/bandwidth/sdk/model/VerifyCodeRequest.java
 src/main/java/com/bandwidth/sdk/model/VerifyCodeResponse.java
 src/main/java/com/bandwidth/sdk/model/VoiceApiError.java
 src/main/java/com/bandwidth/sdk/model/VoiceCodeResponse.java
+src/test/java/com/bandwidth/sdk/api/TranscriptionsApiTest.java
+src/test/java/com/bandwidth/sdk/model/CallTranscriptionMetadataTest.java
+src/test/java/com/bandwidth/sdk/model/CallTranscriptionResponseTest.java
+src/test/java/com/bandwidth/sdk/model/CallTranscriptionTest.java
+src/test/java/com/bandwidth/sdk/model/RecordingTranscriptionMetadataTest.java
+src/test/java/com/bandwidth/sdk/model/RecordingTranscriptionsTest.java

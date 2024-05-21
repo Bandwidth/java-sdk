@@ -29,8 +29,8 @@ import java.io.IOException;
 
 import com.bandwidth.sdk.model.CallRecordingMetadata;
 import java.io.File;
+import com.bandwidth.sdk.model.RecordingTranscriptions;
 import com.bandwidth.sdk.model.TranscribeRecording;
-import com.bandwidth.sdk.model.TranscriptionList;
 import com.bandwidth.sdk.model.UpdateCallRecording;
 import com.bandwidth.sdk.model.VoiceApiError;
 
@@ -77,177 +77,6 @@ public class RecordingsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for deleteCallTranscription
-     * @param accountId Your Bandwidth Account ID. (required)
-     * @param callId Programmable Voice API Call ID. (required)
-     * @param recordingId Programmable Voice API Recording ID. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The transcription was successfully deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
-        <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteCallTranscriptionCall(String accountId, String callId, String recordingId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] { "https://voice.bandwidth.com/api/v2" };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription"
-            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
-            .replace("{" + "callId" + "}", localVarApiClient.escapeString(callId.toString()))
-            .replace("{" + "recordingId" + "}", localVarApiClient.escapeString(recordingId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "Basic" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteCallTranscriptionValidateBeforeCall(String accountId, String callId, String recordingId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'accountId' is set
-        if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling deleteCallTranscription(Async)");
-        }
-
-        // verify the required parameter 'callId' is set
-        if (callId == null) {
-            throw new ApiException("Missing the required parameter 'callId' when calling deleteCallTranscription(Async)");
-        }
-
-        // verify the required parameter 'recordingId' is set
-        if (recordingId == null) {
-            throw new ApiException("Missing the required parameter 'recordingId' when calling deleteCallTranscription(Async)");
-        }
-
-        return deleteCallTranscriptionCall(accountId, callId, recordingId, _callback);
-
-    }
-
-    /**
-     * Delete Transcription
-     * Deletes the specified recording&#39;s transcription.  Note: After the deletion is requested and a &#x60;204&#x60; is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
-     * @param accountId Your Bandwidth Account ID. (required)
-     * @param callId Programmable Voice API Call ID. (required)
-     * @param recordingId Programmable Voice API Recording ID. (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The transcription was successfully deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
-        <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public void deleteCallTranscription(String accountId, String callId, String recordingId) throws ApiException {
-        deleteCallTranscriptionWithHttpInfo(accountId, callId, recordingId);
-    }
-
-    /**
-     * Delete Transcription
-     * Deletes the specified recording&#39;s transcription.  Note: After the deletion is requested and a &#x60;204&#x60; is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
-     * @param accountId Your Bandwidth Account ID. (required)
-     * @param callId Programmable Voice API Call ID. (required)
-     * @param recordingId Programmable Voice API Recording ID. (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The transcription was successfully deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
-        <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> deleteCallTranscriptionWithHttpInfo(String accountId, String callId, String recordingId) throws ApiException {
-        okhttp3.Call localVarCall = deleteCallTranscriptionValidateBeforeCall(accountId, callId, recordingId, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Delete Transcription (asynchronously)
-     * Deletes the specified recording&#39;s transcription.  Note: After the deletion is requested and a &#x60;204&#x60; is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
-     * @param accountId Your Bandwidth Account ID. (required)
-     * @param callId Programmable Voice API Call ID. (required)
-     * @param recordingId Programmable Voice API Recording ID. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The transcription was successfully deleted. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
-        <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteCallTranscriptionAsync(String accountId, String callId, String recordingId, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteCallTranscriptionValidateBeforeCall(accountId, callId, recordingId, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
     /**
      * Build call for deleteRecording
      * @param accountId Your Bandwidth Account ID. (required)
@@ -587,6 +416,177 @@ public class RecordingsApi {
     public okhttp3.Call deleteRecordingMediaAsync(String accountId, String callId, String recordingId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteRecordingMediaValidateBeforeCall(accountId, callId, recordingId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteRecordingTranscription
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> The transcription was successfully deleted. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
+        <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteRecordingTranscriptionCall(String accountId, String callId, String recordingId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] { "https://voice.bandwidth.com/api/v2" };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription"
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "callId" + "}", localVarApiClient.escapeString(callId.toString()))
+            .replace("{" + "recordingId" + "}", localVarApiClient.escapeString(recordingId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Basic" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteRecordingTranscriptionValidateBeforeCall(String accountId, String callId, String recordingId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling deleteRecordingTranscription(Async)");
+        }
+
+        // verify the required parameter 'callId' is set
+        if (callId == null) {
+            throw new ApiException("Missing the required parameter 'callId' when calling deleteRecordingTranscription(Async)");
+        }
+
+        // verify the required parameter 'recordingId' is set
+        if (recordingId == null) {
+            throw new ApiException("Missing the required parameter 'recordingId' when calling deleteRecordingTranscription(Async)");
+        }
+
+        return deleteRecordingTranscriptionCall(accountId, callId, recordingId, _callback);
+
+    }
+
+    /**
+     * Delete Transcription
+     * Deletes the specified recording&#39;s transcription.  Note: After the deletion is requested and a &#x60;204&#x60; is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> The transcription was successfully deleted. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
+        <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteRecordingTranscription(String accountId, String callId, String recordingId) throws ApiException {
+        deleteRecordingTranscriptionWithHttpInfo(accountId, callId, recordingId);
+    }
+
+    /**
+     * Delete Transcription
+     * Deletes the specified recording&#39;s transcription.  Note: After the deletion is requested and a &#x60;204&#x60; is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> The transcription was successfully deleted. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
+        <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteRecordingTranscriptionWithHttpInfo(String accountId, String callId, String recordingId) throws ApiException {
+        okhttp3.Call localVarCall = deleteRecordingTranscriptionValidateBeforeCall(accountId, callId, recordingId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Delete Transcription (asynchronously)
+     * Deletes the specified recording&#39;s transcription.  Note: After the deletion is requested and a &#x60;204&#x60; is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
+     * @param accountId Your Bandwidth Account ID. (required)
+     * @param callId Programmable Voice API Call ID. (required)
+     * @param recordingId Programmable Voice API Recording ID. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> The transcription was successfully deleted. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
+        <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - When you should try your request again. <br>  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteRecordingTranscriptionAsync(String accountId, String callId, String recordingId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteRecordingTranscriptionValidateBeforeCall(accountId, callId, recordingId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -943,7 +943,7 @@ public class RecordingsApi {
         return localVarCall;
     }
     /**
-     * Build call for getCallTranscription
+     * Build call for getRecordingTranscription
      * @param accountId Your Bandwidth Account ID. (required)
      * @param callId Programmable Voice API Call ID. (required)
      * @param recordingId Programmable Voice API Recording ID. (required)
@@ -953,7 +953,7 @@ public class RecordingsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Transcription found </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Transcription found. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
@@ -964,7 +964,7 @@ public class RecordingsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCallTranscriptionCall(String accountId, String callId, String recordingId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRecordingTranscriptionCall(String accountId, String callId, String recordingId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://voice.bandwidth.com/api/v2" };
@@ -1012,38 +1012,38 @@ public class RecordingsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCallTranscriptionValidateBeforeCall(String accountId, String callId, String recordingId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getRecordingTranscriptionValidateBeforeCall(String accountId, String callId, String recordingId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling getCallTranscription(Async)");
+            throw new ApiException("Missing the required parameter 'accountId' when calling getRecordingTranscription(Async)");
         }
 
         // verify the required parameter 'callId' is set
         if (callId == null) {
-            throw new ApiException("Missing the required parameter 'callId' when calling getCallTranscription(Async)");
+            throw new ApiException("Missing the required parameter 'callId' when calling getRecordingTranscription(Async)");
         }
 
         // verify the required parameter 'recordingId' is set
         if (recordingId == null) {
-            throw new ApiException("Missing the required parameter 'recordingId' when calling getCallTranscription(Async)");
+            throw new ApiException("Missing the required parameter 'recordingId' when calling getRecordingTranscription(Async)");
         }
 
-        return getCallTranscriptionCall(accountId, callId, recordingId, _callback);
+        return getRecordingTranscriptionCall(accountId, callId, recordingId, _callback);
 
     }
 
     /**
      * Get Transcription
-     * Downloads the specified transcription.  If the transcribed recording was multi-channel, then there will be 2 transcripts. The caller/called party transcript will be the first item while [&#x60;&lt;PlayAudio&gt;&#x60;](/docs/voice/bxml/playAudio) and [&#x60;&lt;SpeakSentence&gt;&#x60;](/docs/voice/bxml/speakSentence) transcript will be the second item. During a [&#x60;&lt;Transfer&gt;&#x60;](/docs/voice/bxml/transfer) the A-leg transcript will be the first item while the B-leg transcript will be the second item.
+     * Downloads the specified transcription. If the recording was multi-channel, then there will be 2 transcripts. The caller/called party transcript will be the first item while [&#x60;&lt;PlayAudio&gt;&#x60;](/docs/voice/bxml/playAudio) and [&#x60;&lt;SpeakSentence&gt;&#x60;](/docs/voice/bxml/speakSentence) transcript will be the second item. During a [&#x60;&lt;Transfer&gt;&#x60;](/docs/voice/bxml/transfer) the A-leg transcript will be the first item while the B-leg transcript will be the second item.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param callId Programmable Voice API Call ID. (required)
      * @param recordingId Programmable Voice API Recording ID. (required)
-     * @return TranscriptionList
+     * @return RecordingTranscriptions
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Transcription found </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Transcription found. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
@@ -1054,23 +1054,23 @@ public class RecordingsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public TranscriptionList getCallTranscription(String accountId, String callId, String recordingId) throws ApiException {
-        ApiResponse<TranscriptionList> localVarResp = getCallTranscriptionWithHttpInfo(accountId, callId, recordingId);
+    public RecordingTranscriptions getRecordingTranscription(String accountId, String callId, String recordingId) throws ApiException {
+        ApiResponse<RecordingTranscriptions> localVarResp = getRecordingTranscriptionWithHttpInfo(accountId, callId, recordingId);
         return localVarResp.getData();
     }
 
     /**
      * Get Transcription
-     * Downloads the specified transcription.  If the transcribed recording was multi-channel, then there will be 2 transcripts. The caller/called party transcript will be the first item while [&#x60;&lt;PlayAudio&gt;&#x60;](/docs/voice/bxml/playAudio) and [&#x60;&lt;SpeakSentence&gt;&#x60;](/docs/voice/bxml/speakSentence) transcript will be the second item. During a [&#x60;&lt;Transfer&gt;&#x60;](/docs/voice/bxml/transfer) the A-leg transcript will be the first item while the B-leg transcript will be the second item.
+     * Downloads the specified transcription. If the recording was multi-channel, then there will be 2 transcripts. The caller/called party transcript will be the first item while [&#x60;&lt;PlayAudio&gt;&#x60;](/docs/voice/bxml/playAudio) and [&#x60;&lt;SpeakSentence&gt;&#x60;](/docs/voice/bxml/speakSentence) transcript will be the second item. During a [&#x60;&lt;Transfer&gt;&#x60;](/docs/voice/bxml/transfer) the A-leg transcript will be the first item while the B-leg transcript will be the second item.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param callId Programmable Voice API Call ID. (required)
      * @param recordingId Programmable Voice API Recording ID. (required)
-     * @return ApiResponse&lt;TranscriptionList&gt;
+     * @return ApiResponse&lt;RecordingTranscriptions&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Transcription found </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Transcription found. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
@@ -1081,15 +1081,15 @@ public class RecordingsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TranscriptionList> getCallTranscriptionWithHttpInfo(String accountId, String callId, String recordingId) throws ApiException {
-        okhttp3.Call localVarCall = getCallTranscriptionValidateBeforeCall(accountId, callId, recordingId, null);
-        Type localVarReturnType = new TypeToken<TranscriptionList>(){}.getType();
+    public ApiResponse<RecordingTranscriptions> getRecordingTranscriptionWithHttpInfo(String accountId, String callId, String recordingId) throws ApiException {
+        okhttp3.Call localVarCall = getRecordingTranscriptionValidateBeforeCall(accountId, callId, recordingId, null);
+        Type localVarReturnType = new TypeToken<RecordingTranscriptions>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Get Transcription (asynchronously)
-     * Downloads the specified transcription.  If the transcribed recording was multi-channel, then there will be 2 transcripts. The caller/called party transcript will be the first item while [&#x60;&lt;PlayAudio&gt;&#x60;](/docs/voice/bxml/playAudio) and [&#x60;&lt;SpeakSentence&gt;&#x60;](/docs/voice/bxml/speakSentence) transcript will be the second item. During a [&#x60;&lt;Transfer&gt;&#x60;](/docs/voice/bxml/transfer) the A-leg transcript will be the first item while the B-leg transcript will be the second item.
+     * Downloads the specified transcription. If the recording was multi-channel, then there will be 2 transcripts. The caller/called party transcript will be the first item while [&#x60;&lt;PlayAudio&gt;&#x60;](/docs/voice/bxml/playAudio) and [&#x60;&lt;SpeakSentence&gt;&#x60;](/docs/voice/bxml/speakSentence) transcript will be the second item. During a [&#x60;&lt;Transfer&gt;&#x60;](/docs/voice/bxml/transfer) the A-leg transcript will be the first item while the B-leg transcript will be the second item.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param callId Programmable Voice API Call ID. (required)
      * @param recordingId Programmable Voice API Recording ID. (required)
@@ -1099,7 +1099,7 @@ public class RecordingsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Transcription found </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Transcription found. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
@@ -1110,10 +1110,10 @@ public class RecordingsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCallTranscriptionAsync(String accountId, String callId, String recordingId, final ApiCallback<TranscriptionList> _callback) throws ApiException {
+    public okhttp3.Call getRecordingTranscriptionAsync(String accountId, String callId, String recordingId, final ApiCallback<RecordingTranscriptions> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCallTranscriptionValidateBeforeCall(accountId, callId, recordingId, _callback);
-        Type localVarReturnType = new TypeToken<TranscriptionList>(){}.getType();
+        okhttp3.Call localVarCall = getRecordingTranscriptionValidateBeforeCall(accountId, callId, recordingId, _callback);
+        Type localVarReturnType = new TypeToken<RecordingTranscriptions>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

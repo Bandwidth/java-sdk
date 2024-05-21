@@ -44,6 +44,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -77,6 +78,7 @@ public class MessageSendingCallback {
   }
 
   public MessageSendingCallback time(OffsetDateTime time) {
+    
     this.time = time;
     return this;
   }
@@ -90,12 +92,14 @@ public class MessageSendingCallback {
     return time;
   }
 
+
   public void setTime(OffsetDateTime time) {
     this.time = time;
   }
 
 
   public MessageSendingCallback type(String type) {
+    
     this.type = type;
     return this;
   }
@@ -109,12 +113,14 @@ public class MessageSendingCallback {
     return type;
   }
 
+
   public void setType(String type) {
     this.type = type;
   }
 
 
   public MessageSendingCallback to(String to) {
+    
     this.to = to;
     return this;
   }
@@ -128,12 +134,14 @@ public class MessageSendingCallback {
     return to;
   }
 
+
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public MessageSendingCallback description(String description) {
+    
     this.description = description;
     return this;
   }
@@ -147,12 +155,14 @@ public class MessageSendingCallback {
     return description;
   }
 
+
   public void setDescription(String description) {
     this.description = description;
   }
 
 
   public MessageSendingCallback message(MessageSendingCallbackMessage message) {
+    
     this.message = message;
     return this;
   }
@@ -165,6 +175,7 @@ public class MessageSendingCallback {
   public MessageSendingCallbackMessage getMessage() {
     return message;
   }
+
 
   public void setMessage(MessageSendingCallbackMessage message) {
     this.message = message;
@@ -346,12 +357,7 @@ public class MessageSendingCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

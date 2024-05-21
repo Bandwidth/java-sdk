@@ -46,6 +46,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -71,6 +72,7 @@ public class MessagesList {
   }
 
   public MessagesList totalCount(Integer totalCount) {
+    
     this.totalCount = totalCount;
     return this;
   }
@@ -84,12 +86,14 @@ public class MessagesList {
     return totalCount;
   }
 
+
   public void setTotalCount(Integer totalCount) {
     this.totalCount = totalCount;
   }
 
 
   public MessagesList pageInfo(PageInfo pageInfo) {
+    
     this.pageInfo = pageInfo;
     return this;
   }
@@ -103,12 +107,14 @@ public class MessagesList {
     return pageInfo;
   }
 
+
   public void setPageInfo(PageInfo pageInfo) {
     this.pageInfo = pageInfo;
   }
 
 
   public MessagesList messages(List<ListMessageItem> messages) {
+    
     this.messages = messages;
     return this;
   }
@@ -129,6 +135,7 @@ public class MessagesList {
   public List<ListMessageItem> getMessages() {
     return messages;
   }
+
 
   public void setMessages(List<ListMessageItem> messages) {
     this.messages = messages;
@@ -299,12 +306,7 @@ public class MessagesList {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

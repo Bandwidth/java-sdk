@@ -13,11 +13,11 @@
 
 package com.bandwidth.sdk;
 
-import com.fasterxml.jackson.databind.util.StdDateFormat;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapter;
+import com.google.gson.internal.bind.util.ISO8601Utils;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.google.gson.JsonElement;
@@ -31,16 +31,14 @@ import java.io.StringReader;
 import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.ParsePosition;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.TimeZone;
 
 /*
  * A JSON utility class
@@ -56,11 +54,6 @@ public class JSON {
     private static OffsetDateTimeTypeAdapter offsetDateTimeTypeAdapter = new OffsetDateTimeTypeAdapter();
     private static LocalDateTypeAdapter localDateTypeAdapter = new LocalDateTypeAdapter();
     private static ByteArrayAdapter byteArrayAdapter = new ByteArrayAdapter();
-
-    private static final StdDateFormat sdf = new StdDateFormat()
-        .withTimeZone(TimeZone.getTimeZone(ZoneId.systemDefault()))
-        .withColonInTimeZone(true);
-    private static final DateTimeFormatter dtf = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
 
     @SuppressWarnings("unchecked")
     public static GsonBuilder createGson() {
@@ -106,6 +99,9 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.BridgeTargetCompleteCallback.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.CallRecordingMetadata.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.CallState.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.CallTranscription.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.CallTranscriptionMetadata.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.CallTranscriptionResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.CodeRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.Conference.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.ConferenceCompletedCallback.CustomTypeAdapterFactory());
@@ -154,6 +150,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.PageInfo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RecordingAvailableCallback.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RecordingCompleteCallback.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RecordingTranscriptionMetadata.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RecordingTranscriptions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RedirectCallback.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.StirShaken.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.Tag.CustomTypeAdapterFactory());
@@ -161,8 +159,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.TranscribeRecording.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.Transcription.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.TranscriptionAvailableCallback.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.TranscriptionList.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.TranscriptionMetadata.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.TransferAnswerCallback.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.TransferCompleteCallback.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.TransferDisconnectCallback.CustomTypeAdapterFactory());
@@ -406,7 +402,7 @@ public class JSON {
                         if (dateFormat != null) {
                             return new java.sql.Date(dateFormat.parse(date).getTime());
                         }
-                        return new java.sql.Date(sdf.parse(date).getTime());
+                        return new java.sql.Date(ISO8601Utils.parse(date, new ParsePosition(0)).getTime());
                     } catch (ParseException e) {
                         throw new JsonParseException(e);
                     }
@@ -416,7 +412,7 @@ public class JSON {
 
     /**
      * Gson TypeAdapter for java.util.Date type
-     * If the dateFormat is null, DateTimeFormatter will be used.
+     * If the dateFormat is null, ISO8601Utils will be used.
      */
     public static class DateTypeAdapter extends TypeAdapter<Date> {
 
@@ -441,7 +437,7 @@ public class JSON {
                 if (dateFormat != null) {
                     value = dateFormat.format(date);
                 } else {
-                    value = date.toInstant().atOffset(ZoneOffset.UTC).format(dtf);
+                    value = ISO8601Utils.format(date, true);
                 }
                 out.value(value);
             }
@@ -460,7 +456,7 @@ public class JSON {
                             if (dateFormat != null) {
                                 return dateFormat.parse(date);
                             }
-                            return sdf.parse(date);
+                            return ISO8601Utils.parse(date, new ParsePosition(0));
                         } catch (ParseException e) {
                             throw new JsonParseException(e);
                         }
