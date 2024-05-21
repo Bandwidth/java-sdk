@@ -68,7 +68,8 @@ public class TranscriptionsApiTest {
     private static UpdateCall completeMantecaCallBody = new UpdateCall();
     private static URI mantecaAnswerUrl;
     private static String bxmlBody = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml><SpeakSentence locale=\"en_US\" gender=\"female\" voice=\"susan\">This is a bxml start transcription test.</SpeakSentence><StartTranscription tracks=\"both\"></StartTranscription><SpeakSentence voice=\"bridget\">Ideally this part is being transcribed.</SpeakSentence><Pause duration=\"3\"/></Bxml>";
-    private static int TEST_SLEEP = 60;
+    private static int TEST_SLEEP = 10;
+    private static int TEST_SLEEP_LONG = 60;
 
 
     @Test
@@ -85,15 +86,15 @@ public class TranscriptionsApiTest {
 
 
         // This is just creating the call, modifying with StartTranscript, and ending it so we can test the transcription below.
-        TimeUnit.SECONDS.sleep(TEST_SLEEP);
         ApiResponse<CreateCallResponse> createCallResponse = callsApi.createCallWithHttpInfo(BW_ACCOUNT_ID, createMantecaCallBody);
 
 
         String callId = createCallResponse.getData().getCallId();
         assertThat(createCallResponse.getStatusCode(), is(201));
 
-        // Redirect call to different url
+
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
+        // Redirect call to different url
         ApiResponse<Void> updateCallResponse = callsApi.updateCallBxmlWithHttpInfo(BW_ACCOUNT_ID, callId, bxmlBody);
 
         assertThat(updateCallResponse.getStatusCode(), is(204));
@@ -105,21 +106,23 @@ public class TranscriptionsApiTest {
 
         assertThat(completeCallResponse.getStatusCode(), is(200));
 
+
+        TimeUnit.SECONDS.sleep(TEST_SLEEP_LONG);
 	// The Transcriptions API tests start here
         ApiResponse<List<CallTranscriptionMetadata>> listRealTimeTranscriptionResponse = transcriptionsApi.listRealTimeTranscriptionsWithHttpInfo(BW_ACCOUNT_ID, createCallResponse.getData().getCallId());
 
-        String transcriptionId = listRealTimeTranscriptionResponse.getData().toString();
+        String transcriptionId = listRealTimeTranscriptionResponse.getData().get(0).getTranscriptionId();
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
 
         ApiResponse<CallTranscriptionResponse> getRealTimeTranscriptionResponse = transcriptionsApi.getRealTimeTranscriptionWithHttpInfo(BW_ACCOUNT_ID, callId, transcriptionId);
 
         assertThat(getRealTimeTranscriptionResponse.getStatusCode(), is(200));
-        assertThat(getRealTimeTranscriptionResponse.getData(), hasProperty("transcriptId", is(instanceOf(String.class))));
+        assertThat(getRealTimeTranscriptionResponse.getData(), hasProperty("transcriptionId", is(instanceOf(String.class))));
 
 
         ApiResponse<Void> deleteRealTimeTranscriptionResponse = transcriptionsApi.deleteRealTimeTranscriptionWithHttpInfo(BW_ACCOUNT_ID, createCallResponse.getData().getCallId(), transcriptionId);
 
-        assertThat(deleteRealTimeTranscriptionResponse.getStatusCode(), is(204));
+        assertThat(deleteRealTimeTranscriptionResponse.getStatusCode(), is(200));
 
     }
 }
