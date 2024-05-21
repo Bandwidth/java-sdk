@@ -16,7 +16,7 @@ package com.bandwidth.sdk.model;
 import java.util.Objects;
 import com.bandwidth.sdk.model.CallDirectionEnum;
 import com.bandwidth.sdk.model.FileFormatEnum;
-import com.bandwidth.sdk.model.TranscriptionMetadata;
+import com.bandwidth.sdk.model.RecordingTranscriptionMetadata;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -55,7 +55,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * CallRecordingMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class CallRecordingMetadata {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
@@ -127,7 +127,7 @@ public class CallRecordingMetadata {
 
   public static final String SERIALIZED_NAME_TRANSCRIPTION = "transcription";
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTION)
-  private TranscriptionMetadata transcription;
+  private RecordingTranscriptionMetadata transcription;
 
   public CallRecordingMetadata() {
   }
@@ -455,7 +455,7 @@ public class CallRecordingMetadata {
   }
 
 
-  public CallRecordingMetadata transcription(TranscriptionMetadata transcription) {
+  public CallRecordingMetadata transcription(RecordingTranscriptionMetadata transcription) {
     this.transcription = transcription;
     return this;
   }
@@ -465,11 +465,11 @@ public class CallRecordingMetadata {
    * @return transcription
   **/
   @javax.annotation.Nullable
-  public TranscriptionMetadata getTranscription() {
+  public RecordingTranscriptionMetadata getTranscription() {
     return transcription;
   }
 
-  public void setTranscription(TranscriptionMetadata transcription) {
+  public void setTranscription(RecordingTranscriptionMetadata transcription) {
     this.transcription = transcription;
   }
 
@@ -692,7 +692,7 @@ public class CallRecordingMetadata {
       }
       // validate the optional field `transcription`
       if (jsonObj.get("transcription") != null && !jsonObj.get("transcription").isJsonNull()) {
-        TranscriptionMetadata.validateJsonElement(jsonObj.get("transcription"));
+        RecordingTranscriptionMetadata.validateJsonElement(jsonObj.get("transcription"));
       }
   }
 

@@ -53,7 +53,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * MessagesList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class MessagesList {
   public static final String SERIALIZED_NAME_TOTAL_COUNT = "totalCount";
   @SerializedName(SERIALIZED_NAME_TOTAL_COUNT)
@@ -65,7 +65,7 @@ public class MessagesList {
 
   public static final String SERIALIZED_NAME_MESSAGES = "messages";
   @SerializedName(SERIALIZED_NAME_MESSAGES)
-  private List<ListMessageItem> messages;
+  private List<ListMessageItem> messages = new ArrayList<>();
 
   public MessagesList() {
   }

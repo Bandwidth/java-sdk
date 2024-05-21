@@ -54,7 +54,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * The Recording Available event is sent after a recording has been processed. It indicates that the recording is available for download.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class RecordingAvailableCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
@@ -126,7 +126,7 @@ public class RecordingAvailableCallback {
 
   public static final String SERIALIZED_NAME_CHANNELS = "channels";
   @SerializedName(SERIALIZED_NAME_CHANNELS)
-  private String channels;
+  private Integer channels;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
@@ -470,21 +470,21 @@ public class RecordingAvailableCallback {
   }
 
 
-  public RecordingAvailableCallback channels(String channels) {
+  public RecordingAvailableCallback channels(Integer channels) {
     this.channels = channels;
     return this;
   }
 
    /**
-   * The current status of the process. For recording, current possible values are &#39;processing&#39;, &#39;partial&#39;, &#39;complete&#39;, &#39;deleted&#39;, and &#39;error&#39;. For transcriptions, current possible values are &#39;none&#39;, &#39;processing&#39;, &#39;available&#39;, &#39;error&#39;, &#39;timeout&#39;, &#39;file-size-too-big&#39;, and &#39;file-size-too-small&#39;. Additional states may be added in the future, so your application must be tolerant of unknown values.
+   * Always &#x60;1&#x60; for conference recordings; multi-channel recordings are not supported on conferences.
    * @return channels
   **/
   @javax.annotation.Nullable
-  public String getChannels() {
+  public Integer getChannels() {
     return channels;
   }
 
-  public void setChannels(String channels) {
+  public void setChannels(Integer channels) {
     this.channels = channels;
   }
 
@@ -789,9 +789,6 @@ public class RecordingAvailableCallback {
       // validate the optional field `fileFormat`
       if (jsonObj.get("fileFormat") != null && !jsonObj.get("fileFormat").isJsonNull()) {
         FileFormatEnum.validateJsonElement(jsonObj.get("fileFormat"));
-      }
-      if ((jsonObj.get("channels") != null && !jsonObj.get("channels").isJsonNull()) && !jsonObj.get("channels").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `channels` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channels").toString()));
       }
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));

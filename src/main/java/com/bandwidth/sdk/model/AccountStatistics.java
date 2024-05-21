@@ -49,7 +49,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * AccountStatistics
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class AccountStatistics {
   public static final String SERIALIZED_NAME_CURRENT_CALL_QUEUE_SIZE = "currentCallQueueSize";
   @SerializedName(SERIALIZED_NAME_CURRENT_CALL_QUEUE_SIZE)

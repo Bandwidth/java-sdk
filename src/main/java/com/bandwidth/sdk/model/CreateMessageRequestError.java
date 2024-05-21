@@ -52,7 +52,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * CreateMessageRequestError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class CreateMessageRequestError {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -64,7 +64,7 @@ public class CreateMessageRequestError {
 
   public static final String SERIALIZED_NAME_FIELD_ERRORS = "fieldErrors";
   @SerializedName(SERIALIZED_NAME_FIELD_ERRORS)
-  private List<FieldError> fieldErrors;
+  private List<FieldError> fieldErrors = new ArrayList<>();
 
   public CreateMessageRequestError() {
   }
