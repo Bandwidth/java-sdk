@@ -68,7 +68,7 @@ public class TranscriptionsApiTest {
     private static UpdateCall completeMantecaCallBody = new UpdateCall();
     private static URI mantecaAnswerUrl;
     private static String bxmlBody = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Bxml><SpeakSentence locale=\"en_US\" gender=\"female\" voice=\"susan\">This is a bxml start transcription test.</SpeakSentence><StartTranscription tracks=\"both\"></StartTranscription><SpeakSentence voice=\"bridget\">Ideally this part is being transcribed.</SpeakSentence><Pause duration=\"3\"/></Bxml>";
-    private static int TEST_SLEEP = 6;
+    private static int TEST_SLEEP = 60;
 
 
     @Test
