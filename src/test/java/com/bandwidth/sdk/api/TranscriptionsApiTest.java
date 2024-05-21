@@ -24,6 +24,7 @@ import com.bandwidth.sdk.model.CallDirectionEnum;
 import com.bandwidth.sdk.model.CallState;
 import com.bandwidth.sdk.model.CallStateEnum;
 import com.bandwidth.sdk.model.UpdateCall;
+import com.bandwidth.sdk.model.CallTranscription;
 import com.bandwidth.sdk.model.CallTranscriptionMetadata;
 import com.bandwidth.sdk.model.CallTranscriptionResponse;
 import com.bandwidth.sdk.model.VoiceApiError;
@@ -118,8 +119,9 @@ public class TranscriptionsApiTest {
 
         assertThat(getRealTimeTranscriptionResponse.getStatusCode(), is(200));
         assertThat(getRealTimeTranscriptionResponse.getData(), hasProperty("transcriptionId", is(instanceOf(String.class))));
-        assertThat(getRealTimeTranscriptionResponse.getData().getTracks(), hasProperty("track", is("outbound")));
-        assertThat(getRealTimeTranscriptionResponse.getData().getTracks(), hasProperty("confidence", is(instanceOf(String.class))));
+        assertThat(getRealTimeTranscriptionResponse.getData().getTracks().get(0), is(instanceOf(CallTranscription.class)));
+        assertThat(getRealTimeTranscriptionResponse.getData().getTracks().get(0).getTrack(), is(instanceOf(CallTranscription.TrackEnum.class)));
+        assertThat(getRealTimeTranscriptionResponse.getData().getTracks().get(0).getConfidence(), is(0.0));
 
 
         ApiResponse<Void> deleteRealTimeTranscriptionResponse = transcriptionsApi.deleteRealTimeTranscriptionWithHttpInfo(BW_ACCOUNT_ID, createCallResponse.getData().getCallId(), transcriptionId);
