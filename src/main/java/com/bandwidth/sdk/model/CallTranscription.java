@@ -42,7 +42,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -50,7 +49,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * CallTranscription
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class CallTranscription {
   /**
    * The detected language for this transcription.
@@ -98,6 +97,11 @@ public class CallTranscription {
         String value =  jsonReader.nextString();
         return DetectedLanguageEnum.fromValue(value);
       }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      DetectedLanguageEnum.fromValue(value);
     }
   }
 
@@ -150,6 +154,11 @@ public class CallTranscription {
         return TrackEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      TrackEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_TRACK = "track";
@@ -168,7 +177,6 @@ public class CallTranscription {
   }
 
   public CallTranscription detectedLanguage(DetectedLanguageEnum detectedLanguage) {
-    
     this.detectedLanguage = detectedLanguage;
     return this;
   }
@@ -182,14 +190,12 @@ public class CallTranscription {
     return detectedLanguage;
   }
 
-
   public void setDetectedLanguage(DetectedLanguageEnum detectedLanguage) {
     this.detectedLanguage = detectedLanguage;
   }
 
 
   public CallTranscription track(TrackEnum track) {
-    
     this.track = track;
     return this;
   }
@@ -203,14 +209,12 @@ public class CallTranscription {
     return track;
   }
 
-
   public void setTrack(TrackEnum track) {
     this.track = track;
   }
 
 
   public CallTranscription text(String text) {
-    
     this.text = text;
     return this;
   }
@@ -224,14 +228,12 @@ public class CallTranscription {
     return text;
   }
 
-
   public void setText(String text) {
     this.text = text;
   }
 
 
   public CallTranscription confidence(Double confidence) {
-    
     this.confidence = confidence;
     return this;
   }
@@ -246,7 +248,6 @@ public class CallTranscription {
   public Double getConfidence() {
     return confidence;
   }
-
 
   public void setConfidence(Double confidence) {
     this.confidence = confidence;
@@ -375,8 +376,16 @@ public class CallTranscription {
       if ((jsonObj.get("detectedLanguage") != null && !jsonObj.get("detectedLanguage").isJsonNull()) && !jsonObj.get("detectedLanguage").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `detectedLanguage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("detectedLanguage").toString()));
       }
+      // validate the optional field `detectedLanguage`
+      if (jsonObj.get("detectedLanguage") != null && !jsonObj.get("detectedLanguage").isJsonNull()) {
+        DetectedLanguageEnum.validateJsonElement(jsonObj.get("detectedLanguage"));
+      }
       if ((jsonObj.get("track") != null && !jsonObj.get("track").isJsonNull()) && !jsonObj.get("track").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `track` to be a primitive type in the JSON string but got `%s`", jsonObj.get("track").toString()));
+      }
+      // validate the optional field `track`
+      if (jsonObj.get("track") != null && !jsonObj.get("track").isJsonNull()) {
+        TrackEnum.validateJsonElement(jsonObj.get("track"));
       }
       if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull()) && !jsonObj.get("text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
@@ -411,7 +420,12 @@ public class CallTranscription {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

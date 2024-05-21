@@ -45,7 +45,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -53,7 +52,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * The Disconnect event is fired when a call ends, for any reason.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class DisconnectCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
@@ -127,7 +126,6 @@ public class DisconnectCallback {
   }
 
   public DisconnectCallback eventType(String eventType) {
-    
     this.eventType = eventType;
     return this;
   }
@@ -141,14 +139,12 @@ public class DisconnectCallback {
     return eventType;
   }
 
-
   public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
   public DisconnectCallback eventTime(OffsetDateTime eventTime) {
-    
     this.eventTime = eventTime;
     return this;
   }
@@ -162,14 +158,12 @@ public class DisconnectCallback {
     return eventTime;
   }
 
-
   public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
   public DisconnectCallback accountId(String accountId) {
-    
     this.accountId = accountId;
     return this;
   }
@@ -183,14 +177,12 @@ public class DisconnectCallback {
     return accountId;
   }
 
-
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
   public DisconnectCallback applicationId(String applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
@@ -204,14 +196,12 @@ public class DisconnectCallback {
     return applicationId;
   }
 
-
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public DisconnectCallback from(String from) {
-    
     this.from = from;
     return this;
   }
@@ -225,14 +215,12 @@ public class DisconnectCallback {
     return from;
   }
 
-
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public DisconnectCallback to(String to) {
-    
     this.to = to;
     return this;
   }
@@ -246,14 +234,12 @@ public class DisconnectCallback {
     return to;
   }
 
-
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public DisconnectCallback callId(String callId) {
-    
     this.callId = callId;
     return this;
   }
@@ -267,14 +253,12 @@ public class DisconnectCallback {
     return callId;
   }
 
-
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
   public DisconnectCallback direction(CallDirectionEnum direction) {
-    
     this.direction = direction;
     return this;
   }
@@ -288,14 +272,12 @@ public class DisconnectCallback {
     return direction;
   }
 
-
   public void setDirection(CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
   public DisconnectCallback callUrl(String callUrl) {
-    
     this.callUrl = callUrl;
     return this;
   }
@@ -309,14 +291,12 @@ public class DisconnectCallback {
     return callUrl;
   }
 
-
   public void setCallUrl(String callUrl) {
     this.callUrl = callUrl;
   }
 
 
   public DisconnectCallback enqueuedTime(OffsetDateTime enqueuedTime) {
-    
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -330,14 +310,12 @@ public class DisconnectCallback {
     return enqueuedTime;
   }
 
-
   public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
   public DisconnectCallback startTime(OffsetDateTime startTime) {
-    
     this.startTime = startTime;
     return this;
   }
@@ -351,14 +329,12 @@ public class DisconnectCallback {
     return startTime;
   }
 
-
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
   public DisconnectCallback answerTime(OffsetDateTime answerTime) {
-    
     this.answerTime = answerTime;
     return this;
   }
@@ -372,14 +348,12 @@ public class DisconnectCallback {
     return answerTime;
   }
 
-
   public void setAnswerTime(OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
   public DisconnectCallback endTime(OffsetDateTime endTime) {
-    
     this.endTime = endTime;
     return this;
   }
@@ -393,14 +367,12 @@ public class DisconnectCallback {
     return endTime;
   }
 
-
   public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
 
   public DisconnectCallback cause(String cause) {
-    
     this.cause = cause;
     return this;
   }
@@ -414,14 +386,12 @@ public class DisconnectCallback {
     return cause;
   }
 
-
   public void setCause(String cause) {
     this.cause = cause;
   }
 
 
   public DisconnectCallback errorMessage(String errorMessage) {
-    
     this.errorMessage = errorMessage;
     return this;
   }
@@ -435,14 +405,12 @@ public class DisconnectCallback {
     return errorMessage;
   }
 
-
   public void setErrorMessage(String errorMessage) {
     this.errorMessage = errorMessage;
   }
 
 
   public DisconnectCallback errorId(String errorId) {
-    
     this.errorId = errorId;
     return this;
   }
@@ -456,14 +424,12 @@ public class DisconnectCallback {
     return errorId;
   }
 
-
   public void setErrorId(String errorId) {
     this.errorId = errorId;
   }
 
 
   public DisconnectCallback tag(String tag) {
-    
     this.tag = tag;
     return this;
   }
@@ -476,7 +442,6 @@ public class DisconnectCallback {
   public String getTag() {
     return tag;
   }
-
 
   public void setTag(String tag) {
     this.tag = tag;
@@ -670,6 +635,10 @@ public class DisconnectCallback {
       if ((jsonObj.get("callId") != null && !jsonObj.get("callId").isJsonNull()) && !jsonObj.get("callId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callId").toString()));
       }
+      // validate the optional field `direction`
+      if (jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) {
+        CallDirectionEnum.validateJsonElement(jsonObj.get("direction"));
+      }
       if ((jsonObj.get("callUrl") != null && !jsonObj.get("callUrl").isJsonNull()) && !jsonObj.get("callUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callUrl").toString()));
       }
@@ -715,7 +684,12 @@ public class DisconnectCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

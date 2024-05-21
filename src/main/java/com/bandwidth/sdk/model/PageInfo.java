@@ -42,7 +42,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -50,7 +49,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * PageInfo
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class PageInfo {
   public static final String SERIALIZED_NAME_PREV_PAGE = "prevPage";
   @SerializedName(SERIALIZED_NAME_PREV_PAGE)
@@ -72,7 +71,6 @@ public class PageInfo {
   }
 
   public PageInfo prevPage(String prevPage) {
-    
     this.prevPage = prevPage;
     return this;
   }
@@ -86,14 +84,12 @@ public class PageInfo {
     return prevPage;
   }
 
-
   public void setPrevPage(String prevPage) {
     this.prevPage = prevPage;
   }
 
 
   public PageInfo nextPage(String nextPage) {
-    
     this.nextPage = nextPage;
     return this;
   }
@@ -107,14 +103,12 @@ public class PageInfo {
     return nextPage;
   }
 
-
   public void setNextPage(String nextPage) {
     this.nextPage = nextPage;
   }
 
 
   public PageInfo prevPageToken(String prevPageToken) {
-    
     this.prevPageToken = prevPageToken;
     return this;
   }
@@ -128,14 +122,12 @@ public class PageInfo {
     return prevPageToken;
   }
 
-
   public void setPrevPageToken(String prevPageToken) {
     this.prevPageToken = prevPageToken;
   }
 
 
   public PageInfo nextPageToken(String nextPageToken) {
-    
     this.nextPageToken = nextPageToken;
     return this;
   }
@@ -148,7 +140,6 @@ public class PageInfo {
   public String getNextPageToken() {
     return nextPageToken;
   }
-
 
   public void setNextPageToken(String nextPageToken) {
     this.nextPageToken = nextPageToken;
@@ -316,7 +307,12 @@ public class PageInfo {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

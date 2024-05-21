@@ -229,9 +229,3 @@ src/main/java/com/bandwidth/sdk/model/VerifyCodeRequest.java
 src/main/java/com/bandwidth/sdk/model/VerifyCodeResponse.java
 src/main/java/com/bandwidth/sdk/model/VoiceApiError.java
 src/main/java/com/bandwidth/sdk/model/VoiceCodeResponse.java
-src/test/java/com/bandwidth/sdk/api/TranscriptionsApiTest.java
-src/test/java/com/bandwidth/sdk/model/CallTranscriptionMetadataTest.java
-src/test/java/com/bandwidth/sdk/model/CallTranscriptionResponseTest.java
-src/test/java/com/bandwidth/sdk/model/CallTranscriptionTest.java
-src/test/java/com/bandwidth/sdk/model/RecordingTranscriptionMetadataTest.java
-src/test/java/com/bandwidth/sdk/model/RecordingTranscriptionsTest.java

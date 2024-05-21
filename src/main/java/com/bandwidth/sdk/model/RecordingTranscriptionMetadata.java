@@ -43,7 +43,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -51,7 +50,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * If the recording was transcribed, metadata about the transcription
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class RecordingTranscriptionMetadata {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -73,7 +72,6 @@ public class RecordingTranscriptionMetadata {
   }
 
   public RecordingTranscriptionMetadata id(String id) {
-    
     this.id = id;
     return this;
   }
@@ -87,14 +85,12 @@ public class RecordingTranscriptionMetadata {
     return id;
   }
 
-
   public void setId(String id) {
     this.id = id;
   }
 
 
   public RecordingTranscriptionMetadata status(String status) {
-    
     this.status = status;
     return this;
   }
@@ -108,14 +104,12 @@ public class RecordingTranscriptionMetadata {
     return status;
   }
 
-
   public void setStatus(String status) {
     this.status = status;
   }
 
 
   public RecordingTranscriptionMetadata completedTime(String completedTime) {
-    
     this.completedTime = completedTime;
     return this;
   }
@@ -129,14 +123,12 @@ public class RecordingTranscriptionMetadata {
     return completedTime;
   }
 
-
   public void setCompletedTime(String completedTime) {
     this.completedTime = completedTime;
   }
 
 
   public RecordingTranscriptionMetadata url(URI url) {
-    
     this.url = url;
     return this;
   }
@@ -149,7 +141,6 @@ public class RecordingTranscriptionMetadata {
   public URI getUrl() {
     return url;
   }
-
 
   public void setUrl(URI url) {
     this.url = url;
@@ -317,7 +308,12 @@ public class RecordingTranscriptionMetadata {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

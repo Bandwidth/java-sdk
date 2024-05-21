@@ -44,7 +44,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -52,7 +51,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Create phone number lookup request.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class LookupRequest {
   public static final String SERIALIZED_NAME_TNS = "tns";
   @SerializedName(SERIALIZED_NAME_TNS)
@@ -62,7 +61,6 @@ public class LookupRequest {
   }
 
   public LookupRequest tns(List<String> tns) {
-    
     this.tns = tns;
     return this;
   }
@@ -83,7 +81,6 @@ public class LookupRequest {
   public List<String> getTns() {
     return tns;
   }
-
 
   public void setTns(List<String> tns) {
     this.tns = tns;
@@ -244,7 +241,12 @@ public class LookupRequest {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

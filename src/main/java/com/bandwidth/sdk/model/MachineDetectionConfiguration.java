@@ -46,7 +46,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -54,7 +53,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * The machine detection request used to perform &lt;a href&#x3D;&#39;/docs/voice/guides/machineDetection&#39;&gt;machine detection&lt;/a&gt; on the call.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class MachineDetectionConfiguration {
   public static final String SERIALIZED_NAME_MODE = "mode";
   @SerializedName(SERIALIZED_NAME_MODE)
@@ -120,7 +119,6 @@ public class MachineDetectionConfiguration {
   }
 
   public MachineDetectionConfiguration mode(MachineDetectionModeEnum mode) {
-    
     this.mode = mode;
     return this;
   }
@@ -134,14 +132,12 @@ public class MachineDetectionConfiguration {
     return mode;
   }
 
-
   public void setMode(MachineDetectionModeEnum mode) {
     this.mode = mode;
   }
 
 
   public MachineDetectionConfiguration detectionTimeout(Double detectionTimeout) {
-    
     this.detectionTimeout = detectionTimeout;
     return this;
   }
@@ -155,14 +151,12 @@ public class MachineDetectionConfiguration {
     return detectionTimeout;
   }
 
-
   public void setDetectionTimeout(Double detectionTimeout) {
     this.detectionTimeout = detectionTimeout;
   }
 
 
   public MachineDetectionConfiguration silenceTimeout(Double silenceTimeout) {
-    
     this.silenceTimeout = silenceTimeout;
     return this;
   }
@@ -176,14 +170,12 @@ public class MachineDetectionConfiguration {
     return silenceTimeout;
   }
 
-
   public void setSilenceTimeout(Double silenceTimeout) {
     this.silenceTimeout = silenceTimeout;
   }
 
 
   public MachineDetectionConfiguration speechThreshold(Double speechThreshold) {
-    
     this.speechThreshold = speechThreshold;
     return this;
   }
@@ -197,14 +189,12 @@ public class MachineDetectionConfiguration {
     return speechThreshold;
   }
 
-
   public void setSpeechThreshold(Double speechThreshold) {
     this.speechThreshold = speechThreshold;
   }
 
 
   public MachineDetectionConfiguration speechEndThreshold(Double speechEndThreshold) {
-    
     this.speechEndThreshold = speechEndThreshold;
     return this;
   }
@@ -218,14 +208,12 @@ public class MachineDetectionConfiguration {
     return speechEndThreshold;
   }
 
-
   public void setSpeechEndThreshold(Double speechEndThreshold) {
     this.speechEndThreshold = speechEndThreshold;
   }
 
 
   public MachineDetectionConfiguration machineSpeechEndThreshold(Double machineSpeechEndThreshold) {
-    
     this.machineSpeechEndThreshold = machineSpeechEndThreshold;
     return this;
   }
@@ -239,14 +227,12 @@ public class MachineDetectionConfiguration {
     return machineSpeechEndThreshold;
   }
 
-
   public void setMachineSpeechEndThreshold(Double machineSpeechEndThreshold) {
     this.machineSpeechEndThreshold = machineSpeechEndThreshold;
   }
 
 
   public MachineDetectionConfiguration delayResult(Boolean delayResult) {
-    
     this.delayResult = delayResult;
     return this;
   }
@@ -260,14 +246,12 @@ public class MachineDetectionConfiguration {
     return delayResult;
   }
 
-
   public void setDelayResult(Boolean delayResult) {
     this.delayResult = delayResult;
   }
 
 
   public MachineDetectionConfiguration callbackUrl(URI callbackUrl) {
-    
     this.callbackUrl = callbackUrl;
     return this;
   }
@@ -281,14 +265,12 @@ public class MachineDetectionConfiguration {
     return callbackUrl;
   }
 
-
   public void setCallbackUrl(URI callbackUrl) {
     this.callbackUrl = callbackUrl;
   }
 
 
   public MachineDetectionConfiguration callbackMethod(CallbackMethodEnum callbackMethod) {
-    
     this.callbackMethod = callbackMethod;
     return this;
   }
@@ -302,14 +284,12 @@ public class MachineDetectionConfiguration {
     return callbackMethod;
   }
 
-
   public void setCallbackMethod(CallbackMethodEnum callbackMethod) {
     this.callbackMethod = callbackMethod;
   }
 
 
   public MachineDetectionConfiguration username(String username) {
-    
     this.username = username;
     return this;
   }
@@ -323,14 +303,12 @@ public class MachineDetectionConfiguration {
     return username;
   }
 
-
   public void setUsername(String username) {
     this.username = username;
   }
 
 
   public MachineDetectionConfiguration password(String password) {
-    
     this.password = password;
     return this;
   }
@@ -344,14 +322,12 @@ public class MachineDetectionConfiguration {
     return password;
   }
 
-
   public void setPassword(String password) {
     this.password = password;
   }
 
 
   public MachineDetectionConfiguration fallbackUrl(URI fallbackUrl) {
-    
     this.fallbackUrl = fallbackUrl;
     return this;
   }
@@ -365,14 +341,12 @@ public class MachineDetectionConfiguration {
     return fallbackUrl;
   }
 
-
   public void setFallbackUrl(URI fallbackUrl) {
     this.fallbackUrl = fallbackUrl;
   }
 
 
   public MachineDetectionConfiguration fallbackMethod(CallbackMethodEnum fallbackMethod) {
-    
     this.fallbackMethod = fallbackMethod;
     return this;
   }
@@ -386,14 +360,12 @@ public class MachineDetectionConfiguration {
     return fallbackMethod;
   }
 
-
   public void setFallbackMethod(CallbackMethodEnum fallbackMethod) {
     this.fallbackMethod = fallbackMethod;
   }
 
 
   public MachineDetectionConfiguration fallbackUsername(String fallbackUsername) {
-    
     this.fallbackUsername = fallbackUsername;
     return this;
   }
@@ -407,14 +379,12 @@ public class MachineDetectionConfiguration {
     return fallbackUsername;
   }
 
-
   public void setFallbackUsername(String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
   }
 
 
   public MachineDetectionConfiguration fallbackPassword(String fallbackPassword) {
-    
     this.fallbackPassword = fallbackPassword;
     return this;
   }
@@ -427,7 +397,6 @@ public class MachineDetectionConfiguration {
   public String getFallbackPassword() {
     return fallbackPassword;
   }
-
 
   public void setFallbackPassword(String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
@@ -597,8 +566,16 @@ public class MachineDetectionConfiguration {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `mode`
+      if (jsonObj.get("mode") != null && !jsonObj.get("mode").isJsonNull()) {
+        MachineDetectionModeEnum.validateJsonElement(jsonObj.get("mode"));
+      }
       if ((jsonObj.get("callbackUrl") != null && !jsonObj.get("callbackUrl").isJsonNull()) && !jsonObj.get("callbackUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callbackUrl").toString()));
+      }
+      // validate the optional field `callbackMethod`
+      if (jsonObj.get("callbackMethod") != null && !jsonObj.get("callbackMethod").isJsonNull()) {
+        CallbackMethodEnum.validateJsonElement(jsonObj.get("callbackMethod"));
       }
       if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
@@ -608,6 +585,10 @@ public class MachineDetectionConfiguration {
       }
       if ((jsonObj.get("fallbackUrl") != null && !jsonObj.get("fallbackUrl").isJsonNull()) && !jsonObj.get("fallbackUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fallbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackUrl").toString()));
+      }
+      // validate the optional field `fallbackMethod`
+      if (jsonObj.get("fallbackMethod") != null && !jsonObj.get("fallbackMethod").isJsonNull()) {
+        CallbackMethodEnum.validateJsonElement(jsonObj.get("fallbackMethod"));
       }
       if ((jsonObj.get("fallbackUsername") != null && !jsonObj.get("fallbackUsername").isJsonNull()) && !jsonObj.get("fallbackUsername").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fallbackUsername` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackUsername").toString()));
@@ -645,7 +626,12 @@ public class MachineDetectionConfiguration {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

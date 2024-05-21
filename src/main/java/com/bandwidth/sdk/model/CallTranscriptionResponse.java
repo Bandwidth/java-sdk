@@ -45,7 +45,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -53,7 +52,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * CallTranscriptionResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class CallTranscriptionResponse {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
@@ -69,13 +68,12 @@ public class CallTranscriptionResponse {
 
   public static final String SERIALIZED_NAME_TRACKS = "tracks";
   @SerializedName(SERIALIZED_NAME_TRACKS)
-  private List<CallTranscription> tracks;
+  private List<CallTranscription> tracks = new ArrayList<>();
 
   public CallTranscriptionResponse() {
   }
 
   public CallTranscriptionResponse accountId(String accountId) {
-    
     this.accountId = accountId;
     return this;
   }
@@ -89,14 +87,12 @@ public class CallTranscriptionResponse {
     return accountId;
   }
 
-
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
   public CallTranscriptionResponse callId(String callId) {
-    
     this.callId = callId;
     return this;
   }
@@ -110,14 +106,12 @@ public class CallTranscriptionResponse {
     return callId;
   }
 
-
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
   public CallTranscriptionResponse transcriptionId(String transcriptionId) {
-    
     this.transcriptionId = transcriptionId;
     return this;
   }
@@ -131,14 +125,12 @@ public class CallTranscriptionResponse {
     return transcriptionId;
   }
 
-
   public void setTranscriptionId(String transcriptionId) {
     this.transcriptionId = transcriptionId;
   }
 
 
   public CallTranscriptionResponse tracks(List<CallTranscription> tracks) {
-    
     this.tracks = tracks;
     return this;
   }
@@ -159,7 +151,6 @@ public class CallTranscriptionResponse {
   public List<CallTranscription> getTracks() {
     return tracks;
   }
-
 
   public void setTracks(List<CallTranscription> tracks) {
     this.tracks = tracks;
@@ -338,7 +329,12 @@ public class CallTranscriptionResponse {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

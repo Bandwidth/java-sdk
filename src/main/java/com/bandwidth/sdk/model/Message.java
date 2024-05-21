@@ -47,7 +47,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -55,7 +54,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Message
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class Message {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -83,7 +82,7 @@ public class Message {
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
-  private Set<String> to;
+  private Set<String> to = new LinkedHashSet<>();
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
@@ -91,7 +90,7 @@ public class Message {
 
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
-  private Set<String> media;
+  private Set<String> media = new LinkedHashSet<>();
 
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
@@ -113,7 +112,6 @@ public class Message {
   }
 
   public Message id(String id) {
-    
     this.id = id;
     return this;
   }
@@ -127,14 +125,12 @@ public class Message {
     return id;
   }
 
-
   public void setId(String id) {
     this.id = id;
   }
 
 
   public Message owner(String owner) {
-    
     this.owner = owner;
     return this;
   }
@@ -148,14 +144,12 @@ public class Message {
     return owner;
   }
 
-
   public void setOwner(String owner) {
     this.owner = owner;
   }
 
 
   public Message applicationId(String applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
@@ -169,14 +163,12 @@ public class Message {
     return applicationId;
   }
 
-
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public Message time(OffsetDateTime time) {
-    
     this.time = time;
     return this;
   }
@@ -190,14 +182,12 @@ public class Message {
     return time;
   }
 
-
   public void setTime(OffsetDateTime time) {
     this.time = time;
   }
 
 
   public Message segmentCount(Integer segmentCount) {
-    
     this.segmentCount = segmentCount;
     return this;
   }
@@ -211,14 +201,12 @@ public class Message {
     return segmentCount;
   }
 
-
   public void setSegmentCount(Integer segmentCount) {
     this.segmentCount = segmentCount;
   }
 
 
   public Message direction(MessageDirectionEnum direction) {
-    
     this.direction = direction;
     return this;
   }
@@ -232,14 +220,12 @@ public class Message {
     return direction;
   }
 
-
   public void setDirection(MessageDirectionEnum direction) {
     this.direction = direction;
   }
 
 
   public Message to(Set<String> to) {
-    
     this.to = to;
     return this;
   }
@@ -261,14 +247,12 @@ public class Message {
     return to;
   }
 
-
   public void setTo(Set<String> to) {
     this.to = to;
   }
 
 
   public Message from(String from) {
-    
     this.from = from;
     return this;
   }
@@ -282,14 +266,12 @@ public class Message {
     return from;
   }
 
-
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public Message media(Set<String> media) {
-    
     this.media = media;
     return this;
   }
@@ -311,14 +293,12 @@ public class Message {
     return media;
   }
 
-
   public void setMedia(Set<String> media) {
     this.media = media;
   }
 
 
   public Message text(String text) {
-    
     this.text = text;
     return this;
   }
@@ -332,14 +312,12 @@ public class Message {
     return text;
   }
 
-
   public void setText(String text) {
     this.text = text;
   }
 
 
   public Message tag(String tag) {
-    
     this.tag = tag;
     return this;
   }
@@ -353,14 +331,12 @@ public class Message {
     return tag;
   }
 
-
   public void setTag(String tag) {
     this.tag = tag;
   }
 
 
   public Message priority(PriorityEnum priority) {
-    
     this.priority = priority;
     return this;
   }
@@ -374,14 +350,12 @@ public class Message {
     return priority;
   }
 
-
   public void setPriority(PriorityEnum priority) {
     this.priority = priority;
   }
 
 
   public Message expiration(OffsetDateTime expiration) {
-    
     this.expiration = expiration;
     return this;
   }
@@ -394,7 +368,6 @@ public class Message {
   public OffsetDateTime getExpiration() {
     return expiration;
   }
-
 
   public void setExpiration(OffsetDateTime expiration) {
     this.expiration = expiration;
@@ -556,6 +529,10 @@ public class Message {
       if ((jsonObj.get("applicationId") != null && !jsonObj.get("applicationId").isJsonNull()) && !jsonObj.get("applicationId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
       }
+      // validate the optional field `direction`
+      if (jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) {
+        MessageDirectionEnum.validateJsonElement(jsonObj.get("direction"));
+      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull() && !jsonObj.get("to").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be an array in the JSON string but got `%s`", jsonObj.get("to").toString()));
@@ -572,6 +549,10 @@ public class Message {
       }
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
+      }
+      // validate the optional field `priority`
+      if (jsonObj.get("priority") != null && !jsonObj.get("priority").isJsonNull()) {
+        PriorityEnum.validateJsonElement(jsonObj.get("priority"));
       }
   }
 
@@ -603,7 +584,12 @@ public class Message {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

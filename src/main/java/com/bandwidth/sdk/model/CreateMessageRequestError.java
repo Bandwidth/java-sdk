@@ -45,7 +45,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -53,7 +52,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * CreateMessageRequestError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class CreateMessageRequestError {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -65,13 +64,12 @@ public class CreateMessageRequestError {
 
   public static final String SERIALIZED_NAME_FIELD_ERRORS = "fieldErrors";
   @SerializedName(SERIALIZED_NAME_FIELD_ERRORS)
-  private List<FieldError> fieldErrors;
+  private List<FieldError> fieldErrors = new ArrayList<>();
 
   public CreateMessageRequestError() {
   }
 
   public CreateMessageRequestError type(String type) {
-    
     this.type = type;
     return this;
   }
@@ -85,14 +83,12 @@ public class CreateMessageRequestError {
     return type;
   }
 
-
   public void setType(String type) {
     this.type = type;
   }
 
 
   public CreateMessageRequestError description(String description) {
-    
     this.description = description;
     return this;
   }
@@ -106,14 +102,12 @@ public class CreateMessageRequestError {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
 
   public CreateMessageRequestError fieldErrors(List<FieldError> fieldErrors) {
-    
     this.fieldErrors = fieldErrors;
     return this;
   }
@@ -134,7 +128,6 @@ public class CreateMessageRequestError {
   public List<FieldError> getFieldErrors() {
     return fieldErrors;
   }
-
 
   public void setFieldErrors(List<FieldError> fieldErrors) {
     this.fieldErrors = fieldErrors;
@@ -316,7 +309,12 @@ public class CreateMessageRequestError {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

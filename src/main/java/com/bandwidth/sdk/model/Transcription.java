@@ -42,7 +42,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -50,7 +49,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Transcription
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class Transcription {
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
@@ -64,7 +63,6 @@ public class Transcription {
   }
 
   public Transcription text(String text) {
-    
     this.text = text;
     return this;
   }
@@ -78,14 +76,12 @@ public class Transcription {
     return text;
   }
 
-
   public void setText(String text) {
     this.text = text;
   }
 
 
   public Transcription confidence(Double confidence) {
-    
     this.confidence = confidence;
     return this;
   }
@@ -98,7 +94,6 @@ public class Transcription {
   public Double getConfidence() {
     return confidence;
   }
-
 
   public void setConfidence(Double confidence) {
     this.confidence = confidence;
@@ -251,7 +246,12 @@ public class Transcription {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

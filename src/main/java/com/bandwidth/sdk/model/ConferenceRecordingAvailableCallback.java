@@ -46,7 +46,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -54,7 +53,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * The Conference Recording Available event is sent after a conference recording has been processed. It indicates that the recording is available for download.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class ConferenceRecordingAvailableCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
@@ -116,7 +115,6 @@ public class ConferenceRecordingAvailableCallback {
   }
 
   public ConferenceRecordingAvailableCallback eventType(String eventType) {
-    
     this.eventType = eventType;
     return this;
   }
@@ -130,14 +128,12 @@ public class ConferenceRecordingAvailableCallback {
     return eventType;
   }
 
-
   public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
   public ConferenceRecordingAvailableCallback eventTime(OffsetDateTime eventTime) {
-    
     this.eventTime = eventTime;
     return this;
   }
@@ -151,14 +147,12 @@ public class ConferenceRecordingAvailableCallback {
     return eventTime;
   }
 
-
   public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
   public ConferenceRecordingAvailableCallback conferenceId(String conferenceId) {
-    
     this.conferenceId = conferenceId;
     return this;
   }
@@ -172,14 +166,12 @@ public class ConferenceRecordingAvailableCallback {
     return conferenceId;
   }
 
-
   public void setConferenceId(String conferenceId) {
     this.conferenceId = conferenceId;
   }
 
 
   public ConferenceRecordingAvailableCallback name(String name) {
-    
     this.name = name;
     return this;
   }
@@ -193,14 +185,12 @@ public class ConferenceRecordingAvailableCallback {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
 
   public ConferenceRecordingAvailableCallback accountId(String accountId) {
-    
     this.accountId = accountId;
     return this;
   }
@@ -214,14 +204,12 @@ public class ConferenceRecordingAvailableCallback {
     return accountId;
   }
 
-
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
   public ConferenceRecordingAvailableCallback recordingId(String recordingId) {
-    
     this.recordingId = recordingId;
     return this;
   }
@@ -235,14 +223,12 @@ public class ConferenceRecordingAvailableCallback {
     return recordingId;
   }
 
-
   public void setRecordingId(String recordingId) {
     this.recordingId = recordingId;
   }
 
 
   public ConferenceRecordingAvailableCallback channels(Integer channels) {
-    
     this.channels = channels;
     return this;
   }
@@ -256,14 +242,12 @@ public class ConferenceRecordingAvailableCallback {
     return channels;
   }
 
-
   public void setChannels(Integer channels) {
     this.channels = channels;
   }
 
 
   public ConferenceRecordingAvailableCallback startTime(OffsetDateTime startTime) {
-    
     this.startTime = startTime;
     return this;
   }
@@ -277,14 +261,12 @@ public class ConferenceRecordingAvailableCallback {
     return startTime;
   }
 
-
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
   public ConferenceRecordingAvailableCallback endTime(OffsetDateTime endTime) {
-    
     this.endTime = endTime;
     return this;
   }
@@ -298,14 +280,12 @@ public class ConferenceRecordingAvailableCallback {
     return endTime;
   }
 
-
   public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
 
   public ConferenceRecordingAvailableCallback duration(String duration) {
-    
     this.duration = duration;
     return this;
   }
@@ -319,14 +299,12 @@ public class ConferenceRecordingAvailableCallback {
     return duration;
   }
 
-
   public void setDuration(String duration) {
     this.duration = duration;
   }
 
 
   public ConferenceRecordingAvailableCallback fileFormat(FileFormatEnum fileFormat) {
-    
     this.fileFormat = fileFormat;
     return this;
   }
@@ -340,14 +318,12 @@ public class ConferenceRecordingAvailableCallback {
     return fileFormat;
   }
 
-
   public void setFileFormat(FileFormatEnum fileFormat) {
     this.fileFormat = fileFormat;
   }
 
 
   public ConferenceRecordingAvailableCallback mediaUrl(URI mediaUrl) {
-    
     this.mediaUrl = mediaUrl;
     return this;
   }
@@ -361,14 +337,12 @@ public class ConferenceRecordingAvailableCallback {
     return mediaUrl;
   }
 
-
   public void setMediaUrl(URI mediaUrl) {
     this.mediaUrl = mediaUrl;
   }
 
 
   public ConferenceRecordingAvailableCallback tag(String tag) {
-    
     this.tag = tag;
     return this;
   }
@@ -382,14 +356,12 @@ public class ConferenceRecordingAvailableCallback {
     return tag;
   }
 
-
   public void setTag(String tag) {
     this.tag = tag;
   }
 
 
   public ConferenceRecordingAvailableCallback status(String status) {
-    
     this.status = status;
     return this;
   }
@@ -402,7 +374,6 @@ public class ConferenceRecordingAvailableCallback {
   public String getStatus() {
     return status;
   }
-
 
   public void setStatus(String status) {
     this.status = status;
@@ -587,6 +558,10 @@ public class ConferenceRecordingAvailableCallback {
       if ((jsonObj.get("duration") != null && !jsonObj.get("duration").isJsonNull()) && !jsonObj.get("duration").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `duration` to be a primitive type in the JSON string but got `%s`", jsonObj.get("duration").toString()));
       }
+      // validate the optional field `fileFormat`
+      if (jsonObj.get("fileFormat") != null && !jsonObj.get("fileFormat").isJsonNull()) {
+        FileFormatEnum.validateJsonElement(jsonObj.get("fileFormat"));
+      }
       if ((jsonObj.get("mediaUrl") != null && !jsonObj.get("mediaUrl").isJsonNull()) && !jsonObj.get("mediaUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `mediaUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mediaUrl").toString()));
       }
@@ -626,7 +601,12 @@ public class ConferenceRecordingAvailableCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

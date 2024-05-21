@@ -48,7 +48,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -56,7 +55,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * The Transcription Available event is sent when the recording transcription is available to be downloaded.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class TranscriptionAvailableCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
@@ -146,7 +145,6 @@ public class TranscriptionAvailableCallback {
   }
 
   public TranscriptionAvailableCallback eventType(String eventType) {
-    
     this.eventType = eventType;
     return this;
   }
@@ -160,14 +158,12 @@ public class TranscriptionAvailableCallback {
     return eventType;
   }
 
-
   public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
   public TranscriptionAvailableCallback eventTime(OffsetDateTime eventTime) {
-    
     this.eventTime = eventTime;
     return this;
   }
@@ -181,14 +177,12 @@ public class TranscriptionAvailableCallback {
     return eventTime;
   }
 
-
   public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
   public TranscriptionAvailableCallback accountId(String accountId) {
-    
     this.accountId = accountId;
     return this;
   }
@@ -202,14 +196,12 @@ public class TranscriptionAvailableCallback {
     return accountId;
   }
 
-
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
   public TranscriptionAvailableCallback applicationId(String applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
@@ -223,14 +215,12 @@ public class TranscriptionAvailableCallback {
     return applicationId;
   }
 
-
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public TranscriptionAvailableCallback from(String from) {
-    
     this.from = from;
     return this;
   }
@@ -244,14 +234,12 @@ public class TranscriptionAvailableCallback {
     return from;
   }
 
-
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public TranscriptionAvailableCallback to(String to) {
-    
     this.to = to;
     return this;
   }
@@ -265,14 +253,12 @@ public class TranscriptionAvailableCallback {
     return to;
   }
 
-
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public TranscriptionAvailableCallback direction(CallDirectionEnum direction) {
-    
     this.direction = direction;
     return this;
   }
@@ -286,14 +272,12 @@ public class TranscriptionAvailableCallback {
     return direction;
   }
 
-
   public void setDirection(CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
   public TranscriptionAvailableCallback callId(String callId) {
-    
     this.callId = callId;
     return this;
   }
@@ -307,14 +291,12 @@ public class TranscriptionAvailableCallback {
     return callId;
   }
 
-
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
   public TranscriptionAvailableCallback callUrl(String callUrl) {
-    
     this.callUrl = callUrl;
     return this;
   }
@@ -328,14 +310,12 @@ public class TranscriptionAvailableCallback {
     return callUrl;
   }
 
-
   public void setCallUrl(String callUrl) {
     this.callUrl = callUrl;
   }
 
 
   public TranscriptionAvailableCallback mediaUrl(URI mediaUrl) {
-    
     this.mediaUrl = mediaUrl;
     return this;
   }
@@ -349,14 +329,12 @@ public class TranscriptionAvailableCallback {
     return mediaUrl;
   }
 
-
   public void setMediaUrl(URI mediaUrl) {
     this.mediaUrl = mediaUrl;
   }
 
 
   public TranscriptionAvailableCallback parentCallId(String parentCallId) {
-    
     this.parentCallId = parentCallId;
     return this;
   }
@@ -370,14 +348,12 @@ public class TranscriptionAvailableCallback {
     return parentCallId;
   }
 
-
   public void setParentCallId(String parentCallId) {
     this.parentCallId = parentCallId;
   }
 
 
   public TranscriptionAvailableCallback recordingId(String recordingId) {
-    
     this.recordingId = recordingId;
     return this;
   }
@@ -391,14 +367,12 @@ public class TranscriptionAvailableCallback {
     return recordingId;
   }
 
-
   public void setRecordingId(String recordingId) {
     this.recordingId = recordingId;
   }
 
 
   public TranscriptionAvailableCallback enqueuedTime(OffsetDateTime enqueuedTime) {
-    
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -412,14 +386,12 @@ public class TranscriptionAvailableCallback {
     return enqueuedTime;
   }
 
-
   public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
   public TranscriptionAvailableCallback startTime(OffsetDateTime startTime) {
-    
     this.startTime = startTime;
     return this;
   }
@@ -433,14 +405,12 @@ public class TranscriptionAvailableCallback {
     return startTime;
   }
 
-
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
   public TranscriptionAvailableCallback endTime(OffsetDateTime endTime) {
-    
     this.endTime = endTime;
     return this;
   }
@@ -454,14 +424,12 @@ public class TranscriptionAvailableCallback {
     return endTime;
   }
 
-
   public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
 
   public TranscriptionAvailableCallback duration(String duration) {
-    
     this.duration = duration;
     return this;
   }
@@ -475,14 +443,12 @@ public class TranscriptionAvailableCallback {
     return duration;
   }
 
-
   public void setDuration(String duration) {
     this.duration = duration;
   }
 
 
   public TranscriptionAvailableCallback fileFormat(FileFormatEnum fileFormat) {
-    
     this.fileFormat = fileFormat;
     return this;
   }
@@ -496,14 +462,12 @@ public class TranscriptionAvailableCallback {
     return fileFormat;
   }
 
-
   public void setFileFormat(FileFormatEnum fileFormat) {
     this.fileFormat = fileFormat;
   }
 
 
   public TranscriptionAvailableCallback tag(String tag) {
-    
     this.tag = tag;
     return this;
   }
@@ -517,14 +481,12 @@ public class TranscriptionAvailableCallback {
     return tag;
   }
 
-
   public void setTag(String tag) {
     this.tag = tag;
   }
 
 
   public TranscriptionAvailableCallback transcription(Transcription transcription) {
-    
     this.transcription = transcription;
     return this;
   }
@@ -538,14 +500,12 @@ public class TranscriptionAvailableCallback {
     return transcription;
   }
 
-
   public void setTranscription(Transcription transcription) {
     this.transcription = transcription;
   }
 
 
   public TranscriptionAvailableCallback transferCallerId(String transferCallerId) {
-    
     this.transferCallerId = transferCallerId;
     return this;
   }
@@ -559,14 +519,12 @@ public class TranscriptionAvailableCallback {
     return transferCallerId;
   }
 
-
   public void setTransferCallerId(String transferCallerId) {
     this.transferCallerId = transferCallerId;
   }
 
 
   public TranscriptionAvailableCallback transferTo(String transferTo) {
-    
     this.transferTo = transferTo;
     return this;
   }
@@ -579,7 +537,6 @@ public class TranscriptionAvailableCallback {
   public String getTransferTo() {
     return transferTo;
   }
-
 
   public void setTransferTo(String transferTo) {
     this.transferTo = transferTo;
@@ -782,6 +739,10 @@ public class TranscriptionAvailableCallback {
       if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
+      // validate the optional field `direction`
+      if (jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) {
+        CallDirectionEnum.validateJsonElement(jsonObj.get("direction"));
+      }
       if ((jsonObj.get("callId") != null && !jsonObj.get("callId").isJsonNull()) && !jsonObj.get("callId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callId").toString()));
       }
@@ -799,6 +760,10 @@ public class TranscriptionAvailableCallback {
       }
       if ((jsonObj.get("duration") != null && !jsonObj.get("duration").isJsonNull()) && !jsonObj.get("duration").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `duration` to be a primitive type in the JSON string but got `%s`", jsonObj.get("duration").toString()));
+      }
+      // validate the optional field `fileFormat`
+      if (jsonObj.get("fileFormat") != null && !jsonObj.get("fileFormat").isJsonNull()) {
+        FileFormatEnum.validateJsonElement(jsonObj.get("fileFormat"));
       }
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
@@ -843,7 +808,12 @@ public class TranscriptionAvailableCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

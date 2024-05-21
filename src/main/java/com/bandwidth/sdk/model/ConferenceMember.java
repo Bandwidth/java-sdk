@@ -45,7 +45,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -53,7 +52,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * ConferenceMember
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class ConferenceMember {
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
@@ -83,7 +82,6 @@ public class ConferenceMember {
   }
 
   public ConferenceMember callId(String callId) {
-    
     this.callId = callId;
     return this;
   }
@@ -97,14 +95,12 @@ public class ConferenceMember {
     return callId;
   }
 
-
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
   public ConferenceMember conferenceId(String conferenceId) {
-    
     this.conferenceId = conferenceId;
     return this;
   }
@@ -118,14 +114,12 @@ public class ConferenceMember {
     return conferenceId;
   }
 
-
   public void setConferenceId(String conferenceId) {
     this.conferenceId = conferenceId;
   }
 
 
   public ConferenceMember memberUrl(String memberUrl) {
-    
     this.memberUrl = memberUrl;
     return this;
   }
@@ -139,14 +133,12 @@ public class ConferenceMember {
     return memberUrl;
   }
 
-
   public void setMemberUrl(String memberUrl) {
     this.memberUrl = memberUrl;
   }
 
 
   public ConferenceMember mute(Boolean mute) {
-    
     this.mute = mute;
     return this;
   }
@@ -160,14 +152,12 @@ public class ConferenceMember {
     return mute;
   }
 
-
   public void setMute(Boolean mute) {
     this.mute = mute;
   }
 
 
   public ConferenceMember hold(Boolean hold) {
-    
     this.hold = hold;
     return this;
   }
@@ -181,14 +171,12 @@ public class ConferenceMember {
     return hold;
   }
 
-
   public void setHold(Boolean hold) {
     this.hold = hold;
   }
 
 
   public ConferenceMember callIdsToCoach(List<String> callIdsToCoach) {
-    
     this.callIdsToCoach = callIdsToCoach;
     return this;
   }
@@ -209,7 +197,6 @@ public class ConferenceMember {
   public List<String> getCallIdsToCoach() {
     return callIdsToCoach;
   }
-
 
   public void setCallIdsToCoach(List<String> callIdsToCoach) {
     this.callIdsToCoach = callIdsToCoach;
@@ -395,7 +382,12 @@ public class ConferenceMember {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }

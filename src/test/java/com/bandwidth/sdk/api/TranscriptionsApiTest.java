@@ -84,7 +84,7 @@ public class TranscriptionsApiTest {
         completeMantecaCallBody.setState(CallStateEnum.COMPLETED);
 
 
-        // Create call
+        // This is just creating the call, modifying with StartTranscript, and ending it so we can test the transcription below.
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
         ApiResponse<CreateCallResponse> createCallResponse = callsApi.createCallWithHttpInfo(BW_ACCOUNT_ID,
                 createMantecaCallBody);
@@ -105,7 +105,7 @@ public class TranscriptionsApiTest {
 
         assertThat(completeCallResponse.getStatusCode(), is(200));
 
-
+	// The Transcriptions API tests start here
         ApiResponse<List<CallTranscriptionMetadata>> listRealTimeTranscriptionResponse = transcriptionsApi.listRealTimeTranscriptionsWithHttpInfo(BW_ACCOUNT_ID, createCallResponse.getData().getCallId());
 
         String transcriptionId = listRealTimeTranscriptionResponse.getData().get(0).getTranscriptionId();
@@ -114,6 +114,7 @@ public class TranscriptionsApiTest {
         ApiResponse<CallTranscriptionResponse> getRealTimeTranscriptionResponse = transcriptionsApi.getRealTimeTranscriptionWithHttpInfo(BW_ACCOUNT_ID, createCallResponse.getData().getCallId(), transcriptionId);
 
         assertThat(getRealTimeTranscriptionResponse.getStatusCode(), is(200));
+        assertThat(getRealTimeTranscriptionResponse.getData(), hasProperty("transcriptId", is(instanceOf(String.class))));
 
 
         ApiResponse<Void> deleteRealTimeTranscriptionResponse = transcriptionsApi.deleteRealTimeTranscriptionWithHttpInfo(BW_ACCOUNT_ID, createCallResponse.getData().getCallId(), transcriptionId);
