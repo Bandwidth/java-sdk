@@ -88,12 +88,13 @@ public class TranscriptionsApiTest {
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
         ApiResponse<CreateCallResponse> createCallResponse = callsApi.createCallWithHttpInfo(BW_ACCOUNT_ID, createMantecaCallBody);
 
+
+        String callId = createCallResponse.getData().getCallId();
         assertThat(createCallResponse.getStatusCode(), is(201));
 
         // Redirect call to different url
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
-        ApiResponse<Void> updateCallResponse = callsApi.updateCallBxmlWithHttpInfo(BW_ACCOUNT_ID,
-                createCallResponse.getData().getCallId(), bxmlBody);
+        ApiResponse<Void> updateCallResponse = callsApi.updateCallBxmlWithHttpInfo(BW_ACCOUNT_ID, callId, bxmlBody);
 
         assertThat(updateCallResponse.getStatusCode(), is(204));
 
@@ -107,10 +108,10 @@ public class TranscriptionsApiTest {
 	// The Transcriptions API tests start here
         ApiResponse<List<CallTranscriptionMetadata>> listRealTimeTranscriptionResponse = transcriptionsApi.listRealTimeTranscriptionsWithHttpInfo(BW_ACCOUNT_ID, createCallResponse.getData().getCallId());
 
-        String transcriptionId = listRealTimeTranscriptionResponse.getData().get(0).getTranscriptionId();
+        String transcriptionId = listRealTimeTranscriptionResponse.getData().toString();
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
 
-        ApiResponse<CallTranscriptionResponse> getRealTimeTranscriptionResponse = transcriptionsApi.getRealTimeTranscriptionWithHttpInfo(BW_ACCOUNT_ID, createCallResponse.getData().getCallId(), transcriptionId);
+        ApiResponse<CallTranscriptionResponse> getRealTimeTranscriptionResponse = transcriptionsApi.getRealTimeTranscriptionWithHttpInfo(BW_ACCOUNT_ID, callId, transcriptionId);
 
         assertThat(getRealTimeTranscriptionResponse.getStatusCode(), is(200));
         assertThat(getRealTimeTranscriptionResponse.getData(), hasProperty("transcriptId", is(instanceOf(String.class))));
