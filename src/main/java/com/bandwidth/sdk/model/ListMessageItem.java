@@ -47,6 +47,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -54,7 +55,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * ListMessageItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ListMessageItem {
   public static final String SERIALIZED_NAME_MESSAGE_ID = "messageId";
   @SerializedName(SERIALIZED_NAME_MESSAGE_ID)
@@ -128,6 +129,7 @@ public class ListMessageItem {
   }
 
   public ListMessageItem messageId(String messageId) {
+    
     this.messageId = messageId;
     return this;
   }
@@ -141,12 +143,14 @@ public class ListMessageItem {
     return messageId;
   }
 
+
   public void setMessageId(String messageId) {
     this.messageId = messageId;
   }
 
 
   public ListMessageItem accountId(String accountId) {
+    
     this.accountId = accountId;
     return this;
   }
@@ -160,12 +164,14 @@ public class ListMessageItem {
     return accountId;
   }
 
+
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
   public ListMessageItem sourceTn(String sourceTn) {
+    
     this.sourceTn = sourceTn;
     return this;
   }
@@ -179,12 +185,14 @@ public class ListMessageItem {
     return sourceTn;
   }
 
+
   public void setSourceTn(String sourceTn) {
     this.sourceTn = sourceTn;
   }
 
 
   public ListMessageItem destinationTn(String destinationTn) {
+    
     this.destinationTn = destinationTn;
     return this;
   }
@@ -198,12 +206,14 @@ public class ListMessageItem {
     return destinationTn;
   }
 
+
   public void setDestinationTn(String destinationTn) {
     this.destinationTn = destinationTn;
   }
 
 
   public ListMessageItem messageStatus(MessageStatusEnum messageStatus) {
+    
     this.messageStatus = messageStatus;
     return this;
   }
@@ -217,12 +227,14 @@ public class ListMessageItem {
     return messageStatus;
   }
 
+
   public void setMessageStatus(MessageStatusEnum messageStatus) {
     this.messageStatus = messageStatus;
   }
 
 
   public ListMessageItem messageDirection(ListMessageDirectionEnum messageDirection) {
+    
     this.messageDirection = messageDirection;
     return this;
   }
@@ -236,12 +248,14 @@ public class ListMessageItem {
     return messageDirection;
   }
 
+
   public void setMessageDirection(ListMessageDirectionEnum messageDirection) {
     this.messageDirection = messageDirection;
   }
 
 
   public ListMessageItem messageType(MessageTypeEnum messageType) {
+    
     this.messageType = messageType;
     return this;
   }
@@ -255,12 +269,14 @@ public class ListMessageItem {
     return messageType;
   }
 
+
   public void setMessageType(MessageTypeEnum messageType) {
     this.messageType = messageType;
   }
 
 
   public ListMessageItem segmentCount(Integer segmentCount) {
+    
     this.segmentCount = segmentCount;
     return this;
   }
@@ -274,12 +290,14 @@ public class ListMessageItem {
     return segmentCount;
   }
 
+
   public void setSegmentCount(Integer segmentCount) {
     this.segmentCount = segmentCount;
   }
 
 
   public ListMessageItem errorCode(Integer errorCode) {
+    
     this.errorCode = errorCode;
     return this;
   }
@@ -293,12 +311,14 @@ public class ListMessageItem {
     return errorCode;
   }
 
+
   public void setErrorCode(Integer errorCode) {
     this.errorCode = errorCode;
   }
 
 
   public ListMessageItem receiveTime(OffsetDateTime receiveTime) {
+    
     this.receiveTime = receiveTime;
     return this;
   }
@@ -312,12 +332,14 @@ public class ListMessageItem {
     return receiveTime;
   }
 
+
   public void setReceiveTime(OffsetDateTime receiveTime) {
     this.receiveTime = receiveTime;
   }
 
 
   public ListMessageItem carrierName(String carrierName) {
+    
     this.carrierName = carrierName;
     return this;
   }
@@ -331,12 +353,14 @@ public class ListMessageItem {
     return carrierName;
   }
 
+
   public void setCarrierName(String carrierName) {
     this.carrierName = carrierName;
   }
 
 
   public ListMessageItem messageSize(Integer messageSize) {
+    
     this.messageSize = messageSize;
     return this;
   }
@@ -350,12 +374,14 @@ public class ListMessageItem {
     return messageSize;
   }
 
+
   public void setMessageSize(Integer messageSize) {
     this.messageSize = messageSize;
   }
 
 
   public ListMessageItem messageLength(Integer messageLength) {
+    
     this.messageLength = messageLength;
     return this;
   }
@@ -369,12 +395,14 @@ public class ListMessageItem {
     return messageLength;
   }
 
+
   public void setMessageLength(Integer messageLength) {
     this.messageLength = messageLength;
   }
 
 
   public ListMessageItem attachmentCount(Integer attachmentCount) {
+    
     this.attachmentCount = attachmentCount;
     return this;
   }
@@ -388,12 +416,14 @@ public class ListMessageItem {
     return attachmentCount;
   }
 
+
   public void setAttachmentCount(Integer attachmentCount) {
     this.attachmentCount = attachmentCount;
   }
 
 
   public ListMessageItem recipientCount(Integer recipientCount) {
+    
     this.recipientCount = recipientCount;
     return this;
   }
@@ -407,12 +437,14 @@ public class ListMessageItem {
     return recipientCount;
   }
 
+
   public void setRecipientCount(Integer recipientCount) {
     this.recipientCount = recipientCount;
   }
 
 
   public ListMessageItem campaignClass(String campaignClass) {
+    
     this.campaignClass = campaignClass;
     return this;
   }
@@ -426,12 +458,14 @@ public class ListMessageItem {
     return campaignClass;
   }
 
+
   public void setCampaignClass(String campaignClass) {
     this.campaignClass = campaignClass;
   }
 
 
   public ListMessageItem campaignId(String campaignId) {
+    
     this.campaignId = campaignId;
     return this;
   }
@@ -444,6 +478,7 @@ public class ListMessageItem {
   public String getCampaignId() {
     return campaignId;
   }
+
 
   public void setCampaignId(String campaignId) {
     this.campaignId = campaignId;
@@ -631,18 +666,6 @@ public class ListMessageItem {
       if ((jsonObj.get("destinationTn") != null && !jsonObj.get("destinationTn").isJsonNull()) && !jsonObj.get("destinationTn").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `destinationTn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("destinationTn").toString()));
       }
-      // validate the optional field `messageStatus`
-      if (jsonObj.get("messageStatus") != null && !jsonObj.get("messageStatus").isJsonNull()) {
-        MessageStatusEnum.validateJsonElement(jsonObj.get("messageStatus"));
-      }
-      // validate the optional field `messageDirection`
-      if (jsonObj.get("messageDirection") != null && !jsonObj.get("messageDirection").isJsonNull()) {
-        ListMessageDirectionEnum.validateJsonElement(jsonObj.get("messageDirection"));
-      }
-      // validate the optional field `messageType`
-      if (jsonObj.get("messageType") != null && !jsonObj.get("messageType").isJsonNull()) {
-        MessageTypeEnum.validateJsonElement(jsonObj.get("messageType"));
-      }
       if ((jsonObj.get("carrierName") != null && !jsonObj.get("carrierName").isJsonNull()) && !jsonObj.get("carrierName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `carrierName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("carrierName").toString()));
       }
@@ -682,12 +705,7 @@ public class ListMessageItem {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

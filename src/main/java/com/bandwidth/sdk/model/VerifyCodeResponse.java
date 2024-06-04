@@ -42,6 +42,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -49,7 +50,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * VerifyCodeResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class VerifyCodeResponse {
   public static final String SERIALIZED_NAME_VALID = "valid";
   @SerializedName(SERIALIZED_NAME_VALID)
@@ -59,6 +60,7 @@ public class VerifyCodeResponse {
   }
 
   public VerifyCodeResponse valid(Boolean valid) {
+    
     this.valid = valid;
     return this;
   }
@@ -71,6 +73,7 @@ public class VerifyCodeResponse {
   public Boolean getValid() {
     return valid;
   }
+
 
   public void setValid(Boolean valid) {
     this.valid = valid;
@@ -217,12 +220,7 @@ public class VerifyCodeResponse {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

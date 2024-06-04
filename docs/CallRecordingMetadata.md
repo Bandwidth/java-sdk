@@ -13,8 +13,8 @@
 |**parentCallId** | **String** | (optional) If the event is related to the B leg of a &lt;Transfer&gt;, the call id of the original call leg that executed the &lt;Transfer&gt;. Otherwise, this field will not be present. |  [optional] |
 |**recordingId** | **String** | The unique ID of this recording |  [optional] |
 |**to** | **String** | The phone number that received the call, in E.164 format (e.g. +15555555555). |  [optional] |
-|**from** | **String** | The provided identifier of the caller: can be a phone number in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable, or Anonymous. |  [optional] |
-|**transferCallerId** | **String** | The phone number used as the from field of the B-leg call, in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous, Private, or Unavailable. |  [optional] |
+|**from** | **String** | The provided identifier of the caller. Must be a phone number in E.164 format (e.g. +15555555555). |  [optional] |
+|**transferCallerId** | **String** | The phone number used as the from field of the B-leg call, in E.164 format (e.g. +15555555555). |  [optional] |
 |**transferTo** | **String** | The phone number used as the to field of the B-leg call, in E.164 format (e.g. +15555555555). |  [optional] |
 |**duration** | **String** | The duration of the recording in ISO-8601 format |  [optional] |
 |**direction** | **CallDirectionEnum** |  |  [optional] |
