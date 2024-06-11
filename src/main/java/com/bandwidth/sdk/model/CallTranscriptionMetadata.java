@@ -42,6 +42,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -49,7 +50,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * CallTranscriptionMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CallTranscriptionMetadata {
   public static final String SERIALIZED_NAME_TRANSCRIPTION_ID = "transcriptionId";
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTION_ID)
@@ -63,6 +64,7 @@ public class CallTranscriptionMetadata {
   }
 
   public CallTranscriptionMetadata transcriptionId(String transcriptionId) {
+    
     this.transcriptionId = transcriptionId;
     return this;
   }
@@ -76,12 +78,14 @@ public class CallTranscriptionMetadata {
     return transcriptionId;
   }
 
+
   public void setTranscriptionId(String transcriptionId) {
     this.transcriptionId = transcriptionId;
   }
 
 
   public CallTranscriptionMetadata transcriptionUrl(String transcriptionUrl) {
+    
     this.transcriptionUrl = transcriptionUrl;
     return this;
   }
@@ -94,6 +98,7 @@ public class CallTranscriptionMetadata {
   public String getTranscriptionUrl() {
     return transcriptionUrl;
   }
+
 
   public void setTranscriptionUrl(String transcriptionUrl) {
     this.transcriptionUrl = transcriptionUrl;
@@ -249,12 +254,7 @@ public class CallTranscriptionMetadata {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

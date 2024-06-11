@@ -44,6 +44,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -51,7 +52,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * The Conference Member Exit event is fired whenever a caller exits a conference that specified a callbackUrl. The response may be either empty or a BXML document. Only the following verbs are valid for conferences: PlayAudio, SpeakSentence, StartRecording, StopRecording, PauseRecording, ResumeRecording. Audio verbs will be heard by all members of the conference. Recordings capture audio from all members who are not muted or on hold, as well as any audio verbs that are played into the conference.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ConferenceMemberExitCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
@@ -89,6 +90,7 @@ public class ConferenceMemberExitCallback {
   }
 
   public ConferenceMemberExitCallback eventType(String eventType) {
+    
     this.eventType = eventType;
     return this;
   }
@@ -102,12 +104,14 @@ public class ConferenceMemberExitCallback {
     return eventType;
   }
 
+
   public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
   public ConferenceMemberExitCallback eventTime(OffsetDateTime eventTime) {
+    
     this.eventTime = eventTime;
     return this;
   }
@@ -121,12 +125,14 @@ public class ConferenceMemberExitCallback {
     return eventTime;
   }
 
+
   public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
   public ConferenceMemberExitCallback conferenceId(String conferenceId) {
+    
     this.conferenceId = conferenceId;
     return this;
   }
@@ -140,12 +146,14 @@ public class ConferenceMemberExitCallback {
     return conferenceId;
   }
 
+
   public void setConferenceId(String conferenceId) {
     this.conferenceId = conferenceId;
   }
 
 
   public ConferenceMemberExitCallback name(String name) {
+    
     this.name = name;
     return this;
   }
@@ -159,18 +167,20 @@ public class ConferenceMemberExitCallback {
     return name;
   }
 
+
   public void setName(String name) {
     this.name = name;
   }
 
 
   public ConferenceMemberExitCallback from(String from) {
+    
     this.from = from;
     return this;
   }
 
    /**
-   * The provided identifier of the caller: can be a phone number in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable, or Anonymous.
+   * The provided identifier of the caller. Must be a phone number in E.164 format (e.g. +15555555555).
    * @return from
   **/
   @javax.annotation.Nullable
@@ -178,12 +188,14 @@ public class ConferenceMemberExitCallback {
     return from;
   }
 
+
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public ConferenceMemberExitCallback to(String to) {
+    
     this.to = to;
     return this;
   }
@@ -197,12 +209,14 @@ public class ConferenceMemberExitCallback {
     return to;
   }
 
+
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public ConferenceMemberExitCallback callId(String callId) {
+    
     this.callId = callId;
     return this;
   }
@@ -216,12 +230,14 @@ public class ConferenceMemberExitCallback {
     return callId;
   }
 
+
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
   public ConferenceMemberExitCallback tag(String tag) {
+    
     this.tag = tag;
     return this;
   }
@@ -234,6 +250,7 @@ public class ConferenceMemberExitCallback {
   public String getTag() {
     return tag;
   }
+
 
   public void setTag(String tag) {
     this.tag = tag;
@@ -433,12 +450,7 @@ public class ConferenceMemberExitCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
