@@ -45,6 +45,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -52,7 +53,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * When processing a &lt;Transfer&gt; verb, this event is sent when a called party (B-leg) answers. The event is sent to the endpoint specified in the transferAnswerUrl attribute of the &lt;PhoneNumber&gt; tag that answered. BXML returned by this callback will be executed for the called party only. After all BXML has been executed, the called party will be bridged to the original call. Most BXML verbs are allowed in response to a transferAnswer event, but some are not allowed.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TransferAnswerCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
@@ -118,6 +119,7 @@ public class TransferAnswerCallback {
   }
 
   public TransferAnswerCallback eventType(String eventType) {
+    
     this.eventType = eventType;
     return this;
   }
@@ -131,12 +133,14 @@ public class TransferAnswerCallback {
     return eventType;
   }
 
+
   public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
   public TransferAnswerCallback eventTime(OffsetDateTime eventTime) {
+    
     this.eventTime = eventTime;
     return this;
   }
@@ -150,12 +154,14 @@ public class TransferAnswerCallback {
     return eventTime;
   }
 
+
   public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
   public TransferAnswerCallback accountId(String accountId) {
+    
     this.accountId = accountId;
     return this;
   }
@@ -169,12 +175,14 @@ public class TransferAnswerCallback {
     return accountId;
   }
 
+
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
   public TransferAnswerCallback applicationId(String applicationId) {
+    
     this.applicationId = applicationId;
     return this;
   }
@@ -188,18 +196,20 @@ public class TransferAnswerCallback {
     return applicationId;
   }
 
+
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public TransferAnswerCallback from(String from) {
+    
     this.from = from;
     return this;
   }
 
    /**
-   * The provided identifier of the caller: can be a phone number in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable, or Anonymous.
+   * The provided identifier of the caller. Must be a phone number in E.164 format (e.g. +15555555555).
    * @return from
   **/
   @javax.annotation.Nullable
@@ -207,12 +217,14 @@ public class TransferAnswerCallback {
     return from;
   }
 
+
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public TransferAnswerCallback to(String to) {
+    
     this.to = to;
     return this;
   }
@@ -226,12 +238,14 @@ public class TransferAnswerCallback {
     return to;
   }
 
+
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public TransferAnswerCallback direction(CallDirectionEnum direction) {
+    
     this.direction = direction;
     return this;
   }
@@ -245,12 +259,14 @@ public class TransferAnswerCallback {
     return direction;
   }
 
+
   public void setDirection(CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
   public TransferAnswerCallback callId(String callId) {
+    
     this.callId = callId;
     return this;
   }
@@ -264,12 +280,14 @@ public class TransferAnswerCallback {
     return callId;
   }
 
+
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
   public TransferAnswerCallback callUrl(String callUrl) {
+    
     this.callUrl = callUrl;
     return this;
   }
@@ -283,12 +301,14 @@ public class TransferAnswerCallback {
     return callUrl;
   }
 
+
   public void setCallUrl(String callUrl) {
     this.callUrl = callUrl;
   }
 
 
   public TransferAnswerCallback enqueuedTime(OffsetDateTime enqueuedTime) {
+    
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -302,12 +322,14 @@ public class TransferAnswerCallback {
     return enqueuedTime;
   }
 
+
   public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
   public TransferAnswerCallback startTime(OffsetDateTime startTime) {
+    
     this.startTime = startTime;
     return this;
   }
@@ -321,12 +343,14 @@ public class TransferAnswerCallback {
     return startTime;
   }
 
+
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
   public TransferAnswerCallback answerTime(OffsetDateTime answerTime) {
+    
     this.answerTime = answerTime;
     return this;
   }
@@ -340,12 +364,14 @@ public class TransferAnswerCallback {
     return answerTime;
   }
 
+
   public void setAnswerTime(OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
   public TransferAnswerCallback tag(String tag) {
+    
     this.tag = tag;
     return this;
   }
@@ -359,18 +385,20 @@ public class TransferAnswerCallback {
     return tag;
   }
 
+
   public void setTag(String tag) {
     this.tag = tag;
   }
 
 
   public TransferAnswerCallback transferCallerId(String transferCallerId) {
+    
     this.transferCallerId = transferCallerId;
     return this;
   }
 
    /**
-   * The phone number used as the from field of the B-leg call, in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous, Private, or Unavailable.
+   * The phone number used as the from field of the B-leg call, in E.164 format (e.g. +15555555555).
    * @return transferCallerId
   **/
   @javax.annotation.Nullable
@@ -378,12 +406,14 @@ public class TransferAnswerCallback {
     return transferCallerId;
   }
 
+
   public void setTransferCallerId(String transferCallerId) {
     this.transferCallerId = transferCallerId;
   }
 
 
   public TransferAnswerCallback transferTo(String transferTo) {
+    
     this.transferTo = transferTo;
     return this;
   }
@@ -396,6 +426,7 @@ public class TransferAnswerCallback {
   public String getTransferTo() {
     return transferTo;
   }
+
 
   public void setTransferTo(String transferTo) {
     this.transferTo = transferTo;
@@ -580,10 +611,6 @@ public class TransferAnswerCallback {
       if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
-      // validate the optional field `direction`
-      if (jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) {
-        CallDirectionEnum.validateJsonElement(jsonObj.get("direction"));
-      }
       if ((jsonObj.get("callId") != null && !jsonObj.get("callId").isJsonNull()) && !jsonObj.get("callId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callId").toString()));
       }
@@ -629,12 +656,7 @@ public class TransferAnswerCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

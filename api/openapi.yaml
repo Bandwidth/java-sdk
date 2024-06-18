@@ -112,8 +112,7 @@ paths:
       summary: List Media
       tags:
       - Media
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://messaging.bandwidth.com/api/v2
@@ -199,8 +198,7 @@ paths:
       summary: Delete Media
       tags:
       - Media
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     get:
       description: Downloads a media file you previously uploaded.
       operationId: getMedia
@@ -283,9 +281,7 @@ paths:
       summary: Get Media
       tags:
       - Media
-      x-accepts:
-      - application/json
-      - application/octet-stream
+      x-accepts: application/json
     put:
       description: |-
         Upload a file. You may add headers to the request in order to provide some control to your media file.
@@ -389,8 +385,7 @@ paths:
       tags:
       - Media
       x-content-type: application/json
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://messaging.bandwidth.com/api/v2
@@ -613,8 +608,7 @@ paths:
       summary: List Messages
       tags:
       - Messages
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     post:
       callbacks:
         inboundCallback:
@@ -695,8 +689,7 @@ paths:
       tags:
       - Messages
       x-content-type: application/json
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://messaging.bandwidth.com/api/v2
@@ -879,8 +872,7 @@ paths:
       summary: Get Calls
       tags:
       - Calls
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     post:
       description: |-
         Creates an outbound phone call.
@@ -1001,8 +993,7 @@ paths:
       tags:
       - Calls
       x-content-type: application/json
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://voice.bandwidth.com/api/v2
@@ -1121,8 +1112,7 @@ paths:
       summary: Get Call State Information
       tags:
       - Calls
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     post:
       description: Interrupts and redirects a call to a different URL that should
         return a BXML document.
@@ -1243,8 +1233,7 @@ paths:
       tags:
       - Calls
       x-content-type: application/json
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://voice.bandwidth.com/api/v2
@@ -1368,8 +1357,7 @@ paths:
       tags:
       - Calls
       x-content-type: application/xml
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://voice.bandwidth.com/api/v2
@@ -1536,8 +1524,7 @@ paths:
       summary: Get Conferences
       tags:
       - Conferences
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://voice.bandwidth.com/api/v2
@@ -1653,8 +1640,7 @@ paths:
       summary: Get Conference Information
       tags:
       - Conferences
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     post:
       description: Update the conference state.
       operationId: updateConference
@@ -1765,8 +1751,7 @@ paths:
       tags:
       - Conferences
       x-content-type: application/json
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://voice.bandwidth.com/api/v2
@@ -1881,8 +1866,7 @@ paths:
       tags:
       - Conferences
       x-content-type: application/xml
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://voice.bandwidth.com/api/v2
@@ -2007,8 +1991,7 @@ paths:
       summary: Get Conference Member
       tags:
       - Conferences
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     put:
       description: Updates settings for a particular conference member.
       operationId: updateConferenceMember
@@ -2128,8 +2111,7 @@ paths:
       tags:
       - Conferences
       x-content-type: application/json
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://voice.bandwidth.com/api/v2
@@ -2248,8 +2230,7 @@ paths:
       summary: Get Conference Recordings
       tags:
       - Conferences
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://voice.bandwidth.com/api/v2
@@ -2374,8 +2355,7 @@ paths:
       summary: Get Conference Recording Information
       tags:
       - Conferences
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://voice.bandwidth.com/api/v2
@@ -2505,10 +2485,7 @@ paths:
       summary: Download Conference Recording
       tags:
       - Conferences
-      x-accepts:
-      - application/json
-      - audio/mpeg
-      - audio/vnd.wave
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://voice.bandwidth.com/api/v2
@@ -2659,8 +2636,7 @@ paths:
       summary: Get Call Recordings
       tags:
       - Recordings
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://voice.bandwidth.com/api/v2
@@ -2775,8 +2751,7 @@ paths:
       tags:
       - Recordings
       x-content-type: application/json
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://voice.bandwidth.com/api/v2
@@ -2896,8 +2871,7 @@ paths:
       summary: List Call Recordings
       tags:
       - Recordings
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://voice.bandwidth.com/api/v2
@@ -3021,8 +2995,7 @@ paths:
       summary: Delete Recording
       tags:
       - Recordings
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     get:
       description: Returns metadata for the specified recording.
       operationId: getCallRecording
@@ -3143,8 +3116,7 @@ paths:
       summary: Get Call Recording
       tags:
       - Recordings
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://voice.bandwidth.com/api/v2
@@ -3265,8 +3237,7 @@ paths:
       summary: Delete Recording Media
       tags:
       - Recordings
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     get:
       description: Downloads the specified recording.
       operationId: downloadCallRecording
@@ -3392,10 +3363,7 @@ paths:
       summary: Download Recording
       tags:
       - Recordings
-      x-accepts:
-      - application/json
-      - audio/mpeg
-      - audio/vnd.wave
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://voice.bandwidth.com/api/v2
@@ -3519,8 +3487,7 @@ paths:
       summary: Delete Transcription
       tags:
       - Recordings
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     get:
       description: |-
         Downloads the specified transcription.
@@ -3645,8 +3612,7 @@ paths:
       summary: Get Transcription
       tags:
       - Recordings
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     post:
       description: |-
         Generate the transcription for a specific recording. Transcription
@@ -3769,8 +3735,7 @@ paths:
       tags:
       - Recordings
       x-content-type: application/json
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://voice.bandwidth.com/api/v2
@@ -3877,8 +3842,7 @@ paths:
       summary: Get Account Statistics
       tags:
       - Statistics
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://voice.bandwidth.com/api/v2
@@ -3994,8 +3958,7 @@ paths:
       summary: Enumerate transcriptions made with StartTranscription
       tags:
       - Transcriptions
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://voice.bandwidth.com/api/v2
@@ -4004,7 +3967,7 @@ paths:
       description: |-
         Delete the specified transcription that was created on this call via [startTranscription](/docs/voice/bxml/startTranscription).
 
-        Note: After the deletion is requested and a `204` is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
+        Note: After the deletion is requested and a `200` is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
       operationId: deleteRealTimeTranscription
       parameters:
       - description: Your Bandwidth Account ID.
@@ -4035,7 +3998,7 @@ paths:
           type: string
         style: simple
       responses:
-        "204":
+        "200":
           description: Transcription data was deleted.
         "400":
           content:
@@ -4119,8 +4082,7 @@ paths:
       summary: Delete a specific transcription
       tags:
       - Transcriptions
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     get:
       description: "Retrieve the specified transcription that was created on this\
         \ call via [startTranscription](/docs/voice/bxml/startTranscription)."
@@ -4242,8 +4204,7 @@ paths:
       summary: Retrieve a specific transcription
       tags:
       - Transcriptions
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://voice.bandwidth.com/api/v2
@@ -4298,8 +4259,7 @@ paths:
       tags:
       - MFA
       x-content-type: application/json
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://mfa.bandwidth.com/api/v1
@@ -4354,8 +4314,7 @@ paths:
       tags:
       - MFA
       x-content-type: application/json
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://mfa.bandwidth.com/api/v1
@@ -4416,8 +4375,7 @@ paths:
       tags:
       - MFA
       x-content-type: application/json
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://mfa.bandwidth.com/api/v1
@@ -4521,8 +4479,7 @@ paths:
       tags:
       - Phone Number Lookup
       x-content-type: application/json
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://numbers.bandwidth.com/api/v1
@@ -4633,8 +4590,7 @@ paths:
       summary: Get Lookup Request Status
       tags:
       - Phone Number Lookup
-      x-accepts:
-      - application/json
+      x-accepts: application/json
     servers:
     - description: Production
       url: https://numbers.bandwidth.com/api/v1
@@ -4677,8 +4633,8 @@ components:
         applicationId: 04e88489-df02-4e34-a0ee-27a91849555f
         accountId: "9900000"
         callId: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-        to: "+19195551234"
-        from: "+19195554312"
+        to: +19195551234
+        from: +19195554312
         enqueuedTime: 2022-06-16T13:15:07.160Z
         callUrl: https://voice.bandwidth.com/api/v2/accounts/9900000/calls/c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         callTimeout: 30
@@ -4687,6 +4643,7 @@ components:
         answerMethod: POST
         answerUrl: https://myServer.example/bandwidth/webhooks/answer
         answerFallbackMethod: POST
+        answerFallbackUrl: https://myServer.example/bandwidth/webhooks/answerFallback
         disconnectMethod: POST
         disconnectUrl: https://myServer.example/bandwidth/webhooks/disconnect
         username: mySecretUsername
@@ -4753,13 +4710,13 @@ components:
       summary: Example Number Lookup Request for One Number
       value:
         tns:
-        - "+19195551234"
+        - +19195551234
     multipleNumberRequestExample:
       summary: Example Number Lookup Request for Multiple Numbers
       value:
         tns:
-        - "+19195551234"
-        - "+19195554321"
+        - +19195551234
+        - +19195554321
     lookupInProgressExample:
       summary: Example Lookup In Progress Response
       value:
@@ -4771,7 +4728,7 @@ components:
         requestId: 004223a0-8b17-41b1-bf81-20732adf5590
         status: FAILED
         failedTelephoneNumbers:
-        - "+191955512345"
+        - +191955512345
     lookupSingleNumberCompleteExample:
       summary: Example Single Number Lookup Complete Response
       value:
@@ -4780,7 +4737,7 @@ components:
         result:
         - Response Code: 0
           Message: NOERROR
-          E.164 Format: "+19195551234"
+          E.164 Format: +19195551234
           Formatted: (919) 555-1234
           Country: US
           Line Type: Mobile
@@ -4795,7 +4752,7 @@ components:
         result:
         - Response Code: 0
           Message: NOERROR
-          E.164 Format: "+19195551234"
+          E.164 Format: +19195551234
           Formatted: (919) 555-1234
           Country: US
           Line Type: Mobile
@@ -4804,7 +4761,7 @@ components:
           Mobile Network Code: "010"
         - Response Code: 0
           Message: NOERROR
-          E.164 Format: "+19195554321"
+          E.164 Format: +19195554321
           Formatted: (919) 555-4321
           Country: US
           Line Type: Mobile
@@ -4819,7 +4776,7 @@ components:
         result:
         - Response Code: 0
           Message: NOERROR
-          E.164 Format: "+19195551234"
+          E.164 Format: +19195551234
           Formatted: (919) 555-1234
           Country: US
           Line Type: Mobile
@@ -4827,7 +4784,7 @@ components:
           Mobile Country Code: "310"
           Mobile Network Code: "010"
         failedTelephoneNumbers:
-        - "+191955512345"
+        - +191955512345
     lookupSingleNumberCompleteNoInfoExample:
       summary: Example Single Number Lookup Complete with No Information Response
       value:
@@ -4836,7 +4793,7 @@ components:
         result:
         - Response Code: 3
           Message: NXDOMAIN
-          E.164 Format: "+19195550000"
+          E.164 Format: +19195550000
           Formatted: (919) 555-0000
           Country: US
   parameters:
@@ -6037,10 +5994,6 @@ components:
       example: sms
       type: string
     fieldError:
-      example:
-        fieldName: from
-        description: '''+invalid'' must be replaced with a valid E164 formatted telephone
-          number'
       properties:
         fieldName:
           description: The name of the field that contains the error
@@ -6060,34 +6013,34 @@ components:
           nextPageToken: GL83PD3C
           prevPage: https://messaging.bandwidth.com/api/v2/users/accountId/messages?messageStatus=DLR_EXPIRED&nextPage=DLAPE902
         messages:
-        - sourceTn: "+15554443333"
+        - sourceTn: +15554443333
           messageLength: 18
           campaignId: CJEUMDK
           messageId: 1589228074636lm4k2je7j7jklbn2
           errorCode: 9902
-          destinationTn: "+15554442222"
+          destinationTn: +15554442222
           segmentCount: 1
           messageStatus: RECEIVED
           receiveTime: 2020-04-07T14:03:07Z
           accountId: "9900000"
-          messageDirection: INBOUND
+          messageDirection: null
           messageType: sms
           carrierName: other
           recipientCount: 1
           campaignClass: T
           attachmentCount: 1
           messageSize: 27
-        - sourceTn: "+15554443333"
+        - sourceTn: +15554443333
           messageLength: 18
           campaignId: CJEUMDK
           messageId: 1589228074636lm4k2je7j7jklbn2
           errorCode: 9902
-          destinationTn: "+15554442222"
+          destinationTn: +15554442222
           segmentCount: 1
           messageStatus: RECEIVED
           receiveTime: 2020-04-07T14:03:07Z
           accountId: "9900000"
-          messageDirection: INBOUND
+          messageDirection: null
           messageType: sms
           carrierName: other
           recipientCount: 1
@@ -6111,17 +6064,17 @@ components:
       type: object
     listMessageItem:
       example:
-        sourceTn: "+15554443333"
+        sourceTn: +15554443333
         messageLength: 18
         campaignId: CJEUMDK
         messageId: 1589228074636lm4k2je7j7jklbn2
         errorCode: 9902
-        destinationTn: "+15554442222"
+        destinationTn: +15554442222
         segmentCount: 1
         messageStatus: RECEIVED
         receiveTime: 2020-04-07T14:03:07Z
         accountId: "9900000"
-        messageDirection: INBOUND
+        messageDirection: null
         messageType: sms
         carrierName: other
         recipientCount: 1
@@ -6139,11 +6092,11 @@ components:
           type: string
         sourceTn:
           description: The source phone number of the message.
-          example: "+15554443333"
+          example: +15554443333
           type: string
         destinationTn:
           description: The recipient phone number of the message.
-          example: "+15554442222"
+          example: +15554442222
           type: string
         messageStatus:
           $ref: '#/components/schemas/messageStatusEnum'
@@ -6227,9 +6180,6 @@ components:
       title: PageInfo
       type: object
     messagingRequestError:
-      example:
-        description: description
-        type: type
       properties:
         type:
           type: string
@@ -6241,16 +6191,6 @@ components:
       title: MessagingRequestError
       type: object
     createMessageRequestError:
-      example:
-        fieldErrors:
-        - fieldName: from
-          description: '''+invalid'' must be replaced with a valid E164 formatted
-            telephone number'
-        - fieldName: from
-          description: '''+invalid'' must be replaced with a valid E164 formatted
-            telephone number'
-        description: description
-        type: type
       properties:
         type:
           type: string
@@ -6297,21 +6237,21 @@ components:
       type: object
     message:
       example:
-        owner: "+15554443333"
+        owner: +15554443333
         media:
         - https://dev.bandwidth.com/images/bandwidth-logo.png
         priority: default
         segmentCount: 2
-        from: "+15553332222"
+        from: +15553332222
         expiration: 2021-02-01T11:29:18-05:00
         id: 1589228074636lm4k2je7j7jklbn2
         time: 2022-09-14T18:20:16Z
         to:
-        - "+15552223333"
+        - +15552223333
         text: Hello world
         tag: custom tag
         applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
-        direction: in
+        direction: null
       properties:
         id:
           description: The id of the message.
@@ -6319,7 +6259,7 @@ components:
           type: string
         owner:
           description: The Bandwidth phone number associated with the message.
-          example: "+15554443333"
+          example: +15554443333
           type: string
         applicationId:
           description: The application ID associated with the message.
@@ -6340,14 +6280,14 @@ components:
         to:
           description: The phone number recipients of the message.
           example:
-          - "+15552223333"
+          - +15552223333
           items:
             type: string
           type: array
           uniqueItems: true
         from:
           description: The phone number the message was sent from.
-          example: "+15553332222"
+          example: +15553332222
           type: string
         media:
           description: The list of media URLs sent in the message. Including a `filename`
@@ -6387,8 +6327,8 @@ components:
         to:
           description: The phone number(s) the message should be sent to in E164 format.
           example:
-          - "+15554443333"
-          - "+15552223333"
+          - +15554443333
+          - +15552223333
           items:
             type: string
           type: array
@@ -6401,7 +6341,7 @@ components:
             \ lower-case letters a-z, numbers 0-9, space, hyphen -, plus +, underscore\
             \ _ and ampersand &. Alphanumeric Sender IDs must contain at least one\
             \ letter."
-          example: "+15551113333"
+          example: +15551113333
           type: string
         text:
           description: The contents of the text message. Must be 2048 characters or
@@ -6452,7 +6392,7 @@ components:
           example: message-received
           type: string
         to:
-          example: "+15552223333"
+          example: +15552223333
           type: string
         description:
           example: Incoming message received
@@ -6473,7 +6413,7 @@ components:
           example: 1661365814859loidf7mcwd4qacn7
           type: string
         owner:
-          example: "+15553332222"
+          example: +15553332222
           type: string
         applicationId:
           example: 93de2206-9669-4e07-948d-329f4b722ee2
@@ -6489,13 +6429,13 @@ components:
           $ref: '#/components/schemas/messageDirectionEnum'
         to:
           example:
-          - "+15552223333"
+          - +15552223333
           items:
             type: string
           type: array
           uniqueItems: true
         from:
-          example: "+15553332222"
+          example: +15553332222
           type: string
         text:
           example: Hello world
@@ -6535,7 +6475,7 @@ components:
           example: message-sending
           type: string
         to:
-          example: "+15552223333"
+          example: +15552223333
           type: string
         description:
           example: Message is sending to carrier
@@ -6556,7 +6496,7 @@ components:
           example: 1661365814859loidf7mcwd4qacn7
           type: string
         owner:
-          example: "+15553332222"
+          example: +15553332222
           type: string
         applicationId:
           example: 93de2206-9669-4e07-948d-329f4b722ee2
@@ -6572,13 +6512,13 @@ components:
           $ref: '#/components/schemas/messageDirectionEnum'
         to:
           example:
-          - "+15552223333"
+          - +15552223333
           items:
             type: string
           type: array
           uniqueItems: true
         from:
-          example: "+15553332222"
+          example: +15553332222
           type: string
         text:
           example: Hello world
@@ -6620,7 +6560,7 @@ components:
           example: message-delivered
           type: string
         to:
-          example: "+15552223333"
+          example: +15552223333
           type: string
         description:
           example: Message delivered to carrier.
@@ -6641,7 +6581,7 @@ components:
           example: 1661365814859loidf7mcwd4qacn7
           type: string
         owner:
-          example: "+15553332222"
+          example: +15553332222
           type: string
         applicationId:
           example: 93de2206-9669-4e07-948d-329f4b722ee2
@@ -6657,13 +6597,13 @@ components:
           $ref: '#/components/schemas/messageDirectionEnum'
         to:
           example:
-          - "+15552223333"
+          - +15552223333
           items:
             type: string
           type: array
           uniqueItems: true
         from:
-          example: "+15553332222"
+          example: +15553332222
           type: string
         text:
           example: Hello world
@@ -6704,7 +6644,7 @@ components:
           example: message-failed
           type: string
         to:
-          example: "+15552223333"
+          example: +15552223333
           type: string
         description:
           example: rejected-unallocated-from-number
@@ -6729,7 +6669,7 @@ components:
           example: 1661365814859loidf7mcwd4qacn7
           type: string
         owner:
-          example: "+15553332222"
+          example: +15553332222
           type: string
         applicationId:
           example: 93de2206-9669-4e07-948d-329f4b722ee2
@@ -6745,13 +6685,13 @@ components:
           $ref: '#/components/schemas/messageDirectionEnum'
         to:
           example:
-          - "+15552223333"
+          - +15552223333
           items:
             type: string
           type: array
           uniqueItems: true
         from:
-          example: "+15553332222"
+          example: +15553332222
           type: string
         text:
           example: Hello world
@@ -6870,19 +6810,25 @@ components:
           description: |-
             The destination to call (must be an E.164 formatted number
             (e.g. `+15555551212`) or a SIP URI (e.g. `sip:user@server.example`)).
-          example: "+19195551234"
+          example: +19195551234
           type: string
         from:
           description: |-
             A Bandwidth phone number on your account the call should come
-            from (must be in E.164 format, like `+15555551212`, or be one of the following
-            strings: `Restricted`, `Anonymous`, `Private`, or `Unavailable`).
-          example: "+19195554321"
+            from (must be in E.164 format, like `+15555551212`) even if `privacy` is set to true.
+          example: +15555551212
           type: string
+        privacy:
+          description: Hide the calling number. The `displayName` field can be used
+            to customize the displayed name.
+          example: false
+          nullable: true
+          type: boolean
         displayName:
           description: "The caller display name to use when the call is created. \n\
             May not exceed 256 characters nor contain control characters such as new\
-            \ lines."
+            \ lines.\nIf `privacy` is true, only the following values are valid: `Restricted`,\
+            \ `Anonymous`, `Private`, or `Unavailable`."
           example: John Doe
           maxLength: 256
           nullable: true
@@ -7038,9 +6984,9 @@ components:
         answerMethod: POST
         enqueuedTime: 2022-06-16T13:15:07.16Z
         disconnectUrl: https://myServer.example/bandwidth/webhooks/disconnect
-        from: "+19195554321"
+        from: +19195554321
         fallbackPassword: mySecretPassword1!
-        to: "+19195551234"
+        to: +19195551234
         tag: My custom tag value
         applicationId: 04e88489-df02-4e34-a0ee-27a91849555f
         username: mySecretUsername
@@ -7060,11 +7006,11 @@ components:
           type: string
         to:
           description: Recipient of the outgoing call.
-          example: "+19195551234"
+          example: +19195551234
           type: string
         from:
           description: Phone number that created the outbound call.
-          example: "+19195554321"
+          example: +19195554321
           type: string
         enqueuedTime:
           description: The time at which the call was accepted into the queue.
@@ -7172,9 +7118,9 @@ components:
           verstat: TN-Verification-Passed
           attestationIndicator: A
           originatingId: abc123
-        from: "19195554321"
+        from: +19195554321
         startTime: 2022-06-16T13:15:07.16Z
-        to: "+19195551234"
+        to: +19195551234
         state: disconnected
         endTime: 2022-06-16T13:15:18.314Z
         errorId: errorId
@@ -7202,12 +7148,12 @@ components:
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
             \ +15555555555), or if the call was to a SIP URI, the SIP URI."
-          example: "+19195551234"
+          example: +19195551234
           type: string
         from:
           description: "The phone number that made the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "19195554321"
+          example: +19195554321
           type: string
         direction:
           $ref: '#/components/schemas/callDirectionEnum'
@@ -7414,14 +7360,14 @@ components:
           url: https://voice.bandwidth.com/api/v2/accounts/9900000/calls/c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85/recordings/r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85/transcription
           status: completed
         parentCallId: c-95ac8d6e-1a31c52e-b38f-4198-93c1-51633ec68f8d
-        transferCallerId: "+15555555555"
-        transferTo: +15555555555)
+        transferCallerId: +15555555555
+        transferTo: +15555555555
         duration: PT13.67S
-        accountId: "920012"
+        accountId: "9900000"
         channels: 1
-        from: "+15555555555"
+        from: +15555555555
         startTime: 2022-06-17T22:19:40.375Z
-        to: "+15555555555"
+        to: +15555555555
         endTime: 2022-06-17T22:20:00Z
         applicationId: 04e88489-df02-4e34-a0ee-27a91849555f
         recordingId: r-fbe05094-9fd2afe9-bf5b-4c68-820a-41a01c1c5833
@@ -7435,7 +7381,7 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         callId:
           description: The call id associated with the event.
@@ -7454,24 +7400,22 @@ components:
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "+15555555555"
+          example: +15555555555
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
-          example: "+15555555555"
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
+          example: +15555555555
           type: string
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
-          example: "+15555555555"
+            \ in E.164 format (e.g. +15555555555)."
+          example: +15555555555
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: +15555555555
           type: string
         duration:
           description: The duration of the recording in ISO-8601 format
@@ -7722,7 +7666,7 @@ components:
     conferenceRecordingMetadata:
       example:
         duration: PT13.67S
-        accountId: "920012"
+        accountId: "9900000"
         channels: 1
         mediaUrl: https://voice.bandwidth.com/api/v2/accounts/9900000/conferences/conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9/recordings/r-fbe05094-9fd2afe9-bf5b-4c68-820a-41a01c1c5833/media
         conferenceId: conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9
@@ -7735,7 +7679,7 @@ components:
       properties:
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         conferenceId:
           description: "The unique, Bandwidth-generated ID of the conference that\
@@ -7790,8 +7734,11 @@ components:
           type: string
       type: object
     machineDetectionConfiguration:
-      description: The machine detection request used to perform <a href='/docs/voice/guides/machineDetection'>machine
-        detection</a> on the call.
+      description: "The machine detection request used to perform <a href='/docs/voice/guides/machineDetection'>machine\
+        \ detection</a> on the call. Currently, there is an issue where decimal values\
+        \ are not getting processed correctly. Please use whole number values. We\
+        \ are working to resolve this issue. Please contact Bandwidth Support if you\
+        \ need more information."
       properties:
         mode:
           $ref: '#/components/schemas/machineDetectionModeEnum'
@@ -8081,10 +8028,6 @@ components:
           type: string
       type: object
     voiceApiError:
-      example:
-        description: description
-        id: id
-        type: type
       properties:
         type:
           type: string
@@ -8116,22 +8059,21 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
-          example: "+15555555555"
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
+          example: +15555555555
           type: string
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "+15555555555"
+          example: +15555555555
           type: string
         direction:
           $ref: '#/components/schemas/callDirectionEnum'
@@ -8195,22 +8137,21 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
-          example: "+15555555555"
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
+          example: +15555555555
           type: string
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "+15555555555"
+          example: +15555555555
           type: string
         direction:
           $ref: '#/components/schemas/callDirectionEnum'
@@ -8289,22 +8230,21 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
-          example: "+15555555555"
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
+          example: +15555555555
           type: string
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "+15555555555"
+          example: +15555555555
           type: string
         direction:
           $ref: '#/components/schemas/callDirectionEnum'
@@ -8459,15 +8399,14 @@ components:
           example: my-conference-name
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
-          example: "+15555555555"
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
+          example: +15555555555
           type: string
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "+15555555555"
+          example: +15555555555
           type: string
         callId:
           description: The call id associated with the event.
@@ -8515,15 +8454,14 @@ components:
           example: my-conference-name
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
-          example: "+15555555555"
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
+          example: +15555555555
           type: string
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "+15555555555"
+          example: +15555555555
           type: string
         callId:
           description: The call id associated with the event.
@@ -8604,7 +8542,7 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         recordingId:
           description: The unique ID of this recording
@@ -8676,22 +8614,21 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
-          example: "+15555555555"
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
+          example: +15555555555
           type: string
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "+15555555555"
+          example: +15555555555
           type: string
         callId:
           description: The call id associated with the event.
@@ -8773,22 +8710,21 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
-          example: "+15555555555"
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
+          example: +15555555555
           type: string
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "+15555555555"
+          example: +15555555555
           type: string
         callId:
           description: The call id associated with the event.
@@ -8830,14 +8766,13 @@ components:
           type: string
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
-          example: "+15555555555"
+            \ in E.164 format (e.g. +15555555555)."
+          example: +15555555555
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: +15555555555
           type: string
         tag:
           description: "(optional) The tag specified on call creation. If no tag was\
@@ -8868,22 +8803,21 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
-          example: "+15555555555"
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
+          example: +15555555555
           type: string
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "+15555555555"
+          example: +15555555555
           type: string
         direction:
           $ref: '#/components/schemas/callDirectionEnum'
@@ -8932,14 +8866,13 @@ components:
           type: string
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
-          example: "+15555555555"
+            \ in E.164 format (e.g. +15555555555)."
+          example: +15555555555
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: +15555555555
           type: string
         tag:
           description: "(optional) The tag specified on call creation. If no tag was\
@@ -8972,22 +8905,21 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
-          example: "+15555555555"
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
+          example: +15555555555
           type: string
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "+15555555555"
+          example: +15555555555
           type: string
         direction:
           $ref: '#/components/schemas/callDirectionEnum'
@@ -9033,22 +8965,21 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
-          example: "+15555555555"
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
+          example: +15555555555
           type: string
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "+15555555555"
+          example: +15555555555
           type: string
         direction:
           $ref: '#/components/schemas/callDirectionEnum'
@@ -9111,22 +9042,21 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
-          example: "+15555555555"
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
+          example: +15555555555
           type: string
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "+15555555555"
+          example: +15555555555
           type: string
         direction:
           $ref: '#/components/schemas/callDirectionEnum'
@@ -9198,14 +9128,13 @@ components:
           type: string
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
-          example: "+15555555555"
+            \ in E.164 format (e.g. +15555555555)."
+          example: +15555555555
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: +15555555555
           type: string
       type: object
     recordingAvailableCallback:
@@ -9230,22 +9159,21 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
-          example: "+15555555555"
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
+          example: +15555555555
           type: string
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "+15555555555"
+          example: +15555555555
           type: string
         direction:
           $ref: '#/components/schemas/callDirectionEnum'
@@ -9320,14 +9248,13 @@ components:
           type: string
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
-          example: "+15555555555"
+            \ in E.164 format (e.g. +15555555555)."
+          example: +15555555555
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: +15555555555
           type: string
       type: object
     redirectCallback:
@@ -9352,22 +9279,21 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
-          example: "+15555555555"
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
+          example: +15555555555
           type: string
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "+15555555555"
+          example: +15555555555
           type: string
         direction:
           $ref: '#/components/schemas/callDirectionEnum'
@@ -9411,14 +9337,13 @@ components:
           type: string
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
-          example: "+15555555555"
+            \ in E.164 format (e.g. +15555555555)."
+          example: +15555555555
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: +15555555555
           type: string
       type: object
     transcriptionAvailableCallback:
@@ -9443,22 +9368,21 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
-          example: "+15555555555"
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
+          example: +15555555555
           type: string
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "+15555555555"
+          example: +15555555555
           type: string
         direction:
           $ref: '#/components/schemas/callDirectionEnum'
@@ -9520,14 +9444,13 @@ components:
           $ref: '#/components/schemas/transcription'
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
-          example: "+15555555555"
+            \ in E.164 format (e.g. +15555555555)."
+          example: +15555555555
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: +15555555555
           type: string
       type: object
     transferAnswerCallback:
@@ -9557,22 +9480,21 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
-          example: "+15555555555"
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
+          example: +15555555555
           type: string
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "+15555555555"
+          example: +15555555555
           type: string
         direction:
           $ref: '#/components/schemas/callDirectionEnum'
@@ -9610,14 +9532,13 @@ components:
           type: string
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
-          example: "+15555555555"
+            \ in E.164 format (e.g. +15555555555)."
+          example: +15555555555
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: +15555555555
           type: string
       type: object
     transferCompleteCallback:
@@ -9645,22 +9566,21 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
-          example: "+15555555555"
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
+          example: +15555555555
           type: string
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "+15555555555"
+          example: +15555555555
           type: string
         direction:
           $ref: '#/components/schemas/callDirectionEnum'
@@ -9698,14 +9618,13 @@ components:
           type: string
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
-          example: "+15555555555"
+            \ in E.164 format (e.g. +15555555555)."
+          example: +15555555555
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: +15555555555
           type: string
         cause:
           description: "Reason the call failed - hangup, busy, timeout, cancel, rejected,\
@@ -9752,22 +9671,21 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
-          example: "+15555555555"
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
+          example: +15555555555
           type: string
         to:
           description: "The phone number that received the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "+15555555555"
+          example: +15555555555
           type: string
         direction:
           $ref: '#/components/schemas/callDirectionEnum'
@@ -9816,14 +9734,13 @@ components:
           type: string
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
-          example: "+15555555555"
+            \ in E.164 format (e.g. +15555555555)."
+          example: +15555555555
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: +15555555555
           type: string
         cause:
           description: "Reason the call failed - hangup, busy, timeout, cancel, rejected,\
@@ -9862,7 +9779,7 @@ components:
       type: string
     accountId:
       description: The user account associated with the call.
-      example: "920012"
+      example: "9900000"
       type: string
     applicationId:
       description: The id of the application associated with the call.
@@ -9871,13 +9788,12 @@ components:
     to:
       description: "The phone number that received the call, in E.164 format (e.g.\
         \ +15555555555)."
-      example: "+15555555555"
+      example: +15555555555
       type: string
     from:
-      description: "The provided identifier of the caller: can be a phone number in\
-        \ E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-        \ or Anonymous."
-      example: "+15555555555"
+      description: The provided identifier of the caller. Must be a phone number in
+        E.164 format (e.g. +15555555555).
+      example: +15555555555
       type: string
     conferenceId:
       description: "The unique, Bandwidth-generated ID of the conference that was\
@@ -9951,14 +9867,13 @@ components:
       type: string
     transferCallerId:
       description: "The phone number used as the from field of the B-leg call, in\
-        \ E.164 format (e.g. +15555555555) or one of Restricted, Anonymous, Private,\
-        \ or Unavailable."
-      example: "+15555555555"
+        \ E.164 format (e.g. +15555555555)."
+      example: +15555555555
       type: string
     transferTo:
       description: "The phone number used as the to field of the B-leg call, in E.164\
         \ format (e.g. +15555555555)."
-      example: +15555555555)
+      example: +15555555555
       type: string
     mediaUrl:
       description: The URL that can be used to download the recording. Only present
@@ -10054,7 +9969,7 @@ components:
         origTo:
           description: Always present. Indicates the last telephone number that the
             call was diverted from.
-          example: "+15558884444"
+          example: +15558884444
           type: string
       type: object
     transcription:
@@ -10095,12 +10010,12 @@ components:
       properties:
         to:
           description: The phone number to send the mfa code to.
-          example: "+19195551234"
+          example: +19195551234
           pattern: "^\\+[1-9]\\d{1,14}$"
           type: string
         from:
           description: "The application phone number, the sender of the mfa code."
-          example: "+19195554321"
+          example: +19195554321
           maxLength: 32
           pattern: "^\\+[1-9]\\d{1,14}$"
           type: string
@@ -10151,18 +10066,18 @@ components:
       type: object
     messagingCodeResponse:
       example:
-        messageId: 9e0df4ca-b18d-40d7-a59f-82fcdf5ae8e6
+        messageId: 1589228074636lm4k2je7j7jklbn2
       properties:
         messageId:
           description: Messaging API Message ID.
-          example: 9e0df4ca-b18d-40d7-a59f-82fcdf5ae8e6
+          example: 1589228074636lm4k2je7j7jklbn2
           type: string
       type: object
     verifyCodeRequest:
       properties:
         to:
           description: The phone number to send the mfa code to.
-          example: "+19195551234"
+          example: +19195551234
           pattern: "^\\+[1-9]\\d{1,14}$"
           type: string
         scope:
@@ -10200,9 +10115,6 @@ components:
           type: boolean
       type: object
     mfaRequestError:
-      example:
-        requestId: 354cc8a3-6701-461e-8fa7-8671703dd898
-        error: 400 Request is malformed or invalid
       properties:
         error:
           description: A message describing the error with your request.
@@ -10214,8 +10126,6 @@ components:
           type: string
       type: object
     mfaUnauthorizedRequestError:
-      example:
-        message: Unauthorized
       properties:
         message:
           description: Unauthorized
@@ -10223,8 +10133,6 @@ components:
           type: string
       type: object
     mfaForbiddenRequestError:
-      example:
-        message: Missing Authentication Token
       properties:
         message:
           description: The message containing the reason behind the request being
@@ -10273,7 +10181,7 @@ components:
         \ was available for the TN."
       example:
         result:
-        - E.164 Format: "+19195551234"
+        - E.164 Format: +19195551234
           Formatted: (919) 555-1234
           Line Provider: Verizon Wireless
           Message: NOERROR
@@ -10282,7 +10190,7 @@ components:
           Mobile Country Code: "310"
           Mobile Network Code: "010"
           Response Code: 0
-        - E.164 Format: "+19195551234"
+        - E.164 Format: +19195551234
           Formatted: (919) 555-1234
           Line Provider: Verizon Wireless
           Message: NOERROR
@@ -10293,7 +10201,7 @@ components:
           Response Code: 0
         requestId: 004223a0-8b17-41b1-bf81-20732adf5590
         failedTelephoneNumbers:
-        - "+191955512345"
+        - +191955512345
         status: COMPLETE
       properties:
         requestId:
@@ -10311,7 +10219,7 @@ components:
         failedTelephoneNumbers:
           description: The telephone numbers whose lookup failed.
           example:
-          - "+191955512345"
+          - +191955512345
           items:
             type: string
           type: array
@@ -10319,7 +10227,7 @@ components:
     lookupResult:
       description: Carrier information results for the specified telephone number.
       example:
-        E.164 Format: "+19195551234"
+        E.164 Format: +19195551234
         Formatted: (919) 555-1234
         Line Provider: Verizon Wireless
         Message: NOERROR
@@ -10339,7 +10247,7 @@ components:
           type: string
         E.164 Format:
           description: The telephone number in E.164 format.
-          example: "+19195551234"
+          example: +19195551234
           type: string
         Formatted:
           description: The formatted version of the telephone number.
@@ -10367,8 +10275,6 @@ components:
           type: string
       type: object
     tnLookupRequestError:
-      example:
-        message: example error message
       properties:
         message:
           description: A description of what validation error occurred.
