@@ -19,7 +19,7 @@ public class Track {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String track;
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String transcription;
+    private String transcript;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Double confidence;
 
@@ -33,17 +33,17 @@ public class Track {
      * Initialization constructor.
      * @param  detectedLanguage  String value for detectedLanguag3.
      * @param  track  String value for track.
-     * @param  transcription  String value for transcription.
+     * @param  transcript  String value for transcript.
      * @param  confidence  Double value for confidence.
      */
     public Track(
             String detectedLanguage,
             String track,
-            String transcription,
+            String transcript,
             Double confidence) {
         this.detectedLanguage = detectedLanguage;
         this.track = track;
-        this.transcription = transcription;
+        this.transcript = transcript;
         this.confidence = confidence;
     }
 
@@ -84,21 +84,21 @@ public class Track {
     }
 
     /**
-     * Getter for transcription.
+     * Getter for transcript.
      * @return Returns the String
      */
-    @JsonGetter("transcription")
-    public String getTranscription() {
-        return transcription;
+    @JsonGetter("transcript")
+    public String getTranscript() {
+        return transcript;
     }
 
     /**
-     * Setter for transcription.
-     * @param transcription Value for String
+     * Setter for transcript.
+     * @param transcript Value for String
      */
-    @JsonSetter("transcription")
-    public void setTranscription(String transcription) {
-        this.transcription = transcription;
+    @JsonSetter("transcript")
+    public void setTranscript(String transcript) {
+        this.transcript = transcript;
     }
 
     /**
@@ -125,7 +125,7 @@ public class Track {
      */
     @Override
     public String toString() {
-        return "Track [" + "detectedLanguage=" + detectedLanguage + ", track=" + track + ", transcription=" + transcription
+        return "Track [" + "detectedLanguage=" + detectedLanguage + ", track=" + track + ", transcript=" + transcript
                 + ", confidence=" + confidence + "]";
     }
 
@@ -138,7 +138,7 @@ public class Track {
         Builder builder = new Builder()
                 .detectedLanguage(getDetectedLanguage())
                 .track(getTrack())
-                .transcription(getTranscription())
+                .transcript(getTranscript())
                 .confidence(getConfidence());
         return builder;
     }
@@ -149,7 +149,7 @@ public class Track {
     public static class Builder {
         private String detectedLanguage;
         private String track;
-        private String transcription;
+        private String transcript;
         private Double confidence;
 
 
@@ -175,12 +175,12 @@ public class Track {
         }
 
         /**
-         * Setter for transcription.
-         * @param  transcription  String value for transcription.
+         * Setter for transcript.
+         * @param  transcript  String value for transcript.
          * @return Builder
          */
-        public Builder transcription(String transcription) {
-            this.transcription = transcription;
+        public Builder transcript(String transcript) {
+            this.transcript = transcript;
             return this;
         }
 
@@ -199,7 +199,7 @@ public class Track {
          * @return {@link Track}
          */
         public Track build() {
-            return new Track(detectedLanguage, track, transcription, confidence);
+            return new Track(detectedLanguage, track, transcript, confidence);
         }
     }
 }
