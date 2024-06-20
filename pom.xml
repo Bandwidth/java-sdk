@@ -9,7 +9,7 @@
 
   <groupId>com.bandwidth.sdk</groupId>
   <artifactId>bandwidth-sdk</artifactId>
-  <version>8.5.0</version>
+  <version>8.6.0</version>
   <packaging>jar</packaging>
 
   <name>BandwidthLib</name>
