@@ -43,6 +43,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -50,7 +51,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * UpdateCallRecording
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdateCallRecording {
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
@@ -60,6 +61,7 @@ public class UpdateCallRecording {
   }
 
   public UpdateCallRecording state(RecordingStateEnum state) {
+    
     this.state = state;
     return this;
   }
@@ -72,6 +74,7 @@ public class UpdateCallRecording {
   public RecordingStateEnum getState() {
     return state;
   }
+
 
   public void setState(RecordingStateEnum state) {
     this.state = state;
@@ -196,8 +199,6 @@ public class UpdateCallRecording {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `state`
-      RecordingStateEnum.validateJsonElement(jsonObj.get("state"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -228,12 +229,7 @@ public class UpdateCallRecording {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
