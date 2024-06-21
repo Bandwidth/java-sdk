@@ -51,7 +51,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * The Conference Completed event is fired when the last member leaves the conference. The response to this event may not contain BXML.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class ConferenceCompletedCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)

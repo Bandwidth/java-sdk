@@ -53,7 +53,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * If requestId exists, the result for that request is returned. See the Examples for details on the various responses that you can receive. Generally, if you see a Response Code of 0 in a result for a TN, information will be available for it.  Any other Response Code will indicate no information was available for the TN.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class LookupStatus {
   public static final String SERIALIZED_NAME_REQUEST_ID = "requestId";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
@@ -65,11 +65,11 @@ public class LookupStatus {
 
   public static final String SERIALIZED_NAME_RESULT = "result";
   @SerializedName(SERIALIZED_NAME_RESULT)
-  private List<LookupResult> result;
+  private List<LookupResult> result = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_FAILED_TELEPHONE_NUMBERS = "failedTelephoneNumbers";
   @SerializedName(SERIALIZED_NAME_FAILED_TELEPHONE_NUMBERS)
-  private List<String> failedTelephoneNumbers;
+  private List<String> failedTelephoneNumbers = new ArrayList<>();
 
   public LookupStatus() {
   }

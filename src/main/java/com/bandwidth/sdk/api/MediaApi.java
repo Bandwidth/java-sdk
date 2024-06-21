@@ -677,6 +677,8 @@ public class MediaApi {
             "video/webm",
             "video/x-ms-wmv"
         };
+
+
         if (contentType == null) {
             final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
             if (localVarContentType != null) {
