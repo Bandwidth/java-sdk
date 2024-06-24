@@ -46,6 +46,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -53,7 +54,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * CreateCall
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateCall {
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
@@ -62,6 +63,10 @@ public class CreateCall {
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
   private String from;
+
+  public static final String SERIALIZED_NAME_PRIVACY = "privacy";
+  @SerializedName(SERIALIZED_NAME_PRIVACY)
+  private Boolean privacy;
 
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -139,6 +144,7 @@ public class CreateCall {
   }
 
   public CreateCall to(String to) {
+    
     this.to = to;
     return this;
   }
@@ -152,18 +158,20 @@ public class CreateCall {
     return to;
   }
 
+
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public CreateCall from(String from) {
+    
     this.from = from;
     return this;
   }
 
    /**
-   * A Bandwidth phone number on your account the call should come from (must be in E.164 format, like &#x60;+15555551212&#x60;, or be one of the following strings: &#x60;Restricted&#x60;, &#x60;Anonymous&#x60;, &#x60;Private&#x60;, or &#x60;Unavailable&#x60;).
+   * A Bandwidth phone number on your account the call should come from (must be in E.164 format, like &#x60;+15555551212&#x60;) even if &#x60;privacy&#x60; is set to true.
    * @return from
   **/
   @javax.annotation.Nonnull
@@ -171,18 +179,41 @@ public class CreateCall {
     return from;
   }
 
+
   public void setFrom(String from) {
     this.from = from;
   }
 
 
+  public CreateCall privacy(Boolean privacy) {
+    
+    this.privacy = privacy;
+    return this;
+  }
+
+   /**
+   * Hide the calling number. The &#x60;displayName&#x60; field can be used to customize the displayed name.
+   * @return privacy
+  **/
+  @javax.annotation.Nullable
+  public Boolean getPrivacy() {
+    return privacy;
+  }
+
+
+  public void setPrivacy(Boolean privacy) {
+    this.privacy = privacy;
+  }
+
+
   public CreateCall displayName(String displayName) {
+    
     this.displayName = displayName;
     return this;
   }
 
    /**
-   * The caller display name to use when the call is created.  May not exceed 256 characters nor contain control characters such as new lines.
+   * The caller display name to use when the call is created.  May not exceed 256 characters nor contain control characters such as new lines. If &#x60;privacy&#x60; is true, only the following values are valid: &#x60;Restricted&#x60;, &#x60;Anonymous&#x60;, &#x60;Private&#x60;, or &#x60;Unavailable&#x60;.
    * @return displayName
   **/
   @javax.annotation.Nullable
@@ -190,12 +221,14 @@ public class CreateCall {
     return displayName;
   }
 
+
   public void setDisplayName(String displayName) {
     this.displayName = displayName;
   }
 
 
   public CreateCall uui(String uui) {
+    
     this.uui = uui;
     return this;
   }
@@ -209,12 +242,14 @@ public class CreateCall {
     return uui;
   }
 
+
   public void setUui(String uui) {
     this.uui = uui;
   }
 
 
   public CreateCall applicationId(String applicationId) {
+    
     this.applicationId = applicationId;
     return this;
   }
@@ -228,12 +263,14 @@ public class CreateCall {
     return applicationId;
   }
 
+
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public CreateCall answerUrl(URI answerUrl) {
+    
     this.answerUrl = answerUrl;
     return this;
   }
@@ -247,12 +284,14 @@ public class CreateCall {
     return answerUrl;
   }
 
+
   public void setAnswerUrl(URI answerUrl) {
     this.answerUrl = answerUrl;
   }
 
 
   public CreateCall answerMethod(CallbackMethodEnum answerMethod) {
+    
     this.answerMethod = answerMethod;
     return this;
   }
@@ -266,12 +305,14 @@ public class CreateCall {
     return answerMethod;
   }
 
+
   public void setAnswerMethod(CallbackMethodEnum answerMethod) {
     this.answerMethod = answerMethod;
   }
 
 
   public CreateCall username(String username) {
+    
     this.username = username;
     return this;
   }
@@ -285,12 +326,14 @@ public class CreateCall {
     return username;
   }
 
+
   public void setUsername(String username) {
     this.username = username;
   }
 
 
   public CreateCall password(String password) {
+    
     this.password = password;
     return this;
   }
@@ -304,12 +347,14 @@ public class CreateCall {
     return password;
   }
 
+
   public void setPassword(String password) {
     this.password = password;
   }
 
 
   public CreateCall answerFallbackUrl(URI answerFallbackUrl) {
+    
     this.answerFallbackUrl = answerFallbackUrl;
     return this;
   }
@@ -323,12 +368,14 @@ public class CreateCall {
     return answerFallbackUrl;
   }
 
+
   public void setAnswerFallbackUrl(URI answerFallbackUrl) {
     this.answerFallbackUrl = answerFallbackUrl;
   }
 
 
   public CreateCall answerFallbackMethod(CallbackMethodEnum answerFallbackMethod) {
+    
     this.answerFallbackMethod = answerFallbackMethod;
     return this;
   }
@@ -342,12 +389,14 @@ public class CreateCall {
     return answerFallbackMethod;
   }
 
+
   public void setAnswerFallbackMethod(CallbackMethodEnum answerFallbackMethod) {
     this.answerFallbackMethod = answerFallbackMethod;
   }
 
 
   public CreateCall fallbackUsername(String fallbackUsername) {
+    
     this.fallbackUsername = fallbackUsername;
     return this;
   }
@@ -361,12 +410,14 @@ public class CreateCall {
     return fallbackUsername;
   }
 
+
   public void setFallbackUsername(String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
   }
 
 
   public CreateCall fallbackPassword(String fallbackPassword) {
+    
     this.fallbackPassword = fallbackPassword;
     return this;
   }
@@ -380,12 +431,14 @@ public class CreateCall {
     return fallbackPassword;
   }
 
+
   public void setFallbackPassword(String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
   }
 
 
   public CreateCall disconnectUrl(URI disconnectUrl) {
+    
     this.disconnectUrl = disconnectUrl;
     return this;
   }
@@ -399,12 +452,14 @@ public class CreateCall {
     return disconnectUrl;
   }
 
+
   public void setDisconnectUrl(URI disconnectUrl) {
     this.disconnectUrl = disconnectUrl;
   }
 
 
   public CreateCall disconnectMethod(CallbackMethodEnum disconnectMethod) {
+    
     this.disconnectMethod = disconnectMethod;
     return this;
   }
@@ -418,12 +473,14 @@ public class CreateCall {
     return disconnectMethod;
   }
 
+
   public void setDisconnectMethod(CallbackMethodEnum disconnectMethod) {
     this.disconnectMethod = disconnectMethod;
   }
 
 
   public CreateCall callTimeout(Double callTimeout) {
+    
     this.callTimeout = callTimeout;
     return this;
   }
@@ -439,12 +496,14 @@ public class CreateCall {
     return callTimeout;
   }
 
+
   public void setCallTimeout(Double callTimeout) {
     this.callTimeout = callTimeout;
   }
 
 
   public CreateCall callbackTimeout(Double callbackTimeout) {
+    
     this.callbackTimeout = callbackTimeout;
     return this;
   }
@@ -460,12 +519,14 @@ public class CreateCall {
     return callbackTimeout;
   }
 
+
   public void setCallbackTimeout(Double callbackTimeout) {
     this.callbackTimeout = callbackTimeout;
   }
 
 
   public CreateCall machineDetection(MachineDetectionConfiguration machineDetection) {
+    
     this.machineDetection = machineDetection;
     return this;
   }
@@ -479,12 +540,14 @@ public class CreateCall {
     return machineDetection;
   }
 
+
   public void setMachineDetection(MachineDetectionConfiguration machineDetection) {
     this.machineDetection = machineDetection;
   }
 
 
   public CreateCall priority(Integer priority) {
+    
     this.priority = priority;
     return this;
   }
@@ -500,12 +563,14 @@ public class CreateCall {
     return priority;
   }
 
+
   public void setPriority(Integer priority) {
     this.priority = priority;
   }
 
 
   public CreateCall tag(String tag) {
+    
     this.tag = tag;
     return this;
   }
@@ -518,6 +583,7 @@ public class CreateCall {
   public String getTag() {
     return tag;
   }
+
 
   public void setTag(String tag) {
     this.tag = tag;
@@ -580,6 +646,7 @@ public class CreateCall {
     CreateCall createCall = (CreateCall) o;
     return Objects.equals(this.to, createCall.to) &&
         Objects.equals(this.from, createCall.from) &&
+        Objects.equals(this.privacy, createCall.privacy) &&
         Objects.equals(this.displayName, createCall.displayName) &&
         Objects.equals(this.uui, createCall.uui) &&
         Objects.equals(this.applicationId, createCall.applicationId) &&
@@ -607,7 +674,7 @@ public class CreateCall {
 
   @Override
   public int hashCode() {
-    return Objects.hash(to, from, displayName, uui, applicationId, answerUrl, answerMethod, username, password, answerFallbackUrl, answerFallbackMethod, fallbackUsername, fallbackPassword, disconnectUrl, disconnectMethod, callTimeout, callbackTimeout, machineDetection, priority, tag, additionalProperties);
+    return Objects.hash(to, from, privacy, displayName, uui, applicationId, answerUrl, answerMethod, username, password, answerFallbackUrl, answerFallbackMethod, fallbackUsername, fallbackPassword, disconnectUrl, disconnectMethod, callTimeout, callbackTimeout, machineDetection, priority, tag, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -623,6 +690,7 @@ public class CreateCall {
     sb.append("class CreateCall {\n");
     sb.append("    to: ").append(toIndentedString(to)).append("\n");
     sb.append("    from: ").append(toIndentedString(from)).append("\n");
+    sb.append("    privacy: ").append(toIndentedString(privacy)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    uui: ").append(toIndentedString(uui)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
@@ -666,6 +734,7 @@ public class CreateCall {
     openapiFields = new HashSet<String>();
     openapiFields.add("to");
     openapiFields.add("from");
+    openapiFields.add("privacy");
     openapiFields.add("displayName");
     openapiFields.add("uui");
     openapiFields.add("applicationId");
@@ -731,10 +800,6 @@ public class CreateCall {
       if (!jsonObj.get("answerUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `answerUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("answerUrl").toString()));
       }
-      // validate the optional field `answerMethod`
-      if (jsonObj.get("answerMethod") != null && !jsonObj.get("answerMethod").isJsonNull()) {
-        CallbackMethodEnum.validateJsonElement(jsonObj.get("answerMethod"));
-      }
       if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
       }
@@ -744,10 +809,6 @@ public class CreateCall {
       if ((jsonObj.get("answerFallbackUrl") != null && !jsonObj.get("answerFallbackUrl").isJsonNull()) && !jsonObj.get("answerFallbackUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `answerFallbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("answerFallbackUrl").toString()));
       }
-      // validate the optional field `answerFallbackMethod`
-      if (jsonObj.get("answerFallbackMethod") != null && !jsonObj.get("answerFallbackMethod").isJsonNull()) {
-        CallbackMethodEnum.validateJsonElement(jsonObj.get("answerFallbackMethod"));
-      }
       if ((jsonObj.get("fallbackUsername") != null && !jsonObj.get("fallbackUsername").isJsonNull()) && !jsonObj.get("fallbackUsername").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fallbackUsername` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackUsername").toString()));
       }
@@ -756,10 +817,6 @@ public class CreateCall {
       }
       if ((jsonObj.get("disconnectUrl") != null && !jsonObj.get("disconnectUrl").isJsonNull()) && !jsonObj.get("disconnectUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `disconnectUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("disconnectUrl").toString()));
-      }
-      // validate the optional field `disconnectMethod`
-      if (jsonObj.get("disconnectMethod") != null && !jsonObj.get("disconnectMethod").isJsonNull()) {
-        CallbackMethodEnum.validateJsonElement(jsonObj.get("disconnectMethod"));
       }
       // validate the optional field `machineDetection`
       if (jsonObj.get("machineDetection") != null && !jsonObj.get("machineDetection").isJsonNull()) {
@@ -798,12 +855,7 @@ public class CreateCall {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

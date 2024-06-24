@@ -44,6 +44,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -51,7 +52,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * The Conference Completed event is fired when the last member leaves the conference. The response to this event may not contain BXML.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ConferenceCompletedCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
@@ -77,6 +78,7 @@ public class ConferenceCompletedCallback {
   }
 
   public ConferenceCompletedCallback eventType(String eventType) {
+    
     this.eventType = eventType;
     return this;
   }
@@ -90,12 +92,14 @@ public class ConferenceCompletedCallback {
     return eventType;
   }
 
+
   public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
   public ConferenceCompletedCallback eventTime(OffsetDateTime eventTime) {
+    
     this.eventTime = eventTime;
     return this;
   }
@@ -109,12 +113,14 @@ public class ConferenceCompletedCallback {
     return eventTime;
   }
 
+
   public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
   public ConferenceCompletedCallback conferenceId(String conferenceId) {
+    
     this.conferenceId = conferenceId;
     return this;
   }
@@ -128,12 +134,14 @@ public class ConferenceCompletedCallback {
     return conferenceId;
   }
 
+
   public void setConferenceId(String conferenceId) {
     this.conferenceId = conferenceId;
   }
 
 
   public ConferenceCompletedCallback name(String name) {
+    
     this.name = name;
     return this;
   }
@@ -147,12 +155,14 @@ public class ConferenceCompletedCallback {
     return name;
   }
 
+
   public void setName(String name) {
     this.name = name;
   }
 
 
   public ConferenceCompletedCallback tag(String tag) {
+    
     this.tag = tag;
     return this;
   }
@@ -165,6 +175,7 @@ public class ConferenceCompletedCallback {
   public String getTag() {
     return tag;
   }
+
 
   public void setTag(String tag) {
     this.tag = tag;
@@ -346,12 +357,7 @@ public class ConferenceCompletedCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

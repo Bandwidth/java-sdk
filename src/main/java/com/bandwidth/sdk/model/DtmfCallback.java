@@ -45,6 +45,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -52,7 +53,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * The DTMF event is sent for every digit detected after a &lt;StartGather&gt; verb is executed. You may not respond to this event with BXML.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DtmfCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
@@ -126,6 +127,7 @@ public class DtmfCallback {
   }
 
   public DtmfCallback eventType(String eventType) {
+    
     this.eventType = eventType;
     return this;
   }
@@ -139,12 +141,14 @@ public class DtmfCallback {
     return eventType;
   }
 
+
   public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
   public DtmfCallback eventTime(OffsetDateTime eventTime) {
+    
     this.eventTime = eventTime;
     return this;
   }
@@ -158,12 +162,14 @@ public class DtmfCallback {
     return eventTime;
   }
 
+
   public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
   public DtmfCallback accountId(String accountId) {
+    
     this.accountId = accountId;
     return this;
   }
@@ -177,12 +183,14 @@ public class DtmfCallback {
     return accountId;
   }
 
+
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
   public DtmfCallback applicationId(String applicationId) {
+    
     this.applicationId = applicationId;
     return this;
   }
@@ -196,18 +204,20 @@ public class DtmfCallback {
     return applicationId;
   }
 
+
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public DtmfCallback from(String from) {
+    
     this.from = from;
     return this;
   }
 
    /**
-   * The provided identifier of the caller: can be a phone number in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable, or Anonymous.
+   * The provided identifier of the caller. Must be a phone number in E.164 format (e.g. +15555555555).
    * @return from
   **/
   @javax.annotation.Nullable
@@ -215,12 +225,14 @@ public class DtmfCallback {
     return from;
   }
 
+
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public DtmfCallback to(String to) {
+    
     this.to = to;
     return this;
   }
@@ -234,12 +246,14 @@ public class DtmfCallback {
     return to;
   }
 
+
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public DtmfCallback callId(String callId) {
+    
     this.callId = callId;
     return this;
   }
@@ -253,12 +267,14 @@ public class DtmfCallback {
     return callId;
   }
 
+
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
   public DtmfCallback direction(CallDirectionEnum direction) {
+    
     this.direction = direction;
     return this;
   }
@@ -272,12 +288,14 @@ public class DtmfCallback {
     return direction;
   }
 
+
   public void setDirection(CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
   public DtmfCallback digit(String digit) {
+    
     this.digit = digit;
     return this;
   }
@@ -291,12 +309,14 @@ public class DtmfCallback {
     return digit;
   }
 
+
   public void setDigit(String digit) {
     this.digit = digit;
   }
 
 
   public DtmfCallback callUrl(String callUrl) {
+    
     this.callUrl = callUrl;
     return this;
   }
@@ -310,12 +330,14 @@ public class DtmfCallback {
     return callUrl;
   }
 
+
   public void setCallUrl(String callUrl) {
     this.callUrl = callUrl;
   }
 
 
   public DtmfCallback enqueuedTime(OffsetDateTime enqueuedTime) {
+    
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -329,12 +351,14 @@ public class DtmfCallback {
     return enqueuedTime;
   }
 
+
   public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
   public DtmfCallback startTime(OffsetDateTime startTime) {
+    
     this.startTime = startTime;
     return this;
   }
@@ -348,12 +372,14 @@ public class DtmfCallback {
     return startTime;
   }
 
+
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
   public DtmfCallback answerTime(OffsetDateTime answerTime) {
+    
     this.answerTime = answerTime;
     return this;
   }
@@ -367,12 +393,14 @@ public class DtmfCallback {
     return answerTime;
   }
 
+
   public void setAnswerTime(OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
   public DtmfCallback parentCallId(String parentCallId) {
+    
     this.parentCallId = parentCallId;
     return this;
   }
@@ -386,18 +414,20 @@ public class DtmfCallback {
     return parentCallId;
   }
 
+
   public void setParentCallId(String parentCallId) {
     this.parentCallId = parentCallId;
   }
 
 
   public DtmfCallback transferCallerId(String transferCallerId) {
+    
     this.transferCallerId = transferCallerId;
     return this;
   }
 
    /**
-   * The phone number used as the from field of the B-leg call, in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous, Private, or Unavailable.
+   * The phone number used as the from field of the B-leg call, in E.164 format (e.g. +15555555555).
    * @return transferCallerId
   **/
   @javax.annotation.Nullable
@@ -405,12 +435,14 @@ public class DtmfCallback {
     return transferCallerId;
   }
 
+
   public void setTransferCallerId(String transferCallerId) {
     this.transferCallerId = transferCallerId;
   }
 
 
   public DtmfCallback transferTo(String transferTo) {
+    
     this.transferTo = transferTo;
     return this;
   }
@@ -424,12 +456,14 @@ public class DtmfCallback {
     return transferTo;
   }
 
+
   public void setTransferTo(String transferTo) {
     this.transferTo = transferTo;
   }
 
 
   public DtmfCallback tag(String tag) {
+    
     this.tag = tag;
     return this;
   }
@@ -442,6 +476,7 @@ public class DtmfCallback {
   public String getTag() {
     return tag;
   }
+
 
   public void setTag(String tag) {
     this.tag = tag;
@@ -635,10 +670,6 @@ public class DtmfCallback {
       if ((jsonObj.get("callId") != null && !jsonObj.get("callId").isJsonNull()) && !jsonObj.get("callId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callId").toString()));
       }
-      // validate the optional field `direction`
-      if (jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) {
-        CallDirectionEnum.validateJsonElement(jsonObj.get("direction"));
-      }
       if ((jsonObj.get("digit") != null && !jsonObj.get("digit").isJsonNull()) && !jsonObj.get("digit").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `digit` to be a primitive type in the JSON string but got `%s`", jsonObj.get("digit").toString()));
       }
@@ -687,12 +718,7 @@ public class DtmfCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

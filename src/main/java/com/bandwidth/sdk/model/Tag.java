@@ -42,6 +42,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -49,7 +50,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Tag
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Tag {
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
@@ -63,6 +64,7 @@ public class Tag {
   }
 
   public Tag key(String key) {
+    
     this.key = key;
     return this;
   }
@@ -76,12 +78,14 @@ public class Tag {
     return key;
   }
 
+
   public void setKey(String key) {
     this.key = key;
   }
 
 
   public Tag value(String value) {
+    
     this.value = value;
     return this;
   }
@@ -94,6 +98,7 @@ public class Tag {
   public String getValue() {
     return value;
   }
+
 
   public void setValue(String value) {
     this.value = value;
@@ -249,12 +254,7 @@ public class Tag {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
