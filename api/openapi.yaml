@@ -4004,7 +4004,7 @@ paths:
       description: |-
         Delete the specified transcription that was created on this call via [startTranscription](/docs/voice/bxml/startTranscription).
 
-        Note: After the deletion is requested and a `204` is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
+        Note: After the deletion is requested and a `200` is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
       operationId: deleteRealTimeTranscription
       parameters:
       - description: Your Bandwidth Account ID.
@@ -4035,7 +4035,7 @@ paths:
           type: string
         style: simple
       responses:
-        "204":
+        "200":
           description: Transcription data was deleted.
         "400":
           content:
@@ -4687,6 +4687,7 @@ components:
         answerMethod: POST
         answerUrl: https://myServer.example/bandwidth/webhooks/answer
         answerFallbackMethod: POST
+        answerFallbackUrl: https://myServer.example/bandwidth/webhooks/answerFallback
         disconnectMethod: POST
         disconnectUrl: https://myServer.example/bandwidth/webhooks/disconnect
         username: mySecretUsername
@@ -6875,14 +6876,20 @@ components:
         from:
           description: |-
             A Bandwidth phone number on your account the call should come
-            from (must be in E.164 format, like `+15555551212`, or be one of the following
-            strings: `Restricted`, `Anonymous`, `Private`, or `Unavailable`).
-          example: "+19195554321"
+            from (must be in E.164 format, like `+15555551212`) even if `privacy` is set to true.
+          example: "+15555551212"
           type: string
+        privacy:
+          description: Hide the calling number. The `displayName` field can be used
+            to customize the displayed name.
+          example: false
+          nullable: true
+          type: boolean
         displayName:
           description: "The caller display name to use when the call is created. \n\
             May not exceed 256 characters nor contain control characters such as new\
-            \ lines."
+            \ lines.\nIf `privacy` is true, only the following values are valid: `Restricted`,\
+            \ `Anonymous`, `Private`, or `Unavailable`."
           example: John Doe
           maxLength: 256
           nullable: true
@@ -7172,7 +7179,7 @@ components:
           verstat: TN-Verification-Passed
           attestationIndicator: A
           originatingId: abc123
-        from: "19195554321"
+        from: "+19195554321"
         startTime: 2022-06-16T13:15:07.16Z
         to: "+19195551234"
         state: disconnected
@@ -7207,7 +7214,7 @@ components:
         from:
           description: "The phone number that made the call, in E.164 format (e.g.\
             \ +15555555555)."
-          example: "19195554321"
+          example: "+19195554321"
           type: string
         direction:
           $ref: '#/components/schemas/callDirectionEnum'
@@ -7415,9 +7422,9 @@ components:
           status: completed
         parentCallId: c-95ac8d6e-1a31c52e-b38f-4198-93c1-51633ec68f8d
         transferCallerId: "+15555555555"
-        transferTo: +15555555555)
+        transferTo: "+15555555555"
         duration: PT13.67S
-        accountId: "920012"
+        accountId: "9900000"
         channels: 1
         from: "+15555555555"
         startTime: 2022-06-17T22:19:40.375Z
@@ -7435,7 +7442,7 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         callId:
           description: The call id associated with the event.
@@ -7457,21 +7464,19 @@ components:
           example: "+15555555555"
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
           example: "+15555555555"
           type: string
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
+            \ in E.164 format (e.g. +15555555555)."
           example: "+15555555555"
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: "+15555555555"
           type: string
         duration:
           description: The duration of the recording in ISO-8601 format
@@ -7722,7 +7727,7 @@ components:
     conferenceRecordingMetadata:
       example:
         duration: PT13.67S
-        accountId: "920012"
+        accountId: "9900000"
         channels: 1
         mediaUrl: https://voice.bandwidth.com/api/v2/accounts/9900000/conferences/conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9/recordings/r-fbe05094-9fd2afe9-bf5b-4c68-820a-41a01c1c5833/media
         conferenceId: conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9
@@ -7735,7 +7740,7 @@ components:
       properties:
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         conferenceId:
           description: "The unique, Bandwidth-generated ID of the conference that\
@@ -7790,8 +7795,11 @@ components:
           type: string
       type: object
     machineDetectionConfiguration:
-      description: The machine detection request used to perform <a href='/docs/voice/guides/machineDetection'>machine
-        detection</a> on the call.
+      description: "The machine detection request used to perform <a href='/docs/voice/guides/machineDetection'>machine\
+        \ detection</a> on the call. Currently, there is an issue where decimal values\
+        \ are not getting processed correctly. Please use whole number values. We\
+        \ are working to resolve this issue. Please contact Bandwidth Support if you\
+        \ need more information."
       properties:
         mode:
           $ref: '#/components/schemas/machineDetectionModeEnum'
@@ -8035,7 +8043,7 @@ components:
           - outbound
           example: inbound
           type: string
-        text:
+        transcript:
           description: The transcription itself.
           example: Hello World! This is an example.
           type: string
@@ -8116,16 +8124,15 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
           example: "+15555555555"
           type: string
         to:
@@ -8195,16 +8202,15 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
           example: "+15555555555"
           type: string
         to:
@@ -8289,16 +8295,15 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
           example: "+15555555555"
           type: string
         to:
@@ -8459,9 +8464,8 @@ components:
           example: my-conference-name
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
           example: "+15555555555"
           type: string
         to:
@@ -8515,9 +8519,8 @@ components:
           example: my-conference-name
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
           example: "+15555555555"
           type: string
         to:
@@ -8604,7 +8607,7 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         recordingId:
           description: The unique ID of this recording
@@ -8676,16 +8679,15 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
           example: "+15555555555"
           type: string
         to:
@@ -8773,16 +8775,15 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
           example: "+15555555555"
           type: string
         to:
@@ -8830,14 +8831,13 @@ components:
           type: string
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
+            \ in E.164 format (e.g. +15555555555)."
           example: "+15555555555"
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: "+15555555555"
           type: string
         tag:
           description: "(optional) The tag specified on call creation. If no tag was\
@@ -8868,16 +8868,15 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
           example: "+15555555555"
           type: string
         to:
@@ -8932,14 +8931,13 @@ components:
           type: string
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
+            \ in E.164 format (e.g. +15555555555)."
           example: "+15555555555"
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: "+15555555555"
           type: string
         tag:
           description: "(optional) The tag specified on call creation. If no tag was\
@@ -8972,16 +8970,15 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
           example: "+15555555555"
           type: string
         to:
@@ -9033,16 +9030,15 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
           example: "+15555555555"
           type: string
         to:
@@ -9111,16 +9107,15 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
           example: "+15555555555"
           type: string
         to:
@@ -9198,14 +9193,13 @@ components:
           type: string
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
+            \ in E.164 format (e.g. +15555555555)."
           example: "+15555555555"
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: "+15555555555"
           type: string
       type: object
     recordingAvailableCallback:
@@ -9230,16 +9224,15 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
           example: "+15555555555"
           type: string
         to:
@@ -9320,14 +9313,13 @@ components:
           type: string
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
+            \ in E.164 format (e.g. +15555555555)."
           example: "+15555555555"
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: "+15555555555"
           type: string
       type: object
     redirectCallback:
@@ -9352,16 +9344,15 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
           example: "+15555555555"
           type: string
         to:
@@ -9411,14 +9402,13 @@ components:
           type: string
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
+            \ in E.164 format (e.g. +15555555555)."
           example: "+15555555555"
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: "+15555555555"
           type: string
       type: object
     transcriptionAvailableCallback:
@@ -9443,16 +9433,15 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
           example: "+15555555555"
           type: string
         to:
@@ -9520,14 +9509,13 @@ components:
           $ref: '#/components/schemas/transcription'
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
+            \ in E.164 format (e.g. +15555555555)."
           example: "+15555555555"
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: "+15555555555"
           type: string
       type: object
     transferAnswerCallback:
@@ -9557,16 +9545,15 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
           example: "+15555555555"
           type: string
         to:
@@ -9610,14 +9597,13 @@ components:
           type: string
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
+            \ in E.164 format (e.g. +15555555555)."
           example: "+15555555555"
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: "+15555555555"
           type: string
       type: object
     transferCompleteCallback:
@@ -9645,16 +9631,15 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
           example: "+15555555555"
           type: string
         to:
@@ -9698,14 +9683,13 @@ components:
           type: string
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
+            \ in E.164 format (e.g. +15555555555)."
           example: "+15555555555"
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: "+15555555555"
           type: string
         cause:
           description: "Reason the call failed - hangup, busy, timeout, cancel, rejected,\
@@ -9752,16 +9736,15 @@ components:
           type: string
         accountId:
           description: The user account associated with the call.
-          example: "920012"
+          example: "9900000"
           type: string
         applicationId:
           description: The id of the application associated with the call.
           example: 04e88489-df02-4e34-a0ee-27a91849555f
           type: string
         from:
-          description: "The provided identifier of the caller: can be a phone number\
-            \ in E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-            \ or Anonymous."
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
           example: "+15555555555"
           type: string
         to:
@@ -9816,14 +9799,13 @@ components:
           type: string
         transferCallerId:
           description: "The phone number used as the from field of the B-leg call,\
-            \ in E.164 format (e.g. +15555555555) or one of Restricted, Anonymous,\
-            \ Private, or Unavailable."
+            \ in E.164 format (e.g. +15555555555)."
           example: "+15555555555"
           type: string
         transferTo:
           description: "The phone number used as the to field of the B-leg call, in\
             \ E.164 format (e.g. +15555555555)."
-          example: +15555555555)
+          example: "+15555555555"
           type: string
         cause:
           description: "Reason the call failed - hangup, busy, timeout, cancel, rejected,\
@@ -9862,7 +9844,7 @@ components:
       type: string
     accountId:
       description: The user account associated with the call.
-      example: "920012"
+      example: "9900000"
       type: string
     applicationId:
       description: The id of the application associated with the call.
@@ -9874,9 +9856,8 @@ components:
       example: "+15555555555"
       type: string
     from:
-      description: "The provided identifier of the caller: can be a phone number in\
-        \ E.164 format (e.g. +15555555555) or one of Private, Restricted, Unavailable,\
-        \ or Anonymous."
+      description: The provided identifier of the caller. Must be a phone number in
+        E.164 format (e.g. +15555555555).
       example: "+15555555555"
       type: string
     conferenceId:
@@ -9951,14 +9932,13 @@ components:
       type: string
     transferCallerId:
       description: "The phone number used as the from field of the B-leg call, in\
-        \ E.164 format (e.g. +15555555555) or one of Restricted, Anonymous, Private,\
-        \ or Unavailable."
+        \ E.164 format (e.g. +15555555555)."
       example: "+15555555555"
       type: string
     transferTo:
       description: "The phone number used as the to field of the B-leg call, in E.164\
         \ format (e.g. +15555555555)."
-      example: +15555555555)
+      example: "+15555555555"
       type: string
     mediaUrl:
       description: The URL that can be used to download the recording. Only present
@@ -10151,11 +10131,11 @@ components:
       type: object
     messagingCodeResponse:
       example:
-        messageId: 9e0df4ca-b18d-40d7-a59f-82fcdf5ae8e6
+        messageId: 1589228074636lm4k2je7j7jklbn2
       properties:
         messageId:
           description: Messaging API Message ID.
-          example: 9e0df4ca-b18d-40d7-a59f-82fcdf5ae8e6
+          example: 1589228074636lm4k2je7j7jklbn2
           type: string
       type: object
     verifyCodeRequest:

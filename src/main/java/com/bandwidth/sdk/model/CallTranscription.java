@@ -165,9 +165,9 @@ public class CallTranscription {
   @SerializedName(SERIALIZED_NAME_TRACK)
   private TrackEnum track;
 
-  public static final String SERIALIZED_NAME_TEXT = "text";
-  @SerializedName(SERIALIZED_NAME_TEXT)
-  private String text;
+  public static final String SERIALIZED_NAME_TRANSCRIPT = "transcript";
+  @SerializedName(SERIALIZED_NAME_TRANSCRIPT)
+  private String transcript;
 
   public static final String SERIALIZED_NAME_CONFIDENCE = "confidence";
   @SerializedName(SERIALIZED_NAME_CONFIDENCE)
@@ -214,22 +214,22 @@ public class CallTranscription {
   }
 
 
-  public CallTranscription text(String text) {
-    this.text = text;
+  public CallTranscription transcript(String transcript) {
+    this.transcript = transcript;
     return this;
   }
 
    /**
    * The transcription itself.
-   * @return text
+   * @return transcript
   **/
   @javax.annotation.Nullable
-  public String getText() {
-    return text;
+  public String getTranscript() {
+    return transcript;
   }
 
-  public void setText(String text) {
-    this.text = text;
+  public void setTranscript(String transcript) {
+    this.transcript = transcript;
   }
 
 
@@ -310,14 +310,14 @@ public class CallTranscription {
     CallTranscription callTranscription = (CallTranscription) o;
     return Objects.equals(this.detectedLanguage, callTranscription.detectedLanguage) &&
         Objects.equals(this.track, callTranscription.track) &&
-        Objects.equals(this.text, callTranscription.text) &&
+        Objects.equals(this.transcript, callTranscription.transcript) &&
         Objects.equals(this.confidence, callTranscription.confidence)&&
         Objects.equals(this.additionalProperties, callTranscription.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(detectedLanguage, track, text, confidence, additionalProperties);
+    return Objects.hash(detectedLanguage, track, transcript, confidence, additionalProperties);
   }
 
   @Override
@@ -326,7 +326,7 @@ public class CallTranscription {
     sb.append("class CallTranscription {\n");
     sb.append("    detectedLanguage: ").append(toIndentedString(detectedLanguage)).append("\n");
     sb.append("    track: ").append(toIndentedString(track)).append("\n");
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    transcript: ").append(toIndentedString(transcript)).append("\n");
     sb.append("    confidence: ").append(toIndentedString(confidence)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -353,7 +353,7 @@ public class CallTranscription {
     openapiFields = new HashSet<String>();
     openapiFields.add("detectedLanguage");
     openapiFields.add("track");
-    openapiFields.add("text");
+    openapiFields.add("transcript");
     openapiFields.add("confidence");
 
     // a set of required properties/fields (JSON key names)
@@ -387,8 +387,8 @@ public class CallTranscription {
       if (jsonObj.get("track") != null && !jsonObj.get("track").isJsonNull()) {
         TrackEnum.validateJsonElement(jsonObj.get("track"));
       }
-      if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull()) && !jsonObj.get("text").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
+      if ((jsonObj.get("transcript") != null && !jsonObj.get("transcript").isJsonNull()) && !jsonObj.get("transcript").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transcript` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transcript").toString()));
       }
   }
 
