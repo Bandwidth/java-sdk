@@ -108,6 +108,7 @@ public class CallsApiTest {
         createCallBody.setCallbackTimeout(15.0);
         createCallBody.setMachineDetection(machineDetection);
         createCallBody.setPriority(5);
+        createCallBody.setPrivacy(false);
         createCallBody.setTag("tag_example");
 
         createMantecaCallBody.setFrom(MANTECA_ACTIVE_NUMBER);
