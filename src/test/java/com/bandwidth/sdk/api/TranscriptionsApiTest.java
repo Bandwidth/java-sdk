@@ -111,6 +111,7 @@ public class TranscriptionsApiTest {
         assertThat(getRealTimeTranscriptionResponse.getData(), hasProperty("transcriptionId", is(instanceOf(String.class))));
         assertThat(getRealTimeTranscriptionResponse.getData().getTracks().get(0), is(instanceOf(CallTranscription.class)));
         assertThat(getRealTimeTranscriptionResponse.getData().getTracks().get(0).getTrack(), is(instanceOf(CallTranscription.TrackEnum.class)));
+        assertThat(getRealTimeTranscriptionResponse.getData().getTracks().get(0).getTranscript(), is(instanceOf(String.class)));
         assertThat(getRealTimeTranscriptionResponse.getData().getTracks().get(0).getConfidence(), is(0.0));
 
 
