@@ -63,6 +63,10 @@ public class CreateCall {
   @SerializedName(SERIALIZED_NAME_FROM)
   private String from;
 
+  public static final String SERIALIZED_NAME_PRIVACY = "privacy";
+  @SerializedName(SERIALIZED_NAME_PRIVACY)
+  private Boolean privacy;
+
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
   private String displayName;
@@ -163,7 +167,7 @@ public class CreateCall {
   }
 
    /**
-   * A Bandwidth phone number on your account the call should come from (must be in E.164 format, like &#x60;+15555551212&#x60;, or be one of the following strings: &#x60;Restricted&#x60;, &#x60;Anonymous&#x60;, &#x60;Private&#x60;, or &#x60;Unavailable&#x60;).
+   * A Bandwidth phone number on your account the call should come from (must be in E.164 format, like &#x60;+15555551212&#x60;) even if &#x60;privacy&#x60; is set to true.
    * @return from
   **/
   @javax.annotation.Nonnull
@@ -176,13 +180,32 @@ public class CreateCall {
   }
 
 
+  public CreateCall privacy(Boolean privacy) {
+    this.privacy = privacy;
+    return this;
+  }
+
+   /**
+   * Hide the calling number. The &#x60;displayName&#x60; field can be used to customize the displayed name.
+   * @return privacy
+  **/
+  @javax.annotation.Nullable
+  public Boolean getPrivacy() {
+    return privacy;
+  }
+
+  public void setPrivacy(Boolean privacy) {
+    this.privacy = privacy;
+  }
+
+
   public CreateCall displayName(String displayName) {
     this.displayName = displayName;
     return this;
   }
 
    /**
-   * The caller display name to use when the call is created.  May not exceed 256 characters nor contain control characters such as new lines.
+   * The caller display name to use when the call is created.  May not exceed 256 characters nor contain control characters such as new lines. If &#x60;privacy&#x60; is true, only the following values are valid: &#x60;Restricted&#x60;, &#x60;Anonymous&#x60;, &#x60;Private&#x60;, or &#x60;Unavailable&#x60;.
    * @return displayName
   **/
   @javax.annotation.Nullable
@@ -580,6 +603,7 @@ public class CreateCall {
     CreateCall createCall = (CreateCall) o;
     return Objects.equals(this.to, createCall.to) &&
         Objects.equals(this.from, createCall.from) &&
+        Objects.equals(this.privacy, createCall.privacy) &&
         Objects.equals(this.displayName, createCall.displayName) &&
         Objects.equals(this.uui, createCall.uui) &&
         Objects.equals(this.applicationId, createCall.applicationId) &&
@@ -607,7 +631,7 @@ public class CreateCall {
 
   @Override
   public int hashCode() {
-    return Objects.hash(to, from, displayName, uui, applicationId, answerUrl, answerMethod, username, password, answerFallbackUrl, answerFallbackMethod, fallbackUsername, fallbackPassword, disconnectUrl, disconnectMethod, callTimeout, callbackTimeout, machineDetection, priority, tag, additionalProperties);
+    return Objects.hash(to, from, privacy, displayName, uui, applicationId, answerUrl, answerMethod, username, password, answerFallbackUrl, answerFallbackMethod, fallbackUsername, fallbackPassword, disconnectUrl, disconnectMethod, callTimeout, callbackTimeout, machineDetection, priority, tag, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -623,6 +647,7 @@ public class CreateCall {
     sb.append("class CreateCall {\n");
     sb.append("    to: ").append(toIndentedString(to)).append("\n");
     sb.append("    from: ").append(toIndentedString(from)).append("\n");
+    sb.append("    privacy: ").append(toIndentedString(privacy)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    uui: ").append(toIndentedString(uui)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
@@ -666,6 +691,7 @@ public class CreateCall {
     openapiFields = new HashSet<String>();
     openapiFields.add("to");
     openapiFields.add("from");
+    openapiFields.add("privacy");
     openapiFields.add("displayName");
     openapiFields.add("uui");
     openapiFields.add("applicationId");
