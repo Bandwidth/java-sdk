@@ -47,6 +47,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -54,7 +55,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * CallState
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CallState {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
@@ -132,6 +133,7 @@ public class CallState {
   }
 
   public CallState applicationId(String applicationId) {
+    
     this.applicationId = applicationId;
     return this;
   }
@@ -145,12 +147,14 @@ public class CallState {
     return applicationId;
   }
 
+
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public CallState accountId(String accountId) {
+    
     this.accountId = accountId;
     return this;
   }
@@ -164,12 +168,14 @@ public class CallState {
     return accountId;
   }
 
+
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
   public CallState callId(String callId) {
+    
     this.callId = callId;
     return this;
   }
@@ -183,12 +189,14 @@ public class CallState {
     return callId;
   }
 
+
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
   public CallState parentCallId(String parentCallId) {
+    
     this.parentCallId = parentCallId;
     return this;
   }
@@ -202,12 +210,14 @@ public class CallState {
     return parentCallId;
   }
 
+
   public void setParentCallId(String parentCallId) {
     this.parentCallId = parentCallId;
   }
 
 
   public CallState to(String to) {
+    
     this.to = to;
     return this;
   }
@@ -221,12 +231,14 @@ public class CallState {
     return to;
   }
 
+
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public CallState from(String from) {
+    
     this.from = from;
     return this;
   }
@@ -240,12 +252,14 @@ public class CallState {
     return from;
   }
 
+
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public CallState direction(CallDirectionEnum direction) {
+    
     this.direction = direction;
     return this;
   }
@@ -259,12 +273,14 @@ public class CallState {
     return direction;
   }
 
+
   public void setDirection(CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
   public CallState state(String state) {
+    
     this.state = state;
     return this;
   }
@@ -278,12 +294,14 @@ public class CallState {
     return state;
   }
 
+
   public void setState(String state) {
     this.state = state;
   }
 
 
   public CallState stirShaken(Map<String, String> stirShaken) {
+    
     this.stirShaken = stirShaken;
     return this;
   }
@@ -305,12 +323,14 @@ public class CallState {
     return stirShaken;
   }
 
+
   public void setStirShaken(Map<String, String> stirShaken) {
     this.stirShaken = stirShaken;
   }
 
 
   public CallState identity(String identity) {
+    
     this.identity = identity;
     return this;
   }
@@ -324,12 +344,14 @@ public class CallState {
     return identity;
   }
 
+
   public void setIdentity(String identity) {
     this.identity = identity;
   }
 
 
   public CallState enqueuedTime(OffsetDateTime enqueuedTime) {
+    
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -343,12 +365,14 @@ public class CallState {
     return enqueuedTime;
   }
 
+
   public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
   public CallState startTime(OffsetDateTime startTime) {
+    
     this.startTime = startTime;
     return this;
   }
@@ -362,12 +386,14 @@ public class CallState {
     return startTime;
   }
 
+
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
   public CallState answerTime(OffsetDateTime answerTime) {
+    
     this.answerTime = answerTime;
     return this;
   }
@@ -381,12 +407,14 @@ public class CallState {
     return answerTime;
   }
 
+
   public void setAnswerTime(OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
   public CallState endTime(OffsetDateTime endTime) {
+    
     this.endTime = endTime;
     return this;
   }
@@ -400,12 +428,14 @@ public class CallState {
     return endTime;
   }
 
+
   public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
 
   public CallState disconnectCause(String disconnectCause) {
+    
     this.disconnectCause = disconnectCause;
     return this;
   }
@@ -419,12 +449,14 @@ public class CallState {
     return disconnectCause;
   }
 
+
   public void setDisconnectCause(String disconnectCause) {
     this.disconnectCause = disconnectCause;
   }
 
 
   public CallState errorMessage(String errorMessage) {
+    
     this.errorMessage = errorMessage;
     return this;
   }
@@ -438,12 +470,14 @@ public class CallState {
     return errorMessage;
   }
 
+
   public void setErrorMessage(String errorMessage) {
     this.errorMessage = errorMessage;
   }
 
 
   public CallState errorId(String errorId) {
+    
     this.errorId = errorId;
     return this;
   }
@@ -457,12 +491,14 @@ public class CallState {
     return errorId;
   }
 
+
   public void setErrorId(String errorId) {
     this.errorId = errorId;
   }
 
 
   public CallState lastUpdate(OffsetDateTime lastUpdate) {
+    
     this.lastUpdate = lastUpdate;
     return this;
   }
@@ -475,6 +511,7 @@ public class CallState {
   public OffsetDateTime getLastUpdate() {
     return lastUpdate;
   }
+
 
   public void setLastUpdate(OffsetDateTime lastUpdate) {
     this.lastUpdate = lastUpdate;
@@ -671,10 +708,6 @@ public class CallState {
       if ((jsonObj.get("from") != null && !jsonObj.get("from").isJsonNull()) && !jsonObj.get("from").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
       }
-      // validate the optional field `direction`
-      if (jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) {
-        CallDirectionEnum.validateJsonElement(jsonObj.get("direction"));
-      }
       if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
       }
@@ -720,12 +753,7 @@ public class CallState {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

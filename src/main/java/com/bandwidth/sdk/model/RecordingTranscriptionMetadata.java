@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.net.URI;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -43,6 +44,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -50,7 +52,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * If the recording was transcribed, metadata about the transcription
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RecordingTranscriptionMetadata {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -62,7 +64,7 @@ public class RecordingTranscriptionMetadata {
 
   public static final String SERIALIZED_NAME_COMPLETED_TIME = "completedTime";
   @SerializedName(SERIALIZED_NAME_COMPLETED_TIME)
-  private String completedTime;
+  private OffsetDateTime completedTime;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
@@ -72,6 +74,7 @@ public class RecordingTranscriptionMetadata {
   }
 
   public RecordingTranscriptionMetadata id(String id) {
+    
     this.id = id;
     return this;
   }
@@ -85,12 +88,14 @@ public class RecordingTranscriptionMetadata {
     return id;
   }
 
+
   public void setId(String id) {
     this.id = id;
   }
 
 
   public RecordingTranscriptionMetadata status(String status) {
+    
     this.status = status;
     return this;
   }
@@ -104,12 +109,14 @@ public class RecordingTranscriptionMetadata {
     return status;
   }
 
+
   public void setStatus(String status) {
     this.status = status;
   }
 
 
-  public RecordingTranscriptionMetadata completedTime(String completedTime) {
+  public RecordingTranscriptionMetadata completedTime(OffsetDateTime completedTime) {
+    
     this.completedTime = completedTime;
     return this;
   }
@@ -119,16 +126,18 @@ public class RecordingTranscriptionMetadata {
    * @return completedTime
   **/
   @javax.annotation.Nullable
-  public String getCompletedTime() {
+  public OffsetDateTime getCompletedTime() {
     return completedTime;
   }
 
-  public void setCompletedTime(String completedTime) {
+
+  public void setCompletedTime(OffsetDateTime completedTime) {
     this.completedTime = completedTime;
   }
 
 
   public RecordingTranscriptionMetadata url(URI url) {
+    
     this.url = url;
     return this;
   }
@@ -141,6 +150,7 @@ public class RecordingTranscriptionMetadata {
   public URI getUrl() {
     return url;
   }
+
 
   public void setUrl(URI url) {
     this.url = url;
@@ -272,9 +282,6 @@ public class RecordingTranscriptionMetadata {
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
-      if ((jsonObj.get("completedTime") != null && !jsonObj.get("completedTime").isJsonNull()) && !jsonObj.get("completedTime").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `completedTime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("completedTime").toString()));
-      }
       if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
       }
@@ -308,12 +315,7 @@ public class RecordingTranscriptionMetadata {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

@@ -2,7 +2,6 @@
 
 Bandwidth
 - API version: 1.0.0
-  - Generator version: 7.6.0
 
 Bandwidth's Communication APIs
 
@@ -174,8 +173,10 @@ Class | Method | HTTP request | Description
  - [CallState](docs/CallState.md)
  - [CallStateEnum](docs/CallStateEnum.md)
  - [CallTranscription](docs/CallTranscription.md)
+ - [CallTranscriptionDetectedLanguageEnum](docs/CallTranscriptionDetectedLanguageEnum.md)
  - [CallTranscriptionMetadata](docs/CallTranscriptionMetadata.md)
  - [CallTranscriptionResponse](docs/CallTranscriptionResponse.md)
+ - [CallTranscriptionTrackEnum](docs/CallTranscriptionTrackEnum.md)
  - [CallbackMethodEnum](docs/CallbackMethodEnum.md)
  - [CodeRequest](docs/CodeRequest.md)
  - [Conference](docs/Conference.md)

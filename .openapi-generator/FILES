@@ -12,8 +12,10 @@ docs/CallRecordingMetadata.md
 docs/CallState.md
 docs/CallStateEnum.md
 docs/CallTranscription.md
+docs/CallTranscriptionDetectedLanguageEnum.md
 docs/CallTranscriptionMetadata.md
 docs/CallTranscriptionResponse.md
+docs/CallTranscriptionTrackEnum.md
 docs/CallbackMethodEnum.md
 docs/CallsApi.md
 docs/CodeRequest.md
@@ -147,8 +149,10 @@ src/main/java/com/bandwidth/sdk/model/CallRecordingMetadata.java
 src/main/java/com/bandwidth/sdk/model/CallState.java
 src/main/java/com/bandwidth/sdk/model/CallStateEnum.java
 src/main/java/com/bandwidth/sdk/model/CallTranscription.java
+src/main/java/com/bandwidth/sdk/model/CallTranscriptionDetectedLanguageEnum.java
 src/main/java/com/bandwidth/sdk/model/CallTranscriptionMetadata.java
 src/main/java/com/bandwidth/sdk/model/CallTranscriptionResponse.java
+src/main/java/com/bandwidth/sdk/model/CallTranscriptionTrackEnum.java
 src/main/java/com/bandwidth/sdk/model/CallbackMethodEnum.java
 src/main/java/com/bandwidth/sdk/model/CodeRequest.java
 src/main/java/com/bandwidth/sdk/model/Conference.java
@@ -229,3 +233,5 @@ src/main/java/com/bandwidth/sdk/model/VerifyCodeRequest.java
 src/main/java/com/bandwidth/sdk/model/VerifyCodeResponse.java
 src/main/java/com/bandwidth/sdk/model/VoiceApiError.java
 src/main/java/com/bandwidth/sdk/model/VoiceCodeResponse.java
+src/test/java/com/bandwidth/sdk/model/CallTranscriptionDetectedLanguageEnumTest.java
+src/test/java/com/bandwidth/sdk/model/CallTranscriptionTrackEnumTest.java
