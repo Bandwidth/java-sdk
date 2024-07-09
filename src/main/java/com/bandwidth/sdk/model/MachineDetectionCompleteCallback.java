@@ -46,6 +46,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -53,7 +54,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * This event is sent to the url informed when requesting a machine detection operation. It contains the machine detection operation result, which can be: human, answering-machine, silence, timeout, error. This event is not sent when sync answering machine detection mode is chosen.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MachineDetectionCompleteCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
@@ -115,6 +116,7 @@ public class MachineDetectionCompleteCallback {
   }
 
   public MachineDetectionCompleteCallback eventType(String eventType) {
+    
     this.eventType = eventType;
     return this;
   }
@@ -128,12 +130,14 @@ public class MachineDetectionCompleteCallback {
     return eventType;
   }
 
+
   public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
   public MachineDetectionCompleteCallback eventTime(OffsetDateTime eventTime) {
+    
     this.eventTime = eventTime;
     return this;
   }
@@ -147,12 +151,14 @@ public class MachineDetectionCompleteCallback {
     return eventTime;
   }
 
+
   public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
   public MachineDetectionCompleteCallback accountId(String accountId) {
+    
     this.accountId = accountId;
     return this;
   }
@@ -166,12 +172,14 @@ public class MachineDetectionCompleteCallback {
     return accountId;
   }
 
+
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
   public MachineDetectionCompleteCallback applicationId(String applicationId) {
+    
     this.applicationId = applicationId;
     return this;
   }
@@ -185,12 +193,14 @@ public class MachineDetectionCompleteCallback {
     return applicationId;
   }
 
+
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public MachineDetectionCompleteCallback from(String from) {
+    
     this.from = from;
     return this;
   }
@@ -204,12 +214,14 @@ public class MachineDetectionCompleteCallback {
     return from;
   }
 
+
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public MachineDetectionCompleteCallback to(String to) {
+    
     this.to = to;
     return this;
   }
@@ -223,12 +235,14 @@ public class MachineDetectionCompleteCallback {
     return to;
   }
 
+
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public MachineDetectionCompleteCallback direction(CallDirectionEnum direction) {
+    
     this.direction = direction;
     return this;
   }
@@ -242,12 +256,14 @@ public class MachineDetectionCompleteCallback {
     return direction;
   }
 
+
   public void setDirection(CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
   public MachineDetectionCompleteCallback callId(String callId) {
+    
     this.callId = callId;
     return this;
   }
@@ -261,12 +277,14 @@ public class MachineDetectionCompleteCallback {
     return callId;
   }
 
+
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
   public MachineDetectionCompleteCallback callUrl(String callUrl) {
+    
     this.callUrl = callUrl;
     return this;
   }
@@ -280,12 +298,14 @@ public class MachineDetectionCompleteCallback {
     return callUrl;
   }
 
+
   public void setCallUrl(String callUrl) {
     this.callUrl = callUrl;
   }
 
 
   public MachineDetectionCompleteCallback enqueuedTime(OffsetDateTime enqueuedTime) {
+    
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -299,12 +319,14 @@ public class MachineDetectionCompleteCallback {
     return enqueuedTime;
   }
 
+
   public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
   public MachineDetectionCompleteCallback startTime(OffsetDateTime startTime) {
+    
     this.startTime = startTime;
     return this;
   }
@@ -318,12 +340,14 @@ public class MachineDetectionCompleteCallback {
     return startTime;
   }
 
+
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
   public MachineDetectionCompleteCallback answerTime(OffsetDateTime answerTime) {
+    
     this.answerTime = answerTime;
     return this;
   }
@@ -337,12 +361,14 @@ public class MachineDetectionCompleteCallback {
     return answerTime;
   }
 
+
   public void setAnswerTime(OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
   public MachineDetectionCompleteCallback tag(String tag) {
+    
     this.tag = tag;
     return this;
   }
@@ -356,12 +382,14 @@ public class MachineDetectionCompleteCallback {
     return tag;
   }
 
+
   public void setTag(String tag) {
     this.tag = tag;
   }
 
 
   public MachineDetectionCompleteCallback machineDetectionResult(MachineDetectionResult machineDetectionResult) {
+    
     this.machineDetectionResult = machineDetectionResult;
     return this;
   }
@@ -374,6 +402,7 @@ public class MachineDetectionCompleteCallback {
   public MachineDetectionResult getMachineDetectionResult() {
     return machineDetectionResult;
   }
+
 
   public void setMachineDetectionResult(MachineDetectionResult machineDetectionResult) {
     this.machineDetectionResult = machineDetectionResult;
@@ -555,10 +584,6 @@ public class MachineDetectionCompleteCallback {
       if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
-      // validate the optional field `direction`
-      if (jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) {
-        CallDirectionEnum.validateJsonElement(jsonObj.get("direction"));
-      }
       if ((jsonObj.get("callId") != null && !jsonObj.get("callId").isJsonNull()) && !jsonObj.get("callId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callId").toString()));
       }
@@ -602,12 +627,7 @@ public class MachineDetectionCompleteCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
