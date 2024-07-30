@@ -46,6 +46,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -53,7 +54,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * UpdateCall
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdateCall {
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
@@ -99,6 +100,7 @@ public class UpdateCall {
   }
 
   public UpdateCall state(CallStateEnum state) {
+    
     this.state = state;
     return this;
   }
@@ -112,12 +114,14 @@ public class UpdateCall {
     return state;
   }
 
+
   public void setState(CallStateEnum state) {
     this.state = state;
   }
 
 
   public UpdateCall redirectUrl(URI redirectUrl) {
+    
     this.redirectUrl = redirectUrl;
     return this;
   }
@@ -131,12 +135,14 @@ public class UpdateCall {
     return redirectUrl;
   }
 
+
   public void setRedirectUrl(URI redirectUrl) {
     this.redirectUrl = redirectUrl;
   }
 
 
   public UpdateCall redirectMethod(RedirectMethodEnum redirectMethod) {
+    
     this.redirectMethod = redirectMethod;
     return this;
   }
@@ -150,12 +156,14 @@ public class UpdateCall {
     return redirectMethod;
   }
 
+
   public void setRedirectMethod(RedirectMethodEnum redirectMethod) {
     this.redirectMethod = redirectMethod;
   }
 
 
   public UpdateCall username(String username) {
+    
     this.username = username;
     return this;
   }
@@ -169,12 +177,14 @@ public class UpdateCall {
     return username;
   }
 
+
   public void setUsername(String username) {
     this.username = username;
   }
 
 
   public UpdateCall password(String password) {
+    
     this.password = password;
     return this;
   }
@@ -188,12 +198,14 @@ public class UpdateCall {
     return password;
   }
 
+
   public void setPassword(String password) {
     this.password = password;
   }
 
 
   public UpdateCall redirectFallbackUrl(URI redirectFallbackUrl) {
+    
     this.redirectFallbackUrl = redirectFallbackUrl;
     return this;
   }
@@ -207,12 +219,14 @@ public class UpdateCall {
     return redirectFallbackUrl;
   }
 
+
   public void setRedirectFallbackUrl(URI redirectFallbackUrl) {
     this.redirectFallbackUrl = redirectFallbackUrl;
   }
 
 
   public UpdateCall redirectFallbackMethod(RedirectMethodEnum redirectFallbackMethod) {
+    
     this.redirectFallbackMethod = redirectFallbackMethod;
     return this;
   }
@@ -226,12 +240,14 @@ public class UpdateCall {
     return redirectFallbackMethod;
   }
 
+
   public void setRedirectFallbackMethod(RedirectMethodEnum redirectFallbackMethod) {
     this.redirectFallbackMethod = redirectFallbackMethod;
   }
 
 
   public UpdateCall fallbackUsername(String fallbackUsername) {
+    
     this.fallbackUsername = fallbackUsername;
     return this;
   }
@@ -245,12 +261,14 @@ public class UpdateCall {
     return fallbackUsername;
   }
 
+
   public void setFallbackUsername(String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
   }
 
 
   public UpdateCall fallbackPassword(String fallbackPassword) {
+    
     this.fallbackPassword = fallbackPassword;
     return this;
   }
@@ -264,12 +282,14 @@ public class UpdateCall {
     return fallbackPassword;
   }
 
+
   public void setFallbackPassword(String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
   }
 
 
   public UpdateCall tag(String tag) {
+    
     this.tag = tag;
     return this;
   }
@@ -282,6 +302,7 @@ public class UpdateCall {
   public String getTag() {
     return tag;
   }
+
 
   public void setTag(String tag) {
     this.tag = tag;
@@ -436,16 +457,8 @@ public class UpdateCall {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `state`
-      if (jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) {
-        CallStateEnum.validateJsonElement(jsonObj.get("state"));
-      }
       if ((jsonObj.get("redirectUrl") != null && !jsonObj.get("redirectUrl").isJsonNull()) && !jsonObj.get("redirectUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redirectUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirectUrl").toString()));
-      }
-      // validate the optional field `redirectMethod`
-      if (jsonObj.get("redirectMethod") != null && !jsonObj.get("redirectMethod").isJsonNull()) {
-        RedirectMethodEnum.validateJsonElement(jsonObj.get("redirectMethod"));
       }
       if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
@@ -455,10 +468,6 @@ public class UpdateCall {
       }
       if ((jsonObj.get("redirectFallbackUrl") != null && !jsonObj.get("redirectFallbackUrl").isJsonNull()) && !jsonObj.get("redirectFallbackUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redirectFallbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirectFallbackUrl").toString()));
-      }
-      // validate the optional field `redirectFallbackMethod`
-      if (jsonObj.get("redirectFallbackMethod") != null && !jsonObj.get("redirectFallbackMethod").isJsonNull()) {
-        RedirectMethodEnum.validateJsonElement(jsonObj.get("redirectFallbackMethod"));
       }
       if ((jsonObj.get("fallbackUsername") != null && !jsonObj.get("fallbackUsername").isJsonNull()) && !jsonObj.get("fallbackUsername").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fallbackUsername` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackUsername").toString()));
@@ -499,12 +508,7 @@ public class UpdateCall {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

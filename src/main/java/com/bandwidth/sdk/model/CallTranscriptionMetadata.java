@@ -42,6 +42,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -49,11 +50,15 @@ import com.bandwidth.sdk.JSON;
 /**
  * CallTranscriptionMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CallTranscriptionMetadata {
   public static final String SERIALIZED_NAME_TRANSCRIPTION_ID = "transcriptionId";
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTION_ID)
   private String transcriptionId;
+
+  public static final String SERIALIZED_NAME_TRANSCRIPTION_NAME = "transcriptionName";
+  @SerializedName(SERIALIZED_NAME_TRANSCRIPTION_NAME)
+  private String transcriptionName;
 
   public static final String SERIALIZED_NAME_TRANSCRIPTION_URL = "transcriptionUrl";
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTION_URL)
@@ -63,6 +68,7 @@ public class CallTranscriptionMetadata {
   }
 
   public CallTranscriptionMetadata transcriptionId(String transcriptionId) {
+    
     this.transcriptionId = transcriptionId;
     return this;
   }
@@ -76,12 +82,35 @@ public class CallTranscriptionMetadata {
     return transcriptionId;
   }
 
+
   public void setTranscriptionId(String transcriptionId) {
     this.transcriptionId = transcriptionId;
   }
 
 
+  public CallTranscriptionMetadata transcriptionName(String transcriptionName) {
+    
+    this.transcriptionName = transcriptionName;
+    return this;
+  }
+
+   /**
+   * The programmable voice API transcription name. This name could be provided by the user when creating the transcription.
+   * @return transcriptionName
+  **/
+  @javax.annotation.Nullable
+  public String getTranscriptionName() {
+    return transcriptionName;
+  }
+
+
+  public void setTranscriptionName(String transcriptionName) {
+    this.transcriptionName = transcriptionName;
+  }
+
+
   public CallTranscriptionMetadata transcriptionUrl(String transcriptionUrl) {
+    
     this.transcriptionUrl = transcriptionUrl;
     return this;
   }
@@ -94,6 +123,7 @@ public class CallTranscriptionMetadata {
   public String getTranscriptionUrl() {
     return transcriptionUrl;
   }
+
 
   public void setTranscriptionUrl(String transcriptionUrl) {
     this.transcriptionUrl = transcriptionUrl;
@@ -155,13 +185,14 @@ public class CallTranscriptionMetadata {
     }
     CallTranscriptionMetadata callTranscriptionMetadata = (CallTranscriptionMetadata) o;
     return Objects.equals(this.transcriptionId, callTranscriptionMetadata.transcriptionId) &&
+        Objects.equals(this.transcriptionName, callTranscriptionMetadata.transcriptionName) &&
         Objects.equals(this.transcriptionUrl, callTranscriptionMetadata.transcriptionUrl)&&
         Objects.equals(this.additionalProperties, callTranscriptionMetadata.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(transcriptionId, transcriptionUrl, additionalProperties);
+    return Objects.hash(transcriptionId, transcriptionName, transcriptionUrl, additionalProperties);
   }
 
   @Override
@@ -169,6 +200,7 @@ public class CallTranscriptionMetadata {
     StringBuilder sb = new StringBuilder();
     sb.append("class CallTranscriptionMetadata {\n");
     sb.append("    transcriptionId: ").append(toIndentedString(transcriptionId)).append("\n");
+    sb.append("    transcriptionName: ").append(toIndentedString(transcriptionName)).append("\n");
     sb.append("    transcriptionUrl: ").append(toIndentedString(transcriptionUrl)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -194,6 +226,7 @@ public class CallTranscriptionMetadata {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("transcriptionId");
+    openapiFields.add("transcriptionName");
     openapiFields.add("transcriptionUrl");
 
     // a set of required properties/fields (JSON key names)
@@ -215,6 +248,9 @@ public class CallTranscriptionMetadata {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("transcriptionId") != null && !jsonObj.get("transcriptionId").isJsonNull()) && !jsonObj.get("transcriptionId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transcriptionId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transcriptionId").toString()));
+      }
+      if ((jsonObj.get("transcriptionName") != null && !jsonObj.get("transcriptionName").isJsonNull()) && !jsonObj.get("transcriptionName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transcriptionName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transcriptionName").toString()));
       }
       if ((jsonObj.get("transcriptionUrl") != null && !jsonObj.get("transcriptionUrl").isJsonNull()) && !jsonObj.get("transcriptionUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transcriptionUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transcriptionUrl").toString()));
@@ -249,12 +285,7 @@ public class CallTranscriptionMetadata {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
