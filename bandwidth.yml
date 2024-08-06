@@ -2131,6 +2131,21 @@ components:
 
         and will include its result.
       example: async
+    callTranscriptionDetectedLanguageEnum:
+      type: string
+      enum:
+        - en-US
+        - es-US
+        - fr-FR
+      description: The detected language for this transcription.
+      example: en-US
+    callTranscriptionTrackEnum:
+      type: string
+      enum:
+        - inbound
+        - outbound
+      description: Which `track` this transcription is derived from.
+      example: inbound
     createCall:
       type: object
       required:
@@ -2787,6 +2802,8 @@ components:
           $ref: '#/components/schemas/mediaUrl'
         transcription:
           $ref: '#/components/schemas/recordingTranscriptionMetadata'
+        recordingName:
+          $ref: '#/components/schemas/recordingName'
     conference:
       type: object
       properties:
@@ -3026,6 +3043,8 @@ components:
           $ref: '#/components/schemas/status'
         mediaUrl:
           $ref: '#/components/schemas/mediaUrl'
+        recordingName:
+          $ref: '#/components/schemas/recordingName'
     machineDetectionConfiguration:
       type: object
       description: >-
@@ -3239,6 +3258,7 @@ components:
         $ref: '#/components/schemas/callTranscriptionMetadata'
       example:
         - transcriptionId: t-3f758f24-c7a2fc78-7c91-401a-8b2e-e542f9c40d6b
+          transcriptionName: live_transcription
           transcriptionUrl: >-
             https://voice.bandwidth.com/api/v2/accounts/9900000/calls/c-fef240ff-5cfc9091-8069-4863-a8c0-a4dcbbf1f1a4/transcriptions/t-3f758f24-c7a2fc78-7c91-401a-8b2e-e542f9c40d6b
     callTranscriptionMetadata:
@@ -3248,6 +3268,12 @@ components:
           type: string
           description: The programmable voice API transcription ID.
           example: t-3f758f24-c7a2fc78-7c91-401a-8b2e-e542f9c40d6b
+        transcriptionName:
+          type: string
+          description: >-
+            The programmable voice API transcription name. This name could be
+            provided by the user when creating the transcription.
+          example: live_transcription
         transcriptionUrl:
           type: string
           description: >-
@@ -3265,7 +3291,7 @@ components:
         accountId:
           type: string
           description: The user account associated with the call.
-          example: '920012'
+          example: '9900000'
         callId:
           type: string
           description: The call id associated with the event.
@@ -3281,26 +3307,15 @@ components:
           example:
             - detectedLanguage: en-US
               track: inbound
-              text: Hello World! This is an example.
+              transcript: Hello World! This is an example.
               confidence: 0.9
     callTranscription:
       type: object
       properties:
         detectedLanguage:
-          type: string
-          enum:
-            - en-US
-            - es-US
-            - fr-FR
-          description: The detected language for this transcription.
-          example: en-US
+          $ref: '#/components/schemas/callTranscriptionDetectedLanguageEnum'
         track:
-          type: string
-          enum:
-            - inbound
-            - outbound
-          description: Which `track` this transcription is derived from.
-          example: inbound
+          $ref: '#/components/schemas/callTranscriptionTrackEnum'
         transcript:
           type: string
           description: The transcription itself.
@@ -3327,6 +3342,7 @@ components:
           $ref: '#/components/schemas/status'
         completedTime:
           type: string
+          format: date-time
           description: The time that the transcription was completed
           example: '2022-06-13T18:46:29.715Z'
         url:
@@ -4254,6 +4270,10 @@ components:
       type: string
       description: The call id associated with the event.
       example: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+    recordingName:
+      type: string
+      description: A name to identify this recording.
+      example: my-recording-name
     callUrl:
       type: string
       description: The URL of the call associated with the event.

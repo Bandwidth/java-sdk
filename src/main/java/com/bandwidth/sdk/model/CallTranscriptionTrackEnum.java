@@ -23,18 +23,18 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The machine detection mode. If set to &#39;async&#39;, the detection result will be sent in a &#39;machineDetectionComplete&#39; callback. If set to &#39;sync&#39;, the &#39;answer&#39; callback will wait for the machine detection to complete and will include its result.
+ * Which &#x60;track&#x60; this transcription is derived from.
  */
-@JsonAdapter(MachineDetectionModeEnum.Adapter.class)
-public enum MachineDetectionModeEnum {
+@JsonAdapter(CallTranscriptionTrackEnum.Adapter.class)
+public enum CallTranscriptionTrackEnum {
   
-  SYNC("sync"),
+  INBOUND("inbound"),
   
-  ASYNC("async");
+  OUTBOUND("outbound");
 
   private String value;
 
-  MachineDetectionModeEnum(String value) {
+  CallTranscriptionTrackEnum(String value) {
     this.value = value;
   }
 
@@ -47,8 +47,8 @@ public enum MachineDetectionModeEnum {
     return String.valueOf(value);
   }
 
-  public static MachineDetectionModeEnum fromValue(String value) {
-    for (MachineDetectionModeEnum b : MachineDetectionModeEnum.values()) {
+  public static CallTranscriptionTrackEnum fromValue(String value) {
+    for (CallTranscriptionTrackEnum b : CallTranscriptionTrackEnum.values()) {
       if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
@@ -56,16 +56,16 @@ public enum MachineDetectionModeEnum {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<MachineDetectionModeEnum> {
+  public static class Adapter extends TypeAdapter<CallTranscriptionTrackEnum> {
     @Override
-    public void write(final JsonWriter jsonWriter, final MachineDetectionModeEnum enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final CallTranscriptionTrackEnum enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public MachineDetectionModeEnum read(final JsonReader jsonReader) throws IOException {
+    public CallTranscriptionTrackEnum read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return MachineDetectionModeEnum.fromValue(value);
+      return CallTranscriptionTrackEnum.fromValue(value);
     }
   }
 }

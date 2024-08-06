@@ -44,6 +44,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -51,7 +52,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Message Failed Callback
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MessageFailedCallback {
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)
@@ -81,6 +82,7 @@ public class MessageFailedCallback {
   }
 
   public MessageFailedCallback time(OffsetDateTime time) {
+    
     this.time = time;
     return this;
   }
@@ -94,12 +96,14 @@ public class MessageFailedCallback {
     return time;
   }
 
+
   public void setTime(OffsetDateTime time) {
     this.time = time;
   }
 
 
   public MessageFailedCallback type(String type) {
+    
     this.type = type;
     return this;
   }
@@ -113,12 +117,14 @@ public class MessageFailedCallback {
     return type;
   }
 
+
   public void setType(String type) {
     this.type = type;
   }
 
 
   public MessageFailedCallback to(String to) {
+    
     this.to = to;
     return this;
   }
@@ -132,12 +138,14 @@ public class MessageFailedCallback {
     return to;
   }
 
+
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public MessageFailedCallback description(String description) {
+    
     this.description = description;
     return this;
   }
@@ -151,12 +159,14 @@ public class MessageFailedCallback {
     return description;
   }
 
+
   public void setDescription(String description) {
     this.description = description;
   }
 
 
   public MessageFailedCallback message(MessageFailedCallbackMessage message) {
+    
     this.message = message;
     return this;
   }
@@ -170,12 +180,14 @@ public class MessageFailedCallback {
     return message;
   }
 
+
   public void setMessage(MessageFailedCallbackMessage message) {
     this.message = message;
   }
 
 
   public MessageFailedCallback errorCode(Integer errorCode) {
+    
     this.errorCode = errorCode;
     return this;
   }
@@ -188,6 +200,7 @@ public class MessageFailedCallback {
   public Integer getErrorCode() {
     return errorCode;
   }
+
 
   public void setErrorCode(Integer errorCode) {
     this.errorCode = errorCode;
@@ -373,12 +386,7 @@ public class MessageFailedCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
