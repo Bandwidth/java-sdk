@@ -55,4 +55,4 @@ jobs:
             RUNNER_OS: ${{ matrix.os }}
             OPERATING_SYSTEM: ${{ matrix.os }}
             DISTRIBUTION: ${{ matrix.distribution }}
-          run: mvn -B package --file pom.xml
+          run: mvn clean install -DskipTests
