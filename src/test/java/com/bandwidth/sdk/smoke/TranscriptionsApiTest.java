@@ -15,6 +15,7 @@ import com.bandwidth.sdk.model.UpdateCall;
 import com.bandwidth.sdk.model.CallTranscription;
 import com.bandwidth.sdk.model.CallTranscriptionMetadata;
 import com.bandwidth.sdk.model.CallTranscriptionResponse;
+import com.bandwidth.sdk.model.CallTranscriptionTrackEnum;
 import com.bandwidth.sdk.model.VoiceApiError;
 
 import org.junit.jupiter.api.Test;
