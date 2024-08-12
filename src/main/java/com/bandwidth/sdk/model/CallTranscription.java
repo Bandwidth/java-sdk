@@ -14,6 +14,8 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import com.bandwidth.sdk.model.CallTranscriptionDetectedLanguageEnum;
+import com.bandwidth.sdk.model.CallTranscriptionTrackEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -51,119 +53,13 @@ import com.bandwidth.sdk.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class CallTranscription {
-  /**
-   * The detected language for this transcription.
-   */
-  @JsonAdapter(DetectedLanguageEnum.Adapter.class)
-  public enum DetectedLanguageEnum {
-    EN_US("en-US"),
-    
-    ES_US("es-US"),
-    
-    FR_FR("fr-FR");
-
-    private String value;
-
-    DetectedLanguageEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static DetectedLanguageEnum fromValue(String value) {
-      for (DetectedLanguageEnum b : DetectedLanguageEnum.values()) {
-        if (b.value.equalsIgnoreCase(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<DetectedLanguageEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final DetectedLanguageEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public DetectedLanguageEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return DetectedLanguageEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      DetectedLanguageEnum.fromValue(value);
-    }
-  }
-
   public static final String SERIALIZED_NAME_DETECTED_LANGUAGE = "detectedLanguage";
   @SerializedName(SERIALIZED_NAME_DETECTED_LANGUAGE)
-  private DetectedLanguageEnum detectedLanguage;
-
-  /**
-   * Which &#x60;track&#x60; this transcription is derived from.
-   */
-  @JsonAdapter(TrackEnum.Adapter.class)
-  public enum TrackEnum {
-    INBOUND("inbound"),
-    
-    OUTBOUND("outbound");
-
-    private String value;
-
-    TrackEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TrackEnum fromValue(String value) {
-      for (TrackEnum b : TrackEnum.values()) {
-        if (b.value.equalsIgnoreCase(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TrackEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TrackEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TrackEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TrackEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      TrackEnum.fromValue(value);
-    }
-  }
+  private CallTranscriptionDetectedLanguageEnum detectedLanguage;
 
   public static final String SERIALIZED_NAME_TRACK = "track";
   @SerializedName(SERIALIZED_NAME_TRACK)
-  private TrackEnum track;
+  private CallTranscriptionTrackEnum track;
 
   public static final String SERIALIZED_NAME_TRANSCRIPT = "transcript";
   @SerializedName(SERIALIZED_NAME_TRANSCRIPT)
@@ -176,40 +72,40 @@ public class CallTranscription {
   public CallTranscription() {
   }
 
-  public CallTranscription detectedLanguage(DetectedLanguageEnum detectedLanguage) {
+  public CallTranscription detectedLanguage(CallTranscriptionDetectedLanguageEnum detectedLanguage) {
     this.detectedLanguage = detectedLanguage;
     return this;
   }
 
    /**
-   * The detected language for this transcription.
+   * Get detectedLanguage
    * @return detectedLanguage
   **/
   @javax.annotation.Nullable
-  public DetectedLanguageEnum getDetectedLanguage() {
+  public CallTranscriptionDetectedLanguageEnum getDetectedLanguage() {
     return detectedLanguage;
   }
 
-  public void setDetectedLanguage(DetectedLanguageEnum detectedLanguage) {
+  public void setDetectedLanguage(CallTranscriptionDetectedLanguageEnum detectedLanguage) {
     this.detectedLanguage = detectedLanguage;
   }
 
 
-  public CallTranscription track(TrackEnum track) {
+  public CallTranscription track(CallTranscriptionTrackEnum track) {
     this.track = track;
     return this;
   }
 
    /**
-   * Which &#x60;track&#x60; this transcription is derived from.
+   * Get track
    * @return track
   **/
   @javax.annotation.Nullable
-  public TrackEnum getTrack() {
+  public CallTranscriptionTrackEnum getTrack() {
     return track;
   }
 
-  public void setTrack(TrackEnum track) {
+  public void setTrack(CallTranscriptionTrackEnum track) {
     this.track = track;
   }
 
@@ -373,19 +269,13 @@ public class CallTranscription {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("detectedLanguage") != null && !jsonObj.get("detectedLanguage").isJsonNull()) && !jsonObj.get("detectedLanguage").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `detectedLanguage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("detectedLanguage").toString()));
-      }
       // validate the optional field `detectedLanguage`
       if (jsonObj.get("detectedLanguage") != null && !jsonObj.get("detectedLanguage").isJsonNull()) {
-        DetectedLanguageEnum.validateJsonElement(jsonObj.get("detectedLanguage"));
-      }
-      if ((jsonObj.get("track") != null && !jsonObj.get("track").isJsonNull()) && !jsonObj.get("track").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `track` to be a primitive type in the JSON string but got `%s`", jsonObj.get("track").toString()));
+        CallTranscriptionDetectedLanguageEnum.validateJsonElement(jsonObj.get("detectedLanguage"));
       }
       // validate the optional field `track`
       if (jsonObj.get("track") != null && !jsonObj.get("track").isJsonNull()) {
-        TrackEnum.validateJsonElement(jsonObj.get("track"));
+        CallTranscriptionTrackEnum.validateJsonElement(jsonObj.get("track"));
       }
       if ((jsonObj.get("transcript") != null && !jsonObj.get("transcript").isJsonNull()) && !jsonObj.get("transcript").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transcript` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transcript").toString()));
