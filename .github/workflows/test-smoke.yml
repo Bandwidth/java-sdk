@@ -3,11 +3,11 @@ name: Smoke Test
 on:
   schedule:
     - cron: "0 4 * * *"
-  pull_request:
-    branches:
-      - main
-    paths:
-      - "src/test/java/com/bandwidth/sdk/smoke/*"
+  # pull_request:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - "src/test/java/com/bandwidth/sdk/smoke/*"
 
 env:
   BW_ACCOUNT_ID: ${{ secrets.BW_ACCOUNT_ID }}
@@ -48,13 +48,13 @@ jobs:
           distribution: ${{ matrix.distribution }}
           java-version: ${{ matrix.java-version }}
 
-      # - name: Test
-      #   env:
-      #     JAVA_VERSION: ${{ matrix.java-version }}
-      #     RUNNER_OS: ${{ matrix.os }}
-      #     OPERATING_SYSTEM: ${{ matrix.os }}
-      #     DISTRIBUTION: ${{ matrix.distribution }}
-      #   run: mvn -B package --file pom.xml
+      - name: Test
+        env:
+          JAVA_VERSION: ${{ matrix.java-version }}
+          RUNNER_OS: ${{ matrix.os }}
+          OPERATING_SYSTEM: ${{ matrix.os }}
+          DISTRIBUTION: ${{ matrix.distribution }}
+        run: mvn -B package --file pom.xml
 
   notify_for_failures:
     name: Notify for Failures
