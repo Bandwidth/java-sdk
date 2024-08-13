@@ -42,6 +42,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -49,7 +50,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * VoiceCodeResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class VoiceCodeResponse {
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
@@ -59,6 +60,7 @@ public class VoiceCodeResponse {
   }
 
   public VoiceCodeResponse callId(String callId) {
+    
     this.callId = callId;
     return this;
   }
@@ -71,6 +73,7 @@ public class VoiceCodeResponse {
   public String getCallId() {
     return callId;
   }
+
 
   public void setCallId(String callId) {
     this.callId = callId;
@@ -220,12 +223,7 @@ public class VoiceCodeResponse {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }
