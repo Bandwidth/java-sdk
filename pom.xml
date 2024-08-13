@@ -100,6 +100,9 @@
                     <argLine>-Xms512m -Xmx1500m</argLine>
                     <parallel>methods</parallel>
                     <threadCount>10</threadCount>
+                    <includes>
+                        <include>${test-classes}</include>
+                    </includes>
                 </configuration>
                 <dependencies>
                     <!--Custom
@@ -419,6 +422,22 @@
             UTF-8</project.build.sourceEncoding>
         <spotless.version>2.21.0</spotless.version>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>smoke-tests</id>
+            <properties>
+                <test-classes>smoke/**/*</test-classes>
+            </properties>
+        </profile>
+        <profile>
+            <id>unit-tests</id>
+            <properties>
+                <test-classes>unit/**/*</test-classes>
+            </properties>
+        </profile>
+    </profiles>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
