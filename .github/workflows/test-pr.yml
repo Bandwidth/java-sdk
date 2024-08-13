@@ -57,3 +57,4 @@ jobs:
             DISTRIBUTION: ${{ matrix.distribution }}
           run: |
             mvn -B package --file pom.xml -DskipTests
+            mvn test -Punit-tests
