@@ -12,34 +12,46 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.ListMessageDirectionEnum;
-import com.bandwidth.sdk.model.ListMessageItem;
-import com.bandwidth.sdk.model.MessageStatusEnum;
-import com.bandwidth.sdk.model.MessageTypeEnum;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.OffsetDateTime;
-import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.time.OffsetDateTime;
+import com.bandwidth.sdk.model.ListMessageItem;
+import com.bandwidth.sdk.model.MessageTypeEnum;
+import com.bandwidth.sdk.model.MessageStatusEnum;
+import com.bandwidth.sdk.model.ListMessageDirectionEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for ListMessageItem
  */
 public class ListMessageItemTest {
-    private final ListMessageItem model = new ListMessageItem();
+    private final ListMessageItem model = new ListMessageItem()
+            .messageId("messageId")
+            .accountId("accountId")
+            .sourceTn("sourceTn")
+            .destinationTn("destinationTn")
+            .messageStatus(MessageStatusEnum.ACCEPTED)
+            .messageDirection(ListMessageDirectionEnum.INBOUND)
+            .messageType(MessageTypeEnum.SMS)
+            .segmentCount(10)
+            .errorCode(123)
+            .receiveTime(OffsetDateTime.now())
+            .carrierName("carrierName")
+            .messageSize(10)
+            .messageLength(10)
+            .attachmentCount(10)
+            .recipientCount(10)
+            .campaignClass("campaignClass")
+            .campaignId("campaignId");
 
     /**
      * Model tests for ListMessageItem
      */
     @Test
     public void testListMessageItem() {
-        // TODO: test ListMessageItem
+        assertThat(model, instanceOf(ListMessageItem.class));
     }
 
     /**
@@ -47,7 +59,7 @@ public class ListMessageItemTest {
      */
     @Test
     public void messageIdTest() {
-        // TODO: test messageId
+        assertThat(model.getMessageId(), instanceOf(String.class));
     }
 
     /**
@@ -55,7 +67,7 @@ public class ListMessageItemTest {
      */
     @Test
     public void accountIdTest() {
-        // TODO: test accountId
+        assertThat(model.getAccountId(), instanceOf(String.class));
     }
 
     /**
@@ -63,7 +75,7 @@ public class ListMessageItemTest {
      */
     @Test
     public void sourceTnTest() {
-        // TODO: test sourceTn
+        assertThat(model.getSourceTn(), instanceOf(String.class));
     }
 
     /**
@@ -71,7 +83,7 @@ public class ListMessageItemTest {
      */
     @Test
     public void destinationTnTest() {
-        // TODO: test destinationTn
+        assertThat(model.getDestinationTn(), instanceOf(String.class));
     }
 
     /**
@@ -79,7 +91,7 @@ public class ListMessageItemTest {
      */
     @Test
     public void messageStatusTest() {
-        // TODO: test messageStatus
+        assertThat(model.getMessageStatus(), instanceOf(MessageStatusEnum.class));
     }
 
     /**
@@ -87,7 +99,7 @@ public class ListMessageItemTest {
      */
     @Test
     public void messageDirectionTest() {
-        // TODO: test messageDirection
+        assertThat(model.getMessageDirection(), instanceOf(ListMessageDirectionEnum.class));
     }
 
     /**
@@ -95,7 +107,7 @@ public class ListMessageItemTest {
      */
     @Test
     public void messageTypeTest() {
-        // TODO: test messageType
+        assertThat(model.getMessageType(), instanceOf(MessageTypeEnum.class));
     }
 
     /**
@@ -103,7 +115,7 @@ public class ListMessageItemTest {
      */
     @Test
     public void segmentCountTest() {
-        // TODO: test segmentCount
+        assertThat(model.getSegmentCount(), instanceOf(Integer.class));
     }
 
     /**
@@ -111,7 +123,7 @@ public class ListMessageItemTest {
      */
     @Test
     public void errorCodeTest() {
-        // TODO: test errorCode
+        assertThat(model.getErrorCode(), instanceOf(Integer.class));
     }
 
     /**
@@ -119,7 +131,7 @@ public class ListMessageItemTest {
      */
     @Test
     public void receiveTimeTest() {
-        // TODO: test receiveTime
+        assertThat(model.getReceiveTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -127,7 +139,7 @@ public class ListMessageItemTest {
      */
     @Test
     public void carrierNameTest() {
-        // TODO: test carrierName
+        assertThat(model.getCarrierName(), instanceOf(String.class));
     }
 
     /**
@@ -135,7 +147,7 @@ public class ListMessageItemTest {
      */
     @Test
     public void messageSizeTest() {
-        // TODO: test messageSize
+        assertThat(model.getMessageSize(), instanceOf(Integer.class));
     }
 
     /**
@@ -143,7 +155,7 @@ public class ListMessageItemTest {
      */
     @Test
     public void messageLengthTest() {
-        // TODO: test messageLength
+        assertThat(model.getMessageLength(), instanceOf(Integer.class));
     }
 
     /**
@@ -151,7 +163,7 @@ public class ListMessageItemTest {
      */
     @Test
     public void attachmentCountTest() {
-        // TODO: test attachmentCount
+        assertThat(model.getAttachmentCount(), instanceOf(Integer.class));
     }
 
     /**
@@ -159,7 +171,7 @@ public class ListMessageItemTest {
      */
     @Test
     public void recipientCountTest() {
-        // TODO: test recipientCount
+        assertThat(model.getRecipientCount(), instanceOf(Integer.class));
     }
 
     /**
@@ -167,7 +179,7 @@ public class ListMessageItemTest {
      */
     @Test
     public void campaignClassTest() {
-        // TODO: test campaignClass
+        assertThat(model.getCampaignClass(), instanceOf(String.class));
     }
 
     /**
@@ -175,7 +187,7 @@ public class ListMessageItemTest {
      */
     @Test
     public void campaignIdTest() {
-        // TODO: test campaignId
+        assertThat(model.getCampaignId(), instanceOf(String.class));
     }
 
 }

@@ -12,9 +12,12 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.google.gson.annotations.SerializedName;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.LookupStatusEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for LookupStatusEnum
@@ -25,7 +28,10 @@ public class LookupStatusEnumTest {
      */
     @Test
     public void testLookupStatusEnum() {
-        // TODO: test LookupStatusEnum
+        assertThat(LookupStatusEnum.COMPLETE.toString(), equalTo("COMPLETE"));
+        assertThat(LookupStatusEnum.FAILED.toString(), equalTo("FAILED"));
+        assertThat(LookupStatusEnum.IN_PROGRESS.toString(), equalTo("IN_PROGRESS"));
+        assertThat(LookupStatusEnum.PARTIAL_COMPLETE.toString(), equalTo("PARTIAL_COMPLETE"));
     }
 
 }

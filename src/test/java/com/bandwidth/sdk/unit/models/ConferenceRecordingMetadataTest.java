@@ -12,33 +12,40 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.ConferenceRecordingMetadata;
-import com.bandwidth.sdk.model.FileFormatEnum;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import org.junit.jupiter.api.Test;
+
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import com.bandwidth.sdk.model.ConferenceRecordingMetadata;
+import com.bandwidth.sdk.model.FileFormatEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for ConferenceRecordingMetadata
  */
 public class ConferenceRecordingMetadataTest {
-    private final ConferenceRecordingMetadata model = new ConferenceRecordingMetadata();
+    private final ConferenceRecordingMetadata model = new ConferenceRecordingMetadata()
+            .accountId("accountId")
+            .conferenceId("conferenceId")
+            .name("name")
+            .recordingId("recordingId")
+            .duration("duration")
+            .channels(0)
+            .startTime(OffsetDateTime.now())
+            .endTime(OffsetDateTime.now())
+            .fileFormat(FileFormatEnum.WAV)
+            .status("status")
+            .mediaUrl(URI.create("http://example.com"))
+            .recordingName("recordingName");
 
     /**
      * Model tests for ConferenceRecordingMetadata
      */
     @Test
     public void testConferenceRecordingMetadata() {
-        // TODO: test ConferenceRecordingMetadata
+        assertThat(model, instanceOf(ConferenceRecordingMetadata.class));
     }
 
     /**
@@ -46,7 +53,7 @@ public class ConferenceRecordingMetadataTest {
      */
     @Test
     public void accountIdTest() {
-        // TODO: test accountId
+        assertThat(model.getAccountId(), instanceOf(String.class));
     }
 
     /**
@@ -54,7 +61,7 @@ public class ConferenceRecordingMetadataTest {
      */
     @Test
     public void conferenceIdTest() {
-        // TODO: test conferenceId
+        assertThat(model.getConferenceId(), instanceOf(String.class));
     }
 
     /**
@@ -62,7 +69,7 @@ public class ConferenceRecordingMetadataTest {
      */
     @Test
     public void nameTest() {
-        // TODO: test name
+        assertThat(model.getName(), instanceOf(String.class));
     }
 
     /**
@@ -70,7 +77,7 @@ public class ConferenceRecordingMetadataTest {
      */
     @Test
     public void recordingIdTest() {
-        // TODO: test recordingId
+        assertThat(model.getRecordingId(), instanceOf(String.class));
     }
 
     /**
@@ -78,7 +85,7 @@ public class ConferenceRecordingMetadataTest {
      */
     @Test
     public void durationTest() {
-        // TODO: test duration
+        assertThat(model.getDuration(), instanceOf(String.class));
     }
 
     /**
@@ -86,7 +93,7 @@ public class ConferenceRecordingMetadataTest {
      */
     @Test
     public void channelsTest() {
-        // TODO: test channels
+        assertThat(model.getChannels(), instanceOf(Integer.class));
     }
 
     /**
@@ -94,7 +101,7 @@ public class ConferenceRecordingMetadataTest {
      */
     @Test
     public void startTimeTest() {
-        // TODO: test startTime
+        assertThat(model.getStartTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -102,7 +109,7 @@ public class ConferenceRecordingMetadataTest {
      */
     @Test
     public void endTimeTest() {
-        // TODO: test endTime
+        assertThat(model.getEndTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -110,7 +117,7 @@ public class ConferenceRecordingMetadataTest {
      */
     @Test
     public void fileFormatTest() {
-        // TODO: test fileFormat
+        assertThat(model.getFileFormat(), instanceOf(FileFormatEnum.class));
     }
 
     /**
@@ -118,7 +125,7 @@ public class ConferenceRecordingMetadataTest {
      */
     @Test
     public void statusTest() {
-        // TODO: test status
+        assertThat(model.getStatus(), instanceOf(String.class));
     }
 
     /**
@@ -126,7 +133,7 @@ public class ConferenceRecordingMetadataTest {
      */
     @Test
     public void mediaUrlTest() {
-        // TODO: test mediaUrl
+        assertThat(model.getMediaUrl(), instanceOf(URI.class));
     }
 
     /**
@@ -134,7 +141,7 @@ public class ConferenceRecordingMetadataTest {
      */
     @Test
     public void recordingNameTest() {
-        // TODO: test recordingName
+        assertThat(model.getRecordingName(), instanceOf(String.class));
     }
 
 }

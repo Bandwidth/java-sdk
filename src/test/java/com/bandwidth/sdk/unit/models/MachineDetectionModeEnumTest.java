@@ -12,9 +12,12 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.google.gson.annotations.SerializedName;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.MachineDetectionModeEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for MachineDetectionModeEnum
@@ -25,7 +28,8 @@ public class MachineDetectionModeEnumTest {
      */
     @Test
     public void testMachineDetectionModeEnum() {
-        // TODO: test MachineDetectionModeEnum
+        assertThat(MachineDetectionModeEnum.ASYNC.toString(), equalTo("async"));
+        assertThat(MachineDetectionModeEnum.SYNC.toString(), equalTo("sync"));
     }
 
 }

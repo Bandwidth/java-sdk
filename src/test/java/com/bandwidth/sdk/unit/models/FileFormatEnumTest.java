@@ -12,9 +12,12 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.google.gson.annotations.SerializedName;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.FileFormatEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for FileFormatEnum
@@ -25,7 +28,8 @@ public class FileFormatEnumTest {
      */
     @Test
     public void testFileFormatEnum() {
-        // TODO: test FileFormatEnum
+        assertThat(FileFormatEnum.MP3.toString(), equalTo("mp3"));
+        assertThat(FileFormatEnum.WAV.toString(), equalTo("wav"));
     }
 
 }

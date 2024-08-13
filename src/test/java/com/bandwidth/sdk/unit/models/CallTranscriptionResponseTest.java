@@ -12,32 +12,32 @@
 
 package com.bandwidth.sdk.unit.models;
 
+import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.ArrayList;
 import com.bandwidth.sdk.model.CallTranscription;
 import com.bandwidth.sdk.model.CallTranscriptionResponse;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Model tests for CallTranscriptionResponse
  */
 public class CallTranscriptionResponseTest {
-    private final CallTranscriptionResponse model = new CallTranscriptionResponse();
+    private final CallTranscriptionResponse model = new CallTranscriptionResponse()
+            .accountId("accountId")
+            .callId("callId")
+            .transcriptionId("transcriptionId")
+            .tracks(new ArrayList<>(Arrays.asList(new CallTranscription())));
 
     /**
      * Model tests for CallTranscriptionResponse
      */
     @Test
     public void testCallTranscriptionResponse() {
-        // TODO: test CallTranscriptionResponse
+        assertThat(model, instanceOf(CallTranscriptionResponse.class));
     }
 
     /**
@@ -45,7 +45,7 @@ public class CallTranscriptionResponseTest {
      */
     @Test
     public void accountIdTest() {
-        // TODO: test accountId
+        assertThat(model.getAccountId(), instanceOf(String.class));
     }
 
     /**
@@ -53,7 +53,7 @@ public class CallTranscriptionResponseTest {
      */
     @Test
     public void callIdTest() {
-        // TODO: test callId
+        assertThat(model.getCallId(), instanceOf(String.class));
     }
 
     /**
@@ -61,7 +61,7 @@ public class CallTranscriptionResponseTest {
      */
     @Test
     public void transcriptionIdTest() {
-        // TODO: test transcriptionId
+        assertThat(model.getTranscriptionId(), instanceOf(String.class));
     }
 
     /**
@@ -69,7 +69,7 @@ public class CallTranscriptionResponseTest {
      */
     @Test
     public void tracksTest() {
-        // TODO: test tracks
+        assertThat(model.getTracks(), instanceOf(ArrayList.class));
     }
 
 }

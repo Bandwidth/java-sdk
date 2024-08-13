@@ -12,30 +12,28 @@
 
 package com.bandwidth.sdk.unit.models;
 
+import org.junit.jupiter.api.Test;
+
 import com.bandwidth.sdk.model.CreateLookupResponse;
 import com.bandwidth.sdk.model.LookupStatusEnum;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for CreateLookupResponse
  */
 public class CreateLookupResponseTest {
-    private final CreateLookupResponse model = new CreateLookupResponse();
+    private final CreateLookupResponse model = new CreateLookupResponse()
+            .requestId("requestId")
+            .status(LookupStatusEnum.COMPLETE);
 
     /**
      * Model tests for CreateLookupResponse
      */
     @Test
     public void testCreateLookupResponse() {
-        // TODO: test CreateLookupResponse
+        assertThat(model, instanceOf(CreateLookupResponse.class));
     }
 
     /**
@@ -43,7 +41,7 @@ public class CreateLookupResponseTest {
      */
     @Test
     public void requestIdTest() {
-        // TODO: test requestId
+        assertThat(model.getRequestId(), instanceOf(String.class));
     }
 
     /**
@@ -51,7 +49,7 @@ public class CreateLookupResponseTest {
      */
     @Test
     public void statusTest() {
-        // TODO: test status
+        assertThat(model.getStatus(), instanceOf(LookupStatusEnum.class));
     }
 
 }

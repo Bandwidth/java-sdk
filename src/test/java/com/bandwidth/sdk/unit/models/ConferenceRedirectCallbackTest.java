@@ -12,31 +12,31 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.ConferenceRedirectCallback;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.OffsetDateTime;
-import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.time.OffsetDateTime;
+import com.bandwidth.sdk.model.ConferenceRedirectCallback;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for ConferenceRedirectCallback
  */
 public class ConferenceRedirectCallbackTest {
-    private final ConferenceRedirectCallback model = new ConferenceRedirectCallback();
+    private final ConferenceRedirectCallback model = new ConferenceRedirectCallback()
+            .eventType("conferenceRedirect")
+            .eventTime(OffsetDateTime.now())
+            .conferenceId("conferenceId")
+            .name("name")
+            .tag("tag");
 
     /**
      * Model tests for ConferenceRedirectCallback
      */
     @Test
     public void testConferenceRedirectCallback() {
-        // TODO: test ConferenceRedirectCallback
+        assertThat(model, instanceOf(ConferenceRedirectCallback.class));
     }
 
     /**
@@ -44,7 +44,7 @@ public class ConferenceRedirectCallbackTest {
      */
     @Test
     public void eventTypeTest() {
-        // TODO: test eventType
+        assertThat(model.getEventType(), instanceOf(String.class));
     }
 
     /**
@@ -52,7 +52,7 @@ public class ConferenceRedirectCallbackTest {
      */
     @Test
     public void eventTimeTest() {
-        // TODO: test eventTime
+        assertThat(model.getEventTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -60,7 +60,7 @@ public class ConferenceRedirectCallbackTest {
      */
     @Test
     public void conferenceIdTest() {
-        // TODO: test conferenceId
+        assertThat(model.getConferenceId(), instanceOf(String.class));
     }
 
     /**
@@ -68,7 +68,7 @@ public class ConferenceRedirectCallbackTest {
      */
     @Test
     public void nameTest() {
-        // TODO: test name
+        assertThat(model.getName(), instanceOf(String.class));
     }
 
     /**
@@ -76,7 +76,7 @@ public class ConferenceRedirectCallbackTest {
      */
     @Test
     public void tagTest() {
-        // TODO: test tag
+        assertThat(model.getTag(), instanceOf(String.class));
     }
 
 }

@@ -12,33 +12,43 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.CallbackMethodEnum;
-import com.bandwidth.sdk.model.MachineDetectionConfiguration;
-import com.bandwidth.sdk.model.MachineDetectionModeEnum;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.net.URI;
-import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.net.URI;
+import com.bandwidth.sdk.model.MachineDetectionConfiguration;
+import com.bandwidth.sdk.model.CallbackMethodEnum;
+import com.bandwidth.sdk.model.MachineDetectionModeEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for MachineDetectionConfiguration
  */
 public class MachineDetectionConfigurationTest {
-    private final MachineDetectionConfiguration model = new MachineDetectionConfiguration();
+    private final MachineDetectionConfiguration model = new MachineDetectionConfiguration()
+            .mode(MachineDetectionModeEnum.ASYNC)
+            .detectionTimeout(10.0)
+            .silenceTimeout(10.0)
+            .speechThreshold(10.0)
+            .speechEndThreshold(10.0)
+            .machineSpeechEndThreshold(10.0)
+            .delayResult(true)
+            .callbackUrl(URI.create("https://example.com"))
+            .callbackMethod(CallbackMethodEnum.GET)
+            .username("username")
+            .password("password")
+            .fallbackUrl(URI.create("https://example.com"))
+            .fallbackMethod(CallbackMethodEnum.GET)
+            .fallbackUsername("fallbackUsername")
+            .fallbackPassword("fallbackPassword");
 
     /**
      * Model tests for MachineDetectionConfiguration
      */
     @Test
     public void testMachineDetectionConfiguration() {
-        // TODO: test MachineDetectionConfiguration
+        assertThat(model, instanceOf(MachineDetectionConfiguration.class));
     }
 
     /**
@@ -46,7 +56,7 @@ public class MachineDetectionConfigurationTest {
      */
     @Test
     public void modeTest() {
-        // TODO: test mode
+        assertThat(model.getMode(), instanceOf(MachineDetectionModeEnum.class));
     }
 
     /**
@@ -54,7 +64,7 @@ public class MachineDetectionConfigurationTest {
      */
     @Test
     public void detectionTimeoutTest() {
-        // TODO: test detectionTimeout
+        assertThat(model.getDetectionTimeout(), instanceOf(Double.class));
     }
 
     /**
@@ -62,7 +72,7 @@ public class MachineDetectionConfigurationTest {
      */
     @Test
     public void silenceTimeoutTest() {
-        // TODO: test silenceTimeout
+        assertThat(model.getSilenceTimeout(), instanceOf(Double.class));
     }
 
     /**
@@ -70,7 +80,7 @@ public class MachineDetectionConfigurationTest {
      */
     @Test
     public void speechThresholdTest() {
-        // TODO: test speechThreshold
+        assertThat(model.getSpeechThreshold(), instanceOf(Double.class));
     }
 
     /**
@@ -78,7 +88,7 @@ public class MachineDetectionConfigurationTest {
      */
     @Test
     public void speechEndThresholdTest() {
-        // TODO: test speechEndThreshold
+        assertThat(model.getSpeechEndThreshold(), instanceOf(Double.class));
     }
 
     /**
@@ -86,7 +96,7 @@ public class MachineDetectionConfigurationTest {
      */
     @Test
     public void machineSpeechEndThresholdTest() {
-        // TODO: test machineSpeechEndThreshold
+        assertThat(model.getMachineSpeechEndThreshold(), instanceOf(Double.class));
     }
 
     /**
@@ -94,7 +104,7 @@ public class MachineDetectionConfigurationTest {
      */
     @Test
     public void delayResultTest() {
-        // TODO: test delayResult
+        assertThat(model.getDelayResult(), instanceOf(Boolean.class));
     }
 
     /**
@@ -102,7 +112,7 @@ public class MachineDetectionConfigurationTest {
      */
     @Test
     public void callbackUrlTest() {
-        // TODO: test callbackUrl
+        assertThat(model.getCallbackUrl(), instanceOf(URI.class));
     }
 
     /**
@@ -110,7 +120,7 @@ public class MachineDetectionConfigurationTest {
      */
     @Test
     public void callbackMethodTest() {
-        // TODO: test callbackMethod
+        assertThat(model.getCallbackMethod(), instanceOf(CallbackMethodEnum.class));
     }
 
     /**
@@ -118,7 +128,7 @@ public class MachineDetectionConfigurationTest {
      */
     @Test
     public void usernameTest() {
-        // TODO: test username
+        assertThat(model.getUsername(), instanceOf(String.class));
     }
 
     /**
@@ -126,7 +136,7 @@ public class MachineDetectionConfigurationTest {
      */
     @Test
     public void passwordTest() {
-        // TODO: test password
+        assertThat(model.getPassword(), instanceOf(String.class));
     }
 
     /**
@@ -134,7 +144,7 @@ public class MachineDetectionConfigurationTest {
      */
     @Test
     public void fallbackUrlTest() {
-        // TODO: test fallbackUrl
+        assertThat(model.getFallbackUrl(), instanceOf(URI.class));
     }
 
     /**
@@ -142,7 +152,7 @@ public class MachineDetectionConfigurationTest {
      */
     @Test
     public void fallbackMethodTest() {
-        // TODO: test fallbackMethod
+        assertThat(model.getFallbackMethod(), instanceOf(CallbackMethodEnum.class));
     }
 
     /**
@@ -150,7 +160,7 @@ public class MachineDetectionConfigurationTest {
      */
     @Test
     public void fallbackUsernameTest() {
-        // TODO: test fallbackUsername
+        assertThat(model.getFallbackUsername(), instanceOf(String.class));
     }
 
     /**
@@ -158,7 +168,7 @@ public class MachineDetectionConfigurationTest {
      */
     @Test
     public void fallbackPasswordTest() {
-        // TODO: test fallbackPassword
+        assertThat(model.getFallbackPassword(), instanceOf(String.class));
     }
 
 }

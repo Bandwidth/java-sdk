@@ -12,9 +12,12 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.google.gson.annotations.SerializedName;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.CallTranscriptionDetectedLanguageEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for CallTranscriptionDetectedLanguageEnum
@@ -25,7 +28,9 @@ public class CallTranscriptionDetectedLanguageEnumTest {
      */
     @Test
     public void testCallTranscriptionDetectedLanguageEnum() {
-        // TODO: test CallTranscriptionDetectedLanguageEnum
+        assertThat(CallTranscriptionDetectedLanguageEnum.EN_US.toString(), equalTo("en-US"));
+        assertThat(CallTranscriptionDetectedLanguageEnum.ES_US.toString(), equalTo("es-US"));
+        assertThat(CallTranscriptionDetectedLanguageEnum.FR_FR.toString(), equalTo("fr-FR"));
     }
 
 }

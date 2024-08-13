@@ -12,33 +12,42 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.ConferenceRecordingAvailableCallback;
-import com.bandwidth.sdk.model.FileFormatEnum;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import org.junit.jupiter.api.Test;
+
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import com.bandwidth.sdk.model.ConferenceRecordingAvailableCallback;
+import com.bandwidth.sdk.model.FileFormatEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for ConferenceRecordingAvailableCallback
  */
 public class ConferenceRecordingAvailableCallbackTest {
-    private final ConferenceRecordingAvailableCallback model = new ConferenceRecordingAvailableCallback();
+    private final ConferenceRecordingAvailableCallback model = new ConferenceRecordingAvailableCallback()
+            .eventType("conferenceRecordingAvailable")
+            .eventTime(OffsetDateTime.now())
+            .conferenceId("conferenceId")
+            .name("name")
+            .accountId("accountId")
+            .recordingId("recordingId")
+            .channels(1)
+            .startTime(OffsetDateTime.now())
+            .endTime(OffsetDateTime.now())
+            .duration("duration")
+            .fileFormat(FileFormatEnum.WAV)
+            .mediaUrl(URI.create("http://example.com"))
+            .tag("tag")
+            .status("status");
 
     /**
      * Model tests for ConferenceRecordingAvailableCallback
      */
     @Test
     public void testConferenceRecordingAvailableCallback() {
-        // TODO: test ConferenceRecordingAvailableCallback
+        assertThat(model, instanceOf(ConferenceRecordingAvailableCallback.class));
     }
 
     /**
@@ -46,7 +55,7 @@ public class ConferenceRecordingAvailableCallbackTest {
      */
     @Test
     public void eventTypeTest() {
-        // TODO: test eventType
+        assertThat(model.getEventType(), instanceOf(String.class));
     }
 
     /**
@@ -54,7 +63,7 @@ public class ConferenceRecordingAvailableCallbackTest {
      */
     @Test
     public void eventTimeTest() {
-        // TODO: test eventTime
+        assertThat(model.getEventTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -62,7 +71,7 @@ public class ConferenceRecordingAvailableCallbackTest {
      */
     @Test
     public void conferenceIdTest() {
-        // TODO: test conferenceId
+        assertThat(model.getConferenceId(), instanceOf(String.class));
     }
 
     /**
@@ -70,7 +79,7 @@ public class ConferenceRecordingAvailableCallbackTest {
      */
     @Test
     public void nameTest() {
-        // TODO: test name
+        assertThat(model.getName(), instanceOf(String.class));
     }
 
     /**
@@ -78,7 +87,7 @@ public class ConferenceRecordingAvailableCallbackTest {
      */
     @Test
     public void accountIdTest() {
-        // TODO: test accountId
+        assertThat(model.getAccountId(), instanceOf(String.class));
     }
 
     /**
@@ -86,7 +95,7 @@ public class ConferenceRecordingAvailableCallbackTest {
      */
     @Test
     public void recordingIdTest() {
-        // TODO: test recordingId
+        assertThat(model.getRecordingId(), instanceOf(String.class));
     }
 
     /**
@@ -94,7 +103,7 @@ public class ConferenceRecordingAvailableCallbackTest {
      */
     @Test
     public void channelsTest() {
-        // TODO: test channels
+        assertThat(model.getChannels(), instanceOf(Integer.class));
     }
 
     /**
@@ -102,7 +111,7 @@ public class ConferenceRecordingAvailableCallbackTest {
      */
     @Test
     public void startTimeTest() {
-        // TODO: test startTime
+        assertThat(model.getStartTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -110,7 +119,7 @@ public class ConferenceRecordingAvailableCallbackTest {
      */
     @Test
     public void endTimeTest() {
-        // TODO: test endTime
+        assertThat(model.getEndTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -118,7 +127,7 @@ public class ConferenceRecordingAvailableCallbackTest {
      */
     @Test
     public void durationTest() {
-        // TODO: test duration
+        assertThat(model.getDuration(), instanceOf(String.class));
     }
 
     /**
@@ -126,7 +135,7 @@ public class ConferenceRecordingAvailableCallbackTest {
      */
     @Test
     public void fileFormatTest() {
-        // TODO: test fileFormat
+        assertThat(model.getFileFormat(), instanceOf(FileFormatEnum.class));
     }
 
     /**
@@ -134,7 +143,7 @@ public class ConferenceRecordingAvailableCallbackTest {
      */
     @Test
     public void mediaUrlTest() {
-        // TODO: test mediaUrl
+        assertThat(model.getMediaUrl(), instanceOf(URI.class));
     }
 
     /**
@@ -142,7 +151,7 @@ public class ConferenceRecordingAvailableCallbackTest {
      */
     @Test
     public void tagTest() {
-        // TODO: test tag
+        assertThat(model.getTag(), instanceOf(String.class));
     }
 
     /**
@@ -150,7 +159,7 @@ public class ConferenceRecordingAvailableCallbackTest {
      */
     @Test
     public void statusTest() {
-        // TODO: test status
+        assertThat(model.getStatus(), instanceOf(String.class));
     }
 
 }

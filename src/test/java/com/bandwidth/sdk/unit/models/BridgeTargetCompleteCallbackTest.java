@@ -12,32 +12,40 @@
 
 package com.bandwidth.sdk.unit.models;
 
+import org.junit.jupiter.api.Test;
+
+import java.time.OffsetDateTime;
 import com.bandwidth.sdk.model.BridgeTargetCompleteCallback;
 import com.bandwidth.sdk.model.CallDirectionEnum;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.OffsetDateTime;
-import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for BridgeTargetCompleteCallback
  */
 public class BridgeTargetCompleteCallbackTest {
-    private final BridgeTargetCompleteCallback model = new BridgeTargetCompleteCallback();
+    private final BridgeTargetCompleteCallback model = new BridgeTargetCompleteCallback()
+            .eventType("eventType")
+            .eventTime(OffsetDateTime.now())
+            .accountId("accountId")
+            .applicationId("applicationId")
+            .from("from")
+            .to("to")
+            .direction(CallDirectionEnum.INBOUND)
+            .callId("callId")
+            .callUrl("callUrl")
+            .enqueuedTime(OffsetDateTime.now())
+            .startTime(OffsetDateTime.now())
+            .answerTime(OffsetDateTime.now())
+            .tag("tag");
 
     /**
      * Model tests for BridgeTargetCompleteCallback
      */
     @Test
     public void testBridgeTargetCompleteCallback() {
-        // TODO: test BridgeTargetCompleteCallback
+        assertThat(model, instanceOf(BridgeTargetCompleteCallback.class));
     }
 
     /**
@@ -45,7 +53,7 @@ public class BridgeTargetCompleteCallbackTest {
      */
     @Test
     public void eventTypeTest() {
-        // TODO: test eventType
+        assertThat(model.getEventType(), instanceOf(String.class));
     }
 
     /**
@@ -53,7 +61,7 @@ public class BridgeTargetCompleteCallbackTest {
      */
     @Test
     public void eventTimeTest() {
-        // TODO: test eventTime
+        assertThat(model.getEventTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -61,7 +69,7 @@ public class BridgeTargetCompleteCallbackTest {
      */
     @Test
     public void accountIdTest() {
-        // TODO: test accountId
+        assertThat(model.getAccountId(), instanceOf(String.class));
     }
 
     /**
@@ -69,7 +77,7 @@ public class BridgeTargetCompleteCallbackTest {
      */
     @Test
     public void applicationIdTest() {
-        // TODO: test applicationId
+        assertThat(model.getApplicationId(), instanceOf(String.class));
     }
 
     /**
@@ -77,7 +85,7 @@ public class BridgeTargetCompleteCallbackTest {
      */
     @Test
     public void fromTest() {
-        // TODO: test from
+        assertThat(model.getFrom(), instanceOf(String.class));
     }
 
     /**
@@ -85,7 +93,7 @@ public class BridgeTargetCompleteCallbackTest {
      */
     @Test
     public void toTest() {
-        // TODO: test to
+        assertThat(model.getTo(), instanceOf(String.class));
     }
 
     /**
@@ -93,7 +101,7 @@ public class BridgeTargetCompleteCallbackTest {
      */
     @Test
     public void directionTest() {
-        // TODO: test direction
+        assertThat(model.getDirection(), instanceOf(CallDirectionEnum.class));
     }
 
     /**
@@ -101,7 +109,7 @@ public class BridgeTargetCompleteCallbackTest {
      */
     @Test
     public void callIdTest() {
-        // TODO: test callId
+        assertThat(model.getCallId(), instanceOf(String.class));
     }
 
     /**
@@ -109,7 +117,7 @@ public class BridgeTargetCompleteCallbackTest {
      */
     @Test
     public void callUrlTest() {
-        // TODO: test callUrl
+        assertThat(model.getCallUrl(), instanceOf(String.class));
     }
 
     /**
@@ -117,7 +125,7 @@ public class BridgeTargetCompleteCallbackTest {
      */
     @Test
     public void enqueuedTimeTest() {
-        // TODO: test enqueuedTime
+        assertThat(model.getEnqueuedTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -125,7 +133,7 @@ public class BridgeTargetCompleteCallbackTest {
      */
     @Test
     public void startTimeTest() {
-        // TODO: test startTime
+        assertThat(model.getStartTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -133,7 +141,7 @@ public class BridgeTargetCompleteCallbackTest {
      */
     @Test
     public void answerTimeTest() {
-        // TODO: test answerTime
+        assertThat(model.getAnswerTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -141,7 +149,7 @@ public class BridgeTargetCompleteCallbackTest {
      */
     @Test
     public void tagTest() {
-        // TODO: test tag
+        assertThat(model.getTag(), instanceOf(String.class));
     }
 
 }

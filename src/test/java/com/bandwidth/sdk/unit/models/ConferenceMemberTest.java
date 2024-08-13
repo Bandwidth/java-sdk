@@ -12,32 +12,33 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.ConferenceMember;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.ArrayList;
+import com.bandwidth.sdk.model.ConferenceMember;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for ConferenceMember
  */
 public class ConferenceMemberTest {
-    private final ConferenceMember model = new ConferenceMember();
+    private final ConferenceMember model = new ConferenceMember()
+            .callId("callId")
+            .conferenceId("conferenceId")
+            .memberUrl("memberUrl")
+            .mute(true)
+            .hold(true)
+            .callIdsToCoach(new ArrayList<>(Arrays.asList("callIdsToCoach")));
 
     /**
      * Model tests for ConferenceMember
      */
     @Test
     public void testConferenceMember() {
-        // TODO: test ConferenceMember
+        assertThat(model, instanceOf(ConferenceMember.class));
     }
 
     /**
@@ -45,7 +46,7 @@ public class ConferenceMemberTest {
      */
     @Test
     public void callIdTest() {
-        // TODO: test callId
+        assertThat(model.getCallId(), instanceOf(String.class));
     }
 
     /**
@@ -53,7 +54,7 @@ public class ConferenceMemberTest {
      */
     @Test
     public void conferenceIdTest() {
-        // TODO: test conferenceId
+        assertThat(model.getConferenceId(), instanceOf(String.class));
     }
 
     /**
@@ -61,7 +62,7 @@ public class ConferenceMemberTest {
      */
     @Test
     public void memberUrlTest() {
-        // TODO: test memberUrl
+        assertThat(model.getMemberUrl(), instanceOf(String.class));
     }
 
     /**
@@ -69,7 +70,7 @@ public class ConferenceMemberTest {
      */
     @Test
     public void muteTest() {
-        // TODO: test mute
+        assertThat(model.getMute(), instanceOf(Boolean.class));
     }
 
     /**
@@ -77,7 +78,7 @@ public class ConferenceMemberTest {
      */
     @Test
     public void holdTest() {
-        // TODO: test hold
+        assertThat(model.getHold(), instanceOf(Boolean.class));
     }
 
     /**
@@ -85,7 +86,7 @@ public class ConferenceMemberTest {
      */
     @Test
     public void callIdsToCoachTest() {
-        // TODO: test callIdsToCoach
+        assertThat(model.getCallIdsToCoach(), instanceOf(ArrayList.class));
     }
 
 }

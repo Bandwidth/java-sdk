@@ -12,9 +12,12 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.google.gson.annotations.SerializedName;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.CallbackMethodEnum;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Model tests for CallbackMethodEnum
@@ -25,7 +28,8 @@ public class CallbackMethodEnumTest {
      */
     @Test
     public void testCallbackMethodEnum() {
-        // TODO: test CallbackMethodEnum
+        assertThat(CallbackMethodEnum.GET.toString(), equalTo("GET"));
+        assertThat(CallbackMethodEnum.POST.toString(), equalTo("POST"));
     }
 
 }

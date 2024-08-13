@@ -12,32 +12,31 @@
 
 package com.bandwidth.sdk.unit.models;
 
+import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.ArrayList;
 import com.bandwidth.sdk.model.CreateMessageRequestError;
 import com.bandwidth.sdk.model.FieldError;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for CreateMessageRequestError
  */
 public class CreateMessageRequestErrorTest {
-    private final CreateMessageRequestError model = new CreateMessageRequestError();
+    private final CreateMessageRequestError model = new CreateMessageRequestError()
+            .type("type")
+            .description("description")
+            .fieldErrors(new ArrayList<>(Arrays.asList(new FieldError())));
 
     /**
      * Model tests for CreateMessageRequestError
      */
     @Test
     public void testCreateMessageRequestError() {
-        // TODO: test CreateMessageRequestError
+        assertThat(model, instanceOf(CreateMessageRequestError.class));
     }
 
     /**
@@ -45,7 +44,7 @@ public class CreateMessageRequestErrorTest {
      */
     @Test
     public void typeTest() {
-        // TODO: test type
+        assertThat(model.getType(), instanceOf(String.class));
     }
 
     /**
@@ -53,7 +52,7 @@ public class CreateMessageRequestErrorTest {
      */
     @Test
     public void descriptionTest() {
-        // TODO: test description
+        assertThat(model.getDescription(), instanceOf(String.class));
     }
 
     /**
@@ -61,7 +60,7 @@ public class CreateMessageRequestErrorTest {
      */
     @Test
     public void fieldErrorsTest() {
-        // TODO: test fieldErrors
+        assertThat(model.getFieldErrors(), instanceOf(ArrayList.class));
     }
 
 }

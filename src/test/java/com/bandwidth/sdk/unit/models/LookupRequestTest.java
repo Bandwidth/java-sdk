@@ -12,31 +12,30 @@
 
 package com.bandwidth.sdk.unit.models;
 
+import org.junit.jupiter.api.Test;
+
 import com.bandwidth.sdk.model.LookupRequest;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for LookupRequest
  */
 public class LookupRequestTest {
-    private final LookupRequest model = new LookupRequest();
+    private final LookupRequest model = new LookupRequest()
+            .tns(new ArrayList<>(Arrays.asList("tns")));
 
     /**
      * Model tests for LookupRequest
      */
     @Test
     public void testLookupRequest() {
-        // TODO: test LookupRequest
+        assertThat(model, instanceOf(LookupRequest.class));
     }
 
     /**
@@ -44,7 +43,7 @@ public class LookupRequestTest {
      */
     @Test
     public void tnsTest() {
-        // TODO: test tns
+        assertThat(model.getTns(), instanceOf(ArrayList.class));
     }
 
 }

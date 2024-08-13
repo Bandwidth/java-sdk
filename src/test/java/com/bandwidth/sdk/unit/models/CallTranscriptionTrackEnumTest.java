@@ -12,9 +12,12 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.google.gson.annotations.SerializedName;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.CallTranscriptionTrackEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for CallTranscriptionTrackEnum
@@ -25,7 +28,8 @@ public class CallTranscriptionTrackEnumTest {
      */
     @Test
     public void testCallTranscriptionTrackEnum() {
-        // TODO: test CallTranscriptionTrackEnum
+        assertThat(CallTranscriptionTrackEnum.INBOUND.toString(), equalTo("inbound"));
+        assertThat(CallTranscriptionTrackEnum.OUTBOUND.toString(), equalTo("outbound"));
     }
 
 }

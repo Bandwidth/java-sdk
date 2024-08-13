@@ -12,29 +12,27 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.DeferredResult;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.DeferredResult;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for DeferredResult
  */
 public class DeferredResultTest {
-    private final DeferredResult model = new DeferredResult();
+    private final DeferredResult model = new DeferredResult()
+            .result("result")
+            .setOrExpired(true);
 
     /**
      * Model tests for DeferredResult
      */
     @Test
     public void testDeferredResult() {
-        // TODO: test DeferredResult
+        assertThat(model, instanceOf(DeferredResult.class));
     }
 
     /**
@@ -42,7 +40,7 @@ public class DeferredResultTest {
      */
     @Test
     public void resultTest() {
-        // TODO: test result
+        assertThat(model.getResult(), instanceOf(String.class));
     }
 
     /**
@@ -50,7 +48,7 @@ public class DeferredResultTest {
      */
     @Test
     public void setOrExpiredTest() {
-        // TODO: test setOrExpired
+        assertThat(model.getSetOrExpired(), instanceOf(Boolean.class));
     }
 
 }

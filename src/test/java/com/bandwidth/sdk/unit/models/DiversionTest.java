@@ -12,29 +12,32 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.Diversion;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.Diversion;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for Diversion
  */
 public class DiversionTest {
-    private final Diversion model = new Diversion();
+    private final Diversion model = new Diversion()
+            .reason("reason")
+            .privacy("privacy")
+            .screen("screen")
+            .counter("counter")
+            .limit("limit")
+            .unknown("unknown")
+            .origTo("origTo");
 
     /**
      * Model tests for Diversion
      */
     @Test
     public void testDiversion() {
-        // TODO: test Diversion
+        assertThat(model, instanceOf(Diversion.class));
     }
 
     /**
@@ -42,7 +45,7 @@ public class DiversionTest {
      */
     @Test
     public void reasonTest() {
-        // TODO: test reason
+        assertThat(model.getReason(), instanceOf(String.class));
     }
 
     /**
@@ -50,7 +53,7 @@ public class DiversionTest {
      */
     @Test
     public void privacyTest() {
-        // TODO: test privacy
+        assertThat(model.getPrivacy(), instanceOf(String.class));
     }
 
     /**
@@ -58,7 +61,7 @@ public class DiversionTest {
      */
     @Test
     public void screenTest() {
-        // TODO: test screen
+        assertThat(model.getScreen(), instanceOf(String.class));
     }
 
     /**
@@ -66,7 +69,7 @@ public class DiversionTest {
      */
     @Test
     public void counterTest() {
-        // TODO: test counter
+        assertThat(model.getCounter(), instanceOf(String.class));
     }
 
     /**
@@ -74,7 +77,7 @@ public class DiversionTest {
      */
     @Test
     public void limitTest() {
-        // TODO: test limit
+        assertThat(model.getLimit(), instanceOf(String.class));
     }
 
     /**
@@ -82,7 +85,7 @@ public class DiversionTest {
      */
     @Test
     public void unknownTest() {
-        // TODO: test unknown
+        assertThat(model.getUnknown(), instanceOf(String.class));
     }
 
     /**
@@ -90,7 +93,7 @@ public class DiversionTest {
      */
     @Test
     public void origToTest() {
-        // TODO: test origTo
+        assertThat(model.getOrigTo(), instanceOf(String.class));
     }
 
 }

@@ -12,36 +12,39 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.CallbackMethodEnum;
+import org.junit.jupiter.api.Test;
+
+import java.net.URI;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.time.OffsetDateTime;
 import com.bandwidth.sdk.model.Conference;
 import com.bandwidth.sdk.model.ConferenceMember;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.net.URI;
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import com.bandwidth.sdk.model.CallbackMethodEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for Conference
  */
 public class ConferenceTest {
-    private final Conference model = new Conference();
+    private final Conference model = new Conference()
+            .id("id")
+            .name("name")
+            .createdTime(OffsetDateTime.now())
+            .completedTime(OffsetDateTime.now())
+            .conferenceEventUrl(URI.create("http://example.com"))
+            .conferenceEventMethod(CallbackMethodEnum.POST)
+            .tag("tag")
+            .activeMembers(new ArrayList<>(Arrays.asList(new ConferenceMember())));
 
     /**
      * Model tests for Conference
      */
     @Test
     public void testConference() {
-        // TODO: test Conference
+        assertThat(model, instanceOf(Conference.class));
     }
 
     /**
@@ -49,7 +52,7 @@ public class ConferenceTest {
      */
     @Test
     public void idTest() {
-        // TODO: test id
+        assertThat(model.getId(), instanceOf(String.class));
     }
 
     /**
@@ -57,7 +60,7 @@ public class ConferenceTest {
      */
     @Test
     public void nameTest() {
-        // TODO: test name
+        assertThat(model.getName(), instanceOf(String.class));
     }
 
     /**
@@ -65,7 +68,7 @@ public class ConferenceTest {
      */
     @Test
     public void createdTimeTest() {
-        // TODO: test createdTime
+        assertThat(model.getCreatedTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -73,7 +76,7 @@ public class ConferenceTest {
      */
     @Test
     public void completedTimeTest() {
-        // TODO: test completedTime
+        assertThat(model.getCompletedTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -81,7 +84,7 @@ public class ConferenceTest {
      */
     @Test
     public void conferenceEventUrlTest() {
-        // TODO: test conferenceEventUrl
+        assertThat(model.getConferenceEventUrl(), instanceOf(URI.class));
     }
 
     /**
@@ -89,7 +92,7 @@ public class ConferenceTest {
      */
     @Test
     public void conferenceEventMethodTest() {
-        // TODO: test conferenceEventMethod
+        assertThat(model.getConferenceEventMethod(), instanceOf(CallbackMethodEnum.class));
     }
 
     /**
@@ -97,7 +100,7 @@ public class ConferenceTest {
      */
     @Test
     public void tagTest() {
-        // TODO: test tag
+        assertThat(model.getTag(), instanceOf(String.class));
     }
 
     /**
@@ -105,7 +108,7 @@ public class ConferenceTest {
      */
     @Test
     public void activeMembersTest() {
-        // TODO: test activeMembers
+        assertThat(model.getActiveMembers(), instanceOf(ArrayList.class));
     }
 
 }

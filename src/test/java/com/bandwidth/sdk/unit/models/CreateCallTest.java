@@ -12,33 +12,49 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.CallbackMethodEnum;
-import com.bandwidth.sdk.model.CreateCall;
-import com.bandwidth.sdk.model.MachineDetectionConfiguration;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.net.URI;
-import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.net.URI;
+import com.bandwidth.sdk.model.CreateCall;
+import com.bandwidth.sdk.model.CallbackMethodEnum;
+import com.bandwidth.sdk.model.MachineDetectionConfiguration;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for CreateCall
  */
 public class CreateCallTest {
-    private final CreateCall model = new CreateCall();
+    private final CreateCall model = new CreateCall()
+            .to("to")
+            .from("from")
+            .privacy(true)
+            .displayName("displayName")
+            .uui("uui")
+            .applicationId("applicationId")
+            .answerUrl(URI.create("http://example.com"))
+            .answerMethod(CallbackMethodEnum.POST)
+            .username("username")
+            .password("password")
+            .answerFallbackUrl(URI.create("http://example.com"))
+            .answerFallbackMethod(CallbackMethodEnum.POST)
+            .fallbackUsername("fallbackUsername")
+            .fallbackPassword("fallbackPassword")
+            .disconnectUrl(URI.create("http://example.com"))
+            .disconnectMethod(CallbackMethodEnum.POST)
+            .callTimeout(30.0)
+            .callbackTimeout(30.0)
+            .machineDetection(new MachineDetectionConfiguration())
+            .priority(1)
+            .tag("tag");
 
     /**
      * Model tests for CreateCall
      */
     @Test
     public void testCreateCall() {
-        // TODO: test CreateCall
+        assertThat(model, instanceOf(CreateCall.class));
     }
 
     /**
@@ -46,7 +62,7 @@ public class CreateCallTest {
      */
     @Test
     public void toTest() {
-        // TODO: test to
+        assertThat(model.getTo(), instanceOf(String.class));
     }
 
     /**
@@ -54,7 +70,7 @@ public class CreateCallTest {
      */
     @Test
     public void fromTest() {
-        // TODO: test from
+        assertThat(model.getFrom(), instanceOf(String.class));
     }
 
     /**
@@ -62,7 +78,7 @@ public class CreateCallTest {
      */
     @Test
     public void privacyTest() {
-        // TODO: test privacy
+        assertThat(model.getPrivacy(), instanceOf(Boolean.class));
     }
 
     /**
@@ -70,7 +86,7 @@ public class CreateCallTest {
      */
     @Test
     public void displayNameTest() {
-        // TODO: test displayName
+        assertThat(model.getDisplayName(), instanceOf(String.class));
     }
 
     /**
@@ -78,7 +94,7 @@ public class CreateCallTest {
      */
     @Test
     public void uuiTest() {
-        // TODO: test uui
+        assertThat(model.getUui(), instanceOf(String.class));
     }
 
     /**
@@ -86,7 +102,7 @@ public class CreateCallTest {
      */
     @Test
     public void applicationIdTest() {
-        // TODO: test applicationId
+        assertThat(model.getApplicationId(), instanceOf(String.class));
     }
 
     /**
@@ -94,7 +110,7 @@ public class CreateCallTest {
      */
     @Test
     public void answerUrlTest() {
-        // TODO: test answerUrl
+        assertThat(model.getAnswerUrl(), instanceOf(URI.class));
     }
 
     /**
@@ -102,7 +118,7 @@ public class CreateCallTest {
      */
     @Test
     public void answerMethodTest() {
-        // TODO: test answerMethod
+        assertThat(model.getAnswerMethod(), instanceOf(CallbackMethodEnum.class));
     }
 
     /**
@@ -110,7 +126,7 @@ public class CreateCallTest {
      */
     @Test
     public void usernameTest() {
-        // TODO: test username
+        assertThat(model.getUsername(), instanceOf(String.class));
     }
 
     /**
@@ -118,7 +134,7 @@ public class CreateCallTest {
      */
     @Test
     public void passwordTest() {
-        // TODO: test password
+        assertThat(model.getPassword(), instanceOf(String.class));
     }
 
     /**
@@ -126,7 +142,7 @@ public class CreateCallTest {
      */
     @Test
     public void answerFallbackUrlTest() {
-        // TODO: test answerFallbackUrl
+        assertThat(model.getAnswerFallbackUrl(), instanceOf(URI.class));
     }
 
     /**
@@ -134,7 +150,7 @@ public class CreateCallTest {
      */
     @Test
     public void answerFallbackMethodTest() {
-        // TODO: test answerFallbackMethod
+        assertThat(model.getAnswerFallbackMethod(), instanceOf(CallbackMethodEnum.class));
     }
 
     /**
@@ -142,7 +158,7 @@ public class CreateCallTest {
      */
     @Test
     public void fallbackUsernameTest() {
-        // TODO: test fallbackUsername
+        assertThat(model.getFallbackUsername(), instanceOf(String.class));
     }
 
     /**
@@ -150,7 +166,7 @@ public class CreateCallTest {
      */
     @Test
     public void fallbackPasswordTest() {
-        // TODO: test fallbackPassword
+        assertThat(model.getFallbackPassword(), instanceOf(String.class));
     }
 
     /**
@@ -158,7 +174,7 @@ public class CreateCallTest {
      */
     @Test
     public void disconnectUrlTest() {
-        // TODO: test disconnectUrl
+        assertThat(model.getDisconnectUrl(), instanceOf(URI.class));
     }
 
     /**
@@ -166,7 +182,7 @@ public class CreateCallTest {
      */
     @Test
     public void disconnectMethodTest() {
-        // TODO: test disconnectMethod
+        assertThat(model.getDisconnectMethod(), instanceOf(CallbackMethodEnum.class));
     }
 
     /**
@@ -174,7 +190,7 @@ public class CreateCallTest {
      */
     @Test
     public void callTimeoutTest() {
-        // TODO: test callTimeout
+        assertThat(model.getCallTimeout(), instanceOf(Double.class));
     }
 
     /**
@@ -182,7 +198,7 @@ public class CreateCallTest {
      */
     @Test
     public void callbackTimeoutTest() {
-        // TODO: test callbackTimeout
+        assertThat(model.getCallbackTimeout(), instanceOf(Double.class));
     }
 
     /**
@@ -190,7 +206,7 @@ public class CreateCallTest {
      */
     @Test
     public void machineDetectionTest() {
-        // TODO: test machineDetection
+        assertThat(model.getMachineDetection(), instanceOf(MachineDetectionConfiguration.class));
     }
 
     /**
@@ -198,7 +214,7 @@ public class CreateCallTest {
      */
     @Test
     public void priorityTest() {
-        // TODO: test priority
+        assertThat(model.getPriority(), instanceOf(Integer.class));
     }
 
     /**
@@ -206,7 +222,7 @@ public class CreateCallTest {
      */
     @Test
     public void tagTest() {
-        // TODO: test tag
+        assertThat(model.getTag(), instanceOf(String.class));
     }
 
 }

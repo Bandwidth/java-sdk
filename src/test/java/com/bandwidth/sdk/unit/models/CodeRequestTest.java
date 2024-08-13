@@ -12,29 +12,31 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.CodeRequest;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.CodeRequest;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for CodeRequest
  */
 public class CodeRequestTest {
-    private final CodeRequest model = new CodeRequest();
+    private final CodeRequest model = new CodeRequest()
+            .to("to")
+            .from("from")
+            .applicationId("applicationId")
+            .scope("scope")
+            .message("message")
+            .digits(10);
 
     /**
      * Model tests for CodeRequest
      */
     @Test
     public void testCodeRequest() {
-        // TODO: test CodeRequest
+        assertThat(model, instanceOf(CodeRequest.class));
     }
 
     /**
@@ -42,7 +44,7 @@ public class CodeRequestTest {
      */
     @Test
     public void toTest() {
-        // TODO: test to
+        assertThat(model.getTo(), instanceOf(String.class));
     }
 
     /**
@@ -50,7 +52,7 @@ public class CodeRequestTest {
      */
     @Test
     public void fromTest() {
-        // TODO: test from
+        assertThat(model.getFrom(), instanceOf(String.class));
     }
 
     /**
@@ -58,7 +60,7 @@ public class CodeRequestTest {
      */
     @Test
     public void applicationIdTest() {
-        // TODO: test applicationId
+        assertThat(model.getApplicationId(), instanceOf(String.class));
     }
 
     /**
@@ -66,7 +68,7 @@ public class CodeRequestTest {
      */
     @Test
     public void scopeTest() {
-        // TODO: test scope
+        assertThat(model.getScope(), instanceOf(String.class));
     }
 
     /**
@@ -74,7 +76,7 @@ public class CodeRequestTest {
      */
     @Test
     public void messageTest() {
-        // TODO: test message
+        assertThat(model.getMessage(), instanceOf(String.class));
     }
 
     /**
@@ -82,7 +84,7 @@ public class CodeRequestTest {
      */
     @Test
     public void digitsTest() {
-        // TODO: test digits
+        assertThat(model.getDigits(), instanceOf(Integer.class));
     }
 
 }

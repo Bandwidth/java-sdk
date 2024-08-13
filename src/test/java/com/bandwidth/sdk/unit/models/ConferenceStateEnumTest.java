@@ -12,9 +12,12 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.google.gson.annotations.SerializedName;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.ConferenceStateEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for ConferenceStateEnum
@@ -25,7 +28,9 @@ public class ConferenceStateEnumTest {
      */
     @Test
     public void testConferenceStateEnum() {
-        // TODO: test ConferenceStateEnum
+        assertThat(ConferenceStateEnum.COMPLETED.toString(), equalTo("completed"));
+        assertThat(ConferenceStateEnum.ACTIVE.toString(), equalTo("active"));
+
     }
 
 }

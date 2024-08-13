@@ -12,32 +12,44 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.CallDirectionEnum;
-import com.bandwidth.sdk.model.DisconnectCallback;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.OffsetDateTime;
-import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.time.OffsetDateTime;
+import com.bandwidth.sdk.model.DisconnectCallback;
+import com.bandwidth.sdk.model.CallDirectionEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for DisconnectCallback
  */
 public class DisconnectCallbackTest {
-    private final DisconnectCallback model = new DisconnectCallback();
+    private final DisconnectCallback model = new DisconnectCallback()
+            .eventType("disconnect")
+            .eventTime(OffsetDateTime.now())
+            .accountId("accountId")
+            .applicationId("applicationId")
+            .from("from")
+            .to("to")
+            .callId("callId")
+            .direction(CallDirectionEnum.INBOUND)
+            .callUrl("callUrl")
+            .enqueuedTime(OffsetDateTime.now())
+            .startTime(OffsetDateTime.now())
+            .answerTime(OffsetDateTime.now())
+            .endTime(OffsetDateTime.now())
+            .cause("cause")
+            .errorMessage("errorMessage")
+            .errorId("errorId")
+            .tag("tag");
 
     /**
      * Model tests for DisconnectCallback
      */
     @Test
     public void testDisconnectCallback() {
-        // TODO: test DisconnectCallback
+        assertThat(model, instanceOf(DisconnectCallback.class));
     }
 
     /**
@@ -45,7 +57,7 @@ public class DisconnectCallbackTest {
      */
     @Test
     public void eventTypeTest() {
-        // TODO: test eventType
+        assertThat(model.getEventType(), instanceOf(String.class));
     }
 
     /**
@@ -53,7 +65,7 @@ public class DisconnectCallbackTest {
      */
     @Test
     public void eventTimeTest() {
-        // TODO: test eventTime
+        assertThat(model.getEventTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -61,7 +73,7 @@ public class DisconnectCallbackTest {
      */
     @Test
     public void accountIdTest() {
-        // TODO: test accountId
+        assertThat(model.getAccountId(), instanceOf(String.class));
     }
 
     /**
@@ -69,7 +81,7 @@ public class DisconnectCallbackTest {
      */
     @Test
     public void applicationIdTest() {
-        // TODO: test applicationId
+        assertThat(model.getApplicationId(), instanceOf(String.class));
     }
 
     /**
@@ -77,7 +89,7 @@ public class DisconnectCallbackTest {
      */
     @Test
     public void fromTest() {
-        // TODO: test from
+        assertThat(model.getFrom(), instanceOf(String.class));
     }
 
     /**
@@ -85,7 +97,7 @@ public class DisconnectCallbackTest {
      */
     @Test
     public void toTest() {
-        // TODO: test to
+        assertThat(model.getTo(), instanceOf(String.class));
     }
 
     /**
@@ -93,7 +105,7 @@ public class DisconnectCallbackTest {
      */
     @Test
     public void callIdTest() {
-        // TODO: test callId
+        assertThat(model.getCallId(), instanceOf(String.class));
     }
 
     /**
@@ -101,7 +113,7 @@ public class DisconnectCallbackTest {
      */
     @Test
     public void directionTest() {
-        // TODO: test direction
+        assertThat(model.getDirection(), instanceOf(CallDirectionEnum.class));
     }
 
     /**
@@ -109,7 +121,7 @@ public class DisconnectCallbackTest {
      */
     @Test
     public void callUrlTest() {
-        // TODO: test callUrl
+        assertThat(model.getCallUrl(), instanceOf(String.class));
     }
 
     /**
@@ -117,7 +129,7 @@ public class DisconnectCallbackTest {
      */
     @Test
     public void enqueuedTimeTest() {
-        // TODO: test enqueuedTime
+        assertThat(model.getEnqueuedTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -125,7 +137,7 @@ public class DisconnectCallbackTest {
      */
     @Test
     public void startTimeTest() {
-        // TODO: test startTime
+        assertThat(model.getStartTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -133,7 +145,7 @@ public class DisconnectCallbackTest {
      */
     @Test
     public void answerTimeTest() {
-        // TODO: test answerTime
+        assertThat(model.getAnswerTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -141,7 +153,7 @@ public class DisconnectCallbackTest {
      */
     @Test
     public void endTimeTest() {
-        // TODO: test endTime
+        assertThat(model.getEndTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -149,7 +161,7 @@ public class DisconnectCallbackTest {
      */
     @Test
     public void causeTest() {
-        // TODO: test cause
+        assertThat(model.getCause(), instanceOf(String.class));
     }
 
     /**
@@ -157,7 +169,7 @@ public class DisconnectCallbackTest {
      */
     @Test
     public void errorMessageTest() {
-        // TODO: test errorMessage
+        assertThat(model.getErrorMessage(), instanceOf(String.class));
     }
 
     /**
@@ -165,7 +177,7 @@ public class DisconnectCallbackTest {
      */
     @Test
     public void errorIdTest() {
-        // TODO: test errorId
+        assertThat(model.getErrorId(), instanceOf(String.class));
     }
 
     /**
@@ -173,7 +185,7 @@ public class DisconnectCallbackTest {
      */
     @Test
     public void tagTest() {
-        // TODO: test tag
+        assertThat(model.getTag(), instanceOf(String.class));
     }
 
 }

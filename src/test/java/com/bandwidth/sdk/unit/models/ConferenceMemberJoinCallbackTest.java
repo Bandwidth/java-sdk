@@ -12,31 +12,34 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.ConferenceMemberJoinCallback;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.OffsetDateTime;
-import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.time.OffsetDateTime;
+import com.bandwidth.sdk.model.ConferenceMemberJoinCallback;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for ConferenceMemberJoinCallback
  */
 public class ConferenceMemberJoinCallbackTest {
-    private final ConferenceMemberJoinCallback model = new ConferenceMemberJoinCallback();
+    private final ConferenceMemberJoinCallback model = new ConferenceMemberJoinCallback()
+            .eventType("conferenceMemberJoin")
+            .eventTime(OffsetDateTime.now())
+            .conferenceId("conferenceId")
+            .name("name")
+            .from("from")
+            .to("to")
+            .callId("callId")
+            .tag("tag");
 
     /**
      * Model tests for ConferenceMemberJoinCallback
      */
     @Test
     public void testConferenceMemberJoinCallback() {
-        // TODO: test ConferenceMemberJoinCallback
+        assertThat(model, instanceOf(ConferenceMemberJoinCallback.class));
     }
 
     /**
@@ -44,7 +47,7 @@ public class ConferenceMemberJoinCallbackTest {
      */
     @Test
     public void eventTypeTest() {
-        // TODO: test eventType
+        assertThat(model.getEventType(), instanceOf(String.class));
     }
 
     /**
@@ -52,7 +55,7 @@ public class ConferenceMemberJoinCallbackTest {
      */
     @Test
     public void eventTimeTest() {
-        // TODO: test eventTime
+        assertThat(model.getEventTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -60,7 +63,7 @@ public class ConferenceMemberJoinCallbackTest {
      */
     @Test
     public void conferenceIdTest() {
-        // TODO: test conferenceId
+        assertThat(model.getConferenceId(), instanceOf(String.class));
     }
 
     /**
@@ -68,7 +71,7 @@ public class ConferenceMemberJoinCallbackTest {
      */
     @Test
     public void nameTest() {
-        // TODO: test name
+        assertThat(model.getName(), instanceOf(String.class));
     }
 
     /**
@@ -76,7 +79,7 @@ public class ConferenceMemberJoinCallbackTest {
      */
     @Test
     public void fromTest() {
-        // TODO: test from
+        assertThat(model.getFrom(), instanceOf(String.class));
     }
 
     /**
@@ -84,7 +87,7 @@ public class ConferenceMemberJoinCallbackTest {
      */
     @Test
     public void toTest() {
-        // TODO: test to
+        assertThat(model.getTo(), instanceOf(String.class));
     }
 
     /**
@@ -92,7 +95,7 @@ public class ConferenceMemberJoinCallbackTest {
      */
     @Test
     public void callIdTest() {
-        // TODO: test callId
+        assertThat(model.getCallId(), instanceOf(String.class));
     }
 
     /**
@@ -100,7 +103,7 @@ public class ConferenceMemberJoinCallbackTest {
      */
     @Test
     public void tagTest() {
-        // TODO: test tag
+        assertThat(model.getTag(), instanceOf(String.class));
     }
 
 }

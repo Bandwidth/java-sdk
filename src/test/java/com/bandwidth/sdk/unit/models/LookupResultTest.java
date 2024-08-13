@@ -12,29 +12,34 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.LookupResult;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.LookupResult;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for LookupResult
  */
 public class LookupResultTest {
-    private final LookupResult model = new LookupResult();
+    private final LookupResult model = new LookupResult()
+            .responseCode(200)
+            .message("message")
+            .e164Format("e164Format")
+            .formatted("formatted")
+            .country("country")
+            .lineType("lineType")
+            .lineProvider("lineProvider")
+            .mobileCountryCode("mobileCountryCode")
+            .mobileNetworkCode("mobileNetworkCode");
 
     /**
      * Model tests for LookupResult
      */
     @Test
     public void testLookupResult() {
-        // TODO: test LookupResult
+        assertThat(model, instanceOf(LookupResult.class));
     }
 
     /**
@@ -42,7 +47,7 @@ public class LookupResultTest {
      */
     @Test
     public void responseCodeTest() {
-        // TODO: test responseCode
+        assertThat(model.getResponseCode(), instanceOf(Integer.class));
     }
 
     /**
@@ -50,7 +55,7 @@ public class LookupResultTest {
      */
     @Test
     public void messageTest() {
-        // TODO: test message
+        assertThat(model.getMessage(), instanceOf(String.class));
     }
 
     /**
@@ -58,7 +63,7 @@ public class LookupResultTest {
      */
     @Test
     public void e164FormatTest() {
-        // TODO: test e164Format
+        assertThat(model.getE164Format(), instanceOf(String.class));
     }
 
     /**
@@ -66,7 +71,7 @@ public class LookupResultTest {
      */
     @Test
     public void formattedTest() {
-        // TODO: test formatted
+        assertThat(model.getFormatted(), instanceOf(String.class));
     }
 
     /**
@@ -74,7 +79,7 @@ public class LookupResultTest {
      */
     @Test
     public void countryTest() {
-        // TODO: test country
+        assertThat(model.getCountry(), instanceOf(String.class));
     }
 
     /**
@@ -82,7 +87,7 @@ public class LookupResultTest {
      */
     @Test
     public void lineTypeTest() {
-        // TODO: test lineType
+        assertThat(model.getLineType(), instanceOf(String.class));
     }
 
     /**
@@ -90,7 +95,7 @@ public class LookupResultTest {
      */
     @Test
     public void lineProviderTest() {
-        // TODO: test lineProvider
+        assertThat(model.getLineProvider(), instanceOf(String.class));
     }
 
     /**
@@ -98,7 +103,7 @@ public class LookupResultTest {
      */
     @Test
     public void mobileCountryCodeTest() {
-        // TODO: test mobileCountryCode
+        assertThat(model.getMobileCountryCode(), instanceOf(String.class));
     }
 
     /**
@@ -106,7 +111,7 @@ public class LookupResultTest {
      */
     @Test
     public void mobileNetworkCodeTest() {
-        // TODO: test mobileNetworkCode
+        assertThat(model.getMobileNetworkCode(), instanceOf(String.class));
     }
 
 }

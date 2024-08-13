@@ -12,29 +12,28 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.CallTranscriptionMetadata;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.CallTranscriptionMetadata;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for CallTranscriptionMetadata
  */
 public class CallTranscriptionMetadataTest {
-    private final CallTranscriptionMetadata model = new CallTranscriptionMetadata();
+    private final CallTranscriptionMetadata model = new CallTranscriptionMetadata()
+            .transcriptionId("transcription")
+            .transcriptionName("transcription")
+            .transcriptionUrl("https://bandwidth.com");
 
     /**
      * Model tests for CallTranscriptionMetadata
      */
     @Test
     public void testCallTranscriptionMetadata() {
-        // TODO: test CallTranscriptionMetadata
+        assertThat(model, instanceOf(CallTranscriptionMetadata.class));
     }
 
     /**
@@ -42,7 +41,7 @@ public class CallTranscriptionMetadataTest {
      */
     @Test
     public void transcriptionIdTest() {
-        // TODO: test transcriptionId
+        assertThat(model.getTranscriptionId(), instanceOf(String.class));
     }
 
     /**
@@ -50,7 +49,7 @@ public class CallTranscriptionMetadataTest {
      */
     @Test
     public void transcriptionNameTest() {
-        // TODO: test transcriptionName
+        assertThat(model.getTranscriptionName(), instanceOf(String.class));
     }
 
     /**
@@ -58,7 +57,7 @@ public class CallTranscriptionMetadataTest {
      */
     @Test
     public void transcriptionUrlTest() {
-        // TODO: test transcriptionUrl
+        assertThat(model.getTranscriptionUrl(), instanceOf(String.class));
     }
 
 }

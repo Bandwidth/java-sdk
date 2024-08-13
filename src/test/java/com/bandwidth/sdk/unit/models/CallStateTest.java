@@ -12,34 +12,52 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.CallDirectionEnum;
-import com.bandwidth.sdk.model.CallState;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.OffsetDateTime;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.util.Map;
+import java.time.OffsetDateTime;
+import com.bandwidth.sdk.model.CallState;
+import com.bandwidth.sdk.model.CallDirectionEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for CallState
  */
 public class CallStateTest {
-    private final CallState model = new CallState();
+    private final CallState model = new CallState()
+            .applicationId("applicationId")
+            .accountId("accountId")
+            .callId("callId")
+            .parentCallId("parentCallId")
+            .to("to")
+            .from("from")
+            .direction(CallDirectionEnum.INBOUND)
+            .state("state")
+            .stirShaken(Map.of(
+                    "verstat",
+                    "verstat",
+                    "attestationIndicator",
+                    "attestationIndicator",
+                    "originatingId",
+                    "originatingId"))
+            .identity("identity")
+            .enqueuedTime(OffsetDateTime.now())
+            .startTime(OffsetDateTime.now())
+            .answerTime(OffsetDateTime.now())
+            .endTime(OffsetDateTime.now())
+            .disconnectCause("disconnectCause")
+            .errorMessage("errorMessage")
+            .errorId("errorId")
+            .lastUpdate(OffsetDateTime.now());
 
     /**
      * Model tests for CallState
      */
     @Test
     public void testCallState() {
-        // TODO: test CallState
+        assertThat(model, instanceOf(CallState.class));
     }
 
     /**
@@ -47,7 +65,7 @@ public class CallStateTest {
      */
     @Test
     public void applicationIdTest() {
-        // TODO: test applicationId
+        assertThat(model.getApplicationId(), instanceOf(String.class));
     }
 
     /**
@@ -55,7 +73,7 @@ public class CallStateTest {
      */
     @Test
     public void accountIdTest() {
-        // TODO: test accountId
+        assertThat(model.getAccountId(), instanceOf(String.class));
     }
 
     /**
@@ -63,7 +81,7 @@ public class CallStateTest {
      */
     @Test
     public void callIdTest() {
-        // TODO: test callId
+        assertThat(model.getCallId(), instanceOf(String.class));
     }
 
     /**
@@ -71,7 +89,7 @@ public class CallStateTest {
      */
     @Test
     public void parentCallIdTest() {
-        // TODO: test parentCallId
+        assertThat(model.getParentCallId(), instanceOf(String.class));
     }
 
     /**
@@ -79,7 +97,7 @@ public class CallStateTest {
      */
     @Test
     public void toTest() {
-        // TODO: test to
+        assertThat(model.getTo(), instanceOf(String.class));
     }
 
     /**
@@ -87,7 +105,7 @@ public class CallStateTest {
      */
     @Test
     public void fromTest() {
-        // TODO: test from
+        assertThat(model.getFrom(), instanceOf(String.class));
     }
 
     /**
@@ -95,7 +113,7 @@ public class CallStateTest {
      */
     @Test
     public void directionTest() {
-        // TODO: test direction
+        assertThat(model.getDirection(), instanceOf(CallDirectionEnum.class));
     }
 
     /**
@@ -103,7 +121,7 @@ public class CallStateTest {
      */
     @Test
     public void stateTest() {
-        // TODO: test state
+        assertThat(model.getState(), instanceOf(String.class));
     }
 
     /**
@@ -111,7 +129,7 @@ public class CallStateTest {
      */
     @Test
     public void stirShakenTest() {
-        // TODO: test stirShaken
+        assertThat(model.getStirShaken(), instanceOf(Map.class));
     }
 
     /**
@@ -119,7 +137,7 @@ public class CallStateTest {
      */
     @Test
     public void identityTest() {
-        // TODO: test identity
+        assertThat(model.getIdentity(), instanceOf(String.class));
     }
 
     /**
@@ -127,7 +145,7 @@ public class CallStateTest {
      */
     @Test
     public void enqueuedTimeTest() {
-        // TODO: test enqueuedTime
+        assertThat(model.getEnqueuedTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -135,7 +153,7 @@ public class CallStateTest {
      */
     @Test
     public void startTimeTest() {
-        // TODO: test startTime
+        assertThat(model.getStartTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -143,7 +161,7 @@ public class CallStateTest {
      */
     @Test
     public void answerTimeTest() {
-        // TODO: test answerTime
+        assertThat(model.getAnswerTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -151,7 +169,7 @@ public class CallStateTest {
      */
     @Test
     public void endTimeTest() {
-        // TODO: test endTime
+        assertThat(model.getEndTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -159,7 +177,7 @@ public class CallStateTest {
      */
     @Test
     public void disconnectCauseTest() {
-        // TODO: test disconnectCause
+        assertThat(model.getDisconnectCause(), instanceOf(String.class));
     }
 
     /**
@@ -167,7 +185,7 @@ public class CallStateTest {
      */
     @Test
     public void errorMessageTest() {
-        // TODO: test errorMessage
+        assertThat(model.getErrorMessage(), instanceOf(String.class));
     }
 
     /**
@@ -175,7 +193,7 @@ public class CallStateTest {
      */
     @Test
     public void errorIdTest() {
-        // TODO: test errorId
+        assertThat(model.getErrorId(), instanceOf(String.class));
     }
 
     /**
@@ -183,7 +201,7 @@ public class CallStateTest {
      */
     @Test
     public void lastUpdateTest() {
-        // TODO: test lastUpdate
+        assertThat(model.getLastUpdate(), instanceOf(OffsetDateTime.class));
     }
 
 }

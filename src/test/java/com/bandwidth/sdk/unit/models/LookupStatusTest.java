@@ -12,33 +12,33 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.LookupResult;
-import com.bandwidth.sdk.model.LookupStatus;
-import com.bandwidth.sdk.model.LookupStatusEnum;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.ArrayList;
+import com.bandwidth.sdk.model.LookupStatus;
+import com.bandwidth.sdk.model.LookupResult;
+import com.bandwidth.sdk.model.LookupStatusEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for LookupStatus
  */
 public class LookupStatusTest {
-    private final LookupStatus model = new LookupStatus();
+    private final LookupStatus model = new LookupStatus()
+            .requestId("requestId")
+            .status(LookupStatusEnum.COMPLETE)
+            .result(new ArrayList<>(Arrays.asList(new LookupResult())))
+            .failedTelephoneNumbers(new ArrayList<>(Arrays.asList("failedTelephoneNumbers")));
 
     /**
      * Model tests for LookupStatus
      */
     @Test
     public void testLookupStatus() {
-        // TODO: test LookupStatus
+        assertThat(model, instanceOf(LookupStatus.class));
     }
 
     /**
@@ -46,7 +46,7 @@ public class LookupStatusTest {
      */
     @Test
     public void requestIdTest() {
-        // TODO: test requestId
+        assertThat(model.getRequestId(), instanceOf(String.class));
     }
 
     /**
@@ -54,7 +54,7 @@ public class LookupStatusTest {
      */
     @Test
     public void statusTest() {
-        // TODO: test status
+        assertThat(model.getStatus(), instanceOf(LookupStatusEnum.class));
     }
 
     /**
@@ -62,7 +62,7 @@ public class LookupStatusTest {
      */
     @Test
     public void resultTest() {
-        // TODO: test result
+        assertThat(model.getResult(), instanceOf(ArrayList.class));
     }
 
     /**
@@ -70,7 +70,7 @@ public class LookupStatusTest {
      */
     @Test
     public void failedTelephoneNumbersTest() {
-        // TODO: test failedTelephoneNumbers
+        assertThat(model.getFailedTelephoneNumbers(), instanceOf(ArrayList.class));
     }
 
 }

@@ -12,31 +12,31 @@
 
 package com.bandwidth.sdk.unit.models;
 
+import org.junit.jupiter.api.Test;
+
 import com.bandwidth.sdk.model.CallTranscription;
 import com.bandwidth.sdk.model.CallTranscriptionDetectedLanguageEnum;
 import com.bandwidth.sdk.model.CallTranscriptionTrackEnum;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for CallTranscription
  */
 public class CallTranscriptionTest {
-    private final CallTranscription model = new CallTranscription();
+    private final CallTranscription model = new CallTranscription()
+            .detectedLanguage(CallTranscriptionDetectedLanguageEnum.EN_US)
+            .track(CallTranscriptionTrackEnum.INBOUND)
+            .transcript("transcript")
+            .confidence(0.5);
 
     /**
      * Model tests for CallTranscription
      */
     @Test
     public void testCallTranscription() {
-        // TODO: test CallTranscription
+        assertThat(model, instanceOf(CallTranscription.class));
     }
 
     /**
@@ -44,7 +44,7 @@ public class CallTranscriptionTest {
      */
     @Test
     public void detectedLanguageTest() {
-        // TODO: test detectedLanguage
+        assertThat(model.getDetectedLanguage(), instanceOf(CallTranscriptionDetectedLanguageEnum.class));
     }
 
     /**
@@ -52,7 +52,7 @@ public class CallTranscriptionTest {
      */
     @Test
     public void trackTest() {
-        // TODO: test track
+        assertThat(model.getTrack(), instanceOf(CallTranscriptionTrackEnum.class));
     }
 
     /**
@@ -60,7 +60,7 @@ public class CallTranscriptionTest {
      */
     @Test
     public void transcriptTest() {
-        // TODO: test transcript
+        assertThat(model.getTranscript(), instanceOf(String.class));
     }
 
     /**
@@ -68,7 +68,7 @@ public class CallTranscriptionTest {
      */
     @Test
     public void confidenceTest() {
-        // TODO: test confidence
+        assertThat(model.getConfidence(), instanceOf(Double.class));
     }
 
 }

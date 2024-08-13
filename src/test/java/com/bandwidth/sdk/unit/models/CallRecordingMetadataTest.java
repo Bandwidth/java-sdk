@@ -12,35 +12,53 @@
 
 package com.bandwidth.sdk.unit.models;
 
+import org.junit.jupiter.api.Test;
+
+import java.net.URI;
+import java.time.OffsetDateTime;
 import com.bandwidth.sdk.model.CallDirectionEnum;
 import com.bandwidth.sdk.model.CallRecordingMetadata;
 import com.bandwidth.sdk.model.FileFormatEnum;
 import com.bandwidth.sdk.model.RecordingTranscriptionMetadata;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.net.URI;
-import java.time.OffsetDateTime;
-import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for CallRecordingMetadata
  */
 public class CallRecordingMetadataTest {
-    private final CallRecordingMetadata model = new CallRecordingMetadata();
+    private final CallRecordingMetadata model = new CallRecordingMetadata()
+            .applicationId("04e88489-df02-4e34-a0ee-27a91849555f")
+            .accountId("accountId")
+            .callId("callId")
+            .parentCallId("parentCallId")
+            .recordingId("recordingId")
+            .to("to")
+            .from("from")
+            .transferCallerId("transferCallerId")
+            .transferTo("transferTo")
+            .duration("duration")
+            .direction(CallDirectionEnum.INBOUND)
+            .channels(0)
+            .startTime(OffsetDateTime.now())
+            .endTime(OffsetDateTime.now())
+            .fileFormat(FileFormatEnum.WAV)
+            .status("status")
+            .mediaUrl(URI.create("https://bandwidth.com"))
+            .transcription(new RecordingTranscriptionMetadata()
+                    .id("id")
+                    .status("status")
+                    .completedTime(OffsetDateTime.now())
+                    .url(URI.create("https://bandwidth.com")))
+            .recordingName("recordingName");
 
     /**
      * Model tests for CallRecordingMetadata
      */
     @Test
     public void testCallRecordingMetadata() {
-        // TODO: test CallRecordingMetadata
+        assertThat(model, instanceOf(CallRecordingMetadata.class));
     }
 
     /**
@@ -48,7 +66,7 @@ public class CallRecordingMetadataTest {
      */
     @Test
     public void applicationIdTest() {
-        // TODO: test applicationId
+        assertThat(model.getApplicationId(), instanceOf(String.class));
     }
 
     /**
@@ -56,7 +74,7 @@ public class CallRecordingMetadataTest {
      */
     @Test
     public void accountIdTest() {
-        // TODO: test accountId
+        assertThat(model.getAccountId(), instanceOf(String.class));
     }
 
     /**
@@ -64,7 +82,7 @@ public class CallRecordingMetadataTest {
      */
     @Test
     public void callIdTest() {
-        // TODO: test callId
+        assertThat(model.getCallId(), instanceOf(String.class));
     }
 
     /**
@@ -72,7 +90,7 @@ public class CallRecordingMetadataTest {
      */
     @Test
     public void parentCallIdTest() {
-        // TODO: test parentCallId
+        assertThat(model.getParentCallId(), instanceOf(String.class));
     }
 
     /**
@@ -80,7 +98,7 @@ public class CallRecordingMetadataTest {
      */
     @Test
     public void recordingIdTest() {
-        // TODO: test recordingId
+        assertThat(model.getRecordingId(), instanceOf(String.class));
     }
 
     /**
@@ -88,7 +106,7 @@ public class CallRecordingMetadataTest {
      */
     @Test
     public void toTest() {
-        // TODO: test to
+        assertThat(model.getTo(), instanceOf(String.class));
     }
 
     /**
@@ -96,7 +114,7 @@ public class CallRecordingMetadataTest {
      */
     @Test
     public void fromTest() {
-        // TODO: test from
+        assertThat(model.getFrom(), instanceOf(String.class));
     }
 
     /**
@@ -104,7 +122,7 @@ public class CallRecordingMetadataTest {
      */
     @Test
     public void transferCallerIdTest() {
-        // TODO: test transferCallerId
+        assertThat(model.getTransferCallerId(), instanceOf(String.class));
     }
 
     /**
@@ -112,7 +130,7 @@ public class CallRecordingMetadataTest {
      */
     @Test
     public void transferToTest() {
-        // TODO: test transferTo
+        assertThat(model.getTransferTo(), instanceOf(String.class));
     }
 
     /**
@@ -120,7 +138,7 @@ public class CallRecordingMetadataTest {
      */
     @Test
     public void durationTest() {
-        // TODO: test duration
+        assertThat(model.getDuration(), instanceOf(String.class));
     }
 
     /**
@@ -128,7 +146,7 @@ public class CallRecordingMetadataTest {
      */
     @Test
     public void directionTest() {
-        // TODO: test direction
+        assertThat(model.getDirection(), instanceOf(CallDirectionEnum.class));
     }
 
     /**
@@ -136,7 +154,7 @@ public class CallRecordingMetadataTest {
      */
     @Test
     public void channelsTest() {
-        // TODO: test channels
+        assertThat(model.getChannels(), instanceOf(Integer.class));
     }
 
     /**
@@ -144,7 +162,7 @@ public class CallRecordingMetadataTest {
      */
     @Test
     public void startTimeTest() {
-        // TODO: test startTime
+        assertThat(model.getStartTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -152,7 +170,7 @@ public class CallRecordingMetadataTest {
      */
     @Test
     public void endTimeTest() {
-        // TODO: test endTime
+        assertThat(model.getEndTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -160,7 +178,7 @@ public class CallRecordingMetadataTest {
      */
     @Test
     public void fileFormatTest() {
-        // TODO: test fileFormat
+        assertThat(model.getFileFormat(), instanceOf(FileFormatEnum.class));
     }
 
     /**
@@ -168,7 +186,7 @@ public class CallRecordingMetadataTest {
      */
     @Test
     public void statusTest() {
-        // TODO: test status
+        assertThat(model.getStatus(), instanceOf(String.class));
     }
 
     /**
@@ -176,7 +194,7 @@ public class CallRecordingMetadataTest {
      */
     @Test
     public void mediaUrlTest() {
-        // TODO: test mediaUrl
+        assertThat(model.getMediaUrl(), instanceOf(URI.class));
     }
 
     /**
@@ -184,7 +202,7 @@ public class CallRecordingMetadataTest {
      */
     @Test
     public void transcriptionTest() {
-        // TODO: test transcription
+        assertThat(model.getTranscription(), instanceOf(RecordingTranscriptionMetadata.class));
     }
 
     /**
@@ -192,7 +210,7 @@ public class CallRecordingMetadataTest {
      */
     @Test
     public void recordingNameTest() {
-        // TODO: test recordingName
+        assertThat(model.getRecordingName(), instanceOf(String.class));
     }
 
 }

@@ -12,33 +12,41 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.CallDirectionEnum;
-import com.bandwidth.sdk.model.Diversion;
-import com.bandwidth.sdk.model.InitiateCallback;
-import com.bandwidth.sdk.model.StirShaken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.OffsetDateTime;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.time.OffsetDateTime;
+import com.bandwidth.sdk.model.InitiateCallback;
+import com.bandwidth.sdk.model.Diversion;
+import com.bandwidth.sdk.model.StirShaken;
+import com.bandwidth.sdk.model.CallDirectionEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for InitiateCallback
  */
 public class InitiateCallbackTest {
-    private final InitiateCallback model = new InitiateCallback();
+    private final InitiateCallback model = new InitiateCallback()
+            .eventType("eventType")
+            .eventTime(OffsetDateTime.now())
+            .accountId("accountId")
+            .applicationId("applicationId")
+            .from("from")
+            .to("to")
+            .direction(CallDirectionEnum.INBOUND)
+            .callId("callId")
+            .callUrl("callUrl")
+            .startTime(OffsetDateTime.now())
+            .diversion(new Diversion())
+            .stirShaken(new StirShaken());
 
     /**
      * Model tests for InitiateCallback
      */
     @Test
     public void testInitiateCallback() {
-        // TODO: test InitiateCallback
+        assertThat(model, instanceOf(InitiateCallback.class));
     }
 
     /**
@@ -46,7 +54,7 @@ public class InitiateCallbackTest {
      */
     @Test
     public void eventTypeTest() {
-        // TODO: test eventType
+        assertThat(model.getEventType(), instanceOf(String.class));
     }
 
     /**
@@ -54,7 +62,7 @@ public class InitiateCallbackTest {
      */
     @Test
     public void eventTimeTest() {
-        // TODO: test eventTime
+        assertThat(model.getEventTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -62,7 +70,7 @@ public class InitiateCallbackTest {
      */
     @Test
     public void accountIdTest() {
-        // TODO: test accountId
+        assertThat(model.getAccountId(), instanceOf(String.class));
     }
 
     /**
@@ -70,7 +78,7 @@ public class InitiateCallbackTest {
      */
     @Test
     public void applicationIdTest() {
-        // TODO: test applicationId
+        assertThat(model.getApplicationId(), instanceOf(String.class));
     }
 
     /**
@@ -78,7 +86,7 @@ public class InitiateCallbackTest {
      */
     @Test
     public void fromTest() {
-        // TODO: test from
+        assertThat(model.getFrom(), instanceOf(String.class));
     }
 
     /**
@@ -86,7 +94,7 @@ public class InitiateCallbackTest {
      */
     @Test
     public void toTest() {
-        // TODO: test to
+        assertThat(model.getTo(), instanceOf(String.class));
     }
 
     /**
@@ -94,7 +102,7 @@ public class InitiateCallbackTest {
      */
     @Test
     public void directionTest() {
-        // TODO: test direction
+        assertThat(model.getDirection(), instanceOf(CallDirectionEnum.class));
     }
 
     /**
@@ -102,7 +110,7 @@ public class InitiateCallbackTest {
      */
     @Test
     public void callIdTest() {
-        // TODO: test callId
+        assertThat(model.getCallId(), instanceOf(String.class));
     }
 
     /**
@@ -110,7 +118,7 @@ public class InitiateCallbackTest {
      */
     @Test
     public void callUrlTest() {
-        // TODO: test callUrl
+        assertThat(model.getCallUrl(), instanceOf(String.class));
     }
 
     /**
@@ -118,7 +126,7 @@ public class InitiateCallbackTest {
      */
     @Test
     public void startTimeTest() {
-        // TODO: test startTime
+        assertThat(model.getStartTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -126,7 +134,7 @@ public class InitiateCallbackTest {
      */
     @Test
     public void diversionTest() {
-        // TODO: test diversion
+        assertThat(model.getDiversion(), instanceOf(Diversion.class));
     }
 
     /**
@@ -134,7 +142,7 @@ public class InitiateCallbackTest {
      */
     @Test
     public void stirShakenTest() {
-        // TODO: test stirShaken
+        assertThat(model.getStirShaken(), instanceOf(StirShaken.class));
     }
 
 }

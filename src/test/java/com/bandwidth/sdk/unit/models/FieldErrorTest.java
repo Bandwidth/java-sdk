@@ -12,29 +12,27 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.FieldError;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.FieldError;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for FieldError
  */
 public class FieldErrorTest {
-    private final FieldError model = new FieldError();
+    private final FieldError model = new FieldError()
+            .fieldName("fieldName")
+            .description("description");
 
     /**
      * Model tests for FieldError
      */
     @Test
     public void testFieldError() {
-        // TODO: test FieldError
+        assertThat(model, instanceOf(FieldError.class));
     }
 
     /**
@@ -42,7 +40,7 @@ public class FieldErrorTest {
      */
     @Test
     public void fieldNameTest() {
-        // TODO: test fieldName
+        assertThat(model.getFieldName(), instanceOf(String.class));
     }
 
     /**
@@ -50,7 +48,7 @@ public class FieldErrorTest {
      */
     @Test
     public void descriptionTest() {
-        // TODO: test description
+        assertThat(model.getDescription(), instanceOf(String.class));
     }
 
 }
