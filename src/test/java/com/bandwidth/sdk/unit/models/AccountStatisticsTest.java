@@ -10,33 +10,30 @@
  * Do not edit the class manually.
  */
 
+package com.bandwidth.sdk.unit.models;
 
-package com.bandwidth.sdk.model;
-
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import com.bandwidth.sdk.model.AccountStatistics;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for AccountStatistics
  */
 public class AccountStatisticsTest {
-    private final AccountStatistics model = new AccountStatistics();
+    private static AccountStatistics model = new AccountStatistics()
+            .currentCallQueueSize(10)
+            .maxCallQueueSize(10);
 
     /**
      * Model tests for AccountStatistics
      */
     @Test
     public void testAccountStatistics() {
-        // TODO: test AccountStatistics
+        assertThat(model, is(instanceOf(AccountStatistics.class)));
     }
 
     /**
@@ -44,7 +41,7 @@ public class AccountStatisticsTest {
      */
     @Test
     public void currentCallQueueSizeTest() {
-        // TODO: test currentCallQueueSize
+        assertThat(model.getCurrentCallQueueSize(), is(10));
     }
 
     /**
@@ -52,7 +49,7 @@ public class AccountStatisticsTest {
      */
     @Test
     public void maxCallQueueSizeTest() {
-        // TODO: test maxCallQueueSize
+        assertThat(model.getMaxCallQueueSize(), is(10));
     }
 
 }

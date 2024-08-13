@@ -10,36 +10,46 @@
  * Do not edit the class manually.
  */
 
+package com.bandwidth.sdk.unit.models;
 
-package com.bandwidth.sdk.model;
-
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
-import java.time.OffsetDateTime;
-import com.bandwidth.sdk.model.CallDirectionEnum;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.OffsetDateTime;
+import com.bandwidth.sdk.model.AnswerCallback;
+import com.bandwidth.sdk.model.CallDirectionEnum;
+import com.bandwidth.sdk.model.MachineDetectionResult;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for AnswerCallback
  */
 public class AnswerCallbackTest {
-    private final AnswerCallback model = new AnswerCallback();
+    private final AnswerCallback model = new AnswerCallback()
+            .eventType("eventType")
+            .eventTime(OffsetDateTime.now())
+            .accountId("accountId")
+            .applicationId("applicationId")
+            .from("from")
+            .to("to")
+            .direction(CallDirectionEnum.INBOUND)
+            .callId("callId")
+            .callUrl("callUrl")
+            .enqueuedTime(OffsetDateTime.now())
+            .startTime(OffsetDateTime.now())
+            .answerTime(OffsetDateTime.now())
+            .tag("tag")
+            .machineDetectionResult(new MachineDetectionResult()
+                    .value("answering-machine")
+                    .duration("PT4.9891287S"));
 
     /**
      * Model tests for AnswerCallback
      */
     @Test
     public void testAnswerCallback() {
-        // TODO: test AnswerCallback
+        assertThat(model, instanceOf(AnswerCallback.class));
     }
 
     /**
@@ -47,7 +57,7 @@ public class AnswerCallbackTest {
      */
     @Test
     public void eventTypeTest() {
-        // TODO: test eventType
+        assertThat(model.getEventType(), instanceOf(String.class));
     }
 
     /**
@@ -55,7 +65,7 @@ public class AnswerCallbackTest {
      */
     @Test
     public void eventTimeTest() {
-        // TODO: test eventTime
+        assertThat(model.getEventTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -63,7 +73,7 @@ public class AnswerCallbackTest {
      */
     @Test
     public void accountIdTest() {
-        // TODO: test accountId
+        assertThat(model.getAccountId(), instanceOf(String.class));
     }
 
     /**
@@ -71,7 +81,7 @@ public class AnswerCallbackTest {
      */
     @Test
     public void applicationIdTest() {
-        // TODO: test applicationId
+        assertThat(model.getApplicationId(), instanceOf(String.class));
     }
 
     /**
@@ -79,7 +89,7 @@ public class AnswerCallbackTest {
      */
     @Test
     public void fromTest() {
-        // TODO: test from
+        assertThat(model.getFrom(), instanceOf(String.class));
     }
 
     /**
@@ -87,7 +97,7 @@ public class AnswerCallbackTest {
      */
     @Test
     public void toTest() {
-        // TODO: test to
+        assertThat(model.getTo(), instanceOf(String.class));
     }
 
     /**
@@ -95,7 +105,7 @@ public class AnswerCallbackTest {
      */
     @Test
     public void directionTest() {
-        // TODO: test direction
+        assertThat(model.getDirection(), instanceOf(CallDirectionEnum.class));
     }
 
     /**
@@ -103,7 +113,7 @@ public class AnswerCallbackTest {
      */
     @Test
     public void callIdTest() {
-        // TODO: test callId
+        assertThat(model.getCallId(), instanceOf(String.class));
     }
 
     /**
@@ -111,7 +121,7 @@ public class AnswerCallbackTest {
      */
     @Test
     public void callUrlTest() {
-        // TODO: test callUrl
+        assertThat(model.getCallUrl(), instanceOf(String.class));
     }
 
     /**
@@ -119,7 +129,7 @@ public class AnswerCallbackTest {
      */
     @Test
     public void enqueuedTimeTest() {
-        // TODO: test enqueuedTime
+        assertThat(model.getEnqueuedTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -127,7 +137,7 @@ public class AnswerCallbackTest {
      */
     @Test
     public void startTimeTest() {
-        // TODO: test startTime
+        assertThat(model.getStartTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -135,7 +145,7 @@ public class AnswerCallbackTest {
      */
     @Test
     public void answerTimeTest() {
-        // TODO: test answerTime
+        assertThat(model.getAnswerTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -143,7 +153,7 @@ public class AnswerCallbackTest {
      */
     @Test
     public void tagTest() {
-        // TODO: test tag
+        assertThat(model.getTag(), instanceOf(String.class));
     }
 
     /**
@@ -151,7 +161,7 @@ public class AnswerCallbackTest {
      */
     @Test
     public void machineDetectionResultTest() {
-        // TODO: test machineDetectionResult
+        assertThat(model.getMachineDetectionResult(), instanceOf(MachineDetectionResult.class));
     }
 
 }
