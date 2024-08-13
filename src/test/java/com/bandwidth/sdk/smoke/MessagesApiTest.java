@@ -1,14 +1,6 @@
-/*
- * Bandwidth
- * Bandwidth's Communication APIs
- *
- * The version of the OpenAPI document: 1.0.0
- * Contact: letstalk@bandwidth.com
- *
- */
+package com.bandwidth.sdk.smoke;
 
-package com.bandwidth.sdk.api;
-
+import com.bandwidth.sdk.api.MessagesApi;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.auth.HttpBasicAuth;
@@ -79,12 +71,14 @@ public class MessagesApiTest {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
         MessagesList response = api.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus,
-                messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken,
+                messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort,
+                pageToken,
                 limit, false);
 
         assertThat(response, instanceOf(MessagesList.class));
         assertThat(response.getTotalCount(), greaterThan(0));
 
+        @SuppressWarnings("null")
         ListMessageItem message = response.getMessages().get(0);
         assertThat(message, instanceOf(ListMessageItem.class));
         assertThat(message.getAccountId(), is(System.getenv("BW_ACCOUNT_ID")));
@@ -105,7 +99,8 @@ public class MessagesApiTest {
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
                 () -> api.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection,
-                        carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, false));
+                        carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken,
+                        limit, false));
         assertThat(exception.getCode(), is(400));
 
     }
@@ -118,7 +113,8 @@ public class MessagesApiTest {
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
                 () -> api.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection,
-                        carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, false));
+                        carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken,
+                        limit, false));
         assertThat(exception.getCode(), is(401));
     }
 

@@ -1,5 +1,6 @@
-package com.bandwidth.sdk.api;
+package com.bandwidth.sdk.smoke;
 
+import com.bandwidth.sdk.api.MfaApi;
 import com.bandwidth.sdk.ApiResponse;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiClient;

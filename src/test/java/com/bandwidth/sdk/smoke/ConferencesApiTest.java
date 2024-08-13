@@ -1,5 +1,7 @@
-package com.bandwidth.sdk.api;
+package com.bandwidth.sdk.smoke;
 
+import com.bandwidth.sdk.api.CallsApi;
+import com.bandwidth.sdk.api.ConferencesApi;
 import com.bandwidth.sdk.ApiResponse;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.auth.HttpBasicAuth;
@@ -74,7 +76,7 @@ public class ConferencesApiTest {
     @AfterAll
     public void tearDownAfterClass() throws Exception {
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
-        Cleanup(this, callId);
+        // Cleanup(this, callId);
     }
 
     static final String constructMantecaJsonBody(String os, String language) {
@@ -103,7 +105,8 @@ public class ConferencesApiTest {
             } else {
                 System.out.println(mantecaStatusResponse.body().string());
                 throw new Exception(
-                        "Received HTTP " + String.valueOf(mantecaStatusResponse.code()) + " status code from Manteca");
+                        "Received HTTP " + String.valueOf(mantecaStatusResponse.code())
+                                + " status code from Manteca");
             }
         } catch (IOException e) {
             System.out.println(e.toString());
@@ -196,7 +199,8 @@ public class ConferencesApiTest {
                 conferenceId, updateConference);
         assertThat(updateConferenceResponse.getStatusCode(), is(204));
 
-        ApiResponse<Void> updateConferenceBxmlResponse = conferencesApi.updateConferenceBxmlWithHttpInfo(BW_ACCOUNT_ID,
+        ApiResponse<Void> updateConferenceBxmlResponse = conferencesApi.updateConferenceBxmlWithHttpInfo(
+                BW_ACCOUNT_ID,
                 conferenceId, updateRecordingBxml);
         assertThat(updateConferenceBxmlResponse.getStatusCode(), is(204));
     }
@@ -209,8 +213,8 @@ public class ConferencesApiTest {
 
         Boolean testRecordingStatus = false;
         for (int i = 0; i < MAX_RETRIES; i++) {
-                TimeUnit.SECONDS.sleep(TEST_SLEEP);
-                testRecordingStatus = getTestRecordedStatus(testId);
+            TimeUnit.SECONDS.sleep(TEST_SLEEP);
+            testRecordingStatus = getTestRecordedStatus(testId);
         }
         assertThat(testRecordingStatus, is(true));
 

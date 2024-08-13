@@ -1,5 +1,6 @@
-package com.bandwidth.sdk.api;
+package com.bandwidth.sdk.smoke;
 
+import com.bandwidth.sdk.api.PhoneNumberLookupApi;
 import com.bandwidth.sdk.ApiResponse;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiClient;
@@ -82,6 +83,7 @@ public class PhoneNumberLookupApiTest {
         return lookupStatus;
     }
 
+    @SuppressWarnings("null")
     @Test
     public void successfulPhoneNumberLookup() throws Exception, ApiException {
         Basic.setUsername(BW_USERNAME);

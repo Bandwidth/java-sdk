@@ -1,5 +1,7 @@
-package com.bandwidth.sdk.api;
+package com.bandwidth.sdk.smoke;
 
+import com.bandwidth.sdk.api.CallsApi;
+import com.bandwidth.sdk.api.RecordingsApi;
 import com.bandwidth.sdk.ApiResponse;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
@@ -76,7 +78,7 @@ public class RecordingsApiTest {
     @AfterAll
     public void tearDownAfterClass() throws Exception {
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
-        Cleanup(this, callId);
+        // Cleanup(this, callId);
     }
 
     static final String constructMantecaJsonBody() {
@@ -102,7 +104,8 @@ public class RecordingsApiTest {
             } else {
                 System.out.println(mantecaStatusResponse.body().string());
                 throw new Exception(
-                        "Received HTTP " + String.valueOf(mantecaStatusResponse.code()) + " status code from Manteca");
+                        "Received HTTP " + String.valueOf(mantecaStatusResponse.code())
+                                + " status code from Manteca");
             }
         } catch (IOException e) {
             System.out.println(e.toString());
@@ -147,7 +150,8 @@ public class RecordingsApiTest {
         UpdateCallRecording updateRecording = new UpdateCallRecording();
         updateRecording.setState(RecordingStateEnum.PAUSED);
 
-        ApiResponse<Void> pauseRecordingResponse = recordingsApi.updateCallRecordingStateWithHttpInfo(BW_ACCOUNT_ID,
+        ApiResponse<Void> pauseRecordingResponse = recordingsApi.updateCallRecordingStateWithHttpInfo(
+                BW_ACCOUNT_ID,
                 callId, updateRecording);
         assertThat(pauseRecordingResponse.getStatusCode(), is(200));
 
@@ -155,7 +159,8 @@ public class RecordingsApiTest {
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
         updateRecording.setState(RecordingStateEnum.RECORDING);
 
-        ApiResponse<Void> resumeRecordingResponse = recordingsApi.updateCallRecordingStateWithHttpInfo(BW_ACCOUNT_ID,
+        ApiResponse<Void> resumeRecordingResponse = recordingsApi.updateCallRecordingStateWithHttpInfo(
+                BW_ACCOUNT_ID,
                 callId, updateRecording);
         assertThat(resumeRecordingResponse.getStatusCode(), is(200));
 
@@ -182,8 +187,9 @@ public class RecordingsApiTest {
         assertThat(listRecordingMetadataResponse.getStatusCode(), is(200));
         recordingId = listRecordingMetadataResponse.getData().get(0).getRecordingId();
 
-        ApiResponse<CallRecordingMetadata> recordingMetadataResponse = recordingsApi.getCallRecordingWithHttpInfo(
-                BW_ACCOUNT_ID, callId, recordingId);
+        ApiResponse<CallRecordingMetadata> recordingMetadataResponse = recordingsApi
+                .getCallRecordingWithHttpInfo(
+                        BW_ACCOUNT_ID, callId, recordingId);
         assertThat(recordingMetadataResponse.getStatusCode(), is(200));
 
         // Pass the tag to transcribeRecording to receive the callback
@@ -210,17 +216,20 @@ public class RecordingsApiTest {
         assertThat(listTranscriptionsResponse.getStatusCode(), is(200));
 
         // Delete transcription
-        ApiResponse<Void> deleteTranscriptionResponse = recordingsApi.deleteRecordingTranscriptionWithHttpInfo(BW_ACCOUNT_ID,
+        ApiResponse<Void> deleteTranscriptionResponse = recordingsApi.deleteRecordingTranscriptionWithHttpInfo(
+                BW_ACCOUNT_ID,
                 callId, recordingId);
         assertThat(deleteTranscriptionResponse.getStatusCode(), is(204));
 
         // Delete recording media
-        ApiResponse<Void> deleteRecordingMediaResponse = recordingsApi.deleteRecordingMediaWithHttpInfo(BW_ACCOUNT_ID,
+        ApiResponse<Void> deleteRecordingMediaResponse = recordingsApi.deleteRecordingMediaWithHttpInfo(
+                BW_ACCOUNT_ID,
                 callId, recordingId);
         assertThat(deleteRecordingMediaResponse.getStatusCode(), is(204));
 
         // Delete recording metadata
-        ApiResponse<Void> deleteRecordingMetadataResponse = recordingsApi.deleteRecordingWithHttpInfo(BW_ACCOUNT_ID,
+        ApiResponse<Void> deleteRecordingMetadataResponse = recordingsApi.deleteRecordingWithHttpInfo(
+                BW_ACCOUNT_ID,
                 callId, recordingId);
         assertThat(deleteRecordingMetadataResponse.getStatusCode(), is(204));
     }
