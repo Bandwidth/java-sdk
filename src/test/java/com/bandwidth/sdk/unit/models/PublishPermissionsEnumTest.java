@@ -10,13 +10,11 @@
  * Do not edit the class manually.
  */
 
-
-package com.bandwidth.sdk.model;
+package com.bandwidth.sdk.unit.models;
 
 import com.google.gson.annotations.SerializedName;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
 
 /**
  * Model tests for PublishPermissionsEnum

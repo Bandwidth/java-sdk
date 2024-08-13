@@ -10,8 +10,7 @@
  * Do not edit the class manually.
  */
 
-
-package com.bandwidth.sdk.model;
+package com.bandwidth.sdk.unit.models;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -22,6 +21,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.MachineDetectionResult;
 
 /**
  * Model tests for MachineDetectionResult

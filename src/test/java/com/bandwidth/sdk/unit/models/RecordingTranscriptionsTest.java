@@ -10,8 +10,7 @@
  * Do not edit the class manually.
  */
 
-
-package com.bandwidth.sdk.model;
+package com.bandwidth.sdk.unit.models;
 
 import com.bandwidth.sdk.model.Transcription;
 import com.google.gson.TypeAdapter;
@@ -25,6 +24,8 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.RecordingTranscriptions;
 
 /**
  * Model tests for RecordingTranscriptions

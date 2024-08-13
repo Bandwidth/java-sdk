@@ -10,8 +10,7 @@
  * Do not edit the class manually.
  */
 
-
-package com.bandwidth.sdk.model;
+package com.bandwidth.sdk.unit.models;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -30,6 +29,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import com.bandwidth.sdk.model.CallRecordingMetadata;
 
 /**
  * Model tests for CallRecordingMetadata
