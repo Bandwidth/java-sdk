@@ -13,6 +13,7 @@
 package com.bandwidth.sdk.unit.models;
 
 import com.bandwidth.sdk.model.CallTranscription;
+import com.bandwidth.sdk.model.CallTranscriptionResponse;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,8 +25,6 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
-import com.bandwidth.sdk.model.CallTranscriptionResponse;
 
 /**
  * Model tests for CallTranscriptionResponse

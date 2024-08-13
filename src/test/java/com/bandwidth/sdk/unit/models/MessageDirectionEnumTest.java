@@ -12,7 +12,6 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import io.swagger.annotations.ApiModel;
 import com.google.gson.annotations.SerializedName;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

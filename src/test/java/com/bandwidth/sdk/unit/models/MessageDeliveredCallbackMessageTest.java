@@ -12,6 +12,9 @@
 
 package com.bandwidth.sdk.unit.models;
 
+import com.bandwidth.sdk.model.MessageDeliveredCallbackMessage;
+import com.bandwidth.sdk.model.MessageDirectionEnum;
+import com.bandwidth.sdk.model.PriorityEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -21,15 +24,12 @@ import java.io.IOException;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import com.bandwidth.sdk.model.MessageDirectionEnum;
-import com.bandwidth.sdk.model.PriorityEnum;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
-import com.bandwidth.sdk.model.MessageDeliveredCallbackMessage;
 
 /**
  * Model tests for MessageDeliveredCallbackMessage

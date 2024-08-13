@@ -12,6 +12,9 @@
 
 package com.bandwidth.sdk.unit.models;
 
+import com.bandwidth.sdk.model.CallTranscription;
+import com.bandwidth.sdk.model.CallTranscriptionDetectedLanguageEnum;
+import com.bandwidth.sdk.model.CallTranscriptionTrackEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -21,8 +24,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
-import com.bandwidth.sdk.model.CallTranscription;
 
 /**
  * Model tests for CallTranscription
@@ -55,11 +56,11 @@ public class CallTranscriptionTest {
     }
 
     /**
-     * Test the property 'text'
+     * Test the property 'transcript'
      */
     @Test
-    public void textTest() {
-        // TODO: test text
+    public void transcriptTest() {
+        // TODO: test transcript
     }
 
     /**

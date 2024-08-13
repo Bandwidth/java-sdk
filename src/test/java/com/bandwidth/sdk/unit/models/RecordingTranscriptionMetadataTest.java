@@ -12,6 +12,7 @@
 
 package com.bandwidth.sdk.unit.models;
 
+import com.bandwidth.sdk.model.RecordingTranscriptionMetadata;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -19,11 +20,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.net.URI;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
-import com.bandwidth.sdk.model.RecordingTranscriptionMetadata;
 
 /**
  * Model tests for RecordingTranscriptionMetadata
