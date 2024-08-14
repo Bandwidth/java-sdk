@@ -3,11 +3,11 @@ name: Smoke Test
 on:
   schedule:
     - cron: "0 4 * * *"
-  # pull_request:
-  #   branches:
-  #     - main
-  #   paths:
-  #     - "src/test/java/com/bandwidth/sdk/smoke/*"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "src/test/java/com/bandwidth/sdk/smoke/*"
 
 env:
   BW_ACCOUNT_ID: ${{ secrets.BW_ACCOUNT_ID }}
