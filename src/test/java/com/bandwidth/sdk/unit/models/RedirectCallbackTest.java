@@ -14,7 +14,6 @@ package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.time.OffsetDateTime;
 import com.bandwidth.sdk.model.RedirectCallback;
 import com.bandwidth.sdk.model.CallDirectionEnum;
