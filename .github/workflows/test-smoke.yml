@@ -44,11 +44,11 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: zulu
-          java-version: 19
+          java-version: 21
 
       - name: Build Package and Test
         env:
-          JAVA_VERSION: 19
+          JAVA_VERSION: 21
           RUNNER_OS: ubuntu-latest
           OPERATING_SYSTEM: ubuntu-latest
           DISTRIBUTION: zulu
