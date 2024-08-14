@@ -91,6 +91,14 @@ public class TranscriptionsApiTest {
         ApiResponse<List<CallTranscriptionMetadata>> listRealTimeTranscriptionResponse = transcriptionsApi
                 .listRealTimeTranscriptionsWithHttpInfo(BW_ACCOUNT_ID, createCallResponse.getData().getCallId());
 
+        assertThat(listRealTimeTranscriptionResponse.getStatusCode(), is(200));
+        assertThat(listRealTimeTranscriptionResponse.getData().get(0),
+                hasProperty("transcriptionId", is(instanceOf(String.class))));
+        assertThat(listRealTimeTranscriptionResponse.getData().get(0),
+                hasProperty("transcriptionName", is(instanceOf(String.class))));
+        assertThat(listRealTimeTranscriptionResponse.getData().get(0),
+                hasProperty("transcriptionUrl", is(instanceOf(String.class))));
+
         String transcriptionId = listRealTimeTranscriptionResponse.getData().get(0).getTranscriptionId();
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
 
