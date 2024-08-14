@@ -12,31 +12,33 @@
 
 package com.bandwidth.sdk.unit.models;
 
+import org.junit.jupiter.api.Test;
+
+import java.time.OffsetDateTime;
 import com.bandwidth.sdk.model.MessageFailedCallback;
 import com.bandwidth.sdk.model.MessageFailedCallbackMessage;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.OffsetDateTime;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for MessageFailedCallback
  */
 public class MessageFailedCallbackTest {
-    private final MessageFailedCallback model = new MessageFailedCallback();
+    private final MessageFailedCallback model = new MessageFailedCallback()
+            .time(OffsetDateTime.now())
+            .type("type")
+            .to("to")
+            .description("description")
+            .message(new MessageFailedCallbackMessage())
+            .errorCode(123);
 
     /**
      * Model tests for MessageFailedCallback
      */
     @Test
     public void testMessageFailedCallback() {
-        // TODO: test MessageFailedCallback
+        assertThat(model, instanceOf(MessageFailedCallback.class));
     }
 
     /**
@@ -44,7 +46,7 @@ public class MessageFailedCallbackTest {
      */
     @Test
     public void timeTest() {
-        // TODO: test time
+        assertThat(model.getTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -52,7 +54,7 @@ public class MessageFailedCallbackTest {
      */
     @Test
     public void typeTest() {
-        // TODO: test type
+        assertThat(model.getType(), instanceOf(String.class));
     }
 
     /**
@@ -60,7 +62,7 @@ public class MessageFailedCallbackTest {
      */
     @Test
     public void toTest() {
-        // TODO: test to
+        assertThat(model.getTo(), instanceOf(String.class));
     }
 
     /**
@@ -68,7 +70,7 @@ public class MessageFailedCallbackTest {
      */
     @Test
     public void descriptionTest() {
-        // TODO: test description
+        assertThat(model.getDescription(), instanceOf(String.class));
     }
 
     /**
@@ -76,7 +78,7 @@ public class MessageFailedCallbackTest {
      */
     @Test
     public void messageTest() {
-        // TODO: test message
+        assertThat(model.getMessage(), instanceOf(MessageFailedCallbackMessage.class));
     }
 
     /**
@@ -84,7 +86,7 @@ public class MessageFailedCallbackTest {
      */
     @Test
     public void errorCodeTest() {
-        // TODO: test errorCode
+        assertThat(model.getErrorCode(), instanceOf(Integer.class));
     }
 
 }

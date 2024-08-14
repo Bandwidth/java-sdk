@@ -12,36 +12,40 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.MessageRequest;
-import com.bandwidth.sdk.model.PriorityEnum;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import org.junit.jupiter.api.Test;
+import org.mockito.internal.util.collections.Sets;
+
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import com.bandwidth.sdk.model.MessageRequest;
+import com.bandwidth.sdk.model.PriorityEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for MessageRequest
  */
 public class MessageRequestTest {
-    private final MessageRequest model = new MessageRequest();
+    private final MessageRequest model = new MessageRequest()
+            .applicationId("applicationId")
+            .to(Sets.newSet("+1234567890"))
+            .from("tel:+1234567890")
+            .text("text")
+            .media(new ArrayList<URI>(Arrays.asList(URI.create("http://example.com"))))
+            .tag("tag")
+            .priority(PriorityEnum.HIGH)
+            .expiration(OffsetDateTime.now());
 
     /**
      * Model tests for MessageRequest
      */
     @Test
     public void testMessageRequest() {
-        // TODO: test MessageRequest
+        assertThat(model, instanceOf(MessageRequest.class));
     }
 
     /**
@@ -49,7 +53,7 @@ public class MessageRequestTest {
      */
     @Test
     public void applicationIdTest() {
-        // TODO: test applicationId
+        assertThat(model.getApplicationId(), instanceOf(String.class));
     }
 
     /**
@@ -57,7 +61,7 @@ public class MessageRequestTest {
      */
     @Test
     public void toTest() {
-        // TODO: test to
+        assertThat(model.getTo(), instanceOf(LinkedHashSet.class));
     }
 
     /**
@@ -65,7 +69,7 @@ public class MessageRequestTest {
      */
     @Test
     public void fromTest() {
-        // TODO: test from
+        assertThat(model.getFrom(), instanceOf(String.class));
     }
 
     /**
@@ -73,7 +77,7 @@ public class MessageRequestTest {
      */
     @Test
     public void textTest() {
-        // TODO: test text
+        assertThat(model.getText(), instanceOf(String.class));
     }
 
     /**
@@ -81,7 +85,7 @@ public class MessageRequestTest {
      */
     @Test
     public void mediaTest() {
-        // TODO: test media
+        assertThat(model.getMedia(), instanceOf(ArrayList.class));
     }
 
     /**
@@ -89,7 +93,7 @@ public class MessageRequestTest {
      */
     @Test
     public void tagTest() {
-        // TODO: test tag
+        assertThat(model.getTag(), instanceOf(String.class));
     }
 
     /**
@@ -97,7 +101,7 @@ public class MessageRequestTest {
      */
     @Test
     public void priorityTest() {
-        // TODO: test priority
+        assertThat(model.getPriority(), instanceOf(PriorityEnum.class));
     }
 
     /**
@@ -105,7 +109,7 @@ public class MessageRequestTest {
      */
     @Test
     public void expirationTest() {
-        // TODO: test expiration
+        assertThat(model.getExpiration(), instanceOf(OffsetDateTime.class));
     }
 
 }

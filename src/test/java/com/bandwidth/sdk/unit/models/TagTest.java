@@ -12,29 +12,27 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.Tag;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.Tag;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for Tag
  */
 public class TagTest {
-    private final Tag model = new Tag();
+    private final Tag model = new Tag()
+            .key("key")
+            .value("value");
 
     /**
      * Model tests for Tag
      */
     @Test
     public void testTag() {
-        // TODO: test Tag
+        assertThat(model, instanceOf(Tag.class));
     }
 
     /**
@@ -42,7 +40,7 @@ public class TagTest {
      */
     @Test
     public void keyTest() {
-        // TODO: test key
+        assertThat(model.getKey(), instanceOf(String.class));
     }
 
     /**
@@ -50,7 +48,7 @@ public class TagTest {
      */
     @Test
     public void valueTest() {
-        // TODO: test value
+        assertThat(model.getValue(), instanceOf(String.class));
     }
 
 }

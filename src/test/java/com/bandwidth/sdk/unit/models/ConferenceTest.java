@@ -37,7 +37,7 @@ public class ConferenceTest {
             .conferenceEventUrl(URI.create("http://example.com"))
             .conferenceEventMethod(CallbackMethodEnum.POST)
             .tag("tag")
-            .activeMembers(new ArrayList<>(Arrays.asList(new ConferenceMember())));
+            .activeMembers(new ArrayList<ConferenceMember>(Arrays.asList(new ConferenceMember())));
 
     /**
      * Model tests for Conference

@@ -30,8 +30,8 @@ public class LookupStatusTest {
     private final LookupStatus model = new LookupStatus()
             .requestId("requestId")
             .status(LookupStatusEnum.COMPLETE)
-            .result(new ArrayList<>(Arrays.asList(new LookupResult())))
-            .failedTelephoneNumbers(new ArrayList<>(Arrays.asList("failedTelephoneNumbers")));
+            .result(new ArrayList<LookupResult>(Arrays.asList(new LookupResult())))
+            .failedTelephoneNumbers(new ArrayList<String>(Arrays.asList("failedTelephoneNumbers")));
 
     /**
      * Model tests for LookupStatus

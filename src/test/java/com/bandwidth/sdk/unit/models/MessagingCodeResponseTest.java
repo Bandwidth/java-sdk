@@ -12,29 +12,26 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.MessagingCodeResponse;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.MessagingCodeResponse;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for MessagingCodeResponse
  */
 public class MessagingCodeResponseTest {
-    private final MessagingCodeResponse model = new MessagingCodeResponse();
+    private final MessagingCodeResponse model = new MessagingCodeResponse()
+            .messageId("messageId");
 
     /**
      * Model tests for MessagingCodeResponse
      */
     @Test
     public void testMessagingCodeResponse() {
-        // TODO: test MessagingCodeResponse
+        assertThat(model, instanceOf(MessagingCodeResponse.class));
     }
 
     /**
@@ -42,7 +39,7 @@ public class MessagingCodeResponseTest {
      */
     @Test
     public void messageIdTest() {
-        // TODO: test messageId
+        assertThat(model.getMessageId(), instanceOf(String.class));
     }
 
 }

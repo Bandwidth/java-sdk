@@ -12,33 +12,32 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.ListMessageItem;
-import com.bandwidth.sdk.model.MessagesList;
-import com.bandwidth.sdk.model.PageInfo;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import com.bandwidth.sdk.model.MessagesList;
+import com.bandwidth.sdk.model.PageInfo;
+import com.bandwidth.sdk.model.ListMessageItem;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for MessagesList
  */
 public class MessagesListTest {
-    private final MessagesList model = new MessagesList();
+    private final MessagesList model = new MessagesList()
+            .totalCount(56)
+            .pageInfo(new PageInfo())
+            .messages(new ArrayList<ListMessageItem>(Arrays.asList(new ListMessageItem())));
 
     /**
      * Model tests for MessagesList
      */
     @Test
     public void testMessagesList() {
-        // TODO: test MessagesList
+        assertThat(model, instanceOf(MessagesList.class));
     }
 
     /**
@@ -46,7 +45,7 @@ public class MessagesListTest {
      */
     @Test
     public void totalCountTest() {
-        // TODO: test totalCount
+        assertThat(model.getTotalCount(), instanceOf(Integer.class));
     }
 
     /**
@@ -54,7 +53,7 @@ public class MessagesListTest {
      */
     @Test
     public void pageInfoTest() {
-        // TODO: test pageInfo
+        assertThat(model.getPageInfo(), instanceOf(PageInfo.class));
     }
 
     /**
@@ -62,7 +61,7 @@ public class MessagesListTest {
      */
     @Test
     public void messagesTest() {
-        // TODO: test messages
+        assertThat(model.getMessages(), instanceOf(ArrayList.class));
     }
 
 }

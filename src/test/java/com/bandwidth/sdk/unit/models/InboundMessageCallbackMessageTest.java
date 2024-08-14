@@ -42,7 +42,7 @@ public class InboundMessageCallbackMessageTest {
             .from("from")
             .text("text")
             .tag("tag")
-            .media(new ArrayList<>(Arrays.asList(URI.create("http://example.com"))))
+            .media(new ArrayList<URI>(Arrays.asList(URI.create("http://example.com"))))
             .priority(PriorityEnum.HIGH);
 
     /**

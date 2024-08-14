@@ -12,9 +12,12 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.google.gson.annotations.SerializedName;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.MessageTypeEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for MessageTypeEnum
@@ -25,7 +28,8 @@ public class MessageTypeEnumTest {
      */
     @Test
     public void testMessageTypeEnum() {
-        // TODO: test MessageTypeEnum
+        assertThat(MessageTypeEnum.SMS.toString(), equalTo("sms"));
+        assertThat(MessageTypeEnum.MMS.toString(), equalTo("mms"));
     }
 
 }

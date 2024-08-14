@@ -31,7 +31,7 @@ public class ConferenceMemberTest {
             .memberUrl("memberUrl")
             .mute(true)
             .hold(true)
-            .callIdsToCoach(new ArrayList<>(Arrays.asList("callIdsToCoach")));
+            .callIdsToCoach(new ArrayList<String>(Arrays.asList("callIdsToCoach")));
 
     /**
      * Model tests for ConferenceMember

@@ -12,32 +12,29 @@
 
 package com.bandwidth.sdk.unit.models;
 
+import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.ArrayList;
 import com.bandwidth.sdk.model.RecordingTranscriptions;
 import com.bandwidth.sdk.model.Transcription;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for RecordingTranscriptions
  */
 public class RecordingTranscriptionsTest {
-    private final RecordingTranscriptions model = new RecordingTranscriptions();
+    private final RecordingTranscriptions model = new RecordingTranscriptions()
+            .transcripts(new ArrayList<Transcription>(Arrays.asList(new Transcription())));
 
     /**
      * Model tests for RecordingTranscriptions
      */
     @Test
     public void testRecordingTranscriptions() {
-        // TODO: test RecordingTranscriptions
+        assertThat(model, instanceOf(RecordingTranscriptions.class));
     }
 
     /**
@@ -45,7 +42,7 @@ public class RecordingTranscriptionsTest {
      */
     @Test
     public void transcriptsTest() {
-        // TODO: test transcripts
+        assertThat(model.getTranscripts(), instanceOf(ArrayList.class));
     }
 
 }

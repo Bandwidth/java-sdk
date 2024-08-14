@@ -12,29 +12,29 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.PageInfo;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.PageInfo;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for PageInfo
  */
 public class PageInfoTest {
-    private final PageInfo model = new PageInfo();
+    private final PageInfo model = new PageInfo()
+            .prevPage("prevPage")
+            .nextPage("nextPage")
+            .prevPageToken("prevPageToken")
+            .nextPageToken("nextPageToken");
 
     /**
      * Model tests for PageInfo
      */
     @Test
     public void testPageInfo() {
-        // TODO: test PageInfo
+        assertThat(model, instanceOf(PageInfo.class));
     }
 
     /**
@@ -42,7 +42,7 @@ public class PageInfoTest {
      */
     @Test
     public void prevPageTest() {
-        // TODO: test prevPage
+        assertThat(model.getPrevPage(), instanceOf(String.class));
     }
 
     /**
@@ -50,7 +50,7 @@ public class PageInfoTest {
      */
     @Test
     public void nextPageTest() {
-        // TODO: test nextPage
+        assertThat(model.getNextPage(), instanceOf(String.class));
     }
 
     /**
@@ -58,7 +58,7 @@ public class PageInfoTest {
      */
     @Test
     public void prevPageTokenTest() {
-        // TODO: test prevPageToken
+        assertThat(model.getPrevPageToken(), instanceOf(String.class));
     }
 
     /**
@@ -66,7 +66,7 @@ public class PageInfoTest {
      */
     @Test
     public void nextPageTokenTest() {
-        // TODO: test nextPageToken
+        assertThat(model.getNextPageToken(), instanceOf(String.class));
     }
 
 }

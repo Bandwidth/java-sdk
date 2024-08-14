@@ -12,35 +12,51 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.CallDirectionEnum;
-import com.bandwidth.sdk.model.FileFormatEnum;
-import com.bandwidth.sdk.model.Transcription;
-import com.bandwidth.sdk.model.TranscriptionAvailableCallback;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import org.junit.jupiter.api.Test;
+
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import com.bandwidth.sdk.model.TranscriptionAvailableCallback;
+import com.bandwidth.sdk.model.Transcription;
+import com.bandwidth.sdk.model.FileFormatEnum;
+import com.bandwidth.sdk.model.CallDirectionEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for TranscriptionAvailableCallback
  */
 public class TranscriptionAvailableCallbackTest {
-    private final TranscriptionAvailableCallback model = new TranscriptionAvailableCallback();
+    private final TranscriptionAvailableCallback model = new TranscriptionAvailableCallback()
+            .eventType("eventType")
+            .eventTime(OffsetDateTime.now())
+            .accountId("accountId")
+            .applicationId("applicationId")
+            .from("from")
+            .to("to")
+            .direction(CallDirectionEnum.INBOUND)
+            .callId("callId") // should be URI
+            .callUrl("https://example.com")
+            .mediaUrl(URI.create("https://example.com"))
+            .parentCallId("parentCallId")
+            .recordingId("recordingId")
+            .enqueuedTime(OffsetDateTime.now())
+            .startTime(OffsetDateTime.now())
+            .endTime(OffsetDateTime.now())
+            .duration("duration")
+            .fileFormat(FileFormatEnum.WAV)
+            .tag("tag")
+            .transcription(new Transcription())
+            .transferCallerId("transferCallerId")
+            .transferTo("transferTo");
 
     /**
      * Model tests for TranscriptionAvailableCallback
      */
     @Test
     public void testTranscriptionAvailableCallback() {
-        // TODO: test TranscriptionAvailableCallback
+        assertThat(model, instanceOf(TranscriptionAvailableCallback.class));
     }
 
     /**
@@ -48,7 +64,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void eventTypeTest() {
-        // TODO: test eventType
+        assertThat(model.getEventType(), instanceOf(String.class));
     }
 
     /**
@@ -56,7 +72,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void eventTimeTest() {
-        // TODO: test eventTime
+        assertThat(model.getEventTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -64,7 +80,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void accountIdTest() {
-        // TODO: test accountId
+        assertThat(model.getAccountId(), instanceOf(String.class));
     }
 
     /**
@@ -72,7 +88,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void applicationIdTest() {
-        // TODO: test applicationId
+        assertThat(model.getApplicationId(), instanceOf(String.class));
     }
 
     /**
@@ -80,7 +96,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void fromTest() {
-        // TODO: test from
+        assertThat(model.getFrom(), instanceOf(String.class));
     }
 
     /**
@@ -88,7 +104,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void toTest() {
-        // TODO: test to
+        assertThat(model.getTo(), instanceOf(String.class));
     }
 
     /**
@@ -96,7 +112,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void directionTest() {
-        // TODO: test direction
+        assertThat(model.getDirection(), instanceOf(CallDirectionEnum.class));
     }
 
     /**
@@ -104,7 +120,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void callIdTest() {
-        // TODO: test callId
+        assertThat(model.getCallId(), instanceOf(String.class));
     }
 
     /**
@@ -112,7 +128,8 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void callUrlTest() {
-        // TODO: test callUrl
+        // assertThat(model.getCallUrl(), instanceOf(URI.class));
+        assertThat(model.getCallUrl(), instanceOf(String.class));
     }
 
     /**
@@ -120,7 +137,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void mediaUrlTest() {
-        // TODO: test mediaUrl
+        assertThat(model.getMediaUrl(), instanceOf(URI.class));
     }
 
     /**
@@ -128,7 +145,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void parentCallIdTest() {
-        // TODO: test parentCallId
+        assertThat(model.getParentCallId(), instanceOf(String.class));
     }
 
     /**
@@ -136,7 +153,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void recordingIdTest() {
-        // TODO: test recordingId
+        assertThat(model.getRecordingId(), instanceOf(String.class));
     }
 
     /**
@@ -144,7 +161,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void enqueuedTimeTest() {
-        // TODO: test enqueuedTime
+        assertThat(model.getEnqueuedTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -152,7 +169,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void startTimeTest() {
-        // TODO: test startTime
+        assertThat(model.getStartTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -160,7 +177,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void endTimeTest() {
-        // TODO: test endTime
+        assertThat(model.getEndTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -168,7 +185,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void durationTest() {
-        // TODO: test duration
+        assertThat(model.getDuration(), instanceOf(String.class));
     }
 
     /**
@@ -176,7 +193,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void fileFormatTest() {
-        // TODO: test fileFormat
+        assertThat(model.getFileFormat(), instanceOf(FileFormatEnum.class));
     }
 
     /**
@@ -184,7 +201,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void tagTest() {
-        // TODO: test tag
+        assertThat(model.getTag(), instanceOf(String.class));
     }
 
     /**
@@ -192,7 +209,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void transcriptionTest() {
-        // TODO: test transcription
+        assertThat(model.getTranscription(), instanceOf(Transcription.class));
     }
 
     /**
@@ -200,7 +217,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void transferCallerIdTest() {
-        // TODO: test transferCallerId
+        assertThat(model.getTransferCallerId(), instanceOf(String.class));
     }
 
     /**
@@ -208,7 +225,7 @@ public class TranscriptionAvailableCallbackTest {
      */
     @Test
     public void transferToTest() {
-        // TODO: test transferTo
+        assertThat(model.getTransferTo(), instanceOf(String.class));
     }
 
 }

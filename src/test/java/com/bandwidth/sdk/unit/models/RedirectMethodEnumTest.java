@@ -12,9 +12,12 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.google.gson.annotations.SerializedName;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.RedirectMethodEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for RedirectMethodEnum
@@ -25,7 +28,8 @@ public class RedirectMethodEnumTest {
      */
     @Test
     public void testRedirectMethodEnum() {
-        // TODO: test RedirectMethodEnum
+        assertThat(RedirectMethodEnum.GET.toString(), equalTo("GET"));
+        assertThat(RedirectMethodEnum.POST.toString(), equalTo("POST"));
     }
 
 }

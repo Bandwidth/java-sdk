@@ -12,32 +12,34 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.CallbackMethodEnum;
-import com.bandwidth.sdk.model.TranscribeRecording;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.net.URI;
-import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.net.URI;
+import com.bandwidth.sdk.model.TranscribeRecording;
+import com.bandwidth.sdk.model.CallbackMethodEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for TranscribeRecording
  */
 public class TranscribeRecordingTest {
-    private final TranscribeRecording model = new TranscribeRecording();
+    private final TranscribeRecording model = new TranscribeRecording()
+            .callbackUrl(URI.create("https://example.com"))
+            .callbackMethod(CallbackMethodEnum.POST)
+            .username("username")
+            .password("password")
+            .tag("tag")
+            .callbackTimeout(30.0)
+            .detectLanguage(true);
 
     /**
      * Model tests for TranscribeRecording
      */
     @Test
     public void testTranscribeRecording() {
-        // TODO: test TranscribeRecording
+        assertThat(model, instanceOf(TranscribeRecording.class));
     }
 
     /**
@@ -45,7 +47,7 @@ public class TranscribeRecordingTest {
      */
     @Test
     public void callbackUrlTest() {
-        // TODO: test callbackUrl
+        assertThat(model.getCallbackUrl(), instanceOf(URI.class));
     }
 
     /**
@@ -53,7 +55,7 @@ public class TranscribeRecordingTest {
      */
     @Test
     public void callbackMethodTest() {
-        // TODO: test callbackMethod
+        assertThat(model.getCallbackMethod(), instanceOf(CallbackMethodEnum.class));
     }
 
     /**
@@ -61,7 +63,7 @@ public class TranscribeRecordingTest {
      */
     @Test
     public void usernameTest() {
-        // TODO: test username
+        assertThat(model.getUsername(), instanceOf(String.class));
     }
 
     /**
@@ -69,7 +71,7 @@ public class TranscribeRecordingTest {
      */
     @Test
     public void passwordTest() {
-        // TODO: test password
+        assertThat(model.getPassword(), instanceOf(String.class));
     }
 
     /**
@@ -77,7 +79,7 @@ public class TranscribeRecordingTest {
      */
     @Test
     public void tagTest() {
-        // TODO: test tag
+        assertThat(model.getTag(), instanceOf(String.class));
     }
 
     /**
@@ -85,7 +87,7 @@ public class TranscribeRecordingTest {
      */
     @Test
     public void callbackTimeoutTest() {
-        // TODO: test callbackTimeout
+        assertThat(model.getCallbackTimeout(), instanceOf(Double.class));
     }
 
     /**
@@ -93,7 +95,7 @@ public class TranscribeRecordingTest {
      */
     @Test
     public void detectLanguageTest() {
-        // TODO: test detectLanguage
+        assertThat(model.getDetectLanguage(), instanceOf(Boolean.class));
     }
 
 }

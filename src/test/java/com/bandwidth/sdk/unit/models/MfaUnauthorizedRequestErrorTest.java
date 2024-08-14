@@ -12,29 +12,26 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.MfaUnauthorizedRequestError;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.MfaUnauthorizedRequestError;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for MfaUnauthorizedRequestError
  */
 public class MfaUnauthorizedRequestErrorTest {
-    private final MfaUnauthorizedRequestError model = new MfaUnauthorizedRequestError();
+    private final MfaUnauthorizedRequestError model = new MfaUnauthorizedRequestError()
+            .message("message");
 
     /**
      * Model tests for MfaUnauthorizedRequestError
      */
     @Test
     public void testMfaUnauthorizedRequestError() {
-        // TODO: test MfaUnauthorizedRequestError
+        assertThat(model, instanceOf(MfaUnauthorizedRequestError.class));
     }
 
     /**
@@ -42,7 +39,7 @@ public class MfaUnauthorizedRequestErrorTest {
      */
     @Test
     public void messageTest() {
-        // TODO: test message
+        assertThat(model.getMessage(), instanceOf(String.class));
     }
 
 }

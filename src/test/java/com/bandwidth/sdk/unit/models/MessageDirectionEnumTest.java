@@ -12,9 +12,12 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.google.gson.annotations.SerializedName;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.MessageDirectionEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for MessageDirectionEnum
@@ -25,7 +28,8 @@ public class MessageDirectionEnumTest {
      */
     @Test
     public void testMessageDirectionEnum() {
-        // TODO: test MessageDirectionEnum
+        assertThat(MessageDirectionEnum.IN.toString(), equalTo("in"));
+        assertThat(MessageDirectionEnum.OUT.toString(), equalTo("out"));
     }
 
 }

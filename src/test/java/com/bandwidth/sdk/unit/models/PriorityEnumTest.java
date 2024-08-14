@@ -12,9 +12,12 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.google.gson.annotations.SerializedName;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.PriorityEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for PriorityEnum
@@ -25,7 +28,8 @@ public class PriorityEnumTest {
      */
     @Test
     public void testPriorityEnum() {
-        // TODO: test PriorityEnum
+        assertThat(PriorityEnum.HIGH.toString(), equalTo("high"));
+        assertThat(PriorityEnum.DEFAULT.toString(), equalTo("default"));
     }
 
 }

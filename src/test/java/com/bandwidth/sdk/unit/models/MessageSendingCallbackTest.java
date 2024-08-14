@@ -12,31 +12,32 @@
 
 package com.bandwidth.sdk.unit.models;
 
+import org.junit.jupiter.api.Test;
+
+import java.time.OffsetDateTime;
 import com.bandwidth.sdk.model.MessageSendingCallback;
 import com.bandwidth.sdk.model.MessageSendingCallbackMessage;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.OffsetDateTime;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for MessageSendingCallback
  */
 public class MessageSendingCallbackTest {
-    private final MessageSendingCallback model = new MessageSendingCallback();
+    private final MessageSendingCallback model = new MessageSendingCallback()
+            .time(OffsetDateTime.now())
+            .type("type")
+            .to("to")
+            .description("description")
+            .message(new MessageSendingCallbackMessage());
 
     /**
      * Model tests for MessageSendingCallback
      */
     @Test
     public void testMessageSendingCallback() {
-        // TODO: test MessageSendingCallback
+        assertThat(model, instanceOf(MessageSendingCallback.class));
     }
 
     /**
@@ -44,7 +45,7 @@ public class MessageSendingCallbackTest {
      */
     @Test
     public void timeTest() {
-        // TODO: test time
+        assertThat(model.getTime(), instanceOf(OffsetDateTime.class));
     }
 
     /**
@@ -52,7 +53,7 @@ public class MessageSendingCallbackTest {
      */
     @Test
     public void typeTest() {
-        // TODO: test type
+        assertThat(model.getType(), instanceOf(String.class));
     }
 
     /**
@@ -60,7 +61,7 @@ public class MessageSendingCallbackTest {
      */
     @Test
     public void toTest() {
-        // TODO: test to
+        assertThat(model.getTo(), instanceOf(String.class));
     }
 
     /**
@@ -68,7 +69,7 @@ public class MessageSendingCallbackTest {
      */
     @Test
     public void descriptionTest() {
-        // TODO: test description
+        assertThat(model.getDescription(), instanceOf(String.class));
     }
 
     /**
@@ -76,7 +77,7 @@ public class MessageSendingCallbackTest {
      */
     @Test
     public void messageTest() {
-        // TODO: test message
+        assertThat(model.getMessage(), instanceOf(MessageSendingCallbackMessage.class));
     }
 
 }

@@ -29,7 +29,7 @@ public class CreateMessageRequestErrorTest {
     private final CreateMessageRequestError model = new CreateMessageRequestError()
             .type("type")
             .description("description")
-            .fieldErrors(new ArrayList<>(Arrays.asList(new FieldError())));
+            .fieldErrors(new ArrayList<FieldError>(Arrays.asList(new FieldError())));
 
     /**
      * Model tests for CreateMessageRequestError

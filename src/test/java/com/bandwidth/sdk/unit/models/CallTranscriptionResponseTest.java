@@ -30,7 +30,7 @@ public class CallTranscriptionResponseTest {
             .accountId("accountId")
             .callId("callId")
             .transcriptionId("transcriptionId")
-            .tracks(new ArrayList<>(Arrays.asList(new CallTranscription())));
+            .tracks(new ArrayList<CallTranscription>(Arrays.asList(new CallTranscription())));
 
     /**
      * Model tests for CallTranscriptionResponse

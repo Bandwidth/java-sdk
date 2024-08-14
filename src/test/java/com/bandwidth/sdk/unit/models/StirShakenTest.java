@@ -12,29 +12,28 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.StirShaken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.StirShaken;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for StirShaken
  */
 public class StirShakenTest {
-    private final StirShaken model = new StirShaken();
+    private final StirShaken model = new StirShaken()
+            .verstat("verstat")
+            .attestationIndicator("A")
+            .originatingId("originatingId");
 
     /**
      * Model tests for StirShaken
      */
     @Test
     public void testStirShaken() {
-        // TODO: test StirShaken
+        assertThat(model, instanceOf(StirShaken.class));
     }
 
     /**
@@ -42,7 +41,7 @@ public class StirShakenTest {
      */
     @Test
     public void verstatTest() {
-        // TODO: test verstat
+        assertThat(model.getVerstat(), instanceOf(String.class));
     }
 
     /**
@@ -50,7 +49,7 @@ public class StirShakenTest {
      */
     @Test
     public void attestationIndicatorTest() {
-        // TODO: test attestationIndicator
+        assertThat(model.getAttestationIndicator(), instanceOf(String.class));
     }
 
     /**
@@ -58,7 +57,7 @@ public class StirShakenTest {
      */
     @Test
     public void originatingIdTest() {
-        // TODO: test originatingId
+        assertThat(model.getOriginatingId(), instanceOf(String.class));
     }
 
 }

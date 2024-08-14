@@ -12,29 +12,28 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.Media;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.Media;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for Media
  */
 public class MediaTest {
-    private final Media model = new Media();
+    private final Media model = new Media()
+            .content("content")
+            .contentLength(56)
+            .mediaName("mediaName");
 
     /**
      * Model tests for Media
      */
     @Test
     public void testMedia() {
-        // TODO: test Media
+        assertThat(model, instanceOf(Media.class));
     }
 
     /**
@@ -42,7 +41,7 @@ public class MediaTest {
      */
     @Test
     public void contentTest() {
-        // TODO: test content
+        assertThat(model.getContent(), instanceOf(String.class));
     }
 
     /**
@@ -50,7 +49,7 @@ public class MediaTest {
      */
     @Test
     public void contentLengthTest() {
-        // TODO: test contentLength
+        assertThat(model.getContentLength(), instanceOf(Integer.class));
     }
 
     /**
@@ -58,7 +57,7 @@ public class MediaTest {
      */
     @Test
     public void mediaNameTest() {
-        // TODO: test mediaName
+        assertThat(model.getMediaName(), instanceOf(String.class));
     }
 
 }

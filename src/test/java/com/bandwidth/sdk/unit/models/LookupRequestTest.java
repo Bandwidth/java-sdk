@@ -28,7 +28,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
  */
 public class LookupRequestTest {
     private final LookupRequest model = new LookupRequest()
-            .tns(new ArrayList<>(Arrays.asList("tns")));
+            .tns(new ArrayList<String>(Arrays.asList("tns")));
 
     /**
      * Model tests for LookupRequest

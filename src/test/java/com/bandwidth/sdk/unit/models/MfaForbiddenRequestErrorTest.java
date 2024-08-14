@@ -12,29 +12,26 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.MfaForbiddenRequestError;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.MfaForbiddenRequestError;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for MfaForbiddenRequestError
  */
 public class MfaForbiddenRequestErrorTest {
-    private final MfaForbiddenRequestError model = new MfaForbiddenRequestError();
+    private final MfaForbiddenRequestError model = new MfaForbiddenRequestError()
+            .message("message");
 
     /**
      * Model tests for MfaForbiddenRequestError
      */
     @Test
     public void testMfaForbiddenRequestError() {
-        // TODO: test MfaForbiddenRequestError
+        assertThat(model, instanceOf(MfaForbiddenRequestError.class));
     }
 
     /**
@@ -42,7 +39,7 @@ public class MfaForbiddenRequestErrorTest {
      */
     @Test
     public void messageTest() {
-        // TODO: test message
+        assertThat(model.getMessage(), instanceOf(String.class));
     }
 
 }

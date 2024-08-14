@@ -12,9 +12,12 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.google.gson.annotations.SerializedName;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.MessageStatusEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for MessageStatusEnum
@@ -25,7 +28,14 @@ public class MessageStatusEnumTest {
      */
     @Test
     public void testMessageStatusEnum() {
-        // TODO: test MessageStatusEnum
+        assertThat(MessageStatusEnum.RECEIVED.toString(), equalTo("RECEIVED"));
+        assertThat(MessageStatusEnum.QUEUED.toString(), equalTo("QUEUED"));
+        assertThat(MessageStatusEnum.SENDING.toString(), equalTo("SENDING"));
+        assertThat(MessageStatusEnum.SENT.toString(), equalTo("SENT"));
+        assertThat(MessageStatusEnum.FAILED.toString(), equalTo("FAILED"));
+        assertThat(MessageStatusEnum.DELIVERED.toString(), equalTo("DELIVERED"));
+        assertThat(MessageStatusEnum.ACCEPTED.toString(), equalTo("ACCEPTED"));
+        assertThat(MessageStatusEnum.UNDELIVERED.toString(), equalTo("UNDELIVERED"));
     }
 
 }
