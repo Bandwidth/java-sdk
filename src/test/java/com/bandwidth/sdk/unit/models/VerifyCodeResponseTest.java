@@ -12,29 +12,26 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.VerifyCodeResponse;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.VerifyCodeResponse;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for VerifyCodeResponse
  */
 public class VerifyCodeResponseTest {
-    private final VerifyCodeResponse model = new VerifyCodeResponse();
+    private final VerifyCodeResponse model = new VerifyCodeResponse()
+            .valid(true);
 
     /**
      * Model tests for VerifyCodeResponse
      */
     @Test
     public void testVerifyCodeResponse() {
-        // TODO: test VerifyCodeResponse
+        assertThat(model, instanceOf(VerifyCodeResponse.class));
     }
 
     /**
@@ -42,7 +39,7 @@ public class VerifyCodeResponseTest {
      */
     @Test
     public void validTest() {
-        // TODO: test valid
+        assertThat(model.getValid(), instanceOf(Boolean.class));
     }
 
 }

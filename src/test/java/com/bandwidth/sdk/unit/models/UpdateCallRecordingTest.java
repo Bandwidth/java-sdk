@@ -12,30 +12,27 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.RecordingStateEnum;
-import com.bandwidth.sdk.model.UpdateCallRecording;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.UpdateCallRecording;
+import com.bandwidth.sdk.model.RecordingStateEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for UpdateCallRecording
  */
 public class UpdateCallRecordingTest {
-    private final UpdateCallRecording model = new UpdateCallRecording();
+    private final UpdateCallRecording model = new UpdateCallRecording()
+            .state(RecordingStateEnum.RECORDING);
 
     /**
      * Model tests for UpdateCallRecording
      */
     @Test
     public void testUpdateCallRecording() {
-        // TODO: test UpdateCallRecording
+        assertThat(model, instanceOf(UpdateCallRecording.class));
     }
 
     /**
@@ -43,7 +40,7 @@ public class UpdateCallRecordingTest {
      */
     @Test
     public void stateTest() {
-        // TODO: test state
+        assertThat(model.getState(), instanceOf(RecordingStateEnum.class));
     }
 
 }

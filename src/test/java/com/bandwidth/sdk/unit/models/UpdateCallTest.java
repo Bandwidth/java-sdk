@@ -12,33 +12,38 @@
 
 package com.bandwidth.sdk.unit.models;
 
+import org.junit.jupiter.api.Test;
+
+import java.net.URI;
+import com.bandwidth.sdk.model.UpdateCall;
 import com.bandwidth.sdk.model.CallStateEnum;
 import com.bandwidth.sdk.model.RedirectMethodEnum;
-import com.bandwidth.sdk.model.UpdateCall;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.net.URI;
-import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for UpdateCall
  */
 public class UpdateCallTest {
-    private final UpdateCall model = new UpdateCall();
+    private final UpdateCall model = new UpdateCall()
+            .state(CallStateEnum.COMPLETED)
+            .redirectUrl(URI.create("http://example.com"))
+            .redirectMethod(RedirectMethodEnum.GET)
+            .username("username")
+            .password("password")
+            .redirectFallbackUrl(URI.create("http://example.com"))
+            .redirectFallbackMethod(RedirectMethodEnum.GET)
+            .fallbackUsername("fallbackUsername")
+            .fallbackPassword("fallbackPassword")
+            .tag("tag");
 
     /**
      * Model tests for UpdateCall
      */
     @Test
     public void testUpdateCall() {
-        // TODO: test UpdateCall
+        assertThat(model, instanceOf(UpdateCall.class));
     }
 
     /**
@@ -46,7 +51,7 @@ public class UpdateCallTest {
      */
     @Test
     public void stateTest() {
-        // TODO: test state
+        assertThat(model.getState(), instanceOf(CallStateEnum.class));
     }
 
     /**
@@ -54,7 +59,7 @@ public class UpdateCallTest {
      */
     @Test
     public void redirectUrlTest() {
-        // TODO: test redirectUrl
+        assertThat(model.getRedirectUrl(), instanceOf(URI.class));
     }
 
     /**
@@ -62,7 +67,7 @@ public class UpdateCallTest {
      */
     @Test
     public void redirectMethodTest() {
-        // TODO: test redirectMethod
+        assertThat(model.getRedirectMethod(), instanceOf(RedirectMethodEnum.class));
     }
 
     /**
@@ -70,7 +75,7 @@ public class UpdateCallTest {
      */
     @Test
     public void usernameTest() {
-        // TODO: test username
+        assertThat(model.getUsername(), instanceOf(String.class));
     }
 
     /**
@@ -78,7 +83,7 @@ public class UpdateCallTest {
      */
     @Test
     public void passwordTest() {
-        // TODO: test password
+        assertThat(model.getPassword(), instanceOf(String.class));
     }
 
     /**
@@ -86,7 +91,7 @@ public class UpdateCallTest {
      */
     @Test
     public void redirectFallbackUrlTest() {
-        // TODO: test redirectFallbackUrl
+        assertThat(model.getRedirectFallbackUrl(), instanceOf(URI.class));
     }
 
     /**
@@ -94,7 +99,7 @@ public class UpdateCallTest {
      */
     @Test
     public void redirectFallbackMethodTest() {
-        // TODO: test redirectFallbackMethod
+        assertThat(model.getRedirectFallbackMethod(), instanceOf(RedirectMethodEnum.class));
     }
 
     /**
@@ -102,7 +107,7 @@ public class UpdateCallTest {
      */
     @Test
     public void fallbackUsernameTest() {
-        // TODO: test fallbackUsername
+        assertThat(model.getFallbackUsername(), instanceOf(String.class));
     }
 
     /**
@@ -110,7 +115,7 @@ public class UpdateCallTest {
      */
     @Test
     public void fallbackPasswordTest() {
-        // TODO: test fallbackPassword
+        assertThat(model.getFallbackPassword(), instanceOf(String.class));
     }
 
     /**
@@ -118,7 +123,7 @@ public class UpdateCallTest {
      */
     @Test
     public void tagTest() {
-        // TODO: test tag
+        assertThat(model.getTag(), instanceOf(String.class));
     }
 
 }

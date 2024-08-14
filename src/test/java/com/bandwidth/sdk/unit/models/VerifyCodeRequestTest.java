@@ -12,30 +12,30 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.VerifyCodeRequest;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.math.BigDecimal;
+import com.bandwidth.sdk.model.VerifyCodeRequest;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for VerifyCodeRequest
  */
 public class VerifyCodeRequestTest {
-    private final VerifyCodeRequest model = new VerifyCodeRequest();
+    private final VerifyCodeRequest model = new VerifyCodeRequest()
+            .to("to")
+            .scope("scope")
+            .expirationTimeInMinutes(new BigDecimal(56.55))
+            .code("code");
 
     /**
      * Model tests for VerifyCodeRequest
      */
     @Test
     public void testVerifyCodeRequest() {
-        // TODO: test VerifyCodeRequest
+        assertThat(model, instanceOf(VerifyCodeRequest.class));
     }
 
     /**
@@ -43,7 +43,7 @@ public class VerifyCodeRequestTest {
      */
     @Test
     public void toTest() {
-        // TODO: test to
+        assertThat(model.getTo(), instanceOf(String.class));
     }
 
     /**
@@ -51,7 +51,7 @@ public class VerifyCodeRequestTest {
      */
     @Test
     public void scopeTest() {
-        // TODO: test scope
+        assertThat(model.getScope(), instanceOf(String.class));
     }
 
     /**
@@ -59,7 +59,7 @@ public class VerifyCodeRequestTest {
      */
     @Test
     public void expirationTimeInMinutesTest() {
-        // TODO: test expirationTimeInMinutes
+        assertThat(model.getExpirationTimeInMinutes(), instanceOf(BigDecimal.class));
     }
 
     /**
@@ -67,7 +67,7 @@ public class VerifyCodeRequestTest {
      */
     @Test
     public void codeTest() {
-        // TODO: test code
+        assertThat(model.getCode(), instanceOf(String.class));
     }
 
 }

@@ -12,32 +12,30 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.UpdateConferenceMember;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.ArrayList;
+import com.bandwidth.sdk.model.UpdateConferenceMember;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for UpdateConferenceMember
  */
 public class UpdateConferenceMemberTest {
-    private final UpdateConferenceMember model = new UpdateConferenceMember();
+    private final UpdateConferenceMember model = new UpdateConferenceMember()
+            .mute(true)
+            .hold(true)
+            .callIdsToCoach(new ArrayList<String>(Arrays.asList("callIdsToCoach")));
 
     /**
      * Model tests for UpdateConferenceMember
      */
     @Test
     public void testUpdateConferenceMember() {
-        // TODO: test UpdateConferenceMember
+        assertThat(model, instanceOf(UpdateConferenceMember.class));
     }
 
     /**
@@ -45,7 +43,7 @@ public class UpdateConferenceMemberTest {
      */
     @Test
     public void muteTest() {
-        // TODO: test mute
+        assertThat(model.getMute(), instanceOf(Boolean.class));
     }
 
     /**
@@ -53,7 +51,7 @@ public class UpdateConferenceMemberTest {
      */
     @Test
     public void holdTest() {
-        // TODO: test hold
+        assertThat(model.getHold(), instanceOf(Boolean.class));
     }
 
     /**
@@ -61,7 +59,7 @@ public class UpdateConferenceMemberTest {
      */
     @Test
     public void callIdsToCoachTest() {
-        // TODO: test callIdsToCoach
+        assertThat(model.getCallIdsToCoach(), instanceOf(ArrayList.class));
     }
 
 }

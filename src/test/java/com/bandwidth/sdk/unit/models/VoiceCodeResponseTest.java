@@ -12,29 +12,26 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.VoiceCodeResponse;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.VoiceCodeResponse;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for VoiceCodeResponse
  */
 public class VoiceCodeResponseTest {
-    private final VoiceCodeResponse model = new VoiceCodeResponse();
+    private final VoiceCodeResponse model = new VoiceCodeResponse()
+            .callId("callId");
 
     /**
      * Model tests for VoiceCodeResponse
      */
     @Test
     public void testVoiceCodeResponse() {
-        // TODO: test VoiceCodeResponse
+        assertThat(model, instanceOf(VoiceCodeResponse.class));
     }
 
     /**
@@ -42,7 +39,7 @@ public class VoiceCodeResponseTest {
      */
     @Test
     public void callIdTest() {
-        // TODO: test callId
+        assertThat(model.getCallId(), instanceOf(String.class));
     }
 
 }

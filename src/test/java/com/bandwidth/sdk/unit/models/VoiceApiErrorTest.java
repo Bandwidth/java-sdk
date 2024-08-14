@@ -12,30 +12,28 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.VoiceApiError;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.VoiceApiError;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for VoiceApiError
  */
 public class VoiceApiErrorTest {
-    private final VoiceApiError model = new VoiceApiError();
+    private final VoiceApiError model = new VoiceApiError()
+            .type("type")
+            .description("description")
+            .id("id");
 
     /**
      * Model tests for VoiceApiError
      */
     @Test
     public void testVoiceApiError() {
-        // TODO: test VoiceApiError
+        assertThat(model, instanceOf(VoiceApiError.class));
     }
 
     /**
@@ -43,7 +41,7 @@ public class VoiceApiErrorTest {
      */
     @Test
     public void typeTest() {
-        // TODO: test type
+        assertThat(model.getType(), instanceOf(String.class));
     }
 
     /**
@@ -51,7 +49,7 @@ public class VoiceApiErrorTest {
      */
     @Test
     public void descriptionTest() {
-        // TODO: test description
+        assertThat(model.getDescription(), instanceOf(String.class));
     }
 
     /**
@@ -59,7 +57,7 @@ public class VoiceApiErrorTest {
      */
     @Test
     public void idTest() {
-        // TODO: test id
+        assertThat(model.getId(), instanceOf(String.class));
     }
 
 }

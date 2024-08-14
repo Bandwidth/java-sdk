@@ -12,33 +12,37 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import com.bandwidth.sdk.model.ConferenceStateEnum;
-import com.bandwidth.sdk.model.RedirectMethodEnum;
-import com.bandwidth.sdk.model.UpdateConference;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.net.URI;
-import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.net.URI;
+import com.bandwidth.sdk.model.UpdateConference;
+import com.bandwidth.sdk.model.RedirectMethodEnum;
+import com.bandwidth.sdk.model.ConferenceStateEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for UpdateConference
  */
 public class UpdateConferenceTest {
-    private final UpdateConference model = new UpdateConference();
+    private final UpdateConference model = new UpdateConference()
+            .status(ConferenceStateEnum.COMPLETED)
+            .redirectUrl(URI.create("http://example.com"))
+            .redirectMethod(RedirectMethodEnum.GET)
+            .username("username")
+            .password("password")
+            .redirectFallbackUrl(URI.create("http://example.com"))
+            .redirectFallbackMethod(RedirectMethodEnum.GET)
+            .fallbackUsername("fallbackUsername")
+            .fallbackPassword("fallbackPassword");
 
     /**
      * Model tests for UpdateConference
      */
     @Test
     public void testUpdateConference() {
-        // TODO: test UpdateConference
+        assertThat(model, instanceOf(UpdateConference.class));
     }
 
     /**
@@ -46,7 +50,7 @@ public class UpdateConferenceTest {
      */
     @Test
     public void statusTest() {
-        // TODO: test status
+        assertThat(model.getStatus(), instanceOf(ConferenceStateEnum.class));
     }
 
     /**
@@ -54,7 +58,7 @@ public class UpdateConferenceTest {
      */
     @Test
     public void redirectUrlTest() {
-        // TODO: test redirectUrl
+        assertThat(model.getRedirectUrl(), instanceOf(URI.class));
     }
 
     /**
@@ -62,7 +66,7 @@ public class UpdateConferenceTest {
      */
     @Test
     public void redirectMethodTest() {
-        // TODO: test redirectMethod
+        assertThat(model.getRedirectMethod(), instanceOf(RedirectMethodEnum.class));
     }
 
     /**
@@ -70,7 +74,7 @@ public class UpdateConferenceTest {
      */
     @Test
     public void usernameTest() {
-        // TODO: test username
+        assertThat(model.getUsername(), instanceOf(String.class));
     }
 
     /**
@@ -78,7 +82,7 @@ public class UpdateConferenceTest {
      */
     @Test
     public void passwordTest() {
-        // TODO: test password
+        assertThat(model.getPassword(), instanceOf(String.class));
     }
 
     /**
@@ -86,7 +90,7 @@ public class UpdateConferenceTest {
      */
     @Test
     public void redirectFallbackUrlTest() {
-        // TODO: test redirectFallbackUrl
+        assertThat(model.getRedirectFallbackUrl(), instanceOf(URI.class));
     }
 
     /**
@@ -94,7 +98,7 @@ public class UpdateConferenceTest {
      */
     @Test
     public void redirectFallbackMethodTest() {
-        // TODO: test redirectFallbackMethod
+        assertThat(model.getRedirectFallbackMethod(), instanceOf(RedirectMethodEnum.class));
     }
 
     /**
@@ -102,7 +106,7 @@ public class UpdateConferenceTest {
      */
     @Test
     public void fallbackUsernameTest() {
-        // TODO: test fallbackUsername
+        assertThat(model.getFallbackUsername(), instanceOf(String.class));
     }
 
     /**
@@ -110,7 +114,7 @@ public class UpdateConferenceTest {
      */
     @Test
     public void fallbackPasswordTest() {
-        // TODO: test fallbackPassword
+        assertThat(model.getFallbackPassword(), instanceOf(String.class));
     }
 
 }
