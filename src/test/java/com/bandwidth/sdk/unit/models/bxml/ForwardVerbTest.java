@@ -6,7 +6,7 @@
  * @throws JAXBException if the test fails
  */
 
-package com.bandwidth.sdk.model.unit.bxml;
+package com.bandwidth.sdk.unit.models.bxml;
 
 import com.bandwidth.sdk.model.bxml.Bxml;
 import com.bandwidth.sdk.model.bxml.Forward;
@@ -15,24 +15,24 @@ import com.bandwidth.sdk.model.DiversionTreatment;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
- 
-import org.junit.Test;
- 
+
+import org.junit.jupiter.api.Test;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 public class ForwardVerbTest {
     /**
-    * Setting up Variables
-    */
-    Forward forward = new Forward().builder()
-                               .to("+19195554321")
-                               .from("19195554322")
-                               .callTimeout(15d)
-                               .diversionTreatment(DiversionTreatment.propagate)
-                               .diversionReason(DiversionReason.away)
-                               .uui("93d6f3c0be5845960b744fa28015d8ede84bd1a4;encoding=base64,asdf;encoding=jwt")
-                               .build();
+     * Setting up Variables
+     */
+    Forward forward = Forward.builder()
+            .to("+19195554321")
+            .from("19195554322")
+            .callTimeout(15d)
+            .diversionTreatment(DiversionTreatment.propagate)
+            .diversionReason(DiversionReason.away)
+            .uui("93d6f3c0be5845960b744fa28015d8ede84bd1a4;encoding=base64,asdf;encoding=jwt")
+            .build();
 
     @Test
     public void forwardVerbWorks() throws JAXBException {

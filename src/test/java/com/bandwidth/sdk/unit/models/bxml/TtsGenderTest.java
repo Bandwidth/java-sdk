@@ -1,4 +1,4 @@
-package com.bandwidth.sdk.model.unit.bxml;
+package com.bandwidth.sdk.unit.models.bxml;
 
 import com.bandwidth.sdk.model.bxml.utils.TtsGender;
 
@@ -6,7 +6,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.CoreMatchers.*;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class TtsGenderTest {
 

@@ -5,7 +5,7 @@
  * @throws JAXBException if the test fails
  */
 
-package com.bandwidth.sdk.model.unit.bxml;
+package com.bandwidth.sdk.unit.models.bxml;
 
 import com.bandwidth.sdk.model.bxml.Bxml;
 import com.bandwidth.sdk.model.bxml.Hangup;
@@ -13,10 +13,11 @@ import com.bandwidth.sdk.model.bxml.Hangup;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+
 public class HangupVerbTest {
 
     @Test

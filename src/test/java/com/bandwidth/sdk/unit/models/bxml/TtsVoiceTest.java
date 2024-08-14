@@ -1,4 +1,4 @@
-package com.bandwidth.sdk.model.unit.bxml;
+package com.bandwidth.sdk.unit.models.bxml;
 
 import com.bandwidth.sdk.model.bxml.utils.TtsGender;
 import com.bandwidth.sdk.model.bxml.utils.TtsLocale;
@@ -8,8 +8,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.CoreMatchers.*;
 
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class TtsVoiceTest {
 
@@ -17,6 +16,7 @@ public class TtsVoiceTest {
     public void resolveOurName1() {
         assertThat(TtsVoice.fromOurName("susan"), is(TtsVoice.SUSAN));
     }
+
     @Test
     public void resolveOurName() {
         assertThat(TtsVoice.fromOurName("paul"), is(TtsVoice.PAUL));

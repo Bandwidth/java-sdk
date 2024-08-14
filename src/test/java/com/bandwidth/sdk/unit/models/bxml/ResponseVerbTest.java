@@ -4,24 +4,21 @@
  * @throws JAXBException if the test fails
  */
 
-package com.bandwidth.sdk.model.unit.bxml;
+package com.bandwidth.sdk.unit.models.bxml;
 
 import com.bandwidth.sdk.model.bxml.Response;
-import com.bandwidth.sdk.model.bxml.Forward;
 import com.bandwidth.sdk.model.bxml.Tag;
 import com.bandwidth.sdk.model.bxml.Pause;
 import com.bandwidth.sdk.model.bxml.SendDtmf;
-import com.bandwidth.sdk.model.DiversionReason;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.containsString;
 
 public class ResponseVerbTest {
 
