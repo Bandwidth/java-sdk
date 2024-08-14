@@ -76,7 +76,7 @@ public class ConferencesApiTest {
     @AfterAll
     public void tearDownAfterClass() throws Exception {
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
-        // Cleanup(this, callId);
+        Cleanup(this, callId);
     }
 
     static final String constructMantecaJsonBody(String os, String language) {
