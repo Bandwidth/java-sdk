@@ -30,17 +30,17 @@ import lombok.NoArgsConstructor;
 @Builder
 @Getter
 @EqualsAndHashCode
+/**
+ *
+ * @param text (str): The text to speak. Cannot be blank. Can be a mixture of plain text and SSML tags.
+ *     You can find a list of supported SSML tags here: https://dev.bandwidth.com/docs/voice/bxml/speakSentence/#supported-ssml-tags
+ * @param voice (str, optional): Selects the voice of the speaker. Consult the voice column in the below table for valid values.
+ *     If the voice attribute is present, gender and locale are ignored. You can find a list of supported voices here: https://dev.bandwidth.com/docs/voice/bxml/speakSentence/#supported-voices
+ * @param gender (str, optional): Selects the gender of the speaker. Valid values are "male" or "female". Default "female".
+ * @param locale (str, optional): Selects the locale of the speaker. Consult the locale column in the below table for valid values. Default "en_US"
+ *
+ */
 public class SpeakSentence implements AudioProducer {
-    /**
-     * 
-     * @param text (str): The text to speak. Cannot be blank. Can be a mixture of plain text and SSML tags. 
-     *     You can find a list of supported SSML tags here: https://dev.bandwidth.com/docs/voice/bxml/speakSentence/#supported-ssml-tags
-     * @param voice (str, optional): Selects the voice of the speaker. Consult the voice column in the below table for valid values.
-     *     If the voice attribute is present, gender and locale are ignored. You can find a list of supported voices here: https://dev.bandwidth.com/docs/voice/bxml/speakSentence/#supported-voices
-     * @param gender (str, optional): Selects the gender of the speaker. Valid values are "male" or "female". Default "female".
-     * @param locale (str, optional): Selects the locale of the speaker. Consult the locale column in the below table for valid values. Default "en_US"
-     * 
-     */       
 
     public static final String TYPE_NAME = "SpeakSentence";
 

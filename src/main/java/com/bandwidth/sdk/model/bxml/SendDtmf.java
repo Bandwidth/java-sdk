@@ -28,14 +28,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @Getter
 @EqualsAndHashCode
+/**
+ *
+ * @param digits (str): String containing the DTMF characters to be sent in a call. Allows a maximum of 50 characters. The digits will be sent one-by-one with a marginal delay.
+ * @param toneDuration (int, optional): The length (in milliseconds) of each DTMF tone. Default value is 200. Range: decimal values between 50 - 5000.
+ * @param toneInterval (int, optional): The duration of silence (in milliseconds) following each DTMF tone. Default value is 400. Range: decimal values between 50 - 5000.
+ *
+ */
 public class SendDtmf implements Verb {
-    /**
-     *      
-     * @param digits (str): String containing the DTMF characters to be sent in a call. Allows a maximum of 50 characters. The digits will be sent one-by-one with a marginal delay.
-     * @param toneDuration (int, optional): The length (in milliseconds) of each DTMF tone. Default value is 200. Range: decimal values between 50 - 5000.
-     * @param toneInterval (int, optional): The duration of silence (in milliseconds) following each DTMF tone. Default value is 400. Range: decimal values between 50 - 5000.
-     * 
-     */      
 
     public static final String TYPE_NAME = "SendDtmf";
 

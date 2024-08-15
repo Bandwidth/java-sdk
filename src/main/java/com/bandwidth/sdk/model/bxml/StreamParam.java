@@ -1,5 +1,5 @@
 /**
- * The {@code <StreamParam>} verb is used to define optional user specified parameters that will be sent to the destination URL when the stream is first started. 
+ * The {@code <StreamParam>} verb is used to define optional user specified parameters that will be sent to the destination URL when the stream is first started.
  * You may specify up to 12 {@code <StreamParam>} elements nested within a {@code <StartStream>} tag.
  */
 
@@ -21,13 +21,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+/**
+ *
+ * @param name (str): The name of this parameter, up to 256 characters.
+ * @param value (str): The value of this parameter, up to 2048 characters.
+ *
+ */
 public class StreamParam {
-    /**
-     * 
-     * @param name (str): The name of this parameter, up to 256 characters.
-     * @param value (str): The value of this parameter, up to 2048 characters.
-     *
-     */         
+
     public static final String TYPE_NAME = "StreamParam";
 
     @XmlAttribute

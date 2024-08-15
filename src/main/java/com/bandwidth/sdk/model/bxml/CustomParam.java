@@ -1,5 +1,5 @@
 /**
- * The {@code <CustomParam>} verb is used to define optional user specified parameters that will be sent to the destination URL when the real-time transcription is first started. 
+ * The {@code <CustomParam>} verb is used to define optional user specified parameters that will be sent to the destination URL when the real-time transcription is first started.
  * You may specify up to 12 {@code <CustomParam>} elements nested within a {@code <StartTranscription>} tag.
  */
 
@@ -21,13 +21,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+/**
+ *
+ * @param name (str): The name of this parameter, up to 256 characters.
+ * @param value (str): The value of this parameter, up to 2048 characters.
+ *
+ */
 public class CustomParam {
-    /**
-     * 
-     * @param name (str): The name of this parameter, up to 256 characters.
-     * @param value (str): The value of this parameter, up to 2048 characters.
-     *
-     */         
+
     public static final String TYPE_NAME = "CustomParam";
 
     @XmlAttribute

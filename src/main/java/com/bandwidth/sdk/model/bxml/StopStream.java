@@ -21,12 +21,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @Getter
 @EqualsAndHashCode
+/**
+ *
+ * @param name (str, optional): The name of the stream to stop.
+ *      This is either the user selected name when sending the <StartStream> verb, or the system generated name returned in the Media Stream Started webhook if <StartStream> was sent with no name attribute.
+ */
 public class StopStream implements Verb {
-    /**
-     * 
-     * @param name (str, optional): The name of the stream to stop. 
-     *      This is either the user selected name when sending the <StartStream> verb, or the system generated name returned in the Media Stream Started webhook if <StartStream> was sent with no name attribute.
-     */       
 
     public static final String TYPE_NAME = "StopStream";
 

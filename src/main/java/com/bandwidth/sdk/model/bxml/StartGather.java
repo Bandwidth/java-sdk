@@ -24,16 +24,16 @@ import lombok.NoArgsConstructor;
 @Builder
 @Getter
 @EqualsAndHashCode
+/**
+ *
+ * @param dtmfUrl (str): URL to send the DTMF event to. May be a relative URL..
+ * @param dtmfMethod (str, optional): The HTTP method to use for the request to dtmfUrl. GET or POST. Default value is POST. Defaults to None.
+ * @param username (str, optional): The username to send in the HTTP request to dtmfUrl. Defaults to None.
+ * @param password (str, optional): The password to send in the HTTP request to dtmfUrl. Defaults to None.
+ * @param tag (str, optional):  A custom string that will be sent with these and all future callbacks unless overwritten by a future tag attribute or cleared. May be cleared by setting tag="" Max length 256 characters. Defaults to None.
+ *
+ */
 public class StartGather implements Verb {
-    /**
-     * 
-     * @param dtmfUrl (str): URL to send the DTMF event to. May be a relative URL..
-     * @param dtmfMethod (str, optional): The HTTP method to use for the request to dtmfUrl. GET or POST. Default value is POST. Defaults to None.
-     * @param username (str, optional): The username to send in the HTTP request to dtmfUrl. Defaults to None.
-     * @param password (str, optional): The password to send in the HTTP request to dtmfUrl. Defaults to None.
-     * @param tag (str, optional):  A custom string that will be sent with these and all future callbacks unless overwritten by a future tag attribute or cleared. May be cleared by setting tag="" Max length 256 characters. Defaults to None.
-     *  
-     */       
 
     public static final String TYPE_NAME = "StartGather";
 
