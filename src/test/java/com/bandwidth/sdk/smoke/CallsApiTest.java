@@ -202,10 +202,11 @@ public class CallsApiTest {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
 
-        ApiResponse<List<CallState>> response = api.listCallsWithHttpInfo(BW_ACCOUNT_ID, USER_NUMBER, BW_NUMBER, null, null, null, null, null);
+        ApiResponse<List<CallState>> response = api.listCallsWithHttpInfo(BW_ACCOUNT_ID, USER_NUMBER, BW_NUMBER, null,
+                null, null, null, null);
 
         assertThat(response.getStatusCode(), is(200));
-        assertThat(response.getData(), is(instanceOf(ArrayList.class)));
+        assertThat(response.getData(), is(instanceOf(List.class)));
         assertThat(response.getData().get(0), hasProperty("accountId", is(instanceOf(String.class))));
         assertThat(response.getData().get(0), hasProperty("applicationId", is(instanceOf(String.class))));
         assertThat(response.getData().get(0), hasProperty("callId", is(instanceOf(String.class))));
@@ -227,7 +228,7 @@ public class CallsApiTest {
         TimeUnit.SECONDS.sleep(40);
         ApiResponse<CallState> response = api.getCallStateWithHttpInfo(BW_ACCOUNT_ID, callIdList.get(0));
 
-        assertThat(response.getStatusCode(), anyOf(is(200),is(404)));
+        assertThat(response.getStatusCode(), anyOf(is(200), is(404)));
         assertThat(response.getData(), hasProperty("callId", is(instanceOf(String.class))));
         assertThat(response.getData(), hasProperty("state", is(instanceOf(String.class))));
         assertThat(response.getData(), hasProperty("direction", is(CallDirectionEnum.OUTBOUND)));

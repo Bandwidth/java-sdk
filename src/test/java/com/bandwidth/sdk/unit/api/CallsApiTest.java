@@ -30,19 +30,20 @@ import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.List;
 
+@SuppressWarnings("null")
 public class CallsApiTest {
-    public static ApiClient defaultClient = Configuration.getDefaultApiClient();
-    public static HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    public static CallsApi api = new CallsApi(defaultClient);
+    private static ApiClient defaultClient = Configuration.getDefaultApiClient();
+    private static HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
+    private static CallsApi api = new CallsApi(defaultClient);
 
-    public static String callId = "c-1234";
-    public static String displayName = "Java SDK";
-    public static CallbackMethodEnum answerMethod = CallbackMethodEnum.POST;
-    public static URI answerUrl = URI.create(BASE_CALLBACK_URL);
-    public static CallbackMethodEnum disconnectMethod = CallbackMethodEnum.GET;
-    public static URI disconnectUrl = URI.create(BASE_CALLBACK_URL);
-    public static Double callTimeout = 30.0;
-    public static Double callbackTimeout = 15.0;
+    private static String callId = "c-1234";
+    private static String displayName = "Java SDK";
+    private static CallbackMethodEnum answerMethod = CallbackMethodEnum.POST;
+    private static URI answerUrl = URI.create(BASE_CALLBACK_URL);
+    private static CallbackMethodEnum disconnectMethod = CallbackMethodEnum.GET;
+    private static URI disconnectUrl = URI.create(BASE_CALLBACK_URL);
+    private static Double callTimeout = 30.0;
+    private static Double callbackTimeout = 15.0;
 
     @BeforeAll
     public static void setUp() {
