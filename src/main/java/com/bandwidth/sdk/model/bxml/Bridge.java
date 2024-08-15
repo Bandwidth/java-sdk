@@ -24,7 +24,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType
 @NoArgsConstructor
