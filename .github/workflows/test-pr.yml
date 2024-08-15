@@ -57,4 +57,5 @@ jobs:
             DISTRIBUTION: ${{ matrix.distribution }}
           run: |
             mvn -B package --file pom.xml -DskipTests
-            mvn test -Punit-tests
+            npm install -g @stoplight/prism-cli
+            prism mock ./bandwidth.yml & mvn test -Punit-tests
