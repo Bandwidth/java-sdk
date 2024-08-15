@@ -1,5 +1,5 @@
 /**
- * The {@code <Tag>} verb is used to set a new tag value without executing a callback. 
+ * The {@code <Tag>} verb is used to set a new tag value without executing a callback.
  * This new tag will be sent with all future callbacks unless overwritten by a future tag attribute or {@code <Tag>} verb, or cleared.
  */
 
@@ -26,10 +26,10 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 public class Tag implements Verb {
     /**
-     * 
+     *
      * @param tag (str, optional): Custom tag value. Defaults to "".
      *
-     */       
+     */
 
     public static final String TYPE_NAME = "Tag";
 

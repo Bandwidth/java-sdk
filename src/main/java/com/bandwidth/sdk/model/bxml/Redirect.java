@@ -25,20 +25,20 @@ import lombok.NoArgsConstructor;
 @Builder
 @Getter
 @EqualsAndHashCode
+/**
+ *
+ * @param redirectUrl (str): URL to request new BXML from. A Redirect event will be sent to this endpoint. May be a relative URL. Defaults to None.
+ * @param redirectMethod (str, optional): The HTTP method to use for the request to redirectUrl. GET or POST. Defaults to None.
+ * @param redirectFallbackUrl (str, optional): A fallback url which, if provided, will be used to retry the Redirect callback delivery in case redirectUrl fails to respond. Defaults to None.
+ * @param redirectFallbackMethod (str, optional): The HTTP method to use to deliver the Redirect callback to redirectFallbackUrl. GET or POST. Default value is POST. Defaults to None.
+ * @param username (str, optional): The username to send in the HTTP request to redirectUrl. Defaults to None.
+ * @param password (str, optional): The password to send in the HTTP request to redirectUrl. Defaults to None.
+ * @param fallbackUsername (str, optional): The username to send in the HTTP request to redirectFallbackUrl. Defaults to None.
+ * @param fallbackPassword (str, optional): The password to send in the HTTP request to redirectFallbackUrl. Defaults to None.
+ * @param tag (str, optional): A custom string that will be sent with this and all future callbacks unless overwritten by a future tag attribute or <Tag> verb, or cleared. May be cleared by setting tag="". Max length 256 characters. Defaults to None.
+ *
+ */
 public class Redirect implements Verb {
-    /**
-     *      
-     * @param redirectUrl (str): URL to request new BXML from. A Redirect event will be sent to this endpoint. May be a relative URL. Defaults to None.
-     * @param redirectMethod (str, optional): The HTTP method to use for the request to redirectUrl. GET or POST. Defaults to None.
-     * @param redirectFallbackUrl (str, optional): A fallback url which, if provided, will be used to retry the Redirect callback delivery in case redirectUrl fails to respond. Defaults to None.
-     * @param redirectFallbackMethod (str, optional): The HTTP method to use to deliver the Redirect callback to redirectFallbackUrl. GET or POST. Default value is POST. Defaults to None.
-     * @param username (str, optional): The username to send in the HTTP request to redirectUrl. Defaults to None.
-     * @param password (str, optional): The password to send in the HTTP request to redirectUrl. Defaults to None.
-     * @param fallbackUsername (str, optional): The username to send in the HTTP request to redirectFallbackUrl. Defaults to None.
-     * @param fallbackPassword (str, optional): The password to send in the HTTP request to redirectFallbackUrl. Defaults to None.
-     * @param tag (str, optional): A custom string that will be sent with this and all future callbacks unless overwritten by a future tag attribute or <Tag> verb, or cleared. May be cleared by setting tag="". Max length 256 characters. Defaults to None.
-     *
-     */            
 
     public static final String TYPE_NAME = "Redirect";
 

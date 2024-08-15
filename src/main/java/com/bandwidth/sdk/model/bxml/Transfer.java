@@ -33,7 +33,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 public class Transfer implements Verb {
     /**
-     * 
+     *
      * @param destinations (list[PhoneNumber, SipUri], optional): List of recipients to transfer a call to. Defaults to [].
      * @param transferCallerId (str, optional): The caller ID to use when the call is transferred, if different. Must be in E.164 format (e.g. +15555555555) or be one of the following strings Restricted, Anonymous, Private, or Unavailable. Leave as default to pass along the number of the remote party. Defaults to None.
      * @param transferCallerDisplayName (str, optional): The caller display name to use when the call is transferred. May not exceed 256 characters nor contain control characters such as new lines.
@@ -68,7 +68,7 @@ public class Transfer implements Verb {
      *       This parameter is considered only when diversionTreatment is set to stack. Defaults is unknown.
      *       Defaults to None.
      *
-     */         
+     */
 
     public static final String TYPE_NAME = "Transfer";
 

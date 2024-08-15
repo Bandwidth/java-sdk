@@ -23,10 +23,10 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 public class StopTranscription implements Verb {
     /**
-     * 
-     * @param name (str, optional): The name of the real-time transcription to stop. 
+     *
+     * @param name (str, optional): The name of the real-time transcription to stop.
      *      This is either the user selected name when sending the <StartTranscription> verb, or the system generated name returned in the Media Transcription Started webhook if <StartTranscription> was sent with no name attribute.
-     */       
+     */
 
     public static final String TYPE_NAME = "StopTranscription";
 

@@ -24,6 +24,14 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Getter
+@EqualsAndHashCode
 /**
  *
  *   @param targetCallId (str): String containing the callId of the call to be bridged.
@@ -44,16 +52,8 @@ import lombok.NoArgsConstructor;
  *   @param fallbackUsername (str, optional): The username to send in the HTTP request to bridgeCompleteFallbackUrl and to bridgeTargetCompleteFallbackUrl. Defaults to None.
  *   @param fallbackPassword (str, optional): The password to send in the HTTP request to bridgeCompleteFallbackUrl and to bridgeTargetCompleteFallbackUrl. Defaults to None.
  *   @param tag (str, optional): A custom string that will be sent with the bridgeComplete webhook and all future webhooks of the call unless overwritten by a future tag attribute or <Tag> verb, or cleared. May be cleared by setting tag="". Max length 256 characters. Defaults to None.
- * 
+ *
  */
-
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-@Getter
-@EqualsAndHashCode
 public class Bridge implements Verb {
 
     public static final String TYPE_NAME = "Bridge";

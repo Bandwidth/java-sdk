@@ -33,7 +33,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 public class StartStream implements Verb {
     /**
-     * 
+     *
      * @param name (str, optional): A name to refer to this stream by. Used when sending <StopStream>. If not provided, it will default to the generated stream id as sent in the Media Stream Started webhook.
      * @param tracks (str, optional): The part of the call to send a stream from. inbound, outbound or both. Default is inbound.
      * @param destination (str, optional): A websocket URI to send the stream to. The audio from the specified tracks will be sent via websocket to this URL as base64-encoded PCMU/G711 audio. See below for more details on the websocket packet format.
@@ -41,12 +41,12 @@ public class StartStream implements Verb {
      * @param streamEventMethod (str, optional): The HTTP method to use for the request to streamEventUrl. GET or POST. Default value is POST.
      * @param username (str, optional): The username to send in the HTTP request to streamEventUrl. If specified, the URLs must be TLS-encrypted (i.e., https).
      * @param password (str, optional): The password to send in the HTTP request to streamEventUrl. If specified, the URLs must be TLS-encrypted (i.e., https).
-     *       
+     *
      *        Nested Verbs:
-     *        @param  StreamParam: (optional) You may specify up to 12 <StreamParam/> elements nested within a <StartStream> tag. 
+     *        @param  StreamParam: (optional) You may specify up to 12 <StreamParam/> elements nested within a <StartStream> tag.
      *          These elements define optional user specified parameters that will be sent to the destination URL when the stream is first started.
      *
-     */        
+     */
 
     public static final String TYPE_NAME = "StartStream";
 

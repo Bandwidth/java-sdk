@@ -27,7 +27,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 public class StartRecording implements TranscriptionProducer {
     /**
-     * 
+     *
      * @param recordingAvailableUrl (str, optional): URL to send the Recording Available event to once it has been processed. Does not accept BXML. May be a relative URL. Defaults to None.
      * @param recordingAvailableMethod (str, optional): The HTTP method to use for the request to recordingAvailableUrl. GET or POST. Default value is POST.
      * @param transcribe (str, optional): A boolean value to indicate that recording should be transcribed. Transcription can succeed only for recordings of length greater than 500 milliseconds and less than 4 hours. Default is false. Defaults to None.
@@ -39,7 +39,7 @@ public class StartRecording implements TranscriptionProducer {
      * @param fileFormat (str, optional): The audio format that the recording will be saved as: mp3 or wav. Default value is wav. Defaults to None.            max_duration (str, optional): Maximum length of recording (in seconds). Max 10800 (3 hours). Default value is 60. Defaults to None.
      * @param multiChannel (str, optional): A boolean value indicating whether or not the recording file should separate each side of the call into its own audio channel. Default value is false.
      *
-     */        
+     */
 
     public static final String TYPE_NAME = "StartRecording";
 
