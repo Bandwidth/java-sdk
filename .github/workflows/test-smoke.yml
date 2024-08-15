@@ -55,6 +55,7 @@ jobs:
         run: |
           mvn -B package --file pom.xml -DskipTests
           mvn test -Psmoke-tests
+        shell: bash
 
   notify_for_failures:
     name: Notify for Failures

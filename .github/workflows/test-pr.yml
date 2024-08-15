@@ -59,3 +59,4 @@ jobs:
             mvn -B package --file pom.xml -DskipTests
             npm install -g @stoplight/prism-cli
             prism mock ./bandwidth.yml & (sleep 3; mvn test -Punit-tests)
+          shell: bash
