@@ -14,6 +14,7 @@ package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
 import com.bandwidth.sdk.model.LookupStatus;
@@ -62,7 +63,7 @@ public class LookupStatusTest {
      */
     @Test
     public void resultTest() {
-        assertThat(model.getResult(), instanceOf(ArrayList.class));
+        assertThat(model.getResult(), instanceOf(List.class));
     }
 
     /**
@@ -70,7 +71,7 @@ public class LookupStatusTest {
      */
     @Test
     public void failedTelephoneNumbersTest() {
-        assertThat(model.getFailedTelephoneNumbers(), instanceOf(ArrayList.class));
+        assertThat(model.getFailedTelephoneNumbers(), instanceOf(List.class));
     }
 
 }

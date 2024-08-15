@@ -91,7 +91,7 @@ public class ConferencesApiTest {
         assertThat(response.getData().getMemberUrl(), instanceOf(String.class)); // should be a URI
         assertThat(response.getData().getMute(), instanceOf(Boolean.class));
         assertThat(response.getData().getHold(), instanceOf(Boolean.class));
-        assertThat(response.getData().getCallIdsToCoach(), instanceOf(ArrayList.class));
+        assertThat(response.getData().getCallIdsToCoach(), instanceOf(List.class));
     }
 
     @Test

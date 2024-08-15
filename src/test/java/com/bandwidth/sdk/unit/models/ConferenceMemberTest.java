@@ -14,6 +14,7 @@ package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
 import com.bandwidth.sdk.model.ConferenceMember;
@@ -86,7 +87,7 @@ public class ConferenceMemberTest {
      */
     @Test
     public void callIdsToCoachTest() {
-        assertThat(model.getCallIdsToCoach(), instanceOf(ArrayList.class));
+        assertThat(model.getCallIdsToCoach(), instanceOf(List.class));
     }
 
 }

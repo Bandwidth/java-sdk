@@ -15,6 +15,7 @@ package com.bandwidth.sdk.unit.models;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.time.OffsetDateTime;
@@ -108,7 +109,7 @@ public class ConferenceTest {
      */
     @Test
     public void activeMembersTest() {
-        assertThat(model.getActiveMembers(), instanceOf(ArrayList.class));
+        assertThat(model.getActiveMembers(), instanceOf(List.class));
     }
 
 }

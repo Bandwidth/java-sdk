@@ -14,6 +14,7 @@ package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
 import com.bandwidth.sdk.model.CallTranscription;
@@ -69,7 +70,7 @@ public class CallTranscriptionResponseTest {
      */
     @Test
     public void tracksTest() {
-        assertThat(model.getTracks(), instanceOf(ArrayList.class));
+        assertThat(model.getTracks(), instanceOf(List.class));
     }
 
 }

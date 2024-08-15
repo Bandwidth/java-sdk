@@ -14,8 +14,9 @@ package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Arrays;
+import java.util.ArrayList;
 import com.bandwidth.sdk.model.MessagesList;
 import com.bandwidth.sdk.model.PageInfo;
 import com.bandwidth.sdk.model.ListMessageItem;
@@ -61,7 +62,7 @@ public class MessagesListTest {
      */
     @Test
     public void messagesTest() {
-        assertThat(model.getMessages(), instanceOf(ArrayList.class));
+        assertThat(model.getMessages(), instanceOf(List.class));
     }
 
 }

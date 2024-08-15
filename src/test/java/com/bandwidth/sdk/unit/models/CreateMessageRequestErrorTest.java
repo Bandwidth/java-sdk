@@ -14,6 +14,7 @@ package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
 import com.bandwidth.sdk.model.CreateMessageRequestError;
@@ -60,7 +61,7 @@ public class CreateMessageRequestErrorTest {
      */
     @Test
     public void fieldErrorsTest() {
-        assertThat(model.getFieldErrors(), instanceOf(ArrayList.class));
+        assertThat(model.getFieldErrors(), instanceOf(List.class));
     }
 
 }

@@ -18,8 +18,9 @@ import com.bandwidth.sdk.model.LookupRequest;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Arrays;
+import java.util.ArrayList;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 
@@ -43,7 +44,7 @@ public class LookupRequestTest {
      */
     @Test
     public void tnsTest() {
-        assertThat(model.getTns(), instanceOf(ArrayList.class));
+        assertThat(model.getTns(), instanceOf(List.class));
     }
 
 }

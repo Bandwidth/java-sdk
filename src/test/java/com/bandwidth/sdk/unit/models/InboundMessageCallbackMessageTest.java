@@ -15,6 +15,7 @@ package com.bandwidth.sdk.unit.models;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.ArrayList;
@@ -138,7 +139,7 @@ public class InboundMessageCallbackMessageTest {
      */
     @Test
     public void mediaTest() {
-        assertThat(model.getMedia(), instanceOf(ArrayList.class));
+        assertThat(model.getMedia(), instanceOf(List.class));
     }
 
     /**

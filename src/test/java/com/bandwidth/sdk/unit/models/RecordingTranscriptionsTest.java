@@ -14,6 +14,7 @@ package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
 import com.bandwidth.sdk.model.RecordingTranscriptions;
@@ -42,7 +43,7 @@ public class RecordingTranscriptionsTest {
      */
     @Test
     public void transcriptsTest() {
-        assertThat(model.getTranscripts(), instanceOf(ArrayList.class));
+        assertThat(model.getTranscripts(), instanceOf(List.class));
     }
 
 }

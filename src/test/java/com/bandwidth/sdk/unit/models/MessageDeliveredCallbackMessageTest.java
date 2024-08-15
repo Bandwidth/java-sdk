@@ -16,10 +16,11 @@ import org.junit.jupiter.api.Test;
 import org.mockito.internal.util.collections.Sets;
 
 import java.net.URI;
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.time.OffsetDateTime;
 import com.bandwidth.sdk.model.MessageDeliveredCallbackMessage;
 import com.bandwidth.sdk.model.PriorityEnum;
 import com.bandwidth.sdk.model.MessageDirectionEnum;
@@ -138,7 +139,7 @@ public class MessageDeliveredCallbackMessageTest {
      */
     @Test
     public void mediaTest() {
-        assertThat(model.getMedia(), instanceOf(ArrayList.class));
+        assertThat(model.getMedia(), instanceOf(List.class));
     }
 
     /**
