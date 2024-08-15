@@ -24,12 +24,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @Getter
 @EqualsAndHashCode
+/**
+ *
+ * @param tag (str, optional): Custom tag value. Defaults to "".
+ *
+ */
 public class Tag implements Verb {
-    /**
-     *
-     * @param tag (str, optional): Custom tag value. Defaults to "".
-     *
-     */
 
     public static final String TYPE_NAME = "Tag";
 

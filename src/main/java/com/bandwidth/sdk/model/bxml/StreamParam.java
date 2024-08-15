@@ -21,13 +21,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+/**
+ *
+ * @param name (str): The name of this parameter, up to 256 characters.
+ * @param value (str): The value of this parameter, up to 2048 characters.
+ *
+ */
 public class StreamParam {
-    /**
-     *
-     * @param name (str): The name of this parameter, up to 256 characters.
-     * @param value (str): The value of this parameter, up to 2048 characters.
-     *
-     */
+
     public static final String TYPE_NAME = "StreamParam";
 
     @XmlAttribute

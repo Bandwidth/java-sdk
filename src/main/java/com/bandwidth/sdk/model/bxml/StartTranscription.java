@@ -31,23 +31,23 @@ import lombok.NoArgsConstructor;
 @Builder
 @Getter
 @EqualsAndHashCode
+/**
+ *
+ * @param name (str, optional): A name to refer to this transcription by. Used when sending <StopTranscription>. If not provided, it will default to the generated transcription id as sent in the Real-Time Transcription Started webhook.
+ * @param tracks (str, optional): The part of the call to send a transcription from. inbound, outbound or both. Default is inbound.
+ * @param destination (str, optional): A websocket URI to send the stream to. The audio from the specified tracks will be sent via websocket to this URL as base64-encoded PCMU/G711 audio. See below for more details on the websocket packet format.
+ * @param transcriptionEventUrl (str, optional): URL to send the associated Webhook events to during this real-time transcription's lifetime. Does not accept BXML. May be a relative URL.
+ * @param transcriptionEventMethod (str, optional): The HTTP method to use for the request to transcriptionEventUrl. GET or POST. Default value is POST.
+ * @param username (str, optional): The username to send in the HTTP request to transcriptionEventUrl. If specified, the URLs must be TLS-encrypted (i.e., https).
+ * @param password (str, optional): The password to send in the HTTP request to transcriptionEventUrl. If specified, the URLs must be TLS-encrypted (i.e., https).
+ * @param stabilized (str, optional): Whether to send transcription update events to the specified destination only after they have become stable. Requires destination. Defaults to true.
+ *
+ *        Nested Verbs:
+ *        @param  CustomParam: (optional) You may specify up to 12 <CustomParam/> elements nested within a <StartTranscription> tag.
+ *          These elements define optional user specified parameters that will be sent to the destination URL when the real-time transcription is first started.
+ *
+ */
 public class StartTranscription implements Verb {
-    /**
-     *
-     * @param name (str, optional): A name to refer to this transcription by. Used when sending <StopTranscription>. If not provided, it will default to the generated transcription id as sent in the Real-Time Transcription Started webhook.
-     * @param tracks (str, optional): The part of the call to send a transcription from. inbound, outbound or both. Default is inbound.
-     * @param destination (str, optional): A websocket URI to send the stream to. The audio from the specified tracks will be sent via websocket to this URL as base64-encoded PCMU/G711 audio. See below for more details on the websocket packet format.
-     * @param transcriptionEventUrl (str, optional): URL to send the associated Webhook events to during this real-time transcription's lifetime. Does not accept BXML. May be a relative URL.
-     * @param transcriptionEventMethod (str, optional): The HTTP method to use for the request to transcriptionEventUrl. GET or POST. Default value is POST.
-     * @param username (str, optional): The username to send in the HTTP request to transcriptionEventUrl. If specified, the URLs must be TLS-encrypted (i.e., https).
-     * @param password (str, optional): The password to send in the HTTP request to transcriptionEventUrl. If specified, the URLs must be TLS-encrypted (i.e., https).
-     * @param stabilized (str, optional): Whether to send transcription update events to the specified destination only after they have become stable. Requires destination. Defaults to true.
-     *
-     *        Nested Verbs:
-     *        @param  CustomParam: (optional) You may specify up to 12 <CustomParam/> elements nested within a <StartTranscription> tag.
-     *          These elements define optional user specified parameters that will be sent to the destination URL when the real-time transcription is first started.
-     *
-     */
 
     public static final String TYPE_NAME = "StartTranscription";
 
