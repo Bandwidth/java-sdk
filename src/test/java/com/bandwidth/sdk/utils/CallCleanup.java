@@ -3,9 +3,9 @@ package com.bandwidth.sdk.utils;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import com.bandwidth.sdk.api.CallsApiTest;
-import com.bandwidth.sdk.api.ConferencesApiTest;
-import com.bandwidth.sdk.api.RecordingsApiTest;
+import com.bandwidth.sdk.smoke.CallsApiTest;
+import com.bandwidth.sdk.smoke.ConferencesApiTest;
+import com.bandwidth.sdk.smoke.RecordingsApiTest;
 import com.bandwidth.sdk.model.CallStateEnum;
 import com.bandwidth.sdk.model.UpdateCall;
 import com.bandwidth.sdk.ApiException;

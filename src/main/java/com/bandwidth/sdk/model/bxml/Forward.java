@@ -1,5 +1,5 @@
 /**
- * The {@code <Forward>} verb is used to forward an unanswered incoming call to another number. Unlike {@code <Transfer>}, once your call is forwarded, 
+ * The {@code <Forward>} verb is used to forward an unanswered incoming call to another number. Unlike {@code <Transfer>}, once your call is forwarded,
  * your application will not have any control over either leg of the call. When either leg hangs up, a Disconnect event will be sent to your Call status webhook URL.
  */
 
@@ -26,35 +26,35 @@ import lombok.NoArgsConstructor;
 @Builder
 @Getter
 @EqualsAndHashCode
+/**
+ *
+ * @param to (str): The phone number destination of the call.
+ * @param from_ (str, optional): The phone number that the recipient will receive the call from.
+ * @param callTimeout (str, optional): The number of seconds to wait before timing out the call.
+ * @param diversionTreatment (str, optional): Can be any of the following:
+ *     none: No diversion headers are sent on the outbound leg of the transferred call.
+ *     propagate: Copy the Diversion header from the inbound leg to the outbound leg. Ignored if there is no Diversion header present on the inbound leg.
+ *     stack: After propagating any Diversion header from the inbound leg to the outbound leg, stack on top another Diversion header based on the Request-URI of the inbound call.
+ *     Defaults to none. If diversionTreatment is not specified, no diversion header will be included for the transfer even if one came with the inbound call. Defaults to None.
+ * @param diversionReason (str, optional): Can be any of the following values:
+ *     unknown
+ *     user-busy
+ *     no-answer
+ *     unavailable
+ *     unconditional
+ *     time-of-day
+ *     do-not-disturb
+ *     deflection
+ *     follow-me
+ *     out-of-service
+ *     away
+ *     This parameter is considered only when diversionTreatment is set to stack. Defaults is unknown.
+ *     Defaults to None.
+ * @param uui (str, optional): The value of the User-To-User header to send within the outbound INVITE when forwarding to a SIP URI.
+ *     Must include the encoding parameter as specified in RFC 7433. Only base64 and jwt encoding are currently allowed.
+ *     This value, including the encoding specifier, may not exceed 256 characters.
+ */
 public class Forward implements Verb {
-    /**
-     *      
-     * @param to (str): The phone number destination of the call.
-     * @param from_ (str, optional): The phone number that the recipient will receive the call from.
-     * @param callTimeout (str, optional): The number of seconds to wait before timing out the call.
-     * @param diversionTreatment (str, optional): Can be any of the following:
-     *     none: No diversion headers are sent on the outbound leg of the transferred call.
-     *     propagate: Copy the Diversion header from the inbound leg to the outbound leg. Ignored if there is no Diversion header present on the inbound leg.
-     *     stack: After propagating any Diversion header from the inbound leg to the outbound leg, stack on top another Diversion header based on the Request-URI of the inbound call.
-     *     Defaults to none. If diversionTreatment is not specified, no diversion header will be included for the transfer even if one came with the inbound call. Defaults to None.
-     * @param diversionReason (str, optional): Can be any of the following values:
-     *     unknown
-     *     user-busy
-     *     no-answer
-     *     unavailable
-     *     unconditional
-     *     time-of-day
-     *     do-not-disturb
-     *     deflection
-     *     follow-me
-     *     out-of-service
-     *     away
-     *     This parameter is considered only when diversionTreatment is set to stack. Defaults is unknown. 
-     *     Defaults to None.
-     * @param uui (str, optional): The value of the User-To-User header to send within the outbound INVITE when forwarding to a SIP URI. 
-     *     Must include the encoding parameter as specified in RFC 7433. Only base64 and jwt encoding are currently allowed. 
-     *     This value, including the encoding specifier, may not exceed 256 characters.
-     */   
 
     public static final String TYPE_NAME = "Forward";
 

@@ -24,11 +24,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @Getter
 @EqualsAndHashCode
+/**
+ *
+ * @param duration (str, optional): The time in seconds to pause. Default value is 1.
+ */
 public class Pause implements Verb {
-    /**
-     *      
-     * @param duration (str, optional): The time in seconds to pause. Default value is 1.
-     */        
 
     public static final String TYPE_NAME = "Pause";
 

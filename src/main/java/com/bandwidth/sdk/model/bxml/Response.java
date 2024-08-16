@@ -1,6 +1,6 @@
 /**
  * The root {@code <Response>} verb. Other verbs get added to Response and then the JAXB marshaller using the toBxml() method converts this to valid BXML.
- * 
+ *
  */
 
 package com.bandwidth.sdk.model.bxml;

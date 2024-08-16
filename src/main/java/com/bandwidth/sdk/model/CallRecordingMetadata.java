@@ -129,6 +129,10 @@ public class CallRecordingMetadata {
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTION)
   private RecordingTranscriptionMetadata transcription;
 
+  public static final String SERIALIZED_NAME_RECORDING_NAME = "recordingName";
+  @SerializedName(SERIALIZED_NAME_RECORDING_NAME)
+  private String recordingName;
+
   public CallRecordingMetadata() {
   }
 
@@ -473,6 +477,25 @@ public class CallRecordingMetadata {
     this.transcription = transcription;
   }
 
+
+  public CallRecordingMetadata recordingName(String recordingName) {
+    this.recordingName = recordingName;
+    return this;
+  }
+
+   /**
+   * A name to identify this recording.
+   * @return recordingName
+  **/
+  @javax.annotation.Nullable
+  public String getRecordingName() {
+    return recordingName;
+  }
+
+  public void setRecordingName(String recordingName) {
+    this.recordingName = recordingName;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -545,7 +568,8 @@ public class CallRecordingMetadata {
         Objects.equals(this.fileFormat, callRecordingMetadata.fileFormat) &&
         Objects.equals(this.status, callRecordingMetadata.status) &&
         Objects.equals(this.mediaUrl, callRecordingMetadata.mediaUrl) &&
-        Objects.equals(this.transcription, callRecordingMetadata.transcription)&&
+        Objects.equals(this.transcription, callRecordingMetadata.transcription) &&
+        Objects.equals(this.recordingName, callRecordingMetadata.recordingName)&&
         Objects.equals(this.additionalProperties, callRecordingMetadata.additionalProperties);
   }
 
@@ -555,7 +579,7 @@ public class CallRecordingMetadata {
 
   @Override
   public int hashCode() {
-    return Objects.hash(applicationId, accountId, callId, parentCallId, recordingId, to, from, transferCallerId, transferTo, duration, direction, channels, startTime, endTime, fileFormat, status, mediaUrl, transcription, additionalProperties);
+    return Objects.hash(applicationId, accountId, callId, parentCallId, recordingId, to, from, transferCallerId, transferTo, duration, direction, channels, startTime, endTime, fileFormat, status, mediaUrl, transcription, recordingName, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -587,6 +611,7 @@ public class CallRecordingMetadata {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    mediaUrl: ").append(toIndentedString(mediaUrl)).append("\n");
     sb.append("    transcription: ").append(toIndentedString(transcription)).append("\n");
+    sb.append("    recordingName: ").append(toIndentedString(recordingName)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -628,6 +653,7 @@ public class CallRecordingMetadata {
     openapiFields.add("status");
     openapiFields.add("mediaUrl");
     openapiFields.add("transcription");
+    openapiFields.add("recordingName");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -693,6 +719,9 @@ public class CallRecordingMetadata {
       // validate the optional field `transcription`
       if (jsonObj.get("transcription") != null && !jsonObj.get("transcription").isJsonNull()) {
         RecordingTranscriptionMetadata.validateJsonElement(jsonObj.get("transcription"));
+      }
+      if ((jsonObj.get("recordingName") != null && !jsonObj.get("recordingName").isJsonNull()) && !jsonObj.get("recordingName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `recordingName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("recordingName").toString()));
       }
   }
 

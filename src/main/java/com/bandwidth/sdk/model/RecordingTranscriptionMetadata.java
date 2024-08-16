@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.net.URI;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -62,7 +63,7 @@ public class RecordingTranscriptionMetadata {
 
   public static final String SERIALIZED_NAME_COMPLETED_TIME = "completedTime";
   @SerializedName(SERIALIZED_NAME_COMPLETED_TIME)
-  private String completedTime;
+  private OffsetDateTime completedTime;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
@@ -109,7 +110,7 @@ public class RecordingTranscriptionMetadata {
   }
 
 
-  public RecordingTranscriptionMetadata completedTime(String completedTime) {
+  public RecordingTranscriptionMetadata completedTime(OffsetDateTime completedTime) {
     this.completedTime = completedTime;
     return this;
   }
@@ -119,11 +120,11 @@ public class RecordingTranscriptionMetadata {
    * @return completedTime
   **/
   @javax.annotation.Nullable
-  public String getCompletedTime() {
+  public OffsetDateTime getCompletedTime() {
     return completedTime;
   }
 
-  public void setCompletedTime(String completedTime) {
+  public void setCompletedTime(OffsetDateTime completedTime) {
     this.completedTime = completedTime;
   }
 
@@ -271,9 +272,6 @@ public class RecordingTranscriptionMetadata {
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
-      }
-      if ((jsonObj.get("completedTime") != null && !jsonObj.get("completedTime").isJsonNull()) && !jsonObj.get("completedTime").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `completedTime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("completedTime").toString()));
       }
       if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));

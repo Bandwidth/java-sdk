@@ -99,6 +99,10 @@ public class ConferenceRecordingMetadata {
   @SerializedName(SERIALIZED_NAME_MEDIA_URL)
   private URI mediaUrl;
 
+  public static final String SERIALIZED_NAME_RECORDING_NAME = "recordingName";
+  @SerializedName(SERIALIZED_NAME_RECORDING_NAME)
+  private String recordingName;
+
   public ConferenceRecordingMetadata() {
   }
 
@@ -310,6 +314,25 @@ public class ConferenceRecordingMetadata {
     this.mediaUrl = mediaUrl;
   }
 
+
+  public ConferenceRecordingMetadata recordingName(String recordingName) {
+    this.recordingName = recordingName;
+    return this;
+  }
+
+   /**
+   * A name to identify this recording.
+   * @return recordingName
+  **/
+  @javax.annotation.Nullable
+  public String getRecordingName() {
+    return recordingName;
+  }
+
+  public void setRecordingName(String recordingName) {
+    this.recordingName = recordingName;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -375,7 +398,8 @@ public class ConferenceRecordingMetadata {
         Objects.equals(this.endTime, conferenceRecordingMetadata.endTime) &&
         Objects.equals(this.fileFormat, conferenceRecordingMetadata.fileFormat) &&
         Objects.equals(this.status, conferenceRecordingMetadata.status) &&
-        Objects.equals(this.mediaUrl, conferenceRecordingMetadata.mediaUrl)&&
+        Objects.equals(this.mediaUrl, conferenceRecordingMetadata.mediaUrl) &&
+        Objects.equals(this.recordingName, conferenceRecordingMetadata.recordingName)&&
         Objects.equals(this.additionalProperties, conferenceRecordingMetadata.additionalProperties);
   }
 
@@ -385,7 +409,7 @@ public class ConferenceRecordingMetadata {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, conferenceId, name, recordingId, duration, channels, startTime, endTime, fileFormat, status, mediaUrl, additionalProperties);
+    return Objects.hash(accountId, conferenceId, name, recordingId, duration, channels, startTime, endTime, fileFormat, status, mediaUrl, recordingName, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -410,6 +434,7 @@ public class ConferenceRecordingMetadata {
     sb.append("    fileFormat: ").append(toIndentedString(fileFormat)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    mediaUrl: ").append(toIndentedString(mediaUrl)).append("\n");
+    sb.append("    recordingName: ").append(toIndentedString(recordingName)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -444,6 +469,7 @@ public class ConferenceRecordingMetadata {
     openapiFields.add("fileFormat");
     openapiFields.add("status");
     openapiFields.add("mediaUrl");
+    openapiFields.add("recordingName");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -486,6 +512,9 @@ public class ConferenceRecordingMetadata {
       }
       if ((jsonObj.get("mediaUrl") != null && !jsonObj.get("mediaUrl").isJsonNull()) && !jsonObj.get("mediaUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `mediaUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mediaUrl").toString()));
+      }
+      if ((jsonObj.get("recordingName") != null && !jsonObj.get("recordingName").isJsonNull()) && !jsonObj.get("recordingName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `recordingName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("recordingName").toString()));
       }
   }
 

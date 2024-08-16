@@ -55,6 +55,10 @@ public class CallTranscriptionMetadata {
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTION_ID)
   private String transcriptionId;
 
+  public static final String SERIALIZED_NAME_TRANSCRIPTION_NAME = "transcriptionName";
+  @SerializedName(SERIALIZED_NAME_TRANSCRIPTION_NAME)
+  private String transcriptionName;
+
   public static final String SERIALIZED_NAME_TRANSCRIPTION_URL = "transcriptionUrl";
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTION_URL)
   private String transcriptionUrl;
@@ -78,6 +82,25 @@ public class CallTranscriptionMetadata {
 
   public void setTranscriptionId(String transcriptionId) {
     this.transcriptionId = transcriptionId;
+  }
+
+
+  public CallTranscriptionMetadata transcriptionName(String transcriptionName) {
+    this.transcriptionName = transcriptionName;
+    return this;
+  }
+
+   /**
+   * The programmable voice API transcription name. This name could be provided by the user when creating the transcription.
+   * @return transcriptionName
+  **/
+  @javax.annotation.Nullable
+  public String getTranscriptionName() {
+    return transcriptionName;
+  }
+
+  public void setTranscriptionName(String transcriptionName) {
+    this.transcriptionName = transcriptionName;
   }
 
 
@@ -155,13 +178,14 @@ public class CallTranscriptionMetadata {
     }
     CallTranscriptionMetadata callTranscriptionMetadata = (CallTranscriptionMetadata) o;
     return Objects.equals(this.transcriptionId, callTranscriptionMetadata.transcriptionId) &&
+        Objects.equals(this.transcriptionName, callTranscriptionMetadata.transcriptionName) &&
         Objects.equals(this.transcriptionUrl, callTranscriptionMetadata.transcriptionUrl)&&
         Objects.equals(this.additionalProperties, callTranscriptionMetadata.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(transcriptionId, transcriptionUrl, additionalProperties);
+    return Objects.hash(transcriptionId, transcriptionName, transcriptionUrl, additionalProperties);
   }
 
   @Override
@@ -169,6 +193,7 @@ public class CallTranscriptionMetadata {
     StringBuilder sb = new StringBuilder();
     sb.append("class CallTranscriptionMetadata {\n");
     sb.append("    transcriptionId: ").append(toIndentedString(transcriptionId)).append("\n");
+    sb.append("    transcriptionName: ").append(toIndentedString(transcriptionName)).append("\n");
     sb.append("    transcriptionUrl: ").append(toIndentedString(transcriptionUrl)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -194,6 +219,7 @@ public class CallTranscriptionMetadata {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("transcriptionId");
+    openapiFields.add("transcriptionName");
     openapiFields.add("transcriptionUrl");
 
     // a set of required properties/fields (JSON key names)
@@ -215,6 +241,9 @@ public class CallTranscriptionMetadata {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("transcriptionId") != null && !jsonObj.get("transcriptionId").isJsonNull()) && !jsonObj.get("transcriptionId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transcriptionId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transcriptionId").toString()));
+      }
+      if ((jsonObj.get("transcriptionName") != null && !jsonObj.get("transcriptionName").isJsonNull()) && !jsonObj.get("transcriptionName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transcriptionName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transcriptionName").toString()));
       }
       if ((jsonObj.get("transcriptionUrl") != null && !jsonObj.get("transcriptionUrl").isJsonNull()) && !jsonObj.get("transcriptionUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transcriptionUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transcriptionUrl").toString()));
