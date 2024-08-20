@@ -63,6 +63,18 @@ jobs:
       - name: Set Maven Project Version
         run: mvn versions:set -DnewVersion=$RELEASE_VERSION
 
+      - name: Build Package and Test
+        env:
+          JAVA_VERSION: 21
+          RUNNER_OS: ubuntu-latest
+          OPERATING_SYSTEM: ubuntu -latest
+          DISTRIBUTION: adopt
+        run: |
+          mvn -B package --file pom.xml -DskipTests
+          npm install -g @stoplight/prism-cli
+          prism mock ./bandwidth.yml & (sleep 3; mvn test -Punit-tests)
+        shell: bash
+
       - name: Publish to Apache Maven Central
         run: mvn deploy -DskipTests
         env:
@@ -122,6 +134,18 @@ jobs:
     - name: Set Maven Project Version
       run: mvn versions:set -DnewVersion=$RELEASE_VERSION
 
+    - name: Build Package and Test
+      env:
+        JAVA_VERSION: 21
+        RUNNER_OS: ubuntu-latest
+        OPERATING_SYSTEM: ubuntu -latest
+        DISTRIBUTION: adopt
+      run: |
+        mvn -B package --file pom.xml -DskipTests
+        npm install -g @stoplight/prism-cli
+        prism mock ./bandwidth.yml & (sleep 3; mvn test -Punit-tests)
+      shell: bash
+
     - name: Publish to Apache Maven Central
       run: mvn deploy -DskipTests
       env:
@@ -130,7 +154,7 @@ jobs:
         MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
 
     - name: Notify Slack
-      uses: Bandwidth/build-notify-slack-action@v1.0.0
+      uses: Bandwidth/build-notify-slack-action@v2.0.0
       if: always()
       with:
         job-status: ${{ job.status }}
