@@ -45,15 +45,15 @@ jobs:
           fi
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: feature/openapi-generator-sdk
 
       - name: Set up Apache Maven Central
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: 'adopt'
-          java-version: '17'
+          java-version: 21
           server-id: ossrh
           server-username: MAVEN_USERNAME
           server-password: MAVEN_CENTRAL_TOKEN
@@ -63,8 +63,20 @@ jobs:
       - name: Set Maven Project Version
         run: mvn versions:set -DnewVersion=$RELEASE_VERSION
 
+      - name: Build Package and Test
+        env:
+          JAVA_VERSION: 21
+          RUNNER_OS: ubuntu-latest
+          OPERATING_SYSTEM: ubuntu -latest
+          DISTRIBUTION: adopt
+        run: |
+          mvn -B package --file pom.xml -DskipTests
+          npm install -g @stoplight/prism-cli
+          prism mock ./bandwidth.yml & (sleep 3; mvn test -Punit-tests)
+        shell: bash
+
       - name: Publish to Apache Maven Central
-        run: mvn deploy
+        run: mvn deploy -DskipTests
         env:
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
           MAVEN_CENTRAL_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
@@ -103,13 +115,13 @@ jobs:
       BW_NUMBER_PROVIDER: ${{ secrets.BW_NUMBER_PROVIDER }}
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Set up Apache Maven Central
       uses: actions/setup-java@v4
       with:
         distribution: 'adopt'
-        java-version: '17'
+        java-version: 21
         server-id: 'ossrh'
         server-username: OSSRH_USERNAME
         server-password: OSSRH_PASSWORD
@@ -122,15 +134,27 @@ jobs:
     - name: Set Maven Project Version
       run: mvn versions:set -DnewVersion=$RELEASE_VERSION
 
+    - name: Build Package and Test
+      env:
+        JAVA_VERSION: 21
+        RUNNER_OS: ubuntu-latest
+        OPERATING_SYSTEM: ubuntu -latest
+        DISTRIBUTION: adopt
+      run: |
+        mvn -B package --file pom.xml -DskipTests
+        npm install -g @stoplight/prism-cli
+        prism mock ./bandwidth.yml & (sleep 3; mvn test -Punit-tests)
+      shell: bash
+
     - name: Publish to Apache Maven Central
-      run: mvn deploy
+      run: mvn deploy -DskipTests
       env:
         OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
         OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
         MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
 
     - name: Notify Slack
-      uses: Bandwidth/build-notify-slack-action@v1.0.0
+      uses: Bandwidth/build-notify-slack-action@v2.0.0
       if: always()
       with:
         job-status: ${{ job.status }}
