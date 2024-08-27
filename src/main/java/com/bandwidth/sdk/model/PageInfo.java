@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -50,7 +48,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * PageInfo
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class PageInfo {
   public static final String SERIALIZED_NAME_PREV_PAGE = "prevPage";
   @SerializedName(SERIALIZED_NAME_PREV_PAGE)
@@ -72,20 +70,18 @@ public class PageInfo {
   }
 
   public PageInfo prevPage(String prevPage) {
-    
     this.prevPage = prevPage;
     return this;
   }
 
-   /**
+  /**
    * The link to the previous page for pagination.
    * @return prevPage
-  **/
+   */
   @javax.annotation.Nullable
   public String getPrevPage() {
     return prevPage;
   }
-
 
   public void setPrevPage(String prevPage) {
     this.prevPage = prevPage;
@@ -93,20 +89,18 @@ public class PageInfo {
 
 
   public PageInfo nextPage(String nextPage) {
-    
     this.nextPage = nextPage;
     return this;
   }
 
-   /**
+  /**
    * The link to the next page for pagination.
    * @return nextPage
-  **/
+   */
   @javax.annotation.Nullable
   public String getNextPage() {
     return nextPage;
   }
-
 
   public void setNextPage(String nextPage) {
     this.nextPage = nextPage;
@@ -114,20 +108,18 @@ public class PageInfo {
 
 
   public PageInfo prevPageToken(String prevPageToken) {
-    
     this.prevPageToken = prevPageToken;
     return this;
   }
 
-   /**
+  /**
    * The isolated pagination token for the previous page.
    * @return prevPageToken
-  **/
+   */
   @javax.annotation.Nullable
   public String getPrevPageToken() {
     return prevPageToken;
   }
-
 
   public void setPrevPageToken(String prevPageToken) {
     this.prevPageToken = prevPageToken;
@@ -135,20 +127,18 @@ public class PageInfo {
 
 
   public PageInfo nextPageToken(String nextPageToken) {
-    
     this.nextPageToken = nextPageToken;
     return this;
   }
 
-   /**
+  /**
    * The isolated pagination token for the next page.
    * @return nextPageToken
-  **/
+   */
   @javax.annotation.Nullable
   public String getNextPageToken() {
     return nextPageToken;
   }
-
 
   public void setNextPageToken(String nextPageToken) {
     this.nextPageToken = nextPageToken;
@@ -261,12 +251,12 @@ public class PageInfo {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to PageInfo
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to PageInfo
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!PageInfo.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -316,7 +306,12 @@ public class PageInfo {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }
@@ -355,22 +350,22 @@ public class PageInfo {
     }
   }
 
- /**
-  * Create an instance of PageInfo given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of PageInfo
-  * @throws IOException if the JSON string is invalid with respect to PageInfo
-  */
+  /**
+   * Create an instance of PageInfo given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of PageInfo
+   * @throws IOException if the JSON string is invalid with respect to PageInfo
+   */
   public static PageInfo fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, PageInfo.class);
   }
 
- /**
-  * Convert an instance of PageInfo to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of PageInfo to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

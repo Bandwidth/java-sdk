@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -50,7 +48,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * FieldError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class FieldError {
   public static final String SERIALIZED_NAME_FIELD_NAME = "fieldName";
   @SerializedName(SERIALIZED_NAME_FIELD_NAME)
@@ -64,20 +62,18 @@ public class FieldError {
   }
 
   public FieldError fieldName(String fieldName) {
-    
     this.fieldName = fieldName;
     return this;
   }
 
-   /**
+  /**
    * The name of the field that contains the error
    * @return fieldName
-  **/
+   */
   @javax.annotation.Nullable
   public String getFieldName() {
     return fieldName;
   }
-
 
   public void setFieldName(String fieldName) {
     this.fieldName = fieldName;
@@ -85,20 +81,18 @@ public class FieldError {
 
 
   public FieldError description(String description) {
-    
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * The error associated with the field
    * @return description
-  **/
+   */
   @javax.annotation.Nullable
   public String getDescription() {
     return description;
   }
-
 
   public void setDescription(String description) {
     this.description = description;
@@ -205,12 +199,12 @@ public class FieldError {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to FieldError
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to FieldError
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!FieldError.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -254,7 +248,12 @@ public class FieldError {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }
@@ -293,22 +292,22 @@ public class FieldError {
     }
   }
 
- /**
-  * Create an instance of FieldError given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of FieldError
-  * @throws IOException if the JSON string is invalid with respect to FieldError
-  */
+  /**
+   * Create an instance of FieldError given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of FieldError
+   * @throws IOException if the JSON string is invalid with respect to FieldError
+   */
   public static FieldError fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, FieldError.class);
   }
 
- /**
-  * Convert an instance of FieldError to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of FieldError to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

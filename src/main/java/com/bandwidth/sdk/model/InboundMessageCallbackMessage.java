@@ -45,12 +45,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -58,7 +56,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Inbound Message Callback Message Schema
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class InboundMessageCallbackMessage {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -102,7 +100,7 @@ public class InboundMessageCallbackMessage {
 
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
-  private List<URI> media;
+  private List<URI> media = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
@@ -112,20 +110,18 @@ public class InboundMessageCallbackMessage {
   }
 
   public InboundMessageCallbackMessage id(String id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
+   */
   @javax.annotation.Nonnull
   public String getId() {
     return id;
   }
-
 
   public void setId(String id) {
     this.id = id;
@@ -133,20 +129,18 @@ public class InboundMessageCallbackMessage {
 
 
   public InboundMessageCallbackMessage owner(String owner) {
-    
     this.owner = owner;
     return this;
   }
 
-   /**
+  /**
    * Get owner
    * @return owner
-  **/
+   */
   @javax.annotation.Nonnull
   public String getOwner() {
     return owner;
   }
-
 
   public void setOwner(String owner) {
     this.owner = owner;
@@ -154,20 +148,18 @@ public class InboundMessageCallbackMessage {
 
 
   public InboundMessageCallbackMessage applicationId(String applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * Get applicationId
    * @return applicationId
-  **/
+   */
   @javax.annotation.Nonnull
   public String getApplicationId() {
     return applicationId;
   }
-
 
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
@@ -175,20 +167,18 @@ public class InboundMessageCallbackMessage {
 
 
   public InboundMessageCallbackMessage time(OffsetDateTime time) {
-    
     this.time = time;
     return this;
   }
 
-   /**
+  /**
    * Get time
    * @return time
-  **/
+   */
   @javax.annotation.Nonnull
   public OffsetDateTime getTime() {
     return time;
   }
-
 
   public void setTime(OffsetDateTime time) {
     this.time = time;
@@ -196,20 +186,18 @@ public class InboundMessageCallbackMessage {
 
 
   public InboundMessageCallbackMessage segmentCount(Integer segmentCount) {
-    
     this.segmentCount = segmentCount;
     return this;
   }
 
-   /**
+  /**
    * Get segmentCount
    * @return segmentCount
-  **/
+   */
   @javax.annotation.Nonnull
   public Integer getSegmentCount() {
     return segmentCount;
   }
-
 
   public void setSegmentCount(Integer segmentCount) {
     this.segmentCount = segmentCount;
@@ -217,20 +205,18 @@ public class InboundMessageCallbackMessage {
 
 
   public InboundMessageCallbackMessage direction(MessageDirectionEnum direction) {
-    
     this.direction = direction;
     return this;
   }
 
-   /**
+  /**
    * Get direction
    * @return direction
-  **/
+   */
   @javax.annotation.Nonnull
   public MessageDirectionEnum getDirection() {
     return direction;
   }
-
 
   public void setDirection(MessageDirectionEnum direction) {
     this.direction = direction;
@@ -238,7 +224,6 @@ public class InboundMessageCallbackMessage {
 
 
   public InboundMessageCallbackMessage to(Set<String> to) {
-    
     this.to = to;
     return this;
   }
@@ -251,15 +236,14 @@ public class InboundMessageCallbackMessage {
     return this;
   }
 
-   /**
+  /**
    * Get to
    * @return to
-  **/
+   */
   @javax.annotation.Nonnull
   public Set<String> getTo() {
     return to;
   }
-
 
   public void setTo(Set<String> to) {
     this.to = to;
@@ -267,20 +251,18 @@ public class InboundMessageCallbackMessage {
 
 
   public InboundMessageCallbackMessage from(String from) {
-    
     this.from = from;
     return this;
   }
 
-   /**
+  /**
    * Get from
    * @return from
-  **/
+   */
   @javax.annotation.Nonnull
   public String getFrom() {
     return from;
   }
-
 
   public void setFrom(String from) {
     this.from = from;
@@ -288,20 +270,18 @@ public class InboundMessageCallbackMessage {
 
 
   public InboundMessageCallbackMessage text(String text) {
-    
     this.text = text;
     return this;
   }
 
-   /**
+  /**
    * Get text
    * @return text
-  **/
+   */
   @javax.annotation.Nonnull
   public String getText() {
     return text;
   }
-
 
   public void setText(String text) {
     this.text = text;
@@ -309,20 +289,18 @@ public class InboundMessageCallbackMessage {
 
 
   public InboundMessageCallbackMessage tag(String tag) {
-    
     this.tag = tag;
     return this;
   }
 
-   /**
+  /**
    * Get tag
    * @return tag
-  **/
+   */
   @javax.annotation.Nullable
   public String getTag() {
     return tag;
   }
-
 
   public void setTag(String tag) {
     this.tag = tag;
@@ -330,7 +308,6 @@ public class InboundMessageCallbackMessage {
 
 
   public InboundMessageCallbackMessage media(List<URI> media) {
-    
     this.media = media;
     return this;
   }
@@ -343,15 +320,14 @@ public class InboundMessageCallbackMessage {
     return this;
   }
 
-   /**
+  /**
    * Get media
    * @return media
-  **/
+   */
   @javax.annotation.Nullable
   public List<URI> getMedia() {
     return media;
   }
-
 
   public void setMedia(List<URI> media) {
     this.media = media;
@@ -359,20 +335,18 @@ public class InboundMessageCallbackMessage {
 
 
   public InboundMessageCallbackMessage priority(PriorityEnum priority) {
-    
     this.priority = priority;
     return this;
   }
 
-   /**
+  /**
    * Get priority
    * @return priority
-  **/
+   */
   @javax.annotation.Nullable
   public PriorityEnum getPriority() {
     return priority;
   }
-
 
   public void setPriority(PriorityEnum priority) {
     this.priority = priority;
@@ -518,12 +492,12 @@ public class InboundMessageCallbackMessage {
     openapiRequiredFields.add("text");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to InboundMessageCallbackMessage
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to InboundMessageCallbackMessage
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!InboundMessageCallbackMessage.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -547,6 +521,8 @@ public class InboundMessageCallbackMessage {
       if (!jsonObj.get("applicationId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
       }
+      // validate the required field `direction`
+      MessageDirectionEnum.validateJsonElement(jsonObj.get("direction"));
       // ensure the required json array is present
       if (jsonObj.get("to") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
@@ -565,6 +541,10 @@ public class InboundMessageCallbackMessage {
       // ensure the optional json data is an array if present
       if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonNull() && !jsonObj.get("media").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `media` to be an array in the JSON string but got `%s`", jsonObj.get("media").toString()));
+      }
+      // validate the optional field `priority`
+      if (jsonObj.get("priority") != null && !jsonObj.get("priority").isJsonNull()) {
+        PriorityEnum.validateJsonElement(jsonObj.get("priority"));
       }
   }
 
@@ -596,7 +576,12 @@ public class InboundMessageCallbackMessage {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }
@@ -635,22 +620,22 @@ public class InboundMessageCallbackMessage {
     }
   }
 
- /**
-  * Create an instance of InboundMessageCallbackMessage given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of InboundMessageCallbackMessage
-  * @throws IOException if the JSON string is invalid with respect to InboundMessageCallbackMessage
-  */
+  /**
+   * Create an instance of InboundMessageCallbackMessage given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of InboundMessageCallbackMessage
+   * @throws IOException if the JSON string is invalid with respect to InboundMessageCallbackMessage
+   */
   public static InboundMessageCallbackMessage fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, InboundMessageCallbackMessage.class);
   }
 
- /**
-  * Convert an instance of InboundMessageCallbackMessage to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of InboundMessageCallbackMessage to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

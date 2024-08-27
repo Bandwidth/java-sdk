@@ -38,12 +38,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -51,7 +49,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * VerifyCodeRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class VerifyCodeRequest {
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
@@ -73,20 +71,18 @@ public class VerifyCodeRequest {
   }
 
   public VerifyCodeRequest to(String to) {
-    
     this.to = to;
     return this;
   }
 
-   /**
+  /**
    * The phone number to send the mfa code to.
    * @return to
-  **/
+   */
   @javax.annotation.Nonnull
   public String getTo() {
     return to;
   }
-
 
   public void setTo(String to) {
     this.to = to;
@@ -94,20 +90,18 @@ public class VerifyCodeRequest {
 
 
   public VerifyCodeRequest scope(String scope) {
-    
     this.scope = scope;
     return this;
   }
 
-   /**
+  /**
    * An optional field to denote what scope or action the mfa code is addressing.  If not supplied, defaults to \&quot;2FA\&quot;.
    * @return scope
-  **/
+   */
   @javax.annotation.Nullable
   public String getScope() {
     return scope;
   }
-
 
   public void setScope(String scope) {
     this.scope = scope;
@@ -115,22 +109,20 @@ public class VerifyCodeRequest {
 
 
   public VerifyCodeRequest expirationTimeInMinutes(BigDecimal expirationTimeInMinutes) {
-    
     this.expirationTimeInMinutes = expirationTimeInMinutes;
     return this;
   }
 
-   /**
+  /**
    * The time period, in minutes, to validate the mfa code.  By setting this to 3 minutes, it will mean any code generated within the last 3 minutes are still valid.  The valid range for expiration time is between 0 and 15 minutes, exclusively and inclusively, respectively.
    * minimum: 1
    * maximum: 15
    * @return expirationTimeInMinutes
-  **/
+   */
   @javax.annotation.Nonnull
   public BigDecimal getExpirationTimeInMinutes() {
     return expirationTimeInMinutes;
   }
-
 
   public void setExpirationTimeInMinutes(BigDecimal expirationTimeInMinutes) {
     this.expirationTimeInMinutes = expirationTimeInMinutes;
@@ -138,20 +130,18 @@ public class VerifyCodeRequest {
 
 
   public VerifyCodeRequest code(String code) {
-    
     this.code = code;
     return this;
   }
 
-   /**
+  /**
    * The generated mfa code to check if valid.
    * @return code
-  **/
+   */
   @javax.annotation.Nonnull
   public String getCode() {
     return code;
   }
-
 
   public void setCode(String code) {
     this.code = code;
@@ -267,12 +257,12 @@ public class VerifyCodeRequest {
     openapiRequiredFields.add("code");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to VerifyCodeRequest
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to VerifyCodeRequest
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!VerifyCodeRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -326,7 +316,12 @@ public class VerifyCodeRequest {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }
@@ -365,22 +360,22 @@ public class VerifyCodeRequest {
     }
   }
 
- /**
-  * Create an instance of VerifyCodeRequest given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of VerifyCodeRequest
-  * @throws IOException if the JSON string is invalid with respect to VerifyCodeRequest
-  */
+  /**
+   * Create an instance of VerifyCodeRequest given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of VerifyCodeRequest
+   * @throws IOException if the JSON string is invalid with respect to VerifyCodeRequest
+   */
   public static VerifyCodeRequest fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, VerifyCodeRequest.class);
   }
 
- /**
-  * Convert an instance of VerifyCodeRequest to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of VerifyCodeRequest to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

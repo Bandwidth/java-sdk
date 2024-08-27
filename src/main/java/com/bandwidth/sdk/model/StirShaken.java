@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -50,7 +48,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * StirShaken
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class StirShaken {
   public static final String SERIALIZED_NAME_VERSTAT = "verstat";
   @SerializedName(SERIALIZED_NAME_VERSTAT)
@@ -68,20 +66,18 @@ public class StirShaken {
   }
 
   public StirShaken verstat(String verstat) {
-    
     this.verstat = verstat;
     return this;
   }
 
-   /**
+  /**
    * (optional) The verification status indicating whether the verification was successful or not. Possible values are TN-Verification-Passed and TN-Verification-Failed.
    * @return verstat
-  **/
+   */
   @javax.annotation.Nullable
   public String getVerstat() {
     return verstat;
   }
-
 
   public void setVerstat(String verstat) {
     this.verstat = verstat;
@@ -89,20 +85,18 @@ public class StirShaken {
 
 
   public StirShaken attestationIndicator(String attestationIndicator) {
-    
     this.attestationIndicator = attestationIndicator;
     return this;
   }
 
-   /**
+  /**
    * (optional) The attestation level verified by Bandwidth. Possible values are A (full), B (partial) or C (gateway).
    * @return attestationIndicator
-  **/
+   */
   @javax.annotation.Nullable
   public String getAttestationIndicator() {
     return attestationIndicator;
   }
-
 
   public void setAttestationIndicator(String attestationIndicator) {
     this.attestationIndicator = attestationIndicator;
@@ -110,20 +104,18 @@ public class StirShaken {
 
 
   public StirShaken originatingId(String originatingId) {
-    
     this.originatingId = originatingId;
     return this;
   }
 
-   /**
+  /**
    * (optional) A unique origination identifier.
    * @return originatingId
-  **/
+   */
   @javax.annotation.Nullable
   public String getOriginatingId() {
     return originatingId;
   }
-
 
   public void setOriginatingId(String originatingId) {
     this.originatingId = originatingId;
@@ -233,12 +225,12 @@ public class StirShaken {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to StirShaken
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to StirShaken
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!StirShaken.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -285,7 +277,12 @@ public class StirShaken {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }
@@ -324,22 +321,22 @@ public class StirShaken {
     }
   }
 
- /**
-  * Create an instance of StirShaken given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of StirShaken
-  * @throws IOException if the JSON string is invalid with respect to StirShaken
-  */
+  /**
+   * Create an instance of StirShaken given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of StirShaken
+   * @throws IOException if the JSON string is invalid with respect to StirShaken
+   */
   public static StirShaken fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, StirShaken.class);
   }
 
- /**
-  * Convert an instance of StirShaken to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of StirShaken to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

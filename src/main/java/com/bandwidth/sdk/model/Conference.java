@@ -44,12 +44,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -57,7 +55,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Conference
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Conference {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -95,20 +93,18 @@ public class Conference {
   }
 
   public Conference id(String id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * The Bandwidth-generated conference ID.
    * @return id
-  **/
+   */
   @javax.annotation.Nullable
   public String getId() {
     return id;
   }
-
 
   public void setId(String id) {
     this.id = id;
@@ -116,20 +112,18 @@ public class Conference {
 
 
   public Conference name(String name) {
-    
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of the conference, as specified by your application.
    * @return name
-  **/
+   */
   @javax.annotation.Nullable
   public String getName() {
     return name;
   }
-
 
   public void setName(String name) {
     this.name = name;
@@ -137,20 +131,18 @@ public class Conference {
 
 
   public Conference createdTime(OffsetDateTime createdTime) {
-    
     this.createdTime = createdTime;
     return this;
   }
 
-   /**
+  /**
    * The time the conference was initiated, in ISO 8601 format.
    * @return createdTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getCreatedTime() {
     return createdTime;
   }
-
 
   public void setCreatedTime(OffsetDateTime createdTime) {
     this.createdTime = createdTime;
@@ -158,20 +150,18 @@ public class Conference {
 
 
   public Conference completedTime(OffsetDateTime completedTime) {
-    
     this.completedTime = completedTime;
     return this;
   }
 
-   /**
+  /**
    * The time the conference was terminated, in ISO 8601 format.
    * @return completedTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getCompletedTime() {
     return completedTime;
   }
-
 
   public void setCompletedTime(OffsetDateTime completedTime) {
     this.completedTime = completedTime;
@@ -179,20 +169,18 @@ public class Conference {
 
 
   public Conference conferenceEventUrl(URI conferenceEventUrl) {
-    
     this.conferenceEventUrl = conferenceEventUrl;
     return this;
   }
 
-   /**
+  /**
    * The URL to send the conference-related events.
    * @return conferenceEventUrl
-  **/
+   */
   @javax.annotation.Nullable
   public URI getConferenceEventUrl() {
     return conferenceEventUrl;
   }
-
 
   public void setConferenceEventUrl(URI conferenceEventUrl) {
     this.conferenceEventUrl = conferenceEventUrl;
@@ -200,20 +188,18 @@ public class Conference {
 
 
   public Conference conferenceEventMethod(CallbackMethodEnum conferenceEventMethod) {
-    
     this.conferenceEventMethod = conferenceEventMethod;
     return this;
   }
 
-   /**
+  /**
    * Get conferenceEventMethod
    * @return conferenceEventMethod
-  **/
+   */
   @javax.annotation.Nullable
   public CallbackMethodEnum getConferenceEventMethod() {
     return conferenceEventMethod;
   }
-
 
   public void setConferenceEventMethod(CallbackMethodEnum conferenceEventMethod) {
     this.conferenceEventMethod = conferenceEventMethod;
@@ -221,20 +207,18 @@ public class Conference {
 
 
   public Conference tag(String tag) {
-    
     this.tag = tag;
     return this;
   }
 
-   /**
+  /**
    * The custom string attached to the conference that will be sent with callbacks.
    * @return tag
-  **/
+   */
   @javax.annotation.Nullable
   public String getTag() {
     return tag;
   }
-
 
   public void setTag(String tag) {
     this.tag = tag;
@@ -242,7 +226,6 @@ public class Conference {
 
 
   public Conference activeMembers(List<ConferenceMember> activeMembers) {
-    
     this.activeMembers = activeMembers;
     return this;
   }
@@ -255,15 +238,14 @@ public class Conference {
     return this;
   }
 
-   /**
+  /**
    * A list of active members of the conference. Omitted if this is a response to the [Get Conferences endpoint](/apis/voice#tag/Conferences/operation/listConferences).
    * @return activeMembers
-  **/
+   */
   @javax.annotation.Nullable
   public List<ConferenceMember> getActiveMembers() {
     return activeMembers;
   }
-
 
   public void setActiveMembers(List<ConferenceMember> activeMembers) {
     this.activeMembers = activeMembers;
@@ -399,12 +381,12 @@ public class Conference {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Conference
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Conference
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Conference.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -420,6 +402,10 @@ public class Conference {
       }
       if ((jsonObj.get("conferenceEventUrl") != null && !jsonObj.get("conferenceEventUrl").isJsonNull()) && !jsonObj.get("conferenceEventUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `conferenceEventUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conferenceEventUrl").toString()));
+      }
+      // validate the optional field `conferenceEventMethod`
+      if (jsonObj.get("conferenceEventMethod") != null && !jsonObj.get("conferenceEventMethod").isJsonNull()) {
+        CallbackMethodEnum.validateJsonElement(jsonObj.get("conferenceEventMethod"));
       }
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
@@ -468,7 +454,12 @@ public class Conference {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }
@@ -507,22 +498,22 @@ public class Conference {
     }
   }
 
- /**
-  * Create an instance of Conference given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Conference
-  * @throws IOException if the JSON string is invalid with respect to Conference
-  */
+  /**
+   * Create an instance of Conference given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Conference
+   * @throws IOException if the JSON string is invalid with respect to Conference
+   */
   public static Conference fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Conference.class);
   }
 
- /**
-  * Convert an instance of Conference to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of Conference to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

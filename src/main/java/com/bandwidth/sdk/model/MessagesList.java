@@ -41,12 +41,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -54,7 +52,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * MessagesList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class MessagesList {
   public static final String SERIALIZED_NAME_TOTAL_COUNT = "totalCount";
   @SerializedName(SERIALIZED_NAME_TOTAL_COUNT)
@@ -66,26 +64,24 @@ public class MessagesList {
 
   public static final String SERIALIZED_NAME_MESSAGES = "messages";
   @SerializedName(SERIALIZED_NAME_MESSAGES)
-  private List<ListMessageItem> messages;
+  private List<ListMessageItem> messages = new ArrayList<>();
 
   public MessagesList() {
   }
 
   public MessagesList totalCount(Integer totalCount) {
-    
     this.totalCount = totalCount;
     return this;
   }
 
-   /**
+  /**
    * The total number of messages matched by the search. When the request has limitTotalCount set to true this value is limited to 10,000.
    * @return totalCount
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getTotalCount() {
     return totalCount;
   }
-
 
   public void setTotalCount(Integer totalCount) {
     this.totalCount = totalCount;
@@ -93,20 +89,18 @@ public class MessagesList {
 
 
   public MessagesList pageInfo(PageInfo pageInfo) {
-    
     this.pageInfo = pageInfo;
     return this;
   }
 
-   /**
+  /**
    * Get pageInfo
    * @return pageInfo
-  **/
+   */
   @javax.annotation.Nullable
   public PageInfo getPageInfo() {
     return pageInfo;
   }
-
 
   public void setPageInfo(PageInfo pageInfo) {
     this.pageInfo = pageInfo;
@@ -114,7 +108,6 @@ public class MessagesList {
 
 
   public MessagesList messages(List<ListMessageItem> messages) {
-    
     this.messages = messages;
     return this;
   }
@@ -127,15 +120,14 @@ public class MessagesList {
     return this;
   }
 
-   /**
+  /**
    * Get messages
    * @return messages
-  **/
+   */
   @javax.annotation.Nullable
   public List<ListMessageItem> getMessages() {
     return messages;
   }
-
 
   public void setMessages(List<ListMessageItem> messages) {
     this.messages = messages;
@@ -245,12 +237,12 @@ public class MessagesList {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to MessagesList
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to MessagesList
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!MessagesList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -306,7 +298,12 @@ public class MessagesList {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }
@@ -345,22 +342,22 @@ public class MessagesList {
     }
   }
 
- /**
-  * Create an instance of MessagesList given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of MessagesList
-  * @throws IOException if the JSON string is invalid with respect to MessagesList
-  */
+  /**
+   * Create an instance of MessagesList given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of MessagesList
+   * @throws IOException if the JSON string is invalid with respect to MessagesList
+   */
   public static MessagesList fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, MessagesList.class);
   }
 
- /**
-  * Convert an instance of MessagesList to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of MessagesList to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

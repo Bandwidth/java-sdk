@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -50,7 +48,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * (optional) if machine detection was requested in sync mode, the result will be specified here. Possible values are the same as the async counterpart: Machine Detection Complete
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class MachineDetectionResult {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
@@ -64,20 +62,18 @@ public class MachineDetectionResult {
   }
 
   public MachineDetectionResult value(String value) {
-    
     this.value = value;
     return this;
   }
 
-   /**
+  /**
    * Possible values are answering-machine, human, silence, timeout, or error.
    * @return value
-  **/
+   */
   @javax.annotation.Nullable
   public String getValue() {
     return value;
   }
-
 
   public void setValue(String value) {
     this.value = value;
@@ -85,20 +81,18 @@ public class MachineDetectionResult {
 
 
   public MachineDetectionResult duration(String duration) {
-    
     this.duration = duration;
     return this;
   }
 
-   /**
+  /**
    * The amount of time it took to determine the result.
    * @return duration
-  **/
+   */
   @javax.annotation.Nullable
   public String getDuration() {
     return duration;
   }
-
 
   public void setDuration(String duration) {
     this.duration = duration;
@@ -205,12 +199,12 @@ public class MachineDetectionResult {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to MachineDetectionResult
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to MachineDetectionResult
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!MachineDetectionResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -254,7 +248,12 @@ public class MachineDetectionResult {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }
@@ -293,22 +292,22 @@ public class MachineDetectionResult {
     }
   }
 
- /**
-  * Create an instance of MachineDetectionResult given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of MachineDetectionResult
-  * @throws IOException if the JSON string is invalid with respect to MachineDetectionResult
-  */
+  /**
+   * Create an instance of MachineDetectionResult given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of MachineDetectionResult
+   * @throws IOException if the JSON string is invalid with respect to MachineDetectionResult
+   */
   public static MachineDetectionResult fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, MachineDetectionResult.class);
   }
 
- /**
-  * Convert an instance of MachineDetectionResult to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of MachineDetectionResult to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

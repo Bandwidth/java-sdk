@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -50,7 +48,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * CodeRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class CodeRequest {
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
@@ -80,20 +78,18 @@ public class CodeRequest {
   }
 
   public CodeRequest to(String to) {
-    
     this.to = to;
     return this;
   }
 
-   /**
+  /**
    * The phone number to send the mfa code to.
    * @return to
-  **/
+   */
   @javax.annotation.Nonnull
   public String getTo() {
     return to;
   }
-
 
   public void setTo(String to) {
     this.to = to;
@@ -101,20 +97,18 @@ public class CodeRequest {
 
 
   public CodeRequest from(String from) {
-    
     this.from = from;
     return this;
   }
 
-   /**
+  /**
    * The application phone number, the sender of the mfa code.
    * @return from
-  **/
+   */
   @javax.annotation.Nonnull
   public String getFrom() {
     return from;
   }
-
 
   public void setFrom(String from) {
     this.from = from;
@@ -122,20 +116,18 @@ public class CodeRequest {
 
 
   public CodeRequest applicationId(String applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The application unique ID, obtained from Bandwidth.
    * @return applicationId
-  **/
+   */
   @javax.annotation.Nonnull
   public String getApplicationId() {
     return applicationId;
   }
-
 
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
@@ -143,20 +135,18 @@ public class CodeRequest {
 
 
   public CodeRequest scope(String scope) {
-    
     this.scope = scope;
     return this;
   }
 
-   /**
+  /**
    * An optional field to denote what scope or action the mfa code is addressing.  If not supplied, defaults to \&quot;2FA\&quot;.
    * @return scope
-  **/
+   */
   @javax.annotation.Nullable
   public String getScope() {
     return scope;
   }
-
 
   public void setScope(String scope) {
     this.scope = scope;
@@ -164,20 +154,18 @@ public class CodeRequest {
 
 
   public CodeRequest message(String message) {
-    
     this.message = message;
     return this;
   }
 
-   /**
+  /**
    * The message format of the mfa code.  There are three values that the system will replace \&quot;{CODE}\&quot;, \&quot;{NAME}\&quot;, \&quot;{SCOPE}\&quot;.  The \&quot;{SCOPE}\&quot; and \&quot;{NAME} value template are optional, while \&quot;{CODE}\&quot; must be supplied.  As the name would suggest, code will be replace with the actual mfa code.  Name is replaced with the application name, configured during provisioning of mfa.  The scope value is the same value sent during the call and partitioned by the server.
    * @return message
-  **/
+   */
   @javax.annotation.Nonnull
   public String getMessage() {
     return message;
   }
-
 
   public void setMessage(String message) {
     this.message = message;
@@ -185,22 +173,20 @@ public class CodeRequest {
 
 
   public CodeRequest digits(Integer digits) {
-    
     this.digits = digits;
     return this;
   }
 
-   /**
+  /**
    * The number of digits for your mfa code.  The valid number ranges from 2 to 8, inclusively.
    * minimum: 4
    * maximum: 8
    * @return digits
-  **/
+   */
   @javax.annotation.Nonnull
   public Integer getDigits() {
     return digits;
   }
-
 
   public void setDigits(Integer digits) {
     this.digits = digits;
@@ -324,12 +310,12 @@ public class CodeRequest {
     openapiRequiredFields.add("digits");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CodeRequest
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to CodeRequest
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CodeRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -389,7 +375,12 @@ public class CodeRequest {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }
@@ -428,22 +419,22 @@ public class CodeRequest {
     }
   }
 
- /**
-  * Create an instance of CodeRequest given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of CodeRequest
-  * @throws IOException if the JSON string is invalid with respect to CodeRequest
-  */
+  /**
+   * Create an instance of CodeRequest given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of CodeRequest
+   * @throws IOException if the JSON string is invalid with respect to CodeRequest
+   */
   public static CodeRequest fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, CodeRequest.class);
   }
 
- /**
-  * Convert an instance of CodeRequest to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of CodeRequest to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

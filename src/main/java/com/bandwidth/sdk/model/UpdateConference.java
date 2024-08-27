@@ -41,12 +41,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -54,7 +52,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * UpdateConference
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class UpdateConference {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -96,20 +94,18 @@ public class UpdateConference {
   }
 
   public UpdateConference status(ConferenceStateEnum status) {
-    
     this.status = status;
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @javax.annotation.Nullable
   public ConferenceStateEnum getStatus() {
     return status;
   }
-
 
   public void setStatus(ConferenceStateEnum status) {
     this.status = status;
@@ -117,20 +113,18 @@ public class UpdateConference {
 
 
   public UpdateConference redirectUrl(URI redirectUrl) {
-    
     this.redirectUrl = redirectUrl;
     return this;
   }
 
-   /**
+  /**
    * The URL to send the [conferenceRedirect](/docs/voice/webhooks/conferenceRedirect) event which will provide new BXML. Not allowed if &#x60;state&#x60; is &#x60;completed&#x60;, but required if &#x60;state&#x60; is &#x60;active&#x60;.
    * @return redirectUrl
-  **/
+   */
   @javax.annotation.Nullable
   public URI getRedirectUrl() {
     return redirectUrl;
   }
-
 
   public void setRedirectUrl(URI redirectUrl) {
     this.redirectUrl = redirectUrl;
@@ -138,20 +132,18 @@ public class UpdateConference {
 
 
   public UpdateConference redirectMethod(RedirectMethodEnum redirectMethod) {
-    
     this.redirectMethod = redirectMethod;
     return this;
   }
 
-   /**
+  /**
    * Get redirectMethod
    * @return redirectMethod
-  **/
+   */
   @javax.annotation.Nullable
   public RedirectMethodEnum getRedirectMethod() {
     return redirectMethod;
   }
-
 
   public void setRedirectMethod(RedirectMethodEnum redirectMethod) {
     this.redirectMethod = redirectMethod;
@@ -159,20 +151,18 @@ public class UpdateConference {
 
 
   public UpdateConference username(String username) {
-    
     this.username = username;
     return this;
   }
 
-   /**
+  /**
    * Basic auth username.
    * @return username
-  **/
+   */
   @javax.annotation.Nullable
   public String getUsername() {
     return username;
   }
-
 
   public void setUsername(String username) {
     this.username = username;
@@ -180,20 +170,18 @@ public class UpdateConference {
 
 
   public UpdateConference password(String password) {
-    
     this.password = password;
     return this;
   }
 
-   /**
+  /**
    * Basic auth password.
    * @return password
-  **/
+   */
   @javax.annotation.Nullable
   public String getPassword() {
     return password;
   }
-
 
   public void setPassword(String password) {
     this.password = password;
@@ -201,20 +189,18 @@ public class UpdateConference {
 
 
   public UpdateConference redirectFallbackUrl(URI redirectFallbackUrl) {
-    
     this.redirectFallbackUrl = redirectFallbackUrl;
     return this;
   }
 
-   /**
+  /**
    * A fallback url which, if provided, will be used to retry the &#x60;conferenceRedirect&#x60; webhook delivery in case &#x60;redirectUrl&#x60; fails to respond.  Not allowed if &#x60;state&#x60; is &#x60;completed&#x60;.
    * @return redirectFallbackUrl
-  **/
+   */
   @javax.annotation.Nullable
   public URI getRedirectFallbackUrl() {
     return redirectFallbackUrl;
   }
-
 
   public void setRedirectFallbackUrl(URI redirectFallbackUrl) {
     this.redirectFallbackUrl = redirectFallbackUrl;
@@ -222,20 +208,18 @@ public class UpdateConference {
 
 
   public UpdateConference redirectFallbackMethod(RedirectMethodEnum redirectFallbackMethod) {
-    
     this.redirectFallbackMethod = redirectFallbackMethod;
     return this;
   }
 
-   /**
+  /**
    * Get redirectFallbackMethod
    * @return redirectFallbackMethod
-  **/
+   */
   @javax.annotation.Nullable
   public RedirectMethodEnum getRedirectFallbackMethod() {
     return redirectFallbackMethod;
   }
-
 
   public void setRedirectFallbackMethod(RedirectMethodEnum redirectFallbackMethod) {
     this.redirectFallbackMethod = redirectFallbackMethod;
@@ -243,20 +227,18 @@ public class UpdateConference {
 
 
   public UpdateConference fallbackUsername(String fallbackUsername) {
-    
     this.fallbackUsername = fallbackUsername;
     return this;
   }
 
-   /**
+  /**
    * Basic auth username.
    * @return fallbackUsername
-  **/
+   */
   @javax.annotation.Nullable
   public String getFallbackUsername() {
     return fallbackUsername;
   }
-
 
   public void setFallbackUsername(String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
@@ -264,20 +246,18 @@ public class UpdateConference {
 
 
   public UpdateConference fallbackPassword(String fallbackPassword) {
-    
     this.fallbackPassword = fallbackPassword;
     return this;
   }
 
-   /**
+  /**
    * Basic auth password.
    * @return fallbackPassword
-  **/
+   */
   @javax.annotation.Nullable
   public String getFallbackPassword() {
     return fallbackPassword;
   }
-
 
   public void setFallbackPassword(String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
@@ -416,12 +396,12 @@ public class UpdateConference {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to UpdateConference
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to UpdateConference
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!UpdateConference.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -429,8 +409,16 @@ public class UpdateConference {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `status`
+      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+        ConferenceStateEnum.validateJsonElement(jsonObj.get("status"));
+      }
       if ((jsonObj.get("redirectUrl") != null && !jsonObj.get("redirectUrl").isJsonNull()) && !jsonObj.get("redirectUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redirectUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirectUrl").toString()));
+      }
+      // validate the optional field `redirectMethod`
+      if (jsonObj.get("redirectMethod") != null && !jsonObj.get("redirectMethod").isJsonNull()) {
+        RedirectMethodEnum.validateJsonElement(jsonObj.get("redirectMethod"));
       }
       if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
@@ -440,6 +428,10 @@ public class UpdateConference {
       }
       if ((jsonObj.get("redirectFallbackUrl") != null && !jsonObj.get("redirectFallbackUrl").isJsonNull()) && !jsonObj.get("redirectFallbackUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redirectFallbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirectFallbackUrl").toString()));
+      }
+      // validate the optional field `redirectFallbackMethod`
+      if (jsonObj.get("redirectFallbackMethod") != null && !jsonObj.get("redirectFallbackMethod").isJsonNull()) {
+        RedirectMethodEnum.validateJsonElement(jsonObj.get("redirectFallbackMethod"));
       }
       if ((jsonObj.get("fallbackUsername") != null && !jsonObj.get("fallbackUsername").isJsonNull()) && !jsonObj.get("fallbackUsername").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fallbackUsername` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackUsername").toString()));
@@ -477,7 +469,12 @@ public class UpdateConference {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }
@@ -516,22 +513,22 @@ public class UpdateConference {
     }
   }
 
- /**
-  * Create an instance of UpdateConference given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of UpdateConference
-  * @throws IOException if the JSON string is invalid with respect to UpdateConference
-  */
+  /**
+   * Create an instance of UpdateConference given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of UpdateConference
+   * @throws IOException if the JSON string is invalid with respect to UpdateConference
+   */
   public static UpdateConference fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, UpdateConference.class);
   }
 
- /**
-  * Convert an instance of UpdateConference to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of UpdateConference to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

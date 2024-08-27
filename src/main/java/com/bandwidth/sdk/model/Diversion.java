@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -50,7 +48,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Diversion
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Diversion {
   public static final String SERIALIZED_NAME_REASON = "reason";
   @SerializedName(SERIALIZED_NAME_REASON)
@@ -84,20 +82,18 @@ public class Diversion {
   }
 
   public Diversion reason(String reason) {
-    
     this.reason = reason;
     return this;
   }
 
-   /**
+  /**
    * The reason for the diversion. Common values: unknown, user-busy, no-answer, unavailable, unconditional, time-of-day, do-not-disturb, deflection, follow-me, out-of-service, away.
    * @return reason
-  **/
+   */
   @javax.annotation.Nullable
   public String getReason() {
     return reason;
   }
-
 
   public void setReason(String reason) {
     this.reason = reason;
@@ -105,20 +101,18 @@ public class Diversion {
 
 
   public Diversion privacy(String privacy) {
-    
     this.privacy = privacy;
     return this;
   }
 
-   /**
+  /**
    * off or full
    * @return privacy
-  **/
+   */
   @javax.annotation.Nullable
   public String getPrivacy() {
     return privacy;
   }
-
 
   public void setPrivacy(String privacy) {
     this.privacy = privacy;
@@ -126,20 +120,18 @@ public class Diversion {
 
 
   public Diversion screen(String screen) {
-    
     this.screen = screen;
     return this;
   }
 
-   /**
+  /**
    * No if the number was provided by the user, yes if the number was provided by the network
    * @return screen
-  **/
+   */
   @javax.annotation.Nullable
   public String getScreen() {
     return screen;
   }
-
 
   public void setScreen(String screen) {
     this.screen = screen;
@@ -147,20 +139,18 @@ public class Diversion {
 
 
   public Diversion counter(String counter) {
-    
     this.counter = counter;
     return this;
   }
 
-   /**
+  /**
    * The number of diversions that have occurred
    * @return counter
-  **/
+   */
   @javax.annotation.Nullable
   public String getCounter() {
     return counter;
   }
-
 
   public void setCounter(String counter) {
     this.counter = counter;
@@ -168,20 +158,18 @@ public class Diversion {
 
 
   public Diversion limit(String limit) {
-    
     this.limit = limit;
     return this;
   }
 
-   /**
+  /**
    * The maximum number of diversions allowed for this session
    * @return limit
-  **/
+   */
   @javax.annotation.Nullable
   public String getLimit() {
     return limit;
   }
-
 
   public void setLimit(String limit) {
     this.limit = limit;
@@ -189,20 +177,18 @@ public class Diversion {
 
 
   public Diversion unknown(String unknown) {
-    
     this.unknown = unknown;
     return this;
   }
 
-   /**
+  /**
    * The normal list of values is not exhaustive. Your application must be tolerant of unlisted keys and unlisted values of those keys.
    * @return unknown
-  **/
+   */
   @javax.annotation.Nullable
   public String getUnknown() {
     return unknown;
   }
-
 
   public void setUnknown(String unknown) {
     this.unknown = unknown;
@@ -210,20 +196,18 @@ public class Diversion {
 
 
   public Diversion origTo(String origTo) {
-    
     this.origTo = origTo;
     return this;
   }
 
-   /**
+  /**
    * Always present. Indicates the last telephone number that the call was diverted from.
    * @return origTo
-  **/
+   */
   @javax.annotation.Nullable
   public String getOrigTo() {
     return origTo;
   }
-
 
   public void setOrigTo(String origTo) {
     this.origTo = origTo;
@@ -345,12 +329,12 @@ public class Diversion {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Diversion
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Diversion
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Diversion.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -409,7 +393,12 @@ public class Diversion {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }
@@ -448,22 +437,22 @@ public class Diversion {
     }
   }
 
- /**
-  * Create an instance of Diversion given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Diversion
-  * @throws IOException if the JSON string is invalid with respect to Diversion
-  */
+  /**
+   * Create an instance of Diversion given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Diversion
+   * @throws IOException if the JSON string is invalid with respect to Diversion
+   */
   public static Diversion fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Diversion.class);
   }
 
- /**
-  * Convert an instance of Diversion to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of Diversion to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

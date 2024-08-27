@@ -39,12 +39,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -52,7 +50,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * CallTranscription
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class CallTranscription {
   public static final String SERIALIZED_NAME_DETECTED_LANGUAGE = "detectedLanguage";
   @SerializedName(SERIALIZED_NAME_DETECTED_LANGUAGE)
@@ -74,20 +72,18 @@ public class CallTranscription {
   }
 
   public CallTranscription detectedLanguage(CallTranscriptionDetectedLanguageEnum detectedLanguage) {
-    
     this.detectedLanguage = detectedLanguage;
     return this;
   }
 
-   /**
+  /**
    * Get detectedLanguage
    * @return detectedLanguage
-  **/
+   */
   @javax.annotation.Nullable
   public CallTranscriptionDetectedLanguageEnum getDetectedLanguage() {
     return detectedLanguage;
   }
-
 
   public void setDetectedLanguage(CallTranscriptionDetectedLanguageEnum detectedLanguage) {
     this.detectedLanguage = detectedLanguage;
@@ -95,20 +91,18 @@ public class CallTranscription {
 
 
   public CallTranscription track(CallTranscriptionTrackEnum track) {
-    
     this.track = track;
     return this;
   }
 
-   /**
+  /**
    * Get track
    * @return track
-  **/
+   */
   @javax.annotation.Nullable
   public CallTranscriptionTrackEnum getTrack() {
     return track;
   }
-
 
   public void setTrack(CallTranscriptionTrackEnum track) {
     this.track = track;
@@ -116,20 +110,18 @@ public class CallTranscription {
 
 
   public CallTranscription transcript(String transcript) {
-    
     this.transcript = transcript;
     return this;
   }
 
-   /**
+  /**
    * The transcription itself.
    * @return transcript
-  **/
+   */
   @javax.annotation.Nullable
   public String getTranscript() {
     return transcript;
   }
-
 
   public void setTranscript(String transcript) {
     this.transcript = transcript;
@@ -137,22 +129,20 @@ public class CallTranscription {
 
 
   public CallTranscription confidence(Double confidence) {
-    
     this.confidence = confidence;
     return this;
   }
 
-   /**
+  /**
    * How confident the transcription engine was in transcribing the associated audio (from &#x60;0&#x60; to &#x60;1&#x60;).
    * minimum: 0
    * maximum: 1
    * @return confidence
-  **/
+   */
   @javax.annotation.Nullable
   public Double getConfidence() {
     return confidence;
   }
-
 
   public void setConfidence(Double confidence) {
     this.confidence = confidence;
@@ -265,12 +255,12 @@ public class CallTranscription {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CallTranscription
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to CallTranscription
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CallTranscription.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -278,6 +268,14 @@ public class CallTranscription {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `detectedLanguage`
+      if (jsonObj.get("detectedLanguage") != null && !jsonObj.get("detectedLanguage").isJsonNull()) {
+        CallTranscriptionDetectedLanguageEnum.validateJsonElement(jsonObj.get("detectedLanguage"));
+      }
+      // validate the optional field `track`
+      if (jsonObj.get("track") != null && !jsonObj.get("track").isJsonNull()) {
+        CallTranscriptionTrackEnum.validateJsonElement(jsonObj.get("track"));
+      }
       if ((jsonObj.get("transcript") != null && !jsonObj.get("transcript").isJsonNull()) && !jsonObj.get("transcript").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transcript` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transcript").toString()));
       }
@@ -311,7 +309,12 @@ public class CallTranscription {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }
@@ -350,22 +353,22 @@ public class CallTranscription {
     }
   }
 
- /**
-  * Create an instance of CallTranscription given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of CallTranscription
-  * @throws IOException if the JSON string is invalid with respect to CallTranscription
-  */
+  /**
+   * Create an instance of CallTranscription given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of CallTranscription
+   * @throws IOException if the JSON string is invalid with respect to CallTranscription
+   */
   public static CallTranscription fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, CallTranscription.class);
   }
 
- /**
-  * Convert an instance of CallTranscription to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of CallTranscription to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

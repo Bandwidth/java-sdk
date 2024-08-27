@@ -39,12 +39,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -52,7 +50,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Message Delivered Callback
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class MessageDeliveredCallback {
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)
@@ -78,20 +76,18 @@ public class MessageDeliveredCallback {
   }
 
   public MessageDeliveredCallback time(OffsetDateTime time) {
-    
     this.time = time;
     return this;
   }
 
-   /**
+  /**
    * Get time
    * @return time
-  **/
+   */
   @javax.annotation.Nonnull
   public OffsetDateTime getTime() {
     return time;
   }
-
 
   public void setTime(OffsetDateTime time) {
     this.time = time;
@@ -99,20 +95,18 @@ public class MessageDeliveredCallback {
 
 
   public MessageDeliveredCallback type(String type) {
-    
     this.type = type;
     return this;
   }
 
-   /**
+  /**
    * Get type
    * @return type
-  **/
+   */
   @javax.annotation.Nonnull
   public String getType() {
     return type;
   }
-
 
   public void setType(String type) {
     this.type = type;
@@ -120,20 +114,18 @@ public class MessageDeliveredCallback {
 
 
   public MessageDeliveredCallback to(String to) {
-    
     this.to = to;
     return this;
   }
 
-   /**
+  /**
    * Get to
    * @return to
-  **/
+   */
   @javax.annotation.Nonnull
   public String getTo() {
     return to;
   }
-
 
   public void setTo(String to) {
     this.to = to;
@@ -141,20 +133,18 @@ public class MessageDeliveredCallback {
 
 
   public MessageDeliveredCallback description(String description) {
-    
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * Get description
    * @return description
-  **/
+   */
   @javax.annotation.Nonnull
   public String getDescription() {
     return description;
   }
-
 
   public void setDescription(String description) {
     this.description = description;
@@ -162,20 +152,18 @@ public class MessageDeliveredCallback {
 
 
   public MessageDeliveredCallback message(MessageDeliveredCallbackMessage message) {
-    
     this.message = message;
     return this;
   }
 
-   /**
+  /**
    * Get message
    * @return message
-  **/
+   */
   @javax.annotation.Nonnull
   public MessageDeliveredCallbackMessage getMessage() {
     return message;
   }
-
 
   public void setMessage(MessageDeliveredCallbackMessage message) {
     this.message = message;
@@ -296,12 +284,12 @@ public class MessageDeliveredCallback {
     openapiRequiredFields.add("message");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to MessageDeliveredCallback
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to MessageDeliveredCallback
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!MessageDeliveredCallback.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -357,7 +345,12 @@ public class MessageDeliveredCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }
@@ -396,22 +389,22 @@ public class MessageDeliveredCallback {
     }
   }
 
- /**
-  * Create an instance of MessageDeliveredCallback given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of MessageDeliveredCallback
-  * @throws IOException if the JSON string is invalid with respect to MessageDeliveredCallback
-  */
+  /**
+   * Create an instance of MessageDeliveredCallback given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of MessageDeliveredCallback
+   * @throws IOException if the JSON string is invalid with respect to MessageDeliveredCallback
+   */
   public static MessageDeliveredCallback fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, MessageDeliveredCallback.class);
   }
 
- /**
-  * Convert an instance of MessageDeliveredCallback to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of MessageDeliveredCallback to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

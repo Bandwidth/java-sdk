@@ -42,12 +42,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -55,7 +53,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * ListMessageItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ListMessageItem {
   public static final String SERIALIZED_NAME_MESSAGE_ID = "messageId";
   @SerializedName(SERIALIZED_NAME_MESSAGE_ID)
@@ -129,20 +127,18 @@ public class ListMessageItem {
   }
 
   public ListMessageItem messageId(String messageId) {
-    
     this.messageId = messageId;
     return this;
   }
 
-   /**
+  /**
    * The message id
    * @return messageId
-  **/
+   */
   @javax.annotation.Nullable
   public String getMessageId() {
     return messageId;
   }
-
 
   public void setMessageId(String messageId) {
     this.messageId = messageId;
@@ -150,20 +146,18 @@ public class ListMessageItem {
 
 
   public ListMessageItem accountId(String accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The account id associated with this message.
    * @return accountId
-  **/
+   */
   @javax.annotation.Nullable
   public String getAccountId() {
     return accountId;
   }
-
 
   public void setAccountId(String accountId) {
     this.accountId = accountId;
@@ -171,20 +165,18 @@ public class ListMessageItem {
 
 
   public ListMessageItem sourceTn(String sourceTn) {
-    
     this.sourceTn = sourceTn;
     return this;
   }
 
-   /**
+  /**
    * The source phone number of the message.
    * @return sourceTn
-  **/
+   */
   @javax.annotation.Nullable
   public String getSourceTn() {
     return sourceTn;
   }
-
 
   public void setSourceTn(String sourceTn) {
     this.sourceTn = sourceTn;
@@ -192,20 +184,18 @@ public class ListMessageItem {
 
 
   public ListMessageItem destinationTn(String destinationTn) {
-    
     this.destinationTn = destinationTn;
     return this;
   }
 
-   /**
+  /**
    * The recipient phone number of the message.
    * @return destinationTn
-  **/
+   */
   @javax.annotation.Nullable
   public String getDestinationTn() {
     return destinationTn;
   }
-
 
   public void setDestinationTn(String destinationTn) {
     this.destinationTn = destinationTn;
@@ -213,20 +203,18 @@ public class ListMessageItem {
 
 
   public ListMessageItem messageStatus(MessageStatusEnum messageStatus) {
-    
     this.messageStatus = messageStatus;
     return this;
   }
 
-   /**
+  /**
    * Get messageStatus
    * @return messageStatus
-  **/
+   */
   @javax.annotation.Nullable
   public MessageStatusEnum getMessageStatus() {
     return messageStatus;
   }
-
 
   public void setMessageStatus(MessageStatusEnum messageStatus) {
     this.messageStatus = messageStatus;
@@ -234,20 +222,18 @@ public class ListMessageItem {
 
 
   public ListMessageItem messageDirection(ListMessageDirectionEnum messageDirection) {
-    
     this.messageDirection = messageDirection;
     return this;
   }
 
-   /**
+  /**
    * Get messageDirection
    * @return messageDirection
-  **/
+   */
   @javax.annotation.Nullable
   public ListMessageDirectionEnum getMessageDirection() {
     return messageDirection;
   }
-
 
   public void setMessageDirection(ListMessageDirectionEnum messageDirection) {
     this.messageDirection = messageDirection;
@@ -255,20 +241,18 @@ public class ListMessageItem {
 
 
   public ListMessageItem messageType(MessageTypeEnum messageType) {
-    
     this.messageType = messageType;
     return this;
   }
 
-   /**
+  /**
    * Get messageType
    * @return messageType
-  **/
+   */
   @javax.annotation.Nullable
   public MessageTypeEnum getMessageType() {
     return messageType;
   }
-
 
   public void setMessageType(MessageTypeEnum messageType) {
     this.messageType = messageType;
@@ -276,20 +260,18 @@ public class ListMessageItem {
 
 
   public ListMessageItem segmentCount(Integer segmentCount) {
-    
     this.segmentCount = segmentCount;
     return this;
   }
 
-   /**
+  /**
    * The number of segments the message was sent as.
    * @return segmentCount
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getSegmentCount() {
     return segmentCount;
   }
-
 
   public void setSegmentCount(Integer segmentCount) {
     this.segmentCount = segmentCount;
@@ -297,20 +279,18 @@ public class ListMessageItem {
 
 
   public ListMessageItem errorCode(Integer errorCode) {
-    
     this.errorCode = errorCode;
     return this;
   }
 
-   /**
+  /**
    * The numeric error code of the message.
    * @return errorCode
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getErrorCode() {
     return errorCode;
   }
-
 
   public void setErrorCode(Integer errorCode) {
     this.errorCode = errorCode;
@@ -318,20 +298,18 @@ public class ListMessageItem {
 
 
   public ListMessageItem receiveTime(OffsetDateTime receiveTime) {
-    
     this.receiveTime = receiveTime;
     return this;
   }
 
-   /**
+  /**
    * The ISO 8601 datetime of the message.
    * @return receiveTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getReceiveTime() {
     return receiveTime;
   }
-
 
   public void setReceiveTime(OffsetDateTime receiveTime) {
     this.receiveTime = receiveTime;
@@ -339,20 +317,18 @@ public class ListMessageItem {
 
 
   public ListMessageItem carrierName(String carrierName) {
-    
     this.carrierName = carrierName;
     return this;
   }
 
-   /**
+  /**
    * The name of the carrier. Not currently supported for MMS coming soon.
    * @return carrierName
-  **/
+   */
   @javax.annotation.Nullable
   public String getCarrierName() {
     return carrierName;
   }
-
 
   public void setCarrierName(String carrierName) {
     this.carrierName = carrierName;
@@ -360,20 +336,18 @@ public class ListMessageItem {
 
 
   public ListMessageItem messageSize(Integer messageSize) {
-    
     this.messageSize = messageSize;
     return this;
   }
 
-   /**
+  /**
    * The size of the message including message content and headers.
    * @return messageSize
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getMessageSize() {
     return messageSize;
   }
-
 
   public void setMessageSize(Integer messageSize) {
     this.messageSize = messageSize;
@@ -381,20 +355,18 @@ public class ListMessageItem {
 
 
   public ListMessageItem messageLength(Integer messageLength) {
-    
     this.messageLength = messageLength;
     return this;
   }
 
-   /**
+  /**
    * The length of the message content.
    * @return messageLength
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getMessageLength() {
     return messageLength;
   }
-
 
   public void setMessageLength(Integer messageLength) {
     this.messageLength = messageLength;
@@ -402,20 +374,18 @@ public class ListMessageItem {
 
 
   public ListMessageItem attachmentCount(Integer attachmentCount) {
-    
     this.attachmentCount = attachmentCount;
     return this;
   }
 
-   /**
+  /**
    * The number of attachments the message has.
    * @return attachmentCount
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getAttachmentCount() {
     return attachmentCount;
   }
-
 
   public void setAttachmentCount(Integer attachmentCount) {
     this.attachmentCount = attachmentCount;
@@ -423,20 +393,18 @@ public class ListMessageItem {
 
 
   public ListMessageItem recipientCount(Integer recipientCount) {
-    
     this.recipientCount = recipientCount;
     return this;
   }
 
-   /**
+  /**
    * The number of recipients the message has.
    * @return recipientCount
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getRecipientCount() {
     return recipientCount;
   }
-
 
   public void setRecipientCount(Integer recipientCount) {
     this.recipientCount = recipientCount;
@@ -444,20 +412,18 @@ public class ListMessageItem {
 
 
   public ListMessageItem campaignClass(String campaignClass) {
-    
     this.campaignClass = campaignClass;
     return this;
   }
 
-   /**
+  /**
    * The campaign class of the message if it has one.
    * @return campaignClass
-  **/
+   */
   @javax.annotation.Nullable
   public String getCampaignClass() {
     return campaignClass;
   }
-
 
   public void setCampaignClass(String campaignClass) {
     this.campaignClass = campaignClass;
@@ -465,20 +431,18 @@ public class ListMessageItem {
 
 
   public ListMessageItem campaignId(String campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * The campaign ID of the message if it has one.
    * @return campaignId
-  **/
+   */
   @javax.annotation.Nullable
   public String getCampaignId() {
     return campaignId;
   }
-
 
   public void setCampaignId(String campaignId) {
     this.campaignId = campaignId;
@@ -641,12 +605,12 @@ public class ListMessageItem {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ListMessageItem
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to ListMessageItem
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ListMessageItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -665,6 +629,18 @@ public class ListMessageItem {
       }
       if ((jsonObj.get("destinationTn") != null && !jsonObj.get("destinationTn").isJsonNull()) && !jsonObj.get("destinationTn").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `destinationTn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("destinationTn").toString()));
+      }
+      // validate the optional field `messageStatus`
+      if (jsonObj.get("messageStatus") != null && !jsonObj.get("messageStatus").isJsonNull()) {
+        MessageStatusEnum.validateJsonElement(jsonObj.get("messageStatus"));
+      }
+      // validate the optional field `messageDirection`
+      if (jsonObj.get("messageDirection") != null && !jsonObj.get("messageDirection").isJsonNull()) {
+        ListMessageDirectionEnum.validateJsonElement(jsonObj.get("messageDirection"));
+      }
+      // validate the optional field `messageType`
+      if (jsonObj.get("messageType") != null && !jsonObj.get("messageType").isJsonNull()) {
+        MessageTypeEnum.validateJsonElement(jsonObj.get("messageType"));
       }
       if ((jsonObj.get("carrierName") != null && !jsonObj.get("carrierName").isJsonNull()) && !jsonObj.get("carrierName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `carrierName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("carrierName").toString()));
@@ -705,7 +681,12 @@ public class ListMessageItem {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }
@@ -744,22 +725,22 @@ public class ListMessageItem {
     }
   }
 
- /**
-  * Create an instance of ListMessageItem given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of ListMessageItem
-  * @throws IOException if the JSON string is invalid with respect to ListMessageItem
-  */
+  /**
+   * Create an instance of ListMessageItem given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of ListMessageItem
+   * @throws IOException if the JSON string is invalid with respect to ListMessageItem
+   */
   public static ListMessageItem fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, ListMessageItem.class);
   }
 
- /**
-  * Convert an instance of ListMessageItem to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of ListMessageItem to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

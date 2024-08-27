@@ -37,12 +37,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -50,7 +48,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Transcription
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Transcription {
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
@@ -64,20 +62,18 @@ public class Transcription {
   }
 
   public Transcription text(String text) {
-    
     this.text = text;
     return this;
   }
 
-   /**
+  /**
    * The transcribed text
    * @return text
-  **/
+   */
   @javax.annotation.Nullable
   public String getText() {
     return text;
   }
-
 
   public void setText(String text) {
     this.text = text;
@@ -85,20 +81,18 @@ public class Transcription {
 
 
   public Transcription confidence(Double confidence) {
-    
     this.confidence = confidence;
     return this;
   }
 
-   /**
+  /**
    * The confidence on the recognized content, ranging from &#x60;0.0&#x60; to &#x60;1.0&#x60; with &#x60;1.0&#x60; being the highest confidence.
    * @return confidence
-  **/
+   */
   @javax.annotation.Nullable
   public Double getConfidence() {
     return confidence;
   }
-
 
   public void setConfidence(Double confidence) {
     this.confidence = confidence;
@@ -205,12 +199,12 @@ public class Transcription {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Transcription
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Transcription
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Transcription.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -251,7 +245,12 @@ public class Transcription {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }
@@ -290,22 +289,22 @@ public class Transcription {
     }
   }
 
- /**
-  * Create an instance of Transcription given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Transcription
-  * @throws IOException if the JSON string is invalid with respect to Transcription
-  */
+  /**
+   * Create an instance of Transcription given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Transcription
+   * @throws IOException if the JSON string is invalid with respect to Transcription
+   */
   public static Transcription fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Transcription.class);
   }
 
- /**
-  * Convert an instance of Transcription to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of Transcription to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

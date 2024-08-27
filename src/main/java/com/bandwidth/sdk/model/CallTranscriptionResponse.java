@@ -40,12 +40,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -53,7 +51,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * CallTranscriptionResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class CallTranscriptionResponse {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
@@ -69,26 +67,24 @@ public class CallTranscriptionResponse {
 
   public static final String SERIALIZED_NAME_TRACKS = "tracks";
   @SerializedName(SERIALIZED_NAME_TRACKS)
-  private List<CallTranscription> tracks;
+  private List<CallTranscription> tracks = new ArrayList<>();
 
   public CallTranscriptionResponse() {
   }
 
   public CallTranscriptionResponse accountId(String accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The user account associated with the call.
    * @return accountId
-  **/
+   */
   @javax.annotation.Nullable
   public String getAccountId() {
     return accountId;
   }
-
 
   public void setAccountId(String accountId) {
     this.accountId = accountId;
@@ -96,20 +92,18 @@ public class CallTranscriptionResponse {
 
 
   public CallTranscriptionResponse callId(String callId) {
-    
     this.callId = callId;
     return this;
   }
 
-   /**
+  /**
    * The call id associated with the event.
    * @return callId
-  **/
+   */
   @javax.annotation.Nullable
   public String getCallId() {
     return callId;
   }
-
 
   public void setCallId(String callId) {
     this.callId = callId;
@@ -117,20 +111,18 @@ public class CallTranscriptionResponse {
 
 
   public CallTranscriptionResponse transcriptionId(String transcriptionId) {
-    
     this.transcriptionId = transcriptionId;
     return this;
   }
 
-   /**
+  /**
    * The programmable voice API transcription ID.
    * @return transcriptionId
-  **/
+   */
   @javax.annotation.Nullable
   public String getTranscriptionId() {
     return transcriptionId;
   }
-
 
   public void setTranscriptionId(String transcriptionId) {
     this.transcriptionId = transcriptionId;
@@ -138,7 +130,6 @@ public class CallTranscriptionResponse {
 
 
   public CallTranscriptionResponse tracks(List<CallTranscription> tracks) {
-    
     this.tracks = tracks;
     return this;
   }
@@ -151,15 +142,14 @@ public class CallTranscriptionResponse {
     return this;
   }
 
-   /**
+  /**
    * Get tracks
    * @return tracks
-  **/
+   */
   @javax.annotation.Nullable
   public List<CallTranscription> getTracks() {
     return tracks;
   }
-
 
   public void setTracks(List<CallTranscription> tracks) {
     this.tracks = tracks;
@@ -272,12 +262,12 @@ public class CallTranscriptionResponse {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CallTranscriptionResponse
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to CallTranscriptionResponse
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CallTranscriptionResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -338,7 +328,12 @@ public class CallTranscriptionResponse {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
                  }
                }
              }
@@ -377,22 +372,22 @@ public class CallTranscriptionResponse {
     }
   }
 
- /**
-  * Create an instance of CallTranscriptionResponse given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of CallTranscriptionResponse
-  * @throws IOException if the JSON string is invalid with respect to CallTranscriptionResponse
-  */
+  /**
+   * Create an instance of CallTranscriptionResponse given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of CallTranscriptionResponse
+   * @throws IOException if the JSON string is invalid with respect to CallTranscriptionResponse
+   */
   public static CallTranscriptionResponse fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, CallTranscriptionResponse.class);
   }
 
- /**
-  * Convert an instance of CallTranscriptionResponse to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of CallTranscriptionResponse to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

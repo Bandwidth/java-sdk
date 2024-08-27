@@ -18,6 +18,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.IOException;
 import com.google.gson.TypeAdapter;
+import com.google.gson.JsonElement;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
@@ -79,6 +80,11 @@ public enum MessageStatusEnum {
       String value = jsonReader.nextString();
       return MessageStatusEnum.fromValue(value);
     }
+  }
+
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+    String value = jsonElement.getAsString();
+    MessageStatusEnum.fromValue(value);
   }
 }
 
