@@ -41,6 +41,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,7 +53,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * CreateCallResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class CreateCallResponse {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
@@ -146,10 +147,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * The id of the application associated with the &#x60;from&#x60; number.
    * @return applicationId
-   */
+  **/
   @javax.annotation.Nonnull
   public String getApplicationId() {
     return applicationId;
@@ -165,10 +166,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * The bandwidth account ID associated with the call.
    * @return accountId
-   */
+  **/
   @javax.annotation.Nonnull
   public String getAccountId() {
     return accountId;
@@ -184,10 +185,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * Programmable Voice API Call ID.
    * @return callId
-   */
+  **/
   @javax.annotation.Nonnull
   public String getCallId() {
     return callId;
@@ -203,10 +204,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * Recipient of the outgoing call.
    * @return to
-   */
+  **/
   @javax.annotation.Nonnull
   public String getTo() {
     return to;
@@ -222,10 +223,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * Phone number that created the outbound call.
    * @return from
-   */
+  **/
   @javax.annotation.Nonnull
   public String getFrom() {
     return from;
@@ -241,10 +242,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * The time at which the call was accepted into the queue.
    * @return enqueuedTime
-   */
+  **/
   @javax.annotation.Nullable
   public OffsetDateTime getEnqueuedTime() {
     return enqueuedTime;
@@ -260,10 +261,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * The URL to update this call&#39;s state.
    * @return callUrl
-   */
+  **/
   @javax.annotation.Nonnull
   public URI getCallUrl() {
     return callUrl;
@@ -279,10 +280,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * The timeout (in seconds) for the callee to answer the call after it starts ringing.
    * @return callTimeout
-   */
+  **/
   @javax.annotation.Nullable
   public Double getCallTimeout() {
     return callTimeout;
@@ -298,10 +299,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * This is the timeout (in seconds) to use when delivering webhooks for the call.
    * @return callbackTimeout
-   */
+  **/
   @javax.annotation.Nullable
   public Double getCallbackTimeout() {
     return callbackTimeout;
@@ -317,10 +318,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * Custom tag value.
    * @return tag
-   */
+  **/
   @javax.annotation.Nullable
   public String getTag() {
     return tag;
@@ -336,10 +337,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * Get answerMethod
    * @return answerMethod
-   */
+  **/
   @javax.annotation.Nullable
   public CallbackMethodEnum getAnswerMethod() {
     return answerMethod;
@@ -355,10 +356,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * URL to deliver the &#x60;answer&#x60; event webhook.
    * @return answerUrl
-   */
+  **/
   @javax.annotation.Nonnull
   public URI getAnswerUrl() {
     return answerUrl;
@@ -374,10 +375,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * Get answerFallbackMethod
    * @return answerFallbackMethod
-   */
+  **/
   @javax.annotation.Nullable
   public CallbackMethodEnum getAnswerFallbackMethod() {
     return answerFallbackMethod;
@@ -393,10 +394,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * Fallback URL to deliver the &#x60;answer&#x60; event webhook.
    * @return answerFallbackUrl
-   */
+  **/
   @javax.annotation.Nullable
   public URI getAnswerFallbackUrl() {
     return answerFallbackUrl;
@@ -412,10 +413,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * Get disconnectMethod
    * @return disconnectMethod
-   */
+  **/
   @javax.annotation.Nullable
   public CallbackMethodEnum getDisconnectMethod() {
     return disconnectMethod;
@@ -431,10 +432,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * URL to deliver the &#x60;disconnect&#x60; event webhook.
    * @return disconnectUrl
-   */
+  **/
   @javax.annotation.Nullable
   public URI getDisconnectUrl() {
     return disconnectUrl;
@@ -450,10 +451,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * Basic auth username.
    * @return username
-   */
+  **/
   @javax.annotation.Nullable
   public String getUsername() {
     return username;
@@ -469,10 +470,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * Basic auth password.
    * @return password
-   */
+  **/
   @javax.annotation.Nullable
   public String getPassword() {
     return password;
@@ -488,10 +489,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * Basic auth username.
    * @return fallbackUsername
-   */
+  **/
   @javax.annotation.Nullable
   public String getFallbackUsername() {
     return fallbackUsername;
@@ -507,10 +508,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * Basic auth password.
    * @return fallbackPassword
-   */
+  **/
   @javax.annotation.Nullable
   public String getFallbackPassword() {
     return fallbackPassword;
@@ -526,10 +527,10 @@ public class CreateCallResponse {
     return this;
   }
 
-  /**
+   /**
    * The priority of this call over other calls from your account.
    * @return priority
-   */
+  **/
   @javax.annotation.Nullable
   public Integer getPriority() {
     return priority;
@@ -717,12 +718,12 @@ public class CreateCallResponse {
     openapiRequiredFields.add("disconnectMethod");
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CreateCallResponse
-   */
+ /**
+  * Validates the JSON Element and throws an exception if issues found
+  *
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to CreateCallResponse
+  */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CreateCallResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -861,22 +862,22 @@ public class CreateCallResponse {
     }
   }
 
-  /**
-   * Create an instance of CreateCallResponse given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of CreateCallResponse
-   * @throws IOException if the JSON string is invalid with respect to CreateCallResponse
-   */
+ /**
+  * Create an instance of CreateCallResponse given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of CreateCallResponse
+  * @throws IOException if the JSON string is invalid with respect to CreateCallResponse
+  */
   public static CreateCallResponse fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, CreateCallResponse.class);
   }
 
-  /**
-   * Convert an instance of CreateCallResponse to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of CreateCallResponse to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

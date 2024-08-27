@@ -39,6 +39,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,7 +51,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * CallTranscription
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class CallTranscription {
   public static final String SERIALIZED_NAME_DETECTED_LANGUAGE = "detectedLanguage";
   @SerializedName(SERIALIZED_NAME_DETECTED_LANGUAGE)
@@ -76,10 +77,10 @@ public class CallTranscription {
     return this;
   }
 
-  /**
+   /**
    * Get detectedLanguage
    * @return detectedLanguage
-   */
+  **/
   @javax.annotation.Nullable
   public CallTranscriptionDetectedLanguageEnum getDetectedLanguage() {
     return detectedLanguage;
@@ -95,10 +96,10 @@ public class CallTranscription {
     return this;
   }
 
-  /**
+   /**
    * Get track
    * @return track
-   */
+  **/
   @javax.annotation.Nullable
   public CallTranscriptionTrackEnum getTrack() {
     return track;
@@ -114,10 +115,10 @@ public class CallTranscription {
     return this;
   }
 
-  /**
+   /**
    * The transcription itself.
    * @return transcript
-   */
+  **/
   @javax.annotation.Nullable
   public String getTranscript() {
     return transcript;
@@ -133,12 +134,12 @@ public class CallTranscription {
     return this;
   }
 
-  /**
+   /**
    * How confident the transcription engine was in transcribing the associated audio (from &#x60;0&#x60; to &#x60;1&#x60;).
    * minimum: 0
    * maximum: 1
    * @return confidence
-   */
+  **/
   @javax.annotation.Nullable
   public Double getConfidence() {
     return confidence;
@@ -255,12 +256,12 @@ public class CallTranscription {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CallTranscription
-   */
+ /**
+  * Validates the JSON Element and throws an exception if issues found
+  *
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to CallTranscription
+  */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CallTranscription.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -353,22 +354,22 @@ public class CallTranscription {
     }
   }
 
-  /**
-   * Create an instance of CallTranscription given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of CallTranscription
-   * @throws IOException if the JSON string is invalid with respect to CallTranscription
-   */
+ /**
+  * Create an instance of CallTranscription given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of CallTranscription
+  * @throws IOException if the JSON string is invalid with respect to CallTranscription
+  */
   public static CallTranscription fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, CallTranscription.class);
   }
 
-  /**
-   * Convert an instance of CallTranscription to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of CallTranscription to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

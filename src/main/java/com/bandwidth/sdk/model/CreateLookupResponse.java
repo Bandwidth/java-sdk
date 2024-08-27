@@ -38,6 +38,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,7 +50,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * The request has been accepted for processing but not yet finished and in a terminal state (COMPLETE, PARTIAL_COMPLETE, or FAILED).
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class CreateLookupResponse {
   public static final String SERIALIZED_NAME_REQUEST_ID = "requestId";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
@@ -67,10 +68,10 @@ public class CreateLookupResponse {
     return this;
   }
 
-  /**
+   /**
    * The phone number lookup request ID from Bandwidth.
    * @return requestId
-   */
+  **/
   @javax.annotation.Nullable
   public String getRequestId() {
     return requestId;
@@ -86,10 +87,10 @@ public class CreateLookupResponse {
     return this;
   }
 
-  /**
+   /**
    * Get status
    * @return status
-   */
+  **/
   @javax.annotation.Nullable
   public LookupStatusEnum getStatus() {
     return status;
@@ -200,12 +201,12 @@ public class CreateLookupResponse {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CreateLookupResponse
-   */
+ /**
+  * Validates the JSON Element and throws an exception if issues found
+  *
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to CreateLookupResponse
+  */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CreateLookupResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -294,22 +295,22 @@ public class CreateLookupResponse {
     }
   }
 
-  /**
-   * Create an instance of CreateLookupResponse given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of CreateLookupResponse
-   * @throws IOException if the JSON string is invalid with respect to CreateLookupResponse
-   */
+ /**
+  * Create an instance of CreateLookupResponse given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of CreateLookupResponse
+  * @throws IOException if the JSON string is invalid with respect to CreateLookupResponse
+  */
   public static CreateLookupResponse fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, CreateLookupResponse.class);
   }
 
-  /**
-   * Convert an instance of CreateLookupResponse to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of CreateLookupResponse to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

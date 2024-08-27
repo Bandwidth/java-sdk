@@ -41,6 +41,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,7 +53,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * The machine detection request used to perform &lt;a href&#x3D;&#39;/docs/voice/guides/machineDetection&#39;&gt;machine detection&lt;/a&gt; on the call. Currently, there is an issue where decimal values are not getting processed correctly. Please use whole number values. We are working to resolve this issue. Please contact Bandwidth Support if you need more information.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class MachineDetectionConfiguration {
   public static final String SERIALIZED_NAME_MODE = "mode";
   @SerializedName(SERIALIZED_NAME_MODE)
@@ -122,10 +123,10 @@ public class MachineDetectionConfiguration {
     return this;
   }
 
-  /**
+   /**
    * Get mode
    * @return mode
-   */
+  **/
   @javax.annotation.Nullable
   public MachineDetectionModeEnum getMode() {
     return mode;
@@ -141,10 +142,10 @@ public class MachineDetectionConfiguration {
     return this;
   }
 
-  /**
+   /**
    * The timeout used for the whole operation, in seconds. If no result is determined in this period, a callback with a &#x60;timeout&#x60; result is sent.
    * @return detectionTimeout
-   */
+  **/
   @javax.annotation.Nullable
   public Double getDetectionTimeout() {
     return detectionTimeout;
@@ -160,10 +161,10 @@ public class MachineDetectionConfiguration {
     return this;
   }
 
-  /**
+   /**
    * If no speech is detected in this period, a callback with a &#39;silence&#39; result is sent.
    * @return silenceTimeout
-   */
+  **/
   @javax.annotation.Nullable
   public Double getSilenceTimeout() {
     return silenceTimeout;
@@ -179,10 +180,10 @@ public class MachineDetectionConfiguration {
     return this;
   }
 
-  /**
+   /**
    * When speech has ended and a result couldn&#39;t be determined based on the audio content itself, this value is used to determine if the speaker is a machine based on the speech duration. If the length of the speech detected is greater than or equal to this threshold, the result will be &#39;answering-machine&#39;. If the length of speech detected is below this threshold, the result will be &#39;human&#39;.
    * @return speechThreshold
-   */
+  **/
   @javax.annotation.Nullable
   public Double getSpeechThreshold() {
     return speechThreshold;
@@ -198,10 +199,10 @@ public class MachineDetectionConfiguration {
     return this;
   }
 
-  /**
+   /**
    * Amount of silence (in seconds) before assuming the callee has finished speaking.
    * @return speechEndThreshold
-   */
+  **/
   @javax.annotation.Nullable
   public Double getSpeechEndThreshold() {
     return speechEndThreshold;
@@ -217,10 +218,10 @@ public class MachineDetectionConfiguration {
     return this;
   }
 
-  /**
+   /**
    * When an answering machine is detected, the amount of silence (in seconds) before assuming the message has finished playing.  If not provided it will default to the speechEndThreshold value.
    * @return machineSpeechEndThreshold
-   */
+  **/
   @javax.annotation.Nullable
   public Double getMachineSpeechEndThreshold() {
     return machineSpeechEndThreshold;
@@ -236,10 +237,10 @@ public class MachineDetectionConfiguration {
     return this;
   }
 
-  /**
+   /**
    * If set to &#39;true&#39; and if an answering machine is detected, the &#39;answering-machine&#39; callback will be delayed until the machine is done speaking, or an end of message tone is detected, or until the &#39;detectionTimeout&#39; is exceeded. If false, the &#39;answering-machine&#39; result is sent immediately.
    * @return delayResult
-   */
+  **/
   @javax.annotation.Nullable
   public Boolean getDelayResult() {
     return delayResult;
@@ -255,10 +256,10 @@ public class MachineDetectionConfiguration {
     return this;
   }
 
-  /**
+   /**
    * The URL to send the &#39;machineDetectionComplete&#39; webhook when the detection is completed. Only for &#39;async&#39; mode.
    * @return callbackUrl
-   */
+  **/
   @javax.annotation.Nullable
   public URI getCallbackUrl() {
     return callbackUrl;
@@ -274,10 +275,10 @@ public class MachineDetectionConfiguration {
     return this;
   }
 
-  /**
+   /**
    * Get callbackMethod
    * @return callbackMethod
-   */
+  **/
   @javax.annotation.Nullable
   public CallbackMethodEnum getCallbackMethod() {
     return callbackMethod;
@@ -293,10 +294,10 @@ public class MachineDetectionConfiguration {
     return this;
   }
 
-  /**
+   /**
    * Basic auth username.
    * @return username
-   */
+  **/
   @javax.annotation.Nullable
   public String getUsername() {
     return username;
@@ -312,10 +313,10 @@ public class MachineDetectionConfiguration {
     return this;
   }
 
-  /**
+   /**
    * Basic auth password.
    * @return password
-   */
+  **/
   @javax.annotation.Nullable
   public String getPassword() {
     return password;
@@ -331,10 +332,10 @@ public class MachineDetectionConfiguration {
     return this;
   }
 
-  /**
+   /**
    * A fallback URL which, if provided, will be used to retry the machine detection complete webhook delivery in case &#x60;callbackUrl&#x60; fails to respond
    * @return fallbackUrl
-   */
+  **/
   @javax.annotation.Nullable
   public URI getFallbackUrl() {
     return fallbackUrl;
@@ -350,10 +351,10 @@ public class MachineDetectionConfiguration {
     return this;
   }
 
-  /**
+   /**
    * Get fallbackMethod
    * @return fallbackMethod
-   */
+  **/
   @javax.annotation.Nullable
   public CallbackMethodEnum getFallbackMethod() {
     return fallbackMethod;
@@ -369,10 +370,10 @@ public class MachineDetectionConfiguration {
     return this;
   }
 
-  /**
+   /**
    * Basic auth username.
    * @return fallbackUsername
-   */
+  **/
   @javax.annotation.Nullable
   public String getFallbackUsername() {
     return fallbackUsername;
@@ -388,10 +389,10 @@ public class MachineDetectionConfiguration {
     return this;
   }
 
-  /**
+   /**
    * Basic auth password.
    * @return fallbackPassword
-   */
+  **/
   @javax.annotation.Nullable
   public String getFallbackPassword() {
     return fallbackPassword;
@@ -552,12 +553,12 @@ public class MachineDetectionConfiguration {
     openapiRequiredFields = new HashSet<String>();
   }
 
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to MachineDetectionConfiguration
-   */
+ /**
+  * Validates the JSON Element and throws an exception if issues found
+  *
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to MachineDetectionConfiguration
+  */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!MachineDetectionConfiguration.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -669,22 +670,22 @@ public class MachineDetectionConfiguration {
     }
   }
 
-  /**
-   * Create an instance of MachineDetectionConfiguration given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of MachineDetectionConfiguration
-   * @throws IOException if the JSON string is invalid with respect to MachineDetectionConfiguration
-   */
+ /**
+  * Create an instance of MachineDetectionConfiguration given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of MachineDetectionConfiguration
+  * @throws IOException if the JSON string is invalid with respect to MachineDetectionConfiguration
+  */
   public static MachineDetectionConfiguration fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, MachineDetectionConfiguration.class);
   }
 
-  /**
-   * Convert an instance of MachineDetectionConfiguration to an JSON string
-   *
-   * @return JSON string
-   */
+ /**
+  * Convert an instance of MachineDetectionConfiguration to an JSON string
+  *
+  * @return JSON string
+  */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }
