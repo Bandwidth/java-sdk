@@ -46,6 +46,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -53,7 +54,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * ConferenceRecordingMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ConferenceRecordingMetadata {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
@@ -107,6 +108,7 @@ public class ConferenceRecordingMetadata {
   }
 
   public ConferenceRecordingMetadata accountId(String accountId) {
+    
     this.accountId = accountId;
     return this;
   }
@@ -120,12 +122,14 @@ public class ConferenceRecordingMetadata {
     return accountId;
   }
 
+
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
   public ConferenceRecordingMetadata conferenceId(String conferenceId) {
+    
     this.conferenceId = conferenceId;
     return this;
   }
@@ -139,12 +143,14 @@ public class ConferenceRecordingMetadata {
     return conferenceId;
   }
 
+
   public void setConferenceId(String conferenceId) {
     this.conferenceId = conferenceId;
   }
 
 
   public ConferenceRecordingMetadata name(String name) {
+    
     this.name = name;
     return this;
   }
@@ -158,12 +164,14 @@ public class ConferenceRecordingMetadata {
     return name;
   }
 
+
   public void setName(String name) {
     this.name = name;
   }
 
 
   public ConferenceRecordingMetadata recordingId(String recordingId) {
+    
     this.recordingId = recordingId;
     return this;
   }
@@ -177,12 +185,14 @@ public class ConferenceRecordingMetadata {
     return recordingId;
   }
 
+
   public void setRecordingId(String recordingId) {
     this.recordingId = recordingId;
   }
 
 
   public ConferenceRecordingMetadata duration(String duration) {
+    
     this.duration = duration;
     return this;
   }
@@ -196,12 +206,14 @@ public class ConferenceRecordingMetadata {
     return duration;
   }
 
+
   public void setDuration(String duration) {
     this.duration = duration;
   }
 
 
   public ConferenceRecordingMetadata channels(Integer channels) {
+    
     this.channels = channels;
     return this;
   }
@@ -215,12 +227,14 @@ public class ConferenceRecordingMetadata {
     return channels;
   }
 
+
   public void setChannels(Integer channels) {
     this.channels = channels;
   }
 
 
   public ConferenceRecordingMetadata startTime(OffsetDateTime startTime) {
+    
     this.startTime = startTime;
     return this;
   }
@@ -234,12 +248,14 @@ public class ConferenceRecordingMetadata {
     return startTime;
   }
 
+
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
   public ConferenceRecordingMetadata endTime(OffsetDateTime endTime) {
+    
     this.endTime = endTime;
     return this;
   }
@@ -253,12 +269,14 @@ public class ConferenceRecordingMetadata {
     return endTime;
   }
 
+
   public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
 
   public ConferenceRecordingMetadata fileFormat(FileFormatEnum fileFormat) {
+    
     this.fileFormat = fileFormat;
     return this;
   }
@@ -272,12 +290,14 @@ public class ConferenceRecordingMetadata {
     return fileFormat;
   }
 
+
   public void setFileFormat(FileFormatEnum fileFormat) {
     this.fileFormat = fileFormat;
   }
 
 
   public ConferenceRecordingMetadata status(String status) {
+    
     this.status = status;
     return this;
   }
@@ -291,12 +311,14 @@ public class ConferenceRecordingMetadata {
     return status;
   }
 
+
   public void setStatus(String status) {
     this.status = status;
   }
 
 
   public ConferenceRecordingMetadata mediaUrl(URI mediaUrl) {
+    
     this.mediaUrl = mediaUrl;
     return this;
   }
@@ -310,12 +332,14 @@ public class ConferenceRecordingMetadata {
     return mediaUrl;
   }
 
+
   public void setMediaUrl(URI mediaUrl) {
     this.mediaUrl = mediaUrl;
   }
 
 
   public ConferenceRecordingMetadata recordingName(String recordingName) {
+    
     this.recordingName = recordingName;
     return this;
   }
@@ -328,6 +352,7 @@ public class ConferenceRecordingMetadata {
   public String getRecordingName() {
     return recordingName;
   }
+
 
   public void setRecordingName(String recordingName) {
     this.recordingName = recordingName;
@@ -503,10 +528,6 @@ public class ConferenceRecordingMetadata {
       if ((jsonObj.get("duration") != null && !jsonObj.get("duration").isJsonNull()) && !jsonObj.get("duration").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `duration` to be a primitive type in the JSON string but got `%s`", jsonObj.get("duration").toString()));
       }
-      // validate the optional field `fileFormat`
-      if (jsonObj.get("fileFormat") != null && !jsonObj.get("fileFormat").isJsonNull()) {
-        FileFormatEnum.validateJsonElement(jsonObj.get("fileFormat"));
-      }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
@@ -546,12 +567,7 @@ public class ConferenceRecordingMetadata {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

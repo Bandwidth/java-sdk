@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -45,6 +46,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -52,7 +54,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * ConferenceMember
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ConferenceMember {
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
@@ -64,7 +66,7 @@ public class ConferenceMember {
 
   public static final String SERIALIZED_NAME_MEMBER_URL = "memberUrl";
   @SerializedName(SERIALIZED_NAME_MEMBER_URL)
-  private String memberUrl;
+  private URI memberUrl;
 
   public static final String SERIALIZED_NAME_MUTE = "mute";
   @SerializedName(SERIALIZED_NAME_MUTE)
@@ -82,6 +84,7 @@ public class ConferenceMember {
   }
 
   public ConferenceMember callId(String callId) {
+    
     this.callId = callId;
     return this;
   }
@@ -95,12 +98,14 @@ public class ConferenceMember {
     return callId;
   }
 
+
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
   public ConferenceMember conferenceId(String conferenceId) {
+    
     this.conferenceId = conferenceId;
     return this;
   }
@@ -114,12 +119,14 @@ public class ConferenceMember {
     return conferenceId;
   }
 
+
   public void setConferenceId(String conferenceId) {
     this.conferenceId = conferenceId;
   }
 
 
-  public ConferenceMember memberUrl(String memberUrl) {
+  public ConferenceMember memberUrl(URI memberUrl) {
+    
     this.memberUrl = memberUrl;
     return this;
   }
@@ -129,16 +136,18 @@ public class ConferenceMember {
    * @return memberUrl
   **/
   @javax.annotation.Nullable
-  public String getMemberUrl() {
+  public URI getMemberUrl() {
     return memberUrl;
   }
 
-  public void setMemberUrl(String memberUrl) {
+
+  public void setMemberUrl(URI memberUrl) {
     this.memberUrl = memberUrl;
   }
 
 
   public ConferenceMember mute(Boolean mute) {
+    
     this.mute = mute;
     return this;
   }
@@ -152,12 +161,14 @@ public class ConferenceMember {
     return mute;
   }
 
+
   public void setMute(Boolean mute) {
     this.mute = mute;
   }
 
 
   public ConferenceMember hold(Boolean hold) {
+    
     this.hold = hold;
     return this;
   }
@@ -171,12 +182,14 @@ public class ConferenceMember {
     return hold;
   }
 
+
   public void setHold(Boolean hold) {
     this.hold = hold;
   }
 
 
   public ConferenceMember callIdsToCoach(List<String> callIdsToCoach) {
+    
     this.callIdsToCoach = callIdsToCoach;
     return this;
   }
@@ -197,6 +210,7 @@ public class ConferenceMember {
   public List<String> getCallIdsToCoach() {
     return callIdsToCoach;
   }
+
 
   public void setCallIdsToCoach(List<String> callIdsToCoach) {
     this.callIdsToCoach = callIdsToCoach;
@@ -382,12 +396,7 @@ public class ConferenceMember {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

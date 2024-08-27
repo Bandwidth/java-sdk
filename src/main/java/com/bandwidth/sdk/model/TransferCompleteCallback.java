@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -45,6 +46,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -52,7 +54,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * This event is sent to the transferCompleteUrl of the A-leg&#39;s &lt;Transfer&gt; verb when the transferred call (B-leg) completes. In a simultaneous ringing scenario, only one B-leg succeeds and this event corresponds to that successful leg. If none of the calls were answered, the transferComplete event corresponds to one of the legs.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TransferCompleteCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
@@ -88,7 +90,7 @@ public class TransferCompleteCallback {
 
   public static final String SERIALIZED_NAME_CALL_URL = "callUrl";
   @SerializedName(SERIALIZED_NAME_CALL_URL)
-  private String callUrl;
+  private URI callUrl;
 
   public static final String SERIALIZED_NAME_ENQUEUED_TIME = "enqueuedTime";
   @SerializedName(SERIALIZED_NAME_ENQUEUED_TIME)
@@ -130,6 +132,7 @@ public class TransferCompleteCallback {
   }
 
   public TransferCompleteCallback eventType(String eventType) {
+    
     this.eventType = eventType;
     return this;
   }
@@ -143,12 +146,14 @@ public class TransferCompleteCallback {
     return eventType;
   }
 
+
   public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
   public TransferCompleteCallback eventTime(OffsetDateTime eventTime) {
+    
     this.eventTime = eventTime;
     return this;
   }
@@ -162,12 +167,14 @@ public class TransferCompleteCallback {
     return eventTime;
   }
 
+
   public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
   public TransferCompleteCallback accountId(String accountId) {
+    
     this.accountId = accountId;
     return this;
   }
@@ -181,12 +188,14 @@ public class TransferCompleteCallback {
     return accountId;
   }
 
+
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
   public TransferCompleteCallback applicationId(String applicationId) {
+    
     this.applicationId = applicationId;
     return this;
   }
@@ -200,12 +209,14 @@ public class TransferCompleteCallback {
     return applicationId;
   }
 
+
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public TransferCompleteCallback from(String from) {
+    
     this.from = from;
     return this;
   }
@@ -219,12 +230,14 @@ public class TransferCompleteCallback {
     return from;
   }
 
+
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public TransferCompleteCallback to(String to) {
+    
     this.to = to;
     return this;
   }
@@ -238,12 +251,14 @@ public class TransferCompleteCallback {
     return to;
   }
 
+
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public TransferCompleteCallback direction(CallDirectionEnum direction) {
+    
     this.direction = direction;
     return this;
   }
@@ -257,12 +272,14 @@ public class TransferCompleteCallback {
     return direction;
   }
 
+
   public void setDirection(CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
   public TransferCompleteCallback callId(String callId) {
+    
     this.callId = callId;
     return this;
   }
@@ -276,12 +293,14 @@ public class TransferCompleteCallback {
     return callId;
   }
 
+
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
-  public TransferCompleteCallback callUrl(String callUrl) {
+  public TransferCompleteCallback callUrl(URI callUrl) {
+    
     this.callUrl = callUrl;
     return this;
   }
@@ -291,16 +310,18 @@ public class TransferCompleteCallback {
    * @return callUrl
   **/
   @javax.annotation.Nullable
-  public String getCallUrl() {
+  public URI getCallUrl() {
     return callUrl;
   }
 
-  public void setCallUrl(String callUrl) {
+
+  public void setCallUrl(URI callUrl) {
     this.callUrl = callUrl;
   }
 
 
   public TransferCompleteCallback enqueuedTime(OffsetDateTime enqueuedTime) {
+    
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -314,12 +335,14 @@ public class TransferCompleteCallback {
     return enqueuedTime;
   }
 
+
   public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
   public TransferCompleteCallback startTime(OffsetDateTime startTime) {
+    
     this.startTime = startTime;
     return this;
   }
@@ -333,12 +356,14 @@ public class TransferCompleteCallback {
     return startTime;
   }
 
+
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
   public TransferCompleteCallback answerTime(OffsetDateTime answerTime) {
+    
     this.answerTime = answerTime;
     return this;
   }
@@ -352,12 +377,14 @@ public class TransferCompleteCallback {
     return answerTime;
   }
 
+
   public void setAnswerTime(OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
   public TransferCompleteCallback tag(String tag) {
+    
     this.tag = tag;
     return this;
   }
@@ -371,12 +398,14 @@ public class TransferCompleteCallback {
     return tag;
   }
 
+
   public void setTag(String tag) {
     this.tag = tag;
   }
 
 
   public TransferCompleteCallback transferCallerId(String transferCallerId) {
+    
     this.transferCallerId = transferCallerId;
     return this;
   }
@@ -390,12 +419,14 @@ public class TransferCompleteCallback {
     return transferCallerId;
   }
 
+
   public void setTransferCallerId(String transferCallerId) {
     this.transferCallerId = transferCallerId;
   }
 
 
   public TransferCompleteCallback transferTo(String transferTo) {
+    
     this.transferTo = transferTo;
     return this;
   }
@@ -409,12 +440,14 @@ public class TransferCompleteCallback {
     return transferTo;
   }
 
+
   public void setTransferTo(String transferTo) {
     this.transferTo = transferTo;
   }
 
 
   public TransferCompleteCallback cause(String cause) {
+    
     this.cause = cause;
     return this;
   }
@@ -428,12 +461,14 @@ public class TransferCompleteCallback {
     return cause;
   }
 
+
   public void setCause(String cause) {
     this.cause = cause;
   }
 
 
   public TransferCompleteCallback errorMessage(String errorMessage) {
+    
     this.errorMessage = errorMessage;
     return this;
   }
@@ -447,12 +482,14 @@ public class TransferCompleteCallback {
     return errorMessage;
   }
 
+
   public void setErrorMessage(String errorMessage) {
     this.errorMessage = errorMessage;
   }
 
 
   public TransferCompleteCallback errorId(String errorId) {
+    
     this.errorId = errorId;
     return this;
   }
@@ -465,6 +502,7 @@ public class TransferCompleteCallback {
   public String getErrorId() {
     return errorId;
   }
+
 
   public void setErrorId(String errorId) {
     this.errorId = errorId;
@@ -658,10 +696,6 @@ public class TransferCompleteCallback {
       if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
-      // validate the optional field `direction`
-      if (jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) {
-        CallDirectionEnum.validateJsonElement(jsonObj.get("direction"));
-      }
       if ((jsonObj.get("callId") != null && !jsonObj.get("callId").isJsonNull()) && !jsonObj.get("callId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callId").toString()));
       }
@@ -716,12 +750,7 @@ public class TransferCompleteCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

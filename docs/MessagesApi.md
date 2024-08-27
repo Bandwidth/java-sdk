@@ -88,7 +88,7 @@ public class Example {
 
 <a id="listMessages"></a>
 # **listMessages**
-> MessagesList listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, limitTotalCount)
+> MessagesList listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, limitTotalCount, region)
 
 List Messages
 
@@ -131,8 +131,9 @@ public class Example {
     String pageToken = "gdEewhcJLQRB5"; // String | A base64 encoded value used for pagination of results.
     Integer limit = 50; // Integer | The maximum records requested in search result. Default 100. The sum of limit and after cannot be more than 10000.
     Boolean limitTotalCount = true; // Boolean | When set to true, the response's totalCount field will have a maximum value of 10,000. When set to false, or excluded, this will give an accurate totalCount of all messages that match the provided filters. If you are experiencing latency, try using this parameter to limit your results.
+    Region region = Region.fromValue("US"); // Region | The region to search in. One of US or EU.
     try {
-      MessagesList result = apiInstance.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, limitTotalCount);
+      MessagesList result = apiInstance.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, limitTotalCount, region);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MessagesApi#listMessages");
@@ -165,6 +166,7 @@ public class Example {
 | **pageToken** | **String**| A base64 encoded value used for pagination of results. | [optional] |
 | **limit** | **Integer**| The maximum records requested in search result. Default 100. The sum of limit and after cannot be more than 10000. | [optional] |
 | **limitTotalCount** | **Boolean**| When set to true, the response&#39;s totalCount field will have a maximum value of 10,000. When set to false, or excluded, this will give an accurate totalCount of all messages that match the provided filters. If you are experiencing latency, try using this parameter to limit your results. | [optional] |
+| **region** | [**Region**](.md)| The region to search in. One of US or EU. | [optional] [default to US] [enum: US, EU] |
 
 ### Return type
 

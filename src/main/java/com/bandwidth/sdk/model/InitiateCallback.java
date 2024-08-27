@@ -23,6 +23,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
 
@@ -46,6 +47,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.bandwidth.sdk.JSON;
@@ -53,7 +55,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * The Initiate event is fired when an inbound call is received for a Telephone Number on your Account. It is sent to the URL specified in the application associated with the location (sip-peer) that the called telephone number belongs to.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InitiateCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
@@ -89,7 +91,7 @@ public class InitiateCallback {
 
   public static final String SERIALIZED_NAME_CALL_URL = "callUrl";
   @SerializedName(SERIALIZED_NAME_CALL_URL)
-  private String callUrl;
+  private URI callUrl;
 
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
@@ -107,6 +109,7 @@ public class InitiateCallback {
   }
 
   public InitiateCallback eventType(String eventType) {
+    
     this.eventType = eventType;
     return this;
   }
@@ -120,12 +123,14 @@ public class InitiateCallback {
     return eventType;
   }
 
+
   public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
   public InitiateCallback eventTime(OffsetDateTime eventTime) {
+    
     this.eventTime = eventTime;
     return this;
   }
@@ -139,12 +144,14 @@ public class InitiateCallback {
     return eventTime;
   }
 
+
   public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
   public InitiateCallback accountId(String accountId) {
+    
     this.accountId = accountId;
     return this;
   }
@@ -158,12 +165,14 @@ public class InitiateCallback {
     return accountId;
   }
 
+
   public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
   public InitiateCallback applicationId(String applicationId) {
+    
     this.applicationId = applicationId;
     return this;
   }
@@ -177,12 +186,14 @@ public class InitiateCallback {
     return applicationId;
   }
 
+
   public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
   public InitiateCallback from(String from) {
+    
     this.from = from;
     return this;
   }
@@ -196,12 +207,14 @@ public class InitiateCallback {
     return from;
   }
 
+
   public void setFrom(String from) {
     this.from = from;
   }
 
 
   public InitiateCallback to(String to) {
+    
     this.to = to;
     return this;
   }
@@ -215,12 +228,14 @@ public class InitiateCallback {
     return to;
   }
 
+
   public void setTo(String to) {
     this.to = to;
   }
 
 
   public InitiateCallback direction(CallDirectionEnum direction) {
+    
     this.direction = direction;
     return this;
   }
@@ -234,12 +249,14 @@ public class InitiateCallback {
     return direction;
   }
 
+
   public void setDirection(CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
   public InitiateCallback callId(String callId) {
+    
     this.callId = callId;
     return this;
   }
@@ -253,12 +270,14 @@ public class InitiateCallback {
     return callId;
   }
 
+
   public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
-  public InitiateCallback callUrl(String callUrl) {
+  public InitiateCallback callUrl(URI callUrl) {
+    
     this.callUrl = callUrl;
     return this;
   }
@@ -268,16 +287,18 @@ public class InitiateCallback {
    * @return callUrl
   **/
   @javax.annotation.Nullable
-  public String getCallUrl() {
+  public URI getCallUrl() {
     return callUrl;
   }
 
-  public void setCallUrl(String callUrl) {
+
+  public void setCallUrl(URI callUrl) {
     this.callUrl = callUrl;
   }
 
 
   public InitiateCallback startTime(OffsetDateTime startTime) {
+    
     this.startTime = startTime;
     return this;
   }
@@ -291,12 +312,14 @@ public class InitiateCallback {
     return startTime;
   }
 
+
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
   public InitiateCallback diversion(Diversion diversion) {
+    
     this.diversion = diversion;
     return this;
   }
@@ -310,12 +333,14 @@ public class InitiateCallback {
     return diversion;
   }
 
+
   public void setDiversion(Diversion diversion) {
     this.diversion = diversion;
   }
 
 
   public InitiateCallback stirShaken(StirShaken stirShaken) {
+    
     this.stirShaken = stirShaken;
     return this;
   }
@@ -328,6 +353,7 @@ public class InitiateCallback {
   public StirShaken getStirShaken() {
     return stirShaken;
   }
+
 
   public void setStirShaken(StirShaken stirShaken) {
     this.stirShaken = stirShaken;
@@ -492,10 +518,6 @@ public class InitiateCallback {
       if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
-      // validate the optional field `direction`
-      if (jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) {
-        CallDirectionEnum.validateJsonElement(jsonObj.get("direction"));
-      }
       if ((jsonObj.get("callId") != null && !jsonObj.get("callId").isJsonNull()) && !jsonObj.get("callId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callId").toString()));
       }
@@ -540,12 +562,7 @@ public class InitiateCallback {
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
                  }
                }
              }

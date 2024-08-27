@@ -2,7 +2,6 @@
 
 Bandwidth
 - API version: 1.0.0
-  - Generator version: 7.6.0
 
 Bandwidth's Communication APIs
 
@@ -241,6 +240,7 @@ Class | Method | HTTP request | Description
  - [RecordingTranscriptions](docs/RecordingTranscriptions.md)
  - [RedirectCallback](docs/RedirectCallback.md)
  - [RedirectMethodEnum](docs/RedirectMethodEnum.md)
+ - [Region](docs/Region.md)
  - [StirShaken](docs/StirShaken.md)
  - [Tag](docs/Tag.md)
  - [TnLookupRequestError](docs/TnLookupRequestError.md)
