@@ -36,7 +36,7 @@ public class RecordingCompleteCallbackTest {
             .to("to")
             .direction(CallDirectionEnum.INBOUND)
             .callId("callId")
-            .callUrl("https://bandwidth.com") // should be a URI, need to update the spec
+            .callUrl(URI.create("https://bandwidth.com"))
             .parentCallId("parentCallId")
             .recordingId("recordingId")
             .mediaUrl(URI.create("https://bandwidth.com"))
@@ -129,7 +129,7 @@ public class RecordingCompleteCallbackTest {
     @Test
     public void callUrlTest() {
         // assertThat(model.getCallUrl(), instanceOf(URI.class));
-        assertThat(model.getCallUrl(), instanceOf(String.class));
+        assertThat(model.getCallUrl(), instanceOf(URI.class));
     }
 
     /**

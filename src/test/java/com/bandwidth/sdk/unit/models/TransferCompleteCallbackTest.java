@@ -14,6 +14,7 @@ package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
 import java.time.OffsetDateTime;
 import com.bandwidth.sdk.model.TransferCompleteCallback;
 import com.bandwidth.sdk.model.CallDirectionEnum;
@@ -34,7 +35,7 @@ public class TransferCompleteCallbackTest {
             .to("to")
             .direction(CallDirectionEnum.INBOUND)
             .callId("callId")
-            .callUrl("callUrl") // should be uri
+            .callUrl(URI.create("https://bandwidth.com")) // should be uri
             .enqueuedTime(OffsetDateTime.now())
             .startTime(OffsetDateTime.now())
             .answerTime(OffsetDateTime.now())
@@ -122,7 +123,7 @@ public class TransferCompleteCallbackTest {
      */
     @Test
     public void callUrlTest() {
-        assertThat(model.getCallUrl(), instanceOf(String.class));
+        assertThat(model.getCallUrl(), instanceOf(URI.class));
     }
 
     /**

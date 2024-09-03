@@ -14,6 +14,7 @@ package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
 import java.time.OffsetDateTime;
 import com.bandwidth.sdk.model.TransferDisconnectCallback;
 import com.bandwidth.sdk.model.CallDirectionEnum;
@@ -34,7 +35,7 @@ public class TransferDisconnectCallbackTest {
             .to("to")
             .direction(CallDirectionEnum.INBOUND)
             .callId("callId")
-            .callUrl("callUrl")
+            .callUrl(URI.create("https://bandwidth.com"))
             .parentCallId("parentCallId")
             .enqueuedTime(OffsetDateTime.now())
             .startTime(OffsetDateTime.now())
@@ -124,7 +125,7 @@ public class TransferDisconnectCallbackTest {
      */
     @Test
     public void callUrlTest() {
-        assertThat(model.getCallUrl(), instanceOf(String.class));
+        assertThat(model.getCallUrl(), instanceOf(URI.class));
     }
 
     /**
