@@ -16,7 +16,7 @@ The Record Complete event is sent after a <Record> verb has executed if the call
 |**to** | **String** | The phone number that received the call, in E.164 format (e.g. +15555555555). |  [optional] |
 |**direction** | **CallDirectionEnum** |  |  [optional] |
 |**callId** | **String** | The call id associated with the event. |  [optional] |
-|**callUrl** | **String** | The URL of the call associated with the event. |  [optional] |
+|**callUrl** | **URI** | The URL of the call associated with the event. |  [optional] |
 |**parentCallId** | **String** | (optional) If the event is related to the B leg of a &lt;Transfer&gt;, the call id of the original call leg that executed the &lt;Transfer&gt;. Otherwise, this field will not be present. |  [optional] |
 |**recordingId** | **String** | The unique ID of this recording |  [optional] |
 |**mediaUrl** | **URI** | The URL that can be used to download the recording. Only present if the recording is finished and may be downloaded. |  [optional] |

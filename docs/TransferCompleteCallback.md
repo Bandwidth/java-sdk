@@ -16,7 +16,7 @@ This event is sent to the transferCompleteUrl of the A-leg's <Transfer> verb whe
 |**to** | **String** | The phone number that received the call, in E.164 format (e.g. +15555555555). |  [optional] |
 |**direction** | **CallDirectionEnum** |  |  [optional] |
 |**callId** | **String** | The call id associated with the event. |  [optional] |
-|**callUrl** | **String** | The URL of the call associated with the event. |  [optional] |
+|**callUrl** | **URI** | The URL of the call associated with the event. |  [optional] |
 |**enqueuedTime** | **OffsetDateTime** | (optional) If call queueing is enabled and this is an outbound call, time the call was queued, in ISO 8601 format. |  [optional] |
 |**startTime** | **OffsetDateTime** | Time the call was started, in ISO 8601 format. |  [optional] |
 |**answerTime** | **OffsetDateTime** | Time the call was answered, in ISO 8601 format. |  [optional] |

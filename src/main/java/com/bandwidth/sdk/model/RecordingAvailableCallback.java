@@ -90,7 +90,7 @@ public class RecordingAvailableCallback {
 
   public static final String SERIALIZED_NAME_CALL_URL = "callUrl";
   @SerializedName(SERIALIZED_NAME_CALL_URL)
-  private String callUrl;
+  private URI callUrl;
 
   public static final String SERIALIZED_NAME_PARENT_CALL_ID = "parentCallId";
   @SerializedName(SERIALIZED_NAME_PARENT_CALL_ID)
@@ -299,7 +299,7 @@ public class RecordingAvailableCallback {
   }
 
 
-  public RecordingAvailableCallback callUrl(String callUrl) {
+  public RecordingAvailableCallback callUrl(URI callUrl) {
     this.callUrl = callUrl;
     return this;
   }
@@ -309,11 +309,11 @@ public class RecordingAvailableCallback {
    * @return callUrl
   **/
   @javax.annotation.Nullable
-  public String getCallUrl() {
+  public URI getCallUrl() {
     return callUrl;
   }
 
-  public void setCallUrl(String callUrl) {
+  public void setCallUrl(URI callUrl) {
     this.callUrl = callUrl;
   }
 
