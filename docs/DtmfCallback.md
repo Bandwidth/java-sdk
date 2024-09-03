@@ -17,7 +17,7 @@ The DTMF event is sent for every digit detected after a <StartGather> verb is ex
 |**callId** | **String** | The call id associated with the event. |  [optional] |
 |**direction** | **CallDirectionEnum** |  |  [optional] |
 |**digit** | **String** | The digit collected in the call. |  [optional] |
-|**callUrl** | **String** | The URL of the call associated with the event. |  [optional] |
+|**callUrl** | **URI** | The URL of the call associated with the event. |  [optional] |
 |**enqueuedTime** | **OffsetDateTime** | (optional) If call queueing is enabled and this is an outbound call, time the call was queued, in ISO 8601 format. |  [optional] |
 |**startTime** | **OffsetDateTime** | Time the call was started, in ISO 8601 format. |  [optional] |
 |**answerTime** | **OffsetDateTime** | Time the call was answered, in ISO 8601 format. |  [optional] |

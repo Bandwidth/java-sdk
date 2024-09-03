@@ -14,6 +14,7 @@ package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class ConferenceMemberTest {
     private final ConferenceMember model = new ConferenceMember()
             .callId("callId")
             .conferenceId("conferenceId")
-            .memberUrl("memberUrl")
+            .memberUrl(URI.create("https://bandwidth.com"))
             .mute(true)
             .hold(true)
             .callIdsToCoach(new ArrayList<String>(Arrays.asList("callIdsToCoach")));
@@ -63,7 +64,7 @@ public class ConferenceMemberTest {
      */
     @Test
     public void memberUrlTest() {
-        assertThat(model.getMemberUrl(), instanceOf(String.class));
+        assertThat(model.getMemberUrl(), instanceOf(URI.class));
     }
 
     /**

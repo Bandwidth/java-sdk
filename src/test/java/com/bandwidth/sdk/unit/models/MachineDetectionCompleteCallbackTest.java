@@ -14,6 +14,7 @@ package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
 import java.time.OffsetDateTime;
 import com.bandwidth.sdk.model.MachineDetectionCompleteCallback;
 import com.bandwidth.sdk.model.CallDirectionEnum;
@@ -35,7 +36,7 @@ public class MachineDetectionCompleteCallbackTest {
             .to("to")
             .direction(CallDirectionEnum.INBOUND)
             .callId("callId")
-            .callUrl("callUrl")
+            .callUrl(URI.create("https://bandwidth.com"))
             .enqueuedTime(OffsetDateTime.now())
             .startTime(OffsetDateTime.now())
             .answerTime(OffsetDateTime.now())
@@ -119,7 +120,7 @@ public class MachineDetectionCompleteCallbackTest {
      */
     @Test
     public void callUrlTest() {
-        assertThat(model.getCallUrl(), instanceOf(String.class));
+        assertThat(model.getCallUrl(), instanceOf(URI.class));
     }
 
     /**

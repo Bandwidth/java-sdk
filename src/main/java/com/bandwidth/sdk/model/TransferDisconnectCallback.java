@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -88,7 +89,7 @@ public class TransferDisconnectCallback {
 
   public static final String SERIALIZED_NAME_CALL_URL = "callUrl";
   @SerializedName(SERIALIZED_NAME_CALL_URL)
-  private String callUrl;
+  private URI callUrl;
 
   public static final String SERIALIZED_NAME_PARENT_CALL_ID = "parentCallId";
   @SerializedName(SERIALIZED_NAME_PARENT_CALL_ID)
@@ -289,7 +290,7 @@ public class TransferDisconnectCallback {
   }
 
 
-  public TransferDisconnectCallback callUrl(String callUrl) {
+  public TransferDisconnectCallback callUrl(URI callUrl) {
     this.callUrl = callUrl;
     return this;
   }
@@ -299,11 +300,11 @@ public class TransferDisconnectCallback {
    * @return callUrl
   **/
   @javax.annotation.Nullable
-  public String getCallUrl() {
+  public URI getCallUrl() {
     return callUrl;
   }
 
-  public void setCallUrl(String callUrl) {
+  public void setCallUrl(URI callUrl) {
     this.callUrl = callUrl;
   }
 

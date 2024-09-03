@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -64,7 +65,7 @@ public class ConferenceMember {
 
   public static final String SERIALIZED_NAME_MEMBER_URL = "memberUrl";
   @SerializedName(SERIALIZED_NAME_MEMBER_URL)
-  private String memberUrl;
+  private URI memberUrl;
 
   public static final String SERIALIZED_NAME_MUTE = "mute";
   @SerializedName(SERIALIZED_NAME_MUTE)
@@ -119,7 +120,7 @@ public class ConferenceMember {
   }
 
 
-  public ConferenceMember memberUrl(String memberUrl) {
+  public ConferenceMember memberUrl(URI memberUrl) {
     this.memberUrl = memberUrl;
     return this;
   }
@@ -129,11 +130,11 @@ public class ConferenceMember {
    * @return memberUrl
   **/
   @javax.annotation.Nullable
-  public String getMemberUrl() {
+  public URI getMemberUrl() {
     return memberUrl;
   }
 
-  public void setMemberUrl(String memberUrl) {
+  public void setMemberUrl(URI memberUrl) {
     this.memberUrl = memberUrl;
   }
 

@@ -17,7 +17,7 @@ The gather event is sent after a <Gather> verb is executed. Its purpose is to re
 |**direction** | **CallDirectionEnum** |  |  [optional] |
 |**callId** | **String** | The call id associated with the event. |  [optional] |
 |**digits** | **String** | (optional) The digits, letters, and/or symbols entered by the user. The string is empty if a timeout occurred before any buttons were pressed. |  [optional] |
-|**callUrl** | **String** | The URL of the call associated with the event. |  [optional] |
+|**callUrl** | **URI** | The URL of the call associated with the event. |  [optional] |
 |**enqueuedTime** | **OffsetDateTime** | (optional) If call queueing is enabled and this is an outbound call, time the call was queued, in ISO 8601 format. |  [optional] |
 |**startTime** | **OffsetDateTime** | Time the call was started, in ISO 8601 format. |  [optional] |
 |**answerTime** | **OffsetDateTime** | Time the call was answered, in ISO 8601 format. |  [optional] |

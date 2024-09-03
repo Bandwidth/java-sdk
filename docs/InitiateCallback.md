@@ -16,7 +16,7 @@ The Initiate event is fired when an inbound call is received for a Telephone Num
 |**to** | **String** | The phone number that received the call, in E.164 format (e.g. +15555555555). |  [optional] |
 |**direction** | **CallDirectionEnum** |  |  [optional] |
 |**callId** | **String** | The call id associated with the event. |  [optional] |
-|**callUrl** | **String** | The URL of the call associated with the event. |  [optional] |
+|**callUrl** | **URI** | The URL of the call associated with the event. |  [optional] |
 |**startTime** | **OffsetDateTime** | Time the call was started, in ISO 8601 format. |  [optional] |
 |**diversion** | [**Diversion**](Diversion.md) |  |  [optional] |
 |**stirShaken** | [**StirShaken**](StirShaken.md) |  |  [optional] |

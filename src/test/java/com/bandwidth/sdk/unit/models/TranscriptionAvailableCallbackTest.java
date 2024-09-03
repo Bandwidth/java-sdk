@@ -37,7 +37,7 @@ public class TranscriptionAvailableCallbackTest {
             .to("to")
             .direction(CallDirectionEnum.INBOUND)
             .callId("callId") // should be URI
-            .callUrl("https://example.com")
+            .callUrl(URI.create("https://bandwidth.com"))
             .mediaUrl(URI.create("https://example.com"))
             .parentCallId("parentCallId")
             .recordingId("recordingId")
@@ -129,7 +129,7 @@ public class TranscriptionAvailableCallbackTest {
     @Test
     public void callUrlTest() {
         // assertThat(model.getCallUrl(), instanceOf(URI.class));
-        assertThat(model.getCallUrl(), instanceOf(String.class));
+        assertThat(model.getCallUrl(), instanceOf(URI.class));
     }
 
     /**
