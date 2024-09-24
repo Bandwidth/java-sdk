@@ -344,7 +344,7 @@ public class MessageFailedCallbackMessage {
    * Get priority
    * @return priority
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public PriorityEnum getPriority() {
     return priority;
   }
@@ -492,7 +492,6 @@ public class MessageFailedCallbackMessage {
     openapiRequiredFields.add("from");
     openapiRequiredFields.add("text");
     openapiRequiredFields.add("tag");
-    openapiRequiredFields.add("priority");
   }
 
  /**
@@ -545,8 +544,10 @@ public class MessageFailedCallbackMessage {
       if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonNull() && !jsonObj.get("media").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `media` to be an array in the JSON string but got `%s`", jsonObj.get("media").toString()));
       }
-      // validate the required field `priority`
-      PriorityEnum.validateJsonElement(jsonObj.get("priority"));
+      // validate the optional field `priority`
+      if (jsonObj.get("priority") != null && !jsonObj.get("priority").isJsonNull()) {
+        PriorityEnum.validateJsonElement(jsonObj.get("priority"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

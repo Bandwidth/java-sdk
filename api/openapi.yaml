@@ -6610,7 +6610,6 @@ components:
       - id
       - media
       - owner
-      - priority
       - segmentCount
       - text
       - time
@@ -6782,7 +6781,6 @@ components:
       - from
       - id
       - owner
-      - priority
       - segmentCount
       - tag
       - text
