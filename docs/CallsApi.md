@@ -288,7 +288,7 @@ public class Example {
     CallsApi apiInstance = new CallsApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String callId = "c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | Programmable Voice API Call ID.
-    UpdateCall updateCall = new UpdateCall(); // UpdateCall | JSON object containing information to redirect an existing call to a new BXML document
+    UpdateCall updateCall = new UpdateCall(); // UpdateCall | JSON or BXML object containing information to redirect an existing call to a new BXML document
     try {
       apiInstance.updateCall(accountId, callId, updateCall);
     } catch (ApiException e) {
@@ -308,7 +308,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| Your Bandwidth Account ID. | |
 | **callId** | **String**| Programmable Voice API Call ID. | |
-| **updateCall** | [**UpdateCall**](UpdateCall.md)| JSON object containing information to redirect an existing call to a new BXML document | |
+| **updateCall** | [**UpdateCall**](UpdateCall.md)| JSON or BXML object containing information to redirect an existing call to a new BXML document | |
 
 ### Return type
 
@@ -320,7 +320,7 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json
 
 ### HTTP response details

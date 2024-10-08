@@ -621,7 +621,7 @@ public class CallsApi {
      * Build call for updateCall
      * @param accountId Your Bandwidth Account ID. (required)
      * @param callId Programmable Voice API Call ID. (required)
-     * @param updateCall JSON object containing information to redirect an existing call to a new BXML document (required)
+     * @param updateCall JSON or BXML object containing information to redirect an existing call to a new BXML document (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -676,7 +676,8 @@ public class CallsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
+            "application/json",
+            "application/xml"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -713,7 +714,7 @@ public class CallsApi {
      * Interrupts and redirects a call to a different URL that should return a BXML document.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param callId Programmable Voice API Call ID. (required)
-     * @param updateCall JSON object containing information to redirect an existing call to a new BXML document (required)
+     * @param updateCall JSON or BXML object containing information to redirect an existing call to a new BXML document (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -739,7 +740,7 @@ public class CallsApi {
      * Interrupts and redirects a call to a different URL that should return a BXML document.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param callId Programmable Voice API Call ID. (required)
-     * @param updateCall JSON object containing information to redirect an existing call to a new BXML document (required)
+     * @param updateCall JSON or BXML object containing information to redirect an existing call to a new BXML document (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -767,7 +768,7 @@ public class CallsApi {
      * Interrupts and redirects a call to a different URL that should return a BXML document.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param callId Programmable Voice API Call ID. (required)
-     * @param updateCall JSON object containing information to redirect an existing call to a new BXML document (required)
+     * @param updateCall JSON or BXML object containing information to redirect an existing call to a new BXML document (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
