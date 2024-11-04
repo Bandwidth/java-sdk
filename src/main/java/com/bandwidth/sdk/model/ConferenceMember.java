@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,7 +52,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * ConferenceMember
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ConferenceMember {
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
@@ -87,10 +86,10 @@ public class ConferenceMember {
     return this;
   }
 
-   /**
+  /**
    * The call id associated with the event.
    * @return callId
-  **/
+   */
   @javax.annotation.Nullable
   public String getCallId() {
     return callId;
@@ -106,10 +105,10 @@ public class ConferenceMember {
     return this;
   }
 
-   /**
+  /**
    * The unique, Bandwidth-generated ID of the conference that was recorded
    * @return conferenceId
-  **/
+   */
   @javax.annotation.Nullable
   public String getConferenceId() {
     return conferenceId;
@@ -125,10 +124,10 @@ public class ConferenceMember {
     return this;
   }
 
-   /**
+  /**
    * A URL that may be used to retrieve information about or update the state of this conference member. This is the URL of this member&#39;s [Get Conference Member](/apis/voice/#operation/getConferenceMember) endpoint and [Modify Conference Member](/apis/voice/#operation/updateConferenceMember) endpoint.
    * @return memberUrl
-  **/
+   */
   @javax.annotation.Nullable
   public URI getMemberUrl() {
     return memberUrl;
@@ -144,10 +143,10 @@ public class ConferenceMember {
     return this;
   }
 
-   /**
+  /**
    * Whether or not this member is currently muted. Members who are muted are still able to hear other participants.  If used in a PUT request, updates this member&#39;s mute status. Has no effect if omitted.
    * @return mute
-  **/
+   */
   @javax.annotation.Nullable
   public Boolean getMute() {
     return mute;
@@ -163,10 +162,10 @@ public class ConferenceMember {
     return this;
   }
 
-   /**
+  /**
    * Whether or not this member is currently on hold. Members who are on hold are not able to hear or speak in the conference.  If used in a PUT request, updates this member&#39;s hold status. Has no effect if omitted.
    * @return hold
-  **/
+   */
   @javax.annotation.Nullable
   public Boolean getHold() {
     return hold;
@@ -190,10 +189,10 @@ public class ConferenceMember {
     return this;
   }
 
-   /**
+  /**
    * If this member had a value set for &#x60;callIdsToCoach&#x60; in its [Conference](/docs/voice/bxml/conference) verb or this list was added with a previous PUT request to modify the member, this is that list of calls.  If present in a PUT request, modifies the calls that this member is coaching. Has no effect if omitted. See the documentation for the [Conference](/docs/voice/bxml/conference) verb for more details about coaching. Note that this will not add the matching calls to the conference; each call must individually execute a Conference verb to join.
    * @return callIdsToCoach
-  **/
+   */
   @javax.annotation.Nullable
   public List<String> getCallIdsToCoach() {
     return callIdsToCoach;
@@ -327,12 +326,12 @@ public class ConferenceMember {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ConferenceMember
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to ConferenceMember
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ConferenceMember.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -427,22 +426,22 @@ public class ConferenceMember {
     }
   }
 
- /**
-  * Create an instance of ConferenceMember given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of ConferenceMember
-  * @throws IOException if the JSON string is invalid with respect to ConferenceMember
-  */
+  /**
+   * Create an instance of ConferenceMember given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of ConferenceMember
+   * @throws IOException if the JSON string is invalid with respect to ConferenceMember
+   */
   public static ConferenceMember fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, ConferenceMember.class);
   }
 
- /**
-  * Convert an instance of ConferenceMember to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of ConferenceMember to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

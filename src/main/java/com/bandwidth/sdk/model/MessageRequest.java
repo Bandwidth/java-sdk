@@ -44,7 +44,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -56,7 +55,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * MessageRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class MessageRequest {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
@@ -98,10 +97,10 @@ public class MessageRequest {
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application your from number is associated with in the Bandwidth Phone Number Dashboard.
    * @return applicationId
-  **/
+   */
   @javax.annotation.Nonnull
   public String getApplicationId() {
     return applicationId;
@@ -125,10 +124,10 @@ public class MessageRequest {
     return this;
   }
 
-   /**
+  /**
    * The phone number(s) the message should be sent to in E164 format.
    * @return to
-  **/
+   */
   @javax.annotation.Nonnull
   public Set<String> getTo() {
     return to;
@@ -144,10 +143,10 @@ public class MessageRequest {
     return this;
   }
 
-   /**
+  /**
    * Either an alphanumeric sender ID or the sender&#39;s Bandwidth phone number in E.164 format, which must be hosted within Bandwidth and linked to the account that is generating the message.  Alphanumeric Sender IDs can contain up to 11 characters, upper-case letters A-Z, lower-case letters a-z, numbers 0-9, space, hyphen -, plus +, underscore _ and ampersand &amp;. Alphanumeric Sender IDs must contain at least one letter.
    * @return from
-  **/
+   */
   @javax.annotation.Nonnull
   public String getFrom() {
     return from;
@@ -163,10 +162,10 @@ public class MessageRequest {
     return this;
   }
 
-   /**
+  /**
    * The contents of the text message. Must be 2048 characters or less.
    * @return text
-  **/
+   */
   @javax.annotation.Nullable
   public String getText() {
     return text;
@@ -190,10 +189,10 @@ public class MessageRequest {
     return this;
   }
 
-   /**
+  /**
    * A list of URLs to include as media attachments as part of the message. Each URL can be at most 4096 characters.
    * @return media
-  **/
+   */
   @javax.annotation.Nullable
   public List<URI> getMedia() {
     return media;
@@ -209,10 +208,10 @@ public class MessageRequest {
     return this;
   }
 
-   /**
+  /**
    * A custom string that will be included in callback events of the message. Max 1024 characters.
    * @return tag
-  **/
+   */
   @javax.annotation.Nullable
   public String getTag() {
     return tag;
@@ -228,10 +227,10 @@ public class MessageRequest {
     return this;
   }
 
-   /**
+  /**
    * Get priority
    * @return priority
-  **/
+   */
   @javax.annotation.Nullable
   public PriorityEnum getPriority() {
     return priority;
@@ -247,10 +246,10 @@ public class MessageRequest {
     return this;
   }
 
-   /**
+  /**
    * A string with the date/time value that the message will automatically expire by. This must be a valid RFC-3339 value, e.g., 2021-03-14T01:59:26Z or 2021-03-13T20:59:26-05:00. Must be a date-time in the future. Not supported on MMS.
    * @return expiration
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getExpiration() {
     return expiration;
@@ -382,12 +381,12 @@ public class MessageRequest {
     openapiRequiredFields.add("from");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to MessageRequest
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to MessageRequest
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!MessageRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -502,22 +501,22 @@ public class MessageRequest {
     }
   }
 
- /**
-  * Create an instance of MessageRequest given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of MessageRequest
-  * @throws IOException if the JSON string is invalid with respect to MessageRequest
-  */
+  /**
+   * Create an instance of MessageRequest given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of MessageRequest
+   * @throws IOException if the JSON string is invalid with respect to MessageRequest
+   */
   public static MessageRequest fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, MessageRequest.class);
   }
 
- /**
-  * Convert an instance of MessageRequest to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of MessageRequest to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

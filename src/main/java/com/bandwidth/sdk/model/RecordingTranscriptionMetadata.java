@@ -39,7 +39,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -51,7 +50,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * If the recording was transcribed, metadata about the transcription
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class RecordingTranscriptionMetadata {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -77,10 +76,10 @@ public class RecordingTranscriptionMetadata {
     return this;
   }
 
-   /**
+  /**
    * The unique transcription ID
    * @return id
-  **/
+   */
   @javax.annotation.Nullable
   public String getId() {
     return id;
@@ -96,10 +95,10 @@ public class RecordingTranscriptionMetadata {
     return this;
   }
 
-   /**
+  /**
    * The current status of the process. For recording, current possible values are &#39;processing&#39;, &#39;partial&#39;, &#39;complete&#39;, &#39;deleted&#39;, and &#39;error&#39;. For transcriptions, current possible values are &#39;none&#39;, &#39;processing&#39;, &#39;available&#39;, &#39;error&#39;, &#39;timeout&#39;, &#39;file-size-too-big&#39;, and &#39;file-size-too-small&#39;. Additional states may be added in the future, so your application must be tolerant of unknown values.
    * @return status
-  **/
+   */
   @javax.annotation.Nullable
   public String getStatus() {
     return status;
@@ -115,10 +114,10 @@ public class RecordingTranscriptionMetadata {
     return this;
   }
 
-   /**
+  /**
    * The time that the transcription was completed
    * @return completedTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getCompletedTime() {
     return completedTime;
@@ -134,10 +133,10 @@ public class RecordingTranscriptionMetadata {
     return this;
   }
 
-   /**
+  /**
    * The URL of the [transcription](#operation/getCallTranscription)
    * @return url
-  **/
+   */
   @javax.annotation.Nullable
   public URI getUrl() {
     return url;
@@ -254,12 +253,12 @@ public class RecordingTranscriptionMetadata {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to RecordingTranscriptionMetadata
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to RecordingTranscriptionMetadata
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!RecordingTranscriptionMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -350,22 +349,22 @@ public class RecordingTranscriptionMetadata {
     }
   }
 
- /**
-  * Create an instance of RecordingTranscriptionMetadata given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of RecordingTranscriptionMetadata
-  * @throws IOException if the JSON string is invalid with respect to RecordingTranscriptionMetadata
-  */
+  /**
+   * Create an instance of RecordingTranscriptionMetadata given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of RecordingTranscriptionMetadata
+   * @throws IOException if the JSON string is invalid with respect to RecordingTranscriptionMetadata
+   */
   public static RecordingTranscriptionMetadata fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, RecordingTranscriptionMetadata.class);
   }
 
- /**
-  * Convert an instance of RecordingTranscriptionMetadata to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of RecordingTranscriptionMetadata to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

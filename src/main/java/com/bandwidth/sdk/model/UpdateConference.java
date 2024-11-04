@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,7 +52,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * UpdateConference
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class UpdateConference {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -99,10 +98,10 @@ public class UpdateConference {
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @javax.annotation.Nullable
   public ConferenceStateEnum getStatus() {
     return status;
@@ -118,10 +117,10 @@ public class UpdateConference {
     return this;
   }
 
-   /**
+  /**
    * The URL to send the [conferenceRedirect](/docs/voice/webhooks/conferenceRedirect) event which will provide new BXML. Not allowed if &#x60;state&#x60; is &#x60;completed&#x60;, but required if &#x60;state&#x60; is &#x60;active&#x60;.
    * @return redirectUrl
-  **/
+   */
   @javax.annotation.Nullable
   public URI getRedirectUrl() {
     return redirectUrl;
@@ -137,10 +136,10 @@ public class UpdateConference {
     return this;
   }
 
-   /**
+  /**
    * Get redirectMethod
    * @return redirectMethod
-  **/
+   */
   @javax.annotation.Nullable
   public RedirectMethodEnum getRedirectMethod() {
     return redirectMethod;
@@ -156,10 +155,10 @@ public class UpdateConference {
     return this;
   }
 
-   /**
+  /**
    * Basic auth username.
    * @return username
-  **/
+   */
   @javax.annotation.Nullable
   public String getUsername() {
     return username;
@@ -175,10 +174,10 @@ public class UpdateConference {
     return this;
   }
 
-   /**
+  /**
    * Basic auth password.
    * @return password
-  **/
+   */
   @javax.annotation.Nullable
   public String getPassword() {
     return password;
@@ -194,10 +193,10 @@ public class UpdateConference {
     return this;
   }
 
-   /**
+  /**
    * A fallback url which, if provided, will be used to retry the &#x60;conferenceRedirect&#x60; webhook delivery in case &#x60;redirectUrl&#x60; fails to respond.  Not allowed if &#x60;state&#x60; is &#x60;completed&#x60;.
    * @return redirectFallbackUrl
-  **/
+   */
   @javax.annotation.Nullable
   public URI getRedirectFallbackUrl() {
     return redirectFallbackUrl;
@@ -213,10 +212,10 @@ public class UpdateConference {
     return this;
   }
 
-   /**
+  /**
    * Get redirectFallbackMethod
    * @return redirectFallbackMethod
-  **/
+   */
   @javax.annotation.Nullable
   public RedirectMethodEnum getRedirectFallbackMethod() {
     return redirectFallbackMethod;
@@ -232,10 +231,10 @@ public class UpdateConference {
     return this;
   }
 
-   /**
+  /**
    * Basic auth username.
    * @return fallbackUsername
-  **/
+   */
   @javax.annotation.Nullable
   public String getFallbackUsername() {
     return fallbackUsername;
@@ -251,10 +250,10 @@ public class UpdateConference {
     return this;
   }
 
-   /**
+  /**
    * Basic auth password.
    * @return fallbackPassword
-  **/
+   */
   @javax.annotation.Nullable
   public String getFallbackPassword() {
     return fallbackPassword;
@@ -397,12 +396,12 @@ public class UpdateConference {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to UpdateConference
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to UpdateConference
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!UpdateConference.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -514,22 +513,22 @@ public class UpdateConference {
     }
   }
 
- /**
-  * Create an instance of UpdateConference given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of UpdateConference
-  * @throws IOException if the JSON string is invalid with respect to UpdateConference
-  */
+  /**
+   * Create an instance of UpdateConference given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of UpdateConference
+   * @throws IOException if the JSON string is invalid with respect to UpdateConference
+   */
   public static UpdateConference fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, UpdateConference.class);
   }
 
- /**
-  * Convert an instance of UpdateConference to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of UpdateConference to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

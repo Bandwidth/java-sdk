@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,7 +52,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * UpdateCall
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class UpdateCall {
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
@@ -103,10 +102,10 @@ public class UpdateCall {
     return this;
   }
 
-   /**
+  /**
    * Get state
    * @return state
-  **/
+   */
   @javax.annotation.Nullable
   public CallStateEnum getState() {
     return state;
@@ -122,10 +121,10 @@ public class UpdateCall {
     return this;
   }
 
-   /**
+  /**
    * The URL to send the [Redirect](/docs/voice/bxml/redirect) event to which will provide new BXML.  Required if &#x60;state&#x60; is &#x60;active&#x60;.  Not allowed if &#x60;state&#x60; is &#x60;completed&#x60;.
    * @return redirectUrl
-  **/
+   */
   @javax.annotation.Nullable
   public URI getRedirectUrl() {
     return redirectUrl;
@@ -141,10 +140,10 @@ public class UpdateCall {
     return this;
   }
 
-   /**
+  /**
    * Get redirectMethod
    * @return redirectMethod
-  **/
+   */
   @javax.annotation.Nullable
   public RedirectMethodEnum getRedirectMethod() {
     return redirectMethod;
@@ -160,10 +159,10 @@ public class UpdateCall {
     return this;
   }
 
-   /**
+  /**
    * Basic auth username.
    * @return username
-  **/
+   */
   @javax.annotation.Nullable
   public String getUsername() {
     return username;
@@ -179,10 +178,10 @@ public class UpdateCall {
     return this;
   }
 
-   /**
+  /**
    * Basic auth password.
    * @return password
-  **/
+   */
   @javax.annotation.Nullable
   public String getPassword() {
     return password;
@@ -198,10 +197,10 @@ public class UpdateCall {
     return this;
   }
 
-   /**
+  /**
    * A fallback url which, if provided, will be used to retry the redirect callback delivery in case &#x60;redirectUrl&#x60; fails to respond.
    * @return redirectFallbackUrl
-  **/
+   */
   @javax.annotation.Nullable
   public URI getRedirectFallbackUrl() {
     return redirectFallbackUrl;
@@ -217,10 +216,10 @@ public class UpdateCall {
     return this;
   }
 
-   /**
+  /**
    * Get redirectFallbackMethod
    * @return redirectFallbackMethod
-  **/
+   */
   @javax.annotation.Nullable
   public RedirectMethodEnum getRedirectFallbackMethod() {
     return redirectFallbackMethod;
@@ -236,10 +235,10 @@ public class UpdateCall {
     return this;
   }
 
-   /**
+  /**
    * Basic auth username.
    * @return fallbackUsername
-  **/
+   */
   @javax.annotation.Nullable
   public String getFallbackUsername() {
     return fallbackUsername;
@@ -255,10 +254,10 @@ public class UpdateCall {
     return this;
   }
 
-   /**
+  /**
    * Basic auth password.
    * @return fallbackPassword
-  **/
+   */
   @javax.annotation.Nullable
   public String getFallbackPassword() {
     return fallbackPassword;
@@ -274,10 +273,10 @@ public class UpdateCall {
     return this;
   }
 
-   /**
+  /**
    * A custom string that will be sent with this and all future callbacks unless overwritten by a future &#x60;tag&#x60; attribute or [&#x60;&lt;Tag&gt;&#x60;](/docs/voice/bxml/tag) verb, or cleared.  May be cleared by setting &#x60;tag&#x3D;\&quot;\&quot;&#x60;.  Max length 256 characters.  Not allowed if &#x60;state&#x60; is &#x60;completed&#x60;.
    * @return tag
-  **/
+   */
   @javax.annotation.Nullable
   public String getTag() {
     return tag;
@@ -423,12 +422,12 @@ public class UpdateCall {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to UpdateCall
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to UpdateCall
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!UpdateCall.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -543,22 +542,22 @@ public class UpdateCall {
     }
   }
 
- /**
-  * Create an instance of UpdateCall given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of UpdateCall
-  * @throws IOException if the JSON string is invalid with respect to UpdateCall
-  */
+  /**
+   * Create an instance of UpdateCall given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of UpdateCall
+   * @throws IOException if the JSON string is invalid with respect to UpdateCall
+   */
   public static UpdateCall fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, UpdateCall.class);
   }
 
- /**
-  * Convert an instance of UpdateCall to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of UpdateCall to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }
