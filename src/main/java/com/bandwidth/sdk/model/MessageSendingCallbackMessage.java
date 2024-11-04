@@ -342,7 +342,7 @@ public class MessageSendingCallbackMessage {
   /**
    * Get priority
    * @return priority
-  **/
+   */
   @javax.annotation.Nullable
   public PriorityEnum getPriority() {
     return priority;
