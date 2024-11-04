@@ -19,7 +19,7 @@ Message Sending Callback Message Schema
 |**text** | **String** |  |  |
 |**tag** | **String** |  |  [optional] |
 |**media** | **List&lt;URI&gt;** |  |  |
-|**priority** | **PriorityEnum** |  |  |
+|**priority** | **PriorityEnum** |  |  [optional] |
 
 
 

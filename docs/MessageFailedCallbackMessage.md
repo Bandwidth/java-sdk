@@ -19,7 +19,7 @@ Message Failed Callback Message Schema
 |**text** | **String** |  |  |
 |**tag** | **String** |  |  |
 |**media** | **List&lt;URI&gt;** |  |  [optional] |
-|**priority** | **PriorityEnum** |  |  |
+|**priority** | **PriorityEnum** |  |  [optional] |
 
 
 
