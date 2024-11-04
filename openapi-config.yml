@@ -13,3 +13,4 @@ modelPackage: com.bandwidth.sdk.model
 library: okhttp-gson
 licenseName: MIT
 useEnumCaseInsensitive: true
+templateDir: custom_templates

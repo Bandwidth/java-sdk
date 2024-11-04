@@ -448,10 +448,6 @@ public class MediaApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (continuationToken != null) {
-            localVarHeaderParams.put("Continuation-Token", localVarApiClient.parameterToString(continuationToken));
-        }
-
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -466,6 +462,11 @@ public class MediaApi {
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
+
+        if (continuationToken != null) {
+            localVarHeaderParams.put("Continuation-Token", localVarApiClient.parameterToString(continuationToken));
+        }
+
 
         String[] localVarAuthNames = new String[] { "Basic" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
@@ -615,14 +616,6 @@ public class MediaApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (contentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarApiClient.parameterToString(contentType));
-        }
-
-        if (cacheControl != null) {
-            localVarHeaderParams.put("Cache-Control", localVarApiClient.parameterToString(cacheControl));
-        }
-
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -681,6 +674,16 @@ public class MediaApi {
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
+
+        if (contentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarApiClient.parameterToString(contentType));
+        }
+
+
+        if (cacheControl != null) {
+            localVarHeaderParams.put("Cache-Control", localVarApiClient.parameterToString(cacheControl));
+        }
+
 
         String[] localVarAuthNames = new String[] { "Basic" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
