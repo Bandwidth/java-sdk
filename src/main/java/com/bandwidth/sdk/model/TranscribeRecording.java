@@ -40,7 +40,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,7 +51,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * TranscribeRecording
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class TranscribeRecording {
   public static final String SERIALIZED_NAME_CALLBACK_URL = "callbackUrl";
   @SerializedName(SERIALIZED_NAME_CALLBACK_URL)
@@ -90,10 +89,10 @@ public class TranscribeRecording {
     return this;
   }
 
-   /**
+  /**
    * The URL to send the [TranscriptionAvailable](/docs/voice/webhooks/transcriptionAvailable) event to. You should not include sensitive or personally-identifiable information in the callbackUrl field! Always use the proper username and password fields for authorization.
    * @return callbackUrl
-  **/
+   */
   @javax.annotation.Nullable
   public URI getCallbackUrl() {
     return callbackUrl;
@@ -109,10 +108,10 @@ public class TranscribeRecording {
     return this;
   }
 
-   /**
+  /**
    * Get callbackMethod
    * @return callbackMethod
-  **/
+   */
   @javax.annotation.Nullable
   public CallbackMethodEnum getCallbackMethod() {
     return callbackMethod;
@@ -128,10 +127,10 @@ public class TranscribeRecording {
     return this;
   }
 
-   /**
+  /**
    * Basic auth username.
    * @return username
-  **/
+   */
   @javax.annotation.Nullable
   public String getUsername() {
     return username;
@@ -147,10 +146,10 @@ public class TranscribeRecording {
     return this;
   }
 
-   /**
+  /**
    * Basic auth password.
    * @return password
-  **/
+   */
   @javax.annotation.Nullable
   public String getPassword() {
     return password;
@@ -166,10 +165,10 @@ public class TranscribeRecording {
     return this;
   }
 
-   /**
+  /**
    * (optional) The tag specified on call creation. If no tag was specified or it was previously cleared, this field will not be present.
    * @return tag
-  **/
+   */
   @javax.annotation.Nullable
   public String getTag() {
     return tag;
@@ -185,12 +184,12 @@ public class TranscribeRecording {
     return this;
   }
 
-   /**
+  /**
    * This is the timeout (in seconds) to use when delivering the webhook to &#x60;callbackUrl&#x60;. Can be any numeric value (including decimals) between 1 and 25.
    * minimum: 1
    * maximum: 25
    * @return callbackTimeout
-  **/
+   */
   @javax.annotation.Nullable
   public Double getCallbackTimeout() {
     return callbackTimeout;
@@ -206,10 +205,10 @@ public class TranscribeRecording {
     return this;
   }
 
-   /**
+  /**
    * A boolean value to indicate that the recording may not be in English, and the transcription service will need to detect the dominant language the recording is in and transcribe accordingly. Current supported languages are English, French, and Spanish.
    * @return detectLanguage
-  **/
+   */
   @javax.annotation.Nullable
   public Boolean getDetectLanguage() {
     return detectLanguage;
@@ -346,12 +345,12 @@ public class TranscribeRecording {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to TranscribeRecording
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to TranscribeRecording
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!TranscribeRecording.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -449,22 +448,22 @@ public class TranscribeRecording {
     }
   }
 
- /**
-  * Create an instance of TranscribeRecording given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of TranscribeRecording
-  * @throws IOException if the JSON string is invalid with respect to TranscribeRecording
-  */
+  /**
+   * Create an instance of TranscribeRecording given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of TranscribeRecording
+   * @throws IOException if the JSON string is invalid with respect to TranscribeRecording
+   */
   public static TranscribeRecording fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, TranscribeRecording.class);
   }
 
- /**
-  * Convert an instance of TranscribeRecording to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of TranscribeRecording to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

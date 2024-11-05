@@ -45,7 +45,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -57,7 +56,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Message Failed Callback Message Schema
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class MessageFailedCallbackMessage {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -115,10 +114,10 @@ public class MessageFailedCallbackMessage {
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
+   */
   @javax.annotation.Nonnull
   public String getId() {
     return id;
@@ -134,10 +133,10 @@ public class MessageFailedCallbackMessage {
     return this;
   }
 
-   /**
+  /**
    * Get owner
    * @return owner
-  **/
+   */
   @javax.annotation.Nonnull
   public String getOwner() {
     return owner;
@@ -153,10 +152,10 @@ public class MessageFailedCallbackMessage {
     return this;
   }
 
-   /**
+  /**
    * Get applicationId
    * @return applicationId
-  **/
+   */
   @javax.annotation.Nonnull
   public String getApplicationId() {
     return applicationId;
@@ -172,10 +171,10 @@ public class MessageFailedCallbackMessage {
     return this;
   }
 
-   /**
+  /**
    * Get time
    * @return time
-  **/
+   */
   @javax.annotation.Nonnull
   public OffsetDateTime getTime() {
     return time;
@@ -191,10 +190,10 @@ public class MessageFailedCallbackMessage {
     return this;
   }
 
-   /**
+  /**
    * Get segmentCount
    * @return segmentCount
-  **/
+   */
   @javax.annotation.Nonnull
   public Integer getSegmentCount() {
     return segmentCount;
@@ -210,10 +209,10 @@ public class MessageFailedCallbackMessage {
     return this;
   }
 
-   /**
+  /**
    * Get direction
    * @return direction
-  **/
+   */
   @javax.annotation.Nonnull
   public MessageDirectionEnum getDirection() {
     return direction;
@@ -237,10 +236,10 @@ public class MessageFailedCallbackMessage {
     return this;
   }
 
-   /**
+  /**
    * Get to
    * @return to
-  **/
+   */
   @javax.annotation.Nonnull
   public Set<String> getTo() {
     return to;
@@ -256,10 +255,10 @@ public class MessageFailedCallbackMessage {
     return this;
   }
 
-   /**
+  /**
    * Get from
    * @return from
-  **/
+   */
   @javax.annotation.Nonnull
   public String getFrom() {
     return from;
@@ -275,10 +274,10 @@ public class MessageFailedCallbackMessage {
     return this;
   }
 
-   /**
+  /**
    * Get text
    * @return text
-  **/
+   */
   @javax.annotation.Nonnull
   public String getText() {
     return text;
@@ -294,10 +293,10 @@ public class MessageFailedCallbackMessage {
     return this;
   }
 
-   /**
+  /**
    * Get tag
    * @return tag
-  **/
+   */
   @javax.annotation.Nonnull
   public String getTag() {
     return tag;
@@ -321,10 +320,10 @@ public class MessageFailedCallbackMessage {
     return this;
   }
 
-   /**
+  /**
    * Get media
    * @return media
-  **/
+   */
   @javax.annotation.Nullable
   public List<URI> getMedia() {
     return media;
@@ -340,10 +339,10 @@ public class MessageFailedCallbackMessage {
     return this;
   }
 
-   /**
+  /**
    * Get priority
    * @return priority
-  **/
+   */
   @javax.annotation.Nullable
   public PriorityEnum getPriority() {
     return priority;
@@ -494,12 +493,12 @@ public class MessageFailedCallbackMessage {
     openapiRequiredFields.add("tag");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to MessageFailedCallbackMessage
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to MessageFailedCallbackMessage
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!MessageFailedCallbackMessage.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -622,22 +621,22 @@ public class MessageFailedCallbackMessage {
     }
   }
 
- /**
-  * Create an instance of MessageFailedCallbackMessage given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of MessageFailedCallbackMessage
-  * @throws IOException if the JSON string is invalid with respect to MessageFailedCallbackMessage
-  */
+  /**
+   * Create an instance of MessageFailedCallbackMessage given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of MessageFailedCallbackMessage
+   * @throws IOException if the JSON string is invalid with respect to MessageFailedCallbackMessage
+   */
   public static MessageFailedCallbackMessage fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, MessageFailedCallbackMessage.class);
   }
 
- /**
-  * Convert an instance of MessageFailedCallbackMessage to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of MessageFailedCallbackMessage to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,7 +49,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * UpdateCallRecording
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class UpdateCallRecording {
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
@@ -64,10 +63,10 @@ public class UpdateCallRecording {
     return this;
   }
 
-   /**
+  /**
    * Get state
    * @return state
-  **/
+   */
   @javax.annotation.Nonnull
   public RecordingStateEnum getState() {
     return state;
@@ -176,12 +175,12 @@ public class UpdateCallRecording {
     openapiRequiredFields.add("state");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to UpdateCallRecording
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to UpdateCallRecording
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!UpdateCallRecording.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -272,22 +271,22 @@ public class UpdateCallRecording {
     }
   }
 
- /**
-  * Create an instance of UpdateCallRecording given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of UpdateCallRecording
-  * @throws IOException if the JSON string is invalid with respect to UpdateCallRecording
-  */
+  /**
+   * Create an instance of UpdateCallRecording given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of UpdateCallRecording
+   * @throws IOException if the JSON string is invalid with respect to UpdateCallRecording
+   */
   public static UpdateCallRecording fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, UpdateCallRecording.class);
   }
 
- /**
-  * Convert an instance of UpdateCallRecording to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of UpdateCallRecording to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

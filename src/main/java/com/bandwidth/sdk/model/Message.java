@@ -42,7 +42,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -54,7 +53,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Message
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class Message {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -116,10 +115,10 @@ public class Message {
     return this;
   }
 
-   /**
+  /**
    * The id of the message.
    * @return id
-  **/
+   */
   @javax.annotation.Nullable
   public String getId() {
     return id;
@@ -135,10 +134,10 @@ public class Message {
     return this;
   }
 
-   /**
+  /**
    * The Bandwidth phone number associated with the message.
    * @return owner
-  **/
+   */
   @javax.annotation.Nullable
   public String getOwner() {
     return owner;
@@ -154,10 +153,10 @@ public class Message {
     return this;
   }
 
-   /**
+  /**
    * The application ID associated with the message.
    * @return applicationId
-  **/
+   */
   @javax.annotation.Nullable
   public String getApplicationId() {
     return applicationId;
@@ -173,10 +172,10 @@ public class Message {
     return this;
   }
 
-   /**
+  /**
    * The datetime stamp of the message in ISO 8601
    * @return time
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getTime() {
     return time;
@@ -192,10 +191,10 @@ public class Message {
     return this;
   }
 
-   /**
+  /**
    * The number of segments the original message from the user is broken into before sending over to carrier networks.
    * @return segmentCount
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getSegmentCount() {
     return segmentCount;
@@ -211,10 +210,10 @@ public class Message {
     return this;
   }
 
-   /**
+  /**
    * Get direction
    * @return direction
-  **/
+   */
   @javax.annotation.Nullable
   public MessageDirectionEnum getDirection() {
     return direction;
@@ -238,10 +237,10 @@ public class Message {
     return this;
   }
 
-   /**
+  /**
    * The phone number recipients of the message.
    * @return to
-  **/
+   */
   @javax.annotation.Nullable
   public Set<String> getTo() {
     return to;
@@ -257,10 +256,10 @@ public class Message {
     return this;
   }
 
-   /**
+  /**
    * The phone number the message was sent from.
    * @return from
-  **/
+   */
   @javax.annotation.Nullable
   public String getFrom() {
     return from;
@@ -284,10 +283,10 @@ public class Message {
     return this;
   }
 
-   /**
+  /**
    * The list of media URLs sent in the message. Including a &#x60;filename&#x60; field in the &#x60;Content-Disposition&#x60; header of the media linked with a URL will set the displayed file name. This is a best practice to ensure that your media has a readable file name.
    * @return media
-  **/
+   */
   @javax.annotation.Nullable
   public Set<String> getMedia() {
     return media;
@@ -303,10 +302,10 @@ public class Message {
     return this;
   }
 
-   /**
+  /**
    * The contents of the message.
    * @return text
-  **/
+   */
   @javax.annotation.Nullable
   public String getText() {
     return text;
@@ -322,10 +321,10 @@ public class Message {
     return this;
   }
 
-   /**
+  /**
    * The custom string set by the user.
    * @return tag
-  **/
+   */
   @javax.annotation.Nullable
   public String getTag() {
     return tag;
@@ -341,10 +340,10 @@ public class Message {
     return this;
   }
 
-   /**
+  /**
    * Get priority
    * @return priority
-  **/
+   */
   @javax.annotation.Nullable
   public PriorityEnum getPriority() {
     return priority;
@@ -360,10 +359,10 @@ public class Message {
     return this;
   }
 
-   /**
+  /**
    * The expiration date-time set by the user.
    * @return expiration
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getExpiration() {
     return expiration;
@@ -507,12 +506,12 @@ public class Message {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Message
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Message
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Message.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -628,22 +627,22 @@ public class Message {
     }
   }
 
- /**
-  * Create an instance of Message given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Message
-  * @throws IOException if the JSON string is invalid with respect to Message
-  */
+  /**
+   * Create an instance of Message given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Message
+   * @throws IOException if the JSON string is invalid with respect to Message
+   */
   public static Message fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Message.class);
   }
 
- /**
-  * Convert an instance of Message to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of Message to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

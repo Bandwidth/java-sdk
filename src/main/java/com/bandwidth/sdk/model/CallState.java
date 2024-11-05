@@ -42,7 +42,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -54,7 +53,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * CallState
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CallState {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
@@ -136,10 +135,10 @@ public class CallState {
     return this;
   }
 
-   /**
+  /**
    * The application id associated with the call.
    * @return applicationId
-  **/
+   */
   @javax.annotation.Nullable
   public String getApplicationId() {
     return applicationId;
@@ -155,10 +154,10 @@ public class CallState {
     return this;
   }
 
-   /**
+  /**
    * The account id associated with the call.
    * @return accountId
-  **/
+   */
   @javax.annotation.Nullable
   public String getAccountId() {
     return accountId;
@@ -174,10 +173,10 @@ public class CallState {
     return this;
   }
 
-   /**
+  /**
    * The programmable voice API call ID.
    * @return callId
-  **/
+   */
   @javax.annotation.Nullable
   public String getCallId() {
     return callId;
@@ -193,10 +192,10 @@ public class CallState {
     return this;
   }
 
-   /**
+  /**
    * The A-leg call id, set only if this call is the B-leg of a [&#x60;&lt;Transfer&gt;&#x60;](/docs/voice/bxml/transfer).
    * @return parentCallId
-  **/
+   */
   @javax.annotation.Nullable
   public String getParentCallId() {
     return parentCallId;
@@ -212,10 +211,10 @@ public class CallState {
     return this;
   }
 
-   /**
+  /**
    * The phone number that received the call, in E.164 format (e.g. +15555555555), or if the call was to a SIP URI, the SIP URI.
    * @return to
-  **/
+   */
   @javax.annotation.Nullable
   public String getTo() {
     return to;
@@ -231,10 +230,10 @@ public class CallState {
     return this;
   }
 
-   /**
+  /**
    * The phone number that made the call, in E.164 format (e.g. +15555555555).
    * @return from
-  **/
+   */
   @javax.annotation.Nullable
   public String getFrom() {
     return from;
@@ -250,10 +249,10 @@ public class CallState {
     return this;
   }
 
-   /**
+  /**
    * Get direction
    * @return direction
-  **/
+   */
   @javax.annotation.Nullable
   public CallDirectionEnum getDirection() {
     return direction;
@@ -269,10 +268,10 @@ public class CallState {
     return this;
   }
 
-   /**
+  /**
    * The current state of the call. Current possible values are &#x60;queued&#x60;, &#x60;initiated&#x60;, &#x60;answered&#x60; and &#x60;disconnected&#x60;. Additional states may be added in the future, so your application must be tolerant of unknown values.
    * @return state
-  **/
+   */
   @javax.annotation.Nullable
   public String getState() {
     return state;
@@ -296,10 +295,10 @@ public class CallState {
     return this;
   }
 
-   /**
+  /**
    * For inbound calls, the Bandwidth STIR/SHAKEN implementation will verify the information provided in the inbound invite request &#x60;Identity&#x60; header. The verification status is stored in the call state &#x60;stirShaken&#x60; property as follows.  | Property          | Description | |:------------------|:------------| | verstat | (optional) The verification status indicating whether the verification was successful or not. Possible values are &#x60;TN-Verification-Passed&#x60; or &#x60;TN-Verification-Failed&#x60;. | | attestationIndicator | (optional) The attestation level verified by Bandwidth. Possible values are &#x60;A&#x60; (full), &#x60;B&#x60; (partial) or &#x60;C&#x60; (gateway). | | originatingId | (optional) A unique origination identifier. |  Note that these are common properties but that the &#x60;stirShaken&#x60; object is free form and can contain other key-value pairs.  More information: [Understanding STIR/SHAKEN](https://www.bandwidth.com/regulations/stir-shaken).
    * @return stirShaken
-  **/
+   */
   @javax.annotation.Nullable
   public Map<String, String> getStirShaken() {
     return stirShaken;
@@ -315,10 +314,10 @@ public class CallState {
     return this;
   }
 
-   /**
+  /**
    * The value of the &#x60;Identity&#x60; header from the inbound invite request. Only present for inbound calls and if the account is configured to forward this header.
    * @return identity
-  **/
+   */
   @javax.annotation.Nullable
   public String getIdentity() {
     return identity;
@@ -334,10 +333,10 @@ public class CallState {
     return this;
   }
 
-   /**
+  /**
    * The time this call was placed in queue.
    * @return enqueuedTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getEnqueuedTime() {
     return enqueuedTime;
@@ -353,10 +352,10 @@ public class CallState {
     return this;
   }
 
-   /**
+  /**
    * The time the call was initiated, in ISO 8601 format. &#x60;null&#x60; if the call is still in your queue.
    * @return startTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getStartTime() {
     return startTime;
@@ -372,10 +371,10 @@ public class CallState {
     return this;
   }
 
-   /**
+  /**
    * Populated once the call has been answered, with the time in ISO 8601 format.
    * @return answerTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getAnswerTime() {
     return answerTime;
@@ -391,10 +390,10 @@ public class CallState {
     return this;
   }
 
-   /**
+  /**
    * Populated once the call has ended, with the time in ISO 8601 format.
    * @return endTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getEndTime() {
     return endTime;
@@ -410,10 +409,10 @@ public class CallState {
     return this;
   }
 
-   /**
+  /**
    * | Cause | Description | |:------|:------------| | &#x60;hangup&#x60;| One party hung up the call, a [&#x60;&lt;Hangup&gt;&#x60;](../../bxml/verbs/hangup.md) verb was executed, or there was no more BXML to execute; it indicates that the call ended normally. | | &#x60;busy&#x60; | Callee was busy. | | &#x60;timeout&#x60; | Call wasn&#39;t answered before the &#x60;callTimeout&#x60; was reached. | | &#x60;cancel&#x60; | Call was cancelled by its originator while it was ringing. | | &#x60;rejected&#x60; | Call was rejected by the callee. | | &#x60;callback-error&#x60; | BXML callback couldn&#39;t be delivered to your callback server. | | &#x60;invalid-bxml&#x60; | Invalid BXML was returned in response to a callback. | | &#x60;application-error&#x60; | An unsupported action was tried on the call, e.g. trying to play a .ogg audio. | | &#x60;account-limit&#x60; | Account rate limits were reached. | | &#x60;node-capacity-exceeded&#x60; | System maximum capacity was reached. | | &#x60;error&#x60; | Some error not described in any of the other causes happened on the call. | | &#x60;unknown&#x60; | Unknown error happened on the call. |  Note: This list is not exhaustive and other values can appear in the future.
    * @return disconnectCause
-  **/
+   */
   @javax.annotation.Nullable
   public String getDisconnectCause() {
     return disconnectCause;
@@ -429,10 +428,10 @@ public class CallState {
     return this;
   }
 
-   /**
+  /**
    * Populated only if the call ended with an error, with text explaining the reason.
    * @return errorMessage
-  **/
+   */
   @javax.annotation.Nullable
   public String getErrorMessage() {
     return errorMessage;
@@ -448,10 +447,10 @@ public class CallState {
     return this;
   }
 
-   /**
+  /**
    * Populated only if the call ended with an error, with a Bandwidth internal id that references the error event.
    * @return errorId
-  **/
+   */
   @javax.annotation.Nullable
   public String getErrorId() {
     return errorId;
@@ -467,10 +466,10 @@ public class CallState {
     return this;
   }
 
-   /**
+  /**
    * The last time the call had a state update, in ISO 8601 format.
    * @return lastUpdate
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getLastUpdate() {
     return lastUpdate;
@@ -640,12 +639,12 @@ public class CallState {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CallState
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to CallState
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CallState.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -764,22 +763,22 @@ public class CallState {
     }
   }
 
- /**
-  * Create an instance of CallState given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of CallState
-  * @throws IOException if the JSON string is invalid with respect to CallState
-  */
+  /**
+   * Create an instance of CallState given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of CallState
+   * @throws IOException if the JSON string is invalid with respect to CallState
+   */
   public static CallState fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, CallState.class);
   }
 
- /**
-  * Convert an instance of CallState to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of CallState to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

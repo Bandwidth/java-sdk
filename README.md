@@ -2,7 +2,7 @@
 
 Bandwidth
 - API version: 1.0.0
-  - Generator version: 7.6.0
+  - Generator version: 7.9.0
 
 Bandwidth's Communication APIs
 
@@ -85,7 +85,7 @@ import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.auth.*;
-import com.bandwidth.sdk.models.*;
+import com.bandwidth.sdk.model.*;
 import com.bandwidth.sdk.api.CallsApi;
 
 public class Example {

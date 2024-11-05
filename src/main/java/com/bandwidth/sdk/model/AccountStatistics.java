@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,7 +48,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * AccountStatistics
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class AccountStatistics {
   public static final String SERIALIZED_NAME_CURRENT_CALL_QUEUE_SIZE = "currentCallQueueSize";
   @SerializedName(SERIALIZED_NAME_CURRENT_CALL_QUEUE_SIZE)
@@ -67,10 +66,10 @@ public class AccountStatistics {
     return this;
   }
 
-   /**
+  /**
    * The number of calls currently enqueued.
    * @return currentCallQueueSize
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getCurrentCallQueueSize() {
     return currentCallQueueSize;
@@ -86,10 +85,10 @@ public class AccountStatistics {
     return this;
   }
 
-   /**
+  /**
    * The maximum size of the queue before outgoing calls start being rejected.
    * @return maxCallQueueSize
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getMaxCallQueueSize() {
     return maxCallQueueSize;
@@ -200,12 +199,12 @@ public class AccountStatistics {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to AccountStatistics
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to AccountStatistics
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AccountStatistics.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -287,22 +286,22 @@ public class AccountStatistics {
     }
   }
 
- /**
-  * Create an instance of AccountStatistics given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of AccountStatistics
-  * @throws IOException if the JSON string is invalid with respect to AccountStatistics
-  */
+  /**
+   * Create an instance of AccountStatistics given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of AccountStatistics
+   * @throws IOException if the JSON string is invalid with respect to AccountStatistics
+   */
   public static AccountStatistics fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, AccountStatistics.class);
   }
 
- /**
-  * Convert an instance of AccountStatistics to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of AccountStatistics to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

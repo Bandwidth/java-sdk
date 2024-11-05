@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,7 +48,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Carrier information results for the specified telephone number.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class LookupResult {
   public static final String SERIALIZED_NAME_RESPONSE_CODE = "Response Code";
   @SerializedName(SERIALIZED_NAME_RESPONSE_CODE)
@@ -95,10 +94,10 @@ public class LookupResult {
     return this;
   }
 
-   /**
+  /**
    * Our vendor&#39;s response code.
    * @return responseCode
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getResponseCode() {
     return responseCode;
@@ -114,10 +113,10 @@ public class LookupResult {
     return this;
   }
 
-   /**
+  /**
    * Message associated with the response code.
    * @return message
-  **/
+   */
   @javax.annotation.Nullable
   public String getMessage() {
     return message;
@@ -133,10 +132,10 @@ public class LookupResult {
     return this;
   }
 
-   /**
+  /**
    * The telephone number in E.164 format.
    * @return e164Format
-  **/
+   */
   @javax.annotation.Nullable
   public String getE164Format() {
     return e164Format;
@@ -152,10 +151,10 @@ public class LookupResult {
     return this;
   }
 
-   /**
+  /**
    * The formatted version of the telephone number.
    * @return formatted
-  **/
+   */
   @javax.annotation.Nullable
   public String getFormatted() {
     return formatted;
@@ -171,10 +170,10 @@ public class LookupResult {
     return this;
   }
 
-   /**
+  /**
    * The country of the telephone number.
    * @return country
-  **/
+   */
   @javax.annotation.Nullable
   public String getCountry() {
     return country;
@@ -190,10 +189,10 @@ public class LookupResult {
     return this;
   }
 
-   /**
+  /**
    * The line type of the telephone number.
    * @return lineType
-  **/
+   */
   @javax.annotation.Nullable
   public String getLineType() {
     return lineType;
@@ -209,10 +208,10 @@ public class LookupResult {
     return this;
   }
 
-   /**
+  /**
    * The messaging service provider of the telephone number.
    * @return lineProvider
-  **/
+   */
   @javax.annotation.Nullable
   public String getLineProvider() {
     return lineProvider;
@@ -228,10 +227,10 @@ public class LookupResult {
     return this;
   }
 
-   /**
+  /**
    * The first half of the Home Network Identity (HNI).
    * @return mobileCountryCode
-  **/
+   */
   @javax.annotation.Nullable
   public String getMobileCountryCode() {
     return mobileCountryCode;
@@ -247,10 +246,10 @@ public class LookupResult {
     return this;
   }
 
-   /**
+  /**
    * The second half of the HNI.
    * @return mobileNetworkCode
-  **/
+   */
   @javax.annotation.Nullable
   public String getMobileNetworkCode() {
     return mobileNetworkCode;
@@ -382,12 +381,12 @@ public class LookupResult {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to LookupResult
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to LookupResult
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!LookupResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -493,22 +492,22 @@ public class LookupResult {
     }
   }
 
- /**
-  * Create an instance of LookupResult given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of LookupResult
-  * @throws IOException if the JSON string is invalid with respect to LookupResult
-  */
+  /**
+   * Create an instance of LookupResult given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of LookupResult
+   * @throws IOException if the JSON string is invalid with respect to LookupResult
+   */
   public static LookupResult fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, LookupResult.class);
   }
 
- /**
-  * Convert an instance of LookupResult to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of LookupResult to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }
