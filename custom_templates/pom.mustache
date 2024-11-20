@@ -21,6 +21,14 @@
     </parent>
 {{/parentOverridden}}
 
+    <licenses>
+        <license>
+            <name>{{licenseName}}</name>
+            <url>{{licenseUrl}}</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
@@ -31,14 +39,6 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
-
-    <licenses>
-        <license>
-            <name>{{licenseName}}</name>
-            <url>{{licenseUrl}}</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
 
     <developers>
         <developer>
@@ -63,10 +63,6 @@
                         <arg>-Xlint:all</arg>
                         <arg>-J-Xss4m</arg><!-- Compiling the generated JSON.java file may require larger stack size. -->
                     </compilerArgs>
-                    <forceJavacCompilerUse>true</forceJavacCompilerUse>
-                    <release>${java.version}</release>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
                 </configuration>
             </plugin>
             <plugin>
