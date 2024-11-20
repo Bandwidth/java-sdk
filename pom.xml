@@ -9,10 +9,21 @@
     <url>https://github.com/Bandwidth/java-sdk</url>
     <description>The official client SDK for Bandwidth&#39;s Voice, Messaging, MFA, and WebRTC APIs</description>
     <scm>
-        <connection>scm:git:git@github.com:openapitools/openapi-generator.git</connection>
-        <developerConnection>scm:git:git@github.com:openapitools/openapi-generator.git</developerConnection>
-        <url>https://github.com/openapitools/openapi-generator</url>
+        <url>https://github.com/Bandwidth/java-sdk</url>
+        <connection>scm:git:git@github.com:Bandwidth/java-sdk.git</connection>
+        <developerConnection>scm:git:git@github.com:Bandwidth/java-sdk.git</developerConnection>
     </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <licenses>
         <license>
@@ -45,6 +56,10 @@
                         <arg>-Xlint:all</arg>
                         <arg>-J-Xss4m</arg><!-- Compiling the generated JSON.java file may require larger stack size. -->
                     </compilerArgs>
+                    <forceJavacCompilerUse>true</forceJavacCompilerUse>
+                    <release>${java.version}</release>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -190,6 +205,31 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.7.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                <serverId>ossrh</serverId>
+                <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
             </plugin>
             <!-- Use spotless plugin to automatically format code, remove unused import, etc
                  To apply changes directly to the file, run `mvn spotless:apply`
