@@ -1,9 +1,11 @@
 artifactId: bandwidth-sdk
-artifactVersion: 10.1.0
+artifactVersion: 1.0.0-dev
 artifactDescription: The official client SDK for Bandwidth's Voice, Messaging, MFA, and WebRTC APIs
 artifactUrl: https://github.com/Bandwidth/java-sdk
-developerEmail: dx@bandwidth.com
-developerOrganization: Bandwidth
+developerName: Bandwidth Support
+developerEmail: info@bandwidth.com
+developerOrganization: Bandwidth Inc
+developerOrganizationUrl: http://bandwidth.com
 disallowAdditionalPropertiesIfNotPresent: false
 hideGenerationTimestamp: true
 groupId: com.bandwidth.sdk
