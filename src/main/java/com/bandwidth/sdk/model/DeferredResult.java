@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,53 +48,55 @@ import com.bandwidth.sdk.JSON;
 /**
  * DeferredResult
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class DeferredResult {
   public static final String SERIALIZED_NAME_RESULT = "result";
   @SerializedName(SERIALIZED_NAME_RESULT)
+  @javax.annotation.Nullable
   private Object result;
 
   public static final String SERIALIZED_NAME_SET_OR_EXPIRED = "setOrExpired";
   @SerializedName(SERIALIZED_NAME_SET_OR_EXPIRED)
+  @javax.annotation.Nullable
   private Boolean setOrExpired;
 
   public DeferredResult() {
   }
 
-  public DeferredResult result(Object result) {
+  public DeferredResult result(@javax.annotation.Nullable Object result) {
     this.result = result;
     return this;
   }
 
-   /**
+  /**
    * Get result
    * @return result
-  **/
+   */
   @javax.annotation.Nullable
   public Object getResult() {
     return result;
   }
 
-  public void setResult(Object result) {
+  public void setResult(@javax.annotation.Nullable Object result) {
     this.result = result;
   }
 
 
-  public DeferredResult setOrExpired(Boolean setOrExpired) {
+  public DeferredResult setOrExpired(@javax.annotation.Nullable Boolean setOrExpired) {
     this.setOrExpired = setOrExpired;
     return this;
   }
 
-   /**
+  /**
    * Get setOrExpired
    * @return setOrExpired
-  **/
+   */
   @javax.annotation.Nullable
   public Boolean getSetOrExpired() {
     return setOrExpired;
   }
 
-  public void setSetOrExpired(Boolean setOrExpired) {
+  public void setSetOrExpired(@javax.annotation.Nullable Boolean setOrExpired) {
     this.setOrExpired = setOrExpired;
   }
 
@@ -200,12 +201,12 @@ public class DeferredResult {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to DeferredResult
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to DeferredResult
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!DeferredResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -287,22 +288,22 @@ public class DeferredResult {
     }
   }
 
- /**
-  * Create an instance of DeferredResult given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of DeferredResult
-  * @throws IOException if the JSON string is invalid with respect to DeferredResult
-  */
+  /**
+   * Create an instance of DeferredResult given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of DeferredResult
+   * @throws IOException if the JSON string is invalid with respect to DeferredResult
+   */
   public static DeferredResult fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, DeferredResult.class);
   }
 
- /**
-  * Convert an instance of DeferredResult to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of DeferredResult to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,76 +49,79 @@ import com.bandwidth.sdk.JSON;
 /**
  * VoiceApiError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class VoiceApiError {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
   private String type;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public VoiceApiError() {
   }
 
-  public VoiceApiError type(String type) {
+  public VoiceApiError type(@javax.annotation.Nullable String type) {
     this.type = type;
     return this;
   }
 
-   /**
+  /**
    * Get type
    * @return type
-  **/
+   */
   @javax.annotation.Nullable
   public String getType() {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nullable String type) {
     this.type = type;
   }
 
 
-  public VoiceApiError description(String description) {
+  public VoiceApiError description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * Get description
    * @return description
-  **/
+   */
   @javax.annotation.Nullable
   public String getDescription() {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public VoiceApiError id(String id) {
+  public VoiceApiError id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
+   */
   @javax.annotation.Nullable
   public String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
@@ -238,12 +240,12 @@ public class VoiceApiError {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to VoiceApiError
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to VoiceApiError
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!VoiceApiError.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -334,22 +336,22 @@ public class VoiceApiError {
     }
   }
 
- /**
-  * Create an instance of VoiceApiError given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of VoiceApiError
-  * @throws IOException if the JSON string is invalid with respect to VoiceApiError
-  */
+  /**
+   * Create an instance of VoiceApiError given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of VoiceApiError
+   * @throws IOException if the JSON string is invalid with respect to VoiceApiError
+   */
   public static VoiceApiError fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, VoiceApiError.class);
   }
 
- /**
-  * Convert an instance of VoiceApiError to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of VoiceApiError to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

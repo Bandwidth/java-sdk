@@ -42,7 +42,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -54,178 +53,191 @@ import com.bandwidth.sdk.JSON;
 /**
  * Message
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class Message {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_OWNER = "owner";
   @SerializedName(SERIALIZED_NAME_OWNER)
+  @javax.annotation.Nullable
   private String owner;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  @javax.annotation.Nullable
   private String applicationId;
 
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime time;
 
   public static final String SERIALIZED_NAME_SEGMENT_COUNT = "segmentCount";
   @SerializedName(SERIALIZED_NAME_SEGMENT_COUNT)
+  @javax.annotation.Nullable
   private Integer segmentCount;
 
   public static final String SERIALIZED_NAME_DIRECTION = "direction";
   @SerializedName(SERIALIZED_NAME_DIRECTION)
+  @javax.annotation.Nullable
   private MessageDirectionEnum direction;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
+  @javax.annotation.Nullable
   private Set<String> to = new LinkedHashSet<>();
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
+  @javax.annotation.Nullable
   private String from;
 
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
+  @javax.annotation.Nullable
   private Set<String> media = new LinkedHashSet<>();
 
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
+  @javax.annotation.Nullable
   private String text;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
+  @javax.annotation.Nullable
   private String tag;
 
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
+  @javax.annotation.Nullable
   private PriorityEnum priority;
 
   public static final String SERIALIZED_NAME_EXPIRATION = "expiration";
   @SerializedName(SERIALIZED_NAME_EXPIRATION)
+  @javax.annotation.Nullable
   private OffsetDateTime expiration;
 
   public Message() {
   }
 
-  public Message id(String id) {
+  public Message id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * The id of the message.
    * @return id
-  **/
+   */
   @javax.annotation.Nullable
   public String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public Message owner(String owner) {
+  public Message owner(@javax.annotation.Nullable String owner) {
     this.owner = owner;
     return this;
   }
 
-   /**
+  /**
    * The Bandwidth phone number associated with the message.
    * @return owner
-  **/
+   */
   @javax.annotation.Nullable
   public String getOwner() {
     return owner;
   }
 
-  public void setOwner(String owner) {
+  public void setOwner(@javax.annotation.Nullable String owner) {
     this.owner = owner;
   }
 
 
-  public Message applicationId(String applicationId) {
+  public Message applicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The application ID associated with the message.
    * @return applicationId
-  **/
+   */
   @javax.annotation.Nullable
   public String getApplicationId() {
     return applicationId;
   }
 
-  public void setApplicationId(String applicationId) {
+  public void setApplicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public Message time(OffsetDateTime time) {
+  public Message time(@javax.annotation.Nullable OffsetDateTime time) {
     this.time = time;
     return this;
   }
 
-   /**
+  /**
    * The datetime stamp of the message in ISO 8601
    * @return time
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getTime() {
     return time;
   }
 
-  public void setTime(OffsetDateTime time) {
+  public void setTime(@javax.annotation.Nullable OffsetDateTime time) {
     this.time = time;
   }
 
 
-  public Message segmentCount(Integer segmentCount) {
+  public Message segmentCount(@javax.annotation.Nullable Integer segmentCount) {
     this.segmentCount = segmentCount;
     return this;
   }
 
-   /**
+  /**
    * The number of segments the original message from the user is broken into before sending over to carrier networks.
    * @return segmentCount
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getSegmentCount() {
     return segmentCount;
   }
 
-  public void setSegmentCount(Integer segmentCount) {
+  public void setSegmentCount(@javax.annotation.Nullable Integer segmentCount) {
     this.segmentCount = segmentCount;
   }
 
 
-  public Message direction(MessageDirectionEnum direction) {
+  public Message direction(@javax.annotation.Nullable MessageDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
 
-   /**
+  /**
    * Get direction
    * @return direction
-  **/
+   */
   @javax.annotation.Nullable
   public MessageDirectionEnum getDirection() {
     return direction;
   }
 
-  public void setDirection(MessageDirectionEnum direction) {
+  public void setDirection(@javax.annotation.Nullable MessageDirectionEnum direction) {
     this.direction = direction;
   }
 
 
-  public Message to(Set<String> to) {
+  public Message to(@javax.annotation.Nullable Set<String> to) {
     this.to = to;
     return this;
   }
@@ -238,40 +250,40 @@ public class Message {
     return this;
   }
 
-   /**
+  /**
    * The phone number recipients of the message.
    * @return to
-  **/
+   */
   @javax.annotation.Nullable
   public Set<String> getTo() {
     return to;
   }
 
-  public void setTo(Set<String> to) {
+  public void setTo(@javax.annotation.Nullable Set<String> to) {
     this.to = to;
   }
 
 
-  public Message from(String from) {
+  public Message from(@javax.annotation.Nullable String from) {
     this.from = from;
     return this;
   }
 
-   /**
+  /**
    * The phone number the message was sent from.
    * @return from
-  **/
+   */
   @javax.annotation.Nullable
   public String getFrom() {
     return from;
   }
 
-  public void setFrom(String from) {
+  public void setFrom(@javax.annotation.Nullable String from) {
     this.from = from;
   }
 
 
-  public Message media(Set<String> media) {
+  public Message media(@javax.annotation.Nullable Set<String> media) {
     this.media = media;
     return this;
   }
@@ -284,92 +296,92 @@ public class Message {
     return this;
   }
 
-   /**
+  /**
    * The list of media URLs sent in the message. Including a &#x60;filename&#x60; field in the &#x60;Content-Disposition&#x60; header of the media linked with a URL will set the displayed file name. This is a best practice to ensure that your media has a readable file name.
    * @return media
-  **/
+   */
   @javax.annotation.Nullable
   public Set<String> getMedia() {
     return media;
   }
 
-  public void setMedia(Set<String> media) {
+  public void setMedia(@javax.annotation.Nullable Set<String> media) {
     this.media = media;
   }
 
 
-  public Message text(String text) {
+  public Message text(@javax.annotation.Nullable String text) {
     this.text = text;
     return this;
   }
 
-   /**
+  /**
    * The contents of the message.
    * @return text
-  **/
+   */
   @javax.annotation.Nullable
   public String getText() {
     return text;
   }
 
-  public void setText(String text) {
+  public void setText(@javax.annotation.Nullable String text) {
     this.text = text;
   }
 
 
-  public Message tag(String tag) {
+  public Message tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
 
-   /**
+  /**
    * The custom string set by the user.
    * @return tag
-  **/
+   */
   @javax.annotation.Nullable
   public String getTag() {
     return tag;
   }
 
-  public void setTag(String tag) {
+  public void setTag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
   }
 
 
-  public Message priority(PriorityEnum priority) {
+  public Message priority(@javax.annotation.Nullable PriorityEnum priority) {
     this.priority = priority;
     return this;
   }
 
-   /**
+  /**
    * Get priority
    * @return priority
-  **/
+   */
   @javax.annotation.Nullable
   public PriorityEnum getPriority() {
     return priority;
   }
 
-  public void setPriority(PriorityEnum priority) {
+  public void setPriority(@javax.annotation.Nullable PriorityEnum priority) {
     this.priority = priority;
   }
 
 
-  public Message expiration(OffsetDateTime expiration) {
+  public Message expiration(@javax.annotation.Nullable OffsetDateTime expiration) {
     this.expiration = expiration;
     return this;
   }
 
-   /**
+  /**
    * The expiration date-time set by the user.
    * @return expiration
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getExpiration() {
     return expiration;
   }
 
-  public void setExpiration(OffsetDateTime expiration) {
+  public void setExpiration(@javax.annotation.Nullable OffsetDateTime expiration) {
     this.expiration = expiration;
   }
 
@@ -507,12 +519,12 @@ public class Message {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Message
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Message
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Message.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -628,22 +640,22 @@ public class Message {
     }
   }
 
- /**
-  * Create an instance of Message given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Message
-  * @throws IOException if the JSON string is invalid with respect to Message
-  */
+  /**
+   * Create an instance of Message given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Message
+   * @throws IOException if the JSON string is invalid with respect to Message
+   */
   public static Message fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Message.class);
   }
 
- /**
-  * Convert an instance of Message to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of Message to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

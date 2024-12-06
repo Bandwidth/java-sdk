@@ -43,7 +43,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -55,444 +54,463 @@ import com.bandwidth.sdk.JSON;
 /**
  * CallRecordingMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class CallRecordingMetadata {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  @javax.annotation.Nullable
   private String applicationId;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String accountId;
 
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
+  @javax.annotation.Nullable
   private String callId;
 
   public static final String SERIALIZED_NAME_PARENT_CALL_ID = "parentCallId";
   @SerializedName(SERIALIZED_NAME_PARENT_CALL_ID)
+  @javax.annotation.Nullable
   private String parentCallId;
 
   public static final String SERIALIZED_NAME_RECORDING_ID = "recordingId";
   @SerializedName(SERIALIZED_NAME_RECORDING_ID)
+  @javax.annotation.Nullable
   private String recordingId;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
+  @javax.annotation.Nullable
   private String to;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
+  @javax.annotation.Nullable
   private String from;
 
   public static final String SERIALIZED_NAME_TRANSFER_CALLER_ID = "transferCallerId";
   @SerializedName(SERIALIZED_NAME_TRANSFER_CALLER_ID)
+  @javax.annotation.Nullable
   private String transferCallerId;
 
   public static final String SERIALIZED_NAME_TRANSFER_TO = "transferTo";
   @SerializedName(SERIALIZED_NAME_TRANSFER_TO)
+  @javax.annotation.Nullable
   private String transferTo;
 
   public static final String SERIALIZED_NAME_DURATION = "duration";
   @SerializedName(SERIALIZED_NAME_DURATION)
+  @javax.annotation.Nullable
   private String duration;
 
   public static final String SERIALIZED_NAME_DIRECTION = "direction";
   @SerializedName(SERIALIZED_NAME_DIRECTION)
+  @javax.annotation.Nullable
   private CallDirectionEnum direction;
 
   public static final String SERIALIZED_NAME_CHANNELS = "channels";
   @SerializedName(SERIALIZED_NAME_CHANNELS)
+  @javax.annotation.Nullable
   private Integer channels;
 
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime startTime;
 
   public static final String SERIALIZED_NAME_END_TIME = "endTime";
   @SerializedName(SERIALIZED_NAME_END_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime endTime;
 
   public static final String SERIALIZED_NAME_FILE_FORMAT = "fileFormat";
   @SerializedName(SERIALIZED_NAME_FILE_FORMAT)
+  @javax.annotation.Nullable
   private FileFormatEnum fileFormat;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private String status;
 
   public static final String SERIALIZED_NAME_MEDIA_URL = "mediaUrl";
   @SerializedName(SERIALIZED_NAME_MEDIA_URL)
+  @javax.annotation.Nullable
   private URI mediaUrl;
 
   public static final String SERIALIZED_NAME_TRANSCRIPTION = "transcription";
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTION)
+  @javax.annotation.Nullable
   private RecordingTranscriptionMetadata transcription;
 
   public static final String SERIALIZED_NAME_RECORDING_NAME = "recordingName";
   @SerializedName(SERIALIZED_NAME_RECORDING_NAME)
+  @javax.annotation.Nullable
   private String recordingName;
 
   public CallRecordingMetadata() {
   }
 
-  public CallRecordingMetadata applicationId(String applicationId) {
+  public CallRecordingMetadata applicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The id of the application associated with the call.
    * @return applicationId
-  **/
+   */
   @javax.annotation.Nullable
   public String getApplicationId() {
     return applicationId;
   }
 
-  public void setApplicationId(String applicationId) {
+  public void setApplicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public CallRecordingMetadata accountId(String accountId) {
+  public CallRecordingMetadata accountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The user account associated with the call.
    * @return accountId
-  **/
+   */
   @javax.annotation.Nullable
   public String getAccountId() {
     return accountId;
   }
 
-  public void setAccountId(String accountId) {
+  public void setAccountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
   }
 
 
-  public CallRecordingMetadata callId(String callId) {
+  public CallRecordingMetadata callId(@javax.annotation.Nullable String callId) {
     this.callId = callId;
     return this;
   }
 
-   /**
+  /**
    * The call id associated with the event.
    * @return callId
-  **/
+   */
   @javax.annotation.Nullable
   public String getCallId() {
     return callId;
   }
 
-  public void setCallId(String callId) {
+  public void setCallId(@javax.annotation.Nullable String callId) {
     this.callId = callId;
   }
 
 
-  public CallRecordingMetadata parentCallId(String parentCallId) {
+  public CallRecordingMetadata parentCallId(@javax.annotation.Nullable String parentCallId) {
     this.parentCallId = parentCallId;
     return this;
   }
 
-   /**
+  /**
    * (optional) If the event is related to the B leg of a &lt;Transfer&gt;, the call id of the original call leg that executed the &lt;Transfer&gt;. Otherwise, this field will not be present.
    * @return parentCallId
-  **/
+   */
   @javax.annotation.Nullable
   public String getParentCallId() {
     return parentCallId;
   }
 
-  public void setParentCallId(String parentCallId) {
+  public void setParentCallId(@javax.annotation.Nullable String parentCallId) {
     this.parentCallId = parentCallId;
   }
 
 
-  public CallRecordingMetadata recordingId(String recordingId) {
+  public CallRecordingMetadata recordingId(@javax.annotation.Nullable String recordingId) {
     this.recordingId = recordingId;
     return this;
   }
 
-   /**
+  /**
    * The unique ID of this recording
    * @return recordingId
-  **/
+   */
   @javax.annotation.Nullable
   public String getRecordingId() {
     return recordingId;
   }
 
-  public void setRecordingId(String recordingId) {
+  public void setRecordingId(@javax.annotation.Nullable String recordingId) {
     this.recordingId = recordingId;
   }
 
 
-  public CallRecordingMetadata to(String to) {
+  public CallRecordingMetadata to(@javax.annotation.Nullable String to) {
     this.to = to;
     return this;
   }
 
-   /**
+  /**
    * The phone number that received the call, in E.164 format (e.g. +15555555555).
    * @return to
-  **/
+   */
   @javax.annotation.Nullable
   public String getTo() {
     return to;
   }
 
-  public void setTo(String to) {
+  public void setTo(@javax.annotation.Nullable String to) {
     this.to = to;
   }
 
 
-  public CallRecordingMetadata from(String from) {
+  public CallRecordingMetadata from(@javax.annotation.Nullable String from) {
     this.from = from;
     return this;
   }
 
-   /**
+  /**
    * The provided identifier of the caller. Must be a phone number in E.164 format (e.g. +15555555555).
    * @return from
-  **/
+   */
   @javax.annotation.Nullable
   public String getFrom() {
     return from;
   }
 
-  public void setFrom(String from) {
+  public void setFrom(@javax.annotation.Nullable String from) {
     this.from = from;
   }
 
 
-  public CallRecordingMetadata transferCallerId(String transferCallerId) {
+  public CallRecordingMetadata transferCallerId(@javax.annotation.Nullable String transferCallerId) {
     this.transferCallerId = transferCallerId;
     return this;
   }
 
-   /**
+  /**
    * The phone number used as the from field of the B-leg call, in E.164 format (e.g. +15555555555).
    * @return transferCallerId
-  **/
+   */
   @javax.annotation.Nullable
   public String getTransferCallerId() {
     return transferCallerId;
   }
 
-  public void setTransferCallerId(String transferCallerId) {
+  public void setTransferCallerId(@javax.annotation.Nullable String transferCallerId) {
     this.transferCallerId = transferCallerId;
   }
 
 
-  public CallRecordingMetadata transferTo(String transferTo) {
+  public CallRecordingMetadata transferTo(@javax.annotation.Nullable String transferTo) {
     this.transferTo = transferTo;
     return this;
   }
 
-   /**
+  /**
    * The phone number used as the to field of the B-leg call, in E.164 format (e.g. +15555555555).
    * @return transferTo
-  **/
+   */
   @javax.annotation.Nullable
   public String getTransferTo() {
     return transferTo;
   }
 
-  public void setTransferTo(String transferTo) {
+  public void setTransferTo(@javax.annotation.Nullable String transferTo) {
     this.transferTo = transferTo;
   }
 
 
-  public CallRecordingMetadata duration(String duration) {
+  public CallRecordingMetadata duration(@javax.annotation.Nullable String duration) {
     this.duration = duration;
     return this;
   }
 
-   /**
+  /**
    * The duration of the recording in ISO-8601 format
    * @return duration
-  **/
+   */
   @javax.annotation.Nullable
   public String getDuration() {
     return duration;
   }
 
-  public void setDuration(String duration) {
+  public void setDuration(@javax.annotation.Nullable String duration) {
     this.duration = duration;
   }
 
 
-  public CallRecordingMetadata direction(CallDirectionEnum direction) {
+  public CallRecordingMetadata direction(@javax.annotation.Nullable CallDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
 
-   /**
+  /**
    * Get direction
    * @return direction
-  **/
+   */
   @javax.annotation.Nullable
   public CallDirectionEnum getDirection() {
     return direction;
   }
 
-  public void setDirection(CallDirectionEnum direction) {
+  public void setDirection(@javax.annotation.Nullable CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
-  public CallRecordingMetadata channels(Integer channels) {
+  public CallRecordingMetadata channels(@javax.annotation.Nullable Integer channels) {
     this.channels = channels;
     return this;
   }
 
-   /**
+  /**
    * Always &#x60;1&#x60; for conference recordings; multi-channel recordings are not supported on conferences.
    * @return channels
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getChannels() {
     return channels;
   }
 
-  public void setChannels(Integer channels) {
+  public void setChannels(@javax.annotation.Nullable Integer channels) {
     this.channels = channels;
   }
 
 
-  public CallRecordingMetadata startTime(OffsetDateTime startTime) {
+  public CallRecordingMetadata startTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
   }
 
-   /**
+  /**
    * Time the call was started, in ISO 8601 format.
    * @return startTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getStartTime() {
     return startTime;
   }
 
-  public void setStartTime(OffsetDateTime startTime) {
+  public void setStartTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
-  public CallRecordingMetadata endTime(OffsetDateTime endTime) {
+  public CallRecordingMetadata endTime(@javax.annotation.Nullable OffsetDateTime endTime) {
     this.endTime = endTime;
     return this;
   }
 
-   /**
+  /**
    * The time that the recording ended in ISO-8601 format
    * @return endTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getEndTime() {
     return endTime;
   }
 
-  public void setEndTime(OffsetDateTime endTime) {
+  public void setEndTime(@javax.annotation.Nullable OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
 
-  public CallRecordingMetadata fileFormat(FileFormatEnum fileFormat) {
+  public CallRecordingMetadata fileFormat(@javax.annotation.Nullable FileFormatEnum fileFormat) {
     this.fileFormat = fileFormat;
     return this;
   }
 
-   /**
+  /**
    * Get fileFormat
    * @return fileFormat
-  **/
+   */
   @javax.annotation.Nullable
   public FileFormatEnum getFileFormat() {
     return fileFormat;
   }
 
-  public void setFileFormat(FileFormatEnum fileFormat) {
+  public void setFileFormat(@javax.annotation.Nullable FileFormatEnum fileFormat) {
     this.fileFormat = fileFormat;
   }
 
 
-  public CallRecordingMetadata status(String status) {
+  public CallRecordingMetadata status(@javax.annotation.Nullable String status) {
     this.status = status;
     return this;
   }
 
-   /**
+  /**
    * The current status of the process. For recording, current possible values are &#39;processing&#39;, &#39;partial&#39;, &#39;complete&#39;, &#39;deleted&#39;, and &#39;error&#39;. For transcriptions, current possible values are &#39;none&#39;, &#39;processing&#39;, &#39;available&#39;, &#39;error&#39;, &#39;timeout&#39;, &#39;file-size-too-big&#39;, and &#39;file-size-too-small&#39;. Additional states may be added in the future, so your application must be tolerant of unknown values.
    * @return status
-  **/
+   */
   @javax.annotation.Nullable
   public String getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(@javax.annotation.Nullable String status) {
     this.status = status;
   }
 
 
-  public CallRecordingMetadata mediaUrl(URI mediaUrl) {
+  public CallRecordingMetadata mediaUrl(@javax.annotation.Nullable URI mediaUrl) {
     this.mediaUrl = mediaUrl;
     return this;
   }
 
-   /**
+  /**
    * The URL that can be used to download the recording. Only present if the recording is finished and may be downloaded.
    * @return mediaUrl
-  **/
+   */
   @javax.annotation.Nullable
   public URI getMediaUrl() {
     return mediaUrl;
   }
 
-  public void setMediaUrl(URI mediaUrl) {
+  public void setMediaUrl(@javax.annotation.Nullable URI mediaUrl) {
     this.mediaUrl = mediaUrl;
   }
 
 
-  public CallRecordingMetadata transcription(RecordingTranscriptionMetadata transcription) {
+  public CallRecordingMetadata transcription(@javax.annotation.Nullable RecordingTranscriptionMetadata transcription) {
     this.transcription = transcription;
     return this;
   }
 
-   /**
+  /**
    * Get transcription
    * @return transcription
-  **/
+   */
   @javax.annotation.Nullable
   public RecordingTranscriptionMetadata getTranscription() {
     return transcription;
   }
 
-  public void setTranscription(RecordingTranscriptionMetadata transcription) {
+  public void setTranscription(@javax.annotation.Nullable RecordingTranscriptionMetadata transcription) {
     this.transcription = transcription;
   }
 
 
-  public CallRecordingMetadata recordingName(String recordingName) {
+  public CallRecordingMetadata recordingName(@javax.annotation.Nullable String recordingName) {
     this.recordingName = recordingName;
     return this;
   }
 
-   /**
+  /**
    * A name to identify this recording.
    * @return recordingName
-  **/
+   */
   @javax.annotation.Nullable
   public String getRecordingName() {
     return recordingName;
   }
 
-  public void setRecordingName(String recordingName) {
+  public void setRecordingName(@javax.annotation.Nullable String recordingName) {
     this.recordingName = recordingName;
   }
 
@@ -659,12 +677,12 @@ public class CallRecordingMetadata {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CallRecordingMetadata
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to CallRecordingMetadata
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CallRecordingMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -797,22 +815,22 @@ public class CallRecordingMetadata {
     }
   }
 
- /**
-  * Create an instance of CallRecordingMetadata given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of CallRecordingMetadata
-  * @throws IOException if the JSON string is invalid with respect to CallRecordingMetadata
-  */
+  /**
+   * Create an instance of CallRecordingMetadata given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of CallRecordingMetadata
+   * @throws IOException if the JSON string is invalid with respect to CallRecordingMetadata
+   */
   public static CallRecordingMetadata fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, CallRecordingMetadata.class);
   }
 
- /**
-  * Convert an instance of CallRecordingMetadata to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of CallRecordingMetadata to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

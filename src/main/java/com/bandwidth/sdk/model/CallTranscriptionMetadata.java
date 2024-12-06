@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,76 +48,79 @@ import com.bandwidth.sdk.JSON;
 /**
  * CallTranscriptionMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class CallTranscriptionMetadata {
   public static final String SERIALIZED_NAME_TRANSCRIPTION_ID = "transcriptionId";
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTION_ID)
+  @javax.annotation.Nullable
   private String transcriptionId;
 
   public static final String SERIALIZED_NAME_TRANSCRIPTION_NAME = "transcriptionName";
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTION_NAME)
+  @javax.annotation.Nullable
   private String transcriptionName;
 
   public static final String SERIALIZED_NAME_TRANSCRIPTION_URL = "transcriptionUrl";
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTION_URL)
+  @javax.annotation.Nullable
   private String transcriptionUrl;
 
   public CallTranscriptionMetadata() {
   }
 
-  public CallTranscriptionMetadata transcriptionId(String transcriptionId) {
+  public CallTranscriptionMetadata transcriptionId(@javax.annotation.Nullable String transcriptionId) {
     this.transcriptionId = transcriptionId;
     return this;
   }
 
-   /**
+  /**
    * The programmable voice API transcription ID.
    * @return transcriptionId
-  **/
+   */
   @javax.annotation.Nullable
   public String getTranscriptionId() {
     return transcriptionId;
   }
 
-  public void setTranscriptionId(String transcriptionId) {
+  public void setTranscriptionId(@javax.annotation.Nullable String transcriptionId) {
     this.transcriptionId = transcriptionId;
   }
 
 
-  public CallTranscriptionMetadata transcriptionName(String transcriptionName) {
+  public CallTranscriptionMetadata transcriptionName(@javax.annotation.Nullable String transcriptionName) {
     this.transcriptionName = transcriptionName;
     return this;
   }
 
-   /**
+  /**
    * The programmable voice API transcription name. This name could be provided by the user when creating the transcription.
    * @return transcriptionName
-  **/
+   */
   @javax.annotation.Nullable
   public String getTranscriptionName() {
     return transcriptionName;
   }
 
-  public void setTranscriptionName(String transcriptionName) {
+  public void setTranscriptionName(@javax.annotation.Nullable String transcriptionName) {
     this.transcriptionName = transcriptionName;
   }
 
 
-  public CallTranscriptionMetadata transcriptionUrl(String transcriptionUrl) {
+  public CallTranscriptionMetadata transcriptionUrl(@javax.annotation.Nullable String transcriptionUrl) {
     this.transcriptionUrl = transcriptionUrl;
     return this;
   }
 
-   /**
+  /**
    * A URL that may be used to retrieve the transcription itself. This points to the [Get Call Transcription](/apis/voice/#operation/getCallTranscription) endpoint.
    * @return transcriptionUrl
-  **/
+   */
   @javax.annotation.Nullable
   public String getTranscriptionUrl() {
     return transcriptionUrl;
   }
 
-  public void setTranscriptionUrl(String transcriptionUrl) {
+  public void setTranscriptionUrl(@javax.annotation.Nullable String transcriptionUrl) {
     this.transcriptionUrl = transcriptionUrl;
   }
 
@@ -226,12 +228,12 @@ public class CallTranscriptionMetadata {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CallTranscriptionMetadata
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to CallTranscriptionMetadata
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CallTranscriptionMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -322,22 +324,22 @@ public class CallTranscriptionMetadata {
     }
   }
 
- /**
-  * Create an instance of CallTranscriptionMetadata given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of CallTranscriptionMetadata
-  * @throws IOException if the JSON string is invalid with respect to CallTranscriptionMetadata
-  */
+  /**
+   * Create an instance of CallTranscriptionMetadata given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of CallTranscriptionMetadata
+   * @throws IOException if the JSON string is invalid with respect to CallTranscriptionMetadata
+   */
   public static CallTranscriptionMetadata fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, CallTranscriptionMetadata.class);
   }
 
- /**
-  * Convert an instance of CallTranscriptionMetadata to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of CallTranscriptionMetadata to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,30 +48,31 @@ import com.bandwidth.sdk.JSON;
 /**
  * TnLookupRequestError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class TnLookupRequestError {
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nullable
   private String message;
 
   public TnLookupRequestError() {
   }
 
-  public TnLookupRequestError message(String message) {
+  public TnLookupRequestError message(@javax.annotation.Nullable String message) {
     this.message = message;
     return this;
   }
 
-   /**
+  /**
    * A description of what validation error occurred.
    * @return message
-  **/
+   */
   @javax.annotation.Nullable
   public String getMessage() {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nullable String message) {
     this.message = message;
   }
 
@@ -174,12 +174,12 @@ public class TnLookupRequestError {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to TnLookupRequestError
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to TnLookupRequestError
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!TnLookupRequestError.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -264,22 +264,22 @@ public class TnLookupRequestError {
     }
   }
 
- /**
-  * Create an instance of TnLookupRequestError given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of TnLookupRequestError
-  * @throws IOException if the JSON string is invalid with respect to TnLookupRequestError
-  */
+  /**
+   * Create an instance of TnLookupRequestError given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of TnLookupRequestError
+   * @throws IOException if the JSON string is invalid with respect to TnLookupRequestError
+   */
   public static TnLookupRequestError fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, TnLookupRequestError.class);
   }
 
- /**
-  * Convert an instance of TnLookupRequestError to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of TnLookupRequestError to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

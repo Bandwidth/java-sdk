@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,99 +48,103 @@ import com.bandwidth.sdk.JSON;
 /**
  * PageInfo
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class PageInfo {
   public static final String SERIALIZED_NAME_PREV_PAGE = "prevPage";
   @SerializedName(SERIALIZED_NAME_PREV_PAGE)
+  @javax.annotation.Nullable
   private String prevPage;
 
   public static final String SERIALIZED_NAME_NEXT_PAGE = "nextPage";
   @SerializedName(SERIALIZED_NAME_NEXT_PAGE)
+  @javax.annotation.Nullable
   private String nextPage;
 
   public static final String SERIALIZED_NAME_PREV_PAGE_TOKEN = "prevPageToken";
   @SerializedName(SERIALIZED_NAME_PREV_PAGE_TOKEN)
+  @javax.annotation.Nullable
   private String prevPageToken;
 
   public static final String SERIALIZED_NAME_NEXT_PAGE_TOKEN = "nextPageToken";
   @SerializedName(SERIALIZED_NAME_NEXT_PAGE_TOKEN)
+  @javax.annotation.Nullable
   private String nextPageToken;
 
   public PageInfo() {
   }
 
-  public PageInfo prevPage(String prevPage) {
+  public PageInfo prevPage(@javax.annotation.Nullable String prevPage) {
     this.prevPage = prevPage;
     return this;
   }
 
-   /**
+  /**
    * The link to the previous page for pagination.
    * @return prevPage
-  **/
+   */
   @javax.annotation.Nullable
   public String getPrevPage() {
     return prevPage;
   }
 
-  public void setPrevPage(String prevPage) {
+  public void setPrevPage(@javax.annotation.Nullable String prevPage) {
     this.prevPage = prevPage;
   }
 
 
-  public PageInfo nextPage(String nextPage) {
+  public PageInfo nextPage(@javax.annotation.Nullable String nextPage) {
     this.nextPage = nextPage;
     return this;
   }
 
-   /**
+  /**
    * The link to the next page for pagination.
    * @return nextPage
-  **/
+   */
   @javax.annotation.Nullable
   public String getNextPage() {
     return nextPage;
   }
 
-  public void setNextPage(String nextPage) {
+  public void setNextPage(@javax.annotation.Nullable String nextPage) {
     this.nextPage = nextPage;
   }
 
 
-  public PageInfo prevPageToken(String prevPageToken) {
+  public PageInfo prevPageToken(@javax.annotation.Nullable String prevPageToken) {
     this.prevPageToken = prevPageToken;
     return this;
   }
 
-   /**
+  /**
    * The isolated pagination token for the previous page.
    * @return prevPageToken
-  **/
+   */
   @javax.annotation.Nullable
   public String getPrevPageToken() {
     return prevPageToken;
   }
 
-  public void setPrevPageToken(String prevPageToken) {
+  public void setPrevPageToken(@javax.annotation.Nullable String prevPageToken) {
     this.prevPageToken = prevPageToken;
   }
 
 
-  public PageInfo nextPageToken(String nextPageToken) {
+  public PageInfo nextPageToken(@javax.annotation.Nullable String nextPageToken) {
     this.nextPageToken = nextPageToken;
     return this;
   }
 
-   /**
+  /**
    * The isolated pagination token for the next page.
    * @return nextPageToken
-  **/
+   */
   @javax.annotation.Nullable
   public String getNextPageToken() {
     return nextPageToken;
   }
 
-  public void setNextPageToken(String nextPageToken) {
+  public void setNextPageToken(@javax.annotation.Nullable String nextPageToken) {
     this.nextPageToken = nextPageToken;
   }
 
@@ -252,12 +255,12 @@ public class PageInfo {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to PageInfo
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to PageInfo
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!PageInfo.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -351,22 +354,22 @@ public class PageInfo {
     }
   }
 
- /**
-  * Create an instance of PageInfo given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of PageInfo
-  * @throws IOException if the JSON string is invalid with respect to PageInfo
-  */
+  /**
+   * Create an instance of PageInfo given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of PageInfo
+   * @throws IOException if the JSON string is invalid with respect to PageInfo
+   */
   public static PageInfo fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, PageInfo.class);
   }
 
- /**
-  * Convert an instance of PageInfo to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of PageInfo to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

@@ -42,7 +42,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -54,236 +53,254 @@ import com.bandwidth.sdk.JSON;
 /**
  * CallState
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class CallState {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  @javax.annotation.Nullable
   private String applicationId;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String accountId;
 
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
+  @javax.annotation.Nullable
   private String callId;
 
   public static final String SERIALIZED_NAME_PARENT_CALL_ID = "parentCallId";
   @SerializedName(SERIALIZED_NAME_PARENT_CALL_ID)
+  @javax.annotation.Nullable
   private String parentCallId;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
+  @javax.annotation.Nullable
   private String to;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
+  @javax.annotation.Nullable
   private String from;
 
   public static final String SERIALIZED_NAME_DIRECTION = "direction";
   @SerializedName(SERIALIZED_NAME_DIRECTION)
+  @javax.annotation.Nullable
   private CallDirectionEnum direction;
 
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
+  @javax.annotation.Nullable
   private String state;
 
   public static final String SERIALIZED_NAME_STIR_SHAKEN = "stirShaken";
   @SerializedName(SERIALIZED_NAME_STIR_SHAKEN)
+  @javax.annotation.Nullable
   private Map<String, String> stirShaken;
 
   public static final String SERIALIZED_NAME_IDENTITY = "identity";
   @SerializedName(SERIALIZED_NAME_IDENTITY)
+  @javax.annotation.Nullable
   private String identity;
 
   public static final String SERIALIZED_NAME_ENQUEUED_TIME = "enqueuedTime";
   @SerializedName(SERIALIZED_NAME_ENQUEUED_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime enqueuedTime;
 
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime startTime;
 
   public static final String SERIALIZED_NAME_ANSWER_TIME = "answerTime";
   @SerializedName(SERIALIZED_NAME_ANSWER_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime answerTime;
 
   public static final String SERIALIZED_NAME_END_TIME = "endTime";
   @SerializedName(SERIALIZED_NAME_END_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime endTime;
 
   public static final String SERIALIZED_NAME_DISCONNECT_CAUSE = "disconnectCause";
   @SerializedName(SERIALIZED_NAME_DISCONNECT_CAUSE)
+  @javax.annotation.Nullable
   private String disconnectCause;
 
   public static final String SERIALIZED_NAME_ERROR_MESSAGE = "errorMessage";
   @SerializedName(SERIALIZED_NAME_ERROR_MESSAGE)
+  @javax.annotation.Nullable
   private String errorMessage;
 
   public static final String SERIALIZED_NAME_ERROR_ID = "errorId";
   @SerializedName(SERIALIZED_NAME_ERROR_ID)
+  @javax.annotation.Nullable
   private String errorId;
 
   public static final String SERIALIZED_NAME_LAST_UPDATE = "lastUpdate";
   @SerializedName(SERIALIZED_NAME_LAST_UPDATE)
+  @javax.annotation.Nullable
   private OffsetDateTime lastUpdate;
 
   public CallState() {
   }
 
-  public CallState applicationId(String applicationId) {
+  public CallState applicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The application id associated with the call.
    * @return applicationId
-  **/
+   */
   @javax.annotation.Nullable
   public String getApplicationId() {
     return applicationId;
   }
 
-  public void setApplicationId(String applicationId) {
+  public void setApplicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public CallState accountId(String accountId) {
+  public CallState accountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The account id associated with the call.
    * @return accountId
-  **/
+   */
   @javax.annotation.Nullable
   public String getAccountId() {
     return accountId;
   }
 
-  public void setAccountId(String accountId) {
+  public void setAccountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
   }
 
 
-  public CallState callId(String callId) {
+  public CallState callId(@javax.annotation.Nullable String callId) {
     this.callId = callId;
     return this;
   }
 
-   /**
+  /**
    * The programmable voice API call ID.
    * @return callId
-  **/
+   */
   @javax.annotation.Nullable
   public String getCallId() {
     return callId;
   }
 
-  public void setCallId(String callId) {
+  public void setCallId(@javax.annotation.Nullable String callId) {
     this.callId = callId;
   }
 
 
-  public CallState parentCallId(String parentCallId) {
+  public CallState parentCallId(@javax.annotation.Nullable String parentCallId) {
     this.parentCallId = parentCallId;
     return this;
   }
 
-   /**
+  /**
    * The A-leg call id, set only if this call is the B-leg of a [&#x60;&lt;Transfer&gt;&#x60;](/docs/voice/bxml/transfer).
    * @return parentCallId
-  **/
+   */
   @javax.annotation.Nullable
   public String getParentCallId() {
     return parentCallId;
   }
 
-  public void setParentCallId(String parentCallId) {
+  public void setParentCallId(@javax.annotation.Nullable String parentCallId) {
     this.parentCallId = parentCallId;
   }
 
 
-  public CallState to(String to) {
+  public CallState to(@javax.annotation.Nullable String to) {
     this.to = to;
     return this;
   }
 
-   /**
+  /**
    * The phone number that received the call, in E.164 format (e.g. +15555555555), or if the call was to a SIP URI, the SIP URI.
    * @return to
-  **/
+   */
   @javax.annotation.Nullable
   public String getTo() {
     return to;
   }
 
-  public void setTo(String to) {
+  public void setTo(@javax.annotation.Nullable String to) {
     this.to = to;
   }
 
 
-  public CallState from(String from) {
+  public CallState from(@javax.annotation.Nullable String from) {
     this.from = from;
     return this;
   }
 
-   /**
+  /**
    * The phone number that made the call, in E.164 format (e.g. +15555555555).
    * @return from
-  **/
+   */
   @javax.annotation.Nullable
   public String getFrom() {
     return from;
   }
 
-  public void setFrom(String from) {
+  public void setFrom(@javax.annotation.Nullable String from) {
     this.from = from;
   }
 
 
-  public CallState direction(CallDirectionEnum direction) {
+  public CallState direction(@javax.annotation.Nullable CallDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
 
-   /**
+  /**
    * Get direction
    * @return direction
-  **/
+   */
   @javax.annotation.Nullable
   public CallDirectionEnum getDirection() {
     return direction;
   }
 
-  public void setDirection(CallDirectionEnum direction) {
+  public void setDirection(@javax.annotation.Nullable CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
-  public CallState state(String state) {
+  public CallState state(@javax.annotation.Nullable String state) {
     this.state = state;
     return this;
   }
 
-   /**
+  /**
    * The current state of the call. Current possible values are &#x60;queued&#x60;, &#x60;initiated&#x60;, &#x60;answered&#x60; and &#x60;disconnected&#x60;. Additional states may be added in the future, so your application must be tolerant of unknown values.
    * @return state
-  **/
+   */
   @javax.annotation.Nullable
   public String getState() {
     return state;
   }
 
-  public void setState(String state) {
+  public void setState(@javax.annotation.Nullable String state) {
     this.state = state;
   }
 
 
-  public CallState stirShaken(Map<String, String> stirShaken) {
+  public CallState stirShaken(@javax.annotation.Nullable Map<String, String> stirShaken) {
     this.stirShaken = stirShaken;
     return this;
   }
@@ -296,187 +313,187 @@ public class CallState {
     return this;
   }
 
-   /**
+  /**
    * For inbound calls, the Bandwidth STIR/SHAKEN implementation will verify the information provided in the inbound invite request &#x60;Identity&#x60; header. The verification status is stored in the call state &#x60;stirShaken&#x60; property as follows.  | Property          | Description | |:------------------|:------------| | verstat | (optional) The verification status indicating whether the verification was successful or not. Possible values are &#x60;TN-Verification-Passed&#x60; or &#x60;TN-Verification-Failed&#x60;. | | attestationIndicator | (optional) The attestation level verified by Bandwidth. Possible values are &#x60;A&#x60; (full), &#x60;B&#x60; (partial) or &#x60;C&#x60; (gateway). | | originatingId | (optional) A unique origination identifier. |  Note that these are common properties but that the &#x60;stirShaken&#x60; object is free form and can contain other key-value pairs.  More information: [Understanding STIR/SHAKEN](https://www.bandwidth.com/regulations/stir-shaken).
    * @return stirShaken
-  **/
+   */
   @javax.annotation.Nullable
   public Map<String, String> getStirShaken() {
     return stirShaken;
   }
 
-  public void setStirShaken(Map<String, String> stirShaken) {
+  public void setStirShaken(@javax.annotation.Nullable Map<String, String> stirShaken) {
     this.stirShaken = stirShaken;
   }
 
 
-  public CallState identity(String identity) {
+  public CallState identity(@javax.annotation.Nullable String identity) {
     this.identity = identity;
     return this;
   }
 
-   /**
+  /**
    * The value of the &#x60;Identity&#x60; header from the inbound invite request. Only present for inbound calls and if the account is configured to forward this header.
    * @return identity
-  **/
+   */
   @javax.annotation.Nullable
   public String getIdentity() {
     return identity;
   }
 
-  public void setIdentity(String identity) {
+  public void setIdentity(@javax.annotation.Nullable String identity) {
     this.identity = identity;
   }
 
 
-  public CallState enqueuedTime(OffsetDateTime enqueuedTime) {
+  public CallState enqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
     return this;
   }
 
-   /**
+  /**
    * The time this call was placed in queue.
    * @return enqueuedTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getEnqueuedTime() {
     return enqueuedTime;
   }
 
-  public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
+  public void setEnqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
-  public CallState startTime(OffsetDateTime startTime) {
+  public CallState startTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
   }
 
-   /**
+  /**
    * The time the call was initiated, in ISO 8601 format. &#x60;null&#x60; if the call is still in your queue.
    * @return startTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getStartTime() {
     return startTime;
   }
 
-  public void setStartTime(OffsetDateTime startTime) {
+  public void setStartTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
-  public CallState answerTime(OffsetDateTime answerTime) {
+  public CallState answerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
     this.answerTime = answerTime;
     return this;
   }
 
-   /**
+  /**
    * Populated once the call has been answered, with the time in ISO 8601 format.
    * @return answerTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getAnswerTime() {
     return answerTime;
   }
 
-  public void setAnswerTime(OffsetDateTime answerTime) {
+  public void setAnswerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
-  public CallState endTime(OffsetDateTime endTime) {
+  public CallState endTime(@javax.annotation.Nullable OffsetDateTime endTime) {
     this.endTime = endTime;
     return this;
   }
 
-   /**
+  /**
    * Populated once the call has ended, with the time in ISO 8601 format.
    * @return endTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getEndTime() {
     return endTime;
   }
 
-  public void setEndTime(OffsetDateTime endTime) {
+  public void setEndTime(@javax.annotation.Nullable OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
 
-  public CallState disconnectCause(String disconnectCause) {
+  public CallState disconnectCause(@javax.annotation.Nullable String disconnectCause) {
     this.disconnectCause = disconnectCause;
     return this;
   }
 
-   /**
+  /**
    * | Cause | Description | |:------|:------------| | &#x60;hangup&#x60;| One party hung up the call, a [&#x60;&lt;Hangup&gt;&#x60;](../../bxml/verbs/hangup.md) verb was executed, or there was no more BXML to execute; it indicates that the call ended normally. | | &#x60;busy&#x60; | Callee was busy. | | &#x60;timeout&#x60; | Call wasn&#39;t answered before the &#x60;callTimeout&#x60; was reached. | | &#x60;cancel&#x60; | Call was cancelled by its originator while it was ringing. | | &#x60;rejected&#x60; | Call was rejected by the callee. | | &#x60;callback-error&#x60; | BXML callback couldn&#39;t be delivered to your callback server. | | &#x60;invalid-bxml&#x60; | Invalid BXML was returned in response to a callback. | | &#x60;application-error&#x60; | An unsupported action was tried on the call, e.g. trying to play a .ogg audio. | | &#x60;account-limit&#x60; | Account rate limits were reached. | | &#x60;node-capacity-exceeded&#x60; | System maximum capacity was reached. | | &#x60;error&#x60; | Some error not described in any of the other causes happened on the call. | | &#x60;unknown&#x60; | Unknown error happened on the call. |  Note: This list is not exhaustive and other values can appear in the future.
    * @return disconnectCause
-  **/
+   */
   @javax.annotation.Nullable
   public String getDisconnectCause() {
     return disconnectCause;
   }
 
-  public void setDisconnectCause(String disconnectCause) {
+  public void setDisconnectCause(@javax.annotation.Nullable String disconnectCause) {
     this.disconnectCause = disconnectCause;
   }
 
 
-  public CallState errorMessage(String errorMessage) {
+  public CallState errorMessage(@javax.annotation.Nullable String errorMessage) {
     this.errorMessage = errorMessage;
     return this;
   }
 
-   /**
+  /**
    * Populated only if the call ended with an error, with text explaining the reason.
    * @return errorMessage
-  **/
+   */
   @javax.annotation.Nullable
   public String getErrorMessage() {
     return errorMessage;
   }
 
-  public void setErrorMessage(String errorMessage) {
+  public void setErrorMessage(@javax.annotation.Nullable String errorMessage) {
     this.errorMessage = errorMessage;
   }
 
 
-  public CallState errorId(String errorId) {
+  public CallState errorId(@javax.annotation.Nullable String errorId) {
     this.errorId = errorId;
     return this;
   }
 
-   /**
+  /**
    * Populated only if the call ended with an error, with a Bandwidth internal id that references the error event.
    * @return errorId
-  **/
+   */
   @javax.annotation.Nullable
   public String getErrorId() {
     return errorId;
   }
 
-  public void setErrorId(String errorId) {
+  public void setErrorId(@javax.annotation.Nullable String errorId) {
     this.errorId = errorId;
   }
 
 
-  public CallState lastUpdate(OffsetDateTime lastUpdate) {
+  public CallState lastUpdate(@javax.annotation.Nullable OffsetDateTime lastUpdate) {
     this.lastUpdate = lastUpdate;
     return this;
   }
 
-   /**
+  /**
    * The last time the call had a state update, in ISO 8601 format.
    * @return lastUpdate
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getLastUpdate() {
     return lastUpdate;
   }
 
-  public void setLastUpdate(OffsetDateTime lastUpdate) {
+  public void setLastUpdate(@javax.annotation.Nullable OffsetDateTime lastUpdate) {
     this.lastUpdate = lastUpdate;
   }
 
@@ -640,12 +657,12 @@ public class CallState {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CallState
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to CallState
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CallState.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -764,22 +781,22 @@ public class CallState {
     }
   }
 
- /**
-  * Create an instance of CallState given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of CallState
-  * @throws IOException if the JSON string is invalid with respect to CallState
-  */
+  /**
+   * Create an instance of CallState given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of CallState
+   * @throws IOException if the JSON string is invalid with respect to CallState
+   */
   public static CallState fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, CallState.class);
   }
 
- /**
-  * Convert an instance of CallState to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of CallState to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

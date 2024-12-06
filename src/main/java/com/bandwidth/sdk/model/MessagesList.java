@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,62 +52,65 @@ import com.bandwidth.sdk.JSON;
 /**
  * MessagesList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class MessagesList {
   public static final String SERIALIZED_NAME_TOTAL_COUNT = "totalCount";
   @SerializedName(SERIALIZED_NAME_TOTAL_COUNT)
+  @javax.annotation.Nullable
   private Integer totalCount;
 
   public static final String SERIALIZED_NAME_PAGE_INFO = "pageInfo";
   @SerializedName(SERIALIZED_NAME_PAGE_INFO)
+  @javax.annotation.Nullable
   private PageInfo pageInfo;
 
   public static final String SERIALIZED_NAME_MESSAGES = "messages";
   @SerializedName(SERIALIZED_NAME_MESSAGES)
+  @javax.annotation.Nullable
   private List<ListMessageItem> messages = new ArrayList<>();
 
   public MessagesList() {
   }
 
-  public MessagesList totalCount(Integer totalCount) {
+  public MessagesList totalCount(@javax.annotation.Nullable Integer totalCount) {
     this.totalCount = totalCount;
     return this;
   }
 
-   /**
+  /**
    * The total number of messages matched by the search. When the request has limitTotalCount set to true this value is limited to 10,000.
    * @return totalCount
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getTotalCount() {
     return totalCount;
   }
 
-  public void setTotalCount(Integer totalCount) {
+  public void setTotalCount(@javax.annotation.Nullable Integer totalCount) {
     this.totalCount = totalCount;
   }
 
 
-  public MessagesList pageInfo(PageInfo pageInfo) {
+  public MessagesList pageInfo(@javax.annotation.Nullable PageInfo pageInfo) {
     this.pageInfo = pageInfo;
     return this;
   }
 
-   /**
+  /**
    * Get pageInfo
    * @return pageInfo
-  **/
+   */
   @javax.annotation.Nullable
   public PageInfo getPageInfo() {
     return pageInfo;
   }
 
-  public void setPageInfo(PageInfo pageInfo) {
+  public void setPageInfo(@javax.annotation.Nullable PageInfo pageInfo) {
     this.pageInfo = pageInfo;
   }
 
 
-  public MessagesList messages(List<ListMessageItem> messages) {
+  public MessagesList messages(@javax.annotation.Nullable List<ListMessageItem> messages) {
     this.messages = messages;
     return this;
   }
@@ -121,16 +123,16 @@ public class MessagesList {
     return this;
   }
 
-   /**
+  /**
    * Get messages
    * @return messages
-  **/
+   */
   @javax.annotation.Nullable
   public List<ListMessageItem> getMessages() {
     return messages;
   }
 
-  public void setMessages(List<ListMessageItem> messages) {
+  public void setMessages(@javax.annotation.Nullable List<ListMessageItem> messages) {
     this.messages = messages;
   }
 
@@ -238,12 +240,12 @@ public class MessagesList {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to MessagesList
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to MessagesList
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!MessagesList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -343,22 +345,22 @@ public class MessagesList {
     }
   }
 
- /**
-  * Create an instance of MessagesList given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of MessagesList
-  * @throws IOException if the JSON string is invalid with respect to MessagesList
-  */
+  /**
+   * Create an instance of MessagesList given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of MessagesList
+   * @throws IOException if the JSON string is invalid with respect to MessagesList
+   */
   public static MessagesList fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, MessagesList.class);
   }
 
- /**
-  * Convert an instance of MessagesList to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of MessagesList to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

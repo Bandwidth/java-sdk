@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,30 +48,31 @@ import com.bandwidth.sdk.JSON;
 /**
  * VerifyCodeResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class VerifyCodeResponse {
   public static final String SERIALIZED_NAME_VALID = "valid";
   @SerializedName(SERIALIZED_NAME_VALID)
+  @javax.annotation.Nullable
   private Boolean valid;
 
   public VerifyCodeResponse() {
   }
 
-  public VerifyCodeResponse valid(Boolean valid) {
+  public VerifyCodeResponse valid(@javax.annotation.Nullable Boolean valid) {
     this.valid = valid;
     return this;
   }
 
-   /**
+  /**
    * Whether or not the supplied code is valid.
    * @return valid
-  **/
+   */
   @javax.annotation.Nullable
   public Boolean getValid() {
     return valid;
   }
 
-  public void setValid(Boolean valid) {
+  public void setValid(@javax.annotation.Nullable Boolean valid) {
     this.valid = valid;
   }
 
@@ -174,12 +174,12 @@ public class VerifyCodeResponse {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to VerifyCodeResponse
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to VerifyCodeResponse
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!VerifyCodeResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -261,22 +261,22 @@ public class VerifyCodeResponse {
     }
   }
 
- /**
-  * Create an instance of VerifyCodeResponse given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of VerifyCodeResponse
-  * @throws IOException if the JSON string is invalid with respect to VerifyCodeResponse
-  */
+  /**
+   * Create an instance of VerifyCodeResponse given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of VerifyCodeResponse
+   * @throws IOException if the JSON string is invalid with respect to VerifyCodeResponse
+   */
   public static VerifyCodeResponse fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, VerifyCodeResponse.class);
   }
 
- /**
-  * Convert an instance of VerifyCodeResponse to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of VerifyCodeResponse to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

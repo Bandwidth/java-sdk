@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,214 +52,223 @@ import com.bandwidth.sdk.JSON;
 /**
  * UpdateConference
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class UpdateConference {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private ConferenceStateEnum status = ConferenceStateEnum.ACTIVE;
 
   public static final String SERIALIZED_NAME_REDIRECT_URL = "redirectUrl";
   @SerializedName(SERIALIZED_NAME_REDIRECT_URL)
+  @javax.annotation.Nullable
   private URI redirectUrl;
 
   public static final String SERIALIZED_NAME_REDIRECT_METHOD = "redirectMethod";
   @SerializedName(SERIALIZED_NAME_REDIRECT_METHOD)
+  @javax.annotation.Nullable
   private RedirectMethodEnum redirectMethod = RedirectMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
+  @javax.annotation.Nullable
   private String username;
 
   public static final String SERIALIZED_NAME_PASSWORD = "password";
   @SerializedName(SERIALIZED_NAME_PASSWORD)
+  @javax.annotation.Nullable
   private String password;
 
   public static final String SERIALIZED_NAME_REDIRECT_FALLBACK_URL = "redirectFallbackUrl";
   @SerializedName(SERIALIZED_NAME_REDIRECT_FALLBACK_URL)
+  @javax.annotation.Nullable
   private URI redirectFallbackUrl;
 
   public static final String SERIALIZED_NAME_REDIRECT_FALLBACK_METHOD = "redirectFallbackMethod";
   @SerializedName(SERIALIZED_NAME_REDIRECT_FALLBACK_METHOD)
+  @javax.annotation.Nullable
   private RedirectMethodEnum redirectFallbackMethod = RedirectMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_FALLBACK_USERNAME = "fallbackUsername";
   @SerializedName(SERIALIZED_NAME_FALLBACK_USERNAME)
+  @javax.annotation.Nullable
   private String fallbackUsername;
 
   public static final String SERIALIZED_NAME_FALLBACK_PASSWORD = "fallbackPassword";
   @SerializedName(SERIALIZED_NAME_FALLBACK_PASSWORD)
+  @javax.annotation.Nullable
   private String fallbackPassword;
 
   public UpdateConference() {
   }
 
-  public UpdateConference status(ConferenceStateEnum status) {
+  public UpdateConference status(@javax.annotation.Nullable ConferenceStateEnum status) {
     this.status = status;
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @javax.annotation.Nullable
   public ConferenceStateEnum getStatus() {
     return status;
   }
 
-  public void setStatus(ConferenceStateEnum status) {
+  public void setStatus(@javax.annotation.Nullable ConferenceStateEnum status) {
     this.status = status;
   }
 
 
-  public UpdateConference redirectUrl(URI redirectUrl) {
+  public UpdateConference redirectUrl(@javax.annotation.Nullable URI redirectUrl) {
     this.redirectUrl = redirectUrl;
     return this;
   }
 
-   /**
+  /**
    * The URL to send the [conferenceRedirect](/docs/voice/webhooks/conferenceRedirect) event which will provide new BXML. Not allowed if &#x60;state&#x60; is &#x60;completed&#x60;, but required if &#x60;state&#x60; is &#x60;active&#x60;.
    * @return redirectUrl
-  **/
+   */
   @javax.annotation.Nullable
   public URI getRedirectUrl() {
     return redirectUrl;
   }
 
-  public void setRedirectUrl(URI redirectUrl) {
+  public void setRedirectUrl(@javax.annotation.Nullable URI redirectUrl) {
     this.redirectUrl = redirectUrl;
   }
 
 
-  public UpdateConference redirectMethod(RedirectMethodEnum redirectMethod) {
+  public UpdateConference redirectMethod(@javax.annotation.Nullable RedirectMethodEnum redirectMethod) {
     this.redirectMethod = redirectMethod;
     return this;
   }
 
-   /**
+  /**
    * Get redirectMethod
    * @return redirectMethod
-  **/
+   */
   @javax.annotation.Nullable
   public RedirectMethodEnum getRedirectMethod() {
     return redirectMethod;
   }
 
-  public void setRedirectMethod(RedirectMethodEnum redirectMethod) {
+  public void setRedirectMethod(@javax.annotation.Nullable RedirectMethodEnum redirectMethod) {
     this.redirectMethod = redirectMethod;
   }
 
 
-  public UpdateConference username(String username) {
+  public UpdateConference username(@javax.annotation.Nullable String username) {
     this.username = username;
     return this;
   }
 
-   /**
+  /**
    * Basic auth username.
    * @return username
-  **/
+   */
   @javax.annotation.Nullable
   public String getUsername() {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(@javax.annotation.Nullable String username) {
     this.username = username;
   }
 
 
-  public UpdateConference password(String password) {
+  public UpdateConference password(@javax.annotation.Nullable String password) {
     this.password = password;
     return this;
   }
 
-   /**
+  /**
    * Basic auth password.
    * @return password
-  **/
+   */
   @javax.annotation.Nullable
   public String getPassword() {
     return password;
   }
 
-  public void setPassword(String password) {
+  public void setPassword(@javax.annotation.Nullable String password) {
     this.password = password;
   }
 
 
-  public UpdateConference redirectFallbackUrl(URI redirectFallbackUrl) {
+  public UpdateConference redirectFallbackUrl(@javax.annotation.Nullable URI redirectFallbackUrl) {
     this.redirectFallbackUrl = redirectFallbackUrl;
     return this;
   }
 
-   /**
+  /**
    * A fallback url which, if provided, will be used to retry the &#x60;conferenceRedirect&#x60; webhook delivery in case &#x60;redirectUrl&#x60; fails to respond.  Not allowed if &#x60;state&#x60; is &#x60;completed&#x60;.
    * @return redirectFallbackUrl
-  **/
+   */
   @javax.annotation.Nullable
   public URI getRedirectFallbackUrl() {
     return redirectFallbackUrl;
   }
 
-  public void setRedirectFallbackUrl(URI redirectFallbackUrl) {
+  public void setRedirectFallbackUrl(@javax.annotation.Nullable URI redirectFallbackUrl) {
     this.redirectFallbackUrl = redirectFallbackUrl;
   }
 
 
-  public UpdateConference redirectFallbackMethod(RedirectMethodEnum redirectFallbackMethod) {
+  public UpdateConference redirectFallbackMethod(@javax.annotation.Nullable RedirectMethodEnum redirectFallbackMethod) {
     this.redirectFallbackMethod = redirectFallbackMethod;
     return this;
   }
 
-   /**
+  /**
    * Get redirectFallbackMethod
    * @return redirectFallbackMethod
-  **/
+   */
   @javax.annotation.Nullable
   public RedirectMethodEnum getRedirectFallbackMethod() {
     return redirectFallbackMethod;
   }
 
-  public void setRedirectFallbackMethod(RedirectMethodEnum redirectFallbackMethod) {
+  public void setRedirectFallbackMethod(@javax.annotation.Nullable RedirectMethodEnum redirectFallbackMethod) {
     this.redirectFallbackMethod = redirectFallbackMethod;
   }
 
 
-  public UpdateConference fallbackUsername(String fallbackUsername) {
+  public UpdateConference fallbackUsername(@javax.annotation.Nullable String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
     return this;
   }
 
-   /**
+  /**
    * Basic auth username.
    * @return fallbackUsername
-  **/
+   */
   @javax.annotation.Nullable
   public String getFallbackUsername() {
     return fallbackUsername;
   }
 
-  public void setFallbackUsername(String fallbackUsername) {
+  public void setFallbackUsername(@javax.annotation.Nullable String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
   }
 
 
-  public UpdateConference fallbackPassword(String fallbackPassword) {
+  public UpdateConference fallbackPassword(@javax.annotation.Nullable String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
     return this;
   }
 
-   /**
+  /**
    * Basic auth password.
    * @return fallbackPassword
-  **/
+   */
   @javax.annotation.Nullable
   public String getFallbackPassword() {
     return fallbackPassword;
   }
 
-  public void setFallbackPassword(String fallbackPassword) {
+  public void setFallbackPassword(@javax.annotation.Nullable String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
   }
 
@@ -397,12 +405,12 @@ public class UpdateConference {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to UpdateConference
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to UpdateConference
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!UpdateConference.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -514,22 +522,22 @@ public class UpdateConference {
     }
   }
 
- /**
-  * Create an instance of UpdateConference given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of UpdateConference
-  * @throws IOException if the JSON string is invalid with respect to UpdateConference
-  */
+  /**
+   * Create an instance of UpdateConference given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of UpdateConference
+   * @throws IOException if the JSON string is invalid with respect to UpdateConference
+   */
   public static UpdateConference fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, UpdateConference.class);
   }
 
- /**
-  * Convert an instance of UpdateConference to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of UpdateConference to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

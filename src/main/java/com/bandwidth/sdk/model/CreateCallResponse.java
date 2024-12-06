@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,490 +52,511 @@ import com.bandwidth.sdk.JSON;
 /**
  * CreateCallResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class CreateCallResponse {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  @javax.annotation.Nonnull
   private String applicationId;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+  @javax.annotation.Nonnull
   private String accountId;
 
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
+  @javax.annotation.Nonnull
   private String callId;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
+  @javax.annotation.Nonnull
   private String to;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
+  @javax.annotation.Nonnull
   private String from;
 
   public static final String SERIALIZED_NAME_ENQUEUED_TIME = "enqueuedTime";
   @SerializedName(SERIALIZED_NAME_ENQUEUED_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime enqueuedTime;
 
   public static final String SERIALIZED_NAME_CALL_URL = "callUrl";
   @SerializedName(SERIALIZED_NAME_CALL_URL)
+  @javax.annotation.Nonnull
   private URI callUrl;
 
   public static final String SERIALIZED_NAME_CALL_TIMEOUT = "callTimeout";
   @SerializedName(SERIALIZED_NAME_CALL_TIMEOUT)
+  @javax.annotation.Nullable
   private Double callTimeout;
 
   public static final String SERIALIZED_NAME_CALLBACK_TIMEOUT = "callbackTimeout";
   @SerializedName(SERIALIZED_NAME_CALLBACK_TIMEOUT)
+  @javax.annotation.Nullable
   private Double callbackTimeout;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
+  @javax.annotation.Nullable
   private String tag;
 
   public static final String SERIALIZED_NAME_ANSWER_METHOD = "answerMethod";
   @SerializedName(SERIALIZED_NAME_ANSWER_METHOD)
+  @javax.annotation.Nullable
   private CallbackMethodEnum answerMethod = CallbackMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_ANSWER_URL = "answerUrl";
   @SerializedName(SERIALIZED_NAME_ANSWER_URL)
+  @javax.annotation.Nonnull
   private URI answerUrl;
 
   public static final String SERIALIZED_NAME_ANSWER_FALLBACK_METHOD = "answerFallbackMethod";
   @SerializedName(SERIALIZED_NAME_ANSWER_FALLBACK_METHOD)
+  @javax.annotation.Nullable
   private CallbackMethodEnum answerFallbackMethod = CallbackMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_ANSWER_FALLBACK_URL = "answerFallbackUrl";
   @SerializedName(SERIALIZED_NAME_ANSWER_FALLBACK_URL)
+  @javax.annotation.Nullable
   private URI answerFallbackUrl;
 
   public static final String SERIALIZED_NAME_DISCONNECT_METHOD = "disconnectMethod";
   @SerializedName(SERIALIZED_NAME_DISCONNECT_METHOD)
+  @javax.annotation.Nullable
   private CallbackMethodEnum disconnectMethod = CallbackMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_DISCONNECT_URL = "disconnectUrl";
   @SerializedName(SERIALIZED_NAME_DISCONNECT_URL)
+  @javax.annotation.Nullable
   private URI disconnectUrl;
 
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
+  @javax.annotation.Nullable
   private String username;
 
   public static final String SERIALIZED_NAME_PASSWORD = "password";
   @SerializedName(SERIALIZED_NAME_PASSWORD)
+  @javax.annotation.Nullable
   private String password;
 
   public static final String SERIALIZED_NAME_FALLBACK_USERNAME = "fallbackUsername";
   @SerializedName(SERIALIZED_NAME_FALLBACK_USERNAME)
+  @javax.annotation.Nullable
   private String fallbackUsername;
 
   public static final String SERIALIZED_NAME_FALLBACK_PASSWORD = "fallbackPassword";
   @SerializedName(SERIALIZED_NAME_FALLBACK_PASSWORD)
+  @javax.annotation.Nullable
   private String fallbackPassword;
 
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
+  @javax.annotation.Nullable
   private Integer priority;
 
   public CreateCallResponse() {
   }
 
-  public CreateCallResponse applicationId(String applicationId) {
+  public CreateCallResponse applicationId(@javax.annotation.Nonnull String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The id of the application associated with the &#x60;from&#x60; number.
    * @return applicationId
-  **/
+   */
   @javax.annotation.Nonnull
   public String getApplicationId() {
     return applicationId;
   }
 
-  public void setApplicationId(String applicationId) {
+  public void setApplicationId(@javax.annotation.Nonnull String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public CreateCallResponse accountId(String accountId) {
+  public CreateCallResponse accountId(@javax.annotation.Nonnull String accountId) {
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The bandwidth account ID associated with the call.
    * @return accountId
-  **/
+   */
   @javax.annotation.Nonnull
   public String getAccountId() {
     return accountId;
   }
 
-  public void setAccountId(String accountId) {
+  public void setAccountId(@javax.annotation.Nonnull String accountId) {
     this.accountId = accountId;
   }
 
 
-  public CreateCallResponse callId(String callId) {
+  public CreateCallResponse callId(@javax.annotation.Nonnull String callId) {
     this.callId = callId;
     return this;
   }
 
-   /**
+  /**
    * Programmable Voice API Call ID.
    * @return callId
-  **/
+   */
   @javax.annotation.Nonnull
   public String getCallId() {
     return callId;
   }
 
-  public void setCallId(String callId) {
+  public void setCallId(@javax.annotation.Nonnull String callId) {
     this.callId = callId;
   }
 
 
-  public CreateCallResponse to(String to) {
+  public CreateCallResponse to(@javax.annotation.Nonnull String to) {
     this.to = to;
     return this;
   }
 
-   /**
+  /**
    * Recipient of the outgoing call.
    * @return to
-  **/
+   */
   @javax.annotation.Nonnull
   public String getTo() {
     return to;
   }
 
-  public void setTo(String to) {
+  public void setTo(@javax.annotation.Nonnull String to) {
     this.to = to;
   }
 
 
-  public CreateCallResponse from(String from) {
+  public CreateCallResponse from(@javax.annotation.Nonnull String from) {
     this.from = from;
     return this;
   }
 
-   /**
+  /**
    * Phone number that created the outbound call.
    * @return from
-  **/
+   */
   @javax.annotation.Nonnull
   public String getFrom() {
     return from;
   }
 
-  public void setFrom(String from) {
+  public void setFrom(@javax.annotation.Nonnull String from) {
     this.from = from;
   }
 
 
-  public CreateCallResponse enqueuedTime(OffsetDateTime enqueuedTime) {
+  public CreateCallResponse enqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
     return this;
   }
 
-   /**
+  /**
    * The time at which the call was accepted into the queue.
    * @return enqueuedTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getEnqueuedTime() {
     return enqueuedTime;
   }
 
-  public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
+  public void setEnqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
-  public CreateCallResponse callUrl(URI callUrl) {
+  public CreateCallResponse callUrl(@javax.annotation.Nonnull URI callUrl) {
     this.callUrl = callUrl;
     return this;
   }
 
-   /**
+  /**
    * The URL to update this call&#39;s state.
    * @return callUrl
-  **/
+   */
   @javax.annotation.Nonnull
   public URI getCallUrl() {
     return callUrl;
   }
 
-  public void setCallUrl(URI callUrl) {
+  public void setCallUrl(@javax.annotation.Nonnull URI callUrl) {
     this.callUrl = callUrl;
   }
 
 
-  public CreateCallResponse callTimeout(Double callTimeout) {
+  public CreateCallResponse callTimeout(@javax.annotation.Nullable Double callTimeout) {
     this.callTimeout = callTimeout;
     return this;
   }
 
-   /**
+  /**
    * The timeout (in seconds) for the callee to answer the call after it starts ringing.
    * @return callTimeout
-  **/
+   */
   @javax.annotation.Nullable
   public Double getCallTimeout() {
     return callTimeout;
   }
 
-  public void setCallTimeout(Double callTimeout) {
+  public void setCallTimeout(@javax.annotation.Nullable Double callTimeout) {
     this.callTimeout = callTimeout;
   }
 
 
-  public CreateCallResponse callbackTimeout(Double callbackTimeout) {
+  public CreateCallResponse callbackTimeout(@javax.annotation.Nullable Double callbackTimeout) {
     this.callbackTimeout = callbackTimeout;
     return this;
   }
 
-   /**
+  /**
    * This is the timeout (in seconds) to use when delivering webhooks for the call.
    * @return callbackTimeout
-  **/
+   */
   @javax.annotation.Nullable
   public Double getCallbackTimeout() {
     return callbackTimeout;
   }
 
-  public void setCallbackTimeout(Double callbackTimeout) {
+  public void setCallbackTimeout(@javax.annotation.Nullable Double callbackTimeout) {
     this.callbackTimeout = callbackTimeout;
   }
 
 
-  public CreateCallResponse tag(String tag) {
+  public CreateCallResponse tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
 
-   /**
+  /**
    * Custom tag value.
    * @return tag
-  **/
+   */
   @javax.annotation.Nullable
   public String getTag() {
     return tag;
   }
 
-  public void setTag(String tag) {
+  public void setTag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
   }
 
 
-  public CreateCallResponse answerMethod(CallbackMethodEnum answerMethod) {
+  public CreateCallResponse answerMethod(@javax.annotation.Nullable CallbackMethodEnum answerMethod) {
     this.answerMethod = answerMethod;
     return this;
   }
 
-   /**
+  /**
    * Get answerMethod
    * @return answerMethod
-  **/
+   */
   @javax.annotation.Nullable
   public CallbackMethodEnum getAnswerMethod() {
     return answerMethod;
   }
 
-  public void setAnswerMethod(CallbackMethodEnum answerMethod) {
+  public void setAnswerMethod(@javax.annotation.Nullable CallbackMethodEnum answerMethod) {
     this.answerMethod = answerMethod;
   }
 
 
-  public CreateCallResponse answerUrl(URI answerUrl) {
+  public CreateCallResponse answerUrl(@javax.annotation.Nonnull URI answerUrl) {
     this.answerUrl = answerUrl;
     return this;
   }
 
-   /**
+  /**
    * URL to deliver the &#x60;answer&#x60; event webhook.
    * @return answerUrl
-  **/
+   */
   @javax.annotation.Nonnull
   public URI getAnswerUrl() {
     return answerUrl;
   }
 
-  public void setAnswerUrl(URI answerUrl) {
+  public void setAnswerUrl(@javax.annotation.Nonnull URI answerUrl) {
     this.answerUrl = answerUrl;
   }
 
 
-  public CreateCallResponse answerFallbackMethod(CallbackMethodEnum answerFallbackMethod) {
+  public CreateCallResponse answerFallbackMethod(@javax.annotation.Nullable CallbackMethodEnum answerFallbackMethod) {
     this.answerFallbackMethod = answerFallbackMethod;
     return this;
   }
 
-   /**
+  /**
    * Get answerFallbackMethod
    * @return answerFallbackMethod
-  **/
+   */
   @javax.annotation.Nullable
   public CallbackMethodEnum getAnswerFallbackMethod() {
     return answerFallbackMethod;
   }
 
-  public void setAnswerFallbackMethod(CallbackMethodEnum answerFallbackMethod) {
+  public void setAnswerFallbackMethod(@javax.annotation.Nullable CallbackMethodEnum answerFallbackMethod) {
     this.answerFallbackMethod = answerFallbackMethod;
   }
 
 
-  public CreateCallResponse answerFallbackUrl(URI answerFallbackUrl) {
+  public CreateCallResponse answerFallbackUrl(@javax.annotation.Nullable URI answerFallbackUrl) {
     this.answerFallbackUrl = answerFallbackUrl;
     return this;
   }
 
-   /**
+  /**
    * Fallback URL to deliver the &#x60;answer&#x60; event webhook.
    * @return answerFallbackUrl
-  **/
+   */
   @javax.annotation.Nullable
   public URI getAnswerFallbackUrl() {
     return answerFallbackUrl;
   }
 
-  public void setAnswerFallbackUrl(URI answerFallbackUrl) {
+  public void setAnswerFallbackUrl(@javax.annotation.Nullable URI answerFallbackUrl) {
     this.answerFallbackUrl = answerFallbackUrl;
   }
 
 
-  public CreateCallResponse disconnectMethod(CallbackMethodEnum disconnectMethod) {
+  public CreateCallResponse disconnectMethod(@javax.annotation.Nullable CallbackMethodEnum disconnectMethod) {
     this.disconnectMethod = disconnectMethod;
     return this;
   }
 
-   /**
+  /**
    * Get disconnectMethod
    * @return disconnectMethod
-  **/
+   */
   @javax.annotation.Nullable
   public CallbackMethodEnum getDisconnectMethod() {
     return disconnectMethod;
   }
 
-  public void setDisconnectMethod(CallbackMethodEnum disconnectMethod) {
+  public void setDisconnectMethod(@javax.annotation.Nullable CallbackMethodEnum disconnectMethod) {
     this.disconnectMethod = disconnectMethod;
   }
 
 
-  public CreateCallResponse disconnectUrl(URI disconnectUrl) {
+  public CreateCallResponse disconnectUrl(@javax.annotation.Nullable URI disconnectUrl) {
     this.disconnectUrl = disconnectUrl;
     return this;
   }
 
-   /**
+  /**
    * URL to deliver the &#x60;disconnect&#x60; event webhook.
    * @return disconnectUrl
-  **/
+   */
   @javax.annotation.Nullable
   public URI getDisconnectUrl() {
     return disconnectUrl;
   }
 
-  public void setDisconnectUrl(URI disconnectUrl) {
+  public void setDisconnectUrl(@javax.annotation.Nullable URI disconnectUrl) {
     this.disconnectUrl = disconnectUrl;
   }
 
 
-  public CreateCallResponse username(String username) {
+  public CreateCallResponse username(@javax.annotation.Nullable String username) {
     this.username = username;
     return this;
   }
 
-   /**
+  /**
    * Basic auth username.
    * @return username
-  **/
+   */
   @javax.annotation.Nullable
   public String getUsername() {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(@javax.annotation.Nullable String username) {
     this.username = username;
   }
 
 
-  public CreateCallResponse password(String password) {
+  public CreateCallResponse password(@javax.annotation.Nullable String password) {
     this.password = password;
     return this;
   }
 
-   /**
+  /**
    * Basic auth password.
    * @return password
-  **/
+   */
   @javax.annotation.Nullable
   public String getPassword() {
     return password;
   }
 
-  public void setPassword(String password) {
+  public void setPassword(@javax.annotation.Nullable String password) {
     this.password = password;
   }
 
 
-  public CreateCallResponse fallbackUsername(String fallbackUsername) {
+  public CreateCallResponse fallbackUsername(@javax.annotation.Nullable String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
     return this;
   }
 
-   /**
+  /**
    * Basic auth username.
    * @return fallbackUsername
-  **/
+   */
   @javax.annotation.Nullable
   public String getFallbackUsername() {
     return fallbackUsername;
   }
 
-  public void setFallbackUsername(String fallbackUsername) {
+  public void setFallbackUsername(@javax.annotation.Nullable String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
   }
 
 
-  public CreateCallResponse fallbackPassword(String fallbackPassword) {
+  public CreateCallResponse fallbackPassword(@javax.annotation.Nullable String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
     return this;
   }
 
-   /**
+  /**
    * Basic auth password.
    * @return fallbackPassword
-  **/
+   */
   @javax.annotation.Nullable
   public String getFallbackPassword() {
     return fallbackPassword;
   }
 
-  public void setFallbackPassword(String fallbackPassword) {
+  public void setFallbackPassword(@javax.annotation.Nullable String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
   }
 
 
-  public CreateCallResponse priority(Integer priority) {
+  public CreateCallResponse priority(@javax.annotation.Nullable Integer priority) {
     this.priority = priority;
     return this;
   }
 
-   /**
+  /**
    * The priority of this call over other calls from your account.
    * @return priority
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getPriority() {
     return priority;
   }
 
-  public void setPriority(Integer priority) {
+  public void setPriority(@javax.annotation.Nullable Integer priority) {
     this.priority = priority;
   }
 
@@ -718,12 +738,12 @@ public class CreateCallResponse {
     openapiRequiredFields.add("disconnectMethod");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CreateCallResponse
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to CreateCallResponse
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CreateCallResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -862,22 +882,22 @@ public class CreateCallResponse {
     }
   }
 
- /**
-  * Create an instance of CreateCallResponse given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of CreateCallResponse
-  * @throws IOException if the JSON string is invalid with respect to CreateCallResponse
-  */
+  /**
+   * Create an instance of CreateCallResponse given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of CreateCallResponse
+   * @throws IOException if the JSON string is invalid with respect to CreateCallResponse
+   */
   public static CreateCallResponse fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, CreateCallResponse.class);
   }
 
- /**
-  * Convert an instance of CreateCallResponse to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of CreateCallResponse to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,496 +52,517 @@ import com.bandwidth.sdk.JSON;
 /**
  * CreateCall
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class CreateCall {
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
+  @javax.annotation.Nonnull
   private String to;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
+  @javax.annotation.Nonnull
   private String from;
 
   public static final String SERIALIZED_NAME_PRIVACY = "privacy";
   @SerializedName(SERIALIZED_NAME_PRIVACY)
+  @javax.annotation.Nullable
   private Boolean privacy;
 
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  @javax.annotation.Nullable
   private String displayName;
 
   public static final String SERIALIZED_NAME_UUI = "uui";
   @SerializedName(SERIALIZED_NAME_UUI)
+  @javax.annotation.Nullable
   private String uui;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  @javax.annotation.Nonnull
   private String applicationId;
 
   public static final String SERIALIZED_NAME_ANSWER_URL = "answerUrl";
   @SerializedName(SERIALIZED_NAME_ANSWER_URL)
+  @javax.annotation.Nonnull
   private URI answerUrl;
 
   public static final String SERIALIZED_NAME_ANSWER_METHOD = "answerMethod";
   @SerializedName(SERIALIZED_NAME_ANSWER_METHOD)
+  @javax.annotation.Nullable
   private CallbackMethodEnum answerMethod = CallbackMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
+  @javax.annotation.Nullable
   private String username;
 
   public static final String SERIALIZED_NAME_PASSWORD = "password";
   @SerializedName(SERIALIZED_NAME_PASSWORD)
+  @javax.annotation.Nullable
   private String password;
 
   public static final String SERIALIZED_NAME_ANSWER_FALLBACK_URL = "answerFallbackUrl";
   @SerializedName(SERIALIZED_NAME_ANSWER_FALLBACK_URL)
+  @javax.annotation.Nullable
   private URI answerFallbackUrl;
 
   public static final String SERIALIZED_NAME_ANSWER_FALLBACK_METHOD = "answerFallbackMethod";
   @SerializedName(SERIALIZED_NAME_ANSWER_FALLBACK_METHOD)
+  @javax.annotation.Nullable
   private CallbackMethodEnum answerFallbackMethod = CallbackMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_FALLBACK_USERNAME = "fallbackUsername";
   @SerializedName(SERIALIZED_NAME_FALLBACK_USERNAME)
+  @javax.annotation.Nullable
   private String fallbackUsername;
 
   public static final String SERIALIZED_NAME_FALLBACK_PASSWORD = "fallbackPassword";
   @SerializedName(SERIALIZED_NAME_FALLBACK_PASSWORD)
+  @javax.annotation.Nullable
   private String fallbackPassword;
 
   public static final String SERIALIZED_NAME_DISCONNECT_URL = "disconnectUrl";
   @SerializedName(SERIALIZED_NAME_DISCONNECT_URL)
+  @javax.annotation.Nullable
   private URI disconnectUrl;
 
   public static final String SERIALIZED_NAME_DISCONNECT_METHOD = "disconnectMethod";
   @SerializedName(SERIALIZED_NAME_DISCONNECT_METHOD)
+  @javax.annotation.Nullable
   private CallbackMethodEnum disconnectMethod = CallbackMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_CALL_TIMEOUT = "callTimeout";
   @SerializedName(SERIALIZED_NAME_CALL_TIMEOUT)
+  @javax.annotation.Nullable
   private Double callTimeout = 30d;
 
   public static final String SERIALIZED_NAME_CALLBACK_TIMEOUT = "callbackTimeout";
   @SerializedName(SERIALIZED_NAME_CALLBACK_TIMEOUT)
+  @javax.annotation.Nullable
   private Double callbackTimeout = 15d;
 
   public static final String SERIALIZED_NAME_MACHINE_DETECTION = "machineDetection";
   @SerializedName(SERIALIZED_NAME_MACHINE_DETECTION)
+  @javax.annotation.Nullable
   private MachineDetectionConfiguration machineDetection;
 
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
+  @javax.annotation.Nullable
   private Integer priority = 5;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
+  @javax.annotation.Nullable
   private String tag;
 
   public CreateCall() {
   }
 
-  public CreateCall to(String to) {
+  public CreateCall to(@javax.annotation.Nonnull String to) {
     this.to = to;
     return this;
   }
 
-   /**
+  /**
    * The destination to call (must be an E.164 formatted number (e.g. &#x60;+15555551212&#x60;) or a SIP URI (e.g. &#x60;sip:user@server.example&#x60;)).
    * @return to
-  **/
+   */
   @javax.annotation.Nonnull
   public String getTo() {
     return to;
   }
 
-  public void setTo(String to) {
+  public void setTo(@javax.annotation.Nonnull String to) {
     this.to = to;
   }
 
 
-  public CreateCall from(String from) {
+  public CreateCall from(@javax.annotation.Nonnull String from) {
     this.from = from;
     return this;
   }
 
-   /**
+  /**
    * A Bandwidth phone number on your account the call should come from (must be in E.164 format, like &#x60;+15555551212&#x60;) even if &#x60;privacy&#x60; is set to true.
    * @return from
-  **/
+   */
   @javax.annotation.Nonnull
   public String getFrom() {
     return from;
   }
 
-  public void setFrom(String from) {
+  public void setFrom(@javax.annotation.Nonnull String from) {
     this.from = from;
   }
 
 
-  public CreateCall privacy(Boolean privacy) {
+  public CreateCall privacy(@javax.annotation.Nullable Boolean privacy) {
     this.privacy = privacy;
     return this;
   }
 
-   /**
+  /**
    * Hide the calling number. The &#x60;displayName&#x60; field can be used to customize the displayed name.
    * @return privacy
-  **/
+   */
   @javax.annotation.Nullable
   public Boolean getPrivacy() {
     return privacy;
   }
 
-  public void setPrivacy(Boolean privacy) {
+  public void setPrivacy(@javax.annotation.Nullable Boolean privacy) {
     this.privacy = privacy;
   }
 
 
-  public CreateCall displayName(String displayName) {
+  public CreateCall displayName(@javax.annotation.Nullable String displayName) {
     this.displayName = displayName;
     return this;
   }
 
-   /**
+  /**
    * The caller display name to use when the call is created.  May not exceed 256 characters nor contain control characters such as new lines. If &#x60;privacy&#x60; is true, only the following values are valid: &#x60;Restricted&#x60;, &#x60;Anonymous&#x60;, &#x60;Private&#x60;, or &#x60;Unavailable&#x60;.
    * @return displayName
-  **/
+   */
   @javax.annotation.Nullable
   public String getDisplayName() {
     return displayName;
   }
 
-  public void setDisplayName(String displayName) {
+  public void setDisplayName(@javax.annotation.Nullable String displayName) {
     this.displayName = displayName;
   }
 
 
-  public CreateCall uui(String uui) {
+  public CreateCall uui(@javax.annotation.Nullable String uui) {
     this.uui = uui;
     return this;
   }
 
-   /**
+  /**
    * A comma-separated list of &#39;User-To-User&#39; headers to be sent in the INVITE when calling a SIP URI. Each value must end with an &#39;encoding&#39; parameter as described in &lt;a href&#x3D;&#39;https://tools.ietf.org/html/rfc7433&#39;&gt;RFC 7433&lt;/a&gt;. Only &#39;jwt&#39; and &#39;base64&#39; encodings are allowed. The entire value cannot exceed 350 characters, including parameters and separators.
    * @return uui
-  **/
+   */
   @javax.annotation.Nullable
   public String getUui() {
     return uui;
   }
 
-  public void setUui(String uui) {
+  public void setUui(@javax.annotation.Nullable String uui) {
     this.uui = uui;
   }
 
 
-  public CreateCall applicationId(String applicationId) {
+  public CreateCall applicationId(@javax.annotation.Nonnull String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The id of the application associated with the &#x60;from&#x60; number.
    * @return applicationId
-  **/
+   */
   @javax.annotation.Nonnull
   public String getApplicationId() {
     return applicationId;
   }
 
-  public void setApplicationId(String applicationId) {
+  public void setApplicationId(@javax.annotation.Nonnull String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public CreateCall answerUrl(URI answerUrl) {
+  public CreateCall answerUrl(@javax.annotation.Nonnull URI answerUrl) {
     this.answerUrl = answerUrl;
     return this;
   }
 
-   /**
+  /**
    * The full URL to send the &lt;a href&#x3D;&#39;/docs/voice/webhooks/answer&#39;&gt;Answer&lt;/a&gt; event to when the called party answers. This endpoint should return the first &lt;a href&#x3D;&#39;/docs/voice/bxml&#39;&gt;BXML document&lt;/a&gt; to be executed in the call.  Must use &#x60;https&#x60; if specifying &#x60;username&#x60; and &#x60;password&#x60;.
    * @return answerUrl
-  **/
+   */
   @javax.annotation.Nonnull
   public URI getAnswerUrl() {
     return answerUrl;
   }
 
-  public void setAnswerUrl(URI answerUrl) {
+  public void setAnswerUrl(@javax.annotation.Nonnull URI answerUrl) {
     this.answerUrl = answerUrl;
   }
 
 
-  public CreateCall answerMethod(CallbackMethodEnum answerMethod) {
+  public CreateCall answerMethod(@javax.annotation.Nullable CallbackMethodEnum answerMethod) {
     this.answerMethod = answerMethod;
     return this;
   }
 
-   /**
+  /**
    * Get answerMethod
    * @return answerMethod
-  **/
+   */
   @javax.annotation.Nullable
   public CallbackMethodEnum getAnswerMethod() {
     return answerMethod;
   }
 
-  public void setAnswerMethod(CallbackMethodEnum answerMethod) {
+  public void setAnswerMethod(@javax.annotation.Nullable CallbackMethodEnum answerMethod) {
     this.answerMethod = answerMethod;
   }
 
 
-  public CreateCall username(String username) {
+  public CreateCall username(@javax.annotation.Nullable String username) {
     this.username = username;
     return this;
   }
 
-   /**
+  /**
    * Basic auth username.
    * @return username
-  **/
+   */
   @javax.annotation.Nullable
   public String getUsername() {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(@javax.annotation.Nullable String username) {
     this.username = username;
   }
 
 
-  public CreateCall password(String password) {
+  public CreateCall password(@javax.annotation.Nullable String password) {
     this.password = password;
     return this;
   }
 
-   /**
+  /**
    * Basic auth password.
    * @return password
-  **/
+   */
   @javax.annotation.Nullable
   public String getPassword() {
     return password;
   }
 
-  public void setPassword(String password) {
+  public void setPassword(@javax.annotation.Nullable String password) {
     this.password = password;
   }
 
 
-  public CreateCall answerFallbackUrl(URI answerFallbackUrl) {
+  public CreateCall answerFallbackUrl(@javax.annotation.Nullable URI answerFallbackUrl) {
     this.answerFallbackUrl = answerFallbackUrl;
     return this;
   }
 
-   /**
+  /**
    * A fallback url which, if provided, will be used to retry the &#x60;answer&#x60; webhook delivery in case &#x60;answerUrl&#x60; fails to respond  Must use &#x60;https&#x60; if specifying &#x60;fallbackUsername&#x60; and &#x60;fallbackPassword&#x60;.
    * @return answerFallbackUrl
-  **/
+   */
   @javax.annotation.Nullable
   public URI getAnswerFallbackUrl() {
     return answerFallbackUrl;
   }
 
-  public void setAnswerFallbackUrl(URI answerFallbackUrl) {
+  public void setAnswerFallbackUrl(@javax.annotation.Nullable URI answerFallbackUrl) {
     this.answerFallbackUrl = answerFallbackUrl;
   }
 
 
-  public CreateCall answerFallbackMethod(CallbackMethodEnum answerFallbackMethod) {
+  public CreateCall answerFallbackMethod(@javax.annotation.Nullable CallbackMethodEnum answerFallbackMethod) {
     this.answerFallbackMethod = answerFallbackMethod;
     return this;
   }
 
-   /**
+  /**
    * Get answerFallbackMethod
    * @return answerFallbackMethod
-  **/
+   */
   @javax.annotation.Nullable
   public CallbackMethodEnum getAnswerFallbackMethod() {
     return answerFallbackMethod;
   }
 
-  public void setAnswerFallbackMethod(CallbackMethodEnum answerFallbackMethod) {
+  public void setAnswerFallbackMethod(@javax.annotation.Nullable CallbackMethodEnum answerFallbackMethod) {
     this.answerFallbackMethod = answerFallbackMethod;
   }
 
 
-  public CreateCall fallbackUsername(String fallbackUsername) {
+  public CreateCall fallbackUsername(@javax.annotation.Nullable String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
     return this;
   }
 
-   /**
+  /**
    * Basic auth username.
    * @return fallbackUsername
-  **/
+   */
   @javax.annotation.Nullable
   public String getFallbackUsername() {
     return fallbackUsername;
   }
 
-  public void setFallbackUsername(String fallbackUsername) {
+  public void setFallbackUsername(@javax.annotation.Nullable String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
   }
 
 
-  public CreateCall fallbackPassword(String fallbackPassword) {
+  public CreateCall fallbackPassword(@javax.annotation.Nullable String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
     return this;
   }
 
-   /**
+  /**
    * Basic auth password.
    * @return fallbackPassword
-  **/
+   */
   @javax.annotation.Nullable
   public String getFallbackPassword() {
     return fallbackPassword;
   }
 
-  public void setFallbackPassword(String fallbackPassword) {
+  public void setFallbackPassword(@javax.annotation.Nullable String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
   }
 
 
-  public CreateCall disconnectUrl(URI disconnectUrl) {
+  public CreateCall disconnectUrl(@javax.annotation.Nullable URI disconnectUrl) {
     this.disconnectUrl = disconnectUrl;
     return this;
   }
 
-   /**
+  /**
    * The URL to send the &lt;a href&#x3D;&#39;/docs/voice/webhooks/disconnect&#39;&gt;Disconnect&lt;/a&gt; event to when the call ends. This event does not expect a BXML response.
    * @return disconnectUrl
-  **/
+   */
   @javax.annotation.Nullable
   public URI getDisconnectUrl() {
     return disconnectUrl;
   }
 
-  public void setDisconnectUrl(URI disconnectUrl) {
+  public void setDisconnectUrl(@javax.annotation.Nullable URI disconnectUrl) {
     this.disconnectUrl = disconnectUrl;
   }
 
 
-  public CreateCall disconnectMethod(CallbackMethodEnum disconnectMethod) {
+  public CreateCall disconnectMethod(@javax.annotation.Nullable CallbackMethodEnum disconnectMethod) {
     this.disconnectMethod = disconnectMethod;
     return this;
   }
 
-   /**
+  /**
    * Get disconnectMethod
    * @return disconnectMethod
-  **/
+   */
   @javax.annotation.Nullable
   public CallbackMethodEnum getDisconnectMethod() {
     return disconnectMethod;
   }
 
-  public void setDisconnectMethod(CallbackMethodEnum disconnectMethod) {
+  public void setDisconnectMethod(@javax.annotation.Nullable CallbackMethodEnum disconnectMethod) {
     this.disconnectMethod = disconnectMethod;
   }
 
 
-  public CreateCall callTimeout(Double callTimeout) {
+  public CreateCall callTimeout(@javax.annotation.Nullable Double callTimeout) {
     this.callTimeout = callTimeout;
     return this;
   }
 
-   /**
+  /**
    * The timeout (in seconds) for the callee to answer the call after it starts ringing. If the call does not start ringing within 30s, the call will be cancelled regardless of this value.  Can be any numeric value (including decimals) between 1 and 300.
    * minimum: 1
    * maximum: 300
    * @return callTimeout
-  **/
+   */
   @javax.annotation.Nullable
   public Double getCallTimeout() {
     return callTimeout;
   }
 
-  public void setCallTimeout(Double callTimeout) {
+  public void setCallTimeout(@javax.annotation.Nullable Double callTimeout) {
     this.callTimeout = callTimeout;
   }
 
 
-  public CreateCall callbackTimeout(Double callbackTimeout) {
+  public CreateCall callbackTimeout(@javax.annotation.Nullable Double callbackTimeout) {
     this.callbackTimeout = callbackTimeout;
     return this;
   }
 
-   /**
+  /**
    * This is the timeout (in seconds) to use when delivering webhooks for the call. Can be any numeric value (including decimals) between 1 and 25.
    * minimum: 1
    * maximum: 25
    * @return callbackTimeout
-  **/
+   */
   @javax.annotation.Nullable
   public Double getCallbackTimeout() {
     return callbackTimeout;
   }
 
-  public void setCallbackTimeout(Double callbackTimeout) {
+  public void setCallbackTimeout(@javax.annotation.Nullable Double callbackTimeout) {
     this.callbackTimeout = callbackTimeout;
   }
 
 
-  public CreateCall machineDetection(MachineDetectionConfiguration machineDetection) {
+  public CreateCall machineDetection(@javax.annotation.Nullable MachineDetectionConfiguration machineDetection) {
     this.machineDetection = machineDetection;
     return this;
   }
 
-   /**
+  /**
    * Get machineDetection
    * @return machineDetection
-  **/
+   */
   @javax.annotation.Nullable
   public MachineDetectionConfiguration getMachineDetection() {
     return machineDetection;
   }
 
-  public void setMachineDetection(MachineDetectionConfiguration machineDetection) {
+  public void setMachineDetection(@javax.annotation.Nullable MachineDetectionConfiguration machineDetection) {
     this.machineDetection = machineDetection;
   }
 
 
-  public CreateCall priority(Integer priority) {
+  public CreateCall priority(@javax.annotation.Nullable Integer priority) {
     this.priority = priority;
     return this;
   }
 
-   /**
+  /**
    * The priority of this call over other calls from your account. For example, if during a call your application needs to place a new call and bridge it with the current call, you might want to create the call with priority 1 so that it will be the next call picked off your queue, ahead of other less time sensitive calls. A lower value means higher priority, so a priority 1 call takes precedence over a priority 2 call.
    * minimum: 1
    * maximum: 5
    * @return priority
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getPriority() {
     return priority;
   }
 
-  public void setPriority(Integer priority) {
+  public void setPriority(@javax.annotation.Nullable Integer priority) {
     this.priority = priority;
   }
 
 
-  public CreateCall tag(String tag) {
+  public CreateCall tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
 
-   /**
+  /**
    * A custom string that will be sent with all webhooks for this call unless overwritten by a future &lt;a href&#x3D;&#39;/docs/voice/bxml/tag&#39;&gt;&#x60;&lt;Tag&gt;&#x60;&lt;/a&gt; verb or &#x60;tag&#x60; attribute on another verb, or cleared.  May be cleared by setting &#x60;tag&#x3D;\&quot;\&quot;&#x60;  Max length 256 characters.
    * @return tag
-  **/
+   */
   @javax.annotation.Nullable
   public String getTag() {
     return tag;
   }
 
-  public void setTag(String tag) {
+  public void setTag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
   }
 
@@ -719,12 +739,12 @@ public class CreateCall {
     openapiRequiredFields.add("answerUrl");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CreateCall
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to CreateCall
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CreateCall.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -868,22 +888,22 @@ public class CreateCall {
     }
   }
 
- /**
-  * Create an instance of CreateCall given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of CreateCall
-  * @throws IOException if the JSON string is invalid with respect to CreateCall
-  */
+  /**
+   * Create an instance of CreateCall given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of CreateCall
+   * @throws IOException if the JSON string is invalid with respect to CreateCall
+   */
   public static CreateCall fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, CreateCall.class);
   }
 
- /**
-  * Convert an instance of CreateCall to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of CreateCall to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

@@ -44,7 +44,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -56,177 +55,185 @@ import com.bandwidth.sdk.JSON;
 /**
  * Conference
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class Conference {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_CREATED_TIME = "createdTime";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime createdTime;
 
   public static final String SERIALIZED_NAME_COMPLETED_TIME = "completedTime";
   @SerializedName(SERIALIZED_NAME_COMPLETED_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime completedTime;
 
   public static final String SERIALIZED_NAME_CONFERENCE_EVENT_URL = "conferenceEventUrl";
   @SerializedName(SERIALIZED_NAME_CONFERENCE_EVENT_URL)
+  @javax.annotation.Nullable
   private URI conferenceEventUrl;
 
   public static final String SERIALIZED_NAME_CONFERENCE_EVENT_METHOD = "conferenceEventMethod";
   @SerializedName(SERIALIZED_NAME_CONFERENCE_EVENT_METHOD)
+  @javax.annotation.Nullable
   private CallbackMethodEnum conferenceEventMethod = CallbackMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
+  @javax.annotation.Nullable
   private String tag;
 
   public static final String SERIALIZED_NAME_ACTIVE_MEMBERS = "activeMembers";
   @SerializedName(SERIALIZED_NAME_ACTIVE_MEMBERS)
+  @javax.annotation.Nullable
   private List<ConferenceMember> activeMembers;
 
   public Conference() {
   }
 
-  public Conference id(String id) {
+  public Conference id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * The Bandwidth-generated conference ID.
    * @return id
-  **/
+   */
   @javax.annotation.Nullable
   public String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public Conference name(String name) {
+  public Conference name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of the conference, as specified by your application.
    * @return name
-  **/
+   */
   @javax.annotation.Nullable
   public String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public Conference createdTime(OffsetDateTime createdTime) {
+  public Conference createdTime(@javax.annotation.Nullable OffsetDateTime createdTime) {
     this.createdTime = createdTime;
     return this;
   }
 
-   /**
+  /**
    * The time the conference was initiated, in ISO 8601 format.
    * @return createdTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getCreatedTime() {
     return createdTime;
   }
 
-  public void setCreatedTime(OffsetDateTime createdTime) {
+  public void setCreatedTime(@javax.annotation.Nullable OffsetDateTime createdTime) {
     this.createdTime = createdTime;
   }
 
 
-  public Conference completedTime(OffsetDateTime completedTime) {
+  public Conference completedTime(@javax.annotation.Nullable OffsetDateTime completedTime) {
     this.completedTime = completedTime;
     return this;
   }
 
-   /**
+  /**
    * The time the conference was terminated, in ISO 8601 format.
    * @return completedTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getCompletedTime() {
     return completedTime;
   }
 
-  public void setCompletedTime(OffsetDateTime completedTime) {
+  public void setCompletedTime(@javax.annotation.Nullable OffsetDateTime completedTime) {
     this.completedTime = completedTime;
   }
 
 
-  public Conference conferenceEventUrl(URI conferenceEventUrl) {
+  public Conference conferenceEventUrl(@javax.annotation.Nullable URI conferenceEventUrl) {
     this.conferenceEventUrl = conferenceEventUrl;
     return this;
   }
 
-   /**
+  /**
    * The URL to send the conference-related events.
    * @return conferenceEventUrl
-  **/
+   */
   @javax.annotation.Nullable
   public URI getConferenceEventUrl() {
     return conferenceEventUrl;
   }
 
-  public void setConferenceEventUrl(URI conferenceEventUrl) {
+  public void setConferenceEventUrl(@javax.annotation.Nullable URI conferenceEventUrl) {
     this.conferenceEventUrl = conferenceEventUrl;
   }
 
 
-  public Conference conferenceEventMethod(CallbackMethodEnum conferenceEventMethod) {
+  public Conference conferenceEventMethod(@javax.annotation.Nullable CallbackMethodEnum conferenceEventMethod) {
     this.conferenceEventMethod = conferenceEventMethod;
     return this;
   }
 
-   /**
+  /**
    * Get conferenceEventMethod
    * @return conferenceEventMethod
-  **/
+   */
   @javax.annotation.Nullable
   public CallbackMethodEnum getConferenceEventMethod() {
     return conferenceEventMethod;
   }
 
-  public void setConferenceEventMethod(CallbackMethodEnum conferenceEventMethod) {
+  public void setConferenceEventMethod(@javax.annotation.Nullable CallbackMethodEnum conferenceEventMethod) {
     this.conferenceEventMethod = conferenceEventMethod;
   }
 
 
-  public Conference tag(String tag) {
+  public Conference tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
 
-   /**
+  /**
    * The custom string attached to the conference that will be sent with callbacks.
    * @return tag
-  **/
+   */
   @javax.annotation.Nullable
   public String getTag() {
     return tag;
   }
 
-  public void setTag(String tag) {
+  public void setTag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
   }
 
 
-  public Conference activeMembers(List<ConferenceMember> activeMembers) {
+  public Conference activeMembers(@javax.annotation.Nullable List<ConferenceMember> activeMembers) {
     this.activeMembers = activeMembers;
     return this;
   }
@@ -239,16 +246,16 @@ public class Conference {
     return this;
   }
 
-   /**
+  /**
    * A list of active members of the conference. Omitted if this is a response to the [Get Conferences endpoint](/apis/voice#tag/Conferences/operation/listConferences).
    * @return activeMembers
-  **/
+   */
   @javax.annotation.Nullable
   public List<ConferenceMember> getActiveMembers() {
     return activeMembers;
   }
 
-  public void setActiveMembers(List<ConferenceMember> activeMembers) {
+  public void setActiveMembers(@javax.annotation.Nullable List<ConferenceMember> activeMembers) {
     this.activeMembers = activeMembers;
   }
 
@@ -382,12 +389,12 @@ public class Conference {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Conference
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Conference
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Conference.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -499,22 +506,22 @@ public class Conference {
     }
   }
 
- /**
-  * Create an instance of Conference given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Conference
-  * @throws IOException if the JSON string is invalid with respect to Conference
-  */
+  /**
+   * Create an instance of Conference given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Conference
+   * @throws IOException if the JSON string is invalid with respect to Conference
+   */
   public static Conference fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Conference.class);
   }
 
- /**
-  * Convert an instance of Conference to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of Conference to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

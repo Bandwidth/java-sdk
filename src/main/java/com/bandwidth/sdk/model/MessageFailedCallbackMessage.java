@@ -45,7 +45,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -57,174 +56,186 @@ import com.bandwidth.sdk.JSON;
 /**
  * Message Failed Callback Message Schema
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class MessageFailedCallbackMessage {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String SERIALIZED_NAME_OWNER = "owner";
   @SerializedName(SERIALIZED_NAME_OWNER)
+  @javax.annotation.Nonnull
   private String owner;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  @javax.annotation.Nonnull
   private String applicationId;
 
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)
+  @javax.annotation.Nonnull
   private OffsetDateTime time;
 
   public static final String SERIALIZED_NAME_SEGMENT_COUNT = "segmentCount";
   @SerializedName(SERIALIZED_NAME_SEGMENT_COUNT)
+  @javax.annotation.Nonnull
   private Integer segmentCount;
 
   public static final String SERIALIZED_NAME_DIRECTION = "direction";
   @SerializedName(SERIALIZED_NAME_DIRECTION)
+  @javax.annotation.Nonnull
   private MessageDirectionEnum direction;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
+  @javax.annotation.Nonnull
   private Set<String> to = new LinkedHashSet<>();
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
+  @javax.annotation.Nonnull
   private String from;
 
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
+  @javax.annotation.Nonnull
   private String text;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
+  @javax.annotation.Nonnull
   private String tag;
 
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
+  @javax.annotation.Nullable
   private List<URI> media = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
+  @javax.annotation.Nullable
   private PriorityEnum priority;
 
   public MessageFailedCallbackMessage() {
   }
 
-  public MessageFailedCallbackMessage id(String id) {
+  public MessageFailedCallbackMessage id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
+   */
   @javax.annotation.Nonnull
   public String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
 
-  public MessageFailedCallbackMessage owner(String owner) {
+  public MessageFailedCallbackMessage owner(@javax.annotation.Nonnull String owner) {
     this.owner = owner;
     return this;
   }
 
-   /**
+  /**
    * Get owner
    * @return owner
-  **/
+   */
   @javax.annotation.Nonnull
   public String getOwner() {
     return owner;
   }
 
-  public void setOwner(String owner) {
+  public void setOwner(@javax.annotation.Nonnull String owner) {
     this.owner = owner;
   }
 
 
-  public MessageFailedCallbackMessage applicationId(String applicationId) {
+  public MessageFailedCallbackMessage applicationId(@javax.annotation.Nonnull String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * Get applicationId
    * @return applicationId
-  **/
+   */
   @javax.annotation.Nonnull
   public String getApplicationId() {
     return applicationId;
   }
 
-  public void setApplicationId(String applicationId) {
+  public void setApplicationId(@javax.annotation.Nonnull String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public MessageFailedCallbackMessage time(OffsetDateTime time) {
+  public MessageFailedCallbackMessage time(@javax.annotation.Nonnull OffsetDateTime time) {
     this.time = time;
     return this;
   }
 
-   /**
+  /**
    * Get time
    * @return time
-  **/
+   */
   @javax.annotation.Nonnull
   public OffsetDateTime getTime() {
     return time;
   }
 
-  public void setTime(OffsetDateTime time) {
+  public void setTime(@javax.annotation.Nonnull OffsetDateTime time) {
     this.time = time;
   }
 
 
-  public MessageFailedCallbackMessage segmentCount(Integer segmentCount) {
+  public MessageFailedCallbackMessage segmentCount(@javax.annotation.Nonnull Integer segmentCount) {
     this.segmentCount = segmentCount;
     return this;
   }
 
-   /**
+  /**
    * Get segmentCount
    * @return segmentCount
-  **/
+   */
   @javax.annotation.Nonnull
   public Integer getSegmentCount() {
     return segmentCount;
   }
 
-  public void setSegmentCount(Integer segmentCount) {
+  public void setSegmentCount(@javax.annotation.Nonnull Integer segmentCount) {
     this.segmentCount = segmentCount;
   }
 
 
-  public MessageFailedCallbackMessage direction(MessageDirectionEnum direction) {
+  public MessageFailedCallbackMessage direction(@javax.annotation.Nonnull MessageDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
 
-   /**
+  /**
    * Get direction
    * @return direction
-  **/
+   */
   @javax.annotation.Nonnull
   public MessageDirectionEnum getDirection() {
     return direction;
   }
 
-  public void setDirection(MessageDirectionEnum direction) {
+  public void setDirection(@javax.annotation.Nonnull MessageDirectionEnum direction) {
     this.direction = direction;
   }
 
 
-  public MessageFailedCallbackMessage to(Set<String> to) {
+  public MessageFailedCallbackMessage to(@javax.annotation.Nonnull Set<String> to) {
     this.to = to;
     return this;
   }
@@ -237,78 +248,78 @@ public class MessageFailedCallbackMessage {
     return this;
   }
 
-   /**
+  /**
    * Get to
    * @return to
-  **/
+   */
   @javax.annotation.Nonnull
   public Set<String> getTo() {
     return to;
   }
 
-  public void setTo(Set<String> to) {
+  public void setTo(@javax.annotation.Nonnull Set<String> to) {
     this.to = to;
   }
 
 
-  public MessageFailedCallbackMessage from(String from) {
+  public MessageFailedCallbackMessage from(@javax.annotation.Nonnull String from) {
     this.from = from;
     return this;
   }
 
-   /**
+  /**
    * Get from
    * @return from
-  **/
+   */
   @javax.annotation.Nonnull
   public String getFrom() {
     return from;
   }
 
-  public void setFrom(String from) {
+  public void setFrom(@javax.annotation.Nonnull String from) {
     this.from = from;
   }
 
 
-  public MessageFailedCallbackMessage text(String text) {
+  public MessageFailedCallbackMessage text(@javax.annotation.Nonnull String text) {
     this.text = text;
     return this;
   }
 
-   /**
+  /**
    * Get text
    * @return text
-  **/
+   */
   @javax.annotation.Nonnull
   public String getText() {
     return text;
   }
 
-  public void setText(String text) {
+  public void setText(@javax.annotation.Nonnull String text) {
     this.text = text;
   }
 
 
-  public MessageFailedCallbackMessage tag(String tag) {
+  public MessageFailedCallbackMessage tag(@javax.annotation.Nonnull String tag) {
     this.tag = tag;
     return this;
   }
 
-   /**
+  /**
    * Get tag
    * @return tag
-  **/
+   */
   @javax.annotation.Nonnull
   public String getTag() {
     return tag;
   }
 
-  public void setTag(String tag) {
+  public void setTag(@javax.annotation.Nonnull String tag) {
     this.tag = tag;
   }
 
 
-  public MessageFailedCallbackMessage media(List<URI> media) {
+  public MessageFailedCallbackMessage media(@javax.annotation.Nullable List<URI> media) {
     this.media = media;
     return this;
   }
@@ -321,35 +332,35 @@ public class MessageFailedCallbackMessage {
     return this;
   }
 
-   /**
+  /**
    * Get media
    * @return media
-  **/
+   */
   @javax.annotation.Nullable
   public List<URI> getMedia() {
     return media;
   }
 
-  public void setMedia(List<URI> media) {
+  public void setMedia(@javax.annotation.Nullable List<URI> media) {
     this.media = media;
   }
 
 
-  public MessageFailedCallbackMessage priority(PriorityEnum priority) {
+  public MessageFailedCallbackMessage priority(@javax.annotation.Nullable PriorityEnum priority) {
     this.priority = priority;
     return this;
   }
 
-   /**
+  /**
    * Get priority
    * @return priority
-  **/
+   */
   @javax.annotation.Nullable
   public PriorityEnum getPriority() {
     return priority;
   }
 
-  public void setPriority(PriorityEnum priority) {
+  public void setPriority(@javax.annotation.Nullable PriorityEnum priority) {
     this.priority = priority;
   }
 
@@ -494,12 +505,12 @@ public class MessageFailedCallbackMessage {
     openapiRequiredFields.add("tag");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to MessageFailedCallbackMessage
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to MessageFailedCallbackMessage
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!MessageFailedCallbackMessage.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -622,22 +633,22 @@ public class MessageFailedCallbackMessage {
     }
   }
 
- /**
-  * Create an instance of MessageFailedCallbackMessage given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of MessageFailedCallbackMessage
-  * @throws IOException if the JSON string is invalid with respect to MessageFailedCallbackMessage
-  */
+  /**
+   * Create an instance of MessageFailedCallbackMessage given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of MessageFailedCallbackMessage
+   * @throws IOException if the JSON string is invalid with respect to MessageFailedCallbackMessage
+   */
   public static MessageFailedCallbackMessage fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, MessageFailedCallbackMessage.class);
   }
 
- /**
-  * Convert an instance of MessageFailedCallbackMessage to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of MessageFailedCallbackMessage to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,147 +48,153 @@ import com.bandwidth.sdk.JSON;
 /**
  * CodeRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class CodeRequest {
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
+  @javax.annotation.Nonnull
   private String to;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
+  @javax.annotation.Nonnull
   private String from;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  @javax.annotation.Nonnull
   private String applicationId;
 
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
+  @javax.annotation.Nullable
   private String scope;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nonnull
   private String message;
 
   public static final String SERIALIZED_NAME_DIGITS = "digits";
   @SerializedName(SERIALIZED_NAME_DIGITS)
+  @javax.annotation.Nonnull
   private Integer digits;
 
   public CodeRequest() {
   }
 
-  public CodeRequest to(String to) {
+  public CodeRequest to(@javax.annotation.Nonnull String to) {
     this.to = to;
     return this;
   }
 
-   /**
+  /**
    * The phone number to send the mfa code to.
    * @return to
-  **/
+   */
   @javax.annotation.Nonnull
   public String getTo() {
     return to;
   }
 
-  public void setTo(String to) {
+  public void setTo(@javax.annotation.Nonnull String to) {
     this.to = to;
   }
 
 
-  public CodeRequest from(String from) {
+  public CodeRequest from(@javax.annotation.Nonnull String from) {
     this.from = from;
     return this;
   }
 
-   /**
+  /**
    * The application phone number, the sender of the mfa code.
    * @return from
-  **/
+   */
   @javax.annotation.Nonnull
   public String getFrom() {
     return from;
   }
 
-  public void setFrom(String from) {
+  public void setFrom(@javax.annotation.Nonnull String from) {
     this.from = from;
   }
 
 
-  public CodeRequest applicationId(String applicationId) {
+  public CodeRequest applicationId(@javax.annotation.Nonnull String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The application unique ID, obtained from Bandwidth.
    * @return applicationId
-  **/
+   */
   @javax.annotation.Nonnull
   public String getApplicationId() {
     return applicationId;
   }
 
-  public void setApplicationId(String applicationId) {
+  public void setApplicationId(@javax.annotation.Nonnull String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public CodeRequest scope(String scope) {
+  public CodeRequest scope(@javax.annotation.Nullable String scope) {
     this.scope = scope;
     return this;
   }
 
-   /**
+  /**
    * An optional field to denote what scope or action the mfa code is addressing.  If not supplied, defaults to \&quot;2FA\&quot;.
    * @return scope
-  **/
+   */
   @javax.annotation.Nullable
   public String getScope() {
     return scope;
   }
 
-  public void setScope(String scope) {
+  public void setScope(@javax.annotation.Nullable String scope) {
     this.scope = scope;
   }
 
 
-  public CodeRequest message(String message) {
+  public CodeRequest message(@javax.annotation.Nonnull String message) {
     this.message = message;
     return this;
   }
 
-   /**
+  /**
    * The message format of the mfa code.  There are three values that the system will replace \&quot;{CODE}\&quot;, \&quot;{NAME}\&quot;, \&quot;{SCOPE}\&quot;.  The \&quot;{SCOPE}\&quot; and \&quot;{NAME} value template are optional, while \&quot;{CODE}\&quot; must be supplied.  As the name would suggest, code will be replace with the actual mfa code.  Name is replaced with the application name, configured during provisioning of mfa.  The scope value is the same value sent during the call and partitioned by the server.
    * @return message
-  **/
+   */
   @javax.annotation.Nonnull
   public String getMessage() {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nonnull String message) {
     this.message = message;
   }
 
 
-  public CodeRequest digits(Integer digits) {
+  public CodeRequest digits(@javax.annotation.Nonnull Integer digits) {
     this.digits = digits;
     return this;
   }
 
-   /**
+  /**
    * The number of digits for your mfa code.  The valid number ranges from 2 to 8, inclusively.
    * minimum: 4
    * maximum: 8
    * @return digits
-  **/
+   */
   @javax.annotation.Nonnull
   public Integer getDigits() {
     return digits;
   }
 
-  public void setDigits(Integer digits) {
+  public void setDigits(@javax.annotation.Nonnull Integer digits) {
     this.digits = digits;
   }
 
@@ -311,12 +316,12 @@ public class CodeRequest {
     openapiRequiredFields.add("digits");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CodeRequest
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to CodeRequest
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CodeRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -420,22 +425,22 @@ public class CodeRequest {
     }
   }
 
- /**
-  * Create an instance of CodeRequest given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of CodeRequest
-  * @throws IOException if the JSON string is invalid with respect to CodeRequest
-  */
+  /**
+   * Create an instance of CodeRequest given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of CodeRequest
+   * @throws IOException if the JSON string is invalid with respect to CodeRequest
+   */
   public static CodeRequest fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, CodeRequest.class);
   }
 
- /**
-  * Convert an instance of CodeRequest to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of CodeRequest to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

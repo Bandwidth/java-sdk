@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,398 +52,415 @@ import com.bandwidth.sdk.JSON;
 /**
  * The DTMF event is sent for every digit detected after a &lt;StartGather&gt; verb is executed. You may not respond to this event with BXML.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class DtmfCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
+  @javax.annotation.Nullable
   private String eventType;
 
   public static final String SERIALIZED_NAME_EVENT_TIME = "eventTime";
   @SerializedName(SERIALIZED_NAME_EVENT_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime eventTime;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String accountId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  @javax.annotation.Nullable
   private String applicationId;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
+  @javax.annotation.Nullable
   private String from;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
+  @javax.annotation.Nullable
   private String to;
 
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
+  @javax.annotation.Nullable
   private String callId;
 
   public static final String SERIALIZED_NAME_DIRECTION = "direction";
   @SerializedName(SERIALIZED_NAME_DIRECTION)
+  @javax.annotation.Nullable
   private CallDirectionEnum direction;
 
   public static final String SERIALIZED_NAME_DIGIT = "digit";
   @SerializedName(SERIALIZED_NAME_DIGIT)
+  @javax.annotation.Nullable
   private String digit;
 
   public static final String SERIALIZED_NAME_CALL_URL = "callUrl";
   @SerializedName(SERIALIZED_NAME_CALL_URL)
+  @javax.annotation.Nullable
   private URI callUrl;
 
   public static final String SERIALIZED_NAME_ENQUEUED_TIME = "enqueuedTime";
   @SerializedName(SERIALIZED_NAME_ENQUEUED_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime enqueuedTime;
 
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime startTime;
 
   public static final String SERIALIZED_NAME_ANSWER_TIME = "answerTime";
   @SerializedName(SERIALIZED_NAME_ANSWER_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime answerTime;
 
   public static final String SERIALIZED_NAME_PARENT_CALL_ID = "parentCallId";
   @SerializedName(SERIALIZED_NAME_PARENT_CALL_ID)
+  @javax.annotation.Nullable
   private String parentCallId;
 
   public static final String SERIALIZED_NAME_TRANSFER_CALLER_ID = "transferCallerId";
   @SerializedName(SERIALIZED_NAME_TRANSFER_CALLER_ID)
+  @javax.annotation.Nullable
   private String transferCallerId;
 
   public static final String SERIALIZED_NAME_TRANSFER_TO = "transferTo";
   @SerializedName(SERIALIZED_NAME_TRANSFER_TO)
+  @javax.annotation.Nullable
   private String transferTo;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
+  @javax.annotation.Nullable
   private String tag;
 
   public DtmfCallback() {
   }
 
-  public DtmfCallback eventType(String eventType) {
+  public DtmfCallback eventType(@javax.annotation.Nullable String eventType) {
     this.eventType = eventType;
     return this;
   }
 
-   /**
+  /**
    * The event type, value can be one of the following: answer, bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect, conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable, disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete, recordingAvailable, redirect, transcriptionAvailable, transferAnswer, transferComplete, transferDisconnect.
    * @return eventType
-  **/
+   */
   @javax.annotation.Nullable
   public String getEventType() {
     return eventType;
   }
 
-  public void setEventType(String eventType) {
+  public void setEventType(@javax.annotation.Nullable String eventType) {
     this.eventType = eventType;
   }
 
 
-  public DtmfCallback eventTime(OffsetDateTime eventTime) {
+  public DtmfCallback eventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
     this.eventTime = eventTime;
     return this;
   }
 
-   /**
+  /**
    * The approximate UTC date and time when the event was generated by the Bandwidth server, in ISO 8601 format. This may not be exactly the time of event execution.
    * @return eventTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getEventTime() {
     return eventTime;
   }
 
-  public void setEventTime(OffsetDateTime eventTime) {
+  public void setEventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
-  public DtmfCallback accountId(String accountId) {
+  public DtmfCallback accountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The user account associated with the call.
    * @return accountId
-  **/
+   */
   @javax.annotation.Nullable
   public String getAccountId() {
     return accountId;
   }
 
-  public void setAccountId(String accountId) {
+  public void setAccountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
   }
 
 
-  public DtmfCallback applicationId(String applicationId) {
+  public DtmfCallback applicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The id of the application associated with the call.
    * @return applicationId
-  **/
+   */
   @javax.annotation.Nullable
   public String getApplicationId() {
     return applicationId;
   }
 
-  public void setApplicationId(String applicationId) {
+  public void setApplicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public DtmfCallback from(String from) {
+  public DtmfCallback from(@javax.annotation.Nullable String from) {
     this.from = from;
     return this;
   }
 
-   /**
+  /**
    * The provided identifier of the caller. Must be a phone number in E.164 format (e.g. +15555555555).
    * @return from
-  **/
+   */
   @javax.annotation.Nullable
   public String getFrom() {
     return from;
   }
 
-  public void setFrom(String from) {
+  public void setFrom(@javax.annotation.Nullable String from) {
     this.from = from;
   }
 
 
-  public DtmfCallback to(String to) {
+  public DtmfCallback to(@javax.annotation.Nullable String to) {
     this.to = to;
     return this;
   }
 
-   /**
+  /**
    * The phone number that received the call, in E.164 format (e.g. +15555555555).
    * @return to
-  **/
+   */
   @javax.annotation.Nullable
   public String getTo() {
     return to;
   }
 
-  public void setTo(String to) {
+  public void setTo(@javax.annotation.Nullable String to) {
     this.to = to;
   }
 
 
-  public DtmfCallback callId(String callId) {
+  public DtmfCallback callId(@javax.annotation.Nullable String callId) {
     this.callId = callId;
     return this;
   }
 
-   /**
+  /**
    * The call id associated with the event.
    * @return callId
-  **/
+   */
   @javax.annotation.Nullable
   public String getCallId() {
     return callId;
   }
 
-  public void setCallId(String callId) {
+  public void setCallId(@javax.annotation.Nullable String callId) {
     this.callId = callId;
   }
 
 
-  public DtmfCallback direction(CallDirectionEnum direction) {
+  public DtmfCallback direction(@javax.annotation.Nullable CallDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
 
-   /**
+  /**
    * Get direction
    * @return direction
-  **/
+   */
   @javax.annotation.Nullable
   public CallDirectionEnum getDirection() {
     return direction;
   }
 
-  public void setDirection(CallDirectionEnum direction) {
+  public void setDirection(@javax.annotation.Nullable CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
-  public DtmfCallback digit(String digit) {
+  public DtmfCallback digit(@javax.annotation.Nullable String digit) {
     this.digit = digit;
     return this;
   }
 
-   /**
+  /**
    * The digit collected in the call.
    * @return digit
-  **/
+   */
   @javax.annotation.Nullable
   public String getDigit() {
     return digit;
   }
 
-  public void setDigit(String digit) {
+  public void setDigit(@javax.annotation.Nullable String digit) {
     this.digit = digit;
   }
 
 
-  public DtmfCallback callUrl(URI callUrl) {
+  public DtmfCallback callUrl(@javax.annotation.Nullable URI callUrl) {
     this.callUrl = callUrl;
     return this;
   }
 
-   /**
+  /**
    * The URL of the call associated with the event.
    * @return callUrl
-  **/
+   */
   @javax.annotation.Nullable
   public URI getCallUrl() {
     return callUrl;
   }
 
-  public void setCallUrl(URI callUrl) {
+  public void setCallUrl(@javax.annotation.Nullable URI callUrl) {
     this.callUrl = callUrl;
   }
 
 
-  public DtmfCallback enqueuedTime(OffsetDateTime enqueuedTime) {
+  public DtmfCallback enqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
     return this;
   }
 
-   /**
+  /**
    * (optional) If call queueing is enabled and this is an outbound call, time the call was queued, in ISO 8601 format.
    * @return enqueuedTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getEnqueuedTime() {
     return enqueuedTime;
   }
 
-  public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
+  public void setEnqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
-  public DtmfCallback startTime(OffsetDateTime startTime) {
+  public DtmfCallback startTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
   }
 
-   /**
+  /**
    * Time the call was started, in ISO 8601 format.
    * @return startTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getStartTime() {
     return startTime;
   }
 
-  public void setStartTime(OffsetDateTime startTime) {
+  public void setStartTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
-  public DtmfCallback answerTime(OffsetDateTime answerTime) {
+  public DtmfCallback answerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
     this.answerTime = answerTime;
     return this;
   }
 
-   /**
+  /**
    * Time the call was answered, in ISO 8601 format.
    * @return answerTime
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getAnswerTime() {
     return answerTime;
   }
 
-  public void setAnswerTime(OffsetDateTime answerTime) {
+  public void setAnswerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
-  public DtmfCallback parentCallId(String parentCallId) {
+  public DtmfCallback parentCallId(@javax.annotation.Nullable String parentCallId) {
     this.parentCallId = parentCallId;
     return this;
   }
 
-   /**
+  /**
    * (optional) If the event is related to the B leg of a &lt;Transfer&gt;, the call id of the original call leg that executed the &lt;Transfer&gt;. Otherwise, this field will not be present.
    * @return parentCallId
-  **/
+   */
   @javax.annotation.Nullable
   public String getParentCallId() {
     return parentCallId;
   }
 
-  public void setParentCallId(String parentCallId) {
+  public void setParentCallId(@javax.annotation.Nullable String parentCallId) {
     this.parentCallId = parentCallId;
   }
 
 
-  public DtmfCallback transferCallerId(String transferCallerId) {
+  public DtmfCallback transferCallerId(@javax.annotation.Nullable String transferCallerId) {
     this.transferCallerId = transferCallerId;
     return this;
   }
 
-   /**
+  /**
    * The phone number used as the from field of the B-leg call, in E.164 format (e.g. +15555555555).
    * @return transferCallerId
-  **/
+   */
   @javax.annotation.Nullable
   public String getTransferCallerId() {
     return transferCallerId;
   }
 
-  public void setTransferCallerId(String transferCallerId) {
+  public void setTransferCallerId(@javax.annotation.Nullable String transferCallerId) {
     this.transferCallerId = transferCallerId;
   }
 
 
-  public DtmfCallback transferTo(String transferTo) {
+  public DtmfCallback transferTo(@javax.annotation.Nullable String transferTo) {
     this.transferTo = transferTo;
     return this;
   }
 
-   /**
+  /**
    * The phone number used as the to field of the B-leg call, in E.164 format (e.g. +15555555555).
    * @return transferTo
-  **/
+   */
   @javax.annotation.Nullable
   public String getTransferTo() {
     return transferTo;
   }
 
-  public void setTransferTo(String transferTo) {
+  public void setTransferTo(@javax.annotation.Nullable String transferTo) {
     this.transferTo = transferTo;
   }
 
 
-  public DtmfCallback tag(String tag) {
+  public DtmfCallback tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
 
-   /**
+  /**
    * (optional) The tag specified on call creation. If no tag was specified or it was previously cleared, this field will not be present.
    * @return tag
-  **/
+   */
   @javax.annotation.Nullable
   public String getTag() {
     return tag;
   }
 
-  public void setTag(String tag) {
+  public void setTag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
   }
 
@@ -605,12 +621,12 @@ public class DtmfCallback {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to DtmfCallback
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to DtmfCallback
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!DtmfCallback.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -732,22 +748,22 @@ public class DtmfCallback {
     }
   }
 
- /**
-  * Create an instance of DtmfCallback given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of DtmfCallback
-  * @throws IOException if the JSON string is invalid with respect to DtmfCallback
-  */
+  /**
+   * Create an instance of DtmfCallback given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of DtmfCallback
+   * @throws IOException if the JSON string is invalid with respect to DtmfCallback
+   */
   public static DtmfCallback fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, DtmfCallback.class);
   }
 
- /**
-  * Convert an instance of DtmfCallback to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of DtmfCallback to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

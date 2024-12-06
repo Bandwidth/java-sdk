@@ -39,7 +39,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -51,122 +50,127 @@ import com.bandwidth.sdk.JSON;
 /**
  * Message Sending Callback
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class MessageSendingCallback {
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)
+  @javax.annotation.Nonnull
   private OffsetDateTime time;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nonnull
   private String type;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
+  @javax.annotation.Nonnull
   private String to;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nonnull
   private String description;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nonnull
   private MessageSendingCallbackMessage message;
 
   public MessageSendingCallback() {
   }
 
-  public MessageSendingCallback time(OffsetDateTime time) {
+  public MessageSendingCallback time(@javax.annotation.Nonnull OffsetDateTime time) {
     this.time = time;
     return this;
   }
 
-   /**
+  /**
    * Get time
    * @return time
-  **/
+   */
   @javax.annotation.Nonnull
   public OffsetDateTime getTime() {
     return time;
   }
 
-  public void setTime(OffsetDateTime time) {
+  public void setTime(@javax.annotation.Nonnull OffsetDateTime time) {
     this.time = time;
   }
 
 
-  public MessageSendingCallback type(String type) {
+  public MessageSendingCallback type(@javax.annotation.Nonnull String type) {
     this.type = type;
     return this;
   }
 
-   /**
+  /**
    * Get type
    * @return type
-  **/
+   */
   @javax.annotation.Nonnull
   public String getType() {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nonnull String type) {
     this.type = type;
   }
 
 
-  public MessageSendingCallback to(String to) {
+  public MessageSendingCallback to(@javax.annotation.Nonnull String to) {
     this.to = to;
     return this;
   }
 
-   /**
+  /**
    * Get to
    * @return to
-  **/
+   */
   @javax.annotation.Nonnull
   public String getTo() {
     return to;
   }
 
-  public void setTo(String to) {
+  public void setTo(@javax.annotation.Nonnull String to) {
     this.to = to;
   }
 
 
-  public MessageSendingCallback description(String description) {
+  public MessageSendingCallback description(@javax.annotation.Nonnull String description) {
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * Get description
    * @return description
-  **/
+   */
   @javax.annotation.Nonnull
   public String getDescription() {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nonnull String description) {
     this.description = description;
   }
 
 
-  public MessageSendingCallback message(MessageSendingCallbackMessage message) {
+  public MessageSendingCallback message(@javax.annotation.Nonnull MessageSendingCallbackMessage message) {
     this.message = message;
     return this;
   }
 
-   /**
+  /**
    * Get message
    * @return message
-  **/
+   */
   @javax.annotation.Nonnull
   public MessageSendingCallbackMessage getMessage() {
     return message;
   }
 
-  public void setMessage(MessageSendingCallbackMessage message) {
+  public void setMessage(@javax.annotation.Nonnull MessageSendingCallbackMessage message) {
     this.message = message;
   }
 
@@ -285,12 +289,12 @@ public class MessageSendingCallback {
     openapiRequiredFields.add("message");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to MessageSendingCallback
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to MessageSendingCallback
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!MessageSendingCallback.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -390,22 +394,22 @@ public class MessageSendingCallback {
     }
   }
 
- /**
-  * Create an instance of MessageSendingCallback given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of MessageSendingCallback
-  * @throws IOException if the JSON string is invalid with respect to MessageSendingCallback
-  */
+  /**
+   * Create an instance of MessageSendingCallback given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of MessageSendingCallback
+   * @throws IOException if the JSON string is invalid with respect to MessageSendingCallback
+   */
   public static MessageSendingCallback fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, MessageSendingCallback.class);
   }
 
- /**
-  * Convert an instance of MessageSendingCallback to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of MessageSendingCallback to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

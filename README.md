@@ -2,7 +2,7 @@
 
 Bandwidth
 - API version: 1.0.0
-  - Generator version: 7.6.0
+  - Generator version: 7.10.0
 
 Bandwidth's Communication APIs
 
@@ -41,7 +41,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.bandwidth.sdk</groupId>
   <artifactId>bandwidth-sdk</artifactId>
-  <version>10.1.0</version>
+  <version>1.0.0-dev</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -57,7 +57,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.bandwidth.sdk:bandwidth-sdk:10.1.0"
+     implementation "com.bandwidth.sdk:bandwidth-sdk:1.0.0-dev"
   }
 ```
 
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/bandwidth-sdk-10.1.0.jar`
+* `target/bandwidth-sdk-1.0.0-dev.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -85,7 +85,7 @@ import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.auth.*;
-import com.bandwidth.sdk.models.*;
+import com.bandwidth.sdk.model.*;
 import com.bandwidth.sdk.api.CallsApi;
 
 public class Example {

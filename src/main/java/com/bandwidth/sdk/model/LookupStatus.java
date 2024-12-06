@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,66 +52,70 @@ import com.bandwidth.sdk.JSON;
 /**
  * If requestId exists, the result for that request is returned. See the Examples for details on the various responses that you can receive. Generally, if you see a Response Code of 0 in a result for a TN, information will be available for it.  Any other Response Code will indicate no information was available for the TN.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class LookupStatus {
   public static final String SERIALIZED_NAME_REQUEST_ID = "requestId";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
+  @javax.annotation.Nullable
   private String requestId;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private LookupStatusEnum status;
 
   public static final String SERIALIZED_NAME_RESULT = "result";
   @SerializedName(SERIALIZED_NAME_RESULT)
+  @javax.annotation.Nullable
   private List<LookupResult> result = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_FAILED_TELEPHONE_NUMBERS = "failedTelephoneNumbers";
   @SerializedName(SERIALIZED_NAME_FAILED_TELEPHONE_NUMBERS)
+  @javax.annotation.Nullable
   private List<String> failedTelephoneNumbers = new ArrayList<>();
 
   public LookupStatus() {
   }
 
-  public LookupStatus requestId(String requestId) {
+  public LookupStatus requestId(@javax.annotation.Nullable String requestId) {
     this.requestId = requestId;
     return this;
   }
 
-   /**
+  /**
    * The requestId.
    * @return requestId
-  **/
+   */
   @javax.annotation.Nullable
   public String getRequestId() {
     return requestId;
   }
 
-  public void setRequestId(String requestId) {
+  public void setRequestId(@javax.annotation.Nullable String requestId) {
     this.requestId = requestId;
   }
 
 
-  public LookupStatus status(LookupStatusEnum status) {
+  public LookupStatus status(@javax.annotation.Nullable LookupStatusEnum status) {
     this.status = status;
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @javax.annotation.Nullable
   public LookupStatusEnum getStatus() {
     return status;
   }
 
-  public void setStatus(LookupStatusEnum status) {
+  public void setStatus(@javax.annotation.Nullable LookupStatusEnum status) {
     this.status = status;
   }
 
 
-  public LookupStatus result(List<LookupResult> result) {
+  public LookupStatus result(@javax.annotation.Nullable List<LookupResult> result) {
     this.result = result;
     return this;
   }
@@ -125,21 +128,21 @@ public class LookupStatus {
     return this;
   }
 
-   /**
+  /**
    * The carrier information results for the specified telephone number.
    * @return result
-  **/
+   */
   @javax.annotation.Nullable
   public List<LookupResult> getResult() {
     return result;
   }
 
-  public void setResult(List<LookupResult> result) {
+  public void setResult(@javax.annotation.Nullable List<LookupResult> result) {
     this.result = result;
   }
 
 
-  public LookupStatus failedTelephoneNumbers(List<String> failedTelephoneNumbers) {
+  public LookupStatus failedTelephoneNumbers(@javax.annotation.Nullable List<String> failedTelephoneNumbers) {
     this.failedTelephoneNumbers = failedTelephoneNumbers;
     return this;
   }
@@ -152,16 +155,16 @@ public class LookupStatus {
     return this;
   }
 
-   /**
+  /**
    * The telephone numbers whose lookup failed.
    * @return failedTelephoneNumbers
-  **/
+   */
   @javax.annotation.Nullable
   public List<String> getFailedTelephoneNumbers() {
     return failedTelephoneNumbers;
   }
 
-  public void setFailedTelephoneNumbers(List<String> failedTelephoneNumbers) {
+  public void setFailedTelephoneNumbers(@javax.annotation.Nullable List<String> failedTelephoneNumbers) {
     this.failedTelephoneNumbers = failedTelephoneNumbers;
   }
 
@@ -272,12 +275,12 @@ public class LookupStatus {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to LookupStatus
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to LookupStatus
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!LookupStatus.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -384,22 +387,22 @@ public class LookupStatus {
     }
   }
 
- /**
-  * Create an instance of LookupStatus given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of LookupStatus
-  * @throws IOException if the JSON string is invalid with respect to LookupStatus
-  */
+  /**
+   * Create an instance of LookupStatus given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of LookupStatus
+   * @throws IOException if the JSON string is invalid with respect to LookupStatus
+   */
   public static LookupStatus fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, LookupStatus.class);
   }
 
- /**
-  * Convert an instance of LookupStatus to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of LookupStatus to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }
