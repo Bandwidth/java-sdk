@@ -48,16 +48,17 @@ import com.bandwidth.sdk.JSON;
 /**
  * MessagingCodeResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class MessagingCodeResponse {
   public static final String SERIALIZED_NAME_MESSAGE_ID = "messageId";
   @SerializedName(SERIALIZED_NAME_MESSAGE_ID)
+  @javax.annotation.Nullable
   private String messageId;
 
   public MessagingCodeResponse() {
   }
 
-  public MessagingCodeResponse messageId(String messageId) {
+  public MessagingCodeResponse messageId(@javax.annotation.Nullable String messageId) {
     this.messageId = messageId;
     return this;
   }
@@ -71,7 +72,7 @@ public class MessagingCodeResponse {
     return messageId;
   }
 
-  public void setMessageId(String messageId) {
+  public void setMessageId(@javax.annotation.Nullable String messageId) {
     this.messageId = messageId;
   }
 

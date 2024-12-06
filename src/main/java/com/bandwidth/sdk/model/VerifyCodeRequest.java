@@ -49,28 +49,32 @@ import com.bandwidth.sdk.JSON;
 /**
  * VerifyCodeRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class VerifyCodeRequest {
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
+  @javax.annotation.Nonnull
   private String to;
 
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
+  @javax.annotation.Nullable
   private String scope;
 
   public static final String SERIALIZED_NAME_EXPIRATION_TIME_IN_MINUTES = "expirationTimeInMinutes";
   @SerializedName(SERIALIZED_NAME_EXPIRATION_TIME_IN_MINUTES)
+  @javax.annotation.Nonnull
   private BigDecimal expirationTimeInMinutes;
 
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
+  @javax.annotation.Nonnull
   private String code;
 
   public VerifyCodeRequest() {
   }
 
-  public VerifyCodeRequest to(String to) {
+  public VerifyCodeRequest to(@javax.annotation.Nonnull String to) {
     this.to = to;
     return this;
   }
@@ -84,12 +88,12 @@ public class VerifyCodeRequest {
     return to;
   }
 
-  public void setTo(String to) {
+  public void setTo(@javax.annotation.Nonnull String to) {
     this.to = to;
   }
 
 
-  public VerifyCodeRequest scope(String scope) {
+  public VerifyCodeRequest scope(@javax.annotation.Nullable String scope) {
     this.scope = scope;
     return this;
   }
@@ -103,12 +107,12 @@ public class VerifyCodeRequest {
     return scope;
   }
 
-  public void setScope(String scope) {
+  public void setScope(@javax.annotation.Nullable String scope) {
     this.scope = scope;
   }
 
 
-  public VerifyCodeRequest expirationTimeInMinutes(BigDecimal expirationTimeInMinutes) {
+  public VerifyCodeRequest expirationTimeInMinutes(@javax.annotation.Nonnull BigDecimal expirationTimeInMinutes) {
     this.expirationTimeInMinutes = expirationTimeInMinutes;
     return this;
   }
@@ -124,12 +128,12 @@ public class VerifyCodeRequest {
     return expirationTimeInMinutes;
   }
 
-  public void setExpirationTimeInMinutes(BigDecimal expirationTimeInMinutes) {
+  public void setExpirationTimeInMinutes(@javax.annotation.Nonnull BigDecimal expirationTimeInMinutes) {
     this.expirationTimeInMinutes = expirationTimeInMinutes;
   }
 
 
-  public VerifyCodeRequest code(String code) {
+  public VerifyCodeRequest code(@javax.annotation.Nonnull String code) {
     this.code = code;
     return this;
   }
@@ -143,7 +147,7 @@ public class VerifyCodeRequest {
     return code;
   }
 
-  public void setCode(String code) {
+  public void setCode(@javax.annotation.Nonnull String code) {
     this.code = code;
   }
 

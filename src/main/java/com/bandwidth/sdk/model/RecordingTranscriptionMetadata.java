@@ -50,28 +50,32 @@ import com.bandwidth.sdk.JSON;
 /**
  * If the recording was transcribed, metadata about the transcription
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class RecordingTranscriptionMetadata {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private String status;
 
   public static final String SERIALIZED_NAME_COMPLETED_TIME = "completedTime";
   @SerializedName(SERIALIZED_NAME_COMPLETED_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime completedTime;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
+  @javax.annotation.Nullable
   private URI url;
 
   public RecordingTranscriptionMetadata() {
   }
 
-  public RecordingTranscriptionMetadata id(String id) {
+  public RecordingTranscriptionMetadata id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -85,12 +89,12 @@ public class RecordingTranscriptionMetadata {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public RecordingTranscriptionMetadata status(String status) {
+  public RecordingTranscriptionMetadata status(@javax.annotation.Nullable String status) {
     this.status = status;
     return this;
   }
@@ -104,12 +108,12 @@ public class RecordingTranscriptionMetadata {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(@javax.annotation.Nullable String status) {
     this.status = status;
   }
 
 
-  public RecordingTranscriptionMetadata completedTime(OffsetDateTime completedTime) {
+  public RecordingTranscriptionMetadata completedTime(@javax.annotation.Nullable OffsetDateTime completedTime) {
     this.completedTime = completedTime;
     return this;
   }
@@ -123,12 +127,12 @@ public class RecordingTranscriptionMetadata {
     return completedTime;
   }
 
-  public void setCompletedTime(OffsetDateTime completedTime) {
+  public void setCompletedTime(@javax.annotation.Nullable OffsetDateTime completedTime) {
     this.completedTime = completedTime;
   }
 
 
-  public RecordingTranscriptionMetadata url(URI url) {
+  public RecordingTranscriptionMetadata url(@javax.annotation.Nullable URI url) {
     this.url = url;
     return this;
   }
@@ -142,7 +146,7 @@ public class RecordingTranscriptionMetadata {
     return url;
   }
 
-  public void setUrl(URI url) {
+  public void setUrl(@javax.annotation.Nullable URI url) {
     this.url = url;
   }
 

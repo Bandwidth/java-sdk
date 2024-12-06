@@ -53,68 +53,82 @@ import com.bandwidth.sdk.JSON;
 /**
  * This event is sent to the url informed when requesting a machine detection operation. It contains the machine detection operation result, which can be: human, answering-machine, silence, timeout, error. This event is not sent when sync answering machine detection mode is chosen.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class MachineDetectionCompleteCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
+  @javax.annotation.Nullable
   private String eventType;
 
   public static final String SERIALIZED_NAME_EVENT_TIME = "eventTime";
   @SerializedName(SERIALIZED_NAME_EVENT_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime eventTime;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String accountId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  @javax.annotation.Nullable
   private String applicationId;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
+  @javax.annotation.Nullable
   private String from;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
+  @javax.annotation.Nullable
   private String to;
 
   public static final String SERIALIZED_NAME_DIRECTION = "direction";
   @SerializedName(SERIALIZED_NAME_DIRECTION)
+  @javax.annotation.Nullable
   private CallDirectionEnum direction;
 
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
+  @javax.annotation.Nullable
   private String callId;
 
   public static final String SERIALIZED_NAME_CALL_URL = "callUrl";
   @SerializedName(SERIALIZED_NAME_CALL_URL)
+  @javax.annotation.Nullable
   private URI callUrl;
 
   public static final String SERIALIZED_NAME_ENQUEUED_TIME = "enqueuedTime";
   @SerializedName(SERIALIZED_NAME_ENQUEUED_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime enqueuedTime;
 
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime startTime;
 
   public static final String SERIALIZED_NAME_ANSWER_TIME = "answerTime";
   @SerializedName(SERIALIZED_NAME_ANSWER_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime answerTime;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
+  @javax.annotation.Nullable
   private String tag;
 
   public static final String SERIALIZED_NAME_MACHINE_DETECTION_RESULT = "machineDetectionResult";
   @SerializedName(SERIALIZED_NAME_MACHINE_DETECTION_RESULT)
+  @javax.annotation.Nullable
   private MachineDetectionResult machineDetectionResult;
 
   public MachineDetectionCompleteCallback() {
   }
 
-  public MachineDetectionCompleteCallback eventType(String eventType) {
+  public MachineDetectionCompleteCallback eventType(@javax.annotation.Nullable String eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -128,12 +142,12 @@ public class MachineDetectionCompleteCallback {
     return eventType;
   }
 
-  public void setEventType(String eventType) {
+  public void setEventType(@javax.annotation.Nullable String eventType) {
     this.eventType = eventType;
   }
 
 
-  public MachineDetectionCompleteCallback eventTime(OffsetDateTime eventTime) {
+  public MachineDetectionCompleteCallback eventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
     this.eventTime = eventTime;
     return this;
   }
@@ -147,12 +161,12 @@ public class MachineDetectionCompleteCallback {
     return eventTime;
   }
 
-  public void setEventTime(OffsetDateTime eventTime) {
+  public void setEventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
-  public MachineDetectionCompleteCallback accountId(String accountId) {
+  public MachineDetectionCompleteCallback accountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -166,12 +180,12 @@ public class MachineDetectionCompleteCallback {
     return accountId;
   }
 
-  public void setAccountId(String accountId) {
+  public void setAccountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
   }
 
 
-  public MachineDetectionCompleteCallback applicationId(String applicationId) {
+  public MachineDetectionCompleteCallback applicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -185,12 +199,12 @@ public class MachineDetectionCompleteCallback {
     return applicationId;
   }
 
-  public void setApplicationId(String applicationId) {
+  public void setApplicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public MachineDetectionCompleteCallback from(String from) {
+  public MachineDetectionCompleteCallback from(@javax.annotation.Nullable String from) {
     this.from = from;
     return this;
   }
@@ -204,12 +218,12 @@ public class MachineDetectionCompleteCallback {
     return from;
   }
 
-  public void setFrom(String from) {
+  public void setFrom(@javax.annotation.Nullable String from) {
     this.from = from;
   }
 
 
-  public MachineDetectionCompleteCallback to(String to) {
+  public MachineDetectionCompleteCallback to(@javax.annotation.Nullable String to) {
     this.to = to;
     return this;
   }
@@ -223,12 +237,12 @@ public class MachineDetectionCompleteCallback {
     return to;
   }
 
-  public void setTo(String to) {
+  public void setTo(@javax.annotation.Nullable String to) {
     this.to = to;
   }
 
 
-  public MachineDetectionCompleteCallback direction(CallDirectionEnum direction) {
+  public MachineDetectionCompleteCallback direction(@javax.annotation.Nullable CallDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
@@ -242,12 +256,12 @@ public class MachineDetectionCompleteCallback {
     return direction;
   }
 
-  public void setDirection(CallDirectionEnum direction) {
+  public void setDirection(@javax.annotation.Nullable CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
-  public MachineDetectionCompleteCallback callId(String callId) {
+  public MachineDetectionCompleteCallback callId(@javax.annotation.Nullable String callId) {
     this.callId = callId;
     return this;
   }
@@ -261,12 +275,12 @@ public class MachineDetectionCompleteCallback {
     return callId;
   }
 
-  public void setCallId(String callId) {
+  public void setCallId(@javax.annotation.Nullable String callId) {
     this.callId = callId;
   }
 
 
-  public MachineDetectionCompleteCallback callUrl(URI callUrl) {
+  public MachineDetectionCompleteCallback callUrl(@javax.annotation.Nullable URI callUrl) {
     this.callUrl = callUrl;
     return this;
   }
@@ -280,12 +294,12 @@ public class MachineDetectionCompleteCallback {
     return callUrl;
   }
 
-  public void setCallUrl(URI callUrl) {
+  public void setCallUrl(@javax.annotation.Nullable URI callUrl) {
     this.callUrl = callUrl;
   }
 
 
-  public MachineDetectionCompleteCallback enqueuedTime(OffsetDateTime enqueuedTime) {
+  public MachineDetectionCompleteCallback enqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -299,12 +313,12 @@ public class MachineDetectionCompleteCallback {
     return enqueuedTime;
   }
 
-  public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
+  public void setEnqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
-  public MachineDetectionCompleteCallback startTime(OffsetDateTime startTime) {
+  public MachineDetectionCompleteCallback startTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -318,12 +332,12 @@ public class MachineDetectionCompleteCallback {
     return startTime;
   }
 
-  public void setStartTime(OffsetDateTime startTime) {
+  public void setStartTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
-  public MachineDetectionCompleteCallback answerTime(OffsetDateTime answerTime) {
+  public MachineDetectionCompleteCallback answerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
     this.answerTime = answerTime;
     return this;
   }
@@ -337,12 +351,12 @@ public class MachineDetectionCompleteCallback {
     return answerTime;
   }
 
-  public void setAnswerTime(OffsetDateTime answerTime) {
+  public void setAnswerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
-  public MachineDetectionCompleteCallback tag(String tag) {
+  public MachineDetectionCompleteCallback tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
@@ -356,12 +370,12 @@ public class MachineDetectionCompleteCallback {
     return tag;
   }
 
-  public void setTag(String tag) {
+  public void setTag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
   }
 
 
-  public MachineDetectionCompleteCallback machineDetectionResult(MachineDetectionResult machineDetectionResult) {
+  public MachineDetectionCompleteCallback machineDetectionResult(@javax.annotation.Nullable MachineDetectionResult machineDetectionResult) {
     this.machineDetectionResult = machineDetectionResult;
     return this;
   }
@@ -375,7 +389,7 @@ public class MachineDetectionCompleteCallback {
     return machineDetectionResult;
   }
 
-  public void setMachineDetectionResult(MachineDetectionResult machineDetectionResult) {
+  public void setMachineDetectionResult(@javax.annotation.Nullable MachineDetectionResult machineDetectionResult) {
     this.machineDetectionResult = machineDetectionResult;
   }
 

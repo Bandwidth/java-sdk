@@ -52,64 +52,77 @@ import com.bandwidth.sdk.JSON;
 /**
  * If the originating call leaves the &lt;Bridge&gt;, then this callback is sent to the bridgeTargetCompleteUrl, and the BXML returned in it is executed on the target call. If this webhook is sent, the Bridge Complete webhook is NOT sent.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class BridgeTargetCompleteCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
+  @javax.annotation.Nullable
   private String eventType;
 
   public static final String SERIALIZED_NAME_EVENT_TIME = "eventTime";
   @SerializedName(SERIALIZED_NAME_EVENT_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime eventTime;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String accountId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  @javax.annotation.Nullable
   private String applicationId;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
+  @javax.annotation.Nullable
   private String from;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
+  @javax.annotation.Nullable
   private String to;
 
   public static final String SERIALIZED_NAME_DIRECTION = "direction";
   @SerializedName(SERIALIZED_NAME_DIRECTION)
+  @javax.annotation.Nullable
   private CallDirectionEnum direction;
 
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
+  @javax.annotation.Nullable
   private String callId;
 
   public static final String SERIALIZED_NAME_CALL_URL = "callUrl";
   @SerializedName(SERIALIZED_NAME_CALL_URL)
+  @javax.annotation.Nullable
   private URI callUrl;
 
   public static final String SERIALIZED_NAME_ENQUEUED_TIME = "enqueuedTime";
   @SerializedName(SERIALIZED_NAME_ENQUEUED_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime enqueuedTime;
 
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime startTime;
 
   public static final String SERIALIZED_NAME_ANSWER_TIME = "answerTime";
   @SerializedName(SERIALIZED_NAME_ANSWER_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime answerTime;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
+  @javax.annotation.Nullable
   private String tag;
 
   public BridgeTargetCompleteCallback() {
   }
 
-  public BridgeTargetCompleteCallback eventType(String eventType) {
+  public BridgeTargetCompleteCallback eventType(@javax.annotation.Nullable String eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -123,12 +136,12 @@ public class BridgeTargetCompleteCallback {
     return eventType;
   }
 
-  public void setEventType(String eventType) {
+  public void setEventType(@javax.annotation.Nullable String eventType) {
     this.eventType = eventType;
   }
 
 
-  public BridgeTargetCompleteCallback eventTime(OffsetDateTime eventTime) {
+  public BridgeTargetCompleteCallback eventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
     this.eventTime = eventTime;
     return this;
   }
@@ -142,12 +155,12 @@ public class BridgeTargetCompleteCallback {
     return eventTime;
   }
 
-  public void setEventTime(OffsetDateTime eventTime) {
+  public void setEventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
-  public BridgeTargetCompleteCallback accountId(String accountId) {
+  public BridgeTargetCompleteCallback accountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -161,12 +174,12 @@ public class BridgeTargetCompleteCallback {
     return accountId;
   }
 
-  public void setAccountId(String accountId) {
+  public void setAccountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
   }
 
 
-  public BridgeTargetCompleteCallback applicationId(String applicationId) {
+  public BridgeTargetCompleteCallback applicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -180,12 +193,12 @@ public class BridgeTargetCompleteCallback {
     return applicationId;
   }
 
-  public void setApplicationId(String applicationId) {
+  public void setApplicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public BridgeTargetCompleteCallback from(String from) {
+  public BridgeTargetCompleteCallback from(@javax.annotation.Nullable String from) {
     this.from = from;
     return this;
   }
@@ -199,12 +212,12 @@ public class BridgeTargetCompleteCallback {
     return from;
   }
 
-  public void setFrom(String from) {
+  public void setFrom(@javax.annotation.Nullable String from) {
     this.from = from;
   }
 
 
-  public BridgeTargetCompleteCallback to(String to) {
+  public BridgeTargetCompleteCallback to(@javax.annotation.Nullable String to) {
     this.to = to;
     return this;
   }
@@ -218,12 +231,12 @@ public class BridgeTargetCompleteCallback {
     return to;
   }
 
-  public void setTo(String to) {
+  public void setTo(@javax.annotation.Nullable String to) {
     this.to = to;
   }
 
 
-  public BridgeTargetCompleteCallback direction(CallDirectionEnum direction) {
+  public BridgeTargetCompleteCallback direction(@javax.annotation.Nullable CallDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
@@ -237,12 +250,12 @@ public class BridgeTargetCompleteCallback {
     return direction;
   }
 
-  public void setDirection(CallDirectionEnum direction) {
+  public void setDirection(@javax.annotation.Nullable CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
-  public BridgeTargetCompleteCallback callId(String callId) {
+  public BridgeTargetCompleteCallback callId(@javax.annotation.Nullable String callId) {
     this.callId = callId;
     return this;
   }
@@ -256,12 +269,12 @@ public class BridgeTargetCompleteCallback {
     return callId;
   }
 
-  public void setCallId(String callId) {
+  public void setCallId(@javax.annotation.Nullable String callId) {
     this.callId = callId;
   }
 
 
-  public BridgeTargetCompleteCallback callUrl(URI callUrl) {
+  public BridgeTargetCompleteCallback callUrl(@javax.annotation.Nullable URI callUrl) {
     this.callUrl = callUrl;
     return this;
   }
@@ -275,12 +288,12 @@ public class BridgeTargetCompleteCallback {
     return callUrl;
   }
 
-  public void setCallUrl(URI callUrl) {
+  public void setCallUrl(@javax.annotation.Nullable URI callUrl) {
     this.callUrl = callUrl;
   }
 
 
-  public BridgeTargetCompleteCallback enqueuedTime(OffsetDateTime enqueuedTime) {
+  public BridgeTargetCompleteCallback enqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -294,12 +307,12 @@ public class BridgeTargetCompleteCallback {
     return enqueuedTime;
   }
 
-  public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
+  public void setEnqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
-  public BridgeTargetCompleteCallback startTime(OffsetDateTime startTime) {
+  public BridgeTargetCompleteCallback startTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -313,12 +326,12 @@ public class BridgeTargetCompleteCallback {
     return startTime;
   }
 
-  public void setStartTime(OffsetDateTime startTime) {
+  public void setStartTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
-  public BridgeTargetCompleteCallback answerTime(OffsetDateTime answerTime) {
+  public BridgeTargetCompleteCallback answerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
     this.answerTime = answerTime;
     return this;
   }
@@ -332,12 +345,12 @@ public class BridgeTargetCompleteCallback {
     return answerTime;
   }
 
-  public void setAnswerTime(OffsetDateTime answerTime) {
+  public void setAnswerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
-  public BridgeTargetCompleteCallback tag(String tag) {
+  public BridgeTargetCompleteCallback tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
@@ -351,7 +364,7 @@ public class BridgeTargetCompleteCallback {
     return tag;
   }
 
-  public void setTag(String tag) {
+  public void setTag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
   }
 

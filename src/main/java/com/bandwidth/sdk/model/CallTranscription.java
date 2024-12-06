@@ -50,28 +50,32 @@ import com.bandwidth.sdk.JSON;
 /**
  * CallTranscription
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class CallTranscription {
   public static final String SERIALIZED_NAME_DETECTED_LANGUAGE = "detectedLanguage";
   @SerializedName(SERIALIZED_NAME_DETECTED_LANGUAGE)
+  @javax.annotation.Nullable
   private CallTranscriptionDetectedLanguageEnum detectedLanguage;
 
   public static final String SERIALIZED_NAME_TRACK = "track";
   @SerializedName(SERIALIZED_NAME_TRACK)
+  @javax.annotation.Nullable
   private CallTranscriptionTrackEnum track;
 
   public static final String SERIALIZED_NAME_TRANSCRIPT = "transcript";
   @SerializedName(SERIALIZED_NAME_TRANSCRIPT)
+  @javax.annotation.Nullable
   private String transcript;
 
   public static final String SERIALIZED_NAME_CONFIDENCE = "confidence";
   @SerializedName(SERIALIZED_NAME_CONFIDENCE)
+  @javax.annotation.Nullable
   private Double confidence;
 
   public CallTranscription() {
   }
 
-  public CallTranscription detectedLanguage(CallTranscriptionDetectedLanguageEnum detectedLanguage) {
+  public CallTranscription detectedLanguage(@javax.annotation.Nullable CallTranscriptionDetectedLanguageEnum detectedLanguage) {
     this.detectedLanguage = detectedLanguage;
     return this;
   }
@@ -85,12 +89,12 @@ public class CallTranscription {
     return detectedLanguage;
   }
 
-  public void setDetectedLanguage(CallTranscriptionDetectedLanguageEnum detectedLanguage) {
+  public void setDetectedLanguage(@javax.annotation.Nullable CallTranscriptionDetectedLanguageEnum detectedLanguage) {
     this.detectedLanguage = detectedLanguage;
   }
 
 
-  public CallTranscription track(CallTranscriptionTrackEnum track) {
+  public CallTranscription track(@javax.annotation.Nullable CallTranscriptionTrackEnum track) {
     this.track = track;
     return this;
   }
@@ -104,12 +108,12 @@ public class CallTranscription {
     return track;
   }
 
-  public void setTrack(CallTranscriptionTrackEnum track) {
+  public void setTrack(@javax.annotation.Nullable CallTranscriptionTrackEnum track) {
     this.track = track;
   }
 
 
-  public CallTranscription transcript(String transcript) {
+  public CallTranscription transcript(@javax.annotation.Nullable String transcript) {
     this.transcript = transcript;
     return this;
   }
@@ -123,12 +127,12 @@ public class CallTranscription {
     return transcript;
   }
 
-  public void setTranscript(String transcript) {
+  public void setTranscript(@javax.annotation.Nullable String transcript) {
     this.transcript = transcript;
   }
 
 
-  public CallTranscription confidence(Double confidence) {
+  public CallTranscription confidence(@javax.annotation.Nullable Double confidence) {
     this.confidence = confidence;
     return this;
   }
@@ -144,7 +148,7 @@ public class CallTranscription {
     return confidence;
   }
 
-  public void setConfidence(Double confidence) {
+  public void setConfidence(@javax.annotation.Nullable Double confidence) {
     this.confidence = confidence;
   }
 

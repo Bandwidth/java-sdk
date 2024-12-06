@@ -50,36 +50,42 @@ import com.bandwidth.sdk.JSON;
 /**
  * Message Failed Callback
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class MessageFailedCallback {
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)
+  @javax.annotation.Nonnull
   private OffsetDateTime time;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nonnull
   private String type;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
+  @javax.annotation.Nonnull
   private String to;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nonnull
   private String description;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nonnull
   private MessageFailedCallbackMessage message;
 
   public static final String SERIALIZED_NAME_ERROR_CODE = "errorCode";
   @SerializedName(SERIALIZED_NAME_ERROR_CODE)
+  @javax.annotation.Nonnull
   private Integer errorCode;
 
   public MessageFailedCallback() {
   }
 
-  public MessageFailedCallback time(OffsetDateTime time) {
+  public MessageFailedCallback time(@javax.annotation.Nonnull OffsetDateTime time) {
     this.time = time;
     return this;
   }
@@ -93,12 +99,12 @@ public class MessageFailedCallback {
     return time;
   }
 
-  public void setTime(OffsetDateTime time) {
+  public void setTime(@javax.annotation.Nonnull OffsetDateTime time) {
     this.time = time;
   }
 
 
-  public MessageFailedCallback type(String type) {
+  public MessageFailedCallback type(@javax.annotation.Nonnull String type) {
     this.type = type;
     return this;
   }
@@ -112,12 +118,12 @@ public class MessageFailedCallback {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nonnull String type) {
     this.type = type;
   }
 
 
-  public MessageFailedCallback to(String to) {
+  public MessageFailedCallback to(@javax.annotation.Nonnull String to) {
     this.to = to;
     return this;
   }
@@ -131,12 +137,12 @@ public class MessageFailedCallback {
     return to;
   }
 
-  public void setTo(String to) {
+  public void setTo(@javax.annotation.Nonnull String to) {
     this.to = to;
   }
 
 
-  public MessageFailedCallback description(String description) {
+  public MessageFailedCallback description(@javax.annotation.Nonnull String description) {
     this.description = description;
     return this;
   }
@@ -150,12 +156,12 @@ public class MessageFailedCallback {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nonnull String description) {
     this.description = description;
   }
 
 
-  public MessageFailedCallback message(MessageFailedCallbackMessage message) {
+  public MessageFailedCallback message(@javax.annotation.Nonnull MessageFailedCallbackMessage message) {
     this.message = message;
     return this;
   }
@@ -169,12 +175,12 @@ public class MessageFailedCallback {
     return message;
   }
 
-  public void setMessage(MessageFailedCallbackMessage message) {
+  public void setMessage(@javax.annotation.Nonnull MessageFailedCallbackMessage message) {
     this.message = message;
   }
 
 
-  public MessageFailedCallback errorCode(Integer errorCode) {
+  public MessageFailedCallback errorCode(@javax.annotation.Nonnull Integer errorCode) {
     this.errorCode = errorCode;
     return this;
   }
@@ -188,7 +194,7 @@ public class MessageFailedCallback {
     return errorCode;
   }
 
-  public void setErrorCode(Integer errorCode) {
+  public void setErrorCode(@javax.annotation.Nonnull Integer errorCode) {
     this.errorCode = errorCode;
   }
 

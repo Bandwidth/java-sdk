@@ -49,16 +49,17 @@ import com.bandwidth.sdk.JSON;
 /**
  * UpdateCallRecording
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class UpdateCallRecording {
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
+  @javax.annotation.Nonnull
   private RecordingStateEnum state;
 
   public UpdateCallRecording() {
   }
 
-  public UpdateCallRecording state(RecordingStateEnum state) {
+  public UpdateCallRecording state(@javax.annotation.Nonnull RecordingStateEnum state) {
     this.state = state;
     return this;
   }
@@ -72,7 +73,7 @@ public class UpdateCallRecording {
     return state;
   }
 
-  public void setState(RecordingStateEnum state) {
+  public void setState(@javax.annotation.Nonnull RecordingStateEnum state) {
     this.state = state;
   }
 
