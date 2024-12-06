@@ -48,20 +48,22 @@ import com.bandwidth.sdk.JSON;
 /**
  * AccountStatistics
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class AccountStatistics {
   public static final String SERIALIZED_NAME_CURRENT_CALL_QUEUE_SIZE = "currentCallQueueSize";
   @SerializedName(SERIALIZED_NAME_CURRENT_CALL_QUEUE_SIZE)
+  @javax.annotation.Nullable
   private Integer currentCallQueueSize;
 
   public static final String SERIALIZED_NAME_MAX_CALL_QUEUE_SIZE = "maxCallQueueSize";
   @SerializedName(SERIALIZED_NAME_MAX_CALL_QUEUE_SIZE)
+  @javax.annotation.Nullable
   private Integer maxCallQueueSize;
 
   public AccountStatistics() {
   }
 
-  public AccountStatistics currentCallQueueSize(Integer currentCallQueueSize) {
+  public AccountStatistics currentCallQueueSize(@javax.annotation.Nullable Integer currentCallQueueSize) {
     this.currentCallQueueSize = currentCallQueueSize;
     return this;
   }
@@ -75,12 +77,12 @@ public class AccountStatistics {
     return currentCallQueueSize;
   }
 
-  public void setCurrentCallQueueSize(Integer currentCallQueueSize) {
+  public void setCurrentCallQueueSize(@javax.annotation.Nullable Integer currentCallQueueSize) {
     this.currentCallQueueSize = currentCallQueueSize;
   }
 
 
-  public AccountStatistics maxCallQueueSize(Integer maxCallQueueSize) {
+  public AccountStatistics maxCallQueueSize(@javax.annotation.Nullable Integer maxCallQueueSize) {
     this.maxCallQueueSize = maxCallQueueSize;
     return this;
   }
@@ -94,7 +96,7 @@ public class AccountStatistics {
     return maxCallQueueSize;
   }
 
-  public void setMaxCallQueueSize(Integer maxCallQueueSize) {
+  public void setMaxCallQueueSize(@javax.annotation.Nullable Integer maxCallQueueSize) {
     this.maxCallQueueSize = maxCallQueueSize;
   }
 

@@ -48,20 +48,22 @@ import com.bandwidth.sdk.JSON;
 /**
  * (optional) if machine detection was requested in sync mode, the result will be specified here. Possible values are the same as the async counterpart: Machine Detection Complete
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class MachineDetectionResult {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
+  @javax.annotation.Nullable
   private String value;
 
   public static final String SERIALIZED_NAME_DURATION = "duration";
   @SerializedName(SERIALIZED_NAME_DURATION)
+  @javax.annotation.Nullable
   private String duration;
 
   public MachineDetectionResult() {
   }
 
-  public MachineDetectionResult value(String value) {
+  public MachineDetectionResult value(@javax.annotation.Nullable String value) {
     this.value = value;
     return this;
   }
@@ -75,12 +77,12 @@ public class MachineDetectionResult {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(@javax.annotation.Nullable String value) {
     this.value = value;
   }
 
 
-  public MachineDetectionResult duration(String duration) {
+  public MachineDetectionResult duration(@javax.annotation.Nullable String duration) {
     this.duration = duration;
     return this;
   }
@@ -94,7 +96,7 @@ public class MachineDetectionResult {
     return duration;
   }
 
-  public void setDuration(String duration) {
+  public void setDuration(@javax.annotation.Nullable String duration) {
     this.duration = duration;
   }
 

@@ -49,24 +49,27 @@ import com.bandwidth.sdk.JSON;
 /**
  * VoiceApiError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class VoiceApiError {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
   private String type;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public VoiceApiError() {
   }
 
-  public VoiceApiError type(String type) {
+  public VoiceApiError type(@javax.annotation.Nullable String type) {
     this.type = type;
     return this;
   }
@@ -80,12 +83,12 @@ public class VoiceApiError {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nullable String type) {
     this.type = type;
   }
 
 
-  public VoiceApiError description(String description) {
+  public VoiceApiError description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -99,12 +102,12 @@ public class VoiceApiError {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public VoiceApiError id(String id) {
+  public VoiceApiError id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -118,7 +121,7 @@ public class VoiceApiError {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 

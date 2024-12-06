@@ -50,32 +50,37 @@ import com.bandwidth.sdk.JSON;
 /**
  * The Conference Created event is fired whenever a new conference that specified a callbackUrl is created. The response may be either empty or a BXML document. Only the following verbs are valid for conferences: PlayAudio, SpeakSentence, StartRecording, StopRecording, PauseRecording, ResumeRecording. Audio verbs will be heard by all members of the conference. Recordings capture audio from all members who are not muted or on hold, as well as any audio verbs that are played into the conference.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class ConferenceCreatedCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
+  @javax.annotation.Nullable
   private String eventType;
 
   public static final String SERIALIZED_NAME_EVENT_TIME = "eventTime";
   @SerializedName(SERIALIZED_NAME_EVENT_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime eventTime;
 
   public static final String SERIALIZED_NAME_CONFERENCE_ID = "conferenceId";
   @SerializedName(SERIALIZED_NAME_CONFERENCE_ID)
+  @javax.annotation.Nullable
   private String conferenceId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
+  @javax.annotation.Nullable
   private String tag;
 
   public ConferenceCreatedCallback() {
   }
 
-  public ConferenceCreatedCallback eventType(String eventType) {
+  public ConferenceCreatedCallback eventType(@javax.annotation.Nullable String eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -89,12 +94,12 @@ public class ConferenceCreatedCallback {
     return eventType;
   }
 
-  public void setEventType(String eventType) {
+  public void setEventType(@javax.annotation.Nullable String eventType) {
     this.eventType = eventType;
   }
 
 
-  public ConferenceCreatedCallback eventTime(OffsetDateTime eventTime) {
+  public ConferenceCreatedCallback eventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
     this.eventTime = eventTime;
     return this;
   }
@@ -108,12 +113,12 @@ public class ConferenceCreatedCallback {
     return eventTime;
   }
 
-  public void setEventTime(OffsetDateTime eventTime) {
+  public void setEventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
-  public ConferenceCreatedCallback conferenceId(String conferenceId) {
+  public ConferenceCreatedCallback conferenceId(@javax.annotation.Nullable String conferenceId) {
     this.conferenceId = conferenceId;
     return this;
   }
@@ -127,12 +132,12 @@ public class ConferenceCreatedCallback {
     return conferenceId;
   }
 
-  public void setConferenceId(String conferenceId) {
+  public void setConferenceId(@javax.annotation.Nullable String conferenceId) {
     this.conferenceId = conferenceId;
   }
 
 
-  public ConferenceCreatedCallback name(String name) {
+  public ConferenceCreatedCallback name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -146,12 +151,12 @@ public class ConferenceCreatedCallback {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public ConferenceCreatedCallback tag(String tag) {
+  public ConferenceCreatedCallback tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
@@ -165,7 +170,7 @@ public class ConferenceCreatedCallback {
     return tag;
   }
 
-  public void setTag(String tag) {
+  public void setTag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
   }
 

@@ -50,16 +50,17 @@ import com.bandwidth.sdk.JSON;
 /**
  * Create phone number lookup request.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class LookupRequest {
   public static final String SERIALIZED_NAME_TNS = "tns";
   @SerializedName(SERIALIZED_NAME_TNS)
+  @javax.annotation.Nonnull
   private List<String> tns = new ArrayList<>();
 
   public LookupRequest() {
   }
 
-  public LookupRequest tns(List<String> tns) {
+  public LookupRequest tns(@javax.annotation.Nonnull List<String> tns) {
     this.tns = tns;
     return this;
   }
@@ -81,7 +82,7 @@ public class LookupRequest {
     return tns;
   }
 
-  public void setTns(List<String> tns) {
+  public void setTns(@javax.annotation.Nonnull List<String> tns) {
     this.tns = tns;
   }
 

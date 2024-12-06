@@ -52,48 +52,57 @@ import com.bandwidth.sdk.JSON;
 /**
  * UpdateConference
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class UpdateConference {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private ConferenceStateEnum status = ConferenceStateEnum.ACTIVE;
 
   public static final String SERIALIZED_NAME_REDIRECT_URL = "redirectUrl";
   @SerializedName(SERIALIZED_NAME_REDIRECT_URL)
+  @javax.annotation.Nullable
   private URI redirectUrl;
 
   public static final String SERIALIZED_NAME_REDIRECT_METHOD = "redirectMethod";
   @SerializedName(SERIALIZED_NAME_REDIRECT_METHOD)
+  @javax.annotation.Nullable
   private RedirectMethodEnum redirectMethod = RedirectMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
+  @javax.annotation.Nullable
   private String username;
 
   public static final String SERIALIZED_NAME_PASSWORD = "password";
   @SerializedName(SERIALIZED_NAME_PASSWORD)
+  @javax.annotation.Nullable
   private String password;
 
   public static final String SERIALIZED_NAME_REDIRECT_FALLBACK_URL = "redirectFallbackUrl";
   @SerializedName(SERIALIZED_NAME_REDIRECT_FALLBACK_URL)
+  @javax.annotation.Nullable
   private URI redirectFallbackUrl;
 
   public static final String SERIALIZED_NAME_REDIRECT_FALLBACK_METHOD = "redirectFallbackMethod";
   @SerializedName(SERIALIZED_NAME_REDIRECT_FALLBACK_METHOD)
+  @javax.annotation.Nullable
   private RedirectMethodEnum redirectFallbackMethod = RedirectMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_FALLBACK_USERNAME = "fallbackUsername";
   @SerializedName(SERIALIZED_NAME_FALLBACK_USERNAME)
+  @javax.annotation.Nullable
   private String fallbackUsername;
 
   public static final String SERIALIZED_NAME_FALLBACK_PASSWORD = "fallbackPassword";
   @SerializedName(SERIALIZED_NAME_FALLBACK_PASSWORD)
+  @javax.annotation.Nullable
   private String fallbackPassword;
 
   public UpdateConference() {
   }
 
-  public UpdateConference status(ConferenceStateEnum status) {
+  public UpdateConference status(@javax.annotation.Nullable ConferenceStateEnum status) {
     this.status = status;
     return this;
   }
@@ -107,12 +116,12 @@ public class UpdateConference {
     return status;
   }
 
-  public void setStatus(ConferenceStateEnum status) {
+  public void setStatus(@javax.annotation.Nullable ConferenceStateEnum status) {
     this.status = status;
   }
 
 
-  public UpdateConference redirectUrl(URI redirectUrl) {
+  public UpdateConference redirectUrl(@javax.annotation.Nullable URI redirectUrl) {
     this.redirectUrl = redirectUrl;
     return this;
   }
@@ -126,12 +135,12 @@ public class UpdateConference {
     return redirectUrl;
   }
 
-  public void setRedirectUrl(URI redirectUrl) {
+  public void setRedirectUrl(@javax.annotation.Nullable URI redirectUrl) {
     this.redirectUrl = redirectUrl;
   }
 
 
-  public UpdateConference redirectMethod(RedirectMethodEnum redirectMethod) {
+  public UpdateConference redirectMethod(@javax.annotation.Nullable RedirectMethodEnum redirectMethod) {
     this.redirectMethod = redirectMethod;
     return this;
   }
@@ -145,12 +154,12 @@ public class UpdateConference {
     return redirectMethod;
   }
 
-  public void setRedirectMethod(RedirectMethodEnum redirectMethod) {
+  public void setRedirectMethod(@javax.annotation.Nullable RedirectMethodEnum redirectMethod) {
     this.redirectMethod = redirectMethod;
   }
 
 
-  public UpdateConference username(String username) {
+  public UpdateConference username(@javax.annotation.Nullable String username) {
     this.username = username;
     return this;
   }
@@ -164,12 +173,12 @@ public class UpdateConference {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(@javax.annotation.Nullable String username) {
     this.username = username;
   }
 
 
-  public UpdateConference password(String password) {
+  public UpdateConference password(@javax.annotation.Nullable String password) {
     this.password = password;
     return this;
   }
@@ -183,12 +192,12 @@ public class UpdateConference {
     return password;
   }
 
-  public void setPassword(String password) {
+  public void setPassword(@javax.annotation.Nullable String password) {
     this.password = password;
   }
 
 
-  public UpdateConference redirectFallbackUrl(URI redirectFallbackUrl) {
+  public UpdateConference redirectFallbackUrl(@javax.annotation.Nullable URI redirectFallbackUrl) {
     this.redirectFallbackUrl = redirectFallbackUrl;
     return this;
   }
@@ -202,12 +211,12 @@ public class UpdateConference {
     return redirectFallbackUrl;
   }
 
-  public void setRedirectFallbackUrl(URI redirectFallbackUrl) {
+  public void setRedirectFallbackUrl(@javax.annotation.Nullable URI redirectFallbackUrl) {
     this.redirectFallbackUrl = redirectFallbackUrl;
   }
 
 
-  public UpdateConference redirectFallbackMethod(RedirectMethodEnum redirectFallbackMethod) {
+  public UpdateConference redirectFallbackMethod(@javax.annotation.Nullable RedirectMethodEnum redirectFallbackMethod) {
     this.redirectFallbackMethod = redirectFallbackMethod;
     return this;
   }
@@ -221,12 +230,12 @@ public class UpdateConference {
     return redirectFallbackMethod;
   }
 
-  public void setRedirectFallbackMethod(RedirectMethodEnum redirectFallbackMethod) {
+  public void setRedirectFallbackMethod(@javax.annotation.Nullable RedirectMethodEnum redirectFallbackMethod) {
     this.redirectFallbackMethod = redirectFallbackMethod;
   }
 
 
-  public UpdateConference fallbackUsername(String fallbackUsername) {
+  public UpdateConference fallbackUsername(@javax.annotation.Nullable String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
     return this;
   }
@@ -240,12 +249,12 @@ public class UpdateConference {
     return fallbackUsername;
   }
 
-  public void setFallbackUsername(String fallbackUsername) {
+  public void setFallbackUsername(@javax.annotation.Nullable String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
   }
 
 
-  public UpdateConference fallbackPassword(String fallbackPassword) {
+  public UpdateConference fallbackPassword(@javax.annotation.Nullable String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
     return this;
   }
@@ -259,7 +268,7 @@ public class UpdateConference {
     return fallbackPassword;
   }
 
-  public void setFallbackPassword(String fallbackPassword) {
+  public void setFallbackPassword(@javax.annotation.Nullable String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
   }
 

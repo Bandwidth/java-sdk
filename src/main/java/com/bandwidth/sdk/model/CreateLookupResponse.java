@@ -49,20 +49,22 @@ import com.bandwidth.sdk.JSON;
 /**
  * The request has been accepted for processing but not yet finished and in a terminal state (COMPLETE, PARTIAL_COMPLETE, or FAILED).
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class CreateLookupResponse {
   public static final String SERIALIZED_NAME_REQUEST_ID = "requestId";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
+  @javax.annotation.Nullable
   private String requestId;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private LookupStatusEnum status;
 
   public CreateLookupResponse() {
   }
 
-  public CreateLookupResponse requestId(String requestId) {
+  public CreateLookupResponse requestId(@javax.annotation.Nullable String requestId) {
     this.requestId = requestId;
     return this;
   }
@@ -76,12 +78,12 @@ public class CreateLookupResponse {
     return requestId;
   }
 
-  public void setRequestId(String requestId) {
+  public void setRequestId(@javax.annotation.Nullable String requestId) {
     this.requestId = requestId;
   }
 
 
-  public CreateLookupResponse status(LookupStatusEnum status) {
+  public CreateLookupResponse status(@javax.annotation.Nullable LookupStatusEnum status) {
     this.status = status;
     return this;
   }
@@ -95,7 +97,7 @@ public class CreateLookupResponse {
     return status;
   }
 
-  public void setStatus(LookupStatusEnum status) {
+  public void setStatus(@javax.annotation.Nullable LookupStatusEnum status) {
     this.status = status;
   }
 
