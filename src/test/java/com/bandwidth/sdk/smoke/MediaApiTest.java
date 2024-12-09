@@ -79,7 +79,7 @@ public class MediaApiTest {
         ApiResponse<File> response = api.getMediaWithHttpInfo(BW_ACCOUNT_ID, mediaId);
 
         assertThat(response.getStatusCode(), is(200));
-        assertThat(FileUtils.readLines(response.getData(), "utf-8"), is(FileUtils.readLines(media, "utf-8")));
+        assertThat(FileUtils.readLines(response.getData(), "ISO-8859-1"), is(FileUtils.readLines(media, "ISO-8859-1")));
     }
 
     @Test
