@@ -4647,7 +4647,7 @@ components:
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/inboundMessageCallback'
+                  $ref: '#/components/schemas/messageCallbackEnvelope'
             description: Inbound Message Callback Payload
             required: true
           responses:
@@ -4660,12 +4660,8 @@ components:
             content:
               application/json:
                 schema:
-                  oneOf:
-                  - $ref: '#/components/schemas/messageSendingCallback'
-                  - $ref: '#/components/schemas/messageDeliveredCallback'
-                  - $ref: '#/components/schemas/messageFailedCallback'
-                  type: object
-            description: Status Callback Payload
+                  $ref: '#/components/schemas/messageCallbackEnvelope'
+            description: Outbound Message Status Callback Payload
             required: true
           responses:
             "200":
@@ -6312,7 +6308,7 @@ components:
         from: "+15553332222"
         expiration: 2021-02-01T11:29:18-05:00
         id: 1589228074636lm4k2je7j7jklbn2
-        time: 2022-09-14T18:20:16Z
+        time: 2024-12-02T20:15:57.278Z
         to:
         - "+15552223333"
         text: Hello world
@@ -6334,7 +6330,7 @@ components:
           type: string
         time:
           description: The datetime stamp of the message in ISO 8601
-          example: 2022-09-14T18:20:16Z
+          example: 2024-12-02T20:15:57.278Z
           format: date-time
           type: string
         segmentCount:
@@ -6448,265 +6444,19 @@ components:
       - to
       title: MessageRequest
       type: object
-    inboundMessageCallback:
-      description: Inbound Message Callback
+    messageCallbackEnvelope:
+      description: Message Callback Envelope
       properties:
         time:
-          example: 2016-09-14T18:20:16Z
+          example: 2024-12-02T20:15:57.278Z
           format: date-time
           type: string
         type:
-          example: message-received
-          type: string
-        to:
-          example: "+15552223333"
-          type: string
-        description:
-          example: Incoming message received
-          type: string
-        message:
-          $ref: '#/components/schemas/inboundMessageCallbackMessage'
-      required:
-      - description
-      - message
-      - time
-      - to
-      - type
-      type: object
-    inboundMessageCallbackMessage:
-      description: Inbound Message Callback Message Schema
-      properties:
-        id:
-          example: 1661365814859loidf7mcwd4qacn7
-          type: string
-        owner:
-          example: "+15553332222"
-          type: string
-        applicationId:
-          example: 93de2206-9669-4e07-948d-329f4b722ee2
-          type: string
-        time:
-          example: 2016-09-14T18:20:16Z
-          format: date-time
-          type: string
-        segmentCount:
-          example: 1
-          type: integer
-        direction:
-          $ref: '#/components/schemas/messageDirectionEnum'
-        to:
-          example:
-          - "+15552223333"
-          items:
-            type: string
-          type: array
-          uniqueItems: true
-        from:
-          example: "+15553332222"
-          type: string
-        text:
-          example: Hello world
-          type: string
-        tag:
-          example: custom string
-          type: string
-        media:
-          example:
-          - https://dev.bandwidth.com/images/bandwidth-logo.png
-          - https://dev.bandwidth.com/images/github_logo.png
-          items:
-            format: uri
-            type: string
-          type: array
-        priority:
-          $ref: '#/components/schemas/priorityEnum'
-      required:
-      - applicationId
-      - direction
-      - from
-      - id
-      - owner
-      - segmentCount
-      - text
-      - time
-      - to
-      type: object
-    messageSendingCallback:
-      description: Message Sending Callback
-      properties:
-        time:
-          example: 2016-09-14T18:20:16Z
-          format: date-time
-          type: string
-        type:
-          example: message-sending
-          type: string
-        to:
-          example: "+15552223333"
-          type: string
-        description:
-          example: Message is sending to carrier
-          type: string
-        message:
-          $ref: '#/components/schemas/messageSendingCallbackMessage'
-      required:
-      - description
-      - message
-      - time
-      - to
-      - type
-      type: object
-    messageSendingCallbackMessage:
-      description: Message Sending Callback Message Schema
-      properties:
-        id:
-          example: 1661365814859loidf7mcwd4qacn7
-          type: string
-        owner:
-          example: "+15553332222"
-          type: string
-        applicationId:
-          example: 93de2206-9669-4e07-948d-329f4b722ee2
-          type: string
-        time:
-          example: 2016-09-14T18:20:16Z
-          format: date-time
-          type: string
-        segmentCount:
-          example: 1
-          type: integer
-        direction:
-          $ref: '#/components/schemas/messageDirectionEnum'
-        to:
-          example:
-          - "+15552223333"
-          items:
-            type: string
-          type: array
-          uniqueItems: true
-        from:
-          example: "+15553332222"
-          type: string
-        text:
-          example: Hello world
-          type: string
-        tag:
-          example: custom string
-          type: string
-        media:
-          example:
-          - https://dev.bandwidth.com/images/bandwidth-logo.png
-          - https://dev.bandwidth.com/images/github_logo.png
-          items:
-            format: uri
-            type: string
-          type: array
-        priority:
-          $ref: '#/components/schemas/priorityEnum'
-      required:
-      - applicationId
-      - direction
-      - from
-      - id
-      - media
-      - owner
-      - segmentCount
-      - text
-      - time
-      - to
-      type: object
-    messageDeliveredCallback:
-      description: Message Delivered Callback
-      properties:
-        time:
-          example: 2016-09-14T18:20:16Z
-          format: date-time
-          type: string
-        type:
-          example: message-delivered
-          type: string
-        to:
-          example: "+15552223333"
-          type: string
-        description:
-          example: Message delivered to carrier.
-          type: string
-        message:
-          $ref: '#/components/schemas/messageDeliveredCallbackMessage'
-      required:
-      - description
-      - message
-      - time
-      - to
-      - type
-      type: object
-    messageDeliveredCallbackMessage:
-      description: Message Delivered Callback Message Schema
-      properties:
-        id:
-          example: 1661365814859loidf7mcwd4qacn7
-          type: string
-        owner:
-          example: "+15553332222"
-          type: string
-        applicationId:
-          example: 93de2206-9669-4e07-948d-329f4b722ee2
-          type: string
-        time:
-          example: 2016-09-14T18:20:16Z
-          format: date-time
-          type: string
-        segmentCount:
-          example: 1
-          type: integer
-        direction:
-          $ref: '#/components/schemas/messageDirectionEnum'
-        to:
-          example:
-          - "+15552223333"
-          items:
-            type: string
-          type: array
-          uniqueItems: true
-        from:
-          example: "+15553332222"
-          type: string
-        text:
-          example: Hello world
-          type: string
-        tag:
-          example: custom string
-          type: string
-        media:
-          example:
-          - https://dev.bandwidth.com/images/bandwidth-logo.png
-          - https://dev.bandwidth.com/images/github_logo.png
-          items:
-            format: uri
-            type: string
-          type: array
-        priority:
-          $ref: '#/components/schemas/priorityEnum'
-      required:
-      - applicationId
-      - direction
-      - from
-      - id
-      - owner
-      - segmentCount
-      - tag
-      - text
-      - time
-      - to
-      type: object
-    messageFailedCallback:
-      description: Message Failed Callback
-      properties:
-        time:
-          example: 2016-09-14T18:20:16Z
-          format: date-time
-          type: string
-        type:
+          enum:
+          - message-received
+          - message-delivered
+          - message-sent
+          - message-failed
           example: message-failed
           type: string
         to:
@@ -6716,20 +6466,21 @@ components:
           example: rejected-unallocated-from-number
           type: string
         message:
-          $ref: '#/components/schemas/messageFailedCallbackMessage'
+          $ref: '#/components/schemas/callbackMessage'
         errorCode:
-          example: 9902
+          description: "Optional error code, applicable only when type is message-failed"
+          example: 4405
+          nullable: true
           type: integer
       required:
       - description
-      - errorCode
       - message
       - time
       - to
       - type
       type: object
-    messageFailedCallbackMessage:
-      description: Message Failed Callback Message Schema
+    callbackMessage:
+      description: Callback Message Schema
       properties:
         id:
           example: 1661365814859loidf7mcwd4qacn7
@@ -6741,7 +6492,7 @@ components:
           example: 93de2206-9669-4e07-948d-329f4b722ee2
           type: string
         time:
-          example: 2016-09-14T18:20:16Z
+          example: 2024-12-02T20:15:57.666Z
           format: date-time
           type: string
         segmentCount:
@@ -6766,12 +6517,14 @@ components:
           example: custom string
           type: string
         media:
+          description: "Optional media, applicable only when sending mms"
           example:
           - https://dev.bandwidth.com/images/bandwidth-logo.png
           - https://dev.bandwidth.com/images/github_logo.png
           items:
             format: uri
             type: string
+          nullable: true
           type: array
         priority:
           $ref: '#/components/schemas/priorityEnum'
@@ -6782,7 +6535,6 @@ components:
       - id
       - owner
       - segmentCount
-      - tag
       - text
       - time
       - to

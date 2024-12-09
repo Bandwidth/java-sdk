@@ -29,6 +29,7 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,10 +55,10 @@ import java.util.Set;
 import com.bandwidth.sdk.JSON;
 
 /**
- * Message Sending Callback Message Schema
+ * Callback Message Schema
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class MessageSendingCallbackMessage {
+public class CallbackMessage {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nonnull
@@ -110,18 +111,18 @@ public class MessageSendingCallbackMessage {
 
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
-  @javax.annotation.Nonnull
-  private List<URI> media = new ArrayList<>();
+  @javax.annotation.Nullable
+  private List<URI> media;
 
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
   @javax.annotation.Nullable
   private PriorityEnum priority;
 
-  public MessageSendingCallbackMessage() {
+  public CallbackMessage() {
   }
 
-  public MessageSendingCallbackMessage id(@javax.annotation.Nonnull String id) {
+  public CallbackMessage id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
@@ -140,7 +141,7 @@ public class MessageSendingCallbackMessage {
   }
 
 
-  public MessageSendingCallbackMessage owner(@javax.annotation.Nonnull String owner) {
+  public CallbackMessage owner(@javax.annotation.Nonnull String owner) {
     this.owner = owner;
     return this;
   }
@@ -159,7 +160,7 @@ public class MessageSendingCallbackMessage {
   }
 
 
-  public MessageSendingCallbackMessage applicationId(@javax.annotation.Nonnull String applicationId) {
+  public CallbackMessage applicationId(@javax.annotation.Nonnull String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -178,7 +179,7 @@ public class MessageSendingCallbackMessage {
   }
 
 
-  public MessageSendingCallbackMessage time(@javax.annotation.Nonnull OffsetDateTime time) {
+  public CallbackMessage time(@javax.annotation.Nonnull OffsetDateTime time) {
     this.time = time;
     return this;
   }
@@ -197,7 +198,7 @@ public class MessageSendingCallbackMessage {
   }
 
 
-  public MessageSendingCallbackMessage segmentCount(@javax.annotation.Nonnull Integer segmentCount) {
+  public CallbackMessage segmentCount(@javax.annotation.Nonnull Integer segmentCount) {
     this.segmentCount = segmentCount;
     return this;
   }
@@ -216,7 +217,7 @@ public class MessageSendingCallbackMessage {
   }
 
 
-  public MessageSendingCallbackMessage direction(@javax.annotation.Nonnull MessageDirectionEnum direction) {
+  public CallbackMessage direction(@javax.annotation.Nonnull MessageDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
@@ -235,12 +236,12 @@ public class MessageSendingCallbackMessage {
   }
 
 
-  public MessageSendingCallbackMessage to(@javax.annotation.Nonnull Set<String> to) {
+  public CallbackMessage to(@javax.annotation.Nonnull Set<String> to) {
     this.to = to;
     return this;
   }
 
-  public MessageSendingCallbackMessage addToItem(String toItem) {
+  public CallbackMessage addToItem(String toItem) {
     if (this.to == null) {
       this.to = new LinkedHashSet<>();
     }
@@ -262,7 +263,7 @@ public class MessageSendingCallbackMessage {
   }
 
 
-  public MessageSendingCallbackMessage from(@javax.annotation.Nonnull String from) {
+  public CallbackMessage from(@javax.annotation.Nonnull String from) {
     this.from = from;
     return this;
   }
@@ -281,7 +282,7 @@ public class MessageSendingCallbackMessage {
   }
 
 
-  public MessageSendingCallbackMessage text(@javax.annotation.Nonnull String text) {
+  public CallbackMessage text(@javax.annotation.Nonnull String text) {
     this.text = text;
     return this;
   }
@@ -300,7 +301,7 @@ public class MessageSendingCallbackMessage {
   }
 
 
-  public MessageSendingCallbackMessage tag(@javax.annotation.Nullable String tag) {
+  public CallbackMessage tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
@@ -319,12 +320,12 @@ public class MessageSendingCallbackMessage {
   }
 
 
-  public MessageSendingCallbackMessage media(@javax.annotation.Nonnull List<URI> media) {
+  public CallbackMessage media(@javax.annotation.Nullable List<URI> media) {
     this.media = media;
     return this;
   }
 
-  public MessageSendingCallbackMessage addMediaItem(URI mediaItem) {
+  public CallbackMessage addMediaItem(URI mediaItem) {
     if (this.media == null) {
       this.media = new ArrayList<>();
     }
@@ -333,20 +334,20 @@ public class MessageSendingCallbackMessage {
   }
 
   /**
-   * Get media
+   * Optional media, applicable only when sending mms
    * @return media
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<URI> getMedia() {
     return media;
   }
 
-  public void setMedia(@javax.annotation.Nonnull List<URI> media) {
+  public void setMedia(@javax.annotation.Nullable List<URI> media) {
     this.media = media;
   }
 
 
-  public MessageSendingCallbackMessage priority(@javax.annotation.Nullable PriorityEnum priority) {
+  public CallbackMessage priority(@javax.annotation.Nullable PriorityEnum priority) {
     this.priority = priority;
     return this;
   }
@@ -377,9 +378,9 @@ public class MessageSendingCallbackMessage {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the MessageSendingCallbackMessage instance itself
+   * @return the CallbackMessage instance itself
    */
-  public MessageSendingCallbackMessage putAdditionalProperty(String key, Object value) {
+  public CallbackMessage putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -418,20 +419,24 @@ public class MessageSendingCallbackMessage {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MessageSendingCallbackMessage messageSendingCallbackMessage = (MessageSendingCallbackMessage) o;
-    return Objects.equals(this.id, messageSendingCallbackMessage.id) &&
-        Objects.equals(this.owner, messageSendingCallbackMessage.owner) &&
-        Objects.equals(this.applicationId, messageSendingCallbackMessage.applicationId) &&
-        Objects.equals(this.time, messageSendingCallbackMessage.time) &&
-        Objects.equals(this.segmentCount, messageSendingCallbackMessage.segmentCount) &&
-        Objects.equals(this.direction, messageSendingCallbackMessage.direction) &&
-        Objects.equals(this.to, messageSendingCallbackMessage.to) &&
-        Objects.equals(this.from, messageSendingCallbackMessage.from) &&
-        Objects.equals(this.text, messageSendingCallbackMessage.text) &&
-        Objects.equals(this.tag, messageSendingCallbackMessage.tag) &&
-        Objects.equals(this.media, messageSendingCallbackMessage.media) &&
-        Objects.equals(this.priority, messageSendingCallbackMessage.priority)&&
-        Objects.equals(this.additionalProperties, messageSendingCallbackMessage.additionalProperties);
+    CallbackMessage callbackMessage = (CallbackMessage) o;
+    return Objects.equals(this.id, callbackMessage.id) &&
+        Objects.equals(this.owner, callbackMessage.owner) &&
+        Objects.equals(this.applicationId, callbackMessage.applicationId) &&
+        Objects.equals(this.time, callbackMessage.time) &&
+        Objects.equals(this.segmentCount, callbackMessage.segmentCount) &&
+        Objects.equals(this.direction, callbackMessage.direction) &&
+        Objects.equals(this.to, callbackMessage.to) &&
+        Objects.equals(this.from, callbackMessage.from) &&
+        Objects.equals(this.text, callbackMessage.text) &&
+        Objects.equals(this.tag, callbackMessage.tag) &&
+        Objects.equals(this.media, callbackMessage.media) &&
+        Objects.equals(this.priority, callbackMessage.priority)&&
+        Objects.equals(this.additionalProperties, callbackMessage.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
@@ -439,10 +444,17 @@ public class MessageSendingCallbackMessage {
     return Objects.hash(id, owner, applicationId, time, segmentCount, direction, to, from, text, tag, media, priority, additionalProperties);
   }
 
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+  }
+
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MessageSendingCallbackMessage {\n");
+    sb.append("class CallbackMessage {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
@@ -502,24 +514,23 @@ public class MessageSendingCallbackMessage {
     openapiRequiredFields.add("to");
     openapiRequiredFields.add("from");
     openapiRequiredFields.add("text");
-    openapiRequiredFields.add("media");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to MessageSendingCallbackMessage
+   * @throws IOException if the JSON Element is invalid with respect to CallbackMessage
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!MessageSendingCallbackMessage.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in MessageSendingCallbackMessage is not found in the empty JSON string", MessageSendingCallbackMessage.openapiRequiredFields.toString()));
+        if (!CallbackMessage.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CallbackMessage is not found in the empty JSON string", CallbackMessage.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : MessageSendingCallbackMessage.openapiRequiredFields) {
+      for (String requiredField : CallbackMessage.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -551,10 +562,8 @@ public class MessageSendingCallbackMessage {
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
       }
-      // ensure the required json array is present
-      if (jsonObj.get("media") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("media").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonNull() && !jsonObj.get("media").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `media` to be an array in the JSON string but got `%s`", jsonObj.get("media").toString()));
       }
       // validate the optional field `priority`
@@ -567,16 +576,16 @@ public class MessageSendingCallbackMessage {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!MessageSendingCallbackMessage.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'MessageSendingCallbackMessage' and its subtypes
+       if (!CallbackMessage.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CallbackMessage' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<MessageSendingCallbackMessage> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(MessageSendingCallbackMessage.class));
+       final TypeAdapter<CallbackMessage> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CallbackMessage.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<MessageSendingCallbackMessage>() {
+       return (TypeAdapter<T>) new TypeAdapter<CallbackMessage>() {
            @Override
-           public void write(JsonWriter out, MessageSendingCallbackMessage value) throws IOException {
+           public void write(JsonWriter out, CallbackMessage value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -604,12 +613,12 @@ public class MessageSendingCallbackMessage {
            }
 
            @Override
-           public MessageSendingCallbackMessage read(JsonReader in) throws IOException {
+           public CallbackMessage read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             MessageSendingCallbackMessage instance = thisAdapter.fromJsonTree(jsonObj);
+             CallbackMessage instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -636,18 +645,18 @@ public class MessageSendingCallbackMessage {
   }
 
   /**
-   * Create an instance of MessageSendingCallbackMessage given an JSON string
+   * Create an instance of CallbackMessage given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of MessageSendingCallbackMessage
-   * @throws IOException if the JSON string is invalid with respect to MessageSendingCallbackMessage
+   * @return An instance of CallbackMessage
+   * @throws IOException if the JSON string is invalid with respect to CallbackMessage
    */
-  public static MessageSendingCallbackMessage fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, MessageSendingCallbackMessage.class);
+  public static CallbackMessage fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CallbackMessage.class);
   }
 
   /**
-   * Convert an instance of MessageSendingCallbackMessage to an JSON string
+   * Convert an instance of CallbackMessage to an JSON string
    *
    * @return JSON string
    */
