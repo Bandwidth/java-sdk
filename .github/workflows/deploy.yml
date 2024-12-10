@@ -63,7 +63,7 @@ jobs:
       - name: Build SDK
         uses: Bandwidth/generate-sdk-action@v4.0.0
         with:
-          openapi-generator-version: 7.9.0
+          openapi-generator-version: 7.10.0
           language: java
           additional-properties: --additional-properties=artifactVersion=$RELEASE_VERSION
 
