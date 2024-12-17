@@ -53,77 +53,64 @@ import com.bandwidth.sdk.JSON;
 /**
  * Message
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class Message {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_OWNER = "owner";
   @SerializedName(SERIALIZED_NAME_OWNER)
-  @javax.annotation.Nullable
   private String owner;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  @javax.annotation.Nullable
   private String applicationId;
 
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime time;
 
   public static final String SERIALIZED_NAME_SEGMENT_COUNT = "segmentCount";
   @SerializedName(SERIALIZED_NAME_SEGMENT_COUNT)
-  @javax.annotation.Nullable
   private Integer segmentCount;
 
   public static final String SERIALIZED_NAME_DIRECTION = "direction";
   @SerializedName(SERIALIZED_NAME_DIRECTION)
-  @javax.annotation.Nullable
   private MessageDirectionEnum direction;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
-  @javax.annotation.Nullable
   private Set<String> to = new LinkedHashSet<>();
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
-  @javax.annotation.Nullable
   private String from;
 
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
-  @javax.annotation.Nullable
   private Set<String> media = new LinkedHashSet<>();
 
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
-  @javax.annotation.Nullable
   private String text;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
-  @javax.annotation.Nullable
   private String tag;
 
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
-  @javax.annotation.Nullable
   private PriorityEnum priority;
 
   public static final String SERIALIZED_NAME_EXPIRATION = "expiration";
   @SerializedName(SERIALIZED_NAME_EXPIRATION)
-  @javax.annotation.Nullable
   private OffsetDateTime expiration;
 
   public Message() {
   }
 
-  public Message id(@javax.annotation.Nullable String id) {
+  public Message id(String id) {
     this.id = id;
     return this;
   }
@@ -137,12 +124,12 @@ public class Message {
     return id;
   }
 
-  public void setId(@javax.annotation.Nullable String id) {
+  public void setId(String id) {
     this.id = id;
   }
 
 
-  public Message owner(@javax.annotation.Nullable String owner) {
+  public Message owner(String owner) {
     this.owner = owner;
     return this;
   }
@@ -156,12 +143,12 @@ public class Message {
     return owner;
   }
 
-  public void setOwner(@javax.annotation.Nullable String owner) {
+  public void setOwner(String owner) {
     this.owner = owner;
   }
 
 
-  public Message applicationId(@javax.annotation.Nullable String applicationId) {
+  public Message applicationId(String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -175,12 +162,12 @@ public class Message {
     return applicationId;
   }
 
-  public void setApplicationId(@javax.annotation.Nullable String applicationId) {
+  public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public Message time(@javax.annotation.Nullable OffsetDateTime time) {
+  public Message time(OffsetDateTime time) {
     this.time = time;
     return this;
   }
@@ -194,12 +181,12 @@ public class Message {
     return time;
   }
 
-  public void setTime(@javax.annotation.Nullable OffsetDateTime time) {
+  public void setTime(OffsetDateTime time) {
     this.time = time;
   }
 
 
-  public Message segmentCount(@javax.annotation.Nullable Integer segmentCount) {
+  public Message segmentCount(Integer segmentCount) {
     this.segmentCount = segmentCount;
     return this;
   }
@@ -213,12 +200,12 @@ public class Message {
     return segmentCount;
   }
 
-  public void setSegmentCount(@javax.annotation.Nullable Integer segmentCount) {
+  public void setSegmentCount(Integer segmentCount) {
     this.segmentCount = segmentCount;
   }
 
 
-  public Message direction(@javax.annotation.Nullable MessageDirectionEnum direction) {
+  public Message direction(MessageDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
@@ -232,12 +219,12 @@ public class Message {
     return direction;
   }
 
-  public void setDirection(@javax.annotation.Nullable MessageDirectionEnum direction) {
+  public void setDirection(MessageDirectionEnum direction) {
     this.direction = direction;
   }
 
 
-  public Message to(@javax.annotation.Nullable Set<String> to) {
+  public Message to(Set<String> to) {
     this.to = to;
     return this;
   }
@@ -259,12 +246,12 @@ public class Message {
     return to;
   }
 
-  public void setTo(@javax.annotation.Nullable Set<String> to) {
+  public void setTo(Set<String> to) {
     this.to = to;
   }
 
 
-  public Message from(@javax.annotation.Nullable String from) {
+  public Message from(String from) {
     this.from = from;
     return this;
   }
@@ -278,12 +265,12 @@ public class Message {
     return from;
   }
 
-  public void setFrom(@javax.annotation.Nullable String from) {
+  public void setFrom(String from) {
     this.from = from;
   }
 
 
-  public Message media(@javax.annotation.Nullable Set<String> media) {
+  public Message media(Set<String> media) {
     this.media = media;
     return this;
   }
@@ -305,12 +292,12 @@ public class Message {
     return media;
   }
 
-  public void setMedia(@javax.annotation.Nullable Set<String> media) {
+  public void setMedia(Set<String> media) {
     this.media = media;
   }
 
 
-  public Message text(@javax.annotation.Nullable String text) {
+  public Message text(String text) {
     this.text = text;
     return this;
   }
@@ -324,12 +311,12 @@ public class Message {
     return text;
   }
 
-  public void setText(@javax.annotation.Nullable String text) {
+  public void setText(String text) {
     this.text = text;
   }
 
 
-  public Message tag(@javax.annotation.Nullable String tag) {
+  public Message tag(String tag) {
     this.tag = tag;
     return this;
   }
@@ -343,12 +330,12 @@ public class Message {
     return tag;
   }
 
-  public void setTag(@javax.annotation.Nullable String tag) {
+  public void setTag(String tag) {
     this.tag = tag;
   }
 
 
-  public Message priority(@javax.annotation.Nullable PriorityEnum priority) {
+  public Message priority(PriorityEnum priority) {
     this.priority = priority;
     return this;
   }
@@ -362,12 +349,12 @@ public class Message {
     return priority;
   }
 
-  public void setPriority(@javax.annotation.Nullable PriorityEnum priority) {
+  public void setPriority(PriorityEnum priority) {
     this.priority = priority;
   }
 
 
-  public Message expiration(@javax.annotation.Nullable OffsetDateTime expiration) {
+  public Message expiration(OffsetDateTime expiration) {
     this.expiration = expiration;
     return this;
   }
@@ -381,7 +368,7 @@ public class Message {
     return expiration;
   }
 
-  public void setExpiration(@javax.annotation.Nullable OffsetDateTime expiration) {
+  public void setExpiration(OffsetDateTime expiration) {
     this.expiration = expiration;
   }
 

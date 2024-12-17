@@ -52,72 +52,60 @@ import com.bandwidth.sdk.JSON;
 /**
  * ConferenceRecordingMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ConferenceRecordingMetadata {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  @javax.annotation.Nullable
   private String accountId;
 
   public static final String SERIALIZED_NAME_CONFERENCE_ID = "conferenceId";
   @SerializedName(SERIALIZED_NAME_CONFERENCE_ID)
-  @javax.annotation.Nullable
   private String conferenceId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
-  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_RECORDING_ID = "recordingId";
   @SerializedName(SERIALIZED_NAME_RECORDING_ID)
-  @javax.annotation.Nullable
   private String recordingId;
 
   public static final String SERIALIZED_NAME_DURATION = "duration";
   @SerializedName(SERIALIZED_NAME_DURATION)
-  @javax.annotation.Nullable
   private String duration;
 
   public static final String SERIALIZED_NAME_CHANNELS = "channels";
   @SerializedName(SERIALIZED_NAME_CHANNELS)
-  @javax.annotation.Nullable
   private Integer channels;
 
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime startTime;
 
   public static final String SERIALIZED_NAME_END_TIME = "endTime";
   @SerializedName(SERIALIZED_NAME_END_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime endTime;
 
   public static final String SERIALIZED_NAME_FILE_FORMAT = "fileFormat";
   @SerializedName(SERIALIZED_NAME_FILE_FORMAT)
-  @javax.annotation.Nullable
   private FileFormatEnum fileFormat;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  @javax.annotation.Nullable
   private String status;
 
   public static final String SERIALIZED_NAME_MEDIA_URL = "mediaUrl";
   @SerializedName(SERIALIZED_NAME_MEDIA_URL)
-  @javax.annotation.Nullable
   private URI mediaUrl;
 
   public static final String SERIALIZED_NAME_RECORDING_NAME = "recordingName";
   @SerializedName(SERIALIZED_NAME_RECORDING_NAME)
-  @javax.annotation.Nullable
   private String recordingName;
 
   public ConferenceRecordingMetadata() {
   }
 
-  public ConferenceRecordingMetadata accountId(@javax.annotation.Nullable String accountId) {
+  public ConferenceRecordingMetadata accountId(String accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -131,12 +119,12 @@ public class ConferenceRecordingMetadata {
     return accountId;
   }
 
-  public void setAccountId(@javax.annotation.Nullable String accountId) {
+  public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
-  public ConferenceRecordingMetadata conferenceId(@javax.annotation.Nullable String conferenceId) {
+  public ConferenceRecordingMetadata conferenceId(String conferenceId) {
     this.conferenceId = conferenceId;
     return this;
   }
@@ -150,12 +138,12 @@ public class ConferenceRecordingMetadata {
     return conferenceId;
   }
 
-  public void setConferenceId(@javax.annotation.Nullable String conferenceId) {
+  public void setConferenceId(String conferenceId) {
     this.conferenceId = conferenceId;
   }
 
 
-  public ConferenceRecordingMetadata name(@javax.annotation.Nullable String name) {
+  public ConferenceRecordingMetadata name(String name) {
     this.name = name;
     return this;
   }
@@ -169,12 +157,12 @@ public class ConferenceRecordingMetadata {
     return name;
   }
 
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(String name) {
     this.name = name;
   }
 
 
-  public ConferenceRecordingMetadata recordingId(@javax.annotation.Nullable String recordingId) {
+  public ConferenceRecordingMetadata recordingId(String recordingId) {
     this.recordingId = recordingId;
     return this;
   }
@@ -188,12 +176,12 @@ public class ConferenceRecordingMetadata {
     return recordingId;
   }
 
-  public void setRecordingId(@javax.annotation.Nullable String recordingId) {
+  public void setRecordingId(String recordingId) {
     this.recordingId = recordingId;
   }
 
 
-  public ConferenceRecordingMetadata duration(@javax.annotation.Nullable String duration) {
+  public ConferenceRecordingMetadata duration(String duration) {
     this.duration = duration;
     return this;
   }
@@ -207,12 +195,12 @@ public class ConferenceRecordingMetadata {
     return duration;
   }
 
-  public void setDuration(@javax.annotation.Nullable String duration) {
+  public void setDuration(String duration) {
     this.duration = duration;
   }
 
 
-  public ConferenceRecordingMetadata channels(@javax.annotation.Nullable Integer channels) {
+  public ConferenceRecordingMetadata channels(Integer channels) {
     this.channels = channels;
     return this;
   }
@@ -226,12 +214,12 @@ public class ConferenceRecordingMetadata {
     return channels;
   }
 
-  public void setChannels(@javax.annotation.Nullable Integer channels) {
+  public void setChannels(Integer channels) {
     this.channels = channels;
   }
 
 
-  public ConferenceRecordingMetadata startTime(@javax.annotation.Nullable OffsetDateTime startTime) {
+  public ConferenceRecordingMetadata startTime(OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -245,12 +233,12 @@ public class ConferenceRecordingMetadata {
     return startTime;
   }
 
-  public void setStartTime(@javax.annotation.Nullable OffsetDateTime startTime) {
+  public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
-  public ConferenceRecordingMetadata endTime(@javax.annotation.Nullable OffsetDateTime endTime) {
+  public ConferenceRecordingMetadata endTime(OffsetDateTime endTime) {
     this.endTime = endTime;
     return this;
   }
@@ -264,12 +252,12 @@ public class ConferenceRecordingMetadata {
     return endTime;
   }
 
-  public void setEndTime(@javax.annotation.Nullable OffsetDateTime endTime) {
+  public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
 
-  public ConferenceRecordingMetadata fileFormat(@javax.annotation.Nullable FileFormatEnum fileFormat) {
+  public ConferenceRecordingMetadata fileFormat(FileFormatEnum fileFormat) {
     this.fileFormat = fileFormat;
     return this;
   }
@@ -283,12 +271,12 @@ public class ConferenceRecordingMetadata {
     return fileFormat;
   }
 
-  public void setFileFormat(@javax.annotation.Nullable FileFormatEnum fileFormat) {
+  public void setFileFormat(FileFormatEnum fileFormat) {
     this.fileFormat = fileFormat;
   }
 
 
-  public ConferenceRecordingMetadata status(@javax.annotation.Nullable String status) {
+  public ConferenceRecordingMetadata status(String status) {
     this.status = status;
     return this;
   }
@@ -302,12 +290,12 @@ public class ConferenceRecordingMetadata {
     return status;
   }
 
-  public void setStatus(@javax.annotation.Nullable String status) {
+  public void setStatus(String status) {
     this.status = status;
   }
 
 
-  public ConferenceRecordingMetadata mediaUrl(@javax.annotation.Nullable URI mediaUrl) {
+  public ConferenceRecordingMetadata mediaUrl(URI mediaUrl) {
     this.mediaUrl = mediaUrl;
     return this;
   }
@@ -321,12 +309,12 @@ public class ConferenceRecordingMetadata {
     return mediaUrl;
   }
 
-  public void setMediaUrl(@javax.annotation.Nullable URI mediaUrl) {
+  public void setMediaUrl(URI mediaUrl) {
     this.mediaUrl = mediaUrl;
   }
 
 
-  public ConferenceRecordingMetadata recordingName(@javax.annotation.Nullable String recordingName) {
+  public ConferenceRecordingMetadata recordingName(String recordingName) {
     this.recordingName = recordingName;
     return this;
   }
@@ -340,7 +328,7 @@ public class ConferenceRecordingMetadata {
     return recordingName;
   }
 
-  public void setRecordingName(@javax.annotation.Nullable String recordingName) {
+  public void setRecordingName(String recordingName) {
     this.recordingName = recordingName;
   }
 

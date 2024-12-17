@@ -52,87 +52,72 @@ import com.bandwidth.sdk.JSON;
 /**
  * The machine detection request used to perform &lt;a href&#x3D;&#39;/docs/voice/guides/machineDetection&#39;&gt;machine detection&lt;/a&gt; on the call. Currently, there is an issue where decimal values are not getting processed correctly. Please use whole number values. We are working to resolve this issue. Please contact Bandwidth Support if you need more information.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class MachineDetectionConfiguration {
   public static final String SERIALIZED_NAME_MODE = "mode";
   @SerializedName(SERIALIZED_NAME_MODE)
-  @javax.annotation.Nullable
   private MachineDetectionModeEnum mode = MachineDetectionModeEnum.ASYNC;
 
   public static final String SERIALIZED_NAME_DETECTION_TIMEOUT = "detectionTimeout";
   @SerializedName(SERIALIZED_NAME_DETECTION_TIMEOUT)
-  @javax.annotation.Nullable
   private Double detectionTimeout = 15d;
 
   public static final String SERIALIZED_NAME_SILENCE_TIMEOUT = "silenceTimeout";
   @SerializedName(SERIALIZED_NAME_SILENCE_TIMEOUT)
-  @javax.annotation.Nullable
   private Double silenceTimeout = 10d;
 
   public static final String SERIALIZED_NAME_SPEECH_THRESHOLD = "speechThreshold";
   @SerializedName(SERIALIZED_NAME_SPEECH_THRESHOLD)
-  @javax.annotation.Nullable
   private Double speechThreshold = 10d;
 
   public static final String SERIALIZED_NAME_SPEECH_END_THRESHOLD = "speechEndThreshold";
   @SerializedName(SERIALIZED_NAME_SPEECH_END_THRESHOLD)
-  @javax.annotation.Nullable
   private Double speechEndThreshold = 5d;
 
   public static final String SERIALIZED_NAME_MACHINE_SPEECH_END_THRESHOLD = "machineSpeechEndThreshold";
   @SerializedName(SERIALIZED_NAME_MACHINE_SPEECH_END_THRESHOLD)
-  @javax.annotation.Nullable
   private Double machineSpeechEndThreshold;
 
   public static final String SERIALIZED_NAME_DELAY_RESULT = "delayResult";
   @SerializedName(SERIALIZED_NAME_DELAY_RESULT)
-  @javax.annotation.Nullable
   private Boolean delayResult = false;
 
   public static final String SERIALIZED_NAME_CALLBACK_URL = "callbackUrl";
   @SerializedName(SERIALIZED_NAME_CALLBACK_URL)
-  @javax.annotation.Nullable
   private URI callbackUrl;
 
   public static final String SERIALIZED_NAME_CALLBACK_METHOD = "callbackMethod";
   @SerializedName(SERIALIZED_NAME_CALLBACK_METHOD)
-  @javax.annotation.Nullable
   private CallbackMethodEnum callbackMethod = CallbackMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
-  @javax.annotation.Nullable
   private String username;
 
   public static final String SERIALIZED_NAME_PASSWORD = "password";
   @SerializedName(SERIALIZED_NAME_PASSWORD)
-  @javax.annotation.Nullable
   private String password;
 
   public static final String SERIALIZED_NAME_FALLBACK_URL = "fallbackUrl";
   @SerializedName(SERIALIZED_NAME_FALLBACK_URL)
-  @javax.annotation.Nullable
   private URI fallbackUrl;
 
   public static final String SERIALIZED_NAME_FALLBACK_METHOD = "fallbackMethod";
   @SerializedName(SERIALIZED_NAME_FALLBACK_METHOD)
-  @javax.annotation.Nullable
   private CallbackMethodEnum fallbackMethod = CallbackMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_FALLBACK_USERNAME = "fallbackUsername";
   @SerializedName(SERIALIZED_NAME_FALLBACK_USERNAME)
-  @javax.annotation.Nullable
   private String fallbackUsername;
 
   public static final String SERIALIZED_NAME_FALLBACK_PASSWORD = "fallbackPassword";
   @SerializedName(SERIALIZED_NAME_FALLBACK_PASSWORD)
-  @javax.annotation.Nullable
   private String fallbackPassword;
 
   public MachineDetectionConfiguration() {
   }
 
-  public MachineDetectionConfiguration mode(@javax.annotation.Nullable MachineDetectionModeEnum mode) {
+  public MachineDetectionConfiguration mode(MachineDetectionModeEnum mode) {
     this.mode = mode;
     return this;
   }
@@ -146,12 +131,12 @@ public class MachineDetectionConfiguration {
     return mode;
   }
 
-  public void setMode(@javax.annotation.Nullable MachineDetectionModeEnum mode) {
+  public void setMode(MachineDetectionModeEnum mode) {
     this.mode = mode;
   }
 
 
-  public MachineDetectionConfiguration detectionTimeout(@javax.annotation.Nullable Double detectionTimeout) {
+  public MachineDetectionConfiguration detectionTimeout(Double detectionTimeout) {
     this.detectionTimeout = detectionTimeout;
     return this;
   }
@@ -165,12 +150,12 @@ public class MachineDetectionConfiguration {
     return detectionTimeout;
   }
 
-  public void setDetectionTimeout(@javax.annotation.Nullable Double detectionTimeout) {
+  public void setDetectionTimeout(Double detectionTimeout) {
     this.detectionTimeout = detectionTimeout;
   }
 
 
-  public MachineDetectionConfiguration silenceTimeout(@javax.annotation.Nullable Double silenceTimeout) {
+  public MachineDetectionConfiguration silenceTimeout(Double silenceTimeout) {
     this.silenceTimeout = silenceTimeout;
     return this;
   }
@@ -184,12 +169,12 @@ public class MachineDetectionConfiguration {
     return silenceTimeout;
   }
 
-  public void setSilenceTimeout(@javax.annotation.Nullable Double silenceTimeout) {
+  public void setSilenceTimeout(Double silenceTimeout) {
     this.silenceTimeout = silenceTimeout;
   }
 
 
-  public MachineDetectionConfiguration speechThreshold(@javax.annotation.Nullable Double speechThreshold) {
+  public MachineDetectionConfiguration speechThreshold(Double speechThreshold) {
     this.speechThreshold = speechThreshold;
     return this;
   }
@@ -203,12 +188,12 @@ public class MachineDetectionConfiguration {
     return speechThreshold;
   }
 
-  public void setSpeechThreshold(@javax.annotation.Nullable Double speechThreshold) {
+  public void setSpeechThreshold(Double speechThreshold) {
     this.speechThreshold = speechThreshold;
   }
 
 
-  public MachineDetectionConfiguration speechEndThreshold(@javax.annotation.Nullable Double speechEndThreshold) {
+  public MachineDetectionConfiguration speechEndThreshold(Double speechEndThreshold) {
     this.speechEndThreshold = speechEndThreshold;
     return this;
   }
@@ -222,12 +207,12 @@ public class MachineDetectionConfiguration {
     return speechEndThreshold;
   }
 
-  public void setSpeechEndThreshold(@javax.annotation.Nullable Double speechEndThreshold) {
+  public void setSpeechEndThreshold(Double speechEndThreshold) {
     this.speechEndThreshold = speechEndThreshold;
   }
 
 
-  public MachineDetectionConfiguration machineSpeechEndThreshold(@javax.annotation.Nullable Double machineSpeechEndThreshold) {
+  public MachineDetectionConfiguration machineSpeechEndThreshold(Double machineSpeechEndThreshold) {
     this.machineSpeechEndThreshold = machineSpeechEndThreshold;
     return this;
   }
@@ -241,12 +226,12 @@ public class MachineDetectionConfiguration {
     return machineSpeechEndThreshold;
   }
 
-  public void setMachineSpeechEndThreshold(@javax.annotation.Nullable Double machineSpeechEndThreshold) {
+  public void setMachineSpeechEndThreshold(Double machineSpeechEndThreshold) {
     this.machineSpeechEndThreshold = machineSpeechEndThreshold;
   }
 
 
-  public MachineDetectionConfiguration delayResult(@javax.annotation.Nullable Boolean delayResult) {
+  public MachineDetectionConfiguration delayResult(Boolean delayResult) {
     this.delayResult = delayResult;
     return this;
   }
@@ -260,12 +245,12 @@ public class MachineDetectionConfiguration {
     return delayResult;
   }
 
-  public void setDelayResult(@javax.annotation.Nullable Boolean delayResult) {
+  public void setDelayResult(Boolean delayResult) {
     this.delayResult = delayResult;
   }
 
 
-  public MachineDetectionConfiguration callbackUrl(@javax.annotation.Nullable URI callbackUrl) {
+  public MachineDetectionConfiguration callbackUrl(URI callbackUrl) {
     this.callbackUrl = callbackUrl;
     return this;
   }
@@ -279,12 +264,12 @@ public class MachineDetectionConfiguration {
     return callbackUrl;
   }
 
-  public void setCallbackUrl(@javax.annotation.Nullable URI callbackUrl) {
+  public void setCallbackUrl(URI callbackUrl) {
     this.callbackUrl = callbackUrl;
   }
 
 
-  public MachineDetectionConfiguration callbackMethod(@javax.annotation.Nullable CallbackMethodEnum callbackMethod) {
+  public MachineDetectionConfiguration callbackMethod(CallbackMethodEnum callbackMethod) {
     this.callbackMethod = callbackMethod;
     return this;
   }
@@ -298,12 +283,12 @@ public class MachineDetectionConfiguration {
     return callbackMethod;
   }
 
-  public void setCallbackMethod(@javax.annotation.Nullable CallbackMethodEnum callbackMethod) {
+  public void setCallbackMethod(CallbackMethodEnum callbackMethod) {
     this.callbackMethod = callbackMethod;
   }
 
 
-  public MachineDetectionConfiguration username(@javax.annotation.Nullable String username) {
+  public MachineDetectionConfiguration username(String username) {
     this.username = username;
     return this;
   }
@@ -317,12 +302,12 @@ public class MachineDetectionConfiguration {
     return username;
   }
 
-  public void setUsername(@javax.annotation.Nullable String username) {
+  public void setUsername(String username) {
     this.username = username;
   }
 
 
-  public MachineDetectionConfiguration password(@javax.annotation.Nullable String password) {
+  public MachineDetectionConfiguration password(String password) {
     this.password = password;
     return this;
   }
@@ -336,12 +321,12 @@ public class MachineDetectionConfiguration {
     return password;
   }
 
-  public void setPassword(@javax.annotation.Nullable String password) {
+  public void setPassword(String password) {
     this.password = password;
   }
 
 
-  public MachineDetectionConfiguration fallbackUrl(@javax.annotation.Nullable URI fallbackUrl) {
+  public MachineDetectionConfiguration fallbackUrl(URI fallbackUrl) {
     this.fallbackUrl = fallbackUrl;
     return this;
   }
@@ -355,12 +340,12 @@ public class MachineDetectionConfiguration {
     return fallbackUrl;
   }
 
-  public void setFallbackUrl(@javax.annotation.Nullable URI fallbackUrl) {
+  public void setFallbackUrl(URI fallbackUrl) {
     this.fallbackUrl = fallbackUrl;
   }
 
 
-  public MachineDetectionConfiguration fallbackMethod(@javax.annotation.Nullable CallbackMethodEnum fallbackMethod) {
+  public MachineDetectionConfiguration fallbackMethod(CallbackMethodEnum fallbackMethod) {
     this.fallbackMethod = fallbackMethod;
     return this;
   }
@@ -374,12 +359,12 @@ public class MachineDetectionConfiguration {
     return fallbackMethod;
   }
 
-  public void setFallbackMethod(@javax.annotation.Nullable CallbackMethodEnum fallbackMethod) {
+  public void setFallbackMethod(CallbackMethodEnum fallbackMethod) {
     this.fallbackMethod = fallbackMethod;
   }
 
 
-  public MachineDetectionConfiguration fallbackUsername(@javax.annotation.Nullable String fallbackUsername) {
+  public MachineDetectionConfiguration fallbackUsername(String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
     return this;
   }
@@ -393,12 +378,12 @@ public class MachineDetectionConfiguration {
     return fallbackUsername;
   }
 
-  public void setFallbackUsername(@javax.annotation.Nullable String fallbackUsername) {
+  public void setFallbackUsername(String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
   }
 
 
-  public MachineDetectionConfiguration fallbackPassword(@javax.annotation.Nullable String fallbackPassword) {
+  public MachineDetectionConfiguration fallbackPassword(String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
     return this;
   }
@@ -412,7 +397,7 @@ public class MachineDetectionConfiguration {
     return fallbackPassword;
   }
 
-  public void setFallbackPassword(@javax.annotation.Nullable String fallbackPassword) {
+  public void setFallbackPassword(String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
   }
 

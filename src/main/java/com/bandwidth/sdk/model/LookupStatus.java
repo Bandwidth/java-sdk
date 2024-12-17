@@ -52,32 +52,28 @@ import com.bandwidth.sdk.JSON;
 /**
  * If requestId exists, the result for that request is returned. See the Examples for details on the various responses that you can receive. Generally, if you see a Response Code of 0 in a result for a TN, information will be available for it.  Any other Response Code will indicate no information was available for the TN.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class LookupStatus {
   public static final String SERIALIZED_NAME_REQUEST_ID = "requestId";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
-  @javax.annotation.Nullable
   private String requestId;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  @javax.annotation.Nullable
   private LookupStatusEnum status;
 
   public static final String SERIALIZED_NAME_RESULT = "result";
   @SerializedName(SERIALIZED_NAME_RESULT)
-  @javax.annotation.Nullable
   private List<LookupResult> result = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_FAILED_TELEPHONE_NUMBERS = "failedTelephoneNumbers";
   @SerializedName(SERIALIZED_NAME_FAILED_TELEPHONE_NUMBERS)
-  @javax.annotation.Nullable
   private List<String> failedTelephoneNumbers = new ArrayList<>();
 
   public LookupStatus() {
   }
 
-  public LookupStatus requestId(@javax.annotation.Nullable String requestId) {
+  public LookupStatus requestId(String requestId) {
     this.requestId = requestId;
     return this;
   }
@@ -91,12 +87,12 @@ public class LookupStatus {
     return requestId;
   }
 
-  public void setRequestId(@javax.annotation.Nullable String requestId) {
+  public void setRequestId(String requestId) {
     this.requestId = requestId;
   }
 
 
-  public LookupStatus status(@javax.annotation.Nullable LookupStatusEnum status) {
+  public LookupStatus status(LookupStatusEnum status) {
     this.status = status;
     return this;
   }
@@ -110,12 +106,12 @@ public class LookupStatus {
     return status;
   }
 
-  public void setStatus(@javax.annotation.Nullable LookupStatusEnum status) {
+  public void setStatus(LookupStatusEnum status) {
     this.status = status;
   }
 
 
-  public LookupStatus result(@javax.annotation.Nullable List<LookupResult> result) {
+  public LookupStatus result(List<LookupResult> result) {
     this.result = result;
     return this;
   }
@@ -137,12 +133,12 @@ public class LookupStatus {
     return result;
   }
 
-  public void setResult(@javax.annotation.Nullable List<LookupResult> result) {
+  public void setResult(List<LookupResult> result) {
     this.result = result;
   }
 
 
-  public LookupStatus failedTelephoneNumbers(@javax.annotation.Nullable List<String> failedTelephoneNumbers) {
+  public LookupStatus failedTelephoneNumbers(List<String> failedTelephoneNumbers) {
     this.failedTelephoneNumbers = failedTelephoneNumbers;
     return this;
   }
@@ -164,7 +160,7 @@ public class LookupStatus {
     return failedTelephoneNumbers;
   }
 
-  public void setFailedTelephoneNumbers(@javax.annotation.Nullable List<String> failedTelephoneNumbers) {
+  public void setFailedTelephoneNumbers(List<String> failedTelephoneNumbers) {
     this.failedTelephoneNumbers = failedTelephoneNumbers;
   }
 

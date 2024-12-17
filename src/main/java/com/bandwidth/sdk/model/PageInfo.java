@@ -48,32 +48,28 @@ import com.bandwidth.sdk.JSON;
 /**
  * PageInfo
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class PageInfo {
   public static final String SERIALIZED_NAME_PREV_PAGE = "prevPage";
   @SerializedName(SERIALIZED_NAME_PREV_PAGE)
-  @javax.annotation.Nullable
   private String prevPage;
 
   public static final String SERIALIZED_NAME_NEXT_PAGE = "nextPage";
   @SerializedName(SERIALIZED_NAME_NEXT_PAGE)
-  @javax.annotation.Nullable
   private String nextPage;
 
   public static final String SERIALIZED_NAME_PREV_PAGE_TOKEN = "prevPageToken";
   @SerializedName(SERIALIZED_NAME_PREV_PAGE_TOKEN)
-  @javax.annotation.Nullable
   private String prevPageToken;
 
   public static final String SERIALIZED_NAME_NEXT_PAGE_TOKEN = "nextPageToken";
   @SerializedName(SERIALIZED_NAME_NEXT_PAGE_TOKEN)
-  @javax.annotation.Nullable
   private String nextPageToken;
 
   public PageInfo() {
   }
 
-  public PageInfo prevPage(@javax.annotation.Nullable String prevPage) {
+  public PageInfo prevPage(String prevPage) {
     this.prevPage = prevPage;
     return this;
   }
@@ -87,12 +83,12 @@ public class PageInfo {
     return prevPage;
   }
 
-  public void setPrevPage(@javax.annotation.Nullable String prevPage) {
+  public void setPrevPage(String prevPage) {
     this.prevPage = prevPage;
   }
 
 
-  public PageInfo nextPage(@javax.annotation.Nullable String nextPage) {
+  public PageInfo nextPage(String nextPage) {
     this.nextPage = nextPage;
     return this;
   }
@@ -106,12 +102,12 @@ public class PageInfo {
     return nextPage;
   }
 
-  public void setNextPage(@javax.annotation.Nullable String nextPage) {
+  public void setNextPage(String nextPage) {
     this.nextPage = nextPage;
   }
 
 
-  public PageInfo prevPageToken(@javax.annotation.Nullable String prevPageToken) {
+  public PageInfo prevPageToken(String prevPageToken) {
     this.prevPageToken = prevPageToken;
     return this;
   }
@@ -125,12 +121,12 @@ public class PageInfo {
     return prevPageToken;
   }
 
-  public void setPrevPageToken(@javax.annotation.Nullable String prevPageToken) {
+  public void setPrevPageToken(String prevPageToken) {
     this.prevPageToken = prevPageToken;
   }
 
 
-  public PageInfo nextPageToken(@javax.annotation.Nullable String nextPageToken) {
+  public PageInfo nextPageToken(String nextPageToken) {
     this.nextPageToken = nextPageToken;
     return this;
   }
@@ -144,7 +140,7 @@ public class PageInfo {
     return nextPageToken;
   }
 
-  public void setNextPageToken(@javax.annotation.Nullable String nextPageToken) {
+  public void setNextPageToken(String nextPageToken) {
     this.nextPageToken = nextPageToken;
   }
 

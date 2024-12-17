@@ -50,37 +50,32 @@ import com.bandwidth.sdk.JSON;
 /**
  * Message Sending Callback
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class MessageSendingCallback {
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)
-  @javax.annotation.Nonnull
   private OffsetDateTime time;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  @javax.annotation.Nonnull
   private String type;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
-  @javax.annotation.Nonnull
   private String to;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  @javax.annotation.Nonnull
   private String description;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
-  @javax.annotation.Nonnull
   private MessageSendingCallbackMessage message;
 
   public MessageSendingCallback() {
   }
 
-  public MessageSendingCallback time(@javax.annotation.Nonnull OffsetDateTime time) {
+  public MessageSendingCallback time(OffsetDateTime time) {
     this.time = time;
     return this;
   }
@@ -94,12 +89,12 @@ public class MessageSendingCallback {
     return time;
   }
 
-  public void setTime(@javax.annotation.Nonnull OffsetDateTime time) {
+  public void setTime(OffsetDateTime time) {
     this.time = time;
   }
 
 
-  public MessageSendingCallback type(@javax.annotation.Nonnull String type) {
+  public MessageSendingCallback type(String type) {
     this.type = type;
     return this;
   }
@@ -113,12 +108,12 @@ public class MessageSendingCallback {
     return type;
   }
 
-  public void setType(@javax.annotation.Nonnull String type) {
+  public void setType(String type) {
     this.type = type;
   }
 
 
-  public MessageSendingCallback to(@javax.annotation.Nonnull String to) {
+  public MessageSendingCallback to(String to) {
     this.to = to;
     return this;
   }
@@ -132,12 +127,12 @@ public class MessageSendingCallback {
     return to;
   }
 
-  public void setTo(@javax.annotation.Nonnull String to) {
+  public void setTo(String to) {
     this.to = to;
   }
 
 
-  public MessageSendingCallback description(@javax.annotation.Nonnull String description) {
+  public MessageSendingCallback description(String description) {
     this.description = description;
     return this;
   }
@@ -151,12 +146,12 @@ public class MessageSendingCallback {
     return description;
   }
 
-  public void setDescription(@javax.annotation.Nonnull String description) {
+  public void setDescription(String description) {
     this.description = description;
   }
 
 
-  public MessageSendingCallback message(@javax.annotation.Nonnull MessageSendingCallbackMessage message) {
+  public MessageSendingCallback message(MessageSendingCallbackMessage message) {
     this.message = message;
     return this;
   }
@@ -170,7 +165,7 @@ public class MessageSendingCallback {
     return message;
   }
 
-  public void setMessage(@javax.annotation.Nonnull MessageSendingCallbackMessage message) {
+  public void setMessage(MessageSendingCallbackMessage message) {
     this.message = message;
   }
 

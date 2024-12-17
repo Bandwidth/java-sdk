@@ -55,52 +55,44 @@ import com.bandwidth.sdk.JSON;
 /**
  * Conference
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class Conference {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
-  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_CREATED_TIME = "createdTime";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime createdTime;
 
   public static final String SERIALIZED_NAME_COMPLETED_TIME = "completedTime";
   @SerializedName(SERIALIZED_NAME_COMPLETED_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime completedTime;
 
   public static final String SERIALIZED_NAME_CONFERENCE_EVENT_URL = "conferenceEventUrl";
   @SerializedName(SERIALIZED_NAME_CONFERENCE_EVENT_URL)
-  @javax.annotation.Nullable
   private URI conferenceEventUrl;
 
   public static final String SERIALIZED_NAME_CONFERENCE_EVENT_METHOD = "conferenceEventMethod";
   @SerializedName(SERIALIZED_NAME_CONFERENCE_EVENT_METHOD)
-  @javax.annotation.Nullable
   private CallbackMethodEnum conferenceEventMethod = CallbackMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
-  @javax.annotation.Nullable
   private String tag;
 
   public static final String SERIALIZED_NAME_ACTIVE_MEMBERS = "activeMembers";
   @SerializedName(SERIALIZED_NAME_ACTIVE_MEMBERS)
-  @javax.annotation.Nullable
   private List<ConferenceMember> activeMembers;
 
   public Conference() {
   }
 
-  public Conference id(@javax.annotation.Nullable String id) {
+  public Conference id(String id) {
     this.id = id;
     return this;
   }
@@ -114,12 +106,12 @@ public class Conference {
     return id;
   }
 
-  public void setId(@javax.annotation.Nullable String id) {
+  public void setId(String id) {
     this.id = id;
   }
 
 
-  public Conference name(@javax.annotation.Nullable String name) {
+  public Conference name(String name) {
     this.name = name;
     return this;
   }
@@ -133,12 +125,12 @@ public class Conference {
     return name;
   }
 
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(String name) {
     this.name = name;
   }
 
 
-  public Conference createdTime(@javax.annotation.Nullable OffsetDateTime createdTime) {
+  public Conference createdTime(OffsetDateTime createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -152,12 +144,12 @@ public class Conference {
     return createdTime;
   }
 
-  public void setCreatedTime(@javax.annotation.Nullable OffsetDateTime createdTime) {
+  public void setCreatedTime(OffsetDateTime createdTime) {
     this.createdTime = createdTime;
   }
 
 
-  public Conference completedTime(@javax.annotation.Nullable OffsetDateTime completedTime) {
+  public Conference completedTime(OffsetDateTime completedTime) {
     this.completedTime = completedTime;
     return this;
   }
@@ -171,12 +163,12 @@ public class Conference {
     return completedTime;
   }
 
-  public void setCompletedTime(@javax.annotation.Nullable OffsetDateTime completedTime) {
+  public void setCompletedTime(OffsetDateTime completedTime) {
     this.completedTime = completedTime;
   }
 
 
-  public Conference conferenceEventUrl(@javax.annotation.Nullable URI conferenceEventUrl) {
+  public Conference conferenceEventUrl(URI conferenceEventUrl) {
     this.conferenceEventUrl = conferenceEventUrl;
     return this;
   }
@@ -190,12 +182,12 @@ public class Conference {
     return conferenceEventUrl;
   }
 
-  public void setConferenceEventUrl(@javax.annotation.Nullable URI conferenceEventUrl) {
+  public void setConferenceEventUrl(URI conferenceEventUrl) {
     this.conferenceEventUrl = conferenceEventUrl;
   }
 
 
-  public Conference conferenceEventMethod(@javax.annotation.Nullable CallbackMethodEnum conferenceEventMethod) {
+  public Conference conferenceEventMethod(CallbackMethodEnum conferenceEventMethod) {
     this.conferenceEventMethod = conferenceEventMethod;
     return this;
   }
@@ -209,12 +201,12 @@ public class Conference {
     return conferenceEventMethod;
   }
 
-  public void setConferenceEventMethod(@javax.annotation.Nullable CallbackMethodEnum conferenceEventMethod) {
+  public void setConferenceEventMethod(CallbackMethodEnum conferenceEventMethod) {
     this.conferenceEventMethod = conferenceEventMethod;
   }
 
 
-  public Conference tag(@javax.annotation.Nullable String tag) {
+  public Conference tag(String tag) {
     this.tag = tag;
     return this;
   }
@@ -228,12 +220,12 @@ public class Conference {
     return tag;
   }
 
-  public void setTag(@javax.annotation.Nullable String tag) {
+  public void setTag(String tag) {
     this.tag = tag;
   }
 
 
-  public Conference activeMembers(@javax.annotation.Nullable List<ConferenceMember> activeMembers) {
+  public Conference activeMembers(List<ConferenceMember> activeMembers) {
     this.activeMembers = activeMembers;
     return this;
   }
@@ -255,7 +247,7 @@ public class Conference {
     return activeMembers;
   }
 
-  public void setActiveMembers(@javax.annotation.Nullable List<ConferenceMember> activeMembers) {
+  public void setActiveMembers(List<ConferenceMember> activeMembers) {
     this.activeMembers = activeMembers;
   }
 

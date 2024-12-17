@@ -48,27 +48,24 @@ import com.bandwidth.sdk.JSON;
 /**
  * StirShaken
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class StirShaken {
   public static final String SERIALIZED_NAME_VERSTAT = "verstat";
   @SerializedName(SERIALIZED_NAME_VERSTAT)
-  @javax.annotation.Nullable
   private String verstat;
 
   public static final String SERIALIZED_NAME_ATTESTATION_INDICATOR = "attestationIndicator";
   @SerializedName(SERIALIZED_NAME_ATTESTATION_INDICATOR)
-  @javax.annotation.Nullable
   private String attestationIndicator;
 
   public static final String SERIALIZED_NAME_ORIGINATING_ID = "originatingId";
   @SerializedName(SERIALIZED_NAME_ORIGINATING_ID)
-  @javax.annotation.Nullable
   private String originatingId;
 
   public StirShaken() {
   }
 
-  public StirShaken verstat(@javax.annotation.Nullable String verstat) {
+  public StirShaken verstat(String verstat) {
     this.verstat = verstat;
     return this;
   }
@@ -82,12 +79,12 @@ public class StirShaken {
     return verstat;
   }
 
-  public void setVerstat(@javax.annotation.Nullable String verstat) {
+  public void setVerstat(String verstat) {
     this.verstat = verstat;
   }
 
 
-  public StirShaken attestationIndicator(@javax.annotation.Nullable String attestationIndicator) {
+  public StirShaken attestationIndicator(String attestationIndicator) {
     this.attestationIndicator = attestationIndicator;
     return this;
   }
@@ -101,12 +98,12 @@ public class StirShaken {
     return attestationIndicator;
   }
 
-  public void setAttestationIndicator(@javax.annotation.Nullable String attestationIndicator) {
+  public void setAttestationIndicator(String attestationIndicator) {
     this.attestationIndicator = attestationIndicator;
   }
 
 
-  public StirShaken originatingId(@javax.annotation.Nullable String originatingId) {
+  public StirShaken originatingId(String originatingId) {
     this.originatingId = originatingId;
     return this;
   }
@@ -120,7 +117,7 @@ public class StirShaken {
     return originatingId;
   }
 
-  public void setOriginatingId(@javax.annotation.Nullable String originatingId) {
+  public void setOriginatingId(String originatingId) {
     this.originatingId = originatingId;
   }
 

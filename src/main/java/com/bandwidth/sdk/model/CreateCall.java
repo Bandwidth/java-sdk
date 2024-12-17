@@ -52,117 +52,96 @@ import com.bandwidth.sdk.JSON;
 /**
  * CreateCall
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CreateCall {
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
-  @javax.annotation.Nonnull
   private String to;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
-  @javax.annotation.Nonnull
   private String from;
 
   public static final String SERIALIZED_NAME_PRIVACY = "privacy";
   @SerializedName(SERIALIZED_NAME_PRIVACY)
-  @javax.annotation.Nullable
   private Boolean privacy;
 
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
-  @javax.annotation.Nullable
   private String displayName;
 
   public static final String SERIALIZED_NAME_UUI = "uui";
   @SerializedName(SERIALIZED_NAME_UUI)
-  @javax.annotation.Nullable
   private String uui;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  @javax.annotation.Nonnull
   private String applicationId;
 
   public static final String SERIALIZED_NAME_ANSWER_URL = "answerUrl";
   @SerializedName(SERIALIZED_NAME_ANSWER_URL)
-  @javax.annotation.Nonnull
   private URI answerUrl;
 
   public static final String SERIALIZED_NAME_ANSWER_METHOD = "answerMethod";
   @SerializedName(SERIALIZED_NAME_ANSWER_METHOD)
-  @javax.annotation.Nullable
   private CallbackMethodEnum answerMethod = CallbackMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
-  @javax.annotation.Nullable
   private String username;
 
   public static final String SERIALIZED_NAME_PASSWORD = "password";
   @SerializedName(SERIALIZED_NAME_PASSWORD)
-  @javax.annotation.Nullable
   private String password;
 
   public static final String SERIALIZED_NAME_ANSWER_FALLBACK_URL = "answerFallbackUrl";
   @SerializedName(SERIALIZED_NAME_ANSWER_FALLBACK_URL)
-  @javax.annotation.Nullable
   private URI answerFallbackUrl;
 
   public static final String SERIALIZED_NAME_ANSWER_FALLBACK_METHOD = "answerFallbackMethod";
   @SerializedName(SERIALIZED_NAME_ANSWER_FALLBACK_METHOD)
-  @javax.annotation.Nullable
   private CallbackMethodEnum answerFallbackMethod = CallbackMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_FALLBACK_USERNAME = "fallbackUsername";
   @SerializedName(SERIALIZED_NAME_FALLBACK_USERNAME)
-  @javax.annotation.Nullable
   private String fallbackUsername;
 
   public static final String SERIALIZED_NAME_FALLBACK_PASSWORD = "fallbackPassword";
   @SerializedName(SERIALIZED_NAME_FALLBACK_PASSWORD)
-  @javax.annotation.Nullable
   private String fallbackPassword;
 
   public static final String SERIALIZED_NAME_DISCONNECT_URL = "disconnectUrl";
   @SerializedName(SERIALIZED_NAME_DISCONNECT_URL)
-  @javax.annotation.Nullable
   private URI disconnectUrl;
 
   public static final String SERIALIZED_NAME_DISCONNECT_METHOD = "disconnectMethod";
   @SerializedName(SERIALIZED_NAME_DISCONNECT_METHOD)
-  @javax.annotation.Nullable
   private CallbackMethodEnum disconnectMethod = CallbackMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_CALL_TIMEOUT = "callTimeout";
   @SerializedName(SERIALIZED_NAME_CALL_TIMEOUT)
-  @javax.annotation.Nullable
   private Double callTimeout = 30d;
 
   public static final String SERIALIZED_NAME_CALLBACK_TIMEOUT = "callbackTimeout";
   @SerializedName(SERIALIZED_NAME_CALLBACK_TIMEOUT)
-  @javax.annotation.Nullable
   private Double callbackTimeout = 15d;
 
   public static final String SERIALIZED_NAME_MACHINE_DETECTION = "machineDetection";
   @SerializedName(SERIALIZED_NAME_MACHINE_DETECTION)
-  @javax.annotation.Nullable
   private MachineDetectionConfiguration machineDetection;
 
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
-  @javax.annotation.Nullable
   private Integer priority = 5;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
-  @javax.annotation.Nullable
   private String tag;
 
   public CreateCall() {
   }
 
-  public CreateCall to(@javax.annotation.Nonnull String to) {
+  public CreateCall to(String to) {
     this.to = to;
     return this;
   }
@@ -176,12 +155,12 @@ public class CreateCall {
     return to;
   }
 
-  public void setTo(@javax.annotation.Nonnull String to) {
+  public void setTo(String to) {
     this.to = to;
   }
 
 
-  public CreateCall from(@javax.annotation.Nonnull String from) {
+  public CreateCall from(String from) {
     this.from = from;
     return this;
   }
@@ -195,12 +174,12 @@ public class CreateCall {
     return from;
   }
 
-  public void setFrom(@javax.annotation.Nonnull String from) {
+  public void setFrom(String from) {
     this.from = from;
   }
 
 
-  public CreateCall privacy(@javax.annotation.Nullable Boolean privacy) {
+  public CreateCall privacy(Boolean privacy) {
     this.privacy = privacy;
     return this;
   }
@@ -214,12 +193,12 @@ public class CreateCall {
     return privacy;
   }
 
-  public void setPrivacy(@javax.annotation.Nullable Boolean privacy) {
+  public void setPrivacy(Boolean privacy) {
     this.privacy = privacy;
   }
 
 
-  public CreateCall displayName(@javax.annotation.Nullable String displayName) {
+  public CreateCall displayName(String displayName) {
     this.displayName = displayName;
     return this;
   }
@@ -233,18 +212,18 @@ public class CreateCall {
     return displayName;
   }
 
-  public void setDisplayName(@javax.annotation.Nullable String displayName) {
+  public void setDisplayName(String displayName) {
     this.displayName = displayName;
   }
 
 
-  public CreateCall uui(@javax.annotation.Nullable String uui) {
+  public CreateCall uui(String uui) {
     this.uui = uui;
     return this;
   }
 
   /**
-   * A comma-separated list of &#39;User-To-User&#39; headers to be sent in the INVITE when calling a SIP URI. Each value must end with an &#39;encoding&#39; parameter as described in &lt;a href&#x3D;&#39;https://tools.ietf.org/html/rfc7433&#39;&gt;RFC 7433&lt;/a&gt;. Only &#39;jwt&#39; and &#39;base64&#39; encodings are allowed. The entire value cannot exceed 350 characters, including parameters and separators.
+   * A comma-separated list of &#39;User-To-User&#39; headers to be sent in the INVITE when calling a SIP URI. Each value must end with an &#39;encoding&#39; parameter as described in &lt;a href&#x3D;&#39;https://tools.ietf.org/html/rfc7433&#39;&gt;RFC 7433&lt;/a&gt;. Only &#39;jwt&#39;, &#39;base64&#39; and &#39;hex&#39; encodings are allowed. The entire value cannot exceed 350 characters, including parameters and separators.
    * @return uui
    */
   @javax.annotation.Nullable
@@ -252,12 +231,12 @@ public class CreateCall {
     return uui;
   }
 
-  public void setUui(@javax.annotation.Nullable String uui) {
+  public void setUui(String uui) {
     this.uui = uui;
   }
 
 
-  public CreateCall applicationId(@javax.annotation.Nonnull String applicationId) {
+  public CreateCall applicationId(String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -271,12 +250,12 @@ public class CreateCall {
     return applicationId;
   }
 
-  public void setApplicationId(@javax.annotation.Nonnull String applicationId) {
+  public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public CreateCall answerUrl(@javax.annotation.Nonnull URI answerUrl) {
+  public CreateCall answerUrl(URI answerUrl) {
     this.answerUrl = answerUrl;
     return this;
   }
@@ -290,12 +269,12 @@ public class CreateCall {
     return answerUrl;
   }
 
-  public void setAnswerUrl(@javax.annotation.Nonnull URI answerUrl) {
+  public void setAnswerUrl(URI answerUrl) {
     this.answerUrl = answerUrl;
   }
 
 
-  public CreateCall answerMethod(@javax.annotation.Nullable CallbackMethodEnum answerMethod) {
+  public CreateCall answerMethod(CallbackMethodEnum answerMethod) {
     this.answerMethod = answerMethod;
     return this;
   }
@@ -309,12 +288,12 @@ public class CreateCall {
     return answerMethod;
   }
 
-  public void setAnswerMethod(@javax.annotation.Nullable CallbackMethodEnum answerMethod) {
+  public void setAnswerMethod(CallbackMethodEnum answerMethod) {
     this.answerMethod = answerMethod;
   }
 
 
-  public CreateCall username(@javax.annotation.Nullable String username) {
+  public CreateCall username(String username) {
     this.username = username;
     return this;
   }
@@ -328,12 +307,12 @@ public class CreateCall {
     return username;
   }
 
-  public void setUsername(@javax.annotation.Nullable String username) {
+  public void setUsername(String username) {
     this.username = username;
   }
 
 
-  public CreateCall password(@javax.annotation.Nullable String password) {
+  public CreateCall password(String password) {
     this.password = password;
     return this;
   }
@@ -347,12 +326,12 @@ public class CreateCall {
     return password;
   }
 
-  public void setPassword(@javax.annotation.Nullable String password) {
+  public void setPassword(String password) {
     this.password = password;
   }
 
 
-  public CreateCall answerFallbackUrl(@javax.annotation.Nullable URI answerFallbackUrl) {
+  public CreateCall answerFallbackUrl(URI answerFallbackUrl) {
     this.answerFallbackUrl = answerFallbackUrl;
     return this;
   }
@@ -366,12 +345,12 @@ public class CreateCall {
     return answerFallbackUrl;
   }
 
-  public void setAnswerFallbackUrl(@javax.annotation.Nullable URI answerFallbackUrl) {
+  public void setAnswerFallbackUrl(URI answerFallbackUrl) {
     this.answerFallbackUrl = answerFallbackUrl;
   }
 
 
-  public CreateCall answerFallbackMethod(@javax.annotation.Nullable CallbackMethodEnum answerFallbackMethod) {
+  public CreateCall answerFallbackMethod(CallbackMethodEnum answerFallbackMethod) {
     this.answerFallbackMethod = answerFallbackMethod;
     return this;
   }
@@ -385,12 +364,12 @@ public class CreateCall {
     return answerFallbackMethod;
   }
 
-  public void setAnswerFallbackMethod(@javax.annotation.Nullable CallbackMethodEnum answerFallbackMethod) {
+  public void setAnswerFallbackMethod(CallbackMethodEnum answerFallbackMethod) {
     this.answerFallbackMethod = answerFallbackMethod;
   }
 
 
-  public CreateCall fallbackUsername(@javax.annotation.Nullable String fallbackUsername) {
+  public CreateCall fallbackUsername(String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
     return this;
   }
@@ -404,12 +383,12 @@ public class CreateCall {
     return fallbackUsername;
   }
 
-  public void setFallbackUsername(@javax.annotation.Nullable String fallbackUsername) {
+  public void setFallbackUsername(String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
   }
 
 
-  public CreateCall fallbackPassword(@javax.annotation.Nullable String fallbackPassword) {
+  public CreateCall fallbackPassword(String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
     return this;
   }
@@ -423,12 +402,12 @@ public class CreateCall {
     return fallbackPassword;
   }
 
-  public void setFallbackPassword(@javax.annotation.Nullable String fallbackPassword) {
+  public void setFallbackPassword(String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
   }
 
 
-  public CreateCall disconnectUrl(@javax.annotation.Nullable URI disconnectUrl) {
+  public CreateCall disconnectUrl(URI disconnectUrl) {
     this.disconnectUrl = disconnectUrl;
     return this;
   }
@@ -442,12 +421,12 @@ public class CreateCall {
     return disconnectUrl;
   }
 
-  public void setDisconnectUrl(@javax.annotation.Nullable URI disconnectUrl) {
+  public void setDisconnectUrl(URI disconnectUrl) {
     this.disconnectUrl = disconnectUrl;
   }
 
 
-  public CreateCall disconnectMethod(@javax.annotation.Nullable CallbackMethodEnum disconnectMethod) {
+  public CreateCall disconnectMethod(CallbackMethodEnum disconnectMethod) {
     this.disconnectMethod = disconnectMethod;
     return this;
   }
@@ -461,12 +440,12 @@ public class CreateCall {
     return disconnectMethod;
   }
 
-  public void setDisconnectMethod(@javax.annotation.Nullable CallbackMethodEnum disconnectMethod) {
+  public void setDisconnectMethod(CallbackMethodEnum disconnectMethod) {
     this.disconnectMethod = disconnectMethod;
   }
 
 
-  public CreateCall callTimeout(@javax.annotation.Nullable Double callTimeout) {
+  public CreateCall callTimeout(Double callTimeout) {
     this.callTimeout = callTimeout;
     return this;
   }
@@ -482,12 +461,12 @@ public class CreateCall {
     return callTimeout;
   }
 
-  public void setCallTimeout(@javax.annotation.Nullable Double callTimeout) {
+  public void setCallTimeout(Double callTimeout) {
     this.callTimeout = callTimeout;
   }
 
 
-  public CreateCall callbackTimeout(@javax.annotation.Nullable Double callbackTimeout) {
+  public CreateCall callbackTimeout(Double callbackTimeout) {
     this.callbackTimeout = callbackTimeout;
     return this;
   }
@@ -503,12 +482,12 @@ public class CreateCall {
     return callbackTimeout;
   }
 
-  public void setCallbackTimeout(@javax.annotation.Nullable Double callbackTimeout) {
+  public void setCallbackTimeout(Double callbackTimeout) {
     this.callbackTimeout = callbackTimeout;
   }
 
 
-  public CreateCall machineDetection(@javax.annotation.Nullable MachineDetectionConfiguration machineDetection) {
+  public CreateCall machineDetection(MachineDetectionConfiguration machineDetection) {
     this.machineDetection = machineDetection;
     return this;
   }
@@ -522,12 +501,12 @@ public class CreateCall {
     return machineDetection;
   }
 
-  public void setMachineDetection(@javax.annotation.Nullable MachineDetectionConfiguration machineDetection) {
+  public void setMachineDetection(MachineDetectionConfiguration machineDetection) {
     this.machineDetection = machineDetection;
   }
 
 
-  public CreateCall priority(@javax.annotation.Nullable Integer priority) {
+  public CreateCall priority(Integer priority) {
     this.priority = priority;
     return this;
   }
@@ -543,12 +522,12 @@ public class CreateCall {
     return priority;
   }
 
-  public void setPriority(@javax.annotation.Nullable Integer priority) {
+  public void setPriority(Integer priority) {
     this.priority = priority;
   }
 
 
-  public CreateCall tag(@javax.annotation.Nullable String tag) {
+  public CreateCall tag(String tag) {
     this.tag = tag;
     return this;
   }
@@ -562,7 +541,7 @@ public class CreateCall {
     return tag;
   }
 
-  public void setTag(@javax.annotation.Nullable String tag) {
+  public void setTag(String tag) {
     this.tag = tag;
   }
 

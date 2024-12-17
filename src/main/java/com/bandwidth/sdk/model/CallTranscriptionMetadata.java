@@ -48,27 +48,24 @@ import com.bandwidth.sdk.JSON;
 /**
  * CallTranscriptionMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CallTranscriptionMetadata {
   public static final String SERIALIZED_NAME_TRANSCRIPTION_ID = "transcriptionId";
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTION_ID)
-  @javax.annotation.Nullable
   private String transcriptionId;
 
   public static final String SERIALIZED_NAME_TRANSCRIPTION_NAME = "transcriptionName";
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTION_NAME)
-  @javax.annotation.Nullable
   private String transcriptionName;
 
   public static final String SERIALIZED_NAME_TRANSCRIPTION_URL = "transcriptionUrl";
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTION_URL)
-  @javax.annotation.Nullable
   private String transcriptionUrl;
 
   public CallTranscriptionMetadata() {
   }
 
-  public CallTranscriptionMetadata transcriptionId(@javax.annotation.Nullable String transcriptionId) {
+  public CallTranscriptionMetadata transcriptionId(String transcriptionId) {
     this.transcriptionId = transcriptionId;
     return this;
   }
@@ -82,12 +79,12 @@ public class CallTranscriptionMetadata {
     return transcriptionId;
   }
 
-  public void setTranscriptionId(@javax.annotation.Nullable String transcriptionId) {
+  public void setTranscriptionId(String transcriptionId) {
     this.transcriptionId = transcriptionId;
   }
 
 
-  public CallTranscriptionMetadata transcriptionName(@javax.annotation.Nullable String transcriptionName) {
+  public CallTranscriptionMetadata transcriptionName(String transcriptionName) {
     this.transcriptionName = transcriptionName;
     return this;
   }
@@ -101,12 +98,12 @@ public class CallTranscriptionMetadata {
     return transcriptionName;
   }
 
-  public void setTranscriptionName(@javax.annotation.Nullable String transcriptionName) {
+  public void setTranscriptionName(String transcriptionName) {
     this.transcriptionName = transcriptionName;
   }
 
 
-  public CallTranscriptionMetadata transcriptionUrl(@javax.annotation.Nullable String transcriptionUrl) {
+  public CallTranscriptionMetadata transcriptionUrl(String transcriptionUrl) {
     this.transcriptionUrl = transcriptionUrl;
     return this;
   }
@@ -120,7 +117,7 @@ public class CallTranscriptionMetadata {
     return transcriptionUrl;
   }
 
-  public void setTranscriptionUrl(@javax.annotation.Nullable String transcriptionUrl) {
+  public void setTranscriptionUrl(String transcriptionUrl) {
     this.transcriptionUrl = transcriptionUrl;
   }
 

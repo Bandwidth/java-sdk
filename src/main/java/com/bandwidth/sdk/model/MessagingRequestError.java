@@ -48,22 +48,20 @@ import com.bandwidth.sdk.JSON;
 /**
  * MessagingRequestError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class MessagingRequestError {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  @javax.annotation.Nonnull
   private String type;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  @javax.annotation.Nonnull
   private String description;
 
   public MessagingRequestError() {
   }
 
-  public MessagingRequestError type(@javax.annotation.Nonnull String type) {
+  public MessagingRequestError type(String type) {
     this.type = type;
     return this;
   }
@@ -77,12 +75,12 @@ public class MessagingRequestError {
     return type;
   }
 
-  public void setType(@javax.annotation.Nonnull String type) {
+  public void setType(String type) {
     this.type = type;
   }
 
 
-  public MessagingRequestError description(@javax.annotation.Nonnull String description) {
+  public MessagingRequestError description(String description) {
     this.description = description;
     return this;
   }
@@ -96,7 +94,7 @@ public class MessagingRequestError {
     return description;
   }
 
-  public void setDescription(@javax.annotation.Nonnull String description) {
+  public void setDescription(String description) {
     this.description = description;
   }
 

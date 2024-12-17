@@ -52,102 +52,84 @@ import com.bandwidth.sdk.JSON;
 /**
  * The gather event is sent after a &lt;Gather&gt; verb is executed. Its purpose is to report the gathered digits to the calling application.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class GatherCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
-  @javax.annotation.Nullable
   private String eventType;
 
   public static final String SERIALIZED_NAME_EVENT_TIME = "eventTime";
   @SerializedName(SERIALIZED_NAME_EVENT_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime eventTime;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  @javax.annotation.Nullable
   private String accountId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  @javax.annotation.Nullable
   private String applicationId;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
-  @javax.annotation.Nullable
   private String from;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
-  @javax.annotation.Nullable
   private String to;
 
   public static final String SERIALIZED_NAME_DIRECTION = "direction";
   @SerializedName(SERIALIZED_NAME_DIRECTION)
-  @javax.annotation.Nullable
   private CallDirectionEnum direction;
 
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
-  @javax.annotation.Nullable
   private String callId;
 
   public static final String SERIALIZED_NAME_DIGITS = "digits";
   @SerializedName(SERIALIZED_NAME_DIGITS)
-  @javax.annotation.Nullable
   private String digits;
 
   public static final String SERIALIZED_NAME_CALL_URL = "callUrl";
   @SerializedName(SERIALIZED_NAME_CALL_URL)
-  @javax.annotation.Nullable
   private URI callUrl;
 
   public static final String SERIALIZED_NAME_ENQUEUED_TIME = "enqueuedTime";
   @SerializedName(SERIALIZED_NAME_ENQUEUED_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime enqueuedTime;
 
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime startTime;
 
   public static final String SERIALIZED_NAME_ANSWER_TIME = "answerTime";
   @SerializedName(SERIALIZED_NAME_ANSWER_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime answerTime;
 
   public static final String SERIALIZED_NAME_PARENT_CALL_ID = "parentCallId";
   @SerializedName(SERIALIZED_NAME_PARENT_CALL_ID)
-  @javax.annotation.Nullable
   private String parentCallId;
 
   public static final String SERIALIZED_NAME_TERMINATING_DIGIT = "terminatingDigit";
   @SerializedName(SERIALIZED_NAME_TERMINATING_DIGIT)
-  @javax.annotation.Nullable
   private String terminatingDigit;
 
   public static final String SERIALIZED_NAME_TRANSFER_CALLER_ID = "transferCallerId";
   @SerializedName(SERIALIZED_NAME_TRANSFER_CALLER_ID)
-  @javax.annotation.Nullable
   private String transferCallerId;
 
   public static final String SERIALIZED_NAME_TRANSFER_TO = "transferTo";
   @SerializedName(SERIALIZED_NAME_TRANSFER_TO)
-  @javax.annotation.Nullable
   private String transferTo;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
-  @javax.annotation.Nullable
   private String tag;
 
   public GatherCallback() {
   }
 
-  public GatherCallback eventType(@javax.annotation.Nullable String eventType) {
+  public GatherCallback eventType(String eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -161,12 +143,12 @@ public class GatherCallback {
     return eventType;
   }
 
-  public void setEventType(@javax.annotation.Nullable String eventType) {
+  public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
-  public GatherCallback eventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
+  public GatherCallback eventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
     return this;
   }
@@ -180,12 +162,12 @@ public class GatherCallback {
     return eventTime;
   }
 
-  public void setEventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
+  public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
-  public GatherCallback accountId(@javax.annotation.Nullable String accountId) {
+  public GatherCallback accountId(String accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -199,12 +181,12 @@ public class GatherCallback {
     return accountId;
   }
 
-  public void setAccountId(@javax.annotation.Nullable String accountId) {
+  public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
-  public GatherCallback applicationId(@javax.annotation.Nullable String applicationId) {
+  public GatherCallback applicationId(String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -218,12 +200,12 @@ public class GatherCallback {
     return applicationId;
   }
 
-  public void setApplicationId(@javax.annotation.Nullable String applicationId) {
+  public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public GatherCallback from(@javax.annotation.Nullable String from) {
+  public GatherCallback from(String from) {
     this.from = from;
     return this;
   }
@@ -237,12 +219,12 @@ public class GatherCallback {
     return from;
   }
 
-  public void setFrom(@javax.annotation.Nullable String from) {
+  public void setFrom(String from) {
     this.from = from;
   }
 
 
-  public GatherCallback to(@javax.annotation.Nullable String to) {
+  public GatherCallback to(String to) {
     this.to = to;
     return this;
   }
@@ -256,12 +238,12 @@ public class GatherCallback {
     return to;
   }
 
-  public void setTo(@javax.annotation.Nullable String to) {
+  public void setTo(String to) {
     this.to = to;
   }
 
 
-  public GatherCallback direction(@javax.annotation.Nullable CallDirectionEnum direction) {
+  public GatherCallback direction(CallDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
@@ -275,12 +257,12 @@ public class GatherCallback {
     return direction;
   }
 
-  public void setDirection(@javax.annotation.Nullable CallDirectionEnum direction) {
+  public void setDirection(CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
-  public GatherCallback callId(@javax.annotation.Nullable String callId) {
+  public GatherCallback callId(String callId) {
     this.callId = callId;
     return this;
   }
@@ -294,12 +276,12 @@ public class GatherCallback {
     return callId;
   }
 
-  public void setCallId(@javax.annotation.Nullable String callId) {
+  public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
-  public GatherCallback digits(@javax.annotation.Nullable String digits) {
+  public GatherCallback digits(String digits) {
     this.digits = digits;
     return this;
   }
@@ -313,12 +295,12 @@ public class GatherCallback {
     return digits;
   }
 
-  public void setDigits(@javax.annotation.Nullable String digits) {
+  public void setDigits(String digits) {
     this.digits = digits;
   }
 
 
-  public GatherCallback callUrl(@javax.annotation.Nullable URI callUrl) {
+  public GatherCallback callUrl(URI callUrl) {
     this.callUrl = callUrl;
     return this;
   }
@@ -332,12 +314,12 @@ public class GatherCallback {
     return callUrl;
   }
 
-  public void setCallUrl(@javax.annotation.Nullable URI callUrl) {
+  public void setCallUrl(URI callUrl) {
     this.callUrl = callUrl;
   }
 
 
-  public GatherCallback enqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
+  public GatherCallback enqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -351,12 +333,12 @@ public class GatherCallback {
     return enqueuedTime;
   }
 
-  public void setEnqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
+  public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
-  public GatherCallback startTime(@javax.annotation.Nullable OffsetDateTime startTime) {
+  public GatherCallback startTime(OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -370,12 +352,12 @@ public class GatherCallback {
     return startTime;
   }
 
-  public void setStartTime(@javax.annotation.Nullable OffsetDateTime startTime) {
+  public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
-  public GatherCallback answerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
+  public GatherCallback answerTime(OffsetDateTime answerTime) {
     this.answerTime = answerTime;
     return this;
   }
@@ -389,12 +371,12 @@ public class GatherCallback {
     return answerTime;
   }
 
-  public void setAnswerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
+  public void setAnswerTime(OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
-  public GatherCallback parentCallId(@javax.annotation.Nullable String parentCallId) {
+  public GatherCallback parentCallId(String parentCallId) {
     this.parentCallId = parentCallId;
     return this;
   }
@@ -408,12 +390,12 @@ public class GatherCallback {
     return parentCallId;
   }
 
-  public void setParentCallId(@javax.annotation.Nullable String parentCallId) {
+  public void setParentCallId(String parentCallId) {
     this.parentCallId = parentCallId;
   }
 
 
-  public GatherCallback terminatingDigit(@javax.annotation.Nullable String terminatingDigit) {
+  public GatherCallback terminatingDigit(String terminatingDigit) {
     this.terminatingDigit = terminatingDigit;
     return this;
   }
@@ -427,12 +409,12 @@ public class GatherCallback {
     return terminatingDigit;
   }
 
-  public void setTerminatingDigit(@javax.annotation.Nullable String terminatingDigit) {
+  public void setTerminatingDigit(String terminatingDigit) {
     this.terminatingDigit = terminatingDigit;
   }
 
 
-  public GatherCallback transferCallerId(@javax.annotation.Nullable String transferCallerId) {
+  public GatherCallback transferCallerId(String transferCallerId) {
     this.transferCallerId = transferCallerId;
     return this;
   }
@@ -446,12 +428,12 @@ public class GatherCallback {
     return transferCallerId;
   }
 
-  public void setTransferCallerId(@javax.annotation.Nullable String transferCallerId) {
+  public void setTransferCallerId(String transferCallerId) {
     this.transferCallerId = transferCallerId;
   }
 
 
-  public GatherCallback transferTo(@javax.annotation.Nullable String transferTo) {
+  public GatherCallback transferTo(String transferTo) {
     this.transferTo = transferTo;
     return this;
   }
@@ -465,12 +447,12 @@ public class GatherCallback {
     return transferTo;
   }
 
-  public void setTransferTo(@javax.annotation.Nullable String transferTo) {
+  public void setTransferTo(String transferTo) {
     this.transferTo = transferTo;
   }
 
 
-  public GatherCallback tag(@javax.annotation.Nullable String tag) {
+  public GatherCallback tag(String tag) {
     this.tag = tag;
     return this;
   }
@@ -484,7 +466,7 @@ public class GatherCallback {
     return tag;
   }
 
-  public void setTag(@javax.annotation.Nullable String tag) {
+  public void setTag(String tag) {
     this.tag = tag;
   }
 

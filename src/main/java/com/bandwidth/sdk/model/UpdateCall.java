@@ -52,62 +52,52 @@ import com.bandwidth.sdk.JSON;
 /**
  * UpdateCall
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class UpdateCall {
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
-  @javax.annotation.Nullable
   private CallStateEnum state = CallStateEnum.ACTIVE;
 
   public static final String SERIALIZED_NAME_REDIRECT_URL = "redirectUrl";
   @SerializedName(SERIALIZED_NAME_REDIRECT_URL)
-  @javax.annotation.Nullable
   private URI redirectUrl;
 
   public static final String SERIALIZED_NAME_REDIRECT_METHOD = "redirectMethod";
   @SerializedName(SERIALIZED_NAME_REDIRECT_METHOD)
-  @javax.annotation.Nullable
   private RedirectMethodEnum redirectMethod = RedirectMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
-  @javax.annotation.Nullable
   private String username;
 
   public static final String SERIALIZED_NAME_PASSWORD = "password";
   @SerializedName(SERIALIZED_NAME_PASSWORD)
-  @javax.annotation.Nullable
   private String password;
 
   public static final String SERIALIZED_NAME_REDIRECT_FALLBACK_URL = "redirectFallbackUrl";
   @SerializedName(SERIALIZED_NAME_REDIRECT_FALLBACK_URL)
-  @javax.annotation.Nullable
   private URI redirectFallbackUrl;
 
   public static final String SERIALIZED_NAME_REDIRECT_FALLBACK_METHOD = "redirectFallbackMethod";
   @SerializedName(SERIALIZED_NAME_REDIRECT_FALLBACK_METHOD)
-  @javax.annotation.Nullable
   private RedirectMethodEnum redirectFallbackMethod = RedirectMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_FALLBACK_USERNAME = "fallbackUsername";
   @SerializedName(SERIALIZED_NAME_FALLBACK_USERNAME)
-  @javax.annotation.Nullable
   private String fallbackUsername;
 
   public static final String SERIALIZED_NAME_FALLBACK_PASSWORD = "fallbackPassword";
   @SerializedName(SERIALIZED_NAME_FALLBACK_PASSWORD)
-  @javax.annotation.Nullable
   private String fallbackPassword;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
-  @javax.annotation.Nullable
   private String tag;
 
   public UpdateCall() {
   }
 
-  public UpdateCall state(@javax.annotation.Nullable CallStateEnum state) {
+  public UpdateCall state(CallStateEnum state) {
     this.state = state;
     return this;
   }
@@ -121,12 +111,12 @@ public class UpdateCall {
     return state;
   }
 
-  public void setState(@javax.annotation.Nullable CallStateEnum state) {
+  public void setState(CallStateEnum state) {
     this.state = state;
   }
 
 
-  public UpdateCall redirectUrl(@javax.annotation.Nullable URI redirectUrl) {
+  public UpdateCall redirectUrl(URI redirectUrl) {
     this.redirectUrl = redirectUrl;
     return this;
   }
@@ -140,12 +130,12 @@ public class UpdateCall {
     return redirectUrl;
   }
 
-  public void setRedirectUrl(@javax.annotation.Nullable URI redirectUrl) {
+  public void setRedirectUrl(URI redirectUrl) {
     this.redirectUrl = redirectUrl;
   }
 
 
-  public UpdateCall redirectMethod(@javax.annotation.Nullable RedirectMethodEnum redirectMethod) {
+  public UpdateCall redirectMethod(RedirectMethodEnum redirectMethod) {
     this.redirectMethod = redirectMethod;
     return this;
   }
@@ -159,12 +149,12 @@ public class UpdateCall {
     return redirectMethod;
   }
 
-  public void setRedirectMethod(@javax.annotation.Nullable RedirectMethodEnum redirectMethod) {
+  public void setRedirectMethod(RedirectMethodEnum redirectMethod) {
     this.redirectMethod = redirectMethod;
   }
 
 
-  public UpdateCall username(@javax.annotation.Nullable String username) {
+  public UpdateCall username(String username) {
     this.username = username;
     return this;
   }
@@ -178,12 +168,12 @@ public class UpdateCall {
     return username;
   }
 
-  public void setUsername(@javax.annotation.Nullable String username) {
+  public void setUsername(String username) {
     this.username = username;
   }
 
 
-  public UpdateCall password(@javax.annotation.Nullable String password) {
+  public UpdateCall password(String password) {
     this.password = password;
     return this;
   }
@@ -197,12 +187,12 @@ public class UpdateCall {
     return password;
   }
 
-  public void setPassword(@javax.annotation.Nullable String password) {
+  public void setPassword(String password) {
     this.password = password;
   }
 
 
-  public UpdateCall redirectFallbackUrl(@javax.annotation.Nullable URI redirectFallbackUrl) {
+  public UpdateCall redirectFallbackUrl(URI redirectFallbackUrl) {
     this.redirectFallbackUrl = redirectFallbackUrl;
     return this;
   }
@@ -216,12 +206,12 @@ public class UpdateCall {
     return redirectFallbackUrl;
   }
 
-  public void setRedirectFallbackUrl(@javax.annotation.Nullable URI redirectFallbackUrl) {
+  public void setRedirectFallbackUrl(URI redirectFallbackUrl) {
     this.redirectFallbackUrl = redirectFallbackUrl;
   }
 
 
-  public UpdateCall redirectFallbackMethod(@javax.annotation.Nullable RedirectMethodEnum redirectFallbackMethod) {
+  public UpdateCall redirectFallbackMethod(RedirectMethodEnum redirectFallbackMethod) {
     this.redirectFallbackMethod = redirectFallbackMethod;
     return this;
   }
@@ -235,12 +225,12 @@ public class UpdateCall {
     return redirectFallbackMethod;
   }
 
-  public void setRedirectFallbackMethod(@javax.annotation.Nullable RedirectMethodEnum redirectFallbackMethod) {
+  public void setRedirectFallbackMethod(RedirectMethodEnum redirectFallbackMethod) {
     this.redirectFallbackMethod = redirectFallbackMethod;
   }
 
 
-  public UpdateCall fallbackUsername(@javax.annotation.Nullable String fallbackUsername) {
+  public UpdateCall fallbackUsername(String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
     return this;
   }
@@ -254,12 +244,12 @@ public class UpdateCall {
     return fallbackUsername;
   }
 
-  public void setFallbackUsername(@javax.annotation.Nullable String fallbackUsername) {
+  public void setFallbackUsername(String fallbackUsername) {
     this.fallbackUsername = fallbackUsername;
   }
 
 
-  public UpdateCall fallbackPassword(@javax.annotation.Nullable String fallbackPassword) {
+  public UpdateCall fallbackPassword(String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
     return this;
   }
@@ -273,12 +263,12 @@ public class UpdateCall {
     return fallbackPassword;
   }
 
-  public void setFallbackPassword(@javax.annotation.Nullable String fallbackPassword) {
+  public void setFallbackPassword(String fallbackPassword) {
     this.fallbackPassword = fallbackPassword;
   }
 
 
-  public UpdateCall tag(@javax.annotation.Nullable String tag) {
+  public UpdateCall tag(String tag) {
     this.tag = tag;
     return this;
   }
@@ -292,7 +282,7 @@ public class UpdateCall {
     return tag;
   }
 
-  public void setTag(@javax.annotation.Nullable String tag) {
+  public void setTag(String tag) {
     this.tag = tag;
   }
 

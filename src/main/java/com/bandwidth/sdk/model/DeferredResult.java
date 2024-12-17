@@ -48,22 +48,20 @@ import com.bandwidth.sdk.JSON;
 /**
  * DeferredResult
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class DeferredResult {
   public static final String SERIALIZED_NAME_RESULT = "result";
   @SerializedName(SERIALIZED_NAME_RESULT)
-  @javax.annotation.Nullable
   private Object result;
 
   public static final String SERIALIZED_NAME_SET_OR_EXPIRED = "setOrExpired";
   @SerializedName(SERIALIZED_NAME_SET_OR_EXPIRED)
-  @javax.annotation.Nullable
   private Boolean setOrExpired;
 
   public DeferredResult() {
   }
 
-  public DeferredResult result(@javax.annotation.Nullable Object result) {
+  public DeferredResult result(Object result) {
     this.result = result;
     return this;
   }
@@ -77,12 +75,12 @@ public class DeferredResult {
     return result;
   }
 
-  public void setResult(@javax.annotation.Nullable Object result) {
+  public void setResult(Object result) {
     this.result = result;
   }
 
 
-  public DeferredResult setOrExpired(@javax.annotation.Nullable Boolean setOrExpired) {
+  public DeferredResult setOrExpired(Boolean setOrExpired) {
     this.setOrExpired = setOrExpired;
     return this;
   }
@@ -96,7 +94,7 @@ public class DeferredResult {
     return setOrExpired;
   }
 
-  public void setSetOrExpired(@javax.annotation.Nullable Boolean setOrExpired) {
+  public void setSetOrExpired(Boolean setOrExpired) {
     this.setOrExpired = setOrExpired;
   }
 

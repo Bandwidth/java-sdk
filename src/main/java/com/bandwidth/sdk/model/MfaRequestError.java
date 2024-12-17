@@ -48,22 +48,20 @@ import com.bandwidth.sdk.JSON;
 /**
  * MfaRequestError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class MfaRequestError {
   public static final String SERIALIZED_NAME_ERROR = "error";
   @SerializedName(SERIALIZED_NAME_ERROR)
-  @javax.annotation.Nullable
   private String error;
 
   public static final String SERIALIZED_NAME_REQUEST_ID = "requestId";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
-  @javax.annotation.Nullable
   private String requestId;
 
   public MfaRequestError() {
   }
 
-  public MfaRequestError error(@javax.annotation.Nullable String error) {
+  public MfaRequestError error(String error) {
     this.error = error;
     return this;
   }
@@ -77,12 +75,12 @@ public class MfaRequestError {
     return error;
   }
 
-  public void setError(@javax.annotation.Nullable String error) {
+  public void setError(String error) {
     this.error = error;
   }
 
 
-  public MfaRequestError requestId(@javax.annotation.Nullable String requestId) {
+  public MfaRequestError requestId(String requestId) {
     this.requestId = requestId;
     return this;
   }
@@ -96,7 +94,7 @@ public class MfaRequestError {
     return requestId;
   }
 
-  public void setRequestId(@javax.annotation.Nullable String requestId) {
+  public void setRequestId(String requestId) {
     this.requestId = requestId;
   }
 

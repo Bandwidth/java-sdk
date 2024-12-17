@@ -51,32 +51,28 @@ import com.bandwidth.sdk.JSON;
 /**
  * CallTranscriptionResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CallTranscriptionResponse {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  @javax.annotation.Nullable
   private String accountId;
 
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
-  @javax.annotation.Nullable
   private String callId;
 
   public static final String SERIALIZED_NAME_TRANSCRIPTION_ID = "transcriptionId";
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTION_ID)
-  @javax.annotation.Nullable
   private String transcriptionId;
 
   public static final String SERIALIZED_NAME_TRACKS = "tracks";
   @SerializedName(SERIALIZED_NAME_TRACKS)
-  @javax.annotation.Nullable
   private List<CallTranscription> tracks = new ArrayList<>();
 
   public CallTranscriptionResponse() {
   }
 
-  public CallTranscriptionResponse accountId(@javax.annotation.Nullable String accountId) {
+  public CallTranscriptionResponse accountId(String accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -90,12 +86,12 @@ public class CallTranscriptionResponse {
     return accountId;
   }
 
-  public void setAccountId(@javax.annotation.Nullable String accountId) {
+  public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
-  public CallTranscriptionResponse callId(@javax.annotation.Nullable String callId) {
+  public CallTranscriptionResponse callId(String callId) {
     this.callId = callId;
     return this;
   }
@@ -109,12 +105,12 @@ public class CallTranscriptionResponse {
     return callId;
   }
 
-  public void setCallId(@javax.annotation.Nullable String callId) {
+  public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
-  public CallTranscriptionResponse transcriptionId(@javax.annotation.Nullable String transcriptionId) {
+  public CallTranscriptionResponse transcriptionId(String transcriptionId) {
     this.transcriptionId = transcriptionId;
     return this;
   }
@@ -128,12 +124,12 @@ public class CallTranscriptionResponse {
     return transcriptionId;
   }
 
-  public void setTranscriptionId(@javax.annotation.Nullable String transcriptionId) {
+  public void setTranscriptionId(String transcriptionId) {
     this.transcriptionId = transcriptionId;
   }
 
 
-  public CallTranscriptionResponse tracks(@javax.annotation.Nullable List<CallTranscription> tracks) {
+  public CallTranscriptionResponse tracks(List<CallTranscription> tracks) {
     this.tracks = tracks;
     return this;
   }
@@ -155,7 +151,7 @@ public class CallTranscriptionResponse {
     return tracks;
   }
 
-  public void setTracks(@javax.annotation.Nullable List<CallTranscription> tracks) {
+  public void setTracks(List<CallTranscription> tracks) {
     this.tracks = tracks;
   }
 

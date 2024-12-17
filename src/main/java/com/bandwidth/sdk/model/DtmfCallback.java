@@ -52,97 +52,80 @@ import com.bandwidth.sdk.JSON;
 /**
  * The DTMF event is sent for every digit detected after a &lt;StartGather&gt; verb is executed. You may not respond to this event with BXML.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class DtmfCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
-  @javax.annotation.Nullable
   private String eventType;
 
   public static final String SERIALIZED_NAME_EVENT_TIME = "eventTime";
   @SerializedName(SERIALIZED_NAME_EVENT_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime eventTime;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  @javax.annotation.Nullable
   private String accountId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  @javax.annotation.Nullable
   private String applicationId;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
-  @javax.annotation.Nullable
   private String from;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
-  @javax.annotation.Nullable
   private String to;
 
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
-  @javax.annotation.Nullable
   private String callId;
 
   public static final String SERIALIZED_NAME_DIRECTION = "direction";
   @SerializedName(SERIALIZED_NAME_DIRECTION)
-  @javax.annotation.Nullable
   private CallDirectionEnum direction;
 
   public static final String SERIALIZED_NAME_DIGIT = "digit";
   @SerializedName(SERIALIZED_NAME_DIGIT)
-  @javax.annotation.Nullable
   private String digit;
 
   public static final String SERIALIZED_NAME_CALL_URL = "callUrl";
   @SerializedName(SERIALIZED_NAME_CALL_URL)
-  @javax.annotation.Nullable
   private URI callUrl;
 
   public static final String SERIALIZED_NAME_ENQUEUED_TIME = "enqueuedTime";
   @SerializedName(SERIALIZED_NAME_ENQUEUED_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime enqueuedTime;
 
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime startTime;
 
   public static final String SERIALIZED_NAME_ANSWER_TIME = "answerTime";
   @SerializedName(SERIALIZED_NAME_ANSWER_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime answerTime;
 
   public static final String SERIALIZED_NAME_PARENT_CALL_ID = "parentCallId";
   @SerializedName(SERIALIZED_NAME_PARENT_CALL_ID)
-  @javax.annotation.Nullable
   private String parentCallId;
 
   public static final String SERIALIZED_NAME_TRANSFER_CALLER_ID = "transferCallerId";
   @SerializedName(SERIALIZED_NAME_TRANSFER_CALLER_ID)
-  @javax.annotation.Nullable
   private String transferCallerId;
 
   public static final String SERIALIZED_NAME_TRANSFER_TO = "transferTo";
   @SerializedName(SERIALIZED_NAME_TRANSFER_TO)
-  @javax.annotation.Nullable
   private String transferTo;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
-  @javax.annotation.Nullable
   private String tag;
 
   public DtmfCallback() {
   }
 
-  public DtmfCallback eventType(@javax.annotation.Nullable String eventType) {
+  public DtmfCallback eventType(String eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -156,12 +139,12 @@ public class DtmfCallback {
     return eventType;
   }
 
-  public void setEventType(@javax.annotation.Nullable String eventType) {
+  public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
-  public DtmfCallback eventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
+  public DtmfCallback eventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
     return this;
   }
@@ -175,12 +158,12 @@ public class DtmfCallback {
     return eventTime;
   }
 
-  public void setEventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
+  public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
-  public DtmfCallback accountId(@javax.annotation.Nullable String accountId) {
+  public DtmfCallback accountId(String accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -194,12 +177,12 @@ public class DtmfCallback {
     return accountId;
   }
 
-  public void setAccountId(@javax.annotation.Nullable String accountId) {
+  public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
-  public DtmfCallback applicationId(@javax.annotation.Nullable String applicationId) {
+  public DtmfCallback applicationId(String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -213,12 +196,12 @@ public class DtmfCallback {
     return applicationId;
   }
 
-  public void setApplicationId(@javax.annotation.Nullable String applicationId) {
+  public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public DtmfCallback from(@javax.annotation.Nullable String from) {
+  public DtmfCallback from(String from) {
     this.from = from;
     return this;
   }
@@ -232,12 +215,12 @@ public class DtmfCallback {
     return from;
   }
 
-  public void setFrom(@javax.annotation.Nullable String from) {
+  public void setFrom(String from) {
     this.from = from;
   }
 
 
-  public DtmfCallback to(@javax.annotation.Nullable String to) {
+  public DtmfCallback to(String to) {
     this.to = to;
     return this;
   }
@@ -251,12 +234,12 @@ public class DtmfCallback {
     return to;
   }
 
-  public void setTo(@javax.annotation.Nullable String to) {
+  public void setTo(String to) {
     this.to = to;
   }
 
 
-  public DtmfCallback callId(@javax.annotation.Nullable String callId) {
+  public DtmfCallback callId(String callId) {
     this.callId = callId;
     return this;
   }
@@ -270,12 +253,12 @@ public class DtmfCallback {
     return callId;
   }
 
-  public void setCallId(@javax.annotation.Nullable String callId) {
+  public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
-  public DtmfCallback direction(@javax.annotation.Nullable CallDirectionEnum direction) {
+  public DtmfCallback direction(CallDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
@@ -289,12 +272,12 @@ public class DtmfCallback {
     return direction;
   }
 
-  public void setDirection(@javax.annotation.Nullable CallDirectionEnum direction) {
+  public void setDirection(CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
-  public DtmfCallback digit(@javax.annotation.Nullable String digit) {
+  public DtmfCallback digit(String digit) {
     this.digit = digit;
     return this;
   }
@@ -308,12 +291,12 @@ public class DtmfCallback {
     return digit;
   }
 
-  public void setDigit(@javax.annotation.Nullable String digit) {
+  public void setDigit(String digit) {
     this.digit = digit;
   }
 
 
-  public DtmfCallback callUrl(@javax.annotation.Nullable URI callUrl) {
+  public DtmfCallback callUrl(URI callUrl) {
     this.callUrl = callUrl;
     return this;
   }
@@ -327,12 +310,12 @@ public class DtmfCallback {
     return callUrl;
   }
 
-  public void setCallUrl(@javax.annotation.Nullable URI callUrl) {
+  public void setCallUrl(URI callUrl) {
     this.callUrl = callUrl;
   }
 
 
-  public DtmfCallback enqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
+  public DtmfCallback enqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -346,12 +329,12 @@ public class DtmfCallback {
     return enqueuedTime;
   }
 
-  public void setEnqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
+  public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
-  public DtmfCallback startTime(@javax.annotation.Nullable OffsetDateTime startTime) {
+  public DtmfCallback startTime(OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -365,12 +348,12 @@ public class DtmfCallback {
     return startTime;
   }
 
-  public void setStartTime(@javax.annotation.Nullable OffsetDateTime startTime) {
+  public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
-  public DtmfCallback answerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
+  public DtmfCallback answerTime(OffsetDateTime answerTime) {
     this.answerTime = answerTime;
     return this;
   }
@@ -384,12 +367,12 @@ public class DtmfCallback {
     return answerTime;
   }
 
-  public void setAnswerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
+  public void setAnswerTime(OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
-  public DtmfCallback parentCallId(@javax.annotation.Nullable String parentCallId) {
+  public DtmfCallback parentCallId(String parentCallId) {
     this.parentCallId = parentCallId;
     return this;
   }
@@ -403,12 +386,12 @@ public class DtmfCallback {
     return parentCallId;
   }
 
-  public void setParentCallId(@javax.annotation.Nullable String parentCallId) {
+  public void setParentCallId(String parentCallId) {
     this.parentCallId = parentCallId;
   }
 
 
-  public DtmfCallback transferCallerId(@javax.annotation.Nullable String transferCallerId) {
+  public DtmfCallback transferCallerId(String transferCallerId) {
     this.transferCallerId = transferCallerId;
     return this;
   }
@@ -422,12 +405,12 @@ public class DtmfCallback {
     return transferCallerId;
   }
 
-  public void setTransferCallerId(@javax.annotation.Nullable String transferCallerId) {
+  public void setTransferCallerId(String transferCallerId) {
     this.transferCallerId = transferCallerId;
   }
 
 
-  public DtmfCallback transferTo(@javax.annotation.Nullable String transferTo) {
+  public DtmfCallback transferTo(String transferTo) {
     this.transferTo = transferTo;
     return this;
   }
@@ -441,12 +424,12 @@ public class DtmfCallback {
     return transferTo;
   }
 
-  public void setTransferTo(@javax.annotation.Nullable String transferTo) {
+  public void setTransferTo(String transferTo) {
     this.transferTo = transferTo;
   }
 
 
-  public DtmfCallback tag(@javax.annotation.Nullable String tag) {
+  public DtmfCallback tag(String tag) {
     this.tag = tag;
     return this;
   }
@@ -460,7 +443,7 @@ public class DtmfCallback {
     return tag;
   }
 
-  public void setTag(@javax.annotation.Nullable String tag) {
+  public void setTag(String tag) {
     this.tag = tag;
   }
 

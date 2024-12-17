@@ -56,72 +56,60 @@ import com.bandwidth.sdk.JSON;
 /**
  * Inbound Message Callback Message Schema
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class InboundMessageCallbackMessage {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  @javax.annotation.Nonnull
   private String id;
 
   public static final String SERIALIZED_NAME_OWNER = "owner";
   @SerializedName(SERIALIZED_NAME_OWNER)
-  @javax.annotation.Nonnull
   private String owner;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  @javax.annotation.Nonnull
   private String applicationId;
 
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)
-  @javax.annotation.Nonnull
   private OffsetDateTime time;
 
   public static final String SERIALIZED_NAME_SEGMENT_COUNT = "segmentCount";
   @SerializedName(SERIALIZED_NAME_SEGMENT_COUNT)
-  @javax.annotation.Nonnull
   private Integer segmentCount;
 
   public static final String SERIALIZED_NAME_DIRECTION = "direction";
   @SerializedName(SERIALIZED_NAME_DIRECTION)
-  @javax.annotation.Nonnull
   private MessageDirectionEnum direction;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
-  @javax.annotation.Nonnull
   private Set<String> to = new LinkedHashSet<>();
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
-  @javax.annotation.Nonnull
   private String from;
 
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
-  @javax.annotation.Nonnull
   private String text;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
-  @javax.annotation.Nullable
   private String tag;
 
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
-  @javax.annotation.Nullable
   private List<URI> media = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
-  @javax.annotation.Nullable
   private PriorityEnum priority;
 
   public InboundMessageCallbackMessage() {
   }
 
-  public InboundMessageCallbackMessage id(@javax.annotation.Nonnull String id) {
+  public InboundMessageCallbackMessage id(String id) {
     this.id = id;
     return this;
   }
@@ -135,12 +123,12 @@ public class InboundMessageCallbackMessage {
     return id;
   }
 
-  public void setId(@javax.annotation.Nonnull String id) {
+  public void setId(String id) {
     this.id = id;
   }
 
 
-  public InboundMessageCallbackMessage owner(@javax.annotation.Nonnull String owner) {
+  public InboundMessageCallbackMessage owner(String owner) {
     this.owner = owner;
     return this;
   }
@@ -154,12 +142,12 @@ public class InboundMessageCallbackMessage {
     return owner;
   }
 
-  public void setOwner(@javax.annotation.Nonnull String owner) {
+  public void setOwner(String owner) {
     this.owner = owner;
   }
 
 
-  public InboundMessageCallbackMessage applicationId(@javax.annotation.Nonnull String applicationId) {
+  public InboundMessageCallbackMessage applicationId(String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -173,12 +161,12 @@ public class InboundMessageCallbackMessage {
     return applicationId;
   }
 
-  public void setApplicationId(@javax.annotation.Nonnull String applicationId) {
+  public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public InboundMessageCallbackMessage time(@javax.annotation.Nonnull OffsetDateTime time) {
+  public InboundMessageCallbackMessage time(OffsetDateTime time) {
     this.time = time;
     return this;
   }
@@ -192,12 +180,12 @@ public class InboundMessageCallbackMessage {
     return time;
   }
 
-  public void setTime(@javax.annotation.Nonnull OffsetDateTime time) {
+  public void setTime(OffsetDateTime time) {
     this.time = time;
   }
 
 
-  public InboundMessageCallbackMessage segmentCount(@javax.annotation.Nonnull Integer segmentCount) {
+  public InboundMessageCallbackMessage segmentCount(Integer segmentCount) {
     this.segmentCount = segmentCount;
     return this;
   }
@@ -211,12 +199,12 @@ public class InboundMessageCallbackMessage {
     return segmentCount;
   }
 
-  public void setSegmentCount(@javax.annotation.Nonnull Integer segmentCount) {
+  public void setSegmentCount(Integer segmentCount) {
     this.segmentCount = segmentCount;
   }
 
 
-  public InboundMessageCallbackMessage direction(@javax.annotation.Nonnull MessageDirectionEnum direction) {
+  public InboundMessageCallbackMessage direction(MessageDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
@@ -230,12 +218,12 @@ public class InboundMessageCallbackMessage {
     return direction;
   }
 
-  public void setDirection(@javax.annotation.Nonnull MessageDirectionEnum direction) {
+  public void setDirection(MessageDirectionEnum direction) {
     this.direction = direction;
   }
 
 
-  public InboundMessageCallbackMessage to(@javax.annotation.Nonnull Set<String> to) {
+  public InboundMessageCallbackMessage to(Set<String> to) {
     this.to = to;
     return this;
   }
@@ -257,12 +245,12 @@ public class InboundMessageCallbackMessage {
     return to;
   }
 
-  public void setTo(@javax.annotation.Nonnull Set<String> to) {
+  public void setTo(Set<String> to) {
     this.to = to;
   }
 
 
-  public InboundMessageCallbackMessage from(@javax.annotation.Nonnull String from) {
+  public InboundMessageCallbackMessage from(String from) {
     this.from = from;
     return this;
   }
@@ -276,12 +264,12 @@ public class InboundMessageCallbackMessage {
     return from;
   }
 
-  public void setFrom(@javax.annotation.Nonnull String from) {
+  public void setFrom(String from) {
     this.from = from;
   }
 
 
-  public InboundMessageCallbackMessage text(@javax.annotation.Nonnull String text) {
+  public InboundMessageCallbackMessage text(String text) {
     this.text = text;
     return this;
   }
@@ -295,12 +283,12 @@ public class InboundMessageCallbackMessage {
     return text;
   }
 
-  public void setText(@javax.annotation.Nonnull String text) {
+  public void setText(String text) {
     this.text = text;
   }
 
 
-  public InboundMessageCallbackMessage tag(@javax.annotation.Nullable String tag) {
+  public InboundMessageCallbackMessage tag(String tag) {
     this.tag = tag;
     return this;
   }
@@ -314,12 +302,12 @@ public class InboundMessageCallbackMessage {
     return tag;
   }
 
-  public void setTag(@javax.annotation.Nullable String tag) {
+  public void setTag(String tag) {
     this.tag = tag;
   }
 
 
-  public InboundMessageCallbackMessage media(@javax.annotation.Nullable List<URI> media) {
+  public InboundMessageCallbackMessage media(List<URI> media) {
     this.media = media;
     return this;
   }
@@ -341,12 +329,12 @@ public class InboundMessageCallbackMessage {
     return media;
   }
 
-  public void setMedia(@javax.annotation.Nullable List<URI> media) {
+  public void setMedia(List<URI> media) {
     this.media = media;
   }
 
 
-  public InboundMessageCallbackMessage priority(@javax.annotation.Nullable PriorityEnum priority) {
+  public InboundMessageCallbackMessage priority(PriorityEnum priority) {
     this.priority = priority;
     return this;
   }
@@ -360,7 +348,7 @@ public class InboundMessageCallbackMessage {
     return priority;
   }
 
-  public void setPriority(@javax.annotation.Nullable PriorityEnum priority) {
+  public void setPriority(PriorityEnum priority) {
     this.priority = priority;
   }
 

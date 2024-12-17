@@ -50,37 +50,32 @@ import com.bandwidth.sdk.JSON;
 /**
  * The Conference Completed event is fired when the last member leaves the conference. The response to this event may not contain BXML.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ConferenceCompletedCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
-  @javax.annotation.Nullable
   private String eventType;
 
   public static final String SERIALIZED_NAME_EVENT_TIME = "eventTime";
   @SerializedName(SERIALIZED_NAME_EVENT_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime eventTime;
 
   public static final String SERIALIZED_NAME_CONFERENCE_ID = "conferenceId";
   @SerializedName(SERIALIZED_NAME_CONFERENCE_ID)
-  @javax.annotation.Nullable
   private String conferenceId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
-  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
-  @javax.annotation.Nullable
   private String tag;
 
   public ConferenceCompletedCallback() {
   }
 
-  public ConferenceCompletedCallback eventType(@javax.annotation.Nullable String eventType) {
+  public ConferenceCompletedCallback eventType(String eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -94,12 +89,12 @@ public class ConferenceCompletedCallback {
     return eventType;
   }
 
-  public void setEventType(@javax.annotation.Nullable String eventType) {
+  public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
-  public ConferenceCompletedCallback eventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
+  public ConferenceCompletedCallback eventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
     return this;
   }
@@ -113,12 +108,12 @@ public class ConferenceCompletedCallback {
     return eventTime;
   }
 
-  public void setEventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
+  public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
-  public ConferenceCompletedCallback conferenceId(@javax.annotation.Nullable String conferenceId) {
+  public ConferenceCompletedCallback conferenceId(String conferenceId) {
     this.conferenceId = conferenceId;
     return this;
   }
@@ -132,12 +127,12 @@ public class ConferenceCompletedCallback {
     return conferenceId;
   }
 
-  public void setConferenceId(@javax.annotation.Nullable String conferenceId) {
+  public void setConferenceId(String conferenceId) {
     this.conferenceId = conferenceId;
   }
 
 
-  public ConferenceCompletedCallback name(@javax.annotation.Nullable String name) {
+  public ConferenceCompletedCallback name(String name) {
     this.name = name;
     return this;
   }
@@ -151,12 +146,12 @@ public class ConferenceCompletedCallback {
     return name;
   }
 
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(String name) {
     this.name = name;
   }
 
 
-  public ConferenceCompletedCallback tag(@javax.annotation.Nullable String tag) {
+  public ConferenceCompletedCallback tag(String tag) {
     this.tag = tag;
     return this;
   }
@@ -170,7 +165,7 @@ public class ConferenceCompletedCallback {
     return tag;
   }
 
-  public void setTag(@javax.annotation.Nullable String tag) {
+  public void setTag(String tag) {
     this.tag = tag;
   }
 

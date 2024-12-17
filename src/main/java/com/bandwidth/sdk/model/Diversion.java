@@ -48,47 +48,40 @@ import com.bandwidth.sdk.JSON;
 /**
  * Diversion
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class Diversion {
   public static final String SERIALIZED_NAME_REASON = "reason";
   @SerializedName(SERIALIZED_NAME_REASON)
-  @javax.annotation.Nullable
   private String reason;
 
   public static final String SERIALIZED_NAME_PRIVACY = "privacy";
   @SerializedName(SERIALIZED_NAME_PRIVACY)
-  @javax.annotation.Nullable
   private String privacy;
 
   public static final String SERIALIZED_NAME_SCREEN = "screen";
   @SerializedName(SERIALIZED_NAME_SCREEN)
-  @javax.annotation.Nullable
   private String screen;
 
   public static final String SERIALIZED_NAME_COUNTER = "counter";
   @SerializedName(SERIALIZED_NAME_COUNTER)
-  @javax.annotation.Nullable
   private String counter;
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
-  @javax.annotation.Nullable
   private String limit;
 
   public static final String SERIALIZED_NAME_UNKNOWN = "unknown";
   @SerializedName(SERIALIZED_NAME_UNKNOWN)
-  @javax.annotation.Nullable
   private String unknown;
 
   public static final String SERIALIZED_NAME_ORIG_TO = "origTo";
   @SerializedName(SERIALIZED_NAME_ORIG_TO)
-  @javax.annotation.Nullable
   private String origTo;
 
   public Diversion() {
   }
 
-  public Diversion reason(@javax.annotation.Nullable String reason) {
+  public Diversion reason(String reason) {
     this.reason = reason;
     return this;
   }
@@ -102,12 +95,12 @@ public class Diversion {
     return reason;
   }
 
-  public void setReason(@javax.annotation.Nullable String reason) {
+  public void setReason(String reason) {
     this.reason = reason;
   }
 
 
-  public Diversion privacy(@javax.annotation.Nullable String privacy) {
+  public Diversion privacy(String privacy) {
     this.privacy = privacy;
     return this;
   }
@@ -121,12 +114,12 @@ public class Diversion {
     return privacy;
   }
 
-  public void setPrivacy(@javax.annotation.Nullable String privacy) {
+  public void setPrivacy(String privacy) {
     this.privacy = privacy;
   }
 
 
-  public Diversion screen(@javax.annotation.Nullable String screen) {
+  public Diversion screen(String screen) {
     this.screen = screen;
     return this;
   }
@@ -140,12 +133,12 @@ public class Diversion {
     return screen;
   }
 
-  public void setScreen(@javax.annotation.Nullable String screen) {
+  public void setScreen(String screen) {
     this.screen = screen;
   }
 
 
-  public Diversion counter(@javax.annotation.Nullable String counter) {
+  public Diversion counter(String counter) {
     this.counter = counter;
     return this;
   }
@@ -159,12 +152,12 @@ public class Diversion {
     return counter;
   }
 
-  public void setCounter(@javax.annotation.Nullable String counter) {
+  public void setCounter(String counter) {
     this.counter = counter;
   }
 
 
-  public Diversion limit(@javax.annotation.Nullable String limit) {
+  public Diversion limit(String limit) {
     this.limit = limit;
     return this;
   }
@@ -178,12 +171,12 @@ public class Diversion {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable String limit) {
+  public void setLimit(String limit) {
     this.limit = limit;
   }
 
 
-  public Diversion unknown(@javax.annotation.Nullable String unknown) {
+  public Diversion unknown(String unknown) {
     this.unknown = unknown;
     return this;
   }
@@ -197,12 +190,12 @@ public class Diversion {
     return unknown;
   }
 
-  public void setUnknown(@javax.annotation.Nullable String unknown) {
+  public void setUnknown(String unknown) {
     this.unknown = unknown;
   }
 
 
-  public Diversion origTo(@javax.annotation.Nullable String origTo) {
+  public Diversion origTo(String origTo) {
     this.origTo = origTo;
     return this;
   }
@@ -216,7 +209,7 @@ public class Diversion {
     return origTo;
   }
 
-  public void setOrigTo(@javax.annotation.Nullable String origTo) {
+  public void setOrigTo(String origTo) {
     this.origTo = origTo;
   }
 

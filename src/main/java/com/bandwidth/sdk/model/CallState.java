@@ -53,102 +53,84 @@ import com.bandwidth.sdk.JSON;
 /**
  * CallState
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CallState {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  @javax.annotation.Nullable
   private String applicationId;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  @javax.annotation.Nullable
   private String accountId;
 
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
-  @javax.annotation.Nullable
   private String callId;
 
   public static final String SERIALIZED_NAME_PARENT_CALL_ID = "parentCallId";
   @SerializedName(SERIALIZED_NAME_PARENT_CALL_ID)
-  @javax.annotation.Nullable
   private String parentCallId;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
-  @javax.annotation.Nullable
   private String to;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
-  @javax.annotation.Nullable
   private String from;
 
   public static final String SERIALIZED_NAME_DIRECTION = "direction";
   @SerializedName(SERIALIZED_NAME_DIRECTION)
-  @javax.annotation.Nullable
   private CallDirectionEnum direction;
 
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
-  @javax.annotation.Nullable
   private String state;
 
   public static final String SERIALIZED_NAME_STIR_SHAKEN = "stirShaken";
   @SerializedName(SERIALIZED_NAME_STIR_SHAKEN)
-  @javax.annotation.Nullable
   private Map<String, String> stirShaken;
 
   public static final String SERIALIZED_NAME_IDENTITY = "identity";
   @SerializedName(SERIALIZED_NAME_IDENTITY)
-  @javax.annotation.Nullable
   private String identity;
 
   public static final String SERIALIZED_NAME_ENQUEUED_TIME = "enqueuedTime";
   @SerializedName(SERIALIZED_NAME_ENQUEUED_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime enqueuedTime;
 
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime startTime;
 
   public static final String SERIALIZED_NAME_ANSWER_TIME = "answerTime";
   @SerializedName(SERIALIZED_NAME_ANSWER_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime answerTime;
 
   public static final String SERIALIZED_NAME_END_TIME = "endTime";
   @SerializedName(SERIALIZED_NAME_END_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime endTime;
 
   public static final String SERIALIZED_NAME_DISCONNECT_CAUSE = "disconnectCause";
   @SerializedName(SERIALIZED_NAME_DISCONNECT_CAUSE)
-  @javax.annotation.Nullable
   private String disconnectCause;
 
   public static final String SERIALIZED_NAME_ERROR_MESSAGE = "errorMessage";
   @SerializedName(SERIALIZED_NAME_ERROR_MESSAGE)
-  @javax.annotation.Nullable
   private String errorMessage;
 
   public static final String SERIALIZED_NAME_ERROR_ID = "errorId";
   @SerializedName(SERIALIZED_NAME_ERROR_ID)
-  @javax.annotation.Nullable
   private String errorId;
 
   public static final String SERIALIZED_NAME_LAST_UPDATE = "lastUpdate";
   @SerializedName(SERIALIZED_NAME_LAST_UPDATE)
-  @javax.annotation.Nullable
   private OffsetDateTime lastUpdate;
 
   public CallState() {
   }
 
-  public CallState applicationId(@javax.annotation.Nullable String applicationId) {
+  public CallState applicationId(String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -162,12 +144,12 @@ public class CallState {
     return applicationId;
   }
 
-  public void setApplicationId(@javax.annotation.Nullable String applicationId) {
+  public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public CallState accountId(@javax.annotation.Nullable String accountId) {
+  public CallState accountId(String accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -181,12 +163,12 @@ public class CallState {
     return accountId;
   }
 
-  public void setAccountId(@javax.annotation.Nullable String accountId) {
+  public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
-  public CallState callId(@javax.annotation.Nullable String callId) {
+  public CallState callId(String callId) {
     this.callId = callId;
     return this;
   }
@@ -200,12 +182,12 @@ public class CallState {
     return callId;
   }
 
-  public void setCallId(@javax.annotation.Nullable String callId) {
+  public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
-  public CallState parentCallId(@javax.annotation.Nullable String parentCallId) {
+  public CallState parentCallId(String parentCallId) {
     this.parentCallId = parentCallId;
     return this;
   }
@@ -219,12 +201,12 @@ public class CallState {
     return parentCallId;
   }
 
-  public void setParentCallId(@javax.annotation.Nullable String parentCallId) {
+  public void setParentCallId(String parentCallId) {
     this.parentCallId = parentCallId;
   }
 
 
-  public CallState to(@javax.annotation.Nullable String to) {
+  public CallState to(String to) {
     this.to = to;
     return this;
   }
@@ -238,12 +220,12 @@ public class CallState {
     return to;
   }
 
-  public void setTo(@javax.annotation.Nullable String to) {
+  public void setTo(String to) {
     this.to = to;
   }
 
 
-  public CallState from(@javax.annotation.Nullable String from) {
+  public CallState from(String from) {
     this.from = from;
     return this;
   }
@@ -257,12 +239,12 @@ public class CallState {
     return from;
   }
 
-  public void setFrom(@javax.annotation.Nullable String from) {
+  public void setFrom(String from) {
     this.from = from;
   }
 
 
-  public CallState direction(@javax.annotation.Nullable CallDirectionEnum direction) {
+  public CallState direction(CallDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
@@ -276,12 +258,12 @@ public class CallState {
     return direction;
   }
 
-  public void setDirection(@javax.annotation.Nullable CallDirectionEnum direction) {
+  public void setDirection(CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
-  public CallState state(@javax.annotation.Nullable String state) {
+  public CallState state(String state) {
     this.state = state;
     return this;
   }
@@ -295,12 +277,12 @@ public class CallState {
     return state;
   }
 
-  public void setState(@javax.annotation.Nullable String state) {
+  public void setState(String state) {
     this.state = state;
   }
 
 
-  public CallState stirShaken(@javax.annotation.Nullable Map<String, String> stirShaken) {
+  public CallState stirShaken(Map<String, String> stirShaken) {
     this.stirShaken = stirShaken;
     return this;
   }
@@ -322,12 +304,12 @@ public class CallState {
     return stirShaken;
   }
 
-  public void setStirShaken(@javax.annotation.Nullable Map<String, String> stirShaken) {
+  public void setStirShaken(Map<String, String> stirShaken) {
     this.stirShaken = stirShaken;
   }
 
 
-  public CallState identity(@javax.annotation.Nullable String identity) {
+  public CallState identity(String identity) {
     this.identity = identity;
     return this;
   }
@@ -341,12 +323,12 @@ public class CallState {
     return identity;
   }
 
-  public void setIdentity(@javax.annotation.Nullable String identity) {
+  public void setIdentity(String identity) {
     this.identity = identity;
   }
 
 
-  public CallState enqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
+  public CallState enqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -360,12 +342,12 @@ public class CallState {
     return enqueuedTime;
   }
 
-  public void setEnqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
+  public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
-  public CallState startTime(@javax.annotation.Nullable OffsetDateTime startTime) {
+  public CallState startTime(OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -379,12 +361,12 @@ public class CallState {
     return startTime;
   }
 
-  public void setStartTime(@javax.annotation.Nullable OffsetDateTime startTime) {
+  public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
-  public CallState answerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
+  public CallState answerTime(OffsetDateTime answerTime) {
     this.answerTime = answerTime;
     return this;
   }
@@ -398,12 +380,12 @@ public class CallState {
     return answerTime;
   }
 
-  public void setAnswerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
+  public void setAnswerTime(OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
-  public CallState endTime(@javax.annotation.Nullable OffsetDateTime endTime) {
+  public CallState endTime(OffsetDateTime endTime) {
     this.endTime = endTime;
     return this;
   }
@@ -417,12 +399,12 @@ public class CallState {
     return endTime;
   }
 
-  public void setEndTime(@javax.annotation.Nullable OffsetDateTime endTime) {
+  public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
 
-  public CallState disconnectCause(@javax.annotation.Nullable String disconnectCause) {
+  public CallState disconnectCause(String disconnectCause) {
     this.disconnectCause = disconnectCause;
     return this;
   }
@@ -436,12 +418,12 @@ public class CallState {
     return disconnectCause;
   }
 
-  public void setDisconnectCause(@javax.annotation.Nullable String disconnectCause) {
+  public void setDisconnectCause(String disconnectCause) {
     this.disconnectCause = disconnectCause;
   }
 
 
-  public CallState errorMessage(@javax.annotation.Nullable String errorMessage) {
+  public CallState errorMessage(String errorMessage) {
     this.errorMessage = errorMessage;
     return this;
   }
@@ -455,12 +437,12 @@ public class CallState {
     return errorMessage;
   }
 
-  public void setErrorMessage(@javax.annotation.Nullable String errorMessage) {
+  public void setErrorMessage(String errorMessage) {
     this.errorMessage = errorMessage;
   }
 
 
-  public CallState errorId(@javax.annotation.Nullable String errorId) {
+  public CallState errorId(String errorId) {
     this.errorId = errorId;
     return this;
   }
@@ -474,12 +456,12 @@ public class CallState {
     return errorId;
   }
 
-  public void setErrorId(@javax.annotation.Nullable String errorId) {
+  public void setErrorId(String errorId) {
     this.errorId = errorId;
   }
 
 
-  public CallState lastUpdate(@javax.annotation.Nullable OffsetDateTime lastUpdate) {
+  public CallState lastUpdate(OffsetDateTime lastUpdate) {
     this.lastUpdate = lastUpdate;
     return this;
   }
@@ -493,7 +475,7 @@ public class CallState {
     return lastUpdate;
   }
 
-  public void setLastUpdate(@javax.annotation.Nullable OffsetDateTime lastUpdate) {
+  public void setLastUpdate(OffsetDateTime lastUpdate) {
     this.lastUpdate = lastUpdate;
   }
 

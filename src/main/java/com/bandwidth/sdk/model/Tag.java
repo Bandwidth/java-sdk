@@ -48,22 +48,20 @@ import com.bandwidth.sdk.JSON;
 /**
  * Tag
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class Tag {
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
-  @javax.annotation.Nullable
   private String key;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
-  @javax.annotation.Nullable
   private String value;
 
   public Tag() {
   }
 
-  public Tag key(@javax.annotation.Nullable String key) {
+  public Tag key(String key) {
     this.key = key;
     return this;
   }
@@ -77,12 +75,12 @@ public class Tag {
     return key;
   }
 
-  public void setKey(@javax.annotation.Nullable String key) {
+  public void setKey(String key) {
     this.key = key;
   }
 
 
-  public Tag value(@javax.annotation.Nullable String value) {
+  public Tag value(String value) {
     this.value = value;
     return this;
   }
@@ -96,7 +94,7 @@ public class Tag {
     return value;
   }
 
-  public void setValue(@javax.annotation.Nullable String value) {
+  public void setValue(String value) {
     this.value = value;
   }
 

@@ -735,7 +735,7 @@ public class ApiClient {
         return params;
     }
 
-   /**
+    /**
     * Formats the specified free-form query parameters to a list of {@code Pair} objects.
     *
     * @param value The free-form query parameters.
@@ -749,7 +749,6 @@ public class ApiClient {
             return params;
         }
 
-        @SuppressWarnings("unchecked")
         final Map<String, Object> valuesMap = (Map<String, Object>) value;
 
         for (Map.Entry<String, Object> entry : valuesMap.entrySet()) {

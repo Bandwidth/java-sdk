@@ -48,22 +48,20 @@ import com.bandwidth.sdk.JSON;
 /**
  * Transcription
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class Transcription {
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
-  @javax.annotation.Nullable
   private String text;
 
   public static final String SERIALIZED_NAME_CONFIDENCE = "confidence";
   @SerializedName(SERIALIZED_NAME_CONFIDENCE)
-  @javax.annotation.Nullable
   private Double confidence;
 
   public Transcription() {
   }
 
-  public Transcription text(@javax.annotation.Nullable String text) {
+  public Transcription text(String text) {
     this.text = text;
     return this;
   }
@@ -77,12 +75,12 @@ public class Transcription {
     return text;
   }
 
-  public void setText(@javax.annotation.Nullable String text) {
+  public void setText(String text) {
     this.text = text;
   }
 
 
-  public Transcription confidence(@javax.annotation.Nullable Double confidence) {
+  public Transcription confidence(Double confidence) {
     this.confidence = confidence;
     return this;
   }
@@ -96,7 +94,7 @@ public class Transcription {
     return confidence;
   }
 
-  public void setConfidence(@javax.annotation.Nullable Double confidence) {
+  public void setConfidence(Double confidence) {
     this.confidence = confidence;
   }
 

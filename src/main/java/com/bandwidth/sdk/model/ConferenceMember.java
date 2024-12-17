@@ -52,42 +52,36 @@ import com.bandwidth.sdk.JSON;
 /**
  * ConferenceMember
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ConferenceMember {
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
-  @javax.annotation.Nullable
   private String callId;
 
   public static final String SERIALIZED_NAME_CONFERENCE_ID = "conferenceId";
   @SerializedName(SERIALIZED_NAME_CONFERENCE_ID)
-  @javax.annotation.Nullable
   private String conferenceId;
 
   public static final String SERIALIZED_NAME_MEMBER_URL = "memberUrl";
   @SerializedName(SERIALIZED_NAME_MEMBER_URL)
-  @javax.annotation.Nullable
   private URI memberUrl;
 
   public static final String SERIALIZED_NAME_MUTE = "mute";
   @SerializedName(SERIALIZED_NAME_MUTE)
-  @javax.annotation.Nullable
   private Boolean mute;
 
   public static final String SERIALIZED_NAME_HOLD = "hold";
   @SerializedName(SERIALIZED_NAME_HOLD)
-  @javax.annotation.Nullable
   private Boolean hold;
 
   public static final String SERIALIZED_NAME_CALL_IDS_TO_COACH = "callIdsToCoach";
   @SerializedName(SERIALIZED_NAME_CALL_IDS_TO_COACH)
-  @javax.annotation.Nullable
   private List<String> callIdsToCoach;
 
   public ConferenceMember() {
   }
 
-  public ConferenceMember callId(@javax.annotation.Nullable String callId) {
+  public ConferenceMember callId(String callId) {
     this.callId = callId;
     return this;
   }
@@ -101,12 +95,12 @@ public class ConferenceMember {
     return callId;
   }
 
-  public void setCallId(@javax.annotation.Nullable String callId) {
+  public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
-  public ConferenceMember conferenceId(@javax.annotation.Nullable String conferenceId) {
+  public ConferenceMember conferenceId(String conferenceId) {
     this.conferenceId = conferenceId;
     return this;
   }
@@ -120,12 +114,12 @@ public class ConferenceMember {
     return conferenceId;
   }
 
-  public void setConferenceId(@javax.annotation.Nullable String conferenceId) {
+  public void setConferenceId(String conferenceId) {
     this.conferenceId = conferenceId;
   }
 
 
-  public ConferenceMember memberUrl(@javax.annotation.Nullable URI memberUrl) {
+  public ConferenceMember memberUrl(URI memberUrl) {
     this.memberUrl = memberUrl;
     return this;
   }
@@ -139,12 +133,12 @@ public class ConferenceMember {
     return memberUrl;
   }
 
-  public void setMemberUrl(@javax.annotation.Nullable URI memberUrl) {
+  public void setMemberUrl(URI memberUrl) {
     this.memberUrl = memberUrl;
   }
 
 
-  public ConferenceMember mute(@javax.annotation.Nullable Boolean mute) {
+  public ConferenceMember mute(Boolean mute) {
     this.mute = mute;
     return this;
   }
@@ -158,12 +152,12 @@ public class ConferenceMember {
     return mute;
   }
 
-  public void setMute(@javax.annotation.Nullable Boolean mute) {
+  public void setMute(Boolean mute) {
     this.mute = mute;
   }
 
 
-  public ConferenceMember hold(@javax.annotation.Nullable Boolean hold) {
+  public ConferenceMember hold(Boolean hold) {
     this.hold = hold;
     return this;
   }
@@ -177,12 +171,12 @@ public class ConferenceMember {
     return hold;
   }
 
-  public void setHold(@javax.annotation.Nullable Boolean hold) {
+  public void setHold(Boolean hold) {
     this.hold = hold;
   }
 
 
-  public ConferenceMember callIdsToCoach(@javax.annotation.Nullable List<String> callIdsToCoach) {
+  public ConferenceMember callIdsToCoach(List<String> callIdsToCoach) {
     this.callIdsToCoach = callIdsToCoach;
     return this;
   }
@@ -204,7 +198,7 @@ public class ConferenceMember {
     return callIdsToCoach;
   }
 
-  public void setCallIdsToCoach(@javax.annotation.Nullable List<String> callIdsToCoach) {
+  public void setCallIdsToCoach(List<String> callIdsToCoach) {
     this.callIdsToCoach = callIdsToCoach;
   }
 

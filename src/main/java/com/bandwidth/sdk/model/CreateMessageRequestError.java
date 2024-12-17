@@ -51,27 +51,24 @@ import com.bandwidth.sdk.JSON;
 /**
  * CreateMessageRequestError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CreateMessageRequestError {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  @javax.annotation.Nonnull
   private String type;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  @javax.annotation.Nonnull
   private String description;
 
   public static final String SERIALIZED_NAME_FIELD_ERRORS = "fieldErrors";
   @SerializedName(SERIALIZED_NAME_FIELD_ERRORS)
-  @javax.annotation.Nullable
   private List<FieldError> fieldErrors = new ArrayList<>();
 
   public CreateMessageRequestError() {
   }
 
-  public CreateMessageRequestError type(@javax.annotation.Nonnull String type) {
+  public CreateMessageRequestError type(String type) {
     this.type = type;
     return this;
   }
@@ -85,12 +82,12 @@ public class CreateMessageRequestError {
     return type;
   }
 
-  public void setType(@javax.annotation.Nonnull String type) {
+  public void setType(String type) {
     this.type = type;
   }
 
 
-  public CreateMessageRequestError description(@javax.annotation.Nonnull String description) {
+  public CreateMessageRequestError description(String description) {
     this.description = description;
     return this;
   }
@@ -104,12 +101,12 @@ public class CreateMessageRequestError {
     return description;
   }
 
-  public void setDescription(@javax.annotation.Nonnull String description) {
+  public void setDescription(String description) {
     this.description = description;
   }
 
 
-  public CreateMessageRequestError fieldErrors(@javax.annotation.Nullable List<FieldError> fieldErrors) {
+  public CreateMessageRequestError fieldErrors(List<FieldError> fieldErrors) {
     this.fieldErrors = fieldErrors;
     return this;
   }
@@ -131,7 +128,7 @@ public class CreateMessageRequestError {
     return fieldErrors;
   }
 
-  public void setFieldErrors(@javax.annotation.Nullable List<FieldError> fieldErrors) {
+  public void setFieldErrors(List<FieldError> fieldErrors) {
     this.fieldErrors = fieldErrors;
   }
 

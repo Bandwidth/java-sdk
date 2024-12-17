@@ -48,17 +48,16 @@ import com.bandwidth.sdk.JSON;
 /**
  * TnLookupRequestError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class TnLookupRequestError {
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
-  @javax.annotation.Nullable
   private String message;
 
   public TnLookupRequestError() {
   }
 
-  public TnLookupRequestError message(@javax.annotation.Nullable String message) {
+  public TnLookupRequestError message(String message) {
     this.message = message;
     return this;
   }
@@ -72,7 +71,7 @@ public class TnLookupRequestError {
     return message;
   }
 
-  public void setMessage(@javax.annotation.Nullable String message) {
+  public void setMessage(String message) {
     this.message = message;
   }
 

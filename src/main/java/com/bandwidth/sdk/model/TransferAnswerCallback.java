@@ -52,87 +52,72 @@ import com.bandwidth.sdk.JSON;
 /**
  * When processing a &lt;Transfer&gt; verb, this event is sent when a called party (B-leg) answers. The event is sent to the endpoint specified in the transferAnswerUrl attribute of the &lt;PhoneNumber&gt; tag that answered. BXML returned by this callback will be executed for the called party only. After all BXML has been executed, the called party will be bridged to the original call. Most BXML verbs are allowed in response to a transferAnswer event, but some are not allowed.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class TransferAnswerCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
-  @javax.annotation.Nullable
   private String eventType;
 
   public static final String SERIALIZED_NAME_EVENT_TIME = "eventTime";
   @SerializedName(SERIALIZED_NAME_EVENT_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime eventTime;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  @javax.annotation.Nullable
   private String accountId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  @javax.annotation.Nullable
   private String applicationId;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
-  @javax.annotation.Nullable
   private String from;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
-  @javax.annotation.Nullable
   private String to;
 
   public static final String SERIALIZED_NAME_DIRECTION = "direction";
   @SerializedName(SERIALIZED_NAME_DIRECTION)
-  @javax.annotation.Nullable
   private CallDirectionEnum direction;
 
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
-  @javax.annotation.Nullable
   private String callId;
 
   public static final String SERIALIZED_NAME_CALL_URL = "callUrl";
   @SerializedName(SERIALIZED_NAME_CALL_URL)
-  @javax.annotation.Nullable
   private URI callUrl;
 
   public static final String SERIALIZED_NAME_ENQUEUED_TIME = "enqueuedTime";
   @SerializedName(SERIALIZED_NAME_ENQUEUED_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime enqueuedTime;
 
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime startTime;
 
   public static final String SERIALIZED_NAME_ANSWER_TIME = "answerTime";
   @SerializedName(SERIALIZED_NAME_ANSWER_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime answerTime;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
-  @javax.annotation.Nullable
   private String tag;
 
   public static final String SERIALIZED_NAME_TRANSFER_CALLER_ID = "transferCallerId";
   @SerializedName(SERIALIZED_NAME_TRANSFER_CALLER_ID)
-  @javax.annotation.Nullable
   private String transferCallerId;
 
   public static final String SERIALIZED_NAME_TRANSFER_TO = "transferTo";
   @SerializedName(SERIALIZED_NAME_TRANSFER_TO)
-  @javax.annotation.Nullable
   private String transferTo;
 
   public TransferAnswerCallback() {
   }
 
-  public TransferAnswerCallback eventType(@javax.annotation.Nullable String eventType) {
+  public TransferAnswerCallback eventType(String eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -146,12 +131,12 @@ public class TransferAnswerCallback {
     return eventType;
   }
 
-  public void setEventType(@javax.annotation.Nullable String eventType) {
+  public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
 
-  public TransferAnswerCallback eventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
+  public TransferAnswerCallback eventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
     return this;
   }
@@ -165,12 +150,12 @@ public class TransferAnswerCallback {
     return eventTime;
   }
 
-  public void setEventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
+  public void setEventTime(OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
-  public TransferAnswerCallback accountId(@javax.annotation.Nullable String accountId) {
+  public TransferAnswerCallback accountId(String accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -184,12 +169,12 @@ public class TransferAnswerCallback {
     return accountId;
   }
 
-  public void setAccountId(@javax.annotation.Nullable String accountId) {
+  public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
-  public TransferAnswerCallback applicationId(@javax.annotation.Nullable String applicationId) {
+  public TransferAnswerCallback applicationId(String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -203,12 +188,12 @@ public class TransferAnswerCallback {
     return applicationId;
   }
 
-  public void setApplicationId(@javax.annotation.Nullable String applicationId) {
+  public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public TransferAnswerCallback from(@javax.annotation.Nullable String from) {
+  public TransferAnswerCallback from(String from) {
     this.from = from;
     return this;
   }
@@ -222,12 +207,12 @@ public class TransferAnswerCallback {
     return from;
   }
 
-  public void setFrom(@javax.annotation.Nullable String from) {
+  public void setFrom(String from) {
     this.from = from;
   }
 
 
-  public TransferAnswerCallback to(@javax.annotation.Nullable String to) {
+  public TransferAnswerCallback to(String to) {
     this.to = to;
     return this;
   }
@@ -241,12 +226,12 @@ public class TransferAnswerCallback {
     return to;
   }
 
-  public void setTo(@javax.annotation.Nullable String to) {
+  public void setTo(String to) {
     this.to = to;
   }
 
 
-  public TransferAnswerCallback direction(@javax.annotation.Nullable CallDirectionEnum direction) {
+  public TransferAnswerCallback direction(CallDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
@@ -260,12 +245,12 @@ public class TransferAnswerCallback {
     return direction;
   }
 
-  public void setDirection(@javax.annotation.Nullable CallDirectionEnum direction) {
+  public void setDirection(CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
-  public TransferAnswerCallback callId(@javax.annotation.Nullable String callId) {
+  public TransferAnswerCallback callId(String callId) {
     this.callId = callId;
     return this;
   }
@@ -279,12 +264,12 @@ public class TransferAnswerCallback {
     return callId;
   }
 
-  public void setCallId(@javax.annotation.Nullable String callId) {
+  public void setCallId(String callId) {
     this.callId = callId;
   }
 
 
-  public TransferAnswerCallback callUrl(@javax.annotation.Nullable URI callUrl) {
+  public TransferAnswerCallback callUrl(URI callUrl) {
     this.callUrl = callUrl;
     return this;
   }
@@ -298,12 +283,12 @@ public class TransferAnswerCallback {
     return callUrl;
   }
 
-  public void setCallUrl(@javax.annotation.Nullable URI callUrl) {
+  public void setCallUrl(URI callUrl) {
     this.callUrl = callUrl;
   }
 
 
-  public TransferAnswerCallback enqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
+  public TransferAnswerCallback enqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -317,12 +302,12 @@ public class TransferAnswerCallback {
     return enqueuedTime;
   }
 
-  public void setEnqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
+  public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
-  public TransferAnswerCallback startTime(@javax.annotation.Nullable OffsetDateTime startTime) {
+  public TransferAnswerCallback startTime(OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -336,12 +321,12 @@ public class TransferAnswerCallback {
     return startTime;
   }
 
-  public void setStartTime(@javax.annotation.Nullable OffsetDateTime startTime) {
+  public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
-  public TransferAnswerCallback answerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
+  public TransferAnswerCallback answerTime(OffsetDateTime answerTime) {
     this.answerTime = answerTime;
     return this;
   }
@@ -355,12 +340,12 @@ public class TransferAnswerCallback {
     return answerTime;
   }
 
-  public void setAnswerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
+  public void setAnswerTime(OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
-  public TransferAnswerCallback tag(@javax.annotation.Nullable String tag) {
+  public TransferAnswerCallback tag(String tag) {
     this.tag = tag;
     return this;
   }
@@ -374,12 +359,12 @@ public class TransferAnswerCallback {
     return tag;
   }
 
-  public void setTag(@javax.annotation.Nullable String tag) {
+  public void setTag(String tag) {
     this.tag = tag;
   }
 
 
-  public TransferAnswerCallback transferCallerId(@javax.annotation.Nullable String transferCallerId) {
+  public TransferAnswerCallback transferCallerId(String transferCallerId) {
     this.transferCallerId = transferCallerId;
     return this;
   }
@@ -393,12 +378,12 @@ public class TransferAnswerCallback {
     return transferCallerId;
   }
 
-  public void setTransferCallerId(@javax.annotation.Nullable String transferCallerId) {
+  public void setTransferCallerId(String transferCallerId) {
     this.transferCallerId = transferCallerId;
   }
 
 
-  public TransferAnswerCallback transferTo(@javax.annotation.Nullable String transferTo) {
+  public TransferAnswerCallback transferTo(String transferTo) {
     this.transferTo = transferTo;
     return this;
   }
@@ -412,7 +397,7 @@ public class TransferAnswerCallback {
     return transferTo;
   }
 
-  public void setTransferTo(@javax.annotation.Nullable String transferTo) {
+  public void setTransferTo(String transferTo) {
     this.transferTo = transferTo;
   }
 

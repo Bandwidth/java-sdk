@@ -48,27 +48,24 @@ import com.bandwidth.sdk.JSON;
 /**
  * Media
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class Media {
   public static final String SERIALIZED_NAME_CONTENT = "content";
   @SerializedName(SERIALIZED_NAME_CONTENT)
-  @javax.annotation.Nullable
   private String content;
 
   public static final String SERIALIZED_NAME_CONTENT_LENGTH = "contentLength";
   @SerializedName(SERIALIZED_NAME_CONTENT_LENGTH)
-  @javax.annotation.Nullable
   private Integer contentLength;
 
   public static final String SERIALIZED_NAME_MEDIA_NAME = "mediaName";
   @SerializedName(SERIALIZED_NAME_MEDIA_NAME)
-  @javax.annotation.Nullable
   private String mediaName;
 
   public Media() {
   }
 
-  public Media content(@javax.annotation.Nullable String content) {
+  public Media content(String content) {
     this.content = content;
     return this;
   }
@@ -82,12 +79,12 @@ public class Media {
     return content;
   }
 
-  public void setContent(@javax.annotation.Nullable String content) {
+  public void setContent(String content) {
     this.content = content;
   }
 
 
-  public Media contentLength(@javax.annotation.Nullable Integer contentLength) {
+  public Media contentLength(Integer contentLength) {
     this.contentLength = contentLength;
     return this;
   }
@@ -101,12 +98,12 @@ public class Media {
     return contentLength;
   }
 
-  public void setContentLength(@javax.annotation.Nullable Integer contentLength) {
+  public void setContentLength(Integer contentLength) {
     this.contentLength = contentLength;
   }
 
 
-  public Media mediaName(@javax.annotation.Nullable String mediaName) {
+  public Media mediaName(String mediaName) {
     this.mediaName = mediaName;
     return this;
   }
@@ -120,7 +117,7 @@ public class Media {
     return mediaName;
   }
 
-  public void setMediaName(@javax.annotation.Nullable String mediaName) {
+  public void setMediaName(String mediaName) {
     this.mediaName = mediaName;
   }
 

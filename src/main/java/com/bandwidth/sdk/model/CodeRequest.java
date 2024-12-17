@@ -48,42 +48,36 @@ import com.bandwidth.sdk.JSON;
 /**
  * CodeRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CodeRequest {
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
-  @javax.annotation.Nonnull
   private String to;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
-  @javax.annotation.Nonnull
   private String from;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  @javax.annotation.Nonnull
   private String applicationId;
 
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
-  @javax.annotation.Nullable
   private String scope;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
-  @javax.annotation.Nonnull
   private String message;
 
   public static final String SERIALIZED_NAME_DIGITS = "digits";
   @SerializedName(SERIALIZED_NAME_DIGITS)
-  @javax.annotation.Nonnull
   private Integer digits;
 
   public CodeRequest() {
   }
 
-  public CodeRequest to(@javax.annotation.Nonnull String to) {
+  public CodeRequest to(String to) {
     this.to = to;
     return this;
   }
@@ -97,12 +91,12 @@ public class CodeRequest {
     return to;
   }
 
-  public void setTo(@javax.annotation.Nonnull String to) {
+  public void setTo(String to) {
     this.to = to;
   }
 
 
-  public CodeRequest from(@javax.annotation.Nonnull String from) {
+  public CodeRequest from(String from) {
     this.from = from;
     return this;
   }
@@ -116,12 +110,12 @@ public class CodeRequest {
     return from;
   }
 
-  public void setFrom(@javax.annotation.Nonnull String from) {
+  public void setFrom(String from) {
     this.from = from;
   }
 
 
-  public CodeRequest applicationId(@javax.annotation.Nonnull String applicationId) {
+  public CodeRequest applicationId(String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -135,12 +129,12 @@ public class CodeRequest {
     return applicationId;
   }
 
-  public void setApplicationId(@javax.annotation.Nonnull String applicationId) {
+  public void setApplicationId(String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public CodeRequest scope(@javax.annotation.Nullable String scope) {
+  public CodeRequest scope(String scope) {
     this.scope = scope;
     return this;
   }
@@ -154,12 +148,12 @@ public class CodeRequest {
     return scope;
   }
 
-  public void setScope(@javax.annotation.Nullable String scope) {
+  public void setScope(String scope) {
     this.scope = scope;
   }
 
 
-  public CodeRequest message(@javax.annotation.Nonnull String message) {
+  public CodeRequest message(String message) {
     this.message = message;
     return this;
   }
@@ -173,12 +167,12 @@ public class CodeRequest {
     return message;
   }
 
-  public void setMessage(@javax.annotation.Nonnull String message) {
+  public void setMessage(String message) {
     this.message = message;
   }
 
 
-  public CodeRequest digits(@javax.annotation.Nonnull Integer digits) {
+  public CodeRequest digits(Integer digits) {
     this.digits = digits;
     return this;
   }
@@ -194,7 +188,7 @@ public class CodeRequest {
     return digits;
   }
 
-  public void setDigits(@javax.annotation.Nonnull Integer digits) {
+  public void setDigits(Integer digits) {
     this.digits = digits;
   }
 

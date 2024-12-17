@@ -53,97 +53,80 @@ import com.bandwidth.sdk.JSON;
 /**
  * ListMessageItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ListMessageItem {
   public static final String SERIALIZED_NAME_MESSAGE_ID = "messageId";
   @SerializedName(SERIALIZED_NAME_MESSAGE_ID)
-  @javax.annotation.Nullable
   private String messageId;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  @javax.annotation.Nullable
   private String accountId;
 
   public static final String SERIALIZED_NAME_SOURCE_TN = "sourceTn";
   @SerializedName(SERIALIZED_NAME_SOURCE_TN)
-  @javax.annotation.Nullable
   private String sourceTn;
 
   public static final String SERIALIZED_NAME_DESTINATION_TN = "destinationTn";
   @SerializedName(SERIALIZED_NAME_DESTINATION_TN)
-  @javax.annotation.Nullable
   private String destinationTn;
 
   public static final String SERIALIZED_NAME_MESSAGE_STATUS = "messageStatus";
   @SerializedName(SERIALIZED_NAME_MESSAGE_STATUS)
-  @javax.annotation.Nullable
   private MessageStatusEnum messageStatus;
 
   public static final String SERIALIZED_NAME_MESSAGE_DIRECTION = "messageDirection";
   @SerializedName(SERIALIZED_NAME_MESSAGE_DIRECTION)
-  @javax.annotation.Nullable
   private ListMessageDirectionEnum messageDirection;
 
   public static final String SERIALIZED_NAME_MESSAGE_TYPE = "messageType";
   @SerializedName(SERIALIZED_NAME_MESSAGE_TYPE)
-  @javax.annotation.Nullable
   private MessageTypeEnum messageType;
 
   public static final String SERIALIZED_NAME_SEGMENT_COUNT = "segmentCount";
   @SerializedName(SERIALIZED_NAME_SEGMENT_COUNT)
-  @javax.annotation.Nullable
   private Integer segmentCount;
 
   public static final String SERIALIZED_NAME_ERROR_CODE = "errorCode";
   @SerializedName(SERIALIZED_NAME_ERROR_CODE)
-  @javax.annotation.Nullable
   private Integer errorCode;
 
   public static final String SERIALIZED_NAME_RECEIVE_TIME = "receiveTime";
   @SerializedName(SERIALIZED_NAME_RECEIVE_TIME)
-  @javax.annotation.Nullable
   private OffsetDateTime receiveTime;
 
   public static final String SERIALIZED_NAME_CARRIER_NAME = "carrierName";
   @SerializedName(SERIALIZED_NAME_CARRIER_NAME)
-  @javax.annotation.Nullable
   private String carrierName;
 
   public static final String SERIALIZED_NAME_MESSAGE_SIZE = "messageSize";
   @SerializedName(SERIALIZED_NAME_MESSAGE_SIZE)
-  @javax.annotation.Nullable
   private Integer messageSize;
 
   public static final String SERIALIZED_NAME_MESSAGE_LENGTH = "messageLength";
   @SerializedName(SERIALIZED_NAME_MESSAGE_LENGTH)
-  @javax.annotation.Nullable
   private Integer messageLength;
 
   public static final String SERIALIZED_NAME_ATTACHMENT_COUNT = "attachmentCount";
   @SerializedName(SERIALIZED_NAME_ATTACHMENT_COUNT)
-  @javax.annotation.Nullable
   private Integer attachmentCount;
 
   public static final String SERIALIZED_NAME_RECIPIENT_COUNT = "recipientCount";
   @SerializedName(SERIALIZED_NAME_RECIPIENT_COUNT)
-  @javax.annotation.Nullable
   private Integer recipientCount;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_CLASS = "campaignClass";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_CLASS)
-  @javax.annotation.Nullable
   private String campaignClass;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  @javax.annotation.Nullable
   private String campaignId;
 
   public ListMessageItem() {
   }
 
-  public ListMessageItem messageId(@javax.annotation.Nullable String messageId) {
+  public ListMessageItem messageId(String messageId) {
     this.messageId = messageId;
     return this;
   }
@@ -157,12 +140,12 @@ public class ListMessageItem {
     return messageId;
   }
 
-  public void setMessageId(@javax.annotation.Nullable String messageId) {
+  public void setMessageId(String messageId) {
     this.messageId = messageId;
   }
 
 
-  public ListMessageItem accountId(@javax.annotation.Nullable String accountId) {
+  public ListMessageItem accountId(String accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -176,12 +159,12 @@ public class ListMessageItem {
     return accountId;
   }
 
-  public void setAccountId(@javax.annotation.Nullable String accountId) {
+  public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
 
-  public ListMessageItem sourceTn(@javax.annotation.Nullable String sourceTn) {
+  public ListMessageItem sourceTn(String sourceTn) {
     this.sourceTn = sourceTn;
     return this;
   }
@@ -195,12 +178,12 @@ public class ListMessageItem {
     return sourceTn;
   }
 
-  public void setSourceTn(@javax.annotation.Nullable String sourceTn) {
+  public void setSourceTn(String sourceTn) {
     this.sourceTn = sourceTn;
   }
 
 
-  public ListMessageItem destinationTn(@javax.annotation.Nullable String destinationTn) {
+  public ListMessageItem destinationTn(String destinationTn) {
     this.destinationTn = destinationTn;
     return this;
   }
@@ -214,12 +197,12 @@ public class ListMessageItem {
     return destinationTn;
   }
 
-  public void setDestinationTn(@javax.annotation.Nullable String destinationTn) {
+  public void setDestinationTn(String destinationTn) {
     this.destinationTn = destinationTn;
   }
 
 
-  public ListMessageItem messageStatus(@javax.annotation.Nullable MessageStatusEnum messageStatus) {
+  public ListMessageItem messageStatus(MessageStatusEnum messageStatus) {
     this.messageStatus = messageStatus;
     return this;
   }
@@ -233,12 +216,12 @@ public class ListMessageItem {
     return messageStatus;
   }
 
-  public void setMessageStatus(@javax.annotation.Nullable MessageStatusEnum messageStatus) {
+  public void setMessageStatus(MessageStatusEnum messageStatus) {
     this.messageStatus = messageStatus;
   }
 
 
-  public ListMessageItem messageDirection(@javax.annotation.Nullable ListMessageDirectionEnum messageDirection) {
+  public ListMessageItem messageDirection(ListMessageDirectionEnum messageDirection) {
     this.messageDirection = messageDirection;
     return this;
   }
@@ -252,12 +235,12 @@ public class ListMessageItem {
     return messageDirection;
   }
 
-  public void setMessageDirection(@javax.annotation.Nullable ListMessageDirectionEnum messageDirection) {
+  public void setMessageDirection(ListMessageDirectionEnum messageDirection) {
     this.messageDirection = messageDirection;
   }
 
 
-  public ListMessageItem messageType(@javax.annotation.Nullable MessageTypeEnum messageType) {
+  public ListMessageItem messageType(MessageTypeEnum messageType) {
     this.messageType = messageType;
     return this;
   }
@@ -271,12 +254,12 @@ public class ListMessageItem {
     return messageType;
   }
 
-  public void setMessageType(@javax.annotation.Nullable MessageTypeEnum messageType) {
+  public void setMessageType(MessageTypeEnum messageType) {
     this.messageType = messageType;
   }
 
 
-  public ListMessageItem segmentCount(@javax.annotation.Nullable Integer segmentCount) {
+  public ListMessageItem segmentCount(Integer segmentCount) {
     this.segmentCount = segmentCount;
     return this;
   }
@@ -290,12 +273,12 @@ public class ListMessageItem {
     return segmentCount;
   }
 
-  public void setSegmentCount(@javax.annotation.Nullable Integer segmentCount) {
+  public void setSegmentCount(Integer segmentCount) {
     this.segmentCount = segmentCount;
   }
 
 
-  public ListMessageItem errorCode(@javax.annotation.Nullable Integer errorCode) {
+  public ListMessageItem errorCode(Integer errorCode) {
     this.errorCode = errorCode;
     return this;
   }
@@ -309,12 +292,12 @@ public class ListMessageItem {
     return errorCode;
   }
 
-  public void setErrorCode(@javax.annotation.Nullable Integer errorCode) {
+  public void setErrorCode(Integer errorCode) {
     this.errorCode = errorCode;
   }
 
 
-  public ListMessageItem receiveTime(@javax.annotation.Nullable OffsetDateTime receiveTime) {
+  public ListMessageItem receiveTime(OffsetDateTime receiveTime) {
     this.receiveTime = receiveTime;
     return this;
   }
@@ -328,12 +311,12 @@ public class ListMessageItem {
     return receiveTime;
   }
 
-  public void setReceiveTime(@javax.annotation.Nullable OffsetDateTime receiveTime) {
+  public void setReceiveTime(OffsetDateTime receiveTime) {
     this.receiveTime = receiveTime;
   }
 
 
-  public ListMessageItem carrierName(@javax.annotation.Nullable String carrierName) {
+  public ListMessageItem carrierName(String carrierName) {
     this.carrierName = carrierName;
     return this;
   }
@@ -347,12 +330,12 @@ public class ListMessageItem {
     return carrierName;
   }
 
-  public void setCarrierName(@javax.annotation.Nullable String carrierName) {
+  public void setCarrierName(String carrierName) {
     this.carrierName = carrierName;
   }
 
 
-  public ListMessageItem messageSize(@javax.annotation.Nullable Integer messageSize) {
+  public ListMessageItem messageSize(Integer messageSize) {
     this.messageSize = messageSize;
     return this;
   }
@@ -366,12 +349,12 @@ public class ListMessageItem {
     return messageSize;
   }
 
-  public void setMessageSize(@javax.annotation.Nullable Integer messageSize) {
+  public void setMessageSize(Integer messageSize) {
     this.messageSize = messageSize;
   }
 
 
-  public ListMessageItem messageLength(@javax.annotation.Nullable Integer messageLength) {
+  public ListMessageItem messageLength(Integer messageLength) {
     this.messageLength = messageLength;
     return this;
   }
@@ -385,12 +368,12 @@ public class ListMessageItem {
     return messageLength;
   }
 
-  public void setMessageLength(@javax.annotation.Nullable Integer messageLength) {
+  public void setMessageLength(Integer messageLength) {
     this.messageLength = messageLength;
   }
 
 
-  public ListMessageItem attachmentCount(@javax.annotation.Nullable Integer attachmentCount) {
+  public ListMessageItem attachmentCount(Integer attachmentCount) {
     this.attachmentCount = attachmentCount;
     return this;
   }
@@ -404,12 +387,12 @@ public class ListMessageItem {
     return attachmentCount;
   }
 
-  public void setAttachmentCount(@javax.annotation.Nullable Integer attachmentCount) {
+  public void setAttachmentCount(Integer attachmentCount) {
     this.attachmentCount = attachmentCount;
   }
 
 
-  public ListMessageItem recipientCount(@javax.annotation.Nullable Integer recipientCount) {
+  public ListMessageItem recipientCount(Integer recipientCount) {
     this.recipientCount = recipientCount;
     return this;
   }
@@ -423,12 +406,12 @@ public class ListMessageItem {
     return recipientCount;
   }
 
-  public void setRecipientCount(@javax.annotation.Nullable Integer recipientCount) {
+  public void setRecipientCount(Integer recipientCount) {
     this.recipientCount = recipientCount;
   }
 
 
-  public ListMessageItem campaignClass(@javax.annotation.Nullable String campaignClass) {
+  public ListMessageItem campaignClass(String campaignClass) {
     this.campaignClass = campaignClass;
     return this;
   }
@@ -442,12 +425,12 @@ public class ListMessageItem {
     return campaignClass;
   }
 
-  public void setCampaignClass(@javax.annotation.Nullable String campaignClass) {
+  public void setCampaignClass(String campaignClass) {
     this.campaignClass = campaignClass;
   }
 
 
-  public ListMessageItem campaignId(@javax.annotation.Nullable String campaignId) {
+  public ListMessageItem campaignId(String campaignId) {
     this.campaignId = campaignId;
     return this;
   }
@@ -461,7 +444,7 @@ public class ListMessageItem {
     return campaignId;
   }
 
-  public void setCampaignId(@javax.annotation.Nullable String campaignId) {
+  public void setCampaignId(String campaignId) {
     this.campaignId = campaignId;
   }
 

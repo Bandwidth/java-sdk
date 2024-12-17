@@ -48,17 +48,16 @@ import com.bandwidth.sdk.JSON;
 /**
  * VoiceCodeResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class VoiceCodeResponse {
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
-  @javax.annotation.Nullable
   private String callId;
 
   public VoiceCodeResponse() {
   }
 
-  public VoiceCodeResponse callId(@javax.annotation.Nullable String callId) {
+  public VoiceCodeResponse callId(String callId) {
     this.callId = callId;
     return this;
   }
@@ -72,7 +71,7 @@ public class VoiceCodeResponse {
     return callId;
   }
 
-  public void setCallId(@javax.annotation.Nullable String callId) {
+  public void setCallId(String callId) {
     this.callId = callId;
   }
 
