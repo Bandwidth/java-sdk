@@ -52,68 +52,82 @@ import com.bandwidth.sdk.JSON;
 /**
  * The Conference Recording Available event is sent after a conference recording has been processed. It indicates that the recording is available for download.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class ConferenceRecordingAvailableCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
+  @javax.annotation.Nullable
   private String eventType;
 
   public static final String SERIALIZED_NAME_EVENT_TIME = "eventTime";
   @SerializedName(SERIALIZED_NAME_EVENT_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime eventTime;
 
   public static final String SERIALIZED_NAME_CONFERENCE_ID = "conferenceId";
   @SerializedName(SERIALIZED_NAME_CONFERENCE_ID)
+  @javax.annotation.Nullable
   private String conferenceId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String accountId;
 
   public static final String SERIALIZED_NAME_RECORDING_ID = "recordingId";
   @SerializedName(SERIALIZED_NAME_RECORDING_ID)
+  @javax.annotation.Nullable
   private String recordingId;
 
   public static final String SERIALIZED_NAME_CHANNELS = "channels";
   @SerializedName(SERIALIZED_NAME_CHANNELS)
+  @javax.annotation.Nullable
   private Integer channels;
 
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime startTime;
 
   public static final String SERIALIZED_NAME_END_TIME = "endTime";
   @SerializedName(SERIALIZED_NAME_END_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime endTime;
 
   public static final String SERIALIZED_NAME_DURATION = "duration";
   @SerializedName(SERIALIZED_NAME_DURATION)
+  @javax.annotation.Nullable
   private String duration;
 
   public static final String SERIALIZED_NAME_FILE_FORMAT = "fileFormat";
   @SerializedName(SERIALIZED_NAME_FILE_FORMAT)
+  @javax.annotation.Nullable
   private FileFormatEnum fileFormat;
 
   public static final String SERIALIZED_NAME_MEDIA_URL = "mediaUrl";
   @SerializedName(SERIALIZED_NAME_MEDIA_URL)
+  @javax.annotation.Nullable
   private URI mediaUrl;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
+  @javax.annotation.Nullable
   private String tag;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private String status;
 
   public ConferenceRecordingAvailableCallback() {
   }
 
-  public ConferenceRecordingAvailableCallback eventType(String eventType) {
+  public ConferenceRecordingAvailableCallback eventType(@javax.annotation.Nullable String eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -127,12 +141,12 @@ public class ConferenceRecordingAvailableCallback {
     return eventType;
   }
 
-  public void setEventType(String eventType) {
+  public void setEventType(@javax.annotation.Nullable String eventType) {
     this.eventType = eventType;
   }
 
 
-  public ConferenceRecordingAvailableCallback eventTime(OffsetDateTime eventTime) {
+  public ConferenceRecordingAvailableCallback eventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
     this.eventTime = eventTime;
     return this;
   }
@@ -146,12 +160,12 @@ public class ConferenceRecordingAvailableCallback {
     return eventTime;
   }
 
-  public void setEventTime(OffsetDateTime eventTime) {
+  public void setEventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
-  public ConferenceRecordingAvailableCallback conferenceId(String conferenceId) {
+  public ConferenceRecordingAvailableCallback conferenceId(@javax.annotation.Nullable String conferenceId) {
     this.conferenceId = conferenceId;
     return this;
   }
@@ -165,12 +179,12 @@ public class ConferenceRecordingAvailableCallback {
     return conferenceId;
   }
 
-  public void setConferenceId(String conferenceId) {
+  public void setConferenceId(@javax.annotation.Nullable String conferenceId) {
     this.conferenceId = conferenceId;
   }
 
 
-  public ConferenceRecordingAvailableCallback name(String name) {
+  public ConferenceRecordingAvailableCallback name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -184,12 +198,12 @@ public class ConferenceRecordingAvailableCallback {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public ConferenceRecordingAvailableCallback accountId(String accountId) {
+  public ConferenceRecordingAvailableCallback accountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -203,12 +217,12 @@ public class ConferenceRecordingAvailableCallback {
     return accountId;
   }
 
-  public void setAccountId(String accountId) {
+  public void setAccountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
   }
 
 
-  public ConferenceRecordingAvailableCallback recordingId(String recordingId) {
+  public ConferenceRecordingAvailableCallback recordingId(@javax.annotation.Nullable String recordingId) {
     this.recordingId = recordingId;
     return this;
   }
@@ -222,12 +236,12 @@ public class ConferenceRecordingAvailableCallback {
     return recordingId;
   }
 
-  public void setRecordingId(String recordingId) {
+  public void setRecordingId(@javax.annotation.Nullable String recordingId) {
     this.recordingId = recordingId;
   }
 
 
-  public ConferenceRecordingAvailableCallback channels(Integer channels) {
+  public ConferenceRecordingAvailableCallback channels(@javax.annotation.Nullable Integer channels) {
     this.channels = channels;
     return this;
   }
@@ -241,12 +255,12 @@ public class ConferenceRecordingAvailableCallback {
     return channels;
   }
 
-  public void setChannels(Integer channels) {
+  public void setChannels(@javax.annotation.Nullable Integer channels) {
     this.channels = channels;
   }
 
 
-  public ConferenceRecordingAvailableCallback startTime(OffsetDateTime startTime) {
+  public ConferenceRecordingAvailableCallback startTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -260,12 +274,12 @@ public class ConferenceRecordingAvailableCallback {
     return startTime;
   }
 
-  public void setStartTime(OffsetDateTime startTime) {
+  public void setStartTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
-  public ConferenceRecordingAvailableCallback endTime(OffsetDateTime endTime) {
+  public ConferenceRecordingAvailableCallback endTime(@javax.annotation.Nullable OffsetDateTime endTime) {
     this.endTime = endTime;
     return this;
   }
@@ -279,12 +293,12 @@ public class ConferenceRecordingAvailableCallback {
     return endTime;
   }
 
-  public void setEndTime(OffsetDateTime endTime) {
+  public void setEndTime(@javax.annotation.Nullable OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
 
-  public ConferenceRecordingAvailableCallback duration(String duration) {
+  public ConferenceRecordingAvailableCallback duration(@javax.annotation.Nullable String duration) {
     this.duration = duration;
     return this;
   }
@@ -298,12 +312,12 @@ public class ConferenceRecordingAvailableCallback {
     return duration;
   }
 
-  public void setDuration(String duration) {
+  public void setDuration(@javax.annotation.Nullable String duration) {
     this.duration = duration;
   }
 
 
-  public ConferenceRecordingAvailableCallback fileFormat(FileFormatEnum fileFormat) {
+  public ConferenceRecordingAvailableCallback fileFormat(@javax.annotation.Nullable FileFormatEnum fileFormat) {
     this.fileFormat = fileFormat;
     return this;
   }
@@ -317,12 +331,12 @@ public class ConferenceRecordingAvailableCallback {
     return fileFormat;
   }
 
-  public void setFileFormat(FileFormatEnum fileFormat) {
+  public void setFileFormat(@javax.annotation.Nullable FileFormatEnum fileFormat) {
     this.fileFormat = fileFormat;
   }
 
 
-  public ConferenceRecordingAvailableCallback mediaUrl(URI mediaUrl) {
+  public ConferenceRecordingAvailableCallback mediaUrl(@javax.annotation.Nullable URI mediaUrl) {
     this.mediaUrl = mediaUrl;
     return this;
   }
@@ -336,12 +350,12 @@ public class ConferenceRecordingAvailableCallback {
     return mediaUrl;
   }
 
-  public void setMediaUrl(URI mediaUrl) {
+  public void setMediaUrl(@javax.annotation.Nullable URI mediaUrl) {
     this.mediaUrl = mediaUrl;
   }
 
 
-  public ConferenceRecordingAvailableCallback tag(String tag) {
+  public ConferenceRecordingAvailableCallback tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
@@ -355,12 +369,12 @@ public class ConferenceRecordingAvailableCallback {
     return tag;
   }
 
-  public void setTag(String tag) {
+  public void setTag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
   }
 
 
-  public ConferenceRecordingAvailableCallback status(String status) {
+  public ConferenceRecordingAvailableCallback status(@javax.annotation.Nullable String status) {
     this.status = status;
     return this;
   }
@@ -374,7 +388,7 @@ public class ConferenceRecordingAvailableCallback {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(@javax.annotation.Nullable String status) {
     this.status = status;
   }
 

@@ -51,40 +51,47 @@ import com.bandwidth.sdk.JSON;
 /**
  * TranscribeRecording
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class TranscribeRecording {
   public static final String SERIALIZED_NAME_CALLBACK_URL = "callbackUrl";
   @SerializedName(SERIALIZED_NAME_CALLBACK_URL)
+  @javax.annotation.Nullable
   private URI callbackUrl;
 
   public static final String SERIALIZED_NAME_CALLBACK_METHOD = "callbackMethod";
   @SerializedName(SERIALIZED_NAME_CALLBACK_METHOD)
+  @javax.annotation.Nullable
   private CallbackMethodEnum callbackMethod = CallbackMethodEnum.POST;
 
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
+  @javax.annotation.Nullable
   private String username;
 
   public static final String SERIALIZED_NAME_PASSWORD = "password";
   @SerializedName(SERIALIZED_NAME_PASSWORD)
+  @javax.annotation.Nullable
   private String password;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
+  @javax.annotation.Nullable
   private String tag;
 
   public static final String SERIALIZED_NAME_CALLBACK_TIMEOUT = "callbackTimeout";
   @SerializedName(SERIALIZED_NAME_CALLBACK_TIMEOUT)
+  @javax.annotation.Nullable
   private Double callbackTimeout = 15d;
 
   public static final String SERIALIZED_NAME_DETECT_LANGUAGE = "detectLanguage";
   @SerializedName(SERIALIZED_NAME_DETECT_LANGUAGE)
+  @javax.annotation.Nullable
   private Boolean detectLanguage = false;
 
   public TranscribeRecording() {
   }
 
-  public TranscribeRecording callbackUrl(URI callbackUrl) {
+  public TranscribeRecording callbackUrl(@javax.annotation.Nullable URI callbackUrl) {
     this.callbackUrl = callbackUrl;
     return this;
   }
@@ -98,12 +105,12 @@ public class TranscribeRecording {
     return callbackUrl;
   }
 
-  public void setCallbackUrl(URI callbackUrl) {
+  public void setCallbackUrl(@javax.annotation.Nullable URI callbackUrl) {
     this.callbackUrl = callbackUrl;
   }
 
 
-  public TranscribeRecording callbackMethod(CallbackMethodEnum callbackMethod) {
+  public TranscribeRecording callbackMethod(@javax.annotation.Nullable CallbackMethodEnum callbackMethod) {
     this.callbackMethod = callbackMethod;
     return this;
   }
@@ -117,12 +124,12 @@ public class TranscribeRecording {
     return callbackMethod;
   }
 
-  public void setCallbackMethod(CallbackMethodEnum callbackMethod) {
+  public void setCallbackMethod(@javax.annotation.Nullable CallbackMethodEnum callbackMethod) {
     this.callbackMethod = callbackMethod;
   }
 
 
-  public TranscribeRecording username(String username) {
+  public TranscribeRecording username(@javax.annotation.Nullable String username) {
     this.username = username;
     return this;
   }
@@ -136,12 +143,12 @@ public class TranscribeRecording {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(@javax.annotation.Nullable String username) {
     this.username = username;
   }
 
 
-  public TranscribeRecording password(String password) {
+  public TranscribeRecording password(@javax.annotation.Nullable String password) {
     this.password = password;
     return this;
   }
@@ -155,12 +162,12 @@ public class TranscribeRecording {
     return password;
   }
 
-  public void setPassword(String password) {
+  public void setPassword(@javax.annotation.Nullable String password) {
     this.password = password;
   }
 
 
-  public TranscribeRecording tag(String tag) {
+  public TranscribeRecording tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
@@ -174,12 +181,12 @@ public class TranscribeRecording {
     return tag;
   }
 
-  public void setTag(String tag) {
+  public void setTag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
   }
 
 
-  public TranscribeRecording callbackTimeout(Double callbackTimeout) {
+  public TranscribeRecording callbackTimeout(@javax.annotation.Nullable Double callbackTimeout) {
     this.callbackTimeout = callbackTimeout;
     return this;
   }
@@ -195,12 +202,12 @@ public class TranscribeRecording {
     return callbackTimeout;
   }
 
-  public void setCallbackTimeout(Double callbackTimeout) {
+  public void setCallbackTimeout(@javax.annotation.Nullable Double callbackTimeout) {
     this.callbackTimeout = callbackTimeout;
   }
 
 
-  public TranscribeRecording detectLanguage(Boolean detectLanguage) {
+  public TranscribeRecording detectLanguage(@javax.annotation.Nullable Boolean detectLanguage) {
     this.detectLanguage = detectLanguage;
     return this;
   }
@@ -214,7 +221,7 @@ public class TranscribeRecording {
     return detectLanguage;
   }
 
-  public void setDetectLanguage(Boolean detectLanguage) {
+  public void setDetectLanguage(@javax.annotation.Nullable Boolean detectLanguage) {
     this.detectLanguage = detectLanguage;
   }
 

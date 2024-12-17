@@ -51,24 +51,27 @@ import com.bandwidth.sdk.JSON;
 /**
  * UpdateConferenceMember
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class UpdateConferenceMember {
   public static final String SERIALIZED_NAME_MUTE = "mute";
   @SerializedName(SERIALIZED_NAME_MUTE)
+  @javax.annotation.Nullable
   private Boolean mute;
 
   public static final String SERIALIZED_NAME_HOLD = "hold";
   @SerializedName(SERIALIZED_NAME_HOLD)
+  @javax.annotation.Nullable
   private Boolean hold;
 
   public static final String SERIALIZED_NAME_CALL_IDS_TO_COACH = "callIdsToCoach";
   @SerializedName(SERIALIZED_NAME_CALL_IDS_TO_COACH)
+  @javax.annotation.Nullable
   private List<String> callIdsToCoach;
 
   public UpdateConferenceMember() {
   }
 
-  public UpdateConferenceMember mute(Boolean mute) {
+  public UpdateConferenceMember mute(@javax.annotation.Nullable Boolean mute) {
     this.mute = mute;
     return this;
   }
@@ -82,12 +85,12 @@ public class UpdateConferenceMember {
     return mute;
   }
 
-  public void setMute(Boolean mute) {
+  public void setMute(@javax.annotation.Nullable Boolean mute) {
     this.mute = mute;
   }
 
 
-  public UpdateConferenceMember hold(Boolean hold) {
+  public UpdateConferenceMember hold(@javax.annotation.Nullable Boolean hold) {
     this.hold = hold;
     return this;
   }
@@ -101,12 +104,12 @@ public class UpdateConferenceMember {
     return hold;
   }
 
-  public void setHold(Boolean hold) {
+  public void setHold(@javax.annotation.Nullable Boolean hold) {
     this.hold = hold;
   }
 
 
-  public UpdateConferenceMember callIdsToCoach(List<String> callIdsToCoach) {
+  public UpdateConferenceMember callIdsToCoach(@javax.annotation.Nullable List<String> callIdsToCoach) {
     this.callIdsToCoach = callIdsToCoach;
     return this;
   }
@@ -128,7 +131,7 @@ public class UpdateConferenceMember {
     return callIdsToCoach;
   }
 
-  public void setCallIdsToCoach(List<String> callIdsToCoach) {
+  public void setCallIdsToCoach(@javax.annotation.Nullable List<String> callIdsToCoach) {
     this.callIdsToCoach = callIdsToCoach;
   }
 

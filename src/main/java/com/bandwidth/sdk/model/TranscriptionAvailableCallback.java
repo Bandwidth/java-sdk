@@ -54,96 +54,117 @@ import com.bandwidth.sdk.JSON;
 /**
  * The Transcription Available event is sent when the recording transcription is available to be downloaded.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class TranscriptionAvailableCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
+  @javax.annotation.Nullable
   private String eventType;
 
   public static final String SERIALIZED_NAME_EVENT_TIME = "eventTime";
   @SerializedName(SERIALIZED_NAME_EVENT_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime eventTime;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String accountId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  @javax.annotation.Nullable
   private String applicationId;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
+  @javax.annotation.Nullable
   private String from;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
+  @javax.annotation.Nullable
   private String to;
 
   public static final String SERIALIZED_NAME_DIRECTION = "direction";
   @SerializedName(SERIALIZED_NAME_DIRECTION)
+  @javax.annotation.Nullable
   private CallDirectionEnum direction;
 
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
+  @javax.annotation.Nullable
   private String callId;
 
   public static final String SERIALIZED_NAME_CALL_URL = "callUrl";
   @SerializedName(SERIALIZED_NAME_CALL_URL)
+  @javax.annotation.Nullable
   private URI callUrl;
 
   public static final String SERIALIZED_NAME_MEDIA_URL = "mediaUrl";
   @SerializedName(SERIALIZED_NAME_MEDIA_URL)
+  @javax.annotation.Nullable
   private URI mediaUrl;
 
   public static final String SERIALIZED_NAME_PARENT_CALL_ID = "parentCallId";
   @SerializedName(SERIALIZED_NAME_PARENT_CALL_ID)
+  @javax.annotation.Nullable
   private String parentCallId;
 
   public static final String SERIALIZED_NAME_RECORDING_ID = "recordingId";
   @SerializedName(SERIALIZED_NAME_RECORDING_ID)
+  @javax.annotation.Nullable
   private String recordingId;
 
   public static final String SERIALIZED_NAME_ENQUEUED_TIME = "enqueuedTime";
   @SerializedName(SERIALIZED_NAME_ENQUEUED_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime enqueuedTime;
 
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime startTime;
 
   public static final String SERIALIZED_NAME_END_TIME = "endTime";
   @SerializedName(SERIALIZED_NAME_END_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime endTime;
 
   public static final String SERIALIZED_NAME_DURATION = "duration";
   @SerializedName(SERIALIZED_NAME_DURATION)
+  @javax.annotation.Nullable
   private String duration;
 
   public static final String SERIALIZED_NAME_FILE_FORMAT = "fileFormat";
   @SerializedName(SERIALIZED_NAME_FILE_FORMAT)
+  @javax.annotation.Nullable
   private FileFormatEnum fileFormat;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
+  @javax.annotation.Nullable
   private String tag;
 
   public static final String SERIALIZED_NAME_TRANSCRIPTION = "transcription";
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTION)
+  @javax.annotation.Nullable
   private Transcription transcription;
 
   public static final String SERIALIZED_NAME_TRANSFER_CALLER_ID = "transferCallerId";
   @SerializedName(SERIALIZED_NAME_TRANSFER_CALLER_ID)
+  @javax.annotation.Nullable
   private String transferCallerId;
 
   public static final String SERIALIZED_NAME_TRANSFER_TO = "transferTo";
   @SerializedName(SERIALIZED_NAME_TRANSFER_TO)
+  @javax.annotation.Nullable
   private String transferTo;
 
   public TranscriptionAvailableCallback() {
   }
 
-  public TranscriptionAvailableCallback eventType(String eventType) {
+  public TranscriptionAvailableCallback eventType(@javax.annotation.Nullable String eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -157,12 +178,12 @@ public class TranscriptionAvailableCallback {
     return eventType;
   }
 
-  public void setEventType(String eventType) {
+  public void setEventType(@javax.annotation.Nullable String eventType) {
     this.eventType = eventType;
   }
 
 
-  public TranscriptionAvailableCallback eventTime(OffsetDateTime eventTime) {
+  public TranscriptionAvailableCallback eventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
     this.eventTime = eventTime;
     return this;
   }
@@ -176,12 +197,12 @@ public class TranscriptionAvailableCallback {
     return eventTime;
   }
 
-  public void setEventTime(OffsetDateTime eventTime) {
+  public void setEventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
-  public TranscriptionAvailableCallback accountId(String accountId) {
+  public TranscriptionAvailableCallback accountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -195,12 +216,12 @@ public class TranscriptionAvailableCallback {
     return accountId;
   }
 
-  public void setAccountId(String accountId) {
+  public void setAccountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
   }
 
 
-  public TranscriptionAvailableCallback applicationId(String applicationId) {
+  public TranscriptionAvailableCallback applicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -214,12 +235,12 @@ public class TranscriptionAvailableCallback {
     return applicationId;
   }
 
-  public void setApplicationId(String applicationId) {
+  public void setApplicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public TranscriptionAvailableCallback from(String from) {
+  public TranscriptionAvailableCallback from(@javax.annotation.Nullable String from) {
     this.from = from;
     return this;
   }
@@ -233,12 +254,12 @@ public class TranscriptionAvailableCallback {
     return from;
   }
 
-  public void setFrom(String from) {
+  public void setFrom(@javax.annotation.Nullable String from) {
     this.from = from;
   }
 
 
-  public TranscriptionAvailableCallback to(String to) {
+  public TranscriptionAvailableCallback to(@javax.annotation.Nullable String to) {
     this.to = to;
     return this;
   }
@@ -252,12 +273,12 @@ public class TranscriptionAvailableCallback {
     return to;
   }
 
-  public void setTo(String to) {
+  public void setTo(@javax.annotation.Nullable String to) {
     this.to = to;
   }
 
 
-  public TranscriptionAvailableCallback direction(CallDirectionEnum direction) {
+  public TranscriptionAvailableCallback direction(@javax.annotation.Nullable CallDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
@@ -271,12 +292,12 @@ public class TranscriptionAvailableCallback {
     return direction;
   }
 
-  public void setDirection(CallDirectionEnum direction) {
+  public void setDirection(@javax.annotation.Nullable CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
-  public TranscriptionAvailableCallback callId(String callId) {
+  public TranscriptionAvailableCallback callId(@javax.annotation.Nullable String callId) {
     this.callId = callId;
     return this;
   }
@@ -290,12 +311,12 @@ public class TranscriptionAvailableCallback {
     return callId;
   }
 
-  public void setCallId(String callId) {
+  public void setCallId(@javax.annotation.Nullable String callId) {
     this.callId = callId;
   }
 
 
-  public TranscriptionAvailableCallback callUrl(URI callUrl) {
+  public TranscriptionAvailableCallback callUrl(@javax.annotation.Nullable URI callUrl) {
     this.callUrl = callUrl;
     return this;
   }
@@ -309,12 +330,12 @@ public class TranscriptionAvailableCallback {
     return callUrl;
   }
 
-  public void setCallUrl(URI callUrl) {
+  public void setCallUrl(@javax.annotation.Nullable URI callUrl) {
     this.callUrl = callUrl;
   }
 
 
-  public TranscriptionAvailableCallback mediaUrl(URI mediaUrl) {
+  public TranscriptionAvailableCallback mediaUrl(@javax.annotation.Nullable URI mediaUrl) {
     this.mediaUrl = mediaUrl;
     return this;
   }
@@ -328,12 +349,12 @@ public class TranscriptionAvailableCallback {
     return mediaUrl;
   }
 
-  public void setMediaUrl(URI mediaUrl) {
+  public void setMediaUrl(@javax.annotation.Nullable URI mediaUrl) {
     this.mediaUrl = mediaUrl;
   }
 
 
-  public TranscriptionAvailableCallback parentCallId(String parentCallId) {
+  public TranscriptionAvailableCallback parentCallId(@javax.annotation.Nullable String parentCallId) {
     this.parentCallId = parentCallId;
     return this;
   }
@@ -347,12 +368,12 @@ public class TranscriptionAvailableCallback {
     return parentCallId;
   }
 
-  public void setParentCallId(String parentCallId) {
+  public void setParentCallId(@javax.annotation.Nullable String parentCallId) {
     this.parentCallId = parentCallId;
   }
 
 
-  public TranscriptionAvailableCallback recordingId(String recordingId) {
+  public TranscriptionAvailableCallback recordingId(@javax.annotation.Nullable String recordingId) {
     this.recordingId = recordingId;
     return this;
   }
@@ -366,12 +387,12 @@ public class TranscriptionAvailableCallback {
     return recordingId;
   }
 
-  public void setRecordingId(String recordingId) {
+  public void setRecordingId(@javax.annotation.Nullable String recordingId) {
     this.recordingId = recordingId;
   }
 
 
-  public TranscriptionAvailableCallback enqueuedTime(OffsetDateTime enqueuedTime) {
+  public TranscriptionAvailableCallback enqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -385,12 +406,12 @@ public class TranscriptionAvailableCallback {
     return enqueuedTime;
   }
 
-  public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
+  public void setEnqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
-  public TranscriptionAvailableCallback startTime(OffsetDateTime startTime) {
+  public TranscriptionAvailableCallback startTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -404,12 +425,12 @@ public class TranscriptionAvailableCallback {
     return startTime;
   }
 
-  public void setStartTime(OffsetDateTime startTime) {
+  public void setStartTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
-  public TranscriptionAvailableCallback endTime(OffsetDateTime endTime) {
+  public TranscriptionAvailableCallback endTime(@javax.annotation.Nullable OffsetDateTime endTime) {
     this.endTime = endTime;
     return this;
   }
@@ -423,12 +444,12 @@ public class TranscriptionAvailableCallback {
     return endTime;
   }
 
-  public void setEndTime(OffsetDateTime endTime) {
+  public void setEndTime(@javax.annotation.Nullable OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
 
-  public TranscriptionAvailableCallback duration(String duration) {
+  public TranscriptionAvailableCallback duration(@javax.annotation.Nullable String duration) {
     this.duration = duration;
     return this;
   }
@@ -442,12 +463,12 @@ public class TranscriptionAvailableCallback {
     return duration;
   }
 
-  public void setDuration(String duration) {
+  public void setDuration(@javax.annotation.Nullable String duration) {
     this.duration = duration;
   }
 
 
-  public TranscriptionAvailableCallback fileFormat(FileFormatEnum fileFormat) {
+  public TranscriptionAvailableCallback fileFormat(@javax.annotation.Nullable FileFormatEnum fileFormat) {
     this.fileFormat = fileFormat;
     return this;
   }
@@ -461,12 +482,12 @@ public class TranscriptionAvailableCallback {
     return fileFormat;
   }
 
-  public void setFileFormat(FileFormatEnum fileFormat) {
+  public void setFileFormat(@javax.annotation.Nullable FileFormatEnum fileFormat) {
     this.fileFormat = fileFormat;
   }
 
 
-  public TranscriptionAvailableCallback tag(String tag) {
+  public TranscriptionAvailableCallback tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
@@ -480,12 +501,12 @@ public class TranscriptionAvailableCallback {
     return tag;
   }
 
-  public void setTag(String tag) {
+  public void setTag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
   }
 
 
-  public TranscriptionAvailableCallback transcription(Transcription transcription) {
+  public TranscriptionAvailableCallback transcription(@javax.annotation.Nullable Transcription transcription) {
     this.transcription = transcription;
     return this;
   }
@@ -499,12 +520,12 @@ public class TranscriptionAvailableCallback {
     return transcription;
   }
 
-  public void setTranscription(Transcription transcription) {
+  public void setTranscription(@javax.annotation.Nullable Transcription transcription) {
     this.transcription = transcription;
   }
 
 
-  public TranscriptionAvailableCallback transferCallerId(String transferCallerId) {
+  public TranscriptionAvailableCallback transferCallerId(@javax.annotation.Nullable String transferCallerId) {
     this.transferCallerId = transferCallerId;
     return this;
   }
@@ -518,12 +539,12 @@ public class TranscriptionAvailableCallback {
     return transferCallerId;
   }
 
-  public void setTransferCallerId(String transferCallerId) {
+  public void setTransferCallerId(@javax.annotation.Nullable String transferCallerId) {
     this.transferCallerId = transferCallerId;
   }
 
 
-  public TranscriptionAvailableCallback transferTo(String transferTo) {
+  public TranscriptionAvailableCallback transferTo(@javax.annotation.Nullable String transferTo) {
     this.transferTo = transferTo;
     return this;
   }
@@ -537,7 +558,7 @@ public class TranscriptionAvailableCallback {
     return transferTo;
   }
 
-  public void setTransferTo(String transferTo) {
+  public void setTransferTo(@javax.annotation.Nullable String transferTo) {
     this.transferTo = transferTo;
   }
 

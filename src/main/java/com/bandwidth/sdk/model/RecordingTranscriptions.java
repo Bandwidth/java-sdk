@@ -51,16 +51,17 @@ import com.bandwidth.sdk.JSON;
 /**
  * RecordingTranscriptions
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class RecordingTranscriptions {
   public static final String SERIALIZED_NAME_TRANSCRIPTS = "transcripts";
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTS)
+  @javax.annotation.Nullable
   private List<Transcription> transcripts = new ArrayList<>();
 
   public RecordingTranscriptions() {
   }
 
-  public RecordingTranscriptions transcripts(List<Transcription> transcripts) {
+  public RecordingTranscriptions transcripts(@javax.annotation.Nullable List<Transcription> transcripts) {
     this.transcripts = transcripts;
     return this;
   }
@@ -82,7 +83,7 @@ public class RecordingTranscriptions {
     return transcripts;
   }
 
-  public void setTranscripts(List<Transcription> transcripts) {
+  public void setTranscripts(@javax.annotation.Nullable List<Transcription> transcripts) {
     this.transcripts = transcripts;
   }
 

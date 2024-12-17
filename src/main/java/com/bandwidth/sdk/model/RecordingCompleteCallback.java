@@ -53,100 +53,122 @@ import com.bandwidth.sdk.JSON;
 /**
  * The Record Complete event is sent after a &lt;Record&gt; verb has executed if the call is still active. The BXML returned by this callback is executed next. When the recording is available for download, a Recording Available event will be sent.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class RecordingCompleteCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
+  @javax.annotation.Nullable
   private String eventType;
 
   public static final String SERIALIZED_NAME_EVENT_TIME = "eventTime";
   @SerializedName(SERIALIZED_NAME_EVENT_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime eventTime;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String accountId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  @javax.annotation.Nullable
   private String applicationId;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
+  @javax.annotation.Nullable
   private String from;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
+  @javax.annotation.Nullable
   private String to;
 
   public static final String SERIALIZED_NAME_DIRECTION = "direction";
   @SerializedName(SERIALIZED_NAME_DIRECTION)
+  @javax.annotation.Nullable
   private CallDirectionEnum direction;
 
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
+  @javax.annotation.Nullable
   private String callId;
 
   public static final String SERIALIZED_NAME_CALL_URL = "callUrl";
   @SerializedName(SERIALIZED_NAME_CALL_URL)
+  @javax.annotation.Nullable
   private URI callUrl;
 
   public static final String SERIALIZED_NAME_PARENT_CALL_ID = "parentCallId";
   @SerializedName(SERIALIZED_NAME_PARENT_CALL_ID)
+  @javax.annotation.Nullable
   private String parentCallId;
 
   public static final String SERIALIZED_NAME_RECORDING_ID = "recordingId";
   @SerializedName(SERIALIZED_NAME_RECORDING_ID)
+  @javax.annotation.Nullable
   private String recordingId;
 
   public static final String SERIALIZED_NAME_MEDIA_URL = "mediaUrl";
   @SerializedName(SERIALIZED_NAME_MEDIA_URL)
+  @javax.annotation.Nullable
   private URI mediaUrl;
 
   public static final String SERIALIZED_NAME_ENQUEUED_TIME = "enqueuedTime";
   @SerializedName(SERIALIZED_NAME_ENQUEUED_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime enqueuedTime;
 
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime startTime;
 
   public static final String SERIALIZED_NAME_ANSWER_TIME = "answerTime";
   @SerializedName(SERIALIZED_NAME_ANSWER_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime answerTime;
 
   public static final String SERIALIZED_NAME_END_TIME = "endTime";
   @SerializedName(SERIALIZED_NAME_END_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime endTime;
 
   public static final String SERIALIZED_NAME_DURATION = "duration";
   @SerializedName(SERIALIZED_NAME_DURATION)
+  @javax.annotation.Nullable
   private String duration;
 
   public static final String SERIALIZED_NAME_FILE_FORMAT = "fileFormat";
   @SerializedName(SERIALIZED_NAME_FILE_FORMAT)
+  @javax.annotation.Nullable
   private FileFormatEnum fileFormat;
 
   public static final String SERIALIZED_NAME_CHANNELS = "channels";
   @SerializedName(SERIALIZED_NAME_CHANNELS)
+  @javax.annotation.Nullable
   private Integer channels;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
+  @javax.annotation.Nullable
   private String tag;
 
   public static final String SERIALIZED_NAME_TRANSFER_CALLER_ID = "transferCallerId";
   @SerializedName(SERIALIZED_NAME_TRANSFER_CALLER_ID)
+  @javax.annotation.Nullable
   private String transferCallerId;
 
   public static final String SERIALIZED_NAME_TRANSFER_TO = "transferTo";
   @SerializedName(SERIALIZED_NAME_TRANSFER_TO)
+  @javax.annotation.Nullable
   private String transferTo;
 
   public RecordingCompleteCallback() {
   }
 
-  public RecordingCompleteCallback eventType(String eventType) {
+  public RecordingCompleteCallback eventType(@javax.annotation.Nullable String eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -160,12 +182,12 @@ public class RecordingCompleteCallback {
     return eventType;
   }
 
-  public void setEventType(String eventType) {
+  public void setEventType(@javax.annotation.Nullable String eventType) {
     this.eventType = eventType;
   }
 
 
-  public RecordingCompleteCallback eventTime(OffsetDateTime eventTime) {
+  public RecordingCompleteCallback eventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
     this.eventTime = eventTime;
     return this;
   }
@@ -179,12 +201,12 @@ public class RecordingCompleteCallback {
     return eventTime;
   }
 
-  public void setEventTime(OffsetDateTime eventTime) {
+  public void setEventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
-  public RecordingCompleteCallback accountId(String accountId) {
+  public RecordingCompleteCallback accountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -198,12 +220,12 @@ public class RecordingCompleteCallback {
     return accountId;
   }
 
-  public void setAccountId(String accountId) {
+  public void setAccountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
   }
 
 
-  public RecordingCompleteCallback applicationId(String applicationId) {
+  public RecordingCompleteCallback applicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -217,12 +239,12 @@ public class RecordingCompleteCallback {
     return applicationId;
   }
 
-  public void setApplicationId(String applicationId) {
+  public void setApplicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public RecordingCompleteCallback from(String from) {
+  public RecordingCompleteCallback from(@javax.annotation.Nullable String from) {
     this.from = from;
     return this;
   }
@@ -236,12 +258,12 @@ public class RecordingCompleteCallback {
     return from;
   }
 
-  public void setFrom(String from) {
+  public void setFrom(@javax.annotation.Nullable String from) {
     this.from = from;
   }
 
 
-  public RecordingCompleteCallback to(String to) {
+  public RecordingCompleteCallback to(@javax.annotation.Nullable String to) {
     this.to = to;
     return this;
   }
@@ -255,12 +277,12 @@ public class RecordingCompleteCallback {
     return to;
   }
 
-  public void setTo(String to) {
+  public void setTo(@javax.annotation.Nullable String to) {
     this.to = to;
   }
 
 
-  public RecordingCompleteCallback direction(CallDirectionEnum direction) {
+  public RecordingCompleteCallback direction(@javax.annotation.Nullable CallDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
@@ -274,12 +296,12 @@ public class RecordingCompleteCallback {
     return direction;
   }
 
-  public void setDirection(CallDirectionEnum direction) {
+  public void setDirection(@javax.annotation.Nullable CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
-  public RecordingCompleteCallback callId(String callId) {
+  public RecordingCompleteCallback callId(@javax.annotation.Nullable String callId) {
     this.callId = callId;
     return this;
   }
@@ -293,12 +315,12 @@ public class RecordingCompleteCallback {
     return callId;
   }
 
-  public void setCallId(String callId) {
+  public void setCallId(@javax.annotation.Nullable String callId) {
     this.callId = callId;
   }
 
 
-  public RecordingCompleteCallback callUrl(URI callUrl) {
+  public RecordingCompleteCallback callUrl(@javax.annotation.Nullable URI callUrl) {
     this.callUrl = callUrl;
     return this;
   }
@@ -312,12 +334,12 @@ public class RecordingCompleteCallback {
     return callUrl;
   }
 
-  public void setCallUrl(URI callUrl) {
+  public void setCallUrl(@javax.annotation.Nullable URI callUrl) {
     this.callUrl = callUrl;
   }
 
 
-  public RecordingCompleteCallback parentCallId(String parentCallId) {
+  public RecordingCompleteCallback parentCallId(@javax.annotation.Nullable String parentCallId) {
     this.parentCallId = parentCallId;
     return this;
   }
@@ -331,12 +353,12 @@ public class RecordingCompleteCallback {
     return parentCallId;
   }
 
-  public void setParentCallId(String parentCallId) {
+  public void setParentCallId(@javax.annotation.Nullable String parentCallId) {
     this.parentCallId = parentCallId;
   }
 
 
-  public RecordingCompleteCallback recordingId(String recordingId) {
+  public RecordingCompleteCallback recordingId(@javax.annotation.Nullable String recordingId) {
     this.recordingId = recordingId;
     return this;
   }
@@ -350,12 +372,12 @@ public class RecordingCompleteCallback {
     return recordingId;
   }
 
-  public void setRecordingId(String recordingId) {
+  public void setRecordingId(@javax.annotation.Nullable String recordingId) {
     this.recordingId = recordingId;
   }
 
 
-  public RecordingCompleteCallback mediaUrl(URI mediaUrl) {
+  public RecordingCompleteCallback mediaUrl(@javax.annotation.Nullable URI mediaUrl) {
     this.mediaUrl = mediaUrl;
     return this;
   }
@@ -369,12 +391,12 @@ public class RecordingCompleteCallback {
     return mediaUrl;
   }
 
-  public void setMediaUrl(URI mediaUrl) {
+  public void setMediaUrl(@javax.annotation.Nullable URI mediaUrl) {
     this.mediaUrl = mediaUrl;
   }
 
 
-  public RecordingCompleteCallback enqueuedTime(OffsetDateTime enqueuedTime) {
+  public RecordingCompleteCallback enqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
     return this;
   }
@@ -388,12 +410,12 @@ public class RecordingCompleteCallback {
     return enqueuedTime;
   }
 
-  public void setEnqueuedTime(OffsetDateTime enqueuedTime) {
+  public void setEnqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
     this.enqueuedTime = enqueuedTime;
   }
 
 
-  public RecordingCompleteCallback startTime(OffsetDateTime startTime) {
+  public RecordingCompleteCallback startTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -407,12 +429,12 @@ public class RecordingCompleteCallback {
     return startTime;
   }
 
-  public void setStartTime(OffsetDateTime startTime) {
+  public void setStartTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
-  public RecordingCompleteCallback answerTime(OffsetDateTime answerTime) {
+  public RecordingCompleteCallback answerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
     this.answerTime = answerTime;
     return this;
   }
@@ -426,12 +448,12 @@ public class RecordingCompleteCallback {
     return answerTime;
   }
 
-  public void setAnswerTime(OffsetDateTime answerTime) {
+  public void setAnswerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
     this.answerTime = answerTime;
   }
 
 
-  public RecordingCompleteCallback endTime(OffsetDateTime endTime) {
+  public RecordingCompleteCallback endTime(@javax.annotation.Nullable OffsetDateTime endTime) {
     this.endTime = endTime;
     return this;
   }
@@ -445,12 +467,12 @@ public class RecordingCompleteCallback {
     return endTime;
   }
 
-  public void setEndTime(OffsetDateTime endTime) {
+  public void setEndTime(@javax.annotation.Nullable OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
 
-  public RecordingCompleteCallback duration(String duration) {
+  public RecordingCompleteCallback duration(@javax.annotation.Nullable String duration) {
     this.duration = duration;
     return this;
   }
@@ -464,12 +486,12 @@ public class RecordingCompleteCallback {
     return duration;
   }
 
-  public void setDuration(String duration) {
+  public void setDuration(@javax.annotation.Nullable String duration) {
     this.duration = duration;
   }
 
 
-  public RecordingCompleteCallback fileFormat(FileFormatEnum fileFormat) {
+  public RecordingCompleteCallback fileFormat(@javax.annotation.Nullable FileFormatEnum fileFormat) {
     this.fileFormat = fileFormat;
     return this;
   }
@@ -483,12 +505,12 @@ public class RecordingCompleteCallback {
     return fileFormat;
   }
 
-  public void setFileFormat(FileFormatEnum fileFormat) {
+  public void setFileFormat(@javax.annotation.Nullable FileFormatEnum fileFormat) {
     this.fileFormat = fileFormat;
   }
 
 
-  public RecordingCompleteCallback channels(Integer channels) {
+  public RecordingCompleteCallback channels(@javax.annotation.Nullable Integer channels) {
     this.channels = channels;
     return this;
   }
@@ -502,12 +524,12 @@ public class RecordingCompleteCallback {
     return channels;
   }
 
-  public void setChannels(Integer channels) {
+  public void setChannels(@javax.annotation.Nullable Integer channels) {
     this.channels = channels;
   }
 
 
-  public RecordingCompleteCallback tag(String tag) {
+  public RecordingCompleteCallback tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
@@ -521,12 +543,12 @@ public class RecordingCompleteCallback {
     return tag;
   }
 
-  public void setTag(String tag) {
+  public void setTag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
   }
 
 
-  public RecordingCompleteCallback transferCallerId(String transferCallerId) {
+  public RecordingCompleteCallback transferCallerId(@javax.annotation.Nullable String transferCallerId) {
     this.transferCallerId = transferCallerId;
     return this;
   }
@@ -540,12 +562,12 @@ public class RecordingCompleteCallback {
     return transferCallerId;
   }
 
-  public void setTransferCallerId(String transferCallerId) {
+  public void setTransferCallerId(@javax.annotation.Nullable String transferCallerId) {
     this.transferCallerId = transferCallerId;
   }
 
 
-  public RecordingCompleteCallback transferTo(String transferTo) {
+  public RecordingCompleteCallback transferTo(@javax.annotation.Nullable String transferTo) {
     this.transferTo = transferTo;
     return this;
   }
@@ -559,7 +581,7 @@ public class RecordingCompleteCallback {
     return transferTo;
   }
 
-  public void setTransferTo(String transferTo) {
+  public void setTransferTo(@javax.annotation.Nullable String transferTo) {
     this.transferTo = transferTo;
   }
 

@@ -48,16 +48,17 @@ import com.bandwidth.sdk.JSON;
 /**
  * VerifyCodeResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class VerifyCodeResponse {
   public static final String SERIALIZED_NAME_VALID = "valid";
   @SerializedName(SERIALIZED_NAME_VALID)
+  @javax.annotation.Nullable
   private Boolean valid;
 
   public VerifyCodeResponse() {
   }
 
-  public VerifyCodeResponse valid(Boolean valid) {
+  public VerifyCodeResponse valid(@javax.annotation.Nullable Boolean valid) {
     this.valid = valid;
     return this;
   }
@@ -71,7 +72,7 @@ public class VerifyCodeResponse {
     return valid;
   }
 
-  public void setValid(Boolean valid) {
+  public void setValid(@javax.annotation.Nullable Boolean valid) {
     this.valid = valid;
   }
 

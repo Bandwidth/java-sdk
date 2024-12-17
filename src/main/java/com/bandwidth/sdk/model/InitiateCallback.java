@@ -53,60 +53,72 @@ import com.bandwidth.sdk.JSON;
 /**
  * The Initiate event is fired when an inbound call is received for a Telephone Number on your Account. It is sent to the URL specified in the application associated with the location (sip-peer) that the called telephone number belongs to.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class InitiateCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
+  @javax.annotation.Nullable
   private String eventType;
 
   public static final String SERIALIZED_NAME_EVENT_TIME = "eventTime";
   @SerializedName(SERIALIZED_NAME_EVENT_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime eventTime;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+  @javax.annotation.Nullable
   private String accountId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  @javax.annotation.Nullable
   private String applicationId;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
+  @javax.annotation.Nullable
   private String from;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
+  @javax.annotation.Nullable
   private String to;
 
   public static final String SERIALIZED_NAME_DIRECTION = "direction";
   @SerializedName(SERIALIZED_NAME_DIRECTION)
+  @javax.annotation.Nullable
   private CallDirectionEnum direction;
 
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
+  @javax.annotation.Nullable
   private String callId;
 
   public static final String SERIALIZED_NAME_CALL_URL = "callUrl";
   @SerializedName(SERIALIZED_NAME_CALL_URL)
+  @javax.annotation.Nullable
   private URI callUrl;
 
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
+  @javax.annotation.Nullable
   private OffsetDateTime startTime;
 
   public static final String SERIALIZED_NAME_DIVERSION = "diversion";
   @SerializedName(SERIALIZED_NAME_DIVERSION)
+  @javax.annotation.Nullable
   private Diversion diversion;
 
   public static final String SERIALIZED_NAME_STIR_SHAKEN = "stirShaken";
   @SerializedName(SERIALIZED_NAME_STIR_SHAKEN)
+  @javax.annotation.Nullable
   private StirShaken stirShaken;
 
   public InitiateCallback() {
   }
 
-  public InitiateCallback eventType(String eventType) {
+  public InitiateCallback eventType(@javax.annotation.Nullable String eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -120,12 +132,12 @@ public class InitiateCallback {
     return eventType;
   }
 
-  public void setEventType(String eventType) {
+  public void setEventType(@javax.annotation.Nullable String eventType) {
     this.eventType = eventType;
   }
 
 
-  public InitiateCallback eventTime(OffsetDateTime eventTime) {
+  public InitiateCallback eventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
     this.eventTime = eventTime;
     return this;
   }
@@ -139,12 +151,12 @@ public class InitiateCallback {
     return eventTime;
   }
 
-  public void setEventTime(OffsetDateTime eventTime) {
+  public void setEventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
     this.eventTime = eventTime;
   }
 
 
-  public InitiateCallback accountId(String accountId) {
+  public InitiateCallback accountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -158,12 +170,12 @@ public class InitiateCallback {
     return accountId;
   }
 
-  public void setAccountId(String accountId) {
+  public void setAccountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
   }
 
 
-  public InitiateCallback applicationId(String applicationId) {
+  public InitiateCallback applicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -177,12 +189,12 @@ public class InitiateCallback {
     return applicationId;
   }
 
-  public void setApplicationId(String applicationId) {
+  public void setApplicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public InitiateCallback from(String from) {
+  public InitiateCallback from(@javax.annotation.Nullable String from) {
     this.from = from;
     return this;
   }
@@ -196,12 +208,12 @@ public class InitiateCallback {
     return from;
   }
 
-  public void setFrom(String from) {
+  public void setFrom(@javax.annotation.Nullable String from) {
     this.from = from;
   }
 
 
-  public InitiateCallback to(String to) {
+  public InitiateCallback to(@javax.annotation.Nullable String to) {
     this.to = to;
     return this;
   }
@@ -215,12 +227,12 @@ public class InitiateCallback {
     return to;
   }
 
-  public void setTo(String to) {
+  public void setTo(@javax.annotation.Nullable String to) {
     this.to = to;
   }
 
 
-  public InitiateCallback direction(CallDirectionEnum direction) {
+  public InitiateCallback direction(@javax.annotation.Nullable CallDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
@@ -234,12 +246,12 @@ public class InitiateCallback {
     return direction;
   }
 
-  public void setDirection(CallDirectionEnum direction) {
+  public void setDirection(@javax.annotation.Nullable CallDirectionEnum direction) {
     this.direction = direction;
   }
 
 
-  public InitiateCallback callId(String callId) {
+  public InitiateCallback callId(@javax.annotation.Nullable String callId) {
     this.callId = callId;
     return this;
   }
@@ -253,12 +265,12 @@ public class InitiateCallback {
     return callId;
   }
 
-  public void setCallId(String callId) {
+  public void setCallId(@javax.annotation.Nullable String callId) {
     this.callId = callId;
   }
 
 
-  public InitiateCallback callUrl(URI callUrl) {
+  public InitiateCallback callUrl(@javax.annotation.Nullable URI callUrl) {
     this.callUrl = callUrl;
     return this;
   }
@@ -272,12 +284,12 @@ public class InitiateCallback {
     return callUrl;
   }
 
-  public void setCallUrl(URI callUrl) {
+  public void setCallUrl(@javax.annotation.Nullable URI callUrl) {
     this.callUrl = callUrl;
   }
 
 
-  public InitiateCallback startTime(OffsetDateTime startTime) {
+  public InitiateCallback startTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -291,12 +303,12 @@ public class InitiateCallback {
     return startTime;
   }
 
-  public void setStartTime(OffsetDateTime startTime) {
+  public void setStartTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
-  public InitiateCallback diversion(Diversion diversion) {
+  public InitiateCallback diversion(@javax.annotation.Nullable Diversion diversion) {
     this.diversion = diversion;
     return this;
   }
@@ -310,12 +322,12 @@ public class InitiateCallback {
     return diversion;
   }
 
-  public void setDiversion(Diversion diversion) {
+  public void setDiversion(@javax.annotation.Nullable Diversion diversion) {
     this.diversion = diversion;
   }
 
 
-  public InitiateCallback stirShaken(StirShaken stirShaken) {
+  public InitiateCallback stirShaken(@javax.annotation.Nullable StirShaken stirShaken) {
     this.stirShaken = stirShaken;
     return this;
   }
@@ -329,7 +341,7 @@ public class InitiateCallback {
     return stirShaken;
   }
 
-  public void setStirShaken(StirShaken stirShaken) {
+  public void setStirShaken(@javax.annotation.Nullable StirShaken stirShaken) {
     this.stirShaken = stirShaken;
   }
 

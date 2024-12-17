@@ -48,16 +48,17 @@ import com.bandwidth.sdk.JSON;
 /**
  * MfaUnauthorizedRequestError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class MfaUnauthorizedRequestError {
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nullable
   private String message;
 
   public MfaUnauthorizedRequestError() {
   }
 
-  public MfaUnauthorizedRequestError message(String message) {
+  public MfaUnauthorizedRequestError message(@javax.annotation.Nullable String message) {
     this.message = message;
     return this;
   }
@@ -71,7 +72,7 @@ public class MfaUnauthorizedRequestError {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nullable String message) {
     this.message = message;
   }
 

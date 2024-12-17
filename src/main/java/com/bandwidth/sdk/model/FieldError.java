@@ -48,20 +48,22 @@ import com.bandwidth.sdk.JSON;
 /**
  * FieldError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class FieldError {
   public static final String SERIALIZED_NAME_FIELD_NAME = "fieldName";
   @SerializedName(SERIALIZED_NAME_FIELD_NAME)
+  @javax.annotation.Nullable
   private String fieldName;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
   private String description;
 
   public FieldError() {
   }
 
-  public FieldError fieldName(String fieldName) {
+  public FieldError fieldName(@javax.annotation.Nullable String fieldName) {
     this.fieldName = fieldName;
     return this;
   }
@@ -75,12 +77,12 @@ public class FieldError {
     return fieldName;
   }
 
-  public void setFieldName(String fieldName) {
+  public void setFieldName(@javax.annotation.Nullable String fieldName) {
     this.fieldName = fieldName;
   }
 
 
-  public FieldError description(String description) {
+  public FieldError description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -94,7 +96,7 @@ public class FieldError {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 

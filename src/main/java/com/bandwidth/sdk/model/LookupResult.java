@@ -48,48 +48,57 @@ import com.bandwidth.sdk.JSON;
 /**
  * Carrier information results for the specified telephone number.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class LookupResult {
   public static final String SERIALIZED_NAME_RESPONSE_CODE = "Response Code";
   @SerializedName(SERIALIZED_NAME_RESPONSE_CODE)
+  @javax.annotation.Nullable
   private Integer responseCode;
 
   public static final String SERIALIZED_NAME_MESSAGE = "Message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nullable
   private String message;
 
   public static final String SERIALIZED_NAME_E164_FORMAT = "E.164 Format";
   @SerializedName(SERIALIZED_NAME_E164_FORMAT)
+  @javax.annotation.Nullable
   private String e164Format;
 
   public static final String SERIALIZED_NAME_FORMATTED = "Formatted";
   @SerializedName(SERIALIZED_NAME_FORMATTED)
+  @javax.annotation.Nullable
   private String formatted;
 
   public static final String SERIALIZED_NAME_COUNTRY = "Country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)
+  @javax.annotation.Nullable
   private String country;
 
   public static final String SERIALIZED_NAME_LINE_TYPE = "Line Type";
   @SerializedName(SERIALIZED_NAME_LINE_TYPE)
+  @javax.annotation.Nullable
   private String lineType;
 
   public static final String SERIALIZED_NAME_LINE_PROVIDER = "Line Provider";
   @SerializedName(SERIALIZED_NAME_LINE_PROVIDER)
+  @javax.annotation.Nullable
   private String lineProvider;
 
   public static final String SERIALIZED_NAME_MOBILE_COUNTRY_CODE = "Mobile Country Code";
   @SerializedName(SERIALIZED_NAME_MOBILE_COUNTRY_CODE)
+  @javax.annotation.Nullable
   private String mobileCountryCode;
 
   public static final String SERIALIZED_NAME_MOBILE_NETWORK_CODE = "Mobile Network Code";
   @SerializedName(SERIALIZED_NAME_MOBILE_NETWORK_CODE)
+  @javax.annotation.Nullable
   private String mobileNetworkCode;
 
   public LookupResult() {
   }
 
-  public LookupResult responseCode(Integer responseCode) {
+  public LookupResult responseCode(@javax.annotation.Nullable Integer responseCode) {
     this.responseCode = responseCode;
     return this;
   }
@@ -103,12 +112,12 @@ public class LookupResult {
     return responseCode;
   }
 
-  public void setResponseCode(Integer responseCode) {
+  public void setResponseCode(@javax.annotation.Nullable Integer responseCode) {
     this.responseCode = responseCode;
   }
 
 
-  public LookupResult message(String message) {
+  public LookupResult message(@javax.annotation.Nullable String message) {
     this.message = message;
     return this;
   }
@@ -122,12 +131,12 @@ public class LookupResult {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nullable String message) {
     this.message = message;
   }
 
 
-  public LookupResult e164Format(String e164Format) {
+  public LookupResult e164Format(@javax.annotation.Nullable String e164Format) {
     this.e164Format = e164Format;
     return this;
   }
@@ -141,12 +150,12 @@ public class LookupResult {
     return e164Format;
   }
 
-  public void setE164Format(String e164Format) {
+  public void setE164Format(@javax.annotation.Nullable String e164Format) {
     this.e164Format = e164Format;
   }
 
 
-  public LookupResult formatted(String formatted) {
+  public LookupResult formatted(@javax.annotation.Nullable String formatted) {
     this.formatted = formatted;
     return this;
   }
@@ -160,12 +169,12 @@ public class LookupResult {
     return formatted;
   }
 
-  public void setFormatted(String formatted) {
+  public void setFormatted(@javax.annotation.Nullable String formatted) {
     this.formatted = formatted;
   }
 
 
-  public LookupResult country(String country) {
+  public LookupResult country(@javax.annotation.Nullable String country) {
     this.country = country;
     return this;
   }
@@ -179,12 +188,12 @@ public class LookupResult {
     return country;
   }
 
-  public void setCountry(String country) {
+  public void setCountry(@javax.annotation.Nullable String country) {
     this.country = country;
   }
 
 
-  public LookupResult lineType(String lineType) {
+  public LookupResult lineType(@javax.annotation.Nullable String lineType) {
     this.lineType = lineType;
     return this;
   }
@@ -198,12 +207,12 @@ public class LookupResult {
     return lineType;
   }
 
-  public void setLineType(String lineType) {
+  public void setLineType(@javax.annotation.Nullable String lineType) {
     this.lineType = lineType;
   }
 
 
-  public LookupResult lineProvider(String lineProvider) {
+  public LookupResult lineProvider(@javax.annotation.Nullable String lineProvider) {
     this.lineProvider = lineProvider;
     return this;
   }
@@ -217,12 +226,12 @@ public class LookupResult {
     return lineProvider;
   }
 
-  public void setLineProvider(String lineProvider) {
+  public void setLineProvider(@javax.annotation.Nullable String lineProvider) {
     this.lineProvider = lineProvider;
   }
 
 
-  public LookupResult mobileCountryCode(String mobileCountryCode) {
+  public LookupResult mobileCountryCode(@javax.annotation.Nullable String mobileCountryCode) {
     this.mobileCountryCode = mobileCountryCode;
     return this;
   }
@@ -236,12 +245,12 @@ public class LookupResult {
     return mobileCountryCode;
   }
 
-  public void setMobileCountryCode(String mobileCountryCode) {
+  public void setMobileCountryCode(@javax.annotation.Nullable String mobileCountryCode) {
     this.mobileCountryCode = mobileCountryCode;
   }
 
 
-  public LookupResult mobileNetworkCode(String mobileNetworkCode) {
+  public LookupResult mobileNetworkCode(@javax.annotation.Nullable String mobileNetworkCode) {
     this.mobileNetworkCode = mobileNetworkCode;
     return this;
   }
@@ -255,7 +264,7 @@ public class LookupResult {
     return mobileNetworkCode;
   }
 
-  public void setMobileNetworkCode(String mobileNetworkCode) {
+  public void setMobileNetworkCode(@javax.annotation.Nullable String mobileNetworkCode) {
     this.mobileNetworkCode = mobileNetworkCode;
   }
 

@@ -55,44 +55,52 @@ import com.bandwidth.sdk.JSON;
 /**
  * MessageRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class MessageRequest {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  @javax.annotation.Nonnull
   private String applicationId;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
+  @javax.annotation.Nonnull
   private Set<String> to = new LinkedHashSet<>();
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
+  @javax.annotation.Nonnull
   private String from;
 
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
+  @javax.annotation.Nullable
   private String text;
 
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
+  @javax.annotation.Nullable
   private List<URI> media = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
+  @javax.annotation.Nullable
   private String tag;
 
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
+  @javax.annotation.Nullable
   private PriorityEnum priority;
 
   public static final String SERIALIZED_NAME_EXPIRATION = "expiration";
   @SerializedName(SERIALIZED_NAME_EXPIRATION)
+  @javax.annotation.Nullable
   private OffsetDateTime expiration;
 
   public MessageRequest() {
   }
 
-  public MessageRequest applicationId(String applicationId) {
+  public MessageRequest applicationId(@javax.annotation.Nonnull String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -106,12 +114,12 @@ public class MessageRequest {
     return applicationId;
   }
 
-  public void setApplicationId(String applicationId) {
+  public void setApplicationId(@javax.annotation.Nonnull String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public MessageRequest to(Set<String> to) {
+  public MessageRequest to(@javax.annotation.Nonnull Set<String> to) {
     this.to = to;
     return this;
   }
@@ -133,12 +141,12 @@ public class MessageRequest {
     return to;
   }
 
-  public void setTo(Set<String> to) {
+  public void setTo(@javax.annotation.Nonnull Set<String> to) {
     this.to = to;
   }
 
 
-  public MessageRequest from(String from) {
+  public MessageRequest from(@javax.annotation.Nonnull String from) {
     this.from = from;
     return this;
   }
@@ -152,12 +160,12 @@ public class MessageRequest {
     return from;
   }
 
-  public void setFrom(String from) {
+  public void setFrom(@javax.annotation.Nonnull String from) {
     this.from = from;
   }
 
 
-  public MessageRequest text(String text) {
+  public MessageRequest text(@javax.annotation.Nullable String text) {
     this.text = text;
     return this;
   }
@@ -171,12 +179,12 @@ public class MessageRequest {
     return text;
   }
 
-  public void setText(String text) {
+  public void setText(@javax.annotation.Nullable String text) {
     this.text = text;
   }
 
 
-  public MessageRequest media(List<URI> media) {
+  public MessageRequest media(@javax.annotation.Nullable List<URI> media) {
     this.media = media;
     return this;
   }
@@ -198,12 +206,12 @@ public class MessageRequest {
     return media;
   }
 
-  public void setMedia(List<URI> media) {
+  public void setMedia(@javax.annotation.Nullable List<URI> media) {
     this.media = media;
   }
 
 
-  public MessageRequest tag(String tag) {
+  public MessageRequest tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
@@ -217,12 +225,12 @@ public class MessageRequest {
     return tag;
   }
 
-  public void setTag(String tag) {
+  public void setTag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
   }
 
 
-  public MessageRequest priority(PriorityEnum priority) {
+  public MessageRequest priority(@javax.annotation.Nullable PriorityEnum priority) {
     this.priority = priority;
     return this;
   }
@@ -236,12 +244,12 @@ public class MessageRequest {
     return priority;
   }
 
-  public void setPriority(PriorityEnum priority) {
+  public void setPriority(@javax.annotation.Nullable PriorityEnum priority) {
     this.priority = priority;
   }
 
 
-  public MessageRequest expiration(OffsetDateTime expiration) {
+  public MessageRequest expiration(@javax.annotation.Nullable OffsetDateTime expiration) {
     this.expiration = expiration;
     return this;
   }
@@ -255,7 +263,7 @@ public class MessageRequest {
     return expiration;
   }
 
-  public void setExpiration(OffsetDateTime expiration) {
+  public void setExpiration(@javax.annotation.Nullable OffsetDateTime expiration) {
     this.expiration = expiration;
   }
 
