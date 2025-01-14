@@ -24,30 +24,22 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The status of the message. One of RECEIVED QUEUED SENDING SENT FAILED DELIVERED ACCEPTED UNDELIVERED. 
+ * Indicates the type of the callback: - &#x60;message-received&#x60; for inbound callbacks. - One of &#x60;message-sending&#x60;, &#x60;message-delivered&#x60;, &#x60;message-failed&#x60; for status callbacks. 
  */
-@JsonAdapter(MessageStatusEnum.Adapter.class)
-public enum MessageStatusEnum {
+@JsonAdapter(CallbackTypeEnum.Adapter.class)
+public enum CallbackTypeEnum {
   
-  RECEIVED("RECEIVED"),
+  RECEIVED("message-received"),
   
-  QUEUED("QUEUED"),
+  SENDING("message-sending"),
   
-  SENDING("SENDING"),
+  DELIVERED("message-delivered"),
   
-  SENT("SENT"),
-  
-  FAILED("FAILED"),
-  
-  DELIVERED("DELIVERED"),
-  
-  ACCEPTED("ACCEPTED"),
-  
-  UNDELIVERED("UNDELIVERED");
+  FAILED("message-failed");
 
   private String value;
 
-  MessageStatusEnum(String value) {
+  CallbackTypeEnum(String value) {
     this.value = value;
   }
 
@@ -60,8 +52,8 @@ public enum MessageStatusEnum {
     return String.valueOf(value);
   }
 
-  public static MessageStatusEnum fromValue(String value) {
-    for (MessageStatusEnum b : MessageStatusEnum.values()) {
+  public static CallbackTypeEnum fromValue(String value) {
+    for (CallbackTypeEnum b : CallbackTypeEnum.values()) {
       if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
@@ -69,22 +61,22 @@ public enum MessageStatusEnum {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<MessageStatusEnum> {
+  public static class Adapter extends TypeAdapter<CallbackTypeEnum> {
     @Override
-    public void write(final JsonWriter jsonWriter, final MessageStatusEnum enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final CallbackTypeEnum enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public MessageStatusEnum read(final JsonReader jsonReader) throws IOException {
+    public CallbackTypeEnum read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return MessageStatusEnum.fromValue(value);
+      return CallbackTypeEnum.fromValue(value);
     }
   }
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
-    MessageStatusEnum.fromValue(value);
+    CallbackTypeEnum.fromValue(value);
   }
 }
 

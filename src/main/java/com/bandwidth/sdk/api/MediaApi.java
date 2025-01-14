@@ -583,7 +583,7 @@ public class MediaApi {
      * @param mediaId Media ID to retrieve. (required)
      * @param body  (required)
      * @param contentType The media type of the entity-body. (optional)
-     * @param cacheControl General-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain. (optional)
+     * @param cacheControl General-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -660,6 +660,8 @@ public class MediaApi {
             "audio/3gpp",
             "image/bmp",
             "image/gif",
+            "image/heic",
+            "image/heif",
             "image/jpeg",
             "image/pjpeg",
             "image/png",
@@ -670,6 +672,7 @@ public class MediaApi {
             "text/css",
             "text/csv",
             "text/calendar",
+            "text/html",
             "text/plain",
             "text/javascript",
             "text/vcard",
@@ -681,7 +684,8 @@ public class MediaApi {
             "video/ogg",
             "video/quicktime",
             "video/webm",
-            "video/x-ms-wmv"
+            "video/x-ms-wmv",
+            "video/x-flv"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -730,7 +734,7 @@ public class MediaApi {
      * @param mediaId Media ID to retrieve. (required)
      * @param body  (required)
      * @param contentType The media type of the entity-body. (optional)
-     * @param cacheControl General-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain. (optional)
+     * @param cacheControl General-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain.  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -758,7 +762,7 @@ public class MediaApi {
      * @param mediaId Media ID to retrieve. (required)
      * @param body  (required)
      * @param contentType The media type of the entity-body. (optional)
-     * @param cacheControl General-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain. (optional)
+     * @param cacheControl General-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain.  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -788,7 +792,7 @@ public class MediaApi {
      * @param mediaId Media ID to retrieve. (required)
      * @param body  (required)
      * @param contentType The media type of the entity-body. (optional)
-     * @param cacheControl General-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain. (optional)
+     * @param cacheControl General-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

@@ -17,6 +17,7 @@ docs/CallTranscriptionMetadata.md
 docs/CallTranscriptionResponse.md
 docs/CallTranscriptionTrackEnum.md
 docs/CallbackMethodEnum.md
+docs/CallbackTypeEnum.md
 docs/CallsApi.md
 docs/CodeRequest.md
 docs/Conference.md
@@ -41,8 +42,6 @@ docs/DtmfCallback.md
 docs/FieldError.md
 docs/FileFormatEnum.md
 docs/GatherCallback.md
-docs/InboundMessageCallback.md
-docs/InboundMessageCallbackMessage.md
 docs/InitiateCallback.md
 docs/ListMessageDirectionEnum.md
 docs/ListMessageItem.md
@@ -57,14 +56,10 @@ docs/MachineDetectionResult.md
 docs/Media.md
 docs/MediaApi.md
 docs/Message.md
-docs/MessageDeliveredCallback.md
-docs/MessageDeliveredCallbackMessage.md
+docs/MessageCallback.md
+docs/MessageCallbackMessage.md
 docs/MessageDirectionEnum.md
-docs/MessageFailedCallback.md
-docs/MessageFailedCallbackMessage.md
 docs/MessageRequest.md
-docs/MessageSendingCallback.md
-docs/MessageSendingCallbackMessage.md
 docs/MessageStatusEnum.md
 docs/MessageTypeEnum.md
 docs/MessagesApi.md
@@ -155,6 +150,7 @@ src/main/java/com/bandwidth/sdk/model/CallTranscriptionMetadata.java
 src/main/java/com/bandwidth/sdk/model/CallTranscriptionResponse.java
 src/main/java/com/bandwidth/sdk/model/CallTranscriptionTrackEnum.java
 src/main/java/com/bandwidth/sdk/model/CallbackMethodEnum.java
+src/main/java/com/bandwidth/sdk/model/CallbackTypeEnum.java
 src/main/java/com/bandwidth/sdk/model/CodeRequest.java
 src/main/java/com/bandwidth/sdk/model/Conference.java
 src/main/java/com/bandwidth/sdk/model/ConferenceCompletedCallback.java
@@ -177,8 +173,6 @@ src/main/java/com/bandwidth/sdk/model/DtmfCallback.java
 src/main/java/com/bandwidth/sdk/model/FieldError.java
 src/main/java/com/bandwidth/sdk/model/FileFormatEnum.java
 src/main/java/com/bandwidth/sdk/model/GatherCallback.java
-src/main/java/com/bandwidth/sdk/model/InboundMessageCallback.java
-src/main/java/com/bandwidth/sdk/model/InboundMessageCallbackMessage.java
 src/main/java/com/bandwidth/sdk/model/InitiateCallback.java
 src/main/java/com/bandwidth/sdk/model/ListMessageDirectionEnum.java
 src/main/java/com/bandwidth/sdk/model/ListMessageItem.java
@@ -192,14 +186,10 @@ src/main/java/com/bandwidth/sdk/model/MachineDetectionModeEnum.java
 src/main/java/com/bandwidth/sdk/model/MachineDetectionResult.java
 src/main/java/com/bandwidth/sdk/model/Media.java
 src/main/java/com/bandwidth/sdk/model/Message.java
-src/main/java/com/bandwidth/sdk/model/MessageDeliveredCallback.java
-src/main/java/com/bandwidth/sdk/model/MessageDeliveredCallbackMessage.java
+src/main/java/com/bandwidth/sdk/model/MessageCallback.java
+src/main/java/com/bandwidth/sdk/model/MessageCallbackMessage.java
 src/main/java/com/bandwidth/sdk/model/MessageDirectionEnum.java
-src/main/java/com/bandwidth/sdk/model/MessageFailedCallback.java
-src/main/java/com/bandwidth/sdk/model/MessageFailedCallbackMessage.java
 src/main/java/com/bandwidth/sdk/model/MessageRequest.java
-src/main/java/com/bandwidth/sdk/model/MessageSendingCallback.java
-src/main/java/com/bandwidth/sdk/model/MessageSendingCallbackMessage.java
 src/main/java/com/bandwidth/sdk/model/MessageStatusEnum.java
 src/main/java/com/bandwidth/sdk/model/MessageTypeEnum.java
 src/main/java/com/bandwidth/sdk/model/MessagesList.java
