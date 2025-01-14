@@ -276,7 +276,7 @@ public class Example {
     String mediaId = "14762070468292kw2fuqty55yp2b2/0/bw.png"; // String | Media ID to retrieve.
     File body = new File("/path/to/file"); // File | 
     String contentType = "audio/wav"; // String | The media type of the entity-body.
-    String cacheControl = "no-cache"; // String | General-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain. 
+    String cacheControl = "no-cache"; // String | General-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain.
     try {
       apiInstance.uploadMedia(accountId, mediaId, body, contentType, cacheControl);
     } catch (ApiException e) {
@@ -298,7 +298,7 @@ public class Example {
 | **mediaId** | **String**| Media ID to retrieve. | |
 | **body** | **File**|  | |
 | **contentType** | **String**| The media type of the entity-body. | [optional] |
-| **cacheControl** | **String**| General-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain.  | [optional] |
+| **cacheControl** | **String**| General-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain. | [optional] |
 
 ### Return type
 
