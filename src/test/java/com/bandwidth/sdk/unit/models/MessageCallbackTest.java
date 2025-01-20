@@ -15,29 +15,31 @@ package com.bandwidth.sdk.unit.models;
 import org.junit.jupiter.api.Test;
 
 import java.time.OffsetDateTime;
-import com.bandwidth.sdk.model.MessageDeliveredCallback;
-import com.bandwidth.sdk.model.MessageDeliveredCallbackMessage;
+import com.bandwidth.sdk.model.MessageCallback;
+import com.bandwidth.sdk.model.CallbackTypeEnum;
+import com.bandwidth.sdk.model.MessageCallbackMessage;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
- * Model tests for MessageDeliveredCallback
+ * Model tests for MessageCallback
  */
-public class MessageDeliveredCallbackTest {
-    private final MessageDeliveredCallback model = new MessageDeliveredCallback()
+public class MessageCallbackTest {
+    private final MessageCallback model = new MessageCallback()
             .time(OffsetDateTime.now())
-            .type("type")
-            .to("to")
+            .type(CallbackTypeEnum.DELIVERED)
+            .to("+1234567890")
             .description("description")
-            .message(new MessageDeliveredCallbackMessage());
+            .message(new MessageCallbackMessage())
+            .errorCode(123);
 
     /**
-     * Model tests for MessageDeliveredCallback
+     * Model tests for MessageCallback
      */
     @Test
-    public void testMessageDeliveredCallback() {
-        assertThat(model, instanceOf(MessageDeliveredCallback.class));
+    public void testMessageCallback() {
+        assertThat(model, instanceOf(MessageCallback.class));
     }
 
     /**
@@ -53,7 +55,7 @@ public class MessageDeliveredCallbackTest {
      */
     @Test
     public void typeTest() {
-        assertThat(model.getType(), instanceOf(String.class));
+        assertThat(model.getType(), instanceOf(CallbackTypeEnum.class));
     }
 
     /**
@@ -77,7 +79,15 @@ public class MessageDeliveredCallbackTest {
      */
     @Test
     public void messageTest() {
-        assertThat(model.getMessage(), instanceOf(MessageDeliveredCallbackMessage.class));
+        assertThat(model.getMessage(), instanceOf(MessageCallbackMessage.class));
+    }
+
+    /**
+     * Test the property 'errorCode'
+     */
+    @Test
+    public void errorCodeTest() {
+        assertThat(model.getErrorCode(), instanceOf(Integer.class));
     }
 
 }

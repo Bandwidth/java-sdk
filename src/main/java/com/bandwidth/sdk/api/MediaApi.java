@@ -660,6 +660,8 @@ public class MediaApi {
             "audio/3gpp",
             "image/bmp",
             "image/gif",
+            "image/heic",
+            "image/heif",
             "image/jpeg",
             "image/pjpeg",
             "image/png",
@@ -670,6 +672,7 @@ public class MediaApi {
             "text/css",
             "text/csv",
             "text/calendar",
+            "text/html",
             "text/plain",
             "text/javascript",
             "text/vcard",
@@ -681,7 +684,8 @@ public class MediaApi {
             "video/ogg",
             "video/quicktime",
             "video/webm",
-            "video/x-ms-wmv"
+            "video/x-ms-wmv",
+            "video/x-flv"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {

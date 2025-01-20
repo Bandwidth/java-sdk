@@ -13,45 +13,44 @@
 package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.util.collections.Sets;
 
 import java.net.URI;
-import java.util.List;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.time.OffsetDateTime;
-import com.bandwidth.sdk.model.MessageFailedCallbackMessage;
-import com.bandwidth.sdk.model.PriorityEnum;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import org.mockito.internal.util.collections.Sets;
+import com.bandwidth.sdk.model.MessageCallbackMessage;
 import com.bandwidth.sdk.model.MessageDirectionEnum;
+import com.bandwidth.sdk.model.PriorityEnum;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
- * Model tests for MessageFailedCallbackMessage
+ * Model tests for MessageCallbackMessage
  */
-public class MessageFailedCallbackMessageTest {
-    private final MessageFailedCallbackMessage model = new MessageFailedCallbackMessage()
+public class MessageCallbackMessageTest {
+    private final MessageCallbackMessage model = new MessageCallbackMessage()
             .id("id")
             .owner("owner")
             .applicationId("applicationId")
             .time(OffsetDateTime.now())
-            .segmentCount(56)
+            .segmentCount(1)
             .direction(MessageDirectionEnum.IN)
-            .to(Sets.newSet("to"))
+            .to(Sets.newSet("+1234567890"))
             .from("from")
             .text("text")
             .tag("tag")
-            .media(new ArrayList<URI>(Arrays.asList(URI.create("http://example.com"))))
+            .media(new ArrayList<URI>())
             .priority(PriorityEnum.HIGH);
 
     /**
-     * Model tests for MessageFailedCallbackMessage
+     * Model tests for MessageCallbackMessage
      */
     @Test
-    public void testMessageFailedCallbackMessage() {
-        assertThat(model, instanceOf(MessageFailedCallbackMessage.class));
+    public void testMessageCallbackMessage() {
+        assertThat(model, instanceOf(MessageCallbackMessage.class));
     }
 
     /**
@@ -107,7 +106,7 @@ public class MessageFailedCallbackMessageTest {
      */
     @Test
     public void toTest() {
-        assertThat(model.getTo(), instanceOf(LinkedHashSet.class));
+        assertThat(model.getTo(), instanceOf(Set.class));
     }
 
     /**

@@ -14,7 +14,8 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import com.bandwidth.sdk.model.MessageFailedCallbackMessage;
+import com.bandwidth.sdk.model.CallbackTypeEnum;
+import com.bandwidth.sdk.model.MessageCallbackMessage;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -23,6 +24,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,10 +50,10 @@ import java.util.Set;
 import com.bandwidth.sdk.JSON;
 
 /**
- * Message Failed Callback
+ * Message Callback Schema
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class MessageFailedCallback {
+public class MessageCallback {
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)
   @javax.annotation.Nonnull
@@ -60,7 +62,7 @@ public class MessageFailedCallback {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   @javax.annotation.Nonnull
-  private String type;
+  private CallbackTypeEnum type;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
@@ -75,17 +77,17 @@ public class MessageFailedCallback {
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
   @javax.annotation.Nonnull
-  private MessageFailedCallbackMessage message;
+  private MessageCallbackMessage message;
 
   public static final String SERIALIZED_NAME_ERROR_CODE = "errorCode";
   @SerializedName(SERIALIZED_NAME_ERROR_CODE)
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private Integer errorCode;
 
-  public MessageFailedCallback() {
+  public MessageCallback() {
   }
 
-  public MessageFailedCallback time(@javax.annotation.Nonnull OffsetDateTime time) {
+  public MessageCallback time(@javax.annotation.Nonnull OffsetDateTime time) {
     this.time = time;
     return this;
   }
@@ -104,7 +106,7 @@ public class MessageFailedCallback {
   }
 
 
-  public MessageFailedCallback type(@javax.annotation.Nonnull String type) {
+  public MessageCallback type(@javax.annotation.Nonnull CallbackTypeEnum type) {
     this.type = type;
     return this;
   }
@@ -114,16 +116,16 @@ public class MessageFailedCallback {
    * @return type
    */
   @javax.annotation.Nonnull
-  public String getType() {
+  public CallbackTypeEnum getType() {
     return type;
   }
 
-  public void setType(@javax.annotation.Nonnull String type) {
+  public void setType(@javax.annotation.Nonnull CallbackTypeEnum type) {
     this.type = type;
   }
 
 
-  public MessageFailedCallback to(@javax.annotation.Nonnull String to) {
+  public MessageCallback to(@javax.annotation.Nonnull String to) {
     this.to = to;
     return this;
   }
@@ -142,13 +144,13 @@ public class MessageFailedCallback {
   }
 
 
-  public MessageFailedCallback description(@javax.annotation.Nonnull String description) {
+  public MessageCallback description(@javax.annotation.Nonnull String description) {
     this.description = description;
     return this;
   }
 
   /**
-   * Get description
+   * A detailed description of the event described by the callback.
    * @return description
    */
   @javax.annotation.Nonnull
@@ -161,7 +163,7 @@ public class MessageFailedCallback {
   }
 
 
-  public MessageFailedCallback message(@javax.annotation.Nonnull MessageFailedCallbackMessage message) {
+  public MessageCallback message(@javax.annotation.Nonnull MessageCallbackMessage message) {
     this.message = message;
     return this;
   }
@@ -171,30 +173,30 @@ public class MessageFailedCallback {
    * @return message
    */
   @javax.annotation.Nonnull
-  public MessageFailedCallbackMessage getMessage() {
+  public MessageCallbackMessage getMessage() {
     return message;
   }
 
-  public void setMessage(@javax.annotation.Nonnull MessageFailedCallbackMessage message) {
+  public void setMessage(@javax.annotation.Nonnull MessageCallbackMessage message) {
     this.message = message;
   }
 
 
-  public MessageFailedCallback errorCode(@javax.annotation.Nonnull Integer errorCode) {
+  public MessageCallback errorCode(@javax.annotation.Nullable Integer errorCode) {
     this.errorCode = errorCode;
     return this;
   }
 
   /**
-   * Get errorCode
+   * Optional error code, applicable only when type is &#x60;message-failed&#x60;.
    * @return errorCode
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getErrorCode() {
     return errorCode;
   }
 
-  public void setErrorCode(@javax.annotation.Nonnull Integer errorCode) {
+  public void setErrorCode(@javax.annotation.Nullable Integer errorCode) {
     this.errorCode = errorCode;
   }
 
@@ -211,9 +213,9 @@ public class MessageFailedCallback {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the MessageFailedCallback instance itself
+   * @return the MessageCallback instance itself
    */
-  public MessageFailedCallback putAdditionalProperty(String key, Object value) {
+  public MessageCallback putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -252,14 +254,18 @@ public class MessageFailedCallback {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MessageFailedCallback messageFailedCallback = (MessageFailedCallback) o;
-    return Objects.equals(this.time, messageFailedCallback.time) &&
-        Objects.equals(this.type, messageFailedCallback.type) &&
-        Objects.equals(this.to, messageFailedCallback.to) &&
-        Objects.equals(this.description, messageFailedCallback.description) &&
-        Objects.equals(this.message, messageFailedCallback.message) &&
-        Objects.equals(this.errorCode, messageFailedCallback.errorCode)&&
-        Objects.equals(this.additionalProperties, messageFailedCallback.additionalProperties);
+    MessageCallback messageCallback = (MessageCallback) o;
+    return Objects.equals(this.time, messageCallback.time) &&
+        Objects.equals(this.type, messageCallback.type) &&
+        Objects.equals(this.to, messageCallback.to) &&
+        Objects.equals(this.description, messageCallback.description) &&
+        Objects.equals(this.message, messageCallback.message) &&
+        Objects.equals(this.errorCode, messageCallback.errorCode)&&
+        Objects.equals(this.additionalProperties, messageCallback.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
@@ -267,10 +273,17 @@ public class MessageFailedCallback {
     return Objects.hash(time, type, to, description, message, errorCode, additionalProperties);
   }
 
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+  }
+
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MessageFailedCallback {\n");
+    sb.append("class MessageCallback {\n");
     sb.append("    time: ").append(toIndentedString(time)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    to: ").append(toIndentedString(to)).append("\n");
@@ -314,32 +327,30 @@ public class MessageFailedCallback {
     openapiRequiredFields.add("to");
     openapiRequiredFields.add("description");
     openapiRequiredFields.add("message");
-    openapiRequiredFields.add("errorCode");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to MessageFailedCallback
+   * @throws IOException if the JSON Element is invalid with respect to MessageCallback
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!MessageFailedCallback.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in MessageFailedCallback is not found in the empty JSON string", MessageFailedCallback.openapiRequiredFields.toString()));
+        if (!MessageCallback.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in MessageCallback is not found in the empty JSON string", MessageCallback.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : MessageFailedCallback.openapiRequiredFields) {
+      for (String requiredField : MessageCallback.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
+      // validate the required field `type`
+      CallbackTypeEnum.validateJsonElement(jsonObj.get("type"));
       if (!jsonObj.get("to").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
@@ -347,23 +358,23 @@ public class MessageFailedCallback {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // validate the required field `message`
-      MessageFailedCallbackMessage.validateJsonElement(jsonObj.get("message"));
+      MessageCallbackMessage.validateJsonElement(jsonObj.get("message"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!MessageFailedCallback.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'MessageFailedCallback' and its subtypes
+       if (!MessageCallback.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'MessageCallback' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<MessageFailedCallback> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(MessageFailedCallback.class));
+       final TypeAdapter<MessageCallback> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(MessageCallback.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<MessageFailedCallback>() {
+       return (TypeAdapter<T>) new TypeAdapter<MessageCallback>() {
            @Override
-           public void write(JsonWriter out, MessageFailedCallback value) throws IOException {
+           public void write(JsonWriter out, MessageCallback value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -391,12 +402,12 @@ public class MessageFailedCallback {
            }
 
            @Override
-           public MessageFailedCallback read(JsonReader in) throws IOException {
+           public MessageCallback read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             MessageFailedCallback instance = thisAdapter.fromJsonTree(jsonObj);
+             MessageCallback instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -423,18 +434,18 @@ public class MessageFailedCallback {
   }
 
   /**
-   * Create an instance of MessageFailedCallback given an JSON string
+   * Create an instance of MessageCallback given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of MessageFailedCallback
-   * @throws IOException if the JSON string is invalid with respect to MessageFailedCallback
+   * @return An instance of MessageCallback
+   * @throws IOException if the JSON string is invalid with respect to MessageCallback
    */
-  public static MessageFailedCallback fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, MessageFailedCallback.class);
+  public static MessageCallback fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, MessageCallback.class);
   }
 
   /**
-   * Convert an instance of MessageFailedCallback to an JSON string
+   * Convert an instance of MessageCallback to an JSON string
    *
    * @return JSON string
    */
