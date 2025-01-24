@@ -53,17 +53,17 @@ import com.bandwidth.sdk.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class Error {
-  public static final String SERIALIZED_NAME_CODE = "Code";
+  public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
   @javax.annotation.Nullable
   private Integer code;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "Description";
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   @javax.annotation.Nullable
   private String description;
 
-  public static final String SERIALIZED_NAME_TELEPHONE_NUMBERS = "TelephoneNumbers";
+  public static final String SERIALIZED_NAME_TELEPHONE_NUMBERS = "telephoneNumbers";
   @SerializedName(SERIALIZED_NAME_TELEPHONE_NUMBERS)
   @javax.annotation.Nullable
   private List<TelephoneNumber> telephoneNumbers = new ArrayList<>();
@@ -231,9 +231,9 @@ public class Error {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("Code");
-    openapiFields.add("Description");
-    openapiFields.add("TelephoneNumbers");
+    openapiFields.add("code");
+    openapiFields.add("description");
+    openapiFields.add("telephoneNumbers");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -252,18 +252,18 @@ public class Error {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("Description") != null && !jsonObj.get("Description").isJsonNull()) && !jsonObj.get("Description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `Description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Description").toString()));
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if (jsonObj.get("TelephoneNumbers") != null && !jsonObj.get("TelephoneNumbers").isJsonNull()) {
-        JsonArray jsonArraytelephoneNumbers = jsonObj.getAsJsonArray("TelephoneNumbers");
+      if (jsonObj.get("telephoneNumbers") != null && !jsonObj.get("telephoneNumbers").isJsonNull()) {
+        JsonArray jsonArraytelephoneNumbers = jsonObj.getAsJsonArray("telephoneNumbers");
         if (jsonArraytelephoneNumbers != null) {
           // ensure the json data is an array
-          if (!jsonObj.get("TelephoneNumbers").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `TelephoneNumbers` to be an array in the JSON string but got `%s`", jsonObj.get("TelephoneNumbers").toString()));
+          if (!jsonObj.get("telephoneNumbers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `telephoneNumbers` to be an array in the JSON string but got `%s`", jsonObj.get("telephoneNumbers").toString()));
           }
 
-          // validate the optional field `TelephoneNumbers` (array)
+          // validate the optional field `telephoneNumbers` (array)
           for (int i = 0; i < jsonArraytelephoneNumbers.size(); i++) {
             TelephoneNumber.validateJsonElement(jsonArraytelephoneNumbers.get(i));
           };

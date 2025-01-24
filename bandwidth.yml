@@ -5099,16 +5099,16 @@ components:
         - data
       properties:
         links:
-          $ref: '#/components/schemas/Links'
+          $ref: '#/components/schemas/links'
         errors:
           type: array
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/error'
         data:
           items:
             $ref: '#/components/schemas/webhookSubscription'
           type: array
-    Links:
+    links:
       type: object
       properties:
         first:
@@ -5129,18 +5129,18 @@ components:
             If more results exist than specified by 'size', this link return the
             last page of result.
           type: string
-    Error:
+    error:
       type: object
       properties:
-        Code:
+        code:
           type: integer
-        Description:
+        description:
           type: string
-        TelephoneNumbers:
+        telephoneNumbers:
           type: array
           items:
-            $ref: '#/components/schemas/TelephoneNumber'
-    TelephoneNumber:
+            $ref: '#/components/schemas/telephoneNumber'
+    telephoneNumber:
       type: object
       properties:
         TelephoneNumber:

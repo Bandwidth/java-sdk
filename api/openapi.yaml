@@ -11976,22 +11976,22 @@ components:
           last: last
           first: first
         errors:
-        - Description: Description
-          TelephoneNumbers:
+        - code: 0
+          telephoneNumbers:
           - TelephoneNumber: TelephoneNumber
           - TelephoneNumber: TelephoneNumber
-          Code: 0
-        - Description: Description
-          TelephoneNumbers:
+          description: description
+        - code: 0
+          telephoneNumbers:
           - TelephoneNumber: TelephoneNumber
           - TelephoneNumber: TelephoneNumber
-          Code: 0
+          description: description
       properties:
         links:
-          $ref: '#/components/schemas/Links'
+          $ref: '#/components/schemas/links'
         errors:
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/error'
           type: array
         data:
           items:
@@ -12000,7 +12000,7 @@ components:
       required:
       - data
       type: object
-    Links:
+    links:
       example:
         next: next
         previous: previous
@@ -12023,24 +12023,24 @@ components:
             \ return the last page of result."
           type: string
       type: object
-    Error:
+    error:
       example:
-        Description: Description
-        TelephoneNumbers:
+        code: 0
+        telephoneNumbers:
         - TelephoneNumber: TelephoneNumber
         - TelephoneNumber: TelephoneNumber
-        Code: 0
+        description: description
       properties:
-        Code:
+        code:
           type: integer
-        Description:
+        description:
           type: string
-        TelephoneNumbers:
+        telephoneNumbers:
           items:
-            $ref: '#/components/schemas/TelephoneNumber'
+            $ref: '#/components/schemas/telephoneNumber'
           type: array
       type: object
-    TelephoneNumber:
+    telephoneNumber:
       example:
         TelephoneNumber: TelephoneNumber
       properties:
