@@ -15,6 +15,7 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import com.bandwidth.sdk.model.TfvStatusEnum;
+import com.bandwidth.sdk.model.TfvSubmissionInfo;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -49,10 +50,10 @@ import java.util.Set;
 import com.bandwidth.sdk.JSON;
 
 /**
- * TfvStatusWithNoSubmissionInfo
+ * TfvStatus
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class TfvStatusWithNoSubmissionInfo {
+public class TfvStatus {
   public static final String SERIALIZED_NAME_PHONE_NUMBER = "phoneNumber";
   @SerializedName(SERIALIZED_NAME_PHONE_NUMBER)
   @javax.annotation.Nullable
@@ -88,10 +89,15 @@ public class TfvStatusWithNoSubmissionInfo {
   @javax.annotation.Nullable
   private OffsetDateTime modifiedDateTime;
 
-  public TfvStatusWithNoSubmissionInfo() {
+  public static final String SERIALIZED_NAME_SUBMISSION = "submission";
+  @SerializedName(SERIALIZED_NAME_SUBMISSION)
+  @javax.annotation.Nullable
+  private TfvSubmissionInfo submission;
+
+  public TfvStatus() {
   }
 
-  public TfvStatusWithNoSubmissionInfo phoneNumber(@javax.annotation.Nullable String phoneNumber) {
+  public TfvStatus phoneNumber(@javax.annotation.Nullable String phoneNumber) {
     this.phoneNumber = phoneNumber;
     return this;
   }
@@ -110,7 +116,7 @@ public class TfvStatusWithNoSubmissionInfo {
   }
 
 
-  public TfvStatusWithNoSubmissionInfo status(@javax.annotation.Nullable TfvStatusEnum status) {
+  public TfvStatus status(@javax.annotation.Nullable TfvStatusEnum status) {
     this.status = status;
     return this;
   }
@@ -129,7 +135,7 @@ public class TfvStatusWithNoSubmissionInfo {
   }
 
 
-  public TfvStatusWithNoSubmissionInfo internalTicketNumber(@javax.annotation.Nullable UUID internalTicketNumber) {
+  public TfvStatus internalTicketNumber(@javax.annotation.Nullable UUID internalTicketNumber) {
     this.internalTicketNumber = internalTicketNumber;
     return this;
   }
@@ -148,7 +154,7 @@ public class TfvStatusWithNoSubmissionInfo {
   }
 
 
-  public TfvStatusWithNoSubmissionInfo declineReasonDescription(@javax.annotation.Nullable String declineReasonDescription) {
+  public TfvStatus declineReasonDescription(@javax.annotation.Nullable String declineReasonDescription) {
     this.declineReasonDescription = declineReasonDescription;
     return this;
   }
@@ -167,7 +173,7 @@ public class TfvStatusWithNoSubmissionInfo {
   }
 
 
-  public TfvStatusWithNoSubmissionInfo resubmitAllowed(@javax.annotation.Nullable Boolean resubmitAllowed) {
+  public TfvStatus resubmitAllowed(@javax.annotation.Nullable Boolean resubmitAllowed) {
     this.resubmitAllowed = resubmitAllowed;
     return this;
   }
@@ -186,7 +192,7 @@ public class TfvStatusWithNoSubmissionInfo {
   }
 
 
-  public TfvStatusWithNoSubmissionInfo createdDateTime(@javax.annotation.Nullable OffsetDateTime createdDateTime) {
+  public TfvStatus createdDateTime(@javax.annotation.Nullable OffsetDateTime createdDateTime) {
     this.createdDateTime = createdDateTime;
     return this;
   }
@@ -205,7 +211,7 @@ public class TfvStatusWithNoSubmissionInfo {
   }
 
 
-  public TfvStatusWithNoSubmissionInfo modifiedDateTime(@javax.annotation.Nullable OffsetDateTime modifiedDateTime) {
+  public TfvStatus modifiedDateTime(@javax.annotation.Nullable OffsetDateTime modifiedDateTime) {
     this.modifiedDateTime = modifiedDateTime;
     return this;
   }
@@ -223,6 +229,25 @@ public class TfvStatusWithNoSubmissionInfo {
     this.modifiedDateTime = modifiedDateTime;
   }
 
+
+  public TfvStatus submission(@javax.annotation.Nullable TfvSubmissionInfo submission) {
+    this.submission = submission;
+    return this;
+  }
+
+  /**
+   * Get submission
+   * @return submission
+   */
+  @javax.annotation.Nullable
+  public TfvSubmissionInfo getSubmission() {
+    return submission;
+  }
+
+  public void setSubmission(@javax.annotation.Nullable TfvSubmissionInfo submission) {
+    this.submission = submission;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -236,9 +261,9 @@ public class TfvStatusWithNoSubmissionInfo {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the TfvStatusWithNoSubmissionInfo instance itself
+   * @return the TfvStatus instance itself
    */
-  public TfvStatusWithNoSubmissionInfo putAdditionalProperty(String key, Object value) {
+  public TfvStatus putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -277,26 +302,27 @@ public class TfvStatusWithNoSubmissionInfo {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TfvStatusWithNoSubmissionInfo tfvStatusWithNoSubmissionInfo = (TfvStatusWithNoSubmissionInfo) o;
-    return Objects.equals(this.phoneNumber, tfvStatusWithNoSubmissionInfo.phoneNumber) &&
-        Objects.equals(this.status, tfvStatusWithNoSubmissionInfo.status) &&
-        Objects.equals(this.internalTicketNumber, tfvStatusWithNoSubmissionInfo.internalTicketNumber) &&
-        Objects.equals(this.declineReasonDescription, tfvStatusWithNoSubmissionInfo.declineReasonDescription) &&
-        Objects.equals(this.resubmitAllowed, tfvStatusWithNoSubmissionInfo.resubmitAllowed) &&
-        Objects.equals(this.createdDateTime, tfvStatusWithNoSubmissionInfo.createdDateTime) &&
-        Objects.equals(this.modifiedDateTime, tfvStatusWithNoSubmissionInfo.modifiedDateTime)&&
-        Objects.equals(this.additionalProperties, tfvStatusWithNoSubmissionInfo.additionalProperties);
+    TfvStatus tfvStatus = (TfvStatus) o;
+    return Objects.equals(this.phoneNumber, tfvStatus.phoneNumber) &&
+        Objects.equals(this.status, tfvStatus.status) &&
+        Objects.equals(this.internalTicketNumber, tfvStatus.internalTicketNumber) &&
+        Objects.equals(this.declineReasonDescription, tfvStatus.declineReasonDescription) &&
+        Objects.equals(this.resubmitAllowed, tfvStatus.resubmitAllowed) &&
+        Objects.equals(this.createdDateTime, tfvStatus.createdDateTime) &&
+        Objects.equals(this.modifiedDateTime, tfvStatus.modifiedDateTime) &&
+        Objects.equals(this.submission, tfvStatus.submission)&&
+        Objects.equals(this.additionalProperties, tfvStatus.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(phoneNumber, status, internalTicketNumber, declineReasonDescription, resubmitAllowed, createdDateTime, modifiedDateTime, additionalProperties);
+    return Objects.hash(phoneNumber, status, internalTicketNumber, declineReasonDescription, resubmitAllowed, createdDateTime, modifiedDateTime, submission, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TfvStatusWithNoSubmissionInfo {\n");
+    sb.append("class TfvStatus {\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    internalTicketNumber: ").append(toIndentedString(internalTicketNumber)).append("\n");
@@ -304,6 +330,7 @@ public class TfvStatusWithNoSubmissionInfo {
     sb.append("    resubmitAllowed: ").append(toIndentedString(resubmitAllowed)).append("\n");
     sb.append("    createdDateTime: ").append(toIndentedString(createdDateTime)).append("\n");
     sb.append("    modifiedDateTime: ").append(toIndentedString(modifiedDateTime)).append("\n");
+    sb.append("    submission: ").append(toIndentedString(submission)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -334,6 +361,7 @@ public class TfvStatusWithNoSubmissionInfo {
     openapiFields.add("resubmitAllowed");
     openapiFields.add("createdDateTime");
     openapiFields.add("modifiedDateTime");
+    openapiFields.add("submission");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -343,12 +371,12 @@ public class TfvStatusWithNoSubmissionInfo {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to TfvStatusWithNoSubmissionInfo
+   * @throws IOException if the JSON Element is invalid with respect to TfvStatus
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!TfvStatusWithNoSubmissionInfo.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in TfvStatusWithNoSubmissionInfo is not found in the empty JSON string", TfvStatusWithNoSubmissionInfo.openapiRequiredFields.toString()));
+        if (!TfvStatus.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in TfvStatus is not found in the empty JSON string", TfvStatus.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -365,22 +393,26 @@ public class TfvStatusWithNoSubmissionInfo {
       if ((jsonObj.get("declineReasonDescription") != null && !jsonObj.get("declineReasonDescription").isJsonNull()) && !jsonObj.get("declineReasonDescription").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `declineReasonDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("declineReasonDescription").toString()));
       }
+      // validate the optional field `submission`
+      if (jsonObj.get("submission") != null && !jsonObj.get("submission").isJsonNull()) {
+        TfvSubmissionInfo.validateJsonElement(jsonObj.get("submission"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!TfvStatusWithNoSubmissionInfo.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'TfvStatusWithNoSubmissionInfo' and its subtypes
+       if (!TfvStatus.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'TfvStatus' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<TfvStatusWithNoSubmissionInfo> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(TfvStatusWithNoSubmissionInfo.class));
+       final TypeAdapter<TfvStatus> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(TfvStatus.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<TfvStatusWithNoSubmissionInfo>() {
+       return (TypeAdapter<T>) new TypeAdapter<TfvStatus>() {
            @Override
-           public void write(JsonWriter out, TfvStatusWithNoSubmissionInfo value) throws IOException {
+           public void write(JsonWriter out, TfvStatus value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -408,12 +440,12 @@ public class TfvStatusWithNoSubmissionInfo {
            }
 
            @Override
-           public TfvStatusWithNoSubmissionInfo read(JsonReader in) throws IOException {
+           public TfvStatus read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             TfvStatusWithNoSubmissionInfo instance = thisAdapter.fromJsonTree(jsonObj);
+             TfvStatus instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -440,18 +472,18 @@ public class TfvStatusWithNoSubmissionInfo {
   }
 
   /**
-   * Create an instance of TfvStatusWithNoSubmissionInfo given an JSON string
+   * Create an instance of TfvStatus given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of TfvStatusWithNoSubmissionInfo
-   * @throws IOException if the JSON string is invalid with respect to TfvStatusWithNoSubmissionInfo
+   * @return An instance of TfvStatus
+   * @throws IOException if the JSON string is invalid with respect to TfvStatus
    */
-  public static TfvStatusWithNoSubmissionInfo fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, TfvStatusWithNoSubmissionInfo.class);
+  public static TfvStatus fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, TfvStatus.class);
   }
 
   /**
-   * Convert an instance of TfvStatusWithNoSubmissionInfo to an JSON string
+   * Convert an instance of TfvStatus to an JSON string
    *
    * @return JSON string
    */

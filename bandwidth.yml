@@ -5099,7 +5099,7 @@ components:
         - data
       properties:
         links:
-          $ref: '#/components/schemas/links'
+          $ref: '#/components/schemas/linksObject'
         errors:
           type: array
           items:
@@ -5108,7 +5108,7 @@ components:
           items:
             $ref: '#/components/schemas/webhookSubscription'
           type: array
-    links:
+    linksObject:
       type: object
       properties:
         first:
@@ -5225,30 +5225,7 @@ components:
           example:
             field: error message
       type: object
-    tfvStatusWithNoSubmissionInfo:
-      type: object
-      properties:
-        phoneNumber:
-          $ref: '#/components/schemas/tfPhoneNumber'
-        status:
-          $ref: '#/components/schemas/tfvStatusEnum'
-        internalTicketNumber:
-          $ref: '#/components/schemas/internalTicketNumber'
-        declineReasonDescription:
-          $ref: '#/components/schemas/declineReasonDescription'
-        resubmitAllowed:
-          $ref: '#/components/schemas/resubmitAllowed'
-        createdDateTime:
-          type: string
-          description: Date and time the verification request was created.
-          format: date-time
-          example: '2021-06-08T06:45:13.0Z'
-        modifiedDateTime:
-          type: string
-          description: Date and time the verification request was last modified.
-          format: date-time
-          example: '2021-06-08T06:45:13.0Z'
-    tfvStatusWithSubmissionInfo:
+    tfvStatus:
       type: object
       properties:
         phoneNumber:
@@ -5787,9 +5764,7 @@ components:
       content:
         application/json:
           schema:
-            oneOf:
-              - $ref: '#/components/schemas/tfvStatusWithNoSubmissionInfo'
-              - $ref: '#/components/schemas/tfvStatusWithSubmissionInfo'
+            $ref: '#/components/schemas/tfvStatus'
     listWebhookSubscriptionsResponse:
       description: OK
       content:

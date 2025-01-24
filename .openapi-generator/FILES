@@ -47,9 +47,8 @@ docs/FailureWebhook.md
 docs/FieldError.md
 docs/FileFormatEnum.md
 docs/GatherCallback.md
-docs/GetTollFreeVerificationStatus200Response.md
 docs/InitiateCallback.md
-docs/Links.md
+docs/LinksObject.md
 docs/ListMessageDirectionEnum.md
 docs/ListMessageItem.md
 docs/LookupRequest.md
@@ -96,9 +95,8 @@ docs/TelephoneNumber.md
 docs/TfvBasicAuthentication.md
 docs/TfvCallbackStatusEnum.md
 docs/TfvError.md
+docs/TfvStatus.md
 docs/TfvStatusEnum.md
-docs/TfvStatusWithNoSubmissionInfo.md
-docs/TfvStatusWithSubmissionInfo.md
 docs/TfvSubmissionInfo.md
 docs/TfvSubmissionWrapper.md
 docs/TnLookupRequestError.md
@@ -206,9 +204,8 @@ src/main/java/com/bandwidth/sdk/model/FailureWebhook.java
 src/main/java/com/bandwidth/sdk/model/FieldError.java
 src/main/java/com/bandwidth/sdk/model/FileFormatEnum.java
 src/main/java/com/bandwidth/sdk/model/GatherCallback.java
-src/main/java/com/bandwidth/sdk/model/GetTollFreeVerificationStatus200Response.java
 src/main/java/com/bandwidth/sdk/model/InitiateCallback.java
-src/main/java/com/bandwidth/sdk/model/Links.java
+src/main/java/com/bandwidth/sdk/model/LinksObject.java
 src/main/java/com/bandwidth/sdk/model/ListMessageDirectionEnum.java
 src/main/java/com/bandwidth/sdk/model/ListMessageItem.java
 src/main/java/com/bandwidth/sdk/model/LookupRequest.java
@@ -249,9 +246,8 @@ src/main/java/com/bandwidth/sdk/model/TelephoneNumber.java
 src/main/java/com/bandwidth/sdk/model/TfvBasicAuthentication.java
 src/main/java/com/bandwidth/sdk/model/TfvCallbackStatusEnum.java
 src/main/java/com/bandwidth/sdk/model/TfvError.java
+src/main/java/com/bandwidth/sdk/model/TfvStatus.java
 src/main/java/com/bandwidth/sdk/model/TfvStatusEnum.java
-src/main/java/com/bandwidth/sdk/model/TfvStatusWithNoSubmissionInfo.java
-src/main/java/com/bandwidth/sdk/model/TfvStatusWithSubmissionInfo.java
 src/main/java/com/bandwidth/sdk/model/TfvSubmissionInfo.java
 src/main/java/com/bandwidth/sdk/model/TfvSubmissionWrapper.java
 src/main/java/com/bandwidth/sdk/model/TnLookupRequestError.java

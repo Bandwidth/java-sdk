@@ -15,7 +15,7 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import com.bandwidth.sdk.model.Error;
-import com.bandwidth.sdk.model.Links;
+import com.bandwidth.sdk.model.LinksObject;
 import com.bandwidth.sdk.model.WebhookSubscription;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -58,7 +58,7 @@ public class WebhookSubscriptionsListBody {
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nullable
-  private Links links;
+  private LinksObject links;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
@@ -73,7 +73,7 @@ public class WebhookSubscriptionsListBody {
   public WebhookSubscriptionsListBody() {
   }
 
-  public WebhookSubscriptionsListBody links(@javax.annotation.Nullable Links links) {
+  public WebhookSubscriptionsListBody links(@javax.annotation.Nullable LinksObject links) {
     this.links = links;
     return this;
   }
@@ -83,11 +83,11 @@ public class WebhookSubscriptionsListBody {
    * @return links
    */
   @javax.annotation.Nullable
-  public Links getLinks() {
+  public LinksObject getLinks() {
     return links;
   }
 
-  public void setLinks(@javax.annotation.Nullable Links links) {
+  public void setLinks(@javax.annotation.Nullable LinksObject links) {
     this.links = links;
   }
 
@@ -272,7 +272,7 @@ public class WebhookSubscriptionsListBody {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `links`
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
-        Links.validateJsonElement(jsonObj.get("links"));
+        LinksObject.validateJsonElement(jsonObj.get("links"));
       }
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");

@@ -27,8 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.bandwidth.sdk.model.GetTollFreeVerificationStatus200Response;
 import com.bandwidth.sdk.model.TfvError;
+import com.bandwidth.sdk.model.TfvStatus;
 import com.bandwidth.sdk.model.TfvSubmissionWrapper;
 import com.bandwidth.sdk.model.VerificationRequest;
 import com.bandwidth.sdk.model.WebhookSubscription;
@@ -501,7 +501,7 @@ public class TollFreeVerificationApi {
      * Gets the verification status for a phone number that is provisioned to your account. Submission information will be appended to the response if it is available.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param phoneNumber Valid Toll-Free telephone number in E.164 format. (required)
-     * @return GetTollFreeVerificationStatus200Response
+     * @return TfvStatus
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -518,8 +518,8 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public GetTollFreeVerificationStatus200Response getTollFreeVerificationStatus(String accountId, String phoneNumber) throws ApiException {
-        ApiResponse<GetTollFreeVerificationStatus200Response> localVarResp = getTollFreeVerificationStatusWithHttpInfo(accountId, phoneNumber);
+    public TfvStatus getTollFreeVerificationStatus(String accountId, String phoneNumber) throws ApiException {
+        ApiResponse<TfvStatus> localVarResp = getTollFreeVerificationStatusWithHttpInfo(accountId, phoneNumber);
         return localVarResp.getData();
     }
 
@@ -528,7 +528,7 @@ public class TollFreeVerificationApi {
      * Gets the verification status for a phone number that is provisioned to your account. Submission information will be appended to the response if it is available.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param phoneNumber Valid Toll-Free telephone number in E.164 format. (required)
-     * @return ApiResponse&lt;GetTollFreeVerificationStatus200Response&gt;
+     * @return ApiResponse&lt;TfvStatus&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -545,9 +545,9 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetTollFreeVerificationStatus200Response> getTollFreeVerificationStatusWithHttpInfo(String accountId, String phoneNumber) throws ApiException {
+    public ApiResponse<TfvStatus> getTollFreeVerificationStatusWithHttpInfo(String accountId, String phoneNumber) throws ApiException {
         okhttp3.Call localVarCall = getTollFreeVerificationStatusValidateBeforeCall(accountId, phoneNumber, null);
-        Type localVarReturnType = new TypeToken<GetTollFreeVerificationStatus200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<TfvStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -574,10 +574,10 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTollFreeVerificationStatusAsync(String accountId, String phoneNumber, final ApiCallback<GetTollFreeVerificationStatus200Response> _callback) throws ApiException {
+    public okhttp3.Call getTollFreeVerificationStatusAsync(String accountId, String phoneNumber, final ApiCallback<TfvStatus> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTollFreeVerificationStatusValidateBeforeCall(accountId, phoneNumber, _callback);
-        Type localVarReturnType = new TypeToken<GetTollFreeVerificationStatus200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<TfvStatus>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

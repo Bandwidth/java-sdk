@@ -14,33 +14,36 @@ package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.UUID;
 import java.time.OffsetDateTime;
-import com.bandwidth.sdk.model.TfvStatusWithNoSubmissionInfo;
+import java.util.UUID;
+
+import com.bandwidth.sdk.model.TfvStatus;
 import com.bandwidth.sdk.model.TfvStatusEnum;
+import com.bandwidth.sdk.model.TfvSubmissionInfo;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
- * Model tests for TfvStatusWithNoSubmissionInfo
+ * Model tests for TfvStatus
  */
-public class TfvStatusWithNoSubmissionInfoTest {
-    private final TfvStatusWithNoSubmissionInfo model = new TfvStatusWithNoSubmissionInfo()
+public class TfvStatusTest {
+    private final TfvStatus model = new TfvStatus()
             .phoneNumber("phoneNumber")
             .status(TfvStatusEnum.PENDING)
             .internalTicketNumber(UUID.randomUUID())
             .declineReasonDescription("declineReasonDescription")
             .resubmitAllowed(true)
             .createdDateTime(OffsetDateTime.now())
-            .modifiedDateTime(OffsetDateTime.now());
+            .modifiedDateTime(OffsetDateTime.now())
+            .submission(new TfvSubmissionInfo());
 
     /**
-     * Model tests for TfvStatusWithNoSubmissionInfo
+     * Model tests for TfvStatus
      */
     @Test
-    public void testTfvStatusWithNoSubmissionInfo() {
-        assertThat(model, instanceOf(TfvStatusWithNoSubmissionInfo.class));
+    public void testTfvStatus() {
+        assertThat(model, instanceOf(TfvStatus.class));
     }
 
     /**
@@ -97,6 +100,14 @@ public class TfvStatusWithNoSubmissionInfoTest {
     @Test
     public void modifiedDateTimeTest() {
         assertThat(model.getModifiedDateTime(), instanceOf(OffsetDateTime.class));
+    }
+
+    /**
+     * Test the property 'submission'
+     */
+    @Test
+    public void submissionTest() {
+        assertThat(model.getSubmission(), instanceOf(TfvSubmissionInfo.class));
     }
 
 }

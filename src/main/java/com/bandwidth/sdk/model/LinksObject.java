@@ -46,10 +46,10 @@ import java.util.Set;
 import com.bandwidth.sdk.JSON;
 
 /**
- * Links
+ * LinksObject
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class Links {
+public class LinksObject {
   public static final String SERIALIZED_NAME_FIRST = "first";
   @SerializedName(SERIALIZED_NAME_FIRST)
   @javax.annotation.Nullable
@@ -70,10 +70,10 @@ public class Links {
   @javax.annotation.Nullable
   private String last;
 
-  public Links() {
+  public LinksObject() {
   }
 
-  public Links first(@javax.annotation.Nullable String first) {
+  public LinksObject first(@javax.annotation.Nullable String first) {
     this.first = first;
     return this;
   }
@@ -92,7 +92,7 @@ public class Links {
   }
 
 
-  public Links next(@javax.annotation.Nullable String next) {
+  public LinksObject next(@javax.annotation.Nullable String next) {
     this.next = next;
     return this;
   }
@@ -111,7 +111,7 @@ public class Links {
   }
 
 
-  public Links previous(@javax.annotation.Nullable String previous) {
+  public LinksObject previous(@javax.annotation.Nullable String previous) {
     this.previous = previous;
     return this;
   }
@@ -130,7 +130,7 @@ public class Links {
   }
 
 
-  public Links last(@javax.annotation.Nullable String last) {
+  public LinksObject last(@javax.annotation.Nullable String last) {
     this.last = last;
     return this;
   }
@@ -161,9 +161,9 @@ public class Links {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the Links instance itself
+   * @return the LinksObject instance itself
    */
-  public Links putAdditionalProperty(String key, Object value) {
+  public LinksObject putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -202,12 +202,12 @@ public class Links {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Links links = (Links) o;
-    return Objects.equals(this.first, links.first) &&
-        Objects.equals(this.next, links.next) &&
-        Objects.equals(this.previous, links.previous) &&
-        Objects.equals(this.last, links.last)&&
-        Objects.equals(this.additionalProperties, links.additionalProperties);
+    LinksObject linksObject = (LinksObject) o;
+    return Objects.equals(this.first, linksObject.first) &&
+        Objects.equals(this.next, linksObject.next) &&
+        Objects.equals(this.previous, linksObject.previous) &&
+        Objects.equals(this.last, linksObject.last)&&
+        Objects.equals(this.additionalProperties, linksObject.additionalProperties);
   }
 
   @Override
@@ -218,7 +218,7 @@ public class Links {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Links {\n");
+    sb.append("class LinksObject {\n");
     sb.append("    first: ").append(toIndentedString(first)).append("\n");
     sb.append("    next: ").append(toIndentedString(next)).append("\n");
     sb.append("    previous: ").append(toIndentedString(previous)).append("\n");
@@ -259,12 +259,12 @@ public class Links {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Links
+   * @throws IOException if the JSON Element is invalid with respect to LinksObject
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!Links.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Links is not found in the empty JSON string", Links.openapiRequiredFields.toString()));
+        if (!LinksObject.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in LinksObject is not found in the empty JSON string", LinksObject.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -286,16 +286,16 @@ public class Links {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Links.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Links' and its subtypes
+       if (!LinksObject.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LinksObject' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Links> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Links.class));
+       final TypeAdapter<LinksObject> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LinksObject.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Links>() {
+       return (TypeAdapter<T>) new TypeAdapter<LinksObject>() {
            @Override
-           public void write(JsonWriter out, Links value) throws IOException {
+           public void write(JsonWriter out, LinksObject value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -323,12 +323,12 @@ public class Links {
            }
 
            @Override
-           public Links read(JsonReader in) throws IOException {
+           public LinksObject read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             Links instance = thisAdapter.fromJsonTree(jsonObj);
+             LinksObject instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -355,18 +355,18 @@ public class Links {
   }
 
   /**
-   * Create an instance of Links given an JSON string
+   * Create an instance of LinksObject given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of Links
-   * @throws IOException if the JSON string is invalid with respect to Links
+   * @return An instance of LinksObject
+   * @throws IOException if the JSON string is invalid with respect to LinksObject
    */
-  public static Links fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Links.class);
+  public static LinksObject fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LinksObject.class);
   }
 
   /**
-   * Convert an instance of Links to an JSON string
+   * Convert an instance of LinksObject to an JSON string
    *
    * @return JSON string
    */

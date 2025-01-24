@@ -171,7 +171,7 @@ null (empty response body)
 
 <a id="getTollFreeVerificationStatus"></a>
 # **getTollFreeVerificationStatus**
-> GetTollFreeVerificationStatus200Response getTollFreeVerificationStatus(accountId, phoneNumber)
+> TfvStatus getTollFreeVerificationStatus(accountId, phoneNumber)
 
 Get Toll-Free Verification Status
 
@@ -201,7 +201,7 @@ public class Example {
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String phoneNumber = "+18885555555"; // String | Valid Toll-Free telephone number in E.164 format.
     try {
-      GetTollFreeVerificationStatus200Response result = apiInstance.getTollFreeVerificationStatus(accountId, phoneNumber);
+      TfvStatus result = apiInstance.getTollFreeVerificationStatus(accountId, phoneNumber);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TollFreeVerificationApi#getTollFreeVerificationStatus");
@@ -223,7 +223,7 @@ public class Example {
 
 ### Return type
 
-[**GetTollFreeVerificationStatus200Response**](GetTollFreeVerificationStatus200Response.md)
+[**TfvStatus**](TfvStatus.md)
 
 ### Authorization
 

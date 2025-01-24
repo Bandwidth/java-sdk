@@ -127,9 +127,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.FailureWebhook.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.FieldError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.GatherCallback.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.GetTollFreeVerificationStatus200Response.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.InitiateCallback.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.Links.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.LinksObject.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.ListMessageItem.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.LookupRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.LookupResult.CustomTypeAdapterFactory());
@@ -160,8 +159,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.TelephoneNumber.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.TfvBasicAuthentication.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.TfvError.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.TfvStatusWithNoSubmissionInfo.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.TfvStatusWithSubmissionInfo.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.TfvStatus.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.TfvSubmissionInfo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.TfvSubmissionWrapper.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.TnLookupRequestError.CustomTypeAdapterFactory());

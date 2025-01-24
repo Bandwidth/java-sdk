@@ -14,27 +14,27 @@ package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
-import com.bandwidth.sdk.model.Links;
+import com.bandwidth.sdk.model.LinksObject;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
- * Model tests for Links
+ * Model tests for LinksObject
  */
-public class LinksTest {
-    private final Links model = new Links()
+public class LinksObjectTest {
+    private final LinksObject model = new LinksObject()
             .first("first")
             .next("next")
             .previous("previous")
             .last("last");
 
     /**
-     * Model tests for Links
+     * Model tests for LinksObject
      */
     @Test
-    public void testLinks() {
-        assertThat(model, instanceOf(Links.class));
+    public void testLinksObject() {
+        assertThat(model, instanceOf(LinksObject.class));
     }
 
     /**
