@@ -50,7 +50,7 @@ import com.bandwidth.sdk.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class TelephoneNumber {
-  public static final String SERIALIZED_NAME_TELEPHONE_NUMBER = "TelephoneNumber";
+  public static final String SERIALIZED_NAME_TELEPHONE_NUMBER = "telephoneNumber";
   @SerializedName(SERIALIZED_NAME_TELEPHONE_NUMBER)
   @javax.annotation.Nullable
   private String telephoneNumber;
@@ -168,7 +168,7 @@ public class TelephoneNumber {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("TelephoneNumber");
+    openapiFields.add("telephoneNumber");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -187,8 +187,8 @@ public class TelephoneNumber {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("TelephoneNumber") != null && !jsonObj.get("TelephoneNumber").isJsonNull()) && !jsonObj.get("TelephoneNumber").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `TelephoneNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("TelephoneNumber").toString()));
+      if ((jsonObj.get("telephoneNumber") != null && !jsonObj.get("telephoneNumber").isJsonNull()) && !jsonObj.get("telephoneNumber").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `telephoneNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("telephoneNumber").toString()));
       }
   }
 

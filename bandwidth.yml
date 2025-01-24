@@ -5143,7 +5143,7 @@ components:
     telephoneNumber:
       type: object
       properties:
-        TelephoneNumber:
+        telephoneNumber:
           description: Simple Telephone Number.
           type: string
     webhookSubscriptionTypeEnum:

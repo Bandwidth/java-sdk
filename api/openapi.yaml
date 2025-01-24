@@ -11978,13 +11978,13 @@ components:
         errors:
         - code: 0
           telephoneNumbers:
-          - TelephoneNumber: TelephoneNumber
-          - TelephoneNumber: TelephoneNumber
+          - telephoneNumber: telephoneNumber
+          - telephoneNumber: telephoneNumber
           description: description
         - code: 0
           telephoneNumbers:
-          - TelephoneNumber: TelephoneNumber
-          - TelephoneNumber: TelephoneNumber
+          - telephoneNumber: telephoneNumber
+          - telephoneNumber: telephoneNumber
           description: description
       properties:
         links:
@@ -12027,8 +12027,8 @@ components:
       example:
         code: 0
         telephoneNumbers:
-        - TelephoneNumber: TelephoneNumber
-        - TelephoneNumber: TelephoneNumber
+        - telephoneNumber: telephoneNumber
+        - telephoneNumber: telephoneNumber
         description: description
       properties:
         code:
@@ -12042,9 +12042,9 @@ components:
       type: object
     telephoneNumber:
       example:
-        TelephoneNumber: TelephoneNumber
+        telephoneNumber: telephoneNumber
       properties:
-        TelephoneNumber:
+        telephoneNumber:
           description: Simple Telephone Number.
           type: string
       type: object
