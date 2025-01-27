@@ -129,27 +129,27 @@ public class TollFreeVerificationApiTest {
         assertThat(response.getData().getLinks().getPrevious(), instanceOf(String.class));
         assertThat(response.getData().getLinks().getLast(), instanceOf(String.class));
         assertThat(response.getData().getErrors(), instanceOf(List.class));
-        assertThat(response.getData().getErrors().getFirst().getCode(), instanceOf(Integer.class));
-        assertThat(response.getData().getErrors().getFirst().getDescription(), instanceOf(String.class));
-        assertThat(response.getData().getErrors().getFirst().getTelephoneNumbers(), instanceOf(List.class));
-        assertThat(response.getData().getErrors().getFirst().getTelephoneNumbers().getFirst(),
+        assertThat(response.getData().getErrors().get(0).getCode(), instanceOf(Integer.class));
+        assertThat(response.getData().getErrors().get(0).getDescription(), instanceOf(String.class));
+        assertThat(response.getData().getErrors().get(0).getTelephoneNumbers(), instanceOf(List.class));
+        assertThat(response.getData().getErrors().get(0).getTelephoneNumbers().get(0),
                 instanceOf(TelephoneNumber.class));
-        assertThat(response.getData().getErrors().getFirst().getTelephoneNumbers().getFirst().getTelephoneNumber(),
+        assertThat(response.getData().getErrors().get(0).getTelephoneNumbers().get(0).getTelephoneNumber(),
                 instanceOf(String.class));
         assertThat(response.getData().getData(), instanceOf(List.class));
-        assertThat(response.getData().getData().getFirst(), instanceOf(WebhookSubscription.class));
-        assertThat(response.getData().getData().getFirst().getId(), instanceOf(String.class));
-        assertThat(response.getData().getData().getFirst().getAccountId(), instanceOf(String.class));
-        assertThat(response.getData().getData().getFirst().getCallbackUrl(), instanceOf(String.class));
-        assertThat(response.getData().getData().getFirst().getType(), instanceOf(WebhookSubscriptionTypeEnum.class));
-        assertThat(response.getData().getData().getFirst().getBasicAuthentication(),
+        assertThat(response.getData().getData().get(0), instanceOf(WebhookSubscription.class));
+        assertThat(response.getData().getData().get(0).getId(), instanceOf(String.class));
+        assertThat(response.getData().getData().get(0).getAccountId(), instanceOf(String.class));
+        assertThat(response.getData().getData().get(0).getCallbackUrl(), instanceOf(String.class));
+        assertThat(response.getData().getData().get(0).getType(), instanceOf(WebhookSubscriptionTypeEnum.class));
+        assertThat(response.getData().getData().get(0).getBasicAuthentication(),
                 instanceOf(WebhookSubscriptionBasicAuthentication.class));
-        assertThat(response.getData().getData().getFirst().getBasicAuthentication().getUsername(),
+        assertThat(response.getData().getData().get(0).getBasicAuthentication().getUsername(),
                 instanceOf(String.class));
-        assertThat(response.getData().getData().getFirst().getBasicAuthentication().getPassword(),
+        assertThat(response.getData().getData().get(0).getBasicAuthentication().getPassword(),
                 instanceOf(String.class));
-        assertThat(response.getData().getData().getFirst().getCreatedDate(), instanceOf(OffsetDateTime.class));
-        assertThat(response.getData().getData().getFirst().getModifiedDate(), instanceOf(OffsetDateTime.class));
+        assertThat(response.getData().getData().get(0).getCreatedDate(), instanceOf(OffsetDateTime.class));
+        assertThat(response.getData().getData().get(0).getModifiedDate(), instanceOf(OffsetDateTime.class));
     }
 
     @Test
