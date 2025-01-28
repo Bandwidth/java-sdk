@@ -158,6 +158,14 @@ Class | Method | HTTP request | Description
 *RecordingsApi* | [**transcribeCallRecording**](docs/RecordingsApi.md#transcribeCallRecording) | **POST** /accounts/{accountId}/calls/{callId}/recordings/{recordingId}/transcription | Create Transcription Request
 *RecordingsApi* | [**updateCallRecordingState**](docs/RecordingsApi.md#updateCallRecordingState) | **PUT** /accounts/{accountId}/calls/{callId}/recording | Update Recording
 *StatisticsApi* | [**getStatistics**](docs/StatisticsApi.md#getStatistics) | **GET** /accounts/{accountId}/statistics | Get Account Statistics
+*TollFreeVerificationApi* | [**createWebhookSubscription**](docs/TollFreeVerificationApi.md#createWebhookSubscription) | **POST** /accounts/{accountId}/tollFreeVerification/webhooks/subscriptions | Create Webhook Subscription
+*TollFreeVerificationApi* | [**deleteWebhookSubscription**](docs/TollFreeVerificationApi.md#deleteWebhookSubscription) | **DELETE** /accounts/{accountId}/tollFreeVerification/webhooks/subscriptions/{id} | Delete Webhook Subscription
+*TollFreeVerificationApi* | [**getTollFreeVerificationStatus**](docs/TollFreeVerificationApi.md#getTollFreeVerificationStatus) | **GET** /accounts/{accountId}/phoneNumbers/{phoneNumber}/tollFreeVerification | Get Toll-Free Verification Status
+*TollFreeVerificationApi* | [**listTollFreeUseCases**](docs/TollFreeVerificationApi.md#listTollFreeUseCases) | **GET** /tollFreeVerification/useCases | List Toll-Free Use Cases
+*TollFreeVerificationApi* | [**listWebhookSubscriptions**](docs/TollFreeVerificationApi.md#listWebhookSubscriptions) | **GET** /accounts/{accountId}/tollFreeVerification/webhooks/subscriptions | List Webhook Subscriptions
+*TollFreeVerificationApi* | [**requestTollFreeVerification**](docs/TollFreeVerificationApi.md#requestTollFreeVerification) | **POST** /accounts/{accountId}/tollFreeVerification | Request Toll-Free Verification
+*TollFreeVerificationApi* | [**updateTollFreeVerificationRequest**](docs/TollFreeVerificationApi.md#updateTollFreeVerificationRequest) | **PUT** /accounts/{accountId}/phoneNumbers/{phoneNumber}/tollFreeVerification | Update Toll-Free Verification Request
+*TollFreeVerificationApi* | [**updateWebhookSubscription**](docs/TollFreeVerificationApi.md#updateWebhookSubscription) | **PUT** /accounts/{accountId}/tollFreeVerification/webhooks/subscriptions/{id} | Update Webhook Subscription
 *TranscriptionsApi* | [**deleteRealTimeTranscription**](docs/TranscriptionsApi.md#deleteRealTimeTranscription) | **DELETE** /accounts/{accountId}/calls/{callId}/transcriptions/{transcriptionId} | Delete a specific transcription
 *TranscriptionsApi* | [**getRealTimeTranscription**](docs/TranscriptionsApi.md#getRealTimeTranscription) | **GET** /accounts/{accountId}/calls/{callId}/transcriptions/{transcriptionId} | Retrieve a specific transcription
 *TranscriptionsApi* | [**listRealTimeTranscriptions**](docs/TranscriptionsApi.md#listRealTimeTranscriptions) | **GET** /accounts/{accountId}/calls/{callId}/transcriptions | Enumerate transcriptions made with StartTranscription
@@ -166,6 +174,8 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [AccountStatistics](docs/AccountStatistics.md)
+ - [AdditionalDenialReason](docs/AdditionalDenialReason.md)
+ - [Address](docs/Address.md)
  - [AnswerCallback](docs/AnswerCallback.md)
  - [BridgeCompleteCallback](docs/BridgeCompleteCallback.md)
  - [BridgeTargetCompleteCallback](docs/BridgeTargetCompleteCallback.md)
@@ -191,6 +201,7 @@ Class | Method | HTTP request | Description
  - [ConferenceRecordingMetadata](docs/ConferenceRecordingMetadata.md)
  - [ConferenceRedirectCallback](docs/ConferenceRedirectCallback.md)
  - [ConferenceStateEnum](docs/ConferenceStateEnum.md)
+ - [Contact](docs/Contact.md)
  - [CreateCall](docs/CreateCall.md)
  - [CreateCallResponse](docs/CreateCallResponse.md)
  - [CreateLookupResponse](docs/CreateLookupResponse.md)
@@ -199,10 +210,13 @@ Class | Method | HTTP request | Description
  - [DisconnectCallback](docs/DisconnectCallback.md)
  - [Diversion](docs/Diversion.md)
  - [DtmfCallback](docs/DtmfCallback.md)
+ - [Error](docs/Error.md)
+ - [FailureWebhook](docs/FailureWebhook.md)
  - [FieldError](docs/FieldError.md)
  - [FileFormatEnum](docs/FileFormatEnum.md)
  - [GatherCallback](docs/GatherCallback.md)
  - [InitiateCallback](docs/InitiateCallback.md)
+ - [LinksObject](docs/LinksObject.md)
  - [ListMessageDirectionEnum](docs/ListMessageDirectionEnum.md)
  - [ListMessageItem](docs/ListMessageItem.md)
  - [LookupRequest](docs/LookupRequest.md)
@@ -227,6 +241,7 @@ Class | Method | HTTP request | Description
  - [MfaForbiddenRequestError](docs/MfaForbiddenRequestError.md)
  - [MfaRequestError](docs/MfaRequestError.md)
  - [MfaUnauthorizedRequestError](docs/MfaUnauthorizedRequestError.md)
+ - [OptInWorkflow](docs/OptInWorkflow.md)
  - [PageInfo](docs/PageInfo.md)
  - [PriorityEnum](docs/PriorityEnum.md)
  - [RecordingAvailableCallback](docs/RecordingAvailableCallback.md)
@@ -238,6 +253,14 @@ Class | Method | HTTP request | Description
  - [RedirectMethodEnum](docs/RedirectMethodEnum.md)
  - [StirShaken](docs/StirShaken.md)
  - [Tag](docs/Tag.md)
+ - [TelephoneNumber](docs/TelephoneNumber.md)
+ - [TfvBasicAuthentication](docs/TfvBasicAuthentication.md)
+ - [TfvCallbackStatusEnum](docs/TfvCallbackStatusEnum.md)
+ - [TfvError](docs/TfvError.md)
+ - [TfvStatus](docs/TfvStatus.md)
+ - [TfvStatusEnum](docs/TfvStatusEnum.md)
+ - [TfvSubmissionInfo](docs/TfvSubmissionInfo.md)
+ - [TfvSubmissionWrapper](docs/TfvSubmissionWrapper.md)
  - [TnLookupRequestError](docs/TnLookupRequestError.md)
  - [TranscribeRecording](docs/TranscribeRecording.md)
  - [Transcription](docs/Transcription.md)
@@ -249,10 +272,19 @@ Class | Method | HTTP request | Description
  - [UpdateCallRecording](docs/UpdateCallRecording.md)
  - [UpdateConference](docs/UpdateConference.md)
  - [UpdateConferenceMember](docs/UpdateConferenceMember.md)
+ - [VerificationDenialWebhook](docs/VerificationDenialWebhook.md)
+ - [VerificationRequest](docs/VerificationRequest.md)
+ - [VerificationUpdateRequest](docs/VerificationUpdateRequest.md)
+ - [VerificationWebhook](docs/VerificationWebhook.md)
  - [VerifyCodeRequest](docs/VerifyCodeRequest.md)
  - [VerifyCodeResponse](docs/VerifyCodeResponse.md)
  - [VoiceApiError](docs/VoiceApiError.md)
  - [VoiceCodeResponse](docs/VoiceCodeResponse.md)
+ - [WebhookSubscription](docs/WebhookSubscription.md)
+ - [WebhookSubscriptionBasicAuthentication](docs/WebhookSubscriptionBasicAuthentication.md)
+ - [WebhookSubscriptionRequestSchema](docs/WebhookSubscriptionRequestSchema.md)
+ - [WebhookSubscriptionTypeEnum](docs/WebhookSubscriptionTypeEnum.md)
+ - [WebhookSubscriptionsListBody](docs/WebhookSubscriptionsListBody.md)
 
 
 <a id="documentation-for-authorization"></a>
