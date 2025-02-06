@@ -3,6 +3,10 @@ on:
   release:
     types:
       - published
+
+env:
+  OPENAPI_GENERATOR_VERSION: 7.10.0
+
 jobs:
   deploy_pre_release:
     name: Deploy OpenAPI Generator Client Pre-Release to Maven
@@ -63,7 +67,7 @@ jobs:
       - name: Build SDK
         uses: Bandwidth/generate-sdk-action@v4.0.0
         with:
-          openapi-generator-version: 7.10.0
+          openapi-generator-version: ${{ env.OPENAPI_GENERATOR_VERSION }}
           language: java
           additional-properties: --additional-properties=artifactVersion=$RELEASE_VERSION
 
@@ -144,7 +148,7 @@ jobs:
     - name: Build SDK
       uses: Bandwidth/generate-sdk-action@v4.0.0
       with:
-        openapi-generator-version: 7.9.0
+        openapi-generator-version: ${{ env.OPENAPI_GENERATOR_VERSION }}
         language: java
         additional-properties: --additional-properties=artifactVersion=$RELEASE_VERSION
 
