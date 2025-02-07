@@ -26,7 +26,7 @@ env:
 
 jobs:
   test:
-    name: Test
+    name: Smoke Test
     runs-on: ubuntu-latest
     env:
       BW_ACCOUNT_ID: ${{ secrets.BW_ACCOUNT_ID }}
@@ -58,7 +58,7 @@ jobs:
         shell: bash
 
   test_up:
-    name: Test
+    name: Smoke Test UP Account
     runs-on: ubuntu-latest
     env:
       BW_ACCOUNT_ID: ${{ secrets.BW_UP_ACCOUNT_ID }}
@@ -91,7 +91,7 @@ jobs:
 
   notify_for_failures:
     name: Notify for Failures
-    needs: [test]
+    needs: [test, test_up]
     if: failure()
     runs-on: ubuntu-latest
     steps:
