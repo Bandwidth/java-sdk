@@ -1,8 +1,15 @@
 name: Deploy
 on:
-  release:
-    types:
-      - published
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to deploy from'
+        required: true
+        default: 'main'
+      version:
+        description: 'Version to deploy'
+        required: true
+        default: '1.0.0'
 
 jobs:
   publish:
@@ -30,6 +37,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.inputs.branch }}
 
     - name: Set up Apache Maven Central
       uses: actions/setup-java@v4
@@ -43,23 +52,7 @@ jobs:
         gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
     - name: Get Maven Project Version
-      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/v}" >> $GITHUB_ENV
-
-    - name: Set OpenAPI Generator Version
-      run: |
-        OPENAPI_VERSION=$(jq .["generator-cli"].version openapitools.json)
-        echo "OPENAPI_GENERATOR_VERSION=$OPENAPI_VERSION" >> $GITHUB_ENV
-      shell: bash
-
-    - name: Build SDK
-      uses: Bandwidth/generate-sdk-action@v4.0.0
-      with:
-        openapi-generator-version: ${{ env.OPENAPI_GENERATOR_VERSION }}
-        language: java
-        additional-properties: --additional-properties=artifactVersion=$RELEASE_VERSION
-
-    - name: Clean SDK
-      run: mvn clean
+      run: echo "RELEASE_VERSION=${{inputs.version}}" >> $GITHUB_ENV
 
     - name: Set Maven Project Version
       run: mvn versions:set -DnewVersion=$RELEASE_VERSION
