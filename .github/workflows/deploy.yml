@@ -1,11 +1,11 @@
-name: Deploy
+name: Deploy SDK
 on:
   release:
     types:
       - published
 
 jobs:
-  publish:
+  deploy:
     env:
       BW_ACCOUNT_ID: ${{ secrets.BW_ACCOUNT_ID }}
       BW_USERNAME: ${{ secrets.BW_USERNAME }}
