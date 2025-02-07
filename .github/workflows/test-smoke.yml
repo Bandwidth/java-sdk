@@ -8,6 +8,7 @@ on:
       - main
     paths:
       - "src/test/java/com/bandwidth/sdk/smoke/*"
+      - ".github/workflows/test-smoke.yml"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref }}
