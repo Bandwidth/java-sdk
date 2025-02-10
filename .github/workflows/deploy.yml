@@ -50,7 +50,7 @@ jobs:
 
       - name: Set OpenAPI Generator Version
         run: |
-          OPENAPI_VERSION=$(jq .["generator-cli"].version openapitools.json)
+          OPENAPI_VERSION=$(jq .[\"generator-cli\"].version openapitools.json)
           echo "OPENAPI_GENERATOR_VERSION=$OPENAPI_VERSION" >> $GITHUB_ENV
         shell: bash
 
