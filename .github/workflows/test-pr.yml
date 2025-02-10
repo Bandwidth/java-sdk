@@ -4,7 +4,6 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref }}
@@ -35,29 +34,29 @@ jobs:
     name: Test PR
     runs-on: ${{ matrix.os }}
     strategy:
-        matrix:
-          os: [windows-2022, windows-2019, ubuntu-20.04, ubuntu-22.04]
-          java-version: ["11", "17", "21"]
-          distribution: ["zulu", "temurin"]
-        fail-fast: false
+      matrix:
+        os: [windows-2022, windows-2019, ubuntu-20.04, ubuntu-22.04]
+        java-version: ["11", "17", "21"]
+        distribution: ["zulu", "temurin"]
+      fail-fast: false
     steps:
-        - name: Checkout
-          uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-        - name: Set up JDK
-          uses: actions/setup-java@v4
-          with:
-            distribution: ${{ matrix.distribution }}
-            java-version: ${{ matrix.java-version }}
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: ${{ matrix.distribution }}
+          java-version: ${{ matrix.java-version }}
 
-        - name: Build Package and Test
-          env:
-            JAVA_VERSION: ${{ matrix.java-version }}
-            RUNNER_OS: ${{ matrix.os }}
-            OPERATING_SYSTEM: ${{ matrix.os }}
-            DISTRIBUTION: ${{ matrix.distribution }}
-          run: |
-            mvn -B package --file pom.xml -DskipTests
-            npm install -g @stoplight/prism-cli
-            prism mock ./bandwidth.yml & (sleep 3; mvn test -Punit-tests)
-          shell: bash
+      - name: Build Package and Test
+        env:
+          JAVA_VERSION: ${{ matrix.java-version }}
+          RUNNER_OS: ${{ matrix.os }}
+          OPERATING_SYSTEM: ${{ matrix.os }}
+          DISTRIBUTION: ${{ matrix.distribution }}
+        run: |
+          mvn -B package --file pom.xml -DskipTests
+          npm install -g @stoplight/prism-cli
+          prism mock ./bandwidth.yml & (sleep 3; mvn test -Punit-tests)
+        shell: bash
