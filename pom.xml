@@ -5,7 +5,7 @@
     <artifactId>bandwidth-sdk</artifactId>
     <packaging>jar</packaging>
     <name>bandwidth-sdk</name>
-    <version>1.0.0</version>
+    <version>1.0.0-dev</version>
     <url>https://github.com/Bandwidth/java-sdk</url>
     <description>The official client SDK for Bandwidth&#39;s Voice, Messaging, MFA, and WebRTC APIs</description>
     <scm>
