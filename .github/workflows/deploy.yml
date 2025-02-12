@@ -87,7 +87,7 @@ jobs:
           MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
 
       - name: Notify Slack
-        uses: Bandwidth/build-notify-slack-action@v2.0.0
+        uses: Bandwidth/build-notify-slack-action@v2
         if: always()
         with:
           job-status: ${{ job.status }}
