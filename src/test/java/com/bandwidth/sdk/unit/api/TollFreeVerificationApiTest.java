@@ -195,10 +195,6 @@ public class TollFreeVerificationApiTest {
     }
 
     @Test
-    @Disabled /*
-               * For some reason this returns a 500 due to:
-               * "Invalid reference token: callbackUrl"
-               */
     public void updateWebhookSubscriptionTest() throws ApiException {
         ApiResponse<WebhookSubscription> response = api.updateWebhookSubscriptionWithHttpInfo(BW_ACCOUNT_ID,
                 "test-id-1234",
