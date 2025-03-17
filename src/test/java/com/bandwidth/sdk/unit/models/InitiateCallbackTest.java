@@ -40,7 +40,8 @@ public class InitiateCallbackTest {
             .callUrl(URI.create("https://bandwidth.com"))
             .startTime(OffsetDateTime.now())
             .diversion(new Diversion())
-            .stirShaken(new StirShaken());
+            .stirShaken(new StirShaken())
+            .uui("uui");
 
     /**
      * Model tests for InitiateCallback
@@ -144,6 +145,14 @@ public class InitiateCallbackTest {
     @Test
     public void stirShakenTest() {
         assertThat(model.getStirShaken(), instanceOf(StirShaken.class));
+    }
+
+    /**
+     * Test the property 'uui'
+     */
+    @Test
+    public void uuiTest() {
+        assertThat(model.getUui(), instanceOf(String.class));
     }
 
 }
