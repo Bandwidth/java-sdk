@@ -115,6 +115,11 @@ public class InitiateCallback {
   @javax.annotation.Nullable
   private StirShaken stirShaken;
 
+  public static final String SERIALIZED_NAME_UUI = "uui";
+  @SerializedName(SERIALIZED_NAME_UUI)
+  @javax.annotation.Nullable
+  private String uui;
+
   public InitiateCallback() {
   }
 
@@ -345,6 +350,25 @@ public class InitiateCallback {
     this.stirShaken = stirShaken;
   }
 
+
+  public InitiateCallback uui(@javax.annotation.Nullable String uui) {
+    this.uui = uui;
+    return this;
+  }
+
+  /**
+   * The value of the &#x60;User-To-User&#x60; header to send within the initial &#x60;INVITE&#x60;. Must include the encoding parameter as specified in RFC 7433. Only &#x60;base64&#x60;, &#x60;jwt&#x60; and &#x60;hex&#x60; encoding are currently allowed. This value, including the encoding specifier, may not exceed 256 characters.
+   * @return uui
+   */
+  @javax.annotation.Nullable
+  public String getUui() {
+    return uui;
+  }
+
+  public void setUui(@javax.annotation.Nullable String uui) {
+    this.uui = uui;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -411,13 +435,14 @@ public class InitiateCallback {
         Objects.equals(this.callUrl, initiateCallback.callUrl) &&
         Objects.equals(this.startTime, initiateCallback.startTime) &&
         Objects.equals(this.diversion, initiateCallback.diversion) &&
-        Objects.equals(this.stirShaken, initiateCallback.stirShaken)&&
+        Objects.equals(this.stirShaken, initiateCallback.stirShaken) &&
+        Objects.equals(this.uui, initiateCallback.uui)&&
         Objects.equals(this.additionalProperties, initiateCallback.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(eventType, eventTime, accountId, applicationId, from, to, direction, callId, callUrl, startTime, diversion, stirShaken, additionalProperties);
+    return Objects.hash(eventType, eventTime, accountId, applicationId, from, to, direction, callId, callUrl, startTime, diversion, stirShaken, uui, additionalProperties);
   }
 
   @Override
@@ -436,6 +461,7 @@ public class InitiateCallback {
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    diversion: ").append(toIndentedString(diversion)).append("\n");
     sb.append("    stirShaken: ").append(toIndentedString(stirShaken)).append("\n");
+    sb.append("    uui: ").append(toIndentedString(uui)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -471,6 +497,7 @@ public class InitiateCallback {
     openapiFields.add("startTime");
     openapiFields.add("diversion");
     openapiFields.add("stirShaken");
+    openapiFields.add("uui");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -521,6 +548,9 @@ public class InitiateCallback {
       // validate the optional field `stirShaken`
       if (jsonObj.get("stirShaken") != null && !jsonObj.get("stirShaken").isJsonNull()) {
         StirShaken.validateJsonElement(jsonObj.get("stirShaken"));
+      }
+      if ((jsonObj.get("uui") != null && !jsonObj.get("uui").isJsonNull()) && !jsonObj.get("uui").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `uui` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uui").toString()));
       }
   }
 
