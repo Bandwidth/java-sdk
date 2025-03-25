@@ -780,6 +780,7 @@ paths:
       - description: "Not intended for explicit use. To use pagination, follow the\
           \ links in the `Link` header of the response, as indicated in the endpoint\
           \ description."
+        example: eyJwYWdlVG9rZW4iOiJ0b2tlbiJ9
         explode: true
         in: query
         name: pageToken
@@ -1434,6 +1435,7 @@ paths:
       - description: "Not intended for explicit use. To use pagination, follow the\
           \ links in the `Link` header of the response, as indicated in the endpoint\
           \ description."
+        example: eyJwYWdlVG9rZW4iOiJ0b2tlbiJ9
         explode: true
         in: query
         name: pageToken
@@ -6309,6 +6311,7 @@ components:
     pageToken1:
       description: "Not intended for explicit use. To use pagination, follow the links\
         \ in the `Link` header of the response, as indicated in the endpoint description."
+      example: eyJwYWdlVG9rZW4iOiJ0b2tlbiJ9
       explode: true
       in: query
       name: pageToken
@@ -7296,12 +7299,14 @@ components:
       enum:
       - INBOUND
       - OUTBOUND
+      example: INBOUND
       type: string
     messageDirectionEnum:
       description: The direction of the message. One of in out.
       enum:
       - in
       - out
+      example: in
       type: string
     messageTypeEnum:
       description: The type of message. Either SMS or MMS.
@@ -11546,20 +11551,23 @@ components:
           type: string
         useCaseSummary:
           description: A general idea of the use case and customer.
+          example: Text summarizing the use case for the toll-free number
           maxLength: 500
-          minLength: 1
+          minLength: 0
           nullable: false
           type: string
         productionMessageContent:
           description: Example of message content.
+          example: Production message content
           maxLength: 500
-          minLength: 1
+          minLength: 0
           nullable: false
           type: string
         optInWorkflow:
           $ref: '#/components/schemas/optInWorkflow'
         additionalInformation:
           description: Any additional information.
+          example: Any additional information
           maxLength: 500
           minLength: 0
           nullable: true
@@ -11601,12 +11609,14 @@ components:
           type: string
         useCaseSummary:
           description: A general idea of the use case and customer.
+          example: Text summarizing the use case for the toll-free number
           maxLength: 500
           minLength: 0
           nullable: false
           type: string
         productionMessageContent:
           description: Example of message content.
+          example: Production message content
           maxLength: 500
           minLength: 0
           nullable: false
@@ -11638,9 +11648,11 @@ components:
     tfvBasicAuthentication:
       properties:
         username:
+          example: username
           maxLength: 100
           type: string
         password:
+          example: password
           maxLength: 200
           type: string
       required:
@@ -11798,7 +11810,7 @@ components:
     address:
       example:
         zip: "27606"
-        addr2: addr2
+        addr2: 2230 Bandmate Way
         addr1: 2230 Bandmate Way
         city: Raleigh
         name: Bandwidth Inc.
@@ -11822,6 +11834,7 @@ components:
           type: string
         addr2:
           description: The address of the business using the toll-free number.
+          example: 2230 Bandmate Way
           maxLength: 500
           minLength: 0
           nullable: true
@@ -11862,6 +11875,12 @@ components:
       - url
       - zip
       type: object
+    additionalInformation:
+      description: Any additional information.
+      maxLength: 500
+      minLength: 0
+      nullable: true
+      type: string
     optInWorkflow:
       example:
         imageUrls:
@@ -11980,6 +11999,20 @@ components:
       example: 2FA
       maxLength: 500
       minLength: 0
+      type: string
+    useCaseSummary:
+      description: A general idea of the use case and customer.
+      example: Text summarizing the use case for the toll-free number
+      maxLength: 500
+      minLength: 0
+      nullable: false
+      type: string
+    productionMessageContent:
+      description: Example of message content.
+      example: Production message content
+      maxLength: 500
+      minLength: 0
+      nullable: false
       type: string
     webhookSubscriptionsListBody:
       description: A list of all webhook subscriptions registered for this account
@@ -12179,7 +12212,7 @@ components:
         createdDateTime: 2021-06-08T06:45:13Z
         modifiedDateTime: 2021-06-08T06:45:13Z
         submission:
-          additionalInformation: Any additional information
+          additionalInformation: additionalInformation
           useCase: 2FA
           isvReseller: Test ISV
           businessContact:
@@ -12191,7 +12224,7 @@ components:
           productionMessageContent: Production message content
           businessAddress:
             zip: "27606"
-            addr2: addr2
+            addr2: 2230 Bandmate Way
             addr1: 2230 Bandmate Way
             city: Raleigh
             name: Bandwidth Inc.
@@ -12250,7 +12283,7 @@ components:
       type: object
     tfvSubmissionInfo:
       example:
-        additionalInformation: Any additional information
+        additionalInformation: additionalInformation
         useCase: 2FA
         isvReseller: Test ISV
         businessContact:
@@ -12262,7 +12295,7 @@ components:
         productionMessageContent: Production message content
         businessAddress:
           zip: "27606"
-          addr2: addr2
+          addr2: 2230 Bandmate Way
           addr1: 2230 Bandmate Way
           city: Raleigh
           name: Bandwidth Inc.
@@ -12309,7 +12342,6 @@ components:
           $ref: '#/components/schemas/optInWorkflow'
         additionalInformation:
           description: Any additional information.
-          example: Any additional information
           maxLength: 500
           minLength: 0
           nullable: true

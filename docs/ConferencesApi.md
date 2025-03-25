@@ -445,7 +445,7 @@ public class Example {
     String minCreatedTime = "2022-06-21T19:13:21Z"; // String | Filter results to conferences which have a `createdTime` after or at `minCreatedTime` (in ISO8601 format).
     String maxCreatedTime = "2022-06-21T19:13:21Z"; // String | Filter results to conferences which have a `createdTime` before or at `maxCreatedTime` (in ISO8601 format).
     Integer pageSize = 1000; // Integer | Specifies the max number of conferences that will be returned.
-    String pageToken = "pageToken_example"; // String | Not intended for explicit use. To use pagination, follow the links in the `Link` header of the response, as indicated in the endpoint description.
+    String pageToken = "eyJwYWdlVG9rZW4iOiJ0b2tlbiJ9"; // String | Not intended for explicit use. To use pagination, follow the links in the `Link` header of the response, as indicated in the endpoint description.
     try {
       List<Conference> result = apiInstance.listConferences(accountId, name, minCreatedTime, maxCreatedTime, pageSize, pageToken);
       System.out.println(result);
