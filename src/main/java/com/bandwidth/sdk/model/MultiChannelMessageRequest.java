@@ -14,6 +14,7 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import com.bandwidth.sdk.model.MultiChannelChannelListObject;
 import com.bandwidth.sdk.model.PriorityEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -21,13 +22,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,34 +51,19 @@ import java.util.Set;
 import com.bandwidth.sdk.JSON;
 
 /**
- * MessageRequest
+ * Multi-Channel Message Request
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class MessageRequest {
-  public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
-  @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  @javax.annotation.Nonnull
-  private String applicationId;
-
+public class MultiChannelMessageRequest {
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
   @javax.annotation.Nonnull
-  private Set<String> to = new LinkedHashSet<>();
+  private String to;
 
-  public static final String SERIALIZED_NAME_FROM = "from";
-  @SerializedName(SERIALIZED_NAME_FROM)
+  public static final String SERIALIZED_NAME_CHANNEL_LIST = "channelList";
+  @SerializedName(SERIALIZED_NAME_CHANNEL_LIST)
   @javax.annotation.Nonnull
-  private String from;
-
-  public static final String SERIALIZED_NAME_TEXT = "text";
-  @SerializedName(SERIALIZED_NAME_TEXT)
-  @javax.annotation.Nullable
-  private String text;
-
-  public static final String SERIALIZED_NAME_MEDIA = "media";
-  @SerializedName(SERIALIZED_NAME_MEDIA)
-  @javax.annotation.Nullable
-  private List<URI> media = new ArrayList<>();
+  private List<MultiChannelChannelListObject> channelList = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
@@ -97,121 +80,56 @@ public class MessageRequest {
   @javax.annotation.Nullable
   private OffsetDateTime expiration;
 
-  public MessageRequest() {
+  public MultiChannelMessageRequest() {
   }
 
-  public MessageRequest applicationId(@javax.annotation.Nonnull String applicationId) {
-    this.applicationId = applicationId;
-    return this;
-  }
-
-  /**
-   * The ID of the Application your from number is associated with in the Bandwidth Phone Number Dashboard.
-   * @return applicationId
-   */
-  @javax.annotation.Nonnull
-  public String getApplicationId() {
-    return applicationId;
-  }
-
-  public void setApplicationId(@javax.annotation.Nonnull String applicationId) {
-    this.applicationId = applicationId;
-  }
-
-
-  public MessageRequest to(@javax.annotation.Nonnull Set<String> to) {
+  public MultiChannelMessageRequest to(@javax.annotation.Nonnull String to) {
     this.to = to;
     return this;
   }
 
-  public MessageRequest addToItem(String toItem) {
-    if (this.to == null) {
-      this.to = new LinkedHashSet<>();
-    }
-    this.to.add(toItem);
-    return this;
-  }
-
   /**
-   * The phone number(s) the message should be sent to in E164 format.
+   * The phone number the message should be sent to in E164 format.
    * @return to
    */
   @javax.annotation.Nonnull
-  public Set<String> getTo() {
+  public String getTo() {
     return to;
   }
 
-  public void setTo(@javax.annotation.Nonnull Set<String> to) {
+  public void setTo(@javax.annotation.Nonnull String to) {
     this.to = to;
   }
 
 
-  public MessageRequest from(@javax.annotation.Nonnull String from) {
-    this.from = from;
+  public MultiChannelMessageRequest channelList(@javax.annotation.Nonnull List<MultiChannelChannelListObject> channelList) {
+    this.channelList = channelList;
+    return this;
+  }
+
+  public MultiChannelMessageRequest addChannelListItem(MultiChannelChannelListObject channelListItem) {
+    if (this.channelList == null) {
+      this.channelList = new ArrayList<>();
+    }
+    this.channelList.add(channelListItem);
     return this;
   }
 
   /**
-   * Either an alphanumeric sender ID or the sender&#39;s Bandwidth phone number in E.164 format, which must be hosted within Bandwidth and linked to the account that is generating the message.  Alphanumeric Sender IDs can contain up to 11 characters, upper-case letters A-Z, lower-case letters a-z, numbers 0-9, space, hyphen -, plus +, underscore _ and ampersand &amp;. Alphanumeric Sender IDs must contain at least one letter.
-   * @return from
+   * A list of message bodies. The messages will be attempted in the order they are listed. Once a message sends successfully, the others will be ignored.
+   * @return channelList
    */
   @javax.annotation.Nonnull
-  public String getFrom() {
-    return from;
+  public List<MultiChannelChannelListObject> getChannelList() {
+    return channelList;
   }
 
-  public void setFrom(@javax.annotation.Nonnull String from) {
-    this.from = from;
-  }
-
-
-  public MessageRequest text(@javax.annotation.Nullable String text) {
-    this.text = text;
-    return this;
-  }
-
-  /**
-   * The contents of the text message. Must be 2048 characters or less.
-   * @return text
-   */
-  @javax.annotation.Nullable
-  public String getText() {
-    return text;
-  }
-
-  public void setText(@javax.annotation.Nullable String text) {
-    this.text = text;
+  public void setChannelList(@javax.annotation.Nonnull List<MultiChannelChannelListObject> channelList) {
+    this.channelList = channelList;
   }
 
 
-  public MessageRequest media(@javax.annotation.Nullable List<URI> media) {
-    this.media = media;
-    return this;
-  }
-
-  public MessageRequest addMediaItem(URI mediaItem) {
-    if (this.media == null) {
-      this.media = new ArrayList<>();
-    }
-    this.media.add(mediaItem);
-    return this;
-  }
-
-  /**
-   * A list of URLs to include as media attachments as part of the message. Each URL can be at most 4096 characters.
-   * @return media
-   */
-  @javax.annotation.Nullable
-  public List<URI> getMedia() {
-    return media;
-  }
-
-  public void setMedia(@javax.annotation.Nullable List<URI> media) {
-    this.media = media;
-  }
-
-
-  public MessageRequest tag(@javax.annotation.Nullable String tag) {
+  public MultiChannelMessageRequest tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
@@ -230,7 +148,7 @@ public class MessageRequest {
   }
 
 
-  public MessageRequest priority(@javax.annotation.Nullable PriorityEnum priority) {
+  public MultiChannelMessageRequest priority(@javax.annotation.Nullable PriorityEnum priority) {
     this.priority = priority;
     return this;
   }
@@ -249,7 +167,7 @@ public class MessageRequest {
   }
 
 
-  public MessageRequest expiration(@javax.annotation.Nullable OffsetDateTime expiration) {
+  public MultiChannelMessageRequest expiration(@javax.annotation.Nullable OffsetDateTime expiration) {
     this.expiration = expiration;
     return this;
   }
@@ -280,9 +198,9 @@ public class MessageRequest {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the MessageRequest instance itself
+   * @return the MultiChannelMessageRequest instance itself
    */
-  public MessageRequest putAdditionalProperty(String key, Object value) {
+  public MultiChannelMessageRequest putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -321,32 +239,26 @@ public class MessageRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MessageRequest messageRequest = (MessageRequest) o;
-    return Objects.equals(this.applicationId, messageRequest.applicationId) &&
-        Objects.equals(this.to, messageRequest.to) &&
-        Objects.equals(this.from, messageRequest.from) &&
-        Objects.equals(this.text, messageRequest.text) &&
-        Objects.equals(this.media, messageRequest.media) &&
-        Objects.equals(this.tag, messageRequest.tag) &&
-        Objects.equals(this.priority, messageRequest.priority) &&
-        Objects.equals(this.expiration, messageRequest.expiration)&&
-        Objects.equals(this.additionalProperties, messageRequest.additionalProperties);
+    MultiChannelMessageRequest multiChannelMessageRequest = (MultiChannelMessageRequest) o;
+    return Objects.equals(this.to, multiChannelMessageRequest.to) &&
+        Objects.equals(this.channelList, multiChannelMessageRequest.channelList) &&
+        Objects.equals(this.tag, multiChannelMessageRequest.tag) &&
+        Objects.equals(this.priority, multiChannelMessageRequest.priority) &&
+        Objects.equals(this.expiration, multiChannelMessageRequest.expiration)&&
+        Objects.equals(this.additionalProperties, multiChannelMessageRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(applicationId, to, from, text, media, tag, priority, expiration, additionalProperties);
+    return Objects.hash(to, channelList, tag, priority, expiration, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MessageRequest {\n");
-    sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
+    sb.append("class MultiChannelMessageRequest {\n");
     sb.append("    to: ").append(toIndentedString(to)).append("\n");
-    sb.append("    from: ").append(toIndentedString(from)).append("\n");
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
-    sb.append("    media: ").append(toIndentedString(media)).append("\n");
+    sb.append("    channelList: ").append(toIndentedString(channelList)).append("\n");
     sb.append("    tag: ").append(toIndentedString(tag)).append("\n");
     sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
     sb.append("    expiration: ").append(toIndentedString(expiration)).append("\n");
@@ -373,61 +285,51 @@ public class MessageRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("applicationId");
     openapiFields.add("to");
-    openapiFields.add("from");
-    openapiFields.add("text");
-    openapiFields.add("media");
+    openapiFields.add("channelList");
     openapiFields.add("tag");
     openapiFields.add("priority");
     openapiFields.add("expiration");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("applicationId");
     openapiRequiredFields.add("to");
-    openapiRequiredFields.add("from");
+    openapiRequiredFields.add("channelList");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to MessageRequest
+   * @throws IOException if the JSON Element is invalid with respect to MultiChannelMessageRequest
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!MessageRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in MessageRequest is not found in the empty JSON string", MessageRequest.openapiRequiredFields.toString()));
+        if (!MultiChannelMessageRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in MultiChannelMessageRequest is not found in the empty JSON string", MultiChannelMessageRequest.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : MessageRequest.openapiRequiredFields) {
+      for (String requiredField : MultiChannelMessageRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("applicationId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
+      if (!jsonObj.get("to").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
-      // ensure the required json array is present
-      if (jsonObj.get("to") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("to").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `to` to be an array in the JSON string but got `%s`", jsonObj.get("to").toString()));
+      // ensure the json data is an array
+      if (!jsonObj.get("channelList").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `channelList` to be an array in the JSON string but got `%s`", jsonObj.get("channelList").toString()));
       }
-      if (!jsonObj.get("from").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
-      }
-      if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull()) && !jsonObj.get("text").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonNull() && !jsonObj.get("media").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `media` to be an array in the JSON string but got `%s`", jsonObj.get("media").toString()));
-      }
+
+      JsonArray jsonArraychannelList = jsonObj.getAsJsonArray("channelList");
+      // validate the required field `channelList` (array)
+      for (int i = 0; i < jsonArraychannelList.size(); i++) {
+        MultiChannelChannelListObject.validateJsonElement(jsonArraychannelList.get(i));
+      };
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
       }
@@ -441,16 +343,16 @@ public class MessageRequest {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!MessageRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'MessageRequest' and its subtypes
+       if (!MultiChannelMessageRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'MultiChannelMessageRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<MessageRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(MessageRequest.class));
+       final TypeAdapter<MultiChannelMessageRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(MultiChannelMessageRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<MessageRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<MultiChannelMessageRequest>() {
            @Override
-           public void write(JsonWriter out, MessageRequest value) throws IOException {
+           public void write(JsonWriter out, MultiChannelMessageRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -478,12 +380,12 @@ public class MessageRequest {
            }
 
            @Override
-           public MessageRequest read(JsonReader in) throws IOException {
+           public MultiChannelMessageRequest read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             MessageRequest instance = thisAdapter.fromJsonTree(jsonObj);
+             MultiChannelMessageRequest instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -510,18 +412,18 @@ public class MessageRequest {
   }
 
   /**
-   * Create an instance of MessageRequest given an JSON string
+   * Create an instance of MultiChannelMessageRequest given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of MessageRequest
-   * @throws IOException if the JSON string is invalid with respect to MessageRequest
+   * @return An instance of MultiChannelMessageRequest
+   * @throws IOException if the JSON string is invalid with respect to MultiChannelMessageRequest
    */
-  public static MessageRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, MessageRequest.class);
+  public static MultiChannelMessageRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, MultiChannelMessageRequest.class);
   }
 
   /**
-   * Convert an instance of MessageRequest to an JSON string
+   * Convert an instance of MultiChannelMessageRequest to an JSON string
    *
    * @return JSON string
    */

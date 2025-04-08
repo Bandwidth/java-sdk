@@ -24,18 +24,20 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The priority specified by the user.
+ * The height of the media.
  */
-@JsonAdapter(PriorityEnum.Adapter.class)
-public enum PriorityEnum {
+@JsonAdapter(RbmMediaHeightEnum.Adapter.class)
+public enum RbmMediaHeightEnum {
   
-  DEFAULT("default"),
+  SHORT("SHORT"),
   
-  HIGH("high");
+  MEDIUM("MEDIUM"),
+  
+  TALL("TALL");
 
   private String value;
 
-  PriorityEnum(String value) {
+  RbmMediaHeightEnum(String value) {
     this.value = value;
   }
 
@@ -48,8 +50,8 @@ public enum PriorityEnum {
     return String.valueOf(value);
   }
 
-  public static PriorityEnum fromValue(String value) {
-    for (PriorityEnum b : PriorityEnum.values()) {
+  public static RbmMediaHeightEnum fromValue(String value) {
+    for (RbmMediaHeightEnum b : RbmMediaHeightEnum.values()) {
       if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
@@ -57,22 +59,22 @@ public enum PriorityEnum {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<PriorityEnum> {
+  public static class Adapter extends TypeAdapter<RbmMediaHeightEnum> {
     @Override
-    public void write(final JsonWriter jsonWriter, final PriorityEnum enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final RbmMediaHeightEnum enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public PriorityEnum read(final JsonReader jsonReader) throws IOException {
+    public RbmMediaHeightEnum read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return PriorityEnum.fromValue(value);
+      return RbmMediaHeightEnum.fromValue(value);
     }
   }
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
-    PriorityEnum.fromValue(value);
+    RbmMediaHeightEnum.fromValue(value);
   }
 }
 

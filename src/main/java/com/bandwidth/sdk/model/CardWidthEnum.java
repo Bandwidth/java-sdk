@@ -24,18 +24,18 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The priority specified by the user.
+ * Gets or Sets cardWidthEnum
  */
-@JsonAdapter(PriorityEnum.Adapter.class)
-public enum PriorityEnum {
+@JsonAdapter(CardWidthEnum.Adapter.class)
+public enum CardWidthEnum {
   
-  DEFAULT("default"),
+  SMALL("SMALL"),
   
-  HIGH("high");
+  MEDIUM("MEDIUM");
 
   private String value;
 
-  PriorityEnum(String value) {
+  CardWidthEnum(String value) {
     this.value = value;
   }
 
@@ -48,8 +48,8 @@ public enum PriorityEnum {
     return String.valueOf(value);
   }
 
-  public static PriorityEnum fromValue(String value) {
-    for (PriorityEnum b : PriorityEnum.values()) {
+  public static CardWidthEnum fromValue(String value) {
+    for (CardWidthEnum b : CardWidthEnum.values()) {
       if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
@@ -57,22 +57,22 @@ public enum PriorityEnum {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<PriorityEnum> {
+  public static class Adapter extends TypeAdapter<CardWidthEnum> {
     @Override
-    public void write(final JsonWriter jsonWriter, final PriorityEnum enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final CardWidthEnum enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public PriorityEnum read(final JsonReader jsonReader) throws IOException {
+    public CardWidthEnum read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return PriorityEnum.fromValue(value);
+      return CardWidthEnum.fromValue(value);
     }
   }
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
-    PriorityEnum.fromValue(value);
+    CardWidthEnum.fromValue(value);
   }
 }
 

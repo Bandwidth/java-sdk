@@ -24,18 +24,18 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The priority specified by the user.
+ * Gets or Sets standaloneCardOrientationEnum
  */
-@JsonAdapter(PriorityEnum.Adapter.class)
-public enum PriorityEnum {
+@JsonAdapter(StandaloneCardOrientationEnum.Adapter.class)
+public enum StandaloneCardOrientationEnum {
   
-  DEFAULT("default"),
+  HORIZONTAL("HORIZONTAL"),
   
-  HIGH("high");
+  VERTICAL("VERTICAL");
 
   private String value;
 
-  PriorityEnum(String value) {
+  StandaloneCardOrientationEnum(String value) {
     this.value = value;
   }
 
@@ -48,8 +48,8 @@ public enum PriorityEnum {
     return String.valueOf(value);
   }
 
-  public static PriorityEnum fromValue(String value) {
-    for (PriorityEnum b : PriorityEnum.values()) {
+  public static StandaloneCardOrientationEnum fromValue(String value) {
+    for (StandaloneCardOrientationEnum b : StandaloneCardOrientationEnum.values()) {
       if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
@@ -57,22 +57,22 @@ public enum PriorityEnum {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<PriorityEnum> {
+  public static class Adapter extends TypeAdapter<StandaloneCardOrientationEnum> {
     @Override
-    public void write(final JsonWriter jsonWriter, final PriorityEnum enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final StandaloneCardOrientationEnum enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public PriorityEnum read(final JsonReader jsonReader) throws IOException {
+    public StandaloneCardOrientationEnum read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return PriorityEnum.fromValue(value);
+      return StandaloneCardOrientationEnum.fromValue(value);
     }
   }
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
-    PriorityEnum.fromValue(value);
+    StandaloneCardOrientationEnum.fromValue(value);
   }
 }
 
