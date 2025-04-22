@@ -24,18 +24,18 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The priority specified by the user.
+ * The alignment of the thumbnail image in the card. Only applicable if the card using horizontal orientation.
  */
-@JsonAdapter(PriorityEnum.Adapter.class)
-public enum PriorityEnum {
+@JsonAdapter(ThumbnailAlignmentEnum.Adapter.class)
+public enum ThumbnailAlignmentEnum {
   
-  DEFAULT("default"),
+  LEFT("LEFT"),
   
-  HIGH("high");
+  RIGHT("RIGHT");
 
   private String value;
 
-  PriorityEnum(String value) {
+  ThumbnailAlignmentEnum(String value) {
     this.value = value;
   }
 
@@ -48,8 +48,8 @@ public enum PriorityEnum {
     return String.valueOf(value);
   }
 
-  public static PriorityEnum fromValue(String value) {
-    for (PriorityEnum b : PriorityEnum.values()) {
+  public static ThumbnailAlignmentEnum fromValue(String value) {
+    for (ThumbnailAlignmentEnum b : ThumbnailAlignmentEnum.values()) {
       if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
@@ -57,22 +57,22 @@ public enum PriorityEnum {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<PriorityEnum> {
+  public static class Adapter extends TypeAdapter<ThumbnailAlignmentEnum> {
     @Override
-    public void write(final JsonWriter jsonWriter, final PriorityEnum enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final ThumbnailAlignmentEnum enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public PriorityEnum read(final JsonReader jsonReader) throws IOException {
+    public ThumbnailAlignmentEnum read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return PriorityEnum.fromValue(value);
+      return ThumbnailAlignmentEnum.fromValue(value);
     }
   }
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
-    PriorityEnum.fromValue(value);
+    ThumbnailAlignmentEnum.fromValue(value);
   }
 }
 

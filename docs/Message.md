@@ -19,7 +19,7 @@
 |**text** | **String** | The contents of the message. |  [optional] |
 |**tag** | **String** | The custom string set by the user. |  [optional] |
 |**priority** | **PriorityEnum** |  |  [optional] |
-|**expiration** | **OffsetDateTime** | The expiration date-time set by the user. |  [optional] |
+|**expiration** | **OffsetDateTime** | A string with the date/time value that the message will automatically expire by. This must be a valid RFC-3339 value, e.g., 2021-03-14T01:59:26Z or 2021-03-13T20:59:26-05:00. Must be a date-time in the future. |  [optional] |
 
 
 

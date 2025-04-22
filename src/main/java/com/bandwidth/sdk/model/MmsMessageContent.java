@@ -14,7 +14,6 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import com.bandwidth.sdk.model.PriorityEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,12 +21,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.net.URI;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,25 +49,10 @@ import java.util.Set;
 import com.bandwidth.sdk.JSON;
 
 /**
- * MessageRequest
+ * MmsMessageContent
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class MessageRequest {
-  public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
-  @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  @javax.annotation.Nonnull
-  private String applicationId;
-
-  public static final String SERIALIZED_NAME_TO = "to";
-  @SerializedName(SERIALIZED_NAME_TO)
-  @javax.annotation.Nonnull
-  private Set<String> to = new LinkedHashSet<>();
-
-  public static final String SERIALIZED_NAME_FROM = "from";
-  @SerializedName(SERIALIZED_NAME_FROM)
-  @javax.annotation.Nonnull
-  private String from;
-
+public class MmsMessageContent {
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
   @javax.annotation.Nullable
@@ -82,90 +63,10 @@ public class MessageRequest {
   @javax.annotation.Nullable
   private List<URI> media = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_TAG = "tag";
-  @SerializedName(SERIALIZED_NAME_TAG)
-  @javax.annotation.Nullable
-  private String tag;
-
-  public static final String SERIALIZED_NAME_PRIORITY = "priority";
-  @SerializedName(SERIALIZED_NAME_PRIORITY)
-  @javax.annotation.Nullable
-  private PriorityEnum priority;
-
-  public static final String SERIALIZED_NAME_EXPIRATION = "expiration";
-  @SerializedName(SERIALIZED_NAME_EXPIRATION)
-  @javax.annotation.Nullable
-  private OffsetDateTime expiration;
-
-  public MessageRequest() {
+  public MmsMessageContent() {
   }
 
-  public MessageRequest applicationId(@javax.annotation.Nonnull String applicationId) {
-    this.applicationId = applicationId;
-    return this;
-  }
-
-  /**
-   * The ID of the Application your from number is associated with in the Bandwidth Phone Number Dashboard.
-   * @return applicationId
-   */
-  @javax.annotation.Nonnull
-  public String getApplicationId() {
-    return applicationId;
-  }
-
-  public void setApplicationId(@javax.annotation.Nonnull String applicationId) {
-    this.applicationId = applicationId;
-  }
-
-
-  public MessageRequest to(@javax.annotation.Nonnull Set<String> to) {
-    this.to = to;
-    return this;
-  }
-
-  public MessageRequest addToItem(String toItem) {
-    if (this.to == null) {
-      this.to = new LinkedHashSet<>();
-    }
-    this.to.add(toItem);
-    return this;
-  }
-
-  /**
-   * The phone number(s) the message should be sent to in E164 format.
-   * @return to
-   */
-  @javax.annotation.Nonnull
-  public Set<String> getTo() {
-    return to;
-  }
-
-  public void setTo(@javax.annotation.Nonnull Set<String> to) {
-    this.to = to;
-  }
-
-
-  public MessageRequest from(@javax.annotation.Nonnull String from) {
-    this.from = from;
-    return this;
-  }
-
-  /**
-   * Either an alphanumeric sender ID or the sender&#39;s Bandwidth phone number in E.164 format, which must be hosted within Bandwidth and linked to the account that is generating the message.  Alphanumeric Sender IDs can contain up to 11 characters, upper-case letters A-Z, lower-case letters a-z, numbers 0-9, space, hyphen -, plus +, underscore _ and ampersand &amp;. Alphanumeric Sender IDs must contain at least one letter.
-   * @return from
-   */
-  @javax.annotation.Nonnull
-  public String getFrom() {
-    return from;
-  }
-
-  public void setFrom(@javax.annotation.Nonnull String from) {
-    this.from = from;
-  }
-
-
-  public MessageRequest text(@javax.annotation.Nullable String text) {
+  public MmsMessageContent text(@javax.annotation.Nullable String text) {
     this.text = text;
     return this;
   }
@@ -184,12 +85,12 @@ public class MessageRequest {
   }
 
 
-  public MessageRequest media(@javax.annotation.Nullable List<URI> media) {
+  public MmsMessageContent media(@javax.annotation.Nullable List<URI> media) {
     this.media = media;
     return this;
   }
 
-  public MessageRequest addMediaItem(URI mediaItem) {
+  public MmsMessageContent addMediaItem(URI mediaItem) {
     if (this.media == null) {
       this.media = new ArrayList<>();
     }
@@ -210,63 +111,6 @@ public class MessageRequest {
     this.media = media;
   }
 
-
-  public MessageRequest tag(@javax.annotation.Nullable String tag) {
-    this.tag = tag;
-    return this;
-  }
-
-  /**
-   * A custom string that will be included in callback events of the message. Max 1024 characters.
-   * @return tag
-   */
-  @javax.annotation.Nullable
-  public String getTag() {
-    return tag;
-  }
-
-  public void setTag(@javax.annotation.Nullable String tag) {
-    this.tag = tag;
-  }
-
-
-  public MessageRequest priority(@javax.annotation.Nullable PriorityEnum priority) {
-    this.priority = priority;
-    return this;
-  }
-
-  /**
-   * Get priority
-   * @return priority
-   */
-  @javax.annotation.Nullable
-  public PriorityEnum getPriority() {
-    return priority;
-  }
-
-  public void setPriority(@javax.annotation.Nullable PriorityEnum priority) {
-    this.priority = priority;
-  }
-
-
-  public MessageRequest expiration(@javax.annotation.Nullable OffsetDateTime expiration) {
-    this.expiration = expiration;
-    return this;
-  }
-
-  /**
-   * A string with the date/time value that the message will automatically expire by. This must be a valid RFC-3339 value, e.g., 2021-03-14T01:59:26Z or 2021-03-13T20:59:26-05:00. Must be a date-time in the future.
-   * @return expiration
-   */
-  @javax.annotation.Nullable
-  public OffsetDateTime getExpiration() {
-    return expiration;
-  }
-
-  public void setExpiration(@javax.annotation.Nullable OffsetDateTime expiration) {
-    this.expiration = expiration;
-  }
-
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -280,9 +124,9 @@ public class MessageRequest {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the MessageRequest instance itself
+   * @return the MmsMessageContent instance itself
    */
-  public MessageRequest putAdditionalProperty(String key, Object value) {
+  public MmsMessageContent putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -321,35 +165,23 @@ public class MessageRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MessageRequest messageRequest = (MessageRequest) o;
-    return Objects.equals(this.applicationId, messageRequest.applicationId) &&
-        Objects.equals(this.to, messageRequest.to) &&
-        Objects.equals(this.from, messageRequest.from) &&
-        Objects.equals(this.text, messageRequest.text) &&
-        Objects.equals(this.media, messageRequest.media) &&
-        Objects.equals(this.tag, messageRequest.tag) &&
-        Objects.equals(this.priority, messageRequest.priority) &&
-        Objects.equals(this.expiration, messageRequest.expiration)&&
-        Objects.equals(this.additionalProperties, messageRequest.additionalProperties);
+    MmsMessageContent mmsMessageContent = (MmsMessageContent) o;
+    return Objects.equals(this.text, mmsMessageContent.text) &&
+        Objects.equals(this.media, mmsMessageContent.media)&&
+        Objects.equals(this.additionalProperties, mmsMessageContent.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(applicationId, to, from, text, media, tag, priority, expiration, additionalProperties);
+    return Objects.hash(text, media, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MessageRequest {\n");
-    sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
-    sb.append("    to: ").append(toIndentedString(to)).append("\n");
-    sb.append("    from: ").append(toIndentedString(from)).append("\n");
+    sb.append("class MmsMessageContent {\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    media: ").append(toIndentedString(media)).append("\n");
-    sb.append("    tag: ").append(toIndentedString(tag)).append("\n");
-    sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
-    sb.append("    expiration: ").append(toIndentedString(expiration)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -373,54 +205,26 @@ public class MessageRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("applicationId");
-    openapiFields.add("to");
-    openapiFields.add("from");
     openapiFields.add("text");
     openapiFields.add("media");
-    openapiFields.add("tag");
-    openapiFields.add("priority");
-    openapiFields.add("expiration");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("applicationId");
-    openapiRequiredFields.add("to");
-    openapiRequiredFields.add("from");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to MessageRequest
+   * @throws IOException if the JSON Element is invalid with respect to MmsMessageContent
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!MessageRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in MessageRequest is not found in the empty JSON string", MessageRequest.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : MessageRequest.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        if (!MmsMessageContent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in MmsMessageContent is not found in the empty JSON string", MmsMessageContent.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("applicationId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
-      }
-      // ensure the required json array is present
-      if (jsonObj.get("to") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("to").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `to` to be an array in the JSON string but got `%s`", jsonObj.get("to").toString()));
-      }
-      if (!jsonObj.get("from").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
-      }
       if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull()) && !jsonObj.get("text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
       }
@@ -428,29 +232,22 @@ public class MessageRequest {
       if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonNull() && !jsonObj.get("media").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `media` to be an array in the JSON string but got `%s`", jsonObj.get("media").toString()));
       }
-      if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
-      }
-      // validate the optional field `priority`
-      if (jsonObj.get("priority") != null && !jsonObj.get("priority").isJsonNull()) {
-        PriorityEnum.validateJsonElement(jsonObj.get("priority"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!MessageRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'MessageRequest' and its subtypes
+       if (!MmsMessageContent.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'MmsMessageContent' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<MessageRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(MessageRequest.class));
+       final TypeAdapter<MmsMessageContent> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(MmsMessageContent.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<MessageRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<MmsMessageContent>() {
            @Override
-           public void write(JsonWriter out, MessageRequest value) throws IOException {
+           public void write(JsonWriter out, MmsMessageContent value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -478,12 +275,12 @@ public class MessageRequest {
            }
 
            @Override
-           public MessageRequest read(JsonReader in) throws IOException {
+           public MmsMessageContent read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             MessageRequest instance = thisAdapter.fromJsonTree(jsonObj);
+             MmsMessageContent instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -510,18 +307,18 @@ public class MessageRequest {
   }
 
   /**
-   * Create an instance of MessageRequest given an JSON string
+   * Create an instance of MmsMessageContent given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of MessageRequest
-   * @throws IOException if the JSON string is invalid with respect to MessageRequest
+   * @return An instance of MmsMessageContent
+   * @throws IOException if the JSON string is invalid with respect to MmsMessageContent
    */
-  public static MessageRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, MessageRequest.class);
+  public static MmsMessageContent fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, MmsMessageContent.class);
   }
 
   /**
-   * Convert an instance of MessageRequest to an JSON string
+   * Convert an instance of MmsMessageContent to an JSON string
    *
    * @return JSON string
    */
