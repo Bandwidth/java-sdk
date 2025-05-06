@@ -94,6 +94,16 @@ public class TfvStatus {
   @javax.annotation.Nullable
   private TfvSubmissionInfo submission;
 
+  public static final String SERIALIZED_NAME_BLOCKED = "blocked";
+  @SerializedName(SERIALIZED_NAME_BLOCKED)
+  @javax.annotation.Nullable
+  private Boolean blocked;
+
+  public static final String SERIALIZED_NAME_BLOCKED_REASON = "blockedReason";
+  @SerializedName(SERIALIZED_NAME_BLOCKED_REASON)
+  @javax.annotation.Nullable
+  private String blockedReason;
+
   public TfvStatus() {
   }
 
@@ -248,6 +258,44 @@ public class TfvStatus {
     this.submission = submission;
   }
 
+
+  public TfvStatus blocked(@javax.annotation.Nullable Boolean blocked) {
+    this.blocked = blocked;
+    return this;
+  }
+
+  /**
+   * Whether a Toll-Free Verification is blocked. This attribute will only be defined when the number is blocked. (Not Available Until 5/28/2025)
+   * @return blocked
+   */
+  @javax.annotation.Nullable
+  public Boolean getBlocked() {
+    return blocked;
+  }
+
+  public void setBlocked(@javax.annotation.Nullable Boolean blocked) {
+    this.blocked = blocked;
+  }
+
+
+  public TfvStatus blockedReason(@javax.annotation.Nullable String blockedReason) {
+    this.blockedReason = blockedReason;
+    return this;
+  }
+
+  /**
+   * The reason why the Toll-Free Verification is blocked. This attribute will only be defined when the number is blocked. (Not Available Until 5/28/2025)
+   * @return blockedReason
+   */
+  @javax.annotation.Nullable
+  public String getBlockedReason() {
+    return blockedReason;
+  }
+
+  public void setBlockedReason(@javax.annotation.Nullable String blockedReason) {
+    this.blockedReason = blockedReason;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -310,13 +358,15 @@ public class TfvStatus {
         Objects.equals(this.resubmitAllowed, tfvStatus.resubmitAllowed) &&
         Objects.equals(this.createdDateTime, tfvStatus.createdDateTime) &&
         Objects.equals(this.modifiedDateTime, tfvStatus.modifiedDateTime) &&
-        Objects.equals(this.submission, tfvStatus.submission)&&
+        Objects.equals(this.submission, tfvStatus.submission) &&
+        Objects.equals(this.blocked, tfvStatus.blocked) &&
+        Objects.equals(this.blockedReason, tfvStatus.blockedReason)&&
         Objects.equals(this.additionalProperties, tfvStatus.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(phoneNumber, status, internalTicketNumber, declineReasonDescription, resubmitAllowed, createdDateTime, modifiedDateTime, submission, additionalProperties);
+    return Objects.hash(phoneNumber, status, internalTicketNumber, declineReasonDescription, resubmitAllowed, createdDateTime, modifiedDateTime, submission, blocked, blockedReason, additionalProperties);
   }
 
   @Override
@@ -331,6 +381,8 @@ public class TfvStatus {
     sb.append("    createdDateTime: ").append(toIndentedString(createdDateTime)).append("\n");
     sb.append("    modifiedDateTime: ").append(toIndentedString(modifiedDateTime)).append("\n");
     sb.append("    submission: ").append(toIndentedString(submission)).append("\n");
+    sb.append("    blocked: ").append(toIndentedString(blocked)).append("\n");
+    sb.append("    blockedReason: ").append(toIndentedString(blockedReason)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -362,6 +414,8 @@ public class TfvStatus {
     openapiFields.add("createdDateTime");
     openapiFields.add("modifiedDateTime");
     openapiFields.add("submission");
+    openapiFields.add("blocked");
+    openapiFields.add("blockedReason");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -396,6 +450,9 @@ public class TfvStatus {
       // validate the optional field `submission`
       if (jsonObj.get("submission") != null && !jsonObj.get("submission").isJsonNull()) {
         TfvSubmissionInfo.validateJsonElement(jsonObj.get("submission"));
+      }
+      if ((jsonObj.get("blockedReason") != null && !jsonObj.get("blockedReason").isJsonNull()) && !jsonObj.get("blockedReason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `blockedReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("blockedReason").toString()));
       }
   }
 

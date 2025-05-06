@@ -24,7 +24,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The priority specified by the user.  Not supported on MMS.
+ * The priority specified by the user.
  */
 @JsonAdapter(PriorityEnum.Adapter.class)
 public enum PriorityEnum {
