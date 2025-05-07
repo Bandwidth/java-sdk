@@ -55,7 +55,7 @@ public class MultiChannelApiTest {
 
         ApiResponse response =
             api.createMultiChannelMessageWithHttpInfo(BW_ACCOUNT_ID, multiChannelMessageRequest);
-        assertThat(response.getStatusCode(), is(205));
+        assertThat(response.getStatusCode(), is(202));
     }
 
 }
