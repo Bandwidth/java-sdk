@@ -19,7 +19,6 @@ import com.bandwidth.sdk.model.MultiChannelActionCalendarEvent;
 import com.bandwidth.sdk.model.RbmActionTypeEnum;
 
 import java.time.OffsetDateTime;
-import java.util.HexFormat;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -31,7 +30,7 @@ public class MultiChannelActionCalendarEventTest {
     private final MultiChannelActionCalendarEvent model = new MultiChannelActionCalendarEvent()
             .type(RbmActionTypeEnum.REPLY)
             .text("text")
-            .postBackData(HexFormat.of().parseHex("e04f"))
+            .postBackData(new byte[]{1, 2, 3})
             .title("title")
             .startTime(OffsetDateTime.now())
             .endTime(OffsetDateTime.now())

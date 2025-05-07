@@ -18,8 +18,6 @@ import org.junit.jupiter.api.Test;
 import com.bandwidth.sdk.model.RbmActionBase;
 import com.bandwidth.sdk.model.RbmActionTypeEnum;
 
-import java.util.HexFormat;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
 
@@ -30,7 +28,7 @@ public class RbmActionBaseTest {
     private final RbmActionBase model = new RbmActionBase()
             .type(RbmActionTypeEnum.REPLY)
             .text("text")
-            .postBackData(HexFormat.of().parseHex("e04f"));
+            .postBackData(new byte[]{1, 2, 3});
 
     /**
      * Model tests for RbmActionBase

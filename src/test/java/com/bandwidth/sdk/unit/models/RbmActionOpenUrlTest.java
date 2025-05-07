@@ -21,7 +21,6 @@ import com.bandwidth.sdk.model.RbmActionTypeEnum;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.net.URI;
-import java.util.HexFormat;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 
@@ -32,7 +31,7 @@ public class RbmActionOpenUrlTest {
     private final RbmActionOpenUrl model = new RbmActionOpenUrl()
             .type(RbmActionTypeEnum.OPEN_URL)
             .text("text")
-            .postBackData(HexFormat.of().parseHex("e04f"))
+            .postBackData(new byte[]{1, 2, 3})
             .url(URI.create("https://bandwidth.com"));
 
     /**
