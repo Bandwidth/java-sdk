@@ -106,6 +106,21 @@ public class VerificationRequest {
   @javax.annotation.Nullable
   private String isvReseller;
 
+  public static final String SERIALIZED_NAME_PRIVACY_POLICY_URL = "privacyPolicyUrl";
+  @SerializedName(SERIALIZED_NAME_PRIVACY_POLICY_URL)
+  @javax.annotation.Nullable
+  private String privacyPolicyUrl;
+
+  public static final String SERIALIZED_NAME_TERMS_AND_CONDITIONS_URL = "termsAndConditionsUrl";
+  @SerializedName(SERIALIZED_NAME_TERMS_AND_CONDITIONS_URL)
+  @javax.annotation.Nullable
+  private String termsAndConditionsUrl;
+
+  public static final String SERIALIZED_NAME_BUSINESS_D_B_A = "businessDBA";
+  @SerializedName(SERIALIZED_NAME_BUSINESS_D_B_A)
+  @javax.annotation.Nullable
+  private String businessDBA;
+
   public VerificationRequest() {
   }
 
@@ -308,6 +323,63 @@ public class VerificationRequest {
     this.isvReseller = isvReseller;
   }
 
+
+  public VerificationRequest privacyPolicyUrl(@javax.annotation.Nullable String privacyPolicyUrl) {
+    this.privacyPolicyUrl = privacyPolicyUrl;
+    return this;
+  }
+
+  /**
+   * The Toll-Free Verification request privacy policy URL. (Not Available Until 5/28/2025)
+   * @return privacyPolicyUrl
+   */
+  @javax.annotation.Nullable
+  public String getPrivacyPolicyUrl() {
+    return privacyPolicyUrl;
+  }
+
+  public void setPrivacyPolicyUrl(@javax.annotation.Nullable String privacyPolicyUrl) {
+    this.privacyPolicyUrl = privacyPolicyUrl;
+  }
+
+
+  public VerificationRequest termsAndConditionsUrl(@javax.annotation.Nullable String termsAndConditionsUrl) {
+    this.termsAndConditionsUrl = termsAndConditionsUrl;
+    return this;
+  }
+
+  /**
+   * The Toll-Free Verification request terms and conditions policy URL. (Not Available Until 5/28/2025)
+   * @return termsAndConditionsUrl
+   */
+  @javax.annotation.Nullable
+  public String getTermsAndConditionsUrl() {
+    return termsAndConditionsUrl;
+  }
+
+  public void setTermsAndConditionsUrl(@javax.annotation.Nullable String termsAndConditionsUrl) {
+    this.termsAndConditionsUrl = termsAndConditionsUrl;
+  }
+
+
+  public VerificationRequest businessDBA(@javax.annotation.Nullable String businessDBA) {
+    this.businessDBA = businessDBA;
+    return this;
+  }
+
+  /**
+   * The company &#39;Doing Business As&#39;. (Not Available Until 5/28/2025)
+   * @return businessDBA
+   */
+  @javax.annotation.Nullable
+  public String getBusinessDBA() {
+    return businessDBA;
+  }
+
+  public void setBusinessDBA(@javax.annotation.Nullable String businessDBA) {
+    this.businessDBA = businessDBA;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -372,7 +444,10 @@ public class VerificationRequest {
         Objects.equals(this.productionMessageContent, verificationRequest.productionMessageContent) &&
         Objects.equals(this.optInWorkflow, verificationRequest.optInWorkflow) &&
         Objects.equals(this.additionalInformation, verificationRequest.additionalInformation) &&
-        Objects.equals(this.isvReseller, verificationRequest.isvReseller)&&
+        Objects.equals(this.isvReseller, verificationRequest.isvReseller) &&
+        Objects.equals(this.privacyPolicyUrl, verificationRequest.privacyPolicyUrl) &&
+        Objects.equals(this.termsAndConditionsUrl, verificationRequest.termsAndConditionsUrl) &&
+        Objects.equals(this.businessDBA, verificationRequest.businessDBA)&&
         Objects.equals(this.additionalProperties, verificationRequest.additionalProperties);
   }
 
@@ -382,7 +457,7 @@ public class VerificationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(businessAddress, businessContact, messageVolume, phoneNumbers, useCase, useCaseSummary, productionMessageContent, optInWorkflow, additionalInformation, isvReseller, additionalProperties);
+    return Objects.hash(businessAddress, businessContact, messageVolume, phoneNumbers, useCase, useCaseSummary, productionMessageContent, optInWorkflow, additionalInformation, isvReseller, privacyPolicyUrl, termsAndConditionsUrl, businessDBA, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -406,6 +481,9 @@ public class VerificationRequest {
     sb.append("    optInWorkflow: ").append(toIndentedString(optInWorkflow)).append("\n");
     sb.append("    additionalInformation: ").append(toIndentedString(additionalInformation)).append("\n");
     sb.append("    isvReseller: ").append(toIndentedString(isvReseller)).append("\n");
+    sb.append("    privacyPolicyUrl: ").append(toIndentedString(privacyPolicyUrl)).append("\n");
+    sb.append("    termsAndConditionsUrl: ").append(toIndentedString(termsAndConditionsUrl)).append("\n");
+    sb.append("    businessDBA: ").append(toIndentedString(businessDBA)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -439,6 +517,9 @@ public class VerificationRequest {
     openapiFields.add("optInWorkflow");
     openapiFields.add("additionalInformation");
     openapiFields.add("isvReseller");
+    openapiFields.add("privacyPolicyUrl");
+    openapiFields.add("termsAndConditionsUrl");
+    openapiFields.add("businessDBA");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -498,6 +579,15 @@ public class VerificationRequest {
       }
       if ((jsonObj.get("isvReseller") != null && !jsonObj.get("isvReseller").isJsonNull()) && !jsonObj.get("isvReseller").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `isvReseller` to be a primitive type in the JSON string but got `%s`", jsonObj.get("isvReseller").toString()));
+      }
+      if ((jsonObj.get("privacyPolicyUrl") != null && !jsonObj.get("privacyPolicyUrl").isJsonNull()) && !jsonObj.get("privacyPolicyUrl").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `privacyPolicyUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("privacyPolicyUrl").toString()));
+      }
+      if ((jsonObj.get("termsAndConditionsUrl") != null && !jsonObj.get("termsAndConditionsUrl").isJsonNull()) && !jsonObj.get("termsAndConditionsUrl").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `termsAndConditionsUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("termsAndConditionsUrl").toString()));
+      }
+      if ((jsonObj.get("businessDBA") != null && !jsonObj.get("businessDBA").isJsonNull()) && !jsonObj.get("businessDBA").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `businessDBA` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessDBA").toString()));
       }
   }
 

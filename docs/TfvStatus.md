@@ -15,6 +15,8 @@
 |**createdDateTime** | **OffsetDateTime** | Date and time the verification request was created. |  [optional] |
 |**modifiedDateTime** | **OffsetDateTime** | Date and time the verification request was last modified. |  [optional] |
 |**submission** | [**TfvSubmissionInfo**](TfvSubmissionInfo.md) |  |  [optional] |
+|**blocked** | **Boolean** | Whether a Toll-Free Verification is blocked. This attribute will only be defined when the number is blocked. (Not Available Until 5/28/2025) |  [optional] |
+|**blockedReason** | **String** | The reason why the Toll-Free Verification is blocked. This attribute will only be defined when the number is blocked. (Not Available Until 5/28/2025) |  [optional] |
 
 
 

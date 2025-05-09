@@ -94,6 +94,16 @@ public class VerificationDenialWebhook {
   @javax.annotation.Nullable
   private String status = "UNVERIFIED";
 
+  public static final String SERIALIZED_NAME_BLOCKED = "blocked";
+  @SerializedName(SERIALIZED_NAME_BLOCKED)
+  @javax.annotation.Nullable
+  private Boolean blocked;
+
+  public static final String SERIALIZED_NAME_BLOCKED_REASON = "blockedReason";
+  @SerializedName(SERIALIZED_NAME_BLOCKED_REASON)
+  @javax.annotation.Nullable
+  private String blockedReason;
+
   public VerificationDenialWebhook() {
   }
 
@@ -256,6 +266,44 @@ public class VerificationDenialWebhook {
     this.status = status;
   }
 
+
+  public VerificationDenialWebhook blocked(@javax.annotation.Nullable Boolean blocked) {
+    this.blocked = blocked;
+    return this;
+  }
+
+  /**
+   * Whether a Toll-Free Verification is blocked. This attribute will only be defined when the number is blocked. (Not Available Until 5/28/2025)
+   * @return blocked
+   */
+  @javax.annotation.Nullable
+  public Boolean getBlocked() {
+    return blocked;
+  }
+
+  public void setBlocked(@javax.annotation.Nullable Boolean blocked) {
+    this.blocked = blocked;
+  }
+
+
+  public VerificationDenialWebhook blockedReason(@javax.annotation.Nullable String blockedReason) {
+    this.blockedReason = blockedReason;
+    return this;
+  }
+
+  /**
+   * The reason why the Toll-Free Verification is blocked. This attribute will only be defined when the number is blocked. (Not Available Until 5/28/2025)
+   * @return blockedReason
+   */
+  @javax.annotation.Nullable
+  public String getBlockedReason() {
+    return blockedReason;
+  }
+
+  public void setBlockedReason(@javax.annotation.Nullable String blockedReason) {
+    this.blockedReason = blockedReason;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -318,13 +366,15 @@ public class VerificationDenialWebhook {
         Objects.equals(this.internalTicketNumber, verificationDenialWebhook.internalTicketNumber) &&
         Objects.equals(this.phoneNumber, verificationDenialWebhook.phoneNumber) &&
         Objects.equals(this.resubmitAllowed, verificationDenialWebhook.resubmitAllowed) &&
-        Objects.equals(this.status, verificationDenialWebhook.status)&&
+        Objects.equals(this.status, verificationDenialWebhook.status) &&
+        Objects.equals(this.blocked, verificationDenialWebhook.blocked) &&
+        Objects.equals(this.blockedReason, verificationDenialWebhook.blockedReason)&&
         Objects.equals(this.additionalProperties, verificationDenialWebhook.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, additionalDenialReasons, declineReasonDescription, denialStatusCode, internalTicketNumber, phoneNumber, resubmitAllowed, status, additionalProperties);
+    return Objects.hash(accountId, additionalDenialReasons, declineReasonDescription, denialStatusCode, internalTicketNumber, phoneNumber, resubmitAllowed, status, blocked, blockedReason, additionalProperties);
   }
 
   @Override
@@ -339,6 +389,8 @@ public class VerificationDenialWebhook {
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("    resubmitAllowed: ").append(toIndentedString(resubmitAllowed)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    blocked: ").append(toIndentedString(blocked)).append("\n");
+    sb.append("    blockedReason: ").append(toIndentedString(blockedReason)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -370,6 +422,8 @@ public class VerificationDenialWebhook {
     openapiFields.add("phoneNumber");
     openapiFields.add("resubmitAllowed");
     openapiFields.add("status");
+    openapiFields.add("blocked");
+    openapiFields.add("blockedReason");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -416,6 +470,9 @@ public class VerificationDenialWebhook {
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      if ((jsonObj.get("blockedReason") != null && !jsonObj.get("blockedReason").isJsonNull()) && !jsonObj.get("blockedReason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `blockedReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("blockedReason").toString()));
       }
   }
 
