@@ -16,6 +16,7 @@ import com.bandwidth.sdk.model.CallTranscriptionMetadata;
 import com.bandwidth.sdk.model.CallTranscriptionResponse;
 import com.bandwidth.sdk.model.CallTranscriptionTrackEnum;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
@@ -53,6 +54,7 @@ public class TranscriptionsApiTest {
 
     @SuppressWarnings("null")
     @Test
+    @Disabled // issue with PV API, can re-enable when fixed
     public void getAndDeleteRealTimeTranscriptionsTest() throws ApiException, InterruptedException, URISyntaxException {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);

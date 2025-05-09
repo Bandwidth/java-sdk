@@ -17,6 +17,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;
+import java.time.OffsetDateTime;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -137,6 +138,7 @@ public class MessagesApiTest {
         messageRequest.addMediaItem(URI.create("https://cdn2.thecatapi.com/images/MTY3ODIyMQ.jpg"));
         messageRequest.tag("Java Integration Test");
         messageRequest.priority(PriorityEnum.DEFAULT);
+        messageRequest.expiration(OffsetDateTime.now().plusSeconds(60));
         Message response = api.createMessage(accountId, messageRequest);
 
         assertThat(response, instanceOf(Message.class));
