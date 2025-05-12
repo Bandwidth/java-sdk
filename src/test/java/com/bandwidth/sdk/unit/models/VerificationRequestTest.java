@@ -38,7 +38,10 @@ public class VerificationRequestTest {
             .productionMessageContent("productionMessageContent")
             .optInWorkflow(new OptInWorkflow())
             .additionalInformation("additionalInformation")
-            .isvReseller("isvReseller");
+            .isvReseller("isvReseller")
+            .privacyPolicyUrl("privacyPolicyUrl")
+            .termsAndConditionsUrl("termsAndConditionsUrl")
+            .businessDBA("businessDBA");
 
     /**
      * Model tests for VerificationRequest
@@ -126,6 +129,30 @@ public class VerificationRequestTest {
     @Test
     public void isvResellerTest() {
         assertThat(model.getIsvReseller(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'privacyPolicyUrl'
+     */
+    @Test
+    public void privacyPolicyUrlTest() {
+        assertThat(model.getPrivacyPolicyUrl(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'termsAndConditionsUrl'
+     */
+    @Test
+    public void termsAndConditionsUrlTest() {
+        assertThat(model.getTermsAndConditionsUrl(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'businessDBA'
+     */
+    @Test
+    public void businessDBATest() {
+        assertThat(model.getBusinessDBA(), instanceOf(String.class));
     }
 
 }
