@@ -30,6 +30,7 @@ import com.bandwidth.sdk.model.TelephoneNumber;
 import com.bandwidth.sdk.model.TfvBasicAuthentication;
 import com.bandwidth.sdk.model.TfvStatus;
 import com.bandwidth.sdk.model.TfvStatusEnum;
+import com.bandwidth.sdk.model.TfvSubmissionInfo;
 import com.bandwidth.sdk.model.TfvSubmissionWrapper;
 import com.bandwidth.sdk.model.VerificationRequest;
 import com.bandwidth.sdk.model.WebhookSubscription;
@@ -107,6 +108,9 @@ public class TollFreeVerificationApiTest {
         assertThat(response.getData().getResubmitAllowed(), instanceOf(Boolean.class));
         assertThat(response.getData().getCreatedDateTime(), instanceOf(OffsetDateTime.class));
         assertThat(response.getData().getModifiedDateTime(), instanceOf(OffsetDateTime.class));
+        assertThat(response.getData().getSubmission(), instanceOf(TfvSubmissionInfo.class));
+        assertThat(response.getData().getBlocked(), instanceOf(Boolean.class));
+        assertThat(response.getData().getBlockedReason(), instanceOf(String.class));
     }
 
     @Test
@@ -177,7 +181,10 @@ public class TollFreeVerificationApiTest {
                         .description("description")
                         .imageUrls(List.of("https://example.com")))
                 .additionalInformation("additionalInformation")
-                .isvReseller("isvReseller");
+                .isvReseller("isvReseller")
+                .privacyPolicyUrl("privacyPolicyUrl")
+                .termsAndConditionsUrl("termsAndConditionsUrl")
+                .businessDBA("businessDBA");
 
         ApiResponse<Void> response = api.requestTollFreeVerificationWithHttpInfo(BW_ACCOUNT_ID, verificationRequest);
 

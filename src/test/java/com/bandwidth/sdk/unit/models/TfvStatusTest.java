@@ -36,7 +36,9 @@ public class TfvStatusTest {
             .resubmitAllowed(true)
             .createdDateTime(OffsetDateTime.now())
             .modifiedDateTime(OffsetDateTime.now())
-            .submission(new TfvSubmissionInfo());
+            .submission(new TfvSubmissionInfo())
+            .blocked(true)
+            .blockedReason("blockedReason");
 
     /**
      * Model tests for TfvStatus
@@ -108,6 +110,22 @@ public class TfvStatusTest {
     @Test
     public void submissionTest() {
         assertThat(model.getSubmission(), instanceOf(TfvSubmissionInfo.class));
+    }
+
+    /**
+     * Test the property 'blocked'
+     */
+    @Test
+    public void blockedTest() {
+        assertThat(model.getBlocked(), instanceOf(Boolean.class));
+    }
+
+    /**
+     * Test the property 'blockedReason'
+     */
+    @Test
+    public void blockedReasonTest() {
+        assertThat(model.getBlockedReason(), instanceOf(String.class));
     }
 
 }

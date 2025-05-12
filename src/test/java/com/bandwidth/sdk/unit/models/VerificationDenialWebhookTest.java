@@ -38,7 +38,9 @@ public class VerificationDenialWebhookTest {
             .internalTicketNumber(UUID.randomUUID())
             .phoneNumber("phoneNumber")
             .resubmitAllowed(true)
-            .status("status");
+            .status("status")
+            .blocked(true)
+            .blockedReason("blockedReason");
 
     /**
      * Model tests for VerificationDenialWebhook
@@ -110,6 +112,22 @@ public class VerificationDenialWebhookTest {
     @Test
     public void statusTest() {
         assertThat(model.getStatus(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'blocked'
+     */
+    @Test
+    public void blockedTest() {
+        assertThat(model.getBlocked(), instanceOf(Boolean.class));
+    }
+
+    /**
+     * Test the property 'blockedReason'
+     */
+    @Test
+    public void blockedReasonTest() {
+        assertThat(model.getBlockedReason(), instanceOf(String.class));
     }
 
 }
