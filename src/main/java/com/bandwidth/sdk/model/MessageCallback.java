@@ -84,6 +84,11 @@ public class MessageCallback {
   @javax.annotation.Nullable
   private Integer errorCode;
 
+  public static final String SERIALIZED_NAME_CARRIER_NAME = "carrierName";
+  @SerializedName(SERIALIZED_NAME_CARRIER_NAME)
+  @javax.annotation.Nullable
+  private String carrierName;
+
   public MessageCallback() {
   }
 
@@ -200,6 +205,25 @@ public class MessageCallback {
     this.errorCode = errorCode;
   }
 
+
+  public MessageCallback carrierName(@javax.annotation.Nullable String carrierName) {
+    this.carrierName = carrierName;
+    return this;
+  }
+
+  /**
+   * The name of the Authorized Message Provider (AMP) that handled this message. In the US, this is the carrier that the message was sent to.
+   * @return carrierName
+   */
+  @javax.annotation.Nullable
+  public String getCarrierName() {
+    return carrierName;
+  }
+
+  public void setCarrierName(@javax.annotation.Nullable String carrierName) {
+    this.carrierName = carrierName;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -260,7 +284,8 @@ public class MessageCallback {
         Objects.equals(this.to, messageCallback.to) &&
         Objects.equals(this.description, messageCallback.description) &&
         Objects.equals(this.message, messageCallback.message) &&
-        Objects.equals(this.errorCode, messageCallback.errorCode)&&
+        Objects.equals(this.errorCode, messageCallback.errorCode) &&
+        Objects.equals(this.carrierName, messageCallback.carrierName)&&
         Objects.equals(this.additionalProperties, messageCallback.additionalProperties);
   }
 
@@ -270,7 +295,7 @@ public class MessageCallback {
 
   @Override
   public int hashCode() {
-    return Objects.hash(time, type, to, description, message, errorCode, additionalProperties);
+    return Objects.hash(time, type, to, description, message, errorCode, carrierName, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -290,6 +315,7 @@ public class MessageCallback {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
+    sb.append("    carrierName: ").append(toIndentedString(carrierName)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -319,6 +345,7 @@ public class MessageCallback {
     openapiFields.add("description");
     openapiFields.add("message");
     openapiFields.add("errorCode");
+    openapiFields.add("carrierName");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -359,6 +386,9 @@ public class MessageCallback {
       }
       // validate the required field `message`
       MessageCallbackMessage.validateJsonElement(jsonObj.get("message"));
+      if ((jsonObj.get("carrierName") != null && !jsonObj.get("carrierName").isJsonNull()) && !jsonObj.get("carrierName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `carrierName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("carrierName").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

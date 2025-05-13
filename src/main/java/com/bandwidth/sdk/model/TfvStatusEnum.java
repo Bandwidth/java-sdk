@@ -33,11 +33,7 @@ public enum TfvStatusEnum {
   
   UNVERIFIED("UNVERIFIED"),
   
-  PENDING("PENDING"),
-  
-  PARTIALLY_VERIFIED("PARTIALLY_VERIFIED"),
-  
-  INVALID_STATUS("INVALID_STATUS");
+  PENDING("PENDING");
 
   private String value;
 
