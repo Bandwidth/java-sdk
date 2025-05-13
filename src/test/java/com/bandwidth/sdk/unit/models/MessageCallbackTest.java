@@ -32,7 +32,8 @@ public class MessageCallbackTest {
             .to("+1234567890")
             .description("description")
             .message(new MessageCallbackMessage())
-            .errorCode(123);
+            .errorCode(123)
+            .carrierName("carrierName");
 
     /**
      * Model tests for MessageCallback
@@ -88,6 +89,14 @@ public class MessageCallbackTest {
     @Test
     public void errorCodeTest() {
         assertThat(model.getErrorCode(), instanceOf(Integer.class));
+    }
+
+    /**
+     * Test the property 'carrierName'
+     */
+    @Test
+    public void carrierNameTest() {
+        assertThat(model.getCarrierName(), instanceOf(String.class));
     }
 
 }
