@@ -41,6 +41,7 @@ import lombok.NoArgsConstructor;
  * @param fallbackUsername (str, optional): The username to send in the HTTP request to transferAnswerFallbackUrl. Defaults to None.
  * @param fallbackPassword (str, optional): The password to send in the HTTP request to transferAnswerFallbackUrl. Defaults to None.
  * @param tag (str, optional):  A custom string that will be sent with these and all future callbacks unless overwritten by a future tag attribute or cleared. May be cleared by setting tag="" Max length 256 characters. Defaults to None.
+ * @param uui (str, optional): The value of the User-To-User header to send within the initial INVITE. Must include the encoding parameter as specified in RFC 7433. Only base64, jwt and hex encoding are currently allowed. This value, including the encoding specifier, may not exceed 256 characters.
  *
  */
 public class PhoneNumber implements OutboundDestination {
@@ -86,4 +87,7 @@ public class PhoneNumber implements OutboundDestination {
 
     @XmlAttribute
     protected String tag;
+
+    @XmlAttribute
+    protected String uui;
 }
