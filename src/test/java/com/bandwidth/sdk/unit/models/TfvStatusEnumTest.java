@@ -31,8 +31,6 @@ public class TfvStatusEnumTest {
         assertThat(TfvStatusEnum.VERIFIED.toString(), equalTo("VERIFIED"));
         assertThat(TfvStatusEnum.UNVERIFIED.toString(), equalTo("UNVERIFIED"));
         assertThat(TfvStatusEnum.PENDING.toString(), equalTo("PENDING"));
-        assertThat(TfvStatusEnum.PARTIALLY_VERIFIED.toString(), equalTo("PARTIALLY_VERIFIED"));
-        assertThat(TfvStatusEnum.INVALID_STATUS.toString(), equalTo("INVALID_STATUS"));
     }
 
 }
