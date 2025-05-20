@@ -38,7 +38,7 @@ public class TfvSubmissionInfoTest {
             .isvReseller("isvReseller")
             .privacyPolicyUrl("privacyPolicyUrl")
             .termsAndConditionsUrl("termsAndConditionsUrl")
-            .businessDBA("businessDBA");
+            .businessDba("businessDba");
 
     /**
      * Model tests for TfvSubmissionInfo
@@ -137,11 +137,11 @@ public class TfvSubmissionInfoTest {
     }
 
     /**
-     * Test the property 'businessDBA'
+     * Test the property 'businessDba'
      */
     @Test
-    public void businessDBATest() {
-        assertThat(model.getBusinessDBA(), instanceOf(String.class));
+    public void businessDbaTest() {
+        assertThat(model.getBusinessDba(), instanceOf(String.class));
     }
 
 }
