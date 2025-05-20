@@ -18,7 +18,7 @@
 |**isvReseller** | **String** | ISV name. |  [optional] |
 |**privacyPolicyUrl** | **String** | The Toll-Free Verification request privacy policy URL. (Not Available Until 5/28/2025) |  [optional] |
 |**termsAndConditionsUrl** | **String** | The Toll-Free Verification request terms and conditions policy URL. (Not Available Until 5/28/2025) |  [optional] |
-|**businessDBA** | **String** | The company &#39;Doing Business As&#39;. (Not Available Until 5/28/2025) |  [optional] |
+|**businessDba** | **String** | The company &#39;Doing Business As&#39;. (Not Available Until 5/28/2025) |  [optional] |
 
 
 

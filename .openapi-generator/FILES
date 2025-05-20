@@ -7,6 +7,7 @@ docs/AccountStatistics.md
 docs/AdditionalDenialReason.md
 docs/Address.md
 docs/AnswerCallback.md
+docs/BlockedWebhook.md
 docs/BridgeCompleteCallback.md
 docs/BridgeTargetCompleteCallback.md
 docs/CallDirectionEnum.md
@@ -200,6 +201,7 @@ src/main/java/com/bandwidth/sdk/model/AccountStatistics.java
 src/main/java/com/bandwidth/sdk/model/AdditionalDenialReason.java
 src/main/java/com/bandwidth/sdk/model/Address.java
 src/main/java/com/bandwidth/sdk/model/AnswerCallback.java
+src/main/java/com/bandwidth/sdk/model/BlockedWebhook.java
 src/main/java/com/bandwidth/sdk/model/BridgeCompleteCallback.java
 src/main/java/com/bandwidth/sdk/model/BridgeTargetCompleteCallback.java
 src/main/java/com/bandwidth/sdk/model/CallDirectionEnum.java
