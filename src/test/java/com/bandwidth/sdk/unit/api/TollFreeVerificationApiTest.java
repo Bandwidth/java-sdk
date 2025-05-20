@@ -184,7 +184,7 @@ public class TollFreeVerificationApiTest {
                 .isvReseller("isvReseller")
                 .privacyPolicyUrl("privacyPolicyUrl")
                 .termsAndConditionsUrl("termsAndConditionsUrl")
-                .businessDBA("businessDBA");
+                .businessDba("businessDba");
 
         ApiResponse<Void> response = api.requestTollFreeVerificationWithHttpInfo(BW_ACCOUNT_ID, verificationRequest);
 

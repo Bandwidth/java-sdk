@@ -109,10 +109,10 @@ public class VerificationUpdateRequest {
   @javax.annotation.Nullable
   private String termsAndConditionsUrl;
 
-  public static final String SERIALIZED_NAME_BUSINESS_D_B_A = "businessDBA";
-  @SerializedName(SERIALIZED_NAME_BUSINESS_D_B_A)
+  public static final String SERIALIZED_NAME_BUSINESS_DBA = "businessDba";
+  @SerializedName(SERIALIZED_NAME_BUSINESS_DBA)
   @javax.annotation.Nullable
-  private String businessDBA;
+  private String businessDba;
 
   public VerificationUpdateRequest() {
   }
@@ -328,22 +328,22 @@ public class VerificationUpdateRequest {
   }
 
 
-  public VerificationUpdateRequest businessDBA(@javax.annotation.Nullable String businessDBA) {
-    this.businessDBA = businessDBA;
+  public VerificationUpdateRequest businessDba(@javax.annotation.Nullable String businessDba) {
+    this.businessDba = businessDba;
     return this;
   }
 
   /**
    * The company &#39;Doing Business As&#39;. (Not Available Until 5/28/2025)
-   * @return businessDBA
+   * @return businessDba
    */
   @javax.annotation.Nullable
-  public String getBusinessDBA() {
-    return businessDBA;
+  public String getBusinessDba() {
+    return businessDba;
   }
 
-  public void setBusinessDBA(@javax.annotation.Nullable String businessDBA) {
-    this.businessDBA = businessDBA;
+  public void setBusinessDba(@javax.annotation.Nullable String businessDba) {
+    this.businessDba = businessDba;
   }
 
   /**
@@ -412,7 +412,7 @@ public class VerificationUpdateRequest {
         Objects.equals(this.isvReseller, verificationUpdateRequest.isvReseller) &&
         Objects.equals(this.privacyPolicyUrl, verificationUpdateRequest.privacyPolicyUrl) &&
         Objects.equals(this.termsAndConditionsUrl, verificationUpdateRequest.termsAndConditionsUrl) &&
-        Objects.equals(this.businessDBA, verificationUpdateRequest.businessDBA)&&
+        Objects.equals(this.businessDba, verificationUpdateRequest.businessDba)&&
         Objects.equals(this.additionalProperties, verificationUpdateRequest.additionalProperties);
   }
 
@@ -422,7 +422,7 @@ public class VerificationUpdateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(businessAddress, businessContact, messageVolume, useCase, useCaseSummary, productionMessageContent, optInWorkflow, additionalInformation, isvReseller, privacyPolicyUrl, termsAndConditionsUrl, businessDBA, additionalProperties);
+    return Objects.hash(businessAddress, businessContact, messageVolume, useCase, useCaseSummary, productionMessageContent, optInWorkflow, additionalInformation, isvReseller, privacyPolicyUrl, termsAndConditionsUrl, businessDba, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -447,7 +447,7 @@ public class VerificationUpdateRequest {
     sb.append("    isvReseller: ").append(toIndentedString(isvReseller)).append("\n");
     sb.append("    privacyPolicyUrl: ").append(toIndentedString(privacyPolicyUrl)).append("\n");
     sb.append("    termsAndConditionsUrl: ").append(toIndentedString(termsAndConditionsUrl)).append("\n");
-    sb.append("    businessDBA: ").append(toIndentedString(businessDBA)).append("\n");
+    sb.append("    businessDba: ").append(toIndentedString(businessDba)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -482,7 +482,7 @@ public class VerificationUpdateRequest {
     openapiFields.add("isvReseller");
     openapiFields.add("privacyPolicyUrl");
     openapiFields.add("termsAndConditionsUrl");
-    openapiFields.add("businessDBA");
+    openapiFields.add("businessDba");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -542,8 +542,8 @@ public class VerificationUpdateRequest {
       if ((jsonObj.get("termsAndConditionsUrl") != null && !jsonObj.get("termsAndConditionsUrl").isJsonNull()) && !jsonObj.get("termsAndConditionsUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `termsAndConditionsUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("termsAndConditionsUrl").toString()));
       }
-      if ((jsonObj.get("businessDBA") != null && !jsonObj.get("businessDBA").isJsonNull()) && !jsonObj.get("businessDBA").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `businessDBA` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessDBA").toString()));
+      if ((jsonObj.get("businessDba") != null && !jsonObj.get("businessDba").isJsonNull()) && !jsonObj.get("businessDba").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `businessDba` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessDba").toString()));
       }
   }
 
