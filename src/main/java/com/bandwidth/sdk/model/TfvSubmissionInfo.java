@@ -296,7 +296,7 @@ public class TfvSubmissionInfo {
   }
 
   /**
-   * The Toll-Free Verification request privacy policy URL. (Not Available Until 5/28/2025)
+   * The Toll-Free Verification request privacy policy URL.
    * @return privacyPolicyUrl
    */
   @javax.annotation.Nullable
@@ -315,7 +315,7 @@ public class TfvSubmissionInfo {
   }
 
   /**
-   * The Toll-Free Verification request terms and conditions policy URL. (Not Available Until 5/28/2025)
+   * The Toll-Free Verification request terms and conditions policy URL.
    * @return termsAndConditionsUrl
    */
   @javax.annotation.Nullable
@@ -334,7 +334,7 @@ public class TfvSubmissionInfo {
   }
 
   /**
-   * The company &#39;Doing Business As&#39;. (Not Available Until 5/28/2025)
+   * The company &#39;Doing Business As&#39;.
    * @return businessDba
    */
   @javax.annotation.Nullable
