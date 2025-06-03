@@ -35,7 +35,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-2019, windows-2022, ubuntu-22.04, ubuntu-24.04]
+        os: [windows-2022, windows-2025, ubuntu-22.04, ubuntu-24.04]
         java-version: ["11", "17", "21"]
         distribution: ["zulu", "temurin"]
       fail-fast: false
