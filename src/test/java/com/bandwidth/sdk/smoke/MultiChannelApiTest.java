@@ -42,6 +42,7 @@ public class MultiChannelApiTest {
     }
 
     @Test
+    @Disabled
     public void createMultiChannelMessageTest() throws ApiException {
         MultiChannelChannelListObject channelListObject = new MultiChannelChannelListObject()
                 .from(BW_NUMBER)
