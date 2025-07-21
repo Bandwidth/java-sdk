@@ -266,8 +266,8 @@ paths:
         '500':
           $ref: '#/components/responses/messagingInternalServerError'
       callbacks:
-        multiChannelCallback:
-          $ref: '#/components/callbacks/multiChannelMessageCallback'
+        statusCallback:
+          $ref: '#/components/callbacks/statusCallback'
       x-badges:
         - name: Beta
           color: '#076EA8'
@@ -1639,21 +1639,6 @@ components:
         The ID of the Application your from number or senderId is associated
         with in the Bandwidth Phone Number Dashboard.
       example: 93de2206-9669-4e07-948d-329f4b722ee2
-    callbackTypeEnum:
-      type: string
-      enum:
-        - message-received
-        - message-sending
-        - message-delivered
-        - message-failed
-      description: >
-        Indicates the type of the callback:
-
-        - `message-received` for inbound callbacks.
-
-        - One of `message-sending`, `message-delivered`, `message-failed` for
-        status callbacks.
-      example: message-delivered
     priorityEnum:
       type: string
       description: The priority specified by the user.
@@ -1676,7 +1661,7 @@ components:
         - ACCEPTED
         - UNDELIVERED
       example: RECEIVED
-    listMessageDirectionEnum:
+    directionEnum:
       type: string
       description: The direction of the message. One of INBOUND OUTBOUND.
       enum:
@@ -1749,13 +1734,11 @@ components:
         messageStatus:
           $ref: '#/components/schemas/messageStatusEnum'
         messageDirection:
-          $ref: '#/components/schemas/listMessageDirectionEnum'
+          $ref: '#/components/schemas/directionEnum'
         messageType:
           $ref: '#/components/schemas/messageTypeEnum'
         segmentCount:
-          type: integer
-          description: The number of segments the message was sent as.
-          example: 1
+          $ref: '#/components/schemas/segmentCount'
         errorCode:
           type: integer
           description: The numeric error code of the message.
@@ -1863,6 +1846,12 @@ components:
           type: integer
         mediaName:
           type: string
+    segmentCount:
+      type: integer
+      description: >-
+        The number of segments the user's message is broken into before sending
+        over carrier networks.
+      example: 1
     tag:
       title: Tag
       type: string
@@ -1887,6 +1876,16 @@ components:
         2021-03-14T01:59:26Z or 2021-03-13T20:59:26-05:00. Must be a date-time
         in the future.
       example: '2021-02-01T11:29:18-05:00'
+    carrierName:
+      type: string
+      description: >
+        The name of the Authorized Message Provider (AMP) that handled this
+        message. 
+
+        In the US, this is the carrier that the message was sent to.
+
+        This field is present only when this account feature has been enabled.
+      example: AT&T
     message:
       title: Message
       type: object
@@ -1900,20 +1899,14 @@ components:
           description: The Bandwidth phone number associated with the message.
           example: '+15554443333'
         applicationId:
-          type: string
-          description: The application ID associated with the message.
-          example: 93de2206-9669-4e07-948d-329f4b722ee2
+          $ref: '#/components/schemas/applicationId'
         time:
           type: string
           format: date-time
           description: The datetime stamp of the message in ISO 8601
           example: 2024-12-02T20:15:57.278Z
         segmentCount:
-          type: integer
-          description: >-
-            The number of segments the original message from the user is broken
-            into before sending over to carrier networks.
-          example: 2
+          $ref: '#/components/schemas/segmentCount'
         direction:
           $ref: '#/components/schemas/messageDirectionEnum'
         to:
@@ -1945,9 +1938,7 @@ components:
           description: The contents of the message.
           example: Hello world
         tag:
-          type: string
-          description: The custom string set by the user.
-          example: custom tag
+          $ref: '#/components/schemas/tag'
         priority:
           $ref: '#/components/schemas/priorityEnum'
         expiration:
@@ -1961,11 +1952,7 @@ components:
         - from
       properties:
         applicationId:
-          type: string
-          description: >-
-            The ID of the Application your from number is associated with in the
-            Bandwidth Phone Number Dashboard.
-          example: 93de2206-9669-4e07-948d-329f4b722ee2
+          $ref: '#/components/schemas/applicationId'
         to:
           uniqueItems: true
           type: array
@@ -2022,7 +2009,7 @@ components:
           items:
             $ref: '#/components/schemas/link'
         data:
-          $ref: '#/components/schemas/multiChannelMessageData'
+          $ref: '#/components/schemas/multiChannelMessageResponseData'
         errors:
           type: array
           items:
@@ -2035,12 +2022,6 @@ components:
         - SMS
         - MMS
       example: RBM
-    multiChannelMessageDirectionEnum:
-      type: string
-      enum:
-        - INBOUND
-        - OUTBOUND
-      example: OUTBOUND
     multiChannelSenderId:
       type: string
       description: The sender ID of the message. This could be an alphanumeric sender ID.
@@ -2342,14 +2323,6 @@ components:
           CREATE_CALENDAR_EVENT: '#/components/schemas/multiChannelActionCalendarEvent'
           OPEN_URL: '#/components/schemas/rbmActionOpenUrl'
           REQUEST_LOCATION: '#/components/schemas/rbmActionBase'
-    multiChannelStatusEnum:
-      type: string
-      enum:
-        - QUEUED
-        - SENDING
-        - DELIVERED
-        - FAILED
-      example: DELIVERED
     multiChannelChannelListObject:
       type: object
       properties:
@@ -2396,39 +2369,19 @@ components:
       required:
         - to
         - channelList
-    multiChannelMessageCallbackData:
+    multiChannelMessageResponseData:
+      description: The data returned in a multichannel message response.
       type: object
       properties:
         messageId:
           $ref: '#/components/schemas/messageId'
-        status:
-          $ref: '#/components/schemas/multiChannelStatusEnum'
-        direction:
-          $ref: '#/components/schemas/multiChannelMessageDirectionEnum'
-        from:
-          $ref: '#/components/schemas/multiChannelSenderId'
-        to:
-          $ref: '#/components/schemas/multiChannelDestination'
-        applicationId:
-          $ref: '#/components/schemas/applicationId'
-        channel:
-          $ref: '#/components/schemas/multiChannelMessageChannelEnum'
-        tag:
-          $ref: '#/components/schemas/tag'
-    multiChannelMessageData:
-      type: object
-      properties:
-        messageId:
-          $ref: '#/components/schemas/messageId'
-        status:
-          $ref: '#/components/schemas/multiChannelStatusEnum'
         time:
           description: The time the message was received by the Bandwidth API.
           type: string
           format: date-time
           example: 2025-01-01T18:20:16.000Z
         direction:
-          $ref: '#/components/schemas/multiChannelMessageDirectionEnum'
+          $ref: '#/components/schemas/messageDirectionEnum'
         from:
           $ref: '#/components/schemas/multiChannelSenderId'
         to:
@@ -2439,23 +2392,36 @@ components:
           $ref: '#/components/schemas/multiChannelMessageChannelEnum'
         tag:
           $ref: '#/components/schemas/tag'
-    multiChannelCallbackData:
+    multiChannelMessageContent:
+      description: The structure of the content field of a multichannel message.
       type: object
       properties:
-        time:
-          description: The time of the callback event.
+        text:
           type: string
-          format: date-time
-          example: 2025-01-01T18:20:16.000Z
-        type:
-          $ref: '#/components/schemas/multiChannelStatusEnum'
-        to:
-          $ref: '#/components/schemas/multiChannelDestination'
-        description:
+        media:
+          $ref: '#/components/schemas/rbmMessageContentFile'
+    rbmSuggestionResponse:
+      type: object
+      properties:
+        text:
           type: string
-          example: Incoming message received
-        message:
-          $ref: '#/components/schemas/multiChannelMessageCallbackData'
+          description: The text associated with the suggestion response.
+          example: Yes, I would like to proceed
+        postBackData:
+          $ref: '#/components/schemas/rbmActionPostBackData'
+    rbmLocationResponse:
+      type: object
+      properties:
+        latitude:
+          type: string
+          format: double
+          description: The latitude of the client's location.
+          example: '37.7749'
+        longitude:
+          type: string
+          format: double
+          description: The longitude of the client's location.
+          example: '-122.4194'
     link:
       type: object
       properties:
@@ -2470,67 +2436,167 @@ components:
           type: string
         message:
           type: string
-    messageCallback:
-      description: Message Callback Schema
+    callback:
       type: object
+      description: >
+        Callbacks are divided into two types based on direction of the related
+        message:
+
+        - `statusCallback` indicates status of an outbound MT SMS or MMS or RBM
+        message.
+
+        - `inboundCallback` indicates an inbound MO message or a multichannel
+        message client's response to a suggestion or location request.
+      oneOf:
+        - $ref: '#/components/schemas/statusCallback'
+        - $ref: '#/components/schemas/inboundCallback'
+      discriminator:
+        propertyName: type
+        mapping:
+          message-sent: '#/components/schemas/statusCallback'
+          message-delivered: '#/components/schemas/statusCallback'
+          message-failed: '#/components/schemas/statusCallback'
+          message-read: '#/components/schemas/statusCallback'
+          message-received: '#/components/schemas/inboundCallback'
+          request-location-response: '#/components/schemas/inboundCallback'
+          suggestion-response: '#/components/schemas/inboundCallback'
+    statusCallback:
+      type: object
+      description: >-
+        Represents a status callback for an outbound MT SMS or MMS or RBM
+        message.
       properties:
         time:
           type: string
           format: date-time
           example: 2024-12-02T20:15:57.278Z
         type:
-          $ref: '#/components/schemas/callbackTypeEnum'
+          $ref: '#/components/schemas/statusCallbackTypeEnum'
         to:
           type: string
+          description: >
+            The destination phone number the message was sent to.
+
+            For status callbacks, this the the Bandwidth user's client phone
+            number.
           example: '+15552223333'
         description:
           type: string
           description: A detailed description of the event described by the callback.
-          example: rejected-unallocated-from-number
+          example: Message delivered to carrier.
         message:
-          $ref: '#/components/schemas/messageCallbackMessage'
+          $ref: '#/components/schemas/statusCallbackMessage'
         errorCode:
           type: integer
           description: Optional error code, applicable only when type is `message-failed`.
-          nullable: true
           example: 4405
         carrierName:
-          type: string
-          description: >-
-            The name of the Authorized Message Provider (AMP) that handled this
-            message. In the US, this is the carrier that the message was sent
-            to.
-          nullable: true
-          example: AT&T
+          $ref: '#/components/schemas/carrierName'
       required:
         - time
         - type
         - to
         - description
         - message
-    messageCallbackMessage:
-      description: Message payload schema within a MessageCallback
+    inboundCallback:
+      type: object
+      description: Represents an inbound callback.
+      properties:
+        time:
+          type: string
+          format: date-time
+          example: 2024-12-02T20:15:57.278Z
+        type:
+          $ref: '#/components/schemas/inboundCallbackTypeEnum'
+        to:
+          type: string
+          description: >
+            The destination phone number the message was sent to. 
+
+            For inbound callbacks, this is the Bandwidth number or alphanumeric
+            identifier that received the message.
+          example: '+15552223333'
+        description:
+          type: string
+          description: A detailed description of the event described by the callback.
+          example: Incoming message received
+        message:
+          $ref: '#/components/schemas/inboundCallbackMessage'
+        carrierName:
+          $ref: '#/components/schemas/carrierName'
+      required:
+        - time
+        - type
+        - to
+        - description
+        - message
+    statusCallbackTypeEnum:
+      type: string
+      description: >
+        The possible status callbacks when sending an MT SMS or MMS or RBM
+        message:
+
+        - `message-sending` indicates that Bandwidth is sending the message to
+        the upstream provider.
+
+        - `message-delivered` indicates that the message was successfully sent.
+
+        - `message-failed` indicates that the message could not be sent to the
+        intended recipient.
+
+        - `message-read` indicates that the RBM message was read by the
+        recipient.
+      enum:
+        - message-sending
+        - message-delivered
+        - message-failed
+        - message-read
+      example: message-delivered
+    inboundCallbackTypeEnum:
+      type: string
+      description: >
+        The possible inbound callback types originating from MO messages or
+        multichannel message client responses:
+
+        - `message-received` indicates an MO message from a Bandwidth user's
+        client to a Bandwidth number.
+
+        - `request-location-response` indicates a response to a location request
+        sent by the Bandwidth user's client after receiving an RBM message. 
+
+        - `suggestion-response` indicates a response to a suggestion sent by the
+        Bandwidth user's client after receiving an RBM message.
+      enum:
+        - message-received
+        - request-location-response
+        - suggestion-response
+      example: message-received
+    statusCallbackMessage:
+      description: Message payload schema within a callback
       type: object
       properties:
         id:
           type: string
+          description: A unique identifier of the message.
           example: 1661365814859loidf7mcwd4qacn7
         owner:
           type: string
+          description: >-
+            The Bandwidth phone number or alphanumeric identifier associated
+            with the message.
           example: '+15553332222'
         applicationId:
-          type: string
-          example: 93de2206-9669-4e07-948d-329f4b722ee2
+          $ref: '#/components/schemas/applicationId'
         time:
           type: string
           format: date-time
           example: 2024-12-02T20:15:57.666Z
         segmentCount:
-          type: integer
-          example: 1
+          $ref: '#/components/schemas/segmentCount'
         direction:
           $ref: '#/components/schemas/messageDirectionEnum'
         to:
+          description: The phone number recipients of the message.
           uniqueItems: true
           type: array
           items:
@@ -2539,16 +2605,18 @@ components:
             - '+15552223333'
         from:
           type: string
+          description: >-
+            The Bandwidth phone number or alphanumeric identifier the message
+            was sent from.
           example: '+15553332222'
         text:
           type: string
           example: Hello world
         tag:
-          type: string
-          example: custom string
+          $ref: '#/components/schemas/tag'
         media:
           type: array
-          description: Optional media, applicable only for mms
+          description: Optional media, not applicable for sms
           nullable: true
           items:
             type: string
@@ -2558,6 +2626,8 @@ components:
             - https://dev.bandwidth.com/images/github_logo.png
         priority:
           $ref: '#/components/schemas/priorityEnum'
+        channel:
+          $ref: '#/components/schemas/multiChannelMessageChannelEnum'
       required:
         - id
         - owner
@@ -2567,7 +2637,26 @@ components:
         - direction
         - to
         - from
-        - text
+    inboundCallbackMessage:
+      allOf:
+        - $ref: '#/components/schemas/statusCallbackMessage'
+        - type: object
+          properties:
+            content:
+              $ref: '#/components/schemas/multiChannelMessageContent'
+            suggestionResponse:
+              $ref: '#/components/schemas/rbmSuggestionResponse'
+            locationResponse:
+              $ref: '#/components/schemas/rbmLocationResponse'
+      required:
+        - id
+        - owner
+        - applicationId
+        - time
+        - segmentCount
+        - direction
+        - to
+        - from
     callbackMethodEnum:
       type: string
       nullable: true
@@ -6545,7 +6634,7 @@ components:
       required: false
       description: The direction of the message. One of INBOUND OUTBOUND.
       schema:
-        $ref: '#/components/schemas/listMessageDirectionEnum'
+        $ref: '#/components/schemas/directionEnum'
     carrierName:
       in: query
       name: carrierName
@@ -7507,16 +7596,29 @@ components:
           requestBody:
             required: true
             description: >
-              <p>This Inbound Message Webhook is an envelope containing a
-              received (MO) message to your message-enabled Bandwidth telephone
-              number. The payload type will always indicate "message-received".
+              <p>This Inbound Message Webhook is an envelope containing either a
+              received (MO) message to your 
+
+              message-enabled Bandwidth telephone number or a multichannel
+              client's response to a suggestion response 
+
+              or location request. 
+
+              <p>The payload type will be one of <code>message-received</code>,
+              <code>suggestion-response</code>, or
+              <code>location-request-response</code>.
+
+              <p>Note that <code>suggestion-response</code> and
+              <code>location-request-response</code> callback types are
+              pertinent only for RBM messages sent from the
+              <code>/messages/multiChannel</code> endpoint.
 
               </p><p>Please visit <a
               href='/docs/messaging/webhooks/'>Webhooks</a></p>
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/messageCallback'
+                  $ref: '#/components/schemas/inboundCallback'
                 examples:
                   smsMessageReceivedCallback:
                     $ref: '#/components/examples/smsMessageReceivedCallbackExample'
@@ -7525,6 +7627,8 @@ components:
           responses:
             '200':
               description: OK
+            '202':
+              description: Accepted
     statusCallback:
       '{statusCallbackUrl}':
         post:
@@ -7532,17 +7636,17 @@ components:
             required: true
             description: >
               <p>This Outbound Message Webhook is an envelope containing status
-              information regarding a message sent (MT) from your
-              message-enabled Bandwidth telephone number. The payload type will
-              be one of "message-sending", "message-delivered", or
-              "message-failed".
+              information regarding a message sent (MT)
 
+              from your message-enabled Bandwidth telephone number.
+               <p>The payload type will be one of <code>message-sent</code>, <code>message-delivered</code>, <code>message-failed</code> or <code>message-read</code>.
+               <p>Note that <code>message-read</code> callbacks are pertinent only for RBM messages sent from the <code>/messages/multiChannel</code> endpoint.
               </p><p>Please visit <a
               href='/docs/messaging/webhooks/'>Webhooks</a></p>
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/messageCallback'
+                  $ref: '#/components/schemas/statusCallback'
                 examples:
                   messageSendingCallback:
                     $ref: '#/components/examples/messageSendingCallbackExample'
@@ -7558,19 +7662,8 @@ components:
           responses:
             '200':
               description: OK
-    multiChannelMessageCallback:
-      '{multiChannelMessageCallbackUrl}':
-        post:
-          requestBody:
-            required: true
-            description: Status Callback Payload
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/multiChannelCallbackData'
-          responses:
-            '204':
-              description: No Content
+            '202':
+              description: Accepted
     tfVerificationStatus:
       your_url.com/webhookService:
         post:

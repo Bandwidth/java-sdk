@@ -14,18 +14,13 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import com.bandwidth.sdk.model.ErrorObject;
-import com.bandwidth.sdk.model.Link;
-import com.bandwidth.sdk.model.MultiChannelMessageResponseData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,98 +46,58 @@ import java.util.Set;
 import com.bandwidth.sdk.JSON;
 
 /**
- * CreateMultiChannelMessageResponse
+ * RbmLocationResponse
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class CreateMultiChannelMessageResponse {
-  public static final String SERIALIZED_NAME_LINKS = "links";
-  @SerializedName(SERIALIZED_NAME_LINKS)
+public class RbmLocationResponse {
+  public static final String SERIALIZED_NAME_LATITUDE = "latitude";
+  @SerializedName(SERIALIZED_NAME_LATITUDE)
   @javax.annotation.Nullable
-  private List<Link> links = new ArrayList<>();
+  private Double latitude;
 
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
+  public static final String SERIALIZED_NAME_LONGITUDE = "longitude";
+  @SerializedName(SERIALIZED_NAME_LONGITUDE)
   @javax.annotation.Nullable
-  private MultiChannelMessageResponseData data;
+  private Double longitude;
 
-  public static final String SERIALIZED_NAME_ERRORS = "errors";
-  @SerializedName(SERIALIZED_NAME_ERRORS)
-  @javax.annotation.Nullable
-  private List<ErrorObject> errors = new ArrayList<>();
-
-  public CreateMultiChannelMessageResponse() {
+  public RbmLocationResponse() {
   }
 
-  public CreateMultiChannelMessageResponse links(@javax.annotation.Nullable List<Link> links) {
-    this.links = links;
-    return this;
-  }
-
-  public CreateMultiChannelMessageResponse addLinksItem(Link linksItem) {
-    if (this.links == null) {
-      this.links = new ArrayList<>();
-    }
-    this.links.add(linksItem);
+  public RbmLocationResponse latitude(@javax.annotation.Nullable Double latitude) {
+    this.latitude = latitude;
     return this;
   }
 
   /**
-   * Get links
-   * @return links
+   * The latitude of the client&#39;s location.
+   * @return latitude
    */
   @javax.annotation.Nullable
-  public List<Link> getLinks() {
-    return links;
+  public Double getLatitude() {
+    return latitude;
   }
 
-  public void setLinks(@javax.annotation.Nullable List<Link> links) {
-    this.links = links;
+  public void setLatitude(@javax.annotation.Nullable Double latitude) {
+    this.latitude = latitude;
   }
 
 
-  public CreateMultiChannelMessageResponse data(@javax.annotation.Nullable MultiChannelMessageResponseData data) {
-    this.data = data;
+  public RbmLocationResponse longitude(@javax.annotation.Nullable Double longitude) {
+    this.longitude = longitude;
     return this;
   }
 
   /**
-   * Get data
-   * @return data
+   * The longitude of the client&#39;s location.
+   * @return longitude
    */
   @javax.annotation.Nullable
-  public MultiChannelMessageResponseData getData() {
-    return data;
+  public Double getLongitude() {
+    return longitude;
   }
 
-  public void setData(@javax.annotation.Nullable MultiChannelMessageResponseData data) {
-    this.data = data;
-  }
-
-
-  public CreateMultiChannelMessageResponse errors(@javax.annotation.Nullable List<ErrorObject> errors) {
-    this.errors = errors;
-    return this;
-  }
-
-  public CreateMultiChannelMessageResponse addErrorsItem(ErrorObject errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
-    }
-    this.errors.add(errorsItem);
-    return this;
-  }
-
-  /**
-   * Get errors
-   * @return errors
-   */
-  @javax.annotation.Nullable
-  public List<ErrorObject> getErrors() {
-    return errors;
-  }
-
-  public void setErrors(@javax.annotation.Nullable List<ErrorObject> errors) {
-    this.errors = errors;
+  public void setLongitude(@javax.annotation.Nullable Double longitude) {
+    this.longitude = longitude;
   }
 
   /**
@@ -158,9 +113,9 @@ public class CreateMultiChannelMessageResponse {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the CreateMultiChannelMessageResponse instance itself
+   * @return the RbmLocationResponse instance itself
    */
-  public CreateMultiChannelMessageResponse putAdditionalProperty(String key, Object value) {
+  public RbmLocationResponse putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -199,25 +154,23 @@ public class CreateMultiChannelMessageResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CreateMultiChannelMessageResponse createMultiChannelMessageResponse = (CreateMultiChannelMessageResponse) o;
-    return Objects.equals(this.links, createMultiChannelMessageResponse.links) &&
-        Objects.equals(this.data, createMultiChannelMessageResponse.data) &&
-        Objects.equals(this.errors, createMultiChannelMessageResponse.errors)&&
-        Objects.equals(this.additionalProperties, createMultiChannelMessageResponse.additionalProperties);
+    RbmLocationResponse rbmLocationResponse = (RbmLocationResponse) o;
+    return Objects.equals(this.latitude, rbmLocationResponse.latitude) &&
+        Objects.equals(this.longitude, rbmLocationResponse.longitude)&&
+        Objects.equals(this.additionalProperties, rbmLocationResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(links, data, errors, additionalProperties);
+    return Objects.hash(latitude, longitude, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CreateMultiChannelMessageResponse {\n");
-    sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("class RbmLocationResponse {\n");
+    sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
+    sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -241,9 +194,8 @@ public class CreateMultiChannelMessageResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("links");
-    openapiFields.add("data");
-    openapiFields.add("errors");
+    openapiFields.add("latitude");
+    openapiFields.add("longitude");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -253,46 +205,20 @@ public class CreateMultiChannelMessageResponse {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CreateMultiChannelMessageResponse
+   * @throws IOException if the JSON Element is invalid with respect to RbmLocationResponse
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!CreateMultiChannelMessageResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateMultiChannelMessageResponse is not found in the empty JSON string", CreateMultiChannelMessageResponse.openapiRequiredFields.toString()));
+        if (!RbmLocationResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RbmLocationResponse is not found in the empty JSON string", RbmLocationResponse.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
-        JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
-        if (jsonArraylinks != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("links").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
-          }
-
-          // validate the optional field `links` (array)
-          for (int i = 0; i < jsonArraylinks.size(); i++) {
-            Link.validateJsonElement(jsonArraylinks.get(i));
-          };
-        }
+      if ((jsonObj.get("latitude") != null && !jsonObj.get("latitude").isJsonNull()) && !jsonObj.get("latitude").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `latitude` to be a primitive type in the JSON string but got `%s`", jsonObj.get("latitude").toString()));
       }
-      // validate the optional field `data`
-      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        MultiChannelMessageResponseData.validateJsonElement(jsonObj.get("data"));
-      }
-      if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
-        JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
-        if (jsonArrayerrors != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("errors").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
-          }
-
-          // validate the optional field `errors` (array)
-          for (int i = 0; i < jsonArrayerrors.size(); i++) {
-            ErrorObject.validateJsonElement(jsonArrayerrors.get(i));
-          };
-        }
+      if ((jsonObj.get("longitude") != null && !jsonObj.get("longitude").isJsonNull()) && !jsonObj.get("longitude").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `longitude` to be a primitive type in the JSON string but got `%s`", jsonObj.get("longitude").toString()));
       }
   }
 
@@ -300,16 +226,16 @@ public class CreateMultiChannelMessageResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CreateMultiChannelMessageResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CreateMultiChannelMessageResponse' and its subtypes
+       if (!RbmLocationResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RbmLocationResponse' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CreateMultiChannelMessageResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CreateMultiChannelMessageResponse.class));
+       final TypeAdapter<RbmLocationResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RbmLocationResponse.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CreateMultiChannelMessageResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<RbmLocationResponse>() {
            @Override
-           public void write(JsonWriter out, CreateMultiChannelMessageResponse value) throws IOException {
+           public void write(JsonWriter out, RbmLocationResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -337,12 +263,12 @@ public class CreateMultiChannelMessageResponse {
            }
 
            @Override
-           public CreateMultiChannelMessageResponse read(JsonReader in) throws IOException {
+           public RbmLocationResponse read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             CreateMultiChannelMessageResponse instance = thisAdapter.fromJsonTree(jsonObj);
+             RbmLocationResponse instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -369,18 +295,18 @@ public class CreateMultiChannelMessageResponse {
   }
 
   /**
-   * Create an instance of CreateMultiChannelMessageResponse given an JSON string
+   * Create an instance of RbmLocationResponse given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of CreateMultiChannelMessageResponse
-   * @throws IOException if the JSON string is invalid with respect to CreateMultiChannelMessageResponse
+   * @return An instance of RbmLocationResponse
+   * @throws IOException if the JSON string is invalid with respect to RbmLocationResponse
    */
-  public static CreateMultiChannelMessageResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CreateMultiChannelMessageResponse.class);
+  public static RbmLocationResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RbmLocationResponse.class);
   }
 
   /**
-   * Convert an instance of CreateMultiChannelMessageResponse to an JSON string
+   * Convert an instance of RbmLocationResponse to an JSON string
    *
    * @return JSON string
    */

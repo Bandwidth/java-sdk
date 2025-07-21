@@ -14,18 +14,14 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import com.bandwidth.sdk.model.ErrorObject;
-import com.bandwidth.sdk.model.Link;
-import com.bandwidth.sdk.model.MultiChannelMessageResponseData;
+import com.bandwidth.sdk.model.RbmMessageContentFile;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,98 +47,58 @@ import java.util.Set;
 import com.bandwidth.sdk.JSON;
 
 /**
- * CreateMultiChannelMessageResponse
+ * The structure of the content field of a multichannel message.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class CreateMultiChannelMessageResponse {
-  public static final String SERIALIZED_NAME_LINKS = "links";
-  @SerializedName(SERIALIZED_NAME_LINKS)
+public class MultiChannelMessageContent {
+  public static final String SERIALIZED_NAME_TEXT = "text";
+  @SerializedName(SERIALIZED_NAME_TEXT)
   @javax.annotation.Nullable
-  private List<Link> links = new ArrayList<>();
+  private String text;
 
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
+  public static final String SERIALIZED_NAME_MEDIA = "media";
+  @SerializedName(SERIALIZED_NAME_MEDIA)
   @javax.annotation.Nullable
-  private MultiChannelMessageResponseData data;
+  private RbmMessageContentFile media;
 
-  public static final String SERIALIZED_NAME_ERRORS = "errors";
-  @SerializedName(SERIALIZED_NAME_ERRORS)
-  @javax.annotation.Nullable
-  private List<ErrorObject> errors = new ArrayList<>();
-
-  public CreateMultiChannelMessageResponse() {
+  public MultiChannelMessageContent() {
   }
 
-  public CreateMultiChannelMessageResponse links(@javax.annotation.Nullable List<Link> links) {
-    this.links = links;
-    return this;
-  }
-
-  public CreateMultiChannelMessageResponse addLinksItem(Link linksItem) {
-    if (this.links == null) {
-      this.links = new ArrayList<>();
-    }
-    this.links.add(linksItem);
+  public MultiChannelMessageContent text(@javax.annotation.Nullable String text) {
+    this.text = text;
     return this;
   }
 
   /**
-   * Get links
-   * @return links
+   * Get text
+   * @return text
    */
   @javax.annotation.Nullable
-  public List<Link> getLinks() {
-    return links;
+  public String getText() {
+    return text;
   }
 
-  public void setLinks(@javax.annotation.Nullable List<Link> links) {
-    this.links = links;
+  public void setText(@javax.annotation.Nullable String text) {
+    this.text = text;
   }
 
 
-  public CreateMultiChannelMessageResponse data(@javax.annotation.Nullable MultiChannelMessageResponseData data) {
-    this.data = data;
+  public MultiChannelMessageContent media(@javax.annotation.Nullable RbmMessageContentFile media) {
+    this.media = media;
     return this;
   }
 
   /**
-   * Get data
-   * @return data
+   * Get media
+   * @return media
    */
   @javax.annotation.Nullable
-  public MultiChannelMessageResponseData getData() {
-    return data;
+  public RbmMessageContentFile getMedia() {
+    return media;
   }
 
-  public void setData(@javax.annotation.Nullable MultiChannelMessageResponseData data) {
-    this.data = data;
-  }
-
-
-  public CreateMultiChannelMessageResponse errors(@javax.annotation.Nullable List<ErrorObject> errors) {
-    this.errors = errors;
-    return this;
-  }
-
-  public CreateMultiChannelMessageResponse addErrorsItem(ErrorObject errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
-    }
-    this.errors.add(errorsItem);
-    return this;
-  }
-
-  /**
-   * Get errors
-   * @return errors
-   */
-  @javax.annotation.Nullable
-  public List<ErrorObject> getErrors() {
-    return errors;
-  }
-
-  public void setErrors(@javax.annotation.Nullable List<ErrorObject> errors) {
-    this.errors = errors;
+  public void setMedia(@javax.annotation.Nullable RbmMessageContentFile media) {
+    this.media = media;
   }
 
   /**
@@ -158,9 +114,9 @@ public class CreateMultiChannelMessageResponse {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the CreateMultiChannelMessageResponse instance itself
+   * @return the MultiChannelMessageContent instance itself
    */
-  public CreateMultiChannelMessageResponse putAdditionalProperty(String key, Object value) {
+  public MultiChannelMessageContent putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -199,25 +155,23 @@ public class CreateMultiChannelMessageResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CreateMultiChannelMessageResponse createMultiChannelMessageResponse = (CreateMultiChannelMessageResponse) o;
-    return Objects.equals(this.links, createMultiChannelMessageResponse.links) &&
-        Objects.equals(this.data, createMultiChannelMessageResponse.data) &&
-        Objects.equals(this.errors, createMultiChannelMessageResponse.errors)&&
-        Objects.equals(this.additionalProperties, createMultiChannelMessageResponse.additionalProperties);
+    MultiChannelMessageContent multiChannelMessageContent = (MultiChannelMessageContent) o;
+    return Objects.equals(this.text, multiChannelMessageContent.text) &&
+        Objects.equals(this.media, multiChannelMessageContent.media)&&
+        Objects.equals(this.additionalProperties, multiChannelMessageContent.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(links, data, errors, additionalProperties);
+    return Objects.hash(text, media, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CreateMultiChannelMessageResponse {\n");
-    sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("class MultiChannelMessageContent {\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    media: ").append(toIndentedString(media)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -241,9 +195,8 @@ public class CreateMultiChannelMessageResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("links");
-    openapiFields.add("data");
-    openapiFields.add("errors");
+    openapiFields.add("text");
+    openapiFields.add("media");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -253,46 +206,21 @@ public class CreateMultiChannelMessageResponse {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CreateMultiChannelMessageResponse
+   * @throws IOException if the JSON Element is invalid with respect to MultiChannelMessageContent
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!CreateMultiChannelMessageResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateMultiChannelMessageResponse is not found in the empty JSON string", CreateMultiChannelMessageResponse.openapiRequiredFields.toString()));
+        if (!MultiChannelMessageContent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in MultiChannelMessageContent is not found in the empty JSON string", MultiChannelMessageContent.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
-        JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
-        if (jsonArraylinks != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("links").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
-          }
-
-          // validate the optional field `links` (array)
-          for (int i = 0; i < jsonArraylinks.size(); i++) {
-            Link.validateJsonElement(jsonArraylinks.get(i));
-          };
-        }
+      if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull()) && !jsonObj.get("text").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
       }
-      // validate the optional field `data`
-      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        MultiChannelMessageResponseData.validateJsonElement(jsonObj.get("data"));
-      }
-      if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
-        JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
-        if (jsonArrayerrors != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("errors").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
-          }
-
-          // validate the optional field `errors` (array)
-          for (int i = 0; i < jsonArrayerrors.size(); i++) {
-            ErrorObject.validateJsonElement(jsonArrayerrors.get(i));
-          };
-        }
+      // validate the optional field `media`
+      if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonNull()) {
+        RbmMessageContentFile.validateJsonElement(jsonObj.get("media"));
       }
   }
 
@@ -300,16 +228,16 @@ public class CreateMultiChannelMessageResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CreateMultiChannelMessageResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CreateMultiChannelMessageResponse' and its subtypes
+       if (!MultiChannelMessageContent.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'MultiChannelMessageContent' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CreateMultiChannelMessageResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CreateMultiChannelMessageResponse.class));
+       final TypeAdapter<MultiChannelMessageContent> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(MultiChannelMessageContent.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CreateMultiChannelMessageResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<MultiChannelMessageContent>() {
            @Override
-           public void write(JsonWriter out, CreateMultiChannelMessageResponse value) throws IOException {
+           public void write(JsonWriter out, MultiChannelMessageContent value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -337,12 +265,12 @@ public class CreateMultiChannelMessageResponse {
            }
 
            @Override
-           public CreateMultiChannelMessageResponse read(JsonReader in) throws IOException {
+           public MultiChannelMessageContent read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             CreateMultiChannelMessageResponse instance = thisAdapter.fromJsonTree(jsonObj);
+             MultiChannelMessageContent instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -369,18 +297,18 @@ public class CreateMultiChannelMessageResponse {
   }
 
   /**
-   * Create an instance of CreateMultiChannelMessageResponse given an JSON string
+   * Create an instance of MultiChannelMessageContent given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of CreateMultiChannelMessageResponse
-   * @throws IOException if the JSON string is invalid with respect to CreateMultiChannelMessageResponse
+   * @return An instance of MultiChannelMessageContent
+   * @throws IOException if the JSON string is invalid with respect to MultiChannelMessageContent
    */
-  public static CreateMultiChannelMessageResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CreateMultiChannelMessageResponse.class);
+  public static MultiChannelMessageContent fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, MultiChannelMessageContent.class);
   }
 
   /**
-   * Convert an instance of CreateMultiChannelMessageResponse to an JSON string
+   * Convert an instance of MultiChannelMessageContent to an JSON string
    *
    * @return JSON string
    */

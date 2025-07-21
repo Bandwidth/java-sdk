@@ -14,7 +14,7 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import com.bandwidth.sdk.model.ListMessageDirectionEnum;
+import com.bandwidth.sdk.model.DirectionEnum;
 import com.bandwidth.sdk.model.MessageStatusEnum;
 import com.bandwidth.sdk.model.MessageTypeEnum;
 import com.google.gson.TypeAdapter;
@@ -83,7 +83,7 @@ public class ListMessageItem {
   public static final String SERIALIZED_NAME_MESSAGE_DIRECTION = "messageDirection";
   @SerializedName(SERIALIZED_NAME_MESSAGE_DIRECTION)
   @javax.annotation.Nullable
-  private ListMessageDirectionEnum messageDirection;
+  private DirectionEnum messageDirection;
 
   public static final String SERIALIZED_NAME_MESSAGE_TYPE = "messageType";
   @SerializedName(SERIALIZED_NAME_MESSAGE_TYPE)
@@ -238,7 +238,7 @@ public class ListMessageItem {
   }
 
 
-  public ListMessageItem messageDirection(@javax.annotation.Nullable ListMessageDirectionEnum messageDirection) {
+  public ListMessageItem messageDirection(@javax.annotation.Nullable DirectionEnum messageDirection) {
     this.messageDirection = messageDirection;
     return this;
   }
@@ -248,11 +248,11 @@ public class ListMessageItem {
    * @return messageDirection
    */
   @javax.annotation.Nullable
-  public ListMessageDirectionEnum getMessageDirection() {
+  public DirectionEnum getMessageDirection() {
     return messageDirection;
   }
 
-  public void setMessageDirection(@javax.annotation.Nullable ListMessageDirectionEnum messageDirection) {
+  public void setMessageDirection(@javax.annotation.Nullable DirectionEnum messageDirection) {
     this.messageDirection = messageDirection;
   }
 
@@ -282,7 +282,7 @@ public class ListMessageItem {
   }
 
   /**
-   * The number of segments the message was sent as.
+   * The number of segments the user&#39;s message is broken into before sending over carrier networks.
    * @return segmentCount
    */
   @javax.annotation.Nullable
@@ -653,7 +653,7 @@ public class ListMessageItem {
       }
       // validate the optional field `messageDirection`
       if (jsonObj.get("messageDirection") != null && !jsonObj.get("messageDirection").isJsonNull()) {
-        ListMessageDirectionEnum.validateJsonElement(jsonObj.get("messageDirection"));
+        DirectionEnum.validateJsonElement(jsonObj.get("messageDirection"));
       }
       // validate the optional field `messageType`
       if (jsonObj.get("messageType") != null && !jsonObj.get("messageType").isJsonNull()) {

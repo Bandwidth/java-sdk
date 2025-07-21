@@ -15,6 +15,7 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import com.bandwidth.sdk.model.MessageDirectionEnum;
+import com.bandwidth.sdk.model.MultiChannelMessageChannelEnum;
 import com.bandwidth.sdk.model.PriorityEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -22,10 +23,14 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.net.URI;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,54 +56,49 @@ import java.util.Set;
 import com.bandwidth.sdk.JSON;
 
 /**
- * Message
+ * Message payload schema within a callback
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class Message {
+public class StatusCallbackMessage {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String SERIALIZED_NAME_OWNER = "owner";
   @SerializedName(SERIALIZED_NAME_OWNER)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String owner;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String applicationId;
 
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private OffsetDateTime time;
 
   public static final String SERIALIZED_NAME_SEGMENT_COUNT = "segmentCount";
   @SerializedName(SERIALIZED_NAME_SEGMENT_COUNT)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private Integer segmentCount;
 
   public static final String SERIALIZED_NAME_DIRECTION = "direction";
   @SerializedName(SERIALIZED_NAME_DIRECTION)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private MessageDirectionEnum direction;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private Set<String> to = new LinkedHashSet<>();
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String from;
-
-  public static final String SERIALIZED_NAME_MEDIA = "media";
-  @SerializedName(SERIALIZED_NAME_MEDIA)
-  @javax.annotation.Nullable
-  private Set<String> media = new LinkedHashSet<>();
 
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
@@ -110,58 +110,63 @@ public class Message {
   @javax.annotation.Nullable
   private String tag;
 
+  public static final String SERIALIZED_NAME_MEDIA = "media";
+  @SerializedName(SERIALIZED_NAME_MEDIA)
+  @javax.annotation.Nullable
+  private List<URI> media;
+
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
   @javax.annotation.Nullable
   private PriorityEnum priority;
 
-  public static final String SERIALIZED_NAME_EXPIRATION = "expiration";
-  @SerializedName(SERIALIZED_NAME_EXPIRATION)
+  public static final String SERIALIZED_NAME_CHANNEL = "channel";
+  @SerializedName(SERIALIZED_NAME_CHANNEL)
   @javax.annotation.Nullable
-  private OffsetDateTime expiration;
+  private MultiChannelMessageChannelEnum channel;
 
-  public Message() {
+  public StatusCallbackMessage() {
   }
 
-  public Message id(@javax.annotation.Nullable String id) {
+  public StatusCallbackMessage id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
 
   /**
-   * The id of the message.
+   * A unique identifier of the message.
    * @return id
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getId() {
     return id;
   }
 
-  public void setId(@javax.annotation.Nullable String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
 
-  public Message owner(@javax.annotation.Nullable String owner) {
+  public StatusCallbackMessage owner(@javax.annotation.Nonnull String owner) {
     this.owner = owner;
     return this;
   }
 
   /**
-   * The Bandwidth phone number associated with the message.
+   * The Bandwidth phone number or alphanumeric identifier associated with the message.
    * @return owner
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getOwner() {
     return owner;
   }
 
-  public void setOwner(@javax.annotation.Nullable String owner) {
+  public void setOwner(@javax.annotation.Nonnull String owner) {
     this.owner = owner;
   }
 
 
-  public Message applicationId(@javax.annotation.Nullable String applicationId) {
+  public StatusCallbackMessage applicationId(@javax.annotation.Nonnull String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -170,36 +175,36 @@ public class Message {
    * The ID of the Application your from number or senderId is associated with in the Bandwidth Phone Number Dashboard.
    * @return applicationId
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getApplicationId() {
     return applicationId;
   }
 
-  public void setApplicationId(@javax.annotation.Nullable String applicationId) {
+  public void setApplicationId(@javax.annotation.Nonnull String applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public Message time(@javax.annotation.Nullable OffsetDateTime time) {
+  public StatusCallbackMessage time(@javax.annotation.Nonnull OffsetDateTime time) {
     this.time = time;
     return this;
   }
 
   /**
-   * The datetime stamp of the message in ISO 8601
+   * Get time
    * @return time
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public OffsetDateTime getTime() {
     return time;
   }
 
-  public void setTime(@javax.annotation.Nullable OffsetDateTime time) {
+  public void setTime(@javax.annotation.Nonnull OffsetDateTime time) {
     this.time = time;
   }
 
 
-  public Message segmentCount(@javax.annotation.Nullable Integer segmentCount) {
+  public StatusCallbackMessage segmentCount(@javax.annotation.Nonnull Integer segmentCount) {
     this.segmentCount = segmentCount;
     return this;
   }
@@ -208,17 +213,17 @@ public class Message {
    * The number of segments the user&#39;s message is broken into before sending over carrier networks.
    * @return segmentCount
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Integer getSegmentCount() {
     return segmentCount;
   }
 
-  public void setSegmentCount(@javax.annotation.Nullable Integer segmentCount) {
+  public void setSegmentCount(@javax.annotation.Nonnull Integer segmentCount) {
     this.segmentCount = segmentCount;
   }
 
 
-  public Message direction(@javax.annotation.Nullable MessageDirectionEnum direction) {
+  public StatusCallbackMessage direction(@javax.annotation.Nonnull MessageDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
@@ -227,22 +232,22 @@ public class Message {
    * Get direction
    * @return direction
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public MessageDirectionEnum getDirection() {
     return direction;
   }
 
-  public void setDirection(@javax.annotation.Nullable MessageDirectionEnum direction) {
+  public void setDirection(@javax.annotation.Nonnull MessageDirectionEnum direction) {
     this.direction = direction;
   }
 
 
-  public Message to(@javax.annotation.Nullable Set<String> to) {
+  public StatusCallbackMessage to(@javax.annotation.Nonnull Set<String> to) {
     this.to = to;
     return this;
   }
 
-  public Message addToItem(String toItem) {
+  public StatusCallbackMessage addToItem(String toItem) {
     if (this.to == null) {
       this.to = new LinkedHashSet<>();
     }
@@ -254,69 +259,42 @@ public class Message {
    * The phone number recipients of the message.
    * @return to
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Set<String> getTo() {
     return to;
   }
 
-  public void setTo(@javax.annotation.Nullable Set<String> to) {
+  public void setTo(@javax.annotation.Nonnull Set<String> to) {
     this.to = to;
   }
 
 
-  public Message from(@javax.annotation.Nullable String from) {
+  public StatusCallbackMessage from(@javax.annotation.Nonnull String from) {
     this.from = from;
     return this;
   }
 
   /**
-   * The phone number the message was sent from.
+   * The Bandwidth phone number or alphanumeric identifier the message was sent from.
    * @return from
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getFrom() {
     return from;
   }
 
-  public void setFrom(@javax.annotation.Nullable String from) {
+  public void setFrom(@javax.annotation.Nonnull String from) {
     this.from = from;
   }
 
 
-  public Message media(@javax.annotation.Nullable Set<String> media) {
-    this.media = media;
-    return this;
-  }
-
-  public Message addMediaItem(String mediaItem) {
-    if (this.media == null) {
-      this.media = new LinkedHashSet<>();
-    }
-    this.media.add(mediaItem);
-    return this;
-  }
-
-  /**
-   * The list of media URLs sent in the message. Including a &#x60;filename&#x60; field in the &#x60;Content-Disposition&#x60; header of the media linked with a URL will set the displayed file name. This is a best practice to ensure that your media has a readable file name.
-   * @return media
-   */
-  @javax.annotation.Nullable
-  public Set<String> getMedia() {
-    return media;
-  }
-
-  public void setMedia(@javax.annotation.Nullable Set<String> media) {
-    this.media = media;
-  }
-
-
-  public Message text(@javax.annotation.Nullable String text) {
+  public StatusCallbackMessage text(@javax.annotation.Nullable String text) {
     this.text = text;
     return this;
   }
 
   /**
-   * The contents of the message.
+   * Get text
    * @return text
    */
   @javax.annotation.Nullable
@@ -329,7 +307,7 @@ public class Message {
   }
 
 
-  public Message tag(@javax.annotation.Nullable String tag) {
+  public StatusCallbackMessage tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
@@ -348,7 +326,34 @@ public class Message {
   }
 
 
-  public Message priority(@javax.annotation.Nullable PriorityEnum priority) {
+  public StatusCallbackMessage media(@javax.annotation.Nullable List<URI> media) {
+    this.media = media;
+    return this;
+  }
+
+  public StatusCallbackMessage addMediaItem(URI mediaItem) {
+    if (this.media == null) {
+      this.media = new ArrayList<>();
+    }
+    this.media.add(mediaItem);
+    return this;
+  }
+
+  /**
+   * Optional media, not applicable for sms
+   * @return media
+   */
+  @javax.annotation.Nullable
+  public List<URI> getMedia() {
+    return media;
+  }
+
+  public void setMedia(@javax.annotation.Nullable List<URI> media) {
+    this.media = media;
+  }
+
+
+  public StatusCallbackMessage priority(@javax.annotation.Nullable PriorityEnum priority) {
     this.priority = priority;
     return this;
   }
@@ -367,22 +372,22 @@ public class Message {
   }
 
 
-  public Message expiration(@javax.annotation.Nullable OffsetDateTime expiration) {
-    this.expiration = expiration;
+  public StatusCallbackMessage channel(@javax.annotation.Nullable MultiChannelMessageChannelEnum channel) {
+    this.channel = channel;
     return this;
   }
 
   /**
-   * A string with the date/time value that the message will automatically expire by. This must be a valid RFC-3339 value, e.g., 2021-03-14T01:59:26Z or 2021-03-13T20:59:26-05:00. Must be a date-time in the future.
-   * @return expiration
+   * Get channel
+   * @return channel
    */
   @javax.annotation.Nullable
-  public OffsetDateTime getExpiration() {
-    return expiration;
+  public MultiChannelMessageChannelEnum getChannel() {
+    return channel;
   }
 
-  public void setExpiration(@javax.annotation.Nullable OffsetDateTime expiration) {
-    this.expiration = expiration;
+  public void setChannel(@javax.annotation.Nullable MultiChannelMessageChannelEnum channel) {
+    this.channel = channel;
   }
 
   /**
@@ -398,9 +403,9 @@ public class Message {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the Message instance itself
+   * @return the StatusCallbackMessage instance itself
    */
-  public Message putAdditionalProperty(String key, Object value) {
+  public StatusCallbackMessage putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -439,32 +444,43 @@ public class Message {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Message message = (Message) o;
-    return Objects.equals(this.id, message.id) &&
-        Objects.equals(this.owner, message.owner) &&
-        Objects.equals(this.applicationId, message.applicationId) &&
-        Objects.equals(this.time, message.time) &&
-        Objects.equals(this.segmentCount, message.segmentCount) &&
-        Objects.equals(this.direction, message.direction) &&
-        Objects.equals(this.to, message.to) &&
-        Objects.equals(this.from, message.from) &&
-        Objects.equals(this.media, message.media) &&
-        Objects.equals(this.text, message.text) &&
-        Objects.equals(this.tag, message.tag) &&
-        Objects.equals(this.priority, message.priority) &&
-        Objects.equals(this.expiration, message.expiration)&&
-        Objects.equals(this.additionalProperties, message.additionalProperties);
+    StatusCallbackMessage statusCallbackMessage = (StatusCallbackMessage) o;
+    return Objects.equals(this.id, statusCallbackMessage.id) &&
+        Objects.equals(this.owner, statusCallbackMessage.owner) &&
+        Objects.equals(this.applicationId, statusCallbackMessage.applicationId) &&
+        Objects.equals(this.time, statusCallbackMessage.time) &&
+        Objects.equals(this.segmentCount, statusCallbackMessage.segmentCount) &&
+        Objects.equals(this.direction, statusCallbackMessage.direction) &&
+        Objects.equals(this.to, statusCallbackMessage.to) &&
+        Objects.equals(this.from, statusCallbackMessage.from) &&
+        Objects.equals(this.text, statusCallbackMessage.text) &&
+        Objects.equals(this.tag, statusCallbackMessage.tag) &&
+        Objects.equals(this.media, statusCallbackMessage.media) &&
+        Objects.equals(this.priority, statusCallbackMessage.priority) &&
+        Objects.equals(this.channel, statusCallbackMessage.channel)&&
+        Objects.equals(this.additionalProperties, statusCallbackMessage.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, owner, applicationId, time, segmentCount, direction, to, from, media, text, tag, priority, expiration, additionalProperties);
+    return Objects.hash(id, owner, applicationId, time, segmentCount, direction, to, from, text, tag, media, priority, channel, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Message {\n");
+    sb.append("class StatusCallbackMessage {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
@@ -473,11 +489,11 @@ public class Message {
     sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("    to: ").append(toIndentedString(to)).append("\n");
     sb.append("    from: ").append(toIndentedString(from)).append("\n");
-    sb.append("    media: ").append(toIndentedString(media)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    tag: ").append(toIndentedString(tag)).append("\n");
+    sb.append("    media: ").append(toIndentedString(media)).append("\n");
     sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
-    sb.append("    expiration: ").append(toIndentedString(expiration)).append("\n");
+    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -509,52 +525,63 @@ public class Message {
     openapiFields.add("direction");
     openapiFields.add("to");
     openapiFields.add("from");
-    openapiFields.add("media");
     openapiFields.add("text");
     openapiFields.add("tag");
+    openapiFields.add("media");
     openapiFields.add("priority");
-    openapiFields.add("expiration");
+    openapiFields.add("channel");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("id");
+    openapiRequiredFields.add("owner");
+    openapiRequiredFields.add("applicationId");
+    openapiRequiredFields.add("time");
+    openapiRequiredFields.add("segmentCount");
+    openapiRequiredFields.add("direction");
+    openapiRequiredFields.add("to");
+    openapiRequiredFields.add("from");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Message
+   * @throws IOException if the JSON Element is invalid with respect to StatusCallbackMessage
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!Message.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Message is not found in the empty JSON string", Message.openapiRequiredFields.toString()));
+        if (!StatusCallbackMessage.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in StatusCallbackMessage is not found in the empty JSON string", StatusCallbackMessage.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : StatusCallbackMessage.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+      if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if ((jsonObj.get("owner") != null && !jsonObj.get("owner").isJsonNull()) && !jsonObj.get("owner").isJsonPrimitive()) {
+      if (!jsonObj.get("owner").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `owner` to be a primitive type in the JSON string but got `%s`", jsonObj.get("owner").toString()));
       }
-      if ((jsonObj.get("applicationId") != null && !jsonObj.get("applicationId").isJsonNull()) && !jsonObj.get("applicationId").isJsonPrimitive()) {
+      if (!jsonObj.get("applicationId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
       }
-      // validate the optional field `direction`
-      if (jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) {
-        MessageDirectionEnum.validateJsonElement(jsonObj.get("direction"));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull() && !jsonObj.get("to").isJsonArray()) {
+      // validate the required field `direction`
+      MessageDirectionEnum.validateJsonElement(jsonObj.get("direction"));
+      // ensure the required json array is present
+      if (jsonObj.get("to") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("to").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be an array in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
-      if ((jsonObj.get("from") != null && !jsonObj.get("from").isJsonNull()) && !jsonObj.get("from").isJsonPrimitive()) {
+      if (!jsonObj.get("from").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonNull() && !jsonObj.get("media").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `media` to be an array in the JSON string but got `%s`", jsonObj.get("media").toString()));
       }
       if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull()) && !jsonObj.get("text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
@@ -562,9 +589,17 @@ public class Message {
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
       }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonNull() && !jsonObj.get("media").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `media` to be an array in the JSON string but got `%s`", jsonObj.get("media").toString()));
+      }
       // validate the optional field `priority`
       if (jsonObj.get("priority") != null && !jsonObj.get("priority").isJsonNull()) {
         PriorityEnum.validateJsonElement(jsonObj.get("priority"));
+      }
+      // validate the optional field `channel`
+      if (jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) {
+        MultiChannelMessageChannelEnum.validateJsonElement(jsonObj.get("channel"));
       }
   }
 
@@ -572,16 +607,16 @@ public class Message {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Message.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Message' and its subtypes
+       if (!StatusCallbackMessage.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'StatusCallbackMessage' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Message> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Message.class));
+       final TypeAdapter<StatusCallbackMessage> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(StatusCallbackMessage.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Message>() {
+       return (TypeAdapter<T>) new TypeAdapter<StatusCallbackMessage>() {
            @Override
-           public void write(JsonWriter out, Message value) throws IOException {
+           public void write(JsonWriter out, StatusCallbackMessage value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -609,12 +644,12 @@ public class Message {
            }
 
            @Override
-           public Message read(JsonReader in) throws IOException {
+           public StatusCallbackMessage read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             Message instance = thisAdapter.fromJsonTree(jsonObj);
+             StatusCallbackMessage instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -641,18 +676,18 @@ public class Message {
   }
 
   /**
-   * Create an instance of Message given an JSON string
+   * Create an instance of StatusCallbackMessage given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of Message
-   * @throws IOException if the JSON string is invalid with respect to Message
+   * @return An instance of StatusCallbackMessage
+   * @throws IOException if the JSON string is invalid with respect to StatusCallbackMessage
    */
-  public static Message fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Message.class);
+  public static StatusCallbackMessage fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, StatusCallbackMessage.class);
   }
 
   /**
-   * Convert an instance of Message to an JSON string
+   * Convert an instance of StatusCallbackMessage to an JSON string
    *
    * @return JSON string
    */

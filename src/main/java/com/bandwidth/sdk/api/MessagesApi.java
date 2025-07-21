@@ -28,7 +28,7 @@ import java.io.IOException;
 
 
 import com.bandwidth.sdk.model.CreateMessageRequestError;
-import com.bandwidth.sdk.model.ListMessageDirectionEnum;
+import com.bandwidth.sdk.model.DirectionEnum;
 import com.bandwidth.sdk.model.Message;
 import com.bandwidth.sdk.model.MessageRequest;
 import com.bandwidth.sdk.model.MessageStatusEnum;
@@ -283,7 +283,7 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMessagesCall(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listMessagesCall(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, DirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://messaging.bandwidth.com/api/v2" };
@@ -389,7 +389,7 @@ public class MessagesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listMessagesValidateBeforeCall(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listMessagesValidateBeforeCall(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, DirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling listMessages(Async)");
@@ -434,7 +434,7 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public MessagesList listMessages(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount) throws ApiException {
+    public MessagesList listMessages(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, DirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount) throws ApiException {
         ApiResponse<MessagesList> localVarResp = listMessagesWithHttpInfo(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, limitTotalCount);
         return localVarResp.getData();
     }
@@ -474,7 +474,7 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MessagesList> listMessagesWithHttpInfo(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount) throws ApiException {
+    public ApiResponse<MessagesList> listMessagesWithHttpInfo(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, DirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount) throws ApiException {
         okhttp3.Call localVarCall = listMessagesValidateBeforeCall(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, limitTotalCount, null);
         Type localVarReturnType = new TypeToken<MessagesList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -516,7 +516,7 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMessagesAsync(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount, final ApiCallback<MessagesList> _callback) throws ApiException {
+    public okhttp3.Call listMessagesAsync(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, DirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount, final ApiCallback<MessagesList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listMessagesValidateBeforeCall(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, limitTotalCount, _callback);
         Type localVarReturnType = new TypeToken<MessagesList>(){}.getType();
