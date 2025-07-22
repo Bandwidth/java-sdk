@@ -19,6 +19,7 @@ import com.bandwidth.sdk.model.CreateMultiChannelMessageResponse;
 import com.bandwidth.sdk.model.ErrorObject;
 import com.bandwidth.sdk.model.Link;
 import com.bandwidth.sdk.model.MultiChannelMessageData;
+import com.bandwidth.sdk.model.MultiChannelMessageResponseData;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,7 +34,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 public class CreateMultiChannelMessageResponseTest {
     private final CreateMultiChannelMessageResponse model = new CreateMultiChannelMessageResponse()
             .links(new ArrayList<Link>(Arrays.asList(new Link())))
-            .data(new MultiChannelMessageData())
+            .data(new MultiChannelMessageResponseData())
             .errors(new ArrayList<ErrorObject>(Arrays.asList(new ErrorObject())));
 
     /**

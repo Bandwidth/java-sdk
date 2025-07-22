@@ -5,7 +5,7 @@ import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.Configuration;
-import com.bandwidth.sdk.model.ListMessageDirectionEnum;
+import com.bandwidth.sdk.model.DirectionEnum;
 import com.bandwidth.sdk.model.ListMessageItem;
 import com.bandwidth.sdk.model.Message;
 import com.bandwidth.sdk.model.MessageRequest;
@@ -43,7 +43,7 @@ public class MessagesApiTest {
     String sourceTn = null;
     String destinationTn = null;
     MessageStatusEnum messageStatus = null;
-    ListMessageDirectionEnum messageDirection = null;
+    DirectionEnum messageDirection = null;
     String carrierName = null;
     MessageTypeEnum messageType = MessageTypeEnum.fromValue("sms");
     Integer errorCode = null;
@@ -84,7 +84,7 @@ public class MessagesApiTest {
         assertThat(message, instanceOf(ListMessageItem.class));
         assertThat(message.getAccountId(), is(System.getenv("BW_ACCOUNT_ID")));
         assertThat(message.getDestinationTn(), matchesRegex("^\\+[1-9]\\d{1,14}$"));
-        assertThat(message.getMessageDirection(), instanceOf(ListMessageDirectionEnum.class));
+        assertThat(message.getMessageDirection(), instanceOf(DirectionEnum.class));
         assertThat(message.getMessageId(), matchesRegex("^.+$"));
         assertThat(message.getMessageStatus(), instanceOf(MessageStatusEnum.class));
         assertThat(message.getMessageType(), instanceOf(MessageTypeEnum.class));

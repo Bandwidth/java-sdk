@@ -18,7 +18,7 @@ import java.time.OffsetDateTime;
 import com.bandwidth.sdk.model.ListMessageItem;
 import com.bandwidth.sdk.model.MessageTypeEnum;
 import com.bandwidth.sdk.model.MessageStatusEnum;
-import com.bandwidth.sdk.model.ListMessageDirectionEnum;
+import com.bandwidth.sdk.model.DirectionEnum;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -33,7 +33,7 @@ public class ListMessageItemTest {
             .sourceTn("sourceTn")
             .destinationTn("destinationTn")
             .messageStatus(MessageStatusEnum.ACCEPTED)
-            .messageDirection(ListMessageDirectionEnum.INBOUND)
+            .messageDirection(DirectionEnum.INBOUND)
             .messageType(MessageTypeEnum.SMS)
             .segmentCount(10)
             .errorCode(123)
@@ -99,7 +99,7 @@ public class ListMessageItemTest {
      */
     @Test
     public void messageDirectionTest() {
-        assertThat(model.getMessageDirection(), instanceOf(ListMessageDirectionEnum.class));
+        assertThat(model.getMessageDirection(), instanceOf(DirectionEnum.class));
     }
 
     /**
