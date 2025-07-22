@@ -68,10 +68,10 @@ public class FailureWebhook {
   @javax.annotation.Nullable
   private String errorCode;
 
-  public static final String SERIALIZED_NAME_ERROR_DESCRIPTION = "errorDescription";
-  @SerializedName(SERIALIZED_NAME_ERROR_DESCRIPTION)
+  public static final String SERIALIZED_NAME_ERROR_MESSAGE = "errorMessage";
+  @SerializedName(SERIALIZED_NAME_ERROR_MESSAGE)
   @javax.annotation.Nullable
-  private String errorDescription;
+  private String errorMessage;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
@@ -143,22 +143,22 @@ public class FailureWebhook {
   }
 
 
-  public FailureWebhook errorDescription(@javax.annotation.Nullable String errorDescription) {
-    this.errorDescription = errorDescription;
+  public FailureWebhook errorMessage(@javax.annotation.Nullable String errorMessage) {
+    this.errorMessage = errorMessage;
     return this;
   }
 
   /**
    * A description of the error that was encountered.
-   * @return errorDescription
+   * @return errorMessage
    */
   @javax.annotation.Nullable
-  public String getErrorDescription() {
-    return errorDescription;
+  public String getErrorMessage() {
+    return errorMessage;
   }
 
-  public void setErrorDescription(@javax.annotation.Nullable String errorDescription) {
-    this.errorDescription = errorDescription;
+  public void setErrorMessage(@javax.annotation.Nullable String errorMessage) {
+    this.errorMessage = errorMessage;
   }
 
 
@@ -265,7 +265,7 @@ public class FailureWebhook {
     return Objects.equals(this.accountId, failureWebhook.accountId) &&
         Objects.equals(this.phoneNumber, failureWebhook.phoneNumber) &&
         Objects.equals(this.errorCode, failureWebhook.errorCode) &&
-        Objects.equals(this.errorDescription, failureWebhook.errorDescription) &&
+        Objects.equals(this.errorMessage, failureWebhook.errorMessage) &&
         Objects.equals(this.errors, failureWebhook.errors) &&
         Objects.equals(this.internalTicketNumber, failureWebhook.internalTicketNumber)&&
         Objects.equals(this.additionalProperties, failureWebhook.additionalProperties);
@@ -273,7 +273,7 @@ public class FailureWebhook {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, phoneNumber, errorCode, errorDescription, errors, internalTicketNumber, additionalProperties);
+    return Objects.hash(accountId, phoneNumber, errorCode, errorMessage, errors, internalTicketNumber, additionalProperties);
   }
 
   @Override
@@ -283,7 +283,7 @@ public class FailureWebhook {
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
-    sb.append("    errorDescription: ").append(toIndentedString(errorDescription)).append("\n");
+    sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    internalTicketNumber: ").append(toIndentedString(internalTicketNumber)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -312,7 +312,7 @@ public class FailureWebhook {
     openapiFields.add("accountId");
     openapiFields.add("phoneNumber");
     openapiFields.add("errorCode");
-    openapiFields.add("errorDescription");
+    openapiFields.add("errorMessage");
     openapiFields.add("errors");
     openapiFields.add("internalTicketNumber");
 
@@ -342,8 +342,8 @@ public class FailureWebhook {
       if ((jsonObj.get("errorCode") != null && !jsonObj.get("errorCode").isJsonNull()) && !jsonObj.get("errorCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `errorCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("errorCode").toString()));
       }
-      if ((jsonObj.get("errorDescription") != null && !jsonObj.get("errorDescription").isJsonNull()) && !jsonObj.get("errorDescription").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `errorDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("errorDescription").toString()));
+      if ((jsonObj.get("errorMessage") != null && !jsonObj.get("errorMessage").isJsonNull()) && !jsonObj.get("errorMessage").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `errorMessage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("errorMessage").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull() && !jsonObj.get("errors").isJsonArray()) {

@@ -32,7 +32,7 @@ public class FailureWebhookTest {
             .accountId("accountId")
             .phoneNumber("phoneNumber")
             .errorCode("errorCode")
-            .errorDescription("errorDescription")
+            .errorMessage("errorMessage")
             .errors(new ArrayList<String>(Arrays.asList("errors")))
             .internalTicketNumber(UUID.randomUUID());
 
@@ -69,11 +69,11 @@ public class FailureWebhookTest {
     }
 
     /**
-     * Test the property 'errorDescription'
+     * Test the property 'errorMessage'
      */
     @Test
-    public void errorDescriptionTest() {
-        assertThat(model.getErrorDescription(), instanceOf(String.class));
+    public void errorMessageTest() {
+        assertThat(model.getErrorMessage(), instanceOf(String.class));
     }
 
     /**
