@@ -58,6 +58,24 @@ public class JSON {
     @SuppressWarnings("unchecked")
     public static GsonBuilder createGson() {
         GsonFireBuilder fireBuilder = new GsonFireBuilder()
+                .registerTypeSelector(com.bandwidth.sdk.model.Callback.class, new TypeSelector<com.bandwidth.sdk.model.Callback>() {
+                    @Override
+                    public Class<? extends com.bandwidth.sdk.model.Callback> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("message-delivered", com.bandwidth.sdk.model.StatusCallback.class);
+                        classByDiscriminatorValue.put("message-failed", com.bandwidth.sdk.model.StatusCallback.class);
+                        classByDiscriminatorValue.put("message-read", com.bandwidth.sdk.model.StatusCallback.class);
+                        classByDiscriminatorValue.put("message-received", com.bandwidth.sdk.model.InboundCallback.class);
+                        classByDiscriminatorValue.put("message-sent", com.bandwidth.sdk.model.StatusCallback.class);
+                        classByDiscriminatorValue.put("request-location-response", com.bandwidth.sdk.model.InboundCallback.class);
+                        classByDiscriminatorValue.put("suggestion-response", com.bandwidth.sdk.model.InboundCallback.class);
+                        classByDiscriminatorValue.put("inboundCallback", com.bandwidth.sdk.model.InboundCallback.class);
+                        classByDiscriminatorValue.put("statusCallback", com.bandwidth.sdk.model.StatusCallback.class);
+                        classByDiscriminatorValue.put("callback", com.bandwidth.sdk.model.Callback.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "type"));
+                    }
+          })
                 .registerTypeSelector(com.bandwidth.sdk.model.MultiChannelAction.class, new TypeSelector<com.bandwidth.sdk.model.MultiChannelAction>() {
                     @Override
                     public Class<? extends com.bandwidth.sdk.model.MultiChannelAction> getClassForElement(JsonElement readElement) {
@@ -125,6 +143,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.CallTranscription.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.CallTranscriptionMetadata.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.CallTranscriptionResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.Callback.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.CodeRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.Conference.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.ConferenceCompletedCallback.CustomTypeAdapterFactory());
@@ -141,15 +160,17 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.CreateLookupResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.CreateMessageRequestError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.CreateMultiChannelMessageResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.DeferredResult.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.DisconnectCallback.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.Diversion.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.DtmfCallback.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.Error.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.ErrorObject.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.ErrorSource.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.FailureWebhook.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.FieldError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.GatherCallback.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.InboundCallback.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.InboundCallbackMessage.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.InitiateCallback.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.Link.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.LinksObject.CustomTypeAdapterFactory());
@@ -162,8 +183,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MachineDetectionResult.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.Media.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.Message.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MessageCallback.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MessageCallbackMessage.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MessageRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MessagesList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MessagingCodeResponse.CustomTypeAdapterFactory());
@@ -172,14 +191,16 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MfaRequestError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MfaUnauthorizedRequestError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MmsMessageContent.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MmsMessageContentFile.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelAction.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelActionCalendarEvent.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelCallbackData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelChannelListObject.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelChannelListObjectContent.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelMessageCallbackData.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelMessageData.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelError.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelMessageContent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelMessageRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelMessageResponseData.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelMessageResponseDataChannelListInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.OptInWorkflow.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.PageInfo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RbmActionBase.CustomTypeAdapterFactory());
@@ -188,18 +209,22 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RbmActionViewLocation.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RbmCardContent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RbmCardContentMedia.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RbmLocationResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RbmMessageCarouselCard.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RbmMessageContentFile.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RbmMessageContentRichCard.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RbmMessageContentText.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RbmMessageMedia.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RbmStandaloneCard.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RbmSuggestionResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RecordingAvailableCallback.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RecordingCompleteCallback.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RecordingTranscriptionMetadata.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RecordingTranscriptions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RedirectCallback.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.SmsMessageContent.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.StatusCallback.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.StatusCallbackMessage.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.StirShaken.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.TelephoneNumber.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.TfvBasicAuthentication.CustomTypeAdapterFactory());
