@@ -17,6 +17,7 @@ import java.util.UUID;
 
 import com.bandwidth.sdk.model.CallDirectionEnum;
 
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Builder.Default;
@@ -83,6 +84,7 @@ public class StartStream implements Verb {
     protected String mode;
 
     @XmlAttribute
+    @XmlJavaTypeAdapter(CallDirectionEnum.XMLAdapter.class)
     @Default
     protected CallDirectionEnum tracks = CallDirectionEnum.INBOUND;
 

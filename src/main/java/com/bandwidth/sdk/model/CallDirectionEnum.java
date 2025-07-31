@@ -22,6 +22,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 /**
  * The direction of the call.
@@ -33,7 +34,7 @@ public enum CallDirectionEnum {
   
   OUTBOUND("outbound");
 
-  private String value;
+  private final String value;
 
   CallDirectionEnum(String value) {
     this.value = value;
@@ -45,7 +46,7 @@ public enum CallDirectionEnum {
 
   @Override
   public String toString() {
-    return String.valueOf(value);
+    return value;
   }
 
   public static CallDirectionEnum fromValue(String value) {
@@ -69,6 +70,24 @@ public enum CallDirectionEnum {
       return CallDirectionEnum.fromValue(value);
     }
   }
+
+  public static class XMLAdapter extends XmlAdapter<String, CallDirectionEnum> {
+    @Override
+    public CallDirectionEnum unmarshal(String v) {
+      for (CallDirectionEnum e : CallDirectionEnum.values()) {
+        if (e.toString().equals(v)) {
+          return e;
+        }
+      }
+      return null;
+    }
+
+    @Override
+    public String marshal(CallDirectionEnum v) {
+      return v.toString();
+    }
+  }
+
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
