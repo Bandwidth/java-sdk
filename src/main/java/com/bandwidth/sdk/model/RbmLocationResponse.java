@@ -14,15 +14,12 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import com.bandwidth.sdk.model.MultiChannelMessageCallbackData;
-import com.bandwidth.sdk.model.MultiChannelStatusEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -49,130 +46,58 @@ import java.util.Set;
 import com.bandwidth.sdk.JSON;
 
 /**
- * MultiChannelCallbackData
+ * RbmLocationResponse
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class MultiChannelCallbackData {
-  public static final String SERIALIZED_NAME_TIME = "time";
-  @SerializedName(SERIALIZED_NAME_TIME)
+public class RbmLocationResponse {
+  public static final String SERIALIZED_NAME_LATITUDE = "latitude";
+  @SerializedName(SERIALIZED_NAME_LATITUDE)
   @javax.annotation.Nullable
-  private OffsetDateTime time;
+  private Double latitude;
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
+  public static final String SERIALIZED_NAME_LONGITUDE = "longitude";
+  @SerializedName(SERIALIZED_NAME_LONGITUDE)
   @javax.annotation.Nullable
-  private MultiChannelStatusEnum type;
+  private Double longitude;
 
-  public static final String SERIALIZED_NAME_TO = "to";
-  @SerializedName(SERIALIZED_NAME_TO)
-  @javax.annotation.Nullable
-  private String to;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  @javax.annotation.Nullable
-  private String description;
-
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
-  @javax.annotation.Nullable
-  private MultiChannelMessageCallbackData message;
-
-  public MultiChannelCallbackData() {
+  public RbmLocationResponse() {
   }
 
-  public MultiChannelCallbackData time(@javax.annotation.Nullable OffsetDateTime time) {
-    this.time = time;
+  public RbmLocationResponse latitude(@javax.annotation.Nullable Double latitude) {
+    this.latitude = latitude;
     return this;
   }
 
   /**
-   * The time of the callback event.
-   * @return time
+   * The latitude of the client&#39;s location.
+   * @return latitude
    */
   @javax.annotation.Nullable
-  public OffsetDateTime getTime() {
-    return time;
+  public Double getLatitude() {
+    return latitude;
   }
 
-  public void setTime(@javax.annotation.Nullable OffsetDateTime time) {
-    this.time = time;
+  public void setLatitude(@javax.annotation.Nullable Double latitude) {
+    this.latitude = latitude;
   }
 
 
-  public MultiChannelCallbackData type(@javax.annotation.Nullable MultiChannelStatusEnum type) {
-    this.type = type;
+  public RbmLocationResponse longitude(@javax.annotation.Nullable Double longitude) {
+    this.longitude = longitude;
     return this;
   }
 
   /**
-   * Get type
-   * @return type
+   * The longitude of the client&#39;s location.
+   * @return longitude
    */
   @javax.annotation.Nullable
-  public MultiChannelStatusEnum getType() {
-    return type;
+  public Double getLongitude() {
+    return longitude;
   }
 
-  public void setType(@javax.annotation.Nullable MultiChannelStatusEnum type) {
-    this.type = type;
-  }
-
-
-  public MultiChannelCallbackData to(@javax.annotation.Nullable String to) {
-    this.to = to;
-    return this;
-  }
-
-  /**
-   * The phone number the message should be sent to in E164 format.
-   * @return to
-   */
-  @javax.annotation.Nullable
-  public String getTo() {
-    return to;
-  }
-
-  public void setTo(@javax.annotation.Nullable String to) {
-    this.to = to;
-  }
-
-
-  public MultiChannelCallbackData description(@javax.annotation.Nullable String description) {
-    this.description = description;
-    return this;
-  }
-
-  /**
-   * Get description
-   * @return description
-   */
-  @javax.annotation.Nullable
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(@javax.annotation.Nullable String description) {
-    this.description = description;
-  }
-
-
-  public MultiChannelCallbackData message(@javax.annotation.Nullable MultiChannelMessageCallbackData message) {
-    this.message = message;
-    return this;
-  }
-
-  /**
-   * Get message
-   * @return message
-   */
-  @javax.annotation.Nullable
-  public MultiChannelMessageCallbackData getMessage() {
-    return message;
-  }
-
-  public void setMessage(@javax.annotation.Nullable MultiChannelMessageCallbackData message) {
-    this.message = message;
+  public void setLongitude(@javax.annotation.Nullable Double longitude) {
+    this.longitude = longitude;
   }
 
   /**
@@ -188,9 +113,9 @@ public class MultiChannelCallbackData {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the MultiChannelCallbackData instance itself
+   * @return the RbmLocationResponse instance itself
    */
-  public MultiChannelCallbackData putAdditionalProperty(String key, Object value) {
+  public RbmLocationResponse putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -229,29 +154,23 @@ public class MultiChannelCallbackData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MultiChannelCallbackData multiChannelCallbackData = (MultiChannelCallbackData) o;
-    return Objects.equals(this.time, multiChannelCallbackData.time) &&
-        Objects.equals(this.type, multiChannelCallbackData.type) &&
-        Objects.equals(this.to, multiChannelCallbackData.to) &&
-        Objects.equals(this.description, multiChannelCallbackData.description) &&
-        Objects.equals(this.message, multiChannelCallbackData.message)&&
-        Objects.equals(this.additionalProperties, multiChannelCallbackData.additionalProperties);
+    RbmLocationResponse rbmLocationResponse = (RbmLocationResponse) o;
+    return Objects.equals(this.latitude, rbmLocationResponse.latitude) &&
+        Objects.equals(this.longitude, rbmLocationResponse.longitude)&&
+        Objects.equals(this.additionalProperties, rbmLocationResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(time, type, to, description, message, additionalProperties);
+    return Objects.hash(latitude, longitude, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MultiChannelCallbackData {\n");
-    sb.append("    time: ").append(toIndentedString(time)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    to: ").append(toIndentedString(to)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("class RbmLocationResponse {\n");
+    sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
+    sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -275,11 +194,8 @@ public class MultiChannelCallbackData {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("time");
-    openapiFields.add("type");
-    openapiFields.add("to");
-    openapiFields.add("description");
-    openapiFields.add("message");
+    openapiFields.add("latitude");
+    openapiFields.add("longitude");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -289,28 +205,20 @@ public class MultiChannelCallbackData {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to MultiChannelCallbackData
+   * @throws IOException if the JSON Element is invalid with respect to RbmLocationResponse
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!MultiChannelCallbackData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in MultiChannelCallbackData is not found in the empty JSON string", MultiChannelCallbackData.openapiRequiredFields.toString()));
+        if (!RbmLocationResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RbmLocationResponse is not found in the empty JSON string", RbmLocationResponse.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `type`
-      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
-        MultiChannelStatusEnum.validateJsonElement(jsonObj.get("type"));
+      if ((jsonObj.get("latitude") != null && !jsonObj.get("latitude").isJsonNull()) && !jsonObj.get("latitude").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `latitude` to be a primitive type in the JSON string but got `%s`", jsonObj.get("latitude").toString()));
       }
-      if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
-      }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      // validate the optional field `message`
-      if (jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) {
-        MultiChannelMessageCallbackData.validateJsonElement(jsonObj.get("message"));
+      if ((jsonObj.get("longitude") != null && !jsonObj.get("longitude").isJsonNull()) && !jsonObj.get("longitude").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `longitude` to be a primitive type in the JSON string but got `%s`", jsonObj.get("longitude").toString()));
       }
   }
 
@@ -318,16 +226,16 @@ public class MultiChannelCallbackData {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!MultiChannelCallbackData.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'MultiChannelCallbackData' and its subtypes
+       if (!RbmLocationResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RbmLocationResponse' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<MultiChannelCallbackData> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(MultiChannelCallbackData.class));
+       final TypeAdapter<RbmLocationResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RbmLocationResponse.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<MultiChannelCallbackData>() {
+       return (TypeAdapter<T>) new TypeAdapter<RbmLocationResponse>() {
            @Override
-           public void write(JsonWriter out, MultiChannelCallbackData value) throws IOException {
+           public void write(JsonWriter out, RbmLocationResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -355,12 +263,12 @@ public class MultiChannelCallbackData {
            }
 
            @Override
-           public MultiChannelCallbackData read(JsonReader in) throws IOException {
+           public RbmLocationResponse read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             MultiChannelCallbackData instance = thisAdapter.fromJsonTree(jsonObj);
+             RbmLocationResponse instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -387,18 +295,18 @@ public class MultiChannelCallbackData {
   }
 
   /**
-   * Create an instance of MultiChannelCallbackData given an JSON string
+   * Create an instance of RbmLocationResponse given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of MultiChannelCallbackData
-   * @throws IOException if the JSON string is invalid with respect to MultiChannelCallbackData
+   * @return An instance of RbmLocationResponse
+   * @throws IOException if the JSON string is invalid with respect to RbmLocationResponse
    */
-  public static MultiChannelCallbackData fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, MultiChannelCallbackData.class);
+  public static RbmLocationResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RbmLocationResponse.class);
   }
 
   /**
-   * Convert an instance of MultiChannelCallbackData to an JSON string
+   * Convert an instance of RbmLocationResponse to an JSON string
    *
    * @return JSON string
    */

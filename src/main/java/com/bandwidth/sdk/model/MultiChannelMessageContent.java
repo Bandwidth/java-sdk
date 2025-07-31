@@ -14,6 +14,7 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import com.bandwidth.sdk.model.RbmMessageContentFile;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -46,58 +47,58 @@ import java.util.Set;
 import com.bandwidth.sdk.JSON;
 
 /**
- * DeferredResult
+ * The structure of the content field of a multichannel message.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class DeferredResult {
-  public static final String SERIALIZED_NAME_RESULT = "result";
-  @SerializedName(SERIALIZED_NAME_RESULT)
+public class MultiChannelMessageContent {
+  public static final String SERIALIZED_NAME_TEXT = "text";
+  @SerializedName(SERIALIZED_NAME_TEXT)
   @javax.annotation.Nullable
-  private Object result;
+  private String text;
 
-  public static final String SERIALIZED_NAME_SET_OR_EXPIRED = "setOrExpired";
-  @SerializedName(SERIALIZED_NAME_SET_OR_EXPIRED)
+  public static final String SERIALIZED_NAME_MEDIA = "media";
+  @SerializedName(SERIALIZED_NAME_MEDIA)
   @javax.annotation.Nullable
-  private Boolean setOrExpired;
+  private RbmMessageContentFile media;
 
-  public DeferredResult() {
+  public MultiChannelMessageContent() {
   }
 
-  public DeferredResult result(@javax.annotation.Nullable Object result) {
-    this.result = result;
+  public MultiChannelMessageContent text(@javax.annotation.Nullable String text) {
+    this.text = text;
     return this;
   }
 
   /**
-   * Get result
-   * @return result
+   * Get text
+   * @return text
    */
   @javax.annotation.Nullable
-  public Object getResult() {
-    return result;
+  public String getText() {
+    return text;
   }
 
-  public void setResult(@javax.annotation.Nullable Object result) {
-    this.result = result;
+  public void setText(@javax.annotation.Nullable String text) {
+    this.text = text;
   }
 
 
-  public DeferredResult setOrExpired(@javax.annotation.Nullable Boolean setOrExpired) {
-    this.setOrExpired = setOrExpired;
+  public MultiChannelMessageContent media(@javax.annotation.Nullable RbmMessageContentFile media) {
+    this.media = media;
     return this;
   }
 
   /**
-   * Get setOrExpired
-   * @return setOrExpired
+   * Get media
+   * @return media
    */
   @javax.annotation.Nullable
-  public Boolean getSetOrExpired() {
-    return setOrExpired;
+  public RbmMessageContentFile getMedia() {
+    return media;
   }
 
-  public void setSetOrExpired(@javax.annotation.Nullable Boolean setOrExpired) {
-    this.setOrExpired = setOrExpired;
+  public void setMedia(@javax.annotation.Nullable RbmMessageContentFile media) {
+    this.media = media;
   }
 
   /**
@@ -113,9 +114,9 @@ public class DeferredResult {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the DeferredResult instance itself
+   * @return the MultiChannelMessageContent instance itself
    */
-  public DeferredResult putAdditionalProperty(String key, Object value) {
+  public MultiChannelMessageContent putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -154,23 +155,23 @@ public class DeferredResult {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DeferredResult deferredResult = (DeferredResult) o;
-    return Objects.equals(this.result, deferredResult.result) &&
-        Objects.equals(this.setOrExpired, deferredResult.setOrExpired)&&
-        Objects.equals(this.additionalProperties, deferredResult.additionalProperties);
+    MultiChannelMessageContent multiChannelMessageContent = (MultiChannelMessageContent) o;
+    return Objects.equals(this.text, multiChannelMessageContent.text) &&
+        Objects.equals(this.media, multiChannelMessageContent.media)&&
+        Objects.equals(this.additionalProperties, multiChannelMessageContent.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(result, setOrExpired, additionalProperties);
+    return Objects.hash(text, media, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DeferredResult {\n");
-    sb.append("    result: ").append(toIndentedString(result)).append("\n");
-    sb.append("    setOrExpired: ").append(toIndentedString(setOrExpired)).append("\n");
+    sb.append("class MultiChannelMessageContent {\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    media: ").append(toIndentedString(media)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -194,8 +195,8 @@ public class DeferredResult {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("result");
-    openapiFields.add("setOrExpired");
+    openapiFields.add("text");
+    openapiFields.add("media");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -205,31 +206,38 @@ public class DeferredResult {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to DeferredResult
+   * @throws IOException if the JSON Element is invalid with respect to MultiChannelMessageContent
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!DeferredResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in DeferredResult is not found in the empty JSON string", DeferredResult.openapiRequiredFields.toString()));
+        if (!MultiChannelMessageContent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in MultiChannelMessageContent is not found in the empty JSON string", MultiChannelMessageContent.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull()) && !jsonObj.get("text").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
+      }
+      // validate the optional field `media`
+      if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonNull()) {
+        RbmMessageContentFile.validateJsonElement(jsonObj.get("media"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!DeferredResult.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'DeferredResult' and its subtypes
+       if (!MultiChannelMessageContent.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'MultiChannelMessageContent' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<DeferredResult> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(DeferredResult.class));
+       final TypeAdapter<MultiChannelMessageContent> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(MultiChannelMessageContent.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<DeferredResult>() {
+       return (TypeAdapter<T>) new TypeAdapter<MultiChannelMessageContent>() {
            @Override
-           public void write(JsonWriter out, DeferredResult value) throws IOException {
+           public void write(JsonWriter out, MultiChannelMessageContent value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -257,12 +265,12 @@ public class DeferredResult {
            }
 
            @Override
-           public DeferredResult read(JsonReader in) throws IOException {
+           public MultiChannelMessageContent read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             DeferredResult instance = thisAdapter.fromJsonTree(jsonObj);
+             MultiChannelMessageContent instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -289,18 +297,18 @@ public class DeferredResult {
   }
 
   /**
-   * Create an instance of DeferredResult given an JSON string
+   * Create an instance of MultiChannelMessageContent given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of DeferredResult
-   * @throws IOException if the JSON string is invalid with respect to DeferredResult
+   * @return An instance of MultiChannelMessageContent
+   * @throws IOException if the JSON string is invalid with respect to MultiChannelMessageContent
    */
-  public static DeferredResult fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, DeferredResult.class);
+  public static MultiChannelMessageContent fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, MultiChannelMessageContent.class);
   }
 
   /**
-   * Convert an instance of DeferredResult to an JSON string
+   * Convert an instance of MultiChannelMessageContent to an JSON string
    *
    * @return JSON string
    */

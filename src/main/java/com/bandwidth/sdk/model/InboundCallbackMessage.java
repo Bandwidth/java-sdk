@@ -15,7 +15,11 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import com.bandwidth.sdk.model.MessageDirectionEnum;
+import com.bandwidth.sdk.model.MultiChannelMessageChannelEnum;
+import com.bandwidth.sdk.model.MultiChannelMessageContent;
 import com.bandwidth.sdk.model.PriorityEnum;
+import com.bandwidth.sdk.model.RbmLocationResponse;
+import com.bandwidth.sdk.model.RbmSuggestionResponse;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -29,7 +33,6 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,10 +58,10 @@ import java.util.Set;
 import com.bandwidth.sdk.JSON;
 
 /**
- * Message payload schema within a MessageCallback
+ * InboundCallbackMessage
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class MessageCallbackMessage {
+public class InboundCallbackMessage {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nonnull
@@ -101,7 +104,7 @@ public class MessageCallbackMessage {
 
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String text;
 
   public static final String SERIALIZED_NAME_TAG = "tag";
@@ -112,23 +115,43 @@ public class MessageCallbackMessage {
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
   @javax.annotation.Nullable
-  private List<URI> media;
+  private List<URI> media = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
   @javax.annotation.Nullable
   private PriorityEnum priority;
 
-  public MessageCallbackMessage() {
+  public static final String SERIALIZED_NAME_CHANNEL = "channel";
+  @SerializedName(SERIALIZED_NAME_CHANNEL)
+  @javax.annotation.Nullable
+  private MultiChannelMessageChannelEnum channel;
+
+  public static final String SERIALIZED_NAME_CONTENT = "content";
+  @SerializedName(SERIALIZED_NAME_CONTENT)
+  @javax.annotation.Nullable
+  private MultiChannelMessageContent content;
+
+  public static final String SERIALIZED_NAME_SUGGESTION_RESPONSE = "suggestionResponse";
+  @SerializedName(SERIALIZED_NAME_SUGGESTION_RESPONSE)
+  @javax.annotation.Nullable
+  private RbmSuggestionResponse suggestionResponse;
+
+  public static final String SERIALIZED_NAME_LOCATION_RESPONSE = "locationResponse";
+  @SerializedName(SERIALIZED_NAME_LOCATION_RESPONSE)
+  @javax.annotation.Nullable
+  private RbmLocationResponse locationResponse;
+
+  public InboundCallbackMessage() {
   }
 
-  public MessageCallbackMessage id(@javax.annotation.Nonnull String id) {
+  public InboundCallbackMessage id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
 
   /**
-   * Get id
+   * A unique identifier of the message.
    * @return id
    */
   @javax.annotation.Nonnull
@@ -141,13 +164,13 @@ public class MessageCallbackMessage {
   }
 
 
-  public MessageCallbackMessage owner(@javax.annotation.Nonnull String owner) {
+  public InboundCallbackMessage owner(@javax.annotation.Nonnull String owner) {
     this.owner = owner;
     return this;
   }
 
   /**
-   * Get owner
+   * The Bandwidth phone number or alphanumeric identifier associated with the message.
    * @return owner
    */
   @javax.annotation.Nonnull
@@ -160,13 +183,13 @@ public class MessageCallbackMessage {
   }
 
 
-  public MessageCallbackMessage applicationId(@javax.annotation.Nonnull String applicationId) {
+  public InboundCallbackMessage applicationId(@javax.annotation.Nonnull String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
 
   /**
-   * Get applicationId
+   * The ID of the Application your from number or senderId is associated with in the Bandwidth Phone Number Dashboard.
    * @return applicationId
    */
   @javax.annotation.Nonnull
@@ -179,7 +202,7 @@ public class MessageCallbackMessage {
   }
 
 
-  public MessageCallbackMessage time(@javax.annotation.Nonnull OffsetDateTime time) {
+  public InboundCallbackMessage time(@javax.annotation.Nonnull OffsetDateTime time) {
     this.time = time;
     return this;
   }
@@ -198,13 +221,13 @@ public class MessageCallbackMessage {
   }
 
 
-  public MessageCallbackMessage segmentCount(@javax.annotation.Nonnull Integer segmentCount) {
+  public InboundCallbackMessage segmentCount(@javax.annotation.Nonnull Integer segmentCount) {
     this.segmentCount = segmentCount;
     return this;
   }
 
   /**
-   * Get segmentCount
+   * The number of segments the user&#39;s message is broken into before sending over carrier networks.
    * @return segmentCount
    */
   @javax.annotation.Nonnull
@@ -217,7 +240,7 @@ public class MessageCallbackMessage {
   }
 
 
-  public MessageCallbackMessage direction(@javax.annotation.Nonnull MessageDirectionEnum direction) {
+  public InboundCallbackMessage direction(@javax.annotation.Nonnull MessageDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
@@ -236,12 +259,12 @@ public class MessageCallbackMessage {
   }
 
 
-  public MessageCallbackMessage to(@javax.annotation.Nonnull Set<String> to) {
+  public InboundCallbackMessage to(@javax.annotation.Nonnull Set<String> to) {
     this.to = to;
     return this;
   }
 
-  public MessageCallbackMessage addToItem(String toItem) {
+  public InboundCallbackMessage addToItem(String toItem) {
     if (this.to == null) {
       this.to = new LinkedHashSet<>();
     }
@@ -250,7 +273,7 @@ public class MessageCallbackMessage {
   }
 
   /**
-   * Get to
+   * The phone number recipients of the message.
    * @return to
    */
   @javax.annotation.Nonnull
@@ -263,13 +286,13 @@ public class MessageCallbackMessage {
   }
 
 
-  public MessageCallbackMessage from(@javax.annotation.Nonnull String from) {
+  public InboundCallbackMessage from(@javax.annotation.Nonnull String from) {
     this.from = from;
     return this;
   }
 
   /**
-   * Get from
+   * The Bandwidth phone number or alphanumeric identifier the message was sent from.
    * @return from
    */
   @javax.annotation.Nonnull
@@ -282,7 +305,7 @@ public class MessageCallbackMessage {
   }
 
 
-  public MessageCallbackMessage text(@javax.annotation.Nonnull String text) {
+  public InboundCallbackMessage text(@javax.annotation.Nullable String text) {
     this.text = text;
     return this;
   }
@@ -291,23 +314,23 @@ public class MessageCallbackMessage {
    * Get text
    * @return text
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getText() {
     return text;
   }
 
-  public void setText(@javax.annotation.Nonnull String text) {
+  public void setText(@javax.annotation.Nullable String text) {
     this.text = text;
   }
 
 
-  public MessageCallbackMessage tag(@javax.annotation.Nullable String tag) {
+  public InboundCallbackMessage tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
 
   /**
-   * Get tag
+   * A custom string that will be included in callback events of the message. Max 1024 characters.
    * @return tag
    */
   @javax.annotation.Nullable
@@ -320,12 +343,12 @@ public class MessageCallbackMessage {
   }
 
 
-  public MessageCallbackMessage media(@javax.annotation.Nullable List<URI> media) {
+  public InboundCallbackMessage media(@javax.annotation.Nullable List<URI> media) {
     this.media = media;
     return this;
   }
 
-  public MessageCallbackMessage addMediaItem(URI mediaItem) {
+  public InboundCallbackMessage addMediaItem(URI mediaItem) {
     if (this.media == null) {
       this.media = new ArrayList<>();
     }
@@ -334,7 +357,7 @@ public class MessageCallbackMessage {
   }
 
   /**
-   * Optional media, applicable only for mms
+   * Optional media, not applicable for sms
    * @return media
    */
   @javax.annotation.Nullable
@@ -347,7 +370,7 @@ public class MessageCallbackMessage {
   }
 
 
-  public MessageCallbackMessage priority(@javax.annotation.Nullable PriorityEnum priority) {
+  public InboundCallbackMessage priority(@javax.annotation.Nullable PriorityEnum priority) {
     this.priority = priority;
     return this;
   }
@@ -365,6 +388,82 @@ public class MessageCallbackMessage {
     this.priority = priority;
   }
 
+
+  public InboundCallbackMessage channel(@javax.annotation.Nullable MultiChannelMessageChannelEnum channel) {
+    this.channel = channel;
+    return this;
+  }
+
+  /**
+   * Get channel
+   * @return channel
+   */
+  @javax.annotation.Nullable
+  public MultiChannelMessageChannelEnum getChannel() {
+    return channel;
+  }
+
+  public void setChannel(@javax.annotation.Nullable MultiChannelMessageChannelEnum channel) {
+    this.channel = channel;
+  }
+
+
+  public InboundCallbackMessage content(@javax.annotation.Nullable MultiChannelMessageContent content) {
+    this.content = content;
+    return this;
+  }
+
+  /**
+   * Get content
+   * @return content
+   */
+  @javax.annotation.Nullable
+  public MultiChannelMessageContent getContent() {
+    return content;
+  }
+
+  public void setContent(@javax.annotation.Nullable MultiChannelMessageContent content) {
+    this.content = content;
+  }
+
+
+  public InboundCallbackMessage suggestionResponse(@javax.annotation.Nullable RbmSuggestionResponse suggestionResponse) {
+    this.suggestionResponse = suggestionResponse;
+    return this;
+  }
+
+  /**
+   * Get suggestionResponse
+   * @return suggestionResponse
+   */
+  @javax.annotation.Nullable
+  public RbmSuggestionResponse getSuggestionResponse() {
+    return suggestionResponse;
+  }
+
+  public void setSuggestionResponse(@javax.annotation.Nullable RbmSuggestionResponse suggestionResponse) {
+    this.suggestionResponse = suggestionResponse;
+  }
+
+
+  public InboundCallbackMessage locationResponse(@javax.annotation.Nullable RbmLocationResponse locationResponse) {
+    this.locationResponse = locationResponse;
+    return this;
+  }
+
+  /**
+   * Get locationResponse
+   * @return locationResponse
+   */
+  @javax.annotation.Nullable
+  public RbmLocationResponse getLocationResponse() {
+    return locationResponse;
+  }
+
+  public void setLocationResponse(@javax.annotation.Nullable RbmLocationResponse locationResponse) {
+    this.locationResponse = locationResponse;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -378,9 +477,9 @@ public class MessageCallbackMessage {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the MessageCallbackMessage instance itself
+   * @return the InboundCallbackMessage instance itself
    */
-  public MessageCallbackMessage putAdditionalProperty(String key, Object value) {
+  public InboundCallbackMessage putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -419,42 +518,35 @@ public class MessageCallbackMessage {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MessageCallbackMessage messageCallbackMessage = (MessageCallbackMessage) o;
-    return Objects.equals(this.id, messageCallbackMessage.id) &&
-        Objects.equals(this.owner, messageCallbackMessage.owner) &&
-        Objects.equals(this.applicationId, messageCallbackMessage.applicationId) &&
-        Objects.equals(this.time, messageCallbackMessage.time) &&
-        Objects.equals(this.segmentCount, messageCallbackMessage.segmentCount) &&
-        Objects.equals(this.direction, messageCallbackMessage.direction) &&
-        Objects.equals(this.to, messageCallbackMessage.to) &&
-        Objects.equals(this.from, messageCallbackMessage.from) &&
-        Objects.equals(this.text, messageCallbackMessage.text) &&
-        Objects.equals(this.tag, messageCallbackMessage.tag) &&
-        Objects.equals(this.media, messageCallbackMessage.media) &&
-        Objects.equals(this.priority, messageCallbackMessage.priority)&&
-        Objects.equals(this.additionalProperties, messageCallbackMessage.additionalProperties);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    InboundCallbackMessage inboundCallbackMessage = (InboundCallbackMessage) o;
+    return Objects.equals(this.id, inboundCallbackMessage.id) &&
+        Objects.equals(this.owner, inboundCallbackMessage.owner) &&
+        Objects.equals(this.applicationId, inboundCallbackMessage.applicationId) &&
+        Objects.equals(this.time, inboundCallbackMessage.time) &&
+        Objects.equals(this.segmentCount, inboundCallbackMessage.segmentCount) &&
+        Objects.equals(this.direction, inboundCallbackMessage.direction) &&
+        Objects.equals(this.to, inboundCallbackMessage.to) &&
+        Objects.equals(this.from, inboundCallbackMessage.from) &&
+        Objects.equals(this.text, inboundCallbackMessage.text) &&
+        Objects.equals(this.tag, inboundCallbackMessage.tag) &&
+        Objects.equals(this.media, inboundCallbackMessage.media) &&
+        Objects.equals(this.priority, inboundCallbackMessage.priority) &&
+        Objects.equals(this.channel, inboundCallbackMessage.channel) &&
+        Objects.equals(this.content, inboundCallbackMessage.content) &&
+        Objects.equals(this.suggestionResponse, inboundCallbackMessage.suggestionResponse) &&
+        Objects.equals(this.locationResponse, inboundCallbackMessage.locationResponse)&&
+        Objects.equals(this.additionalProperties, inboundCallbackMessage.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, owner, applicationId, time, segmentCount, direction, to, from, text, tag, media, priority, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(id, owner, applicationId, time, segmentCount, direction, to, from, text, tag, media, priority, channel, content, suggestionResponse, locationResponse, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MessageCallbackMessage {\n");
+    sb.append("class InboundCallbackMessage {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
@@ -467,6 +559,10 @@ public class MessageCallbackMessage {
     sb.append("    tag: ").append(toIndentedString(tag)).append("\n");
     sb.append("    media: ").append(toIndentedString(media)).append("\n");
     sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
+    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
+    sb.append("    content: ").append(toIndentedString(content)).append("\n");
+    sb.append("    suggestionResponse: ").append(toIndentedString(suggestionResponse)).append("\n");
+    sb.append("    locationResponse: ").append(toIndentedString(locationResponse)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -502,6 +598,10 @@ public class MessageCallbackMessage {
     openapiFields.add("tag");
     openapiFields.add("media");
     openapiFields.add("priority");
+    openapiFields.add("channel");
+    openapiFields.add("content");
+    openapiFields.add("suggestionResponse");
+    openapiFields.add("locationResponse");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -513,24 +613,23 @@ public class MessageCallbackMessage {
     openapiRequiredFields.add("direction");
     openapiRequiredFields.add("to");
     openapiRequiredFields.add("from");
-    openapiRequiredFields.add("text");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to MessageCallbackMessage
+   * @throws IOException if the JSON Element is invalid with respect to InboundCallbackMessage
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!MessageCallbackMessage.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in MessageCallbackMessage is not found in the empty JSON string", MessageCallbackMessage.openapiRequiredFields.toString()));
+        if (!InboundCallbackMessage.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in InboundCallbackMessage is not found in the empty JSON string", InboundCallbackMessage.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : MessageCallbackMessage.openapiRequiredFields) {
+      for (String requiredField : InboundCallbackMessage.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -556,7 +655,7 @@ public class MessageCallbackMessage {
       if (!jsonObj.get("from").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
       }
-      if (!jsonObj.get("text").isJsonPrimitive()) {
+      if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull()) && !jsonObj.get("text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
       }
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
@@ -570,22 +669,38 @@ public class MessageCallbackMessage {
       if (jsonObj.get("priority") != null && !jsonObj.get("priority").isJsonNull()) {
         PriorityEnum.validateJsonElement(jsonObj.get("priority"));
       }
+      // validate the optional field `channel`
+      if (jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) {
+        MultiChannelMessageChannelEnum.validateJsonElement(jsonObj.get("channel"));
+      }
+      // validate the optional field `content`
+      if (jsonObj.get("content") != null && !jsonObj.get("content").isJsonNull()) {
+        MultiChannelMessageContent.validateJsonElement(jsonObj.get("content"));
+      }
+      // validate the optional field `suggestionResponse`
+      if (jsonObj.get("suggestionResponse") != null && !jsonObj.get("suggestionResponse").isJsonNull()) {
+        RbmSuggestionResponse.validateJsonElement(jsonObj.get("suggestionResponse"));
+      }
+      // validate the optional field `locationResponse`
+      if (jsonObj.get("locationResponse") != null && !jsonObj.get("locationResponse").isJsonNull()) {
+        RbmLocationResponse.validateJsonElement(jsonObj.get("locationResponse"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!MessageCallbackMessage.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'MessageCallbackMessage' and its subtypes
+       if (!InboundCallbackMessage.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'InboundCallbackMessage' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<MessageCallbackMessage> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(MessageCallbackMessage.class));
+       final TypeAdapter<InboundCallbackMessage> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(InboundCallbackMessage.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<MessageCallbackMessage>() {
+       return (TypeAdapter<T>) new TypeAdapter<InboundCallbackMessage>() {
            @Override
-           public void write(JsonWriter out, MessageCallbackMessage value) throws IOException {
+           public void write(JsonWriter out, InboundCallbackMessage value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -613,12 +728,12 @@ public class MessageCallbackMessage {
            }
 
            @Override
-           public MessageCallbackMessage read(JsonReader in) throws IOException {
+           public InboundCallbackMessage read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             MessageCallbackMessage instance = thisAdapter.fromJsonTree(jsonObj);
+             InboundCallbackMessage instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -645,18 +760,18 @@ public class MessageCallbackMessage {
   }
 
   /**
-   * Create an instance of MessageCallbackMessage given an JSON string
+   * Create an instance of InboundCallbackMessage given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of MessageCallbackMessage
-   * @throws IOException if the JSON string is invalid with respect to MessageCallbackMessage
+   * @return An instance of InboundCallbackMessage
+   * @throws IOException if the JSON string is invalid with respect to InboundCallbackMessage
    */
-  public static MessageCallbackMessage fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, MessageCallbackMessage.class);
+  public static InboundCallbackMessage fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, InboundCallbackMessage.class);
   }
 
   /**
-   * Convert an instance of MessageCallbackMessage to an JSON string
+   * Convert an instance of InboundCallbackMessage to an JSON string
    *
    * @return JSON string
    */

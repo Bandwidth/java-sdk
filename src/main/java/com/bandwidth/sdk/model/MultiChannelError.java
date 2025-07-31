@@ -14,13 +14,18 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import com.bandwidth.sdk.model.ErrorObject;
+import com.bandwidth.sdk.model.Link;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,58 +51,98 @@ import java.util.Set;
 import com.bandwidth.sdk.JSON;
 
 /**
- * Tag
+ * MultiChannelError
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class Tag {
-  public static final String SERIALIZED_NAME_KEY = "key";
-  @SerializedName(SERIALIZED_NAME_KEY)
+public class MultiChannelError {
+  public static final String SERIALIZED_NAME_LINKS = "links";
+  @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nullable
-  private String key;
+  private List<Link> links = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private String value;
+  private Object data;
 
-  public Tag() {
+  public static final String SERIALIZED_NAME_ERRORS = "errors";
+  @SerializedName(SERIALIZED_NAME_ERRORS)
+  @javax.annotation.Nullable
+  private List<ErrorObject> errors = new ArrayList<>();
+
+  public MultiChannelError() {
   }
 
-  public Tag key(@javax.annotation.Nullable String key) {
-    this.key = key;
+  public MultiChannelError links(@javax.annotation.Nullable List<Link> links) {
+    this.links = links;
+    return this;
+  }
+
+  public MultiChannelError addLinksItem(Link linksItem) {
+    if (this.links == null) {
+      this.links = new ArrayList<>();
+    }
+    this.links.add(linksItem);
     return this;
   }
 
   /**
-   * Get key
-   * @return key
+   * Get links
+   * @return links
    */
   @javax.annotation.Nullable
-  public String getKey() {
-    return key;
+  public List<Link> getLinks() {
+    return links;
   }
 
-  public void setKey(@javax.annotation.Nullable String key) {
-    this.key = key;
+  public void setLinks(@javax.annotation.Nullable List<Link> links) {
+    this.links = links;
   }
 
 
-  public Tag value(@javax.annotation.Nullable String value) {
-    this.value = value;
+  public MultiChannelError data(@javax.annotation.Nullable Object data) {
+    this.data = data;
     return this;
   }
 
   /**
-   * Get value
-   * @return value
+   * Get data
+   * @return data
    */
   @javax.annotation.Nullable
-  public String getValue() {
-    return value;
+  public Object getData() {
+    return data;
   }
 
-  public void setValue(@javax.annotation.Nullable String value) {
-    this.value = value;
+  public void setData(@javax.annotation.Nullable Object data) {
+    this.data = data;
+  }
+
+
+  public MultiChannelError errors(@javax.annotation.Nullable List<ErrorObject> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public MultiChannelError addErrorsItem(ErrorObject errorsItem) {
+    if (this.errors == null) {
+      this.errors = new ArrayList<>();
+    }
+    this.errors.add(errorsItem);
+    return this;
+  }
+
+  /**
+   * Get errors
+   * @return errors
+   */
+  @javax.annotation.Nullable
+  public List<ErrorObject> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(@javax.annotation.Nullable List<ErrorObject> errors) {
+    this.errors = errors;
   }
 
   /**
@@ -113,9 +158,9 @@ public class Tag {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the Tag instance itself
+   * @return the MultiChannelError instance itself
    */
-  public Tag putAdditionalProperty(String key, Object value) {
+  public MultiChannelError putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -154,23 +199,36 @@ public class Tag {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Tag tag = (Tag) o;
-    return Objects.equals(this.key, tag.key) &&
-        Objects.equals(this.value, tag.value)&&
-        Objects.equals(this.additionalProperties, tag.additionalProperties);
+    MultiChannelError multiChannelError = (MultiChannelError) o;
+    return Objects.equals(this.links, multiChannelError.links) &&
+        Objects.equals(this.data, multiChannelError.data) &&
+        Objects.equals(this.errors, multiChannelError.errors)&&
+        Objects.equals(this.additionalProperties, multiChannelError.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, value, additionalProperties);
+    return Objects.hash(links, data, errors, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Tag {\n");
-    sb.append("    key: ").append(toIndentedString(key)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("class MultiChannelError {\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -194,8 +252,9 @@ public class Tag {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("key");
-    openapiFields.add("value");
+    openapiFields.add("links");
+    openapiFields.add("data");
+    openapiFields.add("errors");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -205,20 +264,42 @@ public class Tag {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Tag
+   * @throws IOException if the JSON Element is invalid with respect to MultiChannelError
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!Tag.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Tag is not found in the empty JSON string", Tag.openapiRequiredFields.toString()));
+        if (!MultiChannelError.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in MultiChannelError is not found in the empty JSON string", MultiChannelError.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("key") != null && !jsonObj.get("key").isJsonNull()) && !jsonObj.get("key").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("key").toString()));
+      if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
+        JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
+        if (jsonArraylinks != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("links").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
+          }
+
+          // validate the optional field `links` (array)
+          for (int i = 0; i < jsonArraylinks.size(); i++) {
+            Link.validateJsonElement(jsonArraylinks.get(i));
+          };
+        }
       }
-      if ((jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull()) && !jsonObj.get("value").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("value").toString()));
+      if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
+        JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
+        if (jsonArrayerrors != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("errors").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
+          }
+
+          // validate the optional field `errors` (array)
+          for (int i = 0; i < jsonArrayerrors.size(); i++) {
+            ErrorObject.validateJsonElement(jsonArrayerrors.get(i));
+          };
+        }
       }
   }
 
@@ -226,16 +307,16 @@ public class Tag {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Tag.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Tag' and its subtypes
+       if (!MultiChannelError.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'MultiChannelError' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Tag> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Tag.class));
+       final TypeAdapter<MultiChannelError> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(MultiChannelError.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Tag>() {
+       return (TypeAdapter<T>) new TypeAdapter<MultiChannelError>() {
            @Override
-           public void write(JsonWriter out, Tag value) throws IOException {
+           public void write(JsonWriter out, MultiChannelError value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -263,12 +344,12 @@ public class Tag {
            }
 
            @Override
-           public Tag read(JsonReader in) throws IOException {
+           public MultiChannelError read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             Tag instance = thisAdapter.fromJsonTree(jsonObj);
+             MultiChannelError instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -295,18 +376,18 @@ public class Tag {
   }
 
   /**
-   * Create an instance of Tag given an JSON string
+   * Create an instance of MultiChannelError given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of Tag
-   * @throws IOException if the JSON string is invalid with respect to Tag
+   * @return An instance of MultiChannelError
+   * @throws IOException if the JSON string is invalid with respect to MultiChannelError
    */
-  public static Tag fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Tag.class);
+  public static MultiChannelError fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, MultiChannelError.class);
   }
 
   /**
-   * Convert an instance of Tag to an JSON string
+   * Convert an instance of MultiChannelError to an JSON string
    *
    * @return JSON string
    */

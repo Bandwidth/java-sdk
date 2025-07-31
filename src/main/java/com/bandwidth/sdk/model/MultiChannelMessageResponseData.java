@@ -14,9 +14,9 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import com.bandwidth.sdk.model.MultiChannelMessageChannelEnum;
-import com.bandwidth.sdk.model.MultiChannelMessageDirectionEnum;
-import com.bandwidth.sdk.model.MultiChannelStatusEnum;
+import com.bandwidth.sdk.model.MessageDirectionEnum;
+import com.bandwidth.sdk.model.MultiChannelMessageResponseDataChannelListInner;
+import com.bandwidth.sdk.model.PriorityEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,7 +24,11 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,59 +54,54 @@ import java.util.Set;
 import com.bandwidth.sdk.JSON;
 
 /**
- * MultiChannelMessageData
+ * The data returned in a multichannel message response.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class MultiChannelMessageData {
+public class MultiChannelMessageResponseData {
   public static final String SERIALIZED_NAME_MESSAGE_ID = "messageId";
   @SerializedName(SERIALIZED_NAME_MESSAGE_ID)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String messageId;
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  @javax.annotation.Nullable
-  private MultiChannelStatusEnum status;
 
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private OffsetDateTime time;
 
   public static final String SERIALIZED_NAME_DIRECTION = "direction";
   @SerializedName(SERIALIZED_NAME_DIRECTION)
-  @javax.annotation.Nullable
-  private MultiChannelMessageDirectionEnum direction;
-
-  public static final String SERIALIZED_NAME_FROM = "from";
-  @SerializedName(SERIALIZED_NAME_FROM)
-  @javax.annotation.Nullable
-  private String from;
+  @javax.annotation.Nonnull
+  private MessageDirectionEnum direction;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
-  @javax.annotation.Nullable
-  private String to;
+  @javax.annotation.Nonnull
+  private Set<String> to = new LinkedHashSet<>();
 
-  public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
-  @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  @javax.annotation.Nullable
-  private String applicationId;
-
-  public static final String SERIALIZED_NAME_CHANNEL = "channel";
-  @SerializedName(SERIALIZED_NAME_CHANNEL)
-  @javax.annotation.Nullable
-  private MultiChannelMessageChannelEnum channel;
+  public static final String SERIALIZED_NAME_CHANNEL_LIST = "channelList";
+  @SerializedName(SERIALIZED_NAME_CHANNEL_LIST)
+  @javax.annotation.Nonnull
+  private List<MultiChannelMessageResponseDataChannelListInner> channelList = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
   @javax.annotation.Nullable
   private String tag;
 
-  public MultiChannelMessageData() {
+  public static final String SERIALIZED_NAME_PRIORITY = "priority";
+  @SerializedName(SERIALIZED_NAME_PRIORITY)
+  @javax.annotation.Nullable
+  private PriorityEnum priority;
+
+  public static final String SERIALIZED_NAME_EXPIRATION = "expiration";
+  @SerializedName(SERIALIZED_NAME_EXPIRATION)
+  @javax.annotation.Nullable
+  private OffsetDateTime expiration;
+
+  public MultiChannelMessageResponseData() {
   }
 
-  public MultiChannelMessageData messageId(@javax.annotation.Nullable String messageId) {
+  public MultiChannelMessageResponseData messageId(@javax.annotation.Nonnull String messageId) {
     this.messageId = messageId;
     return this;
   }
@@ -111,36 +110,17 @@ public class MultiChannelMessageData {
    * The ID of the message.
    * @return messageId
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getMessageId() {
     return messageId;
   }
 
-  public void setMessageId(@javax.annotation.Nullable String messageId) {
+  public void setMessageId(@javax.annotation.Nonnull String messageId) {
     this.messageId = messageId;
   }
 
 
-  public MultiChannelMessageData status(@javax.annotation.Nullable MultiChannelStatusEnum status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Get status
-   * @return status
-   */
-  @javax.annotation.Nullable
-  public MultiChannelStatusEnum getStatus() {
-    return status;
-  }
-
-  public void setStatus(@javax.annotation.Nullable MultiChannelStatusEnum status) {
-    this.status = status;
-  }
-
-
-  public MultiChannelMessageData time(@javax.annotation.Nullable OffsetDateTime time) {
+  public MultiChannelMessageResponseData time(@javax.annotation.Nonnull OffsetDateTime time) {
     this.time = time;
     return this;
   }
@@ -149,17 +129,17 @@ public class MultiChannelMessageData {
    * The time the message was received by the Bandwidth API.
    * @return time
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public OffsetDateTime getTime() {
     return time;
   }
 
-  public void setTime(@javax.annotation.Nullable OffsetDateTime time) {
+  public void setTime(@javax.annotation.Nonnull OffsetDateTime time) {
     this.time = time;
   }
 
 
-  public MultiChannelMessageData direction(@javax.annotation.Nullable MultiChannelMessageDirectionEnum direction) {
+  public MultiChannelMessageResponseData direction(@javax.annotation.Nonnull MessageDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
@@ -168,93 +148,71 @@ public class MultiChannelMessageData {
    * Get direction
    * @return direction
    */
-  @javax.annotation.Nullable
-  public MultiChannelMessageDirectionEnum getDirection() {
+  @javax.annotation.Nonnull
+  public MessageDirectionEnum getDirection() {
     return direction;
   }
 
-  public void setDirection(@javax.annotation.Nullable MultiChannelMessageDirectionEnum direction) {
+  public void setDirection(@javax.annotation.Nonnull MessageDirectionEnum direction) {
     this.direction = direction;
   }
 
 
-  public MultiChannelMessageData from(@javax.annotation.Nullable String from) {
-    this.from = from;
-    return this;
-  }
-
-  /**
-   * The sender ID of the message. This could be an alphanumeric sender ID.
-   * @return from
-   */
-  @javax.annotation.Nullable
-  public String getFrom() {
-    return from;
-  }
-
-  public void setFrom(@javax.annotation.Nullable String from) {
-    this.from = from;
-  }
-
-
-  public MultiChannelMessageData to(@javax.annotation.Nullable String to) {
+  public MultiChannelMessageResponseData to(@javax.annotation.Nonnull Set<String> to) {
     this.to = to;
     return this;
   }
 
+  public MultiChannelMessageResponseData addToItem(String toItem) {
+    if (this.to == null) {
+      this.to = new LinkedHashSet<>();
+    }
+    this.to.add(toItem);
+    return this;
+  }
+
   /**
-   * The phone number the message should be sent to in E164 format.
+   * The destination phone number(s) of the message, in E164 format.
    * @return to
    */
-  @javax.annotation.Nullable
-  public String getTo() {
+  @javax.annotation.Nonnull
+  public Set<String> getTo() {
     return to;
   }
 
-  public void setTo(@javax.annotation.Nullable String to) {
+  public void setTo(@javax.annotation.Nonnull Set<String> to) {
     this.to = to;
   }
 
 
-  public MultiChannelMessageData applicationId(@javax.annotation.Nullable String applicationId) {
-    this.applicationId = applicationId;
+  public MultiChannelMessageResponseData channelList(@javax.annotation.Nonnull List<MultiChannelMessageResponseDataChannelListInner> channelList) {
+    this.channelList = channelList;
+    return this;
+  }
+
+  public MultiChannelMessageResponseData addChannelListItem(MultiChannelMessageResponseDataChannelListInner channelListItem) {
+    if (this.channelList == null) {
+      this.channelList = new ArrayList<>();
+    }
+    this.channelList.add(channelListItem);
     return this;
   }
 
   /**
-   * The ID of the Application your from number or senderId is associated with in the Bandwidth Phone Number Dashboard.
-   * @return applicationId
+   * A list of message bodies. The messages will be attempted in the order they are listed. Once a message sends successfully, the others will be ignored.
+   * @return channelList
    */
-  @javax.annotation.Nullable
-  public String getApplicationId() {
-    return applicationId;
+  @javax.annotation.Nonnull
+  public List<MultiChannelMessageResponseDataChannelListInner> getChannelList() {
+    return channelList;
   }
 
-  public void setApplicationId(@javax.annotation.Nullable String applicationId) {
-    this.applicationId = applicationId;
-  }
-
-
-  public MultiChannelMessageData channel(@javax.annotation.Nullable MultiChannelMessageChannelEnum channel) {
-    this.channel = channel;
-    return this;
-  }
-
-  /**
-   * Get channel
-   * @return channel
-   */
-  @javax.annotation.Nullable
-  public MultiChannelMessageChannelEnum getChannel() {
-    return channel;
-  }
-
-  public void setChannel(@javax.annotation.Nullable MultiChannelMessageChannelEnum channel) {
-    this.channel = channel;
+  public void setChannelList(@javax.annotation.Nonnull List<MultiChannelMessageResponseDataChannelListInner> channelList) {
+    this.channelList = channelList;
   }
 
 
-  public MultiChannelMessageData tag(@javax.annotation.Nullable String tag) {
+  public MultiChannelMessageResponseData tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
@@ -272,6 +230,44 @@ public class MultiChannelMessageData {
     this.tag = tag;
   }
 
+
+  public MultiChannelMessageResponseData priority(@javax.annotation.Nullable PriorityEnum priority) {
+    this.priority = priority;
+    return this;
+  }
+
+  /**
+   * Get priority
+   * @return priority
+   */
+  @javax.annotation.Nullable
+  public PriorityEnum getPriority() {
+    return priority;
+  }
+
+  public void setPriority(@javax.annotation.Nullable PriorityEnum priority) {
+    this.priority = priority;
+  }
+
+
+  public MultiChannelMessageResponseData expiration(@javax.annotation.Nullable OffsetDateTime expiration) {
+    this.expiration = expiration;
+    return this;
+  }
+
+  /**
+   * A string with the date/time value that the message will automatically expire by. This must be a valid RFC-3339 value, e.g., 2021-03-14T01:59:26Z or 2021-03-13T20:59:26-05:00. Must be a date-time in the future.
+   * @return expiration
+   */
+  @javax.annotation.Nullable
+  public OffsetDateTime getExpiration() {
+    return expiration;
+  }
+
+  public void setExpiration(@javax.annotation.Nullable OffsetDateTime expiration) {
+    this.expiration = expiration;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -285,9 +281,9 @@ public class MultiChannelMessageData {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the MultiChannelMessageData instance itself
+   * @return the MultiChannelMessageResponseData instance itself
    */
-  public MultiChannelMessageData putAdditionalProperty(String key, Object value) {
+  public MultiChannelMessageResponseData putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -326,37 +322,35 @@ public class MultiChannelMessageData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MultiChannelMessageData multiChannelMessageData = (MultiChannelMessageData) o;
-    return Objects.equals(this.messageId, multiChannelMessageData.messageId) &&
-        Objects.equals(this.status, multiChannelMessageData.status) &&
-        Objects.equals(this.time, multiChannelMessageData.time) &&
-        Objects.equals(this.direction, multiChannelMessageData.direction) &&
-        Objects.equals(this.from, multiChannelMessageData.from) &&
-        Objects.equals(this.to, multiChannelMessageData.to) &&
-        Objects.equals(this.applicationId, multiChannelMessageData.applicationId) &&
-        Objects.equals(this.channel, multiChannelMessageData.channel) &&
-        Objects.equals(this.tag, multiChannelMessageData.tag)&&
-        Objects.equals(this.additionalProperties, multiChannelMessageData.additionalProperties);
+    MultiChannelMessageResponseData multiChannelMessageResponseData = (MultiChannelMessageResponseData) o;
+    return Objects.equals(this.messageId, multiChannelMessageResponseData.messageId) &&
+        Objects.equals(this.time, multiChannelMessageResponseData.time) &&
+        Objects.equals(this.direction, multiChannelMessageResponseData.direction) &&
+        Objects.equals(this.to, multiChannelMessageResponseData.to) &&
+        Objects.equals(this.channelList, multiChannelMessageResponseData.channelList) &&
+        Objects.equals(this.tag, multiChannelMessageResponseData.tag) &&
+        Objects.equals(this.priority, multiChannelMessageResponseData.priority) &&
+        Objects.equals(this.expiration, multiChannelMessageResponseData.expiration)&&
+        Objects.equals(this.additionalProperties, multiChannelMessageResponseData.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(messageId, status, time, direction, from, to, applicationId, channel, tag, additionalProperties);
+    return Objects.hash(messageId, time, direction, to, channelList, tag, priority, expiration, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MultiChannelMessageData {\n");
+    sb.append("class MultiChannelMessageResponseData {\n");
     sb.append("    messageId: ").append(toIndentedString(messageId)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    time: ").append(toIndentedString(time)).append("\n");
     sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
-    sb.append("    from: ").append(toIndentedString(from)).append("\n");
     sb.append("    to: ").append(toIndentedString(to)).append("\n");
-    sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
-    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
+    sb.append("    channelList: ").append(toIndentedString(channelList)).append("\n");
     sb.append("    tag: ").append(toIndentedString(tag)).append("\n");
+    sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
+    sb.append("    expiration: ").append(toIndentedString(expiration)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -381,58 +375,70 @@ public class MultiChannelMessageData {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("messageId");
-    openapiFields.add("status");
     openapiFields.add("time");
     openapiFields.add("direction");
-    openapiFields.add("from");
     openapiFields.add("to");
-    openapiFields.add("applicationId");
-    openapiFields.add("channel");
+    openapiFields.add("channelList");
     openapiFields.add("tag");
+    openapiFields.add("priority");
+    openapiFields.add("expiration");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("messageId");
+    openapiRequiredFields.add("time");
+    openapiRequiredFields.add("direction");
+    openapiRequiredFields.add("to");
+    openapiRequiredFields.add("channelList");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to MultiChannelMessageData
+   * @throws IOException if the JSON Element is invalid with respect to MultiChannelMessageResponseData
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!MultiChannelMessageData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in MultiChannelMessageData is not found in the empty JSON string", MultiChannelMessageData.openapiRequiredFields.toString()));
+        if (!MultiChannelMessageResponseData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in MultiChannelMessageResponseData is not found in the empty JSON string", MultiChannelMessageResponseData.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : MultiChannelMessageResponseData.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("messageId") != null && !jsonObj.get("messageId").isJsonNull()) && !jsonObj.get("messageId").isJsonPrimitive()) {
+      if (!jsonObj.get("messageId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `messageId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("messageId").toString()));
       }
-      // validate the optional field `status`
-      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
-        MultiChannelStatusEnum.validateJsonElement(jsonObj.get("status"));
+      // validate the required field `direction`
+      MessageDirectionEnum.validateJsonElement(jsonObj.get("direction"));
+      // ensure the required json array is present
+      if (jsonObj.get("to") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("to").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `to` to be an array in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
-      // validate the optional field `direction`
-      if (jsonObj.get("direction") != null && !jsonObj.get("direction").isJsonNull()) {
-        MultiChannelMessageDirectionEnum.validateJsonElement(jsonObj.get("direction"));
+      // ensure the json data is an array
+      if (!jsonObj.get("channelList").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `channelList` to be an array in the JSON string but got `%s`", jsonObj.get("channelList").toString()));
       }
-      if ((jsonObj.get("from") != null && !jsonObj.get("from").isJsonNull()) && !jsonObj.get("from").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
-      }
-      if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
-      }
-      if ((jsonObj.get("applicationId") != null && !jsonObj.get("applicationId").isJsonNull()) && !jsonObj.get("applicationId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
-      }
-      // validate the optional field `channel`
-      if (jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) {
-        MultiChannelMessageChannelEnum.validateJsonElement(jsonObj.get("channel"));
-      }
+
+      JsonArray jsonArraychannelList = jsonObj.getAsJsonArray("channelList");
+      // validate the required field `channelList` (array)
+      for (int i = 0; i < jsonArraychannelList.size(); i++) {
+        MultiChannelMessageResponseDataChannelListInner.validateJsonElement(jsonArraychannelList.get(i));
+      };
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
+      }
+      // validate the optional field `priority`
+      if (jsonObj.get("priority") != null && !jsonObj.get("priority").isJsonNull()) {
+        PriorityEnum.validateJsonElement(jsonObj.get("priority"));
       }
   }
 
@@ -440,16 +446,16 @@ public class MultiChannelMessageData {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!MultiChannelMessageData.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'MultiChannelMessageData' and its subtypes
+       if (!MultiChannelMessageResponseData.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'MultiChannelMessageResponseData' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<MultiChannelMessageData> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(MultiChannelMessageData.class));
+       final TypeAdapter<MultiChannelMessageResponseData> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(MultiChannelMessageResponseData.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<MultiChannelMessageData>() {
+       return (TypeAdapter<T>) new TypeAdapter<MultiChannelMessageResponseData>() {
            @Override
-           public void write(JsonWriter out, MultiChannelMessageData value) throws IOException {
+           public void write(JsonWriter out, MultiChannelMessageResponseData value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -477,12 +483,12 @@ public class MultiChannelMessageData {
            }
 
            @Override
-           public MultiChannelMessageData read(JsonReader in) throws IOException {
+           public MultiChannelMessageResponseData read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             MultiChannelMessageData instance = thisAdapter.fromJsonTree(jsonObj);
+             MultiChannelMessageResponseData instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -509,18 +515,18 @@ public class MultiChannelMessageData {
   }
 
   /**
-   * Create an instance of MultiChannelMessageData given an JSON string
+   * Create an instance of MultiChannelMessageResponseData given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of MultiChannelMessageData
-   * @throws IOException if the JSON string is invalid with respect to MultiChannelMessageData
+   * @return An instance of MultiChannelMessageResponseData
+   * @throws IOException if the JSON string is invalid with respect to MultiChannelMessageResponseData
    */
-  public static MultiChannelMessageData fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, MultiChannelMessageData.class);
+  public static MultiChannelMessageResponseData fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, MultiChannelMessageResponseData.class);
   }
 
   /**
-   * Convert an instance of MultiChannelMessageData to an JSON string
+   * Convert an instance of MultiChannelMessageResponseData to an JSON string
    *
    * @return JSON string
    */

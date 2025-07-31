@@ -282,7 +282,7 @@ public class ListMessageItem {
   }
 
   /**
-   * The number of segments the message was sent as.
+   * The number of segments the user&#39;s message is broken into before sending over carrier networks.
    * @return segmentCount
    */
   @javax.annotation.Nullable

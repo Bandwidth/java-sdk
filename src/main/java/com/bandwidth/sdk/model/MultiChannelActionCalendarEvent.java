@@ -62,10 +62,10 @@ public class MultiChannelActionCalendarEvent {
   @javax.annotation.Nonnull
   private String text;
 
-  public static final String SERIALIZED_NAME_POST_BACK_DATA = "postBackData";
-  @SerializedName(SERIALIZED_NAME_POST_BACK_DATA)
+  public static final String SERIALIZED_NAME_POSTBACK_DATA = "postbackData";
+  @SerializedName(SERIALIZED_NAME_POSTBACK_DATA)
   @javax.annotation.Nonnull
-  private byte[] postBackData;
+  private byte[] postbackData;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -128,22 +128,22 @@ public class MultiChannelActionCalendarEvent {
   }
 
 
-  public MultiChannelActionCalendarEvent postBackData(@javax.annotation.Nonnull byte[] postBackData) {
-    this.postBackData = postBackData;
+  public MultiChannelActionCalendarEvent postbackData(@javax.annotation.Nonnull byte[] postbackData) {
+    this.postbackData = postbackData;
     return this;
   }
 
   /**
    * Base64 payload the customer receives when the reply is clicked.
-   * @return postBackData
+   * @return postbackData
    */
   @javax.annotation.Nonnull
-  public byte[] getPostBackData() {
-    return postBackData;
+  public byte[] getPostbackData() {
+    return postbackData;
   }
 
-  public void setPostBackData(@javax.annotation.Nonnull byte[] postBackData) {
-    this.postBackData = postBackData;
+  public void setPostbackData(@javax.annotation.Nonnull byte[] postbackData) {
+    this.postbackData = postbackData;
   }
 
 
@@ -279,7 +279,7 @@ public class MultiChannelActionCalendarEvent {
     MultiChannelActionCalendarEvent multiChannelActionCalendarEvent = (MultiChannelActionCalendarEvent) o;
     return Objects.equals(this.type, multiChannelActionCalendarEvent.type) &&
         Objects.equals(this.text, multiChannelActionCalendarEvent.text) &&
-        Arrays.equals(this.postBackData, multiChannelActionCalendarEvent.postBackData) &&
+        Arrays.equals(this.postbackData, multiChannelActionCalendarEvent.postbackData) &&
         Objects.equals(this.title, multiChannelActionCalendarEvent.title) &&
         Objects.equals(this.startTime, multiChannelActionCalendarEvent.startTime) &&
         Objects.equals(this.endTime, multiChannelActionCalendarEvent.endTime) &&
@@ -289,7 +289,7 @@ public class MultiChannelActionCalendarEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, text, Arrays.hashCode(postBackData), title, startTime, endTime, description, additionalProperties);
+    return Objects.hash(type, text, Arrays.hashCode(postbackData), title, startTime, endTime, description, additionalProperties);
   }
 
   @Override
@@ -298,7 +298,7 @@ public class MultiChannelActionCalendarEvent {
     sb.append("class MultiChannelActionCalendarEvent {\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
-    sb.append("    postBackData: ").append(toIndentedString(postBackData)).append("\n");
+    sb.append("    postbackData: ").append(toIndentedString(postbackData)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
@@ -328,7 +328,7 @@ public class MultiChannelActionCalendarEvent {
     openapiFields = new HashSet<String>();
     openapiFields.add("type");
     openapiFields.add("text");
-    openapiFields.add("postBackData");
+    openapiFields.add("postbackData");
     openapiFields.add("title");
     openapiFields.add("startTime");
     openapiFields.add("endTime");
@@ -338,7 +338,7 @@ public class MultiChannelActionCalendarEvent {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("text");
-    openapiRequiredFields.add("postBackData");
+    openapiRequiredFields.add("postbackData");
     openapiRequiredFields.add("title");
     openapiRequiredFields.add("startTime");
     openapiRequiredFields.add("endTime");

@@ -62,6 +62,12 @@ public class TollFreeVerificationApiTest {
     }
 
     @Test
+    @Disabled
+    public void deleteVerificationRequestTest() throws ApiException {
+        // Test
+    }
+
+    @Test
     public void listTollFreeUseCasesTest() throws ApiException {
         ApiResponse<List<String>> response = api.listTollFreeUseCasesWithHttpInfo();
 

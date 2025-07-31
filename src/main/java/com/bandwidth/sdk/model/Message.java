@@ -167,7 +167,7 @@ public class Message {
   }
 
   /**
-   * The application ID associated with the message.
+   * The ID of the Application your from number or senderId is associated with in the Bandwidth Phone Number Dashboard.
    * @return applicationId
    */
   @javax.annotation.Nullable
@@ -205,7 +205,7 @@ public class Message {
   }
 
   /**
-   * The number of segments the original message from the user is broken into before sending over to carrier networks.
+   * The number of segments the user&#39;s message is broken into before sending over carrier networks.
    * @return segmentCount
    */
   @javax.annotation.Nullable
@@ -335,7 +335,7 @@ public class Message {
   }
 
   /**
-   * The custom string set by the user.
+   * A custom string that will be included in callback events of the message. Max 1024 characters.
    * @return tag
    */
   @javax.annotation.Nullable

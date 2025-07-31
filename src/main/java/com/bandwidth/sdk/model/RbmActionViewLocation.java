@@ -61,10 +61,10 @@ public class RbmActionViewLocation {
   @javax.annotation.Nonnull
   private String text;
 
-  public static final String SERIALIZED_NAME_POST_BACK_DATA = "postBackData";
-  @SerializedName(SERIALIZED_NAME_POST_BACK_DATA)
+  public static final String SERIALIZED_NAME_POSTBACK_DATA = "postbackData";
+  @SerializedName(SERIALIZED_NAME_POSTBACK_DATA)
   @javax.annotation.Nonnull
-  private byte[] postBackData;
+  private byte[] postbackData;
 
   public static final String SERIALIZED_NAME_LATITUDE = "latitude";
   @SerializedName(SERIALIZED_NAME_LATITUDE)
@@ -122,22 +122,22 @@ public class RbmActionViewLocation {
   }
 
 
-  public RbmActionViewLocation postBackData(@javax.annotation.Nonnull byte[] postBackData) {
-    this.postBackData = postBackData;
+  public RbmActionViewLocation postbackData(@javax.annotation.Nonnull byte[] postbackData) {
+    this.postbackData = postbackData;
     return this;
   }
 
   /**
    * Base64 payload the customer receives when the reply is clicked.
-   * @return postBackData
+   * @return postbackData
    */
   @javax.annotation.Nonnull
-  public byte[] getPostBackData() {
-    return postBackData;
+  public byte[] getPostbackData() {
+    return postbackData;
   }
 
-  public void setPostBackData(@javax.annotation.Nonnull byte[] postBackData) {
-    this.postBackData = postBackData;
+  public void setPostbackData(@javax.annotation.Nonnull byte[] postbackData) {
+    this.postbackData = postbackData;
   }
 
 
@@ -254,7 +254,7 @@ public class RbmActionViewLocation {
     RbmActionViewLocation rbmActionViewLocation = (RbmActionViewLocation) o;
     return Objects.equals(this.type, rbmActionViewLocation.type) &&
         Objects.equals(this.text, rbmActionViewLocation.text) &&
-        Arrays.equals(this.postBackData, rbmActionViewLocation.postBackData) &&
+        Arrays.equals(this.postbackData, rbmActionViewLocation.postbackData) &&
         Objects.equals(this.latitude, rbmActionViewLocation.latitude) &&
         Objects.equals(this.longitude, rbmActionViewLocation.longitude) &&
         Objects.equals(this.label, rbmActionViewLocation.label)&&
@@ -263,7 +263,7 @@ public class RbmActionViewLocation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, text, Arrays.hashCode(postBackData), latitude, longitude, label, additionalProperties);
+    return Objects.hash(type, text, Arrays.hashCode(postbackData), latitude, longitude, label, additionalProperties);
   }
 
   @Override
@@ -272,7 +272,7 @@ public class RbmActionViewLocation {
     sb.append("class RbmActionViewLocation {\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
-    sb.append("    postBackData: ").append(toIndentedString(postBackData)).append("\n");
+    sb.append("    postbackData: ").append(toIndentedString(postbackData)).append("\n");
     sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
     sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
@@ -301,7 +301,7 @@ public class RbmActionViewLocation {
     openapiFields = new HashSet<String>();
     openapiFields.add("type");
     openapiFields.add("text");
-    openapiFields.add("postBackData");
+    openapiFields.add("postbackData");
     openapiFields.add("latitude");
     openapiFields.add("longitude");
     openapiFields.add("label");
@@ -310,7 +310,7 @@ public class RbmActionViewLocation {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("text");
-    openapiRequiredFields.add("postBackData");
+    openapiRequiredFields.add("postbackData");
     openapiRequiredFields.add("latitude");
     openapiRequiredFields.add("longitude");
   }

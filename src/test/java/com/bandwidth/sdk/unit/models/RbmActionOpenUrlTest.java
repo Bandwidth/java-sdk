@@ -31,7 +31,7 @@ public class RbmActionOpenUrlTest {
     private final RbmActionOpenUrl model = new RbmActionOpenUrl()
             .type(RbmActionTypeEnum.OPEN_URL)
             .text("text")
-            .postBackData(new byte[]{1, 2, 3})
+            .postbackData(new byte[]{1, 2, 3})
             .url(URI.create("https://bandwidth.com"));
 
     /**
@@ -62,8 +62,8 @@ public class RbmActionOpenUrlTest {
      * Test the property 'postBackData'
      */
     @Test
-    public void postBackDataTest() {
-        assertThat(model.getPostBackData(), instanceOf(byte[].class));
+    public void postbackDataTest() {
+        assertThat(model.getPostbackData(), instanceOf(byte[].class));
     }
 
     /**

@@ -114,6 +114,13 @@ public class TollFreeVerificationApiTest {
     }
 
     @Test
+    public void deleteVerificationRequestTest() throws ApiException {
+        ApiResponse<Void> response = api.deleteVerificationRequestWithHttpInfo(BW_ACCOUNT_ID, "+18005551234");
+
+        assertThat(response.getStatusCode(), is(204));
+    }
+
+    @Test
     public void listTollFreeUseCasesTest() throws ApiException {
         ApiResponse<List<String>> response = api.listTollFreeUseCasesWithHttpInfo();
 

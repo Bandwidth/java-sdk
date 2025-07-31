@@ -15,32 +15,32 @@ package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
-import com.bandwidth.sdk.model.MultiChannelCallbackData;
-import com.bandwidth.sdk.model.MultiChannelMessageCallbackData;
-import com.bandwidth.sdk.model.MultiChannelStatusEnum;
-
 import java.time.OffsetDateTime;
+import com.bandwidth.sdk.model.InboundCallback;
+import com.bandwidth.sdk.model.InboundCallbackMessage;
+import com.bandwidth.sdk.model.InboundCallbackTypeEnum;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
- * Model tests for MultiChannelCallbackData
+ * Model tests for InboundCallback
  */
-public class MultiChannelCallbackDataTest {
-    private final MultiChannelCallbackData model = new MultiChannelCallbackData()
+public class InboundCallbackTest {
+    private final InboundCallback model = new InboundCallback()
             .time(OffsetDateTime.now())
-            .type(MultiChannelStatusEnum.DELIVERED)
+            .type(InboundCallbackTypeEnum.MESSAGE_RECEIVED)
             .to("to")
             .description("description")
-            .message(new MultiChannelMessageCallbackData());
+            .carrierName("carrierName")
+            .message(new InboundCallbackMessage());
 
     /**
-     * Model tests for MultiChannelCallbackData
+     * Model tests for InboundCallback
      */
     @Test
-    public void testMultiChannelCallbackData() {
-        assertThat(model, instanceOf(MultiChannelCallbackData.class));
+    public void testInboundCallback() {
+        assertThat(model, instanceOf(InboundCallback.class));
     }
 
     /**
@@ -56,7 +56,7 @@ public class MultiChannelCallbackDataTest {
      */
     @Test
     public void typeTest() {
-        assertThat(model.getType(), instanceOf(MultiChannelStatusEnum.class));
+        assertThat(model.getType(), instanceOf(InboundCallbackTypeEnum.class));
     }
 
     /**
@@ -80,7 +80,15 @@ public class MultiChannelCallbackDataTest {
      */
     @Test
     public void messageTest() {
-        assertThat(model.getMessage(), instanceOf(MultiChannelMessageCallbackData.class));
+        assertThat(model.getMessage(), instanceOf(InboundCallbackMessage.class));
+    }
+
+    /**
+     * Test the property 'carrierName'
+     */
+    @Test
+    public void carrierNameTest() {
+        assertThat(model.getCarrierName(), instanceOf(String.class));
     }
 
 }

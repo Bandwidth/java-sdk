@@ -10,37 +10,39 @@
  * Do not edit the class manually.
  */
 
+
 package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
 import java.time.OffsetDateTime;
-import com.bandwidth.sdk.model.MessageCallback;
-import com.bandwidth.sdk.model.CallbackTypeEnum;
-import com.bandwidth.sdk.model.MessageCallbackMessage;
+import com.bandwidth.sdk.model.StatusCallback;
+import com.bandwidth.sdk.model.StatusCallbackMessage;
+import com.bandwidth.sdk.model.StatusCallbackTypeEnum;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
- * Model tests for MessageCallback
+ * Model tests for StatusCallback
  */
-public class MessageCallbackTest {
-    private final MessageCallback model = new MessageCallback()
+public class StatusCallbackTest {
+    private final StatusCallback model = new StatusCallback()
             .time(OffsetDateTime.now())
-            .type(CallbackTypeEnum.DELIVERED)
-            .to("+1234567890")
+            .eventTime(OffsetDateTime.now())
+            .type(StatusCallbackTypeEnum.DELIVERED)
+            .to("to")
             .description("description")
-            .message(new MessageCallbackMessage())
-            .errorCode(123)
+            .message(new StatusCallbackMessage())
+            .errorCode(1234)
             .carrierName("carrierName");
 
     /**
-     * Model tests for MessageCallback
+     * Model tests for StatusCallback
      */
     @Test
-    public void testMessageCallback() {
-        assertThat(model, instanceOf(MessageCallback.class));
+    public void testStatusCallback() {
+        assertThat(model, instanceOf(StatusCallback.class));
     }
 
     /**
@@ -52,11 +54,19 @@ public class MessageCallbackTest {
     }
 
     /**
+     * Test the property 'eventTime'
+     */
+    @Test
+    public void eventTimeTest() {
+        assertThat(model.getEventTime(), instanceOf(OffsetDateTime.class));
+    }
+
+    /**
      * Test the property 'type'
      */
     @Test
     public void typeTest() {
-        assertThat(model.getType(), instanceOf(CallbackTypeEnum.class));
+        assertThat(model.getType(), instanceOf(StatusCallbackTypeEnum.class));
     }
 
     /**
@@ -80,7 +90,7 @@ public class MessageCallbackTest {
      */
     @Test
     public void messageTest() {
-        assertThat(model.getMessage(), instanceOf(MessageCallbackMessage.class));
+        assertThat(model.getMessage(), instanceOf(StatusCallbackMessage.class));
     }
 
     /**

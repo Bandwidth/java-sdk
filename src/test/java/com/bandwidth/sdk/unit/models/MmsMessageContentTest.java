@@ -16,6 +16,7 @@ package com.bandwidth.sdk.unit.models;
 import org.junit.jupiter.api.Test;
 
 import com.bandwidth.sdk.model.MmsMessageContent;
+import com.bandwidth.sdk.model.MmsMessageContentFile;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -30,7 +31,9 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 public class MmsMessageContentTest {
     private final MmsMessageContent model = new MmsMessageContent()
             .text("text")
-            .media(new ArrayList<URI>(Arrays.asList(URI.create("https://bandwidth.com"))));
+            .media(new ArrayList<MmsMessageContentFile>(Arrays.asList(
+                    new MmsMessageContentFile()
+                            .fileUrl(URI.create("http://example.com/file.jpg")))));
 
     /**
      * Model tests for MmsMessageContent

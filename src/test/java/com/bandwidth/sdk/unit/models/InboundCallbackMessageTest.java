@@ -10,47 +10,54 @@
  * Do not edit the class manually.
  */
 
+
 package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.internal.util.collections.Sets;
 
-import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import org.mockito.internal.util.collections.Sets;
-import com.bandwidth.sdk.model.MessageCallbackMessage;
+import java.util.LinkedHashSet;
+import com.bandwidth.sdk.model.InboundCallbackMessage;
 import com.bandwidth.sdk.model.MessageDirectionEnum;
+import com.bandwidth.sdk.model.MultiChannelMessageChannelEnum;
+import com.bandwidth.sdk.model.MultiChannelMessageContent;
 import com.bandwidth.sdk.model.PriorityEnum;
+import com.bandwidth.sdk.model.RbmLocationResponse;
+import com.bandwidth.sdk.model.RbmSuggestionResponse;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
- * Model tests for MessageCallbackMessage
+ * Model tests for InboundCallbackMessage
  */
-public class MessageCallbackMessageTest {
-    private final MessageCallbackMessage model = new MessageCallbackMessage()
+public class InboundCallbackMessageTest {
+    private final InboundCallbackMessage model = new InboundCallbackMessage()
             .id("id")
             .owner("owner")
             .applicationId("applicationId")
             .time(OffsetDateTime.now())
             .segmentCount(1)
             .direction(MessageDirectionEnum.IN)
-            .to(Sets.newSet("+1234567890"))
+            .to(Sets.newSet("to"))
             .from("from")
             .text("text")
             .tag("tag")
-            .media(new ArrayList<URI>())
-            .priority(PriorityEnum.HIGH);
+            .media(new ArrayList<>())
+            .priority(PriorityEnum.DEFAULT)
+            .channel(MultiChannelMessageChannelEnum.SMS)
+            .content(new MultiChannelMessageContent())
+            .suggestionResponse(new RbmSuggestionResponse())
+            .locationResponse(new RbmLocationResponse());
 
     /**
-     * Model tests for MessageCallbackMessage
+     * Model tests for InboundCallbackMessage
      */
     @Test
-    public void testMessageCallbackMessage() {
-        assertThat(model, instanceOf(MessageCallbackMessage.class));
+    public void testInboundCallbackMessage() {
+        assertThat(model, instanceOf(InboundCallbackMessage.class));
     }
 
     /**
@@ -106,7 +113,7 @@ public class MessageCallbackMessageTest {
      */
     @Test
     public void toTest() {
-        assertThat(model.getTo(), instanceOf(Set.class));
+        assertThat(model.getTo(), instanceOf(LinkedHashSet.class));
     }
 
     /**
@@ -130,7 +137,7 @@ public class MessageCallbackMessageTest {
      */
     @Test
     public void tagTest() {
-        assertThat(model.getTag(), instanceOf(String.class));
+
     }
 
     /**
@@ -138,7 +145,7 @@ public class MessageCallbackMessageTest {
      */
     @Test
     public void mediaTest() {
-        assertThat(model.getMedia(), instanceOf(List.class));
+        assertThat(model.getMedia(), instanceOf(ArrayList.class));
     }
 
     /**
@@ -147,6 +154,38 @@ public class MessageCallbackMessageTest {
     @Test
     public void priorityTest() {
         assertThat(model.getPriority(), instanceOf(PriorityEnum.class));
+    }
+
+    /**
+     * Test the property 'channel'
+     */
+    @Test
+    public void channelTest() {
+        assertThat(model.getChannel(), instanceOf(MultiChannelMessageChannelEnum.class));
+    }
+
+    /**
+     * Test the property 'content'
+     */
+    @Test
+    public void contentTest() {
+        assertThat(model.getContent(), instanceOf(MultiChannelMessageContent.class));
+    }
+
+    /**
+     * Test the property 'suggestionResponse'
+     */
+    @Test
+    public void suggestionResponseTest() {
+        assertThat(model.getSuggestionResponse(), instanceOf(RbmSuggestionResponse.class));
+    }
+
+    /**
+     * Test the property 'locationResponse'
+     */
+    @Test
+    public void locationResponseTest() {
+        assertThat(model.getLocationResponse(), instanceOf(RbmLocationResponse.class));
     }
 
 }

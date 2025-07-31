@@ -14,8 +14,8 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import com.bandwidth.sdk.model.CallbackTypeEnum;
-import com.bandwidth.sdk.model.MessageCallbackMessage;
+import com.bandwidth.sdk.model.StatusCallbackMessage;
+import com.bandwidth.sdk.model.StatusCallbackTypeEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,7 +24,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,19 +49,24 @@ import java.util.Set;
 import com.bandwidth.sdk.JSON;
 
 /**
- * Message Callback Schema
+ * Represents a status callback for an outbound MT SMS or MMS or RBM message.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class MessageCallback {
+public class StatusCallback {
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)
   @javax.annotation.Nonnull
   private OffsetDateTime time;
 
+  public static final String SERIALIZED_NAME_EVENT_TIME = "eventTime";
+  @SerializedName(SERIALIZED_NAME_EVENT_TIME)
+  @javax.annotation.Nullable
+  private OffsetDateTime eventTime;
+
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   @javax.annotation.Nonnull
-  private CallbackTypeEnum type;
+  private StatusCallbackTypeEnum type;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
@@ -77,7 +81,7 @@ public class MessageCallback {
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
   @javax.annotation.Nonnull
-  private MessageCallbackMessage message;
+  private StatusCallbackMessage message;
 
   public static final String SERIALIZED_NAME_ERROR_CODE = "errorCode";
   @SerializedName(SERIALIZED_NAME_ERROR_CODE)
@@ -89,10 +93,10 @@ public class MessageCallback {
   @javax.annotation.Nullable
   private String carrierName;
 
-  public MessageCallback() {
+  public StatusCallback() {
   }
 
-  public MessageCallback time(@javax.annotation.Nonnull OffsetDateTime time) {
+  public StatusCallback time(@javax.annotation.Nonnull OffsetDateTime time) {
     this.time = time;
     return this;
   }
@@ -111,7 +115,26 @@ public class MessageCallback {
   }
 
 
-  public MessageCallback type(@javax.annotation.Nonnull CallbackTypeEnum type) {
+  public StatusCallback eventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
+    this.eventTime = eventTime;
+    return this;
+  }
+
+  /**
+   * Represents the time at which the message was read, for &#x60;message-read&#x60; callbacks.
+   * @return eventTime
+   */
+  @javax.annotation.Nullable
+  public OffsetDateTime getEventTime() {
+    return eventTime;
+  }
+
+  public void setEventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
+    this.eventTime = eventTime;
+  }
+
+
+  public StatusCallback type(@javax.annotation.Nonnull StatusCallbackTypeEnum type) {
     this.type = type;
     return this;
   }
@@ -121,22 +144,22 @@ public class MessageCallback {
    * @return type
    */
   @javax.annotation.Nonnull
-  public CallbackTypeEnum getType() {
+  public StatusCallbackTypeEnum getType() {
     return type;
   }
 
-  public void setType(@javax.annotation.Nonnull CallbackTypeEnum type) {
+  public void setType(@javax.annotation.Nonnull StatusCallbackTypeEnum type) {
     this.type = type;
   }
 
 
-  public MessageCallback to(@javax.annotation.Nonnull String to) {
+  public StatusCallback to(@javax.annotation.Nonnull String to) {
     this.to = to;
     return this;
   }
 
   /**
-   * Get to
+   * The destination phone number the message was sent to. For status callbacks, this the the Bandwidth user&#39;s client phone number.
    * @return to
    */
   @javax.annotation.Nonnull
@@ -149,7 +172,7 @@ public class MessageCallback {
   }
 
 
-  public MessageCallback description(@javax.annotation.Nonnull String description) {
+  public StatusCallback description(@javax.annotation.Nonnull String description) {
     this.description = description;
     return this;
   }
@@ -168,7 +191,7 @@ public class MessageCallback {
   }
 
 
-  public MessageCallback message(@javax.annotation.Nonnull MessageCallbackMessage message) {
+  public StatusCallback message(@javax.annotation.Nonnull StatusCallbackMessage message) {
     this.message = message;
     return this;
   }
@@ -178,16 +201,16 @@ public class MessageCallback {
    * @return message
    */
   @javax.annotation.Nonnull
-  public MessageCallbackMessage getMessage() {
+  public StatusCallbackMessage getMessage() {
     return message;
   }
 
-  public void setMessage(@javax.annotation.Nonnull MessageCallbackMessage message) {
+  public void setMessage(@javax.annotation.Nonnull StatusCallbackMessage message) {
     this.message = message;
   }
 
 
-  public MessageCallback errorCode(@javax.annotation.Nullable Integer errorCode) {
+  public StatusCallback errorCode(@javax.annotation.Nullable Integer errorCode) {
     this.errorCode = errorCode;
     return this;
   }
@@ -206,13 +229,13 @@ public class MessageCallback {
   }
 
 
-  public MessageCallback carrierName(@javax.annotation.Nullable String carrierName) {
+  public StatusCallback carrierName(@javax.annotation.Nullable String carrierName) {
     this.carrierName = carrierName;
     return this;
   }
 
   /**
-   * The name of the Authorized Message Provider (AMP) that handled this message. In the US, this is the carrier that the message was sent to.
+   * The name of the Authorized Message Provider (AMP) that handled this message.  In the US, this is the carrier that the message was sent to. This field is present only when this account feature has been enabled.
    * @return carrierName
    */
   @javax.annotation.Nullable
@@ -237,9 +260,9 @@ public class MessageCallback {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the MessageCallback instance itself
+   * @return the StatusCallback instance itself
    */
-  public MessageCallback putAdditionalProperty(String key, Object value) {
+  public StatusCallback putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -278,38 +301,29 @@ public class MessageCallback {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MessageCallback messageCallback = (MessageCallback) o;
-    return Objects.equals(this.time, messageCallback.time) &&
-        Objects.equals(this.type, messageCallback.type) &&
-        Objects.equals(this.to, messageCallback.to) &&
-        Objects.equals(this.description, messageCallback.description) &&
-        Objects.equals(this.message, messageCallback.message) &&
-        Objects.equals(this.errorCode, messageCallback.errorCode) &&
-        Objects.equals(this.carrierName, messageCallback.carrierName)&&
-        Objects.equals(this.additionalProperties, messageCallback.additionalProperties);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    StatusCallback statusCallback = (StatusCallback) o;
+    return Objects.equals(this.time, statusCallback.time) &&
+        Objects.equals(this.eventTime, statusCallback.eventTime) &&
+        Objects.equals(this.type, statusCallback.type) &&
+        Objects.equals(this.to, statusCallback.to) &&
+        Objects.equals(this.description, statusCallback.description) &&
+        Objects.equals(this.message, statusCallback.message) &&
+        Objects.equals(this.errorCode, statusCallback.errorCode) &&
+        Objects.equals(this.carrierName, statusCallback.carrierName)&&
+        Objects.equals(this.additionalProperties, statusCallback.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(time, type, to, description, message, errorCode, carrierName, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(time, eventTime, type, to, description, message, errorCode, carrierName, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MessageCallback {\n");
+    sb.append("class StatusCallback {\n");
     sb.append("    time: ").append(toIndentedString(time)).append("\n");
+    sb.append("    eventTime: ").append(toIndentedString(eventTime)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    to: ").append(toIndentedString(to)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -340,6 +354,7 @@ public class MessageCallback {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("time");
+    openapiFields.add("eventTime");
     openapiFields.add("type");
     openapiFields.add("to");
     openapiFields.add("description");
@@ -360,24 +375,24 @@ public class MessageCallback {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to MessageCallback
+   * @throws IOException if the JSON Element is invalid with respect to StatusCallback
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!MessageCallback.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in MessageCallback is not found in the empty JSON string", MessageCallback.openapiRequiredFields.toString()));
+        if (!StatusCallback.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in StatusCallback is not found in the empty JSON string", StatusCallback.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : MessageCallback.openapiRequiredFields) {
+      for (String requiredField : StatusCallback.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `type`
-      CallbackTypeEnum.validateJsonElement(jsonObj.get("type"));
+      StatusCallbackTypeEnum.validateJsonElement(jsonObj.get("type"));
       if (!jsonObj.get("to").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
@@ -385,7 +400,7 @@ public class MessageCallback {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // validate the required field `message`
-      MessageCallbackMessage.validateJsonElement(jsonObj.get("message"));
+      StatusCallbackMessage.validateJsonElement(jsonObj.get("message"));
       if ((jsonObj.get("carrierName") != null && !jsonObj.get("carrierName").isJsonNull()) && !jsonObj.get("carrierName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `carrierName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("carrierName").toString()));
       }
@@ -395,16 +410,16 @@ public class MessageCallback {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!MessageCallback.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'MessageCallback' and its subtypes
+       if (!StatusCallback.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'StatusCallback' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<MessageCallback> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(MessageCallback.class));
+       final TypeAdapter<StatusCallback> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(StatusCallback.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<MessageCallback>() {
+       return (TypeAdapter<T>) new TypeAdapter<StatusCallback>() {
            @Override
-           public void write(JsonWriter out, MessageCallback value) throws IOException {
+           public void write(JsonWriter out, StatusCallback value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -432,12 +447,12 @@ public class MessageCallback {
            }
 
            @Override
-           public MessageCallback read(JsonReader in) throws IOException {
+           public StatusCallback read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             MessageCallback instance = thisAdapter.fromJsonTree(jsonObj);
+             StatusCallback instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -464,18 +479,18 @@ public class MessageCallback {
   }
 
   /**
-   * Create an instance of MessageCallback given an JSON string
+   * Create an instance of StatusCallback given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of MessageCallback
-   * @throws IOException if the JSON string is invalid with respect to MessageCallback
+   * @return An instance of StatusCallback
+   * @throws IOException if the JSON string is invalid with respect to StatusCallback
    */
-  public static MessageCallback fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, MessageCallback.class);
+  public static StatusCallback fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, StatusCallback.class);
   }
 
   /**
-   * Convert an instance of MessageCallback to an JSON string
+   * Convert an instance of StatusCallback to an JSON string
    *
    * @return JSON string
    */

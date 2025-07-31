@@ -61,10 +61,10 @@ public class RbmActionDial {
   @javax.annotation.Nonnull
   private String text;
 
-  public static final String SERIALIZED_NAME_POST_BACK_DATA = "postBackData";
-  @SerializedName(SERIALIZED_NAME_POST_BACK_DATA)
+  public static final String SERIALIZED_NAME_POSTBACK_DATA = "postbackData";
+  @SerializedName(SERIALIZED_NAME_POSTBACK_DATA)
   @javax.annotation.Nonnull
-  private byte[] postBackData;
+  private byte[] postbackData;
 
   public static final String SERIALIZED_NAME_PHONE_NUMBER = "phoneNumber";
   @SerializedName(SERIALIZED_NAME_PHONE_NUMBER)
@@ -112,22 +112,22 @@ public class RbmActionDial {
   }
 
 
-  public RbmActionDial postBackData(@javax.annotation.Nonnull byte[] postBackData) {
-    this.postBackData = postBackData;
+  public RbmActionDial postbackData(@javax.annotation.Nonnull byte[] postbackData) {
+    this.postbackData = postbackData;
     return this;
   }
 
   /**
    * Base64 payload the customer receives when the reply is clicked.
-   * @return postBackData
+   * @return postbackData
    */
   @javax.annotation.Nonnull
-  public byte[] getPostBackData() {
-    return postBackData;
+  public byte[] getPostbackData() {
+    return postbackData;
   }
 
-  public void setPostBackData(@javax.annotation.Nonnull byte[] postBackData) {
-    this.postBackData = postBackData;
+  public void setPostbackData(@javax.annotation.Nonnull byte[] postbackData) {
+    this.postbackData = postbackData;
   }
 
 
@@ -206,14 +206,14 @@ public class RbmActionDial {
     RbmActionDial rbmActionDial = (RbmActionDial) o;
     return Objects.equals(this.type, rbmActionDial.type) &&
         Objects.equals(this.text, rbmActionDial.text) &&
-        Arrays.equals(this.postBackData, rbmActionDial.postBackData) &&
+        Arrays.equals(this.postbackData, rbmActionDial.postbackData) &&
         Objects.equals(this.phoneNumber, rbmActionDial.phoneNumber)&&
         Objects.equals(this.additionalProperties, rbmActionDial.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, text, Arrays.hashCode(postBackData), phoneNumber, additionalProperties);
+    return Objects.hash(type, text, Arrays.hashCode(postbackData), phoneNumber, additionalProperties);
   }
 
   @Override
@@ -222,7 +222,7 @@ public class RbmActionDial {
     sb.append("class RbmActionDial {\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
-    sb.append("    postBackData: ").append(toIndentedString(postBackData)).append("\n");
+    sb.append("    postbackData: ").append(toIndentedString(postbackData)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -249,14 +249,14 @@ public class RbmActionDial {
     openapiFields = new HashSet<String>();
     openapiFields.add("type");
     openapiFields.add("text");
-    openapiFields.add("postBackData");
+    openapiFields.add("postbackData");
     openapiFields.add("phoneNumber");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("text");
-    openapiRequiredFields.add("postBackData");
+    openapiRequiredFields.add("postbackData");
     openapiRequiredFields.add("phoneNumber");
   }
 

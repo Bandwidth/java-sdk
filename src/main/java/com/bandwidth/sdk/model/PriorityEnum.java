@@ -24,7 +24,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The priority specified by the user.
+ * Specifies the message&#39;s sending priority with respect to other messages in your account. For best results and optimal throughput, reserve the &#39;high&#39; priority setting for critical messages only.
  */
 @JsonAdapter(PriorityEnum.Adapter.class)
 public enum PriorityEnum {

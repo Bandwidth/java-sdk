@@ -24,22 +24,22 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Gets or Sets multiChannelStatusEnum
+ * The possible status callbacks when sending an MT SMS or MMS or RBM message: - &#x60;message-sending&#x60; indicates that Bandwidth is sending the message to the upstream provider. - &#x60;message-delivered&#x60; indicates that the message was successfully sent. - &#x60;message-failed&#x60; indicates that the message could not be sent to the intended recipient. - &#x60;message-read&#x60; indicates that the RBM message was read by the recipient.
  */
-@JsonAdapter(MultiChannelStatusEnum.Adapter.class)
-public enum MultiChannelStatusEnum {
+@JsonAdapter(StatusCallbackTypeEnum.Adapter.class)
+public enum StatusCallbackTypeEnum {
   
-  QUEUED("QUEUED"),
+  SENDING("message-sending"),
   
-  SENDING("SENDING"),
+  DELIVERED("message-delivered"),
   
-  DELIVERED("DELIVERED"),
+  FAILED("message-failed"),
   
-  FAILED("FAILED");
+  READ("message-read");
 
   private String value;
 
-  MultiChannelStatusEnum(String value) {
+  StatusCallbackTypeEnum(String value) {
     this.value = value;
   }
 
@@ -52,8 +52,8 @@ public enum MultiChannelStatusEnum {
     return String.valueOf(value);
   }
 
-  public static MultiChannelStatusEnum fromValue(String value) {
-    for (MultiChannelStatusEnum b : MultiChannelStatusEnum.values()) {
+  public static StatusCallbackTypeEnum fromValue(String value) {
+    for (StatusCallbackTypeEnum b : StatusCallbackTypeEnum.values()) {
       if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
@@ -61,22 +61,22 @@ public enum MultiChannelStatusEnum {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<MultiChannelStatusEnum> {
+  public static class Adapter extends TypeAdapter<StatusCallbackTypeEnum> {
     @Override
-    public void write(final JsonWriter jsonWriter, final MultiChannelStatusEnum enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final StatusCallbackTypeEnum enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public MultiChannelStatusEnum read(final JsonReader jsonReader) throws IOException {
+    public StatusCallbackTypeEnum read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return MultiChannelStatusEnum.fromValue(value);
+      return StatusCallbackTypeEnum.fromValue(value);
     }
   }
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
-    MultiChannelStatusEnum.fromValue(value);
+    StatusCallbackTypeEnum.fromValue(value);
   }
 }
 

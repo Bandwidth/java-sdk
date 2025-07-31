@@ -14,13 +14,13 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import com.bandwidth.sdk.model.MmsMessageContentFile;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -61,7 +61,7 @@ public class MmsMessageContent {
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
   @javax.annotation.Nullable
-  private List<URI> media = new ArrayList<>();
+  private List<MmsMessageContentFile> media = new ArrayList<>();
 
   public MmsMessageContent() {
   }
@@ -85,12 +85,12 @@ public class MmsMessageContent {
   }
 
 
-  public MmsMessageContent media(@javax.annotation.Nullable List<URI> media) {
+  public MmsMessageContent media(@javax.annotation.Nullable List<MmsMessageContentFile> media) {
     this.media = media;
     return this;
   }
 
-  public MmsMessageContent addMediaItem(URI mediaItem) {
+  public MmsMessageContent addMediaItem(MmsMessageContentFile mediaItem) {
     if (this.media == null) {
       this.media = new ArrayList<>();
     }
@@ -99,15 +99,15 @@ public class MmsMessageContent {
   }
 
   /**
-   * A list of URLs to include as media attachments as part of the message. Each URL can be at most 4096 characters.
+   * Get media
    * @return media
    */
   @javax.annotation.Nullable
-  public List<URI> getMedia() {
+  public List<MmsMessageContentFile> getMedia() {
     return media;
   }
 
-  public void setMedia(@javax.annotation.Nullable List<URI> media) {
+  public void setMedia(@javax.annotation.Nullable List<MmsMessageContentFile> media) {
     this.media = media;
   }
 
@@ -228,9 +228,19 @@ public class MmsMessageContent {
       if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull()) && !jsonObj.get("text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonNull() && !jsonObj.get("media").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `media` to be an array in the JSON string but got `%s`", jsonObj.get("media").toString()));
+      if (jsonObj.get("media") != null && !jsonObj.get("media").isJsonNull()) {
+        JsonArray jsonArraymedia = jsonObj.getAsJsonArray("media");
+        if (jsonArraymedia != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("media").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `media` to be an array in the JSON string but got `%s`", jsonObj.get("media").toString()));
+          }
+
+          // validate the optional field `media` (array)
+          for (int i = 0; i < jsonArraymedia.size(); i++) {
+            MmsMessageContentFile.validateJsonElement(jsonArraymedia.get(i));
+          };
+        }
       }
   }
 

@@ -16,7 +16,7 @@ package com.bandwidth.sdk.model;
 import java.util.Objects;
 import com.bandwidth.sdk.model.ErrorObject;
 import com.bandwidth.sdk.model.Link;
-import com.bandwidth.sdk.model.MultiChannelMessageData;
+import com.bandwidth.sdk.model.MultiChannelMessageResponseData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -63,7 +63,7 @@ public class CreateMultiChannelMessageResponse {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private MultiChannelMessageData data;
+  private MultiChannelMessageResponseData data;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
@@ -100,7 +100,7 @@ public class CreateMultiChannelMessageResponse {
   }
 
 
-  public CreateMultiChannelMessageResponse data(@javax.annotation.Nullable MultiChannelMessageData data) {
+  public CreateMultiChannelMessageResponse data(@javax.annotation.Nullable MultiChannelMessageResponseData data) {
     this.data = data;
     return this;
   }
@@ -110,11 +110,11 @@ public class CreateMultiChannelMessageResponse {
    * @return data
    */
   @javax.annotation.Nullable
-  public MultiChannelMessageData getData() {
+  public MultiChannelMessageResponseData getData() {
     return data;
   }
 
-  public void setData(@javax.annotation.Nullable MultiChannelMessageData data) {
+  public void setData(@javax.annotation.Nullable MultiChannelMessageResponseData data) {
     this.data = data;
   }
 
@@ -278,7 +278,7 @@ public class CreateMultiChannelMessageResponse {
       }
       // validate the optional field `data`
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        MultiChannelMessageData.validateJsonElement(jsonObj.get("data"));
+        MultiChannelMessageResponseData.validateJsonElement(jsonObj.get("data"));
       }
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
