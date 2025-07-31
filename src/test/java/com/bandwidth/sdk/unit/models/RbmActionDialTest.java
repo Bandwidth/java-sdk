@@ -28,7 +28,7 @@ public class RbmActionDialTest {
     private final RbmActionDial model = new RbmActionDial()
             .type(RbmActionTypeEnum.DIAL_PHONE)
             .text("text")
-            .postBackData(new byte[]{1, 2, 3})
+            .postbackData(new byte[]{1, 2, 3})
             .phoneNumber("phoneNumber");
 
     /**
@@ -56,11 +56,11 @@ public class RbmActionDialTest {
     }
 
     /**
-     * Test the property 'postBackData'
+     * Test the property 'postbackData'
      */
     @Test
-    public void postBackDataTest() {
-        assertThat(model.getPostBackData(), instanceOf(byte[].class));
+    public void postbackDataTest() {
+        assertThat(model.getPostbackData(), instanceOf(byte[].class));
     }
 
     /**
