@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**createWebhookSubscription**](TollFreeVerificationApi.md#createWebhookSubscription) | **POST** /accounts/{accountId}/tollFreeVerification/webhooks/subscriptions | Create Webhook Subscription |
+| [**deleteVerificationRequest**](TollFreeVerificationApi.md#deleteVerificationRequest) | **DELETE** /accounts/{accountId}/phoneNumbers/{phoneNumber}/tollFreeVerification | Delete a Toll-Free Verification Submission |
 | [**deleteWebhookSubscription**](TollFreeVerificationApi.md#deleteWebhookSubscription) | **DELETE** /accounts/{accountId}/tollFreeVerification/webhooks/subscriptions/{id} | Delete Webhook Subscription |
 | [**getTollFreeVerificationStatus**](TollFreeVerificationApi.md#getTollFreeVerificationStatus) | **GET** /accounts/{accountId}/phoneNumbers/{phoneNumber}/tollFreeVerification | Get Toll-Free Verification Status |
 | [**listTollFreeUseCases**](TollFreeVerificationApi.md#listTollFreeUseCases) | **GET** /tollFreeVerification/useCases | List Toll-Free Use Cases |
@@ -83,6 +84,83 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Cannot find the requested resource. |  -  |
+| **405** | Method Not Allowed |  -  |
+| **429** | Too Many Requests |  -  |
+| **500** | Internal Server Error |  -  |
+| **503** | Service Unavailable |  -  |
+
+<a id="deleteVerificationRequest"></a>
+# **deleteVerificationRequest**
+> deleteVerificationRequest(accountId, phoneNumber)
+
+Delete a Toll-Free Verification Submission
+
+Delete a toll-free verification submission for a toll-free number.
+
+### Example
+```java
+// Import classes:
+import com.bandwidth.sdk.ApiClient;
+import com.bandwidth.sdk.ApiException;
+import com.bandwidth.sdk.Configuration;
+import com.bandwidth.sdk.auth.*;
+import com.bandwidth.sdk.models.*;
+import com.bandwidth.sdk.api.TollFreeVerificationApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure HTTP basic authorization: Basic
+    HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
+    Basic.setUsername("YOUR USERNAME");
+    Basic.setPassword("YOUR PASSWORD");
+
+    TollFreeVerificationApi apiInstance = new TollFreeVerificationApi(defaultClient);
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String phoneNumber = "+18885555555"; // String | Valid Toll-Free telephone number in E.164 format.
+    try {
+      apiInstance.deleteVerificationRequest(accountId, phoneNumber);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TollFreeVerificationApi#deleteVerificationRequest");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **phoneNumber** | **String**| Valid Toll-Free telephone number in E.164 format. | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
