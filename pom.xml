@@ -221,6 +221,9 @@
                 <artifactId>central-publishing-maven-plugin</artifactId>
                 <version>0.8.0</version>
                 <extensions>true</extensions>
+                <configuration>
+                    <autoPublish>true</autoPublish>
+                </configuration>
             </plugin>
             <!-- Use spotless plugin to automatically format code, remove unused import, etc
                  To apply changes directly to the file, run `mvn spotless:apply`
