@@ -222,7 +222,7 @@
                 <version>1.7.0</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <serverId>ossrh-staging-api</serverId>
+                    <serverId>ossrh</serverId>
                     <nexusUrl>https://ossrh-staging-api.central.sonatype.com</nexusUrl>
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
