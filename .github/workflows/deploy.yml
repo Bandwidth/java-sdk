@@ -42,9 +42,9 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: 21
-          server-id: 'ossrh'
-          server-username: OSSRH_USERNAME
-          server-password: OSSRH_PASSWORD
+          server-id: 'central'
+          server-username: PUBLISHER_USERNAME
+          server-password: PUBLISHER_PASSWORD
           gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
@@ -82,8 +82,8 @@ jobs:
       - name: Publish to Apache Maven Central
         run: mvn deploy -DskipTests
         env:
-          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          PUBLISHER_USERNAME: ${{ secrets.PUBLISHER_USERNAME }}
+          PUBLISHER_PASSWORD: ${{ secrets.PUBLISHER_PASSWORD }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
 
       - name: Notify Slack
