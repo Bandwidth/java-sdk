@@ -8,10 +8,10 @@
 
 package com.bandwidth.sdk.unit.models.bxml;
 
-import com.bandwidth.sdk.model.CallDirectionEnum;
 import com.bandwidth.sdk.model.bxml.Bxml;
 import com.bandwidth.sdk.model.bxml.StartStream;
 import com.bandwidth.sdk.model.bxml.StreamParam;
+import com.bandwidth.sdk.model.bxml.TracksEnum;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
@@ -38,7 +38,7 @@ public class StartStreamVerbTest {
         StartStream startStream = StartStream.builder()
                         .name("stream1")
                         .mode("unidirectional")
-                        .tracks(CallDirectionEnum.INBOUND)
+                        .tracks(TracksEnum.inbound)
                         .destination("testurl.com")
                         .streamEventUrl("eventurl.com")
                         .streamEventMethod("POST")
@@ -50,7 +50,7 @@ public class StartStreamVerbTest {
         @Test
         public void startStreamVerbWorks() throws JAXBException {
                 JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
-                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><StartStream name=\"stream1\" mode=\"unidirectional\" tracks=\"INBOUND\" destination=\"testurl.com\" streamEventUrl=\"eventurl.com\" streamEventMethod=\"POST\" username=\"user\" password=\"pass\"><StreamParam name=\"name1\" value=\"value1\"/><StreamParam name=\"name2\" value=\"value2\"/></StartStream></Bxml>";
+                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><StartStream name=\"stream1\" mode=\"unidirectional\" tracks=\"inbound\" destination=\"testurl.com\" streamEventUrl=\"eventurl.com\" streamEventMethod=\"POST\" username=\"user\" password=\"pass\"><StreamParam name=\"name1\" value=\"value1\"/><StreamParam name=\"name2\" value=\"value2\"/></StartStream></Bxml>";
 
                 assertThat(new Bxml().with(startStream).toBxml(jaxbContext), is(expectedBxml));
         }
