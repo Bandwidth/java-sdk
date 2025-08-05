@@ -42,7 +42,7 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: 21
-          server-id: 'central'
+          server-id: 'ossrh'
           server-username: PUBLISHER_USERNAME
           server-password: PUBLISHER_PASSWORD
           gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
