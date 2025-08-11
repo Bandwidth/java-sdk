@@ -40,6 +40,8 @@ public class StartStreamVerbTest {
                         .mode("unidirectional")
                         .tracks(TracksEnum.inbound)
                         .destination("testurl.com")
+                        .destinationUsername("destinationUsername")
+                        .destinationPassword("destinationPassword")
                         .streamEventUrl("eventurl.com")
                         .streamEventMethod("POST")
                         .username("user")
@@ -50,7 +52,7 @@ public class StartStreamVerbTest {
         @Test
         public void startStreamVerbWorks() throws JAXBException {
                 JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
-                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><StartStream name=\"stream1\" mode=\"unidirectional\" tracks=\"inbound\" destination=\"testurl.com\" streamEventUrl=\"eventurl.com\" streamEventMethod=\"POST\" username=\"user\" password=\"pass\"><StreamParam name=\"name1\" value=\"value1\"/><StreamParam name=\"name2\" value=\"value2\"/></StartStream></Bxml>";
+                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><StartStream name=\"stream1\" mode=\"unidirectional\" tracks=\"inbound\" destination=\"testurl.com\" destinationUsername=\"destinationUsername\" destinationPassword=\"destinationPassword\" streamEventUrl=\"eventurl.com\" streamEventMethod=\"POST\" username=\"user\" password=\"pass\"><StreamParam name=\"name1\" value=\"value1\"/><StreamParam name=\"name2\" value=\"value2\"/></StartStream></Bxml>";
 
                 assertThat(new Bxml().with(startStream).toBxml(jaxbContext), is(expectedBxml));
         }
