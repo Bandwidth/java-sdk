@@ -7,7 +7,7 @@
     <name>bandwidth-sdk</name>
     <version>1.0.0</version>
     <url>https://github.com/Bandwidth/java-sdk</url>
-    <description>The official client SDK for Bandwidth's Voice, Messaging, MFA, and WebRTC APIs</description>
+    <description>The official client SDK for Bandwidth&#39;s Voice, Messaging, MFA, and WebRTC APIs</description>
     <scm>
         <url>https://github.com/Bandwidth/java-sdk</url>
         <connection>scm:git:git@github.com:Bandwidth/java-sdk.git</connection>
