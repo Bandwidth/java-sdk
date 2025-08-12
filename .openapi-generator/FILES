@@ -99,6 +99,7 @@ docs/OptInWorkflow.md
 docs/PageInfo.md
 docs/PhoneNumberLookupApi.md
 docs/PriorityEnum.md
+docs/ProductTypeEnum.md
 docs/RbmActionBase.md
 docs/RbmActionDial.md
 docs/RbmActionOpenUrl.md
@@ -292,6 +293,7 @@ src/main/java/com/bandwidth/sdk/model/MultiChannelMessageResponseDataChannelList
 src/main/java/com/bandwidth/sdk/model/OptInWorkflow.java
 src/main/java/com/bandwidth/sdk/model/PageInfo.java
 src/main/java/com/bandwidth/sdk/model/PriorityEnum.java
+src/main/java/com/bandwidth/sdk/model/ProductTypeEnum.java
 src/main/java/com/bandwidth/sdk/model/RbmActionBase.java
 src/main/java/com/bandwidth/sdk/model/RbmActionDial.java
 src/main/java/com/bandwidth/sdk/model/RbmActionOpenUrl.java
