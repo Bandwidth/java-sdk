@@ -14,6 +14,7 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import com.bandwidth.sdk.model.ErrorSource;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -50,54 +51,78 @@ import com.bandwidth.sdk.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class ErrorObject {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nullable
-  private String code;
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nonnull
+  private String type;
 
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
-  @javax.annotation.Nullable
-  private String message;
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nonnull
+  private String description;
+
+  public static final String SERIALIZED_NAME_SOURCE = "source";
+  @SerializedName(SERIALIZED_NAME_SOURCE)
+  @javax.annotation.Nonnull
+  private ErrorSource source;
 
   public ErrorObject() {
   }
 
-  public ErrorObject code(@javax.annotation.Nullable String code) {
-    this.code = code;
+  public ErrorObject type(@javax.annotation.Nonnull String type) {
+    this.type = type;
     return this;
   }
 
   /**
-   * Get code
-   * @return code
+   * A concise summary of the error used for categorization.
+   * @return type
    */
-  @javax.annotation.Nullable
-  public String getCode() {
-    return code;
+  @javax.annotation.Nonnull
+  public String getType() {
+    return type;
   }
 
-  public void setCode(@javax.annotation.Nullable String code) {
-    this.code = code;
+  public void setType(@javax.annotation.Nonnull String type) {
+    this.type = type;
   }
 
 
-  public ErrorObject message(@javax.annotation.Nullable String message) {
-    this.message = message;
+  public ErrorObject description(@javax.annotation.Nonnull String description) {
+    this.description = description;
     return this;
   }
 
   /**
-   * Get message
-   * @return message
+   * A detailed explanation of the error.
+   * @return description
    */
-  @javax.annotation.Nullable
-  public String getMessage() {
-    return message;
+  @javax.annotation.Nonnull
+  public String getDescription() {
+    return description;
   }
 
-  public void setMessage(@javax.annotation.Nullable String message) {
-    this.message = message;
+  public void setDescription(@javax.annotation.Nonnull String description) {
+    this.description = description;
+  }
+
+
+  public ErrorObject source(@javax.annotation.Nonnull ErrorSource source) {
+    this.source = source;
+    return this;
+  }
+
+  /**
+   * Get source
+   * @return source
+   */
+  @javax.annotation.Nonnull
+  public ErrorSource getSource() {
+    return source;
+  }
+
+  public void setSource(@javax.annotation.Nonnull ErrorSource source) {
+    this.source = source;
   }
 
   /**
@@ -155,22 +180,24 @@ public class ErrorObject {
       return false;
     }
     ErrorObject errorObject = (ErrorObject) o;
-    return Objects.equals(this.code, errorObject.code) &&
-        Objects.equals(this.message, errorObject.message)&&
+    return Objects.equals(this.type, errorObject.type) &&
+        Objects.equals(this.description, errorObject.description) &&
+        Objects.equals(this.source, errorObject.source)&&
         Objects.equals(this.additionalProperties, errorObject.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, additionalProperties);
+    return Objects.hash(type, description, source, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ErrorObject {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -194,11 +221,15 @@ public class ErrorObject {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("code");
-    openapiFields.add("message");
+    openapiFields.add("type");
+    openapiFields.add("description");
+    openapiFields.add("source");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("type");
+    openapiRequiredFields.add("description");
+    openapiRequiredFields.add("source");
   }
 
   /**
@@ -213,13 +244,22 @@ public class ErrorObject {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ErrorObject is not found in the empty JSON string", ErrorObject.openapiRequiredFields.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ErrorObject.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+      if (!jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
+      // validate the required field `source`
+      ErrorSource.validateJsonElement(jsonObj.get("source"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

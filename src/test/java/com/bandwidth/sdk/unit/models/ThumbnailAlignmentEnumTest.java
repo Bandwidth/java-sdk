@@ -15,7 +15,6 @@ package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
-import com.bandwidth.sdk.model.MultiChannelMessageDirectionEnum;
 import com.bandwidth.sdk.model.ThumbnailAlignmentEnum;
 
 import static org.hamcrest.CoreMatchers.equalTo;

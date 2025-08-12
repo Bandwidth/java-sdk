@@ -25,8 +25,8 @@ import static org.hamcrest.CoreMatchers.instanceOf;
  */
 public class ErrorObjectTest {
     private final ErrorObject model = new ErrorObject()
-            .code("code")
-            .message("message");
+            .type("type")
+            .description("description");
 
     /**
      * Model tests for ErrorObject
@@ -37,19 +37,19 @@ public class ErrorObjectTest {
     }
 
     /**
-     * Test the property 'code'
+     * Test the property 'type'
      */
     @Test
-    public void codeTest() {
-        assertThat(model.getCode(), instanceOf(String.class));
+    public void typeTest() {
+        assertThat(model.getType(), instanceOf(String.class));
     }
 
     /**
-     * Test the property 'message'
+     * Test the property 'description'
      */
     @Test
-    public void messageTest() {
-        assertThat(model.getMessage(), instanceOf(String.class));
+    public void descriptionTest() {
+        assertThat(model.getDescription(), instanceOf(String.class));
     }
 
 }

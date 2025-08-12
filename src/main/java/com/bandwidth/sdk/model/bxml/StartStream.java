@@ -13,9 +13,7 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElements;
 import jakarta.xml.bind.annotation.XmlType;
 import java.util.List;
-import java.util.UUID;
 
-import com.bandwidth.sdk.model.CallDirectionEnum;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,43 +31,49 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 /**
  *
- * @param name              (str, optional): A name to refer to this stream by.
- *                          Used when sending <StopStream>. If not provided, it
- *                          will default to the generated stream id as sent in
- *                          the Media Stream Started webhook.
- * @param mode              (str, optional): The mode to use for the stream.
- *                          unidirectional or bidirectional. Specifies whether
- *                          the audio being streamed over the WebSocket is
- *                          bidirectional (the service can both read and write
- *                          audio over the WebSocket) or unidirectional
- *                          (one-way, read-only). Default is unidirectional.
- * @param tracks            (str, optional): The part of the call to send a
- *                          stream from. inbound, outbound or both. Default is
- *                          inbound.
- * @param destination       (str, optional): A websocket URI to send the stream
- *                          to. The audio from the specified tracks will be sent
- *                          via websocket to this URL as base64-encoded
- *                          PCMU/G711 audio. See below for more details on the
- *                          websocket packet format.
- * @param streamEventUrl    (str, optional): URL to send the associated Webhook
- *                          events to during this stream's lifetime. Does not
- *                          accept BXML. May be a relative URL.
- * @param streamEventMethod (str, optional): The HTTP method to use for the
- *                          request to streamEventUrl. GET or POST. Default
- *                          value is POST.
- * @param username          (str, optional): The username to send in the HTTP
- *                          request to streamEventUrl. If specified, the URLs
- *                          must be TLS-encrypted (i.e., https).
- * @param password          (str, optional): The password to send in the HTTP
- *                          request to streamEventUrl. If specified, the URLs
- *                          must be TLS-encrypted (i.e., https).
+ * @param name                  (str, optional): A name to refer to this stream by.
+ *                              Used when sending <StopStream>. If not provided, it
+ *                              will default to the generated stream id as sent in
+ *                              the Media Stream Started webhook.
+ * @param mode                  (str, optional): The mode to use for the stream.
+ *                              unidirectional or bidirectional. Specifies whether
+ *                              the audio being streamed over the WebSocket is
+ *                              bidirectional (the service can both read and write
+ *                              audio over the WebSocket) or unidirectional
+ *                              (one-way, read-only). Default is unidirectional.
+ * @param tracks                (str, optional): The part of the call to send a
+ *                              stream from. inbound, outbound or both. Default is
+ *                              inbound.
+ * @param destination           (str, optional): A websocket URI to send the stream
+ *                              to. The audio from the specified tracks will be sent
+ *                              via websocket to this URL as base64-encoded
+ *                              PCMU/G711 audio. See below for more details on the
+ *                              websocket packet format.
+ * @param destinationUsername   (str, optional): The username to send in the
+ *                              `Authorization` header of the initial websocket
+ *                              connection to the `destination` URL. 
+ * @param destinationPassword   (str, optional): The password to send in the
+ *                              `Authorization` header of the initial websocket
+ *                              connection to the `destination` URL.
+ * @param streamEventUrl        (str, optional): URL to send the associated Webhook
+ *                              events to during this stream's lifetime. Does not
+ *                              accept BXML. May be a relative URL.
+ * @param streamEventMethod     (str, optional): The HTTP method to use for the
+ *                              request to streamEventUrl. GET or POST. Default
+ *                              value is POST.
+ * @param username              (str, optional): The username to send in the HTTP
+ *                              request to streamEventUrl. If specified, the URLs
+ *                              must be TLS-encrypted (i.e., https).
+ * @param password              (str, optional): The password to send in the HTTP
+ *                              request to streamEventUrl. If specified, the URLs
+ *                              must be TLS-encrypted (i.e., https).
  *
- *                          Nested Verbs:
- * @param StreamParam:      (optional) You may specify up to 12 <StreamParam/>
- *                          elements nested within a <StartStream> tag.
- *                          These elements define optional user specified
- *                          parameters that will be sent to the destination URL
- *                          when the stream is first started.
+ *                              Nested Verbs:
+ * @param StreamParam:          (optional) You may specify up to 12 <StreamParam/>
+ *                              elements nested within a <StartStream> tag.
+ *                              These elements define optional user specified
+ *                              parameters that will be sent to the destination URL
+ *                              when the stream is first started.
  *
  */
 public class StartStream implements Verb {
@@ -84,10 +88,16 @@ public class StartStream implements Verb {
 
     @XmlAttribute
     @Default
-    protected CallDirectionEnum tracks = CallDirectionEnum.INBOUND;
+    protected TracksEnum tracks = TracksEnum.inbound;
 
     @XmlAttribute
     protected String destination;
+
+    @XmlAttribute
+    protected String destinationUsername;
+
+    @XmlAttribute
+    protected String destinationPassword;
 
     @XmlAttribute
     @Getter
