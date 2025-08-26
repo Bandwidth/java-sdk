@@ -15,6 +15,8 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import com.bandwidth.sdk.model.Address;
+import com.bandwidth.sdk.model.BusinessEntityTypeEnum;
+import com.bandwidth.sdk.model.BusinessRegistrationTypeEnum;
 import com.bandwidth.sdk.model.Contact;
 import com.bandwidth.sdk.model.OptInWorkflow;
 import com.google.gson.TypeAdapter;
@@ -113,6 +115,21 @@ public class TfvSubmissionInfo {
   @SerializedName(SERIALIZED_NAME_BUSINESS_DBA)
   @javax.annotation.Nullable
   private String businessDba;
+
+  public static final String SERIALIZED_NAME_BUSINESS_REGISTRATION_NUMBER = "businessRegistrationNumber";
+  @SerializedName(SERIALIZED_NAME_BUSINESS_REGISTRATION_NUMBER)
+  @javax.annotation.Nullable
+  private String businessRegistrationNumber;
+
+  public static final String SERIALIZED_NAME_BUSINESS_REGISTRATION_TYPE = "businessRegistrationType";
+  @SerializedName(SERIALIZED_NAME_BUSINESS_REGISTRATION_TYPE)
+  @javax.annotation.Nullable
+  private BusinessRegistrationTypeEnum businessRegistrationType;
+
+  public static final String SERIALIZED_NAME_BUSINESS_ENTITY_TYPE = "businessEntityType";
+  @SerializedName(SERIALIZED_NAME_BUSINESS_ENTITY_TYPE)
+  @javax.annotation.Nullable
+  private BusinessEntityTypeEnum businessEntityType;
 
   public TfvSubmissionInfo() {
   }
@@ -346,6 +363,63 @@ public class TfvSubmissionInfo {
     this.businessDba = businessDba;
   }
 
+
+  public TfvSubmissionInfo businessRegistrationNumber(@javax.annotation.Nullable String businessRegistrationNumber) {
+    this.businessRegistrationNumber = businessRegistrationNumber;
+    return this;
+  }
+
+  /**
+   * US Federal Tax ID Number (EIN) or Canada Business Number (CBN). Optional until early 2026. If a value is provided for this field, a value must be provided for &#x60;businessRegistrationType&#x60; and &#x60;businessEntityType&#x60;. Available starting October 1st, 2025.
+   * @return businessRegistrationNumber
+   */
+  @javax.annotation.Nullable
+  public String getBusinessRegistrationNumber() {
+    return businessRegistrationNumber;
+  }
+
+  public void setBusinessRegistrationNumber(@javax.annotation.Nullable String businessRegistrationNumber) {
+    this.businessRegistrationNumber = businessRegistrationNumber;
+  }
+
+
+  public TfvSubmissionInfo businessRegistrationType(@javax.annotation.Nullable BusinessRegistrationTypeEnum businessRegistrationType) {
+    this.businessRegistrationType = businessRegistrationType;
+    return this;
+  }
+
+  /**
+   * Get businessRegistrationType
+   * @return businessRegistrationType
+   */
+  @javax.annotation.Nullable
+  public BusinessRegistrationTypeEnum getBusinessRegistrationType() {
+    return businessRegistrationType;
+  }
+
+  public void setBusinessRegistrationType(@javax.annotation.Nullable BusinessRegistrationTypeEnum businessRegistrationType) {
+    this.businessRegistrationType = businessRegistrationType;
+  }
+
+
+  public TfvSubmissionInfo businessEntityType(@javax.annotation.Nullable BusinessEntityTypeEnum businessEntityType) {
+    this.businessEntityType = businessEntityType;
+    return this;
+  }
+
+  /**
+   * Get businessEntityType
+   * @return businessEntityType
+   */
+  @javax.annotation.Nullable
+  public BusinessEntityTypeEnum getBusinessEntityType() {
+    return businessEntityType;
+  }
+
+  public void setBusinessEntityType(@javax.annotation.Nullable BusinessEntityTypeEnum businessEntityType) {
+    this.businessEntityType = businessEntityType;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -412,7 +486,10 @@ public class TfvSubmissionInfo {
         Objects.equals(this.isvReseller, tfvSubmissionInfo.isvReseller) &&
         Objects.equals(this.privacyPolicyUrl, tfvSubmissionInfo.privacyPolicyUrl) &&
         Objects.equals(this.termsAndConditionsUrl, tfvSubmissionInfo.termsAndConditionsUrl) &&
-        Objects.equals(this.businessDba, tfvSubmissionInfo.businessDba)&&
+        Objects.equals(this.businessDba, tfvSubmissionInfo.businessDba) &&
+        Objects.equals(this.businessRegistrationNumber, tfvSubmissionInfo.businessRegistrationNumber) &&
+        Objects.equals(this.businessRegistrationType, tfvSubmissionInfo.businessRegistrationType) &&
+        Objects.equals(this.businessEntityType, tfvSubmissionInfo.businessEntityType)&&
         Objects.equals(this.additionalProperties, tfvSubmissionInfo.additionalProperties);
   }
 
@@ -422,7 +499,7 @@ public class TfvSubmissionInfo {
 
   @Override
   public int hashCode() {
-    return Objects.hash(businessAddress, businessContact, messageVolume, useCase, useCaseSummary, productionMessageContent, optInWorkflow, additionalInformation, isvReseller, privacyPolicyUrl, termsAndConditionsUrl, businessDba, additionalProperties);
+    return Objects.hash(businessAddress, businessContact, messageVolume, useCase, useCaseSummary, productionMessageContent, optInWorkflow, additionalInformation, isvReseller, privacyPolicyUrl, termsAndConditionsUrl, businessDba, businessRegistrationNumber, businessRegistrationType, businessEntityType, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -448,6 +525,9 @@ public class TfvSubmissionInfo {
     sb.append("    privacyPolicyUrl: ").append(toIndentedString(privacyPolicyUrl)).append("\n");
     sb.append("    termsAndConditionsUrl: ").append(toIndentedString(termsAndConditionsUrl)).append("\n");
     sb.append("    businessDba: ").append(toIndentedString(businessDba)).append("\n");
+    sb.append("    businessRegistrationNumber: ").append(toIndentedString(businessRegistrationNumber)).append("\n");
+    sb.append("    businessRegistrationType: ").append(toIndentedString(businessRegistrationType)).append("\n");
+    sb.append("    businessEntityType: ").append(toIndentedString(businessEntityType)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -483,6 +563,9 @@ public class TfvSubmissionInfo {
     openapiFields.add("privacyPolicyUrl");
     openapiFields.add("termsAndConditionsUrl");
     openapiFields.add("businessDba");
+    openapiFields.add("businessRegistrationNumber");
+    openapiFields.add("businessRegistrationType");
+    openapiFields.add("businessEntityType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -536,6 +619,17 @@ public class TfvSubmissionInfo {
       }
       if ((jsonObj.get("businessDba") != null && !jsonObj.get("businessDba").isJsonNull()) && !jsonObj.get("businessDba").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `businessDba` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessDba").toString()));
+      }
+      if ((jsonObj.get("businessRegistrationNumber") != null && !jsonObj.get("businessRegistrationNumber").isJsonNull()) && !jsonObj.get("businessRegistrationNumber").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `businessRegistrationNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessRegistrationNumber").toString()));
+      }
+      // validate the optional field `businessRegistrationType`
+      if (jsonObj.get("businessRegistrationType") != null && !jsonObj.get("businessRegistrationType").isJsonNull()) {
+        BusinessRegistrationTypeEnum.validateJsonElement(jsonObj.get("businessRegistrationType"));
+      }
+      // validate the optional field `businessEntityType`
+      if (jsonObj.get("businessEntityType") != null && !jsonObj.get("businessEntityType").isJsonNull()) {
+        BusinessEntityTypeEnum.validateJsonElement(jsonObj.get("businessEntityType"));
       }
   }
 

@@ -35,6 +35,7 @@ import com.bandwidth.sdk.model.MessageStatusEnum;
 import com.bandwidth.sdk.model.MessageTypeEnum;
 import com.bandwidth.sdk.model.MessagesList;
 import com.bandwidth.sdk.model.MessagingRequestError;
+import com.bandwidth.sdk.model.ProductTypeEnum;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -266,6 +267,18 @@ public class MessagesApi {
      * @param fromDateTime The start of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. (optional)
      * @param toDateTime The end of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. (optional)
      * @param campaignId The campaign ID of the message. (optional)
+     * @param fromBwLatency The minimum Bandwidth latency of the message in seconds. Only available for accounts with the Advanced Quality Metrics feature enabled. (optional)
+     * @param bwQueued A boolean value indicating whether the message is queued in the Bandwidth network. (optional)
+     * @param product Messaging product associated with the message. (optional)
+     * @param location Location Id associated with the message. (optional)
+     * @param carrierQueued A boolean value indicating whether the message is queued in the carrier network. Only available for OUTBOUND messages from accounts with the Advanced Quality Metrics feature enabled. (optional)
+     * @param fromCarrierLatency The minimum carrier latency of the message in seconds. Only available for OUTBOUND messages from accounts with the Advanced Quality Metrics feature enabled. (optional)
+     * @param callingNumberCountryA3 Calling number country in A3 format. (optional)
+     * @param calledNumberCountryA3 Called number country in A3 format. (optional)
+     * @param fromSegmentCount Segment count (start range). (optional)
+     * @param toSegmentCount Segment count (end range). (optional)
+     * @param fromMessageSize Message size (start range). (optional)
+     * @param toMessageSize Message size (end range). (optional)
      * @param sort The field and direction to sort by combined with a colon. Direction is either asc or desc. (optional)
      * @param pageToken A base64 encoded value used for pagination of results. (optional)
      * @param limit The maximum records requested in search result. Default 100. The sum of limit and after cannot be more than 10000. (optional)
@@ -287,7 +300,7 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMessagesCall(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listMessagesCall(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, Integer fromBwLatency, Boolean bwQueued, ProductTypeEnum product, String location, Boolean carrierQueued, Integer fromCarrierLatency, String callingNumberCountryA3, String calledNumberCountryA3, Integer fromSegmentCount, Integer toSegmentCount, Integer fromMessageSize, Integer toMessageSize, String sort, String pageToken, Integer limit, Boolean limitTotalCount, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://messaging.bandwidth.com/api/v2" };
@@ -357,6 +370,54 @@ public class MessagesApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignId", campaignId));
         }
 
+        if (fromBwLatency != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("fromBwLatency", fromBwLatency));
+        }
+
+        if (bwQueued != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("bwQueued", bwQueued));
+        }
+
+        if (product != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("product", product));
+        }
+
+        if (location != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("location", location));
+        }
+
+        if (carrierQueued != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("carrierQueued", carrierQueued));
+        }
+
+        if (fromCarrierLatency != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("fromCarrierLatency", fromCarrierLatency));
+        }
+
+        if (callingNumberCountryA3 != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("callingNumberCountryA3", callingNumberCountryA3));
+        }
+
+        if (calledNumberCountryA3 != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("calledNumberCountryA3", calledNumberCountryA3));
+        }
+
+        if (fromSegmentCount != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("fromSegmentCount", fromSegmentCount));
+        }
+
+        if (toSegmentCount != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("toSegmentCount", toSegmentCount));
+        }
+
+        if (fromMessageSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("fromMessageSize", fromMessageSize));
+        }
+
+        if (toMessageSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("toMessageSize", toMessageSize));
+        }
+
         if (sort != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
         }
@@ -393,13 +454,13 @@ public class MessagesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listMessagesValidateBeforeCall(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listMessagesValidateBeforeCall(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, Integer fromBwLatency, Boolean bwQueued, ProductTypeEnum product, String location, Boolean carrierQueued, Integer fromCarrierLatency, String callingNumberCountryA3, String calledNumberCountryA3, Integer fromSegmentCount, Integer toSegmentCount, Integer fromMessageSize, Integer toMessageSize, String sort, String pageToken, Integer limit, Boolean limitTotalCount, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling listMessages(Async)");
         }
 
-        return listMessagesCall(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, limitTotalCount, _callback);
+        return listMessagesCall(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, fromBwLatency, bwQueued, product, location, carrierQueued, fromCarrierLatency, callingNumberCountryA3, calledNumberCountryA3, fromSegmentCount, toSegmentCount, fromMessageSize, toMessageSize, sort, pageToken, limit, limitTotalCount, _callback);
 
     }
 
@@ -418,6 +479,18 @@ public class MessagesApi {
      * @param fromDateTime The start of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. (optional)
      * @param toDateTime The end of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. (optional)
      * @param campaignId The campaign ID of the message. (optional)
+     * @param fromBwLatency The minimum Bandwidth latency of the message in seconds. Only available for accounts with the Advanced Quality Metrics feature enabled. (optional)
+     * @param bwQueued A boolean value indicating whether the message is queued in the Bandwidth network. (optional)
+     * @param product Messaging product associated with the message. (optional)
+     * @param location Location Id associated with the message. (optional)
+     * @param carrierQueued A boolean value indicating whether the message is queued in the carrier network. Only available for OUTBOUND messages from accounts with the Advanced Quality Metrics feature enabled. (optional)
+     * @param fromCarrierLatency The minimum carrier latency of the message in seconds. Only available for OUTBOUND messages from accounts with the Advanced Quality Metrics feature enabled. (optional)
+     * @param callingNumberCountryA3 Calling number country in A3 format. (optional)
+     * @param calledNumberCountryA3 Called number country in A3 format. (optional)
+     * @param fromSegmentCount Segment count (start range). (optional)
+     * @param toSegmentCount Segment count (end range). (optional)
+     * @param fromMessageSize Message size (start range). (optional)
+     * @param toMessageSize Message size (end range). (optional)
      * @param sort The field and direction to sort by combined with a colon. Direction is either asc or desc. (optional)
      * @param pageToken A base64 encoded value used for pagination of results. (optional)
      * @param limit The maximum records requested in search result. Default 100. The sum of limit and after cannot be more than 10000. (optional)
@@ -438,8 +511,8 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public MessagesList listMessages(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount) throws ApiException {
-        ApiResponse<MessagesList> localVarResp = listMessagesWithHttpInfo(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, limitTotalCount);
+    public MessagesList listMessages(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, Integer fromBwLatency, Boolean bwQueued, ProductTypeEnum product, String location, Boolean carrierQueued, Integer fromCarrierLatency, String callingNumberCountryA3, String calledNumberCountryA3, Integer fromSegmentCount, Integer toSegmentCount, Integer fromMessageSize, Integer toMessageSize, String sort, String pageToken, Integer limit, Boolean limitTotalCount) throws ApiException {
+        ApiResponse<MessagesList> localVarResp = listMessagesWithHttpInfo(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, fromBwLatency, bwQueued, product, location, carrierQueued, fromCarrierLatency, callingNumberCountryA3, calledNumberCountryA3, fromSegmentCount, toSegmentCount, fromMessageSize, toMessageSize, sort, pageToken, limit, limitTotalCount);
         return localVarResp.getData();
     }
 
@@ -458,6 +531,18 @@ public class MessagesApi {
      * @param fromDateTime The start of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. (optional)
      * @param toDateTime The end of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. (optional)
      * @param campaignId The campaign ID of the message. (optional)
+     * @param fromBwLatency The minimum Bandwidth latency of the message in seconds. Only available for accounts with the Advanced Quality Metrics feature enabled. (optional)
+     * @param bwQueued A boolean value indicating whether the message is queued in the Bandwidth network. (optional)
+     * @param product Messaging product associated with the message. (optional)
+     * @param location Location Id associated with the message. (optional)
+     * @param carrierQueued A boolean value indicating whether the message is queued in the carrier network. Only available for OUTBOUND messages from accounts with the Advanced Quality Metrics feature enabled. (optional)
+     * @param fromCarrierLatency The minimum carrier latency of the message in seconds. Only available for OUTBOUND messages from accounts with the Advanced Quality Metrics feature enabled. (optional)
+     * @param callingNumberCountryA3 Calling number country in A3 format. (optional)
+     * @param calledNumberCountryA3 Called number country in A3 format. (optional)
+     * @param fromSegmentCount Segment count (start range). (optional)
+     * @param toSegmentCount Segment count (end range). (optional)
+     * @param fromMessageSize Message size (start range). (optional)
+     * @param toMessageSize Message size (end range). (optional)
      * @param sort The field and direction to sort by combined with a colon. Direction is either asc or desc. (optional)
      * @param pageToken A base64 encoded value used for pagination of results. (optional)
      * @param limit The maximum records requested in search result. Default 100. The sum of limit and after cannot be more than 10000. (optional)
@@ -478,8 +563,8 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MessagesList> listMessagesWithHttpInfo(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount) throws ApiException {
-        okhttp3.Call localVarCall = listMessagesValidateBeforeCall(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, limitTotalCount, null);
+    public ApiResponse<MessagesList> listMessagesWithHttpInfo(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, Integer fromBwLatency, Boolean bwQueued, ProductTypeEnum product, String location, Boolean carrierQueued, Integer fromCarrierLatency, String callingNumberCountryA3, String calledNumberCountryA3, Integer fromSegmentCount, Integer toSegmentCount, Integer fromMessageSize, Integer toMessageSize, String sort, String pageToken, Integer limit, Boolean limitTotalCount) throws ApiException {
+        okhttp3.Call localVarCall = listMessagesValidateBeforeCall(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, fromBwLatency, bwQueued, product, location, carrierQueued, fromCarrierLatency, callingNumberCountryA3, calledNumberCountryA3, fromSegmentCount, toSegmentCount, fromMessageSize, toMessageSize, sort, pageToken, limit, limitTotalCount, null);
         Type localVarReturnType = new TypeToken<MessagesList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -499,6 +584,18 @@ public class MessagesApi {
      * @param fromDateTime The start of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. (optional)
      * @param toDateTime The end of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. (optional)
      * @param campaignId The campaign ID of the message. (optional)
+     * @param fromBwLatency The minimum Bandwidth latency of the message in seconds. Only available for accounts with the Advanced Quality Metrics feature enabled. (optional)
+     * @param bwQueued A boolean value indicating whether the message is queued in the Bandwidth network. (optional)
+     * @param product Messaging product associated with the message. (optional)
+     * @param location Location Id associated with the message. (optional)
+     * @param carrierQueued A boolean value indicating whether the message is queued in the carrier network. Only available for OUTBOUND messages from accounts with the Advanced Quality Metrics feature enabled. (optional)
+     * @param fromCarrierLatency The minimum carrier latency of the message in seconds. Only available for OUTBOUND messages from accounts with the Advanced Quality Metrics feature enabled. (optional)
+     * @param callingNumberCountryA3 Calling number country in A3 format. (optional)
+     * @param calledNumberCountryA3 Called number country in A3 format. (optional)
+     * @param fromSegmentCount Segment count (start range). (optional)
+     * @param toSegmentCount Segment count (end range). (optional)
+     * @param fromMessageSize Message size (start range). (optional)
+     * @param toMessageSize Message size (end range). (optional)
      * @param sort The field and direction to sort by combined with a colon. Direction is either asc or desc. (optional)
      * @param pageToken A base64 encoded value used for pagination of results. (optional)
      * @param limit The maximum records requested in search result. Default 100. The sum of limit and after cannot be more than 10000. (optional)
@@ -520,9 +617,9 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMessagesAsync(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, String sort, String pageToken, Integer limit, Boolean limitTotalCount, final ApiCallback<MessagesList> _callback) throws ApiException {
+    public okhttp3.Call listMessagesAsync(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, Integer fromBwLatency, Boolean bwQueued, ProductTypeEnum product, String location, Boolean carrierQueued, Integer fromCarrierLatency, String callingNumberCountryA3, String calledNumberCountryA3, Integer fromSegmentCount, Integer toSegmentCount, Integer fromMessageSize, Integer toMessageSize, String sort, String pageToken, Integer limit, Boolean limitTotalCount, final ApiCallback<MessagesList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listMessagesValidateBeforeCall(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, limitTotalCount, _callback);
+        okhttp3.Call localVarCall = listMessagesValidateBeforeCall(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, fromBwLatency, bwQueued, product, location, carrierQueued, fromCarrierLatency, callingNumberCountryA3, calledNumberCountryA3, fromSegmentCount, toSegmentCount, fromMessageSize, toMessageSize, sort, pageToken, limit, limitTotalCount, _callback);
         Type localVarReturnType = new TypeToken<MessagesList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

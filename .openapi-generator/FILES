@@ -10,6 +10,8 @@ docs/AnswerCallback.md
 docs/BlockedWebhook.md
 docs/BridgeCompleteCallback.md
 docs/BridgeTargetCompleteCallback.md
+docs/BusinessEntityTypeEnum.md
+docs/BusinessRegistrationTypeEnum.md
 docs/CallDirectionEnum.md
 docs/CallRecordingMetadata.md
 docs/CallState.md
@@ -99,6 +101,7 @@ docs/OptInWorkflow.md
 docs/PageInfo.md
 docs/PhoneNumberLookupApi.md
 docs/PriorityEnum.md
+docs/ProductTypeEnum.md
 docs/RbmActionBase.md
 docs/RbmActionDial.md
 docs/RbmActionOpenUrl.md
@@ -210,6 +213,8 @@ src/main/java/com/bandwidth/sdk/model/AnswerCallback.java
 src/main/java/com/bandwidth/sdk/model/BlockedWebhook.java
 src/main/java/com/bandwidth/sdk/model/BridgeCompleteCallback.java
 src/main/java/com/bandwidth/sdk/model/BridgeTargetCompleteCallback.java
+src/main/java/com/bandwidth/sdk/model/BusinessEntityTypeEnum.java
+src/main/java/com/bandwidth/sdk/model/BusinessRegistrationTypeEnum.java
 src/main/java/com/bandwidth/sdk/model/CallDirectionEnum.java
 src/main/java/com/bandwidth/sdk/model/CallRecordingMetadata.java
 src/main/java/com/bandwidth/sdk/model/CallState.java
@@ -292,6 +297,7 @@ src/main/java/com/bandwidth/sdk/model/MultiChannelMessageResponseDataChannelList
 src/main/java/com/bandwidth/sdk/model/OptInWorkflow.java
 src/main/java/com/bandwidth/sdk/model/PageInfo.java
 src/main/java/com/bandwidth/sdk/model/PriorityEnum.java
+src/main/java/com/bandwidth/sdk/model/ProductTypeEnum.java
 src/main/java/com/bandwidth/sdk/model/RbmActionBase.java
 src/main/java/com/bandwidth/sdk/model/RbmActionDial.java
 src/main/java/com/bandwidth/sdk/model/RbmActionOpenUrl.java

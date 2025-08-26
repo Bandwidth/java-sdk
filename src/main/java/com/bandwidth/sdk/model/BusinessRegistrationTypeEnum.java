@@ -24,20 +24,18 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The type of message. Either SMS or MMS.
+ * The type of business registration number. Optional until early 2026; required if &#x60;businessRegistrationNumber&#x60; is provided. Available starting October 1st, 2025.
  */
-@JsonAdapter(MessageTypeEnum.Adapter.class)
-public enum MessageTypeEnum {
+@JsonAdapter(BusinessRegistrationTypeEnum.Adapter.class)
+public enum BusinessRegistrationTypeEnum {
   
-  SMS("sms"),
+  EIN("EIN"),
   
-  MMS("mms"),
-  
-  RCS("rcs");
+  CBN("CBN");
 
   private String value;
 
-  MessageTypeEnum(String value) {
+  BusinessRegistrationTypeEnum(String value) {
     this.value = value;
   }
 
@@ -50,31 +48,31 @@ public enum MessageTypeEnum {
     return String.valueOf(value);
   }
 
-  public static MessageTypeEnum fromValue(String value) {
-    for (MessageTypeEnum b : MessageTypeEnum.values()) {
+  public static BusinessRegistrationTypeEnum fromValue(String value) {
+    for (BusinessRegistrationTypeEnum b : BusinessRegistrationTypeEnum.values()) {
       if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return null;
   }
 
-  public static class Adapter extends TypeAdapter<MessageTypeEnum> {
+  public static class Adapter extends TypeAdapter<BusinessRegistrationTypeEnum> {
     @Override
-    public void write(final JsonWriter jsonWriter, final MessageTypeEnum enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final BusinessRegistrationTypeEnum enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public MessageTypeEnum read(final JsonReader jsonReader) throws IOException {
+    public BusinessRegistrationTypeEnum read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return MessageTypeEnum.fromValue(value);
+      return BusinessRegistrationTypeEnum.fromValue(value);
     }
   }
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
-    MessageTypeEnum.fromValue(value);
+    BusinessRegistrationTypeEnum.fromValue(value);
   }
 }
 
