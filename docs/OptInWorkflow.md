@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**description** | **String** |  |  |
 |**imageUrls** | **List&lt;String&gt;** |  |  |
+|**confirmationResponse** | **String** |  |  [optional] |
 
 
 

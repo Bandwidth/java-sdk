@@ -140,6 +140,36 @@ public class ListMessageItem {
   @javax.annotation.Nullable
   private String campaignId;
 
+  public static final String SERIALIZED_NAME_BW_LATENCY = "bwLatency";
+  @SerializedName(SERIALIZED_NAME_BW_LATENCY)
+  @javax.annotation.Nullable
+  private Integer bwLatency;
+
+  public static final String SERIALIZED_NAME_CARRIER_LATENCY = "carrierLatency";
+  @SerializedName(SERIALIZED_NAME_CARRIER_LATENCY)
+  @javax.annotation.Nullable
+  private Integer carrierLatency;
+
+  public static final String SERIALIZED_NAME_CALLING_NUMBER_COUNTRY_A3 = "callingNumberCountryA3";
+  @SerializedName(SERIALIZED_NAME_CALLING_NUMBER_COUNTRY_A3)
+  @javax.annotation.Nullable
+  private String callingNumberCountryA3;
+
+  public static final String SERIALIZED_NAME_CALLED_NUMBER_COUNTRY_A3 = "calledNumberCountryA3";
+  @SerializedName(SERIALIZED_NAME_CALLED_NUMBER_COUNTRY_A3)
+  @javax.annotation.Nullable
+  private String calledNumberCountryA3;
+
+  public static final String SERIALIZED_NAME_PRODUCT = "product";
+  @SerializedName(SERIALIZED_NAME_PRODUCT)
+  @javax.annotation.Nullable
+  private String product;
+
+  public static final String SERIALIZED_NAME_LOCATION = "location";
+  @SerializedName(SERIALIZED_NAME_LOCATION)
+  @javax.annotation.Nullable
+  private String location;
+
   public ListMessageItem() {
   }
 
@@ -465,6 +495,120 @@ public class ListMessageItem {
     this.campaignId = campaignId;
   }
 
+
+  public ListMessageItem bwLatency(@javax.annotation.Nullable Integer bwLatency) {
+    this.bwLatency = bwLatency;
+    return this;
+  }
+
+  /**
+   * The Bandwidth latency of the message in seconds. Only available for accounts with the Advanced Quality Metrics feature enabled.
+   * @return bwLatency
+   */
+  @javax.annotation.Nullable
+  public Integer getBwLatency() {
+    return bwLatency;
+  }
+
+  public void setBwLatency(@javax.annotation.Nullable Integer bwLatency) {
+    this.bwLatency = bwLatency;
+  }
+
+
+  public ListMessageItem carrierLatency(@javax.annotation.Nullable Integer carrierLatency) {
+    this.carrierLatency = carrierLatency;
+    return this;
+  }
+
+  /**
+   * The carrier latency of the message in seconds. Only available for OUTBOUND messages from accounts with the Advanced Quality Metrics feature enabled.
+   * @return carrierLatency
+   */
+  @javax.annotation.Nullable
+  public Integer getCarrierLatency() {
+    return carrierLatency;
+  }
+
+  public void setCarrierLatency(@javax.annotation.Nullable Integer carrierLatency) {
+    this.carrierLatency = carrierLatency;
+  }
+
+
+  public ListMessageItem callingNumberCountryA3(@javax.annotation.Nullable String callingNumberCountryA3) {
+    this.callingNumberCountryA3 = callingNumberCountryA3;
+    return this;
+  }
+
+  /**
+   * The A3 country code of the calling number.
+   * @return callingNumberCountryA3
+   */
+  @javax.annotation.Nullable
+  public String getCallingNumberCountryA3() {
+    return callingNumberCountryA3;
+  }
+
+  public void setCallingNumberCountryA3(@javax.annotation.Nullable String callingNumberCountryA3) {
+    this.callingNumberCountryA3 = callingNumberCountryA3;
+  }
+
+
+  public ListMessageItem calledNumberCountryA3(@javax.annotation.Nullable String calledNumberCountryA3) {
+    this.calledNumberCountryA3 = calledNumberCountryA3;
+    return this;
+  }
+
+  /**
+   * The A3 country code of the called number.
+   * @return calledNumberCountryA3
+   */
+  @javax.annotation.Nullable
+  public String getCalledNumberCountryA3() {
+    return calledNumberCountryA3;
+  }
+
+  public void setCalledNumberCountryA3(@javax.annotation.Nullable String calledNumberCountryA3) {
+    this.calledNumberCountryA3 = calledNumberCountryA3;
+  }
+
+
+  public ListMessageItem product(@javax.annotation.Nullable String product) {
+    this.product = product;
+    return this;
+  }
+
+  /**
+   * The messaging product associated with the message.
+   * @return product
+   */
+  @javax.annotation.Nullable
+  public String getProduct() {
+    return product;
+  }
+
+  public void setProduct(@javax.annotation.Nullable String product) {
+    this.product = product;
+  }
+
+
+  public ListMessageItem location(@javax.annotation.Nullable String location) {
+    this.location = location;
+    return this;
+  }
+
+  /**
+   * The location ID associated with this message.
+   * @return location
+   */
+  @javax.annotation.Nullable
+  public String getLocation() {
+    return location;
+  }
+
+  public void setLocation(@javax.annotation.Nullable String location) {
+    this.location = location;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -536,7 +680,13 @@ public class ListMessageItem {
         Objects.equals(this.attachmentCount, listMessageItem.attachmentCount) &&
         Objects.equals(this.recipientCount, listMessageItem.recipientCount) &&
         Objects.equals(this.campaignClass, listMessageItem.campaignClass) &&
-        Objects.equals(this.campaignId, listMessageItem.campaignId)&&
+        Objects.equals(this.campaignId, listMessageItem.campaignId) &&
+        Objects.equals(this.bwLatency, listMessageItem.bwLatency) &&
+        Objects.equals(this.carrierLatency, listMessageItem.carrierLatency) &&
+        Objects.equals(this.callingNumberCountryA3, listMessageItem.callingNumberCountryA3) &&
+        Objects.equals(this.calledNumberCountryA3, listMessageItem.calledNumberCountryA3) &&
+        Objects.equals(this.product, listMessageItem.product) &&
+        Objects.equals(this.location, listMessageItem.location)&&
         Objects.equals(this.additionalProperties, listMessageItem.additionalProperties);
   }
 
@@ -546,7 +696,7 @@ public class ListMessageItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(messageId, accountId, sourceTn, destinationTn, messageStatus, messageDirection, messageType, segmentCount, errorCode, receiveTime, carrierName, messageSize, messageLength, attachmentCount, recipientCount, campaignClass, campaignId, additionalProperties);
+    return Objects.hash(messageId, accountId, sourceTn, destinationTn, messageStatus, messageDirection, messageType, segmentCount, errorCode, receiveTime, carrierName, messageSize, messageLength, attachmentCount, recipientCount, campaignClass, campaignId, bwLatency, carrierLatency, callingNumberCountryA3, calledNumberCountryA3, product, location, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -577,6 +727,12 @@ public class ListMessageItem {
     sb.append("    recipientCount: ").append(toIndentedString(recipientCount)).append("\n");
     sb.append("    campaignClass: ").append(toIndentedString(campaignClass)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("    bwLatency: ").append(toIndentedString(bwLatency)).append("\n");
+    sb.append("    carrierLatency: ").append(toIndentedString(carrierLatency)).append("\n");
+    sb.append("    callingNumberCountryA3: ").append(toIndentedString(callingNumberCountryA3)).append("\n");
+    sb.append("    calledNumberCountryA3: ").append(toIndentedString(calledNumberCountryA3)).append("\n");
+    sb.append("    product: ").append(toIndentedString(product)).append("\n");
+    sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -617,6 +773,12 @@ public class ListMessageItem {
     openapiFields.add("recipientCount");
     openapiFields.add("campaignClass");
     openapiFields.add("campaignId");
+    openapiFields.add("bwLatency");
+    openapiFields.add("carrierLatency");
+    openapiFields.add("callingNumberCountryA3");
+    openapiFields.add("calledNumberCountryA3");
+    openapiFields.add("product");
+    openapiFields.add("location");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -667,6 +829,18 @@ public class ListMessageItem {
       }
       if ((jsonObj.get("campaignId") != null && !jsonObj.get("campaignId").isJsonNull()) && !jsonObj.get("campaignId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
+      }
+      if ((jsonObj.get("callingNumberCountryA3") != null && !jsonObj.get("callingNumberCountryA3").isJsonNull()) && !jsonObj.get("callingNumberCountryA3").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `callingNumberCountryA3` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callingNumberCountryA3").toString()));
+      }
+      if ((jsonObj.get("calledNumberCountryA3") != null && !jsonObj.get("calledNumberCountryA3").isJsonNull()) && !jsonObj.get("calledNumberCountryA3").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `calledNumberCountryA3` to be a primitive type in the JSON string but got `%s`", jsonObj.get("calledNumberCountryA3").toString()));
+      }
+      if ((jsonObj.get("product") != null && !jsonObj.get("product").isJsonNull()) && !jsonObj.get("product").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `product` to be a primitive type in the JSON string but got `%s`", jsonObj.get("product").toString()));
+      }
+      if ((jsonObj.get("location") != null && !jsonObj.get("location").isJsonNull()) && !jsonObj.get("location").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
       }
   }
 

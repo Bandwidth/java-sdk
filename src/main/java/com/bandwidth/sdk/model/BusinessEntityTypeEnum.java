@@ -24,20 +24,24 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The type of message. Either SMS or MMS.
+ * The type of registered business. If no option is applicable, please provide \&quot;SOLE_PROPRIETOR\&quot; as a value. Optional until early 2026; required if &#x60;businessRegistrationNumber&#x60; is provided. Available starting October 1st, 2025.
  */
-@JsonAdapter(MessageTypeEnum.Adapter.class)
-public enum MessageTypeEnum {
+@JsonAdapter(BusinessEntityTypeEnum.Adapter.class)
+public enum BusinessEntityTypeEnum {
   
-  SMS("sms"),
+  SOLE_PROPRIETOR("SOLE_PROPRIETOR"),
   
-  MMS("mms"),
+  PRIVATE_PROFIT("PRIVATE_PROFIT"),
   
-  RCS("rcs");
+  PUBLIC_PROFIT("PUBLIC_PROFIT"),
+  
+  NON_PROFIT("NON_PROFIT"),
+  
+  GOVERNMENT("GOVERNMENT");
 
   private String value;
 
-  MessageTypeEnum(String value) {
+  BusinessEntityTypeEnum(String value) {
     this.value = value;
   }
 
@@ -50,31 +54,31 @@ public enum MessageTypeEnum {
     return String.valueOf(value);
   }
 
-  public static MessageTypeEnum fromValue(String value) {
-    for (MessageTypeEnum b : MessageTypeEnum.values()) {
+  public static BusinessEntityTypeEnum fromValue(String value) {
+    for (BusinessEntityTypeEnum b : BusinessEntityTypeEnum.values()) {
       if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    return null;
   }
 
-  public static class Adapter extends TypeAdapter<MessageTypeEnum> {
+  public static class Adapter extends TypeAdapter<BusinessEntityTypeEnum> {
     @Override
-    public void write(final JsonWriter jsonWriter, final MessageTypeEnum enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final BusinessEntityTypeEnum enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public MessageTypeEnum read(final JsonReader jsonReader) throws IOException {
+    public BusinessEntityTypeEnum read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return MessageTypeEnum.fromValue(value);
+      return BusinessEntityTypeEnum.fromValue(value);
     }
   }
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
-    MessageTypeEnum.fromValue(value);
+    BusinessEntityTypeEnum.fromValue(value);
   }
 }
 

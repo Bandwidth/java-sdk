@@ -24,20 +24,32 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The type of message. Either SMS or MMS.
+ * The type of product associated with the message.
  */
-@JsonAdapter(MessageTypeEnum.Adapter.class)
-public enum MessageTypeEnum {
+@JsonAdapter(ProductTypeEnum.Adapter.class)
+public enum ProductTypeEnum {
   
-  SMS("sms"),
+  LOCAL_A2_P("LOCAL_A2P"),
   
-  MMS("mms"),
+  P2_P("P2P"),
   
-  RCS("rcs");
+  SHORT_CODE_REACH("SHORT_CODE_REACH"),
+  
+  TOLL_FREE("TOLL_FREE"),
+  
+  HOSTED_SHORT_CODE("HOSTED_SHORT_CODE"),
+  
+  ALPHA_NUMERIC("ALPHA_NUMERIC"),
+  
+  RBM_MEDIA("RBM_MEDIA"),
+  
+  RBM_RICH("RBM_RICH"),
+  
+  RBM_CONVERSATIONAL("RBM_CONVERSATIONAL");
 
   private String value;
 
-  MessageTypeEnum(String value) {
+  ProductTypeEnum(String value) {
     this.value = value;
   }
 
@@ -50,8 +62,8 @@ public enum MessageTypeEnum {
     return String.valueOf(value);
   }
 
-  public static MessageTypeEnum fromValue(String value) {
-    for (MessageTypeEnum b : MessageTypeEnum.values()) {
+  public static ProductTypeEnum fromValue(String value) {
+    for (ProductTypeEnum b : ProductTypeEnum.values()) {
       if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
@@ -59,22 +71,22 @@ public enum MessageTypeEnum {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<MessageTypeEnum> {
+  public static class Adapter extends TypeAdapter<ProductTypeEnum> {
     @Override
-    public void write(final JsonWriter jsonWriter, final MessageTypeEnum enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final ProductTypeEnum enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public MessageTypeEnum read(final JsonReader jsonReader) throws IOException {
+    public ProductTypeEnum read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return MessageTypeEnum.fromValue(value);
+      return ProductTypeEnum.fromValue(value);
     }
   }
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
-    MessageTypeEnum.fromValue(value);
+    ProductTypeEnum.fromValue(value);
   }
 }
 

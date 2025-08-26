@@ -89,7 +89,7 @@ public class Example {
 
 <a id="listMessages"></a>
 # **listMessages**
-> MessagesList listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, limitTotalCount)
+> MessagesList listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, fromBwLatency, bwQueued, product, location, carrierQueued, fromCarrierLatency, callingNumberCountryA3, calledNumberCountryA3, fromSegmentCount, toSegmentCount, fromMessageSize, toMessageSize, sort, pageToken, limit, limitTotalCount)
 
 List Messages
 
@@ -128,12 +128,24 @@ public class Example {
     String fromDateTime = "2022-09-14T18:20:16.000Z"; // String | The start of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days.
     String toDateTime = "2022-09-14T18:20:16.000Z"; // String | The end of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days.
     String campaignId = "CJEUMDK"; // String | The campaign ID of the message.
+    Integer fromBwLatency = 5; // Integer | The minimum Bandwidth latency of the message in seconds. Only available for accounts with the Advanced Quality Metrics feature enabled.
+    Boolean bwQueued = true; // Boolean | A boolean value indicating whether the message is queued in the Bandwidth network.
+    ProductTypeEnum product = ProductTypeEnum.fromValue("LOCAL_A2P"); // ProductTypeEnum | Messaging product associated with the message.
+    String location = "123ABC"; // String | Location Id associated with the message.
+    Boolean carrierQueued = true; // Boolean | A boolean value indicating whether the message is queued in the carrier network. Only available for OUTBOUND messages from accounts with the Advanced Quality Metrics feature enabled.
+    Integer fromCarrierLatency = 50; // Integer | The minimum carrier latency of the message in seconds. Only available for OUTBOUND messages from accounts with the Advanced Quality Metrics feature enabled.
+    String callingNumberCountryA3 = "USA"; // String | Calling number country in A3 format.
+    String calledNumberCountryA3 = "USA"; // String | Called number country in A3 format.
+    Integer fromSegmentCount = 1; // Integer | Segment count (start range).
+    Integer toSegmentCount = 3; // Integer | Segment count (end range).
+    Integer fromMessageSize = 100; // Integer | Message size (start range).
+    Integer toMessageSize = 120; // Integer | Message size (end range).
     String sort = "sourceTn:desc"; // String | The field and direction to sort by combined with a colon. Direction is either asc or desc.
     String pageToken = "gdEewhcJLQRB5"; // String | A base64 encoded value used for pagination of results.
     Integer limit = 50; // Integer | The maximum records requested in search result. Default 100. The sum of limit and after cannot be more than 10000.
     Boolean limitTotalCount = true; // Boolean | When set to true, the response's totalCount field will have a maximum value of 10,000. When set to false, or excluded, this will give an accurate totalCount of all messages that match the provided filters. If you are experiencing latency, try using this parameter to limit your results.
     try {
-      MessagesList result = apiInstance.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken, limit, limitTotalCount);
+      MessagesList result = apiInstance.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, fromBwLatency, bwQueued, product, location, carrierQueued, fromCarrierLatency, callingNumberCountryA3, calledNumberCountryA3, fromSegmentCount, toSegmentCount, fromMessageSize, toMessageSize, sort, pageToken, limit, limitTotalCount);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MessagesApi#listMessages");
@@ -157,11 +169,23 @@ public class Example {
 | **messageStatus** | [**MessageStatusEnum**](.md)| The status of the message. One of RECEIVED QUEUED SENDING SENT FAILED DELIVERED ACCEPTED UNDELIVERED. | [optional] [enum: RECEIVED, QUEUED, SENDING, SENT, FAILED, DELIVERED, ACCEPTED, UNDELIVERED] |
 | **messageDirection** | [**ListMessageDirectionEnum**](.md)| The direction of the message. One of INBOUND OUTBOUND. | [optional] [enum: INBOUND, OUTBOUND] |
 | **carrierName** | **String**| The name of the carrier used for this message. Possible values include but are not limited to Verizon and TMobile. Special characters need to be encoded using URL encoding (i.e. AT&amp;T should be passed as AT%26T). | [optional] |
-| **messageType** | [**MessageTypeEnum**](.md)| The type of message. Either sms or mms. | [optional] [enum: sms, mms] |
+| **messageType** | [**MessageTypeEnum**](.md)| The type of message. Either sms or mms. | [optional] [enum: sms, mms, rcs] |
 | **errorCode** | **Integer**| The error code of the message. | [optional] |
 | **fromDateTime** | **String**| The start of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. | [optional] |
 | **toDateTime** | **String**| The end of the date range to search in ISO 8601 format. Uses the message receive time. The date range to search in is currently 14 days. | [optional] |
 | **campaignId** | **String**| The campaign ID of the message. | [optional] |
+| **fromBwLatency** | **Integer**| The minimum Bandwidth latency of the message in seconds. Only available for accounts with the Advanced Quality Metrics feature enabled. | [optional] |
+| **bwQueued** | **Boolean**| A boolean value indicating whether the message is queued in the Bandwidth network. | [optional] |
+| **product** | [**ProductTypeEnum**](.md)| Messaging product associated with the message. | [optional] [enum: LOCAL_A2P, P2P, SHORT_CODE_REACH, TOLL_FREE, HOSTED_SHORT_CODE, ALPHA_NUMERIC, RBM_MEDIA, RBM_RICH, RBM_CONVERSATIONAL] |
+| **location** | **String**| Location Id associated with the message. | [optional] |
+| **carrierQueued** | **Boolean**| A boolean value indicating whether the message is queued in the carrier network. Only available for OUTBOUND messages from accounts with the Advanced Quality Metrics feature enabled. | [optional] |
+| **fromCarrierLatency** | **Integer**| The minimum carrier latency of the message in seconds. Only available for OUTBOUND messages from accounts with the Advanced Quality Metrics feature enabled. | [optional] |
+| **callingNumberCountryA3** | **String**| Calling number country in A3 format. | [optional] |
+| **calledNumberCountryA3** | **String**| Called number country in A3 format. | [optional] |
+| **fromSegmentCount** | **Integer**| Segment count (start range). | [optional] |
+| **toSegmentCount** | **Integer**| Segment count (end range). | [optional] |
+| **fromMessageSize** | **Integer**| Message size (start range). | [optional] |
+| **toMessageSize** | **Integer**| Message size (end range). | [optional] |
 | **sort** | **String**| The field and direction to sort by combined with a colon. Direction is either asc or desc. | [optional] |
 | **pageToken** | **String**| A base64 encoded value used for pagination of results. | [optional] |
 | **limit** | **Integer**| The maximum records requested in search result. Default 100. The sum of limit and after cannot be more than 10000. | [optional] |
