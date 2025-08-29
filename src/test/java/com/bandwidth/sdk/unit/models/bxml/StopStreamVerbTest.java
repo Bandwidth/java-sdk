@@ -31,7 +31,7 @@ public class StopStreamVerbTest {
     @Test
     public void stopStreamVerbWithWaitWorks() throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
-        String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><StopStream name=\"name\" wait=\true\"/></Bxml>";
+        String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><StopStream name=\"name\" wait=\"true\"/></Bxml>";
 
         assertThat(new Bxml().with(new StopStream("name", true)).toBxml(jaxbContext), is(expectedBxml));
     };
