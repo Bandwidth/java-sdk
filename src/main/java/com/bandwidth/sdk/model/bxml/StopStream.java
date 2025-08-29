@@ -25,6 +25,7 @@ import lombok.NoArgsConstructor;
  *
  * @param name (str, optional): The name of the stream to stop.
  *      This is either the user selected name when sending the <StartStream> verb, or the system generated name returned in the Media Stream Started webhook if <StartStream> was sent with no name attribute.
+ * @param wait (bool, optional): If true, the BXML interpreter will wait for the stream to stop before processing the next verb.
  */
 public class StopStream implements Verb {
 
@@ -32,6 +33,14 @@ public class StopStream implements Verb {
 
     @XmlAttribute
     protected String name;
+
+    @XmlAttribute
+    protected Boolean wait;
+
+    // Original constructor for backwards compatibility
+    public StopStream(String name) {
+        this.name = name;
+    }
 
     @Override
     public String getVerbName() {
