@@ -842,6 +842,18 @@ public class ListMessageItem {
       if ((jsonObj.get("location") != null && !jsonObj.get("location").isJsonNull()) && !jsonObj.get("location").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
       }
+      if ((jsonObj.get("callingNumberCountryA3") != null && !jsonObj.get("callingNumberCountryA3").isJsonNull()) && !jsonObj.get("callingNumberCountryA3").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `callingNumberCountryA3` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callingNumberCountryA3").toString()));
+      }
+      if ((jsonObj.get("calledNumberCountryA3") != null && !jsonObj.get("calledNumberCountryA3").isJsonNull()) && !jsonObj.get("calledNumberCountryA3").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `calledNumberCountryA3` to be a primitive type in the JSON string but got `%s`", jsonObj.get("calledNumberCountryA3").toString()));
+      }
+      if ((jsonObj.get("product") != null && !jsonObj.get("product").isJsonNull()) && !jsonObj.get("product").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `product` to be a primitive type in the JSON string but got `%s`", jsonObj.get("product").toString()));
+      }
+      if ((jsonObj.get("location") != null && !jsonObj.get("location").isJsonNull()) && !jsonObj.get("location").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

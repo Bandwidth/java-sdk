@@ -13,6 +13,8 @@ import com.bandwidth.sdk.model.MessageStatusEnum;
 import com.bandwidth.sdk.model.MessageTypeEnum;
 import com.bandwidth.sdk.model.MessagesList;
 import com.bandwidth.sdk.model.PriorityEnum;
+import com.bandwidth.sdk.model.ProductTypeEnum;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -50,6 +52,16 @@ public class MessagesApiTest {
     String fromDateTime = null;
     String toDateTime = null;
     String campaignId = null;
+    Integer fromBwLatency = null;
+    Boolean bwQueued = null;
+    ProductTypeEnum product = null;
+    String location = null;
+    String callingNumberCountryA3 = null;
+    String calledNumberCountryA3 = null;
+    Integer fromSegmentCount = null;
+    Integer toSegmentCount = null;
+    Integer fromMessageSize = null;
+    Integer toMessageSize = null;
     String sort = "sourceTn:desc";
     String pageToken = null;
     Integer limit = 50;
@@ -72,9 +84,9 @@ public class MessagesApiTest {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
         MessagesList response = api.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus,
-                messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort,
-                pageToken,
-                limit, false);
+                messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, fromBwLatency,
+                bwQueued, product, location, callingNumberCountryA3, calledNumberCountryA3, fromSegmentCount, toSegmentCount,
+                fromMessageSize, toMessageSize, sort, pageToken, limit, false);
 
         assertThat(response, instanceOf(MessagesList.class));
         assertThat(response.getTotalCount(), greaterThan(0));
@@ -99,9 +111,11 @@ public class MessagesApiTest {
         String pageToken = "gdEewhcJLQRB5"; // Bad Token
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection,
-                        carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken,
-                        limit, false));
+                () -> api.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus,
+                        messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime,
+                        campaignId, fromBwLatency, bwQueued, product, location, callingNumberCountryA3,
+                        calledNumberCountryA3, fromSegmentCount, toSegmentCount, fromMessageSize,
+                        toMessageSize, sort, pageToken, limit, false));
         assertThat(exception.getCode(), is(400));
 
     }
@@ -113,9 +127,11 @@ public class MessagesApiTest {
         Basic.setPassword("bad_password");
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection,
-                        carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, sort, pageToken,
-                        limit, false));
+                () -> api.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus,
+                        messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime,
+                        campaignId, fromBwLatency, bwQueued, product, location, callingNumberCountryA3,
+                        calledNumberCountryA3, fromSegmentCount, toSegmentCount, fromMessageSize,
+                        toMessageSize, sort, pageToken, limit, false));
         assertThat(exception.getCode(), is(401));
     }
 
