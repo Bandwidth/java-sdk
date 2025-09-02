@@ -36,7 +36,6 @@ import com.bandwidth.sdk.model.MessageTypeEnum;
 import com.bandwidth.sdk.model.MessagesList;
 import com.bandwidth.sdk.model.MessagingRequestError;
 import com.bandwidth.sdk.model.ProductTypeEnum;
-import com.bandwidth.sdk.model.ProductTypeEnum;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
