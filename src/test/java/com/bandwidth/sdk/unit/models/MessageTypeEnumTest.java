@@ -30,6 +30,7 @@ public class MessageTypeEnumTest {
     public void testMessageTypeEnum() {
         assertThat(MessageTypeEnum.SMS.toString(), equalTo("sms"));
         assertThat(MessageTypeEnum.MMS.toString(), equalTo("mms"));
+        assertThat(MessageTypeEnum.RCS.toString(), equalTo("rcs"));
     }
 
 }

@@ -9,5 +9,7 @@
 
 * `MMS` (value: `"mms"`)
 
+* `RCS` (value: `"rcs"`)
+
 
 

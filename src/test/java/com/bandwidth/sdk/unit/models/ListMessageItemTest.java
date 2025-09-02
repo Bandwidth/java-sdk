@@ -44,7 +44,12 @@ public class ListMessageItemTest {
             .attachmentCount(10)
             .recipientCount(10)
             .campaignClass("campaignClass")
-            .campaignId("campaignId");
+            .campaignId("campaignId")
+            .bwLatency(100)
+            .callingNumberCountryA3("USA")
+            .calledNumberCountryA3("USA")
+            .product("product")
+            .location("location");
 
     /**
      * Model tests for ListMessageItem
@@ -188,6 +193,46 @@ public class ListMessageItemTest {
     @Test
     public void campaignIdTest() {
         assertThat(model.getCampaignId(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'bwLatency'
+     */
+    @Test
+    public void bwLatencyTest() {
+        assertThat(model.getBwLatency(), instanceOf(Integer.class));
+    }
+
+    /**
+     * Test the property 'callingNumberCountryA3'
+     */
+    @Test
+    public void callingNumberCountryA3Test() {
+        assertThat(model.getCallingNumberCountryA3(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'calledNumberCountryA3'
+     */
+    @Test
+    public void calledNumberCountryA3Test() {
+        assertThat(model.getCalledNumberCountryA3(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'product'
+     */
+    @Test
+    public void productTest() {
+        assertThat(model.getProduct(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'location'
+     */
+    @Test
+    public void locationTest() {
+        assertThat(model.getLocation(), instanceOf(String.class));
     }
 
 }
