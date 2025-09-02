@@ -54,7 +54,7 @@ public class MessagesApiTest {
     String campaignId = null;
     Integer fromBwLatency = null;
     Boolean bwQueued = null;
-    ProductTypeEnum product = ProductTypeEnum.fromValue("TOLL_FREE");
+    ProductTypeEnum product = null;
     String location = null;
     String callingNumberCountryA3 = null;
     String calledNumberCountryA3 = null;
