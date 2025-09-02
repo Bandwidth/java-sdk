@@ -16,6 +16,8 @@ import org.junit.jupiter.api.Test;
 
 import com.bandwidth.sdk.model.VerificationUpdateRequest;
 import com.bandwidth.sdk.model.Address;
+import com.bandwidth.sdk.model.BusinessEntityTypeEnum;
+import com.bandwidth.sdk.model.BusinessRegistrationTypeEnum;
 import com.bandwidth.sdk.model.Contact;
 import com.bandwidth.sdk.model.OptInWorkflow;
 
@@ -38,7 +40,12 @@ public class VerificationUpdateRequestTest {
             .isvReseller("isvReseller")
             .privacyPolicyUrl("privacyPolicyUrl")
             .termsAndConditionsUrl("termsAndConditionsUrl")
-            .businessDba("businessDba");
+            .businessDba("businessDba")
+            .businessRegistrationNumber("businessRegistrationNumber")
+            .businessRegistrationType(BusinessRegistrationTypeEnum.EIN)
+            .businessEntityType(BusinessEntityTypeEnum.PRIVATE_PROFIT)
+            .helpMessageResponse("helpMessageResponse")
+            .ageGatedContent(true);
 
     /**
      * Model tests for VerificationUpdateRequest
@@ -142,6 +149,46 @@ public class VerificationUpdateRequestTest {
     @Test
     public void businessDbaTest() {
         assertThat(model.getBusinessDba(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'businessRegistrationNumber'
+     */
+    @Test
+    public void businessRegistrationNumberTest() {
+        assertThat(model.getBusinessRegistrationNumber(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'businessRegistrationType'
+     */
+    @Test
+    public void businessRegistrationTypeTest() {
+        assertThat(model.getBusinessRegistrationType(), instanceOf(BusinessRegistrationTypeEnum.class));
+    }
+
+    /**
+     * Test the property 'businessEntityType'
+     */
+    @Test
+    public void businessEntityTypeTest() {
+        assertThat(model.getBusinessEntityType(), instanceOf(BusinessEntityTypeEnum.class));
+    }
+
+    /**
+     * Test the property 'helpMessageResponse'
+     */
+    @Test
+    public void helpMessageResponseTest() {
+        assertThat(model.getHelpMessageResponse(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'ageGatedContent'
+     */
+    @Test
+    public void ageGatedContentTest() {
+        assertThat(model.getAgeGatedContent(), instanceOf(Boolean.class));
     }
 
 }

@@ -15,6 +15,8 @@ package com.bandwidth.sdk.unit.models;
 import org.junit.jupiter.api.Test;
 
 import com.bandwidth.sdk.model.TfvSubmissionInfo;
+import com.bandwidth.sdk.model.BusinessEntityTypeEnum;
+import com.bandwidth.sdk.model.BusinessRegistrationTypeEnum;
 import com.bandwidth.sdk.model.Address;
 import com.bandwidth.sdk.model.Contact;
 import com.bandwidth.sdk.model.OptInWorkflow;
@@ -38,7 +40,10 @@ public class TfvSubmissionInfoTest {
             .isvReseller("isvReseller")
             .privacyPolicyUrl("privacyPolicyUrl")
             .termsAndConditionsUrl("termsAndConditionsUrl")
-            .businessDba("businessDba");
+            .businessDba("businessDba")
+            .businessRegistrationNumber("businessRegistrationNumber")
+            .businessRegistrationType(BusinessRegistrationTypeEnum.EIN)
+            .businessEntityType(BusinessEntityTypeEnum.PRIVATE_PROFIT);
 
     /**
      * Model tests for TfvSubmissionInfo
@@ -142,6 +147,29 @@ public class TfvSubmissionInfoTest {
     @Test
     public void businessDbaTest() {
         assertThat(model.getBusinessDba(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'businessRegistrationNumber'
+     */
+    @Test
+    public void businessRegistrationNumberTest() {
+        assertThat(model.getBusinessRegistrationNumber(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'businessRegistrationType'
+     */    @Test
+    public void businessRegistrationTypeTest() {
+        assertThat(model.getBusinessRegistrationType(), instanceOf(BusinessRegistrationTypeEnum.class));
+    }
+
+    /**
+     * Test the property 'businessEntityType'
+     */
+    @Test
+    public void businessEntityTypeTest() {
+        assertThat(model.getBusinessEntityType(), instanceOf(BusinessEntityTypeEnum.class));
     }
 
 }
