@@ -145,6 +145,11 @@ public class ListMessageItem {
   @javax.annotation.Nullable
   private Integer bwLatency;
 
+  public static final String SERIALIZED_NAME_CARRIER_LATENCY = "carrierLatency";
+  @SerializedName(SERIALIZED_NAME_CARRIER_LATENCY)
+  @javax.annotation.Nullable
+  private Integer carrierLatency;
+
   public static final String SERIALIZED_NAME_CALLING_NUMBER_COUNTRY_A3 = "callingNumberCountryA3";
   @SerializedName(SERIALIZED_NAME_CALLING_NUMBER_COUNTRY_A3)
   @javax.annotation.Nullable
@@ -510,6 +515,25 @@ public class ListMessageItem {
   }
 
 
+  public ListMessageItem carrierLatency(@javax.annotation.Nullable Integer carrierLatency) {
+    this.carrierLatency = carrierLatency;
+    return this;
+  }
+
+  /**
+   * The carrier latency of the message in seconds. Only available for OUTBOUND messages from accounts with the Advanced Quality Metrics feature enabled.
+   * @return carrierLatency
+   */
+  @javax.annotation.Nullable
+  public Integer getCarrierLatency() {
+    return carrierLatency;
+  }
+
+  public void setCarrierLatency(@javax.annotation.Nullable Integer carrierLatency) {
+    this.carrierLatency = carrierLatency;
+  }
+
+
   public ListMessageItem callingNumberCountryA3(@javax.annotation.Nullable String callingNumberCountryA3) {
     this.callingNumberCountryA3 = callingNumberCountryA3;
     return this;
@@ -658,6 +682,7 @@ public class ListMessageItem {
         Objects.equals(this.campaignClass, listMessageItem.campaignClass) &&
         Objects.equals(this.campaignId, listMessageItem.campaignId) &&
         Objects.equals(this.bwLatency, listMessageItem.bwLatency) &&
+        Objects.equals(this.carrierLatency, listMessageItem.carrierLatency) &&
         Objects.equals(this.callingNumberCountryA3, listMessageItem.callingNumberCountryA3) &&
         Objects.equals(this.calledNumberCountryA3, listMessageItem.calledNumberCountryA3) &&
         Objects.equals(this.product, listMessageItem.product) &&
@@ -671,7 +696,7 @@ public class ListMessageItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(messageId, accountId, sourceTn, destinationTn, messageStatus, messageDirection, messageType, segmentCount, errorCode, receiveTime, carrierName, messageSize, messageLength, attachmentCount, recipientCount, campaignClass, campaignId, bwLatency, callingNumberCountryA3, calledNumberCountryA3, product, location, additionalProperties);
+    return Objects.hash(messageId, accountId, sourceTn, destinationTn, messageStatus, messageDirection, messageType, segmentCount, errorCode, receiveTime, carrierName, messageSize, messageLength, attachmentCount, recipientCount, campaignClass, campaignId, bwLatency, carrierLatency, callingNumberCountryA3, calledNumberCountryA3, product, location, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -703,6 +728,7 @@ public class ListMessageItem {
     sb.append("    campaignClass: ").append(toIndentedString(campaignClass)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    bwLatency: ").append(toIndentedString(bwLatency)).append("\n");
+    sb.append("    carrierLatency: ").append(toIndentedString(carrierLatency)).append("\n");
     sb.append("    callingNumberCountryA3: ").append(toIndentedString(callingNumberCountryA3)).append("\n");
     sb.append("    calledNumberCountryA3: ").append(toIndentedString(calledNumberCountryA3)).append("\n");
     sb.append("    product: ").append(toIndentedString(product)).append("\n");
@@ -748,6 +774,7 @@ public class ListMessageItem {
     openapiFields.add("campaignClass");
     openapiFields.add("campaignId");
     openapiFields.add("bwLatency");
+    openapiFields.add("carrierLatency");
     openapiFields.add("callingNumberCountryA3");
     openapiFields.add("calledNumberCountryA3");
     openapiFields.add("product");

@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -61,6 +62,11 @@ public class OptInWorkflow {
   @SerializedName(SERIALIZED_NAME_IMAGE_URLS)
   @javax.annotation.Nonnull
   private List<String> imageUrls = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_CONFIRMATION_RESPONSE = "confirmationResponse";
+  @SerializedName(SERIALIZED_NAME_CONFIRMATION_RESPONSE)
+  @javax.annotation.Nullable
+  private String confirmationResponse;
 
   public OptInWorkflow() {
   }
@@ -108,6 +114,25 @@ public class OptInWorkflow {
 
   public void setImageUrls(@javax.annotation.Nonnull List<String> imageUrls) {
     this.imageUrls = imageUrls;
+  }
+
+
+  public OptInWorkflow confirmationResponse(@javax.annotation.Nullable String confirmationResponse) {
+    this.confirmationResponse = confirmationResponse;
+    return this;
+  }
+
+  /**
+   * Get confirmationResponse
+   * @return confirmationResponse
+   */
+  @javax.annotation.Nullable
+  public String getConfirmationResponse() {
+    return confirmationResponse;
+  }
+
+  public void setConfirmationResponse(@javax.annotation.Nullable String confirmationResponse) {
+    this.confirmationResponse = confirmationResponse;
   }
 
   /**
@@ -166,13 +191,25 @@ public class OptInWorkflow {
     }
     OptInWorkflow optInWorkflow = (OptInWorkflow) o;
     return Objects.equals(this.description, optInWorkflow.description) &&
-        Objects.equals(this.imageUrls, optInWorkflow.imageUrls)&&
+        Objects.equals(this.imageUrls, optInWorkflow.imageUrls) &&
+        Objects.equals(this.confirmationResponse, optInWorkflow.confirmationResponse)&&
         Objects.equals(this.additionalProperties, optInWorkflow.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, imageUrls, additionalProperties);
+    return Objects.hash(description, imageUrls, confirmationResponse, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -181,6 +218,7 @@ public class OptInWorkflow {
     sb.append("class OptInWorkflow {\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    imageUrls: ").append(toIndentedString(imageUrls)).append("\n");
+    sb.append("    confirmationResponse: ").append(toIndentedString(confirmationResponse)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -206,6 +244,7 @@ public class OptInWorkflow {
     openapiFields = new HashSet<String>();
     openapiFields.add("description");
     openapiFields.add("imageUrls");
+    openapiFields.add("confirmationResponse");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -241,6 +280,9 @@ public class OptInWorkflow {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("imageUrls").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `imageUrls` to be an array in the JSON string but got `%s`", jsonObj.get("imageUrls").toString()));
+      }
+      if ((jsonObj.get("confirmationResponse") != null && !jsonObj.get("confirmationResponse").isJsonNull()) && !jsonObj.get("confirmationResponse").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `confirmationResponse` to be a primitive type in the JSON string but got `%s`", jsonObj.get("confirmationResponse").toString()));
       }
   }
 

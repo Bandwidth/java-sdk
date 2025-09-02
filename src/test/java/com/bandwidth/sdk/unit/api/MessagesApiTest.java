@@ -83,7 +83,7 @@ public class MessagesApiTest {
     public void testListMessages() throws ApiException {
         ApiResponse<MessagesList> response = api.listMessagesWithHttpInfo(
                 BW_ACCOUNT_ID, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null, null);
+                null, null, null, null, null, null, null, null, null, null, null, null, null);
 
         assertThat(response.getStatusCode(), is(200));
         assertThat(response.getData(), instanceOf(MessagesList.class));
@@ -114,6 +114,7 @@ public class MessagesApiTest {
         assertThat(response.getData().getMessages().get(0).getCampaignClass(), instanceOf(String.class));
         assertThat(response.getData().getMessages().get(0).getCampaignId(), instanceOf(String.class));
         assertThat(response.getData().getMessages().get(0).getBwLatency(), instanceOf(Integer.class));
+        assertThat(response.getData().getMessages().get(0).getCarrierLatency(), instanceOf(Integer.class));
         assertThat(response.getData().getMessages().get(0).getCallingNumberCountryA3(), instanceOf(String.class));
         assertThat(response.getData().getMessages().get(0).getCalledNumberCountryA3(), instanceOf(String.class));
         assertThat(response.getData().getMessages().get(0).getProduct(), instanceOf(String.class));

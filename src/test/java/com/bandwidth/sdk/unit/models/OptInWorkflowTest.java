@@ -28,7 +28,8 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 public class OptInWorkflowTest {
     private final OptInWorkflow model = new OptInWorkflow()
             .description("description")
-            .imageUrls(new ArrayList<String>(Arrays.asList("imageUrl")));
+            .imageUrls(new ArrayList<String>(Arrays.asList("imageUrl")))
+            .confirmationResponse("confirmationResponse");
 
     /**
      * Model tests for OptInWorkflow
@@ -52,6 +53,14 @@ public class OptInWorkflowTest {
     @Test
     public void imageUrlsTest() {
         assertThat(model.getImageUrls(), instanceOf(List.class));
+    }
+
+    /**
+     * Test the property 'confirmationResponse'
+     */
+    @Test
+    public void confirmationResponseTest() {
+        assertThat(model.getConfirmationResponse(), instanceOf(String.class));
     }
 
 }

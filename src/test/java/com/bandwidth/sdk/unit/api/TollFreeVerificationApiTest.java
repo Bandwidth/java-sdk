@@ -23,6 +23,8 @@ import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.api.TollFreeVerificationApi;
 import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.model.Address;
+import com.bandwidth.sdk.model.BusinessEntityTypeEnum;
+import com.bandwidth.sdk.model.BusinessRegistrationTypeEnum;
 import com.bandwidth.sdk.model.Contact;
 import com.bandwidth.sdk.model.LinksObject;
 import com.bandwidth.sdk.model.OptInWorkflow;
@@ -186,12 +188,18 @@ public class TollFreeVerificationApiTest {
                 .productionMessageContent("productionMessageContent")
                 .optInWorkflow(new OptInWorkflow()
                         .description("description")
-                        .imageUrls(List.of("https://example.com")))
+                        .imageUrls(List.of("https://example.com"))
+                        .confirmationResponse("confirmationResponse"))
                 .additionalInformation("additionalInformation")
                 .isvReseller("isvReseller")
                 .privacyPolicyUrl("privacyPolicyUrl")
                 .termsAndConditionsUrl("termsAndConditionsUrl")
-                .businessDba("businessDba");
+                .businessDba("businessDba")
+                .businessRegistrationNumber("businessRegistrationNumber")
+                .businessRegistrationType(BusinessRegistrationTypeEnum.EIN)
+                .businessEntityType(BusinessEntityTypeEnum.PRIVATE_PROFIT)
+                .helpMessageResponse("helpMessageResponse")
+                .ageGatedContent(true);
 
         ApiResponse<Void> response = api.requestTollFreeVerificationWithHttpInfo(BW_ACCOUNT_ID, verificationRequest);
 

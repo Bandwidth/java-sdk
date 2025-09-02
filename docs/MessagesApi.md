@@ -89,7 +89,7 @@ public class Example {
 
 <a id="listMessages"></a>
 # **listMessages**
-> MessagesList listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, fromBwLatency, bwQueued, product, location, callingNumberCountryA3, calledNumberCountryA3, fromSegmentCount, toSegmentCount, fromMessageSize, toMessageSize, sort, pageToken, limit, limitTotalCount)
+> MessagesList listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, fromBwLatency, bwQueued, product, location, carrierQueued, fromCarrierLatency, callingNumberCountryA3, calledNumberCountryA3, fromSegmentCount, toSegmentCount, fromMessageSize, toMessageSize, sort, pageToken, limit, limitTotalCount)
 
 List Messages
 
@@ -132,6 +132,8 @@ public class Example {
     Boolean bwQueued = true; // Boolean | A boolean value indicating whether the message is queued in the Bandwidth network.
     ProductTypeEnum product = ProductTypeEnum.fromValue("LOCAL_A2P"); // ProductTypeEnum | Messaging product associated with the message.
     String location = "123ABC"; // String | Location Id associated with the message.
+    Boolean carrierQueued = true; // Boolean | A boolean value indicating whether the message is queued in the carrier network. Only available for OUTBOUND messages from accounts with the Advanced Quality Metrics feature enabled.
+    Integer fromCarrierLatency = 50; // Integer | The minimum carrier latency of the message in seconds. Only available for OUTBOUND messages from accounts with the Advanced Quality Metrics feature enabled.
     String callingNumberCountryA3 = "USA"; // String | Calling number country in A3 format.
     String calledNumberCountryA3 = "USA"; // String | Called number country in A3 format.
     Integer fromSegmentCount = 1; // Integer | Segment count (start range).
@@ -143,7 +145,7 @@ public class Example {
     Integer limit = 50; // Integer | The maximum records requested in search result. Default 100. The sum of limit and after cannot be more than 10000.
     Boolean limitTotalCount = true; // Boolean | When set to true, the response's totalCount field will have a maximum value of 10,000. When set to false, or excluded, this will give an accurate totalCount of all messages that match the provided filters. If you are experiencing latency, try using this parameter to limit your results.
     try {
-      MessagesList result = apiInstance.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, fromBwLatency, bwQueued, product, location, callingNumberCountryA3, calledNumberCountryA3, fromSegmentCount, toSegmentCount, fromMessageSize, toMessageSize, sort, pageToken, limit, limitTotalCount);
+      MessagesList result = apiInstance.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, fromBwLatency, bwQueued, product, location, carrierQueued, fromCarrierLatency, callingNumberCountryA3, calledNumberCountryA3, fromSegmentCount, toSegmentCount, fromMessageSize, toMessageSize, sort, pageToken, limit, limitTotalCount);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MessagesApi#listMessages");
@@ -176,6 +178,8 @@ public class Example {
 | **bwQueued** | **Boolean**| A boolean value indicating whether the message is queued in the Bandwidth network. | [optional] |
 | **product** | [**ProductTypeEnum**](.md)| Messaging product associated with the message. | [optional] [enum: LOCAL_A2P, P2P, SHORT_CODE_REACH, TOLL_FREE, HOSTED_SHORT_CODE, ALPHA_NUMERIC, RBM_MEDIA, RBM_RICH, RBM_CONVERSATIONAL] |
 | **location** | **String**| Location Id associated with the message. | [optional] |
+| **carrierQueued** | **Boolean**| A boolean value indicating whether the message is queued in the carrier network. Only available for OUTBOUND messages from accounts with the Advanced Quality Metrics feature enabled. | [optional] |
+| **fromCarrierLatency** | **Integer**| The minimum carrier latency of the message in seconds. Only available for OUTBOUND messages from accounts with the Advanced Quality Metrics feature enabled. | [optional] |
 | **callingNumberCountryA3** | **String**| Calling number country in A3 format. | [optional] |
 | **calledNumberCountryA3** | **String**| Called number country in A3 format. | [optional] |
 | **fromSegmentCount** | **Integer**| Segment count (start range). | [optional] |

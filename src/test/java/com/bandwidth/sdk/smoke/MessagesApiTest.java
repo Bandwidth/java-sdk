@@ -56,6 +56,8 @@ public class MessagesApiTest {
     Boolean bwQueued = null;
     ProductTypeEnum product = null;
     String location = null;
+    Boolean carrierQueued = null;
+    Integer fromCarrierLatency = null;
     String callingNumberCountryA3 = null;
     String calledNumberCountryA3 = null;
     Integer fromSegmentCount = null;
@@ -84,9 +86,10 @@ public class MessagesApiTest {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
         MessagesList response = api.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus,
-                messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, fromBwLatency,
-                bwQueued, product, location, callingNumberCountryA3, calledNumberCountryA3, fromSegmentCount, toSegmentCount,
-                fromMessageSize, toMessageSize, sort, pageToken, limit, false);
+                messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId,
+                fromBwLatency, bwQueued, product, location, carrierQueued, fromCarrierLatency, callingNumberCountryA3,
+                calledNumberCountryA3, fromSegmentCount, toSegmentCount, fromMessageSize, toMessageSize,
+                sort, pageToken, limit, false);
 
         assertThat(response, instanceOf(MessagesList.class));
         assertThat(response.getTotalCount(), greaterThan(0));
@@ -113,9 +116,9 @@ public class MessagesApiTest {
         ApiException exception = Assertions.assertThrows(ApiException.class,
                 () -> api.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus,
                         messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime,
-                        campaignId, fromBwLatency, bwQueued, product, location, callingNumberCountryA3,
-                        calledNumberCountryA3, fromSegmentCount, toSegmentCount, fromMessageSize,
-                        toMessageSize, sort, pageToken, limit, false));
+                        campaignId, fromBwLatency, bwQueued, product, location, carrierQueued,
+                        fromCarrierLatency, callingNumberCountryA3, calledNumberCountryA3, fromSegmentCount,
+                        toSegmentCount, fromMessageSize, toMessageSize, sort, pageToken, limit, false));
         assertThat(exception.getCode(), is(400));
 
     }
@@ -129,9 +132,9 @@ public class MessagesApiTest {
         ApiException exception = Assertions.assertThrows(ApiException.class,
                 () -> api.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus,
                         messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime,
-                        campaignId, fromBwLatency, bwQueued, product, location, callingNumberCountryA3,
-                        calledNumberCountryA3, fromSegmentCount, toSegmentCount, fromMessageSize,
-                        toMessageSize, sort, pageToken, limit, false));
+                        campaignId, fromBwLatency, bwQueued, product, location, carrierQueued,
+                        fromCarrierLatency, callingNumberCountryA3, calledNumberCountryA3, fromSegmentCount,
+                        toSegmentCount, fromMessageSize, toMessageSize, sort, pageToken, limit, false));
         assertThat(exception.getCode(), is(401));
     }
 

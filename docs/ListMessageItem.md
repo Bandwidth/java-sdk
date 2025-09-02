@@ -25,6 +25,7 @@
 |**campaignClass** | **String** | The campaign class of the message if it has one. |  [optional] |
 |**campaignId** | **String** | The campaign ID of the message if it has one. |  [optional] |
 |**bwLatency** | **Integer** | The Bandwidth latency of the message in seconds. Only available for accounts with the Advanced Quality Metrics feature enabled. |  [optional] |
+|**carrierLatency** | **Integer** | The carrier latency of the message in seconds. Only available for OUTBOUND messages from accounts with the Advanced Quality Metrics feature enabled. |  [optional] |
 |**callingNumberCountryA3** | **String** | The A3 country code of the calling number. |  [optional] |
 |**calledNumberCountryA3** | **String** | The A3 country code of the called number. |  [optional] |
 |**product** | **String** | The messaging product associated with the message. |  [optional] |
