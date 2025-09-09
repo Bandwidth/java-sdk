@@ -4,16 +4,16 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteRealTimeTranscription**](TranscriptionsApi.md#deleteRealTimeTranscription) | **DELETE** /accounts/{accountId}/calls/{callId}/transcriptions/{transcriptionId} | Delete a specific transcription |
-| [**getRealTimeTranscription**](TranscriptionsApi.md#getRealTimeTranscription) | **GET** /accounts/{accountId}/calls/{callId}/transcriptions/{transcriptionId} | Retrieve a specific transcription |
-| [**listRealTimeTranscriptions**](TranscriptionsApi.md#listRealTimeTranscriptions) | **GET** /accounts/{accountId}/calls/{callId}/transcriptions | Enumerate transcriptions made with StartTranscription |
+| [**deleteRealTimeTranscription**](TranscriptionsApi.md#deleteRealTimeTranscription) | **DELETE** /accounts/{accountId}/calls/{callId}/transcriptions/{transcriptionId} | Delete Real-time Transcription |
+| [**getRealTimeTranscription**](TranscriptionsApi.md#getRealTimeTranscription) | **GET** /accounts/{accountId}/calls/{callId}/transcriptions/{transcriptionId} | Get Real-time Transcription |
+| [**listRealTimeTranscriptions**](TranscriptionsApi.md#listRealTimeTranscriptions) | **GET** /accounts/{accountId}/calls/{callId}/transcriptions | List Real-time Transcriptions |
 
 
 <a id="deleteRealTimeTranscription"></a>
 # **deleteRealTimeTranscription**
 > deleteRealTimeTranscription(accountId, callId, transcriptionId)
 
-Delete a specific transcription
+Delete Real-time Transcription
 
 Delete the specified transcription that was created on this call via [startTranscription](/docs/voice/bxml/startTranscription).  Note: After the deletion is requested and a &#x60;200&#x60; is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
 
@@ -92,7 +92,7 @@ null (empty response body)
 # **getRealTimeTranscription**
 > CallTranscriptionResponse getRealTimeTranscription(accountId, callId, transcriptionId)
 
-Retrieve a specific transcription
+Get Real-time Transcription
 
 Retrieve the specified transcription that was created on this call via [startTranscription](/docs/voice/bxml/startTranscription).
 
@@ -172,9 +172,9 @@ public class Example {
 # **listRealTimeTranscriptions**
 > List&lt;CallTranscriptionMetadata&gt; listRealTimeTranscriptions(accountId, callId)
 
-Enumerate transcriptions made with StartTranscription
+List Real-time Transcriptions
 
-Enumerates the transcriptions created on this call via [startTranscription](/docs/voice/bxml/startTranscription).
+List the transcriptions created on this call via [startTranscription](/docs/voice/bxml/startTranscription).
 
 ### Example
 ```java

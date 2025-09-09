@@ -8,7 +8,7 @@ The data returned in a multichannel message response.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**messageId** | **String** | The ID of the message. |  |
+|**id** | **String** | The ID of the message. |  |
 |**time** | **OffsetDateTime** | The time the message was received by the Bandwidth API. |  |
 |**direction** | **MessageDirectionEnum** |  |  |
 |**to** | **Set&lt;String&gt;** | The destination phone number(s) of the message, in E164 format. |  |

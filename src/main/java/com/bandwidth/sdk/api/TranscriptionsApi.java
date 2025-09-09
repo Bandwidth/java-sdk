@@ -166,7 +166,7 @@ public class TranscriptionsApi {
     }
 
     /**
-     * Delete a specific transcription
+     * Delete Real-time Transcription
      * Delete the specified transcription that was created on this call via [startTranscription](/docs/voice/bxml/startTranscription).  Note: After the deletion is requested and a &#x60;200&#x60; is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param callId Programmable Voice API Call ID. (required)
@@ -192,7 +192,7 @@ public class TranscriptionsApi {
     }
 
     /**
-     * Delete a specific transcription
+     * Delete Real-time Transcription
      * Delete the specified transcription that was created on this call via [startTranscription](/docs/voice/bxml/startTranscription).  Note: After the deletion is requested and a &#x60;200&#x60; is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param callId Programmable Voice API Call ID. (required)
@@ -220,7 +220,7 @@ public class TranscriptionsApi {
     }
 
     /**
-     * Delete a specific transcription (asynchronously)
+     * Delete Real-time Transcription (asynchronously)
      * Delete the specified transcription that was created on this call via [startTranscription](/docs/voice/bxml/startTranscription).  Note: After the deletion is requested and a &#x60;200&#x60; is returned, the transcription will not be accessible anymore. However, it is not deleted immediately. This deletion process, while transparent and irreversible, can take an additional 24 to 48 hours.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param callId Programmable Voice API Call ID. (required)
@@ -341,7 +341,7 @@ public class TranscriptionsApi {
     }
 
     /**
-     * Retrieve a specific transcription
+     * Get Real-time Transcription
      * Retrieve the specified transcription that was created on this call via [startTranscription](/docs/voice/bxml/startTranscription).
      * @param accountId Your Bandwidth Account ID. (required)
      * @param callId Programmable Voice API Call ID. (required)
@@ -369,7 +369,7 @@ public class TranscriptionsApi {
     }
 
     /**
-     * Retrieve a specific transcription
+     * Get Real-time Transcription
      * Retrieve the specified transcription that was created on this call via [startTranscription](/docs/voice/bxml/startTranscription).
      * @param accountId Your Bandwidth Account ID. (required)
      * @param callId Programmable Voice API Call ID. (required)
@@ -398,7 +398,7 @@ public class TranscriptionsApi {
     }
 
     /**
-     * Retrieve a specific transcription (asynchronously)
+     * Get Real-time Transcription (asynchronously)
      * Retrieve the specified transcription that was created on this call via [startTranscription](/docs/voice/bxml/startTranscription).
      * @param accountId Your Bandwidth Account ID. (required)
      * @param callId Programmable Voice API Call ID. (required)
@@ -513,8 +513,8 @@ public class TranscriptionsApi {
     }
 
     /**
-     * Enumerate transcriptions made with StartTranscription
-     * Enumerates the transcriptions created on this call via [startTranscription](/docs/voice/bxml/startTranscription).
+     * List Real-time Transcriptions
+     * List the transcriptions created on this call via [startTranscription](/docs/voice/bxml/startTranscription).
      * @param accountId Your Bandwidth Account ID. (required)
      * @param callId Programmable Voice API Call ID. (required)
      * @return List&lt;CallTranscriptionMetadata&gt;
@@ -540,8 +540,8 @@ public class TranscriptionsApi {
     }
 
     /**
-     * Enumerate transcriptions made with StartTranscription
-     * Enumerates the transcriptions created on this call via [startTranscription](/docs/voice/bxml/startTranscription).
+     * List Real-time Transcriptions
+     * List the transcriptions created on this call via [startTranscription](/docs/voice/bxml/startTranscription).
      * @param accountId Your Bandwidth Account ID. (required)
      * @param callId Programmable Voice API Call ID. (required)
      * @return ApiResponse&lt;List&lt;CallTranscriptionMetadata&gt;&gt;
@@ -568,8 +568,8 @@ public class TranscriptionsApi {
     }
 
     /**
-     * Enumerate transcriptions made with StartTranscription (asynchronously)
-     * Enumerates the transcriptions created on this call via [startTranscription](/docs/voice/bxml/startTranscription).
+     * List Real-time Transcriptions (asynchronously)
+     * List the transcriptions created on this call via [startTranscription](/docs/voice/bxml/startTranscription).
      * @param accountId Your Bandwidth Account ID. (required)
      * @param callId Programmable Voice API Call ID. (required)
      * @param _callback The callback to be executed when the API call finishes

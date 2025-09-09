@@ -131,7 +131,7 @@ public class ConferenceMember {
   }
 
   /**
-   * A URL that may be used to retrieve information about or update the state of this conference member. This is the URL of this member&#39;s [Get Conference Member](/apis/voice/#operation/getConferenceMember) endpoint and [Modify Conference Member](/apis/voice/#operation/updateConferenceMember) endpoint.
+   * A URL that may be used to retrieve information about or update the state of this conference member. This is the URL of this member&#39;s [Get Conference Member](/apis/voice-apis/voice/#tag/Conferences/operation/getConferenceMember) endpoint and [Modify Conference Member](/apis/voice-apis/voice/#tag/Conferences/operation/updateConferenceMember) endpoint.
    * @return memberUrl
    */
   @javax.annotation.Nullable
