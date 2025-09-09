@@ -32,7 +32,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 public class MultiChannelMessageResponseDataTest {
     private final MultiChannelMessageResponseData model = new MultiChannelMessageResponseData()
-            .messageId("messageId")
+            .id("messageId")
             .time(OffsetDateTime.now())
             .direction(MessageDirectionEnum.IN)
             .to(Sets.newSet("to"))
@@ -50,11 +50,11 @@ public class MultiChannelMessageResponseDataTest {
     }
 
     /**
-     * Test the property 'messageId'
+     * Test the property 'id'
      */
     @Test
-    public void messageIdTest() {
-        assertThat(model.getMessageId(), instanceOf(String.class));
+    public void idTest() {
+        assertThat(model.getId(), instanceOf(String.class));
     }
 
     /**
