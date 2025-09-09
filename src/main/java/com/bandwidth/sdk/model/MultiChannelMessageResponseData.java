@@ -58,10 +58,10 @@ import com.bandwidth.sdk.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class MultiChannelMessageResponseData {
-  public static final String SERIALIZED_NAME_MESSAGE_ID = "messageId";
-  @SerializedName(SERIALIZED_NAME_MESSAGE_ID)
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nonnull
-  private String messageId;
+  private String id;
 
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)
@@ -101,22 +101,22 @@ public class MultiChannelMessageResponseData {
   public MultiChannelMessageResponseData() {
   }
 
-  public MultiChannelMessageResponseData messageId(@javax.annotation.Nonnull String messageId) {
-    this.messageId = messageId;
+  public MultiChannelMessageResponseData id(@javax.annotation.Nonnull String id) {
+    this.id = id;
     return this;
   }
 
   /**
    * The ID of the message.
-   * @return messageId
+   * @return id
    */
   @javax.annotation.Nonnull
-  public String getMessageId() {
-    return messageId;
+  public String getId() {
+    return id;
   }
 
-  public void setMessageId(@javax.annotation.Nonnull String messageId) {
-    this.messageId = messageId;
+  public void setId(@javax.annotation.Nonnull String id) {
+    this.id = id;
   }
 
 
@@ -323,7 +323,7 @@ public class MultiChannelMessageResponseData {
       return false;
     }
     MultiChannelMessageResponseData multiChannelMessageResponseData = (MultiChannelMessageResponseData) o;
-    return Objects.equals(this.messageId, multiChannelMessageResponseData.messageId) &&
+    return Objects.equals(this.id, multiChannelMessageResponseData.id) &&
         Objects.equals(this.time, multiChannelMessageResponseData.time) &&
         Objects.equals(this.direction, multiChannelMessageResponseData.direction) &&
         Objects.equals(this.to, multiChannelMessageResponseData.to) &&
@@ -336,14 +336,14 @@ public class MultiChannelMessageResponseData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(messageId, time, direction, to, channelList, tag, priority, expiration, additionalProperties);
+    return Objects.hash(id, time, direction, to, channelList, tag, priority, expiration, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class MultiChannelMessageResponseData {\n");
-    sb.append("    messageId: ").append(toIndentedString(messageId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    time: ").append(toIndentedString(time)).append("\n");
     sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("    to: ").append(toIndentedString(to)).append("\n");
@@ -374,7 +374,7 @@ public class MultiChannelMessageResponseData {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("messageId");
+    openapiFields.add("id");
     openapiFields.add("time");
     openapiFields.add("direction");
     openapiFields.add("to");
@@ -385,7 +385,7 @@ public class MultiChannelMessageResponseData {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("messageId");
+    openapiRequiredFields.add("id");
     openapiRequiredFields.add("time");
     openapiRequiredFields.add("direction");
     openapiRequiredFields.add("to");
@@ -412,8 +412,8 @@ public class MultiChannelMessageResponseData {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("messageId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `messageId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("messageId").toString()));
+      if (!jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       // validate the required field `direction`
       MessageDirectionEnum.validateJsonElement(jsonObj.get("direction"));
