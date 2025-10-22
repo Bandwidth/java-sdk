@@ -14,6 +14,7 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.bandwidth.sdk.model.FileFormatEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -46,13 +47,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
  * ConferenceRecordingMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class ConferenceRecordingMetadata {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
@@ -468,22 +470,10 @@ public class ConferenceRecordingMetadata {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("accountId");
-    openapiFields.add("conferenceId");
-    openapiFields.add("name");
-    openapiFields.add("recordingId");
-    openapiFields.add("duration");
-    openapiFields.add("channels");
-    openapiFields.add("startTime");
-    openapiFields.add("endTime");
-    openapiFields.add("fileFormat");
-    openapiFields.add("status");
-    openapiFields.add("mediaUrl");
-    openapiFields.add("recordingName");
+    openapiFields = new HashSet<String>(Arrays.asList("accountId", "conferenceId", "name", "recordingId", "duration", "channels", "startTime", "endTime", "fileFormat", "status", "mediaUrl", "recordingName"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -495,37 +485,37 @@ public class ConferenceRecordingMetadata {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ConferenceRecordingMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ConferenceRecordingMetadata is not found in the empty JSON string", ConferenceRecordingMetadata.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in ConferenceRecordingMetadata is not found in the empty JSON string", ConferenceRecordingMetadata.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("accountId") != null && !jsonObj.get("accountId").isJsonNull()) && !jsonObj.get("accountId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `accountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountId").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `accountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountId").toString()));
       }
       if ((jsonObj.get("conferenceId") != null && !jsonObj.get("conferenceId").isJsonNull()) && !jsonObj.get("conferenceId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `conferenceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conferenceId").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `conferenceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conferenceId").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("recordingId") != null && !jsonObj.get("recordingId").isJsonNull()) && !jsonObj.get("recordingId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `recordingId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("recordingId").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `recordingId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("recordingId").toString()));
       }
       if ((jsonObj.get("duration") != null && !jsonObj.get("duration").isJsonNull()) && !jsonObj.get("duration").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `duration` to be a primitive type in the JSON string but got `%s`", jsonObj.get("duration").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `duration` to be a primitive type in the JSON string but got `%s`", jsonObj.get("duration").toString()));
       }
       // validate the optional field `fileFormat`
       if (jsonObj.get("fileFormat") != null && !jsonObj.get("fileFormat").isJsonNull()) {
         FileFormatEnum.validateJsonElement(jsonObj.get("fileFormat"));
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       if ((jsonObj.get("mediaUrl") != null && !jsonObj.get("mediaUrl").isJsonNull()) && !jsonObj.get("mediaUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `mediaUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mediaUrl").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `mediaUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mediaUrl").toString()));
       }
       if ((jsonObj.get("recordingName") != null && !jsonObj.get("recordingName").isJsonNull()) && !jsonObj.get("recordingName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `recordingName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("recordingName").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `recordingName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("recordingName").toString()));
       }
   }
 
@@ -586,7 +576,7 @@ public class ConferenceRecordingMetadata {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object
