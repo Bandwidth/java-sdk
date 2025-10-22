@@ -43,6 +43,10 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
+    // Configure OAuth2 access token for authorization: OAuth2
+    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
     TollFreeVerificationApi apiInstance = new TollFreeVerificationApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema = new WebhookSubscriptionRequestSchema(); // WebhookSubscriptionRequestSchema | Information about a webhook that Bandwidth should send upon the completion of event customer is trying to subscribe to.
@@ -73,7 +77,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -121,6 +125,10 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
+    // Configure OAuth2 access token for authorization: OAuth2
+    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
     TollFreeVerificationApi apiInstance = new TollFreeVerificationApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String phoneNumber = "+18885555555"; // String | Valid Toll-Free telephone number in E.164 format.
@@ -150,7 +158,7 @@ null (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -198,6 +206,10 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
+    // Configure OAuth2 access token for authorization: OAuth2
+    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
     TollFreeVerificationApi apiInstance = new TollFreeVerificationApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String id = "7bt57JcsVYJrN9K1OcV1Nu"; // String | Webhook subscription ID
@@ -227,7 +239,7 @@ null (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -275,6 +287,10 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
+    // Configure OAuth2 access token for authorization: OAuth2
+    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
     TollFreeVerificationApi apiInstance = new TollFreeVerificationApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String phoneNumber = "+18885555555"; // String | Valid Toll-Free telephone number in E.164 format.
@@ -305,7 +321,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -353,6 +369,10 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
+    // Configure OAuth2 access token for authorization: OAuth2
+    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
     TollFreeVerificationApi apiInstance = new TollFreeVerificationApi(defaultClient);
     try {
       List<String> result = apiInstance.listTollFreeUseCases();
@@ -377,7 +397,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -425,6 +445,10 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
+    // Configure OAuth2 access token for authorization: OAuth2
+    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
     TollFreeVerificationApi apiInstance = new TollFreeVerificationApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     try {
@@ -453,7 +477,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -500,6 +524,10 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
+    // Configure OAuth2 access token for authorization: OAuth2
+    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
     TollFreeVerificationApi apiInstance = new TollFreeVerificationApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     VerificationRequest verificationRequest = new VerificationRequest(); // VerificationRequest | Request for verification of a toll-free phone number.
@@ -529,7 +557,7 @@ null (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -576,6 +604,10 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
+    // Configure OAuth2 access token for authorization: OAuth2
+    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
     TollFreeVerificationApi apiInstance = new TollFreeVerificationApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String phoneNumber = "+18885555555"; // String | Valid Toll-Free telephone number in E.164 format.
@@ -607,7 +639,7 @@ null (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -654,6 +686,10 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
+    // Configure OAuth2 access token for authorization: OAuth2
+    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
     TollFreeVerificationApi apiInstance = new TollFreeVerificationApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String id = "7bt57JcsVYJrN9K1OcV1Nu"; // String | Webhook subscription ID
@@ -686,7 +722,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
