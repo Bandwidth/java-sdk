@@ -14,6 +14,7 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.bandwidth.sdk.model.Address;
 import com.bandwidth.sdk.model.BusinessEntityTypeEnum;
 import com.bandwidth.sdk.model.BusinessRegistrationTypeEnum;
@@ -50,13 +51,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
  * VerificationRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class VerificationRequest {
   public static final String SERIALIZED_NAME_BUSINESS_ADDRESS = "businessAddress";
   @SerializedName(SERIALIZED_NAME_BUSINESS_ADDRESS)
@@ -638,36 +640,10 @@ public class VerificationRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("businessAddress");
-    openapiFields.add("businessContact");
-    openapiFields.add("messageVolume");
-    openapiFields.add("phoneNumbers");
-    openapiFields.add("useCase");
-    openapiFields.add("useCaseSummary");
-    openapiFields.add("productionMessageContent");
-    openapiFields.add("optInWorkflow");
-    openapiFields.add("additionalInformation");
-    openapiFields.add("isvReseller");
-    openapiFields.add("privacyPolicyUrl");
-    openapiFields.add("termsAndConditionsUrl");
-    openapiFields.add("businessDba");
-    openapiFields.add("businessRegistrationNumber");
-    openapiFields.add("businessRegistrationType");
-    openapiFields.add("businessEntityType");
-    openapiFields.add("helpMessageResponse");
-    openapiFields.add("ageGatedContent");
+    openapiFields = new HashSet<String>(Arrays.asList("businessAddress", "businessContact", "messageVolume", "phoneNumbers", "useCase", "useCaseSummary", "productionMessageContent", "optInWorkflow", "additionalInformation", "isvReseller", "privacyPolicyUrl", "termsAndConditionsUrl", "businessDba", "businessRegistrationNumber", "businessRegistrationType", "businessEntityType", "helpMessageResponse", "ageGatedContent"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("businessAddress");
-    openapiRequiredFields.add("businessContact");
-    openapiRequiredFields.add("messageVolume");
-    openapiRequiredFields.add("phoneNumbers");
-    openapiRequiredFields.add("useCase");
-    openapiRequiredFields.add("useCaseSummary");
-    openapiRequiredFields.add("productionMessageContent");
-    openapiRequiredFields.add("optInWorkflow");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("businessAddress", "businessContact", "messageVolume", "phoneNumbers", "useCase", "useCaseSummary", "productionMessageContent", "optInWorkflow"));
   }
 
   /**
@@ -679,14 +655,14 @@ public class VerificationRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!VerificationRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in VerificationRequest is not found in the empty JSON string", VerificationRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in VerificationRequest is not found in the empty JSON string", VerificationRequest.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : VerificationRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -698,36 +674,36 @@ public class VerificationRequest {
       if (jsonObj.get("phoneNumbers") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("phoneNumbers").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `phoneNumbers` to be an array in the JSON string but got `%s`", jsonObj.get("phoneNumbers").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `phoneNumbers` to be an array in the JSON string but got `%s`", jsonObj.get("phoneNumbers").toString()));
       }
       if (!jsonObj.get("useCase").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `useCase` to be a primitive type in the JSON string but got `%s`", jsonObj.get("useCase").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `useCase` to be a primitive type in the JSON string but got `%s`", jsonObj.get("useCase").toString()));
       }
       if (!jsonObj.get("useCaseSummary").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `useCaseSummary` to be a primitive type in the JSON string but got `%s`", jsonObj.get("useCaseSummary").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `useCaseSummary` to be a primitive type in the JSON string but got `%s`", jsonObj.get("useCaseSummary").toString()));
       }
       if (!jsonObj.get("productionMessageContent").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `productionMessageContent` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productionMessageContent").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `productionMessageContent` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productionMessageContent").toString()));
       }
       // validate the required field `optInWorkflow`
       OptInWorkflow.validateJsonElement(jsonObj.get("optInWorkflow"));
       if ((jsonObj.get("additionalInformation") != null && !jsonObj.get("additionalInformation").isJsonNull()) && !jsonObj.get("additionalInformation").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `additionalInformation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("additionalInformation").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `additionalInformation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("additionalInformation").toString()));
       }
       if ((jsonObj.get("isvReseller") != null && !jsonObj.get("isvReseller").isJsonNull()) && !jsonObj.get("isvReseller").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `isvReseller` to be a primitive type in the JSON string but got `%s`", jsonObj.get("isvReseller").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `isvReseller` to be a primitive type in the JSON string but got `%s`", jsonObj.get("isvReseller").toString()));
       }
       if ((jsonObj.get("privacyPolicyUrl") != null && !jsonObj.get("privacyPolicyUrl").isJsonNull()) && !jsonObj.get("privacyPolicyUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `privacyPolicyUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("privacyPolicyUrl").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `privacyPolicyUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("privacyPolicyUrl").toString()));
       }
       if ((jsonObj.get("termsAndConditionsUrl") != null && !jsonObj.get("termsAndConditionsUrl").isJsonNull()) && !jsonObj.get("termsAndConditionsUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `termsAndConditionsUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("termsAndConditionsUrl").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `termsAndConditionsUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("termsAndConditionsUrl").toString()));
       }
       if ((jsonObj.get("businessDba") != null && !jsonObj.get("businessDba").isJsonNull()) && !jsonObj.get("businessDba").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `businessDba` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessDba").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `businessDba` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessDba").toString()));
       }
       if ((jsonObj.get("businessRegistrationNumber") != null && !jsonObj.get("businessRegistrationNumber").isJsonNull()) && !jsonObj.get("businessRegistrationNumber").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `businessRegistrationNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessRegistrationNumber").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `businessRegistrationNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessRegistrationNumber").toString()));
       }
       // validate the optional field `businessRegistrationType`
       if (jsonObj.get("businessRegistrationType") != null && !jsonObj.get("businessRegistrationType").isJsonNull()) {
@@ -738,7 +714,7 @@ public class VerificationRequest {
         BusinessEntityTypeEnum.validateJsonElement(jsonObj.get("businessEntityType"));
       }
       if ((jsonObj.get("helpMessageResponse") != null && !jsonObj.get("helpMessageResponse").isJsonNull()) && !jsonObj.get("helpMessageResponse").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `helpMessageResponse` to be a primitive type in the JSON string but got `%s`", jsonObj.get("helpMessageResponse").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `helpMessageResponse` to be a primitive type in the JSON string but got `%s`", jsonObj.get("helpMessageResponse").toString()));
       }
   }
 
@@ -799,7 +775,7 @@ public class VerificationRequest {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

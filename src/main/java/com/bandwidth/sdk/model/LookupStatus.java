@@ -14,6 +14,7 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.bandwidth.sdk.model.LookupResult;
 import com.bandwidth.sdk.model.LookupStatusEnum;
 import com.google.gson.TypeAdapter;
@@ -46,13 +47,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
  * If requestId exists, the result for that request is returned. See the Examples for details on the various responses that you can receive. Generally, if you see a Response Code of 0 in a result for a TN, information will be available for it.  Any other Response Code will indicate no information was available for the TN.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class LookupStatus {
   public static final String SERIALIZED_NAME_REQUEST_ID = "requestId";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID)
@@ -265,14 +267,10 @@ public class LookupStatus {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("requestId");
-    openapiFields.add("status");
-    openapiFields.add("result");
-    openapiFields.add("failedTelephoneNumbers");
+    openapiFields = new HashSet<String>(Arrays.asList("requestId", "status", "result", "failedTelephoneNumbers"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -284,12 +282,12 @@ public class LookupStatus {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!LookupStatus.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LookupStatus is not found in the empty JSON string", LookupStatus.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in LookupStatus is not found in the empty JSON string", LookupStatus.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("requestId") != null && !jsonObj.get("requestId").isJsonNull()) && !jsonObj.get("requestId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `requestId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestId").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `requestId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestId").toString()));
       }
       // validate the optional field `status`
       if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
@@ -300,7 +298,7 @@ public class LookupStatus {
         if (jsonArrayresult != null) {
           // ensure the json data is an array
           if (!jsonObj.get("result").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `result` to be an array in the JSON string but got `%s`", jsonObj.get("result").toString()));
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `result` to be an array in the JSON string but got `%s`", jsonObj.get("result").toString()));
           }
 
           // validate the optional field `result` (array)
@@ -311,7 +309,7 @@ public class LookupStatus {
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("failedTelephoneNumbers") != null && !jsonObj.get("failedTelephoneNumbers").isJsonNull() && !jsonObj.get("failedTelephoneNumbers").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `failedTelephoneNumbers` to be an array in the JSON string but got `%s`", jsonObj.get("failedTelephoneNumbers").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `failedTelephoneNumbers` to be an array in the JSON string but got `%s`", jsonObj.get("failedTelephoneNumbers").toString()));
       }
   }
 
@@ -372,7 +370,7 @@ public class LookupStatus {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

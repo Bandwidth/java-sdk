@@ -27,8 +27,11 @@ import io.gsonfire.TypeSelector;
 import okio.ByteString;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;
@@ -69,8 +72,6 @@ public class JSON {
                         classByDiscriminatorValue.put("message-sent", com.bandwidth.sdk.model.StatusCallback.class);
                         classByDiscriminatorValue.put("request-location-response", com.bandwidth.sdk.model.InboundCallback.class);
                         classByDiscriminatorValue.put("suggestion-response", com.bandwidth.sdk.model.InboundCallback.class);
-                        classByDiscriminatorValue.put("inboundCallback", com.bandwidth.sdk.model.InboundCallback.class);
-                        classByDiscriminatorValue.put("statusCallback", com.bandwidth.sdk.model.StatusCallback.class);
                         classByDiscriminatorValue.put("callback", com.bandwidth.sdk.model.Callback.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "type"));
@@ -86,11 +87,6 @@ public class JSON {
                         classByDiscriminatorValue.put("REPLY", com.bandwidth.sdk.model.RbmActionBase.class);
                         classByDiscriminatorValue.put("REQUEST_LOCATION", com.bandwidth.sdk.model.RbmActionBase.class);
                         classByDiscriminatorValue.put("SHOW_LOCATION", com.bandwidth.sdk.model.RbmActionViewLocation.class);
-                        classByDiscriminatorValue.put("multiChannelActionCalendarEvent", com.bandwidth.sdk.model.MultiChannelActionCalendarEvent.class);
-                        classByDiscriminatorValue.put("rbmActionBase", com.bandwidth.sdk.model.RbmActionBase.class);
-                        classByDiscriminatorValue.put("rbmActionDial", com.bandwidth.sdk.model.RbmActionDial.class);
-                        classByDiscriminatorValue.put("rbmActionOpenUrl", com.bandwidth.sdk.model.RbmActionOpenUrl.class);
-                        classByDiscriminatorValue.put("rbmActionViewLocation", com.bandwidth.sdk.model.RbmActionViewLocation.class);
                         classByDiscriminatorValue.put("multiChannelAction", com.bandwidth.sdk.model.MultiChannelAction.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "type"));
@@ -316,6 +312,28 @@ public class JSON {
                 return (T) body;
             } else {
                 throw (e);
+            }
+        }
+    }
+
+    /**
+    * Deserialize the given JSON InputStream to a Java object.
+    *
+    * @param <T>         Type
+    * @param inputStream The JSON InputStream
+    * @param returnType  The type to deserialize into
+    * @return The deserialized Java object
+    */
+    @SuppressWarnings("unchecked")
+    public static <T> T deserialize(InputStream inputStream, Type returnType) throws IOException {
+        try (InputStreamReader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8)) {
+        if (isLenientOnJson) {
+            // see https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/stream/JsonReader.html#setLenient(boolean)
+            JsonReader jsonReader = new JsonReader(reader);
+            jsonReader.setLenient(true);
+            return gson.fromJson(jsonReader, returnType);
+            } else {
+                return gson.fromJson(reader, returnType);
             }
         }
     }
