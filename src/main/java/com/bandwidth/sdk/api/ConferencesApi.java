@@ -101,7 +101,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call downloadConferenceRecordingCall(String accountId, String conferenceId, String recordingId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call downloadConferenceRecordingCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String recordingId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://voice.bandwidth.com/api/v2" };
@@ -146,12 +146,12 @@ public class ConferencesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call downloadConferenceRecordingValidateBeforeCall(String accountId, String conferenceId, String recordingId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call downloadConferenceRecordingValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String recordingId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling downloadConferenceRecording(Async)");
@@ -194,7 +194,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public File downloadConferenceRecording(String accountId, String conferenceId, String recordingId) throws ApiException {
+    public File downloadConferenceRecording(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String recordingId) throws ApiException {
         ApiResponse<File> localVarResp = downloadConferenceRecordingWithHttpInfo(accountId, conferenceId, recordingId);
         return localVarResp.getData();
     }
@@ -222,7 +222,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<File> downloadConferenceRecordingWithHttpInfo(String accountId, String conferenceId, String recordingId) throws ApiException {
+    public ApiResponse<File> downloadConferenceRecordingWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String recordingId) throws ApiException {
         okhttp3.Call localVarCall = downloadConferenceRecordingValidateBeforeCall(accountId, conferenceId, recordingId, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -252,7 +252,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call downloadConferenceRecordingAsync(String accountId, String conferenceId, String recordingId, final ApiCallback<File> _callback) throws ApiException {
+    public okhttp3.Call downloadConferenceRecordingAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String recordingId, final ApiCallback<File> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = downloadConferenceRecordingValidateBeforeCall(accountId, conferenceId, recordingId, _callback);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
@@ -281,7 +281,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getConferenceCall(String accountId, String conferenceId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getConferenceCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://voice.bandwidth.com/api/v2" };
@@ -323,12 +323,12 @@ public class ConferencesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getConferenceValidateBeforeCall(String accountId, String conferenceId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getConferenceValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getConference(Async)");
@@ -365,7 +365,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public Conference getConference(String accountId, String conferenceId) throws ApiException {
+    public Conference getConference(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId) throws ApiException {
         ApiResponse<Conference> localVarResp = getConferenceWithHttpInfo(accountId, conferenceId);
         return localVarResp.getData();
     }
@@ -392,7 +392,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Conference> getConferenceWithHttpInfo(String accountId, String conferenceId) throws ApiException {
+    public ApiResponse<Conference> getConferenceWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId) throws ApiException {
         okhttp3.Call localVarCall = getConferenceValidateBeforeCall(accountId, conferenceId, null);
         Type localVarReturnType = new TypeToken<Conference>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -421,7 +421,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getConferenceAsync(String accountId, String conferenceId, final ApiCallback<Conference> _callback) throws ApiException {
+    public okhttp3.Call getConferenceAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, final ApiCallback<Conference> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getConferenceValidateBeforeCall(accountId, conferenceId, _callback);
         Type localVarReturnType = new TypeToken<Conference>(){}.getType();
@@ -451,7 +451,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getConferenceMemberCall(String accountId, String conferenceId, String memberId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getConferenceMemberCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String memberId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://voice.bandwidth.com/api/v2" };
@@ -494,12 +494,12 @@ public class ConferencesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getConferenceMemberValidateBeforeCall(String accountId, String conferenceId, String memberId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getConferenceMemberValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String memberId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getConferenceMember(Async)");
@@ -542,7 +542,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ConferenceMember getConferenceMember(String accountId, String conferenceId, String memberId) throws ApiException {
+    public ConferenceMember getConferenceMember(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String memberId) throws ApiException {
         ApiResponse<ConferenceMember> localVarResp = getConferenceMemberWithHttpInfo(accountId, conferenceId, memberId);
         return localVarResp.getData();
     }
@@ -570,7 +570,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConferenceMember> getConferenceMemberWithHttpInfo(String accountId, String conferenceId, String memberId) throws ApiException {
+    public ApiResponse<ConferenceMember> getConferenceMemberWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String memberId) throws ApiException {
         okhttp3.Call localVarCall = getConferenceMemberValidateBeforeCall(accountId, conferenceId, memberId, null);
         Type localVarReturnType = new TypeToken<ConferenceMember>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -600,7 +600,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getConferenceMemberAsync(String accountId, String conferenceId, String memberId, final ApiCallback<ConferenceMember> _callback) throws ApiException {
+    public okhttp3.Call getConferenceMemberAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String memberId, final ApiCallback<ConferenceMember> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getConferenceMemberValidateBeforeCall(accountId, conferenceId, memberId, _callback);
         Type localVarReturnType = new TypeToken<ConferenceMember>(){}.getType();
@@ -630,7 +630,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getConferenceRecordingCall(String accountId, String conferenceId, String recordingId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getConferenceRecordingCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String recordingId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://voice.bandwidth.com/api/v2" };
@@ -673,12 +673,12 @@ public class ConferencesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getConferenceRecordingValidateBeforeCall(String accountId, String conferenceId, String recordingId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getConferenceRecordingValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String recordingId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getConferenceRecording(Async)");
@@ -721,7 +721,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ConferenceRecordingMetadata getConferenceRecording(String accountId, String conferenceId, String recordingId) throws ApiException {
+    public ConferenceRecordingMetadata getConferenceRecording(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String recordingId) throws ApiException {
         ApiResponse<ConferenceRecordingMetadata> localVarResp = getConferenceRecordingWithHttpInfo(accountId, conferenceId, recordingId);
         return localVarResp.getData();
     }
@@ -749,7 +749,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConferenceRecordingMetadata> getConferenceRecordingWithHttpInfo(String accountId, String conferenceId, String recordingId) throws ApiException {
+    public ApiResponse<ConferenceRecordingMetadata> getConferenceRecordingWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String recordingId) throws ApiException {
         okhttp3.Call localVarCall = getConferenceRecordingValidateBeforeCall(accountId, conferenceId, recordingId, null);
         Type localVarReturnType = new TypeToken<ConferenceRecordingMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -779,7 +779,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getConferenceRecordingAsync(String accountId, String conferenceId, String recordingId, final ApiCallback<ConferenceRecordingMetadata> _callback) throws ApiException {
+    public okhttp3.Call getConferenceRecordingAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String recordingId, final ApiCallback<ConferenceRecordingMetadata> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getConferenceRecordingValidateBeforeCall(accountId, conferenceId, recordingId, _callback);
         Type localVarReturnType = new TypeToken<ConferenceRecordingMetadata>(){}.getType();
@@ -808,7 +808,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listConferenceRecordingsCall(String accountId, String conferenceId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listConferenceRecordingsCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://voice.bandwidth.com/api/v2" };
@@ -850,12 +850,12 @@ public class ConferencesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listConferenceRecordingsValidateBeforeCall(String accountId, String conferenceId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listConferenceRecordingsValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling listConferenceRecordings(Async)");
@@ -892,7 +892,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public List<ConferenceRecordingMetadata> listConferenceRecordings(String accountId, String conferenceId) throws ApiException {
+    public List<ConferenceRecordingMetadata> listConferenceRecordings(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId) throws ApiException {
         ApiResponse<List<ConferenceRecordingMetadata>> localVarResp = listConferenceRecordingsWithHttpInfo(accountId, conferenceId);
         return localVarResp.getData();
     }
@@ -919,7 +919,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ConferenceRecordingMetadata>> listConferenceRecordingsWithHttpInfo(String accountId, String conferenceId) throws ApiException {
+    public ApiResponse<List<ConferenceRecordingMetadata>> listConferenceRecordingsWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId) throws ApiException {
         okhttp3.Call localVarCall = listConferenceRecordingsValidateBeforeCall(accountId, conferenceId, null);
         Type localVarReturnType = new TypeToken<List<ConferenceRecordingMetadata>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -948,7 +948,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listConferenceRecordingsAsync(String accountId, String conferenceId, final ApiCallback<List<ConferenceRecordingMetadata>> _callback) throws ApiException {
+    public okhttp3.Call listConferenceRecordingsAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, final ApiCallback<List<ConferenceRecordingMetadata>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listConferenceRecordingsValidateBeforeCall(accountId, conferenceId, _callback);
         Type localVarReturnType = new TypeToken<List<ConferenceRecordingMetadata>>(){}.getType();
@@ -981,7 +981,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listConferencesCall(String accountId, String name, String minCreatedTime, String maxCreatedTime, Integer pageSize, String pageToken, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listConferencesCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String minCreatedTime, @javax.annotation.Nullable String maxCreatedTime, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String pageToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://voice.bandwidth.com/api/v2" };
@@ -1042,12 +1042,12 @@ public class ConferencesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listConferencesValidateBeforeCall(String accountId, String name, String minCreatedTime, String maxCreatedTime, Integer pageSize, String pageToken, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listConferencesValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String minCreatedTime, @javax.annotation.Nullable String maxCreatedTime, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String pageToken, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling listConferences(Async)");
@@ -1083,7 +1083,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public List<Conference> listConferences(String accountId, String name, String minCreatedTime, String maxCreatedTime, Integer pageSize, String pageToken) throws ApiException {
+    public List<Conference> listConferences(@javax.annotation.Nonnull String accountId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String minCreatedTime, @javax.annotation.Nullable String maxCreatedTime, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String pageToken) throws ApiException {
         ApiResponse<List<Conference>> localVarResp = listConferencesWithHttpInfo(accountId, name, minCreatedTime, maxCreatedTime, pageSize, pageToken);
         return localVarResp.getData();
     }
@@ -1114,7 +1114,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<Conference>> listConferencesWithHttpInfo(String accountId, String name, String minCreatedTime, String maxCreatedTime, Integer pageSize, String pageToken) throws ApiException {
+    public ApiResponse<List<Conference>> listConferencesWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String minCreatedTime, @javax.annotation.Nullable String maxCreatedTime, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String pageToken) throws ApiException {
         okhttp3.Call localVarCall = listConferencesValidateBeforeCall(accountId, name, minCreatedTime, maxCreatedTime, pageSize, pageToken, null);
         Type localVarReturnType = new TypeToken<List<Conference>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1147,7 +1147,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listConferencesAsync(String accountId, String name, String minCreatedTime, String maxCreatedTime, Integer pageSize, String pageToken, final ApiCallback<List<Conference>> _callback) throws ApiException {
+    public okhttp3.Call listConferencesAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String minCreatedTime, @javax.annotation.Nullable String maxCreatedTime, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String pageToken, final ApiCallback<List<Conference>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listConferencesValidateBeforeCall(accountId, name, minCreatedTime, maxCreatedTime, pageSize, pageToken, _callback);
         Type localVarReturnType = new TypeToken<List<Conference>>(){}.getType();
@@ -1177,7 +1177,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateConferenceCall(String accountId, String conferenceId, UpdateConference updateConference, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateConferenceCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull UpdateConference updateConference, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://voice.bandwidth.com/api/v2" };
@@ -1220,12 +1220,12 @@ public class ConferencesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateConferenceValidateBeforeCall(String accountId, String conferenceId, UpdateConference updateConference, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateConferenceValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull UpdateConference updateConference, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling updateConference(Async)");
@@ -1267,7 +1267,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public void updateConference(String accountId, String conferenceId, UpdateConference updateConference) throws ApiException {
+    public void updateConference(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull UpdateConference updateConference) throws ApiException {
         updateConferenceWithHttpInfo(accountId, conferenceId, updateConference);
     }
 
@@ -1294,7 +1294,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> updateConferenceWithHttpInfo(String accountId, String conferenceId, UpdateConference updateConference) throws ApiException {
+    public ApiResponse<Void> updateConferenceWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull UpdateConference updateConference) throws ApiException {
         okhttp3.Call localVarCall = updateConferenceValidateBeforeCall(accountId, conferenceId, updateConference, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -1323,7 +1323,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateConferenceAsync(String accountId, String conferenceId, UpdateConference updateConference, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateConferenceAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull UpdateConference updateConference, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateConferenceValidateBeforeCall(accountId, conferenceId, updateConference, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -1352,7 +1352,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateConferenceBxmlCall(String accountId, String conferenceId, String body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateConferenceBxmlCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String body, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://voice.bandwidth.com/api/v2" };
@@ -1395,12 +1395,12 @@ public class ConferencesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateConferenceBxmlValidateBeforeCall(String accountId, String conferenceId, String body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateConferenceBxmlValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String body, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling updateConferenceBxml(Async)");
@@ -1442,7 +1442,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public void updateConferenceBxml(String accountId, String conferenceId, String body) throws ApiException {
+    public void updateConferenceBxml(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String body) throws ApiException {
         updateConferenceBxmlWithHttpInfo(accountId, conferenceId, body);
     }
 
@@ -1469,7 +1469,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> updateConferenceBxmlWithHttpInfo(String accountId, String conferenceId, String body) throws ApiException {
+    public ApiResponse<Void> updateConferenceBxmlWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String body) throws ApiException {
         okhttp3.Call localVarCall = updateConferenceBxmlValidateBeforeCall(accountId, conferenceId, body, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -1498,7 +1498,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateConferenceBxmlAsync(String accountId, String conferenceId, String body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateConferenceBxmlAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String body, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateConferenceBxmlValidateBeforeCall(accountId, conferenceId, body, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -1528,7 +1528,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateConferenceMemberCall(String accountId, String conferenceId, String memberId, UpdateConferenceMember updateConferenceMember, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateConferenceMemberCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String memberId, @javax.annotation.Nonnull UpdateConferenceMember updateConferenceMember, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://voice.bandwidth.com/api/v2" };
@@ -1572,12 +1572,12 @@ public class ConferencesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateConferenceMemberValidateBeforeCall(String accountId, String conferenceId, String memberId, UpdateConferenceMember updateConferenceMember, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateConferenceMemberValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String memberId, @javax.annotation.Nonnull UpdateConferenceMember updateConferenceMember, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling updateConferenceMember(Async)");
@@ -1625,7 +1625,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public void updateConferenceMember(String accountId, String conferenceId, String memberId, UpdateConferenceMember updateConferenceMember) throws ApiException {
+    public void updateConferenceMember(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String memberId, @javax.annotation.Nonnull UpdateConferenceMember updateConferenceMember) throws ApiException {
         updateConferenceMemberWithHttpInfo(accountId, conferenceId, memberId, updateConferenceMember);
     }
 
@@ -1653,7 +1653,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> updateConferenceMemberWithHttpInfo(String accountId, String conferenceId, String memberId, UpdateConferenceMember updateConferenceMember) throws ApiException {
+    public ApiResponse<Void> updateConferenceMemberWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String memberId, @javax.annotation.Nonnull UpdateConferenceMember updateConferenceMember) throws ApiException {
         okhttp3.Call localVarCall = updateConferenceMemberValidateBeforeCall(accountId, conferenceId, memberId, updateConferenceMember, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -1683,7 +1683,7 @@ public class ConferencesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateConferenceMemberAsync(String accountId, String conferenceId, String memberId, UpdateConferenceMember updateConferenceMember, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateConferenceMemberAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String conferenceId, @javax.annotation.Nonnull String memberId, @javax.annotation.Nonnull UpdateConferenceMember updateConferenceMember, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateConferenceMemberValidateBeforeCall(accountId, conferenceId, memberId, updateConferenceMember, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);

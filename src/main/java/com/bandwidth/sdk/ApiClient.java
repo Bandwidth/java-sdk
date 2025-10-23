@@ -21,6 +21,8 @@ import okhttp3.logging.HttpLoggingInterceptor.Level;
 import okio.Buffer;
 import okio.BufferedSink;
 import okio.Okio;
+import org.apache.oltu.oauth2.client.request.OAuthClientRequest.TokenRequestBuilder;
+import org.apache.oltu.oauth2.common.message.types.GrantType;
 
 import javax.net.ssl.*;
 import java.io.File;
@@ -55,13 +57,16 @@ import com.bandwidth.sdk.auth.Authentication;
 import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.auth.HttpBearerAuth;
 import com.bandwidth.sdk.auth.ApiKeyAuth;
+import com.bandwidth.sdk.auth.OAuth;
+import com.bandwidth.sdk.auth.RetryingOAuth;
+import com.bandwidth.sdk.auth.OAuthFlow;
 
 /**
  * <p>ApiClient class.</p>
  */
 public class ApiClient {
 
-    private String basePath = "http://localhost";
+    protected String basePath = "http://localhost";
     protected List<ServerConfiguration> servers = new ArrayList<ServerConfiguration>(Arrays.asList(
     new ServerConfiguration(
       "",
@@ -71,26 +76,26 @@ public class ApiClient {
   ));
     protected Integer serverIndex = 0;
     protected Map<String, String> serverVariables = null;
-    private boolean debugging = false;
-    private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
-    private Map<String, String> defaultCookieMap = new HashMap<String, String>();
-    private String tempFolderPath = null;
+    protected boolean debugging = false;
+    protected Map<String, String> defaultHeaderMap = new HashMap<String, String>();
+    protected Map<String, String> defaultCookieMap = new HashMap<String, String>();
+    protected String tempFolderPath = null;
 
-    private Map<String, Authentication> authentications;
+    protected Map<String, Authentication> authentications;
 
-    private DateFormat dateFormat;
-    private DateFormat datetimeFormat;
-    private boolean lenientDatetimeFormat;
-    private int dateLength;
+    protected DateFormat dateFormat;
+    protected DateFormat datetimeFormat;
+    protected boolean lenientDatetimeFormat;
+    protected int dateLength;
 
-    private InputStream sslCaCert;
-    private boolean verifyingSsl;
-    private KeyManager[] keyManagers;
+    protected InputStream sslCaCert;
+    protected boolean verifyingSsl;
+    protected KeyManager[] keyManagers;
 
-    private OkHttpClient httpClient;
-    private JSON json;
+    protected OkHttpClient httpClient;
+    protected JSON json;
 
-    private HttpLoggingInterceptor loggingInterceptor;
+    protected HttpLoggingInterceptor loggingInterceptor;
 
     /**
      * Basic constructor for ApiClient
@@ -101,6 +106,7 @@ public class ApiClient {
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications.put("Basic", new HttpBasicAuth());
+        authentications.put("OAuth2", new OAuth());
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }
@@ -117,15 +123,83 @@ public class ApiClient {
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications.put("Basic", new HttpBasicAuth());
+        authentications.put("OAuth2", new OAuth());
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }
 
-    private void initHttpClient() {
+    /**
+     * Constructor for ApiClient to support access token retry on 401/403 configured with client ID
+     *
+     * @param clientId client ID
+     */
+    public ApiClient(String clientId) {
+        this(clientId, null, null);
+    }
+
+    /**
+     * Constructor for ApiClient to support access token retry on 401/403 configured with client ID and additional parameters
+     *
+     * @param clientId client ID
+     * @param parameters a {@link java.util.Map} of parameters
+     */
+    public ApiClient(String clientId, Map<String, String> parameters) {
+        this(clientId, null, parameters);
+    }
+
+    /**
+     * Constructor for ApiClient to support access token retry on 401/403 configured with client ID, secret, and additional parameters
+     *
+     * @param clientId client ID
+     * @param clientSecret client secret
+     * @param parameters a {@link java.util.Map} of parameters
+     */
+    public ApiClient(String clientId, String clientSecret, Map<String, String> parameters) {
+        this(null, clientId, clientSecret, parameters);
+    }
+
+    /**
+     * Constructor for ApiClient to support access token retry on 401/403 configured with base path, client ID, secret, and additional parameters
+     *
+     * @param basePath base path
+     * @param clientId client ID
+     * @param clientSecret client secret
+     * @param parameters a {@link java.util.Map} of parameters
+     */
+    public ApiClient(String basePath, String clientId, String clientSecret, Map<String, String> parameters) {
+        init();
+        if (basePath != null) {
+            this.basePath = basePath;
+        }
+
+        String tokenUrl = "https://api.bandwidth.com/api/v1/oauth2/token";
+        if (!"".equals(tokenUrl) && !URI.create(tokenUrl).isAbsolute()) {
+            URI uri = URI.create(getBasePath());
+            tokenUrl = uri.getScheme() + ":" +
+                (uri.getAuthority() != null ? "//" + uri.getAuthority() : "") +
+                tokenUrl;
+            if (!URI.create(tokenUrl).isAbsolute()) {
+                throw new IllegalArgumentException("OAuth2 token URL must be an absolute URL");
+            }
+        }
+        RetryingOAuth retryingOAuth = new RetryingOAuth(tokenUrl, clientId, OAuthFlow.APPLICATION, clientSecret, parameters);
+        authentications.put(
+                "OAuth2",
+                retryingOAuth
+        );
+        initHttpClient(Collections.<Interceptor>singletonList(retryingOAuth));
+        // Setup authentications (key: authentication name, value: authentication).
+        authentications.put("Basic", new HttpBasicAuth());
+
+        // Prevent the authentications from being modified.
+        authentications = Collections.unmodifiableMap(authentications);
+    }
+
+    protected void initHttpClient() {
         initHttpClient(Collections.<Interceptor>emptyList());
     }
 
-    private void initHttpClient(List<Interceptor> interceptors) {
+    protected void initHttpClient(List<Interceptor> interceptors) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.addNetworkInterceptor(getProgressInterceptor());
         for (Interceptor interceptor: interceptors) {
@@ -135,7 +209,7 @@ public class ApiClient {
         httpClient = builder.build();
     }
 
-    private void init() {
+    protected void init() {
         verifyingSsl = true;
 
         json = new JSON();
@@ -158,8 +232,8 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g http://localhost
-     * @return An instance of OkHttpClient
+     * @param basePath Base path of the URL (e.g http://localhost)
+     * @return An instance of ApiClient
      */
     public ApiClient setBasePath(String basePath) {
         this.basePath = basePath;
@@ -207,7 +281,7 @@ public class ApiClient {
      * Set HTTP client, which must never be null.
      *
      * @param newHttpClient An instance of OkHttpClient
-     * @return Api Client
+     * @return ApiClient
      * @throws java.lang.NullPointerException when newHttpClient is null
      */
     public ApiClient setHttpClient(OkHttpClient newHttpClient) {
@@ -452,6 +526,12 @@ public class ApiClient {
      * @param accessToken Access token
      */
     public void setAccessToken(String accessToken) {
+        for (Authentication auth : authentications.values()) {
+            if (auth instanceof OAuth) {
+                ((OAuth) auth).setAccessToken(accessToken);
+                return;
+            }
+        }
         throw new RuntimeException("No OAuth2 authentication configured!");
     }
 
@@ -636,6 +716,20 @@ public class ApiClient {
         return this;
     }
 
+    /**
+     * Helper method to configure the token endpoint of the first oauth found in the apiAuthorizations (there should be only one)
+     *
+     * @return Token request builder
+     */
+    public TokenRequestBuilder getTokenEndPoint() {
+        for (Authentication apiAuth : authentications.values()) {
+            if (apiAuth instanceof RetryingOAuth) {
+                RetryingOAuth retryingOAuth = (RetryingOAuth) apiAuth;
+                return retryingOAuth.getTokenRequestBuilder();
+            }
+        }
+        return null;
+    }
 
     /**
      * Format the given parameter object into string.
@@ -695,7 +789,7 @@ public class ApiClient {
      * @param value The value of the parameter.
      * @return A list of {@code Pair} objects.
      */
-    public List<Pair> parameterToPairs(String collectionFormat, String name, Collection value) {
+    public List<Pair> parameterToPairs(String collectionFormat, String name, Collection<?> value) {
         List<Pair> params = new ArrayList<Pair>();
 
         // preconditions
@@ -802,7 +896,7 @@ public class ApiClient {
      * @return The sanitized filename
      */
     public String sanitizeFilename(String filename) {
-        return filename.replaceAll(".*[/\\\\]", "");
+        return filename.replaceFirst("^.*[/\\\\]", "");
     }
 
     /**
@@ -912,17 +1006,8 @@ public class ApiClient {
             return (T) downloadFileFromResponse(response);
         }
 
-        String respBody;
-        try {
-            if (response.body() != null)
-                respBody = response.body().string();
-            else
-                respBody = null;
-        } catch (IOException e) {
-            throw new ApiException(e);
-        }
-
-        if (respBody == null || "".equals(respBody)) {
+        ResponseBody respBody = response.body();
+        if (respBody == null) {
             return null;
         }
 
@@ -931,17 +1016,25 @@ public class ApiClient {
             // ensuring a default content type
             contentType = "application/json";
         }
-        if (isJsonMime(contentType)) {
-            return JSON.deserialize(respBody, returnType);
-        } else if (returnType.equals(String.class)) {
-            // Expecting string, return the raw response body.
-            return (T) respBody;
-        } else {
-            throw new ApiException(
+        try {
+            if (isJsonMime(contentType)) {
+                return JSON.deserialize(respBody.byteStream(), returnType);
+            } else if (returnType.equals(String.class)) {
+                String respBodyString = respBody.string();
+                if (respBodyString.isEmpty()) {
+                    return null;
+                }
+                // Expecting string, return the raw response body.
+                return (T) respBodyString;
+            } else {
+                throw new ApiException(
                     "Content type \"" + contentType + "\" is not supported for type: " + returnType,
                     response.code(),
                     response.headers().toMultimap(),
-                    respBody);
+                    response.body().string());
+            }
+        } catch (IOException e) {
+            throw new ApiException(e);
         }
     }
 
@@ -1268,7 +1361,8 @@ public class ApiClient {
             if (serverIndex != null) {
                 if (serverIndex < 0 || serverIndex >= servers.size()) {
                     throw new ArrayIndexOutOfBoundsException(String.format(
-                    "Invalid index %d when selecting the host settings. Must be less than %d", serverIndex, servers.size()
+                        Locale.ROOT,
+                        "Invalid index %d when selecting the host settings. Must be less than %d", serverIndex, servers.size()
                     ));
                 }
                 baseURL = servers.get(serverIndex).URL(serverVariables);
@@ -1340,11 +1434,11 @@ public class ApiClient {
      */
     public void processCookieParams(Map<String, String> cookieParams, Request.Builder reqBuilder) {
         for (Entry<String, String> param : cookieParams.entrySet()) {
-            reqBuilder.addHeader("Cookie", String.format("%s=%s", param.getKey(), param.getValue()));
+            reqBuilder.addHeader("Cookie", String.format(Locale.ROOT, "%s=%s", param.getKey(), param.getValue()));
         }
         for (Entry<String, String> param : defaultCookieMap.entrySet()) {
             if (!cookieParams.containsKey(param.getKey())) {
-                reqBuilder.addHeader("Cookie", String.format("%s=%s", param.getKey(), param.getValue()));
+                reqBuilder.addHeader("Cookie", String.format(Locale.ROOT, "%s=%s", param.getKey(), param.getValue()));
             }
         }
     }
@@ -1437,7 +1531,7 @@ public class ApiClient {
      * @param key The key of the Header element
      * @param file The file to add to the Header
      */ 
-    private void addPartToMultiPartBuilder(MultipartBody.Builder mpBuilder, String key, File file) {
+    protected void addPartToMultiPartBuilder(MultipartBody.Builder mpBuilder, String key, File file) {
         Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + key + "\"; filename=\"" + file.getName() + "\"");
         MediaType mediaType = MediaType.parse(guessContentTypeFromFile(file));
         mpBuilder.addPart(partHeaders, RequestBody.create(file, mediaType));
@@ -1450,7 +1544,7 @@ public class ApiClient {
      * @param key The key of the Header element
      * @param obj The complex object to add to the Header
      */
-    private void addPartToMultiPartBuilder(MultipartBody.Builder mpBuilder, String key, Object obj) {
+    protected void addPartToMultiPartBuilder(MultipartBody.Builder mpBuilder, String key, Object obj) {
         RequestBody requestBody;
         if (obj instanceof String) {
             requestBody = RequestBody.create((String) obj, MediaType.parse("text/plain"));
@@ -1472,7 +1566,7 @@ public class ApiClient {
      * Get network interceptor to add it to the httpClient to track download progress for
      * async requests.
      */
-    private Interceptor getProgressInterceptor() {
+    protected Interceptor getProgressInterceptor() {
         return new Interceptor() {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {
@@ -1493,7 +1587,7 @@ public class ApiClient {
      * Apply SSL related settings to httpClient according to the current values of
      * verifyingSsl and sslCaCert.
      */
-    private void applySslSettings() {
+    protected void applySslSettings() {
         try {
             TrustManager[] trustManagers;
             HostnameVerifier hostnameVerifier;
@@ -1555,7 +1649,7 @@ public class ApiClient {
         }
     }
 
-    private KeyStore newEmptyKeyStore(char[] password) throws GeneralSecurityException {
+    protected KeyStore newEmptyKeyStore(char[] password) throws GeneralSecurityException {
         try {
             KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
             keyStore.load(null, password);
@@ -1572,7 +1666,7 @@ public class ApiClient {
      * @return The string representation of the HTTP request body
      * @throws com.bandwidth.sdk.ApiException If fail to serialize the request body object into a string
      */
-    private String requestBodyToString(RequestBody requestBody) throws ApiException {
+    protected String requestBodyToString(RequestBody requestBody) throws ApiException {
         if (requestBody != null) {
             try {
                 final Buffer buffer = new Buffer();

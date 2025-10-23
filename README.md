@@ -2,7 +2,7 @@
 
 Bandwidth
 - API version: 1.0.0
-  - Generator version: 7.10.0
+  - Generator version: 7.16.0
 
 Bandwidth's Communication APIs
 
@@ -97,6 +97,10 @@ public class Example {
     HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
+
+    // Configure OAuth2 access token for authorization: OAuth2
+    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
 
     CallsApi apiInstance = new CallsApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
@@ -340,6 +344,14 @@ Authentication schemes defined for the API:
 ### Basic
 
 - **Type**: HTTP basic authentication
+
+<a id="OAuth2"></a>
+### OAuth2
+
+- **Type**: OAuth
+- **Flow**: application
+- **Authorization URL**: 
+- **Scopes**: N/A
 
 
 ## Recommendation

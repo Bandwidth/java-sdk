@@ -30,7 +30,7 @@ public class StatusCallbackTest {
     private final StatusCallback model = new StatusCallback()
             .time(OffsetDateTime.now())
             .eventTime(OffsetDateTime.now())
-            .type(StatusCallbackTypeEnum.DELIVERED)
+            .type(StatusCallbackTypeEnum.MESSAGE_DELIVERED)
             .to("to")
             .description("description")
             .message(new StatusCallbackMessage())

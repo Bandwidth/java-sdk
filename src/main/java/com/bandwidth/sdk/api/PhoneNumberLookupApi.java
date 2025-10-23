@@ -95,7 +95,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createLookupCall(String accountId, LookupRequest lookupRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createLookupCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull LookupRequest lookupRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://numbers.bandwidth.com/api/v1" };
@@ -137,12 +137,12 @@ public class PhoneNumberLookupApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createLookupValidateBeforeCall(String accountId, LookupRequest lookupRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createLookupValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull LookupRequest lookupRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling createLookup(Async)");
@@ -177,7 +177,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public CreateLookupResponse createLookup(String accountId, LookupRequest lookupRequest) throws ApiException {
+    public CreateLookupResponse createLookup(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull LookupRequest lookupRequest) throws ApiException {
         ApiResponse<CreateLookupResponse> localVarResp = createLookupWithHttpInfo(accountId, lookupRequest);
         return localVarResp.getData();
     }
@@ -202,7 +202,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateLookupResponse> createLookupWithHttpInfo(String accountId, LookupRequest lookupRequest) throws ApiException {
+    public ApiResponse<CreateLookupResponse> createLookupWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull LookupRequest lookupRequest) throws ApiException {
         okhttp3.Call localVarCall = createLookupValidateBeforeCall(accountId, lookupRequest, null);
         Type localVarReturnType = new TypeToken<CreateLookupResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -229,7 +229,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createLookupAsync(String accountId, LookupRequest lookupRequest, final ApiCallback<CreateLookupResponse> _callback) throws ApiException {
+    public okhttp3.Call createLookupAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull LookupRequest lookupRequest, final ApiCallback<CreateLookupResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createLookupValidateBeforeCall(accountId, lookupRequest, _callback);
         Type localVarReturnType = new TypeToken<CreateLookupResponse>(){}.getType();
@@ -256,7 +256,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLookupStatusCall(String accountId, String requestId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLookupStatusCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String requestId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://numbers.bandwidth.com/api/v1" };
@@ -298,12 +298,12 @@ public class PhoneNumberLookupApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLookupStatusValidateBeforeCall(String accountId, String requestId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLookupStatusValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String requestId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getLookupStatus(Async)");
@@ -338,7 +338,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public LookupStatus getLookupStatus(String accountId, String requestId) throws ApiException {
+    public LookupStatus getLookupStatus(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String requestId) throws ApiException {
         ApiResponse<LookupStatus> localVarResp = getLookupStatusWithHttpInfo(accountId, requestId);
         return localVarResp.getData();
     }
@@ -363,7 +363,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LookupStatus> getLookupStatusWithHttpInfo(String accountId, String requestId) throws ApiException {
+    public ApiResponse<LookupStatus> getLookupStatusWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String requestId) throws ApiException {
         okhttp3.Call localVarCall = getLookupStatusValidateBeforeCall(accountId, requestId, null);
         Type localVarReturnType = new TypeToken<LookupStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -390,7 +390,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLookupStatusAsync(String accountId, String requestId, final ApiCallback<LookupStatus> _callback) throws ApiException {
+    public okhttp3.Call getLookupStatusAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String requestId, final ApiCallback<LookupStatus> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLookupStatusValidateBeforeCall(accountId, requestId, _callback);
         Type localVarReturnType = new TypeToken<LookupStatus>(){}.getType();

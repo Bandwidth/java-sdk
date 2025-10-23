@@ -14,6 +14,7 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.bandwidth.sdk.model.MultiChannelAction;
 import com.bandwidth.sdk.model.RbmCardContent;
 import com.bandwidth.sdk.model.StandaloneCardOrientationEnum;
@@ -48,13 +49,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
  * RbmStandaloneCard
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class RbmStandaloneCard {
   public static final String SERIALIZED_NAME_ORIENTATION = "orientation";
   @SerializedName(SERIALIZED_NAME_ORIENTATION)
@@ -259,17 +261,10 @@ public class RbmStandaloneCard {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("orientation");
-    openapiFields.add("thumbnailImageAlignment");
-    openapiFields.add("cardContent");
-    openapiFields.add("suggestions");
+    openapiFields = new HashSet<String>(Arrays.asList("orientation", "thumbnailImageAlignment", "cardContent", "suggestions"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("orientation");
-    openapiRequiredFields.add("thumbnailImageAlignment");
-    openapiRequiredFields.add("cardContent");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("orientation", "thumbnailImageAlignment", "cardContent"));
   }
 
   /**
@@ -281,14 +276,14 @@ public class RbmStandaloneCard {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!RbmStandaloneCard.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RbmStandaloneCard is not found in the empty JSON string", RbmStandaloneCard.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in RbmStandaloneCard is not found in the empty JSON string", RbmStandaloneCard.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : RbmStandaloneCard.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -303,7 +298,7 @@ public class RbmStandaloneCard {
         if (jsonArraysuggestions != null) {
           // ensure the json data is an array
           if (!jsonObj.get("suggestions").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `suggestions` to be an array in the JSON string but got `%s`", jsonObj.get("suggestions").toString()));
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `suggestions` to be an array in the JSON string but got `%s`", jsonObj.get("suggestions").toString()));
           }
 
           // validate the optional field `suggestions` (array)
@@ -371,7 +366,7 @@ public class RbmStandaloneCard {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

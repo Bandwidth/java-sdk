@@ -94,7 +94,7 @@ public class StatisticsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getStatisticsCall(String accountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getStatisticsCall(@javax.annotation.Nonnull String accountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://voice.bandwidth.com/api/v2" };
@@ -135,12 +135,12 @@ public class StatisticsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getStatisticsValidateBeforeCall(String accountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getStatisticsValidateBeforeCall(@javax.annotation.Nonnull String accountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getStatistics(Async)");
@@ -171,7 +171,7 @@ public class StatisticsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public AccountStatistics getStatistics(String accountId) throws ApiException {
+    public AccountStatistics getStatistics(@javax.annotation.Nonnull String accountId) throws ApiException {
         ApiResponse<AccountStatistics> localVarResp = getStatisticsWithHttpInfo(accountId);
         return localVarResp.getData();
     }
@@ -197,7 +197,7 @@ public class StatisticsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccountStatistics> getStatisticsWithHttpInfo(String accountId) throws ApiException {
+    public ApiResponse<AccountStatistics> getStatisticsWithHttpInfo(@javax.annotation.Nonnull String accountId) throws ApiException {
         okhttp3.Call localVarCall = getStatisticsValidateBeforeCall(accountId, null);
         Type localVarReturnType = new TypeToken<AccountStatistics>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -225,7 +225,7 @@ public class StatisticsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getStatisticsAsync(String accountId, final ApiCallback<AccountStatistics> _callback) throws ApiException {
+    public okhttp3.Call getStatisticsAsync(@javax.annotation.Nonnull String accountId, final ApiCallback<AccountStatistics> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getStatisticsValidateBeforeCall(accountId, _callback);
         Type localVarReturnType = new TypeToken<AccountStatistics>(){}.getType();

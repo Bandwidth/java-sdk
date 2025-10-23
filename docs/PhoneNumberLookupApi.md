@@ -36,6 +36,10 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
+    // Configure OAuth2 access token for authorization: OAuth2
+    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
     PhoneNumberLookupApi apiInstance = new PhoneNumberLookupApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     LookupRequest lookupRequest = new LookupRequest(); // LookupRequest | Phone number lookup request.
@@ -66,7 +70,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -112,6 +116,10 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
+    // Configure OAuth2 access token for authorization: OAuth2
+    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
     PhoneNumberLookupApi apiInstance = new PhoneNumberLookupApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String requestId = "004223a0-8b17-41b1-bf81-20732adf5590"; // String | The phone number lookup request ID from Bandwidth.
@@ -142,7 +150,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 

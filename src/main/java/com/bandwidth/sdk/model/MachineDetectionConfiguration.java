@@ -14,6 +14,7 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.bandwidth.sdk.model.CallbackMethodEnum;
 import com.bandwidth.sdk.model.MachineDetectionModeEnum;
 import com.google.gson.TypeAdapter;
@@ -46,13 +47,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
  * The machine detection request used to perform &lt;a href&#x3D;&#39;/docs/voice/guides/machineDetection&#39;&gt;machine detection&lt;/a&gt; on the call. Currently, there is an issue where decimal values are not getting processed correctly. Please use whole number values. We are working to resolve this issue. Please contact Bandwidth Support if you need more information.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class MachineDetectionConfiguration {
   public static final String SERIALIZED_NAME_MODE = "mode";
   @SerializedName(SERIALIZED_NAME_MODE)
@@ -546,25 +548,10 @@ public class MachineDetectionConfiguration {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("mode");
-    openapiFields.add("detectionTimeout");
-    openapiFields.add("silenceTimeout");
-    openapiFields.add("speechThreshold");
-    openapiFields.add("speechEndThreshold");
-    openapiFields.add("machineSpeechEndThreshold");
-    openapiFields.add("delayResult");
-    openapiFields.add("callbackUrl");
-    openapiFields.add("callbackMethod");
-    openapiFields.add("username");
-    openapiFields.add("password");
-    openapiFields.add("fallbackUrl");
-    openapiFields.add("fallbackMethod");
-    openapiFields.add("fallbackUsername");
-    openapiFields.add("fallbackPassword");
+    openapiFields = new HashSet<String>(Arrays.asList("mode", "detectionTimeout", "silenceTimeout", "speechThreshold", "speechEndThreshold", "machineSpeechEndThreshold", "delayResult", "callbackUrl", "callbackMethod", "username", "password", "fallbackUrl", "fallbackMethod", "fallbackUsername", "fallbackPassword"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -576,7 +563,7 @@ public class MachineDetectionConfiguration {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!MachineDetectionConfiguration.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in MachineDetectionConfiguration is not found in the empty JSON string", MachineDetectionConfiguration.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in MachineDetectionConfiguration is not found in the empty JSON string", MachineDetectionConfiguration.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -585,30 +572,30 @@ public class MachineDetectionConfiguration {
         MachineDetectionModeEnum.validateJsonElement(jsonObj.get("mode"));
       }
       if ((jsonObj.get("callbackUrl") != null && !jsonObj.get("callbackUrl").isJsonNull()) && !jsonObj.get("callbackUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `callbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callbackUrl").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `callbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callbackUrl").toString()));
       }
       // validate the optional field `callbackMethod`
       if (jsonObj.get("callbackMethod") != null && !jsonObj.get("callbackMethod").isJsonNull()) {
         CallbackMethodEnum.validateJsonElement(jsonObj.get("callbackMethod"));
       }
       if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
       }
       if ((jsonObj.get("password") != null && !jsonObj.get("password").isJsonNull()) && !jsonObj.get("password").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `password` to be a primitive type in the JSON string but got `%s`", jsonObj.get("password").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `password` to be a primitive type in the JSON string but got `%s`", jsonObj.get("password").toString()));
       }
       if ((jsonObj.get("fallbackUrl") != null && !jsonObj.get("fallbackUrl").isJsonNull()) && !jsonObj.get("fallbackUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `fallbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackUrl").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `fallbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackUrl").toString()));
       }
       // validate the optional field `fallbackMethod`
       if (jsonObj.get("fallbackMethod") != null && !jsonObj.get("fallbackMethod").isJsonNull()) {
         CallbackMethodEnum.validateJsonElement(jsonObj.get("fallbackMethod"));
       }
       if ((jsonObj.get("fallbackUsername") != null && !jsonObj.get("fallbackUsername").isJsonNull()) && !jsonObj.get("fallbackUsername").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `fallbackUsername` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackUsername").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `fallbackUsername` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackUsername").toString()));
       }
       if ((jsonObj.get("fallbackPassword") != null && !jsonObj.get("fallbackPassword").isJsonNull()) && !jsonObj.get("fallbackPassword").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `fallbackPassword` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackPassword").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `fallbackPassword` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackPassword").toString()));
       }
   }
 
@@ -669,7 +656,7 @@ public class MachineDetectionConfiguration {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object
