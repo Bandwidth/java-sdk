@@ -35,11 +35,15 @@ import java.net.HttpURLConnection;
 import java.net.URI;
 import java.util.Map;
 import java.util.List;
+import java.util.Base64;
 
 public class RetryingOAuth extends OAuth implements Interceptor {
     private OAuthClient oAuthClient;
 
     private TokenRequestBuilder tokenRequestBuilder;
+
+    private String clientId;
+    private String clientSecret;
 
     /**
      * @param client An OkHttp client
@@ -73,9 +77,9 @@ public class RetryingOAuth extends OAuth implements Interceptor {
             String clientSecret,
             Map<String, String> parameters
     ) {
-        this(OAuthClientRequest.tokenLocation(tokenUrl)
-                .setClientId(clientId)
-                .setClientSecret(clientSecret));
+        this(OAuthClientRequest.tokenLocation(tokenUrl));
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
         setFlow(flow);
         if (parameters != null) {
             for (Map.Entry<String, String> entry : parameters.entrySet()) {
@@ -185,7 +189,8 @@ public class RetryingOAuth extends OAuth implements Interceptor {
         if (getAccessToken() == null || getAccessToken().equals(requestAccessToken)) {
             try {
                 OAuthClientRequest req = tokenRequestBuilder.buildBodyMessage();
-                req.setHeader("Authorization", "Basic ZGURuOTM=");
+                String credentials = Base64.getEncoder().encodeToString((clientId + ":" + clientSecret).getBytes());
+                req.setHeader("Authorization", "Basic " + credentials);
                 OAuthJSONAccessTokenResponse accessTokenResponse = oAuthClient.accessToken(req);
                 if (accessTokenResponse != null && accessTokenResponse.getAccessToken() != null) {
                     setAccessToken(accessTokenResponse.getAccessToken());

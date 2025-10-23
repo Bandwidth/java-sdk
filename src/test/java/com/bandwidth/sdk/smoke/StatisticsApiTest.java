@@ -1,5 +1,6 @@
 package com.bandwidth.sdk.smoke;
 
+import com.bandwidth.sdk.api.MessagesApi;
 import com.bandwidth.sdk.api.StatisticsApi;
 import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.ApiClient;
@@ -17,10 +18,8 @@ import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
  * API tests for StatisticsApi
  */
 public class StatisticsApiTest {
-    public ApiClient defaultClient = Configuration.getDefaultApiClient();
-    public HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private final StatisticsApi api = new StatisticsApi(defaultClient);
-
+    ApiClient oauthClient = new ApiClient(BW_USERNAME, BW_PASSWORD, null);
+    private final StatisticsApi api = new StatisticsApi(oauthClient);
     /**
      * Get Account Statistics
      *
@@ -30,8 +29,6 @@ public class StatisticsApiTest {
      */
     @Test
     public void getStatisticsTest() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
 
         AccountStatistics response = api.getStatistics(BW_ACCOUNT_ID);
 
