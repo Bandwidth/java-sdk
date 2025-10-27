@@ -103,7 +103,7 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createMessageCall(String accountId, MessageRequest messageRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createMessageCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull MessageRequest messageRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://messaging.bandwidth.com/api/v2" };
@@ -150,7 +150,7 @@ public class MessagesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createMessageValidateBeforeCall(String accountId, MessageRequest messageRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createMessageValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull MessageRequest messageRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling createMessage(Async)");
@@ -188,7 +188,7 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public Message createMessage(String accountId, MessageRequest messageRequest) throws ApiException {
+    public Message createMessage(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull MessageRequest messageRequest) throws ApiException {
         ApiResponse<Message> localVarResp = createMessageWithHttpInfo(accountId, messageRequest);
         return localVarResp.getData();
     }
@@ -216,7 +216,7 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Message> createMessageWithHttpInfo(String accountId, MessageRequest messageRequest) throws ApiException {
+    public ApiResponse<Message> createMessageWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull MessageRequest messageRequest) throws ApiException {
         okhttp3.Call localVarCall = createMessageValidateBeforeCall(accountId, messageRequest, null);
         Type localVarReturnType = new TypeToken<Message>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -246,7 +246,7 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createMessageAsync(String accountId, MessageRequest messageRequest, final ApiCallback<Message> _callback) throws ApiException {
+    public okhttp3.Call createMessageAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull MessageRequest messageRequest, final ApiCallback<Message> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createMessageValidateBeforeCall(accountId, messageRequest, _callback);
         Type localVarReturnType = new TypeToken<Message>(){}.getType();
@@ -300,7 +300,7 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMessagesCall(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, Integer fromBwLatency, Boolean bwQueued, ProductTypeEnum product, String location, Boolean carrierQueued, Integer fromCarrierLatency, String callingNumberCountryA3, String calledNumberCountryA3, Integer fromSegmentCount, Integer toSegmentCount, Integer fromMessageSize, Integer toMessageSize, String sort, String pageToken, Integer limit, Boolean limitTotalCount, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listMessagesCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nullable String messageId, @javax.annotation.Nullable String sourceTn, @javax.annotation.Nullable String destinationTn, @javax.annotation.Nullable MessageStatusEnum messageStatus, @javax.annotation.Nullable ListMessageDirectionEnum messageDirection, @javax.annotation.Nullable String carrierName, @javax.annotation.Nullable MessageTypeEnum messageType, @javax.annotation.Nullable Integer errorCode, @javax.annotation.Nullable String fromDateTime, @javax.annotation.Nullable String toDateTime, @javax.annotation.Nullable String campaignId, @javax.annotation.Nullable Integer fromBwLatency, @javax.annotation.Nullable Boolean bwQueued, @javax.annotation.Nullable ProductTypeEnum product, @javax.annotation.Nullable String location, @javax.annotation.Nullable Boolean carrierQueued, @javax.annotation.Nullable Integer fromCarrierLatency, @javax.annotation.Nullable String callingNumberCountryA3, @javax.annotation.Nullable String calledNumberCountryA3, @javax.annotation.Nullable Integer fromSegmentCount, @javax.annotation.Nullable Integer toSegmentCount, @javax.annotation.Nullable Integer fromMessageSize, @javax.annotation.Nullable Integer toMessageSize, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String pageToken, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Boolean limitTotalCount, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://messaging.bandwidth.com/api/v2" };
@@ -454,7 +454,7 @@ public class MessagesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listMessagesValidateBeforeCall(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, Integer fromBwLatency, Boolean bwQueued, ProductTypeEnum product, String location, Boolean carrierQueued, Integer fromCarrierLatency, String callingNumberCountryA3, String calledNumberCountryA3, Integer fromSegmentCount, Integer toSegmentCount, Integer fromMessageSize, Integer toMessageSize, String sort, String pageToken, Integer limit, Boolean limitTotalCount, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listMessagesValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nullable String messageId, @javax.annotation.Nullable String sourceTn, @javax.annotation.Nullable String destinationTn, @javax.annotation.Nullable MessageStatusEnum messageStatus, @javax.annotation.Nullable ListMessageDirectionEnum messageDirection, @javax.annotation.Nullable String carrierName, @javax.annotation.Nullable MessageTypeEnum messageType, @javax.annotation.Nullable Integer errorCode, @javax.annotation.Nullable String fromDateTime, @javax.annotation.Nullable String toDateTime, @javax.annotation.Nullable String campaignId, @javax.annotation.Nullable Integer fromBwLatency, @javax.annotation.Nullable Boolean bwQueued, @javax.annotation.Nullable ProductTypeEnum product, @javax.annotation.Nullable String location, @javax.annotation.Nullable Boolean carrierQueued, @javax.annotation.Nullable Integer fromCarrierLatency, @javax.annotation.Nullable String callingNumberCountryA3, @javax.annotation.Nullable String calledNumberCountryA3, @javax.annotation.Nullable Integer fromSegmentCount, @javax.annotation.Nullable Integer toSegmentCount, @javax.annotation.Nullable Integer fromMessageSize, @javax.annotation.Nullable Integer toMessageSize, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String pageToken, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Boolean limitTotalCount, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling listMessages(Async)");
@@ -511,7 +511,7 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public MessagesList listMessages(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, Integer fromBwLatency, Boolean bwQueued, ProductTypeEnum product, String location, Boolean carrierQueued, Integer fromCarrierLatency, String callingNumberCountryA3, String calledNumberCountryA3, Integer fromSegmentCount, Integer toSegmentCount, Integer fromMessageSize, Integer toMessageSize, String sort, String pageToken, Integer limit, Boolean limitTotalCount) throws ApiException {
+    public MessagesList listMessages(@javax.annotation.Nonnull String accountId, @javax.annotation.Nullable String messageId, @javax.annotation.Nullable String sourceTn, @javax.annotation.Nullable String destinationTn, @javax.annotation.Nullable MessageStatusEnum messageStatus, @javax.annotation.Nullable ListMessageDirectionEnum messageDirection, @javax.annotation.Nullable String carrierName, @javax.annotation.Nullable MessageTypeEnum messageType, @javax.annotation.Nullable Integer errorCode, @javax.annotation.Nullable String fromDateTime, @javax.annotation.Nullable String toDateTime, @javax.annotation.Nullable String campaignId, @javax.annotation.Nullable Integer fromBwLatency, @javax.annotation.Nullable Boolean bwQueued, @javax.annotation.Nullable ProductTypeEnum product, @javax.annotation.Nullable String location, @javax.annotation.Nullable Boolean carrierQueued, @javax.annotation.Nullable Integer fromCarrierLatency, @javax.annotation.Nullable String callingNumberCountryA3, @javax.annotation.Nullable String calledNumberCountryA3, @javax.annotation.Nullable Integer fromSegmentCount, @javax.annotation.Nullable Integer toSegmentCount, @javax.annotation.Nullable Integer fromMessageSize, @javax.annotation.Nullable Integer toMessageSize, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String pageToken, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Boolean limitTotalCount) throws ApiException {
         ApiResponse<MessagesList> localVarResp = listMessagesWithHttpInfo(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, fromBwLatency, bwQueued, product, location, carrierQueued, fromCarrierLatency, callingNumberCountryA3, calledNumberCountryA3, fromSegmentCount, toSegmentCount, fromMessageSize, toMessageSize, sort, pageToken, limit, limitTotalCount);
         return localVarResp.getData();
     }
@@ -563,7 +563,7 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MessagesList> listMessagesWithHttpInfo(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, Integer fromBwLatency, Boolean bwQueued, ProductTypeEnum product, String location, Boolean carrierQueued, Integer fromCarrierLatency, String callingNumberCountryA3, String calledNumberCountryA3, Integer fromSegmentCount, Integer toSegmentCount, Integer fromMessageSize, Integer toMessageSize, String sort, String pageToken, Integer limit, Boolean limitTotalCount) throws ApiException {
+    public ApiResponse<MessagesList> listMessagesWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nullable String messageId, @javax.annotation.Nullable String sourceTn, @javax.annotation.Nullable String destinationTn, @javax.annotation.Nullable MessageStatusEnum messageStatus, @javax.annotation.Nullable ListMessageDirectionEnum messageDirection, @javax.annotation.Nullable String carrierName, @javax.annotation.Nullable MessageTypeEnum messageType, @javax.annotation.Nullable Integer errorCode, @javax.annotation.Nullable String fromDateTime, @javax.annotation.Nullable String toDateTime, @javax.annotation.Nullable String campaignId, @javax.annotation.Nullable Integer fromBwLatency, @javax.annotation.Nullable Boolean bwQueued, @javax.annotation.Nullable ProductTypeEnum product, @javax.annotation.Nullable String location, @javax.annotation.Nullable Boolean carrierQueued, @javax.annotation.Nullable Integer fromCarrierLatency, @javax.annotation.Nullable String callingNumberCountryA3, @javax.annotation.Nullable String calledNumberCountryA3, @javax.annotation.Nullable Integer fromSegmentCount, @javax.annotation.Nullable Integer toSegmentCount, @javax.annotation.Nullable Integer fromMessageSize, @javax.annotation.Nullable Integer toMessageSize, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String pageToken, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Boolean limitTotalCount) throws ApiException {
         okhttp3.Call localVarCall = listMessagesValidateBeforeCall(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, fromBwLatency, bwQueued, product, location, carrierQueued, fromCarrierLatency, callingNumberCountryA3, calledNumberCountryA3, fromSegmentCount, toSegmentCount, fromMessageSize, toMessageSize, sort, pageToken, limit, limitTotalCount, null);
         Type localVarReturnType = new TypeToken<MessagesList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -617,7 +617,7 @@ public class MessagesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMessagesAsync(String accountId, String messageId, String sourceTn, String destinationTn, MessageStatusEnum messageStatus, ListMessageDirectionEnum messageDirection, String carrierName, MessageTypeEnum messageType, Integer errorCode, String fromDateTime, String toDateTime, String campaignId, Integer fromBwLatency, Boolean bwQueued, ProductTypeEnum product, String location, Boolean carrierQueued, Integer fromCarrierLatency, String callingNumberCountryA3, String calledNumberCountryA3, Integer fromSegmentCount, Integer toSegmentCount, Integer fromMessageSize, Integer toMessageSize, String sort, String pageToken, Integer limit, Boolean limitTotalCount, final ApiCallback<MessagesList> _callback) throws ApiException {
+    public okhttp3.Call listMessagesAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nullable String messageId, @javax.annotation.Nullable String sourceTn, @javax.annotation.Nullable String destinationTn, @javax.annotation.Nullable MessageStatusEnum messageStatus, @javax.annotation.Nullable ListMessageDirectionEnum messageDirection, @javax.annotation.Nullable String carrierName, @javax.annotation.Nullable MessageTypeEnum messageType, @javax.annotation.Nullable Integer errorCode, @javax.annotation.Nullable String fromDateTime, @javax.annotation.Nullable String toDateTime, @javax.annotation.Nullable String campaignId, @javax.annotation.Nullable Integer fromBwLatency, @javax.annotation.Nullable Boolean bwQueued, @javax.annotation.Nullable ProductTypeEnum product, @javax.annotation.Nullable String location, @javax.annotation.Nullable Boolean carrierQueued, @javax.annotation.Nullable Integer fromCarrierLatency, @javax.annotation.Nullable String callingNumberCountryA3, @javax.annotation.Nullable String calledNumberCountryA3, @javax.annotation.Nullable Integer fromSegmentCount, @javax.annotation.Nullable Integer toSegmentCount, @javax.annotation.Nullable Integer fromMessageSize, @javax.annotation.Nullable Integer toMessageSize, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String pageToken, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Boolean limitTotalCount, final ApiCallback<MessagesList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listMessagesValidateBeforeCall(accountId, messageId, sourceTn, destinationTn, messageStatus, messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId, fromBwLatency, bwQueued, product, location, carrierQueued, fromCarrierLatency, callingNumberCountryA3, calledNumberCountryA3, fromSegmentCount, toSegmentCount, fromMessageSize, toMessageSize, sort, pageToken, limit, limitTotalCount, _callback);
         Type localVarReturnType = new TypeToken<MessagesList>(){}.getType();

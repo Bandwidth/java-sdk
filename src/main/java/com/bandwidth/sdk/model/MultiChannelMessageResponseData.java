@@ -14,8 +14,9 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.bandwidth.sdk.model.MessageDirectionEnum;
-import com.bandwidth.sdk.model.MultiChannelMessageResponseDataChannelListInner;
+import com.bandwidth.sdk.model.MultiChannelChannelListResponseObject;
 import com.bandwidth.sdk.model.PriorityEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -50,13 +51,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
  * The data returned in a multichannel message response.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class MultiChannelMessageResponseData {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -81,7 +83,7 @@ public class MultiChannelMessageResponseData {
   public static final String SERIALIZED_NAME_CHANNEL_LIST = "channelList";
   @SerializedName(SERIALIZED_NAME_CHANNEL_LIST)
   @javax.annotation.Nonnull
-  private List<MultiChannelMessageResponseDataChannelListInner> channelList = new ArrayList<>();
+  private List<MultiChannelChannelListResponseObject> channelList = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
@@ -185,12 +187,12 @@ public class MultiChannelMessageResponseData {
   }
 
 
-  public MultiChannelMessageResponseData channelList(@javax.annotation.Nonnull List<MultiChannelMessageResponseDataChannelListInner> channelList) {
+  public MultiChannelMessageResponseData channelList(@javax.annotation.Nonnull List<MultiChannelChannelListResponseObject> channelList) {
     this.channelList = channelList;
     return this;
   }
 
-  public MultiChannelMessageResponseData addChannelListItem(MultiChannelMessageResponseDataChannelListInner channelListItem) {
+  public MultiChannelMessageResponseData addChannelListItem(MultiChannelChannelListResponseObject channelListItem) {
     if (this.channelList == null) {
       this.channelList = new ArrayList<>();
     }
@@ -203,11 +205,11 @@ public class MultiChannelMessageResponseData {
    * @return channelList
    */
   @javax.annotation.Nonnull
-  public List<MultiChannelMessageResponseDataChannelListInner> getChannelList() {
+  public List<MultiChannelChannelListResponseObject> getChannelList() {
     return channelList;
   }
 
-  public void setChannelList(@javax.annotation.Nonnull List<MultiChannelMessageResponseDataChannelListInner> channelList) {
+  public void setChannelList(@javax.annotation.Nonnull List<MultiChannelChannelListResponseObject> channelList) {
     this.channelList = channelList;
   }
 
@@ -373,23 +375,10 @@ public class MultiChannelMessageResponseData {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("time");
-    openapiFields.add("direction");
-    openapiFields.add("to");
-    openapiFields.add("channelList");
-    openapiFields.add("tag");
-    openapiFields.add("priority");
-    openapiFields.add("expiration");
+    openapiFields = new HashSet<String>(Arrays.asList("id", "time", "direction", "to", "channelList", "tag", "priority", "expiration"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("time");
-    openapiRequiredFields.add("direction");
-    openapiRequiredFields.add("to");
-    openapiRequiredFields.add("channelList");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("id", "time", "direction", "to", "channelList"));
   }
 
   /**
@@ -401,19 +390,19 @@ public class MultiChannelMessageResponseData {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!MultiChannelMessageResponseData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in MultiChannelMessageResponseData is not found in the empty JSON string", MultiChannelMessageResponseData.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in MultiChannelMessageResponseData is not found in the empty JSON string", MultiChannelMessageResponseData.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : MultiChannelMessageResponseData.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       // validate the required field `direction`
       MessageDirectionEnum.validateJsonElement(jsonObj.get("direction"));
@@ -421,20 +410,20 @@ public class MultiChannelMessageResponseData {
       if (jsonObj.get("to") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("to").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `to` to be an array in the JSON string but got `%s`", jsonObj.get("to").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `to` to be an array in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
       // ensure the json data is an array
       if (!jsonObj.get("channelList").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `channelList` to be an array in the JSON string but got `%s`", jsonObj.get("channelList").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `channelList` to be an array in the JSON string but got `%s`", jsonObj.get("channelList").toString()));
       }
 
       JsonArray jsonArraychannelList = jsonObj.getAsJsonArray("channelList");
       // validate the required field `channelList` (array)
       for (int i = 0; i < jsonArraychannelList.size(); i++) {
-        MultiChannelMessageResponseDataChannelListInner.validateJsonElement(jsonArraychannelList.get(i));
+        MultiChannelChannelListResponseObject.validateJsonElement(jsonArraychannelList.get(i));
       };
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
       }
       // validate the optional field `priority`
       if (jsonObj.get("priority") != null && !jsonObj.get("priority").isJsonNull()) {
@@ -499,7 +488,7 @@ public class MultiChannelMessageResponseData {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

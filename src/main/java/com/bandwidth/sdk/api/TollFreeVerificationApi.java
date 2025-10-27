@@ -100,7 +100,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createWebhookSubscriptionCall(String accountId, WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createWebhookSubscriptionCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://api.bandwidth.com/api/v2" };
@@ -147,7 +147,7 @@ public class TollFreeVerificationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createWebhookSubscriptionValidateBeforeCall(String accountId, WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createWebhookSubscriptionValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling createWebhookSubscription(Async)");
@@ -184,7 +184,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public WebhookSubscription createWebhookSubscription(String accountId, WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema) throws ApiException {
+    public WebhookSubscription createWebhookSubscription(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema) throws ApiException {
         ApiResponse<WebhookSubscription> localVarResp = createWebhookSubscriptionWithHttpInfo(accountId, webhookSubscriptionRequestSchema);
         return localVarResp.getData();
     }
@@ -211,7 +211,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<WebhookSubscription> createWebhookSubscriptionWithHttpInfo(String accountId, WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema) throws ApiException {
+    public ApiResponse<WebhookSubscription> createWebhookSubscriptionWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema) throws ApiException {
         okhttp3.Call localVarCall = createWebhookSubscriptionValidateBeforeCall(accountId, webhookSubscriptionRequestSchema, null);
         Type localVarReturnType = new TypeToken<WebhookSubscription>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -240,7 +240,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createWebhookSubscriptionAsync(String accountId, WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema, final ApiCallback<WebhookSubscription> _callback) throws ApiException {
+    public okhttp3.Call createWebhookSubscriptionAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema, final ApiCallback<WebhookSubscription> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createWebhookSubscriptionValidateBeforeCall(accountId, webhookSubscriptionRequestSchema, _callback);
         Type localVarReturnType = new TypeToken<WebhookSubscription>(){}.getType();
@@ -269,7 +269,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteVerificationRequestCall(String accountId, String phoneNumber, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteVerificationRequestCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String phoneNumber, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://api.bandwidth.com/api/v2" };
@@ -316,7 +316,7 @@ public class TollFreeVerificationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteVerificationRequestValidateBeforeCall(String accountId, String phoneNumber, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteVerificationRequestValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String phoneNumber, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling deleteVerificationRequest(Async)");
@@ -352,7 +352,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteVerificationRequest(String accountId, String phoneNumber) throws ApiException {
+    public void deleteVerificationRequest(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String phoneNumber) throws ApiException {
         deleteVerificationRequestWithHttpInfo(accountId, phoneNumber);
     }
 
@@ -378,7 +378,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteVerificationRequestWithHttpInfo(String accountId, String phoneNumber) throws ApiException {
+    public ApiResponse<Void> deleteVerificationRequestWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String phoneNumber) throws ApiException {
         okhttp3.Call localVarCall = deleteVerificationRequestValidateBeforeCall(accountId, phoneNumber, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -406,7 +406,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteVerificationRequestAsync(String accountId, String phoneNumber, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteVerificationRequestAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String phoneNumber, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteVerificationRequestValidateBeforeCall(accountId, phoneNumber, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -434,7 +434,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteWebhookSubscriptionCall(String accountId, String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteWebhookSubscriptionCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://api.bandwidth.com/api/v2" };
@@ -481,7 +481,7 @@ public class TollFreeVerificationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteWebhookSubscriptionValidateBeforeCall(String accountId, String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteWebhookSubscriptionValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling deleteWebhookSubscription(Async)");
@@ -517,7 +517,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteWebhookSubscription(String accountId, String id) throws ApiException {
+    public void deleteWebhookSubscription(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String id) throws ApiException {
         deleteWebhookSubscriptionWithHttpInfo(accountId, id);
     }
 
@@ -543,7 +543,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteWebhookSubscriptionWithHttpInfo(String accountId, String id) throws ApiException {
+    public ApiResponse<Void> deleteWebhookSubscriptionWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteWebhookSubscriptionValidateBeforeCall(accountId, id, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -571,7 +571,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteWebhookSubscriptionAsync(String accountId, String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteWebhookSubscriptionAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteWebhookSubscriptionValidateBeforeCall(accountId, id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -599,7 +599,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTollFreeVerificationStatusCall(String accountId, String phoneNumber, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTollFreeVerificationStatusCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String phoneNumber, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://api.bandwidth.com/api/v2" };
@@ -646,7 +646,7 @@ public class TollFreeVerificationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTollFreeVerificationStatusValidateBeforeCall(String accountId, String phoneNumber, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTollFreeVerificationStatusValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String phoneNumber, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getTollFreeVerificationStatus(Async)");
@@ -683,7 +683,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public TfvStatus getTollFreeVerificationStatus(String accountId, String phoneNumber) throws ApiException {
+    public TfvStatus getTollFreeVerificationStatus(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String phoneNumber) throws ApiException {
         ApiResponse<TfvStatus> localVarResp = getTollFreeVerificationStatusWithHttpInfo(accountId, phoneNumber);
         return localVarResp.getData();
     }
@@ -710,7 +710,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TfvStatus> getTollFreeVerificationStatusWithHttpInfo(String accountId, String phoneNumber) throws ApiException {
+    public ApiResponse<TfvStatus> getTollFreeVerificationStatusWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String phoneNumber) throws ApiException {
         okhttp3.Call localVarCall = getTollFreeVerificationStatusValidateBeforeCall(accountId, phoneNumber, null);
         Type localVarReturnType = new TypeToken<TfvStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -739,7 +739,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTollFreeVerificationStatusAsync(String accountId, String phoneNumber, final ApiCallback<TfvStatus> _callback) throws ApiException {
+    public okhttp3.Call getTollFreeVerificationStatusAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String phoneNumber, final ApiCallback<TfvStatus> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTollFreeVerificationStatusValidateBeforeCall(accountId, phoneNumber, _callback);
         Type localVarReturnType = new TypeToken<TfvStatus>(){}.getType();
@@ -915,7 +915,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listWebhookSubscriptionsCall(String accountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listWebhookSubscriptionsCall(@javax.annotation.Nonnull String accountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://api.bandwidth.com/api/v2" };
@@ -961,7 +961,7 @@ public class TollFreeVerificationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listWebhookSubscriptionsValidateBeforeCall(String accountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listWebhookSubscriptionsValidateBeforeCall(@javax.annotation.Nonnull String accountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling listWebhookSubscriptions(Async)");
@@ -991,7 +991,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public WebhookSubscriptionsListBody listWebhookSubscriptions(String accountId) throws ApiException {
+    public WebhookSubscriptionsListBody listWebhookSubscriptions(@javax.annotation.Nonnull String accountId) throws ApiException {
         ApiResponse<WebhookSubscriptionsListBody> localVarResp = listWebhookSubscriptionsWithHttpInfo(accountId);
         return localVarResp.getData();
     }
@@ -1016,7 +1016,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<WebhookSubscriptionsListBody> listWebhookSubscriptionsWithHttpInfo(String accountId) throws ApiException {
+    public ApiResponse<WebhookSubscriptionsListBody> listWebhookSubscriptionsWithHttpInfo(@javax.annotation.Nonnull String accountId) throws ApiException {
         okhttp3.Call localVarCall = listWebhookSubscriptionsValidateBeforeCall(accountId, null);
         Type localVarReturnType = new TypeToken<WebhookSubscriptionsListBody>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1043,7 +1043,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listWebhookSubscriptionsAsync(String accountId, final ApiCallback<WebhookSubscriptionsListBody> _callback) throws ApiException {
+    public okhttp3.Call listWebhookSubscriptionsAsync(@javax.annotation.Nonnull String accountId, final ApiCallback<WebhookSubscriptionsListBody> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listWebhookSubscriptionsValidateBeforeCall(accountId, _callback);
         Type localVarReturnType = new TypeToken<WebhookSubscriptionsListBody>(){}.getType();
@@ -1071,7 +1071,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call requestTollFreeVerificationCall(String accountId, VerificationRequest verificationRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call requestTollFreeVerificationCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull VerificationRequest verificationRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://api.bandwidth.com/api/v2" };
@@ -1118,7 +1118,7 @@ public class TollFreeVerificationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call requestTollFreeVerificationValidateBeforeCall(String accountId, VerificationRequest verificationRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call requestTollFreeVerificationValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull VerificationRequest verificationRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling requestTollFreeVerification(Async)");
@@ -1153,7 +1153,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public void requestTollFreeVerification(String accountId, VerificationRequest verificationRequest) throws ApiException {
+    public void requestTollFreeVerification(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull VerificationRequest verificationRequest) throws ApiException {
         requestTollFreeVerificationWithHttpInfo(accountId, verificationRequest);
     }
 
@@ -1178,7 +1178,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> requestTollFreeVerificationWithHttpInfo(String accountId, VerificationRequest verificationRequest) throws ApiException {
+    public ApiResponse<Void> requestTollFreeVerificationWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull VerificationRequest verificationRequest) throws ApiException {
         okhttp3.Call localVarCall = requestTollFreeVerificationValidateBeforeCall(accountId, verificationRequest, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -1205,7 +1205,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call requestTollFreeVerificationAsync(String accountId, VerificationRequest verificationRequest, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call requestTollFreeVerificationAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull VerificationRequest verificationRequest, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = requestTollFreeVerificationValidateBeforeCall(accountId, verificationRequest, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -1233,7 +1233,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateTollFreeVerificationRequestCall(String accountId, String phoneNumber, TfvSubmissionWrapper tfvSubmissionWrapper, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateTollFreeVerificationRequestCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String phoneNumber, @javax.annotation.Nonnull TfvSubmissionWrapper tfvSubmissionWrapper, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://api.bandwidth.com/api/v2" };
@@ -1281,7 +1281,7 @@ public class TollFreeVerificationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateTollFreeVerificationRequestValidateBeforeCall(String accountId, String phoneNumber, TfvSubmissionWrapper tfvSubmissionWrapper, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateTollFreeVerificationRequestValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String phoneNumber, @javax.annotation.Nonnull TfvSubmissionWrapper tfvSubmissionWrapper, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling updateTollFreeVerificationRequest(Async)");
@@ -1322,7 +1322,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public void updateTollFreeVerificationRequest(String accountId, String phoneNumber, TfvSubmissionWrapper tfvSubmissionWrapper) throws ApiException {
+    public void updateTollFreeVerificationRequest(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String phoneNumber, @javax.annotation.Nonnull TfvSubmissionWrapper tfvSubmissionWrapper) throws ApiException {
         updateTollFreeVerificationRequestWithHttpInfo(accountId, phoneNumber, tfvSubmissionWrapper);
     }
 
@@ -1348,7 +1348,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> updateTollFreeVerificationRequestWithHttpInfo(String accountId, String phoneNumber, TfvSubmissionWrapper tfvSubmissionWrapper) throws ApiException {
+    public ApiResponse<Void> updateTollFreeVerificationRequestWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String phoneNumber, @javax.annotation.Nonnull TfvSubmissionWrapper tfvSubmissionWrapper) throws ApiException {
         okhttp3.Call localVarCall = updateTollFreeVerificationRequestValidateBeforeCall(accountId, phoneNumber, tfvSubmissionWrapper, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -1376,7 +1376,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateTollFreeVerificationRequestAsync(String accountId, String phoneNumber, TfvSubmissionWrapper tfvSubmissionWrapper, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateTollFreeVerificationRequestAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String phoneNumber, @javax.annotation.Nonnull TfvSubmissionWrapper tfvSubmissionWrapper, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateTollFreeVerificationRequestValidateBeforeCall(accountId, phoneNumber, tfvSubmissionWrapper, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -1405,7 +1405,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateWebhookSubscriptionCall(String accountId, String id, WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateWebhookSubscriptionCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://api.bandwidth.com/api/v2" };
@@ -1453,7 +1453,7 @@ public class TollFreeVerificationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateWebhookSubscriptionValidateBeforeCall(String accountId, String id, WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateWebhookSubscriptionValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling updateWebhookSubscription(Async)");
@@ -1496,7 +1496,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public WebhookSubscription updateWebhookSubscription(String accountId, String id, WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema) throws ApiException {
+    public WebhookSubscription updateWebhookSubscription(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema) throws ApiException {
         ApiResponse<WebhookSubscription> localVarResp = updateWebhookSubscriptionWithHttpInfo(accountId, id, webhookSubscriptionRequestSchema);
         return localVarResp.getData();
     }
@@ -1524,7 +1524,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<WebhookSubscription> updateWebhookSubscriptionWithHttpInfo(String accountId, String id, WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema) throws ApiException {
+    public ApiResponse<WebhookSubscription> updateWebhookSubscriptionWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema) throws ApiException {
         okhttp3.Call localVarCall = updateWebhookSubscriptionValidateBeforeCall(accountId, id, webhookSubscriptionRequestSchema, null);
         Type localVarReturnType = new TypeToken<WebhookSubscription>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1554,7 +1554,7 @@ public class TollFreeVerificationApi {
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateWebhookSubscriptionAsync(String accountId, String id, WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema, final ApiCallback<WebhookSubscription> _callback) throws ApiException {
+    public okhttp3.Call updateWebhookSubscriptionAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema, final ApiCallback<WebhookSubscription> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateWebhookSubscriptionValidateBeforeCall(accountId, id, webhookSubscriptionRequestSchema, _callback);
         Type localVarReturnType = new TypeToken<WebhookSubscription>(){}.getType();

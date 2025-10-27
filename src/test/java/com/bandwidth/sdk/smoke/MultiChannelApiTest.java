@@ -7,8 +7,12 @@ import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.api.MultiChannelApi;
 import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.model.MmsMessageContent;
+import com.bandwidth.sdk.model.MmsMessageContentFile;
+import com.bandwidth.sdk.model.MultiChannelChannelListMMSObject;
 import com.bandwidth.sdk.model.MultiChannelChannelListObject;
 import com.bandwidth.sdk.model.MultiChannelChannelListObjectContent;
+import com.bandwidth.sdk.model.MultiChannelChannelListRequestObject;
+import com.bandwidth.sdk.model.MultiChannelChannelListSMSObject;
 import com.bandwidth.sdk.model.MultiChannelMessageChannelEnum;
 import com.bandwidth.sdk.model.MultiChannelMessageRequest;
 import com.bandwidth.sdk.model.PriorityEnum;
@@ -42,14 +46,29 @@ public class MultiChannelApiTest {
     }
 
     @Test
-    @Disabled
+    // @Disabled
     public void createMultiChannelMessageTest() throws ApiException {
-        MultiChannelChannelListObject channelListObject = new MultiChannelChannelListObject()
-                .from(BW_NUMBER)
-                .applicationId(BW_MESSAGING_APPLICATION_ID)
-                .channel(MultiChannelMessageChannelEnum.RBM)
-                .content(new MultiChannelChannelListObjectContent(new RbmMessageContentText()
-                                .text("Hello World!")));
+        MultiChannelChannelListRequestObject channelListObject = new MultiChannelChannelListRequestObject(
+                new MultiChannelChannelListSMSObject()
+                        .from(BW_NUMBER)
+                        .applicationId(BW_MESSAGING_APPLICATION_ID)
+                        .channel(MultiChannelMessageChannelEnum.MMS)
+                        // .content(new MmsMessageContent()
+                        //         .media(Arrays.asList(new MmsMessageContentFile()
+                        //                 .fileUrl(URI.create("https://www.example.com/image.png"))
+                        //         ))
+                        //         .text("Hello World!")
+                        // )
+                        .content(new SmsMessageContent().text("Hello World!"))
+        );
+        // MultiChannelChannelListObject channelListObject = new MultiChannelChannelListObject()
+        //         .from(BW_NUMBER)
+        //         .applicationId(BW_MESSAGING_APPLICATION_ID)
+        //         .channel(MultiChannelMessageChannelEnum.SMS)
+        //         .content(new MultiChannelChannelListObjectContent(
+        //                 new SmsMessageContent().text("Hello World!")
+        //         ));
+
         MultiChannelMessageRequest multiChannelMessageRequest = new MultiChannelMessageRequest()
                 .to(USER_NUMBER)
                 .tag("tag")
@@ -60,6 +79,7 @@ public class MultiChannelApiTest {
 
         ApiResponse response =
             api.createMultiChannelMessageWithHttpInfo(BW_ACCOUNT_ID, multiChannelMessageRequest);
+        System.out.println(response.getData());
         assertThat(response.getStatusCode(), is(202));
     }
 
