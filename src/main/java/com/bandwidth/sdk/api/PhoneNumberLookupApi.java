@@ -94,7 +94,9 @@ public class PhoneNumberLookupApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createLookupCall(String accountId, LookupRequest lookupRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -141,6 +143,7 @@ public class PhoneNumberLookupApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createLookupValidateBeforeCall(String accountId, LookupRequest lookupRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
@@ -176,7 +179,9 @@ public class PhoneNumberLookupApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public CreateLookupResponse createLookup(String accountId, LookupRequest lookupRequest) throws ApiException {
         ApiResponse<CreateLookupResponse> localVarResp = createLookupWithHttpInfo(accountId, lookupRequest);
         return localVarResp.getData();
@@ -201,7 +206,9 @@ public class PhoneNumberLookupApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<CreateLookupResponse> createLookupWithHttpInfo(String accountId, LookupRequest lookupRequest) throws ApiException {
         okhttp3.Call localVarCall = createLookupValidateBeforeCall(accountId, lookupRequest, null);
         Type localVarReturnType = new TypeToken<CreateLookupResponse>(){}.getType();
@@ -228,7 +235,9 @@ public class PhoneNumberLookupApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createLookupAsync(String accountId, LookupRequest lookupRequest, final ApiCallback<CreateLookupResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createLookupValidateBeforeCall(accountId, lookupRequest, _callback);
@@ -255,7 +264,9 @@ public class PhoneNumberLookupApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getLookupStatusCall(String accountId, String requestId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -302,6 +313,7 @@ public class PhoneNumberLookupApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getLookupStatusValidateBeforeCall(String accountId, String requestId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
@@ -337,7 +349,9 @@ public class PhoneNumberLookupApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public LookupStatus getLookupStatus(String accountId, String requestId) throws ApiException {
         ApiResponse<LookupStatus> localVarResp = getLookupStatusWithHttpInfo(accountId, requestId);
         return localVarResp.getData();
@@ -362,7 +376,9 @@ public class PhoneNumberLookupApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<LookupStatus> getLookupStatusWithHttpInfo(String accountId, String requestId) throws ApiException {
         okhttp3.Call localVarCall = getLookupStatusValidateBeforeCall(accountId, requestId, null);
         Type localVarReturnType = new TypeToken<LookupStatus>(){}.getType();
@@ -389,7 +405,9 @@ public class PhoneNumberLookupApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getLookupStatusAsync(String accountId, String requestId, final ApiCallback<LookupStatus> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLookupStatusValidateBeforeCall(accountId, requestId, _callback);
