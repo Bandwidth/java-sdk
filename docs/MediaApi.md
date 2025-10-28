@@ -38,6 +38,10 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
+    // Configure OAuth2 access token for authorization: OAuth2
+    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
     MediaApi apiInstance = new MediaApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String mediaId = "14762070468292kw2fuqty55yp2b2/0/bw.png"; // String | Media ID to retrieve.
@@ -67,7 +71,7 @@ null (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -115,6 +119,10 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
+    // Configure OAuth2 access token for authorization: OAuth2
+    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
     MediaApi apiInstance = new MediaApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String mediaId = "14762070468292kw2fuqty55yp2b2/0/bw.png"; // String | Media ID to retrieve.
@@ -145,7 +153,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -193,6 +201,10 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
+    // Configure OAuth2 access token for authorization: OAuth2
+    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
     MediaApi apiInstance = new MediaApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String continuationToken = "1XEi2tsFtLo1JbtLwETnM1ZJ+PqAa8w6ENvC5QKvwyrCDYII663Gy5M4s40owR1tjkuWUif6qbWvFtQJR5/ipqbUnfAqL254LKNlPy6tATCzioKSuHuOqgzloDkSwRtX0LtcL2otHS69hK343m+SjdL+vlj71tT39"; // String | Continuation token used to retrieve subsequent media.
@@ -223,7 +235,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -271,6 +283,10 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
+    // Configure OAuth2 access token for authorization: OAuth2
+    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
     MediaApi apiInstance = new MediaApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String mediaId = "14762070468292kw2fuqty55yp2b2/0/bw.png"; // String | Media ID to retrieve.
@@ -306,7 +322,7 @@ null (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
