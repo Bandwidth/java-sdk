@@ -5,13 +5,13 @@
 ## Enum
 
 
-* `SENDING` (value: `"message-sending"`)
+* `MESSAGE_SENDING` (value: `"message-sending"`)
 
-* `DELIVERED` (value: `"message-delivered"`)
+* `MESSAGE_DELIVERED` (value: `"message-delivered"`)
 
-* `FAILED` (value: `"message-failed"`)
+* `MESSAGE_FAILED` (value: `"message-failed"`)
 
-* `READ` (value: `"message-read"`)
+* `MESSAGE_READ` (value: `"message-read"`)
 
 
 

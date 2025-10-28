@@ -97,7 +97,7 @@ public class TranscriptionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteRealTimeTranscriptionCall(String accountId, String callId, String transcriptionId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteRealTimeTranscriptionCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String callId, @javax.annotation.Nonnull String transcriptionId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://voice.bandwidth.com/api/v2" };
@@ -140,12 +140,12 @@ public class TranscriptionsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteRealTimeTranscriptionValidateBeforeCall(String accountId, String callId, String transcriptionId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteRealTimeTranscriptionValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String callId, @javax.annotation.Nonnull String transcriptionId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling deleteRealTimeTranscription(Async)");
@@ -187,7 +187,7 @@ public class TranscriptionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteRealTimeTranscription(String accountId, String callId, String transcriptionId) throws ApiException {
+    public void deleteRealTimeTranscription(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String callId, @javax.annotation.Nonnull String transcriptionId) throws ApiException {
         deleteRealTimeTranscriptionWithHttpInfo(accountId, callId, transcriptionId);
     }
 
@@ -214,7 +214,7 @@ public class TranscriptionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteRealTimeTranscriptionWithHttpInfo(String accountId, String callId, String transcriptionId) throws ApiException {
+    public ApiResponse<Void> deleteRealTimeTranscriptionWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String callId, @javax.annotation.Nonnull String transcriptionId) throws ApiException {
         okhttp3.Call localVarCall = deleteRealTimeTranscriptionValidateBeforeCall(accountId, callId, transcriptionId, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -243,7 +243,7 @@ public class TranscriptionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteRealTimeTranscriptionAsync(String accountId, String callId, String transcriptionId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteRealTimeTranscriptionAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String callId, @javax.annotation.Nonnull String transcriptionId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteRealTimeTranscriptionValidateBeforeCall(accountId, callId, transcriptionId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -272,7 +272,7 @@ public class TranscriptionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRealTimeTranscriptionCall(String accountId, String callId, String transcriptionId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRealTimeTranscriptionCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String callId, @javax.annotation.Nonnull String transcriptionId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://voice.bandwidth.com/api/v2" };
@@ -315,12 +315,12 @@ public class TranscriptionsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRealTimeTranscriptionValidateBeforeCall(String accountId, String callId, String transcriptionId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getRealTimeTranscriptionValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String callId, @javax.annotation.Nonnull String transcriptionId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getRealTimeTranscription(Async)");
@@ -363,7 +363,7 @@ public class TranscriptionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public CallTranscriptionResponse getRealTimeTranscription(String accountId, String callId, String transcriptionId) throws ApiException {
+    public CallTranscriptionResponse getRealTimeTranscription(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String callId, @javax.annotation.Nonnull String transcriptionId) throws ApiException {
         ApiResponse<CallTranscriptionResponse> localVarResp = getRealTimeTranscriptionWithHttpInfo(accountId, callId, transcriptionId);
         return localVarResp.getData();
     }
@@ -391,7 +391,7 @@ public class TranscriptionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CallTranscriptionResponse> getRealTimeTranscriptionWithHttpInfo(String accountId, String callId, String transcriptionId) throws ApiException {
+    public ApiResponse<CallTranscriptionResponse> getRealTimeTranscriptionWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String callId, @javax.annotation.Nonnull String transcriptionId) throws ApiException {
         okhttp3.Call localVarCall = getRealTimeTranscriptionValidateBeforeCall(accountId, callId, transcriptionId, null);
         Type localVarReturnType = new TypeToken<CallTranscriptionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -421,7 +421,7 @@ public class TranscriptionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRealTimeTranscriptionAsync(String accountId, String callId, String transcriptionId, final ApiCallback<CallTranscriptionResponse> _callback) throws ApiException {
+    public okhttp3.Call getRealTimeTranscriptionAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String callId, @javax.annotation.Nonnull String transcriptionId, final ApiCallback<CallTranscriptionResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRealTimeTranscriptionValidateBeforeCall(accountId, callId, transcriptionId, _callback);
         Type localVarReturnType = new TypeToken<CallTranscriptionResponse>(){}.getType();
@@ -450,7 +450,7 @@ public class TranscriptionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listRealTimeTranscriptionsCall(String accountId, String callId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listRealTimeTranscriptionsCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String callId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://voice.bandwidth.com/api/v2" };
@@ -492,12 +492,12 @@ public class TranscriptionsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listRealTimeTranscriptionsValidateBeforeCall(String accountId, String callId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listRealTimeTranscriptionsValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String callId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling listRealTimeTranscriptions(Async)");
@@ -534,7 +534,7 @@ public class TranscriptionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public List<CallTranscriptionMetadata> listRealTimeTranscriptions(String accountId, String callId) throws ApiException {
+    public List<CallTranscriptionMetadata> listRealTimeTranscriptions(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String callId) throws ApiException {
         ApiResponse<List<CallTranscriptionMetadata>> localVarResp = listRealTimeTranscriptionsWithHttpInfo(accountId, callId);
         return localVarResp.getData();
     }
@@ -561,7 +561,7 @@ public class TranscriptionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<CallTranscriptionMetadata>> listRealTimeTranscriptionsWithHttpInfo(String accountId, String callId) throws ApiException {
+    public ApiResponse<List<CallTranscriptionMetadata>> listRealTimeTranscriptionsWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String callId) throws ApiException {
         okhttp3.Call localVarCall = listRealTimeTranscriptionsValidateBeforeCall(accountId, callId, null);
         Type localVarReturnType = new TypeToken<List<CallTranscriptionMetadata>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -590,7 +590,7 @@ public class TranscriptionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listRealTimeTranscriptionsAsync(String accountId, String callId, final ApiCallback<List<CallTranscriptionMetadata>> _callback) throws ApiException {
+    public okhttp3.Call listRealTimeTranscriptionsAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String callId, final ApiCallback<List<CallTranscriptionMetadata>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listRealTimeTranscriptionsValidateBeforeCall(accountId, callId, _callback);
         Type localVarReturnType = new TypeToken<List<CallTranscriptionMetadata>>(){}.getType();

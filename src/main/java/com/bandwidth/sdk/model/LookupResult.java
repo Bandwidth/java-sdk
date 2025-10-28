@@ -14,12 +14,17 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import java.util.Locale;
+import com.bandwidth.sdk.model.DeactivationEventEnum;
+import com.bandwidth.sdk.model.LatestMessageDeliveryStatusEnum;
+import com.bandwidth.sdk.model.LineTypeEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -42,230 +47,279 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
  * Carrier information results for the specified telephone number.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class LookupResult {
-  public static final String SERIALIZED_NAME_RESPONSE_CODE = "Response Code";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_CODE)
+  public static final String SERIALIZED_NAME_PHONE_NUMBER = "phoneNumber";
+  @SerializedName(SERIALIZED_NAME_PHONE_NUMBER)
   @javax.annotation.Nullable
-  private Integer responseCode;
+  private String phoneNumber;
 
-  public static final String SERIALIZED_NAME_MESSAGE = "Message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
-  @javax.annotation.Nullable
-  private String message;
-
-  public static final String SERIALIZED_NAME_E164_FORMAT = "E.164 Format";
-  @SerializedName(SERIALIZED_NAME_E164_FORMAT)
-  @javax.annotation.Nullable
-  private String e164Format;
-
-  public static final String SERIALIZED_NAME_FORMATTED = "Formatted";
-  @SerializedName(SERIALIZED_NAME_FORMATTED)
-  @javax.annotation.Nullable
-  private String formatted;
-
-  public static final String SERIALIZED_NAME_COUNTRY = "Country";
-  @SerializedName(SERIALIZED_NAME_COUNTRY)
-  @javax.annotation.Nullable
-  private String country;
-
-  public static final String SERIALIZED_NAME_LINE_TYPE = "Line Type";
+  public static final String SERIALIZED_NAME_LINE_TYPE = "lineType";
   @SerializedName(SERIALIZED_NAME_LINE_TYPE)
   @javax.annotation.Nullable
-  private String lineType;
+  private LineTypeEnum lineType;
 
-  public static final String SERIALIZED_NAME_LINE_PROVIDER = "Line Provider";
-  @SerializedName(SERIALIZED_NAME_LINE_PROVIDER)
+  public static final String SERIALIZED_NAME_MESSAGING_PROVIDER = "messagingProvider";
+  @SerializedName(SERIALIZED_NAME_MESSAGING_PROVIDER)
   @javax.annotation.Nullable
-  private String lineProvider;
+  private String messagingProvider;
 
-  public static final String SERIALIZED_NAME_MOBILE_COUNTRY_CODE = "Mobile Country Code";
-  @SerializedName(SERIALIZED_NAME_MOBILE_COUNTRY_CODE)
+  public static final String SERIALIZED_NAME_VOICE_PROVIDER = "voiceProvider";
+  @SerializedName(SERIALIZED_NAME_VOICE_PROVIDER)
   @javax.annotation.Nullable
-  private String mobileCountryCode;
+  private String voiceProvider;
 
-  public static final String SERIALIZED_NAME_MOBILE_NETWORK_CODE = "Mobile Network Code";
-  @SerializedName(SERIALIZED_NAME_MOBILE_NETWORK_CODE)
+  public static final String SERIALIZED_NAME_COUNTRY_CODE_A3 = "countryCodeA3";
+  @SerializedName(SERIALIZED_NAME_COUNTRY_CODE_A3)
   @javax.annotation.Nullable
-  private String mobileNetworkCode;
+  private String countryCodeA3;
+
+  public static final String SERIALIZED_NAME_DEACTIVATION_REPORTER = "deactivationReporter";
+  @SerializedName(SERIALIZED_NAME_DEACTIVATION_REPORTER)
+  @javax.annotation.Nullable
+  private String deactivationReporter;
+
+  public static final String SERIALIZED_NAME_DEACTIVATION_DATE = "deactivationDate";
+  @SerializedName(SERIALIZED_NAME_DEACTIVATION_DATE)
+  @javax.annotation.Nullable
+  private String deactivationDate;
+
+  public static final String SERIALIZED_NAME_DEACTIVATION_EVENT = "deactivationEvent";
+  @SerializedName(SERIALIZED_NAME_DEACTIVATION_EVENT)
+  @javax.annotation.Nullable
+  private DeactivationEventEnum deactivationEvent;
+
+  public static final String SERIALIZED_NAME_LATEST_MESSAGE_DELIVERY_STATUS = "latestMessageDeliveryStatus";
+  @SerializedName(SERIALIZED_NAME_LATEST_MESSAGE_DELIVERY_STATUS)
+  @javax.annotation.Nullable
+  private LatestMessageDeliveryStatusEnum latestMessageDeliveryStatus;
+
+  public static final String SERIALIZED_NAME_INITIAL_MESSAGE_DELIVERY_STATUS_DATE = "initialMessageDeliveryStatusDate";
+  @SerializedName(SERIALIZED_NAME_INITIAL_MESSAGE_DELIVERY_STATUS_DATE)
+  @javax.annotation.Nullable
+  private LocalDate initialMessageDeliveryStatusDate;
+
+  public static final String SERIALIZED_NAME_LATEST_MESSAGE_DELIVERY_STATUS_DATE = "latestMessageDeliveryStatusDate";
+  @SerializedName(SERIALIZED_NAME_LATEST_MESSAGE_DELIVERY_STATUS_DATE)
+  @javax.annotation.Nullable
+  private LocalDate latestMessageDeliveryStatusDate;
 
   public LookupResult() {
   }
 
-  public LookupResult responseCode(@javax.annotation.Nullable Integer responseCode) {
-    this.responseCode = responseCode;
-    return this;
-  }
-
-  /**
-   * Our vendor&#39;s response code.
-   * @return responseCode
-   */
-  @javax.annotation.Nullable
-  public Integer getResponseCode() {
-    return responseCode;
-  }
-
-  public void setResponseCode(@javax.annotation.Nullable Integer responseCode) {
-    this.responseCode = responseCode;
-  }
-
-
-  public LookupResult message(@javax.annotation.Nullable String message) {
-    this.message = message;
-    return this;
-  }
-
-  /**
-   * Message associated with the response code.
-   * @return message
-   */
-  @javax.annotation.Nullable
-  public String getMessage() {
-    return message;
-  }
-
-  public void setMessage(@javax.annotation.Nullable String message) {
-    this.message = message;
-  }
-
-
-  public LookupResult e164Format(@javax.annotation.Nullable String e164Format) {
-    this.e164Format = e164Format;
+  public LookupResult phoneNumber(@javax.annotation.Nullable String phoneNumber) {
+    this.phoneNumber = phoneNumber;
     return this;
   }
 
   /**
    * The telephone number in E.164 format.
-   * @return e164Format
+   * @return phoneNumber
    */
   @javax.annotation.Nullable
-  public String getE164Format() {
-    return e164Format;
+  public String getPhoneNumber() {
+    return phoneNumber;
   }
 
-  public void setE164Format(@javax.annotation.Nullable String e164Format) {
-    this.e164Format = e164Format;
-  }
-
-
-  public LookupResult formatted(@javax.annotation.Nullable String formatted) {
-    this.formatted = formatted;
-    return this;
-  }
-
-  /**
-   * The formatted version of the telephone number.
-   * @return formatted
-   */
-  @javax.annotation.Nullable
-  public String getFormatted() {
-    return formatted;
-  }
-
-  public void setFormatted(@javax.annotation.Nullable String formatted) {
-    this.formatted = formatted;
+  public void setPhoneNumber(@javax.annotation.Nullable String phoneNumber) {
+    this.phoneNumber = phoneNumber;
   }
 
 
-  public LookupResult country(@javax.annotation.Nullable String country) {
-    this.country = country;
-    return this;
-  }
-
-  /**
-   * The country of the telephone number.
-   * @return country
-   */
-  @javax.annotation.Nullable
-  public String getCountry() {
-    return country;
-  }
-
-  public void setCountry(@javax.annotation.Nullable String country) {
-    this.country = country;
-  }
-
-
-  public LookupResult lineType(@javax.annotation.Nullable String lineType) {
+  public LookupResult lineType(@javax.annotation.Nullable LineTypeEnum lineType) {
     this.lineType = lineType;
     return this;
   }
 
   /**
-   * The line type of the telephone number.
+   * Get lineType
    * @return lineType
    */
   @javax.annotation.Nullable
-  public String getLineType() {
+  public LineTypeEnum getLineType() {
     return lineType;
   }
 
-  public void setLineType(@javax.annotation.Nullable String lineType) {
+  public void setLineType(@javax.annotation.Nullable LineTypeEnum lineType) {
     this.lineType = lineType;
   }
 
 
-  public LookupResult lineProvider(@javax.annotation.Nullable String lineProvider) {
-    this.lineProvider = lineProvider;
+  public LookupResult messagingProvider(@javax.annotation.Nullable String messagingProvider) {
+    this.messagingProvider = messagingProvider;
     return this;
   }
 
   /**
    * The messaging service provider of the telephone number.
-   * @return lineProvider
+   * @return messagingProvider
    */
   @javax.annotation.Nullable
-  public String getLineProvider() {
-    return lineProvider;
+  public String getMessagingProvider() {
+    return messagingProvider;
   }
 
-  public void setLineProvider(@javax.annotation.Nullable String lineProvider) {
-    this.lineProvider = lineProvider;
+  public void setMessagingProvider(@javax.annotation.Nullable String messagingProvider) {
+    this.messagingProvider = messagingProvider;
   }
 
 
-  public LookupResult mobileCountryCode(@javax.annotation.Nullable String mobileCountryCode) {
-    this.mobileCountryCode = mobileCountryCode;
+  public LookupResult voiceProvider(@javax.annotation.Nullable String voiceProvider) {
+    this.voiceProvider = voiceProvider;
     return this;
   }
 
   /**
-   * The first half of the Home Network Identity (HNI).
-   * @return mobileCountryCode
+   * The voice service provider of the telephone number.
+   * @return voiceProvider
    */
   @javax.annotation.Nullable
-  public String getMobileCountryCode() {
-    return mobileCountryCode;
+  public String getVoiceProvider() {
+    return voiceProvider;
   }
 
-  public void setMobileCountryCode(@javax.annotation.Nullable String mobileCountryCode) {
-    this.mobileCountryCode = mobileCountryCode;
+  public void setVoiceProvider(@javax.annotation.Nullable String voiceProvider) {
+    this.voiceProvider = voiceProvider;
   }
 
 
-  public LookupResult mobileNetworkCode(@javax.annotation.Nullable String mobileNetworkCode) {
-    this.mobileNetworkCode = mobileNetworkCode;
+  public LookupResult countryCodeA3(@javax.annotation.Nullable String countryCodeA3) {
+    this.countryCodeA3 = countryCodeA3;
     return this;
   }
 
   /**
-   * The second half of the HNI.
-   * @return mobileNetworkCode
+   * The country code of the telephone number in ISO 3166-1 alpha-3 format.
+   * @return countryCodeA3
    */
   @javax.annotation.Nullable
-  public String getMobileNetworkCode() {
-    return mobileNetworkCode;
+  public String getCountryCodeA3() {
+    return countryCodeA3;
   }
 
-  public void setMobileNetworkCode(@javax.annotation.Nullable String mobileNetworkCode) {
-    this.mobileNetworkCode = mobileNetworkCode;
+  public void setCountryCodeA3(@javax.annotation.Nullable String countryCodeA3) {
+    this.countryCodeA3 = countryCodeA3;
+  }
+
+
+  public LookupResult deactivationReporter(@javax.annotation.Nullable String deactivationReporter) {
+    this.deactivationReporter = deactivationReporter;
+    return this;
+  }
+
+  /**
+   * [DNI-Only](#section/DNI-Only). The carrier that reported a deactivation event for this phone number. 
+   * @return deactivationReporter
+   */
+  @javax.annotation.Nullable
+  public String getDeactivationReporter() {
+    return deactivationReporter;
+  }
+
+  public void setDeactivationReporter(@javax.annotation.Nullable String deactivationReporter) {
+    this.deactivationReporter = deactivationReporter;
+  }
+
+
+  public LookupResult deactivationDate(@javax.annotation.Nullable String deactivationDate) {
+    this.deactivationDate = deactivationDate;
+    return this;
+  }
+
+  /**
+   * [DNI-Only](#section/DNI-Only). The datetime the carrier reported a deactivation event.
+   * @return deactivationDate
+   */
+  @javax.annotation.Nullable
+  public String getDeactivationDate() {
+    return deactivationDate;
+  }
+
+  public void setDeactivationDate(@javax.annotation.Nullable String deactivationDate) {
+    this.deactivationDate = deactivationDate;
+  }
+
+
+  public LookupResult deactivationEvent(@javax.annotation.Nullable DeactivationEventEnum deactivationEvent) {
+    this.deactivationEvent = deactivationEvent;
+    return this;
+  }
+
+  /**
+   * Get deactivationEvent
+   * @return deactivationEvent
+   */
+  @javax.annotation.Nullable
+  public DeactivationEventEnum getDeactivationEvent() {
+    return deactivationEvent;
+  }
+
+  public void setDeactivationEvent(@javax.annotation.Nullable DeactivationEventEnum deactivationEvent) {
+    this.deactivationEvent = deactivationEvent;
+  }
+
+
+  public LookupResult latestMessageDeliveryStatus(@javax.annotation.Nullable LatestMessageDeliveryStatusEnum latestMessageDeliveryStatus) {
+    this.latestMessageDeliveryStatus = latestMessageDeliveryStatus;
+    return this;
+  }
+
+  /**
+   * Get latestMessageDeliveryStatus
+   * @return latestMessageDeliveryStatus
+   */
+  @javax.annotation.Nullable
+  public LatestMessageDeliveryStatusEnum getLatestMessageDeliveryStatus() {
+    return latestMessageDeliveryStatus;
+  }
+
+  public void setLatestMessageDeliveryStatus(@javax.annotation.Nullable LatestMessageDeliveryStatusEnum latestMessageDeliveryStatus) {
+    this.latestMessageDeliveryStatus = latestMessageDeliveryStatus;
+  }
+
+
+  public LookupResult initialMessageDeliveryStatusDate(@javax.annotation.Nullable LocalDate initialMessageDeliveryStatusDate) {
+    this.initialMessageDeliveryStatusDate = initialMessageDeliveryStatusDate;
+    return this;
+  }
+
+  /**
+   * [DNI-Only](#section/DNI-Only). The date the phone number entered the status described in &#x60;latestMessageDeliveryStatus&#x60;.  Think of this as the \&quot;start time\&quot; for that status. Value resets every time the &#x60;latestMessageDeliveryStatus&#x60; changes.
+   * @return initialMessageDeliveryStatusDate
+   */
+  @javax.annotation.Nullable
+  public LocalDate getInitialMessageDeliveryStatusDate() {
+    return initialMessageDeliveryStatusDate;
+  }
+
+  public void setInitialMessageDeliveryStatusDate(@javax.annotation.Nullable LocalDate initialMessageDeliveryStatusDate) {
+    this.initialMessageDeliveryStatusDate = initialMessageDeliveryStatusDate;
+  }
+
+
+  public LookupResult latestMessageDeliveryStatusDate(@javax.annotation.Nullable LocalDate latestMessageDeliveryStatusDate) {
+    this.latestMessageDeliveryStatusDate = latestMessageDeliveryStatusDate;
+    return this;
+  }
+
+  /**
+   * [DNI-Only](#section/DNI-Only). The date bandwidth last received delivery status information for this phone number.  Use this field to understand how up-to-date the &#x60;latestMessageDeliveryStatus&#x60; is. Value resets every time the &#x60;latestMessageDeliveryStatus&#x60; changes.
+   * @return latestMessageDeliveryStatusDate
+   */
+  @javax.annotation.Nullable
+  public LocalDate getLatestMessageDeliveryStatusDate() {
+    return latestMessageDeliveryStatusDate;
+  }
+
+  public void setLatestMessageDeliveryStatusDate(@javax.annotation.Nullable LocalDate latestMessageDeliveryStatusDate) {
+    this.latestMessageDeliveryStatusDate = latestMessageDeliveryStatusDate;
   }
 
   /**
@@ -323,36 +377,40 @@ public class LookupResult {
       return false;
     }
     LookupResult lookupResult = (LookupResult) o;
-    return Objects.equals(this.responseCode, lookupResult.responseCode) &&
-        Objects.equals(this.message, lookupResult.message) &&
-        Objects.equals(this.e164Format, lookupResult.e164Format) &&
-        Objects.equals(this.formatted, lookupResult.formatted) &&
-        Objects.equals(this.country, lookupResult.country) &&
+    return Objects.equals(this.phoneNumber, lookupResult.phoneNumber) &&
         Objects.equals(this.lineType, lookupResult.lineType) &&
-        Objects.equals(this.lineProvider, lookupResult.lineProvider) &&
-        Objects.equals(this.mobileCountryCode, lookupResult.mobileCountryCode) &&
-        Objects.equals(this.mobileNetworkCode, lookupResult.mobileNetworkCode)&&
+        Objects.equals(this.messagingProvider, lookupResult.messagingProvider) &&
+        Objects.equals(this.voiceProvider, lookupResult.voiceProvider) &&
+        Objects.equals(this.countryCodeA3, lookupResult.countryCodeA3) &&
+        Objects.equals(this.deactivationReporter, lookupResult.deactivationReporter) &&
+        Objects.equals(this.deactivationDate, lookupResult.deactivationDate) &&
+        Objects.equals(this.deactivationEvent, lookupResult.deactivationEvent) &&
+        Objects.equals(this.latestMessageDeliveryStatus, lookupResult.latestMessageDeliveryStatus) &&
+        Objects.equals(this.initialMessageDeliveryStatusDate, lookupResult.initialMessageDeliveryStatusDate) &&
+        Objects.equals(this.latestMessageDeliveryStatusDate, lookupResult.latestMessageDeliveryStatusDate)&&
         Objects.equals(this.additionalProperties, lookupResult.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(responseCode, message, e164Format, formatted, country, lineType, lineProvider, mobileCountryCode, mobileNetworkCode, additionalProperties);
+    return Objects.hash(phoneNumber, lineType, messagingProvider, voiceProvider, countryCodeA3, deactivationReporter, deactivationDate, deactivationEvent, latestMessageDeliveryStatus, initialMessageDeliveryStatusDate, latestMessageDeliveryStatusDate, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LookupResult {\n");
-    sb.append("    responseCode: ").append(toIndentedString(responseCode)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    e164Format: ").append(toIndentedString(e164Format)).append("\n");
-    sb.append("    formatted: ").append(toIndentedString(formatted)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("    lineType: ").append(toIndentedString(lineType)).append("\n");
-    sb.append("    lineProvider: ").append(toIndentedString(lineProvider)).append("\n");
-    sb.append("    mobileCountryCode: ").append(toIndentedString(mobileCountryCode)).append("\n");
-    sb.append("    mobileNetworkCode: ").append(toIndentedString(mobileNetworkCode)).append("\n");
+    sb.append("    messagingProvider: ").append(toIndentedString(messagingProvider)).append("\n");
+    sb.append("    voiceProvider: ").append(toIndentedString(voiceProvider)).append("\n");
+    sb.append("    countryCodeA3: ").append(toIndentedString(countryCodeA3)).append("\n");
+    sb.append("    deactivationReporter: ").append(toIndentedString(deactivationReporter)).append("\n");
+    sb.append("    deactivationDate: ").append(toIndentedString(deactivationDate)).append("\n");
+    sb.append("    deactivationEvent: ").append(toIndentedString(deactivationEvent)).append("\n");
+    sb.append("    latestMessageDeliveryStatus: ").append(toIndentedString(latestMessageDeliveryStatus)).append("\n");
+    sb.append("    initialMessageDeliveryStatusDate: ").append(toIndentedString(initialMessageDeliveryStatusDate)).append("\n");
+    sb.append("    latestMessageDeliveryStatusDate: ").append(toIndentedString(latestMessageDeliveryStatusDate)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -375,19 +433,10 @@ public class LookupResult {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("Response Code");
-    openapiFields.add("Message");
-    openapiFields.add("E.164 Format");
-    openapiFields.add("Formatted");
-    openapiFields.add("Country");
-    openapiFields.add("Line Type");
-    openapiFields.add("Line Provider");
-    openapiFields.add("Mobile Country Code");
-    openapiFields.add("Mobile Network Code");
+    openapiFields = new HashSet<String>(Arrays.asList("phoneNumber", "lineType", "messagingProvider", "voiceProvider", "countryCodeA3", "deactivationReporter", "deactivationDate", "deactivationEvent", "latestMessageDeliveryStatus", "initialMessageDeliveryStatusDate", "latestMessageDeliveryStatusDate"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -399,33 +448,39 @@ public class LookupResult {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!LookupResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LookupResult is not found in the empty JSON string", LookupResult.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in LookupResult is not found in the empty JSON string", LookupResult.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("Message") != null && !jsonObj.get("Message").isJsonNull()) && !jsonObj.get("Message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `Message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Message").toString()));
+      if ((jsonObj.get("phoneNumber") != null && !jsonObj.get("phoneNumber").isJsonNull()) && !jsonObj.get("phoneNumber").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `phoneNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phoneNumber").toString()));
       }
-      if ((jsonObj.get("E.164 Format") != null && !jsonObj.get("E.164 Format").isJsonNull()) && !jsonObj.get("E.164 Format").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `E.164 Format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("E.164 Format").toString()));
+      // validate the optional field `lineType`
+      if (jsonObj.get("lineType") != null && !jsonObj.get("lineType").isJsonNull()) {
+        LineTypeEnum.validateJsonElement(jsonObj.get("lineType"));
       }
-      if ((jsonObj.get("Formatted") != null && !jsonObj.get("Formatted").isJsonNull()) && !jsonObj.get("Formatted").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `Formatted` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Formatted").toString()));
+      if ((jsonObj.get("messagingProvider") != null && !jsonObj.get("messagingProvider").isJsonNull()) && !jsonObj.get("messagingProvider").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `messagingProvider` to be a primitive type in the JSON string but got `%s`", jsonObj.get("messagingProvider").toString()));
       }
-      if ((jsonObj.get("Country") != null && !jsonObj.get("Country").isJsonNull()) && !jsonObj.get("Country").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `Country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Country").toString()));
+      if ((jsonObj.get("voiceProvider") != null && !jsonObj.get("voiceProvider").isJsonNull()) && !jsonObj.get("voiceProvider").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `voiceProvider` to be a primitive type in the JSON string but got `%s`", jsonObj.get("voiceProvider").toString()));
       }
-      if ((jsonObj.get("Line Type") != null && !jsonObj.get("Line Type").isJsonNull()) && !jsonObj.get("Line Type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `Line Type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Line Type").toString()));
+      if ((jsonObj.get("countryCodeA3") != null && !jsonObj.get("countryCodeA3").isJsonNull()) && !jsonObj.get("countryCodeA3").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `countryCodeA3` to be a primitive type in the JSON string but got `%s`", jsonObj.get("countryCodeA3").toString()));
       }
-      if ((jsonObj.get("Line Provider") != null && !jsonObj.get("Line Provider").isJsonNull()) && !jsonObj.get("Line Provider").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `Line Provider` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Line Provider").toString()));
+      if ((jsonObj.get("deactivationReporter") != null && !jsonObj.get("deactivationReporter").isJsonNull()) && !jsonObj.get("deactivationReporter").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `deactivationReporter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deactivationReporter").toString()));
       }
-      if ((jsonObj.get("Mobile Country Code") != null && !jsonObj.get("Mobile Country Code").isJsonNull()) && !jsonObj.get("Mobile Country Code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `Mobile Country Code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Mobile Country Code").toString()));
+      if ((jsonObj.get("deactivationDate") != null && !jsonObj.get("deactivationDate").isJsonNull()) && !jsonObj.get("deactivationDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `deactivationDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deactivationDate").toString()));
       }
-      if ((jsonObj.get("Mobile Network Code") != null && !jsonObj.get("Mobile Network Code").isJsonNull()) && !jsonObj.get("Mobile Network Code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `Mobile Network Code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Mobile Network Code").toString()));
+      // validate the optional field `deactivationEvent`
+      if (jsonObj.get("deactivationEvent") != null && !jsonObj.get("deactivationEvent").isJsonNull()) {
+        DeactivationEventEnum.validateJsonElement(jsonObj.get("deactivationEvent"));
+      }
+      // validate the optional field `latestMessageDeliveryStatus`
+      if (jsonObj.get("latestMessageDeliveryStatus") != null && !jsonObj.get("latestMessageDeliveryStatus").isJsonNull()) {
+        LatestMessageDeliveryStatusEnum.validateJsonElement(jsonObj.get("latestMessageDeliveryStatus"));
       }
   }
 
@@ -486,7 +541,7 @@ public class LookupResult {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

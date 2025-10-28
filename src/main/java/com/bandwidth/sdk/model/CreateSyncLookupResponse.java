@@ -14,8 +14,10 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import com.bandwidth.sdk.model.LookupResult;
-import com.bandwidth.sdk.model.LookupStatusEnum;
+import java.util.Locale;
+import com.bandwidth.sdk.model.CreateSyncLookupResponseData;
+import com.bandwidth.sdk.model.LinkSchema;
+import com.bandwidth.sdk.model.LookupErrorSchema;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -46,126 +48,103 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
- * If requestId exists, the result for that request is returned. See the Examples for details on the various responses that you can receive. Generally, if you see a Response Code of 0 in a result for a TN, information will be available for it.  Any other Response Code will indicate no information was available for the TN.
+ * CreateSyncLookupResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class LookupStatus {
-  public static final String SERIALIZED_NAME_REQUEST_ID = "requestId";
-  @SerializedName(SERIALIZED_NAME_REQUEST_ID)
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+public class CreateSyncLookupResponse {
+  public static final String SERIALIZED_NAME_LINKS = "links";
+  @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nullable
-  private String requestId;
+  private List<LinkSchema> links = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private LookupStatusEnum status;
+  private CreateSyncLookupResponseData data;
 
-  public static final String SERIALIZED_NAME_RESULT = "result";
-  @SerializedName(SERIALIZED_NAME_RESULT)
+  public static final String SERIALIZED_NAME_ERRORS = "errors";
+  @SerializedName(SERIALIZED_NAME_ERRORS)
   @javax.annotation.Nullable
-  private List<LookupResult> result = new ArrayList<>();
+  private List<LookupErrorSchema> errors = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_FAILED_TELEPHONE_NUMBERS = "failedTelephoneNumbers";
-  @SerializedName(SERIALIZED_NAME_FAILED_TELEPHONE_NUMBERS)
-  @javax.annotation.Nullable
-  private List<String> failedTelephoneNumbers = new ArrayList<>();
-
-  public LookupStatus() {
+  public CreateSyncLookupResponse() {
   }
 
-  public LookupStatus requestId(@javax.annotation.Nullable String requestId) {
-    this.requestId = requestId;
+  public CreateSyncLookupResponse links(@javax.annotation.Nullable List<LinkSchema> links) {
+    this.links = links;
     return this;
   }
 
-  /**
-   * The requestId.
-   * @return requestId
-   */
-  @javax.annotation.Nullable
-  public String getRequestId() {
-    return requestId;
-  }
-
-  public void setRequestId(@javax.annotation.Nullable String requestId) {
-    this.requestId = requestId;
-  }
-
-
-  public LookupStatus status(@javax.annotation.Nullable LookupStatusEnum status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Get status
-   * @return status
-   */
-  @javax.annotation.Nullable
-  public LookupStatusEnum getStatus() {
-    return status;
-  }
-
-  public void setStatus(@javax.annotation.Nullable LookupStatusEnum status) {
-    this.status = status;
-  }
-
-
-  public LookupStatus result(@javax.annotation.Nullable List<LookupResult> result) {
-    this.result = result;
-    return this;
-  }
-
-  public LookupStatus addResultItem(LookupResult resultItem) {
-    if (this.result == null) {
-      this.result = new ArrayList<>();
+  public CreateSyncLookupResponse addLinksItem(LinkSchema linksItem) {
+    if (this.links == null) {
+      this.links = new ArrayList<>();
     }
-    this.result.add(resultItem);
+    this.links.add(linksItem);
     return this;
   }
 
   /**
-   * The carrier information results for the specified telephone number.
-   * @return result
+   * Get links
+   * @return links
    */
   @javax.annotation.Nullable
-  public List<LookupResult> getResult() {
-    return result;
+  public List<LinkSchema> getLinks() {
+    return links;
   }
 
-  public void setResult(@javax.annotation.Nullable List<LookupResult> result) {
-    this.result = result;
+  public void setLinks(@javax.annotation.Nullable List<LinkSchema> links) {
+    this.links = links;
   }
 
 
-  public LookupStatus failedTelephoneNumbers(@javax.annotation.Nullable List<String> failedTelephoneNumbers) {
-    this.failedTelephoneNumbers = failedTelephoneNumbers;
+  public CreateSyncLookupResponse data(@javax.annotation.Nullable CreateSyncLookupResponseData data) {
+    this.data = data;
     return this;
   }
 
-  public LookupStatus addFailedTelephoneNumbersItem(String failedTelephoneNumbersItem) {
-    if (this.failedTelephoneNumbers == null) {
-      this.failedTelephoneNumbers = new ArrayList<>();
+  /**
+   * Get data
+   * @return data
+   */
+  @javax.annotation.Nullable
+  public CreateSyncLookupResponseData getData() {
+    return data;
+  }
+
+  public void setData(@javax.annotation.Nullable CreateSyncLookupResponseData data) {
+    this.data = data;
+  }
+
+
+  public CreateSyncLookupResponse errors(@javax.annotation.Nullable List<LookupErrorSchema> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public CreateSyncLookupResponse addErrorsItem(LookupErrorSchema errorsItem) {
+    if (this.errors == null) {
+      this.errors = new ArrayList<>();
     }
-    this.failedTelephoneNumbers.add(failedTelephoneNumbersItem);
+    this.errors.add(errorsItem);
     return this;
   }
 
   /**
-   * The telephone numbers whose lookup failed.
-   * @return failedTelephoneNumbers
+   * Get errors
+   * @return errors
    */
   @javax.annotation.Nullable
-  public List<String> getFailedTelephoneNumbers() {
-    return failedTelephoneNumbers;
+  public List<LookupErrorSchema> getErrors() {
+    return errors;
   }
 
-  public void setFailedTelephoneNumbers(@javax.annotation.Nullable List<String> failedTelephoneNumbers) {
-    this.failedTelephoneNumbers = failedTelephoneNumbers;
+  public void setErrors(@javax.annotation.Nullable List<LookupErrorSchema> errors) {
+    this.errors = errors;
   }
 
   /**
@@ -181,9 +160,9 @@ public class LookupStatus {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the LookupStatus instance itself
+   * @return the CreateSyncLookupResponse instance itself
    */
-  public LookupStatus putAdditionalProperty(String key, Object value) {
+  public CreateSyncLookupResponse putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -222,27 +201,25 @@ public class LookupStatus {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LookupStatus lookupStatus = (LookupStatus) o;
-    return Objects.equals(this.requestId, lookupStatus.requestId) &&
-        Objects.equals(this.status, lookupStatus.status) &&
-        Objects.equals(this.result, lookupStatus.result) &&
-        Objects.equals(this.failedTelephoneNumbers, lookupStatus.failedTelephoneNumbers)&&
-        Objects.equals(this.additionalProperties, lookupStatus.additionalProperties);
+    CreateSyncLookupResponse createSyncLookupResponse = (CreateSyncLookupResponse) o;
+    return Objects.equals(this.links, createSyncLookupResponse.links) &&
+        Objects.equals(this.data, createSyncLookupResponse.data) &&
+        Objects.equals(this.errors, createSyncLookupResponse.errors)&&
+        Objects.equals(this.additionalProperties, createSyncLookupResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(requestId, status, result, failedTelephoneNumbers, additionalProperties);
+    return Objects.hash(links, data, errors, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LookupStatus {\n");
-    sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    result: ").append(toIndentedString(result)).append("\n");
-    sb.append("    failedTelephoneNumbers: ").append(toIndentedString(failedTelephoneNumbers)).append("\n");
+    sb.append("class CreateSyncLookupResponse {\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -265,53 +242,56 @@ public class LookupStatus {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("requestId");
-    openapiFields.add("status");
-    openapiFields.add("result");
-    openapiFields.add("failedTelephoneNumbers");
+    openapiFields = new HashSet<String>(Arrays.asList("links", "data", "errors"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to LookupStatus
+   * @throws IOException if the JSON Element is invalid with respect to CreateSyncLookupResponse
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!LookupStatus.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LookupStatus is not found in the empty JSON string", LookupStatus.openapiRequiredFields.toString()));
+        if (!CreateSyncLookupResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in CreateSyncLookupResponse is not found in the empty JSON string", CreateSyncLookupResponse.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("requestId") != null && !jsonObj.get("requestId").isJsonNull()) && !jsonObj.get("requestId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `requestId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestId").toString()));
-      }
-      // validate the optional field `status`
-      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
-        LookupStatusEnum.validateJsonElement(jsonObj.get("status"));
-      }
-      if (jsonObj.get("result") != null && !jsonObj.get("result").isJsonNull()) {
-        JsonArray jsonArrayresult = jsonObj.getAsJsonArray("result");
-        if (jsonArrayresult != null) {
+      if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
+        JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
+        if (jsonArraylinks != null) {
           // ensure the json data is an array
-          if (!jsonObj.get("result").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `result` to be an array in the JSON string but got `%s`", jsonObj.get("result").toString()));
+          if (!jsonObj.get("links").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
           }
 
-          // validate the optional field `result` (array)
-          for (int i = 0; i < jsonArrayresult.size(); i++) {
-            LookupResult.validateJsonElement(jsonArrayresult.get(i));
+          // validate the optional field `links` (array)
+          for (int i = 0; i < jsonArraylinks.size(); i++) {
+            LinkSchema.validateJsonElement(jsonArraylinks.get(i));
           };
         }
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("failedTelephoneNumbers") != null && !jsonObj.get("failedTelephoneNumbers").isJsonNull() && !jsonObj.get("failedTelephoneNumbers").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `failedTelephoneNumbers` to be an array in the JSON string but got `%s`", jsonObj.get("failedTelephoneNumbers").toString()));
+      // validate the optional field `data`
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
+        CreateSyncLookupResponseData.validateJsonElement(jsonObj.get("data"));
+      }
+      if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
+        JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
+        if (jsonArrayerrors != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("errors").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
+          }
+
+          // validate the optional field `errors` (array)
+          for (int i = 0; i < jsonArrayerrors.size(); i++) {
+            LookupErrorSchema.validateJsonElement(jsonArrayerrors.get(i));
+          };
+        }
       }
   }
 
@@ -319,16 +299,16 @@ public class LookupStatus {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!LookupStatus.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'LookupStatus' and its subtypes
+       if (!CreateSyncLookupResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CreateSyncLookupResponse' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<LookupStatus> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(LookupStatus.class));
+       final TypeAdapter<CreateSyncLookupResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CreateSyncLookupResponse.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<LookupStatus>() {
+       return (TypeAdapter<T>) new TypeAdapter<CreateSyncLookupResponse>() {
            @Override
-           public void write(JsonWriter out, LookupStatus value) throws IOException {
+           public void write(JsonWriter out, CreateSyncLookupResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -356,12 +336,12 @@ public class LookupStatus {
            }
 
            @Override
-           public LookupStatus read(JsonReader in) throws IOException {
+           public CreateSyncLookupResponse read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             LookupStatus instance = thisAdapter.fromJsonTree(jsonObj);
+             CreateSyncLookupResponse instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -372,7 +352,7 @@ public class LookupStatus {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object
@@ -388,18 +368,18 @@ public class LookupStatus {
   }
 
   /**
-   * Create an instance of LookupStatus given an JSON string
+   * Create an instance of CreateSyncLookupResponse given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of LookupStatus
-   * @throws IOException if the JSON string is invalid with respect to LookupStatus
+   * @return An instance of CreateSyncLookupResponse
+   * @throws IOException if the JSON string is invalid with respect to CreateSyncLookupResponse
    */
-  public static LookupStatus fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, LookupStatus.class);
+  public static CreateSyncLookupResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CreateSyncLookupResponse.class);
   }
 
   /**
-   * Convert an instance of LookupStatus to an JSON string
+   * Convert an instance of CreateSyncLookupResponse to an JSON string
    *
    * @return JSON string
    */

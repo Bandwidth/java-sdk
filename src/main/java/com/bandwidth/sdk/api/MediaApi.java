@@ -96,7 +96,7 @@ public class MediaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteMediaCall(String accountId, String mediaId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteMediaCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String mediaId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://messaging.bandwidth.com/api/v2" };
@@ -138,12 +138,12 @@ public class MediaApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteMediaValidateBeforeCall(String accountId, String mediaId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteMediaValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String mediaId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling deleteMedia(Async)");
@@ -179,7 +179,7 @@ public class MediaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteMedia(String accountId, String mediaId) throws ApiException {
+    public void deleteMedia(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String mediaId) throws ApiException {
         deleteMediaWithHttpInfo(accountId, mediaId);
     }
 
@@ -205,7 +205,7 @@ public class MediaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteMediaWithHttpInfo(String accountId, String mediaId) throws ApiException {
+    public ApiResponse<Void> deleteMediaWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String mediaId) throws ApiException {
         okhttp3.Call localVarCall = deleteMediaValidateBeforeCall(accountId, mediaId, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -233,7 +233,7 @@ public class MediaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteMediaAsync(String accountId, String mediaId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteMediaAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String mediaId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteMediaValidateBeforeCall(accountId, mediaId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -261,7 +261,7 @@ public class MediaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMediaCall(String accountId, String mediaId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMediaCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String mediaId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://messaging.bandwidth.com/api/v2" };
@@ -304,12 +304,12 @@ public class MediaApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMediaValidateBeforeCall(String accountId, String mediaId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMediaValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String mediaId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getMedia(Async)");
@@ -346,7 +346,7 @@ public class MediaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public File getMedia(String accountId, String mediaId) throws ApiException {
+    public File getMedia(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String mediaId) throws ApiException {
         ApiResponse<File> localVarResp = getMediaWithHttpInfo(accountId, mediaId);
         return localVarResp.getData();
     }
@@ -373,7 +373,7 @@ public class MediaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<File> getMediaWithHttpInfo(String accountId, String mediaId) throws ApiException {
+    public ApiResponse<File> getMediaWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String mediaId) throws ApiException {
         okhttp3.Call localVarCall = getMediaValidateBeforeCall(accountId, mediaId, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -402,7 +402,7 @@ public class MediaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMediaAsync(String accountId, String mediaId, final ApiCallback<File> _callback) throws ApiException {
+    public okhttp3.Call getMediaAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String mediaId, final ApiCallback<File> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMediaValidateBeforeCall(accountId, mediaId, _callback);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
@@ -431,7 +431,7 @@ public class MediaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMediaCall(String accountId, String continuationToken, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listMediaCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nullable String continuationToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://messaging.bandwidth.com/api/v2" };
@@ -477,12 +477,12 @@ public class MediaApi {
         }
 
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listMediaValidateBeforeCall(String accountId, String continuationToken, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listMediaValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nullable String continuationToken, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling listMedia(Async)");
@@ -514,7 +514,7 @@ public class MediaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public List<Media> listMedia(String accountId, String continuationToken) throws ApiException {
+    public List<Media> listMedia(@javax.annotation.Nonnull String accountId, @javax.annotation.Nullable String continuationToken) throws ApiException {
         ApiResponse<List<Media>> localVarResp = listMediaWithHttpInfo(accountId, continuationToken);
         return localVarResp.getData();
     }
@@ -541,7 +541,7 @@ public class MediaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<Media>> listMediaWithHttpInfo(String accountId, String continuationToken) throws ApiException {
+    public ApiResponse<List<Media>> listMediaWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nullable String continuationToken) throws ApiException {
         okhttp3.Call localVarCall = listMediaValidateBeforeCall(accountId, continuationToken, null);
         Type localVarReturnType = new TypeToken<List<Media>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -570,7 +570,7 @@ public class MediaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMediaAsync(String accountId, String continuationToken, final ApiCallback<List<Media>> _callback) throws ApiException {
+    public okhttp3.Call listMediaAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nullable String continuationToken, final ApiCallback<List<Media>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listMediaValidateBeforeCall(accountId, continuationToken, _callback);
         Type localVarReturnType = new TypeToken<List<Media>>(){}.getType();
@@ -602,7 +602,7 @@ public class MediaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call uploadMediaCall(String accountId, String mediaId, File body, String contentType, String cacheControl, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call uploadMediaCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String mediaId, @javax.annotation.Nonnull File body, @javax.annotation.Nullable String contentType, @javax.annotation.Nullable String cacheControl, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://messaging.bandwidth.com/api/v2" };
@@ -702,12 +702,12 @@ public class MediaApi {
         }
 
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call uploadMediaValidateBeforeCall(String accountId, String mediaId, File body, String contentType, String cacheControl, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call uploadMediaValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String mediaId, @javax.annotation.Nonnull File body, @javax.annotation.Nullable String contentType, @javax.annotation.Nullable String cacheControl, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling uploadMedia(Async)");
@@ -751,7 +751,7 @@ public class MediaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public void uploadMedia(String accountId, String mediaId, File body, String contentType, String cacheControl) throws ApiException {
+    public void uploadMedia(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String mediaId, @javax.annotation.Nonnull File body, @javax.annotation.Nullable String contentType, @javax.annotation.Nullable String cacheControl) throws ApiException {
         uploadMediaWithHttpInfo(accountId, mediaId, body, contentType, cacheControl);
     }
 
@@ -780,7 +780,7 @@ public class MediaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> uploadMediaWithHttpInfo(String accountId, String mediaId, File body, String contentType, String cacheControl) throws ApiException {
+    public ApiResponse<Void> uploadMediaWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String mediaId, @javax.annotation.Nonnull File body, @javax.annotation.Nullable String contentType, @javax.annotation.Nullable String cacheControl) throws ApiException {
         okhttp3.Call localVarCall = uploadMediaValidateBeforeCall(accountId, mediaId, body, contentType, cacheControl, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -811,7 +811,7 @@ public class MediaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call uploadMediaAsync(String accountId, String mediaId, File body, String contentType, String cacheControl, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call uploadMediaAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull String mediaId, @javax.annotation.Nonnull File body, @javax.annotation.Nullable String contentType, @javax.annotation.Nullable String cacheControl, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = uploadMediaValidateBeforeCall(accountId, mediaId, body, contentType, cacheControl, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
