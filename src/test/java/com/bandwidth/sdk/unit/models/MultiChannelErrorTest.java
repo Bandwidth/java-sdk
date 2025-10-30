@@ -44,6 +44,7 @@ public class MultiChannelErrorTest {
     /**
      * Test the property 'links'
      */
+    @SuppressWarnings("null")
     @Test
     public void linksTest() {
         assertThat(model.getLinks(), instanceOf(List.class));
@@ -61,6 +62,7 @@ public class MultiChannelErrorTest {
     /**
      * Test the property 'errors'
      */
+    @SuppressWarnings("null")
     @Test
     public void errorsTest() {
         assertThat(model.getErrors(), instanceOf(List.class));
