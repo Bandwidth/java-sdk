@@ -1,6 +1,6 @@
 
 
-# ErrorResponse
+# LookupErrorResponse
 
 
 ## Properties

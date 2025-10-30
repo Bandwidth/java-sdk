@@ -4731,21 +4731,21 @@ paths:
             application/json:
               examples:
                 badRequest:
-                  $ref: "#/components/examples/badRequestPostExample"
+                  $ref: "#/components/examples/badRequestExample"
                 unauthorized:
-                  $ref: "#/components/examples/unauthorizedErrorExample"
+                  $ref: "#/components/examples/unauthorizedExample"
                 forbidden:
-                  $ref: "#/components/examples/forbiddenErrorExample"
+                  $ref: "#/components/examples/forbiddenExample"
                 mediaType:
-                  $ref: "#/components/examples/mediaTypeErrorExample"
+                  $ref: "#/components/examples/unsupportedMediaTypeExample"
                 notFound:
-                  $ref: "#/components/examples/notFoundErrorExample"
+                  $ref: "#/components/examples/notFoundExample"
                 tooManyRequests:
-                  $ref: "#/components/examples/tooManyRequestsErrorExample"
+                  $ref: "#/components/examples/tooManyRequestsExample"
                 internalServer:
                   $ref: "#/components/examples/internalServerErrorExample"
               schema:
-                $ref: "#/components/schemas/errorResponse"
+                $ref: "#/components/schemas/lookupErrorResponse"
           description: Bad Request
       summary: Create Synchronous Number Lookup
       tags:
@@ -4790,21 +4790,21 @@ paths:
             application/json:
               examples:
                 badRequest:
-                  $ref: "#/components/examples/badRequestPostExample"
+                  $ref: "#/components/examples/badRequestExample"
                 unauthorized:
-                  $ref: "#/components/examples/unauthorizedErrorExample"
+                  $ref: "#/components/examples/unauthorizedExample"
                 forbidden:
-                  $ref: "#/components/examples/forbiddenErrorExample"
+                  $ref: "#/components/examples/forbiddenExample"
                 mediaType:
-                  $ref: "#/components/examples/mediaTypeErrorExample"
+                  $ref: "#/components/examples/unsupportedMediaTypeExample"
                 notFound:
-                  $ref: "#/components/examples/notFoundErrorExample"
+                  $ref: "#/components/examples/notFoundExample"
                 tooManyRequests:
-                  $ref: "#/components/examples/tooManyRequestsErrorExample"
+                  $ref: "#/components/examples/tooManyRequestsExample"
                 internalServer:
                   $ref: "#/components/examples/internalServerErrorExample"
               schema:
-                $ref: "#/components/schemas/errorResponse"
+                $ref: "#/components/schemas/lookupErrorResponse"
           description: Bad Request
       summary: Create Asynchronous Bulk Number Lookup
       tags:
@@ -4863,21 +4863,21 @@ paths:
             application/json:
               examples:
                 badRequest:
-                  $ref: "#/components/examples/badRequestPostExample"
+                  $ref: "#/components/examples/badRequestExample"
                 unauthorized:
-                  $ref: "#/components/examples/unauthorizedErrorExample"
+                  $ref: "#/components/examples/unauthorizedExample"
                 forbidden:
-                  $ref: "#/components/examples/forbiddenErrorExample"
+                  $ref: "#/components/examples/forbiddenExample"
                 mediaType:
-                  $ref: "#/components/examples/mediaTypeErrorExample"
+                  $ref: "#/components/examples/unsupportedMediaTypeExample"
                 notFound:
-                  $ref: "#/components/examples/notFoundErrorExample"
+                  $ref: "#/components/examples/notFoundExample"
                 tooManyRequests:
-                  $ref: "#/components/examples/tooManyRequestsErrorExample"
+                  $ref: "#/components/examples/tooManyRequestsExample"
                 internalServer:
                   $ref: "#/components/examples/internalServerErrorExample"
               schema:
-                $ref: "#/components/schemas/errorResponse"
+                $ref: "#/components/schemas/lookupErrorResponse"
           description: Bad Request
       summary: Get Asynchronous Bulk Number Lookup
       tags:
@@ -6321,13 +6321,17 @@ components:
             deactivationEvent: DEACTIVATED
             latestMessageDeliveryStatus: UNKNOWN
         errors: []
-    badRequestPostExample:
+    badRequestExample:
       summary: Example Bad Request Error
       value:
-        statusCode: 400
-        message: Account not authorized
-    unauthorizedErrorExample:
-      summary: Example Unauthorized Error
+        links: []
+        data: {}
+        errors:
+        - type: bad-request
+          description: Bad Request. Ensure that you have set the requestId as a URL
+            path parameter.
+    unauthorizedExample:
+      summary: Unauthorized Error
       value:
         links: []
         data: {}
@@ -6336,8 +6340,8 @@ components:
           description: You are not authorized to access this resource.
           code: "1"
         page: null
-    forbiddenErrorExample:
-      summary: Example Forbidden Error
+    forbiddenExample:
+      summary: Forbidden Error
       value:
         links: []
         data: {}
@@ -6346,8 +6350,8 @@ components:
           description: You do not have permission to access this resource.
           code: "2"
         page: null
-    mediaTypeErrorExample:
-      summary: Example Unsupported Media Type Error
+    unsupportedMediaTypeExample:
+      summary: Unsupported Media Type Error
       value:
         links: []
         data: {}
@@ -6355,8 +6359,8 @@ components:
         - type: invalid-content-type
           description: Invalid content-type. Ensure that your content-type header
             is set to application/json.
-    notFoundErrorExample:
-      summary: Resource not found
+    notFoundExample:
+      summary: Not Found Error
       value:
         links: []
         data: {}
@@ -6364,8 +6368,8 @@ components:
         - type: not-found
           description: RequestId not found. Ensure that the requestId used in the
             URL path is valid and maps to a previous request that was submitted.
-    tooManyRequestsErrorExample:
-      summary: Example Too Many Requests Error
+    tooManyRequestsExample:
+      summary: Too Many Requests Error
       value:
         links: []
         data: {}
@@ -6374,15 +6378,10 @@ components:
           description: Rate limit exceeded. Wait for the time specified in the Retry-After
             header before sending another request.
     internalServerErrorExample:
-      summary: Example Internal Server Error Error
+      summary: Internal Server Error
       value:
-        links:
-        - href: href
-          rel: rel
-          method: GET
-        data:
-          requestId: 004223a0-8b17-41b1-bf81-20732adf5590
-          results: []
+        links: []
+        data: {}
         errors:
         - code: "500"
           type: unexpected-error
@@ -7839,21 +7838,21 @@ components:
         application/json:
           examples:
             badRequest:
-              $ref: "#/components/examples/badRequestPostExample"
+              $ref: "#/components/examples/badRequestExample"
             unauthorized:
-              $ref: "#/components/examples/unauthorizedErrorExample"
+              $ref: "#/components/examples/unauthorizedExample"
             forbidden:
-              $ref: "#/components/examples/forbiddenErrorExample"
+              $ref: "#/components/examples/forbiddenExample"
             mediaType:
-              $ref: "#/components/examples/mediaTypeErrorExample"
+              $ref: "#/components/examples/unsupportedMediaTypeExample"
             notFound:
-              $ref: "#/components/examples/notFoundErrorExample"
+              $ref: "#/components/examples/notFoundExample"
             tooManyRequests:
-              $ref: "#/components/examples/tooManyRequestsErrorExample"
+              $ref: "#/components/examples/tooManyRequestsExample"
             internalServer:
               $ref: "#/components/examples/internalServerErrorExample"
           schema:
-            $ref: "#/components/schemas/errorResponse"
+            $ref: "#/components/schemas/lookupErrorResponse"
       description: Bad Request
     getTollFreeVerificationStatusResponse:
       content:
@@ -13393,7 +13392,7 @@ components:
             $ref: "#/components/schemas/lookupErrorSchema"
           type: array
       type: object
-    errorResponse:
+    lookupErrorResponse:
       example:
         data: "{}"
         links: []

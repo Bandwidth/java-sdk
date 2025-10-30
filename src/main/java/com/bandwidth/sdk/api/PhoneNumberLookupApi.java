@@ -30,8 +30,8 @@ import java.io.IOException;
 import com.bandwidth.sdk.model.AsyncLookupRequest;
 import com.bandwidth.sdk.model.CreateAsyncBulkLookupResponse;
 import com.bandwidth.sdk.model.CreateSyncLookupResponse;
-import com.bandwidth.sdk.model.ErrorResponse;
 import com.bandwidth.sdk.model.GetAsyncBulkLookupResponse;
+import com.bandwidth.sdk.model.LookupErrorResponse;
 import com.bandwidth.sdk.model.SyncLookupRequest;
 import java.util.UUID;
 

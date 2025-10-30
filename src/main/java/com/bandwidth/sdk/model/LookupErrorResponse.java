@@ -52,10 +52,10 @@ import java.util.Locale;
 import com.bandwidth.sdk.JSON;
 
 /**
- * ErrorResponse
+ * LookupErrorResponse
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
-public class ErrorResponse {
+public class LookupErrorResponse {
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nullable
@@ -71,15 +71,15 @@ public class ErrorResponse {
   @javax.annotation.Nullable
   private List<LookupErrorSchema> errors = new ArrayList<>();
 
-  public ErrorResponse() {
+  public LookupErrorResponse() {
   }
 
-  public ErrorResponse links(@javax.annotation.Nullable List<LinkSchema> links) {
+  public LookupErrorResponse links(@javax.annotation.Nullable List<LinkSchema> links) {
     this.links = links;
     return this;
   }
 
-  public ErrorResponse addLinksItem(LinkSchema linksItem) {
+  public LookupErrorResponse addLinksItem(LinkSchema linksItem) {
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -101,7 +101,7 @@ public class ErrorResponse {
   }
 
 
-  public ErrorResponse data(@javax.annotation.Nullable Object data) {
+  public LookupErrorResponse data(@javax.annotation.Nullable Object data) {
     this.data = data;
     return this;
   }
@@ -120,12 +120,12 @@ public class ErrorResponse {
   }
 
 
-  public ErrorResponse errors(@javax.annotation.Nullable List<LookupErrorSchema> errors) {
+  public LookupErrorResponse errors(@javax.annotation.Nullable List<LookupErrorSchema> errors) {
     this.errors = errors;
     return this;
   }
 
-  public ErrorResponse addErrorsItem(LookupErrorSchema errorsItem) {
+  public LookupErrorResponse addErrorsItem(LookupErrorSchema errorsItem) {
     if (this.errors == null) {
       this.errors = new ArrayList<>();
     }
@@ -159,9 +159,9 @@ public class ErrorResponse {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ErrorResponse instance itself
+   * @return the LookupErrorResponse instance itself
    */
-  public ErrorResponse putAdditionalProperty(String key, Object value) {
+  public LookupErrorResponse putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -200,11 +200,11 @@ public class ErrorResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ErrorResponse errorResponse = (ErrorResponse) o;
-    return Objects.equals(this.links, errorResponse.links) &&
-        Objects.equals(this.data, errorResponse.data) &&
-        Objects.equals(this.errors, errorResponse.errors)&&
-        Objects.equals(this.additionalProperties, errorResponse.additionalProperties);
+    LookupErrorResponse lookupErrorResponse = (LookupErrorResponse) o;
+    return Objects.equals(this.links, lookupErrorResponse.links) &&
+        Objects.equals(this.data, lookupErrorResponse.data) &&
+        Objects.equals(this.errors, lookupErrorResponse.errors)&&
+        Objects.equals(this.additionalProperties, lookupErrorResponse.additionalProperties);
   }
 
   @Override
@@ -215,7 +215,7 @@ public class ErrorResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ErrorResponse {\n");
+    sb.append("class LookupErrorResponse {\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
@@ -251,12 +251,12 @@ public class ErrorResponse {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to ErrorResponse
+   * @throws IOException if the JSON Element is invalid with respect to LookupErrorResponse
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ErrorResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in ErrorResponse is not found in the empty JSON string", ErrorResponse.openapiRequiredFields.toString()));
+        if (!LookupErrorResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in LookupErrorResponse is not found in the empty JSON string", LookupErrorResponse.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -294,16 +294,16 @@ public class ErrorResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ErrorResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ErrorResponse' and its subtypes
+       if (!LookupErrorResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LookupErrorResponse' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ErrorResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ErrorResponse.class));
+       final TypeAdapter<LookupErrorResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LookupErrorResponse.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ErrorResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<LookupErrorResponse>() {
            @Override
-           public void write(JsonWriter out, ErrorResponse value) throws IOException {
+           public void write(JsonWriter out, LookupErrorResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -331,12 +331,12 @@ public class ErrorResponse {
            }
 
            @Override
-           public ErrorResponse read(JsonReader in) throws IOException {
+           public LookupErrorResponse read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             ErrorResponse instance = thisAdapter.fromJsonTree(jsonObj);
+             LookupErrorResponse instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -363,18 +363,18 @@ public class ErrorResponse {
   }
 
   /**
-   * Create an instance of ErrorResponse given an JSON string
+   * Create an instance of LookupErrorResponse given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of ErrorResponse
-   * @throws IOException if the JSON string is invalid with respect to ErrorResponse
+   * @return An instance of LookupErrorResponse
+   * @throws IOException if the JSON string is invalid with respect to LookupErrorResponse
    */
-  public static ErrorResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ErrorResponse.class);
+  public static LookupErrorResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LookupErrorResponse.class);
   }
 
   /**
-   * Convert an instance of ErrorResponse to an JSON string
+   * Convert an instance of LookupErrorResponse to an JSON string
    *
    * @return JSON string
    */
