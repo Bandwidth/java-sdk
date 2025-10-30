@@ -13,30 +13,56 @@
 
 package com.bandwidth.sdk.unit.api;
 
+import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
+import com.bandwidth.sdk.ApiResponse;
+import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.api.PhoneNumberLookupApi;
+import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.model.AsyncLookupRequest;
+import com.bandwidth.sdk.model.CompletedLookupStatusEnum;
 import com.bandwidth.sdk.model.CreateAsyncBulkLookupResponse;
+import com.bandwidth.sdk.model.CreateAsyncBulkLookupResponseData;
 import com.bandwidth.sdk.model.CreateSyncLookupResponse;
+import com.bandwidth.sdk.model.CreateSyncLookupResponseData;
 import com.bandwidth.sdk.model.GetAsyncBulkLookupResponse;
-import com.bandwidth.sdk.model.LookupErrorResponse;
+import com.bandwidth.sdk.model.GetAsyncBulkLookupResponseData;
+import com.bandwidth.sdk.model.InProgressLookupStatusEnum;
+import com.bandwidth.sdk.model.LatestMessageDeliveryStatusEnum;
+import com.bandwidth.sdk.model.LineTypeEnum;
+import com.bandwidth.sdk.model.LinkSchema;
+import com.bandwidth.sdk.model.LookupResult;
 import com.bandwidth.sdk.model.SyncLookupRequest;
 import java.util.UUID;
-import org.junit.jupiter.api.Disabled;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+
+import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 
 /**
  * API tests for PhoneNumberLookupApi
  */
-@Disabled
+@SuppressWarnings("null")
 public class PhoneNumberLookupApiTest {
+    private static ApiClient defaultClient = Configuration.getDefaultApiClient();
+    private static HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
+    private static PhoneNumberLookupApi api = new PhoneNumberLookupApi(defaultClient);
 
-    private final PhoneNumberLookupApi api = new PhoneNumberLookupApi();
+    @BeforeAll
+    public static void setUp() {
+        Basic.setUsername(BW_USERNAME);
+        Basic.setPassword(BW_PASSWORD);
+        api.setCustomBaseUrl("http://127.0.0.1:4010");
+    }
 
     /**
      * Create Asynchronous Bulk Number Lookup
@@ -47,10 +73,22 @@ public class PhoneNumberLookupApiTest {
      */
     @Test
     public void createAsyncBulkLookupTest() throws ApiException {
-        String accountId = null;
-        AsyncLookupRequest asyncLookupRequest = null;
-        CreateAsyncBulkLookupResponse response = api.createAsyncBulkLookup(accountId, asyncLookupRequest);
-        // TODO: test validations
+        AsyncLookupRequest asyncLookupRequest = new AsyncLookupRequest()
+            .phoneNumbers(Arrays.asList("+1234567890", "+1987654321"));
+        ApiResponse<CreateAsyncBulkLookupResponse> response =
+                api.createAsyncBulkLookupWithHttpInfo(BW_ACCOUNT_ID, asyncLookupRequest);
+        assertThat(response.getStatusCode(), is(202));
+        assertThat(response.getData(), instanceOf(CreateAsyncBulkLookupResponse.class));
+        assertThat(response.getData().getLinks(), instanceOf(List.class));
+        assertThat(response.getData().getLinks().get(0), instanceOf(LinkSchema.class));
+        assertThat(response.getData().getLinks().get(0).getRel(), instanceOf(String.class));
+        assertThat(response.getData().getLinks().get(0).getHref(), instanceOf(String.class));
+        assertThat(response.getData().getLinks().get(0).getMethod(), instanceOf(String.class));
+        assertThat(response.getData().getData(), instanceOf(CreateAsyncBulkLookupResponseData.class));
+        assertThat(response.getData().getData().getRequestId(), instanceOf(UUID.class));
+        assertThat(response.getData().getData().getStatus(), instanceOf(InProgressLookupStatusEnum.class));
+        assertThat(response.getData().getData().getStatus(), equalTo(InProgressLookupStatusEnum.IN_PROGRESS));
+        assertThat(response.getData().getErrors(), instanceOf(List.class));
     }
 
     /**
@@ -62,10 +100,32 @@ public class PhoneNumberLookupApiTest {
      */
     @Test
     public void createSyncLookupTest() throws ApiException {
-        String accountId = null;
-        SyncLookupRequest syncLookupRequest = null;
-        CreateSyncLookupResponse response = api.createSyncLookup(accountId, syncLookupRequest);
-        // TODO: test validations
+        SyncLookupRequest syncLookupRequest = new SyncLookupRequest()
+            .phoneNumbers(Arrays.asList("+1234567890", "+1987654321"));
+        ApiResponse<CreateSyncLookupResponse> response = api.createSyncLookupWithHttpInfo(BW_ACCOUNT_ID, syncLookupRequest);
+        assertThat(response.getStatusCode(), is(200));
+        assertThat(response.getData(), instanceOf(CreateSyncLookupResponse.class));
+        assertThat(response.getData().getLinks(), instanceOf(List.class));
+        assertThat(response.getData().getLinks().get(0), instanceOf(LinkSchema.class));
+        assertThat(response.getData().getLinks().get(0).getRel(), instanceOf(String.class));
+        assertThat(response.getData().getLinks().get(0).getHref(), instanceOf(String.class));
+        assertThat(response.getData().getLinks().get(0).getMethod(), instanceOf(String.class));
+        assertThat(response.getData().getData(), instanceOf(CreateSyncLookupResponseData.class));
+        assertThat(response.getData().getData().getRequestId(), instanceOf(UUID.class));
+        assertThat(response.getData().getData().getStatus(), instanceOf(CompletedLookupStatusEnum.class));
+        assertThat(response.getData().getData().getStatus(), equalTo(CompletedLookupStatusEnum.COMPLETE));
+        assertThat(response.getData().getData().getResults(), instanceOf(List.class));
+        assertThat(response.getData().getData().getResults().get(0), instanceOf(LookupResult.class));
+        assertThat(response.getData().getData().getResults().get(0).getPhoneNumber(), instanceOf(String.class));
+        assertThat(response.getData().getData().getResults().get(0).getLineType(), instanceOf(LineTypeEnum.class));
+        assertThat(response.getData().getData().getResults().get(0).getMessagingProvider(), instanceOf(String.class));
+        assertThat(response.getData().getData().getResults().get(0).getVoiceProvider(), instanceOf(String.class));
+        assertThat(response.getData().getData().getResults().get(0).getCountryCodeA3(), instanceOf(String.class));
+        assertThat(response.getData().getData().getResults().get(0).getLatestMessageDeliveryStatus(), instanceOf(LatestMessageDeliveryStatusEnum.class));
+        assertThat(response.getData().getData().getResults().get(0).getLatestMessageDeliveryStatus(), equalTo(LatestMessageDeliveryStatusEnum.ACTIVE));
+        assertThat(response.getData().getData().getResults().get(0).getInitialMessageDeliveryStatusDate(), instanceOf(LocalDate.class));
+        assertThat(response.getData().getData().getResults().get(0).getLatestMessageDeliveryStatusDate(), instanceOf(LocalDate.class));
+        assertThat(response.getData().getErrors(), instanceOf(List.class));
     }
 
     /**
@@ -77,10 +137,31 @@ public class PhoneNumberLookupApiTest {
      */
     @Test
     public void getAsyncBulkLookupTest() throws ApiException {
-        String accountId = null;
-        UUID requestId = null;
-        GetAsyncBulkLookupResponse response = api.getAsyncBulkLookup(accountId, requestId);
-        // TODO: test validations
+        UUID requestId = UUID.fromString("123e4567-e89b-12d3-a456-426614174000");
+        ApiResponse<GetAsyncBulkLookupResponse> response = api.getAsyncBulkLookupWithHttpInfo(BW_ACCOUNT_ID, requestId);
+        assertThat(response.getStatusCode(), is(200));
+        assertThat(response.getData(), instanceOf(GetAsyncBulkLookupResponse.class));
+        assertThat(response.getData().getLinks(), instanceOf(List.class));
+        assertThat(response.getData().getLinks().get(0), instanceOf(LinkSchema.class));
+        assertThat(response.getData().getLinks().get(0).getRel(), instanceOf(String.class));
+        assertThat(response.getData().getLinks().get(0).getHref(), instanceOf(String.class));
+        assertThat(response.getData().getLinks().get(0).getMethod(), instanceOf(String.class));
+        assertThat(response.getData().getData(), instanceOf(GetAsyncBulkLookupResponseData.class));
+        assertThat(response.getData().getData().getRequestId(), instanceOf(UUID.class));
+        assertThat(response.getData().getData().getStatus(), instanceOf(InProgressLookupStatusEnum.class));
+        assertThat(response.getData().getData().getStatus(), equalTo(InProgressLookupStatusEnum.COMPLETE));
+        assertThat(response.getData().getData().getResults(), instanceOf(List.class));
+        assertThat(response.getData().getData().getResults().get(0), instanceOf(LookupResult.class));
+        assertThat(response.getData().getData().getResults().get(0).getPhoneNumber(), instanceOf(String.class));
+        assertThat(response.getData().getData().getResults().get(0).getLineType(), instanceOf(LineTypeEnum.class));
+        assertThat(response.getData().getData().getResults().get(0).getMessagingProvider(), instanceOf(String.class));
+        assertThat(response.getData().getData().getResults().get(0).getVoiceProvider(), instanceOf(String.class));
+        assertThat(response.getData().getData().getResults().get(0).getCountryCodeA3(), instanceOf(String.class));
+        assertThat(response.getData().getData().getResults().get(0).getLatestMessageDeliveryStatus(), instanceOf(LatestMessageDeliveryStatusEnum.class));
+        assertThat(response.getData().getData().getResults().get(0).getLatestMessageDeliveryStatus(), equalTo(LatestMessageDeliveryStatusEnum.ACTIVE));
+        assertThat(response.getData().getData().getResults().get(0).getInitialMessageDeliveryStatusDate(), instanceOf(LocalDate.class));
+        assertThat(response.getData().getData().getResults().get(0).getLatestMessageDeliveryStatusDate(), instanceOf(LocalDate.class));
+        assertThat(response.getData().getErrors(), instanceOf(List.class));
     }
 
 }
