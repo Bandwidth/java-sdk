@@ -11,35 +11,37 @@
  */
 
 
-package com.bandwidth.sdk.model;
+package com.bandwidth.sdk.unit.models;
 
+import com.bandwidth.sdk.model.GetAsyncBulkLookupResponseData;
 import com.bandwidth.sdk.model.InProgressLookupStatusEnum;
 import com.bandwidth.sdk.model.LookupResult;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
-import org.junit.jupiter.api.Disabled;
+
 import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for GetAsyncBulkLookupResponseData
  */
 public class GetAsyncBulkLookupResponseDataTest {
-    private final GetAsyncBulkLookupResponseData model = new GetAsyncBulkLookupResponseData();
+    private final GetAsyncBulkLookupResponseData model = new GetAsyncBulkLookupResponseData()
+            .requestId(UUID.fromString("123e4567-e89b-12d3-a456-426614174000"))
+            .status(InProgressLookupStatusEnum.IN_PROGRESS)
+            .results(new ArrayList<LookupResult>(Arrays.asList(new LookupResult())));
 
     /**
      * Model tests for GetAsyncBulkLookupResponseData
      */
     @Test
     public void testGetAsyncBulkLookupResponseData() {
-        // TODO: test GetAsyncBulkLookupResponseData
+        assertThat(model, instanceOf(GetAsyncBulkLookupResponseData.class));
     }
 
     /**
@@ -47,7 +49,7 @@ public class GetAsyncBulkLookupResponseDataTest {
      */
     @Test
     public void requestIdTest() {
-        // TODO: test requestId
+        assertThat(model.getRequestId(), instanceOf(UUID.class));
     }
 
     /**
@@ -55,7 +57,7 @@ public class GetAsyncBulkLookupResponseDataTest {
      */
     @Test
     public void statusTest() {
-        // TODO: test status
+        assertThat(model.getStatus(), instanceOf(InProgressLookupStatusEnum.class));
     }
 
     /**
@@ -63,7 +65,7 @@ public class GetAsyncBulkLookupResponseDataTest {
      */
     @Test
     public void resultsTest() {
-        // TODO: test results
+        assertThat(model.getResults(), instanceOf(List.class));
     }
 
 }

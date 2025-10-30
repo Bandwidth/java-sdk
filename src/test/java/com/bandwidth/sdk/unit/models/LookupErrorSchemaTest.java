@@ -11,31 +11,39 @@
  */
 
 
-package com.bandwidth.sdk.model;
+package com.bandwidth.sdk.unit.models;
 
+import com.bandwidth.sdk.model.LookupErrorSchema;
 import com.bandwidth.sdk.model.LookupErrorSchemaMeta;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+
 import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for LookupErrorSchema
  */
 public class LookupErrorSchemaTest {
-    private final LookupErrorSchema model = new LookupErrorSchema();
+    private final LookupErrorSchema model = new LookupErrorSchema()
+            .code("VALIDATION_ERROR")
+            .description("The provided phone number is not valid.")
+            .type("validation")
+            .meta(new LookupErrorSchemaMeta()
+                    .phoneNumbers(new ArrayList<String>(Arrays.asList("1234567890", "0987654321")))
+                    .message("Sample error message")
+                    .code(400)
+            );
 
     /**
      * Model tests for LookupErrorSchema
      */
     @Test
     public void testLookupErrorSchema() {
-        // TODO: test LookupErrorSchema
+        assertThat(model, instanceOf(LookupErrorSchema.class));
     }
 
     /**
@@ -43,7 +51,7 @@ public class LookupErrorSchemaTest {
      */
     @Test
     public void codeTest() {
-        // TODO: test code
+        assertThat(model.getCode(), instanceOf(String.class));
     }
 
     /**
@@ -51,7 +59,7 @@ public class LookupErrorSchemaTest {
      */
     @Test
     public void descriptionTest() {
-        // TODO: test description
+        assertThat(model.getDescription(), instanceOf(String.class));
     }
 
     /**
@@ -59,7 +67,7 @@ public class LookupErrorSchemaTest {
      */
     @Test
     public void typeTest() {
-        // TODO: test type
+        assertThat(model.getType(), instanceOf(String.class));
     }
 
     /**
@@ -67,7 +75,7 @@ public class LookupErrorSchemaTest {
      */
     @Test
     public void metaTest() {
-        // TODO: test meta
+        assertThat(model.getMeta(), instanceOf(LookupErrorSchemaMeta.class));
     }
 
 }

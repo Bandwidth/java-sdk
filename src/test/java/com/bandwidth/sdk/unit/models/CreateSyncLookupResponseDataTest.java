@@ -11,35 +11,39 @@
  */
 
 
-package com.bandwidth.sdk.model;
+package com.bandwidth.sdk.unit.models;
 
 import com.bandwidth.sdk.model.CompletedLookupStatusEnum;
+import com.bandwidth.sdk.model.CreateSyncLookupResponseData;
+import com.bandwidth.sdk.model.LineTypeEnum;
 import com.bandwidth.sdk.model.LookupResult;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
-import org.junit.jupiter.api.Disabled;
+
 import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for CreateSyncLookupResponseData
  */
 public class CreateSyncLookupResponseDataTest {
-    private final CreateSyncLookupResponseData model = new CreateSyncLookupResponseData();
+    private final CreateSyncLookupResponseData model = new CreateSyncLookupResponseData()
+            .requestId(UUID.fromString("123e4567-e89b-12d3-a456-426614174000"))
+            .status(CompletedLookupStatusEnum.COMPLETE)
+            .results(Arrays.asList(new LookupResult()
+                    .phoneNumber("+1234567890")
+                    .lineType(LineTypeEnum.MOBILE)));
 
     /**
      * Model tests for CreateSyncLookupResponseData
      */
     @Test
     public void testCreateSyncLookupResponseData() {
-        // TODO: test CreateSyncLookupResponseData
+        assertThat(model, instanceOf(CreateSyncLookupResponseData.class));
     }
 
     /**
@@ -47,7 +51,7 @@ public class CreateSyncLookupResponseDataTest {
      */
     @Test
     public void requestIdTest() {
-        // TODO: test requestId
+        assertThat(model.getRequestId(), instanceOf(UUID.class));
     }
 
     /**
@@ -55,7 +59,7 @@ public class CreateSyncLookupResponseDataTest {
      */
     @Test
     public void statusTest() {
-        // TODO: test status
+        assertThat(model.getStatus(), instanceOf(CompletedLookupStatusEnum.class));
     }
 
     /**
@@ -63,7 +67,7 @@ public class CreateSyncLookupResponseDataTest {
      */
     @Test
     public void resultsTest() {
-        // TODO: test results
+        assertThat(model.getResults(), instanceOf(List.class));
     }
 
 }

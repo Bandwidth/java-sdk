@@ -11,32 +11,32 @@
  */
 
 
-package com.bandwidth.sdk.model;
+package com.bandwidth.sdk.unit.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.bandwidth.sdk.model.SyncLookupRequest;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.jupiter.api.Disabled;
+
 import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for SyncLookupRequest
  */
 public class SyncLookupRequestTest {
-    private final SyncLookupRequest model = new SyncLookupRequest();
+    private final SyncLookupRequest model = new SyncLookupRequest()
+            .phoneNumbers(new ArrayList<String>(Arrays.asList("+1234567890", "+1987654321")));
 
     /**
      * Model tests for SyncLookupRequest
      */
     @Test
     public void testSyncLookupRequest() {
-        // TODO: test SyncLookupRequest
+        assertThat(model, instanceOf(SyncLookupRequest.class));
     }
 
     /**
@@ -44,7 +44,7 @@ public class SyncLookupRequestTest {
      */
     @Test
     public void phoneNumbersTest() {
-        // TODO: test phoneNumbers
+        assertThat(model.getPhoneNumbers(), instanceOf(List.class));
     }
 
 }

@@ -11,30 +11,30 @@
  */
 
 
-package com.bandwidth.sdk.model;
+package com.bandwidth.sdk.unit.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import org.junit.jupiter.api.Disabled;
+import com.bandwidth.sdk.model.LinkSchema;
+
 import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for LinkSchema
  */
 public class LinkSchemaTest {
-    private final LinkSchema model = new LinkSchema();
+    private final LinkSchema model = new LinkSchema()
+            .rel("self")
+            .href("https://api.bandwidth.com/v1/users/1234")
+            .method("GET");
 
     /**
      * Model tests for LinkSchema
      */
     @Test
     public void testLinkSchema() {
-        // TODO: test LinkSchema
+        assertThat(model, instanceOf(LinkSchema.class));
     }
 
     /**
@@ -42,7 +42,7 @@ public class LinkSchemaTest {
      */
     @Test
     public void hrefTest() {
-        // TODO: test href
+        assertThat(model.getHref(), instanceOf(String.class));
     }
 
     /**
@@ -50,7 +50,7 @@ public class LinkSchemaTest {
      */
     @Test
     public void relTest() {
-        // TODO: test rel
+        assertThat(model.getRel(), instanceOf(String.class));
     }
 
     /**
@@ -58,7 +58,7 @@ public class LinkSchemaTest {
      */
     @Test
     public void methodTest() {
-        // TODO: test method
+        assertThat(model.getMethod(), instanceOf(String.class));
     }
 
 }

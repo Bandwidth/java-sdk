@@ -11,11 +11,14 @@
  */
 
 
-package com.bandwidth.sdk.model;
+package com.bandwidth.sdk.unit.models;
 
-import com.google.gson.annotations.SerializedName;
-import org.junit.jupiter.api.Disabled;
+import com.bandwidth.sdk.model.LineTypeEnum;
+
 import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for LineTypeEnum
@@ -26,7 +29,10 @@ public class LineTypeEnumTest {
      */
     @Test
     public void testLineTypeEnum() {
-        // TODO: test LineTypeEnum
+        assertThat(LineTypeEnum.FIXED.toString(), equalTo("FIXED"));
+        assertThat(LineTypeEnum.VOIP_FIXED.toString(), equalTo("VOIP-FIXED"));
+        assertThat(LineTypeEnum.MOBILE.toString(), equalTo("MOBILE"));
+        assertThat(LineTypeEnum.VOIP.toString(), equalTo("VOIP"));
     }
 
 }

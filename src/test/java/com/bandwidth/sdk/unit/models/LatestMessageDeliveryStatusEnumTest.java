@@ -11,11 +11,14 @@
  */
 
 
-package com.bandwidth.sdk.model;
+package com.bandwidth.sdk.unit.models;
 
-import com.google.gson.annotations.SerializedName;
-import org.junit.jupiter.api.Disabled;
+import com.bandwidth.sdk.model.LatestMessageDeliveryStatusEnum;
+
 import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for LatestMessageDeliveryStatusEnum
@@ -26,7 +29,9 @@ public class LatestMessageDeliveryStatusEnumTest {
      */
     @Test
     public void testLatestMessageDeliveryStatusEnum() {
-        // TODO: test LatestMessageDeliveryStatusEnum
+        assertThat(LatestMessageDeliveryStatusEnum.ACTIVE.toString(), equalTo("ACTIVE"));
+        assertThat(LatestMessageDeliveryStatusEnum.DEACTIVATED.toString(), equalTo("DEACTIVATED"));
+        assertThat(LatestMessageDeliveryStatusEnum.UNKNOWN.toString(), equalTo("UNKNOWN"));
     }
 
 }

@@ -11,11 +11,14 @@
  */
 
 
-package com.bandwidth.sdk.model;
+package com.bandwidth.sdk.unit.models;
 
-import com.google.gson.annotations.SerializedName;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import com.bandwidth.sdk.model.DeactivationEventEnum;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for DeactivationEventEnum
@@ -26,7 +29,7 @@ public class DeactivationEventEnumTest {
      */
     @Test
     public void testDeactivationEventEnum() {
-        // TODO: test DeactivationEventEnum
+        assertThat(DeactivationEventEnum.DEACTIVATED.toString(), equalTo("DEACTIVATED"));
     }
 
 }

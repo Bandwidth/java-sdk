@@ -11,32 +11,34 @@
  */
 
 
-package com.bandwidth.sdk.model;
+package com.bandwidth.sdk.unit.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.bandwidth.sdk.model.LookupErrorSchemaMeta;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.jupiter.api.Disabled;
+
 import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for LookupErrorSchemaMeta
  */
 public class LookupErrorSchemaMetaTest {
-    private final LookupErrorSchemaMeta model = new LookupErrorSchemaMeta();
+    private final LookupErrorSchemaMeta model = new LookupErrorSchemaMeta()
+            .phoneNumbers(new ArrayList<String>(Arrays.asList("1234567890", "0987654321")))
+            .message("Sample error message")
+            .code(400);
 
     /**
      * Model tests for LookupErrorSchemaMeta
      */
     @Test
     public void testLookupErrorSchemaMeta() {
-        // TODO: test LookupErrorSchemaMeta
+        assertThat(model, instanceOf(LookupErrorSchemaMeta.class));
     }
 
     /**
@@ -44,7 +46,7 @@ public class LookupErrorSchemaMetaTest {
      */
     @Test
     public void phoneNumbersTest() {
-        // TODO: test phoneNumbers
+        assertThat(model.getPhoneNumbers(), instanceOf(List.class));
     }
 
     /**
@@ -52,7 +54,7 @@ public class LookupErrorSchemaMetaTest {
      */
     @Test
     public void messageTest() {
-        // TODO: test message
+        assertThat(model.getMessage(), instanceOf(String.class));
     }
 
     /**
@@ -60,7 +62,7 @@ public class LookupErrorSchemaMetaTest {
      */
     @Test
     public void codeTest() {
-        // TODO: test code
+        assertThat(model.getCode(), instanceOf(Integer.class));
     }
 
 }

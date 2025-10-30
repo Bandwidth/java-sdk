@@ -11,9 +11,10 @@
  */
 
 
-package com.bandwidth.sdk.model;
+package com.bandwidth.sdk.unit.models;
 
 import com.bandwidth.sdk.model.LinkSchema;
+import com.bandwidth.sdk.model.LookupErrorResponse;
 import com.bandwidth.sdk.model.LookupErrorSchema;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -27,18 +28,32 @@ import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
+
 /**
  * Model tests for LookupErrorResponse
  */
 public class LookupErrorResponseTest {
-    private final LookupErrorResponse model = new LookupErrorResponse();
+    private final LookupErrorResponse model = new LookupErrorResponse()
+            .links(new ArrayList<LinkSchema>(Arrays.asList(new LinkSchema()
+                    .rel("self")
+                    .href("https://api.bandwidth.com/v1/users/1234")
+                    .method("GET")
+            )))
+            .data(new Object())
+            .errors(new ArrayList<LookupErrorSchema>(Arrays.asList(new LookupErrorSchema()
+                    .code("InvalidNumber")
+                    .description("The phone number provided is invalid")
+                    .type("ValidationError")
+            )));
 
     /**
      * Model tests for LookupErrorResponse
      */
     @Test
     public void testLookupErrorResponse() {
-        // TODO: test LookupErrorResponse
+        assertThat(model, instanceOf(LookupErrorResponse.class));
     }
 
     /**
@@ -46,7 +61,7 @@ public class LookupErrorResponseTest {
      */
     @Test
     public void linksTest() {
-        // TODO: test links
+        assertThat(model.getLinks(), instanceOf(List.class));
     }
 
     /**
@@ -54,7 +69,7 @@ public class LookupErrorResponseTest {
      */
     @Test
     public void dataTest() {
-        // TODO: test data
+        assertThat(model.getData(), instanceOf(Object.class));
     }
 
     /**
@@ -62,7 +77,7 @@ public class LookupErrorResponseTest {
      */
     @Test
     public void errorsTest() {
-        // TODO: test errors
+        assertThat(model.getErrors(), instanceOf(List.class));
     }
 
 }

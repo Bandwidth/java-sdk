@@ -11,32 +11,31 @@
  */
 
 
-package com.bandwidth.sdk.model;
+package com.bandwidth.sdk.unit.models;
 
+import com.bandwidth.sdk.model.CreateAsyncBulkLookupResponseData;
 import com.bandwidth.sdk.model.InProgressLookupStatusEnum;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+
 import java.util.UUID;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for CreateAsyncBulkLookupResponseData
  */
 public class CreateAsyncBulkLookupResponseDataTest {
-    private final CreateAsyncBulkLookupResponseData model = new CreateAsyncBulkLookupResponseData();
+    private final CreateAsyncBulkLookupResponseData model = new CreateAsyncBulkLookupResponseData()
+            .requestId(UUID.fromString("123e4567-e89b-12d3-a456-426614174000"))
+            .status(InProgressLookupStatusEnum.IN_PROGRESS);
 
     /**
      * Model tests for CreateAsyncBulkLookupResponseData
      */
     @Test
     public void testCreateAsyncBulkLookupResponseData() {
-        // TODO: test CreateAsyncBulkLookupResponseData
+        assertThat(model, instanceOf(CreateAsyncBulkLookupResponseData.class));
     }
 
     /**
@@ -44,7 +43,7 @@ public class CreateAsyncBulkLookupResponseDataTest {
      */
     @Test
     public void requestIdTest() {
-        // TODO: test requestId
+        assertThat(model.getRequestId(), instanceOf(UUID.class));
     }
 
     /**
@@ -52,7 +51,7 @@ public class CreateAsyncBulkLookupResponseDataTest {
      */
     @Test
     public void statusTest() {
-        // TODO: test status
+        assertThat(model.getStatus(), instanceOf(InProgressLookupStatusEnum.class));
     }
 
 }

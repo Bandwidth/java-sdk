@@ -11,35 +11,37 @@
  */
 
 
-package com.bandwidth.sdk.model;
+package com.bandwidth.sdk.unit.models;
 
+import com.bandwidth.sdk.model.GetAsyncBulkLookupResponse;
 import com.bandwidth.sdk.model.GetAsyncBulkLookupResponseData;
 import com.bandwidth.sdk.model.LinkSchema;
 import com.bandwidth.sdk.model.LookupErrorSchema;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.jupiter.api.Disabled;
+
 import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Model tests for GetAsyncBulkLookupResponse
  */
 public class GetAsyncBulkLookupResponseTest {
-    private final GetAsyncBulkLookupResponse model = new GetAsyncBulkLookupResponse();
+    private final GetAsyncBulkLookupResponse model = new GetAsyncBulkLookupResponse()
+            .links(new ArrayList<LinkSchema>(Arrays.asList(new LinkSchema())))
+            .data(new GetAsyncBulkLookupResponseData())
+            .errors(new ArrayList<LookupErrorSchema>(Arrays.asList(new LookupErrorSchema())));
 
     /**
      * Model tests for GetAsyncBulkLookupResponse
      */
     @Test
     public void testGetAsyncBulkLookupResponse() {
-        // TODO: test GetAsyncBulkLookupResponse
+        assertThat(model, instanceOf(GetAsyncBulkLookupResponse.class));
     }
 
     /**
@@ -47,7 +49,7 @@ public class GetAsyncBulkLookupResponseTest {
      */
     @Test
     public void linksTest() {
-        // TODO: test links
+        assertThat(model.getLinks(), instanceOf(List.class));
     }
 
     /**
@@ -55,7 +57,7 @@ public class GetAsyncBulkLookupResponseTest {
      */
     @Test
     public void dataTest() {
-        // TODO: test data
+        assertThat(model.getData(), instanceOf(GetAsyncBulkLookupResponseData.class));
     }
 
     /**
@@ -63,7 +65,7 @@ public class GetAsyncBulkLookupResponseTest {
      */
     @Test
     public void errorsTest() {
-        // TODO: test errors
+        assertThat(model.getErrors(), instanceOf(List.class));
     }
 
 }

@@ -11,8 +11,10 @@
  */
 
 
-package com.bandwidth.sdk.model;
+package com.bandwidth.sdk.unit.models;
 
+import com.bandwidth.sdk.model.CompletedLookupStatusEnum;
+import com.bandwidth.sdk.model.CreateSyncLookupResponse;
 import com.bandwidth.sdk.model.CreateSyncLookupResponseData;
 import com.bandwidth.sdk.model.LinkSchema;
 import com.bandwidth.sdk.model.LookupErrorSchema;
@@ -28,18 +30,32 @@ import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
+
 /**
  * Model tests for CreateSyncLookupResponse
  */
 public class CreateSyncLookupResponseTest {
-    private final CreateSyncLookupResponse model = new CreateSyncLookupResponse();
+    private final CreateSyncLookupResponse model = new CreateSyncLookupResponse()
+            .links(Arrays.asList(new LinkSchema()
+                    .href("https://api.bandwidth.com/v1.0/lookups/12345")
+                    .rel("self").method("GET")))
+            .data(new CreateSyncLookupResponseData()
+                    .requestId(java.util.UUID.fromString("123e4567-e89b-12d3-a456-426614174000"))
+                    .status(CompletedLookupStatusEnum.COMPLETE)
+                    .results(new ArrayList<>()))
+            .errors(Arrays.asList(new LookupErrorSchema()
+                    .code("InvalidNumber")
+                    .description("The phone number provided is invalid.")
+                    .type("ValidationError")));
 
     /**
      * Model tests for CreateSyncLookupResponse
      */
     @Test
     public void testCreateSyncLookupResponse() {
-        // TODO: test CreateSyncLookupResponse
+        assertThat(model, instanceOf(CreateSyncLookupResponse.class));
     }
 
     /**
@@ -47,7 +63,7 @@ public class CreateSyncLookupResponseTest {
      */
     @Test
     public void linksTest() {
-        // TODO: test links
+        assertThat(model.getLinks(), instanceOf(List.class));
     }
 
     /**
@@ -55,7 +71,7 @@ public class CreateSyncLookupResponseTest {
      */
     @Test
     public void dataTest() {
-        // TODO: test data
+        assertThat(model.getData(), instanceOf(CreateSyncLookupResponseData.class));
     }
 
     /**
@@ -63,7 +79,7 @@ public class CreateSyncLookupResponseTest {
      */
     @Test
     public void errorsTest() {
-        // TODO: test errors
+        assertThat(model.getErrors(), instanceOf(List.class));
     }
 
 }
