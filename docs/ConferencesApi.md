@@ -43,10 +43,6 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
-    // Configure OAuth2 access token for authorization: OAuth2
-    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
-    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
-
     ConferencesApi apiInstance = new ConferencesApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID.
@@ -79,7 +75,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -127,10 +123,6 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
-    // Configure OAuth2 access token for authorization: OAuth2
-    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
-    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
-
     ConferencesApi apiInstance = new ConferencesApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID.
@@ -161,7 +153,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -209,10 +201,6 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
-    // Configure OAuth2 access token for authorization: OAuth2
-    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
-    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
-
     ConferencesApi apiInstance = new ConferencesApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID.
@@ -245,7 +233,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -293,10 +281,6 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
-    // Configure OAuth2 access token for authorization: OAuth2
-    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
-    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
-
     ConferencesApi apiInstance = new ConferencesApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID.
@@ -329,7 +313,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -377,10 +361,6 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
-    // Configure OAuth2 access token for authorization: OAuth2
-    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
-    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
-
     ConferencesApi apiInstance = new ConferencesApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID.
@@ -411,7 +391,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -459,10 +439,6 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
-    // Configure OAuth2 access token for authorization: OAuth2
-    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
-    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
-
     ConferencesApi apiInstance = new ConferencesApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String name = "my-custom-name"; // String | Filter results by the `name` field.
@@ -501,7 +477,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -549,10 +525,6 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
-    // Configure OAuth2 access token for authorization: OAuth2
-    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
-    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
-
     ConferencesApi apiInstance = new ConferencesApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID.
@@ -584,7 +556,7 @@ null (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -632,10 +604,6 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
-    // Configure OAuth2 access token for authorization: OAuth2
-    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
-    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
-
     ConferencesApi apiInstance = new ConferencesApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID.
@@ -670,7 +638,7 @@ null (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -718,10 +686,6 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
-    // Configure OAuth2 access token for authorization: OAuth2
-    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
-    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
-
     ConferencesApi apiInstance = new ConferencesApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String conferenceId = "conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9"; // String | Programmable Voice API Conference ID.
@@ -755,7 +719,7 @@ null (empty response body)
 
 ### Authorization
 
-[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 

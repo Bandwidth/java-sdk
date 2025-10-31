@@ -37,10 +37,6 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
-    // Configure OAuth2 access token for authorization: OAuth2
-    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
-    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
-
     PhoneNumberLookupApi apiInstance = new PhoneNumberLookupApi(defaultClient);
     String accountId = "9900000"; // String | 
     AsyncLookupRequest asyncLookupRequest = new AsyncLookupRequest(); // AsyncLookupRequest | Asynchronous bulk phone number lookup request.
@@ -71,7 +67,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -112,10 +108,6 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
-    // Configure OAuth2 access token for authorization: OAuth2
-    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
-    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
-
     PhoneNumberLookupApi apiInstance = new PhoneNumberLookupApi(defaultClient);
     String accountId = "9900000"; // String | 
     SyncLookupRequest syncLookupRequest = new SyncLookupRequest(); // SyncLookupRequest | Synchronous phone number lookup request.
@@ -146,7 +138,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
@@ -187,10 +179,6 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
-    // Configure OAuth2 access token for authorization: OAuth2
-    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
-    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
-
     PhoneNumberLookupApi apiInstance = new PhoneNumberLookupApi(defaultClient);
     String accountId = "9900000"; // String | 
     UUID requestId = UUID.fromString("004223a0-8b17-41b1-bf81-20732adf5590"); // UUID | 
@@ -221,7 +209,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 

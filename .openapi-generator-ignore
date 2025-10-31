@@ -12,7 +12,7 @@
 .idea
 .gitignore
 .github/workflows/maven.yml
-# src/test/
+src/test/
 
 # You can match any string of characters against a directory, file or extension with a single asterisk (*):
 #foo/*/qux

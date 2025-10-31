@@ -35,10 +35,6 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
-    // Configure OAuth2 access token for authorization: OAuth2
-    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
-    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
-
     MultiChannelApi apiInstance = new MultiChannelApi(defaultClient);
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     MultiChannelMessageRequest multiChannelMessageRequest = new MultiChannelMessageRequest(); // MultiChannelMessageRequest | 
@@ -69,7 +65,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
