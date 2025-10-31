@@ -110,7 +110,5 @@ public class PhoneNumberLookupApiTest {
         assertThat(firstResult.getMessagingProvider(), instanceOf(String.class));
         assertThat(firstResult.getVoiceProvider(), instanceOf(String.class));
         assertThat(firstResult.getCountryCodeA3(), instanceOf(String.class));
-        // ASK ABOUT LATENCY / RESPONSE TIME GUARANTEE FOR ASYNC LOOKUP
-        
     }
 }
