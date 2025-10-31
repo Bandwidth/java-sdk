@@ -14,6 +14,7 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -42,13 +43,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
  * PageInfo
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class PageInfo {
   public static final String SERIALIZED_NAME_PREV_PAGE = "prevPage";
   @SerializedName(SERIALIZED_NAME_PREV_PAGE)
@@ -245,14 +247,10 @@ public class PageInfo {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("prevPage");
-    openapiFields.add("nextPage");
-    openapiFields.add("prevPageToken");
-    openapiFields.add("nextPageToken");
+    openapiFields = new HashSet<String>(Arrays.asList("prevPage", "nextPage", "prevPageToken", "nextPageToken"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -264,21 +262,21 @@ public class PageInfo {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!PageInfo.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PageInfo is not found in the empty JSON string", PageInfo.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in PageInfo is not found in the empty JSON string", PageInfo.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("prevPage") != null && !jsonObj.get("prevPage").isJsonNull()) && !jsonObj.get("prevPage").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `prevPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("prevPage").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `prevPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("prevPage").toString()));
       }
       if ((jsonObj.get("nextPage") != null && !jsonObj.get("nextPage").isJsonNull()) && !jsonObj.get("nextPage").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `nextPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("nextPage").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `nextPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("nextPage").toString()));
       }
       if ((jsonObj.get("prevPageToken") != null && !jsonObj.get("prevPageToken").isJsonNull()) && !jsonObj.get("prevPageToken").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `prevPageToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("prevPageToken").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `prevPageToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("prevPageToken").toString()));
       }
       if ((jsonObj.get("nextPageToken") != null && !jsonObj.get("nextPageToken").isJsonNull()) && !jsonObj.get("nextPageToken").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `nextPageToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("nextPageToken").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `nextPageToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("nextPageToken").toString()));
       }
   }
 
@@ -339,7 +337,7 @@ public class PageInfo {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

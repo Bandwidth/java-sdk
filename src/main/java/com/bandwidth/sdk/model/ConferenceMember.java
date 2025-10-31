@@ -14,6 +14,7 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -46,13 +47,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
  * ConferenceMember
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class ConferenceMember {
   public static final String SERIALIZED_NAME_CALL_ID = "callId";
   @SerializedName(SERIALIZED_NAME_CALL_ID)
@@ -320,16 +322,10 @@ public class ConferenceMember {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("callId");
-    openapiFields.add("conferenceId");
-    openapiFields.add("memberUrl");
-    openapiFields.add("mute");
-    openapiFields.add("hold");
-    openapiFields.add("callIdsToCoach");
+    openapiFields = new HashSet<String>(Arrays.asList("callId", "conferenceId", "memberUrl", "mute", "hold", "callIdsToCoach"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -341,22 +337,22 @@ public class ConferenceMember {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ConferenceMember.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ConferenceMember is not found in the empty JSON string", ConferenceMember.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in ConferenceMember is not found in the empty JSON string", ConferenceMember.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("callId") != null && !jsonObj.get("callId").isJsonNull()) && !jsonObj.get("callId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `callId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callId").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `callId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callId").toString()));
       }
       if ((jsonObj.get("conferenceId") != null && !jsonObj.get("conferenceId").isJsonNull()) && !jsonObj.get("conferenceId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `conferenceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conferenceId").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `conferenceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conferenceId").toString()));
       }
       if ((jsonObj.get("memberUrl") != null && !jsonObj.get("memberUrl").isJsonNull()) && !jsonObj.get("memberUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `memberUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("memberUrl").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `memberUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("memberUrl").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("callIdsToCoach") != null && !jsonObj.get("callIdsToCoach").isJsonNull() && !jsonObj.get("callIdsToCoach").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `callIdsToCoach` to be an array in the JSON string but got `%s`", jsonObj.get("callIdsToCoach").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `callIdsToCoach` to be an array in the JSON string but got `%s`", jsonObj.get("callIdsToCoach").toString()));
       }
   }
 
@@ -417,7 +413,7 @@ public class ConferenceMember {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

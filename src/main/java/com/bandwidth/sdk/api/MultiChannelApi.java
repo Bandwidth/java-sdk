@@ -97,7 +97,7 @@ public class MultiChannelApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createMultiChannelMessageCall(String accountId, MultiChannelMessageRequest multiChannelMessageRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createMultiChannelMessageCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull MultiChannelMessageRequest multiChannelMessageRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://messaging.bandwidth.com/api/v2" };
@@ -144,7 +144,7 @@ public class MultiChannelApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createMultiChannelMessageValidateBeforeCall(String accountId, MultiChannelMessageRequest multiChannelMessageRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createMultiChannelMessageValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull MultiChannelMessageRequest multiChannelMessageRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling createMultiChannelMessage(Async)");
@@ -182,7 +182,7 @@ public class MultiChannelApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public CreateMultiChannelMessageResponse createMultiChannelMessage(String accountId, MultiChannelMessageRequest multiChannelMessageRequest) throws ApiException {
+    public CreateMultiChannelMessageResponse createMultiChannelMessage(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull MultiChannelMessageRequest multiChannelMessageRequest) throws ApiException {
         ApiResponse<CreateMultiChannelMessageResponse> localVarResp = createMultiChannelMessageWithHttpInfo(accountId, multiChannelMessageRequest);
         return localVarResp.getData();
     }
@@ -210,7 +210,7 @@ public class MultiChannelApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateMultiChannelMessageResponse> createMultiChannelMessageWithHttpInfo(String accountId, MultiChannelMessageRequest multiChannelMessageRequest) throws ApiException {
+    public ApiResponse<CreateMultiChannelMessageResponse> createMultiChannelMessageWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull MultiChannelMessageRequest multiChannelMessageRequest) throws ApiException {
         okhttp3.Call localVarCall = createMultiChannelMessageValidateBeforeCall(accountId, multiChannelMessageRequest, null);
         Type localVarReturnType = new TypeToken<CreateMultiChannelMessageResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -240,7 +240,7 @@ public class MultiChannelApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createMultiChannelMessageAsync(String accountId, MultiChannelMessageRequest multiChannelMessageRequest, final ApiCallback<CreateMultiChannelMessageResponse> _callback) throws ApiException {
+    public okhttp3.Call createMultiChannelMessageAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull MultiChannelMessageRequest multiChannelMessageRequest, final ApiCallback<CreateMultiChannelMessageResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createMultiChannelMessageValidateBeforeCall(accountId, multiChannelMessageRequest, _callback);
         Type localVarReturnType = new TypeToken<CreateMultiChannelMessageResponse>(){}.getType();

@@ -27,10 +27,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.bandwidth.sdk.model.CreateLookupResponse;
-import com.bandwidth.sdk.model.LookupRequest;
-import com.bandwidth.sdk.model.LookupStatus;
-import com.bandwidth.sdk.model.TnLookupRequestError;
+import com.bandwidth.sdk.model.AsyncLookupRequest;
+import com.bandwidth.sdk.model.CreateAsyncBulkLookupResponse;
+import com.bandwidth.sdk.model.CreateSyncLookupResponse;
+import com.bandwidth.sdk.model.GetAsyncBulkLookupResponse;
+import com.bandwidth.sdk.model.LookupErrorResponse;
+import com.bandwidth.sdk.model.SyncLookupRequest;
+import java.util.UUID;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -76,9 +79,9 @@ public class PhoneNumberLookupApi {
     }
 
     /**
-     * Build call for createLookup
-     * @param accountId Your Bandwidth Account ID. (required)
-     * @param lookupRequest Phone number lookup request. (required)
+     * Build call for createAsyncBulkLookup
+     * @param accountId  (required)
+     * @param asyncLookupRequest Asynchronous bulk phone number lookup request. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -87,20 +90,13 @@ public class PhoneNumberLookupApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Accepted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-        <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
-    public okhttp3.Call createLookupCall(String accountId, LookupRequest lookupRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createAsyncBulkLookupCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull AsyncLookupRequest asyncLookupRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] { "https://numbers.bandwidth.com/api/v1" };
+        String[] localBasePaths = new String[] { "https://api.bandwidth.com/v2" };
 
         // Determine Base Path to Use
         if (localCustomBaseUrl != null){
@@ -111,10 +107,10 @@ public class PhoneNumberLookupApi {
             basePath = null;
         }
 
-        Object localVarPostBody = lookupRequest;
+        Object localVarPostBody = asyncLookupRequest;
 
         // create path and map variables
-        String localVarPath = "/accounts/{accountId}/tnlookup"
+        String localVarPath = "/accounts/{accountId}/phoneNumberLookup/bulk"
             .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -143,83 +139,68 @@ public class PhoneNumberLookupApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createLookupValidateBeforeCall(String accountId, LookupRequest lookupRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAsyncBulkLookupValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull AsyncLookupRequest asyncLookupRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling createLookup(Async)");
+            throw new ApiException("Missing the required parameter 'accountId' when calling createAsyncBulkLookup(Async)");
         }
 
-        // verify the required parameter 'lookupRequest' is set
-        if (lookupRequest == null) {
-            throw new ApiException("Missing the required parameter 'lookupRequest' when calling createLookup(Async)");
+        // verify the required parameter 'asyncLookupRequest' is set
+        if (asyncLookupRequest == null) {
+            throw new ApiException("Missing the required parameter 'asyncLookupRequest' when calling createAsyncBulkLookup(Async)");
         }
 
-        return createLookupCall(accountId, lookupRequest, _callback);
+        return createAsyncBulkLookupCall(accountId, asyncLookupRequest, _callback);
 
     }
 
     /**
-     * Create Lookup
-     * Create a Phone Number Lookup Request.
-     * @param accountId Your Bandwidth Account ID. (required)
-     * @param lookupRequest Phone number lookup request. (required)
-     * @return CreateLookupResponse
+     * Create Asynchronous Bulk Number Lookup
+     * Creates an asynchronous bulk phone number lookup request. Maximum of 15,000 telephone numbers per request. Use the [Get Asynchronous Bulk Number Lookup](#tag/Phone-Number-Lookup/operation/getAsyncBulkLookup) endpoint to check the status of the request and view the results.
+     * @param accountId  (required)
+     * @param asyncLookupRequest Asynchronous bulk phone number lookup request. (required)
+     * @return CreateAsyncBulkLookupResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Accepted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-        <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
-    public CreateLookupResponse createLookup(String accountId, LookupRequest lookupRequest) throws ApiException {
-        ApiResponse<CreateLookupResponse> localVarResp = createLookupWithHttpInfo(accountId, lookupRequest);
+    public CreateAsyncBulkLookupResponse createAsyncBulkLookup(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull AsyncLookupRequest asyncLookupRequest) throws ApiException {
+        ApiResponse<CreateAsyncBulkLookupResponse> localVarResp = createAsyncBulkLookupWithHttpInfo(accountId, asyncLookupRequest);
         return localVarResp.getData();
     }
 
     /**
-     * Create Lookup
-     * Create a Phone Number Lookup Request.
-     * @param accountId Your Bandwidth Account ID. (required)
-     * @param lookupRequest Phone number lookup request. (required)
-     * @return ApiResponse&lt;CreateLookupResponse&gt;
+     * Create Asynchronous Bulk Number Lookup
+     * Creates an asynchronous bulk phone number lookup request. Maximum of 15,000 telephone numbers per request. Use the [Get Asynchronous Bulk Number Lookup](#tag/Phone-Number-Lookup/operation/getAsyncBulkLookup) endpoint to check the status of the request and view the results.
+     * @param accountId  (required)
+     * @param asyncLookupRequest Asynchronous bulk phone number lookup request. (required)
+     * @return ApiResponse&lt;CreateAsyncBulkLookupResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Accepted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-        <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
-    public ApiResponse<CreateLookupResponse> createLookupWithHttpInfo(String accountId, LookupRequest lookupRequest) throws ApiException {
-        okhttp3.Call localVarCall = createLookupValidateBeforeCall(accountId, lookupRequest, null);
-        Type localVarReturnType = new TypeToken<CreateLookupResponse>(){}.getType();
+    public ApiResponse<CreateAsyncBulkLookupResponse> createAsyncBulkLookupWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull AsyncLookupRequest asyncLookupRequest) throws ApiException {
+        okhttp3.Call localVarCall = createAsyncBulkLookupValidateBeforeCall(accountId, asyncLookupRequest, null);
+        Type localVarReturnType = new TypeToken<CreateAsyncBulkLookupResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Create Lookup (asynchronously)
-     * Create a Phone Number Lookup Request.
-     * @param accountId Your Bandwidth Account ID. (required)
-     * @param lookupRequest Phone number lookup request. (required)
+     * Create Asynchronous Bulk Number Lookup (asynchronously)
+     * Creates an asynchronous bulk phone number lookup request. Maximum of 15,000 telephone numbers per request. Use the [Get Asynchronous Bulk Number Lookup](#tag/Phone-Number-Lookup/operation/getAsyncBulkLookup) endpoint to check the status of the request and view the results.
+     * @param accountId  (required)
+     * @param asyncLookupRequest Asynchronous bulk phone number lookup request. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -228,27 +209,20 @@ public class PhoneNumberLookupApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Accepted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-        <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
-    public okhttp3.Call createLookupAsync(String accountId, LookupRequest lookupRequest, final ApiCallback<CreateLookupResponse> _callback) throws ApiException {
+    public okhttp3.Call createAsyncBulkLookupAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull AsyncLookupRequest asyncLookupRequest, final ApiCallback<CreateAsyncBulkLookupResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createLookupValidateBeforeCall(accountId, lookupRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreateLookupResponse>(){}.getType();
+        okhttp3.Call localVarCall = createAsyncBulkLookupValidateBeforeCall(accountId, asyncLookupRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateAsyncBulkLookupResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getLookupStatus
-     * @param accountId Your Bandwidth Account ID. (required)
-     * @param requestId The phone number lookup request ID from Bandwidth. (required)
+     * Build call for createSyncLookup
+     * @param accountId  (required)
+     * @param syncLookupRequest Synchronous phone number lookup request. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -257,20 +231,154 @@ public class PhoneNumberLookupApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
-    public okhttp3.Call getLookupStatusCall(String accountId, String requestId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createSyncLookupCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull SyncLookupRequest syncLookupRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] { "https://numbers.bandwidth.com/api/v1" };
+        String[] localBasePaths = new String[] { "https://api.bandwidth.com/v2" };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = syncLookupRequest;
+
+        // create path and map variables
+        String localVarPath = "/accounts/{accountId}/phoneNumberLookup"
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "Basic" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createSyncLookupValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull SyncLookupRequest syncLookupRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling createSyncLookup(Async)");
+        }
+
+        // verify the required parameter 'syncLookupRequest' is set
+        if (syncLookupRequest == null) {
+            throw new ApiException("Missing the required parameter 'syncLookupRequest' when calling createSyncLookup(Async)");
+        }
+
+        return createSyncLookupCall(accountId, syncLookupRequest, _callback);
+
+    }
+
+    /**
+     * Create Synchronous Number Lookup
+     * Creates a synchronous phone number lookup request. Maximum of 100 telephone numbers per request.
+     * @param accountId  (required)
+     * @param syncLookupRequest Synchronous phone number lookup request. (required)
+     * @return CreateSyncLookupResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
+     </table>
+     */
+    public CreateSyncLookupResponse createSyncLookup(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull SyncLookupRequest syncLookupRequest) throws ApiException {
+        ApiResponse<CreateSyncLookupResponse> localVarResp = createSyncLookupWithHttpInfo(accountId, syncLookupRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create Synchronous Number Lookup
+     * Creates a synchronous phone number lookup request. Maximum of 100 telephone numbers per request.
+     * @param accountId  (required)
+     * @param syncLookupRequest Synchronous phone number lookup request. (required)
+     * @return ApiResponse&lt;CreateSyncLookupResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CreateSyncLookupResponse> createSyncLookupWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull SyncLookupRequest syncLookupRequest) throws ApiException {
+        okhttp3.Call localVarCall = createSyncLookupValidateBeforeCall(accountId, syncLookupRequest, null);
+        Type localVarReturnType = new TypeToken<CreateSyncLookupResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create Synchronous Number Lookup (asynchronously)
+     * Creates a synchronous phone number lookup request. Maximum of 100 telephone numbers per request.
+     * @param accountId  (required)
+     * @param syncLookupRequest Synchronous phone number lookup request. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createSyncLookupAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull SyncLookupRequest syncLookupRequest, final ApiCallback<CreateSyncLookupResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createSyncLookupValidateBeforeCall(accountId, syncLookupRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateSyncLookupResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAsyncBulkLookup
+     * @param accountId  (required)
+     * @param requestId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAsyncBulkLookupCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull UUID requestId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] { "https://api.bandwidth.com/v2" };
 
         // Determine Base Path to Use
         if (localCustomBaseUrl != null){
@@ -284,7 +392,7 @@ public class PhoneNumberLookupApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/accounts/{accountId}/tnlookup/{requestId}"
+        String localVarPath = "/accounts/{accountId}/phoneNumberLookup/bulk/{requestId}"
             .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
             .replace("{" + "requestId" + "}", localVarApiClient.escapeString(requestId.toString()));
 
@@ -313,83 +421,68 @@ public class PhoneNumberLookupApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLookupStatusValidateBeforeCall(String accountId, String requestId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAsyncBulkLookupValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull UUID requestId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling getLookupStatus(Async)");
+            throw new ApiException("Missing the required parameter 'accountId' when calling getAsyncBulkLookup(Async)");
         }
 
         // verify the required parameter 'requestId' is set
         if (requestId == null) {
-            throw new ApiException("Missing the required parameter 'requestId' when calling getLookupStatus(Async)");
+            throw new ApiException("Missing the required parameter 'requestId' when calling getAsyncBulkLookup(Async)");
         }
 
-        return getLookupStatusCall(accountId, requestId, _callback);
+        return getAsyncBulkLookupCall(accountId, requestId, _callback);
 
     }
 
     /**
-     * Get Lookup Request Status
-     * Get an existing Phone Number Lookup Request.
-     * @param accountId Your Bandwidth Account ID. (required)
-     * @param requestId The phone number lookup request ID from Bandwidth. (required)
-     * @return LookupStatus
+     * Get Asynchronous Bulk Number Lookup
+     * Get an existing [Asynchronous Bulk Number Lookup](#tag/Phone-Number-Lookup/operation/createAsyncBulkLookup). Use this endpoint to check the status of the request and view the results.
+     * @param accountId  (required)
+     * @param requestId  (required)
+     * @return GetAsyncBulkLookupResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
-    public LookupStatus getLookupStatus(String accountId, String requestId) throws ApiException {
-        ApiResponse<LookupStatus> localVarResp = getLookupStatusWithHttpInfo(accountId, requestId);
+    public GetAsyncBulkLookupResponse getAsyncBulkLookup(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull UUID requestId) throws ApiException {
+        ApiResponse<GetAsyncBulkLookupResponse> localVarResp = getAsyncBulkLookupWithHttpInfo(accountId, requestId);
         return localVarResp.getData();
     }
 
     /**
-     * Get Lookup Request Status
-     * Get an existing Phone Number Lookup Request.
-     * @param accountId Your Bandwidth Account ID. (required)
-     * @param requestId The phone number lookup request ID from Bandwidth. (required)
-     * @return ApiResponse&lt;LookupStatus&gt;
+     * Get Asynchronous Bulk Number Lookup
+     * Get an existing [Asynchronous Bulk Number Lookup](#tag/Phone-Number-Lookup/operation/createAsyncBulkLookup). Use this endpoint to check the status of the request and view the results.
+     * @param accountId  (required)
+     * @param requestId  (required)
+     * @return ApiResponse&lt;GetAsyncBulkLookupResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
-    public ApiResponse<LookupStatus> getLookupStatusWithHttpInfo(String accountId, String requestId) throws ApiException {
-        okhttp3.Call localVarCall = getLookupStatusValidateBeforeCall(accountId, requestId, null);
-        Type localVarReturnType = new TypeToken<LookupStatus>(){}.getType();
+    public ApiResponse<GetAsyncBulkLookupResponse> getAsyncBulkLookupWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull UUID requestId) throws ApiException {
+        okhttp3.Call localVarCall = getAsyncBulkLookupValidateBeforeCall(accountId, requestId, null);
+        Type localVarReturnType = new TypeToken<GetAsyncBulkLookupResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get Lookup Request Status (asynchronously)
-     * Get an existing Phone Number Lookup Request.
-     * @param accountId Your Bandwidth Account ID. (required)
-     * @param requestId The phone number lookup request ID from Bandwidth. (required)
+     * Get Asynchronous Bulk Number Lookup (asynchronously)
+     * Get an existing [Asynchronous Bulk Number Lookup](#tag/Phone-Number-Lookup/operation/createAsyncBulkLookup). Use this endpoint to check the status of the request and view the results.
+     * @param accountId  (required)
+     * @param requestId  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -398,20 +491,13 @@ public class PhoneNumberLookupApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
-    public okhttp3.Call getLookupStatusAsync(String accountId, String requestId, final ApiCallback<LookupStatus> _callback) throws ApiException {
+    public okhttp3.Call getAsyncBulkLookupAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull UUID requestId, final ApiCallback<GetAsyncBulkLookupResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLookupStatusValidateBeforeCall(accountId, requestId, _callback);
-        Type localVarReturnType = new TypeToken<LookupStatus>(){}.getType();
+        okhttp3.Call localVarCall = getAsyncBulkLookupValidateBeforeCall(accountId, requestId, _callback);
+        Type localVarReturnType = new TypeToken<GetAsyncBulkLookupResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

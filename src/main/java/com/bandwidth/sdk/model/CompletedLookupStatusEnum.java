@@ -14,9 +14,11 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.IOException;
+import java.util.Locale;
 import com.google.gson.TypeAdapter;
 import com.google.gson.JsonElement;
 import com.google.gson.annotations.JsonAdapter;
@@ -24,12 +26,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The status of the request (IN_PROGRESS, COMPLETE, PARTIAL_COMPLETE, or FAILED).
+ * Gets or Sets completedLookupStatusEnum
  */
-@JsonAdapter(LookupStatusEnum.Adapter.class)
-public enum LookupStatusEnum {
-  
-  IN_PROGRESS("IN_PROGRESS"),
+@JsonAdapter(CompletedLookupStatusEnum.Adapter.class)
+public enum CompletedLookupStatusEnum {
   
   COMPLETE("COMPLETE"),
   
@@ -39,7 +39,7 @@ public enum LookupStatusEnum {
 
   private String value;
 
-  LookupStatusEnum(String value) {
+  CompletedLookupStatusEnum(String value) {
     this.value = value;
   }
 
@@ -52,8 +52,8 @@ public enum LookupStatusEnum {
     return String.valueOf(value);
   }
 
-  public static LookupStatusEnum fromValue(String value) {
-    for (LookupStatusEnum b : LookupStatusEnum.values()) {
+  public static CompletedLookupStatusEnum fromValue(String value) {
+    for (CompletedLookupStatusEnum b : CompletedLookupStatusEnum.values()) {
       if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
@@ -61,22 +61,22 @@ public enum LookupStatusEnum {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<LookupStatusEnum> {
+  public static class Adapter extends TypeAdapter<CompletedLookupStatusEnum> {
     @Override
-    public void write(final JsonWriter jsonWriter, final LookupStatusEnum enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final CompletedLookupStatusEnum enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public LookupStatusEnum read(final JsonReader jsonReader) throws IOException {
+    public CompletedLookupStatusEnum read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return LookupStatusEnum.fromValue(value);
+      return CompletedLookupStatusEnum.fromValue(value);
     }
   }
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
-    LookupStatusEnum.fromValue(value);
+    CompletedLookupStatusEnum.fromValue(value);
   }
 }
 

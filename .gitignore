@@ -22,4 +22,4 @@ build
 
 .DS_Store
 .idea
-.settings
+.settings/

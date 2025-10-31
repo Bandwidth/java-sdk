@@ -97,7 +97,7 @@ public class MfaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateMessagingCodeCall(String accountId, CodeRequest codeRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call generateMessagingCodeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull CodeRequest codeRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://mfa.bandwidth.com/api/v1" };
@@ -144,7 +144,7 @@ public class MfaApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call generateMessagingCodeValidateBeforeCall(String accountId, CodeRequest codeRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call generateMessagingCodeValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull CodeRequest codeRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling generateMessagingCode(Async)");
@@ -177,7 +177,7 @@ public class MfaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public MessagingCodeResponse generateMessagingCode(String accountId, CodeRequest codeRequest) throws ApiException {
+    public MessagingCodeResponse generateMessagingCode(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull CodeRequest codeRequest) throws ApiException {
         ApiResponse<MessagingCodeResponse> localVarResp = generateMessagingCodeWithHttpInfo(accountId, codeRequest);
         return localVarResp.getData();
     }
@@ -200,7 +200,7 @@ public class MfaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MessagingCodeResponse> generateMessagingCodeWithHttpInfo(String accountId, CodeRequest codeRequest) throws ApiException {
+    public ApiResponse<MessagingCodeResponse> generateMessagingCodeWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull CodeRequest codeRequest) throws ApiException {
         okhttp3.Call localVarCall = generateMessagingCodeValidateBeforeCall(accountId, codeRequest, null);
         Type localVarReturnType = new TypeToken<MessagingCodeResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -225,7 +225,7 @@ public class MfaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateMessagingCodeAsync(String accountId, CodeRequest codeRequest, final ApiCallback<MessagingCodeResponse> _callback) throws ApiException {
+    public okhttp3.Call generateMessagingCodeAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull CodeRequest codeRequest, final ApiCallback<MessagingCodeResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = generateMessagingCodeValidateBeforeCall(accountId, codeRequest, _callback);
         Type localVarReturnType = new TypeToken<MessagingCodeResponse>(){}.getType();
@@ -250,7 +250,7 @@ public class MfaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateVoiceCodeCall(String accountId, CodeRequest codeRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call generateVoiceCodeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull CodeRequest codeRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://mfa.bandwidth.com/api/v1" };
@@ -297,7 +297,7 @@ public class MfaApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call generateVoiceCodeValidateBeforeCall(String accountId, CodeRequest codeRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call generateVoiceCodeValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull CodeRequest codeRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling generateVoiceCode(Async)");
@@ -330,7 +330,7 @@ public class MfaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public VoiceCodeResponse generateVoiceCode(String accountId, CodeRequest codeRequest) throws ApiException {
+    public VoiceCodeResponse generateVoiceCode(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull CodeRequest codeRequest) throws ApiException {
         ApiResponse<VoiceCodeResponse> localVarResp = generateVoiceCodeWithHttpInfo(accountId, codeRequest);
         return localVarResp.getData();
     }
@@ -353,7 +353,7 @@ public class MfaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VoiceCodeResponse> generateVoiceCodeWithHttpInfo(String accountId, CodeRequest codeRequest) throws ApiException {
+    public ApiResponse<VoiceCodeResponse> generateVoiceCodeWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull CodeRequest codeRequest) throws ApiException {
         okhttp3.Call localVarCall = generateVoiceCodeValidateBeforeCall(accountId, codeRequest, null);
         Type localVarReturnType = new TypeToken<VoiceCodeResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -378,7 +378,7 @@ public class MfaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateVoiceCodeAsync(String accountId, CodeRequest codeRequest, final ApiCallback<VoiceCodeResponse> _callback) throws ApiException {
+    public okhttp3.Call generateVoiceCodeAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull CodeRequest codeRequest, final ApiCallback<VoiceCodeResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = generateVoiceCodeValidateBeforeCall(accountId, codeRequest, _callback);
         Type localVarReturnType = new TypeToken<VoiceCodeResponse>(){}.getType();
@@ -404,7 +404,7 @@ public class MfaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call verifyCodeCall(String accountId, VerifyCodeRequest verifyCodeRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call verifyCodeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull VerifyCodeRequest verifyCodeRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://mfa.bandwidth.com/api/v1" };
@@ -451,7 +451,7 @@ public class MfaApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call verifyCodeValidateBeforeCall(String accountId, VerifyCodeRequest verifyCodeRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call verifyCodeValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull VerifyCodeRequest verifyCodeRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling verifyCode(Async)");
@@ -485,7 +485,7 @@ public class MfaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public VerifyCodeResponse verifyCode(String accountId, VerifyCodeRequest verifyCodeRequest) throws ApiException {
+    public VerifyCodeResponse verifyCode(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull VerifyCodeRequest verifyCodeRequest) throws ApiException {
         ApiResponse<VerifyCodeResponse> localVarResp = verifyCodeWithHttpInfo(accountId, verifyCodeRequest);
         return localVarResp.getData();
     }
@@ -509,7 +509,7 @@ public class MfaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VerifyCodeResponse> verifyCodeWithHttpInfo(String accountId, VerifyCodeRequest verifyCodeRequest) throws ApiException {
+    public ApiResponse<VerifyCodeResponse> verifyCodeWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull VerifyCodeRequest verifyCodeRequest) throws ApiException {
         okhttp3.Call localVarCall = verifyCodeValidateBeforeCall(accountId, verifyCodeRequest, null);
         Type localVarReturnType = new TypeToken<VerifyCodeResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -535,7 +535,7 @@ public class MfaApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call verifyCodeAsync(String accountId, VerifyCodeRequest verifyCodeRequest, final ApiCallback<VerifyCodeResponse> _callback) throws ApiException {
+    public okhttp3.Call verifyCodeAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull VerifyCodeRequest verifyCodeRequest, final ApiCallback<VerifyCodeResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = verifyCodeValidateBeforeCall(accountId, verifyCodeRequest, _callback);
         Type localVarReturnType = new TypeToken<VerifyCodeResponse>(){}.getType();

@@ -1,13 +1,13 @@
 
 
-# TnLookupRequestError
+# AsyncLookupRequest
 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**message** | **String** | A description of what validation error occurred. |  [optional] |
+|**phoneNumbers** | **List&lt;String&gt;** | Telephone numbers in E.164 format. |  |
 
 
 

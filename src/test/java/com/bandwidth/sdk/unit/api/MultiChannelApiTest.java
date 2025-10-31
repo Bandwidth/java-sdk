@@ -6,6 +6,7 @@ import com.bandwidth.sdk.ApiResponse;
 import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.api.MultiChannelApi;
 import com.bandwidth.sdk.auth.HttpBasicAuth;
+import com.bandwidth.sdk.model.CreateMultiChannelMessageResponse;
 import com.bandwidth.sdk.model.MultiChannelChannelListObject;
 import com.bandwidth.sdk.model.MultiChannelChannelListObjectContent;
 import com.bandwidth.sdk.model.MultiChannelMessageChannelEnum;
@@ -21,7 +22,6 @@ import java.time.OffsetDateTime;
 
 import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 
 public class MultiChannelApiTest {
@@ -53,7 +53,7 @@ public class MultiChannelApiTest {
 
         multiChannelMessageRequest.addChannelListItem(channelListObject);
 
-        ApiResponse response =
+        ApiResponse<CreateMultiChannelMessageResponse> response =
             api.createMultiChannelMessageWithHttpInfo(BW_ACCOUNT_ID, multiChannelMessageRequest);
         assertThat(response.getStatusCode(), is(202));
     }

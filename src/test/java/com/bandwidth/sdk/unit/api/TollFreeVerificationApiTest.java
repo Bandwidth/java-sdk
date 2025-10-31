@@ -13,7 +13,6 @@
 package com.bandwidth.sdk.unit.api;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.bandwidth.sdk.ApiClient;

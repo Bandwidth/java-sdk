@@ -14,14 +14,16 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import com.bandwidth.sdk.model.LookupStatusEnum;
+import java.util.Locale;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -43,62 +45,47 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
- * The request has been accepted for processing but not yet finished and in a terminal state (COMPLETE, PARTIAL_COMPLETE, or FAILED).
+ * AsyncLookupRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class CreateLookupResponse {
-  public static final String SERIALIZED_NAME_REQUEST_ID = "requestId";
-  @SerializedName(SERIALIZED_NAME_REQUEST_ID)
-  @javax.annotation.Nullable
-  private String requestId;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+public class AsyncLookupRequest {
+  public static final String SERIALIZED_NAME_PHONE_NUMBERS = "phoneNumbers";
+  @SerializedName(SERIALIZED_NAME_PHONE_NUMBERS)
+  @javax.annotation.Nonnull
+  private List<String> phoneNumbers = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  @javax.annotation.Nullable
-  private LookupStatusEnum status;
-
-  public CreateLookupResponse() {
+  public AsyncLookupRequest() {
   }
 
-  public CreateLookupResponse requestId(@javax.annotation.Nullable String requestId) {
-    this.requestId = requestId;
+  public AsyncLookupRequest phoneNumbers(@javax.annotation.Nonnull List<String> phoneNumbers) {
+    this.phoneNumbers = phoneNumbers;
+    return this;
+  }
+
+  public AsyncLookupRequest addPhoneNumbersItem(String phoneNumbersItem) {
+    if (this.phoneNumbers == null) {
+      this.phoneNumbers = new ArrayList<>();
+    }
+    this.phoneNumbers.add(phoneNumbersItem);
     return this;
   }
 
   /**
-   * The phone number lookup request ID from Bandwidth.
-   * @return requestId
+   * Telephone numbers in E.164 format.
+   * @return phoneNumbers
    */
-  @javax.annotation.Nullable
-  public String getRequestId() {
-    return requestId;
+  @javax.annotation.Nonnull
+  public List<String> getPhoneNumbers() {
+    return phoneNumbers;
   }
 
-  public void setRequestId(@javax.annotation.Nullable String requestId) {
-    this.requestId = requestId;
-  }
-
-
-  public CreateLookupResponse status(@javax.annotation.Nullable LookupStatusEnum status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Get status
-   * @return status
-   */
-  @javax.annotation.Nullable
-  public LookupStatusEnum getStatus() {
-    return status;
-  }
-
-  public void setStatus(@javax.annotation.Nullable LookupStatusEnum status) {
-    this.status = status;
+  public void setPhoneNumbers(@javax.annotation.Nonnull List<String> phoneNumbers) {
+    this.phoneNumbers = phoneNumbers;
   }
 
   /**
@@ -114,9 +101,9 @@ public class CreateLookupResponse {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the CreateLookupResponse instance itself
+   * @return the AsyncLookupRequest instance itself
    */
-  public CreateLookupResponse putAdditionalProperty(String key, Object value) {
+  public AsyncLookupRequest putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -155,23 +142,21 @@ public class CreateLookupResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CreateLookupResponse createLookupResponse = (CreateLookupResponse) o;
-    return Objects.equals(this.requestId, createLookupResponse.requestId) &&
-        Objects.equals(this.status, createLookupResponse.status)&&
-        Objects.equals(this.additionalProperties, createLookupResponse.additionalProperties);
+    AsyncLookupRequest asyncLookupRequest = (AsyncLookupRequest) o;
+    return Objects.equals(this.phoneNumbers, asyncLookupRequest.phoneNumbers)&&
+        Objects.equals(this.additionalProperties, asyncLookupRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(requestId, status, additionalProperties);
+    return Objects.hash(phoneNumbers, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CreateLookupResponse {\n");
-    sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("class AsyncLookupRequest {\n");
+    sb.append("    phoneNumbers: ").append(toIndentedString(phoneNumbers)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -194,33 +179,37 @@ public class CreateLookupResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("requestId");
-    openapiFields.add("status");
+    openapiFields = new HashSet<String>(Arrays.asList("phoneNumbers"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("phoneNumbers"));
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CreateLookupResponse
+   * @throws IOException if the JSON Element is invalid with respect to AsyncLookupRequest
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!CreateLookupResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateLookupResponse is not found in the empty JSON string", CreateLookupResponse.openapiRequiredFields.toString()));
+        if (!AsyncLookupRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in AsyncLookupRequest is not found in the empty JSON string", AsyncLookupRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : AsyncLookupRequest.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("requestId") != null && !jsonObj.get("requestId").isJsonNull()) && !jsonObj.get("requestId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `requestId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestId").toString()));
-      }
-      // validate the optional field `status`
-      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
-        LookupStatusEnum.validateJsonElement(jsonObj.get("status"));
+      // ensure the required json array is present
+      if (jsonObj.get("phoneNumbers") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("phoneNumbers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `phoneNumbers` to be an array in the JSON string but got `%s`", jsonObj.get("phoneNumbers").toString()));
       }
   }
 
@@ -228,16 +217,16 @@ public class CreateLookupResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CreateLookupResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CreateLookupResponse' and its subtypes
+       if (!AsyncLookupRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AsyncLookupRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CreateLookupResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CreateLookupResponse.class));
+       final TypeAdapter<AsyncLookupRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AsyncLookupRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CreateLookupResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<AsyncLookupRequest>() {
            @Override
-           public void write(JsonWriter out, CreateLookupResponse value) throws IOException {
+           public void write(JsonWriter out, AsyncLookupRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -265,12 +254,12 @@ public class CreateLookupResponse {
            }
 
            @Override
-           public CreateLookupResponse read(JsonReader in) throws IOException {
+           public AsyncLookupRequest read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             CreateLookupResponse instance = thisAdapter.fromJsonTree(jsonObj);
+             AsyncLookupRequest instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -281,7 +270,7 @@ public class CreateLookupResponse {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object
@@ -297,18 +286,18 @@ public class CreateLookupResponse {
   }
 
   /**
-   * Create an instance of CreateLookupResponse given an JSON string
+   * Create an instance of AsyncLookupRequest given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of CreateLookupResponse
-   * @throws IOException if the JSON string is invalid with respect to CreateLookupResponse
+   * @return An instance of AsyncLookupRequest
+   * @throws IOException if the JSON string is invalid with respect to AsyncLookupRequest
    */
-  public static CreateLookupResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CreateLookupResponse.class);
+  public static AsyncLookupRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AsyncLookupRequest.class);
   }
 
   /**
-   * Convert an instance of CreateLookupResponse to an JSON string
+   * Convert an instance of AsyncLookupRequest to an JSON string
    *
    * @return JSON string
    */

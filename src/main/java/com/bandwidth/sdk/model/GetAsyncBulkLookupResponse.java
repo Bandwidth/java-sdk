@@ -14,6 +14,10 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import java.util.Locale;
+import com.bandwidth.sdk.model.GetAsyncBulkLookupResponseData;
+import com.bandwidth.sdk.model.LinkSchema;
+import com.bandwidth.sdk.model.LookupErrorSchema;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -44,46 +48,103 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
- * Create phone number lookup request.
+ * GetAsyncBulkLookupResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class LookupRequest {
-  public static final String SERIALIZED_NAME_TNS = "tns";
-  @SerializedName(SERIALIZED_NAME_TNS)
-  @javax.annotation.Nonnull
-  private List<String> tns = new ArrayList<>();
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+public class GetAsyncBulkLookupResponse {
+  public static final String SERIALIZED_NAME_LINKS = "links";
+  @SerializedName(SERIALIZED_NAME_LINKS)
+  @javax.annotation.Nullable
+  private List<LinkSchema> links = new ArrayList<>();
 
-  public LookupRequest() {
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  @javax.annotation.Nullable
+  private GetAsyncBulkLookupResponseData data;
+
+  public static final String SERIALIZED_NAME_ERRORS = "errors";
+  @SerializedName(SERIALIZED_NAME_ERRORS)
+  @javax.annotation.Nullable
+  private List<LookupErrorSchema> errors = new ArrayList<>();
+
+  public GetAsyncBulkLookupResponse() {
   }
 
-  public LookupRequest tns(@javax.annotation.Nonnull List<String> tns) {
-    this.tns = tns;
+  public GetAsyncBulkLookupResponse links(@javax.annotation.Nullable List<LinkSchema> links) {
+    this.links = links;
     return this;
   }
 
-  public LookupRequest addTnsItem(String tnsItem) {
-    if (this.tns == null) {
-      this.tns = new ArrayList<>();
+  public GetAsyncBulkLookupResponse addLinksItem(LinkSchema linksItem) {
+    if (this.links == null) {
+      this.links = new ArrayList<>();
     }
-    this.tns.add(tnsItem);
+    this.links.add(linksItem);
     return this;
   }
 
   /**
-   * Get tns
-   * @return tns
+   * Get links
+   * @return links
    */
-  @javax.annotation.Nonnull
-  public List<String> getTns() {
-    return tns;
+  @javax.annotation.Nullable
+  public List<LinkSchema> getLinks() {
+    return links;
   }
 
-  public void setTns(@javax.annotation.Nonnull List<String> tns) {
-    this.tns = tns;
+  public void setLinks(@javax.annotation.Nullable List<LinkSchema> links) {
+    this.links = links;
+  }
+
+
+  public GetAsyncBulkLookupResponse data(@javax.annotation.Nullable GetAsyncBulkLookupResponseData data) {
+    this.data = data;
+    return this;
+  }
+
+  /**
+   * Get data
+   * @return data
+   */
+  @javax.annotation.Nullable
+  public GetAsyncBulkLookupResponseData getData() {
+    return data;
+  }
+
+  public void setData(@javax.annotation.Nullable GetAsyncBulkLookupResponseData data) {
+    this.data = data;
+  }
+
+
+  public GetAsyncBulkLookupResponse errors(@javax.annotation.Nullable List<LookupErrorSchema> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public GetAsyncBulkLookupResponse addErrorsItem(LookupErrorSchema errorsItem) {
+    if (this.errors == null) {
+      this.errors = new ArrayList<>();
+    }
+    this.errors.add(errorsItem);
+    return this;
+  }
+
+  /**
+   * Get errors
+   * @return errors
+   */
+  @javax.annotation.Nullable
+  public List<LookupErrorSchema> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(@javax.annotation.Nullable List<LookupErrorSchema> errors) {
+    this.errors = errors;
   }
 
   /**
@@ -99,9 +160,9 @@ public class LookupRequest {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the LookupRequest instance itself
+   * @return the GetAsyncBulkLookupResponse instance itself
    */
-  public LookupRequest putAdditionalProperty(String key, Object value) {
+  public GetAsyncBulkLookupResponse putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -140,21 +201,25 @@ public class LookupRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LookupRequest lookupRequest = (LookupRequest) o;
-    return Objects.equals(this.tns, lookupRequest.tns)&&
-        Objects.equals(this.additionalProperties, lookupRequest.additionalProperties);
+    GetAsyncBulkLookupResponse getAsyncBulkLookupResponse = (GetAsyncBulkLookupResponse) o;
+    return Objects.equals(this.links, getAsyncBulkLookupResponse.links) &&
+        Objects.equals(this.data, getAsyncBulkLookupResponse.data) &&
+        Objects.equals(this.errors, getAsyncBulkLookupResponse.errors)&&
+        Objects.equals(this.additionalProperties, getAsyncBulkLookupResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tns, additionalProperties);
+    return Objects.hash(links, data, errors, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LookupRequest {\n");
-    sb.append("    tns: ").append(toIndentedString(tns)).append("\n");
+    sb.append("class GetAsyncBulkLookupResponse {\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -177,39 +242,56 @@ public class LookupRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("tns");
+    openapiFields = new HashSet<String>(Arrays.asList("links", "data", "errors"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("tns");
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to LookupRequest
+   * @throws IOException if the JSON Element is invalid with respect to GetAsyncBulkLookupResponse
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!LookupRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LookupRequest is not found in the empty JSON string", LookupRequest.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LookupRequest.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        if (!GetAsyncBulkLookupResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in GetAsyncBulkLookupResponse is not found in the empty JSON string", GetAsyncBulkLookupResponse.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the required json array is present
-      if (jsonObj.get("tns") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("tns").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tns` to be an array in the JSON string but got `%s`", jsonObj.get("tns").toString()));
+      if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
+        JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
+        if (jsonArraylinks != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("links").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
+          }
+
+          // validate the optional field `links` (array)
+          for (int i = 0; i < jsonArraylinks.size(); i++) {
+            LinkSchema.validateJsonElement(jsonArraylinks.get(i));
+          };
+        }
+      }
+      // validate the optional field `data`
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
+        GetAsyncBulkLookupResponseData.validateJsonElement(jsonObj.get("data"));
+      }
+      if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
+        JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
+        if (jsonArrayerrors != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("errors").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
+          }
+
+          // validate the optional field `errors` (array)
+          for (int i = 0; i < jsonArrayerrors.size(); i++) {
+            LookupErrorSchema.validateJsonElement(jsonArrayerrors.get(i));
+          };
+        }
       }
   }
 
@@ -217,16 +299,16 @@ public class LookupRequest {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!LookupRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'LookupRequest' and its subtypes
+       if (!GetAsyncBulkLookupResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'GetAsyncBulkLookupResponse' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<LookupRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(LookupRequest.class));
+       final TypeAdapter<GetAsyncBulkLookupResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(GetAsyncBulkLookupResponse.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<LookupRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<GetAsyncBulkLookupResponse>() {
            @Override
-           public void write(JsonWriter out, LookupRequest value) throws IOException {
+           public void write(JsonWriter out, GetAsyncBulkLookupResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -254,12 +336,12 @@ public class LookupRequest {
            }
 
            @Override
-           public LookupRequest read(JsonReader in) throws IOException {
+           public GetAsyncBulkLookupResponse read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             LookupRequest instance = thisAdapter.fromJsonTree(jsonObj);
+             GetAsyncBulkLookupResponse instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -270,7 +352,7 @@ public class LookupRequest {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object
@@ -286,18 +368,18 @@ public class LookupRequest {
   }
 
   /**
-   * Create an instance of LookupRequest given an JSON string
+   * Create an instance of GetAsyncBulkLookupResponse given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of LookupRequest
-   * @throws IOException if the JSON string is invalid with respect to LookupRequest
+   * @return An instance of GetAsyncBulkLookupResponse
+   * @throws IOException if the JSON string is invalid with respect to GetAsyncBulkLookupResponse
    */
-  public static LookupRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, LookupRequest.class);
+  public static GetAsyncBulkLookupResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, GetAsyncBulkLookupResponse.class);
   }
 
   /**
-   * Convert an instance of LookupRequest to an JSON string
+   * Convert an instance of GetAsyncBulkLookupResponse to an JSON string
    *
    * @return JSON string
    */

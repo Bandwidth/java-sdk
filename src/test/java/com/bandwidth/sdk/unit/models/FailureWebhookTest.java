@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
 import com.bandwidth.sdk.model.FailureWebhook;
-import com.bandwidth.sdk.model.TelephoneNumber;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
