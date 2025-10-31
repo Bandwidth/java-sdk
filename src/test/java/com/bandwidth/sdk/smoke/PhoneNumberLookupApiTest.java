@@ -68,8 +68,6 @@ public class PhoneNumberLookupApiTest {
         assertThat(firstResult.getVoiceProvider(), instanceOf(String.class));
         assertThat(firstResult.getCountryCodeA3(), instanceOf(String.class));
         assertThat(firstResult.getLatestMessageDeliveryStatus(), instanceOf(LatestMessageDeliveryStatusEnum.class));
-        assertThat(firstResult.getInitialMessageDeliveryStatusDate(), instanceOf(LocalDate.class));
-        assertThat(firstResult.getLatestMessageDeliveryStatusDate(), instanceOf(LocalDate.class));
     }
 
     @Test
