@@ -87,7 +87,7 @@ public class PhoneNumberLookupApiTest {
         assertThat(createResponse.getData().getData().getStatus(), instanceOf(InProgressLookupStatusEnum.class));
         UUID requestId = createResponse.getData().getData().getRequestId();
 
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(10);
 
         ApiResponse<GetAsyncBulkLookupResponse> getResponse
                 = api.getAsyncBulkLookupWithHttpInfo(BW_ACCOUNT_ID, requestId);
