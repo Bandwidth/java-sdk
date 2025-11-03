@@ -50,7 +50,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * TelephoneNumber
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class TelephoneNumber {
   public static final String SERIALIZED_NAME_TELEPHONE_NUMBER = "telephoneNumber";
   @SerializedName(SERIALIZED_NAME_TELEPHONE_NUMBER)
