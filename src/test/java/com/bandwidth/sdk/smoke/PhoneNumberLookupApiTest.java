@@ -31,6 +31,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
@@ -98,7 +99,7 @@ public class PhoneNumberLookupApiTest {
         assertThat(lookupResponse.getLinks(), instanceOf(List.class));
         assertThat(lookupResponse.getLinks().get(0), instanceOf(LinkSchema.class));
         assertThat(lookupResponse.getData(), instanceOf(GetAsyncBulkLookupResponseData.class));
-        assertThat(lookupResponse.getData().getRequestId(), instanceOf(UUID.class));
+        assertThat(lookupResponse.getData().getRequestId(), equalTo(requestId));
         assertThat(lookupResponse.getData().getStatus(), instanceOf(InProgressLookupStatusEnum.class));
         assertThat(lookupResponse.getData().getResults(), instanceOf(List.class));
         LookupResult firstResult = lookupResponse.getData().getResults().get(0);
