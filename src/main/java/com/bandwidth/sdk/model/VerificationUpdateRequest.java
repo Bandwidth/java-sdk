@@ -56,7 +56,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * VerificationUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class VerificationUpdateRequest {
   public static final String SERIALIZED_NAME_BUSINESS_ADDRESS = "businessAddress";
   @SerializedName(SERIALIZED_NAME_BUSINESS_ADDRESS)

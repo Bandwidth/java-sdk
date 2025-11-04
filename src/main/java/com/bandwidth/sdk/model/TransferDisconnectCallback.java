@@ -54,7 +54,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * This event is sent to the transferDisconnectUrl of each &lt;PhoneNumber&gt; tag when its respective call leg ends for any reason. The event is sent in the normal case, when the transferred leg is answered and later hung up, but is also sent if the new leg was never answered in the first place, if it was rejected, and if the original call leg hung up before the transferred leg.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class TransferDisconnectCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)

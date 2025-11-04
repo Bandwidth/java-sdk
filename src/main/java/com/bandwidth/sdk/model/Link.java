@@ -50,7 +50,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Link
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class Link {
   public static final String SERIALIZED_NAME_REL = "rel";
   @SerializedName(SERIALIZED_NAME_REL)

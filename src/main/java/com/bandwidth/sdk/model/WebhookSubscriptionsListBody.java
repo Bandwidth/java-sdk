@@ -55,7 +55,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * A list of all webhook subscriptions registered for this account ID for this particular feature (unpaginated).
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class WebhookSubscriptionsListBody {
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
