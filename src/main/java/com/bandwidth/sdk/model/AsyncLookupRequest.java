@@ -15,15 +15,15 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import java.util.Locale;
-import com.bandwidth.sdk.model.MultiChannelChannelListObjectContent;
-import com.bandwidth.sdk.model.MultiChannelMessageChannelEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,106 +50,42 @@ import java.util.Locale;
 import com.bandwidth.sdk.JSON;
 
 /**
- * MultiChannelChannelListObject
+ * AsyncLookupRequest
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
-public class MultiChannelChannelListObject {
-  public static final String SERIALIZED_NAME_FROM = "from";
-  @SerializedName(SERIALIZED_NAME_FROM)
+public class AsyncLookupRequest {
+  public static final String SERIALIZED_NAME_PHONE_NUMBERS = "phoneNumbers";
+  @SerializedName(SERIALIZED_NAME_PHONE_NUMBERS)
   @javax.annotation.Nonnull
-  private String from;
+  private List<String> phoneNumbers = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
-  @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  @javax.annotation.Nonnull
-  private String applicationId;
-
-  public static final String SERIALIZED_NAME_CHANNEL = "channel";
-  @SerializedName(SERIALIZED_NAME_CHANNEL)
-  @javax.annotation.Nonnull
-  private MultiChannelMessageChannelEnum channel;
-
-  public static final String SERIALIZED_NAME_CONTENT = "content";
-  @SerializedName(SERIALIZED_NAME_CONTENT)
-  @javax.annotation.Nonnull
-  private MultiChannelChannelListObjectContent content;
-
-  public MultiChannelChannelListObject() {
+  public AsyncLookupRequest() {
   }
 
-  public MultiChannelChannelListObject from(@javax.annotation.Nonnull String from) {
-    this.from = from;
+  public AsyncLookupRequest phoneNumbers(@javax.annotation.Nonnull List<String> phoneNumbers) {
+    this.phoneNumbers = phoneNumbers;
+    return this;
+  }
+
+  public AsyncLookupRequest addPhoneNumbersItem(String phoneNumbersItem) {
+    if (this.phoneNumbers == null) {
+      this.phoneNumbers = new ArrayList<>();
+    }
+    this.phoneNumbers.add(phoneNumbersItem);
     return this;
   }
 
   /**
-   * The sender ID of the message. This could be an alphanumeric sender ID.
-   * @return from
+   * Telephone numbers in E.164 format.
+   * @return phoneNumbers
    */
   @javax.annotation.Nonnull
-  public String getFrom() {
-    return from;
+  public List<String> getPhoneNumbers() {
+    return phoneNumbers;
   }
 
-  public void setFrom(@javax.annotation.Nonnull String from) {
-    this.from = from;
-  }
-
-
-  public MultiChannelChannelListObject applicationId(@javax.annotation.Nonnull String applicationId) {
-    this.applicationId = applicationId;
-    return this;
-  }
-
-  /**
-   * The ID of the Application your from number or senderId is associated with in the Bandwidth Phone Number Dashboard.
-   * @return applicationId
-   */
-  @javax.annotation.Nonnull
-  public String getApplicationId() {
-    return applicationId;
-  }
-
-  public void setApplicationId(@javax.annotation.Nonnull String applicationId) {
-    this.applicationId = applicationId;
-  }
-
-
-  public MultiChannelChannelListObject channel(@javax.annotation.Nonnull MultiChannelMessageChannelEnum channel) {
-    this.channel = channel;
-    return this;
-  }
-
-  /**
-   * Get channel
-   * @return channel
-   */
-  @javax.annotation.Nonnull
-  public MultiChannelMessageChannelEnum getChannel() {
-    return channel;
-  }
-
-  public void setChannel(@javax.annotation.Nonnull MultiChannelMessageChannelEnum channel) {
-    this.channel = channel;
-  }
-
-
-  public MultiChannelChannelListObject content(@javax.annotation.Nonnull MultiChannelChannelListObjectContent content) {
-    this.content = content;
-    return this;
-  }
-
-  /**
-   * Get content
-   * @return content
-   */
-  @javax.annotation.Nonnull
-  public MultiChannelChannelListObjectContent getContent() {
-    return content;
-  }
-
-  public void setContent(@javax.annotation.Nonnull MultiChannelChannelListObjectContent content) {
-    this.content = content;
+  public void setPhoneNumbers(@javax.annotation.Nonnull List<String> phoneNumbers) {
+    this.phoneNumbers = phoneNumbers;
   }
 
   /**
@@ -165,9 +101,9 @@ public class MultiChannelChannelListObject {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the MultiChannelChannelListObject instance itself
+   * @return the AsyncLookupRequest instance itself
    */
-  public MultiChannelChannelListObject putAdditionalProperty(String key, Object value) {
+  public AsyncLookupRequest putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -206,27 +142,21 @@ public class MultiChannelChannelListObject {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MultiChannelChannelListObject multiChannelChannelListObject = (MultiChannelChannelListObject) o;
-    return Objects.equals(this.from, multiChannelChannelListObject.from) &&
-        Objects.equals(this.applicationId, multiChannelChannelListObject.applicationId) &&
-        Objects.equals(this.channel, multiChannelChannelListObject.channel) &&
-        Objects.equals(this.content, multiChannelChannelListObject.content)&&
-        Objects.equals(this.additionalProperties, multiChannelChannelListObject.additionalProperties);
+    AsyncLookupRequest asyncLookupRequest = (AsyncLookupRequest) o;
+    return Objects.equals(this.phoneNumbers, asyncLookupRequest.phoneNumbers)&&
+        Objects.equals(this.additionalProperties, asyncLookupRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(from, applicationId, channel, content, additionalProperties);
+    return Objects.hash(phoneNumbers, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MultiChannelChannelListObject {\n");
-    sb.append("    from: ").append(toIndentedString(from)).append("\n");
-    sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
-    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
-    sb.append("    content: ").append(toIndentedString(content)).append("\n");
+    sb.append("class AsyncLookupRequest {\n");
+    sb.append("    phoneNumbers: ").append(toIndentedString(phoneNumbers)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -249,58 +179,54 @@ public class MultiChannelChannelListObject {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("from", "applicationId", "channel", "content"));
+    openapiFields = new HashSet<String>(Arrays.asList("phoneNumbers"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("from", "applicationId", "channel", "content"));
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("phoneNumbers"));
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to MultiChannelChannelListObject
+   * @throws IOException if the JSON Element is invalid with respect to AsyncLookupRequest
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!MultiChannelChannelListObject.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in MultiChannelChannelListObject is not found in the empty JSON string", MultiChannelChannelListObject.openapiRequiredFields.toString()));
+        if (!AsyncLookupRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in AsyncLookupRequest is not found in the empty JSON string", AsyncLookupRequest.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : MultiChannelChannelListObject.openapiRequiredFields) {
+      for (String requiredField : AsyncLookupRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("from").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
+      // ensure the required json array is present
+      if (jsonObj.get("phoneNumbers") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("phoneNumbers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `phoneNumbers` to be an array in the JSON string but got `%s`", jsonObj.get("phoneNumbers").toString()));
       }
-      if (!jsonObj.get("applicationId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
-      }
-      // validate the required field `channel`
-      MultiChannelMessageChannelEnum.validateJsonElement(jsonObj.get("channel"));
-      // validate the required field `content`
-      MultiChannelChannelListObjectContent.validateJsonElement(jsonObj.get("content"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!MultiChannelChannelListObject.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'MultiChannelChannelListObject' and its subtypes
+       if (!AsyncLookupRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AsyncLookupRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<MultiChannelChannelListObject> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(MultiChannelChannelListObject.class));
+       final TypeAdapter<AsyncLookupRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AsyncLookupRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<MultiChannelChannelListObject>() {
+       return (TypeAdapter<T>) new TypeAdapter<AsyncLookupRequest>() {
            @Override
-           public void write(JsonWriter out, MultiChannelChannelListObject value) throws IOException {
+           public void write(JsonWriter out, AsyncLookupRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -328,12 +254,12 @@ public class MultiChannelChannelListObject {
            }
 
            @Override
-           public MultiChannelChannelListObject read(JsonReader in) throws IOException {
+           public AsyncLookupRequest read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             MultiChannelChannelListObject instance = thisAdapter.fromJsonTree(jsonObj);
+             AsyncLookupRequest instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -360,18 +286,18 @@ public class MultiChannelChannelListObject {
   }
 
   /**
-   * Create an instance of MultiChannelChannelListObject given an JSON string
+   * Create an instance of AsyncLookupRequest given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of MultiChannelChannelListObject
-   * @throws IOException if the JSON string is invalid with respect to MultiChannelChannelListObject
+   * @return An instance of AsyncLookupRequest
+   * @throws IOException if the JSON string is invalid with respect to AsyncLookupRequest
    */
-  public static MultiChannelChannelListObject fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, MultiChannelChannelListObject.class);
+  public static AsyncLookupRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AsyncLookupRequest.class);
   }
 
   /**
-   * Convert an instance of MultiChannelChannelListObject to an JSON string
+   * Convert an instance of AsyncLookupRequest to an JSON string
    *
    * @return JSON string
    */

@@ -15,8 +15,6 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import java.util.Locale;
-import com.bandwidth.sdk.model.MultiChannelChannelListObjectContent;
-import com.bandwidth.sdk.model.MultiChannelMessageChannelEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -50,106 +48,82 @@ import java.util.Locale;
 import com.bandwidth.sdk.JSON;
 
 /**
- * MultiChannelChannelListObject
+ * LinkSchema
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
-public class MultiChannelChannelListObject {
-  public static final String SERIALIZED_NAME_FROM = "from";
-  @SerializedName(SERIALIZED_NAME_FROM)
-  @javax.annotation.Nonnull
-  private String from;
+public class LinkSchema {
+  public static final String SERIALIZED_NAME_HREF = "href";
+  @SerializedName(SERIALIZED_NAME_HREF)
+  @javax.annotation.Nullable
+  private String href;
 
-  public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
-  @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  @javax.annotation.Nonnull
-  private String applicationId;
+  public static final String SERIALIZED_NAME_REL = "rel";
+  @SerializedName(SERIALIZED_NAME_REL)
+  @javax.annotation.Nullable
+  private String rel;
 
-  public static final String SERIALIZED_NAME_CHANNEL = "channel";
-  @SerializedName(SERIALIZED_NAME_CHANNEL)
-  @javax.annotation.Nonnull
-  private MultiChannelMessageChannelEnum channel;
+  public static final String SERIALIZED_NAME_METHOD = "method";
+  @SerializedName(SERIALIZED_NAME_METHOD)
+  @javax.annotation.Nullable
+  private String method;
 
-  public static final String SERIALIZED_NAME_CONTENT = "content";
-  @SerializedName(SERIALIZED_NAME_CONTENT)
-  @javax.annotation.Nonnull
-  private MultiChannelChannelListObjectContent content;
-
-  public MultiChannelChannelListObject() {
+  public LinkSchema() {
   }
 
-  public MultiChannelChannelListObject from(@javax.annotation.Nonnull String from) {
-    this.from = from;
+  public LinkSchema href(@javax.annotation.Nullable String href) {
+    this.href = href;
     return this;
   }
 
   /**
-   * The sender ID of the message. This could be an alphanumeric sender ID.
-   * @return from
+   * URI of the link.
+   * @return href
    */
-  @javax.annotation.Nonnull
-  public String getFrom() {
-    return from;
+  @javax.annotation.Nullable
+  public String getHref() {
+    return href;
   }
 
-  public void setFrom(@javax.annotation.Nonnull String from) {
-    this.from = from;
+  public void setHref(@javax.annotation.Nullable String href) {
+    this.href = href;
   }
 
 
-  public MultiChannelChannelListObject applicationId(@javax.annotation.Nonnull String applicationId) {
-    this.applicationId = applicationId;
+  public LinkSchema rel(@javax.annotation.Nullable String rel) {
+    this.rel = rel;
     return this;
   }
 
   /**
-   * The ID of the Application your from number or senderId is associated with in the Bandwidth Phone Number Dashboard.
-   * @return applicationId
+   * Specifies the relationship between this link and the resource.
+   * @return rel
    */
-  @javax.annotation.Nonnull
-  public String getApplicationId() {
-    return applicationId;
+  @javax.annotation.Nullable
+  public String getRel() {
+    return rel;
   }
 
-  public void setApplicationId(@javax.annotation.Nonnull String applicationId) {
-    this.applicationId = applicationId;
+  public void setRel(@javax.annotation.Nullable String rel) {
+    this.rel = rel;
   }
 
 
-  public MultiChannelChannelListObject channel(@javax.annotation.Nonnull MultiChannelMessageChannelEnum channel) {
-    this.channel = channel;
+  public LinkSchema method(@javax.annotation.Nullable String method) {
+    this.method = method;
     return this;
   }
 
   /**
-   * Get channel
-   * @return channel
+   * HTTP method to be used.
+   * @return method
    */
-  @javax.annotation.Nonnull
-  public MultiChannelMessageChannelEnum getChannel() {
-    return channel;
+  @javax.annotation.Nullable
+  public String getMethod() {
+    return method;
   }
 
-  public void setChannel(@javax.annotation.Nonnull MultiChannelMessageChannelEnum channel) {
-    this.channel = channel;
-  }
-
-
-  public MultiChannelChannelListObject content(@javax.annotation.Nonnull MultiChannelChannelListObjectContent content) {
-    this.content = content;
-    return this;
-  }
-
-  /**
-   * Get content
-   * @return content
-   */
-  @javax.annotation.Nonnull
-  public MultiChannelChannelListObjectContent getContent() {
-    return content;
-  }
-
-  public void setContent(@javax.annotation.Nonnull MultiChannelChannelListObjectContent content) {
-    this.content = content;
+  public void setMethod(@javax.annotation.Nullable String method) {
+    this.method = method;
   }
 
   /**
@@ -165,9 +139,9 @@ public class MultiChannelChannelListObject {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the MultiChannelChannelListObject instance itself
+   * @return the LinkSchema instance itself
    */
-  public MultiChannelChannelListObject putAdditionalProperty(String key, Object value) {
+  public LinkSchema putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -206,27 +180,25 @@ public class MultiChannelChannelListObject {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MultiChannelChannelListObject multiChannelChannelListObject = (MultiChannelChannelListObject) o;
-    return Objects.equals(this.from, multiChannelChannelListObject.from) &&
-        Objects.equals(this.applicationId, multiChannelChannelListObject.applicationId) &&
-        Objects.equals(this.channel, multiChannelChannelListObject.channel) &&
-        Objects.equals(this.content, multiChannelChannelListObject.content)&&
-        Objects.equals(this.additionalProperties, multiChannelChannelListObject.additionalProperties);
+    LinkSchema linkSchema = (LinkSchema) o;
+    return Objects.equals(this.href, linkSchema.href) &&
+        Objects.equals(this.rel, linkSchema.rel) &&
+        Objects.equals(this.method, linkSchema.method)&&
+        Objects.equals(this.additionalProperties, linkSchema.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(from, applicationId, channel, content, additionalProperties);
+    return Objects.hash(href, rel, method, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MultiChannelChannelListObject {\n");
-    sb.append("    from: ").append(toIndentedString(from)).append("\n");
-    sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
-    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
-    sb.append("    content: ").append(toIndentedString(content)).append("\n");
+    sb.append("class LinkSchema {\n");
+    sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("    rel: ").append(toIndentedString(rel)).append("\n");
+    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -249,58 +221,50 @@ public class MultiChannelChannelListObject {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("from", "applicationId", "channel", "content"));
+    openapiFields = new HashSet<String>(Arrays.asList("href", "rel", "method"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("from", "applicationId", "channel", "content"));
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to MultiChannelChannelListObject
+   * @throws IOException if the JSON Element is invalid with respect to LinkSchema
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!MultiChannelChannelListObject.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in MultiChannelChannelListObject is not found in the empty JSON string", MultiChannelChannelListObject.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : MultiChannelChannelListObject.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        if (!LinkSchema.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in LinkSchema is not found in the empty JSON string", LinkSchema.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("from").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
+      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
       }
-      if (!jsonObj.get("applicationId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
+      if ((jsonObj.get("rel") != null && !jsonObj.get("rel").isJsonNull()) && !jsonObj.get("rel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `rel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rel").toString()));
       }
-      // validate the required field `channel`
-      MultiChannelMessageChannelEnum.validateJsonElement(jsonObj.get("channel"));
-      // validate the required field `content`
-      MultiChannelChannelListObjectContent.validateJsonElement(jsonObj.get("content"));
+      if ((jsonObj.get("method") != null && !jsonObj.get("method").isJsonNull()) && !jsonObj.get("method").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `method` to be a primitive type in the JSON string but got `%s`", jsonObj.get("method").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!MultiChannelChannelListObject.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'MultiChannelChannelListObject' and its subtypes
+       if (!LinkSchema.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LinkSchema' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<MultiChannelChannelListObject> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(MultiChannelChannelListObject.class));
+       final TypeAdapter<LinkSchema> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LinkSchema.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<MultiChannelChannelListObject>() {
+       return (TypeAdapter<T>) new TypeAdapter<LinkSchema>() {
            @Override
-           public void write(JsonWriter out, MultiChannelChannelListObject value) throws IOException {
+           public void write(JsonWriter out, LinkSchema value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -328,12 +292,12 @@ public class MultiChannelChannelListObject {
            }
 
            @Override
-           public MultiChannelChannelListObject read(JsonReader in) throws IOException {
+           public LinkSchema read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             MultiChannelChannelListObject instance = thisAdapter.fromJsonTree(jsonObj);
+             LinkSchema instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -360,18 +324,18 @@ public class MultiChannelChannelListObject {
   }
 
   /**
-   * Create an instance of MultiChannelChannelListObject given an JSON string
+   * Create an instance of LinkSchema given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of MultiChannelChannelListObject
-   * @throws IOException if the JSON string is invalid with respect to MultiChannelChannelListObject
+   * @return An instance of LinkSchema
+   * @throws IOException if the JSON string is invalid with respect to LinkSchema
    */
-  public static MultiChannelChannelListObject fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, MultiChannelChannelListObject.class);
+  public static LinkSchema fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LinkSchema.class);
   }
 
   /**
-   * Convert an instance of MultiChannelChannelListObject to an JSON string
+   * Convert an instance of LinkSchema to an JSON string
    *
    * @return JSON string
    */

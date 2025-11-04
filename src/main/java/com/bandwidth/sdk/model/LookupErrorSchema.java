@@ -15,8 +15,7 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import java.util.Locale;
-import com.bandwidth.sdk.model.MultiChannelChannelListObjectContent;
-import com.bandwidth.sdk.model.MultiChannelMessageChannelEnum;
+import com.bandwidth.sdk.model.LookupErrorSchemaMeta;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -50,106 +49,106 @@ import java.util.Locale;
 import com.bandwidth.sdk.JSON;
 
 /**
- * MultiChannelChannelListObject
+ * LookupErrorSchema
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
-public class MultiChannelChannelListObject {
-  public static final String SERIALIZED_NAME_FROM = "from";
-  @SerializedName(SERIALIZED_NAME_FROM)
-  @javax.annotation.Nonnull
-  private String from;
+public class LookupErrorSchema {
+  public static final String SERIALIZED_NAME_CODE = "code";
+  @SerializedName(SERIALIZED_NAME_CODE)
+  @javax.annotation.Nullable
+  private String code;
 
-  public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
-  @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  @javax.annotation.Nonnull
-  private String applicationId;
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
+  private String description;
 
-  public static final String SERIALIZED_NAME_CHANNEL = "channel";
-  @SerializedName(SERIALIZED_NAME_CHANNEL)
-  @javax.annotation.Nonnull
-  private MultiChannelMessageChannelEnum channel;
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
+  private String type;
 
-  public static final String SERIALIZED_NAME_CONTENT = "content";
-  @SerializedName(SERIALIZED_NAME_CONTENT)
-  @javax.annotation.Nonnull
-  private MultiChannelChannelListObjectContent content;
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  @javax.annotation.Nullable
+  private LookupErrorSchemaMeta meta;
 
-  public MultiChannelChannelListObject() {
+  public LookupErrorSchema() {
   }
 
-  public MultiChannelChannelListObject from(@javax.annotation.Nonnull String from) {
-    this.from = from;
+  public LookupErrorSchema code(@javax.annotation.Nullable String code) {
+    this.code = code;
     return this;
   }
 
   /**
-   * The sender ID of the message. This could be an alphanumeric sender ID.
-   * @return from
+   * Validation error code
+   * @return code
    */
-  @javax.annotation.Nonnull
-  public String getFrom() {
-    return from;
+  @javax.annotation.Nullable
+  public String getCode() {
+    return code;
   }
 
-  public void setFrom(@javax.annotation.Nonnull String from) {
-    this.from = from;
+  public void setCode(@javax.annotation.Nullable String code) {
+    this.code = code;
   }
 
 
-  public MultiChannelChannelListObject applicationId(@javax.annotation.Nonnull String applicationId) {
-    this.applicationId = applicationId;
+  public LookupErrorSchema description(@javax.annotation.Nullable String description) {
+    this.description = description;
     return this;
   }
 
   /**
-   * The ID of the Application your from number or senderId is associated with in the Bandwidth Phone Number Dashboard.
-   * @return applicationId
+   * Description of validation error
+   * @return description
    */
-  @javax.annotation.Nonnull
-  public String getApplicationId() {
-    return applicationId;
+  @javax.annotation.Nullable
+  public String getDescription() {
+    return description;
   }
 
-  public void setApplicationId(@javax.annotation.Nonnull String applicationId) {
-    this.applicationId = applicationId;
+  public void setDescription(@javax.annotation.Nullable String description) {
+    this.description = description;
   }
 
 
-  public MultiChannelChannelListObject channel(@javax.annotation.Nonnull MultiChannelMessageChannelEnum channel) {
-    this.channel = channel;
+  public LookupErrorSchema type(@javax.annotation.Nullable String type) {
+    this.type = type;
     return this;
   }
 
   /**
-   * Get channel
-   * @return channel
+   * Type of validation error
+   * @return type
    */
-  @javax.annotation.Nonnull
-  public MultiChannelMessageChannelEnum getChannel() {
-    return channel;
+  @javax.annotation.Nullable
+  public String getType() {
+    return type;
   }
 
-  public void setChannel(@javax.annotation.Nonnull MultiChannelMessageChannelEnum channel) {
-    this.channel = channel;
+  public void setType(@javax.annotation.Nullable String type) {
+    this.type = type;
   }
 
 
-  public MultiChannelChannelListObject content(@javax.annotation.Nonnull MultiChannelChannelListObjectContent content) {
-    this.content = content;
+  public LookupErrorSchema meta(@javax.annotation.Nullable LookupErrorSchemaMeta meta) {
+    this.meta = meta;
     return this;
   }
 
   /**
-   * Get content
-   * @return content
+   * Get meta
+   * @return meta
    */
-  @javax.annotation.Nonnull
-  public MultiChannelChannelListObjectContent getContent() {
-    return content;
+  @javax.annotation.Nullable
+  public LookupErrorSchemaMeta getMeta() {
+    return meta;
   }
 
-  public void setContent(@javax.annotation.Nonnull MultiChannelChannelListObjectContent content) {
-    this.content = content;
+  public void setMeta(@javax.annotation.Nullable LookupErrorSchemaMeta meta) {
+    this.meta = meta;
   }
 
   /**
@@ -165,9 +164,9 @@ public class MultiChannelChannelListObject {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the MultiChannelChannelListObject instance itself
+   * @return the LookupErrorSchema instance itself
    */
-  public MultiChannelChannelListObject putAdditionalProperty(String key, Object value) {
+  public LookupErrorSchema putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -206,27 +205,27 @@ public class MultiChannelChannelListObject {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MultiChannelChannelListObject multiChannelChannelListObject = (MultiChannelChannelListObject) o;
-    return Objects.equals(this.from, multiChannelChannelListObject.from) &&
-        Objects.equals(this.applicationId, multiChannelChannelListObject.applicationId) &&
-        Objects.equals(this.channel, multiChannelChannelListObject.channel) &&
-        Objects.equals(this.content, multiChannelChannelListObject.content)&&
-        Objects.equals(this.additionalProperties, multiChannelChannelListObject.additionalProperties);
+    LookupErrorSchema lookupErrorSchema = (LookupErrorSchema) o;
+    return Objects.equals(this.code, lookupErrorSchema.code) &&
+        Objects.equals(this.description, lookupErrorSchema.description) &&
+        Objects.equals(this.type, lookupErrorSchema.type) &&
+        Objects.equals(this.meta, lookupErrorSchema.meta)&&
+        Objects.equals(this.additionalProperties, lookupErrorSchema.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(from, applicationId, channel, content, additionalProperties);
+    return Objects.hash(code, description, type, meta, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MultiChannelChannelListObject {\n");
-    sb.append("    from: ").append(toIndentedString(from)).append("\n");
-    sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
-    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
-    sb.append("    content: ").append(toIndentedString(content)).append("\n");
+    sb.append("class LookupErrorSchema {\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -249,58 +248,54 @@ public class MultiChannelChannelListObject {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("from", "applicationId", "channel", "content"));
+    openapiFields = new HashSet<String>(Arrays.asList("code", "description", "type", "meta"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("from", "applicationId", "channel", "content"));
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to MultiChannelChannelListObject
+   * @throws IOException if the JSON Element is invalid with respect to LookupErrorSchema
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!MultiChannelChannelListObject.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in MultiChannelChannelListObject is not found in the empty JSON string", MultiChannelChannelListObject.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : MultiChannelChannelListObject.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        if (!LookupErrorSchema.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in LookupErrorSchema is not found in the empty JSON string", LookupErrorSchema.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("from").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
+      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
-      if (!jsonObj.get("applicationId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      // validate the required field `channel`
-      MultiChannelMessageChannelEnum.validateJsonElement(jsonObj.get("channel"));
-      // validate the required field `content`
-      MultiChannelChannelListObjectContent.validateJsonElement(jsonObj.get("content"));
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      // validate the optional field `meta`
+      if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
+        LookupErrorSchemaMeta.validateJsonElement(jsonObj.get("meta"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!MultiChannelChannelListObject.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'MultiChannelChannelListObject' and its subtypes
+       if (!LookupErrorSchema.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LookupErrorSchema' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<MultiChannelChannelListObject> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(MultiChannelChannelListObject.class));
+       final TypeAdapter<LookupErrorSchema> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LookupErrorSchema.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<MultiChannelChannelListObject>() {
+       return (TypeAdapter<T>) new TypeAdapter<LookupErrorSchema>() {
            @Override
-           public void write(JsonWriter out, MultiChannelChannelListObject value) throws IOException {
+           public void write(JsonWriter out, LookupErrorSchema value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -328,12 +323,12 @@ public class MultiChannelChannelListObject {
            }
 
            @Override
-           public MultiChannelChannelListObject read(JsonReader in) throws IOException {
+           public LookupErrorSchema read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             MultiChannelChannelListObject instance = thisAdapter.fromJsonTree(jsonObj);
+             LookupErrorSchema instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -360,18 +355,18 @@ public class MultiChannelChannelListObject {
   }
 
   /**
-   * Create an instance of MultiChannelChannelListObject given an JSON string
+   * Create an instance of LookupErrorSchema given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of MultiChannelChannelListObject
-   * @throws IOException if the JSON string is invalid with respect to MultiChannelChannelListObject
+   * @return An instance of LookupErrorSchema
+   * @throws IOException if the JSON string is invalid with respect to LookupErrorSchema
    */
-  public static MultiChannelChannelListObject fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, MultiChannelChannelListObject.class);
+  public static LookupErrorSchema fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LookupErrorSchema.class);
   }
 
   /**
-   * Convert an instance of MultiChannelChannelListObject to an JSON string
+   * Convert an instance of LookupErrorSchema to an JSON string
    *
    * @return JSON string
    */
