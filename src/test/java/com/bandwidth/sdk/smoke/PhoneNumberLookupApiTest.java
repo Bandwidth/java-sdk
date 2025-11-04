@@ -15,7 +15,6 @@ import com.bandwidth.sdk.model.CreateSyncLookupResponseData;
 import com.bandwidth.sdk.model.GetAsyncBulkLookupResponse;
 import com.bandwidth.sdk.model.GetAsyncBulkLookupResponseData;
 import com.bandwidth.sdk.model.InProgressLookupStatusEnum;
-import com.bandwidth.sdk.model.LatestMessageDeliveryStatusEnum;
 import com.bandwidth.sdk.model.LineTypeEnum;
 import com.bandwidth.sdk.model.LinkSchema;
 import com.bandwidth.sdk.model.LookupResult;
@@ -23,7 +22,6 @@ import com.bandwidth.sdk.model.SyncLookupRequest;
 
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
