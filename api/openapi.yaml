@@ -4732,31 +4732,9 @@ paths:
                 badRequest:
                   $ref: "#/components/examples/badRequestExample"
                 unauthorized:
-                  summary: Example Unauthorized Error
-                  value:
-                    message: Unauthorized
-              schema:
-                $ref: '#/components/schemas/tnLookupRequestError'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              examples:
+                  $ref: "#/components/examples/unauthorizedExample"
                 forbidden:
-                  summary: Example Forbidden Error
-                  value:
-                    message: Authorization header requires 'Credential' parameter.
-                      Authorization header requires 'Signature' parameter. Authorization
-                      header requires 'SignedHeaders' parameter. Authorization header
-                      requires existence of either a 'X-Amz-Date' or a 'Date' header.
-                      Authorization=Basic Y2tvZloPTGhHgywYIzGlcGVlcGvvcGovYTIGIt=='
-              schema:
-                $ref: '#/components/schemas/tnLookupRequestError'
-          description: Forbidden
-        "415":
-          content:
-            application/json:
-              examples:
+                  $ref: "#/components/examples/forbiddenExample"
                 mediaType:
                   $ref: "#/components/examples/unsupportedMediaTypeExample"
                 notFound:
@@ -4766,18 +4744,47 @@ paths:
                 internalServer:
                   $ref: "#/components/examples/internalServerErrorExample"
               schema:
-                $ref: '#/components/schemas/tnLookupRequestError'
-          description: Unsupported Media Type
-        "429":
+                $ref: "#/components/schemas/lookupErrorResponse"
+          description: Bad Request
+      summary: Create Synchronous Number Lookup
+      tags:
+      - Phone Number Lookup
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+    servers:
+    - description: Production
+      url: https://api.bandwidth.com/v2
+  /accounts/{accountId}/phoneNumberLookup/bulk:
+    post:
+      description: "Creates an asynchronous bulk phone number lookup request. Maximum\
+        \ of 15,000 telephone numbers per request. Use the [Get Asynchronous Bulk\
+        \ Number Lookup](#tag/Phone-Number-Lookup/operation/getAsyncBulkLookup) endpoint\
+        \ to check the status of the request and view the results."
+      operationId: createAsyncBulkLookup
+      parameters:
+      - explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          description: Your Bandwidth Account ID.
+          example: "9900000"
+          type: string
+        style: simple
+      requestBody:
+        $ref: "#/components/requestBodies/createAsyncBulkLookupRequest"
+      responses:
+        "202":
           content:
             application/json:
               examples:
                 lookupInProgressExample:
                   $ref: "#/components/examples/lookupInProgressExample"
               schema:
-                $ref: '#/components/schemas/tnLookupRequestError'
-          description: Too Many Requests
-        "500":
+                $ref: "#/components/schemas/createAsyncBulkLookupResponse"
+          description: Accepted
+        default:
           content:
             application/json:
               examples:
@@ -4796,9 +4803,9 @@ paths:
                 internalServer:
                   $ref: "#/components/examples/internalServerErrorExample"
               schema:
-                $ref: '#/components/schemas/tnLookupRequestError'
-          description: Internal Server Error
-      summary: Create Lookup
+                $ref: "#/components/schemas/lookupErrorResponse"
+          description: Bad Request
+      summary: Create Asynchronous Bulk Number Lookup
       tags:
       - Phone Number Lookup
       x-content-type: application/json
@@ -4842,63 +4849,24 @@ paths:
                 lookupCompleteExample:
                   $ref: "#/components/examples/lookupCompleteExample"
                 lookupInProgressExample:
-                  $ref: '#/components/examples/lookupInProgressExample'
+                  $ref: "#/components/examples/lookupInProgressExample"
+                lookupPartialExample:
+                  $ref: "#/components/examples/lookupPartialExample"
                 lookupFailedExample:
-                  $ref: '#/components/examples/lookupFailedExample'
-                lookupSingleNumberCompleteExample:
-                  $ref: '#/components/examples/lookupSingleNumberCompleteExample'
-                lookupMultipleNumbersCompleteExample:
-                  $ref: '#/components/examples/lookupMultipleNumbersCompleteExample'
-                lookupMultipleNumbersPartialCompleteExample:
-                  $ref: '#/components/examples/lookupMultipleNumbersPartialCompleteExample'
-                lookupSingleNumberCompleteNoInfoExample:
-                  $ref: '#/components/examples/lookupSingleNumberCompleteNoInfoExample'
+                  $ref: "#/components/examples/lookupFailedExample"
               schema:
-                $ref: '#/components/schemas/lookupStatus'
+                $ref: "#/components/schemas/getAsyncBulkLookupResponse"
           description: OK
         default:
           content:
             application/json:
               examples:
                 badRequest:
-                  summary: Example Bad Request Error
-                  value:
-                    message: "Some tns do not match e164 format: 1234"
-              schema:
-                $ref: '#/components/schemas/tnLookupRequestError'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              examples:
+                  $ref: "#/components/examples/badRequestExample"
                 unauthorized:
-                  summary: Example Unauthorized Error
-                  value:
-                    message: Unauthorized
-              schema:
-                $ref: '#/components/schemas/tnLookupRequestError'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              examples:
+                  $ref: "#/components/examples/unauthorizedExample"
                 forbidden:
-                  summary: Example Forbidden Error
-                  value:
-                    message: Authorization header requires 'Credential' parameter.
-                      Authorization header requires 'Signature' parameter. Authorization
-                      header requires 'SignedHeaders' parameter. Authorization header
-                      requires existence of either a 'X-Amz-Date' or a 'Date' header.
-                      Authorization=Basic Y2tvZloPTGhHgywYIzGlcGVlcGvvcGovYTIGIt=='
-              schema:
-                $ref: '#/components/schemas/tnLookupRequestError'
-          description: Forbidden
-        "404":
-          description: Not Found
-        "429":
-          content:
-            application/json:
-              examples:
+                  $ref: "#/components/examples/forbiddenExample"
                 mediaType:
                   $ref: "#/components/examples/unsupportedMediaTypeExample"
                 notFound:
@@ -4908,20 +4876,9 @@ paths:
                 internalServer:
                   $ref: "#/components/examples/internalServerErrorExample"
               schema:
-                $ref: '#/components/schemas/tnLookupRequestError'
-          description: Too Many Requests
-        "500":
-          content:
-            application/json:
-              examples:
-                mediaType:
-                  summary: Example Internal Server Error Error
-                  value:
-                    message: Request has not been passed further.
-              schema:
-                $ref: '#/components/schemas/tnLookupRequestError'
-          description: Internal Server Error
-      summary: Get Lookup Request Status
+                $ref: "#/components/schemas/lookupErrorResponse"
+          description: Bad Request
+      summary: Get Asynchronous Bulk Number Lookup
       tags:
       - Phone Number Lookup
       x-accepts:
@@ -7317,8 +7274,18 @@ components:
             multipleNumberRequestExample:
               $ref: "#/components/examples/multipleNumberRequestExample"
           schema:
-            $ref: '#/components/schemas/lookupRequest'
-      description: Phone number lookup request.
+            $ref: "#/components/schemas/syncLookupRequest"
+      description: Synchronous phone number lookup request.
+      required: true
+    createAsyncBulkLookupRequest:
+      content:
+        application/json:
+          examples:
+            multipleNumberRequestExample:
+              $ref: "#/components/examples/multipleNumberRequestExample"
+          schema:
+            $ref: "#/components/schemas/asyncLookupRequest"
+      description: Asynchronous bulk phone number lookup request.
       required: true
     requestTollFreeVerificationRequest:
       content:
@@ -7828,29 +7795,16 @@ components:
       content:
         application/json:
           examples:
-            lookupResponseExample:
-              $ref: '#/components/examples/lookupInProgressExample'
-          schema:
-            $ref: '#/components/schemas/createLookupResponse'
-      description: Accepted
-    getLookupResponse:
-      content:
-        application/json:
-          examples:
-            lookupInProgressExample:
-              $ref: '#/components/examples/lookupInProgressExample'
+            lookupCompleteWithDniExample:
+              $ref: "#/components/examples/lookupCompleteWithDniExample"
+            lookupCompleteExample:
+              $ref: "#/components/examples/lookupCompleteExample"
+            lookupPartialExample:
+              $ref: "#/components/examples/lookupPartialExample"
             lookupFailedExample:
-              $ref: '#/components/examples/lookupFailedExample'
-            lookupSingleNumberCompleteExample:
-              $ref: '#/components/examples/lookupSingleNumberCompleteExample'
-            lookupMultipleNumbersCompleteExample:
-              $ref: '#/components/examples/lookupMultipleNumbersCompleteExample'
-            lookupMultipleNumbersPartialCompleteExample:
-              $ref: '#/components/examples/lookupMultipleNumbersPartialCompleteExample'
-            lookupSingleNumberCompleteNoInfoExample:
-              $ref: '#/components/examples/lookupSingleNumberCompleteNoInfoExample'
+              $ref: "#/components/examples/lookupFailedExample"
           schema:
-            $ref: '#/components/schemas/lookupStatus'
+            $ref: "#/components/schemas/createSyncLookupResponse"
       description: OK
     createAsyncBulkLookupResponse:
       content:
@@ -7859,9 +7813,9 @@ components:
             lookupInProgressExample:
               $ref: "#/components/examples/lookupInProgressExample"
           schema:
-            $ref: '#/components/schemas/tnLookupRequestError'
-      description: Bad Request
-    tnLookupUnauthorizedError:
+            $ref: "#/components/schemas/createAsyncBulkLookupResponse"
+      description: Accepted
+    getAsyncBulkLookupResponse:
       content:
         application/json:
           examples:
@@ -7876,9 +7830,9 @@ components:
             lookupFailedExample:
               $ref: "#/components/examples/lookupFailedExample"
           schema:
-            $ref: '#/components/schemas/tnLookupRequestError'
-      description: Unauthorized
-    tnLookupForbiddenError:
+            $ref: "#/components/schemas/getAsyncBulkLookupResponse"
+      description: OK
+    tnLookupDefaultResponse:
       content:
         application/json:
           examples:
@@ -7887,20 +7841,7 @@ components:
             unauthorized:
               $ref: "#/components/examples/unauthorizedExample"
             forbidden:
-              summary: Example Forbidden Error
-              value:
-                message: Authorization header requires 'Credential' parameter. Authorization
-                  header requires 'Signature' parameter. Authorization header requires
-                  'SignedHeaders' parameter. Authorization header requires existence
-                  of either a 'X-Amz-Date' or a 'Date' header. Authorization=Basic
-                  Y2tvZloPTGhHgywYIzGlcGVlcGvvcGovYTIGIt=='
-          schema:
-            $ref: '#/components/schemas/tnLookupRequestError'
-      description: Forbidden
-    tnLookupMediaTypeError:
-      content:
-        application/json:
-          examples:
+              $ref: "#/components/examples/forbiddenExample"
             mediaType:
               $ref: "#/components/examples/unsupportedMediaTypeExample"
             notFound:
@@ -7910,32 +7851,8 @@ components:
             internalServer:
               $ref: "#/components/examples/internalServerErrorExample"
           schema:
-            $ref: '#/components/schemas/tnLookupRequestError'
-      description: Unsupported Media Type
-    tnLookupNotFoundError:
-      description: Not Found
-    tnLookupTooManyRequestsError:
-      content:
-        application/json:
-          examples:
-            mediaType:
-              summary: Example Too Many Requests Error
-              value:
-                message: Too many requests.
-          schema:
-            $ref: '#/components/schemas/tnLookupRequestError'
-      description: Too Many Requests
-    tnLookupInternalServerError:
-      content:
-        application/json:
-          examples:
-            mediaType:
-              summary: Example Internal Server Error Error
-              value:
-                message: Request has not been passed further.
-          schema:
-            $ref: '#/components/schemas/tnLookupRequestError'
-      description: Internal Server Error
+            $ref: "#/components/schemas/lookupErrorResponse"
+      description: Bad Request
     getTollFreeVerificationStatusResponse:
       content:
         application/json:
@@ -9215,12 +9132,12 @@ components:
           REQUEST_LOCATION: "#/components/schemas/rbmActionBase"
         propertyName: type
       oneOf:
-      - $ref: '#/components/schemas/rbmActionBase'
-      - $ref: '#/components/schemas/rbmActionDial'
-      - $ref: '#/components/schemas/rbmActionViewLocation'
-      - $ref: '#/components/schemas/multiChannelActionCalendarEvent'
-      - $ref: '#/components/schemas/rbmActionOpenUrl'
-    multiChannelChannelListObject:
+      - $ref: "#/components/schemas/rbmActionBase"
+      - $ref: "#/components/schemas/rbmActionDial"
+      - $ref: "#/components/schemas/rbmActionViewLocation"
+      - $ref: "#/components/schemas/multiChannelActionCalendarEvent"
+      - $ref: "#/components/schemas/rbmActionOpenUrl"
+    multiChannelChannelListObjectBase:
       properties:
         from:
           description: The sender ID of the message. This could be an alphanumeric
@@ -9233,9 +9150,7 @@ components:
           example: 93de2206-9669-4e07-948d-329f4b722ee2
           type: string
         channel:
-          $ref: '#/components/schemas/multiChannelMessageChannelEnum'
-        content:
-          $ref: '#/components/schemas/multiChannelChannelListObject_content'
+          $ref: "#/components/schemas/multiChannelMessageChannelEnum"
       required:
       - applicationId
       - channel
@@ -9351,7 +9266,7 @@ components:
             \ the order they are listed. Once a message sends successfully, the others\
             \ will be ignored."
           items:
-            $ref: '#/components/schemas/multiChannelChannelListObject'
+            $ref: "#/components/schemas/multiChannelChannelListRequestObject"
           maxItems: 4
           type: array
         tag:
@@ -9518,7 +9433,7 @@ components:
             \ the order they are listed. Once a message sends successfully, the others\
             \ will be ignored."
           items:
-            $ref: '#/components/schemas/multiChannelMessageResponseData_channelList_inner'
+            $ref: "#/components/schemas/multiChannelChannelListResponseObject"
           maxItems: 4
           type: array
         tag:
@@ -13454,11 +13369,17 @@ components:
           description: Example error description
           type: NumberInventory
       properties:
-        requestId:
-          description: The phone number lookup request ID from Bandwidth.
-          type: string
-        status:
-          $ref: '#/components/schemas/lookupStatusEnum'
+        links:
+          example: []
+          items:
+            $ref: "#/components/schemas/linkSchema"
+          type: array
+        data:
+          $ref: "#/components/schemas/createSyncLookupResponse_data"
+        errors:
+          items:
+            $ref: "#/components/schemas/lookupErrorSchema"
+          type: array
       type: object
     createAsyncBulkLookupResponse:
       example:
@@ -13492,17 +13413,10 @@ components:
           description: Example error description
           type: NumberInventory
       properties:
-        requestId:
-          description: The requestId.
-          example: 004223a0-8b17-41b1-bf81-20732adf5590
-          type: string
-        status:
-          $ref: '#/components/schemas/lookupStatusEnum'
-        result:
-          description: The carrier information results for the specified telephone
-            number.
+        links:
+          description: Links for pagination (if applicable)
           items:
-            $ref: '#/components/schemas/lookupResult'
+            $ref: "#/components/schemas/linkSchema"
           type: array
         data:
           $ref: "#/components/schemas/createAsyncBulkLookupResponse_data"
@@ -14858,50 +14772,134 @@ components:
     multiChannelChannelListRBMObject_allOf_content:
       description: The content of the message.
       oneOf:
-      - $ref: '#/components/schemas/rbmMessageContentText'
-      - $ref: '#/components/schemas/rbmMessageMedia'
-      - $ref: '#/components/schemas/rbmMessageContentRichCard'
-      - $ref: '#/components/schemas/smsMessageContent'
-      - $ref: '#/components/schemas/mmsMessageContent'
-    multiChannelMessageResponseData_channelList_inner:
-      allOf:
-      - $ref: '#/components/schemas/multiChannelChannelListObject'
-      - properties:
-          owner:
-            description: The Bandwidth senderId associated with the message. Identical
-              to 'from'.
-            type: string
-        required:
-        - owner
-        type: object
+      - $ref: "#/components/schemas/rbmMessageContentText"
+      - $ref: "#/components/schemas/rbmMessageMedia"
+      - $ref: "#/components/schemas/rbmMessageContentRichCard"
+    lookupErrorSchema_meta:
       example:
-        owner: owner
-        channel: RBM
-        from: BandwidthRBM
-        applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
-        content:
-          suggestions:
-          - postbackData: !!binary |-
-              U0dWc2JHOGdkMjl5YkdRPQ==
-            text: Hello world
-            type: REPLY
-          - postbackData: !!binary |-
-              U0dWc2JHOGdkMjl5YkdRPQ==
-            text: Hello world
-            type: REPLY
-          - postbackData: !!binary |-
-              U0dWc2JHOGdkMjl5YkdRPQ==
-            text: Hello world
-            type: REPLY
-          - postbackData: !!binary |-
-              U0dWc2JHOGdkMjl5YkdRPQ==
-            text: Hello world
-            type: REPLY
-          - postbackData: !!binary |-
-              U0dWc2JHOGdkMjl5YkdRPQ==
-            text: Hello world
-            type: REPLY
-          text: Hello world
+        code: 1001
+        message: Invalid TNs
+        phoneNumbers:
+        - "+13992077164"
+        - "+19196104424"
+      properties:
+        phoneNumbers:
+          example:
+          - "+13992077164"
+          - "+19196104424"
+          items:
+            description: Phone number experiencing the error.
+            type: string
+          type: array
+        message:
+          description: Message describing the error
+          example: Invalid TNs
+          type: string
+        code:
+          description: Error code associated with the message
+          example: 1001
+          type: integer
+      type: object
+    createSyncLookupResponse_data:
+      description: The phone number lookup response data
+      example:
+        requestId: 004223a0-8b17-41b1-bf81-20732adf5590
+        results:
+        - deactivationEvent: DEACTIVATED
+          messagingProvider: Verizon Wireless
+          deactivationDate: 2025-06-20 18:35
+          latestMessageDeliveryStatus: ACTIVE
+          phoneNumber: "+10072904498"
+          countryCodeA3: USA
+          initialMessageDeliveryStatusDate: 2025-06-20
+          lineType: MOBILE
+          deactivationReporter: deactivationReporter
+          voiceProvider: Verizon Wireless
+          latestMessageDeliveryStatusDate: 2025-06-21
+        - deactivationEvent: DEACTIVATED
+          messagingProvider: Verizon Wireless
+          deactivationDate: 2025-06-20 18:35
+          latestMessageDeliveryStatus: ACTIVE
+          phoneNumber: "+10072904498"
+          countryCodeA3: USA
+          initialMessageDeliveryStatusDate: 2025-06-20
+          lineType: MOBILE
+          deactivationReporter: deactivationReporter
+          voiceProvider: Verizon Wireless
+          latestMessageDeliveryStatusDate: 2025-06-21
+        status: COMPLETE
+      properties:
+        requestId:
+          description: The phone number lookup request ID from Bandwidth.
+          example: 004223a0-8b17-41b1-bf81-20732adf5590
+          format: uuid
+          type: string
+        status:
+          $ref: "#/components/schemas/completedLookupStatusEnum"
+        results:
+          description: The carrier information results for the specified telephone
+            numbers.
+          items:
+            $ref: "#/components/schemas/lookupResult"
+          type: array
+      type: object
+    createAsyncBulkLookupResponse_data:
+      description: The phone number lookup response data
+      example:
+        requestId: 004223a0-8b17-41b1-bf81-20732adf5590
+        status: COMPLETE
+      properties:
+        requestId:
+          description: The phone number lookup request ID from Bandwidth.
+          example: 004223a0-8b17-41b1-bf81-20732adf5590
+          format: uuid
+          type: string
+        status:
+          $ref: "#/components/schemas/inProgressLookupStatusEnum"
+      type: object
+    getAsyncBulkLookupResponse_data:
+      description: The phone number lookup response data
+      example:
+        requestId: 004223a0-8b17-41b1-bf81-20732adf5590
+        results:
+        - deactivationEvent: DEACTIVATED
+          messagingProvider: Verizon Wireless
+          deactivationDate: 2025-06-20 18:35
+          latestMessageDeliveryStatus: ACTIVE
+          phoneNumber: "+10072904498"
+          countryCodeA3: USA
+          initialMessageDeliveryStatusDate: 2025-06-20
+          lineType: MOBILE
+          deactivationReporter: deactivationReporter
+          voiceProvider: Verizon Wireless
+          latestMessageDeliveryStatusDate: 2025-06-21
+        - deactivationEvent: DEACTIVATED
+          messagingProvider: Verizon Wireless
+          deactivationDate: 2025-06-20 18:35
+          latestMessageDeliveryStatus: ACTIVE
+          phoneNumber: "+10072904498"
+          countryCodeA3: USA
+          initialMessageDeliveryStatusDate: 2025-06-20
+          lineType: MOBILE
+          deactivationReporter: deactivationReporter
+          voiceProvider: Verizon Wireless
+          latestMessageDeliveryStatusDate: 2025-06-21
+        status: COMPLETE
+      properties:
+        requestId:
+          description: The phone number lookup request ID from Bandwidth.
+          example: 004223a0-8b17-41b1-bf81-20732adf5590
+          format: uuid
+          type: string
+        status:
+          $ref: "#/components/schemas/inProgressLookupStatusEnum"
+        results:
+          description: The carrier information results for the specified telephone
+            number.
+          items:
+            $ref: "#/components/schemas/lookupResult"
+          type: array
+      type: object
     webhookSubscription_basicAuthentication:
       description: "Basic authentication credentials are not required, but if present,\
         \ both username and password must be provided."
