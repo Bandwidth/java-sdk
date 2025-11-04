@@ -29,10 +29,10 @@ public class StatusCallbackTypeEnumTest {
      */
     @Test
     public void testStatusCallbackTypeEnum() {
-        assertThat(StatusCallbackTypeEnum.SENDING.toString(), equalTo("message-sending"));
-        assertThat(StatusCallbackTypeEnum.DELIVERED.toString(), equalTo("message-delivered"));
-        assertThat(StatusCallbackTypeEnum.FAILED.toString(), equalTo("message-failed"));
-        assertThat(StatusCallbackTypeEnum.READ.toString(), equalTo("message-read"));
+        assertThat(StatusCallbackTypeEnum.MESSAGE_SENDING.toString(), equalTo("message-sending"));
+        assertThat(StatusCallbackTypeEnum.MESSAGE_DELIVERED.toString(), equalTo("message-delivered"));
+        assertThat(StatusCallbackTypeEnum.MESSAGE_FAILED.toString(), equalTo("message-failed"));
+        assertThat(StatusCallbackTypeEnum.MESSAGE_READ.toString(), equalTo("message-read"));
 
     }
 

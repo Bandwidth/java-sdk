@@ -14,6 +14,7 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -44,46 +45,47 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
- * Create phone number lookup request.
+ * SyncLookupRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class LookupRequest {
-  public static final String SERIALIZED_NAME_TNS = "tns";
-  @SerializedName(SERIALIZED_NAME_TNS)
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+public class SyncLookupRequest {
+  public static final String SERIALIZED_NAME_PHONE_NUMBERS = "phoneNumbers";
+  @SerializedName(SERIALIZED_NAME_PHONE_NUMBERS)
   @javax.annotation.Nonnull
-  private List<String> tns = new ArrayList<>();
+  private List<String> phoneNumbers = new ArrayList<>();
 
-  public LookupRequest() {
+  public SyncLookupRequest() {
   }
 
-  public LookupRequest tns(@javax.annotation.Nonnull List<String> tns) {
-    this.tns = tns;
+  public SyncLookupRequest phoneNumbers(@javax.annotation.Nonnull List<String> phoneNumbers) {
+    this.phoneNumbers = phoneNumbers;
     return this;
   }
 
-  public LookupRequest addTnsItem(String tnsItem) {
-    if (this.tns == null) {
-      this.tns = new ArrayList<>();
+  public SyncLookupRequest addPhoneNumbersItem(String phoneNumbersItem) {
+    if (this.phoneNumbers == null) {
+      this.phoneNumbers = new ArrayList<>();
     }
-    this.tns.add(tnsItem);
+    this.phoneNumbers.add(phoneNumbersItem);
     return this;
   }
 
   /**
-   * Get tns
-   * @return tns
+   * Telephone numbers in E.164 format.
+   * @return phoneNumbers
    */
   @javax.annotation.Nonnull
-  public List<String> getTns() {
-    return tns;
+  public List<String> getPhoneNumbers() {
+    return phoneNumbers;
   }
 
-  public void setTns(@javax.annotation.Nonnull List<String> tns) {
-    this.tns = tns;
+  public void setPhoneNumbers(@javax.annotation.Nonnull List<String> phoneNumbers) {
+    this.phoneNumbers = phoneNumbers;
   }
 
   /**
@@ -99,9 +101,9 @@ public class LookupRequest {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the LookupRequest instance itself
+   * @return the SyncLookupRequest instance itself
    */
-  public LookupRequest putAdditionalProperty(String key, Object value) {
+  public SyncLookupRequest putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -140,21 +142,21 @@ public class LookupRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LookupRequest lookupRequest = (LookupRequest) o;
-    return Objects.equals(this.tns, lookupRequest.tns)&&
-        Objects.equals(this.additionalProperties, lookupRequest.additionalProperties);
+    SyncLookupRequest syncLookupRequest = (SyncLookupRequest) o;
+    return Objects.equals(this.phoneNumbers, syncLookupRequest.phoneNumbers)&&
+        Objects.equals(this.additionalProperties, syncLookupRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tns, additionalProperties);
+    return Objects.hash(phoneNumbers, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LookupRequest {\n");
-    sb.append("    tns: ").append(toIndentedString(tns)).append("\n");
+    sb.append("class SyncLookupRequest {\n");
+    sb.append("    phoneNumbers: ").append(toIndentedString(phoneNumbers)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -177,39 +179,37 @@ public class LookupRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("tns");
+    openapiFields = new HashSet<String>(Arrays.asList("phoneNumbers"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("tns");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("phoneNumbers"));
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to LookupRequest
+   * @throws IOException if the JSON Element is invalid with respect to SyncLookupRequest
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!LookupRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LookupRequest is not found in the empty JSON string", LookupRequest.openapiRequiredFields.toString()));
+        if (!SyncLookupRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in SyncLookupRequest is not found in the empty JSON string", SyncLookupRequest.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LookupRequest.openapiRequiredFields) {
+      for (String requiredField : SyncLookupRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the required json array is present
-      if (jsonObj.get("tns") == null) {
+      if (jsonObj.get("phoneNumbers") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("tns").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tns` to be an array in the JSON string but got `%s`", jsonObj.get("tns").toString()));
+      } else if (!jsonObj.get("phoneNumbers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `phoneNumbers` to be an array in the JSON string but got `%s`", jsonObj.get("phoneNumbers").toString()));
       }
   }
 
@@ -217,16 +217,16 @@ public class LookupRequest {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!LookupRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'LookupRequest' and its subtypes
+       if (!SyncLookupRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SyncLookupRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<LookupRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(LookupRequest.class));
+       final TypeAdapter<SyncLookupRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SyncLookupRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<LookupRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<SyncLookupRequest>() {
            @Override
-           public void write(JsonWriter out, LookupRequest value) throws IOException {
+           public void write(JsonWriter out, SyncLookupRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -254,12 +254,12 @@ public class LookupRequest {
            }
 
            @Override
-           public LookupRequest read(JsonReader in) throws IOException {
+           public SyncLookupRequest read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             LookupRequest instance = thisAdapter.fromJsonTree(jsonObj);
+             SyncLookupRequest instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -270,7 +270,7 @@ public class LookupRequest {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object
@@ -286,18 +286,18 @@ public class LookupRequest {
   }
 
   /**
-   * Create an instance of LookupRequest given an JSON string
+   * Create an instance of SyncLookupRequest given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of LookupRequest
-   * @throws IOException if the JSON string is invalid with respect to LookupRequest
+   * @return An instance of SyncLookupRequest
+   * @throws IOException if the JSON string is invalid with respect to SyncLookupRequest
    */
-  public static LookupRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, LookupRequest.class);
+  public static SyncLookupRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SyncLookupRequest.class);
   }
 
   /**
-   * Convert an instance of LookupRequest to an JSON string
+   * Convert an instance of SyncLookupRequest to an JSON string
    *
    * @return JSON string
    */

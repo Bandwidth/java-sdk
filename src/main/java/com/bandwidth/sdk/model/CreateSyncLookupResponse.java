@@ -14,13 +14,19 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import java.util.Locale;
+import com.bandwidth.sdk.model.CreateSyncLookupResponseData;
+import com.bandwidth.sdk.model.LinkSchema;
+import com.bandwidth.sdk.model.LookupErrorSchema;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -42,38 +48,103 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
- * TnLookupRequestError
+ * CreateSyncLookupResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class TnLookupRequestError {
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+public class CreateSyncLookupResponse {
+  public static final String SERIALIZED_NAME_LINKS = "links";
+  @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nullable
-  private String message;
+  private List<LinkSchema> links = new ArrayList<>();
 
-  public TnLookupRequestError() {
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  @javax.annotation.Nullable
+  private CreateSyncLookupResponseData data;
+
+  public static final String SERIALIZED_NAME_ERRORS = "errors";
+  @SerializedName(SERIALIZED_NAME_ERRORS)
+  @javax.annotation.Nullable
+  private List<LookupErrorSchema> errors = new ArrayList<>();
+
+  public CreateSyncLookupResponse() {
   }
 
-  public TnLookupRequestError message(@javax.annotation.Nullable String message) {
-    this.message = message;
+  public CreateSyncLookupResponse links(@javax.annotation.Nullable List<LinkSchema> links) {
+    this.links = links;
+    return this;
+  }
+
+  public CreateSyncLookupResponse addLinksItem(LinkSchema linksItem) {
+    if (this.links == null) {
+      this.links = new ArrayList<>();
+    }
+    this.links.add(linksItem);
     return this;
   }
 
   /**
-   * A description of what validation error occurred.
-   * @return message
+   * Get links
+   * @return links
    */
   @javax.annotation.Nullable
-  public String getMessage() {
-    return message;
+  public List<LinkSchema> getLinks() {
+    return links;
   }
 
-  public void setMessage(@javax.annotation.Nullable String message) {
-    this.message = message;
+  public void setLinks(@javax.annotation.Nullable List<LinkSchema> links) {
+    this.links = links;
+  }
+
+
+  public CreateSyncLookupResponse data(@javax.annotation.Nullable CreateSyncLookupResponseData data) {
+    this.data = data;
+    return this;
+  }
+
+  /**
+   * Get data
+   * @return data
+   */
+  @javax.annotation.Nullable
+  public CreateSyncLookupResponseData getData() {
+    return data;
+  }
+
+  public void setData(@javax.annotation.Nullable CreateSyncLookupResponseData data) {
+    this.data = data;
+  }
+
+
+  public CreateSyncLookupResponse errors(@javax.annotation.Nullable List<LookupErrorSchema> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public CreateSyncLookupResponse addErrorsItem(LookupErrorSchema errorsItem) {
+    if (this.errors == null) {
+      this.errors = new ArrayList<>();
+    }
+    this.errors.add(errorsItem);
+    return this;
+  }
+
+  /**
+   * Get errors
+   * @return errors
+   */
+  @javax.annotation.Nullable
+  public List<LookupErrorSchema> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(@javax.annotation.Nullable List<LookupErrorSchema> errors) {
+    this.errors = errors;
   }
 
   /**
@@ -89,9 +160,9 @@ public class TnLookupRequestError {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the TnLookupRequestError instance itself
+   * @return the CreateSyncLookupResponse instance itself
    */
-  public TnLookupRequestError putAdditionalProperty(String key, Object value) {
+  public CreateSyncLookupResponse putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -130,21 +201,25 @@ public class TnLookupRequestError {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TnLookupRequestError tnLookupRequestError = (TnLookupRequestError) o;
-    return Objects.equals(this.message, tnLookupRequestError.message)&&
-        Objects.equals(this.additionalProperties, tnLookupRequestError.additionalProperties);
+    CreateSyncLookupResponse createSyncLookupResponse = (CreateSyncLookupResponse) o;
+    return Objects.equals(this.links, createSyncLookupResponse.links) &&
+        Objects.equals(this.data, createSyncLookupResponse.data) &&
+        Objects.equals(this.errors, createSyncLookupResponse.errors)&&
+        Objects.equals(this.additionalProperties, createSyncLookupResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(message, additionalProperties);
+    return Objects.hash(links, data, errors, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TnLookupRequestError {\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("class CreateSyncLookupResponse {\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -167,28 +242,56 @@ public class TnLookupRequestError {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("message");
+    openapiFields = new HashSet<String>(Arrays.asList("links", "data", "errors"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to TnLookupRequestError
+   * @throws IOException if the JSON Element is invalid with respect to CreateSyncLookupResponse
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!TnLookupRequestError.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in TnLookupRequestError is not found in the empty JSON string", TnLookupRequestError.openapiRequiredFields.toString()));
+        if (!CreateSyncLookupResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in CreateSyncLookupResponse is not found in the empty JSON string", CreateSyncLookupResponse.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+      if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
+        JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
+        if (jsonArraylinks != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("links").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
+          }
+
+          // validate the optional field `links` (array)
+          for (int i = 0; i < jsonArraylinks.size(); i++) {
+            LinkSchema.validateJsonElement(jsonArraylinks.get(i));
+          };
+        }
+      }
+      // validate the optional field `data`
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
+        CreateSyncLookupResponseData.validateJsonElement(jsonObj.get("data"));
+      }
+      if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
+        JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
+        if (jsonArrayerrors != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("errors").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
+          }
+
+          // validate the optional field `errors` (array)
+          for (int i = 0; i < jsonArrayerrors.size(); i++) {
+            LookupErrorSchema.validateJsonElement(jsonArrayerrors.get(i));
+          };
+        }
       }
   }
 
@@ -196,16 +299,16 @@ public class TnLookupRequestError {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!TnLookupRequestError.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'TnLookupRequestError' and its subtypes
+       if (!CreateSyncLookupResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CreateSyncLookupResponse' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<TnLookupRequestError> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(TnLookupRequestError.class));
+       final TypeAdapter<CreateSyncLookupResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CreateSyncLookupResponse.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<TnLookupRequestError>() {
+       return (TypeAdapter<T>) new TypeAdapter<CreateSyncLookupResponse>() {
            @Override
-           public void write(JsonWriter out, TnLookupRequestError value) throws IOException {
+           public void write(JsonWriter out, CreateSyncLookupResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -233,12 +336,12 @@ public class TnLookupRequestError {
            }
 
            @Override
-           public TnLookupRequestError read(JsonReader in) throws IOException {
+           public CreateSyncLookupResponse read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             TnLookupRequestError instance = thisAdapter.fromJsonTree(jsonObj);
+             CreateSyncLookupResponse instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -249,7 +352,7 @@ public class TnLookupRequestError {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object
@@ -265,18 +368,18 @@ public class TnLookupRequestError {
   }
 
   /**
-   * Create an instance of TnLookupRequestError given an JSON string
+   * Create an instance of CreateSyncLookupResponse given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of TnLookupRequestError
-   * @throws IOException if the JSON string is invalid with respect to TnLookupRequestError
+   * @return An instance of CreateSyncLookupResponse
+   * @throws IOException if the JSON string is invalid with respect to CreateSyncLookupResponse
    */
-  public static TnLookupRequestError fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, TnLookupRequestError.class);
+  public static CreateSyncLookupResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CreateSyncLookupResponse.class);
   }
 
   /**
-   * Convert an instance of TnLookupRequestError to an JSON string
+   * Convert an instance of CreateSyncLookupResponse to an JSON string
    *
    * @return JSON string
    */

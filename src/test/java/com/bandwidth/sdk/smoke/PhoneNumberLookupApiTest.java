@@ -6,182 +6,107 @@ import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.Configuration;
-import com.bandwidth.sdk.model.LookupRequest;
-import com.bandwidth.sdk.model.LookupStatus;
-import com.bandwidth.sdk.model.LookupStatusEnum;
-import com.bandwidth.sdk.model.CreateLookupResponse;
+import com.bandwidth.sdk.model.AsyncLookupRequest;
+import com.bandwidth.sdk.model.CompletedLookupStatusEnum;
+import com.bandwidth.sdk.model.CreateAsyncBulkLookupResponse;
+import com.bandwidth.sdk.model.CreateAsyncBulkLookupResponseData;
+import com.bandwidth.sdk.model.CreateSyncLookupResponse;
+import com.bandwidth.sdk.model.CreateSyncLookupResponseData;
+import com.bandwidth.sdk.model.GetAsyncBulkLookupResponse;
+import com.bandwidth.sdk.model.GetAsyncBulkLookupResponseData;
+import com.bandwidth.sdk.model.InProgressLookupStatusEnum;
+import com.bandwidth.sdk.model.LatestMessageDeliveryStatusEnum;
+import com.bandwidth.sdk.model.LineTypeEnum;
+import com.bandwidth.sdk.model.LinkSchema;
 import com.bandwidth.sdk.model.LookupResult;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
+import com.bandwidth.sdk.model.SyncLookupRequest;
+
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.matchesRegex;
 
 import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 
+@SuppressWarnings("null")
 public class PhoneNumberLookupApiTest {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
     private final PhoneNumberLookupApi api = new PhoneNumberLookupApi(defaultClient);
-    LookupRequest lookupRequest = new LookupRequest();
+    private final List<String> phoneNumbers = Arrays.asList(BW_NUMBER, VZW_NUMBER, ATT_NUMBER, T_MOBILE_NUMBER);
 
-    /**
-     * Validate a LookupResult object
-     *
-     * @param result      A LookupResult object
-     * @param phoneNumber A String phone number in E164 format to check against the
-     *                    E164 format value in the result
-     */
-    private void validateResult(LookupResult result, String phoneNumber) {
-        if (result.getMobileCountryCode() != null || result.getMobileNetworkCode() != null) {
-            assertThat(result.getMobileCountryCode(), instanceOf(String.class));
-            assertThat(result.getMobileNetworkCode(), instanceOf(String.class));
-        }
-
-        assertThat(result, hasProperty("responseCode"));
-        assertThat(result, hasProperty("message"));
-        assertThat(result, hasProperty("e164Format"));
-        assertThat(result, hasProperty("formatted"));
-        assertThat(result, hasProperty("country"));
-        assertThat(result, hasProperty("lineType"));
-        assertThat(result, hasProperty("lineProvider"));
-        assertThat(result, hasProperty("mobileCountryCode"));
-        assertThat(result, hasProperty("mobileNetworkCode"));
-
-        assertThat(result.getE164Format(), is(phoneNumber));
-    }
-
-    /**
-     * Poll for a completed TN Lookup order
-     *
-     * @param requestId String requestId to poll for
-     * @return the completed lookup status
-     * @throws Exception If status was not complete after 5 attempts
-     */
-    private LookupStatus pollLookupStatus(String requestId) throws Exception {
-        int attempt = 1;
-        LookupStatus lookupStatus = this.api.getLookupStatus(BW_ACCOUNT_ID, requestId);
-
-        do {
-            try {
-                lookupStatus = this.api.getLookupStatus(BW_ACCOUNT_ID, requestId);
-                TimeUnit.SECONDS.sleep(2);
-                attempt += 1;
-            } catch (ApiException e) {
-                throw new Exception(
-                        "Polling for TnLookup order status failed. \nStatus Code: " + String.valueOf(e.getCode())
-                                + "\nMessage: " + e.getMessage());
-            }
-        } while (attempt <= 5 && lookupStatus.getStatus() != LookupStatusEnum.COMPLETE);
-        return lookupStatus;
-    }
-
-    @SuppressWarnings("null")
     @Test
-    public void successfulPhoneNumberLookup() throws Exception, ApiException {
+    public void createSyncLookupTest() throws ApiException {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
 
-        lookupRequest.addTnsItem(BW_NUMBER);
-        lookupRequest.addTnsItem(VZW_NUMBER);
-        lookupRequest.addTnsItem(ATT_NUMBER);
-        lookupRequest.addTnsItem(T_MOBILE_NUMBER);
+        SyncLookupRequest lookupRequest = new SyncLookupRequest()
+                .phoneNumbers(phoneNumbers);
 
-        // Create the lookup request and validate the response
-        ApiResponse<CreateLookupResponse> response = api.createLookupWithHttpInfo(BW_ACCOUNT_ID, lookupRequest);
-        CreateLookupResponse lookupResponse = response.getData();
-        assertThat(response.getStatusCode(), is(202));
-        assertThat(response.getData(), instanceOf(CreateLookupResponse.class));
-        assertThat(lookupResponse.getStatus(), is(LookupStatusEnum.IN_PROGRESS));
-        assertThat(lookupResponse.getRequestId(), instanceOf(String.class));
-        assertThat(lookupResponse.getRequestId(),
-                matchesRegex("^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"));
-
-        // Test GET LookupStatus Response
-        ApiResponse<LookupStatus> lookupStatusResponse = api.getLookupStatusWithHttpInfo(BW_ACCOUNT_ID,
-                lookupResponse.getRequestId());
-        assertThat(lookupStatusResponse.getStatusCode(), is(200));
-
-        LookupStatus completedLookup = null;
-        try {
-            completedLookup = pollLookupStatus(lookupStatusResponse.getData().getRequestId());
-        } catch (Exception e) {
-            throw e;
-        }
-        assertThat(lookupStatusResponse.getData().getRequestId(), is(completedLookup.getRequestId()));
-
-        for (LookupResult result : completedLookup.getResult()) {
-            assertThat(result, instanceOf(LookupResult.class));
-        }
-
-        LookupResult bwLookupResult = completedLookup.getResult().get(0);
-        validateResult(bwLookupResult, BW_NUMBER);
-
-        LookupResult vzwLookupResult = completedLookup.getResult().get(1);
-        validateResult(vzwLookupResult, VZW_NUMBER);
-
-        LookupResult attLookupResult = completedLookup.getResult().get(2);
-        validateResult(attLookupResult, ATT_NUMBER);
-
-        LookupResult tMobileLookupResult = completedLookup.getResult().get(3);
-        validateResult(tMobileLookupResult, T_MOBILE_NUMBER);
-
+        ApiResponse<CreateSyncLookupResponse> response = api.createSyncLookupWithHttpInfo(BW_ACCOUNT_ID, lookupRequest);
+        assertThat(response.getStatusCode(), is(200));
+        assertThat(response.getData(), instanceOf(CreateSyncLookupResponse.class));
+        CreateSyncLookupResponse lookupResponse = response.getData();
+        assertThat(lookupResponse.getLinks(), instanceOf(List.class));
+        assertThat(lookupResponse.getLinks().get(0), instanceOf(LinkSchema.class));
+        assertThat(lookupResponse.getData(), instanceOf(CreateSyncLookupResponseData.class));
+        assertThat(lookupResponse.getData().getRequestId(), instanceOf(UUID.class));
+        assertThat(lookupResponse.getData().getStatus(), instanceOf(CompletedLookupStatusEnum.class));
+        assertThat(lookupResponse.getData().getResults(), instanceOf(List.class));
+        LookupResult firstResult = lookupResponse.getData().getResults().get(0);
+        assertThat(firstResult.getPhoneNumber(), instanceOf(String.class));
+        assertThat(firstResult.getLineType(), instanceOf(LineTypeEnum.class));
+        assertThat(firstResult.getMessagingProvider(), instanceOf(String.class));
+        assertThat(firstResult.getVoiceProvider(), instanceOf(String.class));
+        assertThat(firstResult.getCountryCodeA3(), instanceOf(String.class));
     }
 
     @Test
-    public void failedPhoneNumberLookup() throws ApiException {
+    public void createGetAsyncLookupTest() throws ApiException, InterruptedException {
         Basic.setUsername(BW_USERNAME);
         Basic.setPassword(BW_PASSWORD);
 
-        lookupRequest.addTnsItem("not a number");
+        AsyncLookupRequest lookupRequest = new AsyncLookupRequest()
+                .phoneNumbers(phoneNumbers);
 
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.createLookup(BW_ACCOUNT_ID, lookupRequest));
-        assertThat(exception.getCode(), is(400));
-    }
+        ApiResponse<CreateAsyncBulkLookupResponse> createResponse
+                = api.createAsyncBulkLookupWithHttpInfo(BW_ACCOUNT_ID, lookupRequest);
 
-    @Test
-    public void duplicatePhoneNumberLookup() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
+        assertThat(createResponse.getStatusCode(), is(202));
+        assertThat(createResponse.getData(), instanceOf(CreateAsyncBulkLookupResponse.class));
+        assertThat(createResponse.getData().getData(), instanceOf(CreateAsyncBulkLookupResponseData.class));
+        assertThat(createResponse.getData().getData().getRequestId(), instanceOf(UUID.class));
+        assertThat(createResponse.getData().getData().getStatus(), instanceOf(InProgressLookupStatusEnum.class));
+        UUID requestId = createResponse.getData().getData().getRequestId();
 
-        lookupRequest.addTnsItem(BW_NUMBER);
-        lookupRequest.addTnsItem(BW_NUMBER);
+        TimeUnit.SECONDS.sleep(10);
 
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.createLookup(BW_ACCOUNT_ID, lookupRequest));
-        assertThat(exception.getCode(), is(400));
-    }
+        ApiResponse<GetAsyncBulkLookupResponse> getResponse
+                = api.getAsyncBulkLookupWithHttpInfo(BW_ACCOUNT_ID, requestId);
 
-    @Test
-    public void unauthorizedRequest() throws ApiException {
-        Basic.setUsername("bad_username");
-        Basic.setPassword("bad_password");
-
-        lookupRequest.addTnsItem(BW_NUMBER);
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.createLookup(BW_ACCOUNT_ID, lookupRequest));
-        assertThat(exception.getCode(), is(401));
-    }
-
-    @Disabled(("403 Response is not implemented in the API"))
-    @Test
-    public void forbiddenRequest() throws ApiException {
-        Basic.setUsername(FORBIDDEN_USERNAME);
-        Basic.setPassword(FORBIDDEN_PASSWORD);
-
-        lookupRequest.addTnsItem(BW_NUMBER);
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.createLookup(BW_ACCOUNT_ID, lookupRequest));
-        assertThat(exception.getCode(), is(403));
+        assertThat(getResponse.getStatusCode(), is(200));
+        assertThat(getResponse.getData(), instanceOf(GetAsyncBulkLookupResponse.class));
+        GetAsyncBulkLookupResponse lookupResponse = getResponse.getData();
+        assertThat(lookupResponse.getLinks(), instanceOf(List.class));
+        assertThat(lookupResponse.getLinks().get(0), instanceOf(LinkSchema.class));
+        assertThat(lookupResponse.getData(), instanceOf(GetAsyncBulkLookupResponseData.class));
+        assertThat(lookupResponse.getData().getRequestId(), equalTo(requestId));
+        assertThat(lookupResponse.getData().getStatus(), instanceOf(InProgressLookupStatusEnum.class));
+        assertThat(lookupResponse.getData().getResults(), instanceOf(List.class));
+        LookupResult firstResult = lookupResponse.getData().getResults().get(0);
+        assertThat(firstResult.getPhoneNumber(), instanceOf(String.class));
+        assertThat(firstResult.getLineType(), instanceOf(LineTypeEnum.class));
+        assertThat(firstResult.getMessagingProvider(), instanceOf(String.class));
+        assertThat(firstResult.getVoiceProvider(), instanceOf(String.class));
+        assertThat(firstResult.getCountryCodeA3(), instanceOf(String.class));
     }
 }

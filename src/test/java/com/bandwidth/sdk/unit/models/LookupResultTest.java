@@ -14,7 +14,12 @@ package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
+import com.bandwidth.sdk.model.DeactivationEventEnum;
+import com.bandwidth.sdk.model.LatestMessageDeliveryStatusEnum;
+import com.bandwidth.sdk.model.LineTypeEnum;
 import com.bandwidth.sdk.model.LookupResult;
+
+import java.time.LocalDate;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -24,15 +29,18 @@ import static org.hamcrest.CoreMatchers.instanceOf;
  */
 public class LookupResultTest {
     private final LookupResult model = new LookupResult()
-            .responseCode(200)
-            .message("message")
-            .e164Format("e164Format")
-            .formatted("formatted")
-            .country("country")
-            .lineType("lineType")
-            .lineProvider("lineProvider")
-            .mobileCountryCode("mobileCountryCode")
-            .mobileNetworkCode("mobileNetworkCode");
+            .phoneNumber("1234567890")
+            .lineType(LineTypeEnum.MOBILE)
+            .messagingProvider("TestProvider")
+            .voiceProvider("TestVoiceProvider")
+            .countryCodeA3("USA")
+            .deactivationReporter("TestReporter")
+            .deactivationDate("2023-01-01T00:00:00Z")
+            .deactivationEvent(DeactivationEventEnum.DEACTIVATED)
+            .latestMessageDeliveryStatus(LatestMessageDeliveryStatusEnum.ACTIVE)
+            .initialMessageDeliveryStatusDate(LocalDate.of(2025, 1, 1))
+            .latestMessageDeliveryStatusDate(LocalDate.of(2025, 1, 1));
+
 
     /**
      * Model tests for LookupResult
@@ -43,43 +51,11 @@ public class LookupResultTest {
     }
 
     /**
-     * Test the property 'responseCode'
+     * Test the property 'phoneNumber'
      */
     @Test
-    public void responseCodeTest() {
-        assertThat(model.getResponseCode(), instanceOf(Integer.class));
-    }
-
-    /**
-     * Test the property 'message'
-     */
-    @Test
-    public void messageTest() {
-        assertThat(model.getMessage(), instanceOf(String.class));
-    }
-
-    /**
-     * Test the property 'e164Format'
-     */
-    @Test
-    public void e164FormatTest() {
-        assertThat(model.getE164Format(), instanceOf(String.class));
-    }
-
-    /**
-     * Test the property 'formatted'
-     */
-    @Test
-    public void formattedTest() {
-        assertThat(model.getFormatted(), instanceOf(String.class));
-    }
-
-    /**
-     * Test the property 'country'
-     */
-    @Test
-    public void countryTest() {
-        assertThat(model.getCountry(), instanceOf(String.class));
+    public void phoneNumberTest() {
+        assertThat(model.getPhoneNumber(), instanceOf(String.class));
     }
 
     /**
@@ -87,31 +63,79 @@ public class LookupResultTest {
      */
     @Test
     public void lineTypeTest() {
-        assertThat(model.getLineType(), instanceOf(String.class));
+        assertThat(model.getLineType(), instanceOf(LineTypeEnum.class));
     }
 
     /**
-     * Test the property 'lineProvider'
+     * Test the property 'messagingProvider'
      */
     @Test
-    public void lineProviderTest() {
-        assertThat(model.getLineProvider(), instanceOf(String.class));
+    public void messagingProviderTest() {
+        assertThat(model.getMessagingProvider(), instanceOf(String.class));
     }
 
     /**
-     * Test the property 'mobileCountryCode'
+     * Test the property 'voiceProvider'
      */
     @Test
-    public void mobileCountryCodeTest() {
-        assertThat(model.getMobileCountryCode(), instanceOf(String.class));
+    public void voiceProviderTest() {
+        assertThat(model.getVoiceProvider(), instanceOf(String.class));
     }
 
     /**
-     * Test the property 'mobileNetworkCode'
+     * Test the property 'countryCodeA3'
      */
     @Test
-    public void mobileNetworkCodeTest() {
-        assertThat(model.getMobileNetworkCode(), instanceOf(String.class));
+    public void countryCodeA3Test() {
+        assertThat(model.getCountryCodeA3(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'deactivationReporter'
+     */
+    @Test
+    public void deactivationReporterTest() {
+        assertThat(model.getDeactivationReporter(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'deactivationDate'
+     */
+    @Test
+    public void deactivationDateTest() {
+        assertThat(model.getDeactivationDate(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'deactivationEvent'
+     */
+    @Test
+    public void deactivationEventTest() {
+        assertThat(model.getDeactivationEvent(), instanceOf(DeactivationEventEnum.class));
+    }
+
+    /**
+     * Test the property 'latestMessageDeliveryStatus'
+     */
+    @Test
+    public void latestMessageDeliveryStatusTest() {
+        assertThat(model.getLatestMessageDeliveryStatus(), instanceOf(LatestMessageDeliveryStatusEnum.class));
+    }
+
+    /**
+     * Test the property 'initialMessageDeliveryStatusDate'
+     */
+    @Test
+    public void initialMessageDeliveryStatusDateTest() {
+        assertThat(model.getInitialMessageDeliveryStatusDate(), instanceOf(LocalDate.class));
+    }
+
+    /**
+     * Test the property 'latestMessageDeliveryStatusDate'
+     */
+    @Test
+    public void latestMessageDeliveryStatusDateTest() {
+        assertThat(model.getLatestMessageDeliveryStatusDate(), instanceOf(LocalDate.class));
     }
 
 }

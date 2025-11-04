@@ -14,6 +14,7 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.bandwidth.sdk.model.InboundCallback;
 import com.bandwidth.sdk.model.InboundCallbackMessage;
 import com.bandwidth.sdk.model.InboundCallbackTypeEnum;
@@ -39,6 +40,7 @@ import java.util.HashSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Locale;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -62,7 +64,7 @@ import com.google.gson.JsonParseException;
 
 import com.bandwidth.sdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class Callback extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(Callback.class.getName());
 
@@ -118,7 +120,7 @@ public class Callback extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'StatusCallback'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for StatusCallback failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for StatusCallback failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'StatusCallback'", e);
                     }
                     // deserialize InboundCallback
@@ -130,7 +132,7 @@ public class Callback extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'InboundCallback'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InboundCallback failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for InboundCallback failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'InboundCallback'", e);
                     }
 
@@ -140,7 +142,7 @@ public class Callback extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for Callback: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(Locale.ROOT, "Failed deserialization for Callback: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -239,7 +241,7 @@ public class Callback extends AbstractOpenApiSchema {
             StatusCallback.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for StatusCallback failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(Locale.ROOT, "Deserialization for StatusCallback failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with InboundCallback
@@ -247,11 +249,11 @@ public class Callback extends AbstractOpenApiSchema {
             InboundCallback.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InboundCallback failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(Locale.ROOT, "Deserialization for InboundCallback failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for Callback with oneOf schemas: InboundCallback, StatusCallback. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(Locale.ROOT, "The JSON string is invalid for Callback with oneOf schemas: InboundCallback, StatusCallback. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

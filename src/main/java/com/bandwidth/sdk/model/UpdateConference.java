@@ -14,6 +14,7 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.bandwidth.sdk.model.ConferenceStateEnum;
 import com.bandwidth.sdk.model.RedirectMethodEnum;
 import com.google.gson.TypeAdapter;
@@ -46,13 +47,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
  * UpdateConference
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class UpdateConference {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -390,19 +392,10 @@ public class UpdateConference {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("status");
-    openapiFields.add("redirectUrl");
-    openapiFields.add("redirectMethod");
-    openapiFields.add("username");
-    openapiFields.add("password");
-    openapiFields.add("redirectFallbackUrl");
-    openapiFields.add("redirectFallbackMethod");
-    openapiFields.add("fallbackUsername");
-    openapiFields.add("fallbackPassword");
+    openapiFields = new HashSet<String>(Arrays.asList("status", "redirectUrl", "redirectMethod", "username", "password", "redirectFallbackUrl", "redirectFallbackMethod", "fallbackUsername", "fallbackPassword"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -414,7 +407,7 @@ public class UpdateConference {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!UpdateConference.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UpdateConference is not found in the empty JSON string", UpdateConference.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in UpdateConference is not found in the empty JSON string", UpdateConference.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -423,30 +416,30 @@ public class UpdateConference {
         ConferenceStateEnum.validateJsonElement(jsonObj.get("status"));
       }
       if ((jsonObj.get("redirectUrl") != null && !jsonObj.get("redirectUrl").isJsonNull()) && !jsonObj.get("redirectUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `redirectUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirectUrl").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `redirectUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirectUrl").toString()));
       }
       // validate the optional field `redirectMethod`
       if (jsonObj.get("redirectMethod") != null && !jsonObj.get("redirectMethod").isJsonNull()) {
         RedirectMethodEnum.validateJsonElement(jsonObj.get("redirectMethod"));
       }
       if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
       }
       if ((jsonObj.get("password") != null && !jsonObj.get("password").isJsonNull()) && !jsonObj.get("password").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `password` to be a primitive type in the JSON string but got `%s`", jsonObj.get("password").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `password` to be a primitive type in the JSON string but got `%s`", jsonObj.get("password").toString()));
       }
       if ((jsonObj.get("redirectFallbackUrl") != null && !jsonObj.get("redirectFallbackUrl").isJsonNull()) && !jsonObj.get("redirectFallbackUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `redirectFallbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirectFallbackUrl").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `redirectFallbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirectFallbackUrl").toString()));
       }
       // validate the optional field `redirectFallbackMethod`
       if (jsonObj.get("redirectFallbackMethod") != null && !jsonObj.get("redirectFallbackMethod").isJsonNull()) {
         RedirectMethodEnum.validateJsonElement(jsonObj.get("redirectFallbackMethod"));
       }
       if ((jsonObj.get("fallbackUsername") != null && !jsonObj.get("fallbackUsername").isJsonNull()) && !jsonObj.get("fallbackUsername").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `fallbackUsername` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackUsername").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `fallbackUsername` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackUsername").toString()));
       }
       if ((jsonObj.get("fallbackPassword") != null && !jsonObj.get("fallbackPassword").isJsonNull()) && !jsonObj.get("fallbackPassword").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `fallbackPassword` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackPassword").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `fallbackPassword` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackPassword").toString()));
       }
   }
 
@@ -507,7 +500,7 @@ public class UpdateConference {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

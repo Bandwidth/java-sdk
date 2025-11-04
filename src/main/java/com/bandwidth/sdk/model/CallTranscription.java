@@ -14,6 +14,7 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.bandwidth.sdk.model.CallTranscriptionDetectedLanguageEnum;
 import com.bandwidth.sdk.model.CallTranscriptionTrackEnum;
 import com.google.gson.TypeAdapter;
@@ -44,13 +45,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
  * CallTranscription
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class CallTranscription {
   public static final String SERIALIZED_NAME_DETECTED_LANGUAGE = "detectedLanguage";
   @SerializedName(SERIALIZED_NAME_DETECTED_LANGUAGE)
@@ -249,14 +251,10 @@ public class CallTranscription {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("detectedLanguage");
-    openapiFields.add("track");
-    openapiFields.add("transcript");
-    openapiFields.add("confidence");
+    openapiFields = new HashSet<String>(Arrays.asList("detectedLanguage", "track", "transcript", "confidence"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -268,7 +266,7 @@ public class CallTranscription {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CallTranscription.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CallTranscription is not found in the empty JSON string", CallTranscription.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in CallTranscription is not found in the empty JSON string", CallTranscription.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -281,7 +279,7 @@ public class CallTranscription {
         CallTranscriptionTrackEnum.validateJsonElement(jsonObj.get("track"));
       }
       if ((jsonObj.get("transcript") != null && !jsonObj.get("transcript").isJsonNull()) && !jsonObj.get("transcript").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `transcript` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transcript").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `transcript` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transcript").toString()));
       }
   }
 
@@ -342,7 +340,7 @@ public class CallTranscription {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object
