@@ -9224,16 +9224,16 @@ components:
       - $ref: "#/components/schemas/multiChannelChannelListMMSObject"
       - $ref: "#/components/schemas/multiChannelChannelListOwnerObject"
     multiChannelChannelListRequestObject:
+      anyOf:
+      - $ref: "#/components/schemas/multiChannelChannelListRBMObject"
+      - $ref: "#/components/schemas/multiChannelChannelListSMSObject"
+      - $ref: "#/components/schemas/multiChannelChannelListMMSObject"
       discriminator:
         mapping:
           RBM: "#/components/schemas/multiChannelChannelListRBMObject"
           SMS: "#/components/schemas/multiChannelChannelListSMSObject"
           MMS: "#/components/schemas/multiChannelChannelListMMSObject"
         propertyName: channel
-      oneOf:
-      - $ref: "#/components/schemas/multiChannelChannelListRBMObject"
-      - $ref: "#/components/schemas/multiChannelChannelListSMSObject"
-      - $ref: "#/components/schemas/multiChannelChannelListMMSObject"
     multiChannelChannelListOwnerObject:
       properties:
         owner:

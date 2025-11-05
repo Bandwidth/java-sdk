@@ -2562,7 +2562,7 @@ components:
         - $ref: '#/components/schemas/multiChannelChannelListMMSObject'
         - $ref: '#/components/schemas/multiChannelChannelListOwnerObject'
     multiChannelChannelListRequestObject:
-      oneOf:
+      anyOf:
         - $ref: '#/components/schemas/multiChannelChannelListRBMObject'
         - $ref: '#/components/schemas/multiChannelChannelListSMSObject'
         - $ref: '#/components/schemas/multiChannelChannelListMMSObject'
