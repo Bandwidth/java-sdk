@@ -9122,6 +9122,12 @@ components:
       maxItems: 11
       type: array
     multiChannelAction:
+      anyOf:
+      - $ref: "#/components/schemas/rbmActionBase"
+      - $ref: "#/components/schemas/rbmActionDial"
+      - $ref: "#/components/schemas/rbmActionViewLocation"
+      - $ref: "#/components/schemas/multiChannelActionCalendarEvent"
+      - $ref: "#/components/schemas/rbmActionOpenUrl"
       discriminator:
         mapping:
           REPLY: "#/components/schemas/rbmActionBase"
@@ -9131,12 +9137,6 @@ components:
           OPEN_URL: "#/components/schemas/rbmActionOpenUrl"
           REQUEST_LOCATION: "#/components/schemas/rbmActionBase"
         propertyName: type
-      oneOf:
-      - $ref: "#/components/schemas/rbmActionBase"
-      - $ref: "#/components/schemas/rbmActionDial"
-      - $ref: "#/components/schemas/rbmActionViewLocation"
-      - $ref: "#/components/schemas/multiChannelActionCalendarEvent"
-      - $ref: "#/components/schemas/rbmActionOpenUrl"
     multiChannelChannelListObjectBase:
       properties:
         from:
