@@ -13,6 +13,7 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElements;
 import jakarta.xml.bind.annotation.XmlType;
 import java.util.List;
+import java.util.UUID;
 
 import com.bandwidth.sdk.model.CallDirectionEnum;
 
@@ -75,7 +76,6 @@ public class StartTranscription implements Verb {
     protected String password;
 
    @XmlAttribute
-   @Default
    protected Boolean stabilized = true;
 
     @XmlElements({
