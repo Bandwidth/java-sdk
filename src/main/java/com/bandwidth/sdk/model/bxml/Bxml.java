@@ -60,6 +60,10 @@ public class Bxml {
 
     private List<Verb> verbs = new ArrayList<>();
 
+    public List<Verb> getVerbs() {
+        return verbs;
+    }
+
     public Bxml with(Verb verb) {
         this.verbs.add(verb);
         return this;

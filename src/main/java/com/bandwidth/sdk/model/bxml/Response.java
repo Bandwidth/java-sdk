@@ -58,6 +58,10 @@ public class Response {
 
     private List<Verb> verbs = new ArrayList<>();
 
+    public List<Verb> getVerbs() {
+        return verbs;
+    }
+
     public Response with(Verb verb) {
         this.verbs.add(verb);
         return this;
