@@ -2,12 +2,11 @@ name: Smoke Tests
 
 on:
   schedule:
-    - cron: "0 4 * * *"
+    - cron: "*/30 * * * *"  # Every 30 minutes
   pull_request:
     paths:
       - "src/test/java/com/bandwidth/sdk/smoke/*"
       - ".github/workflows/test-smoke.yml"
-
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref }}
