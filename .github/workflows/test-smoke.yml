@@ -8,6 +8,7 @@ on:
       - "src/test/java/com/bandwidth/sdk/smoke/*"
       - ".github/workflows/test-smoke.yml"
 
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref }}
   cancel-in-progress: true
@@ -38,10 +39,10 @@ jobs:
       MANTECA_APPLICATION_ID: ${{ secrets.MANTECA_APPLICATION_ID }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Set up JDK
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@v4
         with:
           distribution: zulu
           java-version: 21
