@@ -8,31 +8,19 @@ import com.bandwidth.sdk.api.MultiChannelApi;
 import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.model.CreateMultiChannelMessageResponse;
 import com.bandwidth.sdk.model.MessageDirectionEnum;
-import com.bandwidth.sdk.model.MmsMessageContent;
-import com.bandwidth.sdk.model.MmsMessageContentFile;
-import com.bandwidth.sdk.model.MultiChannelAction;
-import com.bandwidth.sdk.model.MultiChannelChannelListMMSObject;
-import com.bandwidth.sdk.model.MultiChannelChannelListMMSResponseObject;
-import com.bandwidth.sdk.model.MultiChannelChannelListRBMObject;
-import com.bandwidth.sdk.model.MultiChannelChannelListRBMObjectAllOfContent;
-import com.bandwidth.sdk.model.MultiChannelChannelListRBMResponseObject;
 import com.bandwidth.sdk.model.MultiChannelChannelListRequestObject;
 import com.bandwidth.sdk.model.MultiChannelChannelListResponseObject;
 import com.bandwidth.sdk.model.MultiChannelChannelListSMSObject;
-import com.bandwidth.sdk.model.MultiChannelChannelListSMSResponseObject;
 import com.bandwidth.sdk.model.MultiChannelMessageChannelEnum;
 import com.bandwidth.sdk.model.MultiChannelMessageRequest;
 import com.bandwidth.sdk.model.MultiChannelMessageResponseData;
 import com.bandwidth.sdk.model.PriorityEnum;
-import com.bandwidth.sdk.model.RbmActionDial;
-import com.bandwidth.sdk.model.RbmActionTypeEnum;
-import com.bandwidth.sdk.model.RbmMessageContentText;
+
 import com.bandwidth.sdk.model.SmsMessageContent;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -40,8 +28,6 @@ import java.util.Set;
 
 import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.ArgumentMatchers.contains;
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 
