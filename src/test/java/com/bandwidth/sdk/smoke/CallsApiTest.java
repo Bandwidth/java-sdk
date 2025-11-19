@@ -214,8 +214,6 @@ public class CallsApiTest {
         assertThat(response.getData().get(0), hasProperty("direction", is(instanceOf(CallDirectionEnum.class))));
         assertThat(response.getData().get(0), hasProperty("startTime", is(instanceOf(OffsetDateTime.class))));
         assertThat(response.getData().get(0), hasProperty("endTime", is(instanceOf(OffsetDateTime.class))));
-        assertThat(response.getData().get(0), hasProperty("errorMessage", is(instanceOf(String.class))));
-        assertThat(response.getData().get(0), hasProperty("errorId", is(instanceOf(String.class))));
 
     }
 

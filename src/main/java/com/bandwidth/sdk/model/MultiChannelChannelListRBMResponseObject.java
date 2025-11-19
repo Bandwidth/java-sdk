@@ -15,7 +15,7 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import java.util.Locale;
-import com.bandwidth.sdk.model.MultiChannelChannelListObjectContent;
+import com.bandwidth.sdk.model.MultiChannelChannelListRBMObjectAllOfContent;
 import com.bandwidth.sdk.model.MultiChannelMessageChannelEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -50,10 +50,10 @@ import java.util.Locale;
 import com.bandwidth.sdk.JSON;
 
 /**
- * MultiChannelMessageResponseDataChannelListInner
+ * MultiChannelChannelListRBMResponseObject
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
-public class MultiChannelMessageResponseDataChannelListInner {
+public class MultiChannelChannelListRBMResponseObject {
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
   @javax.annotation.Nonnull
@@ -72,17 +72,17 @@ public class MultiChannelMessageResponseDataChannelListInner {
   public static final String SERIALIZED_NAME_CONTENT = "content";
   @SerializedName(SERIALIZED_NAME_CONTENT)
   @javax.annotation.Nonnull
-  private MultiChannelChannelListObjectContent content;
+  private MultiChannelChannelListRBMObjectAllOfContent content;
 
   public static final String SERIALIZED_NAME_OWNER = "owner";
   @SerializedName(SERIALIZED_NAME_OWNER)
   @javax.annotation.Nonnull
   private String owner;
 
-  public MultiChannelMessageResponseDataChannelListInner() {
+  public MultiChannelChannelListRBMResponseObject() {
   }
 
-  public MultiChannelMessageResponseDataChannelListInner from(@javax.annotation.Nonnull String from) {
+  public MultiChannelChannelListRBMResponseObject from(@javax.annotation.Nonnull String from) {
     this.from = from;
     return this;
   }
@@ -101,7 +101,7 @@ public class MultiChannelMessageResponseDataChannelListInner {
   }
 
 
-  public MultiChannelMessageResponseDataChannelListInner applicationId(@javax.annotation.Nonnull String applicationId) {
+  public MultiChannelChannelListRBMResponseObject applicationId(@javax.annotation.Nonnull String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -120,7 +120,7 @@ public class MultiChannelMessageResponseDataChannelListInner {
   }
 
 
-  public MultiChannelMessageResponseDataChannelListInner channel(@javax.annotation.Nonnull MultiChannelMessageChannelEnum channel) {
+  public MultiChannelChannelListRBMResponseObject channel(@javax.annotation.Nonnull MultiChannelMessageChannelEnum channel) {
     this.channel = channel;
     return this;
   }
@@ -139,7 +139,7 @@ public class MultiChannelMessageResponseDataChannelListInner {
   }
 
 
-  public MultiChannelMessageResponseDataChannelListInner content(@javax.annotation.Nonnull MultiChannelChannelListObjectContent content) {
+  public MultiChannelChannelListRBMResponseObject content(@javax.annotation.Nonnull MultiChannelChannelListRBMObjectAllOfContent content) {
     this.content = content;
     return this;
   }
@@ -149,16 +149,16 @@ public class MultiChannelMessageResponseDataChannelListInner {
    * @return content
    */
   @javax.annotation.Nonnull
-  public MultiChannelChannelListObjectContent getContent() {
+  public MultiChannelChannelListRBMObjectAllOfContent getContent() {
     return content;
   }
 
-  public void setContent(@javax.annotation.Nonnull MultiChannelChannelListObjectContent content) {
+  public void setContent(@javax.annotation.Nonnull MultiChannelChannelListRBMObjectAllOfContent content) {
     this.content = content;
   }
 
 
-  public MultiChannelMessageResponseDataChannelListInner owner(@javax.annotation.Nonnull String owner) {
+  public MultiChannelChannelListRBMResponseObject owner(@javax.annotation.Nonnull String owner) {
     this.owner = owner;
     return this;
   }
@@ -189,9 +189,9 @@ public class MultiChannelMessageResponseDataChannelListInner {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the MultiChannelMessageResponseDataChannelListInner instance itself
+   * @return the MultiChannelChannelListRBMResponseObject instance itself
    */
-  public MultiChannelMessageResponseDataChannelListInner putAdditionalProperty(String key, Object value) {
+  public MultiChannelChannelListRBMResponseObject putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -230,13 +230,13 @@ public class MultiChannelMessageResponseDataChannelListInner {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MultiChannelMessageResponseDataChannelListInner multiChannelMessageResponseDataChannelListInner = (MultiChannelMessageResponseDataChannelListInner) o;
-    return Objects.equals(this.from, multiChannelMessageResponseDataChannelListInner.from) &&
-        Objects.equals(this.applicationId, multiChannelMessageResponseDataChannelListInner.applicationId) &&
-        Objects.equals(this.channel, multiChannelMessageResponseDataChannelListInner.channel) &&
-        Objects.equals(this.content, multiChannelMessageResponseDataChannelListInner.content) &&
-        Objects.equals(this.owner, multiChannelMessageResponseDataChannelListInner.owner)&&
-        Objects.equals(this.additionalProperties, multiChannelMessageResponseDataChannelListInner.additionalProperties);
+    MultiChannelChannelListRBMResponseObject multiChannelChannelListRBMResponseObject = (MultiChannelChannelListRBMResponseObject) o;
+    return Objects.equals(this.from, multiChannelChannelListRBMResponseObject.from) &&
+        Objects.equals(this.applicationId, multiChannelChannelListRBMResponseObject.applicationId) &&
+        Objects.equals(this.channel, multiChannelChannelListRBMResponseObject.channel) &&
+        Objects.equals(this.content, multiChannelChannelListRBMResponseObject.content) &&
+        Objects.equals(this.owner, multiChannelChannelListRBMResponseObject.owner)&&
+        Objects.equals(this.additionalProperties, multiChannelChannelListRBMResponseObject.additionalProperties);
   }
 
   @Override
@@ -247,7 +247,7 @@ public class MultiChannelMessageResponseDataChannelListInner {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MultiChannelMessageResponseDataChannelListInner {\n");
+    sb.append("class MultiChannelChannelListRBMResponseObject {\n");
     sb.append("    from: ").append(toIndentedString(from)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
@@ -285,17 +285,17 @@ public class MultiChannelMessageResponseDataChannelListInner {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to MultiChannelMessageResponseDataChannelListInner
+   * @throws IOException if the JSON Element is invalid with respect to MultiChannelChannelListRBMResponseObject
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!MultiChannelMessageResponseDataChannelListInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in MultiChannelMessageResponseDataChannelListInner is not found in the empty JSON string", MultiChannelMessageResponseDataChannelListInner.openapiRequiredFields.toString()));
+        if (!MultiChannelChannelListRBMResponseObject.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in MultiChannelChannelListRBMResponseObject is not found in the empty JSON string", MultiChannelChannelListRBMResponseObject.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : MultiChannelMessageResponseDataChannelListInner.openapiRequiredFields) {
+      for (String requiredField : MultiChannelChannelListRBMResponseObject.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -310,7 +310,7 @@ public class MultiChannelMessageResponseDataChannelListInner {
       // validate the required field `channel`
       MultiChannelMessageChannelEnum.validateJsonElement(jsonObj.get("channel"));
       // validate the required field `content`
-      MultiChannelChannelListObjectContent.validateJsonElement(jsonObj.get("content"));
+      MultiChannelChannelListRBMObjectAllOfContent.validateJsonElement(jsonObj.get("content"));
       if (!jsonObj.get("owner").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `owner` to be a primitive type in the JSON string but got `%s`", jsonObj.get("owner").toString()));
       }
@@ -320,16 +320,16 @@ public class MultiChannelMessageResponseDataChannelListInner {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!MultiChannelMessageResponseDataChannelListInner.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'MultiChannelMessageResponseDataChannelListInner' and its subtypes
+       if (!MultiChannelChannelListRBMResponseObject.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'MultiChannelChannelListRBMResponseObject' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<MultiChannelMessageResponseDataChannelListInner> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(MultiChannelMessageResponseDataChannelListInner.class));
+       final TypeAdapter<MultiChannelChannelListRBMResponseObject> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(MultiChannelChannelListRBMResponseObject.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<MultiChannelMessageResponseDataChannelListInner>() {
+       return (TypeAdapter<T>) new TypeAdapter<MultiChannelChannelListRBMResponseObject>() {
            @Override
-           public void write(JsonWriter out, MultiChannelMessageResponseDataChannelListInner value) throws IOException {
+           public void write(JsonWriter out, MultiChannelChannelListRBMResponseObject value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -357,12 +357,12 @@ public class MultiChannelMessageResponseDataChannelListInner {
            }
 
            @Override
-           public MultiChannelMessageResponseDataChannelListInner read(JsonReader in) throws IOException {
+           public MultiChannelChannelListRBMResponseObject read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             MultiChannelMessageResponseDataChannelListInner instance = thisAdapter.fromJsonTree(jsonObj);
+             MultiChannelChannelListRBMResponseObject instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -389,18 +389,18 @@ public class MultiChannelMessageResponseDataChannelListInner {
   }
 
   /**
-   * Create an instance of MultiChannelMessageResponseDataChannelListInner given an JSON string
+   * Create an instance of MultiChannelChannelListRBMResponseObject given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of MultiChannelMessageResponseDataChannelListInner
-   * @throws IOException if the JSON string is invalid with respect to MultiChannelMessageResponseDataChannelListInner
+   * @return An instance of MultiChannelChannelListRBMResponseObject
+   * @throws IOException if the JSON string is invalid with respect to MultiChannelChannelListRBMResponseObject
    */
-  public static MultiChannelMessageResponseDataChannelListInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, MultiChannelMessageResponseDataChannelListInner.class);
+  public static MultiChannelChannelListRBMResponseObject fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, MultiChannelChannelListRBMResponseObject.class);
   }
 
   /**
-   * Convert an instance of MultiChannelMessageResponseDataChannelListInner to an JSON string
+   * Convert an instance of MultiChannelChannelListRBMResponseObject to an JSON string
    *
    * @return JSON string
    */

@@ -92,6 +92,30 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "type"));
                     }
           })
+                .registerTypeSelector(com.bandwidth.sdk.model.MultiChannelChannelListRequestObject.class, new TypeSelector<com.bandwidth.sdk.model.MultiChannelChannelListRequestObject>() {
+                    @Override
+                    public Class<? extends com.bandwidth.sdk.model.MultiChannelChannelListRequestObject> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("MMS", com.bandwidth.sdk.model.MultiChannelChannelListMMSObject.class);
+                        classByDiscriminatorValue.put("RBM", com.bandwidth.sdk.model.MultiChannelChannelListRBMObject.class);
+                        classByDiscriminatorValue.put("SMS", com.bandwidth.sdk.model.MultiChannelChannelListSMSObject.class);
+                        classByDiscriminatorValue.put("multiChannelChannelListRequestObject", com.bandwidth.sdk.model.MultiChannelChannelListRequestObject.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "channel"));
+                    }
+          })
+                .registerTypeSelector(com.bandwidth.sdk.model.MultiChannelChannelListResponseObject.class, new TypeSelector<com.bandwidth.sdk.model.MultiChannelChannelListResponseObject>() {
+                    @Override
+                    public Class<? extends com.bandwidth.sdk.model.MultiChannelChannelListResponseObject> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("MMS", com.bandwidth.sdk.model.MultiChannelChannelListMMSResponseObject.class);
+                        classByDiscriminatorValue.put("RBM", com.bandwidth.sdk.model.MultiChannelChannelListRBMResponseObject.class);
+                        classByDiscriminatorValue.put("SMS", com.bandwidth.sdk.model.MultiChannelChannelListSMSResponseObject.class);
+                        classByDiscriminatorValue.put("multiChannelChannelListResponseObject", com.bandwidth.sdk.model.MultiChannelChannelListResponseObject.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "channel"));
+                    }
+          })
         ;
         GsonBuilder builder = fireBuilder.createGsonBuilder();
         return builder;
@@ -198,13 +222,21 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MmsMessageContentFile.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelAction.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelActionCalendarEvent.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelChannelListObject.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelChannelListObjectContent.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelChannelListMMSObject.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelChannelListMMSResponseObject.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelChannelListObjectBase.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelChannelListOwnerObject.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelChannelListRBMObject.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelChannelListRBMObjectAllOfContent.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelChannelListRBMResponseObject.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelChannelListRequestObject.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelChannelListResponseObject.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelChannelListSMSObject.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelChannelListSMSResponseObject.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelMessageContent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelMessageRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelMessageResponseData.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.MultiChannelMessageResponseDataChannelListInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.OptInWorkflow.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.PageInfo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RbmActionBase.CustomTypeAdapterFactory());

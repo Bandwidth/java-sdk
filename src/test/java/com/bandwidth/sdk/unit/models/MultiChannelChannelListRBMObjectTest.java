@@ -13,33 +13,31 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import org.junit.jupiter.api.Test;
-
-import com.bandwidth.sdk.model.MultiChannelChannelListObjectContent;
+import com.bandwidth.sdk.model.MultiChannelChannelListRBMObject;
+import com.bandwidth.sdk.model.MultiChannelChannelListRBMObjectAllOfContent;
 import com.bandwidth.sdk.model.MultiChannelMessageChannelEnum;
-import com.bandwidth.sdk.model.MultiChannelMessageResponseDataChannelListInner;
+
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
- * Model tests for MultiChannelMessageResponseDataChannelListInner
+ * Model tests for MultiChannelChannelListRBMObject
  */
-public class MultiChannelMessageResponseDataChannelListInnerTest {
-    private final MultiChannelMessageResponseDataChannelListInner model
-        = new MultiChannelMessageResponseDataChannelListInner()
-            .from("from")
-            .applicationId("applicationId")
-            .channel(MultiChannelMessageChannelEnum.SMS)
-            .content(new MultiChannelChannelListObjectContent())
-            .owner("owner");
+public class MultiChannelChannelListRBMObjectTest {
+    private final MultiChannelChannelListRBMObject model = new MultiChannelChannelListRBMObject()
+            .from("+1234567890")
+            .applicationId("app-1234")
+            .channel(MultiChannelMessageChannelEnum.RBM)
+            .content(new MultiChannelChannelListRBMObjectAllOfContent());
 
     /**
-     * Model tests for MultiChannelMessageResponseDataChannelListInner
+     * Model tests for MultiChannelChannelListRBMObject
      */
     @Test
-    public void testMultiChannelMessageResponseDataChannelListInner() {
-        assertThat(model, instanceOf(MultiChannelMessageResponseDataChannelListInner.class));
+    public void testMultiChannelChannelListRBMObject() {
+        assertThat(model, instanceOf(MultiChannelChannelListRBMObject.class));
     }
 
     /**
@@ -71,15 +69,7 @@ public class MultiChannelMessageResponseDataChannelListInnerTest {
      */
     @Test
     public void contentTest() {
-        assertThat(model.getContent(), instanceOf(MultiChannelChannelListObjectContent.class));
-    }
-
-    /**
-     * Test the property 'owner'
-     */
-    @Test
-    public void ownerTest() {
-        assertThat(model.getOwner(), instanceOf(String.class));
+        assertThat(model.getContent(), instanceOf(MultiChannelChannelListRBMObjectAllOfContent.class));
     }
 
 }

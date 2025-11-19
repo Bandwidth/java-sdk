@@ -123,13 +123,51 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: MultiChannelActionCalendarEvent, RbmActionBase, RbmActionDial, RbmActionOpenUrl, RbmActionViewLocation");
+                    throw new IOException("Failed to serialize as the type doesn't match anyOf schemas: MultiChannelActionCalendarEvent, RbmActionBase, RbmActionDial, RbmActionOpenUrl, RbmActionViewLocation");
                 }
 
                 @Override
                 public MultiChannelAction read(JsonReader in) throws IOException {
                     Object deserialized = null;
                     JsonElement jsonElement = elementAdapter.read(in);
+
+                    JsonObject jsonObject = jsonElement.getAsJsonObject();
+
+                    // use discriminator value for faster oneOf lookup
+                    MultiChannelAction newMultiChannelAction = new MultiChannelAction();
+                    if (jsonObject.get("type") == null) {
+                        log.log(Level.WARNING, "Failed to lookup discriminator value for MultiChannelAction as `type` was not found in the payload or the payload is empty.");
+                    } else  {
+                        // look up the discriminator value in the field `type`
+                        switch (jsonObject.get("type").getAsString()) {
+                            case "CREATE_CALENDAR_EVENT":
+                                deserialized = adapterMultiChannelActionCalendarEvent.fromJsonTree(jsonObject);
+                                newMultiChannelAction.setActualInstance(deserialized);
+                                return newMultiChannelAction;
+                            case "DIAL_PHONE":
+                                deserialized = adapterRbmActionDial.fromJsonTree(jsonObject);
+                                newMultiChannelAction.setActualInstance(deserialized);
+                                return newMultiChannelAction;
+                            case "OPEN_URL":
+                                deserialized = adapterRbmActionOpenUrl.fromJsonTree(jsonObject);
+                                newMultiChannelAction.setActualInstance(deserialized);
+                                return newMultiChannelAction;
+                            case "REPLY":
+                                deserialized = adapterRbmActionBase.fromJsonTree(jsonObject);
+                                newMultiChannelAction.setActualInstance(deserialized);
+                                return newMultiChannelAction;
+                            case "REQUEST_LOCATION":
+                                deserialized = adapterRbmActionBase.fromJsonTree(jsonObject);
+                                newMultiChannelAction.setActualInstance(deserialized);
+                                return newMultiChannelAction;
+                            case "SHOW_LOCATION":
+                                deserialized = adapterRbmActionViewLocation.fromJsonTree(jsonObject);
+                                newMultiChannelAction.setActualInstance(deserialized);
+                                return newMultiChannelAction;
+                            default:
+                                log.log(Level.WARNING, String.format(Locale.ROOT, "Failed to lookup discriminator value `%s` for MultiChannelAction. Possible values: CREATE_CALENDAR_EVENT DIAL_PHONE OPEN_URL REPLY REQUEST_LOCATION SHOW_LOCATION", jsonObject.get("type").getAsString()));
+                        }
+                    }
 
                     int match = 0;
                     ArrayList<String> errorMessages = new ArrayList<>();
@@ -140,8 +178,9 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
                         // validate the JSON object to see if any exception is thrown
                         RbmActionBase.validateJsonElement(jsonElement);
                         actualAdapter = adapterRbmActionBase;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'RbmActionBase'");
+                        MultiChannelAction ret = new MultiChannelAction();
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                        return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
                         errorMessages.add(String.format(Locale.ROOT, "Deserialization for RbmActionBase failed with `%s`.", e.getMessage()));
@@ -152,8 +191,9 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
                         // validate the JSON object to see if any exception is thrown
                         RbmActionDial.validateJsonElement(jsonElement);
                         actualAdapter = adapterRbmActionDial;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'RbmActionDial'");
+                        MultiChannelAction ret = new MultiChannelAction();
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                        return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
                         errorMessages.add(String.format(Locale.ROOT, "Deserialization for RbmActionDial failed with `%s`.", e.getMessage()));
@@ -164,8 +204,9 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
                         // validate the JSON object to see if any exception is thrown
                         RbmActionViewLocation.validateJsonElement(jsonElement);
                         actualAdapter = adapterRbmActionViewLocation;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'RbmActionViewLocation'");
+                        MultiChannelAction ret = new MultiChannelAction();
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                        return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
                         errorMessages.add(String.format(Locale.ROOT, "Deserialization for RbmActionViewLocation failed with `%s`.", e.getMessage()));
@@ -176,8 +217,9 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
                         // validate the JSON object to see if any exception is thrown
                         MultiChannelActionCalendarEvent.validateJsonElement(jsonElement);
                         actualAdapter = adapterMultiChannelActionCalendarEvent;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'MultiChannelActionCalendarEvent'");
+                        MultiChannelAction ret = new MultiChannelAction();
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                        return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
                         errorMessages.add(String.format(Locale.ROOT, "Deserialization for MultiChannelActionCalendarEvent failed with `%s`.", e.getMessage()));
@@ -188,35 +230,30 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
                         // validate the JSON object to see if any exception is thrown
                         RbmActionOpenUrl.validateJsonElement(jsonElement);
                         actualAdapter = adapterRbmActionOpenUrl;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'RbmActionOpenUrl'");
+                        MultiChannelAction ret = new MultiChannelAction();
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                        return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
                         errorMessages.add(String.format(Locale.ROOT, "Deserialization for RbmActionOpenUrl failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'RbmActionOpenUrl'", e);
                     }
 
-                    if (match == 1) {
-                        MultiChannelAction ret = new MultiChannelAction();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
-
-                    throw new IOException(String.format(Locale.ROOT, "Failed deserialization for MultiChannelAction: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(Locale.ROOT, "Failed deserialization for MultiChannelAction: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
     }
 
-    // store a list of schema names defined in oneOf
+    // store a list of schema names defined in anyOf
     public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
 
     public MultiChannelAction() {
-        super("oneOf", Boolean.FALSE);
+        super("anyOf", Boolean.FALSE);
     }
 
     public MultiChannelAction(Object o) {
-        super("oneOf", Boolean.FALSE);
+        super("anyOf", Boolean.FALSE);
         setActualInstance(o);
     }
 
@@ -234,11 +271,11 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
     }
 
     /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
+     * Set the instance that matches the anyOf child schema, check
+     * the instance parameter is valid against the anyOf child schemas:
      * MultiChannelActionCalendarEvent, RbmActionBase, RbmActionDial, RbmActionOpenUrl, RbmActionViewLocation
      *
-     * It could be an instance of the 'oneOf' schemas.
+     * It could be an instance of the 'anyOf' schemas.
      */
     @Override
     public void setActualInstance(Object instance) {
@@ -344,13 +381,12 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
      * @throws IOException if the JSON Element is invalid with respect to MultiChannelAction
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        // validate oneOf schemas one by one
-        int validCount = 0;
+        // validate anyOf schemas one by one
         ArrayList<String> errorMessages = new ArrayList<>();
         // validate the json string with RbmActionBase
         try {
             RbmActionBase.validateJsonElement(jsonElement);
-            validCount++;
+            return;
         } catch (Exception e) {
             errorMessages.add(String.format(Locale.ROOT, "Deserialization for RbmActionBase failed with `%s`.", e.getMessage()));
             // continue to the next one
@@ -358,7 +394,7 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
         // validate the json string with RbmActionDial
         try {
             RbmActionDial.validateJsonElement(jsonElement);
-            validCount++;
+            return;
         } catch (Exception e) {
             errorMessages.add(String.format(Locale.ROOT, "Deserialization for RbmActionDial failed with `%s`.", e.getMessage()));
             // continue to the next one
@@ -366,7 +402,7 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
         // validate the json string with RbmActionViewLocation
         try {
             RbmActionViewLocation.validateJsonElement(jsonElement);
-            validCount++;
+            return;
         } catch (Exception e) {
             errorMessages.add(String.format(Locale.ROOT, "Deserialization for RbmActionViewLocation failed with `%s`.", e.getMessage()));
             // continue to the next one
@@ -374,7 +410,7 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
         // validate the json string with MultiChannelActionCalendarEvent
         try {
             MultiChannelActionCalendarEvent.validateJsonElement(jsonElement);
-            validCount++;
+            return;
         } catch (Exception e) {
             errorMessages.add(String.format(Locale.ROOT, "Deserialization for MultiChannelActionCalendarEvent failed with `%s`.", e.getMessage()));
             // continue to the next one
@@ -382,14 +418,12 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
         // validate the json string with RbmActionOpenUrl
         try {
             RbmActionOpenUrl.validateJsonElement(jsonElement);
-            validCount++;
+            return;
         } catch (Exception e) {
             errorMessages.add(String.format(Locale.ROOT, "Deserialization for RbmActionOpenUrl failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        if (validCount != 1) {
-            throw new IOException(String.format(Locale.ROOT, "The JSON string is invalid for MultiChannelAction with oneOf schemas: MultiChannelActionCalendarEvent, RbmActionBase, RbmActionDial, RbmActionOpenUrl, RbmActionViewLocation. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
-        }
+        throw new IOException(String.format(Locale.ROOT, "The JSON string is invalid for MultiChannelAction with anyOf schemas: MultiChannelActionCalendarEvent, RbmActionBase, RbmActionDial, RbmActionOpenUrl, RbmActionViewLocation. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
     }
 
     /**

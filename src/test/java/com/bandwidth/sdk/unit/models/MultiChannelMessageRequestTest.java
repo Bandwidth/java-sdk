@@ -13,29 +13,27 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import org.junit.jupiter.api.Test;
-
-import com.bandwidth.sdk.model.MultiChannelChannelListObject;
 import com.bandwidth.sdk.model.MultiChannelMessageRequest;
 import com.bandwidth.sdk.model.PriorityEnum;
 
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Model tests for MultiChannelMessageRequest
  */
 public class MultiChannelMessageRequestTest {
     private final MultiChannelMessageRequest model = new MultiChannelMessageRequest()
-            .to("to")
-            .channelList(new ArrayList<MultiChannelChannelListObject>(Arrays.asList(new MultiChannelChannelListObject())))
+            .to("+1234567890")
+            .channelList(Arrays.asList())
             .tag("tag")
-            .priority(PriorityEnum.DEFAULT)
-            .expiration(OffsetDateTime.now());
+            .priority(PriorityEnum.HIGH)
+            .expiration(OffsetDateTime.now().plusSeconds(60));
 
     /**
      * Model tests for MultiChannelMessageRequest
@@ -58,7 +56,7 @@ public class MultiChannelMessageRequestTest {
      */
     @Test
     public void channelListTest() {
-        assertThat(model.getChannelList(), instanceOf(ArrayList.class));
+        assertThat(model.getChannelList(), instanceOf(List.class));
     }
 
     /**

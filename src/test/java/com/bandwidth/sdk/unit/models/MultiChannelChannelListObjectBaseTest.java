@@ -13,31 +13,29 @@
 
 package com.bandwidth.sdk.unit.models;
 
-import org.junit.jupiter.api.Test;
-
-import com.bandwidth.sdk.model.MultiChannelChannelListObject;
-import com.bandwidth.sdk.model.MultiChannelChannelListObjectContent;
+import com.bandwidth.sdk.model.MultiChannelChannelListObjectBase;
 import com.bandwidth.sdk.model.MultiChannelMessageChannelEnum;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+import org.junit.jupiter.api.Test;
+
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
- * Model tests for MultiChannelChannelListObject
+ * Model tests for MultiChannelChannelListObjectBase
  */
-public class MultiChannelChannelListObjectTest {
-    private final MultiChannelChannelListObject model = new MultiChannelChannelListObject()
-            .from("from")
-            .applicationId("applicationId")
-            .channel(MultiChannelMessageChannelEnum.SMS)
-            .content(new MultiChannelChannelListObjectContent());
+public class MultiChannelChannelListObjectBaseTest {
+    private final MultiChannelChannelListObjectBase model = new MultiChannelChannelListObjectBase()
+            .from("+1234567890")
+            .applicationId("app-1234")
+            .channel(MultiChannelMessageChannelEnum.SMS);
 
     /**
-     * Model tests for MultiChannelChannelListObject
+     * Model tests for MultiChannelChannelListObjectBase
      */
     @Test
-    public void testMultiChannelChannelListObject() {
-        assertThat(model, instanceOf(MultiChannelChannelListObject.class));
+    public void testMultiChannelChannelListObjectBase() {
+        assertThat(model, instanceOf(MultiChannelChannelListObjectBase.class));
     }
 
     /**
@@ -62,14 +60,6 @@ public class MultiChannelChannelListObjectTest {
     @Test
     public void channelTest() {
         assertThat(model.getChannel(), instanceOf(MultiChannelMessageChannelEnum.class));
-    }
-
-    /**
-     * Test the property 'content'
-     */
-    @Test
-    public void contentTest() {
-        assertThat(model.getContent(), instanceOf(MultiChannelChannelListObjectContent.class));
     }
 
 }

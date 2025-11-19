@@ -16,14 +16,12 @@ package com.bandwidth.sdk.model;
 import java.util.Objects;
 import java.util.Locale;
 import com.bandwidth.sdk.model.CardWidthEnum;
-import com.bandwidth.sdk.model.MmsMessageContent;
-import com.bandwidth.sdk.model.MmsMessageContentFile;
 import com.bandwidth.sdk.model.MultiChannelAction;
 import com.bandwidth.sdk.model.RbmCardContent;
+import com.bandwidth.sdk.model.RbmMessageContentFile;
 import com.bandwidth.sdk.model.RbmMessageContentRichCard;
 import com.bandwidth.sdk.model.RbmMessageContentText;
 import com.bandwidth.sdk.model.RbmMessageMedia;
-import com.bandwidth.sdk.model.SmsMessageContent;
 import com.bandwidth.sdk.model.StandaloneCardOrientationEnum;
 import com.bandwidth.sdk.model.ThumbnailAlignmentEnum;
 import com.google.gson.TypeAdapter;
@@ -73,26 +71,24 @@ import com.google.gson.JsonParseException;
 import com.bandwidth.sdk.JSON;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
-public class MultiChannelChannelListObjectContent extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(MultiChannelChannelListObjectContent.class.getName());
+public class MultiChannelChannelListRBMObjectAllOfContent extends AbstractOpenApiSchema {
+    private static final Logger log = Logger.getLogger(MultiChannelChannelListRBMObjectAllOfContent.class.getName());
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!MultiChannelChannelListObjectContent.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'MultiChannelChannelListObjectContent' and its subtypes
+            if (!MultiChannelChannelListRBMObjectAllOfContent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'MultiChannelChannelListRBMObjectAllOfContent' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<RbmMessageContentText> adapterRbmMessageContentText = gson.getDelegateAdapter(this, TypeToken.get(RbmMessageContentText.class));
             final TypeAdapter<RbmMessageMedia> adapterRbmMessageMedia = gson.getDelegateAdapter(this, TypeToken.get(RbmMessageMedia.class));
             final TypeAdapter<RbmMessageContentRichCard> adapterRbmMessageContentRichCard = gson.getDelegateAdapter(this, TypeToken.get(RbmMessageContentRichCard.class));
-            final TypeAdapter<SmsMessageContent> adapterSmsMessageContent = gson.getDelegateAdapter(this, TypeToken.get(SmsMessageContent.class));
-            final TypeAdapter<MmsMessageContent> adapterMmsMessageContent = gson.getDelegateAdapter(this, TypeToken.get(MmsMessageContent.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<MultiChannelChannelListObjectContent>() {
+            return (TypeAdapter<T>) new TypeAdapter<MultiChannelChannelListRBMObjectAllOfContent>() {
                 @Override
-                public void write(JsonWriter out, MultiChannelChannelListObjectContent value) throws IOException {
+                public void write(JsonWriter out, MultiChannelChannelListRBMObjectAllOfContent value) throws IOException {
                     if (value == null || value.getActualInstance() == null) {
                         elementAdapter.write(out, null);
                         return;
@@ -116,23 +112,11 @@ public class MultiChannelChannelListObjectContent extends AbstractOpenApiSchema 
                         elementAdapter.write(out, element);
                         return;
                     }
-                    // check if the actual instance is of the type `SmsMessageContent`
-                    if (value.getActualInstance() instanceof SmsMessageContent) {
-                        JsonElement element = adapterSmsMessageContent.toJsonTree((SmsMessageContent)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `MmsMessageContent`
-                    if (value.getActualInstance() instanceof MmsMessageContent) {
-                        JsonElement element = adapterMmsMessageContent.toJsonTree((MmsMessageContent)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: MmsMessageContent, RbmMessageContentRichCard, RbmMessageContentText, RbmMessageMedia, SmsMessageContent");
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: RbmMessageContentRichCard, RbmMessageContentText, RbmMessageMedia");
                 }
 
                 @Override
-                public MultiChannelChannelListObjectContent read(JsonReader in) throws IOException {
+                public MultiChannelChannelListRBMObjectAllOfContent read(JsonReader in) throws IOException {
                     Object deserialized = null;
                     JsonElement jsonElement = elementAdapter.read(in);
 
@@ -176,38 +160,14 @@ public class MultiChannelChannelListObjectContent extends AbstractOpenApiSchema 
                         errorMessages.add(String.format(Locale.ROOT, "Deserialization for RbmMessageContentRichCard failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'RbmMessageContentRichCard'", e);
                     }
-                    // deserialize SmsMessageContent
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        SmsMessageContent.validateJsonElement(jsonElement);
-                        actualAdapter = adapterSmsMessageContent;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'SmsMessageContent'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for SmsMessageContent failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'SmsMessageContent'", e);
-                    }
-                    // deserialize MmsMessageContent
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        MmsMessageContent.validateJsonElement(jsonElement);
-                        actualAdapter = adapterMmsMessageContent;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'MmsMessageContent'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for MmsMessageContent failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'MmsMessageContent'", e);
-                    }
 
                     if (match == 1) {
-                        MultiChannelChannelListObjectContent ret = new MultiChannelChannelListObjectContent();
+                        MultiChannelChannelListRBMObjectAllOfContent ret = new MultiChannelChannelListRBMObjectAllOfContent();
                         ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
                         return ret;
                     }
 
-                    throw new IOException(String.format(Locale.ROOT, "Failed deserialization for MultiChannelChannelListObjectContent: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(Locale.ROOT, "Failed deserialization for MultiChannelChannelListRBMObjectAllOfContent: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -216,11 +176,11 @@ public class MultiChannelChannelListObjectContent extends AbstractOpenApiSchema 
     // store a list of schema names defined in oneOf
     public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
 
-    public MultiChannelChannelListObjectContent() {
+    public MultiChannelChannelListRBMObjectAllOfContent() {
         super("oneOf", Boolean.FALSE);
     }
 
-    public MultiChannelChannelListObjectContent(Object o) {
+    public MultiChannelChannelListRBMObjectAllOfContent(Object o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
     }
@@ -229,19 +189,17 @@ public class MultiChannelChannelListObjectContent extends AbstractOpenApiSchema 
         schemas.put("RbmMessageContentText", RbmMessageContentText.class);
         schemas.put("RbmMessageMedia", RbmMessageMedia.class);
         schemas.put("RbmMessageContentRichCard", RbmMessageContentRichCard.class);
-        schemas.put("SmsMessageContent", SmsMessageContent.class);
-        schemas.put("MmsMessageContent", MmsMessageContent.class);
     }
 
     @Override
     public Map<String, Class<?>> getSchemas() {
-        return MultiChannelChannelListObjectContent.schemas;
+        return MultiChannelChannelListRBMObjectAllOfContent.schemas;
     }
 
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * MmsMessageContent, RbmMessageContentRichCard, RbmMessageContentText, RbmMessageMedia, SmsMessageContent
+     * RbmMessageContentRichCard, RbmMessageContentText, RbmMessageMedia
      *
      * It could be an instance of the 'oneOf' schemas.
      */
@@ -262,24 +220,14 @@ public class MultiChannelChannelListObjectContent extends AbstractOpenApiSchema 
             return;
         }
 
-        if (instance instanceof SmsMessageContent) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof MmsMessageContent) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be MmsMessageContent, RbmMessageContentRichCard, RbmMessageContentText, RbmMessageMedia, SmsMessageContent");
+        throw new RuntimeException("Invalid instance type. Must be RbmMessageContentRichCard, RbmMessageContentText, RbmMessageMedia");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * MmsMessageContent, RbmMessageContentRichCard, RbmMessageContentText, RbmMessageMedia, SmsMessageContent
+     * RbmMessageContentRichCard, RbmMessageContentText, RbmMessageMedia
      *
-     * @return The actual instance (MmsMessageContent, RbmMessageContentRichCard, RbmMessageContentText, RbmMessageMedia, SmsMessageContent)
+     * @return The actual instance (RbmMessageContentRichCard, RbmMessageContentText, RbmMessageMedia)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -321,32 +269,10 @@ public class MultiChannelChannelListObjectContent extends AbstractOpenApiSchema 
     }
 
     /**
-     * Get the actual instance of `SmsMessageContent`. If the actual instance is not `SmsMessageContent`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `SmsMessageContent`
-     * @throws ClassCastException if the instance is not `SmsMessageContent`
-     */
-    public SmsMessageContent getSmsMessageContent() throws ClassCastException {
-        return (SmsMessageContent)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `MmsMessageContent`. If the actual instance is not `MmsMessageContent`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `MmsMessageContent`
-     * @throws ClassCastException if the instance is not `MmsMessageContent`
-     */
-    public MmsMessageContent getMmsMessageContent() throws ClassCastException {
-        return (MmsMessageContent)super.getActualInstance();
-    }
-
-    /**
      * Validates the JSON Element and throws an exception if issues found
      *
      * @param jsonElement JSON Element
-     * @throws IOException if the JSON Element is invalid with respect to MultiChannelChannelListObjectContent
+     * @throws IOException if the JSON Element is invalid with respect to MultiChannelChannelListRBMObjectAllOfContent
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         // validate oneOf schemas one by one
@@ -376,40 +302,24 @@ public class MultiChannelChannelListObjectContent extends AbstractOpenApiSchema 
             errorMessages.add(String.format(Locale.ROOT, "Deserialization for RbmMessageContentRichCard failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        // validate the json string with SmsMessageContent
-        try {
-            SmsMessageContent.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format(Locale.ROOT, "Deserialization for SmsMessageContent failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with MmsMessageContent
-        try {
-            MmsMessageContent.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format(Locale.ROOT, "Deserialization for MmsMessageContent failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
         if (validCount != 1) {
-            throw new IOException(String.format(Locale.ROOT, "The JSON string is invalid for MultiChannelChannelListObjectContent with oneOf schemas: MmsMessageContent, RbmMessageContentRichCard, RbmMessageContentText, RbmMessageMedia, SmsMessageContent. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(Locale.ROOT, "The JSON string is invalid for MultiChannelChannelListRBMObjectAllOfContent with oneOf schemas: RbmMessageContentRichCard, RbmMessageContentText, RbmMessageMedia. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 
     /**
-     * Create an instance of MultiChannelChannelListObjectContent given an JSON string
+     * Create an instance of MultiChannelChannelListRBMObjectAllOfContent given an JSON string
      *
      * @param jsonString JSON string
-     * @return An instance of MultiChannelChannelListObjectContent
-     * @throws IOException if the JSON string is invalid with respect to MultiChannelChannelListObjectContent
+     * @return An instance of MultiChannelChannelListRBMObjectAllOfContent
+     * @throws IOException if the JSON string is invalid with respect to MultiChannelChannelListRBMObjectAllOfContent
      */
-    public static MultiChannelChannelListObjectContent fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, MultiChannelChannelListObjectContent.class);
+    public static MultiChannelChannelListRBMObjectAllOfContent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, MultiChannelChannelListRBMObjectAllOfContent.class);
     }
 
     /**
-     * Convert an instance of MultiChannelChannelListObjectContent to an JSON string
+     * Convert an instance of MultiChannelChannelListRBMObjectAllOfContent to an JSON string
      *
      * @return JSON string
      */

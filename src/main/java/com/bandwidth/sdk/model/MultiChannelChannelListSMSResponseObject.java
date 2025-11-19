@@ -15,8 +15,8 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import java.util.Locale;
-import com.bandwidth.sdk.model.MultiChannelChannelListObjectContent;
 import com.bandwidth.sdk.model.MultiChannelMessageChannelEnum;
+import com.bandwidth.sdk.model.SmsMessageContent;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -50,10 +50,10 @@ import java.util.Locale;
 import com.bandwidth.sdk.JSON;
 
 /**
- * MultiChannelChannelListObject
+ * MultiChannelChannelListSMSResponseObject
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
-public class MultiChannelChannelListObject {
+public class MultiChannelChannelListSMSResponseObject {
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
   @javax.annotation.Nonnull
@@ -72,12 +72,17 @@ public class MultiChannelChannelListObject {
   public static final String SERIALIZED_NAME_CONTENT = "content";
   @SerializedName(SERIALIZED_NAME_CONTENT)
   @javax.annotation.Nonnull
-  private MultiChannelChannelListObjectContent content;
+  private SmsMessageContent content;
 
-  public MultiChannelChannelListObject() {
+  public static final String SERIALIZED_NAME_OWNER = "owner";
+  @SerializedName(SERIALIZED_NAME_OWNER)
+  @javax.annotation.Nonnull
+  private String owner;
+
+  public MultiChannelChannelListSMSResponseObject() {
   }
 
-  public MultiChannelChannelListObject from(@javax.annotation.Nonnull String from) {
+  public MultiChannelChannelListSMSResponseObject from(@javax.annotation.Nonnull String from) {
     this.from = from;
     return this;
   }
@@ -96,7 +101,7 @@ public class MultiChannelChannelListObject {
   }
 
 
-  public MultiChannelChannelListObject applicationId(@javax.annotation.Nonnull String applicationId) {
+  public MultiChannelChannelListSMSResponseObject applicationId(@javax.annotation.Nonnull String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -115,7 +120,7 @@ public class MultiChannelChannelListObject {
   }
 
 
-  public MultiChannelChannelListObject channel(@javax.annotation.Nonnull MultiChannelMessageChannelEnum channel) {
+  public MultiChannelChannelListSMSResponseObject channel(@javax.annotation.Nonnull MultiChannelMessageChannelEnum channel) {
     this.channel = channel;
     return this;
   }
@@ -134,7 +139,7 @@ public class MultiChannelChannelListObject {
   }
 
 
-  public MultiChannelChannelListObject content(@javax.annotation.Nonnull MultiChannelChannelListObjectContent content) {
+  public MultiChannelChannelListSMSResponseObject content(@javax.annotation.Nonnull SmsMessageContent content) {
     this.content = content;
     return this;
   }
@@ -144,12 +149,31 @@ public class MultiChannelChannelListObject {
    * @return content
    */
   @javax.annotation.Nonnull
-  public MultiChannelChannelListObjectContent getContent() {
+  public SmsMessageContent getContent() {
     return content;
   }
 
-  public void setContent(@javax.annotation.Nonnull MultiChannelChannelListObjectContent content) {
+  public void setContent(@javax.annotation.Nonnull SmsMessageContent content) {
     this.content = content;
+  }
+
+
+  public MultiChannelChannelListSMSResponseObject owner(@javax.annotation.Nonnull String owner) {
+    this.owner = owner;
+    return this;
+  }
+
+  /**
+   * The Bandwidth senderId associated with the message. Identical to &#39;from&#39;.
+   * @return owner
+   */
+  @javax.annotation.Nonnull
+  public String getOwner() {
+    return owner;
+  }
+
+  public void setOwner(@javax.annotation.Nonnull String owner) {
+    this.owner = owner;
   }
 
   /**
@@ -165,9 +189,9 @@ public class MultiChannelChannelListObject {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the MultiChannelChannelListObject instance itself
+   * @return the MultiChannelChannelListSMSResponseObject instance itself
    */
-  public MultiChannelChannelListObject putAdditionalProperty(String key, Object value) {
+  public MultiChannelChannelListSMSResponseObject putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -206,27 +230,29 @@ public class MultiChannelChannelListObject {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MultiChannelChannelListObject multiChannelChannelListObject = (MultiChannelChannelListObject) o;
-    return Objects.equals(this.from, multiChannelChannelListObject.from) &&
-        Objects.equals(this.applicationId, multiChannelChannelListObject.applicationId) &&
-        Objects.equals(this.channel, multiChannelChannelListObject.channel) &&
-        Objects.equals(this.content, multiChannelChannelListObject.content)&&
-        Objects.equals(this.additionalProperties, multiChannelChannelListObject.additionalProperties);
+    MultiChannelChannelListSMSResponseObject multiChannelChannelListSMSResponseObject = (MultiChannelChannelListSMSResponseObject) o;
+    return Objects.equals(this.from, multiChannelChannelListSMSResponseObject.from) &&
+        Objects.equals(this.applicationId, multiChannelChannelListSMSResponseObject.applicationId) &&
+        Objects.equals(this.channel, multiChannelChannelListSMSResponseObject.channel) &&
+        Objects.equals(this.content, multiChannelChannelListSMSResponseObject.content) &&
+        Objects.equals(this.owner, multiChannelChannelListSMSResponseObject.owner)&&
+        Objects.equals(this.additionalProperties, multiChannelChannelListSMSResponseObject.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(from, applicationId, channel, content, additionalProperties);
+    return Objects.hash(from, applicationId, channel, content, owner, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MultiChannelChannelListObject {\n");
+    sb.append("class MultiChannelChannelListSMSResponseObject {\n");
     sb.append("    from: ").append(toIndentedString(from)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
+    sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -249,27 +275,27 @@ public class MultiChannelChannelListObject {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("from", "applicationId", "channel", "content"));
+    openapiFields = new HashSet<String>(Arrays.asList("from", "applicationId", "channel", "content", "owner"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("from", "applicationId", "channel", "content"));
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("from", "applicationId", "channel", "content", "owner"));
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to MultiChannelChannelListObject
+   * @throws IOException if the JSON Element is invalid with respect to MultiChannelChannelListSMSResponseObject
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!MultiChannelChannelListObject.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in MultiChannelChannelListObject is not found in the empty JSON string", MultiChannelChannelListObject.openapiRequiredFields.toString()));
+        if (!MultiChannelChannelListSMSResponseObject.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in MultiChannelChannelListSMSResponseObject is not found in the empty JSON string", MultiChannelChannelListSMSResponseObject.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : MultiChannelChannelListObject.openapiRequiredFields) {
+      for (String requiredField : MultiChannelChannelListSMSResponseObject.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -284,23 +310,26 @@ public class MultiChannelChannelListObject {
       // validate the required field `channel`
       MultiChannelMessageChannelEnum.validateJsonElement(jsonObj.get("channel"));
       // validate the required field `content`
-      MultiChannelChannelListObjectContent.validateJsonElement(jsonObj.get("content"));
+      SmsMessageContent.validateJsonElement(jsonObj.get("content"));
+      if (!jsonObj.get("owner").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `owner` to be a primitive type in the JSON string but got `%s`", jsonObj.get("owner").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!MultiChannelChannelListObject.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'MultiChannelChannelListObject' and its subtypes
+       if (!MultiChannelChannelListSMSResponseObject.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'MultiChannelChannelListSMSResponseObject' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<MultiChannelChannelListObject> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(MultiChannelChannelListObject.class));
+       final TypeAdapter<MultiChannelChannelListSMSResponseObject> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(MultiChannelChannelListSMSResponseObject.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<MultiChannelChannelListObject>() {
+       return (TypeAdapter<T>) new TypeAdapter<MultiChannelChannelListSMSResponseObject>() {
            @Override
-           public void write(JsonWriter out, MultiChannelChannelListObject value) throws IOException {
+           public void write(JsonWriter out, MultiChannelChannelListSMSResponseObject value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -328,12 +357,12 @@ public class MultiChannelChannelListObject {
            }
 
            @Override
-           public MultiChannelChannelListObject read(JsonReader in) throws IOException {
+           public MultiChannelChannelListSMSResponseObject read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             MultiChannelChannelListObject instance = thisAdapter.fromJsonTree(jsonObj);
+             MultiChannelChannelListSMSResponseObject instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -360,18 +389,18 @@ public class MultiChannelChannelListObject {
   }
 
   /**
-   * Create an instance of MultiChannelChannelListObject given an JSON string
+   * Create an instance of MultiChannelChannelListSMSResponseObject given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of MultiChannelChannelListObject
-   * @throws IOException if the JSON string is invalid with respect to MultiChannelChannelListObject
+   * @return An instance of MultiChannelChannelListSMSResponseObject
+   * @throws IOException if the JSON string is invalid with respect to MultiChannelChannelListSMSResponseObject
    */
-  public static MultiChannelChannelListObject fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, MultiChannelChannelListObject.class);
+  public static MultiChannelChannelListSMSResponseObject fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, MultiChannelChannelListSMSResponseObject.class);
   }
 
   /**
-   * Convert an instance of MultiChannelChannelListObject to an JSON string
+   * Convert an instance of MultiChannelChannelListSMSResponseObject to an JSON string
    *
    * @return JSON string
    */
