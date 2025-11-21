@@ -39,7 +39,7 @@ import lombok.NoArgsConstructor;
  * @param multiChannel (str, optional): A boolean value indicating whether or not the recording file should separate each side of the call into its own audio channel. Default value is false.
  *
  */
-public class StartRecording implements TranscriptionProducer {
+public class StartRecording implements Verb {
 
     public static final String TYPE_NAME = "StartRecording";
 
@@ -52,12 +52,21 @@ public class StartRecording implements TranscriptionProducer {
 
     @XmlAttribute
     protected Boolean transcribe;
+    public Boolean getTranscribe() {
+        return transcribe;
+    }
 
     @XmlAttribute
     protected String transcriptionAvailableUrl;
+    String getTranscriptionAvailableUrl() {
+        return transcriptionAvailableUrl;
+    }
 
     @XmlAttribute
     protected String transcriptionAvailableMethod;
+    String getTranscriptionAvailableMethod() {
+        return transcriptionAvailableMethod;
+    }
 
     @XmlAttribute
     protected String username;

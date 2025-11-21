@@ -56,10 +56,13 @@ public class Bxml {
             @XmlElement(name = StopStream.TYPE_NAME, type = StopStream.class),
             @XmlElement(name = StartTranscription.TYPE_NAME, type = StartTranscription.class),
             @XmlElement(name = StopTranscription.TYPE_NAME, type = StopTranscription.class),
-
     })
 
     private List<Verb> verbs = new ArrayList<>();
+
+    public List<Verb> getVerbs() {
+        return verbs;
+    }
 
     public Bxml with(Verb verb) {
         this.verbs.add(verb);
