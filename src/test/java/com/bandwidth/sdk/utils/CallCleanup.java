@@ -9,7 +9,6 @@ import com.bandwidth.sdk.smoke.RecordingsApiTest;
 import com.bandwidth.sdk.model.CallStateEnum;
 import com.bandwidth.sdk.model.UpdateCall;
 import com.bandwidth.sdk.ApiException;
-import com.bandwidth.sdk.ApiResponse;
 
 import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 
@@ -21,6 +20,7 @@ public class CallCleanup {
      *
      * @param callIdList List of Bandwidth call ID's
      */
+    @SuppressWarnings("null")
     public static final void Cleanup(CallsApiTest testClass, List<String> callIdList) throws Exception {
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
 
@@ -34,9 +34,7 @@ public class CallCleanup {
                     if (!callState.equalsIgnoreCase("disconnected")) {
                         UpdateCall updateCallBody = new UpdateCall();
                         updateCallBody.setState(CallStateEnum.COMPLETED);
-                        ApiResponse<Void> response = testClass.api.updateCallWithHttpInfo(BW_ACCOUNT_ID,
-                                callIdList.get(i),
-                                updateCallBody);
+                        testClass.api.updateCallWithHttpInfo(BW_ACCOUNT_ID, callIdList.get(i), updateCallBody);
                     }
                 }
             } catch (ApiException e) {
@@ -51,6 +49,7 @@ public class CallCleanup {
      *
      * @param callId Bandwidth call ID
      */
+    @SuppressWarnings("null")
     public static final void Cleanup(ConferencesApiTest testClass, String callId) throws Exception {
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
 
@@ -62,9 +61,7 @@ public class CallCleanup {
             if (!callState.equalsIgnoreCase("disconnected")) {
                 UpdateCall updateCallBody = new UpdateCall();
                 updateCallBody.setState(CallStateEnum.COMPLETED);
-                ApiResponse<Void> response = testClass.callsApi.updateCallWithHttpInfo(BW_ACCOUNT_ID,
-                        callId,
-                        updateCallBody);
+                testClass.callsApi.updateCallWithHttpInfo(BW_ACCOUNT_ID, callId, updateCallBody);
             }
         } catch (ApiException e) {
             System.out.println("API Error: " + e.toString());
@@ -72,6 +69,7 @@ public class CallCleanup {
         }
     }
 
+    @SuppressWarnings("null")
     public static final void Cleanup(RecordingsApiTest testClass, String callId) throws Exception {
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
 
@@ -83,9 +81,7 @@ public class CallCleanup {
             if (!callState.equalsIgnoreCase("disconnected")) {
                 UpdateCall updateCallBody = new UpdateCall();
                 updateCallBody.setState(CallStateEnum.COMPLETED);
-                ApiResponse<Void> response = testClass.callsApi.updateCallWithHttpInfo(BW_ACCOUNT_ID,
-                        callId,
-                        updateCallBody);
+                testClass.callsApi.updateCallWithHttpInfo(BW_ACCOUNT_ID, callId, updateCallBody);
             }
         } catch (ApiException e) {
             System.out.println("API Error: " + e.toString());

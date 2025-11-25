@@ -107,6 +107,48 @@ public class Callback extends AbstractOpenApiSchema {
                     Object deserialized = null;
                     JsonElement jsonElement = elementAdapter.read(in);
 
+                    JsonObject jsonObject = jsonElement.getAsJsonObject();
+
+                    // use discriminator value for faster oneOf lookup
+                    Callback newCallback = new Callback();
+                    if (jsonObject.get("type") == null) {
+                        log.log(Level.WARNING, "Failed to lookup discriminator value for Callback as `type` was not found in the payload or the payload is empty.");
+                    } else  {
+                        // look up the discriminator value in the field `type`
+                        switch (jsonObject.get("type").getAsString()) {
+                            case "message-delivered":
+                                deserialized = adapterStatusCallback.fromJsonTree(jsonObject);
+                                newCallback.setActualInstance(deserialized);
+                                return newCallback;
+                            case "message-failed":
+                                deserialized = adapterStatusCallback.fromJsonTree(jsonObject);
+                                newCallback.setActualInstance(deserialized);
+                                return newCallback;
+                            case "message-read":
+                                deserialized = adapterStatusCallback.fromJsonTree(jsonObject);
+                                newCallback.setActualInstance(deserialized);
+                                return newCallback;
+                            case "message-received":
+                                deserialized = adapterInboundCallback.fromJsonTree(jsonObject);
+                                newCallback.setActualInstance(deserialized);
+                                return newCallback;
+                            case "message-sent":
+                                deserialized = adapterStatusCallback.fromJsonTree(jsonObject);
+                                newCallback.setActualInstance(deserialized);
+                                return newCallback;
+                            case "request-location-response":
+                                deserialized = adapterInboundCallback.fromJsonTree(jsonObject);
+                                newCallback.setActualInstance(deserialized);
+                                return newCallback;
+                            case "suggestion-response":
+                                deserialized = adapterInboundCallback.fromJsonTree(jsonObject);
+                                newCallback.setActualInstance(deserialized);
+                                return newCallback;
+                            default:
+                                log.log(Level.WARNING, String.format(Locale.ROOT, "Failed to lookup discriminator value `%s` for Callback. Possible values: message-delivered message-failed message-read message-received message-sent request-location-response suggestion-response", jsonObject.get("type").getAsString()));
+                        }
+                    }
+
                     int match = 0;
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;

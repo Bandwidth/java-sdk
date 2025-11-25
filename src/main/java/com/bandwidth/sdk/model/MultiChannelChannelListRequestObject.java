@@ -114,6 +114,33 @@ public class MultiChannelChannelListRequestObject extends AbstractOpenApiSchema 
                     Object deserialized = null;
                     JsonElement jsonElement = elementAdapter.read(in);
 
+                    JsonObject jsonObject = jsonElement.getAsJsonObject();
+
+                    // use discriminator value for faster oneOf lookup
+                    MultiChannelChannelListRequestObject newMultiChannelChannelListRequestObject = new MultiChannelChannelListRequestObject();
+                    if (jsonObject.get("channel") == null) {
+                        log.log(Level.WARNING, "Failed to lookup discriminator value for MultiChannelChannelListRequestObject as `channel` was not found in the payload or the payload is empty.");
+                    } else  {
+                        // look up the discriminator value in the field `channel`
+                        switch (jsonObject.get("channel").getAsString()) {
+                            case "MMS":
+                                deserialized = adapterMultiChannelChannelListMMSObject.fromJsonTree(jsonObject);
+                                newMultiChannelChannelListRequestObject.setActualInstance(deserialized);
+                                return newMultiChannelChannelListRequestObject;
+                            case "RBM":
+                                deserialized = adapterMultiChannelChannelListRBMObject.fromJsonTree(jsonObject);
+                                newMultiChannelChannelListRequestObject.setActualInstance(deserialized);
+                                return newMultiChannelChannelListRequestObject;
+                            case "SMS":
+                                deserialized = adapterMultiChannelChannelListSMSObject.fromJsonTree(jsonObject);
+                                newMultiChannelChannelListRequestObject.setActualInstance(deserialized);
+                                return newMultiChannelChannelListRequestObject;
+                            default:
+                                log.log(Level.WARNING, String.format(Locale.ROOT, "Failed to lookup discriminator value `%s` for MultiChannelChannelListRequestObject. Possible values: MMS RBM SMS", jsonObject.get("channel").getAsString()));
+                        }
+                    }
+
+                    int match = 0;
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;
 
