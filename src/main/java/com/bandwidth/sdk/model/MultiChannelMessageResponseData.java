@@ -16,7 +16,7 @@ package com.bandwidth.sdk.model;
 import java.util.Objects;
 import java.util.Locale;
 import com.bandwidth.sdk.model.MessageDirectionEnum;
-import com.bandwidth.sdk.model.MultiChannelMessageResponseDataChannelListInner;
+import com.bandwidth.sdk.model.MultiChannelChannelListResponseObject;
 import com.bandwidth.sdk.model.PriorityEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -83,7 +83,7 @@ public class MultiChannelMessageResponseData {
   public static final String SERIALIZED_NAME_CHANNEL_LIST = "channelList";
   @SerializedName(SERIALIZED_NAME_CHANNEL_LIST)
   @javax.annotation.Nonnull
-  private List<MultiChannelMessageResponseDataChannelListInner> channelList = new ArrayList<>();
+  private List<MultiChannelChannelListResponseObject> channelList = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
@@ -187,12 +187,12 @@ public class MultiChannelMessageResponseData {
   }
 
 
-  public MultiChannelMessageResponseData channelList(@javax.annotation.Nonnull List<MultiChannelMessageResponseDataChannelListInner> channelList) {
+  public MultiChannelMessageResponseData channelList(@javax.annotation.Nonnull List<MultiChannelChannelListResponseObject> channelList) {
     this.channelList = channelList;
     return this;
   }
 
-  public MultiChannelMessageResponseData addChannelListItem(MultiChannelMessageResponseDataChannelListInner channelListItem) {
+  public MultiChannelMessageResponseData addChannelListItem(MultiChannelChannelListResponseObject channelListItem) {
     if (this.channelList == null) {
       this.channelList = new ArrayList<>();
     }
@@ -205,11 +205,11 @@ public class MultiChannelMessageResponseData {
    * @return channelList
    */
   @javax.annotation.Nonnull
-  public List<MultiChannelMessageResponseDataChannelListInner> getChannelList() {
+  public List<MultiChannelChannelListResponseObject> getChannelList() {
     return channelList;
   }
 
-  public void setChannelList(@javax.annotation.Nonnull List<MultiChannelMessageResponseDataChannelListInner> channelList) {
+  public void setChannelList(@javax.annotation.Nonnull List<MultiChannelChannelListResponseObject> channelList) {
     this.channelList = channelList;
   }
 
@@ -420,7 +420,7 @@ public class MultiChannelMessageResponseData {
       JsonArray jsonArraychannelList = jsonObj.getAsJsonArray("channelList");
       // validate the required field `channelList` (array)
       for (int i = 0; i < jsonArraychannelList.size(); i++) {
-        MultiChannelMessageResponseDataChannelListInner.validateJsonElement(jsonArraychannelList.get(i));
+        MultiChannelChannelListResponseObject.validateJsonElement(jsonArraychannelList.get(i));
       };
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
