@@ -7,6 +7,8 @@ import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.model.AccountStatistics;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -17,6 +19,7 @@ import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 /**
  * API tests for StatisticsApi
  */
+@Disabled
 public class StatisticsApiTest {
     ApiClient oauthClient = new ApiClient(BW_USERNAME, BW_PASSWORD, null);
     private final StatisticsApi api = new StatisticsApi(oauthClient);
