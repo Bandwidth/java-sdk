@@ -14,7 +14,6 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import java.util.Locale;
 import com.bandwidth.sdk.model.CardWidthEnum;
 import com.bandwidth.sdk.model.MultiChannelAction;
 import com.bandwidth.sdk.model.RbmCardContent;
@@ -46,7 +45,6 @@ import java.util.HashSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Locale;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -70,7 +68,7 @@ import com.google.gson.JsonParseException;
 
 import com.bandwidth.sdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class MultiChannelChannelListRBMObjectAllOfContent extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(MultiChannelChannelListRBMObjectAllOfContent.class.getName());
 
@@ -133,7 +131,7 @@ public class MultiChannelChannelListRBMObjectAllOfContent extends AbstractOpenAp
                         log.log(Level.FINER, "Input data matches schema 'RbmMessageContentText'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for RbmMessageContentText failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format("Deserialization for RbmMessageContentText failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'RbmMessageContentText'", e);
                     }
                     // deserialize RbmMessageMedia
@@ -145,7 +143,7 @@ public class MultiChannelChannelListRBMObjectAllOfContent extends AbstractOpenAp
                         log.log(Level.FINER, "Input data matches schema 'RbmMessageMedia'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for RbmMessageMedia failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format("Deserialization for RbmMessageMedia failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'RbmMessageMedia'", e);
                     }
                     // deserialize RbmMessageContentRichCard
@@ -157,7 +155,7 @@ public class MultiChannelChannelListRBMObjectAllOfContent extends AbstractOpenAp
                         log.log(Level.FINER, "Input data matches schema 'RbmMessageContentRichCard'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for RbmMessageContentRichCard failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format("Deserialization for RbmMessageContentRichCard failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'RbmMessageContentRichCard'", e);
                     }
 
@@ -167,7 +165,7 @@ public class MultiChannelChannelListRBMObjectAllOfContent extends AbstractOpenAp
                         return ret;
                     }
 
-                    throw new IOException(String.format(Locale.ROOT, "Failed deserialization for MultiChannelChannelListRBMObjectAllOfContent: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format("Failed deserialization for MultiChannelChannelListRBMObjectAllOfContent: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -283,7 +281,7 @@ public class MultiChannelChannelListRBMObjectAllOfContent extends AbstractOpenAp
             RbmMessageContentText.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format(Locale.ROOT, "Deserialization for RbmMessageContentText failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format("Deserialization for RbmMessageContentText failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with RbmMessageMedia
@@ -291,7 +289,7 @@ public class MultiChannelChannelListRBMObjectAllOfContent extends AbstractOpenAp
             RbmMessageMedia.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format(Locale.ROOT, "Deserialization for RbmMessageMedia failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format("Deserialization for RbmMessageMedia failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with RbmMessageContentRichCard
@@ -299,11 +297,11 @@ public class MultiChannelChannelListRBMObjectAllOfContent extends AbstractOpenAp
             RbmMessageContentRichCard.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format(Locale.ROOT, "Deserialization for RbmMessageContentRichCard failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format("Deserialization for RbmMessageContentRichCard failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format(Locale.ROOT, "The JSON string is invalid for MultiChannelChannelListRBMObjectAllOfContent with oneOf schemas: RbmMessageContentRichCard, RbmMessageContentText, RbmMessageMedia. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format("The JSON string is invalid for MultiChannelChannelListRBMObjectAllOfContent with oneOf schemas: RbmMessageContentRichCard, RbmMessageContentText, RbmMessageMedia. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

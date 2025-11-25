@@ -14,7 +14,6 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import java.util.Locale;
 import com.bandwidth.sdk.model.MmsMessageContent;
 import com.bandwidth.sdk.model.MultiChannelChannelListMMSObject;
 import com.bandwidth.sdk.model.MultiChannelChannelListRBMObject;
@@ -64,7 +63,7 @@ import com.google.gson.JsonParseException;
 
 import com.bandwidth.sdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class MultiChannelChannelListRequestObject extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(MultiChannelChannelListRequestObject.class.getName());
 
@@ -90,19 +89,19 @@ public class MultiChannelChannelListRequestObject extends AbstractOpenApiSchema 
 
                     // check if the actual instance is of the type `MultiChannelChannelListRBMObject`
                     if (value.getActualInstance() instanceof MultiChannelChannelListRBMObject) {
-                        JsonElement element = adapterMultiChannelChannelListRBMObject.toJsonTree((MultiChannelChannelListRBMObject)value.getActualInstance());
+                        JsonElement element = adapter.toJsonTree((MultiChannelChannelListRBMObject)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
                     // check if the actual instance is of the type `MultiChannelChannelListSMSObject`
                     if (value.getActualInstance() instanceof MultiChannelChannelListSMSObject) {
-                        JsonElement element = adapterMultiChannelChannelListSMSObject.toJsonTree((MultiChannelChannelListSMSObject)value.getActualInstance());
+                        JsonElement element = adapter.toJsonTree((MultiChannelChannelListSMSObject)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
                     // check if the actual instance is of the type `MultiChannelChannelListMMSObject`
                     if (value.getActualInstance() instanceof MultiChannelChannelListMMSObject) {
-                        JsonElement element = adapterMultiChannelChannelListMMSObject.toJsonTree((MultiChannelChannelListMMSObject)value.getActualInstance());
+                        JsonElement element = adapter.toJsonTree((MultiChannelChannelListMMSObject)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
@@ -135,8 +134,20 @@ public class MultiChannelChannelListRequestObject extends AbstractOpenApiSchema 
                                 deserialized = adapterMultiChannelChannelListSMSObject.fromJsonTree(jsonObject);
                                 newMultiChannelChannelListRequestObject.setActualInstance(deserialized);
                                 return newMultiChannelChannelListRequestObject;
+                            case "multiChannelChannelListMMSObject":
+                                deserialized = adapterMultiChannelChannelListMMSObject.fromJsonTree(jsonObject);
+                                newMultiChannelChannelListRequestObject.setActualInstance(deserialized);
+                                return newMultiChannelChannelListRequestObject;
+                            case "multiChannelChannelListRBMObject":
+                                deserialized = adapterMultiChannelChannelListRBMObject.fromJsonTree(jsonObject);
+                                newMultiChannelChannelListRequestObject.setActualInstance(deserialized);
+                                return newMultiChannelChannelListRequestObject;
+                            case "multiChannelChannelListSMSObject":
+                                deserialized = adapterMultiChannelChannelListSMSObject.fromJsonTree(jsonObject);
+                                newMultiChannelChannelListRequestObject.setActualInstance(deserialized);
+                                return newMultiChannelChannelListRequestObject;
                             default:
-                                log.log(Level.WARNING, String.format(Locale.ROOT, "Failed to lookup discriminator value `%s` for MultiChannelChannelListRequestObject. Possible values: MMS RBM SMS", jsonObject.get("channel").getAsString()));
+                                log.log(Level.WARNING, String.format(Locale.ROOT, "Failed to lookup discriminator value `%s` for MultiChannelChannelListRequestObject. Possible values: MMS RBM SMS multiChannelChannelListMMSObject multiChannelChannelListRBMObject multiChannelChannelListSMSObject", jsonObject.get("channel").getAsString()));
                         }
                     }
 
@@ -148,7 +159,7 @@ public class MultiChannelChannelListRequestObject extends AbstractOpenApiSchema 
                     try {
                         // validate the JSON object to see if any exception is thrown
                         MultiChannelChannelListRBMObject.validateJsonElement(jsonElement);
-                        actualAdapter = adapterMultiChannelChannelListRBMObject;
+                        actualAdapter = adapter;
                         MultiChannelChannelListRequestObject ret = new MultiChannelChannelListRequestObject();
                         ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
                         return ret;
@@ -161,7 +172,7 @@ public class MultiChannelChannelListRequestObject extends AbstractOpenApiSchema 
                     try {
                         // validate the JSON object to see if any exception is thrown
                         MultiChannelChannelListSMSObject.validateJsonElement(jsonElement);
-                        actualAdapter = adapterMultiChannelChannelListSMSObject;
+                        actualAdapter = adapter;
                         MultiChannelChannelListRequestObject ret = new MultiChannelChannelListRequestObject();
                         ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
                         return ret;
@@ -174,7 +185,7 @@ public class MultiChannelChannelListRequestObject extends AbstractOpenApiSchema 
                     try {
                         // validate the JSON object to see if any exception is thrown
                         MultiChannelChannelListMMSObject.validateJsonElement(jsonElement);
-                        actualAdapter = adapterMultiChannelChannelListMMSObject;
+                        actualAdapter = adapter;
                         MultiChannelChannelListRequestObject ret = new MultiChannelChannelListRequestObject();
                         ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
                         return ret;
@@ -259,7 +270,7 @@ public class MultiChannelChannelListRequestObject extends AbstractOpenApiSchema 
      * @return The actual instance of `MultiChannelChannelListRBMObject`
      * @throws ClassCastException if the instance is not `MultiChannelChannelListRBMObject`
      */
-    public MultiChannelChannelListRBMObject getMultiChannelChannelListRBMObject() throws ClassCastException {
+    public MultiChannelChannelListRBMObject get() throws ClassCastException {
         return (MultiChannelChannelListRBMObject)super.getActualInstance();
     }
 
@@ -270,7 +281,7 @@ public class MultiChannelChannelListRequestObject extends AbstractOpenApiSchema 
      * @return The actual instance of `MultiChannelChannelListSMSObject`
      * @throws ClassCastException if the instance is not `MultiChannelChannelListSMSObject`
      */
-    public MultiChannelChannelListSMSObject getMultiChannelChannelListSMSObject() throws ClassCastException {
+    public MultiChannelChannelListSMSObject get() throws ClassCastException {
         return (MultiChannelChannelListSMSObject)super.getActualInstance();
     }
 
@@ -281,7 +292,7 @@ public class MultiChannelChannelListRequestObject extends AbstractOpenApiSchema 
      * @return The actual instance of `MultiChannelChannelListMMSObject`
      * @throws ClassCastException if the instance is not `MultiChannelChannelListMMSObject`
      */
-    public MultiChannelChannelListMMSObject getMultiChannelChannelListMMSObject() throws ClassCastException {
+    public MultiChannelChannelListMMSObject get() throws ClassCastException {
         return (MultiChannelChannelListMMSObject)super.getActualInstance();
     }
 

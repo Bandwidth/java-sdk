@@ -14,7 +14,6 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import java.util.Locale;
 import com.bandwidth.sdk.model.DeactivationEventEnum;
 import com.bandwidth.sdk.model.LatestMessageDeliveryStatusEnum;
 import com.bandwidth.sdk.model.LineTypeEnum;
@@ -47,14 +46,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
  * Carrier information results for the specified telephone number.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class LookupResult {
   public static final String SERIALIZED_NAME_PHONE_NUMBER = "phoneNumber";
   @SerializedName(SERIALIZED_NAME_PHONE_NUMBER)
@@ -433,10 +431,21 @@ public class LookupResult {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("phoneNumber", "lineType", "messagingProvider", "voiceProvider", "countryCodeA3", "deactivationReporter", "deactivationDate", "deactivationEvent", "latestMessageDeliveryStatus", "initialMessageDeliveryStatusDate", "latestMessageDeliveryStatusDate"));
+    openapiFields = new HashSet<String>();
+    openapiFields.add("phoneNumber");
+    openapiFields.add("lineType");
+    openapiFields.add("messagingProvider");
+    openapiFields.add("voiceProvider");
+    openapiFields.add("countryCodeA3");
+    openapiFields.add("deactivationReporter");
+    openapiFields.add("deactivationDate");
+    openapiFields.add("deactivationEvent");
+    openapiFields.add("latestMessageDeliveryStatus");
+    openapiFields.add("initialMessageDeliveryStatusDate");
+    openapiFields.add("latestMessageDeliveryStatusDate");
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(0);
+    openapiRequiredFields = new HashSet<String>();
   }
 
   /**
@@ -448,31 +457,31 @@ public class LookupResult {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!LookupResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in LookupResult is not found in the empty JSON string", LookupResult.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format("The required field(s) %s in LookupResult is not found in the empty JSON string", LookupResult.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("phoneNumber") != null && !jsonObj.get("phoneNumber").isJsonNull()) && !jsonObj.get("phoneNumber").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `phoneNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phoneNumber").toString()));
+        throw new IllegalArgumentException(String.format("Expected the field `phoneNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phoneNumber").toString()));
       }
       // validate the optional field `lineType`
       if (jsonObj.get("lineType") != null && !jsonObj.get("lineType").isJsonNull()) {
         LineTypeEnum.validateJsonElement(jsonObj.get("lineType"));
       }
       if ((jsonObj.get("messagingProvider") != null && !jsonObj.get("messagingProvider").isJsonNull()) && !jsonObj.get("messagingProvider").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `messagingProvider` to be a primitive type in the JSON string but got `%s`", jsonObj.get("messagingProvider").toString()));
+        throw new IllegalArgumentException(String.format("Expected the field `messagingProvider` to be a primitive type in the JSON string but got `%s`", jsonObj.get("messagingProvider").toString()));
       }
       if ((jsonObj.get("voiceProvider") != null && !jsonObj.get("voiceProvider").isJsonNull()) && !jsonObj.get("voiceProvider").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `voiceProvider` to be a primitive type in the JSON string but got `%s`", jsonObj.get("voiceProvider").toString()));
+        throw new IllegalArgumentException(String.format("Expected the field `voiceProvider` to be a primitive type in the JSON string but got `%s`", jsonObj.get("voiceProvider").toString()));
       }
       if ((jsonObj.get("countryCodeA3") != null && !jsonObj.get("countryCodeA3").isJsonNull()) && !jsonObj.get("countryCodeA3").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `countryCodeA3` to be a primitive type in the JSON string but got `%s`", jsonObj.get("countryCodeA3").toString()));
+        throw new IllegalArgumentException(String.format("Expected the field `countryCodeA3` to be a primitive type in the JSON string but got `%s`", jsonObj.get("countryCodeA3").toString()));
       }
       if ((jsonObj.get("deactivationReporter") != null && !jsonObj.get("deactivationReporter").isJsonNull()) && !jsonObj.get("deactivationReporter").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `deactivationReporter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deactivationReporter").toString()));
+        throw new IllegalArgumentException(String.format("Expected the field `deactivationReporter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deactivationReporter").toString()));
       }
       if ((jsonObj.get("deactivationDate") != null && !jsonObj.get("deactivationDate").isJsonNull()) && !jsonObj.get("deactivationDate").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `deactivationDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deactivationDate").toString()));
+        throw new IllegalArgumentException(String.format("Expected the field `deactivationDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deactivationDate").toString()));
       }
       // validate the optional field `deactivationEvent`
       if (jsonObj.get("deactivationEvent") != null && !jsonObj.get("deactivationEvent").isJsonNull()) {
@@ -541,7 +550,7 @@ public class LookupResult {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

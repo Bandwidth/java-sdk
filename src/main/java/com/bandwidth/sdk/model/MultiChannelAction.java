@@ -14,7 +14,6 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import java.util.Locale;
 import com.bandwidth.sdk.model.MultiChannelActionCalendarEvent;
 import com.bandwidth.sdk.model.RbmActionBase;
 import com.bandwidth.sdk.model.RbmActionDial;
@@ -67,7 +66,7 @@ import com.google.gson.JsonParseException;
 
 import com.bandwidth.sdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class MultiChannelAction extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(MultiChannelAction.class.getName());
 
@@ -95,31 +94,31 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
 
                     // check if the actual instance is of the type `RbmActionBase`
                     if (value.getActualInstance() instanceof RbmActionBase) {
-                        JsonElement element = adapterRbmActionBase.toJsonTree((RbmActionBase)value.getActualInstance());
+                        JsonElement element = adapter.toJsonTree((RbmActionBase)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
                     // check if the actual instance is of the type `RbmActionDial`
                     if (value.getActualInstance() instanceof RbmActionDial) {
-                        JsonElement element = adapterRbmActionDial.toJsonTree((RbmActionDial)value.getActualInstance());
+                        JsonElement element = adapter.toJsonTree((RbmActionDial)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
                     // check if the actual instance is of the type `RbmActionViewLocation`
                     if (value.getActualInstance() instanceof RbmActionViewLocation) {
-                        JsonElement element = adapterRbmActionViewLocation.toJsonTree((RbmActionViewLocation)value.getActualInstance());
+                        JsonElement element = adapter.toJsonTree((RbmActionViewLocation)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
                     // check if the actual instance is of the type `MultiChannelActionCalendarEvent`
                     if (value.getActualInstance() instanceof MultiChannelActionCalendarEvent) {
-                        JsonElement element = adapterMultiChannelActionCalendarEvent.toJsonTree((MultiChannelActionCalendarEvent)value.getActualInstance());
+                        JsonElement element = adapter.toJsonTree((MultiChannelActionCalendarEvent)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
                     // check if the actual instance is of the type `RbmActionOpenUrl`
                     if (value.getActualInstance() instanceof RbmActionOpenUrl) {
-                        JsonElement element = adapterRbmActionOpenUrl.toJsonTree((RbmActionOpenUrl)value.getActualInstance());
+                        JsonElement element = adapter.toJsonTree((RbmActionOpenUrl)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
@@ -164,8 +163,28 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
                                 deserialized = adapterRbmActionViewLocation.fromJsonTree(jsonObject);
                                 newMultiChannelAction.setActualInstance(deserialized);
                                 return newMultiChannelAction;
+                            case "multiChannelActionCalendarEvent":
+                                deserialized = adapterMultiChannelActionCalendarEvent.fromJsonTree(jsonObject);
+                                newMultiChannelAction.setActualInstance(deserialized);
+                                return newMultiChannelAction;
+                            case "rbmActionBase":
+                                deserialized = adapterRbmActionBase.fromJsonTree(jsonObject);
+                                newMultiChannelAction.setActualInstance(deserialized);
+                                return newMultiChannelAction;
+                            case "rbmActionDial":
+                                deserialized = adapterRbmActionDial.fromJsonTree(jsonObject);
+                                newMultiChannelAction.setActualInstance(deserialized);
+                                return newMultiChannelAction;
+                            case "rbmActionOpenUrl":
+                                deserialized = adapterRbmActionOpenUrl.fromJsonTree(jsonObject);
+                                newMultiChannelAction.setActualInstance(deserialized);
+                                return newMultiChannelAction;
+                            case "rbmActionViewLocation":
+                                deserialized = adapterRbmActionViewLocation.fromJsonTree(jsonObject);
+                                newMultiChannelAction.setActualInstance(deserialized);
+                                return newMultiChannelAction;
                             default:
-                                log.log(Level.WARNING, String.format(Locale.ROOT, "Failed to lookup discriminator value `%s` for MultiChannelAction. Possible values: CREATE_CALENDAR_EVENT DIAL_PHONE OPEN_URL REPLY REQUEST_LOCATION SHOW_LOCATION", jsonObject.get("type").getAsString()));
+                                log.log(Level.WARNING, String.format(Locale.ROOT, "Failed to lookup discriminator value `%s` for MultiChannelAction. Possible values: CREATE_CALENDAR_EVENT DIAL_PHONE OPEN_URL REPLY REQUEST_LOCATION SHOW_LOCATION multiChannelActionCalendarEvent rbmActionBase rbmActionDial rbmActionOpenUrl rbmActionViewLocation", jsonObject.get("type").getAsString()));
                         }
                     }
 
@@ -177,7 +196,7 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
                     try {
                         // validate the JSON object to see if any exception is thrown
                         RbmActionBase.validateJsonElement(jsonElement);
-                        actualAdapter = adapterRbmActionBase;
+                        actualAdapter = adapter;
                         MultiChannelAction ret = new MultiChannelAction();
                         ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
                         return ret;
@@ -190,7 +209,7 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
                     try {
                         // validate the JSON object to see if any exception is thrown
                         RbmActionDial.validateJsonElement(jsonElement);
-                        actualAdapter = adapterRbmActionDial;
+                        actualAdapter = adapter;
                         MultiChannelAction ret = new MultiChannelAction();
                         ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
                         return ret;
@@ -203,7 +222,7 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
                     try {
                         // validate the JSON object to see if any exception is thrown
                         RbmActionViewLocation.validateJsonElement(jsonElement);
-                        actualAdapter = adapterRbmActionViewLocation;
+                        actualAdapter = adapter;
                         MultiChannelAction ret = new MultiChannelAction();
                         ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
                         return ret;
@@ -216,7 +235,7 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
                     try {
                         // validate the JSON object to see if any exception is thrown
                         MultiChannelActionCalendarEvent.validateJsonElement(jsonElement);
-                        actualAdapter = adapterMultiChannelActionCalendarEvent;
+                        actualAdapter = adapter;
                         MultiChannelAction ret = new MultiChannelAction();
                         ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
                         return ret;
@@ -229,7 +248,7 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
                     try {
                         // validate the JSON object to see if any exception is thrown
                         RbmActionOpenUrl.validateJsonElement(jsonElement);
-                        actualAdapter = adapterRbmActionOpenUrl;
+                        actualAdapter = adapter;
                         MultiChannelAction ret = new MultiChannelAction();
                         ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
                         return ret;
@@ -326,7 +345,7 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
      * @return The actual instance of `RbmActionBase`
      * @throws ClassCastException if the instance is not `RbmActionBase`
      */
-    public RbmActionBase getRbmActionBase() throws ClassCastException {
+    public RbmActionBase get() throws ClassCastException {
         return (RbmActionBase)super.getActualInstance();
     }
 
@@ -337,7 +356,7 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
      * @return The actual instance of `RbmActionDial`
      * @throws ClassCastException if the instance is not `RbmActionDial`
      */
-    public RbmActionDial getRbmActionDial() throws ClassCastException {
+    public RbmActionDial get() throws ClassCastException {
         return (RbmActionDial)super.getActualInstance();
     }
 
@@ -348,7 +367,7 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
      * @return The actual instance of `RbmActionViewLocation`
      * @throws ClassCastException if the instance is not `RbmActionViewLocation`
      */
-    public RbmActionViewLocation getRbmActionViewLocation() throws ClassCastException {
+    public RbmActionViewLocation get() throws ClassCastException {
         return (RbmActionViewLocation)super.getActualInstance();
     }
 
@@ -359,7 +378,7 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
      * @return The actual instance of `MultiChannelActionCalendarEvent`
      * @throws ClassCastException if the instance is not `MultiChannelActionCalendarEvent`
      */
-    public MultiChannelActionCalendarEvent getMultiChannelActionCalendarEvent() throws ClassCastException {
+    public MultiChannelActionCalendarEvent get() throws ClassCastException {
         return (MultiChannelActionCalendarEvent)super.getActualInstance();
     }
 
@@ -370,7 +389,7 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
      * @return The actual instance of `RbmActionOpenUrl`
      * @throws ClassCastException if the instance is not `RbmActionOpenUrl`
      */
-    public RbmActionOpenUrl getRbmActionOpenUrl() throws ClassCastException {
+    public RbmActionOpenUrl get() throws ClassCastException {
         return (RbmActionOpenUrl)super.getActualInstance();
     }
 

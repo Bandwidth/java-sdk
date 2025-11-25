@@ -14,11 +14,9 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import java.util.Locale;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.IOException;
-import java.util.Locale;
 import com.google.gson.TypeAdapter;
 import com.google.gson.JsonElement;
 import com.google.gson.annotations.JsonAdapter;
@@ -31,13 +29,13 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(StatusCallbackTypeEnum.Adapter.class)
 public enum StatusCallbackTypeEnum {
   
-  MESSAGE_SENDING("message-sending"),
+  SENDING("message-sending"),
   
-  MESSAGE_DELIVERED("message-delivered"),
+  DELIVERED("message-delivered"),
   
-  MESSAGE_FAILED("message-failed"),
+  FAILED("message-failed"),
   
-  MESSAGE_READ("message-read");
+  READ("message-read");
 
   private String value;
 

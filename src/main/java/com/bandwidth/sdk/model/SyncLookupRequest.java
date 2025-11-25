@@ -14,7 +14,6 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import java.util.Locale;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -45,14 +44,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
  * SyncLookupRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class SyncLookupRequest {
   public static final String SERIALIZED_NAME_PHONE_NUMBERS = "phoneNumbers";
   @SerializedName(SERIALIZED_NAME_PHONE_NUMBERS)
@@ -179,10 +177,12 @@ public class SyncLookupRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("phoneNumbers"));
+    openapiFields = new HashSet<String>();
+    openapiFields.add("phoneNumbers");
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("phoneNumbers"));
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("phoneNumbers");
   }
 
   /**
@@ -194,14 +194,14 @@ public class SyncLookupRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!SyncLookupRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in SyncLookupRequest is not found in the empty JSON string", SyncLookupRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format("The required field(s) %s in SyncLookupRequest is not found in the empty JSON string", SyncLookupRequest.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : SyncLookupRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -209,7 +209,7 @@ public class SyncLookupRequest {
       if (jsonObj.get("phoneNumbers") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("phoneNumbers").isJsonArray()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `phoneNumbers` to be an array in the JSON string but got `%s`", jsonObj.get("phoneNumbers").toString()));
+        throw new IllegalArgumentException(String.format("Expected the field `phoneNumbers` to be an array in the JSON string but got `%s`", jsonObj.get("phoneNumbers").toString()));
       }
   }
 
@@ -270,7 +270,7 @@ public class SyncLookupRequest {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

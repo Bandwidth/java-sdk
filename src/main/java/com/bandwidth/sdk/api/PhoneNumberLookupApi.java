@@ -93,7 +93,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAsyncBulkLookupCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull AsyncLookupRequest asyncLookupRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createAsyncBulkLookupCall(String accountId, AsyncLookupRequest asyncLookupRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://api.bandwidth.com/v2" };
@@ -135,12 +135,12 @@ public class PhoneNumberLookupApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAsyncBulkLookupValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull AsyncLookupRequest asyncLookupRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAsyncBulkLookupValidateBeforeCall(String accountId, AsyncLookupRequest asyncLookupRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling createAsyncBulkLookup(Async)");
@@ -170,7 +170,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public CreateAsyncBulkLookupResponse createAsyncBulkLookup(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull AsyncLookupRequest asyncLookupRequest) throws ApiException {
+    public CreateAsyncBulkLookupResponse createAsyncBulkLookup(String accountId, AsyncLookupRequest asyncLookupRequest) throws ApiException {
         ApiResponse<CreateAsyncBulkLookupResponse> localVarResp = createAsyncBulkLookupWithHttpInfo(accountId, asyncLookupRequest);
         return localVarResp.getData();
     }
@@ -190,7 +190,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateAsyncBulkLookupResponse> createAsyncBulkLookupWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull AsyncLookupRequest asyncLookupRequest) throws ApiException {
+    public ApiResponse<CreateAsyncBulkLookupResponse> createAsyncBulkLookupWithHttpInfo(String accountId, AsyncLookupRequest asyncLookupRequest) throws ApiException {
         okhttp3.Call localVarCall = createAsyncBulkLookupValidateBeforeCall(accountId, asyncLookupRequest, null);
         Type localVarReturnType = new TypeToken<CreateAsyncBulkLookupResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -212,7 +212,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAsyncBulkLookupAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull AsyncLookupRequest asyncLookupRequest, final ApiCallback<CreateAsyncBulkLookupResponse> _callback) throws ApiException {
+    public okhttp3.Call createAsyncBulkLookupAsync(String accountId, AsyncLookupRequest asyncLookupRequest, final ApiCallback<CreateAsyncBulkLookupResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createAsyncBulkLookupValidateBeforeCall(accountId, asyncLookupRequest, _callback);
         Type localVarReturnType = new TypeToken<CreateAsyncBulkLookupResponse>(){}.getType();
@@ -234,7 +234,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createSyncLookupCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull SyncLookupRequest syncLookupRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createSyncLookupCall(String accountId, SyncLookupRequest syncLookupRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://api.bandwidth.com/v2" };
@@ -276,12 +276,12 @@ public class PhoneNumberLookupApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createSyncLookupValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull SyncLookupRequest syncLookupRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createSyncLookupValidateBeforeCall(String accountId, SyncLookupRequest syncLookupRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling createSyncLookup(Async)");
@@ -311,7 +311,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public CreateSyncLookupResponse createSyncLookup(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull SyncLookupRequest syncLookupRequest) throws ApiException {
+    public CreateSyncLookupResponse createSyncLookup(String accountId, SyncLookupRequest syncLookupRequest) throws ApiException {
         ApiResponse<CreateSyncLookupResponse> localVarResp = createSyncLookupWithHttpInfo(accountId, syncLookupRequest);
         return localVarResp.getData();
     }
@@ -331,7 +331,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateSyncLookupResponse> createSyncLookupWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull SyncLookupRequest syncLookupRequest) throws ApiException {
+    public ApiResponse<CreateSyncLookupResponse> createSyncLookupWithHttpInfo(String accountId, SyncLookupRequest syncLookupRequest) throws ApiException {
         okhttp3.Call localVarCall = createSyncLookupValidateBeforeCall(accountId, syncLookupRequest, null);
         Type localVarReturnType = new TypeToken<CreateSyncLookupResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -353,7 +353,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createSyncLookupAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull SyncLookupRequest syncLookupRequest, final ApiCallback<CreateSyncLookupResponse> _callback) throws ApiException {
+    public okhttp3.Call createSyncLookupAsync(String accountId, SyncLookupRequest syncLookupRequest, final ApiCallback<CreateSyncLookupResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createSyncLookupValidateBeforeCall(accountId, syncLookupRequest, _callback);
         Type localVarReturnType = new TypeToken<CreateSyncLookupResponse>(){}.getType();
@@ -375,7 +375,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAsyncBulkLookupCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull UUID requestId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAsyncBulkLookupCall(String accountId, UUID requestId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] { "https://api.bandwidth.com/v2" };
@@ -417,12 +417,12 @@ public class PhoneNumberLookupApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAsyncBulkLookupValidateBeforeCall(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull UUID requestId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAsyncBulkLookupValidateBeforeCall(String accountId, UUID requestId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getAsyncBulkLookup(Async)");
@@ -452,7 +452,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public GetAsyncBulkLookupResponse getAsyncBulkLookup(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull UUID requestId) throws ApiException {
+    public GetAsyncBulkLookupResponse getAsyncBulkLookup(String accountId, UUID requestId) throws ApiException {
         ApiResponse<GetAsyncBulkLookupResponse> localVarResp = getAsyncBulkLookupWithHttpInfo(accountId, requestId);
         return localVarResp.getData();
     }
@@ -472,7 +472,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetAsyncBulkLookupResponse> getAsyncBulkLookupWithHttpInfo(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull UUID requestId) throws ApiException {
+    public ApiResponse<GetAsyncBulkLookupResponse> getAsyncBulkLookupWithHttpInfo(String accountId, UUID requestId) throws ApiException {
         okhttp3.Call localVarCall = getAsyncBulkLookupValidateBeforeCall(accountId, requestId, null);
         Type localVarReturnType = new TypeToken<GetAsyncBulkLookupResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -494,7 +494,7 @@ public class PhoneNumberLookupApi {
         <tr><td> 0 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAsyncBulkLookupAsync(@javax.annotation.Nonnull String accountId, @javax.annotation.Nonnull UUID requestId, final ApiCallback<GetAsyncBulkLookupResponse> _callback) throws ApiException {
+    public okhttp3.Call getAsyncBulkLookupAsync(String accountId, UUID requestId, final ApiCallback<GetAsyncBulkLookupResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAsyncBulkLookupValidateBeforeCall(accountId, requestId, _callback);
         Type localVarReturnType = new TypeToken<GetAsyncBulkLookupResponse>(){}.getType();
