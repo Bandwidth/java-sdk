@@ -67,7 +67,6 @@ import com.bandwidth.sdk.auth.OAuthFlow;
 public class ApiClient {
 
     protected String basePath = "http://localhost";
-    protected String basePath = "http://localhost";
     protected List<ServerConfiguration> servers = new ArrayList<ServerConfiguration>(Arrays.asList(
     new ServerConfiguration(
       "",
@@ -81,18 +80,9 @@ public class ApiClient {
     protected Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     protected Map<String, String> defaultCookieMap = new HashMap<String, String>();
     protected String tempFolderPath = null;
-    protected boolean debugging = false;
-    protected Map<String, String> defaultHeaderMap = new HashMap<String, String>();
-    protected Map<String, String> defaultCookieMap = new HashMap<String, String>();
-    protected String tempFolderPath = null;
 
     protected Map<String, Authentication> authentications;
-    protected Map<String, Authentication> authentications;
 
-    protected DateFormat dateFormat;
-    protected DateFormat datetimeFormat;
-    protected boolean lenientDatetimeFormat;
-    protected int dateLength;
     protected DateFormat dateFormat;
     protected DateFormat datetimeFormat;
     protected boolean lenientDatetimeFormat;
@@ -101,16 +91,10 @@ public class ApiClient {
     protected InputStream sslCaCert;
     protected boolean verifyingSsl;
     protected KeyManager[] keyManagers;
-    protected InputStream sslCaCert;
-    protected boolean verifyingSsl;
-    protected KeyManager[] keyManagers;
 
     protected OkHttpClient httpClient;
     protected JSON json;
-    protected OkHttpClient httpClient;
-    protected JSON json;
 
-    protected HttpLoggingInterceptor loggingInterceptor;
     protected HttpLoggingInterceptor loggingInterceptor;
 
     /**
@@ -216,7 +200,6 @@ public class ApiClient {
     }
 
     protected void initHttpClient(List<Interceptor> interceptors) {
-    protected void initHttpClient(List<Interceptor> interceptors) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.addNetworkInterceptor(getProgressInterceptor());
         for (Interceptor interceptor: interceptors) {
@@ -226,7 +209,6 @@ public class ApiClient {
         httpClient = builder.build();
     }
 
-    protected void init() {
     protected void init() {
         verifyingSsl = true;
 
@@ -250,8 +232,6 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g http://localhost)
-     * @return An instance of ApiClient
      * @param basePath Base path of the URL (e.g http://localhost)
      * @return An instance of ApiClient
      */
@@ -301,7 +281,6 @@ public class ApiClient {
      * Set HTTP client, which must never be null.
      *
      * @param newHttpClient An instance of OkHttpClient
-     * @return ApiClient
      * @return ApiClient
      * @throws java.lang.NullPointerException when newHttpClient is null
      */
@@ -811,7 +790,6 @@ public class ApiClient {
      * @return A list of {@code Pair} objects.
      */
     public List<Pair> parameterToPairs(String collectionFormat, String name, Collection<?> value) {
-    public List<Pair> parameterToPairs(String collectionFormat, String name, Collection<?> value) {
         List<Pair> params = new ArrayList<Pair>();
 
         // preconditions
@@ -918,7 +896,6 @@ public class ApiClient {
      * @return The sanitized filename
      */
     public String sanitizeFilename(String filename) {
-        return filename.replaceFirst("^.*[/\\\\]", "");
         return filename.replaceFirst("^.*[/\\\\]", "");
     }
 
@@ -1031,8 +1008,6 @@ public class ApiClient {
 
         ResponseBody respBody = response.body();
         if (respBody == null) {
-        ResponseBody respBody = response.body();
-        if (respBody == null) {
             return null;
         }
 
@@ -1053,25 +1028,9 @@ public class ApiClient {
                 return (T) respBodyString;
             } else {
                 throw new ApiException(
-        try {
-            if (isJsonMime(contentType)) {
-                return JSON.deserialize(respBody.byteStream(), returnType);
-            } else if (returnType.equals(String.class)) {
-                String respBodyString = respBody.string();
-                if (respBodyString.isEmpty()) {
-                    return null;
-                }
-                // Expecting string, return the raw response body.
-                return (T) respBodyString;
-            } else {
-                throw new ApiException(
                     "Content type \"" + contentType + "\" is not supported for type: " + returnType,
                     response.code(),
                     response.headers().toMultimap(),
-                    response.body().string());
-            }
-        } catch (IOException e) {
-            throw new ApiException(e);
                     response.body().string());
             }
         } catch (IOException e) {
@@ -1404,8 +1363,6 @@ public class ApiClient {
                     throw new ArrayIndexOutOfBoundsException(String.format(
                         Locale.ROOT,
                         "Invalid index %d when selecting the host settings. Must be less than %d", serverIndex, servers.size()
-                        Locale.ROOT,
-                        "Invalid index %d when selecting the host settings. Must be less than %d", serverIndex, servers.size()
                     ));
                 }
                 baseURL = servers.get(serverIndex).URL(serverVariables);
@@ -1478,11 +1435,9 @@ public class ApiClient {
     public void processCookieParams(Map<String, String> cookieParams, Request.Builder reqBuilder) {
         for (Entry<String, String> param : cookieParams.entrySet()) {
             reqBuilder.addHeader("Cookie", String.format(Locale.ROOT, "%s=%s", param.getKey(), param.getValue()));
-            reqBuilder.addHeader("Cookie", String.format(Locale.ROOT, "%s=%s", param.getKey(), param.getValue()));
         }
         for (Entry<String, String> param : defaultCookieMap.entrySet()) {
             if (!cookieParams.containsKey(param.getKey())) {
-                reqBuilder.addHeader("Cookie", String.format(Locale.ROOT, "%s=%s", param.getKey(), param.getValue()));
                 reqBuilder.addHeader("Cookie", String.format(Locale.ROOT, "%s=%s", param.getKey(), param.getValue()));
             }
         }
@@ -1577,7 +1532,6 @@ public class ApiClient {
      * @param file The file to add to the Header
      */ 
     protected void addPartToMultiPartBuilder(MultipartBody.Builder mpBuilder, String key, File file) {
-    protected void addPartToMultiPartBuilder(MultipartBody.Builder mpBuilder, String key, File file) {
         Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + key + "\"; filename=\"" + file.getName() + "\"");
         MediaType mediaType = MediaType.parse(guessContentTypeFromFile(file));
         mpBuilder.addPart(partHeaders, RequestBody.create(file, mediaType));
@@ -1590,7 +1544,6 @@ public class ApiClient {
      * @param key The key of the Header element
      * @param obj The complex object to add to the Header
      */
-    protected void addPartToMultiPartBuilder(MultipartBody.Builder mpBuilder, String key, Object obj) {
     protected void addPartToMultiPartBuilder(MultipartBody.Builder mpBuilder, String key, Object obj) {
         RequestBody requestBody;
         if (obj instanceof String) {
@@ -1614,7 +1567,6 @@ public class ApiClient {
      * async requests.
      */
     protected Interceptor getProgressInterceptor() {
-    protected Interceptor getProgressInterceptor() {
         return new Interceptor() {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {
@@ -1635,7 +1587,6 @@ public class ApiClient {
      * Apply SSL related settings to httpClient according to the current values of
      * verifyingSsl and sslCaCert.
      */
-    protected void applySslSettings() {
     protected void applySslSettings() {
         try {
             TrustManager[] trustManagers;
@@ -1699,7 +1650,6 @@ public class ApiClient {
     }
 
     protected KeyStore newEmptyKeyStore(char[] password) throws GeneralSecurityException {
-    protected KeyStore newEmptyKeyStore(char[] password) throws GeneralSecurityException {
         try {
             KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
             keyStore.load(null, password);
@@ -1716,7 +1666,6 @@ public class ApiClient {
      * @return The string representation of the HTTP request body
      * @throws com.bandwidth.sdk.ApiException If fail to serialize the request body object into a string
      */
-    protected String requestBodyToString(RequestBody requestBody) throws ApiException {
     protected String requestBodyToString(RequestBody requestBody) throws ApiException {
         if (requestBody != null) {
             try {
