@@ -1,11 +1,8 @@
 package com.bandwidth.sdk.smoke;
 
-import com.bandwidth.sdk.api.MessagesApi;
 import com.bandwidth.sdk.api.StatisticsApi;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.model.AccountStatistics;
 
 import org.junit.jupiter.api.Disabled;
@@ -21,7 +18,7 @@ import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
  */
 @Disabled
 public class StatisticsApiTest {
-    ApiClient oauthClient = new ApiClient(BW_USERNAME, BW_PASSWORD, null);
+    private static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
     private final StatisticsApi api = new StatisticsApi(oauthClient);
     /**
      * Get Account Statistics
@@ -32,7 +29,6 @@ public class StatisticsApiTest {
      */
     @Test
     public void getStatisticsTest() throws ApiException {
-
         AccountStatistics response = api.getStatistics(BW_ACCOUNT_ID);
 
         assertThat(response, instanceOf(AccountStatistics.class));

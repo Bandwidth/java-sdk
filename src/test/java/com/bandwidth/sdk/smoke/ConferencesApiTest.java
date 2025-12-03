@@ -4,8 +4,6 @@ import com.bandwidth.sdk.api.CallsApi;
 import com.bandwidth.sdk.api.ConferencesApi;
 import com.bandwidth.sdk.ApiResponse;
 import com.bandwidth.sdk.ApiClient;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.model.ConferenceRecordingMetadata;
 import com.bandwidth.sdk.model.ConferenceStateEnum;
 import com.bandwidth.sdk.model.CreateCall;
@@ -48,13 +46,13 @@ import static org.hamcrest.Matchers.is;
 import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 import static com.bandwidth.sdk.utils.CallCleanup.Cleanup;
 
+@SuppressWarnings("null")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ConferencesApiTest {
-    public ApiClient defaultClient = Configuration.getDefaultApiClient();
-    public HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    public final CallsApi callsApi = new CallsApi(defaultClient);
-    public final ConferencesApi conferencesApi = new ConferencesApi(defaultClient);
+    private static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    public final CallsApi callsApi = new CallsApi(oauthClient);
+    public final ConferencesApi conferencesApi = new ConferencesApi(oauthClient);
 
     private static final OkHttpClient mantecaClient = new OkHttpClient();
     public static final MediaType jsonMediaType = MediaType.get("application/json; charset=utf-8");
@@ -118,9 +116,6 @@ public class ConferencesApiTest {
     @Test
     @Order(1)
     public void testCreateAndFetchConference() throws Exception {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         String mantecaJsonBody = constructMantecaJsonBody(OPERATING_SYSTEM, JAVA_VERSION);
         RequestBody mantecaRequestBody = RequestBody.create(mantecaJsonBody, jsonMediaType);
 
@@ -171,9 +166,6 @@ public class ConferencesApiTest {
     @Test
     @Order(2)
     public void testConferenceAndMembers() throws Exception {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         ApiResponse<ConferenceMember> listConferenceMembersResponse = conferencesApi
                 .getConferenceMemberWithHttpInfo(BW_ACCOUNT_ID, conferenceId, callId);
         assertThat(listConferenceMembersResponse.getStatusCode(), is(200));
@@ -210,9 +202,6 @@ public class ConferencesApiTest {
     @Order(3)
     @Disabled // issues with PV API, can re-enable after fixed
     public void testConferenceRecordings() throws Exception {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         Boolean testRecordingStatus = false;
         for (int i = 0; i < MAX_RETRIES; i++) {
             TimeUnit.SECONDS.sleep(TEST_SLEEP);
