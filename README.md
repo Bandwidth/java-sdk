@@ -103,6 +103,9 @@ public class Example {
     OAuth2.setAccessToken("YOUR ACCESS TOKEN");
 
     CallsApi apiInstance = new CallsApi(defaultClient);
+    // Or create the instance with a your clientId and clientSecret (for OAuth2):
+    // CallsApi apiInstance = new CallsApi("YOUR_CLIENT_ID", "YOUR_CLIENT_SECRET", null);
+
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     CreateCall createCall = new CreateCall(); // CreateCall | JSON object containing information to create an outbound call
     try {
