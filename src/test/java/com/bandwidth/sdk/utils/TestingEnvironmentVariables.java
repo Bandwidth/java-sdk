@@ -3,6 +3,8 @@ package com.bandwidth.sdk.utils;
 public final class TestingEnvironmentVariables {
     public static final String BW_USERNAME = System.getenv("BW_USERNAME");
     public static final String BW_PASSWORD = System.getenv("BW_PASSWORD");
+    public static final String BW_CLIENT_ID = System.getenv("BW_CLIENT_ID");
+    public static final String BW_CLIENT_SECRET = System.getenv("BW_CLIENT_SECRET");
     public static final String BW_ACCOUNT_ID = System.getenv("BW_ACCOUNT_ID");
     public static final String BW_MESSAGING_APPLICATION_ID = System.getenv("BW_MESSAGING_APPLICATION_ID");
     public static final String BW_VOICE_APPLICATION_ID = System.getenv("BW_VOICE_APPLICATION_ID");

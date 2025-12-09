@@ -6,9 +6,7 @@ import org.junit.jupiter.api.Test;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiResponse;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.api.CallsApi;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.model.CallDirectionEnum;
 import com.bandwidth.sdk.model.CallState;
 import com.bandwidth.sdk.model.CallStateEnum;
@@ -32,9 +30,8 @@ import java.util.List;
 
 @SuppressWarnings("null")
 public class CallsApiTest {
-    private static ApiClient defaultClient = Configuration.getDefaultApiClient();
-    private static HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private static CallsApi api = new CallsApi(defaultClient);
+    private static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    private static CallsApi api = new CallsApi(oauthClient);
 
     private static String callId = "c-1234";
     private static String displayName = "Java SDK";
@@ -47,8 +44,6 @@ public class CallsApiTest {
 
     @BeforeAll
     public static void setUp() {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
         api.setCustomBaseUrl("http://127.0.0.1:4010");
     }
 

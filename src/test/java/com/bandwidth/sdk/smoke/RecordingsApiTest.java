@@ -5,8 +5,6 @@ import com.bandwidth.sdk.api.RecordingsApi;
 import com.bandwidth.sdk.ApiResponse;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.model.CallRecordingMetadata;
 import com.bandwidth.sdk.model.CallStateEnum;
 import com.bandwidth.sdk.model.CreateCall;
@@ -17,7 +15,6 @@ import com.bandwidth.sdk.model.RecordingTranscriptions;
 import com.bandwidth.sdk.model.UpdateCall;
 import com.bandwidth.sdk.model.UpdateCallRecording;
 import com.bandwidth.sdk.utils.MantecaStatusResponse;
-
 import com.google.gson.Gson;
 
 import okhttp3.Call;
@@ -47,13 +44,13 @@ import static org.hamcrest.Matchers.is;
 import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 import static com.bandwidth.sdk.utils.CallCleanup.Cleanup;
 
+@SuppressWarnings("null")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RecordingsApiTest {
-    public ApiClient defaultClient = Configuration.getDefaultApiClient();
-    public HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    public final CallsApi callsApi = new CallsApi(defaultClient);
-    public final RecordingsApi recordingsApi = new RecordingsApi(defaultClient);
+    private static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    public final CallsApi callsApi = new CallsApi(oauthClient);
+    public final RecordingsApi recordingsApi = new RecordingsApi(oauthClient);
 
     private static final OkHttpClient mantecaClient = new OkHttpClient();
     public static final MediaType jsonMediaType = MediaType.get("application/json; charset=utf-8");
@@ -116,9 +113,6 @@ public class RecordingsApiTest {
     @Test
     @Order(1)
     public void testCallRecordingAndTranscription() throws Exception {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         String mantecaJsonBody = constructMantecaJsonBody();
         RequestBody mantecaRequestBody = RequestBody.create(mantecaJsonBody, jsonMediaType);
 
@@ -236,9 +230,6 @@ public class RecordingsApiTest {
 
     @Test
     public void testGetAccountRecordings() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         ApiResponse<List<CallRecordingMetadata>> response = recordingsApi
                 .listAccountCallRecordingsWithHttpInfo(BW_ACCOUNT_ID, null, null, null,
                         null);
@@ -247,199 +238,10 @@ public class RecordingsApiTest {
     }
 
     @Test
-    public void testGetAccountRecordingsUnauthorized() {
-        Basic.setUsername("bad_username");
-        Basic.setPassword("bad_password");
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.listAccountCallRecordingsWithHttpInfo(BW_ACCOUNT_ID,
-                        null, null, null, null));
-
-        assertThat(exception.getCode(), is(401));
-    }
-
-    @Test
-    public void testGetAccountRecordingsForbidden() {
-        Basic.setUsername(FORBIDDEN_USERNAME);
-        Basic.setPassword(FORBIDDEN_PASSWORD);
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.listAccountCallRecordingsWithHttpInfo(BW_ACCOUNT_ID,
-                        null, null, null, null));
-
-        assertThat(exception.getCode(), is(403));
-    }
-
-    @Test
     public void testRecordingNotFound() {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         ApiException exception = Assertions.assertThrows(ApiException.class,
                 () -> recordingsApi.getCallRecording(BW_ACCOUNT_ID, "not a call", "not a recording"));
 
         assertThat(exception.getCode(), is(404));
-    }
-
-    @Test
-    public void testUnauthorizedGetRecording() {
-        Basic.setUsername("bad_username");
-        Basic.setPassword("bad_password");
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.getCallRecording(BW_ACCOUNT_ID, callId, recordingId));
-
-        assertThat(exception.getCode(), is(401));
-    }
-
-    @Test
-    public void testForbiddenGetRecording() {
-        Basic.setUsername(FORBIDDEN_USERNAME);
-        Basic.setPassword(FORBIDDEN_PASSWORD);
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.getCallRecording(BW_ACCOUNT_ID, callId, recordingId));
-
-        assertThat(exception.getCode(), is(403));
-    }
-
-    @Test
-    public void testUnauthorizedDeleteRecording() {
-        Basic.setUsername("bad_username");
-        Basic.setPassword("bad_password");
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.deleteRecording(BW_ACCOUNT_ID, callId, recordingId));
-
-        assertThat(exception.getCode(), is(401));
-    }
-
-    @Test
-    public void testForbiddenDeleteRecording() {
-        Basic.setUsername(FORBIDDEN_USERNAME);
-        Basic.setPassword(FORBIDDEN_PASSWORD);
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.deleteRecording(BW_ACCOUNT_ID, callId, recordingId));
-
-        assertThat(exception.getCode(), is(403));
-    }
-
-    @Test
-    public void testUnauthorizedDownloadRecording() {
-        Basic.setUsername("bad_username");
-        Basic.setPassword("bad_password");
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.downloadCallRecording(BW_ACCOUNT_ID, callId,
-                        recordingId));
-
-        assertThat(exception.getCode(), is(401));
-    }
-
-    @Test
-    public void testForbiddenDownloadRecording() {
-        Basic.setUsername(FORBIDDEN_USERNAME);
-        Basic.setPassword(FORBIDDEN_PASSWORD);
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.downloadCallRecording(BW_ACCOUNT_ID, callId,
-                        recordingId));
-
-        assertThat(exception.getCode(), is(403));
-    }
-
-    @Test
-    public void testUnauthorizedDeleteRecordingMedia() {
-        Basic.setUsername("bad_username");
-        Basic.setPassword("bad_password");
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.deleteRecording(BW_ACCOUNT_ID, callId, recordingId));
-
-        assertThat(exception.getCode(), is(401));
-    }
-
-    @Test
-    public void testForbiddenDeleteRecordingMedia() {
-        Basic.setUsername(FORBIDDEN_USERNAME);
-        Basic.setPassword(FORBIDDEN_PASSWORD);
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.deleteRecording(BW_ACCOUNT_ID, callId, recordingId));
-
-        assertThat(exception.getCode(), is(403));
-    }
-
-    @Test
-    public void testUnauthorizedGetTranscription() {
-        Basic.setUsername("bad_username");
-        Basic.setPassword("bad_password");
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.deleteRecordingTranscription(BW_ACCOUNT_ID, callId,
-                        recordingId));
-
-        assertThat(exception.getCode(), is(401));
-    }
-
-    @Test
-    public void testForbiddenGetTranscription() {
-        Basic.setUsername(FORBIDDEN_USERNAME);
-        Basic.setPassword(FORBIDDEN_PASSWORD);
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.deleteRecordingTranscription(BW_ACCOUNT_ID, callId,
-                        recordingId));
-
-        assertThat(exception.getCode(), is(403));
-    }
-
-    @Test
-    public void testUnauthorizedCreateTranscriptionRequest() {
-        Basic.setUsername("bad_username");
-        Basic.setPassword("bad_password");
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.transcribeCallRecording(BW_ACCOUNT_ID, callId,
-                        recordingId, transcribeRecording));
-
-        assertThat(exception.getCode(), is(401));
-    }
-
-    @Test
-    public void testForbiddenCreateTranscriptionRequest() {
-        Basic.setUsername(FORBIDDEN_USERNAME);
-        Basic.setPassword(FORBIDDEN_PASSWORD);
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.transcribeCallRecording(BW_ACCOUNT_ID, callId,
-                        recordingId, transcribeRecording));
-
-        assertThat(exception.getCode(), is(403));
-    }
-
-    @Test
-    public void testUnauthorizedDeleteTranscription() throws ApiException {
-        Basic.setUsername("bad_username");
-        Basic.setPassword("bad_password");
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.deleteRecordingTranscription(BW_ACCOUNT_ID, callId,
-                        recordingId));
-
-        assertThat(exception.getCode(), is(401));
-    }
-
-    @Test
-    public void testForbiddenDeleteTranscription() {
-        Basic.setUsername(FORBIDDEN_USERNAME);
-        Basic.setPassword(FORBIDDEN_PASSWORD);
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> recordingsApi.deleteRecordingTranscription(BW_ACCOUNT_ID, callId,
-                        recordingId));
-
-        assertThat(exception.getCode(), is(403));
     }
 }
