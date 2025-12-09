@@ -16,6 +16,8 @@ package com.bandwidth.sdk.model;
 import java.util.Objects;
 import java.util.Locale;
 import com.bandwidth.sdk.model.RbmActionTypeEnum;
+import com.bandwidth.sdk.model.RbmOpenUrlEnum;
+import com.bandwidth.sdk.model.RbmVebViewEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -52,7 +54,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * RbmActionOpenUrl
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class RbmActionOpenUrl {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -73,6 +75,16 @@ public class RbmActionOpenUrl {
   @SerializedName(SERIALIZED_NAME_URL)
   @javax.annotation.Nonnull
   private URI url;
+
+  public static final String SERIALIZED_NAME_APPLICATION = "application";
+  @SerializedName(SERIALIZED_NAME_APPLICATION)
+  @javax.annotation.Nullable
+  private RbmOpenUrlEnum application;
+
+  public static final String SERIALIZED_NAME_WEBVIEW_VIEW_MODE = "webviewViewMode";
+  @SerializedName(SERIALIZED_NAME_WEBVIEW_VIEW_MODE)
+  @javax.annotation.Nullable
+  private RbmVebViewEnum webviewViewMode;
 
   public RbmActionOpenUrl() {
   }
@@ -152,6 +164,44 @@ public class RbmActionOpenUrl {
     this.url = url;
   }
 
+
+  public RbmActionOpenUrl application(@javax.annotation.Nullable RbmOpenUrlEnum application) {
+    this.application = application;
+    return this;
+  }
+
+  /**
+   * Get application
+   * @return application
+   */
+  @javax.annotation.Nullable
+  public RbmOpenUrlEnum getApplication() {
+    return application;
+  }
+
+  public void setApplication(@javax.annotation.Nullable RbmOpenUrlEnum application) {
+    this.application = application;
+  }
+
+
+  public RbmActionOpenUrl webviewViewMode(@javax.annotation.Nullable RbmVebViewEnum webviewViewMode) {
+    this.webviewViewMode = webviewViewMode;
+    return this;
+  }
+
+  /**
+   * Get webviewViewMode
+   * @return webviewViewMode
+   */
+  @javax.annotation.Nullable
+  public RbmVebViewEnum getWebviewViewMode() {
+    return webviewViewMode;
+  }
+
+  public void setWebviewViewMode(@javax.annotation.Nullable RbmVebViewEnum webviewViewMode) {
+    this.webviewViewMode = webviewViewMode;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -210,13 +260,15 @@ public class RbmActionOpenUrl {
     return Objects.equals(this.type, rbmActionOpenUrl.type) &&
         Objects.equals(this.text, rbmActionOpenUrl.text) &&
         Arrays.equals(this.postbackData, rbmActionOpenUrl.postbackData) &&
-        Objects.equals(this.url, rbmActionOpenUrl.url)&&
+        Objects.equals(this.url, rbmActionOpenUrl.url) &&
+        Objects.equals(this.application, rbmActionOpenUrl.application) &&
+        Objects.equals(this.webviewViewMode, rbmActionOpenUrl.webviewViewMode)&&
         Objects.equals(this.additionalProperties, rbmActionOpenUrl.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, text, Arrays.hashCode(postbackData), url, additionalProperties);
+    return Objects.hash(type, text, Arrays.hashCode(postbackData), url, application, webviewViewMode, additionalProperties);
   }
 
   @Override
@@ -227,6 +279,8 @@ public class RbmActionOpenUrl {
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    postbackData: ").append(toIndentedString(postbackData)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    application: ").append(toIndentedString(application)).append("\n");
+    sb.append("    webviewViewMode: ").append(toIndentedString(webviewViewMode)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -249,7 +303,7 @@ public class RbmActionOpenUrl {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("type", "text", "postbackData", "url"));
+    openapiFields = new HashSet<String>(Arrays.asList("type", "text", "postbackData", "url", "application", "webviewViewMode"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(Arrays.asList("type", "text", "postbackData", "url"));
@@ -282,6 +336,14 @@ public class RbmActionOpenUrl {
       }
       if (!jsonObj.get("url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
+      }
+      // validate the optional field `application`
+      if (jsonObj.get("application") != null && !jsonObj.get("application").isJsonNull()) {
+        RbmOpenUrlEnum.validateJsonElement(jsonObj.get("application"));
+      }
+      // validate the optional field `webviewViewMode`
+      if (jsonObj.get("webviewViewMode") != null && !jsonObj.get("webviewViewMode").isJsonNull()) {
+        RbmVebViewEnum.validateJsonElement(jsonObj.get("webviewViewMode"));
       }
   }
 

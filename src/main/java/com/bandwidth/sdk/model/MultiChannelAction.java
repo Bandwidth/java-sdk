@@ -21,6 +21,8 @@ import com.bandwidth.sdk.model.RbmActionDial;
 import com.bandwidth.sdk.model.RbmActionOpenUrl;
 import com.bandwidth.sdk.model.RbmActionTypeEnum;
 import com.bandwidth.sdk.model.RbmActionViewLocation;
+import com.bandwidth.sdk.model.RbmOpenUrlEnum;
+import com.bandwidth.sdk.model.RbmVebViewEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -67,7 +69,7 @@ import com.google.gson.JsonParseException;
 
 import com.bandwidth.sdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class MultiChannelAction extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(MultiChannelAction.class.getName());
 
