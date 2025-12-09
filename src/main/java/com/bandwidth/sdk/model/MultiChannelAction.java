@@ -22,7 +22,7 @@ import com.bandwidth.sdk.model.RbmActionOpenUrl;
 import com.bandwidth.sdk.model.RbmActionTypeEnum;
 import com.bandwidth.sdk.model.RbmActionViewLocation;
 import com.bandwidth.sdk.model.RbmOpenUrlEnum;
-import com.bandwidth.sdk.model.RbmVebViewEnum;
+import com.bandwidth.sdk.model.RbmWebViewEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;

@@ -15,24 +15,24 @@ package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
-import com.bandwidth.sdk.model.RbmVebViewEnum;
+import com.bandwidth.sdk.model.RbmWebViewEnum;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 
 /**
- * Model tests for RbmVebViewEnum
+ * Model tests for RbmWebViewEnum
  */
-public class RbmVebViewEnumTest {
+public class RbmWebViewEnumTest {
     /**
-     * Model tests for RbmVebViewEnum
+     * Model tests for RbmWebViewEnum
      */
     @Test
-    public void testRbmVebViewEnum() {
-        assertThat(RbmVebViewEnum.FULL.toString(), equalTo("FULL"));
-        assertThat(RbmVebViewEnum.HALF.toString(), equalTo("HALF"));
-        assertThat(RbmVebViewEnum.TALL.toString(), equalTo("TALL"));
+    public void testRbmWebViewEnum() {
+        assertThat(RbmWebViewEnum.FULL.toString(), equalTo("FULL"));
+        assertThat(RbmWebViewEnum.HALF.toString(), equalTo("HALF"));
+        assertThat(RbmWebViewEnum.TALL.toString(), equalTo("TALL"));
     }
 
 }

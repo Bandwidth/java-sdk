@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 import com.bandwidth.sdk.model.RbmActionOpenUrl;
 import com.bandwidth.sdk.model.RbmActionTypeEnum;
 import com.bandwidth.sdk.model.RbmOpenUrlEnum;
-import com.bandwidth.sdk.model.RbmVebViewEnum;
+import com.bandwidth.sdk.model.RbmWebViewEnum;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -36,7 +36,7 @@ public class RbmActionOpenUrlTest {
             .postbackData(new byte[]{1, 2, 3})
             .url(URI.create("https://bandwidth.com"))
             .application(RbmOpenUrlEnum.BROWSER)
-            .webviewViewMode(RbmVebViewEnum.FULL);
+            .webviewViewMode(RbmWebViewEnum.FULL);
 
     /**
      * Model tests for RbmActionOpenUrl

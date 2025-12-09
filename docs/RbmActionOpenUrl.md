@@ -12,7 +12,7 @@
 |**postbackData** | **byte[]** | Base64 payload the customer receives when the reply is clicked. |  |
 |**url** | **URI** | The URL to open in browser. |  |
 |**application** | **RbmOpenUrlEnum** |  |  [optional] |
-|**webviewViewMode** | **RbmVebViewEnum** |  |  [optional] |
+|**webviewViewMode** | **RbmWebViewEnum** |  |  [optional] |
 
 
 

@@ -20,7 +20,7 @@
 |**description** | **String** | The description of the event. |  [optional] |
 |**url** | **URI** | The URL to open in browser. |  |
 |**application** | **RbmOpenUrlEnum** |  |  [optional] |
-|**webviewViewMode** | **RbmVebViewEnum** |  |  [optional] |
+|**webviewViewMode** | **RbmWebViewEnum** |  |  [optional] |
 
 
 

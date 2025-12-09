@@ -28,8 +28,8 @@ import com.google.gson.stream.JsonWriter;
 /**
  * Defines the layout of the WebView on a mobile device. It must be defined when application is set to &#x60;WEBVIEW&#x60; - &#x60;FULL&#x60; WebView takes the full screen.  - &#x60;HALF&#x60; WebView takes half of the screen. - &#x60;TALL&#x60; WebView takes three-quarters of the screen.
  */
-@JsonAdapter(RbmVebViewEnum.Adapter.class)
-public enum RbmVebViewEnum {
+@JsonAdapter(RbmWebViewEnum.Adapter.class)
+public enum RbmWebViewEnum {
   
   FULL("FULL"),
   
@@ -39,7 +39,7 @@ public enum RbmVebViewEnum {
 
   private String value;
 
-  RbmVebViewEnum(String value) {
+  RbmWebViewEnum(String value) {
     this.value = value;
   }
 
@@ -52,8 +52,8 @@ public enum RbmVebViewEnum {
     return String.valueOf(value);
   }
 
-  public static RbmVebViewEnum fromValue(String value) {
-    for (RbmVebViewEnum b : RbmVebViewEnum.values()) {
+  public static RbmWebViewEnum fromValue(String value) {
+    for (RbmWebViewEnum b : RbmWebViewEnum.values()) {
       if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
@@ -61,22 +61,22 @@ public enum RbmVebViewEnum {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<RbmVebViewEnum> {
+  public static class Adapter extends TypeAdapter<RbmWebViewEnum> {
     @Override
-    public void write(final JsonWriter jsonWriter, final RbmVebViewEnum enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final RbmWebViewEnum enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public RbmVebViewEnum read(final JsonReader jsonReader) throws IOException {
+    public RbmWebViewEnum read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return RbmVebViewEnum.fromValue(value);
+      return RbmWebViewEnum.fromValue(value);
     }
   }
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
-    RbmVebViewEnum.fromValue(value);
+    RbmWebViewEnum.fromValue(value);
   }
 }
 

@@ -17,7 +17,7 @@ import java.util.Objects;
 import java.util.Locale;
 import com.bandwidth.sdk.model.RbmActionTypeEnum;
 import com.bandwidth.sdk.model.RbmOpenUrlEnum;
-import com.bandwidth.sdk.model.RbmVebViewEnum;
+import com.bandwidth.sdk.model.RbmWebViewEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -84,7 +84,7 @@ public class RbmActionOpenUrl {
   public static final String SERIALIZED_NAME_WEBVIEW_VIEW_MODE = "webviewViewMode";
   @SerializedName(SERIALIZED_NAME_WEBVIEW_VIEW_MODE)
   @javax.annotation.Nullable
-  private RbmVebViewEnum webviewViewMode;
+  private RbmWebViewEnum webviewViewMode;
 
   public RbmActionOpenUrl() {
   }
@@ -184,7 +184,7 @@ public class RbmActionOpenUrl {
   }
 
 
-  public RbmActionOpenUrl webviewViewMode(@javax.annotation.Nullable RbmVebViewEnum webviewViewMode) {
+  public RbmActionOpenUrl webviewViewMode(@javax.annotation.Nullable RbmWebViewEnum webviewViewMode) {
     this.webviewViewMode = webviewViewMode;
     return this;
   }
@@ -194,11 +194,11 @@ public class RbmActionOpenUrl {
    * @return webviewViewMode
    */
   @javax.annotation.Nullable
-  public RbmVebViewEnum getWebviewViewMode() {
+  public RbmWebViewEnum getWebviewViewMode() {
     return webviewViewMode;
   }
 
-  public void setWebviewViewMode(@javax.annotation.Nullable RbmVebViewEnum webviewViewMode) {
+  public void setWebviewViewMode(@javax.annotation.Nullable RbmWebViewEnum webviewViewMode) {
     this.webviewViewMode = webviewViewMode;
   }
 
@@ -343,7 +343,7 @@ public class RbmActionOpenUrl {
       }
       // validate the optional field `webviewViewMode`
       if (jsonObj.get("webviewViewMode") != null && !jsonObj.get("webviewViewMode").isJsonNull()) {
-        RbmVebViewEnum.validateJsonElement(jsonObj.get("webviewViewMode"));
+        RbmWebViewEnum.validateJsonElement(jsonObj.get("webviewViewMode"));
       }
   }
 
