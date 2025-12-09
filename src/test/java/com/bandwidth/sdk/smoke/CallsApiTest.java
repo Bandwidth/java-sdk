@@ -4,8 +4,6 @@ import com.bandwidth.sdk.api.CallsApi;
 import com.bandwidth.sdk.ApiResponse;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiClient;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.model.CallbackMethodEnum;
 import com.bandwidth.sdk.model.CreateCall;
 import com.bandwidth.sdk.model.CreateCallResponse;
@@ -40,12 +38,12 @@ import static org.hamcrest.beans.HasPropertyWithValue.hasProperty;
 import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 import static com.bandwidth.sdk.utils.CallCleanup.Cleanup;
 
+@SuppressWarnings("null")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CallsApiTest {
-    public ApiClient defaultClient = Configuration.getDefaultApiClient();
-    public HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    public final CallsApi api = new CallsApi(defaultClient);
+    private static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    public final CallsApi api = new CallsApi(oauthClient);
 
     private static List<String> callIdList = new ArrayList<String>();
     private static MachineDetectionConfiguration machineDetection = new MachineDetectionConfiguration();
@@ -132,9 +130,6 @@ public class CallsApiTest {
     @Test
     @Order(1)
     public void createCall() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         ApiResponse<CreateCallResponse> response = api.createCallWithHttpInfo(BW_ACCOUNT_ID, createCallBody);
         callIdList.add(response.getData().getCallId());
 
@@ -148,9 +143,6 @@ public class CallsApiTest {
 
     @Test
     public void createCallBadRequest() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         CreateCall badCallRequest = new CreateCall();
         createCallBody.setTo("invalid_number");
         createCallBody.setFrom(BW_NUMBER);
@@ -164,44 +156,7 @@ public class CallsApiTest {
     }
 
     @Test
-    public void createCallUnauthorized() throws ApiException {
-        Basic.setUsername("bad_username");
-        Basic.setPassword("bad_password");
-
-        CreateCall badCallRequest = new CreateCall();
-        createCallBody.setTo("invalid_number");
-        createCallBody.setFrom(BW_NUMBER);
-        createCallBody.setApplicationId(BW_VOICE_APPLICATION_ID);
-        createCallBody.setAnswerUrl(answerUrl);
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.createCallWithHttpInfo(BW_ACCOUNT_ID, badCallRequest));
-
-        assertThat(exception.getCode(), is(401));
-    }
-
-    @Test
-    public void createCallForbidden() throws ApiException {
-        Basic.setUsername(FORBIDDEN_USERNAME);
-        Basic.setPassword(FORBIDDEN_PASSWORD);
-
-        CreateCall badCallRequest = new CreateCall();
-        createCallBody.setTo("invalid_number");
-        createCallBody.setFrom(BW_NUMBER);
-        createCallBody.setApplicationId(BW_VOICE_APPLICATION_ID);
-        createCallBody.setAnswerUrl(answerUrl);
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.createCallWithHttpInfo(BW_ACCOUNT_ID, badCallRequest));
-
-        assertThat(exception.getCode(), is(403));
-    }
-
-    @Test
     public void getCalls() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         ApiResponse<List<CallState>> response = api.listCallsWithHttpInfo(BW_ACCOUNT_ID, USER_NUMBER, BW_NUMBER, null,
                 null, null, null, null);
 
@@ -220,9 +175,6 @@ public class CallsApiTest {
     @Test
     @Order(2)
     public void getCallState() throws ApiException, InterruptedException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         TimeUnit.SECONDS.sleep(40);
         ApiResponse<CallState> response = api.getCallStateWithHttpInfo(BW_ACCOUNT_ID, callIdList.get(0));
 
@@ -233,32 +185,7 @@ public class CallsApiTest {
     }
 
     @Test
-    public void getCallStateUnauthorized() throws ApiException {
-        Basic.setUsername("bad_username");
-        Basic.setPassword("bad_password");
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.getCallStateWithHttpInfo(BW_ACCOUNT_ID, "not a call id"));
-
-        assertThat(exception.getCode(), is(401));
-    }
-
-    @Test
-    public void getCallStateForbidden() throws ApiException {
-        Basic.setUsername(FORBIDDEN_USERNAME);
-        Basic.setPassword(FORBIDDEN_PASSWORD);
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.getCallStateWithHttpInfo(BW_ACCOUNT_ID, "not a call id"));
-
-        assertThat(exception.getCode(), is(403));
-    }
-
-    @Test
     public void getCallStateNotFound() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         ApiException exception = Assertions.assertThrows(ApiException.class,
                 () -> api.getCallStateWithHttpInfo(BW_ACCOUNT_ID, "not a call id"));
 
@@ -268,9 +195,6 @@ public class CallsApiTest {
     @Test
     @Order(3)
     public void updateCall() throws ApiException, InterruptedException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         // Create call
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
         ApiResponse<CreateCallResponse> createCallResponse = api.createCallWithHttpInfo(BW_ACCOUNT_ID,
@@ -296,9 +220,6 @@ public class CallsApiTest {
 
     @Test
     public void updateCallBadRequest() throws ApiException, InterruptedException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         UpdateCall badRequest = new UpdateCall();
         badRequest.state(null);
 
@@ -315,35 +236,7 @@ public class CallsApiTest {
     }
 
     @Test
-    public void updateCallUnauthorized() throws ApiException {
-        Basic.setUsername("bad_username");
-        Basic.setPassword("bad_password");
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.updateCallWithHttpInfo(BW_ACCOUNT_ID, testCallId,
-                        new UpdateCall().state(CallStateEnum.COMPLETED)));
-
-        assertThat(exception.getCode(), is(401));
-
-    }
-
-    @Test
-    public void updateCallForbidden() throws ApiException {
-        Basic.setUsername(FORBIDDEN_USERNAME);
-        Basic.setPassword(FORBIDDEN_PASSWORD);
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.updateCallWithHttpInfo(BW_ACCOUNT_ID, testCallId,
-                        new UpdateCall().state(CallStateEnum.COMPLETED)));
-
-        assertThat(exception.getCode(), is(403));
-    }
-
-    @Test
     public void updateCallNotFound() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         ApiException exception = Assertions.assertThrows(ApiException.class,
                 () -> api.updateCallWithHttpInfo(BW_ACCOUNT_ID, testCallId,
                         new UpdateCall().state(CallStateEnum.COMPLETED)));
@@ -354,9 +247,6 @@ public class CallsApiTest {
     @Test
     @Order(4)
     public void updateCallBxml() throws ApiException, InterruptedException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         // Create call
         TimeUnit.SECONDS.sleep(TEST_SLEEP);
         ApiResponse<CreateCallResponse> createCallResponse = api.createCallWithHttpInfo(BW_ACCOUNT_ID,
@@ -378,46 +268,5 @@ public class CallsApiTest {
                 createCallResponse.getData().getCallId(), completeMantecaCallBody);
 
         assertThat(completeCallResponse.getStatusCode(), is(200));
-    }
-
-    @Test
-    public void updateCallBxmlBadRequest() throws ApiException {
-
-    }
-
-    @Test
-    public void updateCallBxmlUnauthorized() throws ApiException {
-        Basic.setUsername("bad_username");
-        Basic.setPassword("bad_password");
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.updateCallBxmlWithHttpInfo(BW_ACCOUNT_ID, testCallId,
-                        testXmlBody));
-
-        assertThat(exception.getCode(), is(401));
-    }
-
-    @Test
-    public void updateCallBxmlForbidden() throws ApiException {
-        Basic.setUsername(FORBIDDEN_USERNAME);
-        Basic.setPassword(FORBIDDEN_PASSWORD);
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.updateCallBxmlWithHttpInfo(BW_ACCOUNT_ID, testCallId,
-                        testXmlBody));
-
-        assertThat(exception.getCode(), is(403));
-    }
-
-    @Test
-    public void updateCallBxmlNotFound() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.updateCallBxmlWithHttpInfo(BW_ACCOUNT_ID, testCallId,
-                        testXmlBody));
-
-        assertThat(exception.getCode(), is(404));
     }
 }

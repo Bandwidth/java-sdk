@@ -98,7 +98,14 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
+    // Configure OAuth2 access token for authorization: OAuth2
+    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
     CallsApi apiInstance = new CallsApi(defaultClient);
+    // Or create the instance with a your clientId and clientSecret (for OAuth2):
+    // CallsApi apiInstance = new CallsApi("YOUR_CLIENT_ID", "YOUR_CLIENT_SECRET", null);
+
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     CreateCall createCall = new CreateCall(); // CreateCall | JSON object containing information to create an outbound call
     try {
@@ -361,6 +368,14 @@ Authentication schemes defined for the API:
 ### Basic
 
 - **Type**: HTTP basic authentication
+
+<a id="OAuth2"></a>
+### OAuth2
+
+- **Type**: OAuth
+- **Flow**: application
+- **Authorization URL**: 
+- **Scopes**: N/A
 
 
 ## Recommendation

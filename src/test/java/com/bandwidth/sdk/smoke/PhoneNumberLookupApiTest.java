@@ -4,8 +4,6 @@ import com.bandwidth.sdk.api.PhoneNumberLookupApi;
 import com.bandwidth.sdk.ApiResponse;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiClient;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.model.AsyncLookupRequest;
 import com.bandwidth.sdk.model.CompletedLookupStatusEnum;
 import com.bandwidth.sdk.model.CreateAsyncBulkLookupResponse;
@@ -36,17 +34,12 @@ import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 
 @SuppressWarnings("null")
 public class PhoneNumberLookupApiTest {
-
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private final PhoneNumberLookupApi api = new PhoneNumberLookupApi(defaultClient);
+    private static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    private final PhoneNumberLookupApi api = new PhoneNumberLookupApi(oauthClient);
     private final List<String> phoneNumbers = Arrays.asList(BW_NUMBER, VZW_NUMBER, ATT_NUMBER, T_MOBILE_NUMBER);
 
     @Test
     public void createSyncLookupTest() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         SyncLookupRequest lookupRequest = new SyncLookupRequest()
                 .phoneNumbers(phoneNumbers);
 
@@ -70,9 +63,6 @@ public class PhoneNumberLookupApiTest {
 
     @Test
     public void createGetAsyncLookupTest() throws ApiException, InterruptedException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         AsyncLookupRequest lookupRequest = new AsyncLookupRequest()
                 .phoneNumbers(phoneNumbers);
 
