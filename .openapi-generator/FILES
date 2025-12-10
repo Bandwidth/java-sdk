@@ -136,8 +136,10 @@ docs/RbmMessageContentFile.md
 docs/RbmMessageContentRichCard.md
 docs/RbmMessageContentText.md
 docs/RbmMessageMedia.md
+docs/RbmOpenUrlEnum.md
 docs/RbmStandaloneCard.md
 docs/RbmSuggestionResponse.md
+docs/RbmWebViewEnum.md
 docs/RecordingAvailableCallback.md
 docs/RecordingCompleteCallback.md
 docs/RecordingStateEnum.md
@@ -356,8 +358,10 @@ src/main/java/com/bandwidth/sdk/model/RbmMessageContentFile.java
 src/main/java/com/bandwidth/sdk/model/RbmMessageContentRichCard.java
 src/main/java/com/bandwidth/sdk/model/RbmMessageContentText.java
 src/main/java/com/bandwidth/sdk/model/RbmMessageMedia.java
+src/main/java/com/bandwidth/sdk/model/RbmOpenUrlEnum.java
 src/main/java/com/bandwidth/sdk/model/RbmStandaloneCard.java
 src/main/java/com/bandwidth/sdk/model/RbmSuggestionResponse.java
+src/main/java/com/bandwidth/sdk/model/RbmWebViewEnum.java
 src/main/java/com/bandwidth/sdk/model/RecordingAvailableCallback.java
 src/main/java/com/bandwidth/sdk/model/RecordingCompleteCallback.java
 src/main/java/com/bandwidth/sdk/model/RecordingStateEnum.java

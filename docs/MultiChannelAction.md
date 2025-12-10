@@ -19,6 +19,8 @@
 |**endTime** | **OffsetDateTime** | The end time of the event. |  |
 |**description** | **String** | The description of the event. |  [optional] |
 |**url** | **URI** | The URL to open in browser. |  |
+|**application** | **RbmOpenUrlEnum** |  |  [optional] |
+|**webviewViewMode** | **RbmWebViewEnum** |  |  [optional] |
 
 
 
