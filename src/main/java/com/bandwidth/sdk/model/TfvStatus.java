@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
 import java.util.UUID;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -105,6 +106,11 @@ public class TfvStatus {
   @SerializedName(SERIALIZED_NAME_BLOCKED_REASON)
   @javax.annotation.Nullable
   private String blockedReason;
+
+  public static final String SERIALIZED_NAME_CV_TOKEN = "cvToken";
+  @SerializedName(SERIALIZED_NAME_CV_TOKEN)
+  @javax.annotation.Nullable
+  private String cvToken;
 
   public TfvStatus() {
   }
@@ -298,6 +304,25 @@ public class TfvStatus {
     this.blockedReason = blockedReason;
   }
 
+
+  public TfvStatus cvToken(@javax.annotation.Nullable String cvToken) {
+    this.cvToken = cvToken;
+    return this;
+  }
+
+  /**
+   * The token provided by Campaign Verify to validate your political use case. Only required for 527 political organizations. If you are not a 527 political organization, this field should be omitted. If you pass an empty string, it will be passed along and potentially rejected.
+   * @return cvToken
+   */
+  @javax.annotation.Nullable
+  public String getCvToken() {
+    return cvToken;
+  }
+
+  public void setCvToken(@javax.annotation.Nullable String cvToken) {
+    this.cvToken = cvToken;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -362,13 +387,25 @@ public class TfvStatus {
         Objects.equals(this.modifiedDateTime, tfvStatus.modifiedDateTime) &&
         Objects.equals(this.submission, tfvStatus.submission) &&
         Objects.equals(this.blocked, tfvStatus.blocked) &&
-        Objects.equals(this.blockedReason, tfvStatus.blockedReason)&&
+        Objects.equals(this.blockedReason, tfvStatus.blockedReason) &&
+        Objects.equals(this.cvToken, tfvStatus.cvToken)&&
         Objects.equals(this.additionalProperties, tfvStatus.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(phoneNumber, status, internalTicketNumber, declineReasonDescription, resubmitAllowed, createdDateTime, modifiedDateTime, submission, blocked, blockedReason, additionalProperties);
+    return Objects.hash(phoneNumber, status, internalTicketNumber, declineReasonDescription, resubmitAllowed, createdDateTime, modifiedDateTime, submission, blocked, blockedReason, cvToken, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -385,6 +422,7 @@ public class TfvStatus {
     sb.append("    submission: ").append(toIndentedString(submission)).append("\n");
     sb.append("    blocked: ").append(toIndentedString(blocked)).append("\n");
     sb.append("    blockedReason: ").append(toIndentedString(blockedReason)).append("\n");
+    sb.append("    cvToken: ").append(toIndentedString(cvToken)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -407,7 +445,7 @@ public class TfvStatus {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("phoneNumber", "status", "internalTicketNumber", "declineReasonDescription", "resubmitAllowed", "createdDateTime", "modifiedDateTime", "submission", "blocked", "blockedReason"));
+    openapiFields = new HashSet<String>(Arrays.asList("phoneNumber", "status", "internalTicketNumber", "declineReasonDescription", "resubmitAllowed", "createdDateTime", "modifiedDateTime", "submission", "blocked", "blockedReason", "cvToken"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -445,6 +483,9 @@ public class TfvStatus {
       }
       if ((jsonObj.get("blockedReason") != null && !jsonObj.get("blockedReason").isJsonNull()) && !jsonObj.get("blockedReason").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `blockedReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("blockedReason").toString()));
+      }
+      if ((jsonObj.get("cvToken") != null && !jsonObj.get("cvToken").isJsonNull()) && !jsonObj.get("cvToken").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `cvToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cvToken").toString()));
       }
   }
 
