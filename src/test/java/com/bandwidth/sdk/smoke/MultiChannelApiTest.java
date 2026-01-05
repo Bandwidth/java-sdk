@@ -24,10 +24,15 @@ import com.bandwidth.sdk.model.MmsMessageContent;
 import com.bandwidth.sdk.model.MmsMessageContentFile;
 import com.bandwidth.sdk.model.MultiChannelAction;
 import com.bandwidth.sdk.model.RbmMessageContentText;
+import com.bandwidth.sdk.model.RbmStandaloneCard;
 import com.bandwidth.sdk.model.SmsMessageContent;
+import com.bandwidth.sdk.model.StandaloneCardOrientationEnum;
+import com.bandwidth.sdk.model.ThumbnailAlignmentEnum;
 import com.bandwidth.sdk.model.PriorityEnum;
 import com.bandwidth.sdk.model.RbmActionDial;
 import com.bandwidth.sdk.model.RbmActionTypeEnum;
+import com.bandwidth.sdk.model.RbmCardContent;
+import com.bandwidth.sdk.model.RbmMessageContentRichCard;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -228,6 +233,73 @@ public class MultiChannelApiTest {
         assertThat(rbmActionDial.getText(), instanceOf(String.class));
         assertThat(rbmActionDial.getPostbackData(), instanceOf(byte[].class));
         assertThat(rbmActionDial.getPhoneNumber(), instanceOf(String.class));
+        assertThat(channelListObject.getOwner(), equalTo(BW_NUMBER));
+    }
+
+    @Test
+    public void createMultiChannelRBMRichMessageTest() throws ApiException {
+        MultiChannelChannelListRequestObject channelListRBMObject = new MultiChannelChannelListRequestObject(
+                new MultiChannelChannelListRBMObject()
+                        .from(BW_NUMBER)
+                        .applicationId(BW_MESSAGING_APPLICATION_ID)
+                        .channel(MultiChannelMessageChannelEnum.RBM)
+                        .content(new MultiChannelChannelListRBMObjectAllOfContent(
+                                new RbmMessageContentRichCard(
+                                        new RbmStandaloneCard()
+                                                .orientation(StandaloneCardOrientationEnum.HORIZONTAL)
+                                                .thumbnailImageAlignment(ThumbnailAlignmentEnum.LEFT)
+                                                .cardContent(new RbmCardContent()
+                                                        .title("Test Title")
+                                                )
+                                )
+                        )
+                )
+        );
+
+        MultiChannelMessageRequest rbmRequest = new MultiChannelMessageRequest()
+                .to(USER_NUMBER)
+                .tag("tag")
+                .priority(PriorityEnum.HIGH)
+                .expiration(OffsetDateTime.now().plusSeconds(60))
+                .channelList(Arrays.asList(channelListRBMObject));
+
+        ApiResponse<CreateMultiChannelMessageResponse> response
+                = api.createMultiChannelMessageWithHttpInfo(BW_ACCOUNT_ID, rbmRequest);
+        
+        assertThat(response.getStatusCode(), is(202));
+        assertThat(response.getData(), instanceOf(CreateMultiChannelMessageResponse.class));
+        assertThat(response.getData().getLinks(), instanceOf(List.class));
+        assertThat(response.getData().getData(), instanceOf(MultiChannelMessageResponseData.class));
+        assertThat(response.getData().getData().getId(), instanceOf(String.class));
+        assertThat(response.getData().getData().getTime(), instanceOf(OffsetDateTime.class));
+        assertThat(response.getData().getData().getDirection(), instanceOf(MessageDirectionEnum.class));
+        assertThat(response.getData().getData().getDirection(), equalTo(MessageDirectionEnum.OUT));
+        assertThat(response.getData().getData().getTo(), instanceOf(Set.class));
+        assertThat(response.getData().getData().getTo(), contains(USER_NUMBER));
+        assertThat(response.getData().getData().getTag(), instanceOf(String.class));
+        assertThat(response.getData().getData().getPriority(), instanceOf(PriorityEnum.class));
+        assertThat(response.getData().getData().getPriority(), equalTo(PriorityEnum.HIGH));
+        assertThat(response.getData().getData().getExpiration(), instanceOf(OffsetDateTime.class));
+        assertThat(response.getData().getData().getChannelList(), instanceOf(List.class));
+        assertThat(response.getData().getData().getChannelList().get(0), instanceOf(MultiChannelChannelListResponseObject.class));
+                assertThat(response.getData().getData().getChannelList().get(0).getActualInstance(), instanceOf(MultiChannelChannelListRBMResponseObject.class));
+        MultiChannelChannelListRBMResponseObject channelListObject
+                = response.getData().getData().getChannelList().get(0).getMultiChannelChannelListRBMResponseObject();
+        assertThat(channelListObject.getFrom(), equalTo(BW_NUMBER));
+        assertThat(channelListObject.getApplicationId(), equalTo(BW_MESSAGING_APPLICATION_ID));
+        assertThat(channelListObject.getChannel(), instanceOf(MultiChannelMessageChannelEnum.class));
+        assertThat(channelListObject.getChannel(), equalTo(MultiChannelMessageChannelEnum.RBM));
+        assertThat(channelListObject.getContent(), instanceOf(MultiChannelChannelListRBMObjectAllOfContent.class));
+        assertThat(channelListObject.getContent().getActualInstance(), instanceOf(RbmMessageContentRichCard.class));
+        RbmMessageContentRichCard rbmContent = channelListObject.getContent().getRbmMessageContentRichCard();
+        assertThat(rbmContent.getActualInstance(), instanceOf(RbmStandaloneCard.class));
+        RbmStandaloneCard rbmCard = rbmContent.getRbmStandaloneCard();
+        assertThat(rbmCard.getOrientation(), instanceOf(StandaloneCardOrientationEnum.class));
+        assertThat(rbmCard.getOrientation(), equalTo(StandaloneCardOrientationEnum.HORIZONTAL));
+        assertThat(rbmCard.getThumbnailImageAlignment(), instanceOf(ThumbnailAlignmentEnum.class));
+        assertThat(rbmCard.getThumbnailImageAlignment(), equalTo(ThumbnailAlignmentEnum.LEFT));
+        assertThat(rbmCard.getCardContent(), instanceOf(RbmCardContent.class));
+        assertThat(rbmCard.getCardContent().getTitle(), instanceOf(String.class));
         assertThat(channelListObject.getOwner(), equalTo(BW_NUMBER));
     }
 
