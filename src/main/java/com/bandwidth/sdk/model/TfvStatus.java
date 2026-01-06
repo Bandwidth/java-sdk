@@ -25,7 +25,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
-import java.util.UUID;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -69,7 +68,7 @@ public class TfvStatus {
   public static final String SERIALIZED_NAME_INTERNAL_TICKET_NUMBER = "internalTicketNumber";
   @SerializedName(SERIALIZED_NAME_INTERNAL_TICKET_NUMBER)
   @javax.annotation.Nullable
-  private UUID internalTicketNumber;
+  private String internalTicketNumber;
 
   public static final String SERIALIZED_NAME_DECLINE_REASON_DESCRIPTION = "declineReasonDescription";
   @SerializedName(SERIALIZED_NAME_DECLINE_REASON_DESCRIPTION)
@@ -147,7 +146,7 @@ public class TfvStatus {
   }
 
 
-  public TfvStatus internalTicketNumber(@javax.annotation.Nullable UUID internalTicketNumber) {
+  public TfvStatus internalTicketNumber(@javax.annotation.Nullable String internalTicketNumber) {
     this.internalTicketNumber = internalTicketNumber;
     return this;
   }
@@ -157,11 +156,11 @@ public class TfvStatus {
    * @return internalTicketNumber
    */
   @javax.annotation.Nullable
-  public UUID getInternalTicketNumber() {
+  public String getInternalTicketNumber() {
     return internalTicketNumber;
   }
 
-  public void setInternalTicketNumber(@javax.annotation.Nullable UUID internalTicketNumber) {
+  public void setInternalTicketNumber(@javax.annotation.Nullable String internalTicketNumber) {
     this.internalTicketNumber = internalTicketNumber;
   }
 
