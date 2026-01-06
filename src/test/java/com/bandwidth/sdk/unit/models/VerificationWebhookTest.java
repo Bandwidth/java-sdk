@@ -31,7 +31,7 @@ public class VerificationWebhookTest {
             .accountId("accountId")
             .phoneNumber("phoneNumber")
             .status(TfvCallbackStatusEnum.VERIFIED)
-            .internalTicketNumber(UUID.randomUUID());
+            .internalTicketNumber(UUID.randomUUID().toString());
 
     /**
      * Model tests for VerificationWebhook
@@ -70,7 +70,7 @@ public class VerificationWebhookTest {
      */
     @Test
     public void internalTicketNumberTest() {
-        assertThat(model.getInternalTicketNumber(), instanceOf(UUID.class));
+        assertThat(model.getInternalTicketNumber(), instanceOf(String.class));
     }
 
 }
