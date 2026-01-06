@@ -23,7 +23,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.UUID;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -72,7 +71,7 @@ public class BlockedWebhook {
   public static final String SERIALIZED_NAME_INTERNAL_TICKET_NUMBER = "internalTicketNumber";
   @SerializedName(SERIALIZED_NAME_INTERNAL_TICKET_NUMBER)
   @javax.annotation.Nullable
-  private UUID internalTicketNumber;
+  private String internalTicketNumber;
 
   public static final String SERIALIZED_NAME_BLOCKED = "blocked";
   @SerializedName(SERIALIZED_NAME_BLOCKED)
@@ -144,7 +143,7 @@ public class BlockedWebhook {
   }
 
 
-  public BlockedWebhook internalTicketNumber(@javax.annotation.Nullable UUID internalTicketNumber) {
+  public BlockedWebhook internalTicketNumber(@javax.annotation.Nullable String internalTicketNumber) {
     this.internalTicketNumber = internalTicketNumber;
     return this;
   }
@@ -154,11 +153,11 @@ public class BlockedWebhook {
    * @return internalTicketNumber
    */
   @javax.annotation.Nullable
-  public UUID getInternalTicketNumber() {
+  public String getInternalTicketNumber() {
     return internalTicketNumber;
   }
 
-  public void setInternalTicketNumber(@javax.annotation.Nullable UUID internalTicketNumber) {
+  public void setInternalTicketNumber(@javax.annotation.Nullable String internalTicketNumber) {
     this.internalTicketNumber = internalTicketNumber;
   }
 

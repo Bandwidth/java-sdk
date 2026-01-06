@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -83,7 +82,7 @@ public class FailureWebhook {
   public static final String SERIALIZED_NAME_INTERNAL_TICKET_NUMBER = "internalTicketNumber";
   @SerializedName(SERIALIZED_NAME_INTERNAL_TICKET_NUMBER)
   @javax.annotation.Nullable
-  private UUID internalTicketNumber;
+  private String internalTicketNumber;
 
   public FailureWebhook() {
   }
@@ -191,7 +190,7 @@ public class FailureWebhook {
   }
 
 
-  public FailureWebhook internalTicketNumber(@javax.annotation.Nullable UUID internalTicketNumber) {
+  public FailureWebhook internalTicketNumber(@javax.annotation.Nullable String internalTicketNumber) {
     this.internalTicketNumber = internalTicketNumber;
     return this;
   }
@@ -201,11 +200,11 @@ public class FailureWebhook {
    * @return internalTicketNumber
    */
   @javax.annotation.Nullable
-  public UUID getInternalTicketNumber() {
+  public String getInternalTicketNumber() {
     return internalTicketNumber;
   }
 
-  public void setInternalTicketNumber(@javax.annotation.Nullable UUID internalTicketNumber) {
+  public void setInternalTicketNumber(@javax.annotation.Nullable String internalTicketNumber) {
     this.internalTicketNumber = internalTicketNumber;
   }
 
