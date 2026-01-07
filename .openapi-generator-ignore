@@ -14,6 +14,8 @@
 .github/workflows/maven.yml
 src/test/
 
+src/main/java/com/bandwidth/sdk/model/MultiChannelChannelListRBMObjectAllOfContent.java
+
 # You can match any string of characters against a directory, file or extension with a single asterisk (*):
 #foo/*/qux
 # The above matches foo/bar/qux and foo/baz/qux, but not foo/bar/baz/qux
