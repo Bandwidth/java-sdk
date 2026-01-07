@@ -46,7 +46,8 @@ public class RbmMessageMediaTest {
      */
     @Test
     public void mediaTest() {
-        assertThat(model.getMedia(), instanceOf(RbmMessageContentFile.class));
+        assertThat(model.getMedia(), instanceOf(ArrayList.class));
+
     }
 
     /**
