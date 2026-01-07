@@ -30,7 +30,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
  */
 public class RbmMessageMediaTest {
     private final RbmMessageMedia model = new RbmMessageMedia()
-            .media(new RbmMessageContentFile())
+            .media(Arrays.asList(new RbmMessageContentFile()))
             .suggestions(new ArrayList<MultiChannelAction>(Arrays.asList(new MultiChannelAction())));
 
     /**

@@ -2257,7 +2257,9 @@ components:
       type: object
       properties:
         media:
-          $ref: '#/components/schemas/rbmMessageContentFile'
+          type: array
+          items:
+            $ref: '#/components/schemas/rbmMessageContentFile'
         suggestions:
           $ref: '#/components/schemas/multiChannelFullActions'
       required:
