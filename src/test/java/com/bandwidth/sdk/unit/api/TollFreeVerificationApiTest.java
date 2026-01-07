@@ -112,6 +112,7 @@ public class TollFreeVerificationApiTest {
         assertThat(response.getData().getSubmission(), instanceOf(TfvSubmissionInfo.class));
         assertThat(response.getData().getBlocked(), instanceOf(Boolean.class));
         assertThat(response.getData().getBlockedReason(), instanceOf(String.class));
+        assertThat(response.getData().getCvToken(), instanceOf(String.class));
     }
 
     @Test
@@ -198,7 +199,8 @@ public class TollFreeVerificationApiTest {
                 .businessRegistrationType(BusinessRegistrationTypeEnum.EIN)
                 .businessEntityType(BusinessEntityTypeEnum.PRIVATE_PROFIT)
                 .helpMessageResponse("helpMessageResponse")
-                .ageGatedContent(true);
+                .ageGatedContent(true)
+                .cvToken("cvToken");
 
         ApiResponse<Void> response = api.requestTollFreeVerificationWithHttpInfo(BW_ACCOUNT_ID, verificationRequest);
 
