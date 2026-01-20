@@ -15,17 +15,13 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import java.util.Locale;
-import com.bandwidth.sdk.model.MultiChannelAction;
-import com.bandwidth.sdk.model.RbmMessageContentFile;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,74 +48,58 @@ import java.util.Locale;
 import com.bandwidth.sdk.JSON;
 
 /**
- * RbmMessageMedia
+ * CustomTooManyRequestsError
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
-public class RbmMessageMedia {
-  public static final String SERIALIZED_NAME_MEDIA = "media";
-  @SerializedName(SERIALIZED_NAME_MEDIA)
+public class CustomTooManyRequestsError {
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
   @javax.annotation.Nonnull
-  private List<RbmMessageContentFile> media = new ArrayList<>();
+  private String type;
 
-  public static final String SERIALIZED_NAME_SUGGESTIONS = "suggestions";
-  @SerializedName(SERIALIZED_NAME_SUGGESTIONS)
-  @javax.annotation.Nullable
-  private List<MultiChannelAction> suggestions = new ArrayList<>();
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nonnull
+  private String description;
 
-  public RbmMessageMedia() {
+  public CustomTooManyRequestsError() {
   }
 
-  public RbmMessageMedia media(@javax.annotation.Nonnull List<RbmMessageContentFile> media) {
-    this.media = media;
-    return this;
-  }
-
-  public RbmMessageMedia addMediaItem(RbmMessageContentFile mediaItem) {
-    if (this.media == null) {
-      this.media = new ArrayList<>();
-    }
-    this.media.add(mediaItem);
+  public CustomTooManyRequestsError type(@javax.annotation.Nonnull String type) {
+    this.type = type;
     return this;
   }
 
   /**
-   * Get media
-   * @return media
+   * Get type
+   * @return type
    */
   @javax.annotation.Nonnull
-  public List<RbmMessageContentFile> getMedia() {
-    return media;
+  public String getType() {
+    return type;
   }
 
-  public void setMedia(@javax.annotation.Nonnull List<RbmMessageContentFile> media) {
-    this.media = media;
+  public void setType(@javax.annotation.Nonnull String type) {
+    this.type = type;
   }
 
 
-  public RbmMessageMedia suggestions(@javax.annotation.Nullable List<MultiChannelAction> suggestions) {
-    this.suggestions = suggestions;
-    return this;
-  }
-
-  public RbmMessageMedia addSuggestionsItem(MultiChannelAction suggestionsItem) {
-    if (this.suggestions == null) {
-      this.suggestions = new ArrayList<>();
-    }
-    this.suggestions.add(suggestionsItem);
+  public CustomTooManyRequestsError description(@javax.annotation.Nonnull String description) {
+    this.description = description;
     return this;
   }
 
   /**
-   * An array of suggested actions for the recipient.
-   * @return suggestions
+   * Get description
+   * @return description
    */
-  @javax.annotation.Nullable
-  public List<MultiChannelAction> getSuggestions() {
-    return suggestions;
+  @javax.annotation.Nonnull
+  public String getDescription() {
+    return description;
   }
 
-  public void setSuggestions(@javax.annotation.Nullable List<MultiChannelAction> suggestions) {
-    this.suggestions = suggestions;
+  public void setDescription(@javax.annotation.Nonnull String description) {
+    this.description = description;
   }
 
   /**
@@ -135,9 +115,9 @@ public class RbmMessageMedia {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the RbmMessageMedia instance itself
+   * @return the CustomTooManyRequestsError instance itself
    */
-  public RbmMessageMedia putAdditionalProperty(String key, Object value) {
+  public CustomTooManyRequestsError putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -176,23 +156,23 @@ public class RbmMessageMedia {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RbmMessageMedia rbmMessageMedia = (RbmMessageMedia) o;
-    return Objects.equals(this.media, rbmMessageMedia.media) &&
-        Objects.equals(this.suggestions, rbmMessageMedia.suggestions)&&
-        Objects.equals(this.additionalProperties, rbmMessageMedia.additionalProperties);
+    CustomTooManyRequestsError customTooManyRequestsError = (CustomTooManyRequestsError) o;
+    return Objects.equals(this.type, customTooManyRequestsError.type) &&
+        Objects.equals(this.description, customTooManyRequestsError.description)&&
+        Objects.equals(this.additionalProperties, customTooManyRequestsError.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(media, suggestions, additionalProperties);
+    return Objects.hash(type, description, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RbmMessageMedia {\n");
-    sb.append("    media: ").append(toIndentedString(media)).append("\n");
-    sb.append("    suggestions: ").append(toIndentedString(suggestions)).append("\n");
+    sb.append("class CustomTooManyRequestsError {\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -215,55 +195,37 @@ public class RbmMessageMedia {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("media", "suggestions"));
+    openapiFields = new HashSet<String>(Arrays.asList("type", "description"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("media"));
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("type", "description"));
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to RbmMessageMedia
+   * @throws IOException if the JSON Element is invalid with respect to CustomTooManyRequestsError
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!RbmMessageMedia.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in RbmMessageMedia is not found in the empty JSON string", RbmMessageMedia.openapiRequiredFields.toString()));
+        if (!CustomTooManyRequestsError.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in CustomTooManyRequestsError is not found in the empty JSON string", CustomTooManyRequestsError.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RbmMessageMedia.openapiRequiredFields) {
+      for (String requiredField : CustomTooManyRequestsError.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the json data is an array
-      if (!jsonObj.get("media").isJsonArray()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `media` to be an array in the JSON string but got `%s`", jsonObj.get("media").toString()));
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-
-      JsonArray jsonArraymedia = jsonObj.getAsJsonArray("media");
-      // validate the required field `media` (array)
-      for (int i = 0; i < jsonArraymedia.size(); i++) {
-        RbmMessageContentFile.validateJsonElement(jsonArraymedia.get(i));
-      };
-      if (jsonObj.get("suggestions") != null && !jsonObj.get("suggestions").isJsonNull()) {
-        JsonArray jsonArraysuggestions = jsonObj.getAsJsonArray("suggestions");
-        if (jsonArraysuggestions != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("suggestions").isJsonArray()) {
-            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `suggestions` to be an array in the JSON string but got `%s`", jsonObj.get("suggestions").toString()));
-          }
-
-          // validate the optional field `suggestions` (array)
-          for (int i = 0; i < jsonArraysuggestions.size(); i++) {
-            MultiChannelAction.validateJsonElement(jsonArraysuggestions.get(i));
-          };
-        }
+      if (!jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
   }
 
@@ -271,16 +233,16 @@ public class RbmMessageMedia {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RbmMessageMedia.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RbmMessageMedia' and its subtypes
+       if (!CustomTooManyRequestsError.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CustomTooManyRequestsError' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RbmMessageMedia> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RbmMessageMedia.class));
+       final TypeAdapter<CustomTooManyRequestsError> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CustomTooManyRequestsError.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<RbmMessageMedia>() {
+       return (TypeAdapter<T>) new TypeAdapter<CustomTooManyRequestsError>() {
            @Override
-           public void write(JsonWriter out, RbmMessageMedia value) throws IOException {
+           public void write(JsonWriter out, CustomTooManyRequestsError value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -308,12 +270,12 @@ public class RbmMessageMedia {
            }
 
            @Override
-           public RbmMessageMedia read(JsonReader in) throws IOException {
+           public CustomTooManyRequestsError read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             RbmMessageMedia instance = thisAdapter.fromJsonTree(jsonObj);
+             CustomTooManyRequestsError instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -340,18 +302,18 @@ public class RbmMessageMedia {
   }
 
   /**
-   * Create an instance of RbmMessageMedia given an JSON string
+   * Create an instance of CustomTooManyRequestsError given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of RbmMessageMedia
-   * @throws IOException if the JSON string is invalid with respect to RbmMessageMedia
+   * @return An instance of CustomTooManyRequestsError
+   * @throws IOException if the JSON string is invalid with respect to CustomTooManyRequestsError
    */
-  public static RbmMessageMedia fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, RbmMessageMedia.class);
+  public static CustomTooManyRequestsError fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CustomTooManyRequestsError.class);
   }
 
   /**
-   * Convert an instance of RbmMessageMedia to an JSON string
+   * Convert an instance of CustomTooManyRequestsError to an JSON string
    *
    * @return JSON string
    */

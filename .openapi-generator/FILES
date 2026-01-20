@@ -48,6 +48,7 @@ docs/CreateMessageRequestError.md
 docs/CreateMultiChannelMessageResponse.md
 docs/CreateSyncLookupResponse.md
 docs/CreateSyncLookupResponseData.md
+docs/CustomTooManyRequestsError.md
 docs/DeactivationEventEnum.md
 docs/DisconnectCallback.md
 docs/Diversion.md
@@ -275,6 +276,7 @@ src/main/java/com/bandwidth/sdk/model/CreateMessageRequestError.java
 src/main/java/com/bandwidth/sdk/model/CreateMultiChannelMessageResponse.java
 src/main/java/com/bandwidth/sdk/model/CreateSyncLookupResponse.java
 src/main/java/com/bandwidth/sdk/model/CreateSyncLookupResponseData.java
+src/main/java/com/bandwidth/sdk/model/CustomTooManyRequestsError.java
 src/main/java/com/bandwidth/sdk/model/DeactivationEventEnum.java
 src/main/java/com/bandwidth/sdk/model/DisconnectCallback.java
 src/main/java/com/bandwidth/sdk/model/Diversion.java
