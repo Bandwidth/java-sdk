@@ -14,7 +14,6 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import java.util.Locale;
 import com.bandwidth.sdk.model.MmsMessageContent;
 import com.bandwidth.sdk.model.MultiChannelChannelListMMSObject;
 import com.bandwidth.sdk.model.MultiChannelChannelListRBMObject;
@@ -64,7 +63,7 @@ import com.google.gson.JsonParseException;
 
 import com.bandwidth.sdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
 public class MultiChannelChannelListRequestObject extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(MultiChannelChannelListRequestObject.class.getName());
 

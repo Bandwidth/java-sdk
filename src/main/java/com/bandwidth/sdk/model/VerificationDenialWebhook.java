@@ -14,7 +14,6 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import java.util.Locale;
 import com.bandwidth.sdk.model.AdditionalDenialReason;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -46,14 +45,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
  * VerificationDenialWebhook
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
 public class VerificationDenialWebhook {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
@@ -429,19 +427,19 @@ public class VerificationDenialWebhook {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!VerificationDenialWebhook.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in VerificationDenialWebhook is not found in the empty JSON string", VerificationDenialWebhook.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in VerificationDenialWebhook is not found in the empty JSON string", VerificationDenialWebhook.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("accountId") != null && !jsonObj.get("accountId").isJsonNull()) && !jsonObj.get("accountId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `accountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountId").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `accountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountId").toString()));
       }
       if (jsonObj.get("additionalDenialReasons") != null && !jsonObj.get("additionalDenialReasons").isJsonNull()) {
         JsonArray jsonArrayadditionalDenialReasons = jsonObj.getAsJsonArray("additionalDenialReasons");
         if (jsonArrayadditionalDenialReasons != null) {
           // ensure the json data is an array
           if (!jsonObj.get("additionalDenialReasons").isJsonArray()) {
-            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `additionalDenialReasons` to be an array in the JSON string but got `%s`", jsonObj.get("additionalDenialReasons").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `additionalDenialReasons` to be an array in the JSON string but got `%s`", jsonObj.get("additionalDenialReasons").toString()));
           }
 
           // validate the optional field `additionalDenialReasons` (array)
@@ -451,19 +449,19 @@ public class VerificationDenialWebhook {
         }
       }
       if ((jsonObj.get("declineReasonDescription") != null && !jsonObj.get("declineReasonDescription").isJsonNull()) && !jsonObj.get("declineReasonDescription").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `declineReasonDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("declineReasonDescription").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `declineReasonDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("declineReasonDescription").toString()));
       }
       if ((jsonObj.get("internalTicketNumber") != null && !jsonObj.get("internalTicketNumber").isJsonNull()) && !jsonObj.get("internalTicketNumber").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `internalTicketNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("internalTicketNumber").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `internalTicketNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("internalTicketNumber").toString()));
       }
       if ((jsonObj.get("phoneNumber") != null && !jsonObj.get("phoneNumber").isJsonNull()) && !jsonObj.get("phoneNumber").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `phoneNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phoneNumber").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `phoneNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phoneNumber").toString()));
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       if ((jsonObj.get("blockedReason") != null && !jsonObj.get("blockedReason").isJsonNull()) && !jsonObj.get("blockedReason").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `blockedReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("blockedReason").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `blockedReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("blockedReason").toString()));
       }
   }
 
@@ -524,7 +522,7 @@ public class VerificationDenialWebhook {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object
