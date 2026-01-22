@@ -23,7 +23,7 @@ import java.util.Map;
 public class ApiClientTest {
 
     @Test
-    public void testHttpClient() {
+    public void testHttpClient() throws Exception {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         OkHttpClient httpClient = builder.build();
 

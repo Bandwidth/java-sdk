@@ -181,7 +181,7 @@ public class ApiClient {
                 throw new IllegalArgumentException("OAuth2 token URL must be an absolute URL");
             }
         }
-        RetryingOAuth retryingOAuth = new RetryingOAuth(tokenUrl, clientId, OAuthFlow.APPLICATION, clientSecret, parameters);
+        RetryingOAuth retryingOAuth = new RetryingOAuth(client, tokenUrl, clientId, OAuthFlow.APPLICATION, clientSecret, parameters);
         authentications.put("OAuth2", retryingOAuth);
         authentications.put("Basic", new HttpBasicAuth());
 
