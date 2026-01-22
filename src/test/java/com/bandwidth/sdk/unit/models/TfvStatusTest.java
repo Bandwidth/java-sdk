@@ -31,7 +31,7 @@ public class TfvStatusTest {
     private final TfvStatus model = new TfvStatus()
             .phoneNumber("phoneNumber")
             .status(TfvStatusEnum.PENDING)
-            .internalTicketNumber(UUID.randomUUID())
+            .internalTicketNumber(UUID.randomUUID().toString())
             .declineReasonDescription("declineReasonDescription")
             .resubmitAllowed(true)
             .createdDateTime(OffsetDateTime.now())
@@ -70,7 +70,7 @@ public class TfvStatusTest {
      */
     @Test
     public void internalTicketNumberTest() {
-        assertThat(model.getInternalTicketNumber(), instanceOf(UUID.class));
+        assertThat(model.getInternalTicketNumber(), instanceOf(String.class));
     }
 
     /**

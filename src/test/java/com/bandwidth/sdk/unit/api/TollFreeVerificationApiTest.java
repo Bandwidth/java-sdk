@@ -45,7 +45,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.UUID;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
@@ -104,7 +103,7 @@ public class TollFreeVerificationApiTest {
         assertThat(response.getData(), instanceOf(TfvStatus.class));
         assertThat(response.getData().getPhoneNumber(), instanceOf(String.class));
         assertThat(response.getData().getStatus(), instanceOf(TfvStatusEnum.class));
-        assertThat(response.getData().getInternalTicketNumber(), instanceOf(UUID.class));
+        assertThat(response.getData().getInternalTicketNumber(), instanceOf(String.class));
         assertThat(response.getData().getDeclineReasonDescription(), instanceOf(String.class));
         assertThat(response.getData().getResubmitAllowed(), instanceOf(Boolean.class));
         assertThat(response.getData().getCreatedDateTime(), instanceOf(OffsetDateTime.class));

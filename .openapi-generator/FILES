@@ -329,7 +329,6 @@ src/main/java/com/bandwidth/sdk/model/MultiChannelChannelListMMSResponseObject.j
 src/main/java/com/bandwidth/sdk/model/MultiChannelChannelListObjectBase.java
 src/main/java/com/bandwidth/sdk/model/MultiChannelChannelListOwnerObject.java
 src/main/java/com/bandwidth/sdk/model/MultiChannelChannelListRBMObject.java
-src/main/java/com/bandwidth/sdk/model/MultiChannelChannelListRBMObjectAllOfContent.java
 src/main/java/com/bandwidth/sdk/model/MultiChannelChannelListRBMResponseObject.java
 src/main/java/com/bandwidth/sdk/model/MultiChannelChannelListRequestObject.java
 src/main/java/com/bandwidth/sdk/model/MultiChannelChannelListResponseObject.java

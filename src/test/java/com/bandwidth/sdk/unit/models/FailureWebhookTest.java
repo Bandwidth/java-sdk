@@ -33,7 +33,7 @@ public class FailureWebhookTest {
             .errorCode("errorCode")
             .errorMessage("errorMessage")
             .errors(new ArrayList<String>(Arrays.asList("errors")))
-            .internalTicketNumber(UUID.randomUUID());
+            .internalTicketNumber(UUID.randomUUID().toString());
 
     /**
      * Model tests for FailureWebhook
@@ -88,7 +88,7 @@ public class FailureWebhookTest {
      */
     @Test
     public void internalTicketNumberTest() {
-        assertThat(model.getInternalTicketNumber(), instanceOf(UUID.class));
+        assertThat(model.getInternalTicketNumber(), instanceOf(String.class));
     }
 
 }
