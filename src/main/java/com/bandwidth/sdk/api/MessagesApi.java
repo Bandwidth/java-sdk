@@ -28,7 +28,6 @@ import java.io.IOException;
 
 
 import com.bandwidth.sdk.model.CreateMessageRequestError;
-import com.bandwidth.sdk.model.CustomTooManyRequestsError;
 import com.bandwidth.sdk.model.ListMessageDirectionEnum;
 import com.bandwidth.sdk.model.Message;
 import com.bandwidth.sdk.model.MessageRequest;
