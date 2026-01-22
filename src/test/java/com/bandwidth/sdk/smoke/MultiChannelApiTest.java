@@ -244,7 +244,6 @@ public class MultiChannelApiTest {
     }
 
     @Test
-    @Disabled("skip until messaging updates API")
     public void createMultiChannelRBMMediaMessageTest() throws ApiException {
         MultiChannelChannelListRequestObject channelListRBMObject = new MultiChannelChannelListRequestObject(
                 new MultiChannelChannelListRBMObject()
@@ -253,10 +252,10 @@ public class MultiChannelApiTest {
                         .channel(MultiChannelMessageChannelEnum.RBM)
                         .content(new MultiChannelChannelListRBMObjectAllOfContent(
                                 new RbmMessageMedia()
-                                        .media(new RbmMessageContentFile()
+                                        .media(Arrays.asList(new RbmMessageContentFile()
                                                 .fileUrl(URI.create("https://www.example.com/image1.png"))
                                                 .thumbnailUrl(URI.create("https://www.example.com/thumbnail"))
-                                        )
+                                        ))
                                         .suggestions(Arrays.asList(
                                                 new MultiChannelAction(new RbmActionDial()
                                                         .type(RbmActionTypeEnum.DIAL_PHONE)
@@ -305,9 +304,10 @@ public class MultiChannelApiTest {
         assertThat(channelListObject.getContent(), instanceOf(MultiChannelChannelListRBMObjectAllOfContent.class));
         assertThat(channelListObject.getContent().getActualInstance(), instanceOf(RbmMessageMedia.class));
         RbmMessageMedia rbmContent = channelListObject.getContent().getRbmMessageMedia();
-        assertThat(rbmContent.getMedia(), instanceOf(RbmMessageContentFile.class));
-        assertThat(rbmContent.getMedia().getFileUrl(), instanceOf(URI.class));
-        assertThat(rbmContent.getMedia().getThumbnailUrl(), instanceOf(URI.class));
+        assertThat(rbmContent.getMedia(), instanceOf(List.class));
+        assertThat(rbmContent.getMedia().get(0), instanceOf(RbmMessageContentFile.class));
+        assertThat(rbmContent.getMedia().get(0).getFileUrl(), instanceOf(URI.class));
+        assertThat(rbmContent.getMedia().get(0).getThumbnailUrl(), instanceOf(URI.class));
         assertThat(rbmContent.getSuggestions(), instanceOf(List.class));
         assertThat(rbmContent.getSuggestions().get(0), instanceOf(MultiChannelAction.class));
         assertThat(rbmContent.getSuggestions().get(0).getActualInstance(), instanceOf(RbmActionDial.class));
