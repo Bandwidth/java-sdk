@@ -38,7 +38,8 @@ public class TfvStatusTest {
             .modifiedDateTime(OffsetDateTime.now())
             .submission(new TfvSubmissionInfo())
             .blocked(true)
-            .blockedReason("blockedReason");
+            .blockedReason("blockedReason")
+            .cvToken("cvToken");
 
     /**
      * Model tests for TfvStatus
@@ -126,6 +127,13 @@ public class TfvStatusTest {
     @Test
     public void blockedReasonTest() {
         assertThat(model.getBlockedReason(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'cvToken'
+     */    @Test
+    public void cvTokenTest() {
+        assertThat(model.getCvToken(), instanceOf(String.class));
     }
 
 }
