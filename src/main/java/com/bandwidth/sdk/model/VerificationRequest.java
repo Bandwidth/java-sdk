@@ -150,6 +150,11 @@ public class VerificationRequest {
   @javax.annotation.Nullable
   private Boolean ageGatedContent;
 
+  public static final String SERIALIZED_NAME_CV_TOKEN = "cvToken";
+  @SerializedName(SERIALIZED_NAME_CV_TOKEN)
+  @javax.annotation.Nullable
+  private String cvToken;
+
   public VerificationRequest() {
   }
 
@@ -504,6 +509,25 @@ public class VerificationRequest {
     this.ageGatedContent = ageGatedContent;
   }
 
+
+  public VerificationRequest cvToken(@javax.annotation.Nullable String cvToken) {
+    this.cvToken = cvToken;
+    return this;
+  }
+
+  /**
+   * The token provided by Campaign Verify to validate your political use case. Only required for 527 political organizations. If you are not a 527 political organization, this field should be omitted. If you pass an empty string, it will be passed along and potentially rejected.
+   * @return cvToken
+   */
+  @javax.annotation.Nullable
+  public String getCvToken() {
+    return cvToken;
+  }
+
+  public void setCvToken(@javax.annotation.Nullable String cvToken) {
+    this.cvToken = cvToken;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -576,7 +600,8 @@ public class VerificationRequest {
         Objects.equals(this.businessRegistrationType, verificationRequest.businessRegistrationType) &&
         Objects.equals(this.businessEntityType, verificationRequest.businessEntityType) &&
         Objects.equals(this.helpMessageResponse, verificationRequest.helpMessageResponse) &&
-        Objects.equals(this.ageGatedContent, verificationRequest.ageGatedContent)&&
+        Objects.equals(this.ageGatedContent, verificationRequest.ageGatedContent) &&
+        Objects.equals(this.cvToken, verificationRequest.cvToken)&&
         Objects.equals(this.additionalProperties, verificationRequest.additionalProperties);
   }
 
@@ -586,7 +611,7 @@ public class VerificationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(businessAddress, businessContact, messageVolume, phoneNumbers, useCase, useCaseSummary, productionMessageContent, optInWorkflow, additionalInformation, isvReseller, privacyPolicyUrl, termsAndConditionsUrl, businessDba, businessRegistrationNumber, businessRegistrationType, businessEntityType, helpMessageResponse, ageGatedContent, additionalProperties);
+    return Objects.hash(businessAddress, businessContact, messageVolume, phoneNumbers, useCase, useCaseSummary, productionMessageContent, optInWorkflow, additionalInformation, isvReseller, privacyPolicyUrl, termsAndConditionsUrl, businessDba, businessRegistrationNumber, businessRegistrationType, businessEntityType, helpMessageResponse, ageGatedContent, cvToken, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -618,6 +643,7 @@ public class VerificationRequest {
     sb.append("    businessEntityType: ").append(toIndentedString(businessEntityType)).append("\n");
     sb.append("    helpMessageResponse: ").append(toIndentedString(helpMessageResponse)).append("\n");
     sb.append("    ageGatedContent: ").append(toIndentedString(ageGatedContent)).append("\n");
+    sb.append("    cvToken: ").append(toIndentedString(cvToken)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -640,7 +666,7 @@ public class VerificationRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("businessAddress", "businessContact", "messageVolume", "phoneNumbers", "useCase", "useCaseSummary", "productionMessageContent", "optInWorkflow", "additionalInformation", "isvReseller", "privacyPolicyUrl", "termsAndConditionsUrl", "businessDba", "businessRegistrationNumber", "businessRegistrationType", "businessEntityType", "helpMessageResponse", "ageGatedContent"));
+    openapiFields = new HashSet<String>(Arrays.asList("businessAddress", "businessContact", "messageVolume", "phoneNumbers", "useCase", "useCaseSummary", "productionMessageContent", "optInWorkflow", "additionalInformation", "isvReseller", "privacyPolicyUrl", "termsAndConditionsUrl", "businessDba", "businessRegistrationNumber", "businessRegistrationType", "businessEntityType", "helpMessageResponse", "ageGatedContent", "cvToken"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(Arrays.asList("businessAddress", "businessContact", "messageVolume", "phoneNumbers", "useCase", "useCaseSummary", "productionMessageContent", "optInWorkflow"));
@@ -715,6 +741,9 @@ public class VerificationRequest {
       }
       if ((jsonObj.get("helpMessageResponse") != null && !jsonObj.get("helpMessageResponse").isJsonNull()) && !jsonObj.get("helpMessageResponse").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `helpMessageResponse` to be a primitive type in the JSON string but got `%s`", jsonObj.get("helpMessageResponse").toString()));
+      }
+      if ((jsonObj.get("cvToken") != null && !jsonObj.get("cvToken").isJsonNull()) && !jsonObj.get("cvToken").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `cvToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cvToken").toString()));
       }
   }
 

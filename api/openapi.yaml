@@ -13851,6 +13851,16 @@ components:
           description: Indicates whether the content is age-gated.
           example: false
           type: boolean
+        cvToken:
+          description: "The token provided by Campaign Verify to validate your political\
+            \ use case. Only required for 527 political organizations. If you are\
+            \ not a 527 political organization, this field should be omitted. If you\
+            \ pass an empty string, it will be passed along and potentially rejected."
+          example: cv.user123|sess456|mno|tfree|read_write|X7yZ9aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVw
+          maxLength: 500
+          minLength: 0
+          nullable: true
+          type: string
       required:
       - businessAddress
       - businessContact
@@ -13945,6 +13955,16 @@ components:
           description: Indicates whether the content is age-gated.
           example: false
           type: boolean
+        cvToken:
+          description: "The token provided by Campaign Verify to validate your political\
+            \ use case. Only required for 527 political organizations. If you are\
+            \ not a 527 political organization, this field should be omitted. If you\
+            \ pass an empty string, it will be passed along and potentially rejected."
+          example: cv.user123|sess456|mno|tfree|read_write|X7yZ9aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVw
+          maxLength: 500
+          minLength: 0
+          nullable: true
+          type: string
       required:
       - businessAddress
       - businessContact
@@ -14603,6 +14623,7 @@ components:
           useCaseSummary: Text summarizing the use case for the toll-free number
         declineReasonDescription: Invalid Information - Can't Validate URL - Website
           is not accessible / not available
+        cvToken: cv.user123|sess456|mno|tfree|read_write|X7yZ9aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVw
         status: VERIFIED
       properties:
         phoneNumber:
@@ -14653,6 +14674,16 @@ components:
           description: The reason why the Toll-Free Verification is blocked. This
             attribute will only be defined when the number is blocked.
           example: Toll-free number was used to send spam messages
+          type: string
+        cvToken:
+          description: "The token provided by Campaign Verify to validate your political\
+            \ use case. Only required for 527 political organizations. If you are\
+            \ not a 527 political organization, this field should be omitted. If you\
+            \ pass an empty string, it will be passed along and potentially rejected."
+          example: cv.user123|sess456|mno|tfree|read_write|X7yZ9aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVw
+          maxLength: 500
+          minLength: 0
+          nullable: true
           type: string
       type: object
     tfvSubmissionInfo:
@@ -14777,6 +14808,16 @@ components:
       minLength: 16
       nullable: true
       pattern: "^[ -~]{16,64}$"
+      type: string
+    cvToken:
+      description: "The token provided by Campaign Verify to validate your political\
+        \ use case. Only required for 527 political organizations. If you are not\
+        \ a 527 political organization, this field should be omitted. If you pass\
+        \ an empty string, it will be passed along and potentially rejected."
+      example: cv.user123|sess456|mno|tfree|read_write|X7yZ9aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVw
+      maxLength: 500
+      minLength: 0
+      nullable: true
       type: string
     rbmCardContent_media:
       allOf:
