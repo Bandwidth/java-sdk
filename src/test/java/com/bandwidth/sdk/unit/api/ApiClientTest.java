@@ -9,8 +9,6 @@ import com.bandwidth.sdk.auth.Authentication;
 import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.auth.RetryingOAuth;
 
-import java.util.Map;
-
 import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -19,6 +17,8 @@ import static org.hamcrest.Matchers.hasKey;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.sameInstance;
 import static org.hamcrest.Matchers.not;
+
+import java.util.Map;
 
 public class ApiClientTest {
 
