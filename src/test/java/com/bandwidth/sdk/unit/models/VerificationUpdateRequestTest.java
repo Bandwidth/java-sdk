@@ -45,7 +45,8 @@ public class VerificationUpdateRequestTest {
             .businessRegistrationType(BusinessRegistrationTypeEnum.EIN)
             .businessEntityType(BusinessEntityTypeEnum.PRIVATE_PROFIT)
             .helpMessageResponse("helpMessageResponse")
-            .ageGatedContent(true);
+            .ageGatedContent(true)
+            .cvToken("cvToken");
 
     /**
      * Model tests for VerificationUpdateRequest
@@ -189,6 +190,13 @@ public class VerificationUpdateRequestTest {
     @Test
     public void ageGatedContentTest() {
         assertThat(model.getAgeGatedContent(), instanceOf(Boolean.class));
+    }
+
+    /**
+     * Test the property 'cvToken'
+     */    @Test
+    public void cvTokenTest() {
+        assertThat(model.getCvToken(), instanceOf(String.class));
     }
 
 }
