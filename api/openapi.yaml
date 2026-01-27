@@ -8860,7 +8860,9 @@ components:
     rbmMessageMedia:
       properties:
         media:
-          $ref: "#/components/schemas/rbmMessageContentFile"
+          items:
+            $ref: "#/components/schemas/rbmMessageContentFile"
+          type: array
         suggestions:
           description: An array of suggested actions for the recipient.
           items:
