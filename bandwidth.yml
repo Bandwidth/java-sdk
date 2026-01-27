@@ -163,7 +163,13 @@ paths:
   /users/{accountId}/messages:
     get:
       summary: List Messages
-      description: Returns a list of messages based on query parameters.
+      description: >
+        Returns a list of messages based on query parameters.
+
+
+        **Rate Limit:** This endpoint is rate limited to 3500 requests per 5
+        minutes per Source IP address. Exceeding the limit returns HTTP 429 with
+        a `Retry-After` header.
       operationId: listMessages
       tags:
         - Messages
@@ -207,10 +213,12 @@ paths:
           $ref: '#/components/responses/messagingForbiddenError'
         '404':
           $ref: '#/components/responses/messagingNotFoundError'
+        '405':
+          $ref: '#/components/responses/messagingMethodNotAllowedError'
         '415':
           $ref: '#/components/responses/messagingInvalidMediaTypeError'
         '429':
-          $ref: '#/components/responses/messagingTooManyRequestsError'
+          $ref: '#/components/responses/listMessagesTooManyRequestsError'
         '500':
           $ref: '#/components/responses/messagingInternalServerError'
     post:
@@ -6752,6 +6760,21 @@ components:
               - type: internal-server-error
                 description: Internal server error. No further information available
                 source: {}
+    listMessagesTooManyRequestsError:
+      description: Too Many Requests
+      headers:
+        Retry-After:
+          description: The number of seconds to wait before retrying the request.
+          schema:
+            type: integer
+            example: 300
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/messagingRequestError"
+          example:
+            type: rate_limit_exceeded
+            description: Rate limit exceeded. Wait for Retry-After time before sending another request.
     createCallResponse:
       description: Created
       headers:
