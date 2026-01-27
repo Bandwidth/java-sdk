@@ -465,6 +465,27 @@ public class MultiChannelApiTest {
         assertThat(rbmCard.getCardWidth(), instanceOf(CardWidthEnum.class));
         assertThat(rbmCard.getCardWidth(), equalTo(CardWidthEnum.MEDIUM));
         assertThat(rbmCard.getCardContents(), instanceOf(List.class));
+        assertThat(rbmCard.getCardContents().get(0), instanceOf(RbmCardContent.class));
+        RbmCardContent card1 = rbmCard.getCardContents().get(0);
+        assertThat(card1.getTitle(), instanceOf(String.class));
+        assertThat(card1.getDescription(), instanceOf(String.class));
+        assertThat(card1.getMedia(), instanceOf(RbmCardContentMedia.class));
+        RbmCardContentMedia media = card1.getMedia();
+        assertThat(media.getFileUrl(), instanceOf(URI.class));
+        assertThat(media.getThumbnailUrl(), instanceOf(URI.class));
+        assertThat(media.getHeight(), instanceOf(RbmMediaHeightEnum.class));
+        assertThat(card1.getSuggestions(), instanceOf(List.class));
+        assertThat(card1.getSuggestions().get(0), instanceOf(MultiChannelAction.class));
+        assertThat(card1.getSuggestions().get(0).getActualInstance(), instanceOf(RbmActionDial.class));
+        RbmActionDial rbmActionDial = card1.getSuggestions().get(0).getRbmActionDial();
+        assertThat(rbmActionDial.getType(), instanceOf(RbmActionTypeEnum.class));
+        assertThat(rbmActionDial.getType(), equalTo(RbmActionTypeEnum.DIAL_PHONE));
+        assertThat(rbmActionDial.getText(), instanceOf(String.class));
+        assertThat(rbmActionDial.getPostbackData(), instanceOf(byte[].class));
+        assertThat(rbmActionDial.getPhoneNumber(), instanceOf(String.class));
+        assertThat(rbmCard.getCardContents().get(0), instanceOf(RbmCardContent.class));
+        RbmCardContent card2 = rbmCard.getCardContents().get(1);
+        assertThat(card2.getTitle(), instanceOf(String.class));
         assertThat(channelListObject.getOwner(), equalTo(BW_NUMBER));
     }
 }
