@@ -17,6 +17,7 @@ import static org.hamcrest.Matchers.hasKey;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.sameInstance;
 import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.contains;
 
 import java.util.Map;
 
@@ -33,7 +34,7 @@ public class ApiClientTest {
         assertThat(defaultOauthClient.getHttpClient(), instanceOf(OkHttpClient.class));
         assertThat(customOauthClient.getHttpClient(), instanceOf(OkHttpClient.class));
         assertThat(defaultOauthClient.getHttpClient(), not(sameInstance(customOauthClient.getHttpClient())));
-        assertThat(customOauthClient.getHttpClient(), sameInstance(httpClient));
+        assertThat(customOauthClient.getHttpClient().interceptors(), contains(instanceOf(RetryingOAuth.class)));
     }
 
     @Test
