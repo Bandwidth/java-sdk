@@ -224,6 +224,7 @@ public class ApiClient {
             }
         }
         RetryingOAuth retryingOAuth = new RetryingOAuth(client, tokenUrl, clientId, OAuthFlow.{{#lambda.uppercase}}{{#lambda.snakecase}}{{flow}}{{/lambda.snakecase}}{{/lambda.uppercase}}, clientSecret, parameters);
+        initHttpClient(client, Collections.<Interceptor>singletonList(retryingOAuth));
         authentications.put("{{name}}", retryingOAuth);{{#authMethods}}{{#isBasic}}{{#isBasicBasic}}
         authentications.put("{{name}}", new HttpBasicAuth());{{/isBasicBasic}}{{#isBasicBearer}}
         authentications.put("{{name}}", new HttpBearerAuth("{{scheme}}"));{{/isBasicBearer}}{{/isBasic}}{{#isApiKey}}
@@ -281,7 +282,11 @@ public class ApiClient {
     }
 
     protected void initHttpClient(List<Interceptor> interceptors) {
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        initHttpClient(new OkHttpClient(), interceptors);
+    }
+
+    protected void initHttpClient(OkHttpClient okHttpClient, List<Interceptor> interceptors) {
+        OkHttpClient.Builder builder = okHttpClient.newBuilder();
         builder.addNetworkInterceptor(getProgressInterceptor());
         for (Interceptor interceptor: interceptors) {
             builder.addInterceptor(interceptor);
