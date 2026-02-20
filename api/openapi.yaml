@@ -13791,7 +13791,7 @@ components:
       - DEU
       - ESP
       - CHE
-      nullable: true
+      nullable: false
       type: string
     businessEntityTypeEnum:
       description: "The type of registered business. If no option is applicable, please\
