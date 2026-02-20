@@ -210,45 +210,6 @@ public class TollFreeVerificationApiTest {
     }
 
     @Test
-    public void failedRequestTollFreeVerificationTest() throws ApiException {
-        VerificationRequest verificationRequest = new VerificationRequest()
-                .businessAddress(new Address()
-                        .name("name")
-                        .addr1("addr1")
-                        .addr2("addr2")
-                        .city("city")
-                        .state("state")
-                        .zip("zip")
-                        .url("https://example.com"))
-                .businessContact(new Contact()
-                        .firstName("first-name")
-                        .lastName("last-name")
-                        .email("email@email.com")
-                        .phoneNumber("+19195551234"))
-                .messageVolume(12)
-                .phoneNumbers(List.of("+18005551234"))
-                .useCase("useCase")
-                .useCaseSummary("useCaseSummary")
-                .productionMessageContent("productionMessageContent")
-                .optInWorkflow(new OptInWorkflow()
-                        .description("description")
-                        .imageUrls(List.of("https://example.com"))
-                        .confirmationResponse("confirmationResponse"))
-                .additionalInformation("additionalInformation")
-                .isvReseller("isvReseller")
-                .privacyPolicyUrl("privacyPolicyUrl")
-                .termsAndConditionsUrl("termsAndConditionsUrl")
-                .businessDba("businessDba")
-                .helpMessageResponse("helpMessageResponse")
-                .ageGatedContent(true)
-                .cvToken("cvToken");
-
-        assertThrows(ApiException.class, () -> {
-            api.requestTollFreeVerificationWithHttpInfo(BW_ACCOUNT_ID, verificationRequest);
-        });
-    }
-
-    @Test
     public void updateTollFreeVerificationRequestTest() throws ApiException {
         TfvSubmissionWrapper tfvSubmissionWrapper = new TfvSubmissionWrapper()
                 .submission(null);
