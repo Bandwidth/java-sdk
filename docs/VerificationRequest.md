@@ -20,9 +20,9 @@
 |**privacyPolicyUrl** | **String** | The Toll-Free Verification request privacy policy URL. |  [optional] |
 |**termsAndConditionsUrl** | **String** | The Toll-Free Verification request terms and conditions policy URL. |  [optional] |
 |**businessDba** | **String** | The company &#39;Doing Business As&#39;. |  [optional] |
-|**businessRegistrationNumber** | **String** | Government-issued business identifying number. |  |
-|**businessRegistrationType** | **BusinessRegistrationTypeEnum** |  |  |
-|**businessRegistrationIssuingCountry** | **BusinessRegistrationIssuingCountryEnum** |  |  |
+|**businessRegistrationNumber** | **String** | Government-issued business identifying number. |  [optional] |
+|**businessRegistrationType** | **BusinessRegistrationTypeEnum** |  |  [optional] |
+|**businessRegistrationIssuingCountry** | **BusinessRegistrationIssuingCountryEnum** |  |  [optional] |
 |**businessEntityType** | **BusinessEntityTypeEnum** |  |  |
 |**helpMessageResponse** | **String** | A message that gets sent to users requesting help. |  [optional] |
 |**ageGatedContent** | **Boolean** | Indicates whether the content is age-gated. |  [optional] |

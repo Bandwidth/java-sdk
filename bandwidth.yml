@@ -5829,7 +5829,7 @@ components:
     businessRegistrationNumber:
       type: string
       description: Government-issued business identifying number.
-      nullable: false
+      nullable: true
       maxLength: 500
       example: 12-3456789
     businessRegistrationTypeEnum:
@@ -5854,7 +5854,7 @@ components:
         - CNPJ
         - UID
         - OTHER
-      nullable: false
+      nullable: true
     businessRegistrationIssuingCountryEnum:
       type: string
       description: >-
@@ -5915,7 +5915,7 @@ components:
         - DEU
         - ESP
         - CHE
-      nullable: false
+      nullable: true
     businessEntityTypeEnum:
       type: string
       description: >-
@@ -5982,9 +5982,6 @@ components:
         - useCaseSummary
         - productionMessageContent
         - optInWorkflow
-        - businessRegistrationNumber
-        - businessRegistrationType
-        - businessRegistrationIssuingCountry
         - businessEntityType
       properties:
         businessAddress:

@@ -13728,7 +13728,7 @@ components:
       description: Government-issued business identifying number.
       example: 12-3456789
       maxLength: 500
-      nullable: false
+      nullable: true
       type: string
     businessRegistrationTypeEnum:
       description: The type of business registration number.
@@ -13751,7 +13751,7 @@ components:
       - CNPJ
       - UID
       - OTHER
-      nullable: false
+      nullable: true
       type: string
     businessRegistrationIssuingCountryEnum:
       description: |-
@@ -13791,7 +13791,7 @@ components:
       - DEU
       - ESP
       - CHE
-      nullable: false
+      nullable: true
       type: string
     businessEntityTypeEnum:
       description: "The type of registered business. If no option is applicable, please\
@@ -13924,7 +13924,7 @@ components:
           description: Government-issued business identifying number.
           example: 12-3456789
           maxLength: 500
-          nullable: false
+          nullable: true
           type: string
         businessRegistrationType:
           $ref: "#/components/schemas/businessRegistrationTypeEnum"
@@ -13956,9 +13956,6 @@ components:
       - businessAddress
       - businessContact
       - businessEntityType
-      - businessRegistrationIssuingCountry
-      - businessRegistrationNumber
-      - businessRegistrationType
       - messageVolume
       - optInWorkflow
       - phoneNumbers
@@ -14031,7 +14028,7 @@ components:
           description: Government-issued business identifying number.
           example: 12-3456789
           maxLength: 500
-          nullable: false
+          nullable: true
           type: string
         businessRegistrationType:
           $ref: "#/components/schemas/businessRegistrationTypeEnum"
@@ -14879,7 +14876,7 @@ components:
           description: Government-issued business identifying number.
           example: 12-3456789
           maxLength: 500
-          nullable: false
+          nullable: true
           type: string
         businessRegistrationType:
           $ref: "#/components/schemas/businessRegistrationTypeEnum"
