@@ -26,7 +26,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The type of registered business. If no option is applicable, please provide \&quot;SOLE_PROPRIETOR\&quot; as a value. Optional until early 2026; required if &#x60;businessRegistrationNumber&#x60; is provided. Available starting October 1st, 2025.
+ * The type of registered business. If no option is applicable, please provide \&quot;SOLE_PROPRIETOR\&quot; as a value.
  */
 @JsonAdapter(BusinessEntityTypeEnum.Adapter.class)
 public enum BusinessEntityTypeEnum {
@@ -62,7 +62,7 @@ public enum BusinessEntityTypeEnum {
         return b;
       }
     }
-    return null;
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
   public static class Adapter extends TypeAdapter<BusinessEntityTypeEnum> {
