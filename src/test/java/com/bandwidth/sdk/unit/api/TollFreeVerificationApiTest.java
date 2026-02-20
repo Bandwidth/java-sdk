@@ -12,7 +12,6 @@
 
 package com.bandwidth.sdk.unit.api;
 
-import static org.junit.Assert.assertThrows;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
