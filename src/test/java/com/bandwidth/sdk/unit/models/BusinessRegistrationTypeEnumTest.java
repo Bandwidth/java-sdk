@@ -27,9 +27,25 @@ public class BusinessRegistrationTypeEnumTest {
      * Model tests for BusinessRegistrationTypeEnum
      */
     @Test
-    public void testCallbackMethodEnum() {
+    public void testBusinessRegistrationTypeEnum() {
         assertThat(BusinessRegistrationTypeEnum.EIN.toString(), equalTo("EIN"));
         assertThat(BusinessRegistrationTypeEnum.CBN.toString(), equalTo("CBN"));
+        assertThat(BusinessRegistrationTypeEnum.NEQ.toString(), equalTo("NEQ"));
+        assertThat(BusinessRegistrationTypeEnum.PROVINCIAL_NUMBER.toString(), equalTo("PROVINCIAL_NUMBER"));
+        assertThat(BusinessRegistrationTypeEnum.CRN.toString(), equalTo("CRN"));
+        assertThat(BusinessRegistrationTypeEnum.VAT.toString(), equalTo("VAT"));
+        assertThat(BusinessRegistrationTypeEnum.ACN.toString(), equalTo("ACN"));
+        assertThat(BusinessRegistrationTypeEnum.ABN.toString(), equalTo("ABN"));
+        assertThat(BusinessRegistrationTypeEnum.BRN.toString(), equalTo("BRN"));
+        assertThat(BusinessRegistrationTypeEnum.SIREN.toString(), equalTo("SIREN"));
+        assertThat(BusinessRegistrationTypeEnum.SIRET.toString(), equalTo("SIRET"));
+        assertThat(BusinessRegistrationTypeEnum.NZBN.toString(), equalTo("NZBN"));
+        assertThat(BusinessRegistrationTypeEnum.UST_IDNR.toString(), equalTo("UST_IDNR"));
+        assertThat(BusinessRegistrationTypeEnum.CIF.toString(), equalTo("CIF"));
+        assertThat(BusinessRegistrationTypeEnum.NIF.toString(), equalTo("NIF"));
+        assertThat(BusinessRegistrationTypeEnum.CNPJ.toString(), equalTo("CNPJ"));
+        assertThat(BusinessRegistrationTypeEnum.UID.toString(), equalTo("UID"));
+        assertThat(BusinessRegistrationTypeEnum.OTHER.toString(), equalTo("OTHER"));
     }
 
 }
