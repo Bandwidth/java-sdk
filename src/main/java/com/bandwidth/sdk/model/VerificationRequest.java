@@ -17,6 +17,7 @@ import java.util.Objects;
 import java.util.Locale;
 import com.bandwidth.sdk.model.Address;
 import com.bandwidth.sdk.model.BusinessEntityTypeEnum;
+import com.bandwidth.sdk.model.BusinessRegistrationIssuingCountryEnum;
 import com.bandwidth.sdk.model.BusinessRegistrationTypeEnum;
 import com.bandwidth.sdk.model.Contact;
 import com.bandwidth.sdk.model.OptInWorkflow;
@@ -127,17 +128,22 @@ public class VerificationRequest {
 
   public static final String SERIALIZED_NAME_BUSINESS_REGISTRATION_NUMBER = "businessRegistrationNumber";
   @SerializedName(SERIALIZED_NAME_BUSINESS_REGISTRATION_NUMBER)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String businessRegistrationNumber;
 
   public static final String SERIALIZED_NAME_BUSINESS_REGISTRATION_TYPE = "businessRegistrationType";
   @SerializedName(SERIALIZED_NAME_BUSINESS_REGISTRATION_TYPE)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private BusinessRegistrationTypeEnum businessRegistrationType;
+
+  public static final String SERIALIZED_NAME_BUSINESS_REGISTRATION_ISSUING_COUNTRY = "businessRegistrationIssuingCountry";
+  @SerializedName(SERIALIZED_NAME_BUSINESS_REGISTRATION_ISSUING_COUNTRY)
+  @javax.annotation.Nonnull
+  private BusinessRegistrationIssuingCountryEnum businessRegistrationIssuingCountry;
 
   public static final String SERIALIZED_NAME_BUSINESS_ENTITY_TYPE = "businessEntityType";
   @SerializedName(SERIALIZED_NAME_BUSINESS_ENTITY_TYPE)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private BusinessEntityTypeEnum businessEntityType;
 
   public static final String SERIALIZED_NAME_HELP_MESSAGE_RESPONSE = "helpMessageResponse";
@@ -415,26 +421,26 @@ public class VerificationRequest {
   }
 
 
-  public VerificationRequest businessRegistrationNumber(@javax.annotation.Nullable String businessRegistrationNumber) {
+  public VerificationRequest businessRegistrationNumber(@javax.annotation.Nonnull String businessRegistrationNumber) {
     this.businessRegistrationNumber = businessRegistrationNumber;
     return this;
   }
 
   /**
-   * US Federal Tax ID Number (EIN) or Canada Business Number (CBN). Optional until early 2026. If a value is provided for this field, a value must be provided for &#x60;businessRegistrationType&#x60; and &#x60;businessEntityType&#x60;. Available starting October 1st, 2025.
+   * Government-issued business identifying number.
    * @return businessRegistrationNumber
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getBusinessRegistrationNumber() {
     return businessRegistrationNumber;
   }
 
-  public void setBusinessRegistrationNumber(@javax.annotation.Nullable String businessRegistrationNumber) {
+  public void setBusinessRegistrationNumber(@javax.annotation.Nonnull String businessRegistrationNumber) {
     this.businessRegistrationNumber = businessRegistrationNumber;
   }
 
 
-  public VerificationRequest businessRegistrationType(@javax.annotation.Nullable BusinessRegistrationTypeEnum businessRegistrationType) {
+  public VerificationRequest businessRegistrationType(@javax.annotation.Nonnull BusinessRegistrationTypeEnum businessRegistrationType) {
     this.businessRegistrationType = businessRegistrationType;
     return this;
   }
@@ -443,17 +449,36 @@ public class VerificationRequest {
    * Get businessRegistrationType
    * @return businessRegistrationType
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public BusinessRegistrationTypeEnum getBusinessRegistrationType() {
     return businessRegistrationType;
   }
 
-  public void setBusinessRegistrationType(@javax.annotation.Nullable BusinessRegistrationTypeEnum businessRegistrationType) {
+  public void setBusinessRegistrationType(@javax.annotation.Nonnull BusinessRegistrationTypeEnum businessRegistrationType) {
     this.businessRegistrationType = businessRegistrationType;
   }
 
 
-  public VerificationRequest businessEntityType(@javax.annotation.Nullable BusinessEntityTypeEnum businessEntityType) {
+  public VerificationRequest businessRegistrationIssuingCountry(@javax.annotation.Nonnull BusinessRegistrationIssuingCountryEnum businessRegistrationIssuingCountry) {
+    this.businessRegistrationIssuingCountry = businessRegistrationIssuingCountry;
+    return this;
+  }
+
+  /**
+   * Get businessRegistrationIssuingCountry
+   * @return businessRegistrationIssuingCountry
+   */
+  @javax.annotation.Nonnull
+  public BusinessRegistrationIssuingCountryEnum getBusinessRegistrationIssuingCountry() {
+    return businessRegistrationIssuingCountry;
+  }
+
+  public void setBusinessRegistrationIssuingCountry(@javax.annotation.Nonnull BusinessRegistrationIssuingCountryEnum businessRegistrationIssuingCountry) {
+    this.businessRegistrationIssuingCountry = businessRegistrationIssuingCountry;
+  }
+
+
+  public VerificationRequest businessEntityType(@javax.annotation.Nonnull BusinessEntityTypeEnum businessEntityType) {
     this.businessEntityType = businessEntityType;
     return this;
   }
@@ -462,12 +487,12 @@ public class VerificationRequest {
    * Get businessEntityType
    * @return businessEntityType
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public BusinessEntityTypeEnum getBusinessEntityType() {
     return businessEntityType;
   }
 
-  public void setBusinessEntityType(@javax.annotation.Nullable BusinessEntityTypeEnum businessEntityType) {
+  public void setBusinessEntityType(@javax.annotation.Nonnull BusinessEntityTypeEnum businessEntityType) {
     this.businessEntityType = businessEntityType;
   }
 
@@ -598,6 +623,7 @@ public class VerificationRequest {
         Objects.equals(this.businessDba, verificationRequest.businessDba) &&
         Objects.equals(this.businessRegistrationNumber, verificationRequest.businessRegistrationNumber) &&
         Objects.equals(this.businessRegistrationType, verificationRequest.businessRegistrationType) &&
+        Objects.equals(this.businessRegistrationIssuingCountry, verificationRequest.businessRegistrationIssuingCountry) &&
         Objects.equals(this.businessEntityType, verificationRequest.businessEntityType) &&
         Objects.equals(this.helpMessageResponse, verificationRequest.helpMessageResponse) &&
         Objects.equals(this.ageGatedContent, verificationRequest.ageGatedContent) &&
@@ -611,7 +637,7 @@ public class VerificationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(businessAddress, businessContact, messageVolume, phoneNumbers, useCase, useCaseSummary, productionMessageContent, optInWorkflow, additionalInformation, isvReseller, privacyPolicyUrl, termsAndConditionsUrl, businessDba, businessRegistrationNumber, businessRegistrationType, businessEntityType, helpMessageResponse, ageGatedContent, cvToken, additionalProperties);
+    return Objects.hash(businessAddress, businessContact, messageVolume, phoneNumbers, useCase, useCaseSummary, productionMessageContent, optInWorkflow, additionalInformation, isvReseller, privacyPolicyUrl, termsAndConditionsUrl, businessDba, businessRegistrationNumber, businessRegistrationType, businessRegistrationIssuingCountry, businessEntityType, helpMessageResponse, ageGatedContent, cvToken, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -640,6 +666,7 @@ public class VerificationRequest {
     sb.append("    businessDba: ").append(toIndentedString(businessDba)).append("\n");
     sb.append("    businessRegistrationNumber: ").append(toIndentedString(businessRegistrationNumber)).append("\n");
     sb.append("    businessRegistrationType: ").append(toIndentedString(businessRegistrationType)).append("\n");
+    sb.append("    businessRegistrationIssuingCountry: ").append(toIndentedString(businessRegistrationIssuingCountry)).append("\n");
     sb.append("    businessEntityType: ").append(toIndentedString(businessEntityType)).append("\n");
     sb.append("    helpMessageResponse: ").append(toIndentedString(helpMessageResponse)).append("\n");
     sb.append("    ageGatedContent: ").append(toIndentedString(ageGatedContent)).append("\n");
@@ -666,10 +693,10 @@ public class VerificationRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("businessAddress", "businessContact", "messageVolume", "phoneNumbers", "useCase", "useCaseSummary", "productionMessageContent", "optInWorkflow", "additionalInformation", "isvReseller", "privacyPolicyUrl", "termsAndConditionsUrl", "businessDba", "businessRegistrationNumber", "businessRegistrationType", "businessEntityType", "helpMessageResponse", "ageGatedContent", "cvToken"));
+    openapiFields = new HashSet<String>(Arrays.asList("businessAddress", "businessContact", "messageVolume", "phoneNumbers", "useCase", "useCaseSummary", "productionMessageContent", "optInWorkflow", "additionalInformation", "isvReseller", "privacyPolicyUrl", "termsAndConditionsUrl", "businessDba", "businessRegistrationNumber", "businessRegistrationType", "businessRegistrationIssuingCountry", "businessEntityType", "helpMessageResponse", "ageGatedContent", "cvToken"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("businessAddress", "businessContact", "messageVolume", "phoneNumbers", "useCase", "useCaseSummary", "productionMessageContent", "optInWorkflow"));
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("businessAddress", "businessContact", "messageVolume", "phoneNumbers", "useCase", "useCaseSummary", "productionMessageContent", "optInWorkflow", "businessRegistrationNumber", "businessRegistrationType", "businessRegistrationIssuingCountry", "businessEntityType"));
   }
 
   /**
@@ -728,17 +755,15 @@ public class VerificationRequest {
       if ((jsonObj.get("businessDba") != null && !jsonObj.get("businessDba").isJsonNull()) && !jsonObj.get("businessDba").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `businessDba` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessDba").toString()));
       }
-      if ((jsonObj.get("businessRegistrationNumber") != null && !jsonObj.get("businessRegistrationNumber").isJsonNull()) && !jsonObj.get("businessRegistrationNumber").isJsonPrimitive()) {
+      if (!jsonObj.get("businessRegistrationNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `businessRegistrationNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessRegistrationNumber").toString()));
       }
-      // validate the optional field `businessRegistrationType`
-      if (jsonObj.get("businessRegistrationType") != null && !jsonObj.get("businessRegistrationType").isJsonNull()) {
-        BusinessRegistrationTypeEnum.validateJsonElement(jsonObj.get("businessRegistrationType"));
-      }
-      // validate the optional field `businessEntityType`
-      if (jsonObj.get("businessEntityType") != null && !jsonObj.get("businessEntityType").isJsonNull()) {
-        BusinessEntityTypeEnum.validateJsonElement(jsonObj.get("businessEntityType"));
-      }
+      // validate the required field `businessRegistrationType`
+      BusinessRegistrationTypeEnum.validateJsonElement(jsonObj.get("businessRegistrationType"));
+      // validate the required field `businessRegistrationIssuingCountry`
+      BusinessRegistrationIssuingCountryEnum.validateJsonElement(jsonObj.get("businessRegistrationIssuingCountry"));
+      // validate the required field `businessEntityType`
+      BusinessEntityTypeEnum.validateJsonElement(jsonObj.get("businessEntityType"));
       if ((jsonObj.get("helpMessageResponse") != null && !jsonObj.get("helpMessageResponse").isJsonNull()) && !jsonObj.get("helpMessageResponse").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `helpMessageResponse` to be a primitive type in the JSON string but got `%s`", jsonObj.get("helpMessageResponse").toString()));
       }
