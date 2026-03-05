@@ -136,6 +136,10 @@ public class Callback extends AbstractOpenApiSchema {
                                 deserialized = adapterStatusCallback.fromJsonTree(jsonObject);
                                 newCallback.setActualInstance(deserialized);
                                 return newCallback;
+                            case "message-sending":
+                                deserialized = adapterStatusCallback.fromJsonTree(jsonObject);
+                                newCallback.setActualInstance(deserialized);
+                                return newCallback;
                             case "request-location-response":
                                 deserialized = adapterInboundCallback.fromJsonTree(jsonObject);
                                 newCallback.setActualInstance(deserialized);
