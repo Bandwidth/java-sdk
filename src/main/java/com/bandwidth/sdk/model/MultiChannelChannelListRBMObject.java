@@ -102,7 +102,7 @@ public class MultiChannelChannelListRBMObject {
   }
 
   /**
-   * The ID of the Application your from number or senderId is associated with in the Bandwidth Phone Number Dashboard.
+   * The ID of the Application your from number or senderId is associated with in the Bandwidth App.
    * @return applicationId
    */
   @javax.annotation.Nonnull
