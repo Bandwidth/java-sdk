@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**id** | **String** | A unique identifier of the message. |  |
 |**owner** | **String** | The Bandwidth phone number or alphanumeric identifier associated with the message. |  |
-|**applicationId** | **String** | The ID of the Application your from number or senderId is associated with in the Bandwidth Phone Number Dashboard. |  |
+|**applicationId** | **String** | The ID of the Application your from number or senderId is associated with in the Bandwidth App. |  |
 |**time** | **OffsetDateTime** |  |  |
 |**segmentCount** | **Integer** | The number of segments the user&#39;s message is broken into before sending over carrier networks. |  |
 |**direction** | **MessageDirectionEnum** |  |  |
