@@ -97,7 +97,7 @@ public class Example {
 
 List Messages
 
-Returns a list of messages based on query parameters.
+Returns a list of messages based on query parameters.  **Rate Limit:** This endpoint is rate limited to 3500 requests per 5 minutes per Source IP address. Exceeding the limit returns HTTP 429 with a &#x60;Retry-After&#x60; header. 
 
 ### Example
 ```java
@@ -220,7 +220,8 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  -  |
+| **429** | Too Many Requests |  * Retry-After - The number of seconds to wait before retrying the request. <br>  |
 | **500** | Internal Server Error |  -  |
 

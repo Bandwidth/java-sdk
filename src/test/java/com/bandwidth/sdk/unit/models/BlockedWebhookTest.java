@@ -30,7 +30,7 @@ public class BlockedWebhookTest {
             .accountId("accountId")
             .phoneNumber("phoneNumber")
             .status(TfvCallbackStatusEnum.VERIFIED)
-            .internalTicketNumber(UUID.randomUUID())
+            .internalTicketNumber(UUID.randomUUID().toString())
             .blocked(true)
             .blockedReason("blockedReason");
 
@@ -71,7 +71,7 @@ public class BlockedWebhookTest {
      */
     @Test
     public void internalTicketNumberTest() {
-        assertThat(model.getInternalTicketNumber(), instanceOf(UUID.class));
+        assertThat(model.getInternalTicketNumber(), instanceOf(String.class));
     }
 
     /**

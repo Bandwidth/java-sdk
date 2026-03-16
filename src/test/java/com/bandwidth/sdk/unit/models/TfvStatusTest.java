@@ -31,14 +31,15 @@ public class TfvStatusTest {
     private final TfvStatus model = new TfvStatus()
             .phoneNumber("phoneNumber")
             .status(TfvStatusEnum.PENDING)
-            .internalTicketNumber(UUID.randomUUID())
+            .internalTicketNumber(UUID.randomUUID().toString())
             .declineReasonDescription("declineReasonDescription")
             .resubmitAllowed(true)
             .createdDateTime(OffsetDateTime.now())
             .modifiedDateTime(OffsetDateTime.now())
             .submission(new TfvSubmissionInfo())
             .blocked(true)
-            .blockedReason("blockedReason");
+            .blockedReason("blockedReason")
+            .cvToken("cvToken");
 
     /**
      * Model tests for TfvStatus
@@ -69,7 +70,7 @@ public class TfvStatusTest {
      */
     @Test
     public void internalTicketNumberTest() {
-        assertThat(model.getInternalTicketNumber(), instanceOf(UUID.class));
+        assertThat(model.getInternalTicketNumber(), instanceOf(String.class));
     }
 
     /**
@@ -126,6 +127,13 @@ public class TfvStatusTest {
     @Test
     public void blockedReasonTest() {
         assertThat(model.getBlockedReason(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'cvToken'
+     */    @Test
+    public void cvTokenTest() {
+        assertThat(model.getCvToken(), instanceOf(String.class));
     }
 
 }

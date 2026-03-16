@@ -84,7 +84,8 @@ public class MultiChannelChannelListRBMObjectAllOfContent extends AbstractOpenAp
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<RbmMessageContentText> adapterRbmMessageContentText = gson.getDelegateAdapter(this, TypeToken.get(RbmMessageContentText.class));
             final TypeAdapter<RbmMessageMedia> adapterRbmMessageMedia = gson.getDelegateAdapter(this, TypeToken.get(RbmMessageMedia.class));
-            final TypeAdapter<RbmMessageContentRichCard> adapterRbmMessageContentRichCard = gson.getDelegateAdapter(this, TypeToken.get(RbmMessageContentRichCard.class));
+            final TypeAdapter<RbmMessageContentRichCard> adapterRbmMessageContentRichCard = gson.getAdapter(TypeToken.get(RbmMessageContentRichCard.class));
+            // above is overwritten to use gson.getAdapter instead of getDelegateAdapter to avoid an extra "instance" in the JSON
 
             return (TypeAdapter<T>) new TypeAdapter<MultiChannelChannelListRBMObjectAllOfContent>() {
                 @Override

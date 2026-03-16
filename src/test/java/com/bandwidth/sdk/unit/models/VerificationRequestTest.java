@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import com.bandwidth.sdk.model.VerificationRequest;
 import com.bandwidth.sdk.model.Address;
 import com.bandwidth.sdk.model.BusinessEntityTypeEnum;
+import com.bandwidth.sdk.model.BusinessRegistrationIssuingCountryEnum;
 import com.bandwidth.sdk.model.BusinessRegistrationTypeEnum;
 import com.bandwidth.sdk.model.Contact;
 import com.bandwidth.sdk.model.OptInWorkflow;
@@ -47,8 +48,10 @@ public class VerificationRequestTest {
             .businessRegistrationNumber("businessRegistrationNumber")
             .businessRegistrationType(BusinessRegistrationTypeEnum.EIN)
             .businessEntityType(BusinessEntityTypeEnum.PRIVATE_PROFIT)
+            .businessRegistrationIssuingCountry(BusinessRegistrationIssuingCountryEnum.USA)
             .helpMessageResponse("helpMessageResponse")
-            .ageGatedContent(true);
+            .ageGatedContent(true)
+            .cvToken("cvToken");
 
     /**
      * Model tests for VerificationRequest
@@ -200,6 +203,13 @@ public class VerificationRequestTest {
     @Test
     public void ageGatedContentTest() {
         assertThat(model.getAgeGatedContent(), instanceOf(Boolean.class));
+    }
+
+    /**
+     * Test the property 'cvToken'
+     */    @Test
+    public void cvTokenTest() {
+        assertThat(model.getCvToken(), instanceOf(String.class));
     }
 
 }

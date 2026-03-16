@@ -400,7 +400,10 @@ paths:
       url: https://messaging.bandwidth.com/api/v2
   /users/{accountId}/messages:
     get:
-      description: Returns a list of messages based on query parameters.
+      description: |
+        Returns a list of messages based on query parameters.
+
+        **Rate Limit:** This endpoint is rate limited to 3500 requests per 5 minutes per Source IP address. Exceeding the limit returns HTTP 429 with a `Retry-After` header.
       operationId: listMessages
       parameters:
       - description: Your Bandwidth Account ID.
@@ -710,6 +713,12 @@ paths:
               schema:
                 $ref: "#/components/schemas/messagingRequestError"
           description: Not Found
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/messagingRequestError"
+          description: Method Not Allowed
         "415":
           content:
             application/json:
@@ -719,9 +728,21 @@ paths:
         "429":
           content:
             application/json:
+              example:
+                type: rate_limit_exceeded
+                description: Rate limit exceeded. Wait for Retry-After time before
+                  sending another request.
               schema:
                 $ref: "#/components/schemas/messagingRequestError"
           description: Too Many Requests
+          headers:
+            Retry-After:
+              description: The number of seconds to wait before retrying the request.
+              explode: false
+              schema:
+                example: 300
+                type: integer
+              style: simple
         "500":
           content:
             application/json:
@@ -8399,6 +8420,24 @@ components:
           schema:
             $ref: "#/components/schemas/multiChannelError"
       description: Internal Server Error
+    listMessagesTooManyRequestsError:
+      content:
+        application/json:
+          example:
+            type: rate_limit_exceeded
+            description: Rate limit exceeded. Wait for Retry-After time before sending
+              another request.
+          schema:
+            $ref: "#/components/schemas/messagingRequestError"
+      description: Too Many Requests
+      headers:
+        Retry-After:
+          description: The number of seconds to wait before retrying the request.
+          explode: false
+          schema:
+            example: 300
+            type: integer
+          style: simple
     createCallResponse:
       content:
         application/json:
@@ -8934,6 +8973,8 @@ components:
           schema:
             $ref: "#/components/schemas/errorResponse"
       description: Service Unavailable
+    verifyPutResponse:
+      description: Accepted
   schemas:
     applicationId:
       description: The ID of the Application your from number or senderId is associated
@@ -9824,7 +9865,9 @@ components:
     rbmMessageMedia:
       properties:
         media:
-          $ref: "#/components/schemas/rbmMessageContentFile"
+          items:
+            $ref: "#/components/schemas/rbmMessageContentFile"
+          type: array
         suggestions:
           description: An array of suggested actions for the recipient.
           items:
@@ -14646,35 +14689,84 @@ components:
       example: Another Company Name Inc.
       type: string
     businessRegistrationNumber:
-      description: "US Federal Tax ID Number (EIN) or Canada Business Number (CBN).\
-        \ Optional until early 2026. If a value is provided for this field, a value\
-        \ must be provided for `businessRegistrationType` and `businessEntityType`.\
-        \ Available starting October 1st, 2025."
+      description: Government-issued business identifying number.
       example: 12-3456789
       maxLength: 500
       nullable: true
       type: string
     businessRegistrationTypeEnum:
-      description: "The type of business registration number. Optional until early\
-        \ 2026; required if `businessRegistrationNumber` is provided. Available starting\
-        \ October 1st, 2025."
+      description: The type of business registration number.
       enum:
       - EIN
       - CBN
+      - NEQ
+      - PROVINCIAL_NUMBER
+      - CRN
+      - VAT
+      - ACN
+      - ABN
+      - BRN
+      - SIREN
+      - SIRET
+      - NZBN
+      - UST_IDNR
+      - CIF
+      - NIF
+      - CNPJ
+      - UID
+      - OTHER
       nullable: true
+      type: string
+    businessRegistrationIssuingCountryEnum:
+      description: |-
+        The country issuing the business registration in ISO-3166-1 alpha-3 format.
+
+        | Registration Type     | Supported Countries                |
+        |----------------------|------------------------------------|
+        | EIN                  | USA                                |
+        | CBN                  | CAN                                |
+        | NEQ                  | CAN                                |
+        | PROVINCIAL_NUMBER    | CAN                                |
+        | CRN                  | GBR, HKG                           |
+        | VAT                  | GBR, IRL, BRA, NLD                 |
+        | ACN                  | AUS                                |
+        | ABN                  | AUS                                |
+        | BRN                  | HKG                                |
+        | SIREN                | FRA                                |
+        | SIRET                | FRA                                |
+        | NZBN                 | NZL                                |
+        | UST_IDNR             | DEU                                |
+        | CIF                  | ESP                                |
+        | NIF                  | ESP                                |
+        | CNPJ                 | BRA                                |
+        | UID                  | CHE                                |
+        | OTHER                | Must Provide Country Code          |
+      enum:
+      - USA
+      - CAN
+      - HKG
+      - GBR
+      - IRL
+      - BRA
+      - NLD
+      - AUS
+      - FRA
+      - NZL
+      - DEU
+      - ESP
+      - CHE
+      nullable: false
       type: string
     businessEntityTypeEnum:
       description: "The type of registered business. If no option is applicable, please\
-        \ provide \"SOLE_PROPRIETOR\" as a value. Optional until early 2026; required\
-        \ if `businessRegistrationNumber` is provided. Available starting October\
-        \ 1st, 2025."
+        \ provide \"SOLE_PROPRIETOR\" as a value."
       enum:
       - SOLE_PROPRIETOR
       - PRIVATE_PROFIT
       - PUBLIC_PROFIT
       - NON_PROFIT
       - GOVERNMENT
-      nullable: true
+      nullable: false
       type: string
     helpMessageResponse:
       description: A message that gets sent to users requesting help.
@@ -14712,13 +14804,11 @@ components:
       description: Unique identifier (UUID) generated by Bandwidth to assist in tracking
         the verification status of a toll-free number - included in all webhook payloads.
       example: acde070d-8c4c-4f0d-9d8a-162843c10333
-      format: uuid
       type: string
     internalTicketNumberForWebhook:
       description: Unique identifier (UUID) generated by Bandwidth to assist in tracking
         the verification status of a toll-free number.
       example: acde070d-8c4c-4f0d-9d8a-162843c10333
-      format: uuid
       type: string
     businessContactPhoneNumber:
       description: Contact telephone number
@@ -14795,16 +14885,15 @@ components:
           example: Another Company Name Inc.
           type: string
         businessRegistrationNumber:
-          description: "US Federal Tax ID Number (EIN) or Canada Business Number (CBN).\
-            \ Optional until early 2026. If a value is provided for this field, a\
-            \ value must be provided for `businessRegistrationType` and `businessEntityType`.\
-            \ Available starting October 1st, 2025."
+          description: Government-issued business identifying number.
           example: 12-3456789
           maxLength: 500
           nullable: true
           type: string
         businessRegistrationType:
           $ref: "#/components/schemas/businessRegistrationTypeEnum"
+        businessRegistrationIssuingCountry:
+          $ref: "#/components/schemas/businessRegistrationIssuingCountryEnum"
         businessEntityType:
           $ref: "#/components/schemas/businessEntityTypeEnum"
         helpMessageResponse:
@@ -14817,9 +14906,20 @@ components:
           description: Indicates whether the content is age-gated.
           example: false
           type: boolean
+        cvToken:
+          description: "The token provided by Campaign Verify to validate your political\
+            \ use case. Only required for 527 political organizations. If you are\
+            \ not a 527 political organization, this field should be omitted. Supplying\
+            \ an empty string will likely result in rejection."
+          example: cv.user123|sess456|mno|tfree|read_write|X7yZ9aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVw
+          maxLength: 500
+          minLength: 0
+          nullable: true
+          type: string
       required:
       - businessAddress
       - businessContact
+      - businessEntityType
       - messageVolume
       - optInWorkflow
       - phoneNumbers
@@ -14889,10 +14989,7 @@ components:
           example: Another Company Name Inc.
           type: string
         businessRegistrationNumber:
-          description: "US Federal Tax ID Number (EIN) or Canada Business Number (CBN).\
-            \ Optional until early 2026. If a value is provided for this field, a\
-            \ value must be provided for `businessRegistrationType` and `businessEntityType`.\
-            \ Available starting October 1st, 2025."
+          description: Government-issued business identifying number.
           example: 12-3456789
           maxLength: 500
           nullable: true
@@ -14901,6 +14998,8 @@ components:
           $ref: "#/components/schemas/businessRegistrationTypeEnum"
         businessEntityType:
           $ref: "#/components/schemas/businessEntityTypeEnum"
+        businessRegistrationIssuingCountry:
+          $ref: "#/components/schemas/businessRegistrationIssuingCountryEnum"
         helpMessageResponse:
           description: A message that gets sent to users requesting help.
           example: Please contact support for assistance.
@@ -14911,6 +15010,16 @@ components:
           description: Indicates whether the content is age-gated.
           example: false
           type: boolean
+        cvToken:
+          description: "The token provided by Campaign Verify to validate your political\
+            \ use case. Only required for 527 political organizations. If you are\
+            \ not a 527 political organization, this field should be omitted. Supplying\
+            \ an empty string will likely result in rejection."
+          example: cv.user123|sess456|mno|tfree|read_write|X7yZ9aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVw
+          maxLength: 500
+          minLength: 0
+          nullable: true
+          type: string
       required:
       - businessAddress
       - businessContact
@@ -14998,7 +15107,6 @@ components:
           description: Unique identifier (UUID) generated by Bandwidth to assist in
             tracking the verification status of a toll-free number.
           example: acde070d-8c4c-4f0d-9d8a-162843c10333
-          format: uuid
           type: string
       type: object
     verificationDenialWebhook:
@@ -15034,7 +15142,6 @@ components:
           description: Unique identifier (UUID) generated by Bandwidth to assist in
             tracking the verification status of a toll-free number.
           example: acde070d-8c4c-4f0d-9d8a-162843c10333
-          format: uuid
           type: string
         phoneNumber:
           description: Toll-free telephone number in E.164 format.
@@ -15084,7 +15191,6 @@ components:
           description: Unique identifier (UUID) generated by Bandwidth to assist in
             tracking the verification status of a toll-free number.
           example: acde070d-8c4c-4f0d-9d8a-162843c10333
-          format: uuid
           type: string
       type: object
     blockedWebhook:
@@ -15107,7 +15213,6 @@ components:
           description: Unique identifier (UUID) generated by Bandwidth to assist in
             tracking the verification status of a toll-free number.
           example: acde070d-8c4c-4f0d-9d8a-162843c10333
-          format: uuid
           type: string
         blocked:
           description: Whether a Toll-Free Verification is blocked. This attribute
@@ -15562,6 +15667,7 @@ components:
           isvReseller: Test ISV
           businessRegistrationNumber: 12-3456789
           productionMessageContent: Production message content
+          businessRegistrationIssuingCountry: USA
           businessAddress:
             zip: "27606"
             addr2: 2230 Bandmate Way
@@ -15573,6 +15679,7 @@ components:
           useCaseSummary: Text summarizing the use case for the toll-free number
         declineReasonDescription: Invalid Information - Can't Validate URL - Website
           is not accessible / not available
+        cvToken: cv.user123|sess456|mno|tfree|read_write|X7yZ9aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVw
         status: VERIFIED
       properties:
         phoneNumber:
@@ -15590,7 +15697,6 @@ components:
             tracking the verification status of a toll-free number - included in all
             webhook payloads.
           example: acde070d-8c4c-4f0d-9d8a-162843c10333
-          format: uuid
           type: string
         declineReasonDescription:
           description: Explanation for why a verification request was declined.
@@ -15625,6 +15731,16 @@ components:
             attribute will only be defined when the number is blocked.
           example: Toll-free number was used to send spam messages
           type: string
+        cvToken:
+          description: "The token provided by Campaign Verify to validate your political\
+            \ use case. Only required for 527 political organizations. If you are\
+            \ not a 527 political organization, this field should be omitted. Supplying\
+            \ an empty string will likely result in rejection."
+          example: cv.user123|sess456|mno|tfree|read_write|X7yZ9aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVw
+          maxLength: 500
+          minLength: 0
+          nullable: true
+          type: string
       type: object
     tfvSubmissionInfo:
       example:
@@ -15650,6 +15766,7 @@ components:
         isvReseller: Test ISV
         businessRegistrationNumber: 12-3456789
         productionMessageContent: Production message content
+        businessRegistrationIssuingCountry: USA
         businessAddress:
           zip: "27606"
           addr2: 2230 Bandmate Way
@@ -15720,16 +15837,15 @@ components:
           example: Another Company Name Inc.
           type: string
         businessRegistrationNumber:
-          description: "US Federal Tax ID Number (EIN) or Canada Business Number (CBN).\
-            \ Optional until early 2026. If a value is provided for this field, a\
-            \ value must be provided for `businessRegistrationType` and `businessEntityType`.\
-            \ Available starting October 1st, 2025."
+          description: Government-issued business identifying number.
           example: 12-3456789
           maxLength: 500
           nullable: true
           type: string
         businessRegistrationType:
           $ref: "#/components/schemas/businessRegistrationTypeEnum"
+        businessRegistrationIssuingCountry:
+          $ref: "#/components/schemas/businessRegistrationIssuingCountryEnum"
         businessEntityType:
           $ref: "#/components/schemas/businessEntityTypeEnum"
       type: object
@@ -16317,6 +16433,16 @@ components:
       - errors
       - links
       type: object
+    cvTokenNullable:
+      description: "The token provided by Campaign Verify to validate your political\
+        \ use case. Only required for 527 political organizations. If you are not\
+        \ a 527 political organization, this field should be omitted. Supplying an\
+        \ empty string will likely result in rejection."
+      example: cv.user123|sess456|mno|tfree|read_write|X7yZ9aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVw
+      maxLength: 500
+      minLength: 0
+      nullable: true
+      type: string
     rbmCardContent_media:
       allOf:
       - $ref: "#/components/schemas/rbmMessageContentFile"
@@ -16513,4 +16639,3 @@ components:
           scopes: {}
           tokenUrl: https://api.bandwidth.com/api/v1/oauth2/token
       type: oauth2
-

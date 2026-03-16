@@ -59,7 +59,7 @@ public class RbmMessageMedia {
   public static final String SERIALIZED_NAME_MEDIA = "media";
   @SerializedName(SERIALIZED_NAME_MEDIA)
   @javax.annotation.Nonnull
-  private RbmMessageContentFile media;
+  private List<RbmMessageContentFile> media = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_SUGGESTIONS = "suggestions";
   @SerializedName(SERIALIZED_NAME_SUGGESTIONS)
@@ -69,8 +69,16 @@ public class RbmMessageMedia {
   public RbmMessageMedia() {
   }
 
-  public RbmMessageMedia media(@javax.annotation.Nonnull RbmMessageContentFile media) {
+  public RbmMessageMedia media(@javax.annotation.Nonnull List<RbmMessageContentFile> media) {
     this.media = media;
+    return this;
+  }
+
+  public RbmMessageMedia addMediaItem(RbmMessageContentFile mediaItem) {
+    if (this.media == null) {
+      this.media = new ArrayList<>();
+    }
+    this.media.add(mediaItem);
     return this;
   }
 
@@ -79,11 +87,11 @@ public class RbmMessageMedia {
    * @return media
    */
   @javax.annotation.Nonnull
-  public RbmMessageContentFile getMedia() {
+  public List<RbmMessageContentFile> getMedia() {
     return media;
   }
 
-  public void setMedia(@javax.annotation.Nonnull RbmMessageContentFile media) {
+  public void setMedia(@javax.annotation.Nonnull List<RbmMessageContentFile> media) {
     this.media = media;
   }
 
@@ -233,8 +241,16 @@ public class RbmMessageMedia {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `media`
-      RbmMessageContentFile.validateJsonElement(jsonObj.get("media"));
+      // ensure the json data is an array
+      if (!jsonObj.get("media").isJsonArray()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `media` to be an array in the JSON string but got `%s`", jsonObj.get("media").toString()));
+      }
+
+      JsonArray jsonArraymedia = jsonObj.getAsJsonArray("media");
+      // validate the required field `media` (array)
+      for (int i = 0; i < jsonArraymedia.size(); i++) {
+        RbmMessageContentFile.validateJsonElement(jsonArraymedia.get(i));
+      };
       if (jsonObj.get("suggestions") != null && !jsonObj.get("suggestions").isJsonNull()) {
         JsonArray jsonArraysuggestions = jsonObj.getAsJsonArray("suggestions");
         if (jsonArraysuggestions != null) {

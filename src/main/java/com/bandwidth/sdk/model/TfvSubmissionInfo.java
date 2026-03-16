@@ -17,6 +17,7 @@ import java.util.Objects;
 import java.util.Locale;
 import com.bandwidth.sdk.model.Address;
 import com.bandwidth.sdk.model.BusinessEntityTypeEnum;
+import com.bandwidth.sdk.model.BusinessRegistrationIssuingCountryEnum;
 import com.bandwidth.sdk.model.BusinessRegistrationTypeEnum;
 import com.bandwidth.sdk.model.Contact;
 import com.bandwidth.sdk.model.OptInWorkflow;
@@ -127,6 +128,11 @@ public class TfvSubmissionInfo {
   @SerializedName(SERIALIZED_NAME_BUSINESS_REGISTRATION_TYPE)
   @javax.annotation.Nullable
   private BusinessRegistrationTypeEnum businessRegistrationType;
+
+  public static final String SERIALIZED_NAME_BUSINESS_REGISTRATION_ISSUING_COUNTRY = "businessRegistrationIssuingCountry";
+  @SerializedName(SERIALIZED_NAME_BUSINESS_REGISTRATION_ISSUING_COUNTRY)
+  @javax.annotation.Nullable
+  private BusinessRegistrationIssuingCountryEnum businessRegistrationIssuingCountry;
 
   public static final String SERIALIZED_NAME_BUSINESS_ENTITY_TYPE = "businessEntityType";
   @SerializedName(SERIALIZED_NAME_BUSINESS_ENTITY_TYPE)
@@ -372,7 +378,7 @@ public class TfvSubmissionInfo {
   }
 
   /**
-   * US Federal Tax ID Number (EIN) or Canada Business Number (CBN). Optional until early 2026. If a value is provided for this field, a value must be provided for &#x60;businessRegistrationType&#x60; and &#x60;businessEntityType&#x60;. Available starting October 1st, 2025.
+   * Government-issued business identifying number.
    * @return businessRegistrationNumber
    */
   @javax.annotation.Nullable
@@ -401,6 +407,25 @@ public class TfvSubmissionInfo {
 
   public void setBusinessRegistrationType(@javax.annotation.Nullable BusinessRegistrationTypeEnum businessRegistrationType) {
     this.businessRegistrationType = businessRegistrationType;
+  }
+
+
+  public TfvSubmissionInfo businessRegistrationIssuingCountry(@javax.annotation.Nullable BusinessRegistrationIssuingCountryEnum businessRegistrationIssuingCountry) {
+    this.businessRegistrationIssuingCountry = businessRegistrationIssuingCountry;
+    return this;
+  }
+
+  /**
+   * Get businessRegistrationIssuingCountry
+   * @return businessRegistrationIssuingCountry
+   */
+  @javax.annotation.Nullable
+  public BusinessRegistrationIssuingCountryEnum getBusinessRegistrationIssuingCountry() {
+    return businessRegistrationIssuingCountry;
+  }
+
+  public void setBusinessRegistrationIssuingCountry(@javax.annotation.Nullable BusinessRegistrationIssuingCountryEnum businessRegistrationIssuingCountry) {
+    this.businessRegistrationIssuingCountry = businessRegistrationIssuingCountry;
   }
 
 
@@ -491,6 +516,7 @@ public class TfvSubmissionInfo {
         Objects.equals(this.businessDba, tfvSubmissionInfo.businessDba) &&
         Objects.equals(this.businessRegistrationNumber, tfvSubmissionInfo.businessRegistrationNumber) &&
         Objects.equals(this.businessRegistrationType, tfvSubmissionInfo.businessRegistrationType) &&
+        Objects.equals(this.businessRegistrationIssuingCountry, tfvSubmissionInfo.businessRegistrationIssuingCountry) &&
         Objects.equals(this.businessEntityType, tfvSubmissionInfo.businessEntityType)&&
         Objects.equals(this.additionalProperties, tfvSubmissionInfo.additionalProperties);
   }
@@ -501,7 +527,7 @@ public class TfvSubmissionInfo {
 
   @Override
   public int hashCode() {
-    return Objects.hash(businessAddress, businessContact, messageVolume, useCase, useCaseSummary, productionMessageContent, optInWorkflow, additionalInformation, isvReseller, privacyPolicyUrl, termsAndConditionsUrl, businessDba, businessRegistrationNumber, businessRegistrationType, businessEntityType, additionalProperties);
+    return Objects.hash(businessAddress, businessContact, messageVolume, useCase, useCaseSummary, productionMessageContent, optInWorkflow, additionalInformation, isvReseller, privacyPolicyUrl, termsAndConditionsUrl, businessDba, businessRegistrationNumber, businessRegistrationType, businessRegistrationIssuingCountry, businessEntityType, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -529,6 +555,7 @@ public class TfvSubmissionInfo {
     sb.append("    businessDba: ").append(toIndentedString(businessDba)).append("\n");
     sb.append("    businessRegistrationNumber: ").append(toIndentedString(businessRegistrationNumber)).append("\n");
     sb.append("    businessRegistrationType: ").append(toIndentedString(businessRegistrationType)).append("\n");
+    sb.append("    businessRegistrationIssuingCountry: ").append(toIndentedString(businessRegistrationIssuingCountry)).append("\n");
     sb.append("    businessEntityType: ").append(toIndentedString(businessEntityType)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -552,7 +579,7 @@ public class TfvSubmissionInfo {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("businessAddress", "businessContact", "messageVolume", "useCase", "useCaseSummary", "productionMessageContent", "optInWorkflow", "additionalInformation", "isvReseller", "privacyPolicyUrl", "termsAndConditionsUrl", "businessDba", "businessRegistrationNumber", "businessRegistrationType", "businessEntityType"));
+    openapiFields = new HashSet<String>(Arrays.asList("businessAddress", "businessContact", "messageVolume", "useCase", "useCaseSummary", "productionMessageContent", "optInWorkflow", "additionalInformation", "isvReseller", "privacyPolicyUrl", "termsAndConditionsUrl", "businessDba", "businessRegistrationNumber", "businessRegistrationType", "businessRegistrationIssuingCountry", "businessEntityType"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -613,6 +640,10 @@ public class TfvSubmissionInfo {
       // validate the optional field `businessRegistrationType`
       if (jsonObj.get("businessRegistrationType") != null && !jsonObj.get("businessRegistrationType").isJsonNull()) {
         BusinessRegistrationTypeEnum.validateJsonElement(jsonObj.get("businessRegistrationType"));
+      }
+      // validate the optional field `businessRegistrationIssuingCountry`
+      if (jsonObj.get("businessRegistrationIssuingCountry") != null && !jsonObj.get("businessRegistrationIssuingCountry").isJsonNull()) {
+        BusinessRegistrationIssuingCountryEnum.validateJsonElement(jsonObj.get("businessRegistrationIssuingCountry"));
       }
       // validate the optional field `businessEntityType`
       if (jsonObj.get("businessEntityType") != null && !jsonObj.get("businessEntityType").isJsonNull()) {

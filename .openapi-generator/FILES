@@ -12,6 +12,7 @@ docs/BlockedWebhook.md
 docs/BridgeCompleteCallback.md
 docs/BridgeTargetCompleteCallback.md
 docs/BusinessEntityTypeEnum.md
+docs/BusinessRegistrationIssuingCountryEnum.md
 docs/BusinessRegistrationTypeEnum.md
 docs/CallDirectionEnum.md
 docs/CallRecordingMetadata.md
@@ -265,6 +266,7 @@ src/main/java/com/bandwidth/sdk/model/BlockedWebhook.java
 src/main/java/com/bandwidth/sdk/model/BridgeCompleteCallback.java
 src/main/java/com/bandwidth/sdk/model/BridgeTargetCompleteCallback.java
 src/main/java/com/bandwidth/sdk/model/BusinessEntityTypeEnum.java
+src/main/java/com/bandwidth/sdk/model/BusinessRegistrationIssuingCountryEnum.java
 src/main/java/com/bandwidth/sdk/model/BusinessRegistrationTypeEnum.java
 src/main/java/com/bandwidth/sdk/model/CallDirectionEnum.java
 src/main/java/com/bandwidth/sdk/model/CallRecordingMetadata.java
@@ -372,7 +374,6 @@ src/main/java/com/bandwidth/sdk/model/MultiChannelChannelListMMSResponseObject.j
 src/main/java/com/bandwidth/sdk/model/MultiChannelChannelListObjectBase.java
 src/main/java/com/bandwidth/sdk/model/MultiChannelChannelListOwnerObject.java
 src/main/java/com/bandwidth/sdk/model/MultiChannelChannelListRBMObject.java
-src/main/java/com/bandwidth/sdk/model/MultiChannelChannelListRBMObjectAllOfContent.java
 src/main/java/com/bandwidth/sdk/model/MultiChannelChannelListRBMResponseObject.java
 src/main/java/com/bandwidth/sdk/model/MultiChannelChannelListRequestObject.java
 src/main/java/com/bandwidth/sdk/model/MultiChannelChannelListResponseObject.java

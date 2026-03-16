@@ -18,18 +18,30 @@ import com.bandwidth.sdk.model.MultiChannelChannelListMMSResponseObject;
 import com.bandwidth.sdk.model.MultiChannelChannelListRBMObject;
 import com.bandwidth.sdk.model.MultiChannelChannelListRBMObjectAllOfContent;
 import com.bandwidth.sdk.model.MultiChannelChannelListRBMResponseObject;
+import com.bandwidth.sdk.model.CardWidthEnum;
 import com.bandwidth.sdk.model.CreateMultiChannelMessageResponse;
 import com.bandwidth.sdk.model.MessageDirectionEnum;
 import com.bandwidth.sdk.model.MmsMessageContent;
 import com.bandwidth.sdk.model.MmsMessageContentFile;
 import com.bandwidth.sdk.model.MultiChannelAction;
 import com.bandwidth.sdk.model.RbmMessageContentText;
+import com.bandwidth.sdk.model.RbmMessageMedia;
+import com.bandwidth.sdk.model.RbmStandaloneCard;
 import com.bandwidth.sdk.model.SmsMessageContent;
+import com.bandwidth.sdk.model.StandaloneCardOrientationEnum;
+import com.bandwidth.sdk.model.ThumbnailAlignmentEnum;
 import com.bandwidth.sdk.model.PriorityEnum;
 import com.bandwidth.sdk.model.RbmActionDial;
 import com.bandwidth.sdk.model.RbmActionTypeEnum;
+import com.bandwidth.sdk.model.RbmCardContent;
+import com.bandwidth.sdk.model.RbmCardContentMedia;
+import com.bandwidth.sdk.model.RbmMediaHeightEnum;
+import com.bandwidth.sdk.model.RbmMessageCarouselCard;
+import com.bandwidth.sdk.model.RbmMessageContentFile;
+import com.bandwidth.sdk.model.RbmMessageContentRichCard;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;
@@ -161,7 +173,7 @@ public class MultiChannelApiTest {
     }
 
     @Test
-    public void createMultiChannelRBMMessageTest() throws ApiException {
+    public void createMultiChannelRBMTextMessageTest() throws ApiException {
         MultiChannelChannelListRequestObject channelListRBMObject = new MultiChannelChannelListRequestObject(
                 new MultiChannelChannelListRBMObject()
                         .from(BW_NUMBER)
@@ -231,4 +243,249 @@ public class MultiChannelApiTest {
         assertThat(channelListObject.getOwner(), equalTo(BW_NUMBER));
     }
 
+    @Test
+    public void createMultiChannelRBMMediaMessageTest() throws ApiException {
+        MultiChannelChannelListRequestObject channelListRBMObject = new MultiChannelChannelListRequestObject(
+                new MultiChannelChannelListRBMObject()
+                        .from(BW_NUMBER)
+                        .applicationId(BW_MESSAGING_APPLICATION_ID)
+                        .channel(MultiChannelMessageChannelEnum.RBM)
+                        .content(new MultiChannelChannelListRBMObjectAllOfContent(
+                                new RbmMessageMedia()
+                                        .media(Arrays.asList(new RbmMessageContentFile()
+                                                .fileUrl(URI.create("https://www.example.com/image1.png"))
+                                                .thumbnailUrl(URI.create("https://www.example.com/thumbnail"))
+                                        ))
+                                        .suggestions(Arrays.asList(
+                                                new MultiChannelAction(new RbmActionDial()
+                                                        .type(RbmActionTypeEnum.DIAL_PHONE)
+                                                        .text("Call Us")
+                                                        .postbackData(new byte[]{1, 2, 3})
+                                                        .phoneNumber(BW_NUMBER)
+                                                )
+                                        ))
+                        )
+                )
+        );
+
+        MultiChannelMessageRequest rbmRequest = new MultiChannelMessageRequest()
+                .to(USER_NUMBER)
+                .tag("tag")
+                .priority(PriorityEnum.HIGH)
+                .expiration(OffsetDateTime.now().plusSeconds(60))
+                .channelList(Arrays.asList(channelListRBMObject));
+
+        ApiResponse<CreateMultiChannelMessageResponse> response
+                = api.createMultiChannelMessageWithHttpInfo(BW_ACCOUNT_ID, rbmRequest);
+        
+        assertThat(response.getStatusCode(), is(202));
+        assertThat(response.getData(), instanceOf(CreateMultiChannelMessageResponse.class));
+        assertThat(response.getData().getLinks(), instanceOf(List.class));
+        assertThat(response.getData().getData(), instanceOf(MultiChannelMessageResponseData.class));
+        assertThat(response.getData().getData().getId(), instanceOf(String.class));
+        assertThat(response.getData().getData().getTime(), instanceOf(OffsetDateTime.class));
+        assertThat(response.getData().getData().getDirection(), instanceOf(MessageDirectionEnum.class));
+        assertThat(response.getData().getData().getDirection(), equalTo(MessageDirectionEnum.OUT));
+        assertThat(response.getData().getData().getTo(), instanceOf(Set.class));
+        assertThat(response.getData().getData().getTo(), contains(USER_NUMBER));
+        assertThat(response.getData().getData().getTag(), instanceOf(String.class));
+        assertThat(response.getData().getData().getPriority(), instanceOf(PriorityEnum.class));
+        assertThat(response.getData().getData().getPriority(), equalTo(PriorityEnum.HIGH));
+        assertThat(response.getData().getData().getExpiration(), instanceOf(OffsetDateTime.class));
+        assertThat(response.getData().getData().getChannelList(), instanceOf(List.class));
+        assertThat(response.getData().getData().getChannelList().get(0), instanceOf(MultiChannelChannelListResponseObject.class));
+        assertThat(response.getData().getData().getChannelList().get(0).getActualInstance(), instanceOf(MultiChannelChannelListRBMResponseObject.class));
+        MultiChannelChannelListRBMResponseObject channelListObject
+                = response.getData().getData().getChannelList().get(0).getMultiChannelChannelListRBMResponseObject();
+        assertThat(channelListObject.getFrom(), equalTo(BW_NUMBER));
+        assertThat(channelListObject.getApplicationId(), equalTo(BW_MESSAGING_APPLICATION_ID));
+        assertThat(channelListObject.getChannel(), instanceOf(MultiChannelMessageChannelEnum.class));
+        assertThat(channelListObject.getChannel(), equalTo(MultiChannelMessageChannelEnum.RBM));
+        assertThat(channelListObject.getContent(), instanceOf(MultiChannelChannelListRBMObjectAllOfContent.class));
+        assertThat(channelListObject.getContent().getActualInstance(), instanceOf(RbmMessageMedia.class));
+        RbmMessageMedia rbmContent = channelListObject.getContent().getRbmMessageMedia();
+        assertThat(rbmContent.getMedia(), instanceOf(List.class));
+        assertThat(rbmContent.getMedia().get(0), instanceOf(RbmMessageContentFile.class));
+        assertThat(rbmContent.getMedia().get(0).getFileUrl(), instanceOf(URI.class));
+        assertThat(rbmContent.getMedia().get(0).getThumbnailUrl(), instanceOf(URI.class));
+        assertThat(rbmContent.getSuggestions(), instanceOf(List.class));
+        assertThat(rbmContent.getSuggestions().get(0), instanceOf(MultiChannelAction.class));
+        assertThat(rbmContent.getSuggestions().get(0).getActualInstance(), instanceOf(RbmActionDial.class));
+        RbmActionDial rbmActionDial = rbmContent.getSuggestions().get(0).getRbmActionDial();
+        assertThat(rbmActionDial.getType(), instanceOf(RbmActionTypeEnum.class));
+        assertThat(rbmActionDial.getType(), equalTo(RbmActionTypeEnum.DIAL_PHONE));
+        assertThat(rbmActionDial.getText(), instanceOf(String.class));
+        assertThat(rbmActionDial.getPostbackData(), instanceOf(byte[].class));
+        assertThat(rbmActionDial.getPhoneNumber(), instanceOf(String.class));
+        assertThat(channelListObject.getOwner(), equalTo(BW_NUMBER));
+    }
+
+    @Test
+    public void createMultiChannelRBMRichStandaloneMessageTest() throws ApiException {
+        MultiChannelChannelListRequestObject channelListRBMObject = new MultiChannelChannelListRequestObject(
+                new MultiChannelChannelListRBMObject()
+                        .from(BW_NUMBER)
+                        .applicationId(BW_MESSAGING_APPLICATION_ID)
+                        .channel(MultiChannelMessageChannelEnum.RBM)
+                        .content(new MultiChannelChannelListRBMObjectAllOfContent(
+                                new RbmMessageContentRichCard(
+                                        new RbmStandaloneCard()
+                                                .orientation(StandaloneCardOrientationEnum.HORIZONTAL)
+                                                .thumbnailImageAlignment(ThumbnailAlignmentEnum.LEFT)
+                                                .cardContent(new RbmCardContent()
+                                                        .title("Test Title")
+                                                )
+                                )
+                        )
+                )
+        );
+
+        MultiChannelMessageRequest rbmRequest = new MultiChannelMessageRequest()
+                .to(USER_NUMBER)
+                .tag("tag")
+                .priority(PriorityEnum.HIGH)
+                .expiration(OffsetDateTime.now().plusSeconds(60))
+                .channelList(Arrays.asList(channelListRBMObject));
+
+        ApiResponse<CreateMultiChannelMessageResponse> response
+                = api.createMultiChannelMessageWithHttpInfo(BW_ACCOUNT_ID, rbmRequest);
+        
+        assertThat(response.getStatusCode(), is(202));
+        assertThat(response.getData(), instanceOf(CreateMultiChannelMessageResponse.class));
+        assertThat(response.getData().getLinks(), instanceOf(List.class));
+        assertThat(response.getData().getData(), instanceOf(MultiChannelMessageResponseData.class));
+        assertThat(response.getData().getData().getId(), instanceOf(String.class));
+        assertThat(response.getData().getData().getTime(), instanceOf(OffsetDateTime.class));
+        assertThat(response.getData().getData().getDirection(), instanceOf(MessageDirectionEnum.class));
+        assertThat(response.getData().getData().getDirection(), equalTo(MessageDirectionEnum.OUT));
+        assertThat(response.getData().getData().getTo(), instanceOf(Set.class));
+        assertThat(response.getData().getData().getTo(), contains(USER_NUMBER));
+        assertThat(response.getData().getData().getTag(), instanceOf(String.class));
+        assertThat(response.getData().getData().getPriority(), instanceOf(PriorityEnum.class));
+        assertThat(response.getData().getData().getPriority(), equalTo(PriorityEnum.HIGH));
+        assertThat(response.getData().getData().getExpiration(), instanceOf(OffsetDateTime.class));
+        assertThat(response.getData().getData().getChannelList(), instanceOf(List.class));
+        assertThat(response.getData().getData().getChannelList().get(0), instanceOf(MultiChannelChannelListResponseObject.class));
+                assertThat(response.getData().getData().getChannelList().get(0).getActualInstance(), instanceOf(MultiChannelChannelListRBMResponseObject.class));
+        MultiChannelChannelListRBMResponseObject channelListObject
+                = response.getData().getData().getChannelList().get(0).getMultiChannelChannelListRBMResponseObject();
+        assertThat(channelListObject.getFrom(), equalTo(BW_NUMBER));
+        assertThat(channelListObject.getApplicationId(), equalTo(BW_MESSAGING_APPLICATION_ID));
+        assertThat(channelListObject.getChannel(), instanceOf(MultiChannelMessageChannelEnum.class));
+        assertThat(channelListObject.getChannel(), equalTo(MultiChannelMessageChannelEnum.RBM));
+        assertThat(channelListObject.getContent(), instanceOf(MultiChannelChannelListRBMObjectAllOfContent.class));
+        assertThat(channelListObject.getContent().getActualInstance(), instanceOf(RbmMessageContentRichCard.class));
+        RbmMessageContentRichCard rbmContent = channelListObject.getContent().getRbmMessageContentRichCard();
+        assertThat(rbmContent.getActualInstance(), instanceOf(RbmStandaloneCard.class));
+        RbmStandaloneCard rbmCard = rbmContent.getRbmStandaloneCard();
+        assertThat(rbmCard.getOrientation(), instanceOf(StandaloneCardOrientationEnum.class));
+        assertThat(rbmCard.getOrientation(), equalTo(StandaloneCardOrientationEnum.HORIZONTAL));
+        assertThat(rbmCard.getThumbnailImageAlignment(), instanceOf(ThumbnailAlignmentEnum.class));
+        assertThat(rbmCard.getThumbnailImageAlignment(), equalTo(ThumbnailAlignmentEnum.LEFT));
+        assertThat(rbmCard.getCardContent(), instanceOf(RbmCardContent.class));
+        assertThat(rbmCard.getCardContent().getTitle(), instanceOf(String.class));
+        assertThat(channelListObject.getOwner(), equalTo(BW_NUMBER));
+    }
+
+    @Test
+    public void createMultiChannelRBMRichCarouselMessageTest() throws ApiException {
+        MultiChannelChannelListRequestObject channelListRBMObject = new MultiChannelChannelListRequestObject(
+                new MultiChannelChannelListRBMObject()
+                        .from(BW_NUMBER)
+                        .applicationId(BW_MESSAGING_APPLICATION_ID)
+                        .channel(MultiChannelMessageChannelEnum.RBM)
+                        .content(new MultiChannelChannelListRBMObjectAllOfContent(
+                                new RbmMessageContentRichCard(
+                                        new RbmMessageCarouselCard()
+                                                .cardWidth(CardWidthEnum.MEDIUM)
+                                                .cardContents(Arrays.asList(
+                                                        new RbmCardContent()
+                                                                .title("Card 1 Title")
+                                                                .description("Card 1 Description")
+                                                                .media(new RbmCardContentMedia()
+                                                                        .fileUrl(URI.create("https://www.example.com/image1.png"))
+                                                                        .thumbnailUrl(URI.create("https://www.example.com/thumbnail"))
+                                                                        .height(RbmMediaHeightEnum.TALL)
+                                                                )
+                                                                .suggestions(Arrays.asList(
+                                                                        new MultiChannelAction(new RbmActionDial()
+                                                                                .type(RbmActionTypeEnum.DIAL_PHONE)
+                                                                                .text("Call Us")
+                                                                                .postbackData(new byte[]{1, 2, 3})
+                                                                                .phoneNumber(BW_NUMBER)
+                                                                        )
+                                                                )),
+                                                        new RbmCardContent()
+                                                                .title("Card 2 Title")
+                                                )
+                                        )
+                                )
+                        )
+                )
+        );
+
+        MultiChannelMessageRequest rbmRequest = new MultiChannelMessageRequest()
+                .to(USER_NUMBER)
+                .tag("tag")
+                .priority(PriorityEnum.HIGH)
+                .expiration(OffsetDateTime.now().plusSeconds(60))
+                .channelList(Arrays.asList(channelListRBMObject));
+
+        ApiResponse<CreateMultiChannelMessageResponse> response
+                = api.createMultiChannelMessageWithHttpInfo(BW_ACCOUNT_ID, rbmRequest);
+        
+        assertThat(response.getStatusCode(), is(202));
+        assertThat(response.getData(), instanceOf(CreateMultiChannelMessageResponse.class));
+        assertThat(response.getData().getLinks(), instanceOf(List.class));
+        assertThat(response.getData().getData(), instanceOf(MultiChannelMessageResponseData.class));
+        assertThat(response.getData().getData().getId(), instanceOf(String.class));
+        assertThat(response.getData().getData().getTime(), instanceOf(OffsetDateTime.class));
+        assertThat(response.getData().getData().getDirection(), instanceOf(MessageDirectionEnum.class));
+        assertThat(response.getData().getData().getDirection(), equalTo(MessageDirectionEnum.OUT));
+        assertThat(response.getData().getData().getTo(), instanceOf(Set.class));
+        assertThat(response.getData().getData().getTo(), contains(USER_NUMBER));
+        assertThat(response.getData().getData().getTag(), instanceOf(String.class));
+        assertThat(response.getData().getData().getPriority(), instanceOf(PriorityEnum.class));
+        assertThat(response.getData().getData().getPriority(), equalTo(PriorityEnum.HIGH));
+        assertThat(response.getData().getData().getExpiration(), instanceOf(OffsetDateTime.class));
+        assertThat(response.getData().getData().getChannelList(), instanceOf(List.class));
+        assertThat(response.getData().getData().getChannelList().get(0), instanceOf(MultiChannelChannelListResponseObject.class));
+                assertThat(response.getData().getData().getChannelList().get(0).getActualInstance(), instanceOf(MultiChannelChannelListRBMResponseObject.class));
+        MultiChannelChannelListRBMResponseObject channelListObject
+                = response.getData().getData().getChannelList().get(0).getMultiChannelChannelListRBMResponseObject();
+        assertThat(channelListObject.getFrom(), equalTo(BW_NUMBER));
+        assertThat(channelListObject.getApplicationId(), equalTo(BW_MESSAGING_APPLICATION_ID));
+        assertThat(channelListObject.getChannel(), instanceOf(MultiChannelMessageChannelEnum.class));
+        assertThat(channelListObject.getChannel(), equalTo(MultiChannelMessageChannelEnum.RBM));
+        assertThat(channelListObject.getContent(), instanceOf(MultiChannelChannelListRBMObjectAllOfContent.class));
+        assertThat(channelListObject.getContent().getActualInstance(), instanceOf(RbmMessageContentRichCard.class));
+        RbmMessageContentRichCard rbmContent = channelListObject.getContent().getRbmMessageContentRichCard();
+        assertThat(rbmContent.getActualInstance(), instanceOf(RbmMessageCarouselCard.class));
+        RbmMessageCarouselCard rbmCard = rbmContent.getRbmMessageCarouselCard();
+        assertThat(rbmCard.getCardWidth(), instanceOf(CardWidthEnum.class));
+        assertThat(rbmCard.getCardWidth(), equalTo(CardWidthEnum.MEDIUM));
+        assertThat(rbmCard.getCardContents(), instanceOf(List.class));
+        assertThat(rbmCard.getCardContents().get(0), instanceOf(RbmCardContent.class));
+        RbmCardContent card1 = rbmCard.getCardContents().get(0);
+        assertThat(card1.getTitle(), instanceOf(String.class));
+        assertThat(card1.getDescription(), instanceOf(String.class));
+        assertThat(card1.getMedia(), instanceOf(RbmCardContentMedia.class));
+        RbmCardContentMedia media = card1.getMedia();
+        assertThat(media.getFileUrl(), instanceOf(URI.class));
+        assertThat(media.getThumbnailUrl(), instanceOf(URI.class));
+        assertThat(media.getHeight(), instanceOf(RbmMediaHeightEnum.class));
+        assertThat(card1.getSuggestions(), instanceOf(List.class));
+        assertThat(card1.getSuggestions().get(0), instanceOf(MultiChannelAction.class));
+        assertThat(card1.getSuggestions().get(0).getActualInstance(), instanceOf(RbmActionDial.class));
+        RbmActionDial rbmActionDial = card1.getSuggestions().get(0).getRbmActionDial();
+        assertThat(rbmActionDial.getType(), instanceOf(RbmActionTypeEnum.class));
+        assertThat(rbmActionDial.getType(), equalTo(RbmActionTypeEnum.DIAL_PHONE));
+        assertThat(rbmActionDial.getText(), instanceOf(String.class));
+        assertThat(rbmActionDial.getPostbackData(), instanceOf(byte[].class));
+        assertThat(rbmActionDial.getPhoneNumber(), instanceOf(String.class));
+        assertThat(rbmCard.getCardContents().get(0), instanceOf(RbmCardContent.class));
+        RbmCardContent card2 = rbmCard.getCardContents().get(1);
+        assertThat(card2.getTitle(), instanceOf(String.class));
+        assertThat(channelListObject.getOwner(), equalTo(BW_NUMBER));
+    }
 }
