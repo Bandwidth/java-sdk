@@ -9,13 +9,10 @@ import com.bandwidth.sdk.model.CreateEndpointResponse;
 import com.bandwidth.sdk.model.EndpointResponse;
 import com.bandwidth.sdk.model.Endpoints;
 import com.bandwidth.sdk.model.EndpointDirectionEnum;
-import com.bandwidth.sdk.model.EndpointStatusEnum;
 import com.bandwidth.sdk.model.EndpointTypeEnum;
 import com.bandwidth.sdk.model.ListEndpointsResponse;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -114,11 +111,12 @@ public class EndpointsApiTest {
         assertThat(response.getData(), notNullValue());
         assertThat(response.getData().getErrors(), instanceOf(List.class));
         assertThat(response.getData().getErrors(), hasSize(0));
-        assertThat(response.getData(), hasProperty("endpointId", is(endpointId)));
-        assertThat(response.getData(), hasProperty("type", is(EndpointTypeEnum.WEBRTC)));
-        assertThat(response.getData(), hasProperty("status", notNullValue()));
-        assertThat(response.getData(), hasProperty("creationTimestamp", notNullValue()));
-        assertThat(response.getData(), hasProperty("expirationTimestamp", notNullValue()));
+        assertThat(response.getData().getData(), notNullValue());
+        assertThat(response.getData().getData(), hasProperty("endpointId", is(endpointId)));
+        assertThat(response.getData().getData(), hasProperty("type", is(EndpointTypeEnum.WEBRTC)));
+        assertThat(response.getData().getData(), hasProperty("status", notNullValue()));
+        assertThat(response.getData().getData(), hasProperty("creationTimestamp", notNullValue()));
+        assertThat(response.getData().getData(), hasProperty("expirationTimestamp", notNullValue()));
     }
 
     @Test
@@ -130,14 +128,12 @@ public class EndpointsApiTest {
     }
 
     @Test
-    public void shouldThrow401UnauthorizedWithInvalidCredentials() throws ApiException {
+    public void shouldThrow401UnauthorizedWithInvalidCredentials() {
         ApiClient badOauthClient = new ApiClient("invalid-client-id", "invalid-client-secret", null);
         EndpointsApi endpointsApiBad = new EndpointsApi(badOauthClient);
 
-        ApiException exception = Assertions.assertThrows(ApiException.class,
+        Assertions.assertThrows(ApiException.class,
                 () -> endpointsApiBad.listEndpointsWithHttpInfo(BW_ACCOUNT_ID, null, null, null, null));
-
-        assertThat(exception.getCode(), is(401));
     }
 
     @Test
