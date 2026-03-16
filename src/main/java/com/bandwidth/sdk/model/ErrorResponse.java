@@ -15,8 +15,8 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import java.util.Locale;
-import com.bandwidth.sdk.model.Error1;
-import com.bandwidth.sdk.model.Link1;
+import com.bandwidth.sdk.model.Error;
+import com.bandwidth.sdk.model.Link;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -59,7 +59,7 @@ public class ErrorResponse {
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nonnull
-  private List<Link1> links = new ArrayList<>();
+  private List<Link> links = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
@@ -69,17 +69,17 @@ public class ErrorResponse {
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   @javax.annotation.Nonnull
-  private List<Error1> errors = new ArrayList<>();
+  private List<Error> errors = new ArrayList<>();
 
   public ErrorResponse() {
   }
 
-  public ErrorResponse links(@javax.annotation.Nonnull List<Link1> links) {
+  public ErrorResponse links(@javax.annotation.Nonnull List<Link> links) {
     this.links = links;
     return this;
   }
 
-  public ErrorResponse addLinksItem(Link1 linksItem) {
+  public ErrorResponse addLinksItem(Link linksItem) {
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -92,11 +92,11 @@ public class ErrorResponse {
    * @return links
    */
   @javax.annotation.Nonnull
-  public List<Link1> getLinks() {
+  public List<Link> getLinks() {
     return links;
   }
 
-  public void setLinks(@javax.annotation.Nonnull List<Link1> links) {
+  public void setLinks(@javax.annotation.Nonnull List<Link> links) {
     this.links = links;
   }
 
@@ -120,12 +120,12 @@ public class ErrorResponse {
   }
 
 
-  public ErrorResponse errors(@javax.annotation.Nonnull List<Error1> errors) {
+  public ErrorResponse errors(@javax.annotation.Nonnull List<Error> errors) {
     this.errors = errors;
     return this;
   }
 
-  public ErrorResponse addErrorsItem(Error1 errorsItem) {
+  public ErrorResponse addErrorsItem(Error errorsItem) {
     if (this.errors == null) {
       this.errors = new ArrayList<>();
     }
@@ -138,11 +138,11 @@ public class ErrorResponse {
    * @return errors
    */
   @javax.annotation.Nonnull
-  public List<Error1> getErrors() {
+  public List<Error> getErrors() {
     return errors;
   }
 
-  public void setErrors(@javax.annotation.Nonnull List<Error1> errors) {
+  public void setErrors(@javax.annotation.Nonnull List<Error> errors) {
     this.errors = errors;
   }
 
@@ -275,7 +275,7 @@ public class ErrorResponse {
       JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
       // validate the required field `links` (array)
       for (int i = 0; i < jsonArraylinks.size(); i++) {
-        Link1.validateJsonElement(jsonArraylinks.get(i));
+        Link.validateJsonElement(jsonArraylinks.get(i));
       };
       // ensure the json data is an array
       if (!jsonObj.get("errors").isJsonArray()) {
@@ -285,7 +285,7 @@ public class ErrorResponse {
       JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
       // validate the required field `errors` (array)
       for (int i = 0; i < jsonArrayerrors.size(); i++) {
-        Error1.validateJsonElement(jsonArrayerrors.get(i));
+        Error.validateJsonElement(jsonArrayerrors.get(i));
       };
   }
 

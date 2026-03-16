@@ -47,7 +47,7 @@ docs/CreateCall.md
 docs/CreateCallResponse.md
 docs/CreateEndpointRequestBase.md
 docs/CreateEndpointResponse.md
-docs/CreateEndpointResponseObject.md
+docs/CreateEndpointResponseData.md
 docs/CreateMessageRequestError.md
 docs/CreateMultiChannelMessageResponse.md
 docs/CreateSyncLookupResponse.md
@@ -69,8 +69,6 @@ docs/EndpointTypeEnum.md
 docs/Endpoints.md
 docs/EndpointsApi.md
 docs/Error.md
-docs/Error1.md
-docs/Error1Source.md
 docs/ErrorObject.md
 docs/ErrorResponse.md
 docs/ErrorSource.md
@@ -88,7 +86,6 @@ docs/InitiateCallback.md
 docs/LatestMessageDeliveryStatusEnum.md
 docs/LineTypeEnum.md
 docs/Link.md
-docs/Link1.md
 docs/LinkSchema.md
 docs/LinksObject.md
 docs/ListEndpointsResponse.md
@@ -299,7 +296,7 @@ src/main/java/com/bandwidth/sdk/model/CreateCall.java
 src/main/java/com/bandwidth/sdk/model/CreateCallResponse.java
 src/main/java/com/bandwidth/sdk/model/CreateEndpointRequestBase.java
 src/main/java/com/bandwidth/sdk/model/CreateEndpointResponse.java
-src/main/java/com/bandwidth/sdk/model/CreateEndpointResponseObject.java
+src/main/java/com/bandwidth/sdk/model/CreateEndpointResponseData.java
 src/main/java/com/bandwidth/sdk/model/CreateMessageRequestError.java
 src/main/java/com/bandwidth/sdk/model/CreateMultiChannelMessageResponse.java
 src/main/java/com/bandwidth/sdk/model/CreateSyncLookupResponse.java
@@ -320,8 +317,6 @@ src/main/java/com/bandwidth/sdk/model/EndpointStatusEnum.java
 src/main/java/com/bandwidth/sdk/model/EndpointTypeEnum.java
 src/main/java/com/bandwidth/sdk/model/Endpoints.java
 src/main/java/com/bandwidth/sdk/model/Error.java
-src/main/java/com/bandwidth/sdk/model/Error1.java
-src/main/java/com/bandwidth/sdk/model/Error1Source.java
 src/main/java/com/bandwidth/sdk/model/ErrorObject.java
 src/main/java/com/bandwidth/sdk/model/ErrorResponse.java
 src/main/java/com/bandwidth/sdk/model/ErrorSource.java
@@ -339,7 +334,6 @@ src/main/java/com/bandwidth/sdk/model/InitiateCallback.java
 src/main/java/com/bandwidth/sdk/model/LatestMessageDeliveryStatusEnum.java
 src/main/java/com/bandwidth/sdk/model/LineTypeEnum.java
 src/main/java/com/bandwidth/sdk/model/Link.java
-src/main/java/com/bandwidth/sdk/model/Link1.java
 src/main/java/com/bandwidth/sdk/model/LinkSchema.java
 src/main/java/com/bandwidth/sdk/model/LinksObject.java
 src/main/java/com/bandwidth/sdk/model/ListEndpointsResponse.java

@@ -44,7 +44,7 @@ public class Example {
     OAuth2.setAccessToken("YOUR ACCESS TOKEN");
 
     EndpointsApi apiInstance = new EndpointsApi(defaultClient);
-    String accountId = "5500123"; // String | Your Bandwidth Account ID.
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
     CreateWebRtcConnectionRequest body = new CreateWebRtcConnectionRequest(); // CreateWebRtcConnectionRequest | 
     try {
       CreateEndpointResponse result = apiInstance.createEndpoint(accountId, body);
@@ -126,7 +126,7 @@ public class Example {
     OAuth2.setAccessToken("YOUR ACCESS TOKEN");
 
     EndpointsApi apiInstance = new EndpointsApi(defaultClient);
-    String accountId = "5500123"; // String | Your Bandwidth Account ID.
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String endpointId = "e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | BRTC Endpoint ID.
     try {
       apiInstance.deleteEndpoint(accountId, endpointId);
@@ -207,7 +207,7 @@ public class Example {
     OAuth2.setAccessToken("YOUR ACCESS TOKEN");
 
     EndpointsApi apiInstance = new EndpointsApi(defaultClient);
-    String accountId = "5500123"; // String | Your Bandwidth Account ID.
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String endpointId = "e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | BRTC Endpoint ID.
     try {
       EndpointResponse result = apiInstance.getEndpoint(accountId, endpointId);
@@ -289,7 +289,7 @@ public class Example {
     OAuth2.setAccessToken("YOUR ACCESS TOKEN");
 
     EndpointsApi apiInstance = new EndpointsApi(defaultClient);
-    String accountId = "5500123"; // String | Your Bandwidth Account ID.
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
     EndpointTypeEnum type = EndpointTypeEnum.fromValue("WEBRTC"); // EndpointTypeEnum | The type of endpoint.
     EndpointStatusEnum status = EndpointStatusEnum.fromValue("CONNECTED"); // EndpointStatusEnum | The status of the endpoint.
     String afterCursor = "TWF5IHRoZSBmb3JjZSBiZSB3aXRoIHlvdQ=="; // String | The cursor to use for pagination. This is the value of the `next` link in the previous response.
@@ -377,7 +377,7 @@ public class Example {
     OAuth2.setAccessToken("YOUR ACCESS TOKEN");
 
     EndpointsApi apiInstance = new EndpointsApi(defaultClient);
-    String accountId = "5500123"; // String | Your Bandwidth Account ID.
+    String accountId = "9900000"; // String | Your Bandwidth Account ID.
     String endpointId = "e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85"; // String | BRTC Endpoint ID.
     String body = "body_example"; // String | 
     try {

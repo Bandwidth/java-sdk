@@ -16,8 +16,8 @@ package com.bandwidth.sdk.model;
 import java.util.Objects;
 import java.util.Locale;
 import com.bandwidth.sdk.model.Endpoint;
-import com.bandwidth.sdk.model.Error1;
-import com.bandwidth.sdk.model.Link1;
+import com.bandwidth.sdk.model.Error;
+import com.bandwidth.sdk.model.Link;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -60,7 +60,7 @@ public class EndpointResponse {
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nonnull
-  private List<Link1> links = new ArrayList<>();
+  private List<Link> links = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
@@ -70,17 +70,17 @@ public class EndpointResponse {
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   @javax.annotation.Nonnull
-  private List<Error1> errors = new ArrayList<>();
+  private List<Error> errors = new ArrayList<>();
 
   public EndpointResponse() {
   }
 
-  public EndpointResponse links(@javax.annotation.Nonnull List<Link1> links) {
+  public EndpointResponse links(@javax.annotation.Nonnull List<Link> links) {
     this.links = links;
     return this;
   }
 
-  public EndpointResponse addLinksItem(Link1 linksItem) {
+  public EndpointResponse addLinksItem(Link linksItem) {
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -93,11 +93,11 @@ public class EndpointResponse {
    * @return links
    */
   @javax.annotation.Nonnull
-  public List<Link1> getLinks() {
+  public List<Link> getLinks() {
     return links;
   }
 
-  public void setLinks(@javax.annotation.Nonnull List<Link1> links) {
+  public void setLinks(@javax.annotation.Nonnull List<Link> links) {
     this.links = links;
   }
 
@@ -121,12 +121,12 @@ public class EndpointResponse {
   }
 
 
-  public EndpointResponse errors(@javax.annotation.Nonnull List<Error1> errors) {
+  public EndpointResponse errors(@javax.annotation.Nonnull List<Error> errors) {
     this.errors = errors;
     return this;
   }
 
-  public EndpointResponse addErrorsItem(Error1 errorsItem) {
+  public EndpointResponse addErrorsItem(Error errorsItem) {
     if (this.errors == null) {
       this.errors = new ArrayList<>();
     }
@@ -139,11 +139,11 @@ public class EndpointResponse {
    * @return errors
    */
   @javax.annotation.Nonnull
-  public List<Error1> getErrors() {
+  public List<Error> getErrors() {
     return errors;
   }
 
-  public void setErrors(@javax.annotation.Nonnull List<Error1> errors) {
+  public void setErrors(@javax.annotation.Nonnull List<Error> errors) {
     this.errors = errors;
   }
 
@@ -276,7 +276,7 @@ public class EndpointResponse {
       JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
       // validate the required field `links` (array)
       for (int i = 0; i < jsonArraylinks.size(); i++) {
-        Link1.validateJsonElement(jsonArraylinks.get(i));
+        Link.validateJsonElement(jsonArraylinks.get(i));
       };
       // validate the required field `data`
       Endpoint.validateJsonElement(jsonObj.get("data"));
@@ -288,7 +288,7 @@ public class EndpointResponse {
       JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
       // validate the required field `errors` (array)
       for (int i = 0; i < jsonArrayerrors.size(); i++) {
-        Error1.validateJsonElement(jsonArrayerrors.get(i));
+        Error.validateJsonElement(jsonArrayerrors.get(i));
       };
   }
 

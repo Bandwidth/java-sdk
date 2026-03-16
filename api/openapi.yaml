@@ -5840,12 +5840,12 @@ paths:
       operationId: listEndpoints
       parameters:
       - description: Your Bandwidth Account ID.
+        example: "9900000"
         explode: false
         in: path
         name: accountId
         required: true
         schema:
-          example: "5500123"
           type: string
         style: simple
       - description: The type of endpoint.
@@ -5971,6 +5971,9 @@ paths:
       summary: List Endpoints
       tags:
       - Endpoints
+      x-badges:
+      - name: Beta
+        color: "#076EA8"
       x-accepts:
       - application/json
     post:
@@ -5981,12 +5984,12 @@ paths:
       operationId: createEndpoint
       parameters:
       - description: Your Bandwidth Account ID.
+        example: "9900000"
         explode: false
         in: path
         name: accountId
         required: true
         schema:
-          example: "5500123"
           type: string
         style: simple
       requestBody:
@@ -6076,6 +6079,9 @@ paths:
       summary: Create Endpoint
       tags:
       - Endpoints
+      x-badges:
+      - name: Beta
+        color: "#076EA8"
       x-content-type: application/json
       x-accepts:
       - application/json
@@ -6089,12 +6095,12 @@ paths:
       operationId: deleteEndpoint
       parameters:
       - description: Your Bandwidth Account ID.
+        example: "9900000"
         explode: false
         in: path
         name: accountId
         required: true
         schema:
-          example: "5500123"
           type: string
         style: simple
       - description: BRTC Endpoint ID.
@@ -6184,6 +6190,9 @@ paths:
       summary: Delete Endpoint
       tags:
       - Endpoints
+      x-badges:
+      - name: Beta
+        color: "#076EA8"
       x-accepts:
       - application/json
     get:
@@ -6191,12 +6200,12 @@ paths:
       operationId: getEndpoint
       parameters:
       - description: Your Bandwidth Account ID.
+        example: "9900000"
         explode: false
         in: path
         name: accountId
         required: true
         schema:
-          example: "5500123"
           type: string
         style: simple
       - description: BRTC Endpoint ID.
@@ -6293,6 +6302,9 @@ paths:
       summary: Get Endpoint
       tags:
       - Endpoints
+      x-badges:
+      - name: Beta
+        color: "#076EA8"
       x-accepts:
       - application/json
     servers:
@@ -6304,12 +6316,12 @@ paths:
       operationId: updateEndpointBxml
       parameters:
       - description: Your Bandwidth Account ID.
+        example: "9900000"
         explode: false
         in: path
         name: accountId
         required: true
         schema:
-          example: "5500123"
           type: string
         style: simple
       - description: BRTC Endpoint ID.
@@ -6401,6 +6413,9 @@ paths:
       summary: Update Endpoint BXML
       tags:
       - Endpoints
+      x-badges:
+      - name: Beta
+        color: "#076EA8"
       x-content-type: application/xml
       x-accepts:
       - application/json
@@ -6422,15 +6437,13 @@ components:
                     $ref: "#/components/examples/mmsMessageReceivedCallbackExample"
                 schema:
                   $ref: "#/components/schemas/inboundCallback"
-            description: "<p>This Inbound Message Webhook is an envelope containing\
-              \ either a received (MO) message to your \nmessage-enabled Bandwidth\
-              \ telephone number or a multichannel client's response to a suggestion\
-              \ response \nor location request. \n<p>The payload type will be one\
-              \ of <code>message-received</code>, <code>suggestion-response</code>,\
-              \ or <code>location-request-response</code>.\n<p>Note that <code>suggestion-response</code>\
-              \ and <code>location-request-response</code> callback types are pertinent\
-              \ only for RBM messages sent from the <code>/messages/multiChannel</code>\
-              \ endpoint.\n</p><p>Please visit <a href='/docs/messaging/webhooks/'>Webhooks</a></p>"
+            description: |-
+              <p>This Inbound Message Webhook is an envelope containing either a received (MO) message to your
+              message-enabled Bandwidth telephone number or a multichannel client's response to a suggestion response
+              or location request.
+              <p>The payload type will be one of <code>message-received</code>, <code>suggestion-response</code>, or <code>location-request-response</code>.
+              <p>Note that <code>suggestion-response</code> and <code>location-request-response</code> callback types are pertinent only for RBM messages sent from the <code>/messages/multiChannel</code> endpoint.
+              </p><p>Please visit <a href='/docs/messaging/webhooks/'>Webhooks</a></p>
             required: true
           responses:
             "200":
@@ -7771,16 +7784,6 @@ components:
       schema:
         type: string
       style: simple
-    accountId2:
-      description: Your Bandwidth Account ID.
-      explode: false
-      in: path
-      name: accountId
-      required: true
-      schema:
-        example: "5500123"
-        type: string
-      style: simple
     endpointId:
       description: BRTC Endpoint ID.
       explode: false
@@ -8874,6 +8877,8 @@ components:
           schema:
             $ref: "#/components/schemas/tfvError"
       description: Service Unavailable
+    verifyPutResponse:
+      description: Accepted
     listEndpointsResponse:
       content:
         application/json:
@@ -8973,8 +8978,6 @@ components:
           schema:
             $ref: "#/components/schemas/errorResponse"
       description: Service Unavailable
-    verifyPutResponse:
-      description: Accepted
   schemas:
     applicationId:
       description: The ID of the Application your from number or senderId is associated
@@ -9358,9 +9361,10 @@ components:
       format: date-time
       type: string
     carrierName:
-      description: "The name of the Authorized Message Provider (AMP) that handled\
-        \ this message. \nIn the US, this is the carrier that the message was sent\
-        \ to.\nThis field is present only when this account feature has been enabled."
+      description: |-
+        The name of the Authorized Message Provider (AMP) that handled this message.
+        In the US, this is the carrier that the message was sent to.
+        This field is present only when this account feature has been enabled.
       example: AT&T
       type: string
     message:
@@ -9467,13 +9471,9 @@ components:
           type: array
           uniqueItems: true
         from:
-          description: "Either an alphanumeric sender ID or the sender's Bandwidth\
-            \ phone number in E.164 format, which must be hosted within Bandwidth\
-            \ and linked to the account that is generating the message. \nAlphanumeric\
-            \ Sender IDs can contain up to 11 characters, upper-case letters A-Z,\
-            \ lower-case letters a-z, numbers 0-9, space, hyphen -, plus +, underscore\
-            \ _ and ampersand &. Alphanumeric Sender IDs must contain at least one\
-            \ letter."
+          description: |-
+            Either an alphanumeric sender ID or the sender's Bandwidth phone number in E.164 format, which must be hosted within Bandwidth and linked to the account that is generating the message.
+            Alphanumeric Sender IDs can contain up to 11 characters, upper-case letters A-Z, lower-case letters a-z, numbers 0-9, space, hyphen -, plus +, underscore _ and ampersand &. Alphanumeric Sender IDs must contain at least one letter.
           example: "+15551113333"
           type: string
         text:
@@ -9703,6 +9703,9 @@ components:
           type: array
       type: object
     link:
+      example:
+        rel: rel
+        href: href
       properties:
         rel:
           type: string
@@ -10002,20 +10005,21 @@ components:
       example: REPLY
       type: string
     rbmOpenUrlEnum:
-      description: "Specifies how the URL should be opened on a mobile device.\n-\
-        \ `BROWSER` Opens the URL in the device's default browser. If application\
-        \ is not set or the device doesn’t support WebView, this option is used by\
-        \ default. \n- `WEBVIEW` Opens the URL in an in-app WebView."
+      description: |-
+        Specifies how the URL should be opened on a mobile device.
+        - `BROWSER` Opens the URL in the device's default browser. If application is not set or the device doesn’t support WebView, this option is used by default.
+        - `WEBVIEW` Opens the URL in an in-app WebView.
       enum:
       - BROWSER
       - WEBVIEW
       example: WEBVIEW
       type: string
     rbmWebViewEnum:
-      description: "Defines the layout of the WebView on a mobile device. It must\
-        \ be defined when application is set to `WEBVIEW`\n- `FULL` WebView takes\
-        \ the full screen. \n- `HALF` WebView takes half of the screen.\n- `TALL`\
-        \ WebView takes three-quarters of the screen."
+      description: |-
+        Defines the layout of the WebView on a mobile device. It must be defined when application is set to `WEBVIEW`
+        - `FULL` WebView takes the full screen.
+        - `HALF` WebView takes half of the screen.
+        - `TALL` WebView takes three-quarters of the screen.
       enum:
       - FULL
       - HALF
@@ -10578,10 +10582,10 @@ components:
           example: 4405
           type: integer
         carrierName:
-          description: "The name of the Authorized Message Provider (AMP) that handled\
-            \ this message. \nIn the US, this is the carrier that the message was\
-            \ sent to.\nThis field is present only when this account feature has been\
-            \ enabled."
+          description: |-
+            The name of the Authorized Message Provider (AMP) that handled this message.
+            In the US, this is the carrier that the message was sent to.
+            This field is present only when this account feature has been enabled.
           example: AT&T
           type: string
       required:
@@ -10601,9 +10605,9 @@ components:
         type:
           $ref: "#/components/schemas/inboundCallbackTypeEnum"
         to:
-          description: "The destination phone number the message was sent to. \nFor\
-            \ inbound callbacks, this is the Bandwidth number or alphanumeric identifier\
-            \ that received the message.\n"
+          description: |
+            The destination phone number the message was sent to.
+            For inbound callbacks, this is the Bandwidth number or alphanumeric identifier that received the message.
           example: "+15552223333"
           type: string
         description:
@@ -10613,10 +10617,10 @@ components:
         message:
           $ref: "#/components/schemas/inboundCallbackMessage"
         carrierName:
-          description: "The name of the Authorized Message Provider (AMP) that handled\
-            \ this message. \nIn the US, this is the carrier that the message was\
-            \ sent to.\nThis field is present only when this account feature has been\
-            \ enabled."
+          description: |-
+            The name of the Authorized Message Provider (AMP) that handled this message.
+            In the US, this is the carrier that the message was sent to.
+            This field is present only when this account feature has been enabled.
           example: AT&T
           type: string
       required:
@@ -10641,13 +10645,11 @@ components:
       example: message-delivered
       type: string
     inboundCallbackTypeEnum:
-      description: "The possible inbound callback types originating from MO messages\
-        \ or multichannel message client responses:\n- `message-received` indicates\
-        \ an MO message from a Bandwidth user's client to a Bandwidth number.\n- `request-location-response`\
-        \ indicates a response to a location request sent by the Bandwidth user's\
-        \ client after receiving an RBM message. \n- `suggestion-response` indicates\
-        \ a response to a suggestion sent by the Bandwidth user's client after receiving\
-        \ an RBM message."
+      description: |-
+        The possible inbound callback types originating from MO messages or multichannel message client responses:
+        - `message-received` indicates an MO message from a Bandwidth user's client to a Bandwidth number.
+        - `request-location-response` indicates a response to a location request sent by the Bandwidth user's client after receiving an RBM message.
+        - `suggestion-response` indicates a response to a suggestion sent by the Bandwidth user's client after receiving an RBM message.
       enum:
       - message-received
       - request-location-response
@@ -10865,10 +10867,10 @@ components:
           nullable: true
           type: boolean
         displayName:
-          description: "The caller display name to use when the call is created. \n\
-            May not exceed 256 characters nor contain control characters such as new\
-            \ lines.\nIf `privacy` is true, only the following values are valid: `Restricted`,\
-            \ `Anonymous`, `Private`, or `Unavailable`."
+          description: |-
+            The caller display name to use when the call is created.
+            May not exceed 256 characters nor contain control characters such as new lines.
+            If `privacy` is true, only the following values are valid: `Restricted`, `Anonymous`, `Private`, or `Unavailable`.
           example: John Doe
           maxLength: 256
           nullable: true
@@ -11833,9 +11835,9 @@ components:
           nullable: true
           type: number
         machineSpeechEndThreshold:
-          description: "When an answering machine is detected, the amount of silence\
-            \ (in seconds) before assuming the message has finished playing. \nIf\
-            \ not provided it will default to the speechEndThreshold value."
+          description: |-
+            When an answering machine is detected, the amount of silence (in seconds) before assuming the message has finished playing.
+            If not provided it will default to the speechEndThreshold value.
           example: 5
           format: double
           nullable: true
@@ -14605,18 +14607,18 @@ components:
         latestMessageDeliveryStatus:
           $ref: "#/components/schemas/latestMessageDeliveryStatusEnum"
         initialMessageDeliveryStatusDate:
-          description: "[DNI-Only](#section/DNI-Only). The date the phone number entered\
-            \ the status described in `latestMessageDeliveryStatus`. \nThink of this\
-            \ as the \"start time\" for that status.\nValue resets every time the\
-            \ `latestMessageDeliveryStatus` changes."
+          description: |-
+            [DNI-Only](#section/DNI-Only). The date the phone number entered the status described in `latestMessageDeliveryStatus`.
+            Think of this as the "start time" for that status.
+            Value resets every time the `latestMessageDeliveryStatus` changes.
           example: 2025-06-20
           format: date
           type: string
         latestMessageDeliveryStatusDate:
-          description: "[DNI-Only](#section/DNI-Only). The date bandwidth last received\
-            \ delivery status information for this phone number. \nUse this field\
-            \ to understand how up-to-date the `latestMessageDeliveryStatus` is.\n\
-            Value resets every time the `latestMessageDeliveryStatus` changes."
+          description: |-
+            [DNI-Only](#section/DNI-Only). The date bandwidth last received delivery status information for this phone number.
+            Use this field to understand how up-to-date the `latestMessageDeliveryStatus` is.
+            Value resets every time the `latestMessageDeliveryStatus` changes.
           example: 2025-06-21
           format: date
           type: string
@@ -15865,6 +15867,16 @@ components:
       nullable: true
       pattern: "^[ -~]{16,64}$"
       type: string
+    cvTokenNullable:
+      description: "The token provided by Campaign Verify to validate your political\
+        \ use case. Only required for 527 political organizations. If you are not\
+        \ a 527 political organization, this field should be omitted. Supplying an\
+        \ empty string will likely result in rejection."
+      example: cv.user123|sess456|mno|tfree|read_write|X7yZ9aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVw
+      maxLength: 500
+      minLength: 0
+      nullable: true
+      type: string
     endpointId:
       description: The unique ID of the endpoint.
       example: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
@@ -16060,7 +16072,7 @@ components:
       type: object
     createEndpointRequest:
       $ref: "#/components/schemas/createWebRtcConnectionRequest"
-    createEndpointResponseObject:
+    createEndpointResponseData:
       allOf:
       - $ref: "#/components/schemas/endpoint"
       - properties:
@@ -16109,29 +16121,6 @@ components:
         - eventType
         type: object
       description: An event that occurred on an endpoint.
-    link1:
-      example:
-        method: GET
-        rel: self
-        href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-      properties:
-        href:
-          description: The full URL of the link.
-          example: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-          type: string
-        rel:
-          description: The relationship of the link to the current resource.
-          example: self
-          type: string
-        method:
-          description: The HTTP method to use when making the request.
-          enum:
-          - GET
-          - POST
-          - DELETE
-          example: GET
-          type: string
-      type: object
     page:
       example:
         pageNumber: 0
@@ -16162,43 +16151,6 @@ components:
       required:
       - pageSize
       type: object
-    error1:
-      example:
-        code: "404"
-        description: The requested resource was not found.
-        id: 59512d87-7a92-4040-8e4a-78fb772019b9
-        source:
-          reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-          field: accountId
-          parameter: accountId
-          header: Authorization
-        type: resource.not_found
-      properties:
-        id:
-          description: A unique identifier for the error.
-          example: 59512d87-7a92-4040-8e4a-78fb772019b9
-          format: uuid
-          type: string
-        type:
-          description: The type of error.
-          example: resource.not_found
-          type: string
-        description:
-          description: A description of the error.
-          example: The requested resource was not found.
-          type: string
-        code:
-          description: A code that uniquely identifies the error.
-          example: "404"
-          type: string
-        source:
-          $ref: "#/components/schemas/error1_source"
-      required:
-      - code
-      - description
-      - id
-      - type
-      type: object
     listEndpointsResponse:
       example:
         data:
@@ -16215,40 +16167,30 @@ components:
           type: WEBRTC
           status: CONNECTED
         links:
-        - method: GET
-          rel: self
-          href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-        - method: GET
-          rel: self
-          href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+        - rel: rel
+          href: href
+        - rel: rel
+          href: href
         page:
           pageNumber: 0
           totalPages: 10
           pageSize: 10
           totalElements: 100
         errors:
-        - code: "404"
-          description: The requested resource was not found.
-          id: 59512d87-7a92-4040-8e4a-78fb772019b9
-          source:
-            reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-            field: accountId
-            parameter: accountId
-            header: Authorization
-          type: resource.not_found
-        - code: "404"
-          description: The requested resource was not found.
-          id: 59512d87-7a92-4040-8e4a-78fb772019b9
-          source:
-            reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-            field: accountId
-            parameter: accountId
-            header: Authorization
-          type: resource.not_found
+        - code: 0
+          telephoneNumbers:
+          - telephoneNumber: telephoneNumber
+          - telephoneNumber: telephoneNumber
+          description: description
+        - code: 0
+          telephoneNumbers:
+          - telephoneNumber: telephoneNumber
+          - telephoneNumber: telephoneNumber
+          description: description
       properties:
         links:
           items:
-            $ref: "#/components/schemas/link1"
+            $ref: "#/components/schemas/link"
           type: array
         page:
           $ref: "#/components/schemas/page"
@@ -16258,7 +16200,7 @@ components:
           type: array
         errors:
           items:
-            $ref: "#/components/schemas/error1"
+            $ref: "#/components/schemas/error"
           type: array
       required:
       - data
@@ -16284,41 +16226,31 @@ components:
           type: WEBRTC
           status: CONNECTED
         links:
-        - method: GET
-          rel: self
-          href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-        - method: GET
-          rel: self
-          href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+        - rel: rel
+          href: href
+        - rel: rel
+          href: href
         errors:
-        - code: "404"
-          description: The requested resource was not found.
-          id: 59512d87-7a92-4040-8e4a-78fb772019b9
-          source:
-            reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-            field: accountId
-            parameter: accountId
-            header: Authorization
-          type: resource.not_found
-        - code: "404"
-          description: The requested resource was not found.
-          id: 59512d87-7a92-4040-8e4a-78fb772019b9
-          source:
-            reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-            field: accountId
-            parameter: accountId
-            header: Authorization
-          type: resource.not_found
+        - code: 0
+          telephoneNumbers:
+          - telephoneNumber: telephoneNumber
+          - telephoneNumber: telephoneNumber
+          description: description
+        - code: 0
+          telephoneNumbers:
+          - telephoneNumber: telephoneNumber
+          - telephoneNumber: telephoneNumber
+          description: description
       properties:
         links:
           items:
-            $ref: "#/components/schemas/link1"
+            $ref: "#/components/schemas/link"
           type: array
         data:
           $ref: "#/components/schemas/endpoint"
         errors:
           items:
-            $ref: "#/components/schemas/error1"
+            $ref: "#/components/schemas/error"
           type: array
       required:
       - data
@@ -16345,41 +16277,31 @@ components:
           status: CONNECTED
           token: xxxxx.yyyyy.zzzzz
         links:
-        - method: GET
-          rel: self
-          href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-        - method: GET
-          rel: self
-          href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+        - rel: rel
+          href: href
+        - rel: rel
+          href: href
         errors:
-        - code: "404"
-          description: The requested resource was not found.
-          id: 59512d87-7a92-4040-8e4a-78fb772019b9
-          source:
-            reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-            field: accountId
-            parameter: accountId
-            header: Authorization
-          type: resource.not_found
-        - code: "404"
-          description: The requested resource was not found.
-          id: 59512d87-7a92-4040-8e4a-78fb772019b9
-          source:
-            reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-            field: accountId
-            parameter: accountId
-            header: Authorization
-          type: resource.not_found
+        - code: 0
+          telephoneNumbers:
+          - telephoneNumber: telephoneNumber
+          - telephoneNumber: telephoneNumber
+          description: description
+        - code: 0
+          telephoneNumbers:
+          - telephoneNumber: telephoneNumber
+          - telephoneNumber: telephoneNumber
+          description: description
       properties:
         links:
           items:
-            $ref: "#/components/schemas/link1"
+            $ref: "#/components/schemas/link"
           type: array
         data:
-          $ref: "#/components/schemas/createEndpointResponseObject"
+          $ref: "#/components/schemas/createEndpointResponseData"
         errors:
           items:
-            $ref: "#/components/schemas/error1"
+            $ref: "#/components/schemas/error"
           type: array
       required:
       - data
@@ -16390,35 +16312,25 @@ components:
       example:
         data: "{}"
         links:
-        - method: GET
-          rel: self
-          href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-        - method: GET
-          rel: self
-          href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+        - rel: rel
+          href: href
+        - rel: rel
+          href: href
         errors:
-        - code: "404"
-          description: The requested resource was not found.
-          id: 59512d87-7a92-4040-8e4a-78fb772019b9
-          source:
-            reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-            field: accountId
-            parameter: accountId
-            header: Authorization
-          type: resource.not_found
-        - code: "404"
-          description: The requested resource was not found.
-          id: 59512d87-7a92-4040-8e4a-78fb772019b9
-          source:
-            reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-            field: accountId
-            parameter: accountId
-            header: Authorization
-          type: resource.not_found
+        - code: 0
+          telephoneNumbers:
+          - telephoneNumber: telephoneNumber
+          - telephoneNumber: telephoneNumber
+          description: description
+        - code: 0
+          telephoneNumbers:
+          - telephoneNumber: telephoneNumber
+          - telephoneNumber: telephoneNumber
+          description: description
       properties:
         links:
           items:
-            $ref: "#/components/schemas/link1"
+            $ref: "#/components/schemas/link"
           type: array
         data:
           additionalProperties: false
@@ -16426,23 +16338,13 @@ components:
           type: object
         errors:
           items:
-            $ref: "#/components/schemas/error1"
+            $ref: "#/components/schemas/error"
           type: array
       required:
       - data
       - errors
       - links
       type: object
-    cvTokenNullable:
-      description: "The token provided by Campaign Verify to validate your political\
-        \ use case. Only required for 527 political organizations. If you are not\
-        \ a 527 political organization, this field should be omitted. Supplying an\
-        \ empty string will likely result in rejection."
-      example: cv.user123|sess456|mno|tfree|read_write|X7yZ9aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVw
-      maxLength: 500
-      minLength: 0
-      nullable: true
-      type: string
     rbmCardContent_media:
       allOf:
       - $ref: "#/components/schemas/rbmMessageContentFile"
@@ -16600,31 +16502,6 @@ components:
       - password
       - username
       type: object
-    error1_source:
-      example:
-        reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-        field: accountId
-        parameter: accountId
-        header: Authorization
-      properties:
-        parameter:
-          description: The URI parameter that caused the error.
-          example: accountId
-          type: string
-        field:
-          description: The request body field that caused the error.
-          example: accountId
-          type: string
-        header:
-          description: The header that caused the error.
-          example: Authorization
-          type: string
-        reference:
-          description: The resource ID or path to the resource (or non-existent resource)
-            causing the error.
-          example: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-          type: string
-      type: object
   securitySchemes:
     Basic:
       description: |-
@@ -16639,3 +16516,4 @@ components:
           scopes: {}
           tokenUrl: https://api.bandwidth.com/api/v1/oauth2/token
       type: oauth2
+

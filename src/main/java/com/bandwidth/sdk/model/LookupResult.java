@@ -291,7 +291,7 @@ public class LookupResult {
   }
 
   /**
-   * [DNI-Only](#section/DNI-Only). The date the phone number entered the status described in &#x60;latestMessageDeliveryStatus&#x60;.  Think of this as the \&quot;start time\&quot; for that status. Value resets every time the &#x60;latestMessageDeliveryStatus&#x60; changes.
+   * [DNI-Only](#section/DNI-Only). The date the phone number entered the status described in &#x60;latestMessageDeliveryStatus&#x60;. Think of this as the \&quot;start time\&quot; for that status. Value resets every time the &#x60;latestMessageDeliveryStatus&#x60; changes.
    * @return initialMessageDeliveryStatusDate
    */
   @javax.annotation.Nullable
@@ -310,7 +310,7 @@ public class LookupResult {
   }
 
   /**
-   * [DNI-Only](#section/DNI-Only). The date bandwidth last received delivery status information for this phone number.  Use this field to understand how up-to-date the &#x60;latestMessageDeliveryStatus&#x60; is. Value resets every time the &#x60;latestMessageDeliveryStatus&#x60; changes.
+   * [DNI-Only](#section/DNI-Only). The date bandwidth last received delivery status information for this phone number. Use this field to understand how up-to-date the &#x60;latestMessageDeliveryStatus&#x60; is. Value resets every time the &#x60;latestMessageDeliveryStatus&#x60; changes.
    * @return latestMessageDeliveryStatusDate
    */
   @javax.annotation.Nullable

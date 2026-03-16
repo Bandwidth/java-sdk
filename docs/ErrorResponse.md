@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**links** | [**List&lt;Link1&gt;**](Link1.md) |  |  |
+|**links** | [**List&lt;Link&gt;**](Link.md) |  |  |
 |**data** | **Object** |  |  |
-|**errors** | [**List&lt;Error1&gt;**](Error1.md) |  |  |
+|**errors** | [**List&lt;Error&gt;**](Error.md) |  |  |
 
 
 
