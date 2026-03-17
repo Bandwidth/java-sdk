@@ -17,7 +17,6 @@ import java.util.Objects;
 import java.util.Locale;
 import com.bandwidth.sdk.model.Address;
 import com.bandwidth.sdk.model.BusinessEntityTypeEnum;
-import com.bandwidth.sdk.model.BusinessRegistrationIssuingCountryEnum;
 import com.bandwidth.sdk.model.BusinessRegistrationTypeEnum;
 import com.bandwidth.sdk.model.Contact;
 import com.bandwidth.sdk.model.OptInWorkflow;
@@ -132,7 +131,7 @@ public class TfvSubmissionInfo {
   public static final String SERIALIZED_NAME_BUSINESS_REGISTRATION_ISSUING_COUNTRY = "businessRegistrationIssuingCountry";
   @SerializedName(SERIALIZED_NAME_BUSINESS_REGISTRATION_ISSUING_COUNTRY)
   @javax.annotation.Nullable
-  private BusinessRegistrationIssuingCountryEnum businessRegistrationIssuingCountry;
+  private String businessRegistrationIssuingCountry;
 
   public static final String SERIALIZED_NAME_BUSINESS_ENTITY_TYPE = "businessEntityType";
   @SerializedName(SERIALIZED_NAME_BUSINESS_ENTITY_TYPE)
@@ -378,7 +377,7 @@ public class TfvSubmissionInfo {
   }
 
   /**
-   * Government-issued business identifying number.
+   * Government-issued business identifying number.  **Note:** If this field is provided, it is strongly recommended to also provide &#x60;businessRegistrationType&#x60; and &#x60;businessRegistrationIssuingCountry&#x60;. Submissions missing these fields have a high likelihood of rejection. 
    * @return businessRegistrationNumber
    */
   @javax.annotation.Nullable
@@ -410,21 +409,21 @@ public class TfvSubmissionInfo {
   }
 
 
-  public TfvSubmissionInfo businessRegistrationIssuingCountry(@javax.annotation.Nullable BusinessRegistrationIssuingCountryEnum businessRegistrationIssuingCountry) {
+  public TfvSubmissionInfo businessRegistrationIssuingCountry(@javax.annotation.Nullable String businessRegistrationIssuingCountry) {
     this.businessRegistrationIssuingCountry = businessRegistrationIssuingCountry;
     return this;
   }
 
   /**
-   * Get businessRegistrationIssuingCountry
+   * The country issuing the business registration in ISO-3166-1 alpha-3 format. Alpha-2 country codes are acceptable, but the application will convert them to alpha-3 when received, so alpha-3 is encouraged.  **Note:** If this field is omitted but &#x60;businessRegistrationType&#x60; is provided, the application will attempt to infer the country based on the registration type. However, if the application cannot confidently infer the country, the submission may be rejected. To ensure the highest likelihood of acceptance, it is recommended to provide both &#x60;businessRegistrationType&#x60; and &#x60;businessRegistrationIssuingCountry&#x60;.  | Registration Type     | Supported Countries                | |----------------------|------------------------------------| | EIN                  | USA                                | | CBN                  | CAN                                | | NEQ                  | CAN                                | | PROVINCIAL_NUMBER    | CAN                                | | CRN                  | GBR, HKG                           | | VAT                  | GBR, IRL, BRA, NLD                 | | ACN                  | AUS                                | | ABN                  | AUS                                | | BRN                  | HKG                                | | SIREN                | FRA                                | | SIRET                | FRA                                | | NZBN                 | NZL                                | | UST_IDNR             | DEU                                | | CIF                  | ESP                                | | NIF                  | ESP                                | | CNPJ                 | BRA                                | | UID                  | CHE                                | | OTHER                | Must Provide Country Code          |
    * @return businessRegistrationIssuingCountry
    */
   @javax.annotation.Nullable
-  public BusinessRegistrationIssuingCountryEnum getBusinessRegistrationIssuingCountry() {
+  public String getBusinessRegistrationIssuingCountry() {
     return businessRegistrationIssuingCountry;
   }
 
-  public void setBusinessRegistrationIssuingCountry(@javax.annotation.Nullable BusinessRegistrationIssuingCountryEnum businessRegistrationIssuingCountry) {
+  public void setBusinessRegistrationIssuingCountry(@javax.annotation.Nullable String businessRegistrationIssuingCountry) {
     this.businessRegistrationIssuingCountry = businessRegistrationIssuingCountry;
   }
 
@@ -641,9 +640,8 @@ public class TfvSubmissionInfo {
       if (jsonObj.get("businessRegistrationType") != null && !jsonObj.get("businessRegistrationType").isJsonNull()) {
         BusinessRegistrationTypeEnum.validateJsonElement(jsonObj.get("businessRegistrationType"));
       }
-      // validate the optional field `businessRegistrationIssuingCountry`
-      if (jsonObj.get("businessRegistrationIssuingCountry") != null && !jsonObj.get("businessRegistrationIssuingCountry").isJsonNull()) {
-        BusinessRegistrationIssuingCountryEnum.validateJsonElement(jsonObj.get("businessRegistrationIssuingCountry"));
+      if ((jsonObj.get("businessRegistrationIssuingCountry") != null && !jsonObj.get("businessRegistrationIssuingCountry").isJsonNull()) && !jsonObj.get("businessRegistrationIssuingCountry").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `businessRegistrationIssuingCountry` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessRegistrationIssuingCountry").toString()));
       }
       // validate the optional field `businessEntityType`
       if (jsonObj.get("businessEntityType") != null && !jsonObj.get("businessEntityType").isJsonNull()) {
