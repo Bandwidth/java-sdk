@@ -393,7 +393,7 @@ public class VerificationUpdateRequest {
   }
 
   /**
-   * Government-issued business identifying number.
+   * Government-issued business identifying number.  **Note:** If this field is provided, it is strongly recommended to also provide &#x60;businessRegistrationType&#x60; and &#x60;businessRegistrationIssuingCountry&#x60;. Submissions missing these fields have a high likelihood of rejection. 
    * @return businessRegistrationNumber
    */
   @javax.annotation.Nullable
