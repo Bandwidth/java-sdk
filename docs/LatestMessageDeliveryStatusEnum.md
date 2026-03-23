@@ -11,5 +11,7 @@
 
 * `UNKNOWN` (value: `"UNKNOWN"`)
 
+* `NOT_ENABLED` (value: `"NOT_ENABLED"`)
+
 
 
