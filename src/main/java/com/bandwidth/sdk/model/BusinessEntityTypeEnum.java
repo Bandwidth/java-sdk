@@ -26,7 +26,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The type of registered business. If no option is applicable, please provide \&quot;SOLE_PROPRIETOR\&quot; as a value.
+ * The type of registered business. 
  */
 @JsonAdapter(BusinessEntityTypeEnum.Adapter.class)
 public enum BusinessEntityTypeEnum {

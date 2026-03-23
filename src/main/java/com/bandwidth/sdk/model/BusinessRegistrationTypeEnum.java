@@ -26,7 +26,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The type of business registration number.
+ * The type of business registration number. 
  */
 @JsonAdapter(BusinessRegistrationTypeEnum.Adapter.class)
 public enum BusinessRegistrationTypeEnum {
