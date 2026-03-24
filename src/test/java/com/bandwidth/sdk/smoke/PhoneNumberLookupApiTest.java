@@ -56,7 +56,7 @@ public class PhoneNumberLookupApiTest {
         LookupResult firstResult = lookupResponse.getData().getResults().get(0);
         assertThat(firstResult.getPhoneNumber(), instanceOf(String.class));
         assertThat(firstResult.getLineType(), instanceOf(LineTypeEnum.class));
-        assertThat(firstResult.getMessagingProvider(), instanceOf(String.class));
+        assertThat(firstResult.getVoiceProvider(), instanceOf(String.class));
         assertThat(firstResult.getCountryCodeA3(), instanceOf(String.class));
     }
 
@@ -92,6 +92,7 @@ public class PhoneNumberLookupApiTest {
         LookupResult firstResult = lookupResponse.getData().getResults().get(0);
         assertThat(firstResult.getPhoneNumber(), instanceOf(String.class));
         assertThat(firstResult.getLineType(), instanceOf(LineTypeEnum.class));
+        assertThat(firstResult.getMessagingProvider(), instanceOf(String.class));
         assertThat(firstResult.getVoiceProvider(), instanceOf(String.class));
         assertThat(firstResult.getCountryCodeA3(), instanceOf(String.class));
     }
