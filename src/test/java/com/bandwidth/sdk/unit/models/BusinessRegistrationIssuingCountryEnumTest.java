@@ -41,6 +41,10 @@ public class BusinessRegistrationIssuingCountryEnumTest {
         assertThat(BusinessRegistrationIssuingCountryEnum.DEU.toString(), equalTo("DEU"));
         assertThat(BusinessRegistrationIssuingCountryEnum.ESP.toString(), equalTo("ESP"));
         assertThat(BusinessRegistrationIssuingCountryEnum.CHE.toString(), equalTo("CHE"));
+        assertThat(BusinessRegistrationIssuingCountryEnum.CYP.toString(), equalTo("CYP"));
+        assertThat(BusinessRegistrationIssuingCountryEnum.IND.toString(), equalTo("IND"));
+        assertThat(BusinessRegistrationIssuingCountryEnum.CHN.toString(), equalTo("CHN"));
+        assertThat(BusinessRegistrationIssuingCountryEnum.BGR.toString(), equalTo("BGR"));
     }
 
 }

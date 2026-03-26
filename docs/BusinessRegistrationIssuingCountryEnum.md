@@ -31,5 +31,13 @@
 
 * `CHE` (value: `"CHE"`)
 
+* `CYP` (value: `"CYP"`)
+
+* `IND` (value: `"IND"`)
+
+* `CHN` (value: `"CHN"`)
+
+* `BGR` (value: `"BGR"`)
+
 
 
