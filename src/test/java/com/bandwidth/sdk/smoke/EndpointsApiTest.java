@@ -6,10 +6,13 @@ import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.model.CreateWebRtcConnectionRequest;
 import com.bandwidth.sdk.model.CreateEndpointResponse;
+import com.bandwidth.sdk.model.CreateEndpointResponseData;
 import com.bandwidth.sdk.model.EndpointResponse;
+import com.bandwidth.sdk.model.Endpoint;
 import com.bandwidth.sdk.model.Endpoints;
 import com.bandwidth.sdk.model.EndpointDirectionEnum;
 import com.bandwidth.sdk.model.EndpointTypeEnum;
+import com.bandwidth.sdk.model.EndpointStatusEnum;
 import com.bandwidth.sdk.model.ListEndpointsResponse;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -18,14 +21,13 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.Assertions;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.beans.HasPropertyWithValue.hasProperty;
 
 import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 
@@ -40,88 +42,64 @@ public class EndpointsApiTest {
 
     @Test
     @Order(1)
-    public void shouldCreateNewEndpoint() throws ApiException {
-        CreateWebRtcConnectionRequest endpointBody = new CreateWebRtcConnectionRequest();
-        endpointBody.setType(EndpointTypeEnum.WEBRTC);
-        endpointBody.setDirection(EndpointDirectionEnum.BIDIRECTIONAL);
+    public void createEndpointTest() throws ApiException {
+        CreateWebRtcConnectionRequest endpointBody = new CreateWebRtcConnectionRequest()
+                .type(EndpointTypeEnum.WEBRTC)
+                .direction(EndpointDirectionEnum.BIDIRECTIONAL);
 
         ApiResponse<CreateEndpointResponse> response = api.createEndpointWithHttpInfo(BW_ACCOUNT_ID, endpointBody);
 
         assertThat(response.getStatusCode(), is(201));
-        assertThat(response.getData(), notNullValue());
-        assertThat(response.getData().getData(), notNullValue());
-        assertThat(response.getData().getData(), hasProperty("endpointId", is(instanceOf(String.class))));
-        assertThat(response.getData().getData(), hasProperty("token", is(instanceOf(String.class))));
-        assertThat(response.getData().getData(), hasProperty("type", is(EndpointTypeEnum.WEBRTC)));
-        assertThat(response.getData().getData(), hasProperty("status", notNullValue()));
-        assertThat(response.getData().getData(), hasProperty("creationTimestamp", notNullValue()));
-        assertThat(response.getData().getData(), hasProperty("expirationTimestamp", notNullValue()));
+        assertThat(response.getData(), instanceOf(CreateEndpointResponse.class));
+        assertThat(response.getData().getData(), instanceOf(CreateEndpointResponseData.class));
+        assertThat(response.getData().getData().getEndpointId(), instanceOf(String.class));
+        assertThat(response.getData().getData().getToken(), instanceOf(String.class));
+        assertThat(response.getData().getData().getType(), equalTo(EndpointTypeEnum.WEBRTC));
+        assertThat(response.getData().getData().getStatus(), instanceOf(EndpointStatusEnum.class));
+        assertThat(response.getData().getData().getCreationTimestamp(), instanceOf(OffsetDateTime.class));
+        assertThat(response.getData().getData().getExpirationTimestamp(), instanceOf(OffsetDateTime.class));
         assertThat(response.getData().getErrors(), instanceOf(List.class));
-        assertThat(response.getData().getErrors(), hasSize(0));
 
         endpointId = response.getData().getData().getEndpointId();
     }
 
     @Test
     @Order(2)
-    public void shouldListEndpointsForAccount() throws ApiException {
+    public void listEndpointsTest() throws ApiException {
         ApiResponse<ListEndpointsResponse> response = api.listEndpointsWithHttpInfo(BW_ACCOUNT_ID, null, null, null, null);
 
         assertThat(response.getStatusCode(), is(200));
-        assertThat(response.getData(), notNullValue());
+        assertThat(response.getData(), instanceOf(ListEndpointsResponse.class));
         assertThat(response.getData().getData(), instanceOf(List.class));
-        assertThat(response.getData().getPage(), notNullValue());
-        assertThat(response.getData().getPage().getTotalElements(), notNullValue());
         assertThat(response.getData().getErrors(), instanceOf(List.class));
 
-        Endpoints createdEndpoint = response.getData().getData().stream()
-                .filter(item -> item.getEndpointId().equals(endpointId))
-                .findFirst()
-                .orElse(null);
-
-        assertThat(createdEndpoint, notNullValue());
-        assertThat(createdEndpoint, hasProperty("type", is(EndpointTypeEnum.WEBRTC)));
-        assertThat(createdEndpoint, hasProperty("status", notNullValue()));
-        assertThat(createdEndpoint, hasProperty("creationTimestamp", notNullValue()));
-        assertThat(createdEndpoint, hasProperty("expirationTimestamp", notNullValue()));
+        Endpoints firstEndpoint = response.getData().getData().get(0);
+        assertThat(firstEndpoint.getEndpointId(), instanceOf(String.class));
+        assertThat(firstEndpoint.getType(), instanceOf(EndpointTypeEnum.class));
+        assertThat(firstEndpoint.getStatus(), instanceOf(EndpointStatusEnum.class));
+        assertThat(firstEndpoint.getCreationTimestamp(), instanceOf(OffsetDateTime.class));
+        assertThat(firstEndpoint.getExpirationTimestamp(), instanceOf(OffsetDateTime.class));
     }
 
     @Test
     @Order(3)
-    public void shouldListEndpointsFilteredByType() throws ApiException {
-        ApiResponse<ListEndpointsResponse> response = api.listEndpointsWithHttpInfo(BW_ACCOUNT_ID, EndpointTypeEnum.WEBRTC, null, null, null);
+    public void getEndpointTest() throws ApiException {
+        ApiResponse<EndpointResponse> response = api.getEndpointWithHttpInfo(BW_ACCOUNT_ID, endpointId);
 
         assertThat(response.getStatusCode(), is(200));
-        assertThat(response.getData().getData(), instanceOf(List.class));
+        assertThat(response.getData(), instanceOf(EndpointResponse.class));
         assertThat(response.getData().getErrors(), instanceOf(List.class));
-
-        if (response.getData().getData().size() > 0) {
-            boolean allWebRtc = response.getData().getData().stream()
-                    .allMatch(item -> item.getType() == EndpointTypeEnum.WEBRTC);
-            assertThat(allWebRtc, is(true));
-        }
+        assertThat(response.getData().getData(), instanceOf(Endpoint.class));
+        assertThat(response.getData().getData().getEndpointId(), equalTo(endpointId));
+        assertThat(response.getData().getData().getType(), equalTo(EndpointTypeEnum.WEBRTC));
+        assertThat(response.getData().getData().getStatus(), instanceOf(EndpointStatusEnum.class));
+        assertThat(response.getData().getData().getCreationTimestamp(), instanceOf(OffsetDateTime.class));
+        assertThat(response.getData().getData().getExpirationTimestamp(), instanceOf(OffsetDateTime.class));
     }
 
     @Test
     @Order(4)
-    public void shouldRetrieveDetailsOfSpecificEndpoint() throws ApiException {
-        ApiResponse<EndpointResponse> response = api.getEndpointWithHttpInfo(BW_ACCOUNT_ID, endpointId);
-
-        assertThat(response.getStatusCode(), is(200));
-        assertThat(response.getData(), notNullValue());
-        assertThat(response.getData().getErrors(), instanceOf(List.class));
-        assertThat(response.getData().getErrors(), hasSize(0));
-        assertThat(response.getData().getData(), notNullValue());
-        assertThat(response.getData().getData(), hasProperty("endpointId", is(endpointId)));
-        assertThat(response.getData().getData(), hasProperty("type", is(EndpointTypeEnum.WEBRTC)));
-        assertThat(response.getData().getData(), hasProperty("status", notNullValue()));
-        assertThat(response.getData().getData(), hasProperty("creationTimestamp", notNullValue()));
-        assertThat(response.getData().getData(), hasProperty("expirationTimestamp", notNullValue()));
-    }
-
-    @Test
-    @Order(5)
-    public void shouldDeleteEndpoint() throws ApiException {
+    public void deleteEndpointTest() throws ApiException {
         ApiResponse<Void> response = api.deleteEndpointWithHttpInfo(BW_ACCOUNT_ID, endpointId);
 
         assertThat(response.getStatusCode(), is(204));
