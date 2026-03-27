@@ -3,9 +3,7 @@ package com.bandwidth.sdk.unit.api;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiResponse;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.api.EndpointsApi;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.model.CreateEndpointResponse;
 import com.bandwidth.sdk.model.CreateEndpointResponseData;
 import com.bandwidth.sdk.model.CreateWebRtcConnectionRequest;
@@ -34,7 +32,7 @@ import static org.hamcrest.CoreMatchers.is;
  */
 @SuppressWarnings("null")
 public class EndpointsApiTest {
-    private static ApiClient oauthClient = new ApiClient("test-client-id", "test-client-secret", null);
+    private static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
     private static EndpointsApi api = new EndpointsApi(oauthClient);
 
     @BeforeAll
