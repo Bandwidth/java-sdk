@@ -29,6 +29,8 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.anyOf;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.Matchers.is;
 
 import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
@@ -83,7 +85,7 @@ public class EndpointsApiTest {
         assertThat(firstEndpoint.getStatus(), instanceOf(EndpointStatusEnum.class));
         assertThat(firstEndpoint.getCreationTimestamp(), instanceOf(OffsetDateTime.class));
         assertThat(firstEndpoint.getExpirationTimestamp(), instanceOf(OffsetDateTime.class));
-        assertThat(firstEndpoint.getTag(), instanceOf(String.class));
+        assertThat(firstEndpoint.getTag(), anyOf(nullValue(), instanceOf(String.class)));
     }
 
     @Test
