@@ -31,7 +31,8 @@ public class CreateWebRtcConnectionRequestTest {
             .direction(EndpointDirectionEnum.BIDIRECTIONAL)
             .eventCallbackUrl(URI.create("https://example.com/callback"))
             .eventFallbackUrl(URI.create("https://example.com/fallback"))
-            .tag("tag");
+            .tag("tag")
+            .connectionMetadata(new Object());
 
     /**
      * Model tests for CreateWebRtcConnectionRequest
@@ -79,5 +80,13 @@ public class CreateWebRtcConnectionRequestTest {
     @Test
     public void tagTest() {
         assertThat(model.getTag(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'connectionMetadata'
+     */
+    @Test
+    public void connectionMetadataTest() {
+        assertThat(model.getConnectionMetadata(), instanceOf(Object.class));
     }
 }

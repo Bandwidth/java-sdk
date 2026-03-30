@@ -44,6 +44,14 @@ public class ConnectVerbTest {
                         .password("pass")
                         .tag("test")
                         .build();
+        Connect connect3 = Connect.builder()
+                        .endpoints(List.of(endpoint))
+                        .connectCallbackUrl(URI.create("https://example.com/webhooks/connect"))
+                        .connectCallbackFallbackUrl(URI.create("https://example.com/webhooks/connect-fallback"))
+                        .fallbackUsername("fallbackUser")
+                        .fallbackPassword("fallbackPass")
+                        .tag("test")
+                        .build();
 
         @Test
         public void connectVerbWorks() throws JAXBException {
@@ -53,5 +61,13 @@ public class ConnectVerbTest {
 
                 assertThat(new Bxml().with(connect1).toBxml(jaxbContext), is(expectedConnectBxml));
                 assertThat(new Bxml().with(connect2).toBxml(jaxbContext), is(expectedConnectWithCredsBxml));
+        }
+
+        @Test
+        public void connectVerbWithFallbackFieldsWorks() throws JAXBException {
+                JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
+                String expectedConnectWithFallbackBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Connect connectCallbackUrl=\"https://example.com/webhooks/connect\" connectCallbackMethod=\"POST\" connectCallbackFallbackUrl=\"https://example.com/webhooks/connect-fallback\" connectCallbackFallbackMethod=\"POST\" fallbackUsername=\"fallbackUser\" fallbackPassword=\"fallbackPass\" tag=\"test\"><Endpoint type=\"webrtc\" tag=\"test\">test-endpoint-id</Endpoint></Connect></Bxml>";
+
+                assertThat(new Bxml().with(connect3).toBxml(jaxbContext), is(expectedConnectWithFallbackBxml));
         }
 }

@@ -13,7 +13,9 @@ import com.bandwidth.sdk.model.Endpoints;
 import com.bandwidth.sdk.model.EndpointDirectionEnum;
 import com.bandwidth.sdk.model.EndpointTypeEnum;
 import com.bandwidth.sdk.model.EndpointStatusEnum;
+import com.bandwidth.sdk.model.Link;
 import com.bandwidth.sdk.model.ListEndpointsResponse;
+import com.bandwidth.sdk.model.Page;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -70,6 +72,8 @@ public class EndpointsApiTest {
 
         assertThat(response.getStatusCode(), is(200));
         assertThat(response.getData(), instanceOf(ListEndpointsResponse.class));
+        assertThat(response.getData().getLinks(), instanceOf(List.class));
+        assertThat(response.getData().getPage(), instanceOf(Page.class));
         assertThat(response.getData().getData(), instanceOf(List.class));
         assertThat(response.getData().getErrors(), instanceOf(List.class));
 
@@ -79,6 +83,7 @@ public class EndpointsApiTest {
         assertThat(firstEndpoint.getStatus(), instanceOf(EndpointStatusEnum.class));
         assertThat(firstEndpoint.getCreationTimestamp(), instanceOf(OffsetDateTime.class));
         assertThat(firstEndpoint.getExpirationTimestamp(), instanceOf(OffsetDateTime.class));
+        assertThat(firstEndpoint.getTag(), instanceOf(String.class));
     }
 
     @Test

@@ -13,7 +13,9 @@ import com.bandwidth.sdk.model.EndpointResponse;
 import com.bandwidth.sdk.model.EndpointStatusEnum;
 import com.bandwidth.sdk.model.EndpointTypeEnum;
 import com.bandwidth.sdk.model.Endpoints;
+import com.bandwidth.sdk.model.Device;
 import com.bandwidth.sdk.model.ListEndpointsResponse;
+import com.bandwidth.sdk.model.Page;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -65,6 +67,8 @@ public class EndpointsApiTest {
         assertThat(response.getData().getData().getStatus(), instanceOf(EndpointStatusEnum.class));
         assertThat(response.getData().getData().getCreationTimestamp(), instanceOf(OffsetDateTime.class));
         assertThat(response.getData().getData().getExpirationTimestamp(), instanceOf(OffsetDateTime.class));
+        assertThat(response.getData().getData().getTag(), instanceOf(String.class));
+        assertThat(response.getData().getData().getDevices(), instanceOf(List.class));
         assertThat(response.getData().getErrors(), instanceOf(List.class));
     }
 
@@ -89,6 +93,8 @@ public class EndpointsApiTest {
         assertThat(response.getData().getData().get(0).getStatus(), instanceOf(EndpointStatusEnum.class));
         assertThat(response.getData().getData().get(0).getCreationTimestamp(), instanceOf(OffsetDateTime.class));
         assertThat(response.getData().getData().get(0).getExpirationTimestamp(), instanceOf(OffsetDateTime.class));
+        assertThat(response.getData().getData().get(0).getTag(), instanceOf(String.class));
+        assertThat(response.getData().getPage(), instanceOf(Page.class));
         assertThat(response.getData().getErrors(), instanceOf(List.class));
     }
 
@@ -113,6 +119,8 @@ public class EndpointsApiTest {
         assertThat(response.getData().getData().getStatus(), instanceOf(EndpointStatusEnum.class));
         assertThat(response.getData().getData().getCreationTimestamp(), instanceOf(OffsetDateTime.class));
         assertThat(response.getData().getData().getExpirationTimestamp(), instanceOf(OffsetDateTime.class));
+        assertThat(response.getData().getData().getTag(), instanceOf(String.class));
+        assertThat(response.getData().getData().getDevices(), instanceOf(List.class));
         assertThat(response.getData().getErrors(), instanceOf(List.class));
     }
 
