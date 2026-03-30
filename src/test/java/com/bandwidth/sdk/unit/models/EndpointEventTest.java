@@ -23,19 +23,24 @@ import com.bandwidth.sdk.model.Device;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for EndpointEvent
  */
 public class EndpointEventTest {
+    private static final OffsetDateTime TEST_CREATION_TIMESTAMP = OffsetDateTime.now();
+    private static final OffsetDateTime TEST_EXPIRATION_TIMESTAMP = OffsetDateTime.now();
+    private static final OffsetDateTime TEST_EVENT_TIME = OffsetDateTime.now();
+
     private final EndpointEvent model = new EndpointEvent()
             .endpointId("endpointId")
             .type(EndpointTypeEnum.WEBRTC)
             .status(EndpointStatusEnum.CONNECTED)
-            .creationTimestamp(OffsetDateTime.now())
-            .expirationTimestamp(OffsetDateTime.now())
+            .creationTimestamp(TEST_CREATION_TIMESTAMP)
+            .expirationTimestamp(TEST_EXPIRATION_TIMESTAMP)
             .tag("tag")
-            .eventTime(OffsetDateTime.now())
+            .eventTime(TEST_EVENT_TIME)
             .eventType(EndpointEventTypeEnum.DEVICE_CONNECTED)
             .device(new Device());
 
@@ -53,6 +58,7 @@ public class EndpointEventTest {
     @Test
     public void endpointIdTest() {
         assertThat(model.getEndpointId(), instanceOf(String.class));
+        assertThat(model.getEndpointId(), equalTo("endpointId"));
     }
 
     /**
@@ -61,6 +67,7 @@ public class EndpointEventTest {
     @Test
     public void typeTest() {
         assertThat(model.getType(), instanceOf(EndpointTypeEnum.class));
+        assertThat(model.getType(), equalTo(EndpointTypeEnum.WEBRTC));
     }
 
     /**
@@ -69,6 +76,7 @@ public class EndpointEventTest {
     @Test
     public void statusTest() {
         assertThat(model.getStatus(), instanceOf(EndpointStatusEnum.class));
+        assertThat(model.getStatus(), equalTo(EndpointStatusEnum.CONNECTED));
     }
 
     /**
@@ -77,6 +85,7 @@ public class EndpointEventTest {
     @Test
     public void creationTimestampTest() {
         assertThat(model.getCreationTimestamp(), instanceOf(OffsetDateTime.class));
+        assertThat(model.getCreationTimestamp(), equalTo(TEST_CREATION_TIMESTAMP));
     }
 
     /**
@@ -85,6 +94,7 @@ public class EndpointEventTest {
     @Test
     public void expirationTimestampTest() {
         assertThat(model.getExpirationTimestamp(), instanceOf(OffsetDateTime.class));
+        assertThat(model.getExpirationTimestamp(), equalTo(TEST_EXPIRATION_TIMESTAMP));
     }
 
     /**
@@ -93,6 +103,7 @@ public class EndpointEventTest {
     @Test
     public void tagTest() {
         assertThat(model.getTag(), instanceOf(String.class));
+        assertThat(model.getTag(), equalTo("tag"));
     }
 
     /**
@@ -101,6 +112,7 @@ public class EndpointEventTest {
     @Test
     public void eventTimeTest() {
         assertThat(model.getEventTime(), instanceOf(OffsetDateTime.class));
+        assertThat(model.getEventTime(), equalTo(TEST_EVENT_TIME));
     }
 
     /**
@@ -109,6 +121,7 @@ public class EndpointEventTest {
     @Test
     public void eventTypeTest() {
         assertThat(model.getEventType(), instanceOf(EndpointEventTypeEnum.class));
+        assertThat(model.getEventType(), equalTo(EndpointEventTypeEnum.DEVICE_CONNECTED));
     }
 
     /**

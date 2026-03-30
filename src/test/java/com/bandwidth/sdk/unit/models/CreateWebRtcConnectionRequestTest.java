@@ -21,6 +21,7 @@ import com.bandwidth.sdk.model.EndpointTypeEnum;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for CreateWebRtcConnectionRequest
@@ -48,6 +49,7 @@ public class CreateWebRtcConnectionRequestTest {
     @Test
     public void typeTest() {
         assertThat(model.getType(), instanceOf(EndpointTypeEnum.class));
+        assertThat(model.getType(), equalTo(EndpointTypeEnum.WEBRTC));
     }
 
     /**
@@ -56,6 +58,7 @@ public class CreateWebRtcConnectionRequestTest {
     @Test
     public void directionTest() {
         assertThat(model.getDirection(), instanceOf(EndpointDirectionEnum.class));
+        assertThat(model.getDirection(), equalTo(EndpointDirectionEnum.BIDIRECTIONAL));
     }
 
     /**
@@ -64,6 +67,7 @@ public class CreateWebRtcConnectionRequestTest {
     @Test
     public void eventCallbackUrlTest() {
         assertThat(model.getEventCallbackUrl(), instanceOf(URI.class));
+        assertThat(model.getEventCallbackUrl(), equalTo(URI.create("https://example.com/callback")));
     }
 
     /**
@@ -72,6 +76,7 @@ public class CreateWebRtcConnectionRequestTest {
     @Test
     public void eventFallbackUrlTest() {
         assertThat(model.getEventFallbackUrl(), instanceOf(URI.class));
+        assertThat(model.getEventFallbackUrl(), equalTo(URI.create("https://example.com/fallback")));
     }
 
     /**
@@ -80,6 +85,7 @@ public class CreateWebRtcConnectionRequestTest {
     @Test
     public void tagTest() {
         assertThat(model.getTag(), instanceOf(String.class));
+        assertThat(model.getTag(), equalTo("tag"));
     }
 
     /**

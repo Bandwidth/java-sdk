@@ -20,16 +20,19 @@ import com.bandwidth.sdk.model.DeviceStatusEnum;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for Device
  */
 public class DeviceTest {
+    private static final OffsetDateTime TEST_CREATION_TIMESTAMP = OffsetDateTime.now();
+
     private final Device model = new Device()
             .deviceId("deviceId")
             .deviceName("deviceName")
             .status(DeviceStatusEnum.CONNECTED)
-            .creationTimestamp(OffsetDateTime.now());
+            .creationTimestamp(TEST_CREATION_TIMESTAMP);
 
     /**
      * Model tests for Device
@@ -45,6 +48,7 @@ public class DeviceTest {
     @Test
     public void deviceIdTest() {
         assertThat(model.getDeviceId(), instanceOf(String.class));
+        assertThat(model.getDeviceId(), equalTo("deviceId"));
     }
 
     /**
@@ -53,6 +57,7 @@ public class DeviceTest {
     @Test
     public void deviceNameTest() {
         assertThat(model.getDeviceName(), instanceOf(String.class));
+        assertThat(model.getDeviceName(), equalTo("deviceName"));
     }
 
     /**
@@ -61,6 +66,7 @@ public class DeviceTest {
     @Test
     public void statusTest() {
         assertThat(model.getStatus(), instanceOf(DeviceStatusEnum.class));
+        assertThat(model.getStatus(), equalTo(DeviceStatusEnum.CONNECTED));
     }
 
     /**
@@ -69,5 +75,6 @@ public class DeviceTest {
     @Test
     public void creationTimestampTest() {
         assertThat(model.getCreationTimestamp(), instanceOf(OffsetDateTime.class));
+        assertThat(model.getCreationTimestamp(), equalTo(TEST_CREATION_TIMESTAMP));
     }
 }

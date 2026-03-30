@@ -18,6 +18,7 @@ import com.bandwidth.sdk.model.Page;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for Page
@@ -43,6 +44,7 @@ public class PageTest {
     @Test
     public void pageSizeTest() {
         assertThat(model.getPageSize(), instanceOf(Integer.class));
+        assertThat(model.getPageSize(), equalTo(10));
     }
 
     /**
@@ -51,6 +53,7 @@ public class PageTest {
     @Test
     public void totalElementsTest() {
         assertThat(model.getTotalElements(), instanceOf(Integer.class));
+        assertThat(model.getTotalElements(), equalTo(100));
     }
 
     /**
@@ -59,6 +62,7 @@ public class PageTest {
     @Test
     public void totalPagesTest() {
         assertThat(model.getTotalPages(), instanceOf(Integer.class));
+        assertThat(model.getTotalPages(), equalTo(10));
     }
 
     /**
@@ -67,5 +71,6 @@ public class PageTest {
     @Test
     public void pageNumberTest() {
         assertThat(model.getPageNumber(), instanceOf(Integer.class));
+        assertThat(model.getPageNumber(), equalTo(1));
     }
 }

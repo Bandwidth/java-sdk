@@ -25,6 +25,7 @@ import com.bandwidth.sdk.model.Page;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for ListEndpointsResponse
@@ -50,6 +51,7 @@ public class ListEndpointsResponseTest {
     @Test
     public void linksTest() {
         assertThat(model.getLinks(), instanceOf(List.class));
+        assertThat(model.getLinks().size(), equalTo(1));
     }
 
     /**
@@ -66,6 +68,7 @@ public class ListEndpointsResponseTest {
     @Test
     public void dataTest() {
         assertThat(model.getData(), instanceOf(List.class));
+        assertThat(model.getData().size(), equalTo(1));
     }
 
     /**
@@ -74,6 +77,7 @@ public class ListEndpointsResponseTest {
     @Test
     public void errorsTest() {
         assertThat(model.getErrors(), instanceOf(List.class));
+        assertThat(model.getErrors().size(), equalTo(1));
     }
 
 }

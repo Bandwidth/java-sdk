@@ -24,6 +24,7 @@ import com.bandwidth.sdk.model.Error;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for CreateEndpointResponse
@@ -48,6 +49,7 @@ public class CreateEndpointResponseTest {
     @Test
     public void linksTest() {
         assertThat(model.getLinks(), instanceOf(List.class));
+        assertThat(model.getLinks().size(), equalTo(1));
     }
 
     /**
@@ -64,6 +66,7 @@ public class CreateEndpointResponseTest {
     @Test
     public void errorsTest() {
         assertThat(model.getErrors(), instanceOf(List.class));
+        assertThat(model.getErrors().size(), equalTo(1));
     }
 
 }

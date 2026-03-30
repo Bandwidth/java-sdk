@@ -25,17 +25,21 @@ import com.bandwidth.sdk.model.Device;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for CreateEndpointResponseData
  */
 public class CreateEndpointResponseDataTest {
+    private static final OffsetDateTime TEST_CREATION_TIMESTAMP = OffsetDateTime.now();
+    private static final OffsetDateTime TEST_EXPIRATION_TIMESTAMP = OffsetDateTime.now();
+
     private final CreateEndpointResponseData model = new CreateEndpointResponseData()
             .endpointId("endpointId")
             .type(EndpointTypeEnum.WEBRTC)
             .status(EndpointStatusEnum.CONNECTED)
-            .creationTimestamp(OffsetDateTime.now())
-            .expirationTimestamp(OffsetDateTime.now())
+            .creationTimestamp(TEST_CREATION_TIMESTAMP)
+            .expirationTimestamp(TEST_EXPIRATION_TIMESTAMP)
             .tag("tag")
             .devices(new ArrayList<Device>(Arrays.asList(new Device())))
             .token("token");
@@ -54,6 +58,7 @@ public class CreateEndpointResponseDataTest {
     @Test
     public void endpointIdTest() {
         assertThat(model.getEndpointId(), instanceOf(String.class));
+        assertThat(model.getEndpointId(), equalTo("endpointId"));
     }
 
     /**
@@ -62,6 +67,7 @@ public class CreateEndpointResponseDataTest {
     @Test
     public void typeTest() {
         assertThat(model.getType(), instanceOf(EndpointTypeEnum.class));
+        assertThat(model.getType(), equalTo(EndpointTypeEnum.WEBRTC));
     }
 
     /**
@@ -70,6 +76,7 @@ public class CreateEndpointResponseDataTest {
     @Test
     public void statusTest() {
         assertThat(model.getStatus(), instanceOf(EndpointStatusEnum.class));
+        assertThat(model.getStatus(), equalTo(EndpointStatusEnum.CONNECTED));
     }
 
     /**
@@ -78,6 +85,7 @@ public class CreateEndpointResponseDataTest {
     @Test
     public void creationTimestampTest() {
         assertThat(model.getCreationTimestamp(), instanceOf(OffsetDateTime.class));
+        assertThat(model.getCreationTimestamp(), equalTo(TEST_CREATION_TIMESTAMP));
     }
 
     /**
@@ -86,6 +94,7 @@ public class CreateEndpointResponseDataTest {
     @Test
     public void expirationTimestampTest() {
         assertThat(model.getExpirationTimestamp(), instanceOf(OffsetDateTime.class));
+        assertThat(model.getExpirationTimestamp(), equalTo(TEST_EXPIRATION_TIMESTAMP));
     }
 
     /**
@@ -94,6 +103,7 @@ public class CreateEndpointResponseDataTest {
     @Test
     public void tagTest() {
         assertThat(model.getTag(), instanceOf(String.class));
+        assertThat(model.getTag(), equalTo("tag"));
     }
 
     /**
@@ -102,6 +112,7 @@ public class CreateEndpointResponseDataTest {
     @Test
     public void devicesTest() {
         assertThat(model.getDevices(), instanceOf(List.class));
+        assertThat(model.getDevices().size(), equalTo(1));
     }
 
     /**
@@ -110,6 +121,7 @@ public class CreateEndpointResponseDataTest {
     @Test
     public void tokenTest() {
         assertThat(model.getToken(), instanceOf(String.class));
+        assertThat(model.getToken(), equalTo("token"));
     }
 
 }

@@ -23,6 +23,8 @@ import com.bandwidth.sdk.model.Error;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for ErrorResponse
@@ -47,6 +49,7 @@ public class ErrorResponseTest {
     @Test
     public void linksTest() {
         assertThat(model.getLinks(), instanceOf(List.class));
+        assertThat(model.getLinks().size(), equalTo(0));
     }
 
     /**
@@ -54,8 +57,7 @@ public class ErrorResponseTest {
      */
     @Test
     public void dataTest() {
-        // data is set to null in the model, so we verify the getter works
-        assertThat(model.getData() == null, is(true));
+        assertThat(model.getData(), is(nullValue()));
     }
 
     /**
@@ -64,5 +66,6 @@ public class ErrorResponseTest {
     @Test
     public void errorsTest() {
         assertThat(model.getErrors(), instanceOf(List.class));
+        assertThat(model.getErrors().size(), equalTo(0));
     }
 }
