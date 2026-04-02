@@ -5,7 +5,6 @@ package com.bandwidth.sdk.model.bxml;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.XmlValue;
 import jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -26,8 +25,6 @@ import lombok.NoArgsConstructor;
 /**
  *
  * @param endpointId (str): The ID of the endpoint to connect to.
- * @param type (str, optional): The type of endpoint. Defaults to None.
- * @param tag (str, optional): A custom string. Defaults to None.
  *
  */
 public class Endpoint {
@@ -37,10 +34,4 @@ public class Endpoint {
     @XmlValue
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String endpointId;
-
-    @XmlAttribute
-    protected String type;
-
-    @XmlAttribute
-    protected String tag;
 }

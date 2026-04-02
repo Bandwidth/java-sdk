@@ -93,4 +93,59 @@ public class SipUri implements OutboundDestination {
 
     @XmlAttribute
     protected String tag;
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getFallbackUsername() {
+        return fallbackUsername;
+    }
+
+    @Override
+    public String getFallbackPassword() {
+        return fallbackPassword;
+    }
+
+    @Override
+    public String getTransferAnswerUrl() {
+        return transferAnswerUrl;
+    }
+
+    @Override
+    public String getTransferAnswerMethod() {
+        return transferAnswerMethod;
+    }
+
+    @Override
+    public String getTransferAnswerFallbackUrl() {
+        return transferAnswerFallbackUrl;
+    }
+
+    @Override
+    public String getTransferAnswerFallbackMethod() {
+        return transferAnswerFallbackMethod;
+    }
+
+    @Override
+    public String getTransferDisconnectUrl() {
+        return transferDisconnectUrl;
+    }
+
+    @Override
+    public String getTransferDisconnectMethod() {
+        return transferDisconnectMethod;
+    }
+
+    @Override
+    public String getTag() {
+        return tag;
+    }
 }

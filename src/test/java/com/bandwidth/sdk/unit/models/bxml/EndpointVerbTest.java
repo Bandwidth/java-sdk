@@ -23,65 +23,25 @@ import java.net.URI;
 import java.util.List;
 
 public class EndpointVerbTest {
-        /**
-         * Setting up Variables
-         */
-        Endpoint endpointWithAllFields = Endpoint.builder()
-                        .endpointId("test-endpoint-id")
-                        .type("webrtc")
-                        .tag("test-tag")
-                        .build();
 
-        Endpoint endpointWithIdOnly = Endpoint.builder()
-                        .endpointId("test-endpoint-id")
-                        .build();
+    Endpoint endpoint = Endpoint.builder()
+            .endpointId("test-endpoint-id")
+            .build();
 
-        Endpoint endpointWithType = Endpoint.builder()
-                        .endpointId("test-endpoint-id")
-                        .type("webrtc")
-                        .build();
+    @Test
+    public void endpointVerbWorks() throws JAXBException {
+        JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
+        Connect connect = Connect.builder()
+                .endpoints(List.of(endpoint))
+                .eventCallbackUrl(URI.create("https://example.com/callback"))
+                .build();
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Connect eventCallbackUrl=\"https://example.com/callback\"><Endpoint>test-endpoint-id</Endpoint></Connect></Bxml>";
 
-        @Test
-        public void endpointVerbWithAllFieldsWorks() throws JAXBException {
-                JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
-                // Endpoint must be nested inside Connect for BXML serialization
-                Connect connect = Connect.builder()
-                                .endpoints(List.of(endpointWithAllFields))
-                                .connectCallbackUrl(URI.create("https://example.com/webhooks/connect"))
-                                .build();
-                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Connect connectCallbackUrl=\"https://example.com/webhooks/connect\" connectCallbackMethod=\"POST\" connectCallbackFallbackMethod=\"POST\"><Endpoint type=\"webrtc\" tag=\"test-tag\">test-endpoint-id</Endpoint></Connect></Bxml>";
+        assertThat(new Bxml().with(connect).toBxml(jaxbContext), is(expected));
+    }
 
-                assertThat(new Bxml().with(connect).toBxml(jaxbContext), is(expectedBxml));
-        }
-
-        @Test
-        public void endpointVerbWithIdOnlyWorks() throws JAXBException {
-                JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
-                Connect connect = Connect.builder()
-                                .endpoints(List.of(endpointWithIdOnly))
-                                .connectCallbackUrl(URI.create("https://example.com/webhooks/connect"))
-                                .build();
-                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Connect connectCallbackUrl=\"https://example.com/webhooks/connect\" connectCallbackMethod=\"POST\" connectCallbackFallbackMethod=\"POST\"><Endpoint>test-endpoint-id</Endpoint></Connect></Bxml>";
-
-                assertThat(new Bxml().with(connect).toBxml(jaxbContext), is(expectedBxml));
-        }
-
-        @Test
-        public void endpointVerbWithTypeWorks() throws JAXBException {
-                JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
-                Connect connect = Connect.builder()
-                                .endpoints(List.of(endpointWithType))
-                                .connectCallbackUrl(URI.create("https://example.com/webhooks/connect"))
-                                .build();
-                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Connect connectCallbackUrl=\"https://example.com/webhooks/connect\" connectCallbackMethod=\"POST\" connectCallbackFallbackMethod=\"POST\"><Endpoint type=\"webrtc\">test-endpoint-id</Endpoint></Connect></Bxml>";
-
-                assertThat(new Bxml().with(connect).toBxml(jaxbContext), is(expectedBxml));
-        }
-
-        @Test
-        public void endpointFieldsAccessibleDirectly() {
-                assertThat(endpointWithAllFields.getEndpointId(), is("test-endpoint-id"));
-                assertThat(endpointWithAllFields.getType(), is("webrtc"));
-                assertThat(endpointWithAllFields.getTag(), is("test-tag"));
-        }
+    @Test
+    public void endpointFieldsAccessibleDirectly() {
+        assertThat(endpoint.getEndpointId(), is("test-endpoint-id"));
+    }
 }

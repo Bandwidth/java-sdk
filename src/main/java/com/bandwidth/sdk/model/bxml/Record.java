@@ -120,4 +120,19 @@ public class Record implements TranscriptionProducer {
     public String getVerbName() {
         return TYPE_NAME;
     }
+
+    @Override
+    public Boolean getTranscribe() {
+        return transcribe;
+    }
+
+    @Override
+    public String getTranscriptionAvailableUrl() {
+        return transcriptionAvailableUrl;
+    }
+
+    @Override
+    public String getTranscriptionAvailableMethod() {
+        return transcriptionAvailableMethod;
+    }
 }
