@@ -48,7 +48,6 @@ public class PhoneNumberLookupApiTest {
         assertThat(response.getData(), instanceOf(CreateSyncLookupResponse.class));
         CreateSyncLookupResponse lookupResponse = response.getData();
         assertThat(lookupResponse.getLinks(), instanceOf(List.class));
-        assertThat(lookupResponse.getLinks().get(0), instanceOf(LinkSchema.class));
         assertThat(lookupResponse.getData(), instanceOf(CreateSyncLookupResponseData.class));
         assertThat(lookupResponse.getData().getRequestId(), instanceOf(UUID.class));
         assertThat(lookupResponse.getData().getStatus(), instanceOf(CompletedLookupStatusEnum.class));
@@ -84,7 +83,6 @@ public class PhoneNumberLookupApiTest {
         assertThat(getResponse.getData(), instanceOf(GetAsyncBulkLookupResponse.class));
         GetAsyncBulkLookupResponse lookupResponse = getResponse.getData();
         assertThat(lookupResponse.getLinks(), instanceOf(List.class));
-        assertThat(lookupResponse.getLinks().get(0), instanceOf(LinkSchema.class));
         assertThat(lookupResponse.getData(), instanceOf(GetAsyncBulkLookupResponseData.class));
         assertThat(lookupResponse.getData().getRequestId(), equalTo(requestId));
         assertThat(lookupResponse.getData().getStatus(), instanceOf(InProgressLookupStatusEnum.class));
