@@ -111,6 +111,11 @@ public class LookupResult {
   @javax.annotation.Nullable
   private LocalDate latestMessageDeliveryStatusDate;
 
+  public static final String SERIALIZED_NAME_RCS_ENABLED = "rcsEnabled";
+  @SerializedName(SERIALIZED_NAME_RCS_ENABLED)
+  @javax.annotation.Nullable
+  private Boolean rcsEnabled;
+
   public LookupResult() {
   }
 
@@ -322,6 +327,25 @@ public class LookupResult {
     this.latestMessageDeliveryStatusDate = latestMessageDeliveryStatusDate;
   }
 
+
+  public LookupResult rcsEnabled(@javax.annotation.Nullable Boolean rcsEnabled) {
+    this.rcsEnabled = rcsEnabled;
+    return this;
+  }
+
+  /**
+   * [RCS-Only](#section/RCS-Only). Indicates whether the phone number is capable of receiving RCS messages. Value will be null if account has RCS, but no value was returned. Absent when account does not have RCS. 
+   * @return rcsEnabled
+   */
+  @javax.annotation.Nullable
+  public Boolean getRcsEnabled() {
+    return rcsEnabled;
+  }
+
+  public void setRcsEnabled(@javax.annotation.Nullable Boolean rcsEnabled) {
+    this.rcsEnabled = rcsEnabled;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -387,13 +411,14 @@ public class LookupResult {
         Objects.equals(this.deactivationEvent, lookupResult.deactivationEvent) &&
         Objects.equals(this.latestMessageDeliveryStatus, lookupResult.latestMessageDeliveryStatus) &&
         Objects.equals(this.initialMessageDeliveryStatusDate, lookupResult.initialMessageDeliveryStatusDate) &&
-        Objects.equals(this.latestMessageDeliveryStatusDate, lookupResult.latestMessageDeliveryStatusDate)&&
+        Objects.equals(this.latestMessageDeliveryStatusDate, lookupResult.latestMessageDeliveryStatusDate) &&
+        Objects.equals(this.rcsEnabled, lookupResult.rcsEnabled)&&
         Objects.equals(this.additionalProperties, lookupResult.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(phoneNumber, lineType, messagingProvider, voiceProvider, countryCodeA3, deactivationReporter, deactivationDate, deactivationEvent, latestMessageDeliveryStatus, initialMessageDeliveryStatusDate, latestMessageDeliveryStatusDate, additionalProperties);
+    return Objects.hash(phoneNumber, lineType, messagingProvider, voiceProvider, countryCodeA3, deactivationReporter, deactivationDate, deactivationEvent, latestMessageDeliveryStatus, initialMessageDeliveryStatusDate, latestMessageDeliveryStatusDate, rcsEnabled, additionalProperties);
   }
 
   @Override
@@ -411,6 +436,7 @@ public class LookupResult {
     sb.append("    latestMessageDeliveryStatus: ").append(toIndentedString(latestMessageDeliveryStatus)).append("\n");
     sb.append("    initialMessageDeliveryStatusDate: ").append(toIndentedString(initialMessageDeliveryStatusDate)).append("\n");
     sb.append("    latestMessageDeliveryStatusDate: ").append(toIndentedString(latestMessageDeliveryStatusDate)).append("\n");
+    sb.append("    rcsEnabled: ").append(toIndentedString(rcsEnabled)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -433,7 +459,7 @@ public class LookupResult {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("phoneNumber", "lineType", "messagingProvider", "voiceProvider", "countryCodeA3", "deactivationReporter", "deactivationDate", "deactivationEvent", "latestMessageDeliveryStatus", "initialMessageDeliveryStatusDate", "latestMessageDeliveryStatusDate"));
+    openapiFields = new HashSet<String>(Arrays.asList("phoneNumber", "lineType", "messagingProvider", "voiceProvider", "countryCodeA3", "deactivationReporter", "deactivationDate", "deactivationEvent", "latestMessageDeliveryStatus", "initialMessageDeliveryStatusDate", "latestMessageDeliveryStatusDate", "rcsEnabled"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
