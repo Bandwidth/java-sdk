@@ -39,7 +39,8 @@ public class LookupResultTest {
             .deactivationEvent(DeactivationEventEnum.DEACTIVATED)
             .latestMessageDeliveryStatus(LatestMessageDeliveryStatusEnum.ACTIVE)
             .initialMessageDeliveryStatusDate(LocalDate.of(2025, 1, 1))
-            .latestMessageDeliveryStatusDate(LocalDate.of(2025, 1, 1));
+            .latestMessageDeliveryStatusDate(LocalDate.of(2025, 1, 1))
+            .rcsEnabled(true);
 
 
     /**
@@ -136,6 +137,13 @@ public class LookupResultTest {
     @Test
     public void latestMessageDeliveryStatusDateTest() {
         assertThat(model.getLatestMessageDeliveryStatusDate(), instanceOf(LocalDate.class));
+    }
+
+    /**
+     * Test the property 'rcsEnabled'
+     */    @Test
+    public void rcsEnabledTest() {
+        assertThat(model.getRcsEnabled(), instanceOf(Boolean.class));
     }
 
 }
