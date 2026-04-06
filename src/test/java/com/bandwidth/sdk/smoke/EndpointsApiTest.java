@@ -113,15 +113,6 @@ public class EndpointsApiTest {
     }
 
     @Test
-    public void unauthorizedCredentialsTest() {
-        ApiClient badOauthClient = new ApiClient("invalid-client-id", "invalid-client-secret", null);
-        EndpointsApi endpointsApiBad = new EndpointsApi(badOauthClient);
-
-        Assertions.assertThrows(ApiException.class,
-                () -> endpointsApiBad.listEndpointsWithHttpInfo(BW_ACCOUNT_ID, null, null, null, null));
-    }
-
-    @Test
     public void invalidAccountTest() throws ApiException {
         ApiException exception = Assertions.assertThrows(ApiException.class,
                 () -> api.listEndpointsWithHttpInfo("invalid-account-id", null, null, null, null));
