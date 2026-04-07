@@ -23,7 +23,6 @@ import com.bandwidth.sdk.api.TollFreeVerificationApi;
 import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.model.Address;
 import com.bandwidth.sdk.model.BusinessEntityTypeEnum;
-import com.bandwidth.sdk.model.BusinessRegistrationIssuingCountryEnum;
 import com.bandwidth.sdk.model.BusinessRegistrationTypeEnum;
 import com.bandwidth.sdk.model.Contact;
 import com.bandwidth.sdk.model.LinksObject;
@@ -198,7 +197,7 @@ public class TollFreeVerificationApiTest {
                 .businessRegistrationNumber("businessRegistrationNumber")
                 .businessRegistrationType(BusinessRegistrationTypeEnum.EIN)
                 .businessEntityType(BusinessEntityTypeEnum.PRIVATE_PROFIT)
-                .businessRegistrationIssuingCountry(BusinessRegistrationIssuingCountryEnum.USA)
+                .businessRegistrationIssuingCountry("USA")
                 .helpMessageResponse("helpMessageResponse")
                 .ageGatedContent(true)
                 .cvToken("cvToken");
