@@ -12,7 +12,6 @@ docs/BlockedWebhook.md
 docs/BridgeCompleteCallback.md
 docs/BridgeTargetCompleteCallback.md
 docs/BusinessEntityTypeEnum.md
-docs/BusinessRegistrationIssuingCountryEnum.md
 docs/BusinessRegistrationTypeEnum.md
 docs/CallDirectionEnum.md
 docs/CallRecordingMetadata.md
@@ -242,7 +241,6 @@ src/main/java/com/bandwidth/sdk/model/BlockedWebhook.java
 src/main/java/com/bandwidth/sdk/model/BridgeCompleteCallback.java
 src/main/java/com/bandwidth/sdk/model/BridgeTargetCompleteCallback.java
 src/main/java/com/bandwidth/sdk/model/BusinessEntityTypeEnum.java
-src/main/java/com/bandwidth/sdk/model/BusinessRegistrationIssuingCountryEnum.java
 src/main/java/com/bandwidth/sdk/model/BusinessRegistrationTypeEnum.java
 src/main/java/com/bandwidth/sdk/model/CallDirectionEnum.java
 src/main/java/com/bandwidth/sdk/model/CallRecordingMetadata.java
