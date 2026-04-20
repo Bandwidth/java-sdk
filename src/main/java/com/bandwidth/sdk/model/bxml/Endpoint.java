@@ -27,11 +27,16 @@ import lombok.NoArgsConstructor;
  * @param endpointId (str): The ID of the endpoint to connect to.
  *
  */
-public class Endpoint {
+public class Endpoint implements Verb {
 
     public static final String TYPE_NAME = "Endpoint";
 
     @XmlValue
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String endpointId;
+
+    @Override
+    public String getVerbName() {
+        return TYPE_NAME;
+    }
 }
