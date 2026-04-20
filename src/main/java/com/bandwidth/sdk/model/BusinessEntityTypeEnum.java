@@ -26,7 +26,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The type of registered business. 
+ * The type of registered business.  **Note: As of October 19th, 2026 submissions using a value other than &#x60;SOLE_PROPRIETOR&#x60; must provide a value for &#x60;businessRegistrationNumber&#x60;, &#x60;businessRegistrationType&#x60;, and &#x60;businessRegistrationIssuingCountry&#x60;.  Submissions using &#x60;SOLE_PROPRIETOR&#x60; must _omit_ &#x60;businessRegistrationNumber&#x60;, &#x60;businessRegistrationType&#x60;, and &#x60;businessRegistrationIssuingCountry&#x60;. Failure to adhere to these constraints will result in a 400 Bad Request rejection.** 
  */
 @JsonAdapter(BusinessEntityTypeEnum.Adapter.class)
 public enum BusinessEntityTypeEnum {

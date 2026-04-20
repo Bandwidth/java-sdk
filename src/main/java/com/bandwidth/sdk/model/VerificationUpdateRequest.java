@@ -17,7 +17,6 @@ import java.util.Objects;
 import java.util.Locale;
 import com.bandwidth.sdk.model.Address;
 import com.bandwidth.sdk.model.BusinessEntityTypeEnum;
-import com.bandwidth.sdk.model.BusinessRegistrationIssuingCountryEnum;
 import com.bandwidth.sdk.model.BusinessRegistrationTypeEnum;
 import com.bandwidth.sdk.model.Contact;
 import com.bandwidth.sdk.model.OptInWorkflow;
@@ -137,7 +136,7 @@ public class VerificationUpdateRequest {
   public static final String SERIALIZED_NAME_BUSINESS_REGISTRATION_ISSUING_COUNTRY = "businessRegistrationIssuingCountry";
   @SerializedName(SERIALIZED_NAME_BUSINESS_REGISTRATION_ISSUING_COUNTRY)
   @javax.annotation.Nullable
-  private BusinessRegistrationIssuingCountryEnum businessRegistrationIssuingCountry;
+  private String businessRegistrationIssuingCountry;
 
   public static final String SERIALIZED_NAME_HELP_MESSAGE_RESPONSE = "helpMessageResponse";
   @SerializedName(SERIALIZED_NAME_HELP_MESSAGE_RESPONSE)
@@ -393,7 +392,7 @@ public class VerificationUpdateRequest {
   }
 
   /**
-   * Government-issued business identifying number.  **Note:** If this field is provided, it is strongly recommended to also provide &#x60;businessRegistrationType&#x60; and &#x60;businessRegistrationIssuingCountry&#x60;. Submissions missing these fields have a high likelihood of rejection. 
+   * Government-issued business identifying number.  **Note: As of October 19th, 2026 this field will be required when &#x60;businessEntityType&#x60; is _not_ &#x60;SOLE_PROPRIETOR&#x60;. If this field is provided, &#x60;businessRegistrationType&#x60; and &#x60;businessRegistrationIssuingCountry&#x60; are also required.** 
    * @return businessRegistrationNumber
    */
   @javax.annotation.Nullable
@@ -444,21 +443,21 @@ public class VerificationUpdateRequest {
   }
 
 
-  public VerificationUpdateRequest businessRegistrationIssuingCountry(@javax.annotation.Nullable BusinessRegistrationIssuingCountryEnum businessRegistrationIssuingCountry) {
+  public VerificationUpdateRequest businessRegistrationIssuingCountry(@javax.annotation.Nullable String businessRegistrationIssuingCountry) {
     this.businessRegistrationIssuingCountry = businessRegistrationIssuingCountry;
     return this;
   }
 
   /**
-   * Get businessRegistrationIssuingCountry
+   * The country issuing the business registration in ISO-3166-1 alpha-3 format. Alpha-2 format is accepted by the API, but alpha-3 is highly encouraged.  **Note: As of October 19th, 2026 this field will be required when &#x60;businessRegistrationNumber&#x60; is provided.**  | Registration Type     | Supported Countries                | |----------------------|------------------------------------| | EIN                  | USA                                | | CBN                  | CAN                                | | NEQ                  | CAN                                | | PROVINCIAL_NUMBER    | CAN                                | | CRN                  | GBR, HKG                           | | VAT                  | GBR, IRL, BRA, NLD                 | | ACN                  | AUS                                | | ABN                  | AUS                                | | BRN                  | HKG                                | | SIREN                | FRA                                | | SIRET                | FRA                                | | NZBN                 | NZL                                | | UST_IDNR             | DEU                                | | CIF                  | ESP                                | | NIF                  | ESP                                | | CNPJ                 | BRA                                | | UID                  | CHE                                | | OTHER                | Must Provide Country Code          |
    * @return businessRegistrationIssuingCountry
    */
   @javax.annotation.Nullable
-  public BusinessRegistrationIssuingCountryEnum getBusinessRegistrationIssuingCountry() {
+  public String getBusinessRegistrationIssuingCountry() {
     return businessRegistrationIssuingCountry;
   }
 
-  public void setBusinessRegistrationIssuingCountry(@javax.annotation.Nullable BusinessRegistrationIssuingCountryEnum businessRegistrationIssuingCountry) {
+  public void setBusinessRegistrationIssuingCountry(@javax.annotation.Nullable String businessRegistrationIssuingCountry) {
     this.businessRegistrationIssuingCountry = businessRegistrationIssuingCountry;
   }
 
@@ -724,9 +723,8 @@ public class VerificationUpdateRequest {
       if (jsonObj.get("businessEntityType") != null && !jsonObj.get("businessEntityType").isJsonNull()) {
         BusinessEntityTypeEnum.validateJsonElement(jsonObj.get("businessEntityType"));
       }
-      // validate the optional field `businessRegistrationIssuingCountry`
-      if (jsonObj.get("businessRegistrationIssuingCountry") != null && !jsonObj.get("businessRegistrationIssuingCountry").isJsonNull()) {
-        BusinessRegistrationIssuingCountryEnum.validateJsonElement(jsonObj.get("businessRegistrationIssuingCountry"));
+      if ((jsonObj.get("businessRegistrationIssuingCountry") != null && !jsonObj.get("businessRegistrationIssuingCountry").isJsonNull()) && !jsonObj.get("businessRegistrationIssuingCountry").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `businessRegistrationIssuingCountry` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessRegistrationIssuingCountry").toString()));
       }
       if ((jsonObj.get("helpMessageResponse") != null && !jsonObj.get("helpMessageResponse").isJsonNull()) && !jsonObj.get("helpMessageResponse").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `helpMessageResponse` to be a primitive type in the JSON string but got `%s`", jsonObj.get("helpMessageResponse").toString()));
