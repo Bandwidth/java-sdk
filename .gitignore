@@ -25,3 +25,6 @@ build
 .DS_Store
 .idea
 .settings/
+
+# Jenv files
+.java-version
