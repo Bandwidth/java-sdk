@@ -26,7 +26,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Defines the layout of the WebView on a mobile device. It must be defined when application is set to &#x60;WEBVIEW&#x60; - &#x60;FULL&#x60; WebView takes the full screen.  - &#x60;HALF&#x60; WebView takes half of the screen. - &#x60;TALL&#x60; WebView takes three-quarters of the screen.
+ * Defines the layout of the WebView on a mobile device. It must be defined when application is set to &#x60;WEBVIEW&#x60; - &#x60;FULL&#x60; WebView takes the full screen. - &#x60;HALF&#x60; WebView takes half of the screen. - &#x60;TALL&#x60; WebView takes three-quarters of the screen.
  */
 @JsonAdapter(RbmWebViewEnum.Adapter.class)
 public enum RbmWebViewEnum {
