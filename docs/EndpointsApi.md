@@ -90,7 +90,7 @@ public class Example {
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  -  |
+| **429** | Too Many Requests |  * Retry-After - The number of seconds the client should wait before making another request. <br>  |
 | **500** | Service Unavailable |  -  |
 
 <a id="deleteEndpoint"></a>
@@ -171,7 +171,7 @@ null (empty response body)
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  -  |
+| **429** | Too Many Requests |  * Retry-After - The number of seconds the client should wait before making another request. <br>  |
 | **500** | Service Unavailable |  -  |
 
 <a id="getEndpoint"></a>
@@ -253,7 +253,7 @@ public class Example {
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  -  |
+| **429** | Too Many Requests |  * Retry-After - The number of seconds the client should wait before making another request. <br>  |
 | **500** | Service Unavailable |  -  |
 
 <a id="listEndpoints"></a>
@@ -341,7 +341,7 @@ public class Example {
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  -  |
+| **429** | Too Many Requests |  * Retry-After - The number of seconds the client should wait before making another request. <br>  |
 | **500** | Service Unavailable |  -  |
 
 <a id="updateEndpointBxml"></a>
@@ -424,6 +424,6 @@ null (empty response body)
 | **404** | Not Found |  -  |
 | **405** | Method Not Allowed |  -  |
 | **415** | Unsupported Media Type |  -  |
-| **429** | Too Many Requests |  -  |
+| **429** | Too Many Requests |  * Retry-After - The number of seconds the client should wait before making another request. <br>  |
 | **500** | Service Unavailable |  -  |
 

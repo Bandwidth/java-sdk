@@ -15,18 +15,15 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import java.util.Locale;
-import com.bandwidth.sdk.model.Endpoint;
-import com.bandwidth.sdk.model.Error1;
-import com.bandwidth.sdk.model.Link1;
+import com.bandwidth.sdk.model.Error1Source;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.UUID;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,98 +50,130 @@ import java.util.Locale;
 import com.bandwidth.sdk.JSON;
 
 /**
- * EndpointResponse
+ * Error1
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
-public class EndpointResponse {
-  public static final String SERIALIZED_NAME_LINKS = "links";
-  @SerializedName(SERIALIZED_NAME_LINKS)
+public class Error1 {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
+  private UUID id;
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
   @javax.annotation.Nonnull
-  private List<Link1> links = new ArrayList<>();
+  private String type;
 
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   @javax.annotation.Nonnull
-  private Endpoint data;
+  private String description;
 
-  public static final String SERIALIZED_NAME_ERRORS = "errors";
-  @SerializedName(SERIALIZED_NAME_ERRORS)
-  @javax.annotation.Nonnull
-  private List<Error1> errors = new ArrayList<>();
+  public static final String SERIALIZED_NAME_CODE = "code";
+  @SerializedName(SERIALIZED_NAME_CODE)
+  @javax.annotation.Nullable
+  private String code;
 
-  public EndpointResponse() {
+  public static final String SERIALIZED_NAME_SOURCE = "source";
+  @SerializedName(SERIALIZED_NAME_SOURCE)
+  @javax.annotation.Nullable
+  private Error1Source source;
+
+  public Error1() {
   }
 
-  public EndpointResponse links(@javax.annotation.Nonnull List<Link1> links) {
-    this.links = links;
-    return this;
-  }
-
-  public EndpointResponse addLinksItem(Link1 linksItem) {
-    if (this.links == null) {
-      this.links = new ArrayList<>();
-    }
-    this.links.add(linksItem);
-    return this;
-  }
-
-  /**
-   * Get links
-   * @return links
-   */
-  @javax.annotation.Nonnull
-  public List<Link1> getLinks() {
-    return links;
-  }
-
-  public void setLinks(@javax.annotation.Nonnull List<Link1> links) {
-    this.links = links;
-  }
-
-
-  public EndpointResponse data(@javax.annotation.Nonnull Endpoint data) {
-    this.data = data;
+  public Error1 id(@javax.annotation.Nullable UUID id) {
+    this.id = id;
     return this;
   }
 
   /**
-   * Get data
-   * @return data
+   * A unique identifier for the error.
+   * @return id
    */
-  @javax.annotation.Nonnull
-  public Endpoint getData() {
-    return data;
+  @javax.annotation.Nullable
+  public UUID getId() {
+    return id;
   }
 
-  public void setData(@javax.annotation.Nonnull Endpoint data) {
-    this.data = data;
+  public void setId(@javax.annotation.Nullable UUID id) {
+    this.id = id;
   }
 
 
-  public EndpointResponse errors(@javax.annotation.Nonnull List<Error1> errors) {
-    this.errors = errors;
-    return this;
-  }
-
-  public EndpointResponse addErrorsItem(Error1 errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
-    }
-    this.errors.add(errorsItem);
+  public Error1 type(@javax.annotation.Nonnull String type) {
+    this.type = type;
     return this;
   }
 
   /**
-   * Get errors
-   * @return errors
+   * The type of error.
+   * @return type
    */
   @javax.annotation.Nonnull
-  public List<Error1> getErrors() {
-    return errors;
+  public String getType() {
+    return type;
   }
 
-  public void setErrors(@javax.annotation.Nonnull List<Error1> errors) {
-    this.errors = errors;
+  public void setType(@javax.annotation.Nonnull String type) {
+    this.type = type;
+  }
+
+
+  public Error1 description(@javax.annotation.Nonnull String description) {
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * A description of the error.
+   * @return description
+   */
+  @javax.annotation.Nonnull
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(@javax.annotation.Nonnull String description) {
+    this.description = description;
+  }
+
+
+  public Error1 code(@javax.annotation.Nullable String code) {
+    this.code = code;
+    return this;
+  }
+
+  /**
+   * A code that uniquely identifies the error.
+   * @return code
+   */
+  @javax.annotation.Nullable
+  public String getCode() {
+    return code;
+  }
+
+  public void setCode(@javax.annotation.Nullable String code) {
+    this.code = code;
+  }
+
+
+  public Error1 source(@javax.annotation.Nullable Error1Source source) {
+    this.source = source;
+    return this;
+  }
+
+  /**
+   * Get source
+   * @return source
+   */
+  @javax.annotation.Nullable
+  public Error1Source getSource() {
+    return source;
+  }
+
+  public void setSource(@javax.annotation.Nullable Error1Source source) {
+    this.source = source;
   }
 
   /**
@@ -160,9 +189,9 @@ public class EndpointResponse {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the EndpointResponse instance itself
+   * @return the Error1 instance itself
    */
-  public EndpointResponse putAdditionalProperty(String key, Object value) {
+  public Error1 putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -201,25 +230,29 @@ public class EndpointResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    EndpointResponse endpointResponse = (EndpointResponse) o;
-    return Objects.equals(this.links, endpointResponse.links) &&
-        Objects.equals(this.data, endpointResponse.data) &&
-        Objects.equals(this.errors, endpointResponse.errors)&&
-        Objects.equals(this.additionalProperties, endpointResponse.additionalProperties);
+    Error1 error1 = (Error1) o;
+    return Objects.equals(this.id, error1.id) &&
+        Objects.equals(this.type, error1.type) &&
+        Objects.equals(this.description, error1.description) &&
+        Objects.equals(this.code, error1.code) &&
+        Objects.equals(this.source, error1.source)&&
+        Objects.equals(this.additionalProperties, error1.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(links, data, errors, additionalProperties);
+    return Objects.hash(id, type, description, code, source, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class EndpointResponse {\n");
-    sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("class Error1 {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -242,70 +275,64 @@ public class EndpointResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("links", "data", "errors"));
+    openapiFields = new HashSet<String>(Arrays.asList("id", "type", "description", "code", "source"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("links", "data", "errors"));
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("type", "description"));
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to EndpointResponse
+   * @throws IOException if the JSON Element is invalid with respect to Error1
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!EndpointResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in EndpointResponse is not found in the empty JSON string", EndpointResponse.openapiRequiredFields.toString()));
+        if (!Error1.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in Error1 is not found in the empty JSON string", Error1.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : EndpointResponse.openapiRequiredFields) {
+      for (String requiredField : Error1.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the json data is an array
-      if (!jsonObj.get("links").isJsonArray()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-
-      JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
-      // validate the required field `links` (array)
-      for (int i = 0; i < jsonArraylinks.size(); i++) {
-        Link1.validateJsonElement(jsonArraylinks.get(i));
-      };
-      // validate the required field `data`
-      Endpoint.validateJsonElement(jsonObj.get("data"));
-      // ensure the json data is an array
-      if (!jsonObj.get("errors").isJsonArray()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-
-      JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
-      // validate the required field `errors` (array)
-      for (int i = 0; i < jsonArrayerrors.size(); i++) {
-        Error1.validateJsonElement(jsonArrayerrors.get(i));
-      };
+      if (!jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      }
+      // validate the optional field `source`
+      if (jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) {
+        Error1Source.validateJsonElement(jsonObj.get("source"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!EndpointResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'EndpointResponse' and its subtypes
+       if (!Error1.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Error1' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<EndpointResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(EndpointResponse.class));
+       final TypeAdapter<Error1> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Error1.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<EndpointResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<Error1>() {
            @Override
-           public void write(JsonWriter out, EndpointResponse value) throws IOException {
+           public void write(JsonWriter out, Error1 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -333,12 +360,12 @@ public class EndpointResponse {
            }
 
            @Override
-           public EndpointResponse read(JsonReader in) throws IOException {
+           public Error1 read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             EndpointResponse instance = thisAdapter.fromJsonTree(jsonObj);
+             Error1 instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -365,18 +392,18 @@ public class EndpointResponse {
   }
 
   /**
-   * Create an instance of EndpointResponse given an JSON string
+   * Create an instance of Error1 given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of EndpointResponse
-   * @throws IOException if the JSON string is invalid with respect to EndpointResponse
+   * @return An instance of Error1
+   * @throws IOException if the JSON string is invalid with respect to Error1
    */
-  public static EndpointResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, EndpointResponse.class);
+  public static Error1 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Error1.class);
   }
 
   /**
-   * Convert an instance of EndpointResponse to an JSON string
+   * Convert an instance of Error1 to an JSON string
    *
    * @return JSON string
    */

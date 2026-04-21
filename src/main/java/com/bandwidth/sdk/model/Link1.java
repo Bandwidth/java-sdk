@@ -15,18 +15,13 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import java.util.Locale;
-import com.bandwidth.sdk.model.Endpoint;
-import com.bandwidth.sdk.model.Error1;
-import com.bandwidth.sdk.model.Link1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,98 +48,136 @@ import java.util.Locale;
 import com.bandwidth.sdk.JSON;
 
 /**
- * EndpointResponse
+ * Link1
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
-public class EndpointResponse {
-  public static final String SERIALIZED_NAME_LINKS = "links";
-  @SerializedName(SERIALIZED_NAME_LINKS)
-  @javax.annotation.Nonnull
-  private List<Link1> links = new ArrayList<>();
+public class Link1 {
+  public static final String SERIALIZED_NAME_HREF = "href";
+  @SerializedName(SERIALIZED_NAME_HREF)
+  @javax.annotation.Nullable
+  private String href;
 
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  @javax.annotation.Nonnull
-  private Endpoint data;
+  public static final String SERIALIZED_NAME_REL = "rel";
+  @SerializedName(SERIALIZED_NAME_REL)
+  @javax.annotation.Nullable
+  private String rel;
 
-  public static final String SERIALIZED_NAME_ERRORS = "errors";
-  @SerializedName(SERIALIZED_NAME_ERRORS)
-  @javax.annotation.Nonnull
-  private List<Error1> errors = new ArrayList<>();
+  /**
+   * The HTTP method to use when making the request.
+   */
+  @JsonAdapter(MethodEnum.Adapter.class)
+  public enum MethodEnum {
+    GET("GET"),
+    
+    POST("POST"),
+    
+    DELETE("DELETE");
 
-  public EndpointResponse() {
-  }
+    private String value;
 
-  public EndpointResponse links(@javax.annotation.Nonnull List<Link1> links) {
-    this.links = links;
-    return this;
-  }
-
-  public EndpointResponse addLinksItem(Link1 linksItem) {
-    if (this.links == null) {
-      this.links = new ArrayList<>();
+    MethodEnum(String value) {
+      this.value = value;
     }
-    this.links.add(linksItem);
-    return this;
-  }
 
-  /**
-   * Get links
-   * @return links
-   */
-  @javax.annotation.Nonnull
-  public List<Link1> getLinks() {
-    return links;
-  }
-
-  public void setLinks(@javax.annotation.Nonnull List<Link1> links) {
-    this.links = links;
-  }
-
-
-  public EndpointResponse data(@javax.annotation.Nonnull Endpoint data) {
-    this.data = data;
-    return this;
-  }
-
-  /**
-   * Get data
-   * @return data
-   */
-  @javax.annotation.Nonnull
-  public Endpoint getData() {
-    return data;
-  }
-
-  public void setData(@javax.annotation.Nonnull Endpoint data) {
-    this.data = data;
-  }
-
-
-  public EndpointResponse errors(@javax.annotation.Nonnull List<Error1> errors) {
-    this.errors = errors;
-    return this;
-  }
-
-  public EndpointResponse addErrorsItem(Error1 errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
+    public String getValue() {
+      return value;
     }
-    this.errors.add(errorsItem);
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static MethodEnum fromValue(String value) {
+      for (MethodEnum b : MethodEnum.values()) {
+        if (b.value.equalsIgnoreCase(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<MethodEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final MethodEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public MethodEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return MethodEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      MethodEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_METHOD = "method";
+  @SerializedName(SERIALIZED_NAME_METHOD)
+  @javax.annotation.Nullable
+  private MethodEnum method;
+
+  public Link1() {
+  }
+
+  public Link1 href(@javax.annotation.Nullable String href) {
+    this.href = href;
     return this;
   }
 
   /**
-   * Get errors
-   * @return errors
+   * The full URL of the link.
+   * @return href
    */
-  @javax.annotation.Nonnull
-  public List<Error1> getErrors() {
-    return errors;
+  @javax.annotation.Nullable
+  public String getHref() {
+    return href;
   }
 
-  public void setErrors(@javax.annotation.Nonnull List<Error1> errors) {
-    this.errors = errors;
+  public void setHref(@javax.annotation.Nullable String href) {
+    this.href = href;
+  }
+
+
+  public Link1 rel(@javax.annotation.Nullable String rel) {
+    this.rel = rel;
+    return this;
+  }
+
+  /**
+   * The relationship of the link to the current resource.
+   * @return rel
+   */
+  @javax.annotation.Nullable
+  public String getRel() {
+    return rel;
+  }
+
+  public void setRel(@javax.annotation.Nullable String rel) {
+    this.rel = rel;
+  }
+
+
+  public Link1 method(@javax.annotation.Nullable MethodEnum method) {
+    this.method = method;
+    return this;
+  }
+
+  /**
+   * The HTTP method to use when making the request.
+   * @return method
+   */
+  @javax.annotation.Nullable
+  public MethodEnum getMethod() {
+    return method;
+  }
+
+  public void setMethod(@javax.annotation.Nullable MethodEnum method) {
+    this.method = method;
   }
 
   /**
@@ -160,9 +193,9 @@ public class EndpointResponse {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the EndpointResponse instance itself
+   * @return the Link1 instance itself
    */
-  public EndpointResponse putAdditionalProperty(String key, Object value) {
+  public Link1 putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -201,25 +234,25 @@ public class EndpointResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    EndpointResponse endpointResponse = (EndpointResponse) o;
-    return Objects.equals(this.links, endpointResponse.links) &&
-        Objects.equals(this.data, endpointResponse.data) &&
-        Objects.equals(this.errors, endpointResponse.errors)&&
-        Objects.equals(this.additionalProperties, endpointResponse.additionalProperties);
+    Link1 link1 = (Link1) o;
+    return Objects.equals(this.href, link1.href) &&
+        Objects.equals(this.rel, link1.rel) &&
+        Objects.equals(this.method, link1.method)&&
+        Objects.equals(this.additionalProperties, link1.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(links, data, errors, additionalProperties);
+    return Objects.hash(href, rel, method, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class EndpointResponse {\n");
-    sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("class Link1 {\n");
+    sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("    rel: ").append(toIndentedString(rel)).append("\n");
+    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -242,70 +275,54 @@ public class EndpointResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("links", "data", "errors"));
+    openapiFields = new HashSet<String>(Arrays.asList("href", "rel", "method"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("links", "data", "errors"));
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to EndpointResponse
+   * @throws IOException if the JSON Element is invalid with respect to Link1
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!EndpointResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in EndpointResponse is not found in the empty JSON string", EndpointResponse.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : EndpointResponse.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        if (!Link1.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in Link1 is not found in the empty JSON string", Link1.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the json data is an array
-      if (!jsonObj.get("links").isJsonArray()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
+      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
       }
-
-      JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
-      // validate the required field `links` (array)
-      for (int i = 0; i < jsonArraylinks.size(); i++) {
-        Link1.validateJsonElement(jsonArraylinks.get(i));
-      };
-      // validate the required field `data`
-      Endpoint.validateJsonElement(jsonObj.get("data"));
-      // ensure the json data is an array
-      if (!jsonObj.get("errors").isJsonArray()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
+      if ((jsonObj.get("rel") != null && !jsonObj.get("rel").isJsonNull()) && !jsonObj.get("rel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `rel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rel").toString()));
       }
-
-      JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
-      // validate the required field `errors` (array)
-      for (int i = 0; i < jsonArrayerrors.size(); i++) {
-        Error1.validateJsonElement(jsonArrayerrors.get(i));
-      };
+      if ((jsonObj.get("method") != null && !jsonObj.get("method").isJsonNull()) && !jsonObj.get("method").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `method` to be a primitive type in the JSON string but got `%s`", jsonObj.get("method").toString()));
+      }
+      // validate the optional field `method`
+      if (jsonObj.get("method") != null && !jsonObj.get("method").isJsonNull()) {
+        MethodEnum.validateJsonElement(jsonObj.get("method"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!EndpointResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'EndpointResponse' and its subtypes
+       if (!Link1.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Link1' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<EndpointResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(EndpointResponse.class));
+       final TypeAdapter<Link1> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Link1.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<EndpointResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<Link1>() {
            @Override
-           public void write(JsonWriter out, EndpointResponse value) throws IOException {
+           public void write(JsonWriter out, Link1 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -333,12 +350,12 @@ public class EndpointResponse {
            }
 
            @Override
-           public EndpointResponse read(JsonReader in) throws IOException {
+           public Link1 read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             EndpointResponse instance = thisAdapter.fromJsonTree(jsonObj);
+             Link1 instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -365,18 +382,18 @@ public class EndpointResponse {
   }
 
   /**
-   * Create an instance of EndpointResponse given an JSON string
+   * Create an instance of Link1 given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of EndpointResponse
-   * @throws IOException if the JSON string is invalid with respect to EndpointResponse
+   * @return An instance of Link1
+   * @throws IOException if the JSON string is invalid with respect to Link1
    */
-  public static EndpointResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, EndpointResponse.class);
+  public static Link1 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Link1.class);
   }
 
   /**
-   * Convert an instance of EndpointResponse to an JSON string
+   * Convert an instance of Link1 to an JSON string
    *
    * @return JSON string
    */
