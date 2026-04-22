@@ -16,9 +16,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.bandwidth.sdk.model.ErrorResponse;
-import com.bandwidth.sdk.model.Link;
-import com.bandwidth.sdk.model.Error;
+import com.bandwidth.sdk.model.BrtcErrorResponse;
+import com.bandwidth.sdk.model.BrtcLink;
+import com.bandwidth.sdk.model.BrtcError;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -27,20 +27,20 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
- * Model tests for ErrorResponse
+ * Model tests for BrtcErrorResponse
  */
 public class ErrorResponseTest {
-    private final ErrorResponse model = new ErrorResponse()
-            .links(new ArrayList<Link>())
+    private final BrtcErrorResponse model = new BrtcErrorResponse()
+            .links(new ArrayList<BrtcLink>())
             .data(null)
-            .errors(new ArrayList<Error>());
+            .errors(new ArrayList<BrtcError>());
 
     /**
      * Model tests for ErrorResponse
      */
     @Test
     public void testErrorResponse() {
-        assertThat(model, instanceOf(ErrorResponse.class));
+        assertThat(model, instanceOf(BrtcErrorResponse.class));
     }
 
     /**

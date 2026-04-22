@@ -13,7 +13,6 @@ import com.bandwidth.sdk.model.Endpoints;
 import com.bandwidth.sdk.model.EndpointDirectionEnum;
 import com.bandwidth.sdk.model.EndpointTypeEnum;
 import com.bandwidth.sdk.model.EndpointStatusEnum;
-import com.bandwidth.sdk.model.Link;
 import com.bandwidth.sdk.model.ListEndpointsResponse;
 import com.bandwidth.sdk.model.Page;
 import org.junit.jupiter.api.MethodOrderer;
