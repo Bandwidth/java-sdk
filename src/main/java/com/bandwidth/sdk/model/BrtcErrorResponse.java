@@ -15,8 +15,8 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import java.util.Locale;
-import com.bandwidth.sdk.model.Error1;
-import com.bandwidth.sdk.model.Link1;
+import com.bandwidth.sdk.model.BrtcError;
+import com.bandwidth.sdk.model.BrtcLink;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -52,14 +52,14 @@ import java.util.Locale;
 import com.bandwidth.sdk.JSON;
 
 /**
- * ErrorResponse
+ * BrtcErrorResponse
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
-public class ErrorResponse {
+public class BrtcErrorResponse {
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nonnull
-  private List<Link1> links = new ArrayList<>();
+  private List<BrtcLink> links = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
@@ -69,17 +69,17 @@ public class ErrorResponse {
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   @javax.annotation.Nonnull
-  private List<Error1> errors = new ArrayList<>();
+  private List<BrtcError> errors = new ArrayList<>();
 
-  public ErrorResponse() {
+  public BrtcErrorResponse() {
   }
 
-  public ErrorResponse links(@javax.annotation.Nonnull List<Link1> links) {
+  public BrtcErrorResponse links(@javax.annotation.Nonnull List<BrtcLink> links) {
     this.links = links;
     return this;
   }
 
-  public ErrorResponse addLinksItem(Link1 linksItem) {
+  public BrtcErrorResponse addLinksItem(BrtcLink linksItem) {
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -92,16 +92,16 @@ public class ErrorResponse {
    * @return links
    */
   @javax.annotation.Nonnull
-  public List<Link1> getLinks() {
+  public List<BrtcLink> getLinks() {
     return links;
   }
 
-  public void setLinks(@javax.annotation.Nonnull List<Link1> links) {
+  public void setLinks(@javax.annotation.Nonnull List<BrtcLink> links) {
     this.links = links;
   }
 
 
-  public ErrorResponse data(@javax.annotation.Nullable Object data) {
+  public BrtcErrorResponse data(@javax.annotation.Nullable Object data) {
     this.data = data;
     return this;
   }
@@ -120,12 +120,12 @@ public class ErrorResponse {
   }
 
 
-  public ErrorResponse errors(@javax.annotation.Nonnull List<Error1> errors) {
+  public BrtcErrorResponse errors(@javax.annotation.Nonnull List<BrtcError> errors) {
     this.errors = errors;
     return this;
   }
 
-  public ErrorResponse addErrorsItem(Error1 errorsItem) {
+  public BrtcErrorResponse addErrorsItem(BrtcError errorsItem) {
     if (this.errors == null) {
       this.errors = new ArrayList<>();
     }
@@ -138,11 +138,11 @@ public class ErrorResponse {
    * @return errors
    */
   @javax.annotation.Nonnull
-  public List<Error1> getErrors() {
+  public List<BrtcError> getErrors() {
     return errors;
   }
 
-  public void setErrors(@javax.annotation.Nonnull List<Error1> errors) {
+  public void setErrors(@javax.annotation.Nonnull List<BrtcError> errors) {
     this.errors = errors;
   }
 
@@ -159,9 +159,9 @@ public class ErrorResponse {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ErrorResponse instance itself
+   * @return the BrtcErrorResponse instance itself
    */
-  public ErrorResponse putAdditionalProperty(String key, Object value) {
+  public BrtcErrorResponse putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -200,11 +200,11 @@ public class ErrorResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ErrorResponse errorResponse = (ErrorResponse) o;
-    return Objects.equals(this.links, errorResponse.links) &&
-        Objects.equals(this.data, errorResponse.data) &&
-        Objects.equals(this.errors, errorResponse.errors)&&
-        Objects.equals(this.additionalProperties, errorResponse.additionalProperties);
+    BrtcErrorResponse brtcErrorResponse = (BrtcErrorResponse) o;
+    return Objects.equals(this.links, brtcErrorResponse.links) &&
+        Objects.equals(this.data, brtcErrorResponse.data) &&
+        Objects.equals(this.errors, brtcErrorResponse.errors)&&
+        Objects.equals(this.additionalProperties, brtcErrorResponse.additionalProperties);
   }
 
   @Override
@@ -215,7 +215,7 @@ public class ErrorResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ErrorResponse {\n");
+    sb.append("class BrtcErrorResponse {\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
@@ -251,17 +251,17 @@ public class ErrorResponse {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to ErrorResponse
+   * @throws IOException if the JSON Element is invalid with respect to BrtcErrorResponse
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ErrorResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in ErrorResponse is not found in the empty JSON string", ErrorResponse.openapiRequiredFields.toString()));
+        if (!BrtcErrorResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in BrtcErrorResponse is not found in the empty JSON string", BrtcErrorResponse.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ErrorResponse.openapiRequiredFields) {
+      for (String requiredField : BrtcErrorResponse.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -275,7 +275,7 @@ public class ErrorResponse {
       JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
       // validate the required field `links` (array)
       for (int i = 0; i < jsonArraylinks.size(); i++) {
-        Link1.validateJsonElement(jsonArraylinks.get(i));
+        BrtcLink.validateJsonElement(jsonArraylinks.get(i));
       };
       // ensure the json data is an array
       if (!jsonObj.get("errors").isJsonArray()) {
@@ -285,7 +285,7 @@ public class ErrorResponse {
       JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
       // validate the required field `errors` (array)
       for (int i = 0; i < jsonArrayerrors.size(); i++) {
-        Error1.validateJsonElement(jsonArrayerrors.get(i));
+        BrtcError.validateJsonElement(jsonArrayerrors.get(i));
       };
   }
 
@@ -293,16 +293,16 @@ public class ErrorResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ErrorResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ErrorResponse' and its subtypes
+       if (!BrtcErrorResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'BrtcErrorResponse' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ErrorResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ErrorResponse.class));
+       final TypeAdapter<BrtcErrorResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(BrtcErrorResponse.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ErrorResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<BrtcErrorResponse>() {
            @Override
-           public void write(JsonWriter out, ErrorResponse value) throws IOException {
+           public void write(JsonWriter out, BrtcErrorResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -330,12 +330,12 @@ public class ErrorResponse {
            }
 
            @Override
-           public ErrorResponse read(JsonReader in) throws IOException {
+           public BrtcErrorResponse read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             ErrorResponse instance = thisAdapter.fromJsonTree(jsonObj);
+             BrtcErrorResponse instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -362,18 +362,18 @@ public class ErrorResponse {
   }
 
   /**
-   * Create an instance of ErrorResponse given an JSON string
+   * Create an instance of BrtcErrorResponse given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of ErrorResponse
-   * @throws IOException if the JSON string is invalid with respect to ErrorResponse
+   * @return An instance of BrtcErrorResponse
+   * @throws IOException if the JSON string is invalid with respect to BrtcErrorResponse
    */
-  public static ErrorResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ErrorResponse.class);
+  public static BrtcErrorResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, BrtcErrorResponse.class);
   }
 
   /**
-   * Convert an instance of ErrorResponse to an JSON string
+   * Convert an instance of BrtcErrorResponse to an JSON string
    *
    * @return JSON string
    */

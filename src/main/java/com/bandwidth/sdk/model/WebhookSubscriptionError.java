@@ -15,15 +15,16 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import java.util.Locale;
-import com.bandwidth.sdk.model.Error1Source;
+import com.bandwidth.sdk.model.TelephoneNumber;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.UUID;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,130 +51,90 @@ import java.util.Locale;
 import com.bandwidth.sdk.JSON;
 
 /**
- * Error1
+ * WebhookSubscriptionError
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
-public class Error1 {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  @javax.annotation.Nullable
-  private UUID id;
-
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  @javax.annotation.Nonnull
-  private String type;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  @javax.annotation.Nonnull
-  private String description;
-
+public class WebhookSubscriptionError {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
   @javax.annotation.Nullable
-  private String code;
+  private Integer code;
 
-  public static final String SERIALIZED_NAME_SOURCE = "source";
-  @SerializedName(SERIALIZED_NAME_SOURCE)
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   @javax.annotation.Nullable
-  private Error1Source source;
+  private String description;
 
-  public Error1() {
+  public static final String SERIALIZED_NAME_TELEPHONE_NUMBERS = "telephoneNumbers";
+  @SerializedName(SERIALIZED_NAME_TELEPHONE_NUMBERS)
+  @javax.annotation.Nullable
+  private List<TelephoneNumber> telephoneNumbers = new ArrayList<>();
+
+  public WebhookSubscriptionError() {
   }
 
-  public Error1 id(@javax.annotation.Nullable UUID id) {
-    this.id = id;
+  public WebhookSubscriptionError code(@javax.annotation.Nullable Integer code) {
+    this.code = code;
     return this;
   }
 
   /**
-   * A unique identifier for the error.
-   * @return id
+   * Get code
+   * @return code
    */
   @javax.annotation.Nullable
-  public UUID getId() {
-    return id;
+  public Integer getCode() {
+    return code;
   }
 
-  public void setId(@javax.annotation.Nullable UUID id) {
-    this.id = id;
-  }
-
-
-  public Error1 type(@javax.annotation.Nonnull String type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * The type of error.
-   * @return type
-   */
-  @javax.annotation.Nonnull
-  public String getType() {
-    return type;
-  }
-
-  public void setType(@javax.annotation.Nonnull String type) {
-    this.type = type;
+  public void setCode(@javax.annotation.Nullable Integer code) {
+    this.code = code;
   }
 
 
-  public Error1 description(@javax.annotation.Nonnull String description) {
+  public WebhookSubscriptionError description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
 
   /**
-   * A description of the error.
+   * Get description
    * @return description
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getDescription() {
     return description;
   }
 
-  public void setDescription(@javax.annotation.Nonnull String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public Error1 code(@javax.annotation.Nullable String code) {
-    this.code = code;
+  public WebhookSubscriptionError telephoneNumbers(@javax.annotation.Nullable List<TelephoneNumber> telephoneNumbers) {
+    this.telephoneNumbers = telephoneNumbers;
+    return this;
+  }
+
+  public WebhookSubscriptionError addTelephoneNumbersItem(TelephoneNumber telephoneNumbersItem) {
+    if (this.telephoneNumbers == null) {
+      this.telephoneNumbers = new ArrayList<>();
+    }
+    this.telephoneNumbers.add(telephoneNumbersItem);
     return this;
   }
 
   /**
-   * A code that uniquely identifies the error.
-   * @return code
+   * Get telephoneNumbers
+   * @return telephoneNumbers
    */
   @javax.annotation.Nullable
-  public String getCode() {
-    return code;
+  public List<TelephoneNumber> getTelephoneNumbers() {
+    return telephoneNumbers;
   }
 
-  public void setCode(@javax.annotation.Nullable String code) {
-    this.code = code;
-  }
-
-
-  public Error1 source(@javax.annotation.Nullable Error1Source source) {
-    this.source = source;
-    return this;
-  }
-
-  /**
-   * Get source
-   * @return source
-   */
-  @javax.annotation.Nullable
-  public Error1Source getSource() {
-    return source;
-  }
-
-  public void setSource(@javax.annotation.Nullable Error1Source source) {
-    this.source = source;
+  public void setTelephoneNumbers(@javax.annotation.Nullable List<TelephoneNumber> telephoneNumbers) {
+    this.telephoneNumbers = telephoneNumbers;
   }
 
   /**
@@ -189,9 +150,9 @@ public class Error1 {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the Error1 instance itself
+   * @return the WebhookSubscriptionError instance itself
    */
-  public Error1 putAdditionalProperty(String key, Object value) {
+  public WebhookSubscriptionError putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -230,29 +191,25 @@ public class Error1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Error1 error1 = (Error1) o;
-    return Objects.equals(this.id, error1.id) &&
-        Objects.equals(this.type, error1.type) &&
-        Objects.equals(this.description, error1.description) &&
-        Objects.equals(this.code, error1.code) &&
-        Objects.equals(this.source, error1.source)&&
-        Objects.equals(this.additionalProperties, error1.additionalProperties);
+    WebhookSubscriptionError webhookSubscriptionError = (WebhookSubscriptionError) o;
+    return Objects.equals(this.code, webhookSubscriptionError.code) &&
+        Objects.equals(this.description, webhookSubscriptionError.description) &&
+        Objects.equals(this.telephoneNumbers, webhookSubscriptionError.telephoneNumbers)&&
+        Objects.equals(this.additionalProperties, webhookSubscriptionError.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, description, code, source, additionalProperties);
+    return Objects.hash(code, description, telephoneNumbers, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Error1 {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("class WebhookSubscriptionError {\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    source: ").append(toIndentedString(source)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    telephoneNumbers: ").append(toIndentedString(telephoneNumbers)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -275,47 +232,41 @@ public class Error1 {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("id", "type", "description", "code", "source"));
+    openapiFields = new HashSet<String>(Arrays.asList("code", "description", "telephoneNumbers"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("type", "description"));
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Error1
+   * @throws IOException if the JSON Element is invalid with respect to WebhookSubscriptionError
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!Error1.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in Error1 is not found in the empty JSON string", Error1.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : Error1.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        if (!WebhookSubscriptionError.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in WebhookSubscriptionError is not found in the empty JSON string", WebhookSubscriptionError.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      if (!jsonObj.get("description").isJsonPrimitive()) {
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
-      }
-      // validate the optional field `source`
-      if (jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) {
-        Error1Source.validateJsonElement(jsonObj.get("source"));
+      if (jsonObj.get("telephoneNumbers") != null && !jsonObj.get("telephoneNumbers").isJsonNull()) {
+        JsonArray jsonArraytelephoneNumbers = jsonObj.getAsJsonArray("telephoneNumbers");
+        if (jsonArraytelephoneNumbers != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("telephoneNumbers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `telephoneNumbers` to be an array in the JSON string but got `%s`", jsonObj.get("telephoneNumbers").toString()));
+          }
+
+          // validate the optional field `telephoneNumbers` (array)
+          for (int i = 0; i < jsonArraytelephoneNumbers.size(); i++) {
+            TelephoneNumber.validateJsonElement(jsonArraytelephoneNumbers.get(i));
+          };
+        }
       }
   }
 
@@ -323,16 +274,16 @@ public class Error1 {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Error1.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Error1' and its subtypes
+       if (!WebhookSubscriptionError.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'WebhookSubscriptionError' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Error1> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Error1.class));
+       final TypeAdapter<WebhookSubscriptionError> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(WebhookSubscriptionError.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Error1>() {
+       return (TypeAdapter<T>) new TypeAdapter<WebhookSubscriptionError>() {
            @Override
-           public void write(JsonWriter out, Error1 value) throws IOException {
+           public void write(JsonWriter out, WebhookSubscriptionError value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -360,12 +311,12 @@ public class Error1 {
            }
 
            @Override
-           public Error1 read(JsonReader in) throws IOException {
+           public WebhookSubscriptionError read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             Error1 instance = thisAdapter.fromJsonTree(jsonObj);
+             WebhookSubscriptionError instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -392,18 +343,18 @@ public class Error1 {
   }
 
   /**
-   * Create an instance of Error1 given an JSON string
+   * Create an instance of WebhookSubscriptionError given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of Error1
-   * @throws IOException if the JSON string is invalid with respect to Error1
+   * @return An instance of WebhookSubscriptionError
+   * @throws IOException if the JSON string is invalid with respect to WebhookSubscriptionError
    */
-  public static Error1 fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Error1.class);
+  public static WebhookSubscriptionError fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, WebhookSubscriptionError.class);
   }
 
   /**
-   * Convert an instance of Error1 to an JSON string
+   * Convert an instance of WebhookSubscriptionError to an JSON string
    *
    * @return JSON string
    */

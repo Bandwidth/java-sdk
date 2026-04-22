@@ -48,136 +48,106 @@ import java.util.Locale;
 import com.bandwidth.sdk.JSON;
 
 /**
- * Link1
+ * BrtcErrorSource
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
-public class Link1 {
-  public static final String SERIALIZED_NAME_HREF = "href";
-  @SerializedName(SERIALIZED_NAME_HREF)
+public class BrtcErrorSource {
+  public static final String SERIALIZED_NAME_PARAMETER = "parameter";
+  @SerializedName(SERIALIZED_NAME_PARAMETER)
   @javax.annotation.Nullable
-  private String href;
+  private String parameter;
 
-  public static final String SERIALIZED_NAME_REL = "rel";
-  @SerializedName(SERIALIZED_NAME_REL)
+  public static final String SERIALIZED_NAME_FIELD = "field";
+  @SerializedName(SERIALIZED_NAME_FIELD)
   @javax.annotation.Nullable
-  private String rel;
+  private String field;
 
-  /**
-   * The HTTP method to use when making the request.
-   */
-  @JsonAdapter(MethodEnum.Adapter.class)
-  public enum MethodEnum {
-    GET("GET"),
-    
-    POST("POST"),
-    
-    DELETE("DELETE");
+  public static final String SERIALIZED_NAME_HEADER = "header";
+  @SerializedName(SERIALIZED_NAME_HEADER)
+  @javax.annotation.Nullable
+  private String header;
 
-    private String value;
+  public static final String SERIALIZED_NAME_REFERENCE = "reference";
+  @SerializedName(SERIALIZED_NAME_REFERENCE)
+  @javax.annotation.Nullable
+  private String reference;
 
-    MethodEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static MethodEnum fromValue(String value) {
-      for (MethodEnum b : MethodEnum.values()) {
-        if (b.value.equalsIgnoreCase(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<MethodEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final MethodEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public MethodEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return MethodEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      MethodEnum.fromValue(value);
-    }
+  public BrtcErrorSource() {
   }
 
-  public static final String SERIALIZED_NAME_METHOD = "method";
-  @SerializedName(SERIALIZED_NAME_METHOD)
-  @javax.annotation.Nullable
-  private MethodEnum method;
-
-  public Link1() {
-  }
-
-  public Link1 href(@javax.annotation.Nullable String href) {
-    this.href = href;
+  public BrtcErrorSource parameter(@javax.annotation.Nullable String parameter) {
+    this.parameter = parameter;
     return this;
   }
 
   /**
-   * The full URL of the link.
-   * @return href
+   * The URI parameter that caused the error.
+   * @return parameter
    */
   @javax.annotation.Nullable
-  public String getHref() {
-    return href;
+  public String getParameter() {
+    return parameter;
   }
 
-  public void setHref(@javax.annotation.Nullable String href) {
-    this.href = href;
+  public void setParameter(@javax.annotation.Nullable String parameter) {
+    this.parameter = parameter;
   }
 
 
-  public Link1 rel(@javax.annotation.Nullable String rel) {
-    this.rel = rel;
+  public BrtcErrorSource field(@javax.annotation.Nullable String field) {
+    this.field = field;
     return this;
   }
 
   /**
-   * The relationship of the link to the current resource.
-   * @return rel
+   * The request body field that caused the error.
+   * @return field
    */
   @javax.annotation.Nullable
-  public String getRel() {
-    return rel;
+  public String getField() {
+    return field;
   }
 
-  public void setRel(@javax.annotation.Nullable String rel) {
-    this.rel = rel;
+  public void setField(@javax.annotation.Nullable String field) {
+    this.field = field;
   }
 
 
-  public Link1 method(@javax.annotation.Nullable MethodEnum method) {
-    this.method = method;
+  public BrtcErrorSource header(@javax.annotation.Nullable String header) {
+    this.header = header;
     return this;
   }
 
   /**
-   * The HTTP method to use when making the request.
-   * @return method
+   * The header that caused the error.
+   * @return header
    */
   @javax.annotation.Nullable
-  public MethodEnum getMethod() {
-    return method;
+  public String getHeader() {
+    return header;
   }
 
-  public void setMethod(@javax.annotation.Nullable MethodEnum method) {
-    this.method = method;
+  public void setHeader(@javax.annotation.Nullable String header) {
+    this.header = header;
+  }
+
+
+  public BrtcErrorSource reference(@javax.annotation.Nullable String reference) {
+    this.reference = reference;
+    return this;
+  }
+
+  /**
+   * The resource ID or path to the resource (or non-existent resource) causing the error.
+   * @return reference
+   */
+  @javax.annotation.Nullable
+  public String getReference() {
+    return reference;
+  }
+
+  public void setReference(@javax.annotation.Nullable String reference) {
+    this.reference = reference;
   }
 
   /**
@@ -193,9 +163,9 @@ public class Link1 {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the Link1 instance itself
+   * @return the BrtcErrorSource instance itself
    */
-  public Link1 putAdditionalProperty(String key, Object value) {
+  public BrtcErrorSource putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -234,25 +204,27 @@ public class Link1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Link1 link1 = (Link1) o;
-    return Objects.equals(this.href, link1.href) &&
-        Objects.equals(this.rel, link1.rel) &&
-        Objects.equals(this.method, link1.method)&&
-        Objects.equals(this.additionalProperties, link1.additionalProperties);
+    BrtcErrorSource brtcErrorSource = (BrtcErrorSource) o;
+    return Objects.equals(this.parameter, brtcErrorSource.parameter) &&
+        Objects.equals(this.field, brtcErrorSource.field) &&
+        Objects.equals(this.header, brtcErrorSource.header) &&
+        Objects.equals(this.reference, brtcErrorSource.reference)&&
+        Objects.equals(this.additionalProperties, brtcErrorSource.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, rel, method, additionalProperties);
+    return Objects.hash(parameter, field, header, reference, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Link1 {\n");
-    sb.append("    href: ").append(toIndentedString(href)).append("\n");
-    sb.append("    rel: ").append(toIndentedString(rel)).append("\n");
-    sb.append("    method: ").append(toIndentedString(method)).append("\n");
+    sb.append("class BrtcErrorSource {\n");
+    sb.append("    parameter: ").append(toIndentedString(parameter)).append("\n");
+    sb.append("    field: ").append(toIndentedString(field)).append("\n");
+    sb.append("    header: ").append(toIndentedString(header)).append("\n");
+    sb.append("    reference: ").append(toIndentedString(reference)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -275,7 +247,7 @@ public class Link1 {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("href", "rel", "method"));
+    openapiFields = new HashSet<String>(Arrays.asList("parameter", "field", "header", "reference"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -285,27 +257,26 @@ public class Link1 {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Link1
+   * @throws IOException if the JSON Element is invalid with respect to BrtcErrorSource
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!Link1.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in Link1 is not found in the empty JSON string", Link1.openapiRequiredFields.toString()));
+        if (!BrtcErrorSource.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in BrtcErrorSource is not found in the empty JSON string", BrtcErrorSource.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
+      if ((jsonObj.get("parameter") != null && !jsonObj.get("parameter").isJsonNull()) && !jsonObj.get("parameter").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `parameter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("parameter").toString()));
       }
-      if ((jsonObj.get("rel") != null && !jsonObj.get("rel").isJsonNull()) && !jsonObj.get("rel").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `rel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rel").toString()));
+      if ((jsonObj.get("field") != null && !jsonObj.get("field").isJsonNull()) && !jsonObj.get("field").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `field` to be a primitive type in the JSON string but got `%s`", jsonObj.get("field").toString()));
       }
-      if ((jsonObj.get("method") != null && !jsonObj.get("method").isJsonNull()) && !jsonObj.get("method").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `method` to be a primitive type in the JSON string but got `%s`", jsonObj.get("method").toString()));
+      if ((jsonObj.get("header") != null && !jsonObj.get("header").isJsonNull()) && !jsonObj.get("header").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `header` to be a primitive type in the JSON string but got `%s`", jsonObj.get("header").toString()));
       }
-      // validate the optional field `method`
-      if (jsonObj.get("method") != null && !jsonObj.get("method").isJsonNull()) {
-        MethodEnum.validateJsonElement(jsonObj.get("method"));
+      if ((jsonObj.get("reference") != null && !jsonObj.get("reference").isJsonNull()) && !jsonObj.get("reference").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `reference` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reference").toString()));
       }
   }
 
@@ -313,16 +284,16 @@ public class Link1 {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Link1.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Link1' and its subtypes
+       if (!BrtcErrorSource.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'BrtcErrorSource' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Link1> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Link1.class));
+       final TypeAdapter<BrtcErrorSource> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(BrtcErrorSource.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Link1>() {
+       return (TypeAdapter<T>) new TypeAdapter<BrtcErrorSource>() {
            @Override
-           public void write(JsonWriter out, Link1 value) throws IOException {
+           public void write(JsonWriter out, BrtcErrorSource value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -350,12 +321,12 @@ public class Link1 {
            }
 
            @Override
-           public Link1 read(JsonReader in) throws IOException {
+           public BrtcErrorSource read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             Link1 instance = thisAdapter.fromJsonTree(jsonObj);
+             BrtcErrorSource instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -382,18 +353,18 @@ public class Link1 {
   }
 
   /**
-   * Create an instance of Link1 given an JSON string
+   * Create an instance of BrtcErrorSource given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of Link1
-   * @throws IOException if the JSON string is invalid with respect to Link1
+   * @return An instance of BrtcErrorSource
+   * @throws IOException if the JSON string is invalid with respect to BrtcErrorSource
    */
-  public static Link1 fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Link1.class);
+  public static BrtcErrorSource fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, BrtcErrorSource.class);
   }
 
   /**
-   * Convert an instance of Link1 to an JSON string
+   * Convert an instance of BrtcErrorSource to an JSON string
    *
    * @return JSON string
    */

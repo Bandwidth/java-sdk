@@ -1,6 +1,6 @@
 
 
-# Error
+# WebhookSubscriptionError
 
 
 ## Properties

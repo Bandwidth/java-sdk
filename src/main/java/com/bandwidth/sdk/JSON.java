@@ -160,6 +160,10 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.BlockedWebhook.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.BridgeCompleteCallback.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.BridgeTargetCompleteCallback.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.BrtcError.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.BrtcErrorResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.BrtcErrorSource.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.BrtcLink.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.CallRecordingMetadata.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.CallState.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.CallTranscription.CustomTypeAdapterFactory());
@@ -197,11 +201,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.EndpointEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.EndpointResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.Endpoints.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.Error.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.Error1.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.Error1Source.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.ErrorObject.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.ErrorResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.ErrorSource.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.FailureWebhook.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.FieldError.CustomTypeAdapterFactory());
@@ -212,7 +212,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.InboundCallbackMessage.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.InitiateCallback.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.Link.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.Link1.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.LinkSchema.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.LinksObject.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.ListEndpointsResponse.CustomTypeAdapterFactory());
@@ -307,6 +306,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.VoiceCodeResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.WebhookSubscription.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.WebhookSubscriptionBasicAuthentication.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.WebhookSubscriptionError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.WebhookSubscriptionRequestSchema.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.WebhookSubscriptionsListBody.CustomTypeAdapterFactory());
         gson = gsonBuilder.create();

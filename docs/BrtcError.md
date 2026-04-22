@@ -1,6 +1,6 @@
 
 
-# Error1
+# BrtcError
 
 
 ## Properties
@@ -11,7 +11,7 @@
 |**type** | **String** | The type of error. |  |
 |**description** | **String** | A description of the error. |  |
 |**code** | **String** | A code that uniquely identifies the error. |  [optional] |
-|**source** | [**Error1Source**](Error1Source.md) |  |  [optional] |
+|**source** | [**BrtcErrorSource**](BrtcErrorSource.md) |  |  [optional] |
 
 
 

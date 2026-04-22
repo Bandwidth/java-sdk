@@ -27,12 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.bandwidth.sdk.model.BrtcErrorResponse;
 import com.bandwidth.sdk.model.CreateEndpointResponse;
 import com.bandwidth.sdk.model.CreateWebRtcConnectionRequest;
 import com.bandwidth.sdk.model.EndpointResponse;
 import com.bandwidth.sdk.model.EndpointStatusEnum;
 import com.bandwidth.sdk.model.EndpointTypeEnum;
-import com.bandwidth.sdk.model.ErrorResponse;
 import com.bandwidth.sdk.model.ListEndpointsResponse;
 
 import java.lang.reflect.Type;

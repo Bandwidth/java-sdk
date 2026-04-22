@@ -26,7 +26,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The possible inbound callback types originating from MO messages or multichannel message client responses: - &#x60;message-received&#x60; indicates an MO message from a Bandwidth user&#39;s client to a Bandwidth number. - &#x60;request-location-response&#x60; indicates a response to a location request sent by the Bandwidth user&#39;s client after receiving an RBM message.  - &#x60;suggestion-response&#x60; indicates a response to a suggestion sent by the Bandwidth user&#39;s client after receiving an RBM message.
+ * The possible inbound callback types originating from MO messages or multichannel message client responses: - &#x60;message-received&#x60; indicates an MO message from a Bandwidth user&#39;s client to a Bandwidth number. - &#x60;request-location-response&#x60; indicates a response to a location request sent by the Bandwidth user&#39;s client after receiving an RBM message. - &#x60;suggestion-response&#x60; indicates a response to a suggestion sent by the Bandwidth user&#39;s client after receiving an RBM message.
  */
 @JsonAdapter(InboundCallbackTypeEnum.Adapter.class)
 public enum InboundCallbackTypeEnum {
