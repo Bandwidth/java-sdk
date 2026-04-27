@@ -11,6 +11,10 @@ docs/AsyncLookupRequest.md
 docs/BlockedWebhook.md
 docs/BridgeCompleteCallback.md
 docs/BridgeTargetCompleteCallback.md
+docs/BrtcError.md
+docs/BrtcErrorResponse.md
+docs/BrtcErrorSource.md
+docs/BrtcLink.md
 docs/BusinessEntityTypeEnum.md
 docs/BusinessRegistrationTypeEnum.md
 docs/CallDirectionEnum.md
@@ -67,9 +71,7 @@ docs/EndpointStatusEnum.md
 docs/EndpointTypeEnum.md
 docs/Endpoints.md
 docs/EndpointsApi.md
-docs/Error.md
 docs/ErrorObject.md
-docs/ErrorResponse.md
 docs/ErrorSource.md
 docs/FailureWebhook.md
 docs/FieldError.md
@@ -207,6 +209,7 @@ docs/VoiceApiError.md
 docs/VoiceCodeResponse.md
 docs/WebhookSubscription.md
 docs/WebhookSubscriptionBasicAuthentication.md
+docs/WebhookSubscriptionError.md
 docs/WebhookSubscriptionRequestSchema.md
 docs/WebhookSubscriptionTypeEnum.md
 docs/WebhookSubscriptionsListBody.md
@@ -261,6 +264,10 @@ src/main/java/com/bandwidth/sdk/model/AsyncLookupRequest.java
 src/main/java/com/bandwidth/sdk/model/BlockedWebhook.java
 src/main/java/com/bandwidth/sdk/model/BridgeCompleteCallback.java
 src/main/java/com/bandwidth/sdk/model/BridgeTargetCompleteCallback.java
+src/main/java/com/bandwidth/sdk/model/BrtcError.java
+src/main/java/com/bandwidth/sdk/model/BrtcErrorResponse.java
+src/main/java/com/bandwidth/sdk/model/BrtcErrorSource.java
+src/main/java/com/bandwidth/sdk/model/BrtcLink.java
 src/main/java/com/bandwidth/sdk/model/BusinessEntityTypeEnum.java
 src/main/java/com/bandwidth/sdk/model/BusinessRegistrationTypeEnum.java
 src/main/java/com/bandwidth/sdk/model/CallDirectionEnum.java
@@ -314,9 +321,7 @@ src/main/java/com/bandwidth/sdk/model/EndpointResponse.java
 src/main/java/com/bandwidth/sdk/model/EndpointStatusEnum.java
 src/main/java/com/bandwidth/sdk/model/EndpointTypeEnum.java
 src/main/java/com/bandwidth/sdk/model/Endpoints.java
-src/main/java/com/bandwidth/sdk/model/Error.java
 src/main/java/com/bandwidth/sdk/model/ErrorObject.java
-src/main/java/com/bandwidth/sdk/model/ErrorResponse.java
 src/main/java/com/bandwidth/sdk/model/ErrorSource.java
 src/main/java/com/bandwidth/sdk/model/FailureWebhook.java
 src/main/java/com/bandwidth/sdk/model/FieldError.java
@@ -444,6 +449,7 @@ src/main/java/com/bandwidth/sdk/model/VoiceApiError.java
 src/main/java/com/bandwidth/sdk/model/VoiceCodeResponse.java
 src/main/java/com/bandwidth/sdk/model/WebhookSubscription.java
 src/main/java/com/bandwidth/sdk/model/WebhookSubscriptionBasicAuthentication.java
+src/main/java/com/bandwidth/sdk/model/WebhookSubscriptionError.java
 src/main/java/com/bandwidth/sdk/model/WebhookSubscriptionRequestSchema.java
 src/main/java/com/bandwidth/sdk/model/WebhookSubscriptionTypeEnum.java
 src/main/java/com/bandwidth/sdk/model/WebhookSubscriptionsListBody.java

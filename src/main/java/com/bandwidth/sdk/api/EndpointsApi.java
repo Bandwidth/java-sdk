@@ -27,12 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.bandwidth.sdk.model.BrtcErrorResponse;
 import com.bandwidth.sdk.model.CreateEndpointResponse;
 import com.bandwidth.sdk.model.CreateWebRtcConnectionRequest;
 import com.bandwidth.sdk.model.EndpointResponse;
 import com.bandwidth.sdk.model.EndpointStatusEnum;
 import com.bandwidth.sdk.model.EndpointTypeEnum;
-import com.bandwidth.sdk.model.ErrorResponse;
 import com.bandwidth.sdk.model.ListEndpointsResponse;
 
 import java.lang.reflect.Type;
@@ -96,7 +96,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -180,7 +180,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -207,7 +207,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -236,7 +236,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -265,7 +265,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -348,7 +348,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -374,7 +374,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -402,7 +402,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -430,7 +430,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -514,7 +514,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -541,7 +541,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -570,7 +570,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -602,7 +602,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -699,7 +699,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -729,7 +729,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -761,7 +761,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -791,7 +791,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -881,7 +881,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -908,7 +908,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -937,7 +937,7 @@ public class EndpointsApi {
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
         <tr><td> 415 </td><td> Unsupported Media Type </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  * Retry-After - The number of seconds the client should wait before making another request. <br>  </td></tr>
         <tr><td> 500 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */

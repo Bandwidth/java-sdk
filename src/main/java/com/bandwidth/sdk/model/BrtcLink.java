@@ -15,18 +15,13 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import java.util.Locale;
-import com.bandwidth.sdk.model.BrtcError;
-import com.bandwidth.sdk.model.BrtcLink;
-import com.bandwidth.sdk.model.CreateEndpointResponseData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,98 +48,82 @@ import java.util.Locale;
 import com.bandwidth.sdk.JSON;
 
 /**
- * CreateEndpointResponse
+ * BrtcLink
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
-public class CreateEndpointResponse {
-  public static final String SERIALIZED_NAME_LINKS = "links";
-  @SerializedName(SERIALIZED_NAME_LINKS)
-  @javax.annotation.Nonnull
-  private List<BrtcLink> links = new ArrayList<>();
+public class BrtcLink {
+  public static final String SERIALIZED_NAME_HREF = "href";
+  @SerializedName(SERIALIZED_NAME_HREF)
+  @javax.annotation.Nullable
+  private String href;
 
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  @javax.annotation.Nonnull
-  private CreateEndpointResponseData data;
+  public static final String SERIALIZED_NAME_REL = "rel";
+  @SerializedName(SERIALIZED_NAME_REL)
+  @javax.annotation.Nullable
+  private String rel;
 
-  public static final String SERIALIZED_NAME_ERRORS = "errors";
-  @SerializedName(SERIALIZED_NAME_ERRORS)
-  @javax.annotation.Nonnull
-  private List<BrtcError> errors = new ArrayList<>();
+  public static final String SERIALIZED_NAME_METHOD = "method";
+  @SerializedName(SERIALIZED_NAME_METHOD)
+  @javax.annotation.Nullable
+  private String method;
 
-  public CreateEndpointResponse() {
+  public BrtcLink() {
   }
 
-  public CreateEndpointResponse links(@javax.annotation.Nonnull List<BrtcLink> links) {
-    this.links = links;
-    return this;
-  }
-
-  public CreateEndpointResponse addLinksItem(BrtcLink linksItem) {
-    if (this.links == null) {
-      this.links = new ArrayList<>();
-    }
-    this.links.add(linksItem);
+  public BrtcLink href(@javax.annotation.Nullable String href) {
+    this.href = href;
     return this;
   }
 
   /**
-   * Get links
-   * @return links
+   * The full URL of the link.
+   * @return href
    */
-  @javax.annotation.Nonnull
-  public List<BrtcLink> getLinks() {
-    return links;
+  @javax.annotation.Nullable
+  public String getHref() {
+    return href;
   }
 
-  public void setLinks(@javax.annotation.Nonnull List<BrtcLink> links) {
-    this.links = links;
+  public void setHref(@javax.annotation.Nullable String href) {
+    this.href = href;
   }
 
 
-  public CreateEndpointResponse data(@javax.annotation.Nonnull CreateEndpointResponseData data) {
-    this.data = data;
+  public BrtcLink rel(@javax.annotation.Nullable String rel) {
+    this.rel = rel;
     return this;
   }
 
   /**
-   * Get data
-   * @return data
+   * The relationship of the link to the current resource.
+   * @return rel
    */
-  @javax.annotation.Nonnull
-  public CreateEndpointResponseData getData() {
-    return data;
+  @javax.annotation.Nullable
+  public String getRel() {
+    return rel;
   }
 
-  public void setData(@javax.annotation.Nonnull CreateEndpointResponseData data) {
-    this.data = data;
+  public void setRel(@javax.annotation.Nullable String rel) {
+    this.rel = rel;
   }
 
 
-  public CreateEndpointResponse errors(@javax.annotation.Nonnull List<BrtcError> errors) {
-    this.errors = errors;
-    return this;
-  }
-
-  public CreateEndpointResponse addErrorsItem(BrtcError errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
-    }
-    this.errors.add(errorsItem);
+  public BrtcLink method(@javax.annotation.Nullable String method) {
+    this.method = method;
     return this;
   }
 
   /**
-   * Get errors
-   * @return errors
+   * The HTTP method to use when making the request.
+   * @return method
    */
-  @javax.annotation.Nonnull
-  public List<BrtcError> getErrors() {
-    return errors;
+  @javax.annotation.Nullable
+  public String getMethod() {
+    return method;
   }
 
-  public void setErrors(@javax.annotation.Nonnull List<BrtcError> errors) {
-    this.errors = errors;
+  public void setMethod(@javax.annotation.Nullable String method) {
+    this.method = method;
   }
 
   /**
@@ -160,9 +139,9 @@ public class CreateEndpointResponse {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the CreateEndpointResponse instance itself
+   * @return the BrtcLink instance itself
    */
-  public CreateEndpointResponse putAdditionalProperty(String key, Object value) {
+  public BrtcLink putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -201,25 +180,25 @@ public class CreateEndpointResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CreateEndpointResponse createEndpointResponse = (CreateEndpointResponse) o;
-    return Objects.equals(this.links, createEndpointResponse.links) &&
-        Objects.equals(this.data, createEndpointResponse.data) &&
-        Objects.equals(this.errors, createEndpointResponse.errors)&&
-        Objects.equals(this.additionalProperties, createEndpointResponse.additionalProperties);
+    BrtcLink brtcLink = (BrtcLink) o;
+    return Objects.equals(this.href, brtcLink.href) &&
+        Objects.equals(this.rel, brtcLink.rel) &&
+        Objects.equals(this.method, brtcLink.method)&&
+        Objects.equals(this.additionalProperties, brtcLink.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(links, data, errors, additionalProperties);
+    return Objects.hash(href, rel, method, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CreateEndpointResponse {\n");
-    sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("class BrtcLink {\n");
+    sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("    rel: ").append(toIndentedString(rel)).append("\n");
+    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -242,70 +221,50 @@ public class CreateEndpointResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("links", "data", "errors"));
+    openapiFields = new HashSet<String>(Arrays.asList("href", "rel", "method"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("links", "data", "errors"));
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CreateEndpointResponse
+   * @throws IOException if the JSON Element is invalid with respect to BrtcLink
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!CreateEndpointResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in CreateEndpointResponse is not found in the empty JSON string", CreateEndpointResponse.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CreateEndpointResponse.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        if (!BrtcLink.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in BrtcLink is not found in the empty JSON string", BrtcLink.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the json data is an array
-      if (!jsonObj.get("links").isJsonArray()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
+      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
       }
-
-      JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
-      // validate the required field `links` (array)
-      for (int i = 0; i < jsonArraylinks.size(); i++) {
-        BrtcLink.validateJsonElement(jsonArraylinks.get(i));
-      };
-      // validate the required field `data`
-      CreateEndpointResponseData.validateJsonElement(jsonObj.get("data"));
-      // ensure the json data is an array
-      if (!jsonObj.get("errors").isJsonArray()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
+      if ((jsonObj.get("rel") != null && !jsonObj.get("rel").isJsonNull()) && !jsonObj.get("rel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `rel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rel").toString()));
       }
-
-      JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
-      // validate the required field `errors` (array)
-      for (int i = 0; i < jsonArrayerrors.size(); i++) {
-        BrtcError.validateJsonElement(jsonArrayerrors.get(i));
-      };
+      if ((jsonObj.get("method") != null && !jsonObj.get("method").isJsonNull()) && !jsonObj.get("method").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `method` to be a primitive type in the JSON string but got `%s`", jsonObj.get("method").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CreateEndpointResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CreateEndpointResponse' and its subtypes
+       if (!BrtcLink.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'BrtcLink' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CreateEndpointResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CreateEndpointResponse.class));
+       final TypeAdapter<BrtcLink> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(BrtcLink.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CreateEndpointResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<BrtcLink>() {
            @Override
-           public void write(JsonWriter out, CreateEndpointResponse value) throws IOException {
+           public void write(JsonWriter out, BrtcLink value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -333,12 +292,12 @@ public class CreateEndpointResponse {
            }
 
            @Override
-           public CreateEndpointResponse read(JsonReader in) throws IOException {
+           public BrtcLink read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             CreateEndpointResponse instance = thisAdapter.fromJsonTree(jsonObj);
+             BrtcLink instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -365,18 +324,18 @@ public class CreateEndpointResponse {
   }
 
   /**
-   * Create an instance of CreateEndpointResponse given an JSON string
+   * Create an instance of BrtcLink given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of CreateEndpointResponse
-   * @throws IOException if the JSON string is invalid with respect to CreateEndpointResponse
+   * @return An instance of BrtcLink
+   * @throws IOException if the JSON string is invalid with respect to BrtcLink
    */
-  public static CreateEndpointResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CreateEndpointResponse.class);
+  public static BrtcLink fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, BrtcLink.class);
   }
 
   /**
-   * Convert an instance of CreateEndpointResponse to an JSON string
+   * Convert an instance of BrtcLink to an JSON string
    *
    * @return JSON string
    */

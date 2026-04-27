@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**links** | [**List&lt;Link&gt;**](Link.md) |  |  |
+|**links** | [**List&lt;BrtcLink&gt;**](BrtcLink.md) |  |  |
 |**data** | [**Endpoint**](Endpoint.md) |  |  |
-|**errors** | [**List&lt;Error&gt;**](Error.md) |  |  |
+|**errors** | [**List&lt;BrtcError&gt;**](BrtcError.md) |  |  |
 
 
 

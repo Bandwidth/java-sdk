@@ -19,8 +19,8 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import com.bandwidth.sdk.model.CreateEndpointResponse;
 import com.bandwidth.sdk.model.CreateEndpointResponseData;
-import com.bandwidth.sdk.model.Link;
-import com.bandwidth.sdk.model.Error;
+import com.bandwidth.sdk.model.BrtcLink;
+import com.bandwidth.sdk.model.BrtcError;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -31,9 +31,9 @@ import static org.hamcrest.CoreMatchers.equalTo;
  */
 public class CreateEndpointResponseTest {
     private final CreateEndpointResponse model = new CreateEndpointResponse()
-            .links(new ArrayList<Link>(Arrays.asList(new Link())))
+            .links(new ArrayList<BrtcLink>(Arrays.asList(new BrtcLink())))
             .data(new CreateEndpointResponseData())
-            .errors(new ArrayList<Error>(Arrays.asList(new Error())));
+            .errors(new ArrayList<BrtcError>(Arrays.asList(new BrtcError())));
 
     /**
      * Model tests for CreateEndpointResponse

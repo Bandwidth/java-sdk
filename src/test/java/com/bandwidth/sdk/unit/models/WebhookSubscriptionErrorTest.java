@@ -17,27 +17,27 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
-import com.bandwidth.sdk.model.Error;
+import com.bandwidth.sdk.model.WebhookSubscriptionError;
 import com.bandwidth.sdk.model.TelephoneNumber;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
- * Model tests for Error
+ * Model tests for WebhookSubscriptionError
  */
-public class ErrorTest {
-    private final Error model = new Error()
+public class WebhookSubscriptionErrorTest {
+    private final WebhookSubscriptionError model = new WebhookSubscriptionError()
             .code(1234)
             .description("description")
             .telephoneNumbers(new ArrayList<TelephoneNumber>(Arrays.asList(new TelephoneNumber())));
 
     /**
-     * Model tests for Error
+     * Model tests for WebhookSubscriptionError
      */
     @Test
-    public void testError() {
-        assertThat(model, instanceOf(Error.class));
+    public void testWebhookSubscriptionError() {
+        assertThat(model, instanceOf(WebhookSubscriptionError.class));
     }
 
     /**

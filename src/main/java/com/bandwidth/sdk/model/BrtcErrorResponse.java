@@ -17,7 +17,6 @@ import java.util.Objects;
 import java.util.Locale;
 import com.bandwidth.sdk.model.BrtcError;
 import com.bandwidth.sdk.model.BrtcLink;
-import com.bandwidth.sdk.model.CreateEndpointResponseData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -53,10 +52,10 @@ import java.util.Locale;
 import com.bandwidth.sdk.JSON;
 
 /**
- * CreateEndpointResponse
+ * BrtcErrorResponse
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
-public class CreateEndpointResponse {
+public class BrtcErrorResponse {
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nonnull
@@ -64,23 +63,23 @@ public class CreateEndpointResponse {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  @javax.annotation.Nonnull
-  private CreateEndpointResponseData data;
+  @javax.annotation.Nullable
+  private Object data;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   @javax.annotation.Nonnull
   private List<BrtcError> errors = new ArrayList<>();
 
-  public CreateEndpointResponse() {
+  public BrtcErrorResponse() {
   }
 
-  public CreateEndpointResponse links(@javax.annotation.Nonnull List<BrtcLink> links) {
+  public BrtcErrorResponse links(@javax.annotation.Nonnull List<BrtcLink> links) {
     this.links = links;
     return this;
   }
 
-  public CreateEndpointResponse addLinksItem(BrtcLink linksItem) {
+  public BrtcErrorResponse addLinksItem(BrtcLink linksItem) {
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -102,7 +101,7 @@ public class CreateEndpointResponse {
   }
 
 
-  public CreateEndpointResponse data(@javax.annotation.Nonnull CreateEndpointResponseData data) {
+  public BrtcErrorResponse data(@javax.annotation.Nullable Object data) {
     this.data = data;
     return this;
   }
@@ -111,22 +110,22 @@ public class CreateEndpointResponse {
    * Get data
    * @return data
    */
-  @javax.annotation.Nonnull
-  public CreateEndpointResponseData getData() {
+  @javax.annotation.Nullable
+  public Object getData() {
     return data;
   }
 
-  public void setData(@javax.annotation.Nonnull CreateEndpointResponseData data) {
+  public void setData(@javax.annotation.Nullable Object data) {
     this.data = data;
   }
 
 
-  public CreateEndpointResponse errors(@javax.annotation.Nonnull List<BrtcError> errors) {
+  public BrtcErrorResponse errors(@javax.annotation.Nonnull List<BrtcError> errors) {
     this.errors = errors;
     return this;
   }
 
-  public CreateEndpointResponse addErrorsItem(BrtcError errorsItem) {
+  public BrtcErrorResponse addErrorsItem(BrtcError errorsItem) {
     if (this.errors == null) {
       this.errors = new ArrayList<>();
     }
@@ -160,9 +159,9 @@ public class CreateEndpointResponse {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the CreateEndpointResponse instance itself
+   * @return the BrtcErrorResponse instance itself
    */
-  public CreateEndpointResponse putAdditionalProperty(String key, Object value) {
+  public BrtcErrorResponse putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -201,11 +200,11 @@ public class CreateEndpointResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CreateEndpointResponse createEndpointResponse = (CreateEndpointResponse) o;
-    return Objects.equals(this.links, createEndpointResponse.links) &&
-        Objects.equals(this.data, createEndpointResponse.data) &&
-        Objects.equals(this.errors, createEndpointResponse.errors)&&
-        Objects.equals(this.additionalProperties, createEndpointResponse.additionalProperties);
+    BrtcErrorResponse brtcErrorResponse = (BrtcErrorResponse) o;
+    return Objects.equals(this.links, brtcErrorResponse.links) &&
+        Objects.equals(this.data, brtcErrorResponse.data) &&
+        Objects.equals(this.errors, brtcErrorResponse.errors)&&
+        Objects.equals(this.additionalProperties, brtcErrorResponse.additionalProperties);
   }
 
   @Override
@@ -216,7 +215,7 @@ public class CreateEndpointResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CreateEndpointResponse {\n");
+    sb.append("class BrtcErrorResponse {\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
@@ -252,17 +251,17 @@ public class CreateEndpointResponse {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CreateEndpointResponse
+   * @throws IOException if the JSON Element is invalid with respect to BrtcErrorResponse
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!CreateEndpointResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in CreateEndpointResponse is not found in the empty JSON string", CreateEndpointResponse.openapiRequiredFields.toString()));
+        if (!BrtcErrorResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in BrtcErrorResponse is not found in the empty JSON string", BrtcErrorResponse.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CreateEndpointResponse.openapiRequiredFields) {
+      for (String requiredField : BrtcErrorResponse.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -278,8 +277,6 @@ public class CreateEndpointResponse {
       for (int i = 0; i < jsonArraylinks.size(); i++) {
         BrtcLink.validateJsonElement(jsonArraylinks.get(i));
       };
-      // validate the required field `data`
-      CreateEndpointResponseData.validateJsonElement(jsonObj.get("data"));
       // ensure the json data is an array
       if (!jsonObj.get("errors").isJsonArray()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
@@ -296,16 +293,16 @@ public class CreateEndpointResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CreateEndpointResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CreateEndpointResponse' and its subtypes
+       if (!BrtcErrorResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'BrtcErrorResponse' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CreateEndpointResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CreateEndpointResponse.class));
+       final TypeAdapter<BrtcErrorResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(BrtcErrorResponse.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CreateEndpointResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<BrtcErrorResponse>() {
            @Override
-           public void write(JsonWriter out, CreateEndpointResponse value) throws IOException {
+           public void write(JsonWriter out, BrtcErrorResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -333,12 +330,12 @@ public class CreateEndpointResponse {
            }
 
            @Override
-           public CreateEndpointResponse read(JsonReader in) throws IOException {
+           public BrtcErrorResponse read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             CreateEndpointResponse instance = thisAdapter.fromJsonTree(jsonObj);
+             BrtcErrorResponse instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -365,18 +362,18 @@ public class CreateEndpointResponse {
   }
 
   /**
-   * Create an instance of CreateEndpointResponse given an JSON string
+   * Create an instance of BrtcErrorResponse given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of CreateEndpointResponse
-   * @throws IOException if the JSON string is invalid with respect to CreateEndpointResponse
+   * @return An instance of BrtcErrorResponse
+   * @throws IOException if the JSON string is invalid with respect to BrtcErrorResponse
    */
-  public static CreateEndpointResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CreateEndpointResponse.class);
+  public static BrtcErrorResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, BrtcErrorResponse.class);
   }
 
   /**
-   * Convert an instance of CreateEndpointResponse to an JSON string
+   * Convert an instance of BrtcErrorResponse to an JSON string
    *
    * @return JSON string
    */

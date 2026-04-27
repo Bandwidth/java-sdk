@@ -1,15 +1,15 @@
 
 
-# ErrorResponse
+# BrtcErrorResponse
 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**links** | [**List&lt;Link&gt;**](Link.md) |  |  |
+|**links** | [**List&lt;BrtcLink&gt;**](BrtcLink.md) |  |  |
 |**data** | **Object** |  |  |
-|**errors** | [**List&lt;Error&gt;**](Error.md) |  |  |
+|**errors** | [**List&lt;BrtcError&gt;**](BrtcError.md) |  |  |
 
 
 

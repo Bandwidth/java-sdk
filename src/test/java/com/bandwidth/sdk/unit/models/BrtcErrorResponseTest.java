@@ -14,32 +14,33 @@ package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
+import java.util.ArrayList;
 import com.bandwidth.sdk.model.BrtcErrorResponse;
 import com.bandwidth.sdk.model.BrtcLink;
 import com.bandwidth.sdk.model.BrtcError;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
-import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for BrtcErrorResponse
  */
-public class ErrorResponseTest {
+public class BrtcErrorResponseTest {
     private final BrtcErrorResponse model = new BrtcErrorResponse()
-            .links(new ArrayList<BrtcLink>())
+            .links(new ArrayList<BrtcLink>(Arrays.asList(new BrtcLink())))
             .data(null)
-            .errors(new ArrayList<BrtcError>());
+            .errors(new ArrayList<BrtcError>(Arrays.asList(new BrtcError())));
 
     /**
-     * Model tests for ErrorResponse
+     * Model tests for BrtcErrorResponse
      */
     @Test
-    public void testErrorResponse() {
+    public void testBrtcErrorResponse() {
         assertThat(model, instanceOf(BrtcErrorResponse.class));
     }
 
@@ -49,7 +50,7 @@ public class ErrorResponseTest {
     @Test
     public void linksTest() {
         assertThat(model.getLinks(), instanceOf(List.class));
-        assertThat(model.getLinks().size(), equalTo(0));
+        assertThat(model.getLinks().size(), equalTo(1));
     }
 
     /**
@@ -66,6 +67,7 @@ public class ErrorResponseTest {
     @Test
     public void errorsTest() {
         assertThat(model.getErrors(), instanceOf(List.class));
-        assertThat(model.getErrors().size(), equalTo(0));
+        assertThat(model.getErrors().size(), equalTo(1));
     }
+
 }
