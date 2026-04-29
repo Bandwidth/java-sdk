@@ -4,18 +4,14 @@
  */
 package com.bandwidth.sdk.model.bxml;
 
-import static com.bandwidth.sdk.model.bxml.utils.BxmlConstants.DEFAULT_CALLBACK_METHOD;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.XmlValue;
 import jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Builder.Default;
+import lombok.experimental.SuperBuilder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,9 +20,9 @@ import lombok.NoArgsConstructor;
 @XmlType(name = PhoneNumber.TYPE_NAME)
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @Getter
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 /**
  *
  * @param number (str): A phone number to transfer the call to. Value must be in E.164 format (e.g. +15555555555).
@@ -44,50 +40,14 @@ import lombok.NoArgsConstructor;
  * @param uui (str, optional): The value of the User-To-User header to send within the initial INVITE. Must include the encoding parameter as specified in RFC 7433. Only base64, jwt and hex encoding are currently allowed. This value, including the encoding specifier, may not exceed 256 characters.
  *
  */
-public class PhoneNumber implements OutboundDestination {
+public class PhoneNumber extends OutboundDestination {
 
     public static final String TYPE_NAME = "PhoneNumber";
 
     @XmlValue
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String number;
-
-    @XmlAttribute
-    protected String username;
-
-    @XmlAttribute
-    protected String password;
-
-    @XmlAttribute
-    protected String fallbackUsername;
-
-    @XmlAttribute
-    protected String fallbackPassword;
-
-    @XmlAttribute
-    protected String transferAnswerUrl;
-
-    @XmlAttribute
-    @Default
-    protected String transferAnswerMethod = DEFAULT_CALLBACK_METHOD;
-
-    @XmlAttribute
-    protected String transferAnswerFallbackUrl;
-
-    @XmlAttribute
-    @Default
-    protected String transferAnswerFallbackMethod = DEFAULT_CALLBACK_METHOD;
-
-    @XmlAttribute
-    protected String transferDisconnectUrl;
-
-    @XmlAttribute
-    @Default
-    protected String transferDisconnectMethod = DEFAULT_CALLBACK_METHOD;
-
-    @XmlAttribute
-    protected String tag;
-
-    @XmlAttribute
-    protected String uui;
+    public String getNumber() {
+        return number;
+    }
 }

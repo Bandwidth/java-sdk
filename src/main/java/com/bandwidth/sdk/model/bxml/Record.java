@@ -51,7 +51,7 @@ import lombok.NoArgsConstructor;
  * @param fileFormat (str, optional): The audio format that the recording will be saved as: mp3 or wav. Default value is wav. Defaults to None.
  *
  */
-public class Record implements TranscriptionProducer {
+public class Record implements Verb {
 
     public static final String TYPE_NAME = "Record";
 
@@ -93,6 +93,9 @@ public class Record implements TranscriptionProducer {
 
     @XmlAttribute
     protected Boolean transcribe;
+    public Boolean getTranscribe() {
+        return transcribe;
+    }
 
     @XmlAttribute
     @Default
@@ -100,9 +103,15 @@ public class Record implements TranscriptionProducer {
 
     @XmlAttribute
     protected String transcriptionAvailableUrl;
+    String getTranscriptionAvailableUrl() {
+        return transcriptionAvailableUrl;
+    }
 
     @XmlAttribute
     protected String transcriptionAvailableMethod;
+    String getTranscriptionAvailableMethod() {
+        return transcriptionAvailableMethod;
+    }
 
     @XmlAttribute
     protected String username;
