@@ -5985,9 +5985,6 @@ paths:
       summary: List Endpoints
       tags:
       - Endpoints
-      x-badges:
-      - name: Beta
-        color: "#076EA8"
       x-accepts:
       - application/json
     post:
@@ -6103,9 +6100,6 @@ paths:
       summary: Create Endpoint
       tags:
       - Endpoints
-      x-badges:
-      - name: Beta
-        color: "#076EA8"
       x-content-type: application/json
       x-accepts:
       - application/json
@@ -6224,9 +6218,6 @@ paths:
       summary: Delete Endpoint
       tags:
       - Endpoints
-      x-badges:
-      - name: Beta
-        color: "#076EA8"
       x-accepts:
       - application/json
     get:
@@ -6346,9 +6337,6 @@ paths:
       summary: Get Endpoint
       tags:
       - Endpoints
-      x-badges:
-      - name: Beta
-        color: "#076EA8"
       x-accepts:
       - application/json
     servers:
@@ -6467,9 +6455,6 @@ paths:
       summary: Update Endpoint BXML
       tags:
       - Endpoints
-      x-badges:
-      - name: Beta
-        color: "#076EA8"
       x-content-type: application/xml
       x-accepts:
       - application/json
