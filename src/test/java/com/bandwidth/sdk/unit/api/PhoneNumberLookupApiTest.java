@@ -101,7 +101,8 @@ public class PhoneNumberLookupApiTest {
     @Test
     public void createSyncLookupTest() throws ApiException {
         SyncLookupRequest syncLookupRequest = new SyncLookupRequest()
-            .phoneNumbers(Arrays.asList("+1234567890", "+1987654321"));
+            .phoneNumbers(Arrays.asList("+1234567890", "+1987654321"))
+            .rcsAgent("TestAgent");
         ApiResponse<CreateSyncLookupResponse> response = api.createSyncLookupWithHttpInfo(BW_ACCOUNT_ID, syncLookupRequest);
         assertThat(response.getStatusCode(), is(200));
         assertThat(response.getData(), instanceOf(CreateSyncLookupResponse.class));

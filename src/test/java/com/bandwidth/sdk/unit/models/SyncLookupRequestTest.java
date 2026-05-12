@@ -29,7 +29,8 @@ import static org.hamcrest.CoreMatchers.instanceOf;
  */
 public class SyncLookupRequestTest {
     private final SyncLookupRequest model = new SyncLookupRequest()
-            .phoneNumbers(new ArrayList<String>(Arrays.asList("+1234567890", "+1987654321")));
+            .phoneNumbers(new ArrayList<String>(Arrays.asList("+1234567890", "+1987654321")))
+            .rcsAgent("TestAgent");
 
     /**
      * Model tests for SyncLookupRequest
@@ -45,6 +46,14 @@ public class SyncLookupRequestTest {
     @Test
     public void phoneNumbersTest() {
         assertThat(model.getPhoneNumbers(), instanceOf(List.class));
+    }
+
+    /**
+     * Test the property 'rcsAgent'
+     */
+    @Test
+    public void rcsAgentTest() {
+        assertThat(model.getRcsAgent(), instanceOf(String.class));
     }
 
 }
