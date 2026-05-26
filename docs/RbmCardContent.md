@@ -2,6 +2,7 @@
 
 # RbmCardContent
 
+Must contain at least one of title, description, or media to be valid.
 
 ## Properties
 
