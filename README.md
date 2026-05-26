@@ -365,6 +365,7 @@ Class | Method | HTTP request | Description
  - [TranscribeRecording](docs/TranscribeRecording.md)
  - [Transcription](docs/Transcription.md)
  - [TranscriptionAvailableCallback](docs/TranscriptionAvailableCallback.md)
+ - [Refer (BXML verb)](docs/Refer.md)
  - [TransferAnswerCallback](docs/TransferAnswerCallback.md)
  - [TransferCompleteCallback](docs/TransferCompleteCallback.md)
  - [TransferDisconnectCallback](docs/TransferDisconnectCallback.md)
