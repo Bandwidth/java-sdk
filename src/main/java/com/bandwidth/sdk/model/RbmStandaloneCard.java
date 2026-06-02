@@ -65,7 +65,7 @@ public class RbmStandaloneCard {
 
   public static final String SERIALIZED_NAME_THUMBNAIL_IMAGE_ALIGNMENT = "thumbnailImageAlignment";
   @SerializedName(SERIALIZED_NAME_THUMBNAIL_IMAGE_ALIGNMENT)
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private ThumbnailAlignmentEnum thumbnailImageAlignment;
 
   public static final String SERIALIZED_NAME_CARD_CONTENT = "cardContent";
@@ -100,7 +100,7 @@ public class RbmStandaloneCard {
   }
 
 
-  public RbmStandaloneCard thumbnailImageAlignment(@javax.annotation.Nonnull ThumbnailAlignmentEnum thumbnailImageAlignment) {
+  public RbmStandaloneCard thumbnailImageAlignment(@javax.annotation.Nullable ThumbnailAlignmentEnum thumbnailImageAlignment) {
     this.thumbnailImageAlignment = thumbnailImageAlignment;
     return this;
   }
@@ -109,12 +109,12 @@ public class RbmStandaloneCard {
    * Get thumbnailImageAlignment
    * @return thumbnailImageAlignment
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ThumbnailAlignmentEnum getThumbnailImageAlignment() {
     return thumbnailImageAlignment;
   }
 
-  public void setThumbnailImageAlignment(@javax.annotation.Nonnull ThumbnailAlignmentEnum thumbnailImageAlignment) {
+  public void setThumbnailImageAlignment(@javax.annotation.Nullable ThumbnailAlignmentEnum thumbnailImageAlignment) {
     this.thumbnailImageAlignment = thumbnailImageAlignment;
   }
 
@@ -264,7 +264,7 @@ public class RbmStandaloneCard {
     openapiFields = new HashSet<String>(Arrays.asList("orientation", "thumbnailImageAlignment", "cardContent", "suggestions"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("orientation", "thumbnailImageAlignment", "cardContent"));
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("orientation", "cardContent"));
   }
 
   /**
@@ -289,8 +289,10 @@ public class RbmStandaloneCard {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `orientation`
       StandaloneCardOrientationEnum.validateJsonElement(jsonObj.get("orientation"));
-      // validate the required field `thumbnailImageAlignment`
-      ThumbnailAlignmentEnum.validateJsonElement(jsonObj.get("thumbnailImageAlignment"));
+      // validate the optional field `thumbnailImageAlignment`
+      if (jsonObj.get("thumbnailImageAlignment") != null && !jsonObj.get("thumbnailImageAlignment").isJsonNull()) {
+        ThumbnailAlignmentEnum.validateJsonElement(jsonObj.get("thumbnailImageAlignment"));
+      }
       // validate the required field `cardContent`
       RbmCardContent.validateJsonElement(jsonObj.get("cardContent"));
       if (jsonObj.get("suggestions") != null && !jsonObj.get("suggestions").isJsonNull()) {
