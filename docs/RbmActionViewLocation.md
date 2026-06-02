@@ -10,8 +10,8 @@
 |**type** | **RbmActionTypeEnum** |  |  |
 |**text** | **String** | Displayed text for user to click |  |
 |**postbackData** | **byte[]** | Base64 payload the customer receives when the reply is clicked. |  |
-|**latitude** | **Double** | The latitude of the location. |  |
-|**longitude** | **Double** | The longitude of the location. |  |
+|**latitude** | **Double** | The latitude of the location. Must be in range [-90.000000, 90.000000]. |  |
+|**longitude** | **Double** | The longitude of the location. Must be in range [-180.000000, 180.000000]. |  |
 |**label** | **String** | The label of the location. |  [optional] |
 
 

@@ -12,7 +12,7 @@ The content of the message.
 |**suggestions** | [**List&lt;MultiChannelAction&gt;**](MultiChannelAction.md) | An array of suggested actions for the recipient. |  [optional] |
 |**media** | [**List&lt;RbmMessageContentFile&gt;**](RbmMessageContentFile.md) |  |  |
 |**orientation** | **StandaloneCardOrientationEnum** |  |  |
-|**thumbnailImageAlignment** | **ThumbnailAlignmentEnum** |  |  |
+|**thumbnailImageAlignment** | **ThumbnailAlignmentEnum** |  |  [optional] |
 |**cardContent** | [**RbmCardContent**](RbmCardContent.md) |  |  |
 |**cardWidth** | **CardWidthEnum** |  |  |
 |**cardContents** | [**List&lt;RbmCardContent&gt;**](RbmCardContent.md) |  |  |

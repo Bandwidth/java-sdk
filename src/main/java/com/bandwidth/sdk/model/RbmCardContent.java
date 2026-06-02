@@ -52,7 +52,7 @@ import java.util.Locale;
 import com.bandwidth.sdk.JSON;
 
 /**
- * RbmCardContent
+ * Must contain at least one of title, description, or media to be valid.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class RbmCardContent {
