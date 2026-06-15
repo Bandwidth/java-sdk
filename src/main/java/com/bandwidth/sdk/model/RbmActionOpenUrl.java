@@ -152,7 +152,7 @@ public class RbmActionOpenUrl {
   }
 
   /**
-   * The URL to open in browser.
+   * The URL to open in browser. Must use http:// or https:// scheme.
    * @return url
    */
   @javax.annotation.Nonnull
