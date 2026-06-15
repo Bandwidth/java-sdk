@@ -5139,11 +5139,9 @@ components:
     transferCompleteCallback:
       type: object
       description: >-
-        This event is sent to the transferCompleteUrl of the A-leg's <Transfer>
-        verb when the transferred call (B-leg) completes. In a simultaneous
-        ringing scenario, only one B-leg succeeds and this event corresponds to
-        that successful leg. If none of the calls were answered, the
-        transferComplete event corresponds to one of the legs.
+        The Refer Complete event is fired when the <Refer> verb finishes
+        executing. This is sent to the referCompleteUrl specified on the
+        <Refer> verb, and the BXML returned in it is executed on the call.
       properties:
         eventType:
           $ref: '#/components/schemas/eventType'
@@ -5175,6 +5173,68 @@ components:
           $ref: '#/components/schemas/transferCallerId'
         transferTo:
           $ref: '#/components/schemas/transferTo'
+        cause:
+          $ref: '#/components/schemas/cause'
+        errorMessage:
+          $ref: '#/components/schemas/errorMessage'
+        errorId:
+          $ref: '#/components/schemas/errorId'
+    referCompleteCallback:
+      type: object
+      description: >-
+        The Refer Complete event is sent to the referCompleteUrl of the <Refer>
+        verb when the SIP REFER operation completes. Note the success-semantics
+        asymmetry: unlike Transfer where success means the call continues, a
+        successful Refer means the remote endpoint has been redirected away and
+        the call is terminated. The BXML returned by this callback is executed
+        on the call only for failure recovery.
+      properties:
+        eventType:
+          $ref: '#/components/schemas/eventType'
+        eventTime:
+          $ref: '#/components/schemas/eventTime'
+        accountId:
+          $ref: '#/components/schemas/accountId'
+        applicationId:
+          $ref: '#/components/schemas/applicationId1'
+        from:
+          $ref: '#/components/schemas/from'
+        to:
+          $ref: '#/components/schemas/to'
+        direction:
+          $ref: '#/components/schemas/callDirectionEnum'
+        callId:
+          $ref: '#/components/schemas/callId'
+        callUrl:
+          $ref: '#/components/schemas/callUrl'
+        enqueuedTime:
+          $ref: '#/components/schemas/enqueuedTime'
+        startTime:
+          $ref: '#/components/schemas/startTime'
+        answerTime:
+          $ref: '#/components/schemas/answerTime'
+        tag:
+          $ref: '#/components/schemas/tag1'
+        referCallStatus:
+          type: string
+          description: >-
+            The outcome of the SIP REFER attempt. Possible values include
+            'success' and 'failure'. On success the call is terminated; on
+            failure the BXML returned by this callback is executed for recovery.
+          example: failure
+        referSipResponseCode:
+          type: integer
+          description: >-
+            The SIP response code received from the remote endpoint in response
+            to the REFER request itself (e.g., 202 Accepted, 603 Declined).
+          example: 202
+        notifySipResponseCode:
+          type: integer
+          description: >-
+            The SIP response code received in the NOTIFY message that reports
+            the final status of the referred call (e.g., 200 OK if the refer
+            target answered, 486 Busy Here if it did not).
+          example: 200
         cause:
           $ref: '#/components/schemas/cause'
         errorMessage:
@@ -5239,8 +5299,8 @@ components:
         conferenceRedirect, conferenceMemberJoin, conferenceMemberExit,
         conferenceCompleted, conferenceRecordingAvailable, disconnect, dtmf,
         gather, initiate, machineDetectionComplete, recordingComplete,
-        recordingAvailable, redirect, transcriptionAvailable, transferAnswer,
-        transferComplete, transferDisconnect.
+        recordingAvailable, redirect, referComplete, transcriptionAvailable,
+        transferAnswer, transferComplete, transferDisconnect.
       example: bridgeComplete
     eventTime:
       type: string

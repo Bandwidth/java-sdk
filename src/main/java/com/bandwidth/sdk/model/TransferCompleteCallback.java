@@ -52,7 +52,7 @@ import java.util.Locale;
 import com.bandwidth.sdk.JSON;
 
 /**
- * This event is sent to the transferCompleteUrl of the A-leg&#39;s &lt;Transfer&gt; verb when the transferred call (B-leg) completes. In a simultaneous ringing scenario, only one B-leg succeeds and this event corresponds to that successful leg. If none of the calls were answered, the transferComplete event corresponds to one of the legs.
+ * The Refer Complete event is fired when the &lt;Refer&gt; verb finishes executing. This is sent to the referCompleteUrl specified on the &lt;Refer&gt; verb, and the BXML returned in it is executed on the call.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class TransferCompleteCallback {
@@ -155,7 +155,7 @@ public class TransferCompleteCallback {
   }
 
   /**
-   * The event type, value can be one of the following: answer, bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect, conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable, disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete, recordingAvailable, redirect, transcriptionAvailable, transferAnswer, transferComplete, transferDisconnect.
+   * The event type, value can be one of the following: answer, bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect, conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable, disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete, recordingAvailable, redirect, referComplete, transcriptionAvailable, transferAnswer, transferComplete, transferDisconnect.
    * @return eventType
    */
   @javax.annotation.Nullable
