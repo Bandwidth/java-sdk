@@ -21,8 +21,8 @@
 |**priority** | **PriorityEnum** |  |  [optional] |
 |**channel** | **MultiChannelMessageChannelEnum** |  |  [optional] |
 |**content** | [**MultiChannelMessageContent**](MultiChannelMessageContent.md) |  |  [optional] |
-|**suggestionResponse** | [**RbmSuggestionResponse**](RbmSuggestionResponse.md) |  |  [optional] |
-|**locationResponse** | [**RbmLocationResponse**](RbmLocationResponse.md) |  |  [optional] |
+|**suggestionResponse** | [**SuggestionResponse**](SuggestionResponse.md) |  |  [optional] |
+|**locationResponse** | [**LocationResponse**](LocationResponse.md) |  |  [optional] |
 
 
 

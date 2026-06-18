@@ -15,12 +15,12 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import java.util.Locale;
+import com.bandwidth.sdk.model.LocationResponse;
 import com.bandwidth.sdk.model.MessageDirectionEnum;
 import com.bandwidth.sdk.model.MultiChannelMessageChannelEnum;
 import com.bandwidth.sdk.model.MultiChannelMessageContent;
 import com.bandwidth.sdk.model.PriorityEnum;
-import com.bandwidth.sdk.model.RbmLocationResponse;
-import com.bandwidth.sdk.model.RbmSuggestionResponse;
+import com.bandwidth.sdk.model.SuggestionResponse;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -137,12 +137,12 @@ public class InboundCallbackMessage {
   public static final String SERIALIZED_NAME_SUGGESTION_RESPONSE = "suggestionResponse";
   @SerializedName(SERIALIZED_NAME_SUGGESTION_RESPONSE)
   @javax.annotation.Nullable
-  private RbmSuggestionResponse suggestionResponse;
+  private SuggestionResponse suggestionResponse;
 
   public static final String SERIALIZED_NAME_LOCATION_RESPONSE = "locationResponse";
   @SerializedName(SERIALIZED_NAME_LOCATION_RESPONSE)
   @javax.annotation.Nullable
-  private RbmLocationResponse locationResponse;
+  private LocationResponse locationResponse;
 
   public InboundCallbackMessage() {
   }
@@ -429,7 +429,7 @@ public class InboundCallbackMessage {
   }
 
 
-  public InboundCallbackMessage suggestionResponse(@javax.annotation.Nullable RbmSuggestionResponse suggestionResponse) {
+  public InboundCallbackMessage suggestionResponse(@javax.annotation.Nullable SuggestionResponse suggestionResponse) {
     this.suggestionResponse = suggestionResponse;
     return this;
   }
@@ -439,16 +439,16 @@ public class InboundCallbackMessage {
    * @return suggestionResponse
    */
   @javax.annotation.Nullable
-  public RbmSuggestionResponse getSuggestionResponse() {
+  public SuggestionResponse getSuggestionResponse() {
     return suggestionResponse;
   }
 
-  public void setSuggestionResponse(@javax.annotation.Nullable RbmSuggestionResponse suggestionResponse) {
+  public void setSuggestionResponse(@javax.annotation.Nullable SuggestionResponse suggestionResponse) {
     this.suggestionResponse = suggestionResponse;
   }
 
 
-  public InboundCallbackMessage locationResponse(@javax.annotation.Nullable RbmLocationResponse locationResponse) {
+  public InboundCallbackMessage locationResponse(@javax.annotation.Nullable LocationResponse locationResponse) {
     this.locationResponse = locationResponse;
     return this;
   }
@@ -458,11 +458,11 @@ public class InboundCallbackMessage {
    * @return locationResponse
    */
   @javax.annotation.Nullable
-  public RbmLocationResponse getLocationResponse() {
+  public LocationResponse getLocationResponse() {
     return locationResponse;
   }
 
-  public void setLocationResponse(@javax.annotation.Nullable RbmLocationResponse locationResponse) {
+  public void setLocationResponse(@javax.annotation.Nullable LocationResponse locationResponse) {
     this.locationResponse = locationResponse;
   }
 
@@ -657,11 +657,11 @@ public class InboundCallbackMessage {
       }
       // validate the optional field `suggestionResponse`
       if (jsonObj.get("suggestionResponse") != null && !jsonObj.get("suggestionResponse").isJsonNull()) {
-        RbmSuggestionResponse.validateJsonElement(jsonObj.get("suggestionResponse"));
+        SuggestionResponse.validateJsonElement(jsonObj.get("suggestionResponse"));
       }
       // validate the optional field `locationResponse`
       if (jsonObj.get("locationResponse") != null && !jsonObj.get("locationResponse").isJsonNull()) {
-        RbmLocationResponse.validateJsonElement(jsonObj.get("locationResponse"));
+        LocationResponse.validateJsonElement(jsonObj.get("locationResponse"));
       }
   }
 
