@@ -140,7 +140,7 @@ public class Callback extends AbstractOpenApiSchema {
                                 deserialized = adapterStatusCallback.fromJsonTree(jsonObject);
                                 newCallback.setActualInstance(deserialized);
                                 return newCallback;
-                            case "request-location-response":
+                            case "requested-location-response":
                                 deserialized = adapterInboundCallback.fromJsonTree(jsonObject);
                                 newCallback.setActualInstance(deserialized);
                                 return newCallback;
@@ -149,7 +149,7 @@ public class Callback extends AbstractOpenApiSchema {
                                 newCallback.setActualInstance(deserialized);
                                 return newCallback;
                             default:
-                                log.log(Level.WARNING, String.format(Locale.ROOT, "Failed to lookup discriminator value `%s` for Callback. Possible values: message-delivered message-failed message-read message-received message-sending message-sent request-location-response suggestion-response", jsonObject.get("type").getAsString()));
+                                log.log(Level.WARNING, String.format(Locale.ROOT, "Failed to lookup discriminator value `%s` for Callback. Possible values: message-delivered message-failed message-read message-received message-sending message-sent requested-location-response suggestion-response", jsonObject.get("type").getAsString()));
                         }
                     }
 

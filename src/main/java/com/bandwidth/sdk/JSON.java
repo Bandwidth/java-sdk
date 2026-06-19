@@ -71,7 +71,7 @@ public class JSON {
                         classByDiscriminatorValue.put("message-received", com.bandwidth.sdk.model.InboundCallback.class);
                         classByDiscriminatorValue.put("message-sending", com.bandwidth.sdk.model.StatusCallback.class);
                         classByDiscriminatorValue.put("message-sent", com.bandwidth.sdk.model.StatusCallback.class);
-                        classByDiscriminatorValue.put("request-location-response", com.bandwidth.sdk.model.InboundCallback.class);
+                        classByDiscriminatorValue.put("requested-location-response", com.bandwidth.sdk.model.InboundCallback.class);
                         classByDiscriminatorValue.put("suggestion-response", com.bandwidth.sdk.model.InboundCallback.class);
                         classByDiscriminatorValue.put("callback", com.bandwidth.sdk.model.Callback.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,

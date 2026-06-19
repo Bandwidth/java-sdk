@@ -30,7 +30,7 @@ public class InboundCallbackTypeEnumTest {
     @Test
     public void testInboundCallbackTypeEnum() {
         assertThat(InboundCallbackTypeEnum.MESSAGE_RECEIVED.toString(), equalTo("message-received"));
-        assertThat(InboundCallbackTypeEnum.REQUEST_LOCATION_RESPONSE.toString(), equalTo("request-location-response"));
+        assertThat(InboundCallbackTypeEnum.REQUESTED_LOCATION_RESPONSE.toString(), equalTo("requested-location-response"));
         assertThat(InboundCallbackTypeEnum.SUGGESTION_RESPONSE.toString(), equalTo("suggestion-response"));
     }
 
