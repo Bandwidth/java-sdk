@@ -26,7 +26,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class RbmSuggestionResponseTest {
     private final RbmSuggestionResponse model = new RbmSuggestionResponse()
             .text("text")
-            .postbackData(new byte[]{1, 2, 3});
+            .postbackData(new byte[]{1, 2, 3})
+            .pairedMessageId("pairedMessageId");
 
     /**
      * Model tests for RbmSuggestionResponse
@@ -50,6 +51,14 @@ public class RbmSuggestionResponseTest {
     @Test
     public void postbackDataTest() {
         assertThat(model.getPostbackData(), instanceOf(byte[].class));
+    }
+
+    /**
+     * Test the property 'pairedMessageId'
+     */
+    @Test
+    public void pairedMessageIdTest() {
+        assertThat(model.getPairedMessageId(), instanceOf(String.class));
     }
 
 }

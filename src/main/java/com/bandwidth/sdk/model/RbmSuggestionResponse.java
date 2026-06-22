@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -62,6 +63,11 @@ public class RbmSuggestionResponse {
   @javax.annotation.Nullable
   private byte[] postbackData;
 
+  public static final String SERIALIZED_NAME_PAIRED_MESSAGE_ID = "pairedMessageId";
+  @SerializedName(SERIALIZED_NAME_PAIRED_MESSAGE_ID)
+  @javax.annotation.Nullable
+  private String pairedMessageId;
+
   public RbmSuggestionResponse() {
   }
 
@@ -100,6 +106,25 @@ public class RbmSuggestionResponse {
 
   public void setPostbackData(@javax.annotation.Nullable byte[] postbackData) {
     this.postbackData = postbackData;
+  }
+
+
+  public RbmSuggestionResponse pairedMessageId(@javax.annotation.Nullable String pairedMessageId) {
+    this.pairedMessageId = pairedMessageId;
+    return this;
+  }
+
+  /**
+   * Corresponding parent message ID (MT).
+   * @return pairedMessageId
+   */
+  @javax.annotation.Nullable
+  public String getPairedMessageId() {
+    return pairedMessageId;
+  }
+
+  public void setPairedMessageId(@javax.annotation.Nullable String pairedMessageId) {
+    this.pairedMessageId = pairedMessageId;
   }
 
   /**
@@ -158,13 +183,25 @@ public class RbmSuggestionResponse {
     }
     RbmSuggestionResponse rbmSuggestionResponse = (RbmSuggestionResponse) o;
     return Objects.equals(this.text, rbmSuggestionResponse.text) &&
-        Arrays.equals(this.postbackData, rbmSuggestionResponse.postbackData)&&
+        Arrays.equals(this.postbackData, rbmSuggestionResponse.postbackData) &&
+        Objects.equals(this.pairedMessageId, rbmSuggestionResponse.pairedMessageId)&&
         Objects.equals(this.additionalProperties, rbmSuggestionResponse.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, Arrays.hashCode(postbackData), additionalProperties);
+    return Objects.hash(text, Arrays.hashCode(postbackData), pairedMessageId, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -173,6 +210,7 @@ public class RbmSuggestionResponse {
     sb.append("class RbmSuggestionResponse {\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    postbackData: ").append(toIndentedString(postbackData)).append("\n");
+    sb.append("    pairedMessageId: ").append(toIndentedString(pairedMessageId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -195,7 +233,7 @@ public class RbmSuggestionResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("text", "postbackData"));
+    openapiFields = new HashSet<String>(Arrays.asList("text", "postbackData", "pairedMessageId"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -216,6 +254,9 @@ public class RbmSuggestionResponse {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull()) && !jsonObj.get("text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
+      }
+      if ((jsonObj.get("pairedMessageId") != null && !jsonObj.get("pairedMessageId").isJsonNull()) && !jsonObj.get("pairedMessageId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `pairedMessageId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pairedMessageId").toString()));
       }
   }
 

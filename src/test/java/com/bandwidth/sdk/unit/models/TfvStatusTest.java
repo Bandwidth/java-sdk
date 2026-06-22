@@ -14,9 +14,13 @@ package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.UUID;
 
+import com.bandwidth.sdk.model.AdditionalDenialReason;
 import com.bandwidth.sdk.model.TfvStatus;
 import com.bandwidth.sdk.model.TfvStatusEnum;
 import com.bandwidth.sdk.model.TfvSubmissionInfo;
@@ -33,6 +37,12 @@ public class TfvStatusTest {
             .status(TfvStatusEnum.PENDING)
             .internalTicketNumber(UUID.randomUUID().toString())
             .declineReasonDescription("declineReasonDescription")
+            .denialStatusCode(123)
+            .additionalDenialReasons(new ArrayList<AdditionalDenialReason>(Arrays.asList(
+                    new AdditionalDenialReason()
+                            .statusCode(403)
+                            .reason("Forbidden")
+                            .resubmitAllowed(true))))
             .resubmitAllowed(true)
             .createdDateTime(OffsetDateTime.now())
             .modifiedDateTime(OffsetDateTime.now())
@@ -79,6 +89,22 @@ public class TfvStatusTest {
     @Test
     public void declineReasonDescriptionTest() {
         assertThat(model.getDeclineReasonDescription(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'denialStatusCode'
+     */
+    @Test
+    public void denialStatusCodeTest() {
+        assertThat(model.getDenialStatusCode(), instanceOf(Integer.class));
+    }
+
+    /**
+     * Test the property 'additionalDenialReasons'
+     */
+    @Test
+    public void additionalDenialReasonsTest() {
+        assertThat(model.getAdditionalDenialReasons(), instanceOf(ArrayList.class));
     }
 
     /**
