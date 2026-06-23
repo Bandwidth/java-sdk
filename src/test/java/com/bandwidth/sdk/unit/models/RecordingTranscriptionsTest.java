@@ -17,6 +17,8 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
+
+import com.bandwidth.sdk.model.RecordingTranscriptionClip;
 import com.bandwidth.sdk.model.RecordingTranscriptions;
 import com.bandwidth.sdk.model.Transcription;
 
@@ -28,7 +30,8 @@ import static org.hamcrest.CoreMatchers.instanceOf;
  */
 public class RecordingTranscriptionsTest {
     private final RecordingTranscriptions model = new RecordingTranscriptions()
-            .transcripts(new ArrayList<Transcription>(Arrays.asList(new Transcription())));
+            .transcripts(new ArrayList<Transcription>(Arrays.asList(new Transcription())))
+            .clips(new ArrayList<RecordingTranscriptionClip>(Arrays.asList(new RecordingTranscriptionClip())));
 
     /**
      * Model tests for RecordingTranscriptions
@@ -44,6 +47,14 @@ public class RecordingTranscriptionsTest {
     @Test
     public void transcriptsTest() {
         assertThat(model.getTranscripts(), instanceOf(List.class));
+    }
+
+    /**
+     * Test the property 'clips'
+     */
+    @Test
+    public void clipsTest() {
+        assertThat(model.getClips(), instanceOf(List.class));
     }
 
 }

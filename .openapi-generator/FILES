@@ -163,6 +163,7 @@ docs/RbmWebViewEnum.md
 docs/RecordingAvailableCallback.md
 docs/RecordingCompleteCallback.md
 docs/RecordingStateEnum.md
+docs/RecordingTranscriptionClip.md
 docs/RecordingTranscriptionMetadata.md
 docs/RecordingTranscriptions.md
 docs/RecordingsApi.md
@@ -407,6 +408,7 @@ src/main/java/com/bandwidth/sdk/model/RbmWebViewEnum.java
 src/main/java/com/bandwidth/sdk/model/RecordingAvailableCallback.java
 src/main/java/com/bandwidth/sdk/model/RecordingCompleteCallback.java
 src/main/java/com/bandwidth/sdk/model/RecordingStateEnum.java
+src/main/java/com/bandwidth/sdk/model/RecordingTranscriptionClip.java
 src/main/java/com/bandwidth/sdk/model/RecordingTranscriptionMetadata.java
 src/main/java/com/bandwidth/sdk/model/RecordingTranscriptions.java
 src/main/java/com/bandwidth/sdk/model/RedirectCallback.java
