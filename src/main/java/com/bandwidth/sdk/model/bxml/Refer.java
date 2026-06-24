@@ -13,6 +13,7 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlValue;
 import java.net.URI;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -46,8 +47,20 @@ public class Refer implements Verb {
 
     public static final String TYPE_NAME = "Refer";
 
-    @XmlElement(name = SipUri.TYPE_NAME, type = SipUri.class)
-    protected SipUri sipUri;
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "SipUri")
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    @Getter
+    @EqualsAndHashCode
+    public static class ReferSipUri {
+        @XmlValue
+        protected String uri;
+    }
+
+    @XmlElement(name = "SipUri", type = ReferSipUri.class)
+    protected ReferSipUri sipUri;
 
     @XmlAttribute
     protected URI referCompleteUrl;
