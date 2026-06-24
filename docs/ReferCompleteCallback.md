@@ -17,16 +17,12 @@ The Refer Complete event is sent to the referCompleteUrl of the <Refer> verb whe
 |**direction** | **CallDirectionEnum** |  |  [optional] |
 |**callId** | **String** | The call id associated with the event. |  [optional] |
 |**callUrl** | **URI** | The URL of the call associated with the event. |  [optional] |
-|**enqueuedTime** | **OffsetDateTime** | (optional) If call queueing is enabled and this is an outbound call, time the call was queued, in ISO 8601 format. |  [optional] |
 |**startTime** | **OffsetDateTime** | Time the call was started, in ISO 8601 format. |  [optional] |
 |**answerTime** | **OffsetDateTime** | Time the call was answered, in ISO 8601 format. |  [optional] |
 |**tag** | **String** | (optional) The tag specified on call creation. If no tag was specified or it was previously cleared, this field will not be present. |  [optional] |
-|**referCallStatus** | **String** | The outcome of the SIP REFER attempt. Possible values include &#39;success&#39; and &#39;failure&#39;. On success the call is terminated; on failure the BXML returned by this callback is executed for recovery. |  [optional] |
+|**referCallStatus** | **ReferCallStatusEnum** | The outcome of the SIP REFER attempt. Possible values include &#39;success&#39; and &#39;failure&#39;. On success the call is terminated; on failure the BXML returned by this callback is executed for recovery. |  [optional] |
 |**referSipResponseCode** | **Integer** | The SIP response code received from the remote endpoint in response to the REFER request itself (e.g., 202 Accepted, 603 Declined). |  [optional] |
 |**notifySipResponseCode** | **Integer** | The SIP response code received in the NOTIFY message that reports the final status of the referred call (e.g., 200 OK if the refer target answered, 486 Busy Here if it did not). |  [optional] |
-|**cause** | **String** | Reason the call failed - hangup, busy, timeout, cancel, rejected, callback-error, invalid-bxml, application-error, account-limit, node-capacity-exceeded, error, or unknown. |  [optional] |
-|**errorMessage** | **String** | Text explaining the reason that caused the call to fail in case of errors. |  [optional] |
-|**errorId** | **String** | Bandwidth&#39;s internal id that references the error event. |  [optional] |
 
 
 

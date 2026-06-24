@@ -13962,13 +13962,6 @@ components:
           example: https://voice.bandwidth.com/api/v2/accounts/9900000/calls/c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
           format: uri
           type: string
-        enqueuedTime:
-          description: "(optional) If call queueing is enabled and this is an outbound\
-            \ call, time the call was queued, in ISO 8601 format."
-          example: 2022-06-17T22:20:00Z
-          format: date-time
-          nullable: true
-          type: string
         startTime:
           description: "Time the call was started, in ISO 8601 format."
           example: 2022-06-17T22:19:40.375Z
@@ -14003,24 +13996,6 @@ components:
             \ target answered, 486 Busy Here if it did not)."
           example: 200
           type: integer
-        cause:
-          description: "Reason the call failed - hangup, busy, timeout, cancel, rejected,\
-            \ callback-error, invalid-bxml, application-error, account-limit, node-capacity-exceeded,\
-            \ error, or unknown."
-          example: busy
-          type: string
-        errorMessage:
-          description: Text explaining the reason that caused the call to fail in
-            case of errors.
-          example: Call c-2a913f94-6a486f3a-3cae-4034-bcc3-f0c9fa77ca2f is already
-            bridged with another call
-          nullable: true
-          type: string
-        errorId:
-          description: Bandwidth's internal id that references the error event.
-          example: 4642074b-7b58-478b-96e4-3a60955c6765
-          nullable: true
-          type: string
       type: object
     transferDisconnectCallback:
       description: "This event is sent to the transferDisconnectUrl of each <PhoneNumber>\

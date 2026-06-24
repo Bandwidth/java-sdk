@@ -101,11 +101,6 @@ public class ReferCompleteCallback {
   @javax.annotation.Nullable
   private URI callUrl;
 
-  public static final String SERIALIZED_NAME_ENQUEUED_TIME = "enqueuedTime";
-  @SerializedName(SERIALIZED_NAME_ENQUEUED_TIME)
-  @javax.annotation.Nullable
-  private OffsetDateTime enqueuedTime;
-
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
   @javax.annotation.Nullable
@@ -124,7 +119,7 @@ public class ReferCompleteCallback {
   public static final String SERIALIZED_NAME_REFER_CALL_STATUS = "referCallStatus";
   @SerializedName(SERIALIZED_NAME_REFER_CALL_STATUS)
   @javax.annotation.Nullable
-  private String referCallStatus;
+  private ReferCallStatusEnum referCallStatus;
 
   public static final String SERIALIZED_NAME_REFER_SIP_RESPONSE_CODE = "referSipResponseCode";
   @SerializedName(SERIALIZED_NAME_REFER_SIP_RESPONSE_CODE)
@@ -135,21 +130,6 @@ public class ReferCompleteCallback {
   @SerializedName(SERIALIZED_NAME_NOTIFY_SIP_RESPONSE_CODE)
   @javax.annotation.Nullable
   private Integer notifySipResponseCode;
-
-  public static final String SERIALIZED_NAME_CAUSE = "cause";
-  @SerializedName(SERIALIZED_NAME_CAUSE)
-  @javax.annotation.Nullable
-  private String cause;
-
-  public static final String SERIALIZED_NAME_ERROR_MESSAGE = "errorMessage";
-  @SerializedName(SERIALIZED_NAME_ERROR_MESSAGE)
-  @javax.annotation.Nullable
-  private String errorMessage;
-
-  public static final String SERIALIZED_NAME_ERROR_ID = "errorId";
-  @SerializedName(SERIALIZED_NAME_ERROR_ID)
-  @javax.annotation.Nullable
-  private String errorId;
 
   public ReferCompleteCallback() {
   }
@@ -324,26 +304,6 @@ public class ReferCompleteCallback {
     this.callUrl = callUrl;
   }
 
-
-  public ReferCompleteCallback enqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
-    this.enqueuedTime = enqueuedTime;
-    return this;
-  }
-
-  /**
-   * (optional) If call queueing is enabled and this is an outbound call, time the call was queued, in ISO 8601 format.
-   * @return enqueuedTime
-   */
-  @javax.annotation.Nullable
-  public OffsetDateTime getEnqueuedTime() {
-    return enqueuedTime;
-  }
-
-  public void setEnqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
-    this.enqueuedTime = enqueuedTime;
-  }
-
-
   public ReferCompleteCallback startTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
@@ -401,7 +361,7 @@ public class ReferCompleteCallback {
   }
 
 
-  public ReferCompleteCallback referCallStatus(@javax.annotation.Nullable String referCallStatus) {
+  public ReferCompleteCallback referCallStatus(@javax.annotation.Nullable ReferCallStatusEnum referCallStatus) {
     this.referCallStatus = referCallStatus;
     return this;
   }
@@ -411,11 +371,11 @@ public class ReferCompleteCallback {
    * @return referCallStatus
    */
   @javax.annotation.Nullable
-  public String getReferCallStatus() {
+  public ReferCallStatusEnum getReferCallStatus() {
     return referCallStatus;
   }
 
-  public void setReferCallStatus(@javax.annotation.Nullable String referCallStatus) {
+  public void setReferCallStatus(@javax.annotation.Nullable ReferCallStatusEnum referCallStatus) {
     this.referCallStatus = referCallStatus;
   }
 
@@ -455,63 +415,6 @@ public class ReferCompleteCallback {
 
   public void setNotifySipResponseCode(@javax.annotation.Nullable Integer notifySipResponseCode) {
     this.notifySipResponseCode = notifySipResponseCode;
-  }
-
-
-  public ReferCompleteCallback cause(@javax.annotation.Nullable String cause) {
-    this.cause = cause;
-    return this;
-  }
-
-  /**
-   * Reason the call failed - hangup, busy, timeout, cancel, rejected, callback-error, invalid-bxml, application-error, account-limit, node-capacity-exceeded, error, or unknown.
-   * @return cause
-   */
-  @javax.annotation.Nullable
-  public String getCause() {
-    return cause;
-  }
-
-  public void setCause(@javax.annotation.Nullable String cause) {
-    this.cause = cause;
-  }
-
-
-  public ReferCompleteCallback errorMessage(@javax.annotation.Nullable String errorMessage) {
-    this.errorMessage = errorMessage;
-    return this;
-  }
-
-  /**
-   * Text explaining the reason that caused the call to fail in case of errors.
-   * @return errorMessage
-   */
-  @javax.annotation.Nullable
-  public String getErrorMessage() {
-    return errorMessage;
-  }
-
-  public void setErrorMessage(@javax.annotation.Nullable String errorMessage) {
-    this.errorMessage = errorMessage;
-  }
-
-
-  public ReferCompleteCallback errorId(@javax.annotation.Nullable String errorId) {
-    this.errorId = errorId;
-    return this;
-  }
-
-  /**
-   * Bandwidth&#39;s internal id that references the error event.
-   * @return errorId
-   */
-  @javax.annotation.Nullable
-  public String getErrorId() {
-    return errorId;
-  }
-
-  public void setErrorId(@javax.annotation.Nullable String errorId) {
-    this.errorId = errorId;
   }
 
   /**
@@ -578,16 +481,12 @@ public class ReferCompleteCallback {
         Objects.equals(this.direction, referCompleteCallback.direction) &&
         Objects.equals(this.callId, referCompleteCallback.callId) &&
         Objects.equals(this.callUrl, referCompleteCallback.callUrl) &&
-        Objects.equals(this.enqueuedTime, referCompleteCallback.enqueuedTime) &&
         Objects.equals(this.startTime, referCompleteCallback.startTime) &&
         Objects.equals(this.answerTime, referCompleteCallback.answerTime) &&
         Objects.equals(this.tag, referCompleteCallback.tag) &&
         Objects.equals(this.referCallStatus, referCompleteCallback.referCallStatus) &&
         Objects.equals(this.referSipResponseCode, referCompleteCallback.referSipResponseCode) &&
         Objects.equals(this.notifySipResponseCode, referCompleteCallback.notifySipResponseCode) &&
-        Objects.equals(this.cause, referCompleteCallback.cause) &&
-        Objects.equals(this.errorMessage, referCompleteCallback.errorMessage) &&
-        Objects.equals(this.errorId, referCompleteCallback.errorId)&&
         Objects.equals(this.additionalProperties, referCompleteCallback.additionalProperties);
   }
 
@@ -597,7 +496,7 @@ public class ReferCompleteCallback {
 
   @Override
   public int hashCode() {
-    return Objects.hash(eventType, eventTime, accountId, applicationId, from, to, direction, callId, callUrl, enqueuedTime, startTime, answerTime, tag, referCallStatus, referSipResponseCode, notifySipResponseCode, cause, errorMessage, errorId, additionalProperties);
+    return Objects.hash(eventType, eventTime, accountId, applicationId, from, to, direction, callId, callUrl, startTime, answerTime, tag, referCallStatus, referSipResponseCode, notifySipResponseCode, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -620,16 +519,12 @@ public class ReferCompleteCallback {
     sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("    callId: ").append(toIndentedString(callId)).append("\n");
     sb.append("    callUrl: ").append(toIndentedString(callUrl)).append("\n");
-    sb.append("    enqueuedTime: ").append(toIndentedString(enqueuedTime)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    answerTime: ").append(toIndentedString(answerTime)).append("\n");
     sb.append("    tag: ").append(toIndentedString(tag)).append("\n");
     sb.append("    referCallStatus: ").append(toIndentedString(referCallStatus)).append("\n");
     sb.append("    referSipResponseCode: ").append(toIndentedString(referSipResponseCode)).append("\n");
     sb.append("    notifySipResponseCode: ").append(toIndentedString(notifySipResponseCode)).append("\n");
-    sb.append("    cause: ").append(toIndentedString(cause)).append("\n");
-    sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
-    sb.append("    errorId: ").append(toIndentedString(errorId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -652,8 +547,7 @@ public class ReferCompleteCallback {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("eventType", "eventTime", "accountId", "applicationId", "from", "to", "direction", "callId", "callUrl", "enqueuedTime", "startTime", "answerTime", "tag", "referCallStatus", "referSipResponseCode", "notifySipResponseCode", "cause", "errorMessage", "errorId"));
-
+    openapiFields = new HashSet<String>(Arrays.asList("eventType", "eventTime", "accountId", "applicationId", "from", "to", "direction", "callId", "callUrl", "startTime", "answerTime", "tag", "referCallStatus", "referSipResponseCode", "notifySipResponseCode"));
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
   }
@@ -699,17 +593,8 @@ public class ReferCompleteCallback {
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
       }
-      if ((jsonObj.get("referCallStatus") != null && !jsonObj.get("referCallStatus").isJsonNull()) && !jsonObj.get("referCallStatus").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `referCallStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("referCallStatus").toString()));
-      }
-      if ((jsonObj.get("cause") != null && !jsonObj.get("cause").isJsonNull()) && !jsonObj.get("cause").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `cause` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cause").toString()));
-      }
-      if ((jsonObj.get("errorMessage") != null && !jsonObj.get("errorMessage").isJsonNull()) && !jsonObj.get("errorMessage").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `errorMessage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("errorMessage").toString()));
-      }
-      if ((jsonObj.get("errorId") != null && !jsonObj.get("errorId").isJsonNull()) && !jsonObj.get("errorId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `errorId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("errorId").toString()));
+      if (jsonObj.get("referCallStatus") != null && !jsonObj.get("referCallStatus").isJsonNull()) {
+         ReferCallStatusEnum.validateJsonElement(jsonObj.get("referCallStatus"));
       }
   }
 

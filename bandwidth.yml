@@ -5281,8 +5281,6 @@ components:
           $ref: '#/components/schemas/callId'
         callUrl:
           $ref: '#/components/schemas/callUrl'
-        enqueuedTime:
-          $ref: '#/components/schemas/enqueuedTime'
         startTime:
           $ref: '#/components/schemas/startTime'
         answerTime:
@@ -5309,12 +5307,6 @@ components:
             the final status of the referred call (e.g., 200 OK if the refer
             target answered, 486 Busy Here if it did not).
           example: 200
-        cause:
-          $ref: '#/components/schemas/cause'
-        errorMessage:
-          $ref: '#/components/schemas/errorMessage'
-        errorId:
-          $ref: '#/components/schemas/errorId'
     transferDisconnectCallback:
       type: object
       description: >-

@@ -40,14 +40,14 @@ public class ReferVerbTest {
         @Test
         public void referVerbWithAllAttributes() throws JAXBException {
                 JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
-                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Refer referCompleteUrl=\"https://example.com/webhooks/refer_complete\" referCompleteMethod=\"POST\" referCompleteFallbackMethod=\"POST\" tag=\"test-tag\"><SipUri>sip:alice@atlanta.example.com</SipUri></Refer></Bxml>";
+                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Refer referCompleteUrl=\"https://example.com/webhooks/refer_complete\" referCompleteMethod=\"POST\" tag=\"test-tag\"><SipUri>sip:alice@atlanta.example.com</SipUri></Refer></Bxml>";
                 assertThat(new Bxml().with(refer).toBxml(jaxbContext), is(expectedBxml));
         }
 
         @Test
         public void referVerbMinimal() throws JAXBException {
                 JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
-                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Refer referCompleteMethod=\"POST\" referCompleteFallbackMethod=\"POST\"><SipUri>sip:alice@atlanta.example.com</SipUri></Refer></Bxml>";
+                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Refer referCompleteMethod=\"POST\"><SipUri>sip:alice@atlanta.example.com</SipUri></Refer></Bxml>";
                 assertThat(new Bxml().with(referMinimal).toBxml(jaxbContext), is(expectedBxml));
         }
 }
