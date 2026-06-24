@@ -15,17 +15,13 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import java.util.Locale;
-import com.bandwidth.sdk.model.RecordingTranscriptionClip;
-import com.bandwidth.sdk.model.Transcription;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,74 +48,132 @@ import java.util.Locale;
 import com.bandwidth.sdk.JSON;
 
 /**
- * RecordingTranscriptions
+ * RecordingTranscriptionClip
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
-public class RecordingTranscriptions {
-  public static final String SERIALIZED_NAME_TRANSCRIPTS = "transcripts";
-  @SerializedName(SERIALIZED_NAME_TRANSCRIPTS)
+public class RecordingTranscriptionClip {
+  public static final String SERIALIZED_NAME_SPEAKER = "speaker";
+  @SerializedName(SERIALIZED_NAME_SPEAKER)
   @javax.annotation.Nullable
-  private List<Transcription> transcripts = new ArrayList<>();
+  private Integer speaker;
 
-  public static final String SERIALIZED_NAME_CLIPS = "clips";
-  @SerializedName(SERIALIZED_NAME_CLIPS)
+  public static final String SERIALIZED_NAME_TEXT = "text";
+  @SerializedName(SERIALIZED_NAME_TEXT)
   @javax.annotation.Nullable
-  private List<RecordingTranscriptionClip> clips = new ArrayList<>();
+  private String text;
 
-  public RecordingTranscriptions() {
-  }
-
-  public RecordingTranscriptions transcripts(@javax.annotation.Nullable List<Transcription> transcripts) {
-    this.transcripts = transcripts;
-    return this;
-  }
-
-  public RecordingTranscriptions addTranscriptsItem(Transcription transcriptsItem) {
-    if (this.transcripts == null) {
-      this.transcripts = new ArrayList<>();
-    }
-    this.transcripts.add(transcriptsItem);
-    return this;
-  }
-
-  /**
-   * Get transcripts
-   * @return transcripts
-   */
+  public static final String SERIALIZED_NAME_CONFIDENCE = "confidence";
+  @SerializedName(SERIALIZED_NAME_CONFIDENCE)
   @javax.annotation.Nullable
-  public List<Transcription> getTranscripts() {
-    return transcripts;
+  private Double confidence;
+
+  public static final String SERIALIZED_NAME_START_TIME_SECONDS = "startTimeSeconds";
+  @SerializedName(SERIALIZED_NAME_START_TIME_SECONDS)
+  @javax.annotation.Nullable
+  private Double startTimeSeconds;
+
+  public static final String SERIALIZED_NAME_END_TIME_SECONDS = "endTimeSeconds";
+  @SerializedName(SERIALIZED_NAME_END_TIME_SECONDS)
+  @javax.annotation.Nullable
+  private Double endTimeSeconds;
+
+  public RecordingTranscriptionClip() {
   }
 
-  public void setTranscripts(@javax.annotation.Nullable List<Transcription> transcripts) {
-    this.transcripts = transcripts;
-  }
-
-
-  public RecordingTranscriptions clips(@javax.annotation.Nullable List<RecordingTranscriptionClip> clips) {
-    this.clips = clips;
-    return this;
-  }
-
-  public RecordingTranscriptions addClipsItem(RecordingTranscriptionClip clipsItem) {
-    if (this.clips == null) {
-      this.clips = new ArrayList<>();
-    }
-    this.clips.add(clipsItem);
+  public RecordingTranscriptionClip speaker(@javax.annotation.Nullable Integer speaker) {
+    this.speaker = speaker;
     return this;
   }
 
   /**
-   * A list of individual speech clips with speaker, timing, and confidence information.
-   * @return clips
+   * Zero-based index identifying the speaker.
+   * @return speaker
    */
   @javax.annotation.Nullable
-  public List<RecordingTranscriptionClip> getClips() {
-    return clips;
+  public Integer getSpeaker() {
+    return speaker;
   }
 
-  public void setClips(@javax.annotation.Nullable List<RecordingTranscriptionClip> clips) {
-    this.clips = clips;
+  public void setSpeaker(@javax.annotation.Nullable Integer speaker) {
+    this.speaker = speaker;
+  }
+
+
+  public RecordingTranscriptionClip text(@javax.annotation.Nullable String text) {
+    this.text = text;
+    return this;
+  }
+
+  /**
+   * The transcribed text of this clip.
+   * @return text
+   */
+  @javax.annotation.Nullable
+  public String getText() {
+    return text;
+  }
+
+  public void setText(@javax.annotation.Nullable String text) {
+    this.text = text;
+  }
+
+
+  public RecordingTranscriptionClip confidence(@javax.annotation.Nullable Double confidence) {
+    this.confidence = confidence;
+    return this;
+  }
+
+  /**
+   * How confident the transcription engine was in transcribing this clip (from &#x60;0.0&#x60; to &#x60;1.0&#x60;).
+   * minimum: 0
+   * maximum: 1
+   * @return confidence
+   */
+  @javax.annotation.Nullable
+  public Double getConfidence() {
+    return confidence;
+  }
+
+  public void setConfidence(@javax.annotation.Nullable Double confidence) {
+    this.confidence = confidence;
+  }
+
+
+  public RecordingTranscriptionClip startTimeSeconds(@javax.annotation.Nullable Double startTimeSeconds) {
+    this.startTimeSeconds = startTimeSeconds;
+    return this;
+  }
+
+  /**
+   * The start time of this clip within the recording, in seconds.
+   * @return startTimeSeconds
+   */
+  @javax.annotation.Nullable
+  public Double getStartTimeSeconds() {
+    return startTimeSeconds;
+  }
+
+  public void setStartTimeSeconds(@javax.annotation.Nullable Double startTimeSeconds) {
+    this.startTimeSeconds = startTimeSeconds;
+  }
+
+
+  public RecordingTranscriptionClip endTimeSeconds(@javax.annotation.Nullable Double endTimeSeconds) {
+    this.endTimeSeconds = endTimeSeconds;
+    return this;
+  }
+
+  /**
+   * The end time of this clip within the recording, in seconds.
+   * @return endTimeSeconds
+   */
+  @javax.annotation.Nullable
+  public Double getEndTimeSeconds() {
+    return endTimeSeconds;
+  }
+
+  public void setEndTimeSeconds(@javax.annotation.Nullable Double endTimeSeconds) {
+    this.endTimeSeconds = endTimeSeconds;
   }
 
   /**
@@ -135,9 +189,9 @@ public class RecordingTranscriptions {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the RecordingTranscriptions instance itself
+   * @return the RecordingTranscriptionClip instance itself
    */
-  public RecordingTranscriptions putAdditionalProperty(String key, Object value) {
+  public RecordingTranscriptionClip putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -176,23 +230,29 @@ public class RecordingTranscriptions {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RecordingTranscriptions recordingTranscriptions = (RecordingTranscriptions) o;
-    return Objects.equals(this.transcripts, recordingTranscriptions.transcripts) &&
-        Objects.equals(this.clips, recordingTranscriptions.clips)&&
-        Objects.equals(this.additionalProperties, recordingTranscriptions.additionalProperties);
+    RecordingTranscriptionClip recordingTranscriptionClip = (RecordingTranscriptionClip) o;
+    return Objects.equals(this.speaker, recordingTranscriptionClip.speaker) &&
+        Objects.equals(this.text, recordingTranscriptionClip.text) &&
+        Objects.equals(this.confidence, recordingTranscriptionClip.confidence) &&
+        Objects.equals(this.startTimeSeconds, recordingTranscriptionClip.startTimeSeconds) &&
+        Objects.equals(this.endTimeSeconds, recordingTranscriptionClip.endTimeSeconds)&&
+        Objects.equals(this.additionalProperties, recordingTranscriptionClip.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(transcripts, clips, additionalProperties);
+    return Objects.hash(speaker, text, confidence, startTimeSeconds, endTimeSeconds, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RecordingTranscriptions {\n");
-    sb.append("    transcripts: ").append(toIndentedString(transcripts)).append("\n");
-    sb.append("    clips: ").append(toIndentedString(clips)).append("\n");
+    sb.append("class RecordingTranscriptionClip {\n");
+    sb.append("    speaker: ").append(toIndentedString(speaker)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    confidence: ").append(toIndentedString(confidence)).append("\n");
+    sb.append("    startTimeSeconds: ").append(toIndentedString(startTimeSeconds)).append("\n");
+    sb.append("    endTimeSeconds: ").append(toIndentedString(endTimeSeconds)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -215,7 +275,7 @@ public class RecordingTranscriptions {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("transcripts", "clips"));
+    openapiFields = new HashSet<String>(Arrays.asList("speaker", "text", "confidence", "startTimeSeconds", "endTimeSeconds"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -225,42 +285,17 @@ public class RecordingTranscriptions {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to RecordingTranscriptions
+   * @throws IOException if the JSON Element is invalid with respect to RecordingTranscriptionClip
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!RecordingTranscriptions.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in RecordingTranscriptions is not found in the empty JSON string", RecordingTranscriptions.openapiRequiredFields.toString()));
+        if (!RecordingTranscriptionClip.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in RecordingTranscriptionClip is not found in the empty JSON string", RecordingTranscriptionClip.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("transcripts") != null && !jsonObj.get("transcripts").isJsonNull()) {
-        JsonArray jsonArraytranscripts = jsonObj.getAsJsonArray("transcripts");
-        if (jsonArraytranscripts != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("transcripts").isJsonArray()) {
-            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `transcripts` to be an array in the JSON string but got `%s`", jsonObj.get("transcripts").toString()));
-          }
-
-          // validate the optional field `transcripts` (array)
-          for (int i = 0; i < jsonArraytranscripts.size(); i++) {
-            Transcription.validateJsonElement(jsonArraytranscripts.get(i));
-          };
-        }
-      }
-      if (jsonObj.get("clips") != null && !jsonObj.get("clips").isJsonNull()) {
-        JsonArray jsonArrayclips = jsonObj.getAsJsonArray("clips");
-        if (jsonArrayclips != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("clips").isJsonArray()) {
-            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `clips` to be an array in the JSON string but got `%s`", jsonObj.get("clips").toString()));
-          }
-
-          // validate the optional field `clips` (array)
-          for (int i = 0; i < jsonArrayclips.size(); i++) {
-            RecordingTranscriptionClip.validateJsonElement(jsonArrayclips.get(i));
-          };
-        }
+      if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull()) && !jsonObj.get("text").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
       }
   }
 
@@ -268,16 +303,16 @@ public class RecordingTranscriptions {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RecordingTranscriptions.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RecordingTranscriptions' and its subtypes
+       if (!RecordingTranscriptionClip.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RecordingTranscriptionClip' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RecordingTranscriptions> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RecordingTranscriptions.class));
+       final TypeAdapter<RecordingTranscriptionClip> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RecordingTranscriptionClip.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<RecordingTranscriptions>() {
+       return (TypeAdapter<T>) new TypeAdapter<RecordingTranscriptionClip>() {
            @Override
-           public void write(JsonWriter out, RecordingTranscriptions value) throws IOException {
+           public void write(JsonWriter out, RecordingTranscriptionClip value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -305,12 +340,12 @@ public class RecordingTranscriptions {
            }
 
            @Override
-           public RecordingTranscriptions read(JsonReader in) throws IOException {
+           public RecordingTranscriptionClip read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             RecordingTranscriptions instance = thisAdapter.fromJsonTree(jsonObj);
+             RecordingTranscriptionClip instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -337,18 +372,18 @@ public class RecordingTranscriptions {
   }
 
   /**
-   * Create an instance of RecordingTranscriptions given an JSON string
+   * Create an instance of RecordingTranscriptionClip given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of RecordingTranscriptions
-   * @throws IOException if the JSON string is invalid with respect to RecordingTranscriptions
+   * @return An instance of RecordingTranscriptionClip
+   * @throws IOException if the JSON string is invalid with respect to RecordingTranscriptionClip
    */
-  public static RecordingTranscriptions fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, RecordingTranscriptions.class);
+  public static RecordingTranscriptionClip fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RecordingTranscriptionClip.class);
   }
 
   /**
-   * Convert an instance of RecordingTranscriptions to an JSON string
+   * Convert an instance of RecordingTranscriptionClip to an JSON string
    *
    * @return JSON string
    */
