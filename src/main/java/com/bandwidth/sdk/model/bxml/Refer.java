@@ -48,7 +48,7 @@ public class Refer implements Verb {
     public static final String TYPE_NAME = "Refer";
 
     @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "SipUri")
+    @XmlType(name = "ReferSipUri")
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder
