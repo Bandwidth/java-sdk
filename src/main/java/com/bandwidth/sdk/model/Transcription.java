@@ -52,6 +52,11 @@ import com.bandwidth.sdk.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class Transcription {
+  public static final String SERIALIZED_NAME_SPEAKER = "speaker";
+  @SerializedName(SERIALIZED_NAME_SPEAKER)
+  @javax.annotation.Nullable
+  private Integer speaker;
+
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
   @javax.annotation.Nullable
@@ -64,6 +69,25 @@ public class Transcription {
 
   public Transcription() {
   }
+
+  public Transcription speaker(@javax.annotation.Nullable Integer speaker) {
+    this.speaker = speaker;
+    return this;
+  }
+
+  /**
+   * Zero-based index identifying the speaker.
+   * @return speaker
+   */
+  @javax.annotation.Nullable
+  public Integer getSpeaker() {
+    return speaker;
+  }
+
+  public void setSpeaker(@javax.annotation.Nullable Integer speaker) {
+    this.speaker = speaker;
+  }
+
 
   public Transcription text(@javax.annotation.Nullable String text) {
     this.text = text;
@@ -157,20 +181,22 @@ public class Transcription {
       return false;
     }
     Transcription transcription = (Transcription) o;
-    return Objects.equals(this.text, transcription.text) &&
+    return Objects.equals(this.speaker, transcription.speaker) &&
+        Objects.equals(this.text, transcription.text) &&
         Objects.equals(this.confidence, transcription.confidence)&&
         Objects.equals(this.additionalProperties, transcription.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, confidence, additionalProperties);
+    return Objects.hash(speaker, text, confidence, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Transcription {\n");
+    sb.append("    speaker: ").append(toIndentedString(speaker)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    confidence: ").append(toIndentedString(confidence)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -195,7 +221,7 @@ public class Transcription {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("text", "confidence"));
+    openapiFields = new HashSet<String>(Arrays.asList("speaker", "text", "confidence"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

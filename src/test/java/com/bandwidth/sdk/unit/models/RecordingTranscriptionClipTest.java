@@ -10,30 +10,34 @@
  * Do not edit the class manually.
  */
 
+
 package com.bandwidth.sdk.unit.models;
 
 import org.junit.jupiter.api.Test;
 
-import com.bandwidth.sdk.model.Transcription;
+import com.bandwidth.sdk.model.RecordingTranscriptionClip;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
 
+
 /**
- * Model tests for Transcription
+ * Model tests for RecordingTranscriptionClip
  */
-public class TranscriptionTest {
-    private final Transcription model = new Transcription()
+public class RecordingTranscriptionClipTest {
+    private final RecordingTranscriptionClip model = new RecordingTranscriptionClip()
             .speaker(1)
             .text("text")
-            .confidence(0.5);
+            .confidence(0.5)
+            .startTimeSeconds(10.0)
+            .endTimeSeconds(20.0);
 
     /**
-     * Model tests for Transcription
+     * Model tests for RecordingTranscriptionClip
      */
     @Test
-    public void testTranscription() {
-        assertThat(model, instanceOf(Transcription.class));
+    public void testRecordingTranscriptionClip() {
+        assertThat(model, instanceOf(RecordingTranscriptionClip.class));
     }
 
     /**
@@ -58,6 +62,22 @@ public class TranscriptionTest {
     @Test
     public void confidenceTest() {
         assertThat(model.getConfidence(), instanceOf(Double.class));
+    }
+
+    /**
+     * Test the property 'startTimeSeconds'
+     */
+    @Test
+    public void startTimeSecondsTest() {
+        assertThat(model.getStartTimeSeconds(), instanceOf(Double.class));
+    }
+
+    /**
+     * Test the property 'endTimeSeconds'
+     */
+    @Test
+    public void endTimeSecondsTest() {
+        assertThat(model.getEndTimeSeconds(), instanceOf(Double.class));
     }
 
 }
