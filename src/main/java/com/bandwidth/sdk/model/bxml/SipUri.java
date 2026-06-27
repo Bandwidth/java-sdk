@@ -5,18 +5,14 @@
 
 package com.bandwidth.sdk.model.bxml;
 
-import static com.bandwidth.sdk.model.bxml.utils.BxmlConstants.DEFAULT_CALLBACK_METHOD;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.XmlValue;
 import jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Builder.Default;
+import lombok.experimental.SuperBuilder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,9 +21,9 @@ import lombok.NoArgsConstructor;
 @XmlType(name = SipUri.TYPE_NAME)
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @Getter
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 /**
  *
  * @param uri (str): A SIP URI to transfer the call to (e.g. sip:user@server.com)
@@ -47,50 +43,14 @@ import lombok.NoArgsConstructor;
  * @param tag (str, optional):  A custom string that will be sent with these and all future callbacks unless overwritten by a future tag attribute or cleared. May be cleared by setting tag="" Max length 256 characters. Defaults to None.
  *
  */
-public class SipUri implements OutboundDestination {
+public class SipUri extends OutboundDestination {
 
     public static final String TYPE_NAME = "SipUri";
 
     @XmlValue
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String uri;
-
-    @XmlAttribute
-    protected String uui;
-
-    @XmlAttribute
-    protected String username;
-
-    @XmlAttribute
-    protected String password;
-
-    @XmlAttribute
-    protected String fallbackUsername;
-
-    @XmlAttribute
-    protected String fallbackPassword;
-
-    @XmlAttribute
-    protected String transferAnswerUrl;
-
-    @XmlAttribute
-    @Default
-    protected String transferAnswerMethod = DEFAULT_CALLBACK_METHOD;
-
-    @XmlAttribute
-    protected String transferAnswerFallbackUrl;
-
-    @XmlAttribute
-    @Default
-    protected String transferAnswerFallbackMethod = DEFAULT_CALLBACK_METHOD;
-
-    @XmlAttribute
-    protected String transferDisconnectUrl;
-
-    @XmlAttribute
-    @Default
-    protected String transferDisconnectMethod = DEFAULT_CALLBACK_METHOD;
-
-    @XmlAttribute
-    protected String tag;
+    public String getUri() {
+        return uri;
+    }
 }
