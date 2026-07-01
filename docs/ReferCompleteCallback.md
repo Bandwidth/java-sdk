@@ -1,8 +1,8 @@
 
 
-# RecordingCompleteCallback
+# ReferCompleteCallback
 
-The Record Complete event is sent after a <Record> verb has executed if the call is still active. The BXML returned by this callback is executed next. When the recording is available for download, a Recording Available event will be sent.
+The Refer Complete event is sent to the referCompleteUrl of the <Refer> verb when the SIP REFER operation completes. Note the success-semantics asymmetry: unlike Transfer where success means the call continues, a successful Refer means the remote endpoint has been redirected away and the call is terminated. The BXML returned by this callback is executed on the call only for failure recovery.
 
 ## Properties
 
@@ -17,19 +17,12 @@ The Record Complete event is sent after a <Record> verb has executed if the call
 |**direction** | **CallDirectionEnum** |  |  [optional] |
 |**callId** | **String** | The call id associated with the event. |  [optional] |
 |**callUrl** | **URI** | The URL of the call associated with the event. |  [optional] |
-|**parentCallId** | **String** | (optional) If the event is related to the B leg of a &lt;Transfer&gt;, the call id of the original call leg that executed the &lt;Transfer&gt;. Otherwise, this field will not be present. |  [optional] |
-|**recordingId** | **String** | The unique ID of this recording |  [optional] |
-|**mediaUrl** | **URI** | The URL that can be used to download the recording. Only present if the recording is finished and may be downloaded. |  [optional] |
-|**enqueuedTime** | **OffsetDateTime** | (optional) If call queueing is enabled and this is an outbound call, time the call was queued, in ISO 8601 format. |  [optional] |
 |**startTime** | **OffsetDateTime** | Time the call was started, in ISO 8601 format. |  [optional] |
 |**answerTime** | **OffsetDateTime** | Time the call was answered, in ISO 8601 format. |  [optional] |
-|**endTime** | **OffsetDateTime** | The time that the recording ended in ISO-8601 format |  [optional] |
-|**duration** | **String** | The duration of the recording in ISO-8601 format |  [optional] |
-|**fileFormat** | **FileFormatEnum** |  |  [optional] |
-|**channels** | **Integer** | Always &#x60;1&#x60; for conference recordings; multi-channel recordings are not supported on conferences. |  [optional] |
 |**tag** | **String** | (optional) The tag specified on call creation. If no tag was specified or it was previously cleared, this field will not be present. |  [optional] |
-|**transferCallerId** | **String** | The phone number used as the from field of the B-leg call, in E.164 format (e.g. +15555555555). |  [optional] |
-|**transferTo** | **String** | The phone number used as the to field of the B-leg call, in E.164 format (e.g. +15555555555). |  [optional] |
+|**referCallStatus** | **ReferCallStatusEnum** | The outcome of the SIP REFER attempt. Possible values include &#39;success&#39; and &#39;failure&#39;. On success the call is terminated; on failure the BXML returned by this callback is executed for recovery. |  [optional] |
+|**referSipResponseCode** | **Integer** | The SIP response code received from the remote endpoint in response to the REFER request itself (e.g., 202 Accepted, 603 Declined). |  [optional] |
+|**notifySipResponseCode** | **Integer** | The SIP response code received in the NOTIFY message that reports the final status of the referred call (e.g., 200 OK if the refer target answered, 486 Busy Here if it did not). |  [optional] |
 
 
 

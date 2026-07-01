@@ -169,6 +169,7 @@ docs/RecordingTranscriptions.md
 docs/RecordingsApi.md
 docs/RedirectCallback.md
 docs/RedirectMethodEnum.md
+docs/ReferCompleteCallback.md
 docs/SipConnectionMetadata.md
 docs/SipCredentials.md
 docs/SmsMessageContent.md
@@ -413,6 +414,7 @@ src/main/java/com/bandwidth/sdk/model/RecordingTranscriptionMetadata.java
 src/main/java/com/bandwidth/sdk/model/RecordingTranscriptions.java
 src/main/java/com/bandwidth/sdk/model/RedirectCallback.java
 src/main/java/com/bandwidth/sdk/model/RedirectMethodEnum.java
+src/main/java/com/bandwidth/sdk/model/ReferCompleteCallback.java
 src/main/java/com/bandwidth/sdk/model/SipConnectionMetadata.java
 src/main/java/com/bandwidth/sdk/model/SipCredentials.java
 src/main/java/com/bandwidth/sdk/model/SmsMessageContent.java

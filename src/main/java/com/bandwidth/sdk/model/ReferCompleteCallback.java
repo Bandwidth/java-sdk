@@ -52,10 +52,10 @@ import java.util.Locale;
 import com.bandwidth.sdk.JSON;
 
 /**
- * The gather event is sent after a &lt;Gather&gt; verb is executed. Its purpose is to report the gathered digits to the calling application.
+ * The Refer Complete event is sent to the referCompleteUrl of the &lt;Refer&gt; verb when the SIP REFER operation completes. Note the success-semantics asymmetry: unlike Transfer where success means the call continues, a successful Refer means the remote endpoint has been redirected away and the call is terminated. The BXML returned by this callback is executed on the call only for failure recovery.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
-public class GatherCallback {
+public class ReferCompleteCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
   @javax.annotation.Nullable
@@ -96,20 +96,10 @@ public class GatherCallback {
   @javax.annotation.Nullable
   private String callId;
 
-  public static final String SERIALIZED_NAME_DIGITS = "digits";
-  @SerializedName(SERIALIZED_NAME_DIGITS)
-  @javax.annotation.Nullable
-  private String digits;
-
   public static final String SERIALIZED_NAME_CALL_URL = "callUrl";
   @SerializedName(SERIALIZED_NAME_CALL_URL)
   @javax.annotation.Nullable
   private URI callUrl;
-
-  public static final String SERIALIZED_NAME_ENQUEUED_TIME = "enqueuedTime";
-  @SerializedName(SERIALIZED_NAME_ENQUEUED_TIME)
-  @javax.annotation.Nullable
-  private OffsetDateTime enqueuedTime;
 
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
@@ -121,35 +111,30 @@ public class GatherCallback {
   @javax.annotation.Nullable
   private OffsetDateTime answerTime;
 
-  public static final String SERIALIZED_NAME_PARENT_CALL_ID = "parentCallId";
-  @SerializedName(SERIALIZED_NAME_PARENT_CALL_ID)
-  @javax.annotation.Nullable
-  private String parentCallId;
-
-  public static final String SERIALIZED_NAME_TERMINATING_DIGIT = "terminatingDigit";
-  @SerializedName(SERIALIZED_NAME_TERMINATING_DIGIT)
-  @javax.annotation.Nullable
-  private String terminatingDigit;
-
-  public static final String SERIALIZED_NAME_TRANSFER_CALLER_ID = "transferCallerId";
-  @SerializedName(SERIALIZED_NAME_TRANSFER_CALLER_ID)
-  @javax.annotation.Nullable
-  private String transferCallerId;
-
-  public static final String SERIALIZED_NAME_TRANSFER_TO = "transferTo";
-  @SerializedName(SERIALIZED_NAME_TRANSFER_TO)
-  @javax.annotation.Nullable
-  private String transferTo;
-
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
   @javax.annotation.Nullable
   private String tag;
 
-  public GatherCallback() {
+  public static final String SERIALIZED_NAME_REFER_CALL_STATUS = "referCallStatus";
+  @SerializedName(SERIALIZED_NAME_REFER_CALL_STATUS)
+  @javax.annotation.Nullable
+  private ReferCallStatusEnum referCallStatus;
+
+  public static final String SERIALIZED_NAME_REFER_SIP_RESPONSE_CODE = "referSipResponseCode";
+  @SerializedName(SERIALIZED_NAME_REFER_SIP_RESPONSE_CODE)
+  @javax.annotation.Nullable
+  private Integer referSipResponseCode;
+
+  public static final String SERIALIZED_NAME_NOTIFY_SIP_RESPONSE_CODE = "notifySipResponseCode";
+  @SerializedName(SERIALIZED_NAME_NOTIFY_SIP_RESPONSE_CODE)
+  @javax.annotation.Nullable
+  private Integer notifySipResponseCode;
+
+  public ReferCompleteCallback() {
   }
 
-  public GatherCallback eventType(@javax.annotation.Nullable String eventType) {
+  public ReferCompleteCallback eventType(@javax.annotation.Nullable String eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -168,7 +153,7 @@ public class GatherCallback {
   }
 
 
-  public GatherCallback eventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
+  public ReferCompleteCallback eventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
     this.eventTime = eventTime;
     return this;
   }
@@ -187,7 +172,7 @@ public class GatherCallback {
   }
 
 
-  public GatherCallback accountId(@javax.annotation.Nullable String accountId) {
+  public ReferCompleteCallback accountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -206,7 +191,7 @@ public class GatherCallback {
   }
 
 
-  public GatherCallback applicationId(@javax.annotation.Nullable String applicationId) {
+  public ReferCompleteCallback applicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -225,7 +210,7 @@ public class GatherCallback {
   }
 
 
-  public GatherCallback from(@javax.annotation.Nullable String from) {
+  public ReferCompleteCallback from(@javax.annotation.Nullable String from) {
     this.from = from;
     return this;
   }
@@ -244,7 +229,7 @@ public class GatherCallback {
   }
 
 
-  public GatherCallback to(@javax.annotation.Nullable String to) {
+  public ReferCompleteCallback to(@javax.annotation.Nullable String to) {
     this.to = to;
     return this;
   }
@@ -263,7 +248,7 @@ public class GatherCallback {
   }
 
 
-  public GatherCallback direction(@javax.annotation.Nullable CallDirectionEnum direction) {
+  public ReferCompleteCallback direction(@javax.annotation.Nullable CallDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
@@ -282,7 +267,7 @@ public class GatherCallback {
   }
 
 
-  public GatherCallback callId(@javax.annotation.Nullable String callId) {
+  public ReferCompleteCallback callId(@javax.annotation.Nullable String callId) {
     this.callId = callId;
     return this;
   }
@@ -301,26 +286,7 @@ public class GatherCallback {
   }
 
 
-  public GatherCallback digits(@javax.annotation.Nullable String digits) {
-    this.digits = digits;
-    return this;
-  }
-
-  /**
-   * (optional) The digits, letters, and/or symbols entered by the user. The string is empty if a timeout occurred before any buttons were pressed.
-   * @return digits
-   */
-  @javax.annotation.Nullable
-  public String getDigits() {
-    return digits;
-  }
-
-  public void setDigits(@javax.annotation.Nullable String digits) {
-    this.digits = digits;
-  }
-
-
-  public GatherCallback callUrl(@javax.annotation.Nullable URI callUrl) {
+  public ReferCompleteCallback callUrl(@javax.annotation.Nullable URI callUrl) {
     this.callUrl = callUrl;
     return this;
   }
@@ -338,27 +304,7 @@ public class GatherCallback {
     this.callUrl = callUrl;
   }
 
-
-  public GatherCallback enqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
-    this.enqueuedTime = enqueuedTime;
-    return this;
-  }
-
-  /**
-   * (optional) If call queueing is enabled and this is an outbound call, time the call was queued, in ISO 8601 format.
-   * @return enqueuedTime
-   */
-  @javax.annotation.Nullable
-  public OffsetDateTime getEnqueuedTime() {
-    return enqueuedTime;
-  }
-
-  public void setEnqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
-    this.enqueuedTime = enqueuedTime;
-  }
-
-
-  public GatherCallback startTime(@javax.annotation.Nullable OffsetDateTime startTime) {
+  public ReferCompleteCallback startTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -377,7 +323,7 @@ public class GatherCallback {
   }
 
 
-  public GatherCallback answerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
+  public ReferCompleteCallback answerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
     this.answerTime = answerTime;
     return this;
   }
@@ -396,83 +342,7 @@ public class GatherCallback {
   }
 
 
-  public GatherCallback parentCallId(@javax.annotation.Nullable String parentCallId) {
-    this.parentCallId = parentCallId;
-    return this;
-  }
-
-  /**
-   * (optional) If the event is related to the B leg of a &lt;Transfer&gt;, the call id of the original call leg that executed the &lt;Transfer&gt;. Otherwise, this field will not be present.
-   * @return parentCallId
-   */
-  @javax.annotation.Nullable
-  public String getParentCallId() {
-    return parentCallId;
-  }
-
-  public void setParentCallId(@javax.annotation.Nullable String parentCallId) {
-    this.parentCallId = parentCallId;
-  }
-
-
-  public GatherCallback terminatingDigit(@javax.annotation.Nullable String terminatingDigit) {
-    this.terminatingDigit = terminatingDigit;
-    return this;
-  }
-
-  /**
-   * (optional) The digit the user pressed to end the gather. Empty string value if no terminating digit was pressed.
-   * @return terminatingDigit
-   */
-  @javax.annotation.Nullable
-  public String getTerminatingDigit() {
-    return terminatingDigit;
-  }
-
-  public void setTerminatingDigit(@javax.annotation.Nullable String terminatingDigit) {
-    this.terminatingDigit = terminatingDigit;
-  }
-
-
-  public GatherCallback transferCallerId(@javax.annotation.Nullable String transferCallerId) {
-    this.transferCallerId = transferCallerId;
-    return this;
-  }
-
-  /**
-   * The phone number used as the from field of the B-leg call, in E.164 format (e.g. +15555555555).
-   * @return transferCallerId
-   */
-  @javax.annotation.Nullable
-  public String getTransferCallerId() {
-    return transferCallerId;
-  }
-
-  public void setTransferCallerId(@javax.annotation.Nullable String transferCallerId) {
-    this.transferCallerId = transferCallerId;
-  }
-
-
-  public GatherCallback transferTo(@javax.annotation.Nullable String transferTo) {
-    this.transferTo = transferTo;
-    return this;
-  }
-
-  /**
-   * The phone number used as the to field of the B-leg call, in E.164 format (e.g. +15555555555).
-   * @return transferTo
-   */
-  @javax.annotation.Nullable
-  public String getTransferTo() {
-    return transferTo;
-  }
-
-  public void setTransferTo(@javax.annotation.Nullable String transferTo) {
-    this.transferTo = transferTo;
-  }
-
-
-  public GatherCallback tag(@javax.annotation.Nullable String tag) {
+  public ReferCompleteCallback tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
@@ -490,6 +360,63 @@ public class GatherCallback {
     this.tag = tag;
   }
 
+
+  public ReferCompleteCallback referCallStatus(@javax.annotation.Nullable ReferCallStatusEnum referCallStatus) {
+    this.referCallStatus = referCallStatus;
+    return this;
+  }
+
+  /**
+   * The outcome of the SIP REFER attempt. Possible values include &#39;success&#39; and &#39;failure&#39;. On success the call is terminated; on failure the BXML returned by this callback is executed for recovery.
+   * @return referCallStatus
+   */
+  @javax.annotation.Nullable
+  public ReferCallStatusEnum getReferCallStatus() {
+    return referCallStatus;
+  }
+
+  public void setReferCallStatus(@javax.annotation.Nullable ReferCallStatusEnum referCallStatus) {
+    this.referCallStatus = referCallStatus;
+  }
+
+
+  public ReferCompleteCallback referSipResponseCode(@javax.annotation.Nullable Integer referSipResponseCode) {
+    this.referSipResponseCode = referSipResponseCode;
+    return this;
+  }
+
+  /**
+   * The SIP response code received from the remote endpoint in response to the REFER request itself (e.g., 202 Accepted, 603 Declined).
+   * @return referSipResponseCode
+   */
+  @javax.annotation.Nullable
+  public Integer getReferSipResponseCode() {
+    return referSipResponseCode;
+  }
+
+  public void setReferSipResponseCode(@javax.annotation.Nullable Integer referSipResponseCode) {
+    this.referSipResponseCode = referSipResponseCode;
+  }
+
+
+  public ReferCompleteCallback notifySipResponseCode(@javax.annotation.Nullable Integer notifySipResponseCode) {
+    this.notifySipResponseCode = notifySipResponseCode;
+    return this;
+  }
+
+  /**
+   * The SIP response code received in the NOTIFY message that reports the final status of the referred call (e.g., 200 OK if the refer target answered, 486 Busy Here if it did not).
+   * @return notifySipResponseCode
+   */
+  @javax.annotation.Nullable
+  public Integer getNotifySipResponseCode() {
+    return notifySipResponseCode;
+  }
+
+  public void setNotifySipResponseCode(@javax.annotation.Nullable Integer notifySipResponseCode) {
+    this.notifySipResponseCode = notifySipResponseCode;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -503,9 +430,9 @@ public class GatherCallback {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the GatherCallback instance itself
+   * @return the ReferCompleteCallback instance itself
    */
-  public GatherCallback putAdditionalProperty(String key, Object value) {
+  public ReferCompleteCallback putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -544,26 +471,23 @@ public class GatherCallback {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GatherCallback gatherCallback = (GatherCallback) o;
-    return Objects.equals(this.eventType, gatherCallback.eventType) &&
-        Objects.equals(this.eventTime, gatherCallback.eventTime) &&
-        Objects.equals(this.accountId, gatherCallback.accountId) &&
-        Objects.equals(this.applicationId, gatherCallback.applicationId) &&
-        Objects.equals(this.from, gatherCallback.from) &&
-        Objects.equals(this.to, gatherCallback.to) &&
-        Objects.equals(this.direction, gatherCallback.direction) &&
-        Objects.equals(this.callId, gatherCallback.callId) &&
-        Objects.equals(this.digits, gatherCallback.digits) &&
-        Objects.equals(this.callUrl, gatherCallback.callUrl) &&
-        Objects.equals(this.enqueuedTime, gatherCallback.enqueuedTime) &&
-        Objects.equals(this.startTime, gatherCallback.startTime) &&
-        Objects.equals(this.answerTime, gatherCallback.answerTime) &&
-        Objects.equals(this.parentCallId, gatherCallback.parentCallId) &&
-        Objects.equals(this.terminatingDigit, gatherCallback.terminatingDigit) &&
-        Objects.equals(this.transferCallerId, gatherCallback.transferCallerId) &&
-        Objects.equals(this.transferTo, gatherCallback.transferTo) &&
-        Objects.equals(this.tag, gatherCallback.tag)&&
-        Objects.equals(this.additionalProperties, gatherCallback.additionalProperties);
+    ReferCompleteCallback referCompleteCallback = (ReferCompleteCallback) o;
+    return Objects.equals(this.eventType, referCompleteCallback.eventType) &&
+        Objects.equals(this.eventTime, referCompleteCallback.eventTime) &&
+        Objects.equals(this.accountId, referCompleteCallback.accountId) &&
+        Objects.equals(this.applicationId, referCompleteCallback.applicationId) &&
+        Objects.equals(this.from, referCompleteCallback.from) &&
+        Objects.equals(this.to, referCompleteCallback.to) &&
+        Objects.equals(this.direction, referCompleteCallback.direction) &&
+        Objects.equals(this.callId, referCompleteCallback.callId) &&
+        Objects.equals(this.callUrl, referCompleteCallback.callUrl) &&
+        Objects.equals(this.startTime, referCompleteCallback.startTime) &&
+        Objects.equals(this.answerTime, referCompleteCallback.answerTime) &&
+        Objects.equals(this.tag, referCompleteCallback.tag) &&
+        Objects.equals(this.referCallStatus, referCompleteCallback.referCallStatus) &&
+        Objects.equals(this.referSipResponseCode, referCompleteCallback.referSipResponseCode) &&
+        Objects.equals(this.notifySipResponseCode, referCompleteCallback.notifySipResponseCode) &&
+        Objects.equals(this.additionalProperties, referCompleteCallback.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -572,7 +496,7 @@ public class GatherCallback {
 
   @Override
   public int hashCode() {
-    return Objects.hash(eventType, eventTime, accountId, applicationId, from, to, direction, callId, digits, callUrl, enqueuedTime, startTime, answerTime, parentCallId, terminatingDigit, transferCallerId, transferTo, tag, additionalProperties);
+    return Objects.hash(eventType, eventTime, accountId, applicationId, from, to, direction, callId, callUrl, startTime, answerTime, tag, referCallStatus, referSipResponseCode, notifySipResponseCode, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -585,7 +509,7 @@ public class GatherCallback {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GatherCallback {\n");
+    sb.append("class ReferCompleteCallback {\n");
     sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
     sb.append("    eventTime: ").append(toIndentedString(eventTime)).append("\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
@@ -594,16 +518,13 @@ public class GatherCallback {
     sb.append("    to: ").append(toIndentedString(to)).append("\n");
     sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("    callId: ").append(toIndentedString(callId)).append("\n");
-    sb.append("    digits: ").append(toIndentedString(digits)).append("\n");
     sb.append("    callUrl: ").append(toIndentedString(callUrl)).append("\n");
-    sb.append("    enqueuedTime: ").append(toIndentedString(enqueuedTime)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    answerTime: ").append(toIndentedString(answerTime)).append("\n");
-    sb.append("    parentCallId: ").append(toIndentedString(parentCallId)).append("\n");
-    sb.append("    terminatingDigit: ").append(toIndentedString(terminatingDigit)).append("\n");
-    sb.append("    transferCallerId: ").append(toIndentedString(transferCallerId)).append("\n");
-    sb.append("    transferTo: ").append(toIndentedString(transferTo)).append("\n");
     sb.append("    tag: ").append(toIndentedString(tag)).append("\n");
+    sb.append("    referCallStatus: ").append(toIndentedString(referCallStatus)).append("\n");
+    sb.append("    referSipResponseCode: ").append(toIndentedString(referSipResponseCode)).append("\n");
+    sb.append("    notifySipResponseCode: ").append(toIndentedString(notifySipResponseCode)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -626,8 +547,7 @@ public class GatherCallback {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("eventType", "eventTime", "accountId", "applicationId", "from", "to", "direction", "callId", "digits", "callUrl", "enqueuedTime", "startTime", "answerTime", "parentCallId", "terminatingDigit", "transferCallerId", "transferTo", "tag"));
-
+    openapiFields = new HashSet<String>(Arrays.asList("eventType", "eventTime", "accountId", "applicationId", "from", "to", "direction", "callId", "callUrl", "startTime", "answerTime", "tag", "referCallStatus", "referSipResponseCode", "notifySipResponseCode"));
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
   }
@@ -636,12 +556,12 @@ public class GatherCallback {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to GatherCallback
+   * @throws IOException if the JSON Element is invalid with respect to ReferCompleteCallback
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!GatherCallback.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in GatherCallback is not found in the empty JSON string", GatherCallback.openapiRequiredFields.toString()));
+        if (!ReferCompleteCallback.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in ReferCompleteCallback is not found in the empty JSON string", ReferCompleteCallback.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -667,26 +587,14 @@ public class GatherCallback {
       if ((jsonObj.get("callId") != null && !jsonObj.get("callId").isJsonNull()) && !jsonObj.get("callId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `callId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callId").toString()));
       }
-      if ((jsonObj.get("digits") != null && !jsonObj.get("digits").isJsonNull()) && !jsonObj.get("digits").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `digits` to be a primitive type in the JSON string but got `%s`", jsonObj.get("digits").toString()));
-      }
       if ((jsonObj.get("callUrl") != null && !jsonObj.get("callUrl").isJsonNull()) && !jsonObj.get("callUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `callUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callUrl").toString()));
       }
-      if ((jsonObj.get("parentCallId") != null && !jsonObj.get("parentCallId").isJsonNull()) && !jsonObj.get("parentCallId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `parentCallId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("parentCallId").toString()));
-      }
-      if ((jsonObj.get("terminatingDigit") != null && !jsonObj.get("terminatingDigit").isJsonNull()) && !jsonObj.get("terminatingDigit").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `terminatingDigit` to be a primitive type in the JSON string but got `%s`", jsonObj.get("terminatingDigit").toString()));
-      }
-      if ((jsonObj.get("transferCallerId") != null && !jsonObj.get("transferCallerId").isJsonNull()) && !jsonObj.get("transferCallerId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `transferCallerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transferCallerId").toString()));
-      }
-      if ((jsonObj.get("transferTo") != null && !jsonObj.get("transferTo").isJsonNull()) && !jsonObj.get("transferTo").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `transferTo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transferTo").toString()));
-      }
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
+      }
+      if (jsonObj.get("referCallStatus") != null && !jsonObj.get("referCallStatus").isJsonNull()) {
+         ReferCallStatusEnum.validateJsonElement(jsonObj.get("referCallStatus"));
       }
   }
 
@@ -694,16 +602,16 @@ public class GatherCallback {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!GatherCallback.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'GatherCallback' and its subtypes
+       if (!ReferCompleteCallback.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ReferCompleteCallback' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<GatherCallback> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(GatherCallback.class));
+       final TypeAdapter<ReferCompleteCallback> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ReferCompleteCallback.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<GatherCallback>() {
+       return (TypeAdapter<T>) new TypeAdapter<ReferCompleteCallback>() {
            @Override
-           public void write(JsonWriter out, GatherCallback value) throws IOException {
+           public void write(JsonWriter out, ReferCompleteCallback value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -731,12 +639,12 @@ public class GatherCallback {
            }
 
            @Override
-           public GatherCallback read(JsonReader in) throws IOException {
+           public ReferCompleteCallback read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             GatherCallback instance = thisAdapter.fromJsonTree(jsonObj);
+             ReferCompleteCallback instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -763,18 +671,18 @@ public class GatherCallback {
   }
 
   /**
-   * Create an instance of GatherCallback given an JSON string
+   * Create an instance of ReferCompleteCallback given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of GatherCallback
-   * @throws IOException if the JSON string is invalid with respect to GatherCallback
+   * @return An instance of ReferCompleteCallback
+   * @throws IOException if the JSON string is invalid with respect to ReferCompleteCallback
    */
-  public static GatherCallback fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, GatherCallback.class);
+  public static ReferCompleteCallback fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ReferCompleteCallback.class);
   }
 
   /**
-   * Convert an instance of GatherCallback to an JSON string
+   * Convert an instance of ReferCompleteCallback to an JSON string
    *
    * @return JSON string
    */

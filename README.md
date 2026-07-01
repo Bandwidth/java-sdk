@@ -345,6 +345,7 @@ Class | Method | HTTP request | Description
  - [RecordingTranscriptions](docs/RecordingTranscriptions.md)
  - [RedirectCallback](docs/RedirectCallback.md)
  - [RedirectMethodEnum](docs/RedirectMethodEnum.md)
+ - [ReferCompleteCallback](docs/ReferCompleteCallback.md)
  - [SipConnectionMetadata](docs/SipConnectionMetadata.md)
  - [SipCredentials](docs/SipCredentials.md)
  - [SmsMessageContent](docs/SmsMessageContent.md)
