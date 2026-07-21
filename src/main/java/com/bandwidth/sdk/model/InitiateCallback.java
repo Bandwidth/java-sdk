@@ -27,6 +27,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -121,6 +123,16 @@ public class InitiateCallback {
   @SerializedName(SERIALIZED_NAME_UUI)
   @javax.annotation.Nullable
   private String uui;
+
+  public static final String SERIALIZED_NAME_SIP_CALL_ID = "sipCallId";
+  @SerializedName(SERIALIZED_NAME_SIP_CALL_ID)
+  @javax.annotation.Nullable
+  private String sipCallId;
+
+  public static final String SERIALIZED_NAME_SIP_HEADERS = "sipHeaders";
+  @SerializedName(SERIALIZED_NAME_SIP_HEADERS)
+  @javax.annotation.Nullable
+  private Map<String, String> sipHeaders = new HashMap<>();
 
   public InitiateCallback() {
   }
@@ -371,6 +383,52 @@ public class InitiateCallback {
     this.uui = uui;
   }
 
+
+  public InitiateCallback sipCallId(@javax.annotation.Nullable String sipCallId) {
+    this.sipCallId = sipCallId;
+    return this;
+  }
+
+  /**
+   * (optional) The SIP Call-ID of the call&#39;s current SIP dialog with Bandwidth&#39;s SBC. Used to correlate dialogs and trace calls. Present on any call, inbound or outbound, once that dialog has been established; may be absent very early in a call before the dialog exists.
+   * @return sipCallId
+   */
+  @javax.annotation.Nullable
+  public String getSipCallId() {
+    return sipCallId;
+  }
+
+  public void setSipCallId(@javax.annotation.Nullable String sipCallId) {
+    this.sipCallId = sipCallId;
+  }
+
+
+  public InitiateCallback sipHeaders(@javax.annotation.Nullable Map<String, String> sipHeaders) {
+    this.sipHeaders = sipHeaders;
+    return this;
+  }
+
+  public InitiateCallback putSipHeadersItem(String key, String sipHeadersItem) {
+    if (this.sipHeaders == null) {
+      this.sipHeaders = new HashMap<>();
+    }
+    this.sipHeaders.put(key, sipHeadersItem);
+    return this;
+  }
+
+  /**
+   * (optional) Map of customer-supplied X-* headers from the original INVITE. Keys are lowercase (SIP headers are case-insensitive). Present only for inbound SIP URI calls with custom headers. Note - keys preserve the original SIP header name in lowercase rather than Bandwidth&#39;s usual camelCase JSON convention, since these are passthrough values from the caller&#39;s SIP INVITE, not Bandwidth-defined fields. If the same header name is sent more than once in the INVITE, only the last value is kept.
+   * @return sipHeaders
+   */
+  @javax.annotation.Nullable
+  public Map<String, String> getSipHeaders() {
+    return sipHeaders;
+  }
+
+  public void setSipHeaders(@javax.annotation.Nullable Map<String, String> sipHeaders) {
+    this.sipHeaders = sipHeaders;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -438,13 +496,15 @@ public class InitiateCallback {
         Objects.equals(this.startTime, initiateCallback.startTime) &&
         Objects.equals(this.diversion, initiateCallback.diversion) &&
         Objects.equals(this.stirShaken, initiateCallback.stirShaken) &&
-        Objects.equals(this.uui, initiateCallback.uui)&&
+        Objects.equals(this.uui, initiateCallback.uui) &&
+        Objects.equals(this.sipCallId, initiateCallback.sipCallId) &&
+        Objects.equals(this.sipHeaders, initiateCallback.sipHeaders)&&
         Objects.equals(this.additionalProperties, initiateCallback.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(eventType, eventTime, accountId, applicationId, from, to, direction, callId, callUrl, startTime, diversion, stirShaken, uui, additionalProperties);
+    return Objects.hash(eventType, eventTime, accountId, applicationId, from, to, direction, callId, callUrl, startTime, diversion, stirShaken, uui, sipCallId, sipHeaders, additionalProperties);
   }
 
   @Override
@@ -464,6 +524,8 @@ public class InitiateCallback {
     sb.append("    diversion: ").append(toIndentedString(diversion)).append("\n");
     sb.append("    stirShaken: ").append(toIndentedString(stirShaken)).append("\n");
     sb.append("    uui: ").append(toIndentedString(uui)).append("\n");
+    sb.append("    sipCallId: ").append(toIndentedString(sipCallId)).append("\n");
+    sb.append("    sipHeaders: ").append(toIndentedString(sipHeaders)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -486,7 +548,7 @@ public class InitiateCallback {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("eventType", "eventTime", "accountId", "applicationId", "from", "to", "direction", "callId", "callUrl", "startTime", "diversion", "stirShaken", "uui"));
+    openapiFields = new HashSet<String>(Arrays.asList("eventType", "eventTime", "accountId", "applicationId", "from", "to", "direction", "callId", "callUrl", "startTime", "diversion", "stirShaken", "uui", "sipCallId", "sipHeaders"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -540,6 +602,9 @@ public class InitiateCallback {
       }
       if ((jsonObj.get("uui") != null && !jsonObj.get("uui").isJsonNull()) && !jsonObj.get("uui").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `uui` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uui").toString()));
+      }
+      if ((jsonObj.get("sipCallId") != null && !jsonObj.get("sipCallId").isJsonNull()) && !jsonObj.get("sipCallId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `sipCallId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sipCallId").toString()));
       }
   }
 
