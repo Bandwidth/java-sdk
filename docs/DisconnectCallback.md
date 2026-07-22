@@ -25,6 +25,8 @@ The Disconnect event is fired when a call ends, for any reason.
 |**errorMessage** | **String** | Text explaining the reason that caused the call to fail in case of errors. |  [optional] |
 |**errorId** | **String** | Bandwidth&#39;s internal id that references the error event. |  [optional] |
 |**tag** | **String** | (optional) The tag specified on call creation. If no tag was specified or it was previously cleared, this field will not be present. |  [optional] |
+|**sipCallId** | **String** | (optional) The SIP Call-ID of the call&#39;s current SIP dialog with Bandwidth&#39;s SBC. Used to correlate dialogs and trace calls. Present on any call, inbound or outbound, once that dialog has been established; may be absent very early in a call before the dialog exists. |  [optional] |
+|**sipResponseCode** | **Integer** | (optional) The SIP status code returned by Bandwidth&#39;s SBC when it rejected an outbound call&#39;s INVITE (e.g. 486 for busy, 603 for decline). Present only when an outbound call was rejected by the SBC. |  [optional] |
 
 
 
