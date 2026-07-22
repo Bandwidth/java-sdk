@@ -16,6 +16,8 @@ import org.junit.jupiter.api.Test;
 
 import java.net.URI;
 import java.time.OffsetDateTime;
+import java.util.Map;
+
 import com.bandwidth.sdk.model.InitiateCallback;
 import com.bandwidth.sdk.model.Diversion;
 import com.bandwidth.sdk.model.StirShaken;
@@ -41,9 +43,14 @@ public class InitiateCallbackTest {
             .startTime(OffsetDateTime.now())
             .diversion(new Diversion())
             .stirShaken(new StirShaken())
-            .uui("uui");
+            .uui("uui")
+            .sipCallId("sipCallId")
+            .sipHeaders(Map.of(
+                    "x-header1",
+                    "x-header2"));
 
     /**
+     *
      * Model tests for InitiateCallback
      */
     @Test
@@ -153,6 +160,22 @@ public class InitiateCallbackTest {
     @Test
     public void uuiTest() {
         assertThat(model.getUui(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'sipCallId'
+     */
+    @Test
+    public void sipCallIdTest() {
+        assertThat(model.getSipCallId(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'sipHeaders'
+     */
+    @Test
+    public void sipHeadersTest() {
+        assertThat(model.getSipHeaders(), instanceOf(Map.class));
     }
 
 }

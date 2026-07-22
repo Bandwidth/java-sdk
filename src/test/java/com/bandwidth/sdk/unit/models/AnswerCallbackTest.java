@@ -43,7 +43,8 @@ public class AnswerCallbackTest {
             .tag("tag")
             .machineDetectionResult(new MachineDetectionResult()
                     .value("answering-machine")
-                    .duration("PT4.9891287S"));
+                    .duration("PT4.9891287S"))
+            .sipCallId("sipCallId");
 
     /**
      * Model tests for AnswerCallback
@@ -163,6 +164,14 @@ public class AnswerCallbackTest {
     @Test
     public void machineDetectionResultTest() {
         assertThat(model.getMachineDetectionResult(), instanceOf(MachineDetectionResult.class));
+    }
+
+    /**
+     * Test the property 'sipCallId'
+     */
+    @Test
+    public void sipCallIdTest() {
+        assertThat(model.getSipCallId(), instanceOf(String.class));
     }
 
 }
