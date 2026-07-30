@@ -127,6 +127,11 @@ public class AnswerCallback {
   @javax.annotation.Nullable
   private MachineDetectionResult machineDetectionResult;
 
+  public static final String SERIALIZED_NAME_SIP_CALL_ID = "sipCallId";
+  @SerializedName(SERIALIZED_NAME_SIP_CALL_ID)
+  @javax.annotation.Nullable
+  private String sipCallId;
+
   public AnswerCallback() {
   }
 
@@ -395,6 +400,25 @@ public class AnswerCallback {
     this.machineDetectionResult = machineDetectionResult;
   }
 
+
+  public AnswerCallback sipCallId(@javax.annotation.Nullable String sipCallId) {
+    this.sipCallId = sipCallId;
+    return this;
+  }
+
+  /**
+   * (optional) The SIP Call-ID of the call&#39;s current SIP dialog with Bandwidth&#39;s SBC. Used to correlate dialogs and trace calls. Present on any call, inbound or outbound, once that dialog has been established; may be absent very early in a call before the dialog exists.
+   * @return sipCallId
+   */
+  @javax.annotation.Nullable
+  public String getSipCallId() {
+    return sipCallId;
+  }
+
+  public void setSipCallId(@javax.annotation.Nullable String sipCallId) {
+    this.sipCallId = sipCallId;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -463,7 +487,8 @@ public class AnswerCallback {
         Objects.equals(this.startTime, answerCallback.startTime) &&
         Objects.equals(this.answerTime, answerCallback.answerTime) &&
         Objects.equals(this.tag, answerCallback.tag) &&
-        Objects.equals(this.machineDetectionResult, answerCallback.machineDetectionResult)&&
+        Objects.equals(this.machineDetectionResult, answerCallback.machineDetectionResult) &&
+        Objects.equals(this.sipCallId, answerCallback.sipCallId)&&
         Objects.equals(this.additionalProperties, answerCallback.additionalProperties);
   }
 
@@ -473,7 +498,7 @@ public class AnswerCallback {
 
   @Override
   public int hashCode() {
-    return Objects.hash(eventType, eventTime, accountId, applicationId, from, to, direction, callId, callUrl, enqueuedTime, startTime, answerTime, tag, machineDetectionResult, additionalProperties);
+    return Objects.hash(eventType, eventTime, accountId, applicationId, from, to, direction, callId, callUrl, enqueuedTime, startTime, answerTime, tag, machineDetectionResult, sipCallId, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -501,6 +526,7 @@ public class AnswerCallback {
     sb.append("    answerTime: ").append(toIndentedString(answerTime)).append("\n");
     sb.append("    tag: ").append(toIndentedString(tag)).append("\n");
     sb.append("    machineDetectionResult: ").append(toIndentedString(machineDetectionResult)).append("\n");
+    sb.append("    sipCallId: ").append(toIndentedString(sipCallId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -523,7 +549,7 @@ public class AnswerCallback {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("eventType", "eventTime", "accountId", "applicationId", "from", "to", "direction", "callId", "callUrl", "enqueuedTime", "startTime", "answerTime", "tag", "machineDetectionResult"));
+    openapiFields = new HashSet<String>(Arrays.asList("eventType", "eventTime", "accountId", "applicationId", "from", "to", "direction", "callId", "callUrl", "enqueuedTime", "startTime", "answerTime", "tag", "machineDetectionResult", "sipCallId"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -573,6 +599,9 @@ public class AnswerCallback {
       // validate the optional field `machineDetectionResult`
       if (jsonObj.get("machineDetectionResult") != null && !jsonObj.get("machineDetectionResult").isJsonNull()) {
         MachineDetectionResult.validateJsonElement(jsonObj.get("machineDetectionResult"));
+      }
+      if ((jsonObj.get("sipCallId") != null && !jsonObj.get("sipCallId").isJsonNull()) && !jsonObj.get("sipCallId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `sipCallId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sipCallId").toString()));
       }
   }
 
