@@ -141,6 +141,16 @@ public class DisconnectCallback {
   @javax.annotation.Nullable
   private String tag;
 
+  public static final String SERIALIZED_NAME_SIP_CALL_ID = "sipCallId";
+  @SerializedName(SERIALIZED_NAME_SIP_CALL_ID)
+  @javax.annotation.Nullable
+  private String sipCallId;
+
+  public static final String SERIALIZED_NAME_SIP_RESPONSE_CODE = "sipResponseCode";
+  @SerializedName(SERIALIZED_NAME_SIP_RESPONSE_CODE)
+  @javax.annotation.Nullable
+  private Integer sipResponseCode;
+
   public DisconnectCallback() {
   }
 
@@ -466,6 +476,44 @@ public class DisconnectCallback {
     this.tag = tag;
   }
 
+
+  public DisconnectCallback sipCallId(@javax.annotation.Nullable String sipCallId) {
+    this.sipCallId = sipCallId;
+    return this;
+  }
+
+  /**
+   * (optional) The SIP Call-ID of the call&#39;s current SIP dialog with Bandwidth&#39;s SBC. Used to correlate dialogs and trace calls. Present on any call, inbound or outbound, once that dialog has been established; may be absent very early in a call before the dialog exists.
+   * @return sipCallId
+   */
+  @javax.annotation.Nullable
+  public String getSipCallId() {
+    return sipCallId;
+  }
+
+  public void setSipCallId(@javax.annotation.Nullable String sipCallId) {
+    this.sipCallId = sipCallId;
+  }
+
+
+  public DisconnectCallback sipResponseCode(@javax.annotation.Nullable Integer sipResponseCode) {
+    this.sipResponseCode = sipResponseCode;
+    return this;
+  }
+
+  /**
+   * (optional) The SIP status code returned by Bandwidth&#39;s SBC when it rejected an outbound call&#39;s INVITE (e.g. 486 for busy, 603 for decline). Present only when an outbound call was rejected by the SBC.
+   * @return sipResponseCode
+   */
+  @javax.annotation.Nullable
+  public Integer getSipResponseCode() {
+    return sipResponseCode;
+  }
+
+  public void setSipResponseCode(@javax.annotation.Nullable Integer sipResponseCode) {
+    this.sipResponseCode = sipResponseCode;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -537,7 +585,9 @@ public class DisconnectCallback {
         Objects.equals(this.cause, disconnectCallback.cause) &&
         Objects.equals(this.errorMessage, disconnectCallback.errorMessage) &&
         Objects.equals(this.errorId, disconnectCallback.errorId) &&
-        Objects.equals(this.tag, disconnectCallback.tag)&&
+        Objects.equals(this.tag, disconnectCallback.tag) &&
+        Objects.equals(this.sipCallId, disconnectCallback.sipCallId) &&
+        Objects.equals(this.sipResponseCode, disconnectCallback.sipResponseCode)&&
         Objects.equals(this.additionalProperties, disconnectCallback.additionalProperties);
   }
 
@@ -547,7 +597,7 @@ public class DisconnectCallback {
 
   @Override
   public int hashCode() {
-    return Objects.hash(eventType, eventTime, accountId, applicationId, from, to, callId, direction, callUrl, enqueuedTime, startTime, answerTime, endTime, cause, errorMessage, errorId, tag, additionalProperties);
+    return Objects.hash(eventType, eventTime, accountId, applicationId, from, to, callId, direction, callUrl, enqueuedTime, startTime, answerTime, endTime, cause, errorMessage, errorId, tag, sipCallId, sipResponseCode, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -578,6 +628,8 @@ public class DisconnectCallback {
     sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
     sb.append("    errorId: ").append(toIndentedString(errorId)).append("\n");
     sb.append("    tag: ").append(toIndentedString(tag)).append("\n");
+    sb.append("    sipCallId: ").append(toIndentedString(sipCallId)).append("\n");
+    sb.append("    sipResponseCode: ").append(toIndentedString(sipResponseCode)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -600,7 +652,7 @@ public class DisconnectCallback {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("eventType", "eventTime", "accountId", "applicationId", "from", "to", "callId", "direction", "callUrl", "enqueuedTime", "startTime", "answerTime", "endTime", "cause", "errorMessage", "errorId", "tag"));
+    openapiFields = new HashSet<String>(Arrays.asList("eventType", "eventTime", "accountId", "applicationId", "from", "to", "callId", "direction", "callUrl", "enqueuedTime", "startTime", "answerTime", "endTime", "cause", "errorMessage", "errorId", "tag", "sipCallId", "sipResponseCode"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -655,6 +707,9 @@ public class DisconnectCallback {
       }
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
+      }
+      if ((jsonObj.get("sipCallId") != null && !jsonObj.get("sipCallId").isJsonNull()) && !jsonObj.get("sipCallId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `sipCallId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sipCallId").toString()));
       }
   }
 
