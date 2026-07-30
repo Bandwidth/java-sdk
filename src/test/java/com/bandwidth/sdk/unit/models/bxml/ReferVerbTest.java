@@ -9,6 +9,7 @@ package com.bandwidth.sdk.unit.models.bxml;
 
 import com.bandwidth.sdk.model.bxml.Bxml;
 import com.bandwidth.sdk.model.bxml.Refer;
+import com.bandwidth.sdk.model.bxml.SipUri;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
@@ -22,7 +23,7 @@ import java.net.URI;
 
 public class ReferVerbTest {
 
-        Refer.ReferSipUri sipUri = Refer.ReferSipUri.builder()
+        SipUri sipUri = SipUri.builder()
                 .uri("sip:alice@atlanta.example.com")
                 .build();
 
@@ -40,14 +41,14 @@ public class ReferVerbTest {
         @Test
         public void referVerbWithAllAttributes() throws JAXBException {
                 JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
-                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Refer referCompleteUrl=\"https://example.com/webhooks/refer_complete\" referCompleteMethod=\"POST\" tag=\"test-tag\"><SipUri>sip:alice@atlanta.example.com</SipUri></Refer></Bxml>";
+                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Refer referCompleteUrl=\"https://example.com/webhooks/refer_complete\" referCompleteMethod=\"POST\" tag=\"test-tag\"><SipUri transferAnswerMethod=\"POST\" transferAnswerFallbackMethod=\"POST\" transferDisconnectMethod=\"POST\">sip:alice@atlanta.example.com</SipUri></Refer></Bxml>";
                 assertThat(new Bxml().with(refer).toBxml(jaxbContext), is(expectedBxml));
         }
 
         @Test
         public void referVerbMinimal() throws JAXBException {
                 JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
-                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Refer referCompleteMethod=\"POST\"><SipUri>sip:alice@atlanta.example.com</SipUri></Refer></Bxml>";
+                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Refer referCompleteMethod=\"POST\"><SipUri transferAnswerMethod=\"POST\" transferAnswerFallbackMethod=\"POST\" transferDisconnectMethod=\"POST\">sip:alice@atlanta.example.com</SipUri></Refer></Bxml>";
                 assertThat(new Bxml().with(referMinimal).toBxml(jaxbContext), is(expectedBxml));
         }
 }
