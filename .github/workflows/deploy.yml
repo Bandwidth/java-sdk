@@ -37,16 +37,16 @@ jobs:
         run: echo "RELEASE_VERSION=${TAG#v}" >> $GITHUB_ENV
         env:
           TAG: ${{ github.event.release.tag_name }}
-      
+
       - name: Checkout
         uses: actions/checkout@v6
 
       - name: Set up Apache Maven Central
         uses: actions/setup-java@v5
         with:
-          distribution: 'adopt'
+          distribution: "adopt"
           java-version: 21
-          server-id: 'ossrh'
+          server-id: "ossrh"
           server-username: PUBLISHER_USERNAME
           server-password: PUBLISHER_PASSWORD
           gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
@@ -59,7 +59,7 @@ jobs:
         shell: bash
 
       - name: Generate SDK with Updated Version
-        uses: Bandwidth/generate-sdk-action@v4.0.0
+        uses: Bandwidth/generate-sdk-action@v4.1.0
         with:
           openapi-generator-version: ${{ env.OPENAPI_GENERATOR_VERSION }}
           language: java
