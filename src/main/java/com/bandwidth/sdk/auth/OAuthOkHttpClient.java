@@ -18,6 +18,7 @@ import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 import org.apache.oltu.oauth2.client.HttpClient;
 import org.apache.oltu.oauth2.client.request.OAuthClientRequest;
@@ -66,9 +67,12 @@ public class OAuthOkHttpClient implements HttpClient {
 
         try {
             Response response = client.newCall(requestBuilder.build()).execute();
+            ResponseBody responseBody = response.body();
+            // A degraded auth response (e.g. rate limited) can have no body or no Content-Type
+            MediaType responseMediaType = responseBody != null ? responseBody.contentType() : null;
             return OAuthClientResponseFactory.createCustomResponse(
-                    response.body().string(),
-                    response.body().contentType().toString(),
+                    responseBody != null ? responseBody.string() : "",
+                    responseMediaType != null ? responseMediaType.toString() : null,
                     response.code(),
                     response.headers().toMultimap(),
                     responseClass);

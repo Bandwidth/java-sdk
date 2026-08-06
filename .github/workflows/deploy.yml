@@ -39,7 +39,7 @@ jobs:
           TAG: ${{ github.event.release.tag_name }}
 
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Set up Apache Maven Central
         uses: actions/setup-java@v5
