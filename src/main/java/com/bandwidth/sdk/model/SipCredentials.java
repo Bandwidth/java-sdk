@@ -14,7 +14,6 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import java.util.Locale;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -43,14 +42,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
  * SipCredentials
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class SipCredentials {
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
@@ -183,10 +181,7 @@ public class SipCredentials {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
@@ -210,15 +205,15 @@ public class SipCredentials {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!SipCredentials.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in SipCredentials is not found in the empty JSON string", SipCredentials.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in SipCredentials is not found in the empty JSON string", SipCredentials.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
       }
       if ((jsonObj.get("password") != null && !jsonObj.get("password").isJsonNull()) && !jsonObj.get("password").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `password` to be a primitive type in the JSON string but got `%s`", jsonObj.get("password").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `password` to be a primitive type in the JSON string but got `%s`", jsonObj.get("password").toString()));
       }
   }
 
@@ -279,7 +274,7 @@ public class SipCredentials {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

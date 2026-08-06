@@ -14,7 +14,6 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import java.util.Locale;
 import com.bandwidth.sdk.model.RecordingTranscriptionClip;
 import com.bandwidth.sdk.model.Transcription;
 import com.google.gson.TypeAdapter;
@@ -47,14 +46,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
  * RecordingTranscriptions
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class RecordingTranscriptions {
   public static final String SERIALIZED_NAME_TRANSCRIPTS = "transcripts";
   @SerializedName(SERIALIZED_NAME_TRANSCRIPTS)
@@ -203,10 +201,7 @@ public class RecordingTranscriptions {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
@@ -230,7 +225,7 @@ public class RecordingTranscriptions {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!RecordingTranscriptions.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in RecordingTranscriptions is not found in the empty JSON string", RecordingTranscriptions.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in RecordingTranscriptions is not found in the empty JSON string", RecordingTranscriptions.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -239,7 +234,7 @@ public class RecordingTranscriptions {
         if (jsonArraytranscripts != null) {
           // ensure the json data is an array
           if (!jsonObj.get("transcripts").isJsonArray()) {
-            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `transcripts` to be an array in the JSON string but got `%s`", jsonObj.get("transcripts").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `transcripts` to be an array in the JSON string but got `%s`", jsonObj.get("transcripts").toString()));
           }
 
           // validate the optional field `transcripts` (array)
@@ -253,7 +248,7 @@ public class RecordingTranscriptions {
         if (jsonArrayclips != null) {
           // ensure the json data is an array
           if (!jsonObj.get("clips").isJsonArray()) {
-            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `clips` to be an array in the JSON string but got `%s`", jsonObj.get("clips").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `clips` to be an array in the JSON string but got `%s`", jsonObj.get("clips").toString()));
           }
 
           // validate the optional field `clips` (array)
@@ -321,7 +316,7 @@ public class RecordingTranscriptions {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

@@ -14,7 +14,6 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import java.util.Locale;
 import com.bandwidth.sdk.model.MmsMessageContent;
 import com.bandwidth.sdk.model.MultiChannelChannelListMMSObject;
 import com.bandwidth.sdk.model.MultiChannelChannelListRBMObject;
@@ -40,7 +39,6 @@ import java.util.HashSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Locale;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -64,7 +62,7 @@ import com.google.gson.JsonParseException;
 
 import com.bandwidth.sdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class MultiChannelChannelListRequestObject extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(MultiChannelChannelListRequestObject.class.getName());
 
@@ -154,7 +152,7 @@ public class MultiChannelChannelListRequestObject extends AbstractOpenApiSchema 
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for MultiChannelChannelListRBMObject failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MultiChannelChannelListRBMObject failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'MultiChannelChannelListRBMObject'", e);
                     }
                     // deserialize MultiChannelChannelListSMSObject
@@ -167,7 +165,7 @@ public class MultiChannelChannelListRequestObject extends AbstractOpenApiSchema 
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for MultiChannelChannelListSMSObject failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MultiChannelChannelListSMSObject failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'MultiChannelChannelListSMSObject'", e);
                     }
                     // deserialize MultiChannelChannelListMMSObject
@@ -180,11 +178,11 @@ public class MultiChannelChannelListRequestObject extends AbstractOpenApiSchema 
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for MultiChannelChannelListMMSObject failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MultiChannelChannelListMMSObject failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'MultiChannelChannelListMMSObject'", e);
                     }
 
-                    throw new IOException(String.format(Locale.ROOT, "Failed deserialization for MultiChannelChannelListRequestObject: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for MultiChannelChannelListRequestObject: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -299,7 +297,7 @@ public class MultiChannelChannelListRequestObject extends AbstractOpenApiSchema 
             MultiChannelChannelListRBMObject.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format(Locale.ROOT, "Deserialization for MultiChannelChannelListRBMObject failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MultiChannelChannelListRBMObject failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with MultiChannelChannelListSMSObject
@@ -307,7 +305,7 @@ public class MultiChannelChannelListRequestObject extends AbstractOpenApiSchema 
             MultiChannelChannelListSMSObject.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format(Locale.ROOT, "Deserialization for MultiChannelChannelListSMSObject failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MultiChannelChannelListSMSObject failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with MultiChannelChannelListMMSObject
@@ -315,10 +313,10 @@ public class MultiChannelChannelListRequestObject extends AbstractOpenApiSchema 
             MultiChannelChannelListMMSObject.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format(Locale.ROOT, "Deserialization for MultiChannelChannelListMMSObject failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MultiChannelChannelListMMSObject failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        throw new IOException(String.format(Locale.ROOT, "The JSON string is invalid for MultiChannelChannelListRequestObject with anyOf schemas: MultiChannelChannelListMMSObject, MultiChannelChannelListRBMObject, MultiChannelChannelListSMSObject. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+        throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for MultiChannelChannelListRequestObject with anyOf schemas: MultiChannelChannelListMMSObject, MultiChannelChannelListRBMObject, MultiChannelChannelListSMSObject. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
     }
 
     /**

@@ -14,7 +14,6 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import java.util.Locale;
 import com.bandwidth.sdk.model.EndpointStatusEnum;
 import com.bandwidth.sdk.model.EndpointTypeEnum;
 import com.google.gson.TypeAdapter;
@@ -46,14 +45,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
  * Endpoints
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class Endpoints {
   public static final String SERIALIZED_NAME_ENDPOINT_ID = "endpointId";
   @SerializedName(SERIALIZED_NAME_ENDPOINT_ID)
@@ -290,10 +288,7 @@ public class Endpoints {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
@@ -317,26 +312,26 @@ public class Endpoints {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Endpoints.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in Endpoints is not found in the empty JSON string", Endpoints.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in Endpoints is not found in the empty JSON string", Endpoints.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : Endpoints.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("endpointId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `endpointId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endpointId").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `endpointId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endpointId").toString()));
       }
       // validate the required field `type`
       EndpointTypeEnum.validateJsonElement(jsonObj.get("type"));
       // validate the required field `status`
       EndpointStatusEnum.validateJsonElement(jsonObj.get("status"));
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
       }
   }
 
@@ -397,7 +392,7 @@ public class Endpoints {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object
