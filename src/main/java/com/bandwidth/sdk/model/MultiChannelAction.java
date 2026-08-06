@@ -165,7 +165,7 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
                                 newMultiChannelAction.setActualInstance(deserialized);
                                 return newMultiChannelAction;
                             default:
-                                log.log(Level.WARNING, String.format(Locale.ROOT, "Failed to lookup discriminator value `%s` for MultiChannelAction. Possible values: CREATE_CALENDAR_EVENT DIAL_PHONE OPEN_URL REPLY REQUEST_LOCATION SHOW_LOCATION", jsonObject.get("type").getAsString()));
+                                log.log(Level.WARNING, String.format(java.util.Locale.ROOT, "Failed to lookup discriminator value `%s` for MultiChannelAction. Possible values: CREATE_CALENDAR_EVENT DIAL_PHONE OPEN_URL REPLY REQUEST_LOCATION SHOW_LOCATION", jsonObject.get("type").getAsString()));
                         }
                     }
 

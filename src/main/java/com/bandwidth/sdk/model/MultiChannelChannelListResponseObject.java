@@ -134,7 +134,7 @@ public class MultiChannelChannelListResponseObject extends AbstractOpenApiSchema
                                 newMultiChannelChannelListResponseObject.setActualInstance(deserialized);
                                 return newMultiChannelChannelListResponseObject;
                             default:
-                                log.log(Level.WARNING, String.format(Locale.ROOT, "Failed to lookup discriminator value `%s` for MultiChannelChannelListResponseObject. Possible values: MMS RBM SMS", jsonObject.get("channel").getAsString()));
+                                log.log(Level.WARNING, String.format(java.util.Locale.ROOT, "Failed to lookup discriminator value `%s` for MultiChannelChannelListResponseObject. Possible values: MMS RBM SMS", jsonObject.get("channel").getAsString()));
                         }
                     }
 
