@@ -20,6 +20,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+@SuppressWarnings("null")
 public class MediaApiTest {
     private static ApiClient defaultClient = Configuration.getDefaultApiClient();
     private static HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");

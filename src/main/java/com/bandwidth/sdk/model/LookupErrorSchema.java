@@ -55,17 +55,17 @@ import com.bandwidth.sdk.JSON;
 public class LookupErrorSchema {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String code;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String description;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String type;
 
   public static final String SERIALIZED_NAME_META = "meta";
@@ -76,7 +76,7 @@ public class LookupErrorSchema {
   public LookupErrorSchema() {
   }
 
-  public LookupErrorSchema code(@javax.annotation.Nullable String code) {
+  public LookupErrorSchema code(@javax.annotation.Nonnull String code) {
     this.code = code;
     return this;
   }
@@ -85,17 +85,17 @@ public class LookupErrorSchema {
    * Validation error code
    * @return code
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getCode() {
     return code;
   }
 
-  public void setCode(@javax.annotation.Nullable String code) {
+  public void setCode(@javax.annotation.Nonnull String code) {
     this.code = code;
   }
 
 
-  public LookupErrorSchema description(@javax.annotation.Nullable String description) {
+  public LookupErrorSchema description(@javax.annotation.Nonnull String description) {
     this.description = description;
     return this;
   }
@@ -104,17 +104,17 @@ public class LookupErrorSchema {
    * Description of validation error
    * @return description
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getDescription() {
     return description;
   }
 
-  public void setDescription(@javax.annotation.Nullable String description) {
+  public void setDescription(@javax.annotation.Nonnull String description) {
     this.description = description;
   }
 
 
-  public LookupErrorSchema type(@javax.annotation.Nullable String type) {
+  public LookupErrorSchema type(@javax.annotation.Nonnull String type) {
     this.type = type;
     return this;
   }
@@ -123,12 +123,12 @@ public class LookupErrorSchema {
    * Type of validation error
    * @return type
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getType() {
     return type;
   }
 
-  public void setType(@javax.annotation.Nullable String type) {
+  public void setType(@javax.annotation.Nonnull String type) {
     this.type = type;
   }
 
@@ -251,7 +251,7 @@ public class LookupErrorSchema {
     openapiFields = new HashSet<String>(Arrays.asList("code", "description", "type", "meta"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(0);
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("code", "description", "type"));
   }
 
   /**
@@ -266,14 +266,21 @@ public class LookupErrorSchema {
           throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in LookupErrorSchema is not found in the empty JSON string", LookupErrorSchema.openapiRequiredFields.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : LookupErrorSchema.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
+      if (!jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+      if (!jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+      if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       // validate the optional field `meta`

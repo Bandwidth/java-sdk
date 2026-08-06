@@ -26,7 +26,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * [DNI-Only](#section/DNI-Only). The current delivery status of the phone number. - ACTIVE: A message was successfully sent to the number (delivery code 0). - DEACTIVATED: A message was not delivered to a number (delivery code 720) - UNKNOWN: Bandwidth cannot find an delivery status entry for the number.
+ * [DNI-Only](#section/DNI-Only). The current delivery status of the phone number. - ACTIVE: A message was successfully sent to the number (delivery code 0). - DEACTIVATED: A message was not delivered to a number (delivery code 720) - UNKNOWN: Bandwidth cannot find an delivery status entry for the number. - NOT_ENABLED: The phone number is not enabled for messaging, so there is no delivery status information.
  */
 @JsonAdapter(LatestMessageDeliveryStatusEnum.Adapter.class)
 public enum LatestMessageDeliveryStatusEnum {
@@ -35,7 +35,9 @@ public enum LatestMessageDeliveryStatusEnum {
   
   DEACTIVATED("DEACTIVATED"),
   
-  UNKNOWN("UNKNOWN");
+  UNKNOWN("UNKNOWN"),
+  
+  NOT_ENABLED("NOT_ENABLED");
 
   private String value;
 

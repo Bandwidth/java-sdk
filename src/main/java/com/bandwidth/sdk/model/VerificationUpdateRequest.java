@@ -133,6 +133,11 @@ public class VerificationUpdateRequest {
   @javax.annotation.Nullable
   private BusinessEntityTypeEnum businessEntityType;
 
+  public static final String SERIALIZED_NAME_BUSINESS_REGISTRATION_ISSUING_COUNTRY = "businessRegistrationIssuingCountry";
+  @SerializedName(SERIALIZED_NAME_BUSINESS_REGISTRATION_ISSUING_COUNTRY)
+  @javax.annotation.Nullable
+  private String businessRegistrationIssuingCountry;
+
   public static final String SERIALIZED_NAME_HELP_MESSAGE_RESPONSE = "helpMessageResponse";
   @SerializedName(SERIALIZED_NAME_HELP_MESSAGE_RESPONSE)
   @javax.annotation.Nullable
@@ -142,6 +147,11 @@ public class VerificationUpdateRequest {
   @SerializedName(SERIALIZED_NAME_AGE_GATED_CONTENT)
   @javax.annotation.Nullable
   private Boolean ageGatedContent;
+
+  public static final String SERIALIZED_NAME_CV_TOKEN = "cvToken";
+  @SerializedName(SERIALIZED_NAME_CV_TOKEN)
+  @javax.annotation.Nullable
+  private String cvToken;
 
   public VerificationUpdateRequest() {
   }
@@ -382,7 +392,7 @@ public class VerificationUpdateRequest {
   }
 
   /**
-   * US Federal Tax ID Number (EIN) or Canada Business Number (CBN). Optional until early 2026. If a value is provided for this field, a value must be provided for &#x60;businessRegistrationType&#x60; and &#x60;businessEntityType&#x60;. Available starting October 1st, 2025.
+   * Government-issued business identifying number.  **Note: As of October 19th, 2026 this field will be required when &#x60;businessEntityType&#x60; is _not_ &#x60;SOLE_PROPRIETOR&#x60;. If this field is provided, &#x60;businessRegistrationType&#x60; and &#x60;businessRegistrationIssuingCountry&#x60; are also required.** 
    * @return businessRegistrationNumber
    */
   @javax.annotation.Nullable
@@ -433,6 +443,25 @@ public class VerificationUpdateRequest {
   }
 
 
+  public VerificationUpdateRequest businessRegistrationIssuingCountry(@javax.annotation.Nullable String businessRegistrationIssuingCountry) {
+    this.businessRegistrationIssuingCountry = businessRegistrationIssuingCountry;
+    return this;
+  }
+
+  /**
+   * The country issuing the business registration in ISO-3166-1 alpha-3 format. Alpha-2 format is accepted by the API, but alpha-3 is highly encouraged.  **Note: As of October 19th, 2026 this field will be required when &#x60;businessRegistrationNumber&#x60; is provided.**  | Registration Type     | Supported Countries                | |----------------------|------------------------------------| | EIN                  | USA                                | | CBN                  | CAN                                | | NEQ                  | CAN                                | | PROVINCIAL_NUMBER    | CAN                                | | CRN                  | GBR, HKG                           | | VAT                  | GBR, IRL, BRA, NLD                 | | ACN                  | AUS                                | | ABN                  | AUS                                | | BRN                  | HKG                                | | SIREN                | FRA                                | | SIRET                | FRA                                | | NZBN                 | NZL                                | | UST_IDNR             | DEU                                | | CIF                  | ESP                                | | NIF                  | ESP                                | | CNPJ                 | BRA                                | | UID                  | CHE                                | | OTHER                | Must Provide Country Code          |
+   * @return businessRegistrationIssuingCountry
+   */
+  @javax.annotation.Nullable
+  public String getBusinessRegistrationIssuingCountry() {
+    return businessRegistrationIssuingCountry;
+  }
+
+  public void setBusinessRegistrationIssuingCountry(@javax.annotation.Nullable String businessRegistrationIssuingCountry) {
+    this.businessRegistrationIssuingCountry = businessRegistrationIssuingCountry;
+  }
+
+
   public VerificationUpdateRequest helpMessageResponse(@javax.annotation.Nullable String helpMessageResponse) {
     this.helpMessageResponse = helpMessageResponse;
     return this;
@@ -468,6 +497,25 @@ public class VerificationUpdateRequest {
 
   public void setAgeGatedContent(@javax.annotation.Nullable Boolean ageGatedContent) {
     this.ageGatedContent = ageGatedContent;
+  }
+
+
+  public VerificationUpdateRequest cvToken(@javax.annotation.Nullable String cvToken) {
+    this.cvToken = cvToken;
+    return this;
+  }
+
+  /**
+   * The token provided by Campaign Verify to validate your political use case. Only required for 527 political organizations. If you are not a 527 political organization, this field should be omitted. Supplying an empty string will likely result in rejection.
+   * @return cvToken
+   */
+  @javax.annotation.Nullable
+  public String getCvToken() {
+    return cvToken;
+  }
+
+  public void setCvToken(@javax.annotation.Nullable String cvToken) {
+    this.cvToken = cvToken;
   }
 
   /**
@@ -540,8 +588,10 @@ public class VerificationUpdateRequest {
         Objects.equals(this.businessRegistrationNumber, verificationUpdateRequest.businessRegistrationNumber) &&
         Objects.equals(this.businessRegistrationType, verificationUpdateRequest.businessRegistrationType) &&
         Objects.equals(this.businessEntityType, verificationUpdateRequest.businessEntityType) &&
+        Objects.equals(this.businessRegistrationIssuingCountry, verificationUpdateRequest.businessRegistrationIssuingCountry) &&
         Objects.equals(this.helpMessageResponse, verificationUpdateRequest.helpMessageResponse) &&
-        Objects.equals(this.ageGatedContent, verificationUpdateRequest.ageGatedContent)&&
+        Objects.equals(this.ageGatedContent, verificationUpdateRequest.ageGatedContent) &&
+        Objects.equals(this.cvToken, verificationUpdateRequest.cvToken)&&
         Objects.equals(this.additionalProperties, verificationUpdateRequest.additionalProperties);
   }
 
@@ -551,7 +601,7 @@ public class VerificationUpdateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(businessAddress, businessContact, messageVolume, useCase, useCaseSummary, productionMessageContent, optInWorkflow, additionalInformation, isvReseller, privacyPolicyUrl, termsAndConditionsUrl, businessDba, businessRegistrationNumber, businessRegistrationType, businessEntityType, helpMessageResponse, ageGatedContent, additionalProperties);
+    return Objects.hash(businessAddress, businessContact, messageVolume, useCase, useCaseSummary, productionMessageContent, optInWorkflow, additionalInformation, isvReseller, privacyPolicyUrl, termsAndConditionsUrl, businessDba, businessRegistrationNumber, businessRegistrationType, businessEntityType, businessRegistrationIssuingCountry, helpMessageResponse, ageGatedContent, cvToken, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -580,8 +630,10 @@ public class VerificationUpdateRequest {
     sb.append("    businessRegistrationNumber: ").append(toIndentedString(businessRegistrationNumber)).append("\n");
     sb.append("    businessRegistrationType: ").append(toIndentedString(businessRegistrationType)).append("\n");
     sb.append("    businessEntityType: ").append(toIndentedString(businessEntityType)).append("\n");
+    sb.append("    businessRegistrationIssuingCountry: ").append(toIndentedString(businessRegistrationIssuingCountry)).append("\n");
     sb.append("    helpMessageResponse: ").append(toIndentedString(helpMessageResponse)).append("\n");
     sb.append("    ageGatedContent: ").append(toIndentedString(ageGatedContent)).append("\n");
+    sb.append("    cvToken: ").append(toIndentedString(cvToken)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -604,7 +656,7 @@ public class VerificationUpdateRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("businessAddress", "businessContact", "messageVolume", "useCase", "useCaseSummary", "productionMessageContent", "optInWorkflow", "additionalInformation", "isvReseller", "privacyPolicyUrl", "termsAndConditionsUrl", "businessDba", "businessRegistrationNumber", "businessRegistrationType", "businessEntityType", "helpMessageResponse", "ageGatedContent"));
+    openapiFields = new HashSet<String>(Arrays.asList("businessAddress", "businessContact", "messageVolume", "useCase", "useCaseSummary", "productionMessageContent", "optInWorkflow", "additionalInformation", "isvReseller", "privacyPolicyUrl", "termsAndConditionsUrl", "businessDba", "businessRegistrationNumber", "businessRegistrationType", "businessEntityType", "businessRegistrationIssuingCountry", "helpMessageResponse", "ageGatedContent", "cvToken"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(Arrays.asList("businessAddress", "businessContact", "messageVolume", "useCase", "useCaseSummary", "productionMessageContent", "optInWorkflow"));
@@ -671,8 +723,14 @@ public class VerificationUpdateRequest {
       if (jsonObj.get("businessEntityType") != null && !jsonObj.get("businessEntityType").isJsonNull()) {
         BusinessEntityTypeEnum.validateJsonElement(jsonObj.get("businessEntityType"));
       }
+      if ((jsonObj.get("businessRegistrationIssuingCountry") != null && !jsonObj.get("businessRegistrationIssuingCountry").isJsonNull()) && !jsonObj.get("businessRegistrationIssuingCountry").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `businessRegistrationIssuingCountry` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessRegistrationIssuingCountry").toString()));
+      }
       if ((jsonObj.get("helpMessageResponse") != null && !jsonObj.get("helpMessageResponse").isJsonNull()) && !jsonObj.get("helpMessageResponse").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `helpMessageResponse` to be a primitive type in the JSON string but got `%s`", jsonObj.get("helpMessageResponse").toString()));
+      }
+      if ((jsonObj.get("cvToken") != null && !jsonObj.get("cvToken").isJsonNull()) && !jsonObj.get("cvToken").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `cvToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cvToken").toString()));
       }
   }
 

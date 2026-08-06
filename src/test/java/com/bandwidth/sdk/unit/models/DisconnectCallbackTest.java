@@ -43,7 +43,9 @@ public class DisconnectCallbackTest {
             .cause("cause")
             .errorMessage("errorMessage")
             .errorId("errorId")
-            .tag("tag");
+            .tag("tag")
+            .sipCallId("sipCallId")
+            .sipResponseCode(200);
 
     /**
      * Model tests for DisconnectCallback
@@ -189,4 +191,19 @@ public class DisconnectCallbackTest {
         assertThat(model.getTag(), instanceOf(String.class));
     }
 
+    /**
+     * Test the property 'sipCallId'
+     */
+    @Test
+    public void sipCallIdTest() {
+        assertThat(model.getSipCallId(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'sipResponseCode'
+     */
+    @Test
+    public void sipResponseCodeTest() {
+        assertThat(model.getSipResponseCode(), instanceOf(Integer.class));
+    }
 }

@@ -149,7 +149,7 @@ public class RbmActionViewLocation {
   }
 
   /**
-   * The latitude of the location.
+   * The latitude of the location. Must be in range [-90.000000, 90.000000].
    * @return latitude
    */
   @javax.annotation.Nonnull
@@ -168,7 +168,7 @@ public class RbmActionViewLocation {
   }
 
   /**
-   * The longitude of the location.
+   * The longitude of the location. Must be in range [-180.000000, 180.000000].
    * @return longitude
    */
   @javax.annotation.Nonnull

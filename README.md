@@ -98,7 +98,14 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
+    // Configure OAuth2 access token for authorization: OAuth2
+    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
     CallsApi apiInstance = new CallsApi(defaultClient);
+    // Or create the instance with a your clientId and clientSecret (for OAuth2):
+    // CallsApi apiInstance = new CallsApi("YOUR_CLIENT_ID", "YOUR_CLIENT_SECRET", null);
+
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     CreateCall createCall = new CreateCall(); // CreateCall | JSON object containing information to create an outbound call
     try {
@@ -136,6 +143,11 @@ Class | Method | HTTP request | Description
 *ConferencesApi* | [**updateConference**](docs/ConferencesApi.md#updateConference) | **POST** /accounts/{accountId}/conferences/{conferenceId} | Update Conference
 *ConferencesApi* | [**updateConferenceBxml**](docs/ConferencesApi.md#updateConferenceBxml) | **PUT** /accounts/{accountId}/conferences/{conferenceId}/bxml | Update Conference BXML
 *ConferencesApi* | [**updateConferenceMember**](docs/ConferencesApi.md#updateConferenceMember) | **PUT** /accounts/{accountId}/conferences/{conferenceId}/members/{memberId} | Update Conference Member
+*EndpointsApi* | [**createEndpoint**](docs/EndpointsApi.md#createEndpoint) | **POST** /accounts/{accountId}/endpoints | Create Endpoint
+*EndpointsApi* | [**deleteEndpoint**](docs/EndpointsApi.md#deleteEndpoint) | **DELETE** /accounts/{accountId}/endpoints/{endpointId} | Delete Endpoint
+*EndpointsApi* | [**getEndpoint**](docs/EndpointsApi.md#getEndpoint) | **GET** /accounts/{accountId}/endpoints/{endpointId} | Get Endpoint
+*EndpointsApi* | [**listEndpoints**](docs/EndpointsApi.md#listEndpoints) | **GET** /accounts/{accountId}/endpoints | List Endpoints
+*EndpointsApi* | [**updateEndpointBxml**](docs/EndpointsApi.md#updateEndpointBxml) | **PUT** /accounts/{accountId}/endpoints/{endpointId}/bxml | Update Endpoint BXML
 *MediaApi* | [**deleteMedia**](docs/MediaApi.md#deleteMedia) | **DELETE** /users/{accountId}/media/{mediaId} | Delete Media
 *MediaApi* | [**getMedia**](docs/MediaApi.md#getMedia) | **GET** /users/{accountId}/media/{mediaId} | Get Media
 *MediaApi* | [**listMedia**](docs/MediaApi.md#listMedia) | **GET** /users/{accountId}/media | List Media
@@ -184,6 +196,10 @@ Class | Method | HTTP request | Description
  - [BlockedWebhook](docs/BlockedWebhook.md)
  - [BridgeCompleteCallback](docs/BridgeCompleteCallback.md)
  - [BridgeTargetCompleteCallback](docs/BridgeTargetCompleteCallback.md)
+ - [BrtcError](docs/BrtcError.md)
+ - [BrtcErrorResponse](docs/BrtcErrorResponse.md)
+ - [BrtcErrorSource](docs/BrtcErrorSource.md)
+ - [BrtcLink](docs/BrtcLink.md)
  - [BusinessEntityTypeEnum](docs/BusinessEntityTypeEnum.md)
  - [BusinessRegistrationTypeEnum](docs/BusinessRegistrationTypeEnum.md)
  - [CallDirectionEnum](docs/CallDirectionEnum.md)
@@ -215,15 +231,28 @@ Class | Method | HTTP request | Description
  - [CreateAsyncBulkLookupResponseData](docs/CreateAsyncBulkLookupResponseData.md)
  - [CreateCall](docs/CreateCall.md)
  - [CreateCallResponse](docs/CreateCallResponse.md)
+ - [CreateEndpointRequestBase](docs/CreateEndpointRequestBase.md)
+ - [CreateEndpointResponse](docs/CreateEndpointResponse.md)
+ - [CreateEndpointResponseData](docs/CreateEndpointResponseData.md)
  - [CreateMessageRequestError](docs/CreateMessageRequestError.md)
  - [CreateMultiChannelMessageResponse](docs/CreateMultiChannelMessageResponse.md)
  - [CreateSyncLookupResponse](docs/CreateSyncLookupResponse.md)
  - [CreateSyncLookupResponseData](docs/CreateSyncLookupResponseData.md)
+ - [CreateWebRtcConnectionRequest](docs/CreateWebRtcConnectionRequest.md)
  - [DeactivationEventEnum](docs/DeactivationEventEnum.md)
+ - [Device](docs/Device.md)
+ - [DeviceStatusEnum](docs/DeviceStatusEnum.md)
  - [DisconnectCallback](docs/DisconnectCallback.md)
  - [Diversion](docs/Diversion.md)
  - [DtmfCallback](docs/DtmfCallback.md)
- - [Error](docs/Error.md)
+ - [Endpoint](docs/Endpoint.md)
+ - [EndpointDirectionEnum](docs/EndpointDirectionEnum.md)
+ - [EndpointEvent](docs/EndpointEvent.md)
+ - [EndpointEventTypeEnum](docs/EndpointEventTypeEnum.md)
+ - [EndpointResponse](docs/EndpointResponse.md)
+ - [EndpointStatusEnum](docs/EndpointStatusEnum.md)
+ - [EndpointTypeEnum](docs/EndpointTypeEnum.md)
+ - [Endpoints](docs/Endpoints.md)
  - [ErrorObject](docs/ErrorObject.md)
  - [ErrorSource](docs/ErrorSource.md)
  - [FailureWebhook](docs/FailureWebhook.md)
@@ -242,6 +271,7 @@ Class | Method | HTTP request | Description
  - [Link](docs/Link.md)
  - [LinkSchema](docs/LinkSchema.md)
  - [LinksObject](docs/LinksObject.md)
+ - [ListEndpointsResponse](docs/ListEndpointsResponse.md)
  - [ListMessageDirectionEnum](docs/ListMessageDirectionEnum.md)
  - [ListMessageItem](docs/ListMessageItem.md)
  - [LookupErrorResponse](docs/LookupErrorResponse.md)
@@ -268,15 +298,24 @@ Class | Method | HTTP request | Description
  - [MmsMessageContentFile](docs/MmsMessageContentFile.md)
  - [MultiChannelAction](docs/MultiChannelAction.md)
  - [MultiChannelActionCalendarEvent](docs/MultiChannelActionCalendarEvent.md)
- - [MultiChannelChannelListObject](docs/MultiChannelChannelListObject.md)
- - [MultiChannelChannelListObjectContent](docs/MultiChannelChannelListObjectContent.md)
+ - [MultiChannelChannelListMMSObject](docs/MultiChannelChannelListMMSObject.md)
+ - [MultiChannelChannelListMMSResponseObject](docs/MultiChannelChannelListMMSResponseObject.md)
+ - [MultiChannelChannelListObjectBase](docs/MultiChannelChannelListObjectBase.md)
+ - [MultiChannelChannelListOwnerObject](docs/MultiChannelChannelListOwnerObject.md)
+ - [MultiChannelChannelListRBMObject](docs/MultiChannelChannelListRBMObject.md)
+ - [MultiChannelChannelListRBMObjectAllOfContent](docs/MultiChannelChannelListRBMObjectAllOfContent.md)
+ - [MultiChannelChannelListRBMResponseObject](docs/MultiChannelChannelListRBMResponseObject.md)
+ - [MultiChannelChannelListRequestObject](docs/MultiChannelChannelListRequestObject.md)
+ - [MultiChannelChannelListResponseObject](docs/MultiChannelChannelListResponseObject.md)
+ - [MultiChannelChannelListSMSObject](docs/MultiChannelChannelListSMSObject.md)
+ - [MultiChannelChannelListSMSResponseObject](docs/MultiChannelChannelListSMSResponseObject.md)
  - [MultiChannelError](docs/MultiChannelError.md)
  - [MultiChannelMessageChannelEnum](docs/MultiChannelMessageChannelEnum.md)
  - [MultiChannelMessageContent](docs/MultiChannelMessageContent.md)
  - [MultiChannelMessageRequest](docs/MultiChannelMessageRequest.md)
  - [MultiChannelMessageResponseData](docs/MultiChannelMessageResponseData.md)
- - [MultiChannelMessageResponseDataChannelListInner](docs/MultiChannelMessageResponseDataChannelListInner.md)
  - [OptInWorkflow](docs/OptInWorkflow.md)
+ - [Page](docs/Page.md)
  - [PageInfo](docs/PageInfo.md)
  - [PriorityEnum](docs/PriorityEnum.md)
  - [ProductTypeEnum](docs/ProductTypeEnum.md)
@@ -294,15 +333,20 @@ Class | Method | HTTP request | Description
  - [RbmMessageContentRichCard](docs/RbmMessageContentRichCard.md)
  - [RbmMessageContentText](docs/RbmMessageContentText.md)
  - [RbmMessageMedia](docs/RbmMessageMedia.md)
+ - [RbmOpenUrlEnum](docs/RbmOpenUrlEnum.md)
  - [RbmStandaloneCard](docs/RbmStandaloneCard.md)
  - [RbmSuggestionResponse](docs/RbmSuggestionResponse.md)
+ - [RbmWebViewEnum](docs/RbmWebViewEnum.md)
  - [RecordingAvailableCallback](docs/RecordingAvailableCallback.md)
  - [RecordingCompleteCallback](docs/RecordingCompleteCallback.md)
  - [RecordingStateEnum](docs/RecordingStateEnum.md)
+ - [RecordingTranscriptionClip](docs/RecordingTranscriptionClip.md)
  - [RecordingTranscriptionMetadata](docs/RecordingTranscriptionMetadata.md)
  - [RecordingTranscriptions](docs/RecordingTranscriptions.md)
  - [RedirectCallback](docs/RedirectCallback.md)
  - [RedirectMethodEnum](docs/RedirectMethodEnum.md)
+ - [SipConnectionMetadata](docs/SipConnectionMetadata.md)
+ - [SipCredentials](docs/SipCredentials.md)
  - [SmsMessageContent](docs/SmsMessageContent.md)
  - [StandaloneCardOrientationEnum](docs/StandaloneCardOrientationEnum.md)
  - [StatusCallback](docs/StatusCallback.md)
@@ -339,6 +383,7 @@ Class | Method | HTTP request | Description
  - [VoiceCodeResponse](docs/VoiceCodeResponse.md)
  - [WebhookSubscription](docs/WebhookSubscription.md)
  - [WebhookSubscriptionBasicAuthentication](docs/WebhookSubscriptionBasicAuthentication.md)
+ - [WebhookSubscriptionError](docs/WebhookSubscriptionError.md)
  - [WebhookSubscriptionRequestSchema](docs/WebhookSubscriptionRequestSchema.md)
  - [WebhookSubscriptionTypeEnum](docs/WebhookSubscriptionTypeEnum.md)
  - [WebhookSubscriptionsListBody](docs/WebhookSubscriptionsListBody.md)
@@ -353,6 +398,14 @@ Authentication schemes defined for the API:
 ### Basic
 
 - **Type**: HTTP basic authentication
+
+<a id="OAuth2"></a>
+### OAuth2
+
+- **Type**: OAuth
+- **Flow**: application
+- **Authorization URL**: 
+- **Scopes**: N/A
 
 
 ## Recommendation

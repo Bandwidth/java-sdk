@@ -15,6 +15,7 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import java.util.Locale;
+import com.bandwidth.sdk.model.AdditionalDenialReason;
 import com.bandwidth.sdk.model.TfvStatusEnum;
 import com.bandwidth.sdk.model.TfvSubmissionInfo;
 import com.google.gson.TypeAdapter;
@@ -24,8 +25,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.UUID;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -69,12 +72,22 @@ public class TfvStatus {
   public static final String SERIALIZED_NAME_INTERNAL_TICKET_NUMBER = "internalTicketNumber";
   @SerializedName(SERIALIZED_NAME_INTERNAL_TICKET_NUMBER)
   @javax.annotation.Nullable
-  private UUID internalTicketNumber;
+  private String internalTicketNumber;
 
   public static final String SERIALIZED_NAME_DECLINE_REASON_DESCRIPTION = "declineReasonDescription";
   @SerializedName(SERIALIZED_NAME_DECLINE_REASON_DESCRIPTION)
   @javax.annotation.Nullable
   private String declineReasonDescription;
+
+  public static final String SERIALIZED_NAME_DENIAL_STATUS_CODE = "denialStatusCode";
+  @SerializedName(SERIALIZED_NAME_DENIAL_STATUS_CODE)
+  @javax.annotation.Nullable
+  private Integer denialStatusCode;
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_DENIAL_REASONS = "additionalDenialReasons";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_DENIAL_REASONS)
+  @javax.annotation.Nullable
+  private List<AdditionalDenialReason> additionalDenialReasons;
 
   public static final String SERIALIZED_NAME_RESUBMIT_ALLOWED = "resubmitAllowed";
   @SerializedName(SERIALIZED_NAME_RESUBMIT_ALLOWED)
@@ -105,6 +118,11 @@ public class TfvStatus {
   @SerializedName(SERIALIZED_NAME_BLOCKED_REASON)
   @javax.annotation.Nullable
   private String blockedReason;
+
+  public static final String SERIALIZED_NAME_CV_TOKEN = "cvToken";
+  @SerializedName(SERIALIZED_NAME_CV_TOKEN)
+  @javax.annotation.Nullable
+  private String cvToken;
 
   public TfvStatus() {
   }
@@ -147,7 +165,7 @@ public class TfvStatus {
   }
 
 
-  public TfvStatus internalTicketNumber(@javax.annotation.Nullable UUID internalTicketNumber) {
+  public TfvStatus internalTicketNumber(@javax.annotation.Nullable String internalTicketNumber) {
     this.internalTicketNumber = internalTicketNumber;
     return this;
   }
@@ -157,11 +175,11 @@ public class TfvStatus {
    * @return internalTicketNumber
    */
   @javax.annotation.Nullable
-  public UUID getInternalTicketNumber() {
+  public String getInternalTicketNumber() {
     return internalTicketNumber;
   }
 
-  public void setInternalTicketNumber(@javax.annotation.Nullable UUID internalTicketNumber) {
+  public void setInternalTicketNumber(@javax.annotation.Nullable String internalTicketNumber) {
     this.internalTicketNumber = internalTicketNumber;
   }
 
@@ -182,6 +200,52 @@ public class TfvStatus {
 
   public void setDeclineReasonDescription(@javax.annotation.Nullable String declineReasonDescription) {
     this.declineReasonDescription = declineReasonDescription;
+  }
+
+
+  public TfvStatus denialStatusCode(@javax.annotation.Nullable Integer denialStatusCode) {
+    this.denialStatusCode = denialStatusCode;
+    return this;
+  }
+
+  /**
+   * Reason code for denial.
+   * @return denialStatusCode
+   */
+  @javax.annotation.Nullable
+  public Integer getDenialStatusCode() {
+    return denialStatusCode;
+  }
+
+  public void setDenialStatusCode(@javax.annotation.Nullable Integer denialStatusCode) {
+    this.denialStatusCode = denialStatusCode;
+  }
+
+
+  public TfvStatus additionalDenialReasons(@javax.annotation.Nullable List<AdditionalDenialReason> additionalDenialReasons) {
+    this.additionalDenialReasons = additionalDenialReasons;
+    return this;
+  }
+
+  public TfvStatus addAdditionalDenialReasonsItem(AdditionalDenialReason additionalDenialReasonsItem) {
+    if (this.additionalDenialReasons == null) {
+      this.additionalDenialReasons = new ArrayList<>();
+    }
+    this.additionalDenialReasons.add(additionalDenialReasonsItem);
+    return this;
+  }
+
+  /**
+   * An optional list of denial reasons in addition to declineReasonDescription when multiple reasons apply.
+   * @return additionalDenialReasons
+   */
+  @javax.annotation.Nullable
+  public List<AdditionalDenialReason> getAdditionalDenialReasons() {
+    return additionalDenialReasons;
+  }
+
+  public void setAdditionalDenialReasons(@javax.annotation.Nullable List<AdditionalDenialReason> additionalDenialReasons) {
+    this.additionalDenialReasons = additionalDenialReasons;
   }
 
 
@@ -298,6 +362,25 @@ public class TfvStatus {
     this.blockedReason = blockedReason;
   }
 
+
+  public TfvStatus cvToken(@javax.annotation.Nullable String cvToken) {
+    this.cvToken = cvToken;
+    return this;
+  }
+
+  /**
+   * The token provided by Campaign Verify to validate your political use case. Only required for 527 political organizations. If you are not a 527 political organization, this field should be omitted. Supplying an empty string will likely result in rejection.
+   * @return cvToken
+   */
+  @javax.annotation.Nullable
+  public String getCvToken() {
+    return cvToken;
+  }
+
+  public void setCvToken(@javax.annotation.Nullable String cvToken) {
+    this.cvToken = cvToken;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -357,18 +440,32 @@ public class TfvStatus {
         Objects.equals(this.status, tfvStatus.status) &&
         Objects.equals(this.internalTicketNumber, tfvStatus.internalTicketNumber) &&
         Objects.equals(this.declineReasonDescription, tfvStatus.declineReasonDescription) &&
+        Objects.equals(this.denialStatusCode, tfvStatus.denialStatusCode) &&
+        Objects.equals(this.additionalDenialReasons, tfvStatus.additionalDenialReasons) &&
         Objects.equals(this.resubmitAllowed, tfvStatus.resubmitAllowed) &&
         Objects.equals(this.createdDateTime, tfvStatus.createdDateTime) &&
         Objects.equals(this.modifiedDateTime, tfvStatus.modifiedDateTime) &&
         Objects.equals(this.submission, tfvStatus.submission) &&
         Objects.equals(this.blocked, tfvStatus.blocked) &&
-        Objects.equals(this.blockedReason, tfvStatus.blockedReason)&&
+        Objects.equals(this.blockedReason, tfvStatus.blockedReason) &&
+        Objects.equals(this.cvToken, tfvStatus.cvToken)&&
         Objects.equals(this.additionalProperties, tfvStatus.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(phoneNumber, status, internalTicketNumber, declineReasonDescription, resubmitAllowed, createdDateTime, modifiedDateTime, submission, blocked, blockedReason, additionalProperties);
+    return Objects.hash(phoneNumber, status, internalTicketNumber, declineReasonDescription, denialStatusCode, additionalDenialReasons, resubmitAllowed, createdDateTime, modifiedDateTime, submission, blocked, blockedReason, cvToken, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -379,12 +476,15 @@ public class TfvStatus {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    internalTicketNumber: ").append(toIndentedString(internalTicketNumber)).append("\n");
     sb.append("    declineReasonDescription: ").append(toIndentedString(declineReasonDescription)).append("\n");
+    sb.append("    denialStatusCode: ").append(toIndentedString(denialStatusCode)).append("\n");
+    sb.append("    additionalDenialReasons: ").append(toIndentedString(additionalDenialReasons)).append("\n");
     sb.append("    resubmitAllowed: ").append(toIndentedString(resubmitAllowed)).append("\n");
     sb.append("    createdDateTime: ").append(toIndentedString(createdDateTime)).append("\n");
     sb.append("    modifiedDateTime: ").append(toIndentedString(modifiedDateTime)).append("\n");
     sb.append("    submission: ").append(toIndentedString(submission)).append("\n");
     sb.append("    blocked: ").append(toIndentedString(blocked)).append("\n");
     sb.append("    blockedReason: ").append(toIndentedString(blockedReason)).append("\n");
+    sb.append("    cvToken: ").append(toIndentedString(cvToken)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -407,7 +507,7 @@ public class TfvStatus {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("phoneNumber", "status", "internalTicketNumber", "declineReasonDescription", "resubmitAllowed", "createdDateTime", "modifiedDateTime", "submission", "blocked", "blockedReason"));
+    openapiFields = new HashSet<String>(Arrays.asList("phoneNumber", "status", "internalTicketNumber", "declineReasonDescription", "denialStatusCode", "additionalDenialReasons", "resubmitAllowed", "createdDateTime", "modifiedDateTime", "submission", "blocked", "blockedReason", "cvToken"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -439,12 +539,29 @@ public class TfvStatus {
       if ((jsonObj.get("declineReasonDescription") != null && !jsonObj.get("declineReasonDescription").isJsonNull()) && !jsonObj.get("declineReasonDescription").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `declineReasonDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("declineReasonDescription").toString()));
       }
+      if (jsonObj.get("additionalDenialReasons") != null && !jsonObj.get("additionalDenialReasons").isJsonNull()) {
+        JsonArray jsonArrayadditionalDenialReasons = jsonObj.getAsJsonArray("additionalDenialReasons");
+        if (jsonArrayadditionalDenialReasons != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("additionalDenialReasons").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `additionalDenialReasons` to be an array in the JSON string but got `%s`", jsonObj.get("additionalDenialReasons").toString()));
+          }
+
+          // validate the optional field `additionalDenialReasons` (array)
+          for (int i = 0; i < jsonArrayadditionalDenialReasons.size(); i++) {
+            AdditionalDenialReason.validateJsonElement(jsonArrayadditionalDenialReasons.get(i));
+          };
+        }
+      }
       // validate the optional field `submission`
       if (jsonObj.get("submission") != null && !jsonObj.get("submission").isJsonNull()) {
         TfvSubmissionInfo.validateJsonElement(jsonObj.get("submission"));
       }
       if ((jsonObj.get("blockedReason") != null && !jsonObj.get("blockedReason").isJsonNull()) && !jsonObj.get("blockedReason").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `blockedReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("blockedReason").toString()));
+      }
+      if ((jsonObj.get("cvToken") != null && !jsonObj.get("cvToken").isJsonNull()) && !jsonObj.get("cvToken").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `cvToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cvToken").toString()));
       }
   }
 

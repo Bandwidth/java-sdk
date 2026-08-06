@@ -35,7 +35,7 @@ public class VerificationDenialWebhookTest {
             .additionalDenialReasons(new ArrayList<AdditionalDenialReason>(Arrays.asList(new AdditionalDenialReason())))
             .declineReasonDescription("declineReasonDescription")
             .denialStatusCode(1234)
-            .internalTicketNumber(UUID.randomUUID())
+            .internalTicketNumber(UUID.randomUUID().toString())
             .phoneNumber("phoneNumber")
             .resubmitAllowed(true)
             .status("status")
@@ -87,7 +87,7 @@ public class VerificationDenialWebhookTest {
      */
     @Test
     public void internalTicketNumberTest() {
-        assertThat(model.getInternalTicketNumber(), instanceOf(UUID.class));
+        assertThat(model.getInternalTicketNumber(), instanceOf(String.class));
     }
 
     /**

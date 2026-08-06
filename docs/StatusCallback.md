@@ -15,7 +15,7 @@ Represents a status callback for an outbound MT SMS or MMS or RBM message.
 |**description** | **String** | A detailed description of the event described by the callback. |  |
 |**message** | [**StatusCallbackMessage**](StatusCallbackMessage.md) |  |  |
 |**errorCode** | **Integer** | Optional error code, applicable only when type is &#x60;message-failed&#x60;. |  [optional] |
-|**carrierName** | **String** | The name of the Authorized Message Provider (AMP) that handled this message.  In the US, this is the carrier that the message was sent to. This field is present only when this account feature has been enabled. |  [optional] |
+|**carrierName** | **String** | The name of the Authorized Message Provider (AMP) that handled this message. In the US, this is the carrier that the message was sent to. This field is present only when this account feature has been enabled. |  [optional] |
 
 
 

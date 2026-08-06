@@ -32,6 +32,7 @@ public class LatestMessageDeliveryStatusEnumTest {
         assertThat(LatestMessageDeliveryStatusEnum.ACTIVE.toString(), equalTo("ACTIVE"));
         assertThat(LatestMessageDeliveryStatusEnum.DEACTIVATED.toString(), equalTo("DEACTIVATED"));
         assertThat(LatestMessageDeliveryStatusEnum.UNKNOWN.toString(), equalTo("UNKNOWN"));
+        assertThat(LatestMessageDeliveryStatusEnum.NOT_ENABLED.toString(), equalTo("NOT_ENABLED"));
     }
 
 }

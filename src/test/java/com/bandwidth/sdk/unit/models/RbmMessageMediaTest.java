@@ -30,7 +30,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
  */
 public class RbmMessageMediaTest {
     private final RbmMessageMedia model = new RbmMessageMedia()
-            .media(new RbmMessageContentFile())
+            .media(new ArrayList<RbmMessageContentFile>(Arrays.asList(new RbmMessageContentFile())))
             .suggestions(new ArrayList<MultiChannelAction>(Arrays.asList(new MultiChannelAction())));
 
     /**
@@ -46,7 +46,8 @@ public class RbmMessageMediaTest {
      */
     @Test
     public void mediaTest() {
-        assertThat(model.getMedia(), instanceOf(RbmMessageContentFile.class));
+        assertThat(model.getMedia(), instanceOf(ArrayList.class));
+        assertThat(model.getMedia().get(0), instanceOf(RbmMessageContentFile.class));
     }
 
     /**

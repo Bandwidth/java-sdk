@@ -32,6 +32,7 @@ public class Response {
     @XmlElements({
             @XmlElement(name = Bridge.TYPE_NAME, type = Bridge.class),
             @XmlElement(name = Conference.TYPE_NAME, type = Conference.class),
+            @XmlElement(name = Connect.TYPE_NAME, type = Connect.class),
             @XmlElement(name = Forward.TYPE_NAME, type = Forward.class),
             @XmlElement(name = Gather.TYPE_NAME, type = Gather.class),
             @XmlElement(name = Hangup.TYPE_NAME, type = Hangup.class),

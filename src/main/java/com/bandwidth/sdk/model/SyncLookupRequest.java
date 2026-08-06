@@ -59,6 +59,11 @@ public class SyncLookupRequest {
   @javax.annotation.Nonnull
   private List<String> phoneNumbers = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_RCS_AGENT = "rcsAgent";
+  @SerializedName(SERIALIZED_NAME_RCS_AGENT)
+  @javax.annotation.Nullable
+  private String rcsAgent;
+
   public SyncLookupRequest() {
   }
 
@@ -86,6 +91,25 @@ public class SyncLookupRequest {
 
   public void setPhoneNumbers(@javax.annotation.Nonnull List<String> phoneNumbers) {
     this.phoneNumbers = phoneNumbers;
+  }
+
+
+  public SyncLookupRequest rcsAgent(@javax.annotation.Nullable String rcsAgent) {
+    this.rcsAgent = rcsAgent;
+    return this;
+  }
+
+  /**
+   * Override the default RCS sender/agent ID used when checking RCS capabilities. When provided, this value is used as the &#x60;sender&#x60; in the RCS capability-check request instead of the account default. Must be 1–40 characters and contain only letters, digits, underscores, or hyphens.
+   * @return rcsAgent
+   */
+  @javax.annotation.Nullable
+  public String getRcsAgent() {
+    return rcsAgent;
+  }
+
+  public void setRcsAgent(@javax.annotation.Nullable String rcsAgent) {
+    this.rcsAgent = rcsAgent;
   }
 
   /**
@@ -143,13 +167,14 @@ public class SyncLookupRequest {
       return false;
     }
     SyncLookupRequest syncLookupRequest = (SyncLookupRequest) o;
-    return Objects.equals(this.phoneNumbers, syncLookupRequest.phoneNumbers)&&
+    return Objects.equals(this.phoneNumbers, syncLookupRequest.phoneNumbers) &&
+        Objects.equals(this.rcsAgent, syncLookupRequest.rcsAgent)&&
         Objects.equals(this.additionalProperties, syncLookupRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(phoneNumbers, additionalProperties);
+    return Objects.hash(phoneNumbers, rcsAgent, additionalProperties);
   }
 
   @Override
@@ -157,6 +182,7 @@ public class SyncLookupRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class SyncLookupRequest {\n");
     sb.append("    phoneNumbers: ").append(toIndentedString(phoneNumbers)).append("\n");
+    sb.append("    rcsAgent: ").append(toIndentedString(rcsAgent)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -179,7 +205,7 @@ public class SyncLookupRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("phoneNumbers"));
+    openapiFields = new HashSet<String>(Arrays.asList("phoneNumbers", "rcsAgent"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(Arrays.asList("phoneNumbers"));
@@ -210,6 +236,9 @@ public class SyncLookupRequest {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("phoneNumbers").isJsonArray()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `phoneNumbers` to be an array in the JSON string but got `%s`", jsonObj.get("phoneNumbers").toString()));
+      }
+      if ((jsonObj.get("rcsAgent") != null && !jsonObj.get("rcsAgent").isJsonNull()) && !jsonObj.get("rcsAgent").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `rcsAgent` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rcsAgent").toString()));
       }
   }
 

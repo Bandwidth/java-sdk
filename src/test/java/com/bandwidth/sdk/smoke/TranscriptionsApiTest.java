@@ -5,8 +5,6 @@ import com.bandwidth.sdk.api.CallsApi;
 import com.bandwidth.sdk.ApiResponse;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiClient;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.model.CreateCall;
 import com.bandwidth.sdk.model.CreateCallResponse;
 import com.bandwidth.sdk.model.CallStateEnum;
@@ -39,11 +37,9 @@ import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
  */
 
 public class TranscriptionsApiTest {
-
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private final CallsApi callsApi = new CallsApi(defaultClient);
-    private final TranscriptionsApi transcriptionsApi = new TranscriptionsApi(defaultClient);
+    private static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    private final CallsApi callsApi = new CallsApi(oauthClient);
+    private final TranscriptionsApi transcriptionsApi = new TranscriptionsApi(oauthClient);
 
     private static CreateCall createMantecaCallBody = new CreateCall();
     private static UpdateCall completeMantecaCallBody = new UpdateCall();
@@ -56,8 +52,6 @@ public class TranscriptionsApiTest {
     @Test
     @Disabled // issue with PV API, can re-enable when fixed
     public void getAndDeleteRealTimeTranscriptionsTest() throws ApiException, InterruptedException, URISyntaxException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
         mantecaAnswerUrl = new URI(MANTECA_BASE_URL + "/bxml/pause");
 
         createMantecaCallBody.setFrom(MANTECA_ACTIVE_NUMBER);

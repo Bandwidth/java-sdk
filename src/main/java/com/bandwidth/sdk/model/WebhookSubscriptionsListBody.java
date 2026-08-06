@@ -15,9 +15,9 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import java.util.Locale;
-import com.bandwidth.sdk.model.Error;
 import com.bandwidth.sdk.model.LinksObject;
 import com.bandwidth.sdk.model.WebhookSubscription;
+import com.bandwidth.sdk.model.WebhookSubscriptionError;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -65,7 +65,7 @@ public class WebhookSubscriptionsListBody {
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   @javax.annotation.Nullable
-  private List<Error> errors = new ArrayList<>();
+  private List<WebhookSubscriptionError> errors = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
@@ -94,12 +94,12 @@ public class WebhookSubscriptionsListBody {
   }
 
 
-  public WebhookSubscriptionsListBody errors(@javax.annotation.Nullable List<Error> errors) {
+  public WebhookSubscriptionsListBody errors(@javax.annotation.Nullable List<WebhookSubscriptionError> errors) {
     this.errors = errors;
     return this;
   }
 
-  public WebhookSubscriptionsListBody addErrorsItem(Error errorsItem) {
+  public WebhookSubscriptionsListBody addErrorsItem(WebhookSubscriptionError errorsItem) {
     if (this.errors == null) {
       this.errors = new ArrayList<>();
     }
@@ -112,11 +112,11 @@ public class WebhookSubscriptionsListBody {
    * @return errors
    */
   @javax.annotation.Nullable
-  public List<Error> getErrors() {
+  public List<WebhookSubscriptionError> getErrors() {
     return errors;
   }
 
-  public void setErrors(@javax.annotation.Nullable List<Error> errors) {
+  public void setErrors(@javax.annotation.Nullable List<WebhookSubscriptionError> errors) {
     this.errors = errors;
   }
 
@@ -282,7 +282,7 @@ public class WebhookSubscriptionsListBody {
 
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
-            Error.validateJsonElement(jsonArrayerrors.get(i));
+            WebhookSubscriptionError.validateJsonElement(jsonArrayerrors.get(i));
           };
         }
       }

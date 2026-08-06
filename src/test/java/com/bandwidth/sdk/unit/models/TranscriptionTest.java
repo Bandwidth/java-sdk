@@ -24,6 +24,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
  */
 public class TranscriptionTest {
     private final Transcription model = new Transcription()
+            .speaker(1)
             .text("text")
             .confidence(0.5);
 
@@ -33,6 +34,14 @@ public class TranscriptionTest {
     @Test
     public void testTranscription() {
         assertThat(model, instanceOf(Transcription.class));
+    }
+
+    /**
+     * Test the property 'speaker'
+     */
+    @Test
+    public void speakerTest() {
+        assertThat(model.getSpeaker(), instanceOf(Integer.class));
     }
 
     /**

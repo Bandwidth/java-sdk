@@ -27,7 +27,7 @@ public class BusinessEntityTypeEnumTest {
      * Model tests for BusinessEntityTypeEnum
      */
     @Test
-    public void testCallbackMethodEnum() {
+    public void testBusinessEntityTypeEnum() {
         assertThat(BusinessEntityTypeEnum.SOLE_PROPRIETOR.toString(), equalTo("SOLE_PROPRIETOR"));
         assertThat(BusinessEntityTypeEnum.PRIVATE_PROFIT.toString(), equalTo("PRIVATE_PROFIT"));
         assertThat(BusinessEntityTypeEnum.PUBLIC_PROFIT.toString(), equalTo("PUBLIC_PROFIT"));

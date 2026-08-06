@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
 import com.bandwidth.sdk.model.WebhookSubscriptionsListBody;
-import com.bandwidth.sdk.model.Error;
+import com.bandwidth.sdk.model.WebhookSubscriptionError;
 import com.bandwidth.sdk.model.LinksObject;
 import com.bandwidth.sdk.model.WebhookSubscription;
 
@@ -31,7 +31,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 public class WebhookSubscriptionsListBodyTest {
     private final WebhookSubscriptionsListBody model = new WebhookSubscriptionsListBody()
             .links(new LinksObject())
-            .errors(new ArrayList<Error>(Arrays.asList(new Error())))
+            .errors(new ArrayList<WebhookSubscriptionError>(Arrays.asList(new WebhookSubscriptionError())))
             .data(new ArrayList<WebhookSubscription>(Arrays.asList(new WebhookSubscription())));
 
     /**

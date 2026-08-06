@@ -19,6 +19,7 @@ import com.bandwidth.sdk.model.Link;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
  * Model tests for Link
@@ -42,6 +43,7 @@ public class LinkTest {
     @Test
     public void relTest() {
         assertThat(model.getRel(), instanceOf(String.class));
+        assertThat(model.getRel(), equalTo("rel"));
     }
 
     /**
@@ -50,6 +52,7 @@ public class LinkTest {
     @Test
     public void hrefTest() {
         assertThat(model.getHref(), instanceOf(String.class));
+        assertThat(model.getHref(), equalTo("href"));
     }
 
 }

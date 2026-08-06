@@ -35,8 +35,12 @@ public class Example {
     Basic.setUsername("YOUR USERNAME");
     Basic.setPassword("YOUR PASSWORD");
 
+    // Configure OAuth2 access token for authorization: OAuth2
+    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
+    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
+
     MultiChannelApi apiInstance = new MultiChannelApi(defaultClient);
-    String accountId = "9900000"; // String | Your Bandwidth Account ID.
+    String accountId = "9900000"; // String | This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (`u-be8dvafwrs63rwpm7pfil4b`) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.** 
     MultiChannelMessageRequest multiChannelMessageRequest = new MultiChannelMessageRequest(); // MultiChannelMessageRequest | 
     try {
       CreateMultiChannelMessageResponse result = apiInstance.createMultiChannelMessage(accountId, multiChannelMessageRequest);
@@ -56,7 +60,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Your Bandwidth Account ID. | |
+| **accountId** | **String**| This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  | |
 | **multiChannelMessageRequest** | [**MultiChannelMessageRequest**](MultiChannelMessageRequest.md)|  | |
 
 ### Return type
@@ -65,7 +69,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 

@@ -7,14 +7,16 @@ import org.junit.jupiter.api.Test;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiResponse;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.api.RecordingsApi;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.model.CallDirectionEnum;
 import com.bandwidth.sdk.model.CallRecordingMetadata;
 import com.bandwidth.sdk.model.FileFormatEnum;
 import com.bandwidth.sdk.model.RecordingStateEnum;
+import com.bandwidth.sdk.model.RecordingTranscriptionClip;
 import com.bandwidth.sdk.model.RecordingTranscriptionMetadata;
+import com.bandwidth.sdk.model.RecordingTranscriptions;
+import com.bandwidth.sdk.model.TranscribeRecording;
+import com.bandwidth.sdk.model.Transcription;
 import com.bandwidth.sdk.model.UpdateCallRecording;
 
 import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
@@ -29,17 +31,14 @@ import java.util.List;
 
 @SuppressWarnings("null")
 public class RecordingsApiTest {
-    private static ApiClient defaultClient = Configuration.getDefaultApiClient();
-    private static HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private static RecordingsApi api = new RecordingsApi(defaultClient);
+    private static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    private static RecordingsApi api = new RecordingsApi(oauthClient);
 
     private static String callId = "c-1234";
     private static String recordingId = "r-1234";
 
     @BeforeAll
     public static void setUp() {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
         api.setCustomBaseUrl("http://127.0.0.1:4010");
     }
 
@@ -114,6 +113,58 @@ public class RecordingsApiTest {
         assertThat(response.getData().get(0).getTranscription().getCompletedTime(), instanceOf(OffsetDateTime.class));
         assertThat(response.getData().get(0).getTranscription().getUrl(), instanceOf(URI.class));
         assertThat(response.getData().get(0).getRecordingName(), instanceOf(String.class));
+    }
+
+    @Test
+    public void testGetRecordingTranscription() throws ApiException {
+        ApiResponse<RecordingTranscriptions> response = api.getRecordingTranscriptionWithHttpInfo(BW_ACCOUNT_ID, callId,
+                recordingId);
+
+        assertThat(response.getStatusCode(), is(200));
+        assertThat(response.getData(), instanceOf(RecordingTranscriptions.class));
+        assertThat(response.getData().getTranscripts(), instanceOf(List.class));
+        assertThat(response.getData().getTranscripts().get(0), instanceOf(Transcription.class));
+        assertThat(response.getData().getTranscripts().get(0).getSpeaker(), instanceOf(Integer.class));
+        assertThat(response.getData().getTranscripts().get(0).getText(), instanceOf(String.class));
+        assertThat(response.getData().getTranscripts().get(0).getConfidence(), instanceOf(Double.class));
+        assertThat(response.getData().getClips(), instanceOf(List.class));
+        assertThat(response.getData().getClips().get(0), instanceOf(RecordingTranscriptionClip.class));
+        assertThat(response.getData().getClips().get(0).getSpeaker(), instanceOf(Integer.class));
+        assertThat(response.getData().getClips().get(0).getText(), instanceOf(String.class));
+        assertThat(response.getData().getClips().get(0).getConfidence(), instanceOf(Double.class));
+        assertThat(response.getData().getClips().get(0).getStartTimeSeconds(), instanceOf(Double.class));
+        assertThat(response.getData().getClips().get(0).getEndTimeSeconds(), instanceOf(Double.class));
+    }
+
+    @Test
+    public void testTranscribeCallRecording() throws ApiException {
+        TranscribeRecording transcribeRecording = new TranscribeRecording()
+                .callbackUrl(URI.create("https://myServer.example/bandwidth/webhooks/transcriptionAvailable"));
+        ApiResponse<Void> response = api.transcribeCallRecordingWithHttpInfo(BW_ACCOUNT_ID, callId, recordingId,
+                transcribeRecording);
+
+        assertThat(response.getStatusCode(), is(204));
+    }
+
+    @Test
+    public void testDeleteRecordingTranscription() throws ApiException {
+        ApiResponse<Void> response = api.deleteRecordingTranscriptionWithHttpInfo(BW_ACCOUNT_ID, callId, recordingId);
+
+        assertThat(response.getStatusCode(), is(204));
+    }
+
+    @Test
+    public void testDeleteRecording() throws ApiException {
+        ApiResponse<Void> response = api.deleteRecordingWithHttpInfo(BW_ACCOUNT_ID, callId, recordingId);
+
+        assertThat(response.getStatusCode(), is(204));
+    }
+
+    @Test
+    public void testDeleteRecordingMedia() throws ApiException {
+        ApiResponse<Void> response = api.deleteRecordingMediaWithHttpInfo(BW_ACCOUNT_ID, callId, recordingId);
+
+        assertThat(response.getStatusCode(), is(204));
     }
 
     @Test

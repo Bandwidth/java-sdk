@@ -7,9 +7,7 @@ import org.junit.jupiter.api.Test;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiResponse;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.api.ConferencesApi;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.model.CallbackMethodEnum;
 import com.bandwidth.sdk.model.Conference;
 import com.bandwidth.sdk.model.ConferenceMember;
@@ -33,9 +31,8 @@ import java.util.List;
 
 @SuppressWarnings("null")
 public class ConferencesApiTest {
-    private static ApiClient defaultClient = Configuration.getDefaultApiClient();
-    private static HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private static ConferencesApi api = new ConferencesApi(defaultClient);
+    private static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    private static ConferencesApi api = new ConferencesApi(oauthClient);
 
     private static String callId = "c-1234";
     private static String conferenceId = "c-4321";
@@ -43,8 +40,6 @@ public class ConferencesApiTest {
 
     @BeforeAll
     public static void setUp() {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
         api.setCustomBaseUrl("http://127.0.0.1:4010");
     }
 

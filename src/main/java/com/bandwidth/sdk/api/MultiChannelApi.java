@@ -76,7 +76,7 @@ public class MultiChannelApi {
 
     /**
      * Build call for createMultiChannelMessage
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param multiChannelMessageRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -139,7 +139,7 @@ public class MultiChannelApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "Basic" };
+        String[] localVarAuthNames = new String[] { "Basic", "OAuth2" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -162,7 +162,7 @@ public class MultiChannelApi {
     /**
      * Create Multi-Channel Message
      * Endpoint for sending Multi-Channel messages.
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param multiChannelMessageRequest  (required)
      * @return CreateMultiChannelMessageResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -190,7 +190,7 @@ public class MultiChannelApi {
     /**
      * Create Multi-Channel Message
      * Endpoint for sending Multi-Channel messages.
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param multiChannelMessageRequest  (required)
      * @return ApiResponse&lt;CreateMultiChannelMessageResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -219,7 +219,7 @@ public class MultiChannelApi {
     /**
      * Create Multi-Channel Message (asynchronously)
      * Endpoint for sending Multi-Channel messages.
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param multiChannelMessageRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

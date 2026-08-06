@@ -47,8 +47,10 @@ public class VerificationRequestTest {
             .businessRegistrationNumber("businessRegistrationNumber")
             .businessRegistrationType(BusinessRegistrationTypeEnum.EIN)
             .businessEntityType(BusinessEntityTypeEnum.PRIVATE_PROFIT)
+            .businessRegistrationIssuingCountry("USA")
             .helpMessageResponse("helpMessageResponse")
-            .ageGatedContent(true);
+            .ageGatedContent(true)
+            .cvToken("cvToken");
 
     /**
      * Model tests for VerificationRequest
@@ -187,6 +189,14 @@ public class VerificationRequestTest {
     }
 
     /**
+     * Test the property 'businessRegistrationIssuingCountry'
+     */
+    @Test
+    public void businessRegistrationIssuingCountryTest() {
+        assertThat(model.getBusinessRegistrationIssuingCountry(), instanceOf(String.class));
+    }
+
+    /**
      * Test the property 'helpMessageResponse'
      */
     @Test
@@ -200,6 +210,13 @@ public class VerificationRequestTest {
     @Test
     public void ageGatedContentTest() {
         assertThat(model.getAgeGatedContent(), instanceOf(Boolean.class));
+    }
+
+    /**
+     * Test the property 'cvToken'
+     */    @Test
+    public void cvTokenTest() {
+        assertThat(model.getCvToken(), instanceOf(String.class));
     }
 
 }

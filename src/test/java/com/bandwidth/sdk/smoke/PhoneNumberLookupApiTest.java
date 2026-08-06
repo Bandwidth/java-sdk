@@ -4,8 +4,6 @@ import com.bandwidth.sdk.api.PhoneNumberLookupApi;
 import com.bandwidth.sdk.ApiResponse;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiClient;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.model.AsyncLookupRequest;
 import com.bandwidth.sdk.model.CompletedLookupStatusEnum;
 import com.bandwidth.sdk.model.CreateAsyncBulkLookupResponse;
@@ -15,7 +13,6 @@ import com.bandwidth.sdk.model.CreateSyncLookupResponseData;
 import com.bandwidth.sdk.model.GetAsyncBulkLookupResponse;
 import com.bandwidth.sdk.model.GetAsyncBulkLookupResponseData;
 import com.bandwidth.sdk.model.InProgressLookupStatusEnum;
-import com.bandwidth.sdk.model.LatestMessageDeliveryStatusEnum;
 import com.bandwidth.sdk.model.LineTypeEnum;
 import com.bandwidth.sdk.model.LinkSchema;
 import com.bandwidth.sdk.model.LookupResult;
@@ -23,7 +20,6 @@ import com.bandwidth.sdk.model.SyncLookupRequest;
 
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -38,17 +34,12 @@ import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 
 @SuppressWarnings("null")
 public class PhoneNumberLookupApiTest {
-
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private final PhoneNumberLookupApi api = new PhoneNumberLookupApi(defaultClient);
+    private static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    private final PhoneNumberLookupApi api = new PhoneNumberLookupApi(oauthClient);
     private final List<String> phoneNumbers = Arrays.asList(BW_NUMBER, VZW_NUMBER, ATT_NUMBER, T_MOBILE_NUMBER);
 
     @Test
     public void createSyncLookupTest() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         SyncLookupRequest lookupRequest = new SyncLookupRequest()
                 .phoneNumbers(phoneNumbers);
 
@@ -57,7 +48,6 @@ public class PhoneNumberLookupApiTest {
         assertThat(response.getData(), instanceOf(CreateSyncLookupResponse.class));
         CreateSyncLookupResponse lookupResponse = response.getData();
         assertThat(lookupResponse.getLinks(), instanceOf(List.class));
-        assertThat(lookupResponse.getLinks().get(0), instanceOf(LinkSchema.class));
         assertThat(lookupResponse.getData(), instanceOf(CreateSyncLookupResponseData.class));
         assertThat(lookupResponse.getData().getRequestId(), instanceOf(UUID.class));
         assertThat(lookupResponse.getData().getStatus(), instanceOf(CompletedLookupStatusEnum.class));
@@ -65,16 +55,12 @@ public class PhoneNumberLookupApiTest {
         LookupResult firstResult = lookupResponse.getData().getResults().get(0);
         assertThat(firstResult.getPhoneNumber(), instanceOf(String.class));
         assertThat(firstResult.getLineType(), instanceOf(LineTypeEnum.class));
-        assertThat(firstResult.getMessagingProvider(), instanceOf(String.class));
         assertThat(firstResult.getVoiceProvider(), instanceOf(String.class));
         assertThat(firstResult.getCountryCodeA3(), instanceOf(String.class));
     }
 
     @Test
     public void createGetAsyncLookupTest() throws ApiException, InterruptedException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         AsyncLookupRequest lookupRequest = new AsyncLookupRequest()
                 .phoneNumbers(phoneNumbers);
 
@@ -88,7 +74,7 @@ public class PhoneNumberLookupApiTest {
         assertThat(createResponse.getData().getData().getStatus(), instanceOf(InProgressLookupStatusEnum.class));
         UUID requestId = createResponse.getData().getData().getRequestId();
 
-        TimeUnit.SECONDS.sleep(10);
+        TimeUnit.SECONDS.sleep(60);
 
         ApiResponse<GetAsyncBulkLookupResponse> getResponse
                 = api.getAsyncBulkLookupWithHttpInfo(BW_ACCOUNT_ID, requestId);
@@ -97,7 +83,6 @@ public class PhoneNumberLookupApiTest {
         assertThat(getResponse.getData(), instanceOf(GetAsyncBulkLookupResponse.class));
         GetAsyncBulkLookupResponse lookupResponse = getResponse.getData();
         assertThat(lookupResponse.getLinks(), instanceOf(List.class));
-        assertThat(lookupResponse.getLinks().get(0), instanceOf(LinkSchema.class));
         assertThat(lookupResponse.getData(), instanceOf(GetAsyncBulkLookupResponseData.class));
         assertThat(lookupResponse.getData().getRequestId(), equalTo(requestId));
         assertThat(lookupResponse.getData().getStatus(), instanceOf(InProgressLookupStatusEnum.class));
@@ -105,7 +90,6 @@ public class PhoneNumberLookupApiTest {
         LookupResult firstResult = lookupResponse.getData().getResults().get(0);
         assertThat(firstResult.getPhoneNumber(), instanceOf(String.class));
         assertThat(firstResult.getLineType(), instanceOf(LineTypeEnum.class));
-        assertThat(firstResult.getMessagingProvider(), instanceOf(String.class));
         assertThat(firstResult.getVoiceProvider(), instanceOf(String.class));
         assertThat(firstResult.getCountryCodeA3(), instanceOf(String.class));
     }

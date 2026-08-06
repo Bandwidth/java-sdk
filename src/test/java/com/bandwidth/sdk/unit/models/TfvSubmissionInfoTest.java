@@ -43,7 +43,8 @@ public class TfvSubmissionInfoTest {
             .businessDba("businessDba")
             .businessRegistrationNumber("businessRegistrationNumber")
             .businessRegistrationType(BusinessRegistrationTypeEnum.EIN)
-            .businessEntityType(BusinessEntityTypeEnum.PRIVATE_PROFIT);
+            .businessEntityType(BusinessEntityTypeEnum.PRIVATE_PROFIT)
+            .businessRegistrationIssuingCountry("USA");
 
     /**
      * Model tests for TfvSubmissionInfo
@@ -170,6 +171,14 @@ public class TfvSubmissionInfoTest {
     @Test
     public void businessEntityTypeTest() {
         assertThat(model.getBusinessEntityType(), instanceOf(BusinessEntityTypeEnum.class));
+    }
+
+    /**
+     * Test the property 'businessRegistrationIssuingCountry'
+     */
+    @Test
+    public void businessRegistrationIssuingCountryTest() {
+        assertThat(model.getBusinessRegistrationIssuingCountry(), instanceOf(String.class));
     }
 
 }

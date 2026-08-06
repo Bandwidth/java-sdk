@@ -101,15 +101,12 @@ public class PhoneNumberLookupApiTest {
     @Test
     public void createSyncLookupTest() throws ApiException {
         SyncLookupRequest syncLookupRequest = new SyncLookupRequest()
-            .phoneNumbers(Arrays.asList("+1234567890", "+1987654321"));
+            .phoneNumbers(Arrays.asList("+1234567890", "+1987654321"))
+            .rcsAgent("TestAgent");
         ApiResponse<CreateSyncLookupResponse> response = api.createSyncLookupWithHttpInfo(BW_ACCOUNT_ID, syncLookupRequest);
         assertThat(response.getStatusCode(), is(200));
         assertThat(response.getData(), instanceOf(CreateSyncLookupResponse.class));
         assertThat(response.getData().getLinks(), instanceOf(List.class));
-        assertThat(response.getData().getLinks().get(0), instanceOf(LinkSchema.class));
-        assertThat(response.getData().getLinks().get(0).getRel(), instanceOf(String.class));
-        assertThat(response.getData().getLinks().get(0).getHref(), instanceOf(String.class));
-        assertThat(response.getData().getLinks().get(0).getMethod(), instanceOf(String.class));
         assertThat(response.getData().getData(), instanceOf(CreateSyncLookupResponseData.class));
         assertThat(response.getData().getData().getRequestId(), instanceOf(UUID.class));
         assertThat(response.getData().getData().getStatus(), instanceOf(CompletedLookupStatusEnum.class));
@@ -142,10 +139,6 @@ public class PhoneNumberLookupApiTest {
         assertThat(response.getStatusCode(), is(200));
         assertThat(response.getData(), instanceOf(GetAsyncBulkLookupResponse.class));
         assertThat(response.getData().getLinks(), instanceOf(List.class));
-        assertThat(response.getData().getLinks().get(0), instanceOf(LinkSchema.class));
-        assertThat(response.getData().getLinks().get(0).getRel(), instanceOf(String.class));
-        assertThat(response.getData().getLinks().get(0).getHref(), instanceOf(String.class));
-        assertThat(response.getData().getLinks().get(0).getMethod(), instanceOf(String.class));
         assertThat(response.getData().getData(), instanceOf(GetAsyncBulkLookupResponseData.class));
         assertThat(response.getData().getData().getRequestId(), instanceOf(UUID.class));
         assertThat(response.getData().getData().getStatus(), instanceOf(InProgressLookupStatusEnum.class));

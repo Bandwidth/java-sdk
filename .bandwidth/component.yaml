@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  schemaVersion: v1.0.0
+  name: java-sdk
+  description: Bandwidth Java SDK
+  annotations:
+    github.com/project-slug: Bandwidth/java-sdk
+    bandwidth.com/languages: Java
+    organization: BW
+    costCenter: Development - Software Infra
+spec:
+  type: Library
+  owner: github/band-swi
+  lifecycle: Available

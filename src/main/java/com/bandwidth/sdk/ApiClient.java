@@ -21,6 +21,8 @@ import okhttp3.logging.HttpLoggingInterceptor.Level;
 import okio.Buffer;
 import okio.BufferedSink;
 import okio.Okio;
+import org.apache.oltu.oauth2.client.request.OAuthClientRequest.TokenRequestBuilder;
+import org.apache.oltu.oauth2.common.message.types.GrantType;
 
 import javax.net.ssl.*;
 import java.io.File;
@@ -55,6 +57,9 @@ import com.bandwidth.sdk.auth.Authentication;
 import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.auth.HttpBearerAuth;
 import com.bandwidth.sdk.auth.ApiKeyAuth;
+import com.bandwidth.sdk.auth.OAuth;
+import com.bandwidth.sdk.auth.RetryingOAuth;
+import com.bandwidth.sdk.auth.OAuthFlow;
 
 /**
  * <p>ApiClient class.</p>
@@ -86,7 +91,8 @@ public class ApiClient {
     protected InputStream sslCaCert;
     protected boolean verifyingSsl;
     protected KeyManager[] keyManagers;
-
+    protected String tlsServerName;
+    
     protected OkHttpClient httpClient;
     protected JSON json;
 
@@ -101,6 +107,7 @@ public class ApiClient {
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications.put("Basic", new HttpBasicAuth());
+        authentications.put("OAuth2", new OAuth());
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }
@@ -117,6 +124,104 @@ public class ApiClient {
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications.put("Basic", new HttpBasicAuth());
+        authentications.put("OAuth2", new OAuth());
+        // Prevent the authentications from being modified.
+        authentications = Collections.unmodifiableMap(authentications);
+    }
+
+    /**
+     * Constructor for ApiClient to support access token retry on 401/403 configured with client ID
+     *
+     * @param clientId client ID
+     */
+    public ApiClient(String clientId) {
+        this(clientId, null, null);
+    }
+
+    /**
+     * Constructor for ApiClient to support access token retry on 401/403 configured with client ID and additional parameters
+     *
+     * @param clientId client ID
+     * @param parameters a {@link java.util.Map} of parameters
+     */
+    public ApiClient(String clientId, Map<String, String> parameters) {
+        this(clientId, null, parameters);
+    }
+
+    /**
+     * Constructor for ApiClient to support access token retry on 401/403 configured with client ID, secret, and additional parameters
+     *
+     * @param clientId client ID
+     * @param clientSecret client secret
+     * @param parameters a {@link java.util.Map} of parameters
+     */
+    public ApiClient(String clientId, String clientSecret, Map<String, String> parameters) {
+        this(null, clientId, clientSecret, parameters);
+    }
+    
+    /**
+     * Constructor for ApiClient with custom OkHttpClient to support access token retry on 401/403 configured with client ID, secret, and additional parameters
+     *
+     * @param clientId client ID
+     * @param clientSecret client secret
+     * @param parameters a {@link java.util.Map} of parameters
+     * @param client a {@link okhttp3.OkHttpClient} object
+     */
+    public ApiClient(String clientId, String clientSecret, Map<String, String> parameters, OkHttpClient client) {
+        init();
+        httpClient = client;
+
+        String tokenUrl = "https://api.bandwidth.com/api/v1/oauth2/token";
+        if (!"".equals(tokenUrl) && !URI.create(tokenUrl).isAbsolute()) {
+            URI uri = URI.create(getBasePath());
+            tokenUrl = uri.getScheme() + ":" +
+                (uri.getAuthority() != null ? "//" + uri.getAuthority() : "") +
+                tokenUrl;
+            if (!URI.create(tokenUrl).isAbsolute()) {
+                throw new IllegalArgumentException("OAuth2 token URL must be an absolute URL");
+            }
+        }
+        RetryingOAuth retryingOAuth = new RetryingOAuth(client, tokenUrl, clientId, OAuthFlow.APPLICATION, clientSecret, parameters);
+        initHttpClient(client, Collections.<Interceptor>singletonList(retryingOAuth));
+        authentications.put("OAuth2", retryingOAuth);
+        authentications.put("Basic", new HttpBasicAuth());
+
+        authentications = Collections.unmodifiableMap(authentications);
+    }
+
+    /**
+     * Constructor for ApiClient to support access token retry on 401/403 configured with base path, client ID, secret, and additional parameters
+     *
+     * @param basePath base path
+     * @param clientId client ID
+     * @param clientSecret client secret
+     * @param parameters a {@link java.util.Map} of parameters
+     */
+    public ApiClient(String basePath, String clientId, String clientSecret, Map<String, String> parameters) {
+        init();
+        if (basePath != null) {
+            this.basePath = basePath;
+        }
+
+        String tokenUrl = "https://api.bandwidth.com/api/v1/oauth2/token";
+        if (!"".equals(tokenUrl) && !URI.create(tokenUrl).isAbsolute()) {
+            URI uri = URI.create(getBasePath());
+            tokenUrl = uri.getScheme() + ":" +
+                (uri.getAuthority() != null ? "//" + uri.getAuthority() : "") +
+                tokenUrl;
+            if (!URI.create(tokenUrl).isAbsolute()) {
+                throw new IllegalArgumentException("OAuth2 token URL must be an absolute URL");
+            }
+        }
+        RetryingOAuth retryingOAuth = new RetryingOAuth(tokenUrl, clientId, OAuthFlow.APPLICATION, clientSecret, parameters);
+        authentications.put(
+                "OAuth2",
+                retryingOAuth
+        );
+        initHttpClient(Collections.<Interceptor>singletonList(retryingOAuth));
+        // Setup authentications (key: authentication name, value: authentication).
+        authentications.put("Basic", new HttpBasicAuth());
+
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }
@@ -126,7 +231,11 @@ public class ApiClient {
     }
 
     protected void initHttpClient(List<Interceptor> interceptors) {
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        initHttpClient(new OkHttpClient(), interceptors);
+    }
+
+    protected void initHttpClient(OkHttpClient okHttpClient, List<Interceptor> interceptors) {
+        OkHttpClient.Builder builder = okHttpClient.newBuilder();
         builder.addNetworkInterceptor(getProgressInterceptor());
         for (Interceptor interceptor: interceptors) {
             builder.addInterceptor(interceptor);
@@ -303,6 +412,29 @@ public class ApiClient {
     }
 
     /**
+     * Get TLS server name for SNI (Server Name Indication).
+     *
+     * @return The TLS server name
+     */
+    public String getTlsServerName() {
+        return tlsServerName;
+    }
+
+    /**
+     * Set TLS server name for SNI (Server Name Indication).
+     * This is used to verify the server certificate against a specific hostname
+     * instead of the hostname in the URL.
+     *
+     * @param tlsServerName The TLS server name to use for certificate verification
+     * @return ApiClient
+     */
+    public ApiClient setTlsServerName(String tlsServerName) {
+        this.tlsServerName = tlsServerName;
+        applySslSettings();
+        return this;
+    }
+
+    /**
      * <p>Getter for the field <code>dateFormat</code>.</p>
      *
      * @return a {@link java.text.DateFormat} object
@@ -452,6 +584,12 @@ public class ApiClient {
      * @param accessToken Access token
      */
     public void setAccessToken(String accessToken) {
+        for (Authentication auth : authentications.values()) {
+            if (auth instanceof OAuth) {
+                ((OAuth) auth).setAccessToken(accessToken);
+                return;
+            }
+        }
         throw new RuntimeException("No OAuth2 authentication configured!");
     }
 
@@ -636,6 +774,20 @@ public class ApiClient {
         return this;
     }
 
+    /**
+     * Helper method to configure the token endpoint of the first oauth found in the apiAuthorizations (there should be only one)
+     *
+     * @return Token request builder
+     */
+    public TokenRequestBuilder getTokenEndPoint() {
+        for (Authentication apiAuth : authentications.values()) {
+            if (apiAuth instanceof RetryingOAuth) {
+                RetryingOAuth retryingOAuth = (RetryingOAuth) apiAuth;
+                return retryingOAuth.getTokenRequestBuilder();
+            }
+        }
+        return null;
+    }
 
     /**
      * Format the given parameter object into string.
@@ -924,7 +1076,17 @@ public class ApiClient {
         }
         try {
             if (isJsonMime(contentType)) {
-                return JSON.deserialize(respBody.byteStream(), returnType);
+                if (returnType.equals(String.class)) {
+                    String respBodyString = respBody.string();
+                    if (respBodyString.isEmpty()) {
+                        return null;
+                    }
+                    // Use String-based deserialize for String return type with fallback
+                    return JSON.deserialize(respBodyString, returnType);
+                } else {
+                    // Use InputStream-based deserialize which supports responses > 2GB
+                    return JSON.deserialize(respBody.byteStream(), returnType);
+                }
             } else if (returnType.equals(String.class)) {
                 String respBodyString = respBody.string();
                 if (respBodyString.isEmpty()) {
@@ -1267,7 +1429,7 @@ public class ApiClient {
             if (serverIndex != null) {
                 if (serverIndex < 0 || serverIndex >= servers.size()) {
                     throw new ArrayIndexOutOfBoundsException(String.format(
-                        Locale.ROOT,
+                        java.util.Locale.ROOT,
                         "Invalid index %d when selecting the host settings. Must be less than %d", serverIndex, servers.size()
                     ));
                 }
@@ -1340,11 +1502,11 @@ public class ApiClient {
      */
     public void processCookieParams(Map<String, String> cookieParams, Request.Builder reqBuilder) {
         for (Entry<String, String> param : cookieParams.entrySet()) {
-            reqBuilder.addHeader("Cookie", String.format(Locale.ROOT, "%s=%s", param.getKey(), param.getValue()));
+            reqBuilder.addHeader("Cookie", String.format(java.util.Locale.ROOT, "%s=%s", param.getKey(), param.getValue()));
         }
         for (Entry<String, String> param : defaultCookieMap.entrySet()) {
             if (!cookieParams.containsKey(param.getKey())) {
-                reqBuilder.addHeader("Cookie", String.format(Locale.ROOT, "%s=%s", param.getKey(), param.getValue()));
+                reqBuilder.addHeader("Cookie", String.format(java.util.Locale.ROOT, "%s=%s", param.getKey(), param.getValue()));
             }
         }
     }
@@ -1541,7 +1703,17 @@ public class ApiClient {
                     trustManagerFactory.init(caKeyStore);
                 }
                 trustManagers = trustManagerFactory.getTrustManagers();
-                hostnameVerifier = OkHostnameVerifier.INSTANCE;
+                if (tlsServerName != null && !tlsServerName.isEmpty()) {
+                    hostnameVerifier = new HostnameVerifier() {
+                        @Override
+                        public boolean verify(String hostname, SSLSession session) {
+                            // Verify the certificate against tlsServerName instead of the actual hostname
+                            return OkHostnameVerifier.INSTANCE.verify(tlsServerName, session);
+                        }
+                    };
+                } else {
+                    hostnameVerifier = OkHostnameVerifier.INSTANCE;
+                }
             }
 
             SSLContext sslContext = SSLContext.getInstance("TLS");

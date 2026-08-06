@@ -26,7 +26,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The alignment of the thumbnail image in the card. Only applicable if the card using horizontal orientation.
+ * The alignment of the thumbnail image in the card. Required when orientation is HORIZONTAL.
  */
 @JsonAdapter(ThumbnailAlignmentEnum.Adapter.class)
 public enum ThumbnailAlignmentEnum {

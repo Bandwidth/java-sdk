@@ -9,6 +9,7 @@ info:
   version: 1.0.0
 security:
   - Basic: []
+  - OAuth2: []
 tags:
   - name: Messages
   - name: Media
@@ -21,6 +22,7 @@ tags:
   - name: MFA
   - name: Phone Number Lookup
   - name: Toll-Free Verification
+  - name: Endpoints
 paths:
   /users/{accountId}/media:
     get:
@@ -94,8 +96,8 @@ paths:
         under this account, the previous file will be overwritten.
 
 
-        A list of supported media types can be found
-        [here](https://support.bandwidth.com/hc/en-us/articles/360014128994-What-MMS-file-types-are-supported-).
+        A list of supported media types can be found at [Bandwidth
+        Support](https://www.bandwidth.com/support/en/articles/12823220-what-mms-file-types-are-supported).
       operationId: uploadMedia
       tags:
         - Media
@@ -162,7 +164,13 @@ paths:
   /users/{accountId}/messages:
     get:
       summary: List Messages
-      description: Returns a list of messages based on query parameters.
+      description: >
+        Returns a list of messages based on query parameters.
+
+
+        **Rate Limit:** This endpoint is rate limited to 3500 requests per 5
+        minutes per Source IP address. Exceeding the limit returns HTTP 429 with
+        a `Retry-After` header.
       operationId: listMessages
       tags:
         - Messages
@@ -206,10 +214,12 @@ paths:
           $ref: '#/components/responses/messagingForbiddenError'
         '404':
           $ref: '#/components/responses/messagingNotFoundError'
+        '405':
+          $ref: '#/components/responses/messagingMethodNotAllowedError'
         '415':
           $ref: '#/components/responses/messagingInvalidMediaTypeError'
         '429':
-          $ref: '#/components/responses/messagingTooManyRequestsError'
+          $ref: '#/components/responses/listMessagesTooManyRequestsError'
         '500':
           $ref: '#/components/responses/messagingInternalServerError'
     post:
@@ -307,7 +317,7 @@ paths:
         approximately in order, but exact ordering is not guaranteed.
       operationId: createCall
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
       requestBody:
         $ref: '#/components/requestBodies/createCallRequest'
       responses:
@@ -348,7 +358,7 @@ paths:
         days, you will get an empty array [] in response.
       operationId: listCalls
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/to'
         - $ref: '#/components/parameters/from'
         - $ref: '#/components/parameters/minStartTimeCalls'
@@ -394,7 +404,7 @@ paths:
         7 days, you will get an HTTP 404 response.
       operationId: getCallState
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/callId'
       responses:
         '200':
@@ -424,7 +434,7 @@ paths:
         BXML document.
       operationId: updateCall
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/callId'
       requestBody:
         $ref: '#/components/requestBodies/updateCallRequest'
@@ -458,7 +468,7 @@ paths:
       description: Interrupts and replaces an active call's BXML document.
       operationId: updateCallBxml
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/callId'
       requestBody:
         $ref: '#/components/requestBodies/updateCallBxmlRequest'
@@ -500,7 +510,7 @@ paths:
         of conference records.
       operationId: listConferences
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/name'
         - $ref: '#/components/parameters/minCreatedTime'
         - $ref: '#/components/parameters/maxCreatedTime'
@@ -534,7 +544,7 @@ paths:
       description: Returns information about the specified conference.
       operationId: getConference
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/conferenceId'
       responses:
         '200':
@@ -562,7 +572,7 @@ paths:
       description: Update the conference state.
       operationId: updateConference
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/conferenceId'
       requestBody:
         $ref: '#/components/requestBodies/updateConferenceRequest'
@@ -594,7 +604,7 @@ paths:
       description: Update the conference BXML document.
       operationId: updateConferenceBxml
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/conferenceId'
       requestBody:
         $ref: '#/components/requestBodies/updateConferenceBxmlRequest'
@@ -626,7 +636,7 @@ paths:
       description: Returns information about the specified conference member.
       operationId: getConferenceMember
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/conferenceId'
         - $ref: '#/components/parameters/memberId'
       responses:
@@ -655,7 +665,7 @@ paths:
       description: Updates settings for a particular conference member.
       operationId: updateConferenceMember
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/conferenceId'
         - $ref: '#/components/parameters/memberId'
       requestBody:
@@ -690,7 +700,7 @@ paths:
         took place during the specified conference.
       operationId: listConferenceRecordings
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/conferenceId'
       responses:
         '200':
@@ -720,7 +730,7 @@ paths:
       description: Returns metadata for the specified recording.
       operationId: getConferenceRecording
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/conferenceId'
         - $ref: '#/components/parameters/recordingId'
       responses:
@@ -751,7 +761,7 @@ paths:
       description: Downloads the specified recording file.
       operationId: downloadConferenceRecording
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/conferenceId'
         - $ref: '#/components/parameters/recordingId'
       responses:
@@ -791,7 +801,7 @@ paths:
         empty if no recordings match the specified criteria.
       operationId: listAccountCallRecordings
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/to'
         - $ref: '#/components/parameters/from'
         - $ref: '#/components/parameters/minStartTime'
@@ -824,7 +834,7 @@ paths:
       description: Pause or resume a recording on an active phone call.
       operationId: updateCallRecordingState
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/callId'
       requestBody:
         $ref: '#/components/requestBodies/updateCallRecordingRequest'
@@ -858,7 +868,7 @@ paths:
         that took place during the specified call.
       operationId: listCallRecordings
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/callId'
       responses:
         '200':
@@ -888,7 +898,7 @@ paths:
       description: Returns metadata for the specified recording.
       operationId: getCallRecording
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/callId'
         - $ref: '#/components/parameters/recordingId'
       responses:
@@ -925,7 +935,7 @@ paths:
         irreversible, can take an additional 24 to 48 hours.
       operationId: deleteRecording
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/callId'
         - $ref: '#/components/parameters/recordingId'
       responses:
@@ -956,7 +966,7 @@ paths:
       description: Downloads the specified recording.
       operationId: downloadCallRecording
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/callId'
         - $ref: '#/components/parameters/recordingId'
       responses:
@@ -985,7 +995,7 @@ paths:
       description: Deletes the specified recording's media.
       operationId: deleteRecordingMedia
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/callId'
         - $ref: '#/components/parameters/recordingId'
       responses:
@@ -1028,7 +1038,7 @@ paths:
         item.
       operationId: getRecordingTranscription
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/callId'
         - $ref: '#/components/parameters/recordingId'
       responses:
@@ -1063,7 +1073,7 @@ paths:
         less than 4 hours.
       operationId: transcribeCallRecording
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/callId'
         - $ref: '#/components/parameters/recordingId'
       requestBody:
@@ -1101,7 +1111,7 @@ paths:
         can take an additional 24 to 48 hours.
       operationId: deleteRecordingTranscription
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/callId'
         - $ref: '#/components/parameters/recordingId'
       responses:
@@ -1132,7 +1142,7 @@ paths:
       description: Returns details about the current state of the account.
       operationId: getStatistics
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
       responses:
         '200':
           $ref: '#/components/responses/getStatisticsResponse'
@@ -1163,7 +1173,7 @@ paths:
         [startTranscription](/docs/voice/bxml/startTranscription).
       operationId: listRealTimeTranscriptions
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/callId'
       responses:
         '200':
@@ -1195,7 +1205,7 @@ paths:
         [startTranscription](/docs/voice/bxml/startTranscription).
       operationId: getRealTimeTranscription
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/callId'
         - $ref: '#/components/parameters/transcriptionId'
       responses:
@@ -1232,7 +1242,7 @@ paths:
         can take an additional 24 to 48 hours.
       operationId: deleteRealTimeTranscription
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId1'
         - $ref: '#/components/parameters/callId'
         - $ref: '#/components/parameters/transcriptionId'
       responses:
@@ -1263,7 +1273,7 @@ paths:
       description: Send an MFA Code via a phone call.
       operationId: generateVoiceCode
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId2'
       requestBody:
         $ref: '#/components/requestBodies/codeRequest'
       responses:
@@ -1288,7 +1298,7 @@ paths:
       description: Send an MFA code via text message (SMS).
       operationId: generateMessagingCode
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId2'
       requestBody:
         $ref: '#/components/requestBodies/codeRequest'
       responses:
@@ -1311,7 +1321,7 @@ paths:
       description: Verify a previously sent MFA code.
       operationId: verifyCode
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId2'
       requestBody:
         $ref: '#/components/requestBodies/codeVerify'
       responses:
@@ -1338,7 +1348,7 @@ paths:
       tags:
         - Phone Number Lookup
       parameters:
-        - $ref: '#/components/parameters/accountId1'
+        - $ref: '#/components/parameters/accountId3'
       requestBody:
         $ref: '#/components/requestBodies/createSyncLookupRequest'
       responses:
@@ -1361,7 +1371,7 @@ paths:
       tags:
         - Phone Number Lookup
       parameters:
-        - $ref: '#/components/parameters/accountId1'
+        - $ref: '#/components/parameters/accountId3'
       requestBody:
         $ref: '#/components/requestBodies/createAsyncBulkLookupRequest'
       responses:
@@ -1381,7 +1391,7 @@ paths:
       tags:
         - Phone Number Lookup
       parameters:
-        - $ref: '#/components/parameters/accountId1'
+        - $ref: '#/components/parameters/accountId3'
         - $ref: '#/components/parameters/requestId'
       responses:
         '200':
@@ -1397,7 +1407,7 @@ paths:
       description: Submit a request for verification of a toll-free phone number.
       operationId: requestTollFreeVerification
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId4'
       requestBody:
         $ref: '#/components/requestBodies/requestTollFreeVerificationRequest'
       responses:
@@ -1436,7 +1446,7 @@ paths:
         available.
       operationId: getTollFreeVerificationStatus
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId4'
         - $ref: '#/components/parameters/tfPhoneNumberPathParam'
       responses:
         '200':
@@ -1469,13 +1479,13 @@ paths:
         true).
       operationId: updateTollFreeVerificationRequest
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId4'
         - $ref: '#/components/parameters/tfPhoneNumberPathParam'
       requestBody:
         $ref: '#/components/requestBodies/updateTollFreeVerificationRequestRequest'
       responses:
         '202':
-          description: Accepted
+          $ref: '#/components/responses/verifyPutResponse'
         '400':
           $ref: '#/components/responses/tfvPostBadRequestResponse'
         '401':
@@ -1497,7 +1507,7 @@ paths:
       description: Delete a toll-free verification submission for a toll-free number.
       operationId: deleteVerificationRequest
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId4'
         - $ref: '#/components/parameters/tfPhoneNumberPathParam'
       responses:
         '204':
@@ -1536,7 +1546,7 @@ paths:
         object will be null).
       operationId: listWebhookSubscriptions
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId4'
       responses:
         '200':
           $ref: '#/components/responses/listWebhookSubscriptionsResponse'
@@ -1569,7 +1579,7 @@ paths:
         modify or delete the subscription at a later time.
       operationId: createWebhookSubscription
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId4'
       requestBody:
         $ref: '#/components/requestBodies/webhookSubscriptionRequest'
       responses:
@@ -1600,7 +1610,7 @@ paths:
       description: Delete a webhook subscription by ID.
       operationId: deleteWebhookSubscription
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId4'
         - $ref: '#/components/parameters/webhookSubscriptionIdPathParam'
       responses:
         '204':
@@ -1630,7 +1640,7 @@ paths:
         `basicAuthentication` can be updated).
       operationId: updateWebhookSubscription
       parameters:
-        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/accountId4'
         - $ref: '#/components/parameters/webhookSubscriptionIdPathParam'
       requestBody:
         $ref: '#/components/requestBodies/webhookSubscriptionRequest'
@@ -1681,13 +1691,172 @@ paths:
         '503':
           $ref: '#/components/responses/tfvServiceUnavailableResponse'
     servers: *ref_4
+  /accounts/{accountId}/endpoints:
+    get:
+      tags:
+        - Endpoints
+      summary: List Endpoints
+      description: Returns a list of endpoints associated with the specified account.
+      operationId: listEndpoints
+      parameters:
+        - $ref: '#/components/parameters/accountId5'
+        - $ref: '#/components/parameters/endpointType'
+        - $ref: '#/components/parameters/endpointStatus'
+        - $ref: '#/components/parameters/afterCursor'
+        - $ref: '#/components/parameters/limit1'
+      responses:
+        '200':
+          $ref: '#/components/responses/listEndpointsResponse'
+        '400':
+          $ref: '#/components/responses/badRequestErrorResponse'
+        '401':
+          $ref: '#/components/responses/unauthorizedErrorResponse'
+        '403':
+          $ref: '#/components/responses/forbiddenErrorResponse'
+        '404':
+          $ref: '#/components/responses/notFoundErrorResponse'
+        '405':
+          $ref: '#/components/responses/methodNotAllowedErrorResponse'
+        '415':
+          $ref: '#/components/responses/unsupportedMediaTypeErrorResponse'
+        '429':
+          $ref: '#/components/responses/tooManyRequestsErrorResponse'
+        '500':
+          $ref: '#/components/responses/serviceUnavailableErrorResponse'
+    post:
+      tags:
+        - Endpoints
+      summary: Create Endpoint
+      description: Creates a new Endpoint for the specified account.
+      operationId: createEndpoint
+      parameters:
+        - $ref: '#/components/parameters/accountId5'
+      requestBody:
+        $ref: '#/components/requestBodies/createEndpointRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/createEndpointResponse'
+        '400':
+          $ref: '#/components/responses/badRequestErrorResponse'
+        '401':
+          $ref: '#/components/responses/unauthorizedErrorResponse'
+        '403':
+          $ref: '#/components/responses/forbiddenErrorResponse'
+        '404':
+          $ref: '#/components/responses/notFoundErrorResponse'
+        '405':
+          $ref: '#/components/responses/methodNotAllowedErrorResponse'
+        '415':
+          $ref: '#/components/responses/unsupportedMediaTypeErrorResponse'
+        '429':
+          $ref: '#/components/responses/tooManyRequestsErrorResponse'
+        '500':
+          $ref: '#/components/responses/serviceUnavailableErrorResponse'
+      callbacks:
+        endpointEventCallback:
+          $ref: '#/components/callbacks/endpointEvent'
+    servers: &ref_5
+      - url: https://api.bandwidth.com/v2
+        description: Production
+  /accounts/{accountId}/endpoints/{endpointId}:
+    get:
+      tags:
+        - Endpoints
+      summary: Get Endpoint
+      description: Returns information about the specified endpoint.
+      operationId: getEndpoint
+      parameters:
+        - $ref: '#/components/parameters/accountId5'
+        - $ref: '#/components/parameters/endpointId'
+      responses:
+        '200':
+          $ref: '#/components/responses/getEndpointResponse'
+        '400':
+          $ref: '#/components/responses/badRequestErrorResponse'
+        '401':
+          $ref: '#/components/responses/unauthorizedErrorResponse'
+        '403':
+          $ref: '#/components/responses/forbiddenErrorResponse'
+        '404':
+          $ref: '#/components/responses/notFoundErrorResponse'
+        '405':
+          $ref: '#/components/responses/methodNotAllowedErrorResponse'
+        '415':
+          $ref: '#/components/responses/unsupportedMediaTypeErrorResponse'
+        '429':
+          $ref: '#/components/responses/tooManyRequestsErrorResponse'
+        '500':
+          $ref: '#/components/responses/serviceUnavailableErrorResponse'
+    delete:
+      tags:
+        - Endpoints
+      summary: Delete Endpoint
+      description: >-
+        Deletes the specified endpoint. If the endpoint is actively streaming
+        media, the media stream will be terminated.
+      operationId: deleteEndpoint
+      parameters:
+        - $ref: '#/components/parameters/accountId5'
+        - $ref: '#/components/parameters/endpointId'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/badRequestErrorResponse'
+        '401':
+          $ref: '#/components/responses/unauthorizedErrorResponse'
+        '403':
+          $ref: '#/components/responses/forbiddenErrorResponse'
+        '404':
+          $ref: '#/components/responses/notFoundErrorResponse'
+        '405':
+          $ref: '#/components/responses/methodNotAllowedErrorResponse'
+        '415':
+          $ref: '#/components/responses/unsupportedMediaTypeErrorResponse'
+        '429':
+          $ref: '#/components/responses/tooManyRequestsErrorResponse'
+        '500':
+          $ref: '#/components/responses/serviceUnavailableErrorResponse'
+    servers: *ref_5
+  /accounts/{accountId}/endpoints/{endpointId}/bxml:
+    put:
+      tags:
+        - Endpoints
+      summary: Update Endpoint BXML
+      description: Updates the BXML for the specified endpoint.
+      operationId: updateEndpointBxml
+      parameters:
+        - $ref: '#/components/parameters/accountId5'
+        - $ref: '#/components/parameters/endpointId'
+      requestBody:
+        $ref: '#/components/requestBodies/updateEndpointBxmlRequest'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/badRequestErrorResponse'
+        '401':
+          $ref: '#/components/responses/unauthorizedErrorResponse'
+        '403':
+          $ref: '#/components/responses/forbiddenErrorResponse'
+        '404':
+          $ref: '#/components/responses/notFoundErrorResponse'
+        '405':
+          $ref: '#/components/responses/methodNotAllowedErrorResponse'
+        '415':
+          $ref: '#/components/responses/unsupportedMediaTypeErrorResponse'
+        '429':
+          $ref: '#/components/responses/tooManyRequestsErrorResponse'
+        '500':
+          $ref: '#/components/responses/serviceUnavailableErrorResponse'
+    servers: *ref_5
 components:
   schemas:
     applicationId:
       type: string
       description: >-
         The ID of the Application your from number or senderId is associated
-        with in the Bandwidth Phone Number Dashboard.
+        with in the Bandwidth App.
       example: 93de2206-9669-4e07-948d-329f4b722ee2
     priorityEnum:
       type: string
@@ -1947,8 +2116,10 @@ components:
           type: string
         contentLength:
           type: integer
+          example: 1024
         mediaName:
           type: string
+          example: image.png
     segmentCount:
       type: integer
       description: >-
@@ -1975,7 +2146,7 @@ components:
       type: string
       description: >-
         The name of the Authorized Message Provider (AMP) that handled this
-        message. 
+        message.
 
         In the US, this is the carrier that the message was sent to.
 
@@ -2062,7 +2233,7 @@ components:
           description: >-
             Either an alphanumeric sender ID or the sender's Bandwidth phone
             number in E.164 format, which must be hosted within Bandwidth and
-            linked to the account that is generating the message. 
+            linked to the account that is generating the message.
 
             Alphanumeric Sender IDs can contain up to 11 characters, upper-case
             letters A-Z, lower-case letters a-z, numbers 0-9, space, hyphen -,
@@ -2244,8 +2415,8 @@ components:
 
             For MMS, the API limits file size to 3.5MB. Specific carriers and
             channels may have a smaller limit that could cause a large file to
-            fail, see
-            [here](https://support.bandwidth.com/hc/en-us/articles/360014235473-What-are-the-MMS-file-size-limits)
+            fail, see more at [Bandwidth
+            Support](https://www.bandwidth.com/support/en/articles/12823216-what-are-the-mms-file-size-limits)
             for more details.
           example: https://dev.bandwidth.com/images/bandwidth-logo.png
           maxLength: 1000
@@ -2256,13 +2427,16 @@ components:
       type: object
       properties:
         media:
-          $ref: '#/components/schemas/rbmMessageContentFile'
+          type: array
+          items:
+            $ref: '#/components/schemas/rbmMessageContentFile'
         suggestions:
           $ref: '#/components/schemas/multiChannelFullActions'
       required:
         - media
     rbmCardContent:
       type: object
+      description: Must contain at least one of title, description, or media to be valid.
       properties:
         title:
           type: string
@@ -2305,7 +2479,6 @@ components:
           $ref: '#/components/schemas/multiChannelFullActions'
       required:
         - orientation
-        - thumbnailImageAlignment
         - cardContent
     standaloneCardOrientationEnum:
       type: string
@@ -2316,8 +2489,8 @@ components:
     thumbnailAlignmentEnum:
       type: string
       description: >-
-        The alignment of the thumbnail image in the card. Only applicable if the
-        card using horizontal orientation.
+        The alignment of the thumbnail image in the card. Required when
+        orientation is HORIZONTAL.
       enum:
         - LEFT
         - RIGHT
@@ -2332,6 +2505,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/rbmCardContent'
+          minItems: 2
           maxItems: 10
         suggestions:
           $ref: '#/components/schemas/multiChannelFullActions'
@@ -2377,6 +2551,39 @@ components:
         - OPEN_URL
         - REQUEST_LOCATION
       example: REPLY
+    rbmOpenUrlEnum:
+      type: string
+      description: >-
+        Specifies how the URL should be opened on a mobile device.
+
+        - `BROWSER` Opens the URL in the device's default browser. If
+        application is not set or the device doesn't support WebView, this
+        option is used by default.
+
+        - `WEBVIEW` Opens the URL in an in-app WebView.
+      enum:
+        - BROWSER
+        - WEBVIEW
+      example: WEBVIEW
+    rbmWebViewEnum:
+      type: string
+      description: >-
+        Defines the layout of the WebView on a mobile device. It must be defined
+
+        when application is set to `WEBVIEW` and must not be set when
+        application
+
+        is set to `BROWSER`.
+
+        - `FULL` WebView takes the full screen.
+
+        - `HALF` WebView takes half of the screen.
+
+        - `TALL` WebView takes three-quarters of the screen.
+      enum:
+        - FULL
+        - HALF
+        - TALL
     rbmActionText:
       title: Text
       type: string
@@ -2424,12 +2631,16 @@ components:
             latitude:
               type: string
               format: double
-              description: The latitude of the location.
+              description: >-
+                The latitude of the location. Must be in range [-90.000000,
+                90.000000].
               example: '37.7749'
             longitude:
               type: string
               format: double
-              description: The longitude of the location.
+              description: >-
+                The longitude of the location. Must be in range [-180.000000,
+                180.000000].
               example: '-122.4194'
             label:
               type: string
@@ -2453,12 +2664,16 @@ components:
             startTime:
               type: string
               format: date-time
-              description: The start time of the event.
+              description: >-
+                The start time of the event. Must be a valid RFC-3339 value,
+                e.g., 2021-03-14T01:59:26Z or 2021-03-13T20:59:26-05:00.
               example: 2022-09-14T18:20:16.000Z
             endTime:
               type: string
               format: date-time
-              description: The end time of the event.
+              description: >-
+                The end time of the event. Must be a valid RFC-3339 value, e.g.,
+                2021-03-14T01:59:26Z or 2021-03-13T20:59:26-05:00.
               example: 2022-09-14T18:20:16.000Z
             description:
               type: string
@@ -2478,9 +2693,13 @@ components:
             url:
               type: string
               format: uri
-              description: The URL to open in browser.
+              description: The URL to open in browser. Must use http:// or https:// scheme.
               example: https://dev.bandwidth.com
               maxLength: 2048
+            application:
+              $ref: '#/components/schemas/rbmOpenUrlEnum'
+            webviewViewMode:
+              $ref: '#/components/schemas/rbmWebViewEnum'
           required:
             - url
     multiChannelFullActions:
@@ -2490,7 +2709,7 @@ components:
         $ref: '#/components/schemas/multiChannelAction'
       maxItems: 11
     multiChannelAction:
-      oneOf:
+      anyOf:
         - $ref: '#/components/schemas/rbmActionBase'
         - $ref: '#/components/schemas/rbmActionDial'
         - $ref: '#/components/schemas/rbmActionViewLocation'
@@ -2505,7 +2724,7 @@ components:
           CREATE_CALENDAR_EVENT: '#/components/schemas/multiChannelActionCalendarEvent'
           OPEN_URL: '#/components/schemas/rbmActionOpenUrl'
           REQUEST_LOCATION: '#/components/schemas/rbmActionBase'
-    multiChannelChannelListObject:
+    multiChannelChannelListObjectBase:
       type: object
       properties:
         from:
@@ -2514,19 +2733,85 @@ components:
           $ref: '#/components/schemas/applicationId'
         channel:
           $ref: '#/components/schemas/multiChannelMessageChannelEnum'
-        content:
-          description: The content of the message.
-          oneOf:
-            - $ref: '#/components/schemas/rbmMessageContentText'
-            - $ref: '#/components/schemas/rbmMessageMedia'
-            - $ref: '#/components/schemas/rbmMessageContentRichCard'
-            - $ref: '#/components/schemas/smsMessageContent'
-            - $ref: '#/components/schemas/mmsMessageContent'
       required:
         - from
         - applicationId
         - channel
+    multiChannelChannelListRBMObject:
+      allOf:
+        - $ref: '#/components/schemas/multiChannelChannelListObjectBase'
+        - type: object
+          properties:
+            content:
+              description: The content of the message.
+              oneOf:
+                - $ref: '#/components/schemas/rbmMessageContentText'
+                - $ref: '#/components/schemas/rbmMessageMedia'
+                - $ref: '#/components/schemas/rbmMessageContentRichCard'
+      required:
         - content
+    multiChannelChannelListSMSObject:
+      allOf:
+        - $ref: '#/components/schemas/multiChannelChannelListObjectBase'
+        - type: object
+          properties:
+            content:
+              $ref: '#/components/schemas/smsMessageContent'
+      required:
+        - content
+    multiChannelChannelListMMSObject:
+      allOf:
+        - $ref: '#/components/schemas/multiChannelChannelListObjectBase'
+        - type: object
+          properties:
+            content:
+              $ref: '#/components/schemas/mmsMessageContent'
+      required:
+        - content
+    multiChannelChannelListRBMResponseObject:
+      allOf:
+        - $ref: '#/components/schemas/multiChannelChannelListRBMObject'
+        - $ref: '#/components/schemas/multiChannelChannelListOwnerObject'
+    multiChannelChannelListSMSResponseObject:
+      allOf:
+        - $ref: '#/components/schemas/multiChannelChannelListSMSObject'
+        - $ref: '#/components/schemas/multiChannelChannelListOwnerObject'
+    multiChannelChannelListMMSResponseObject:
+      allOf:
+        - $ref: '#/components/schemas/multiChannelChannelListMMSObject'
+        - $ref: '#/components/schemas/multiChannelChannelListOwnerObject'
+    multiChannelChannelListRequestObject:
+      anyOf:
+        - $ref: '#/components/schemas/multiChannelChannelListRBMObject'
+        - $ref: '#/components/schemas/multiChannelChannelListSMSObject'
+        - $ref: '#/components/schemas/multiChannelChannelListMMSObject'
+      discriminator:
+        propertyName: channel
+        mapping:
+          RBM: '#/components/schemas/multiChannelChannelListRBMObject'
+          SMS: '#/components/schemas/multiChannelChannelListSMSObject'
+          MMS: '#/components/schemas/multiChannelChannelListMMSObject'
+    multiChannelChannelListOwnerObject:
+      type: object
+      properties:
+        owner:
+          type: string
+          description: >-
+            The Bandwidth senderId associated with the message. Identical to
+            'from'.
+      required:
+        - owner
+    multiChannelChannelListResponseObject:
+      anyOf:
+        - $ref: '#/components/schemas/multiChannelChannelListRBMResponseObject'
+        - $ref: '#/components/schemas/multiChannelChannelListSMSResponseObject'
+        - $ref: '#/components/schemas/multiChannelChannelListMMSResponseObject'
+      discriminator:
+        propertyName: channel
+        mapping:
+          RBM: '#/components/schemas/multiChannelChannelListRBMResponseObject'
+          SMS: '#/components/schemas/multiChannelChannelListSMSResponseObject'
+          MMS: '#/components/schemas/multiChannelChannelListMMSResponseObject'
     multiChannelMessageRequest:
       description: Multi-Channel Message Request
       type: object
@@ -2540,7 +2825,7 @@ components:
             order they are listed. Once a message sends successfully, the others
             will be ignored.
           items:
-            $ref: '#/components/schemas/multiChannelChannelListObject'
+            $ref: '#/components/schemas/multiChannelChannelListRequestObject'
           maxItems: 4
         tag:
           $ref: '#/components/schemas/tag'
@@ -2573,17 +2858,7 @@ components:
             order they are listed. Once a message sends successfully, the others
             will be ignored.
           items:
-            allOf:
-              - $ref: '#/components/schemas/multiChannelChannelListObject'
-              - type: object
-                properties:
-                  owner:
-                    type: string
-                    description: >-
-                      The Bandwidth senderId associated with the message.
-                      Identical to 'from'.
-                required:
-                  - owner
+            $ref: '#/components/schemas/multiChannelChannelListResponseObject'
           maxItems: 4
         tag:
           $ref: '#/components/schemas/tag'
@@ -2614,6 +2889,11 @@ components:
           example: Yes, I would like to proceed
         postbackData:
           $ref: '#/components/schemas/rbmActionPostbackData'
+        pairedMessageId:
+          type: string
+          nullable: true
+          description: Corresponding parent message ID (MT).
+          example: 1752697342534u24xerqdukke523x
     rbmLocationResponse:
       type: object
       properties:
@@ -2644,12 +2924,13 @@ components:
       discriminator:
         propertyName: type
         mapping:
+          message-sending: '#/components/schemas/statusCallback'
           message-sent: '#/components/schemas/statusCallback'
           message-delivered: '#/components/schemas/statusCallback'
           message-failed: '#/components/schemas/statusCallback'
           message-read: '#/components/schemas/statusCallback'
           message-received: '#/components/schemas/inboundCallback'
-          request-location-response: '#/components/schemas/inboundCallback'
+          requested-location-response: '#/components/schemas/inboundCallback'
           suggestion-response: '#/components/schemas/inboundCallback'
     statusCallback:
       type: object
@@ -2681,7 +2962,7 @@ components:
         description:
           type: string
           description: A detailed description of the event described by the callback.
-          example: Message delivered to carrier.
+          example: Message delivered to handset.
         message:
           $ref: '#/components/schemas/statusCallbackMessage'
         errorCode:
@@ -2709,7 +2990,7 @@ components:
         to:
           type: string
           description: >
-            The destination phone number the message was sent to. 
+            The destination phone number the message was sent to.
 
             For inbound callbacks, this is the Bandwidth number or alphanumeric
             identifier that received the message.
@@ -2737,7 +3018,11 @@ components:
         - `message-sending` indicates that Bandwidth is sending the message to
         the upstream provider.
 
-        - `message-delivered` indicates that the message was successfully sent.
+        - `message-sent` indicates that the message has left the Bandwidth
+        network and is in transit to the provider.
+
+        - `message-delivered` indicates that the message was successfully
+        delivered to handset.
 
         - `message-failed` indicates that the message could not be sent to the
         intended recipient.
@@ -2746,6 +3031,7 @@ components:
         recipient.
       enum:
         - message-sending
+        - message-sent
         - message-delivered
         - message-failed
         - message-read
@@ -2759,14 +3045,15 @@ components:
         - `message-received` indicates an MO message from a Bandwidth user's
         client to a Bandwidth number.
 
-        - `request-location-response` indicates a response to a location request
-        sent by the Bandwidth user's client after receiving an RBM message. 
+        - `requested-location-response` indicates a response to a location
+        request sent by the Bandwidth user's client after receiving an RBM
+        message.
 
         - `suggestion-response` indicates a response to a suggestion sent by the
         Bandwidth user's client after receiving an RBM message.
       enum:
         - message-received
-        - request-location-response
+        - requested-location-response
         - suggestion-response
       example: message-received
     statusCallbackMessage:
@@ -2999,7 +3286,7 @@ components:
           nullable: true
           type: string
           description: >-
-            The caller display name to use when the call is created. 
+            The caller display name to use when the call is created.
 
             May not exceed 256 characters nor contain control characters such as
             new lines.
@@ -3177,8 +3464,8 @@ components:
             May be cleared by setting `tag=""`
 
 
-            Max length 256 characters.
-          maxLength: 256
+            Max length 4096 characters.
+          maxLength: 4096
           example: arbitrary text here
     createCallResponse:
       type: object
@@ -3555,11 +3842,11 @@ components:
             May be cleared by setting `tag=""`.
 
 
-            Max length 256 characters.
+            Max length 4096 characters.
 
 
             Not allowed if `state` is `completed`.
-          maxLength: 256
+          maxLength: 4096
           example: My Custom Tag
     updateCallRecording:
       type: object
@@ -3936,7 +4223,7 @@ components:
           format: double
           description: >-
             When an answering machine is detected, the amount of silence (in
-            seconds) before assuming the message has finished playing. 
+            seconds) before assuming the message has finished playing.
 
             If not provided it will default to the speechEndThreshold value.
           example: 5
@@ -4072,6 +4359,72 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/transcription'
+        clips:
+          type: array
+          description: >-
+            A list of individual speech clips with speaker, timing, and
+            confidence information.
+          items:
+            $ref: '#/components/schemas/recordingTranscriptionClip'
+      example:
+        transcripts:
+          - speaker: 0
+            text: Hi, is Thursday at two still good for you? Perfect, talk soon.
+            confidence: 0.96
+          - speaker: 1
+            text: Yes, that works great. See you then! Sounds good, bye!
+            confidence: 0.97
+        clips:
+          - speaker: 0
+            text: Hi, is Thursday at two still good for you?
+            confidence: 0.97
+            startTimeSeconds: 0.4
+            endTimeSeconds: 3.1
+          - speaker: 1
+            text: Yes, that works great. See you then!
+            confidence: 0.95
+            startTimeSeconds: 3.8
+            endTimeSeconds: 6.2
+          - speaker: 0
+            text: Perfect, talk soon.
+            confidence: 0.94
+            startTimeSeconds: 6.9
+            endTimeSeconds: 8.1
+          - speaker: 1
+            text: Sounds good, bye!
+            confidence: 0.98
+            startTimeSeconds: 8.5
+            endTimeSeconds: 9.7
+    recordingTranscriptionClip:
+      type: object
+      properties:
+        speaker:
+          type: integer
+          description: Zero-based index identifying the speaker.
+          example: 0
+        text:
+          type: string
+          description: The transcribed text of this clip.
+          example: Hi there, thanks for calling!
+        confidence:
+          type: number
+          format: double
+          minimum: 0
+          maximum: 1
+          description: >-
+            How confident the transcription engine was in transcribing this clip
+            (from `0.0` to `1.0`).
+          example: 0.85
+        startTimeSeconds:
+          type: number
+          format: double
+          description: The start time of this clip within the recording, in seconds.
+          example: 2.3
+        endTimeSeconds:
+          type: number
+          format: double
+          description: The end time of this clip within the recording, in seconds.
+          example: 3.1
     callTranscriptionMetadataList:
       type: array
       items:
@@ -4215,6 +4568,8 @@ components:
           $ref: '#/components/schemas/tag1'
         machineDetectionResult:
           $ref: '#/components/schemas/machineDetectionResult'
+        sipCallId:
+          $ref: '#/components/schemas/sipCallId'
     bridgeCompleteCallback:
       type: object
       description: >-
@@ -4479,6 +4834,10 @@ components:
           $ref: '#/components/schemas/errorId'
         tag:
           $ref: '#/components/schemas/tag1'
+        sipCallId:
+          $ref: '#/components/schemas/sipCallId'
+        sipResponseCode:
+          $ref: '#/components/schemas/sipResponseCode'
     dtmfCallback:
       type: object
       description: >-
@@ -4595,6 +4954,10 @@ components:
           $ref: '#/components/schemas/stirShaken'
         uui:
           $ref: '#/components/schemas/uui'
+        sipCallId:
+          $ref: '#/components/schemas/sipCallId'
+        sipHeaders:
+          $ref: '#/components/schemas/sipHeaders'
     machineDetectionCompleteCallback:
       type: object
       description: >-
@@ -5198,6 +5561,10 @@ components:
     transcription:
       type: object
       properties:
+        speaker:
+          type: integer
+          description: Zero-based index identifying the speaker.
+          example: 0
         text:
           type: string
           description: The transcribed text
@@ -5238,6 +5605,36 @@ components:
         value, including the encoding specifier, may not exceed 256 characters.
       example: bXktdXVp
       maxLength: 256
+    sipCallId:
+      type: string
+      description: >-
+        (optional) The SIP Call-ID of the call's current SIP dialog with
+        Bandwidth's SBC. Used to correlate dialogs and trace calls. Present on
+        any call, inbound or outbound, once that dialog has been established;
+        may be absent very early in a call before the dialog exists.
+      example: c95ac8d6e1a31c52eb38f419893c151633ec68f8d@sbc.bandwidth.com
+    sipHeaders:
+      type: object
+      additionalProperties:
+        type: string
+      description: >-
+        (optional) Map of customer-supplied X-* headers from the original
+        INVITE. Keys are lowercase (SIP headers are case-insensitive). Present
+        only for inbound SIP URI calls with custom headers. Note - keys preserve
+        the original SIP header name in lowercase rather than Bandwidth's usual
+        camelCase JSON convention, since these are passthrough values from the
+        caller's SIP INVITE, not Bandwidth-defined fields. If the same header
+        name is sent more than once in the INVITE, only the last value is kept.
+      example:
+        x-custom-header: customer-value
+        x-session-id: sess-12345
+    sipResponseCode:
+      type: integer
+      description: >-
+        (optional) The SIP status code returned by Bandwidth's SBC when it
+        rejected an outbound call's INVITE (e.g. 486 for busy, 603 for decline).
+        Present only when an outbound call was rejected by the SBC.
+      example: 486
     codeRequest:
       type: object
       properties:
@@ -5410,10 +5807,14 @@ components:
 
         - UNKNOWN: Bandwidth cannot find an delivery status entry for the
         number.
+
+        - NOT_ENABLED: The phone number is not enabled for messaging, so there
+        is no delivery status information.
       enum:
         - ACTIVE
         - DEACTIVATED
         - UNKNOWN
+        - NOT_ENABLED
     lineTypeEnum:
       type: string
       enum:
@@ -5445,6 +5846,10 @@ components:
           example: GET
     lookupErrorSchema:
       type: object
+      required:
+        - code
+        - type
+        - description
       properties:
         code:
           type: string
@@ -5488,6 +5893,19 @@ components:
           items:
             type: string
             pattern: ^\+[1-9]\d{1,14}$
+        rcsAgent:
+          type: string
+          description: >-
+            Override the default RCS sender/agent ID used when checking RCS
+            capabilities.
+
+            When provided, this value is used as the `sender` in the RCS
+            capability-check request instead of the account default.
+
+            Must be 1–40 characters and contain only letters, digits,
+            underscores, or hyphens.
+          pattern: ^[A-Za-z0-9_-]{1,40}$
+          example: MyCustomRcsAgent
       required:
         - phoneNumbers
     asyncLookupRequest:
@@ -5592,6 +6010,39 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/lookupErrorSchema'
+    rcsErrorEnum:
+      type: string
+      description: >-
+        [RCS-Only](#section/RCS-Only). Error encountered during RCS capability
+        lookup. Appears as the `code` field in the top-level `errors` array.
+
+
+        **RCS service pass-through codes:**
+
+        - `REQUEST_FAILED`: The RCS service returned this error code.
+
+        - `UNKNOWN_CODE`: The RCS service returned this error code.
+
+        - `INVALID_DESTINATION_ADDRESS`: The RCS service returned this error
+        code.
+
+        - `UNKNOWN_STATUS: <code>`: The RCS service returned an unrecognized
+        status code, where `<code>` is the raw value.
+
+
+        **Service-level errors:**
+
+        - `MISSING_FROM_RESPONSE`: The phone number was absent from the RCS
+        service response.
+
+        - `RCS_SERVICE_UNAVAILABLE`: An exception was thrown during the async
+        RCS service call.
+
+        - `RCS_SERVICE_DISABLED`: RCS lookup is disabled in configuration.
+
+        - `EMPTY_RESPONSE`: The RCS service returned a null or empty response
+        body.
+      example: RCS_SERVICE_UNAVAILABLE
     lookupResult:
       type: object
       description: Carrier information results for the specified telephone number.
@@ -5639,7 +6090,7 @@ components:
           format: date
           description: >-
             [DNI-Only](#section/DNI-Only). The date the phone number entered the
-            status described in `latestMessageDeliveryStatus`. 
+            status described in `latestMessageDeliveryStatus`.
 
             Think of this as the "start time" for that status.
 
@@ -5650,13 +6101,21 @@ components:
           format: date
           description: >-
             [DNI-Only](#section/DNI-Only). The date bandwidth last received
-            delivery status information for this phone number. 
+            delivery status information for this phone number.
 
             Use this field to understand how up-to-date the
             `latestMessageDeliveryStatus` is.
 
             Value resets every time the `latestMessageDeliveryStatus` changes.
           example: '2025-06-21'
+        rcsEnabled:
+          type: boolean
+          description: >
+            [RCS-Only](#section/RCS-Only). Indicates whether the phone number is
+            capable of receiving RCS messages. Value will be null if account has
+            RCS, but no value was returned. Absent when account does not have
+            RCS.
+          example: true
     accountId1:
       type: string
       description: User's account ID.
@@ -5696,12 +6155,30 @@ components:
       description: Reason code for denial.
       type: integer
       example: 511
+    denialStatusCodeNullable:
+      description: Reason code for denial.
+      nullable: true
+      type: integer
+      example: 511
     resubmitAllowed:
       description: >-
         Whether a Toll-Free Verification request qualifies for resubmission via
         PUT.
       example: true
       type: boolean
+    additionalDenialReason:
+      type: object
+      properties:
+        statusCode:
+          $ref: '#/components/schemas/denialStatusCode'
+        reason:
+          $ref: '#/components/schemas/declineReasonDescription'
+        resubmitAllowed:
+          $ref: '#/components/schemas/resubmitAllowed'
+      required:
+        - statusCode
+        - reason
+        - resubmitAllowed
     blocked:
       description: >-
         Whether a Toll-Free Verification is blocked. This attribute will only be
@@ -5716,50 +6193,136 @@ components:
       type: string
     privacyPolicyUrl:
       description: The Toll-Free Verification request privacy policy URL.
+      maxLength: 500
       example: http://your-company.com/privacyPolicy
       type: string
     termsAndConditionsUrl:
       description: The Toll-Free Verification request terms and conditions policy URL.
+      maxLength: 500
       example: http://your-company.com/termsAndConditions
       type: string
     businessDba:
       description: The company 'Doing Business As'.
+      maxLength: 500
       example: Another Company Name Inc.
       type: string
     businessRegistrationNumber:
       type: string
-      description: >-
-        US Federal Tax ID Number (EIN) or Canada Business Number (CBN). Optional
-        until early 2026. If a value is provided for this field, a value must be
-        provided for `businessRegistrationType` and `businessEntityType`.
-        Available starting October 1st, 2025.
+      description: >
+        Government-issued business identifying number.
+
+
+        **Note: As of October 19th, 2026 this field will be required when
+        `businessEntityType` is _not_ `SOLE_PROPRIETOR`. If this field is
+        provided, `businessRegistrationType` and
+        `businessRegistrationIssuingCountry` are also required.**
       nullable: true
       maxLength: 500
       example: 12-3456789
     businessRegistrationTypeEnum:
       type: string
-      description: >-
-        The type of business registration number. Optional until early 2026;
-        required if `businessRegistrationNumber` is provided. Available starting
-        October 1st, 2025.
+      description: >
+        The type of business registration number.
+
+
+        **Note: As of October 19th, 2026 this field will be required when
+        `businessRegistrationNumber` is provided.**
       enum:
         - EIN
         - CBN
+        - NEQ
+        - PROVINCIAL_NUMBER
+        - CRN
+        - VAT
+        - ACN
+        - ABN
+        - BRN
+        - SIREN
+        - SIRET
+        - NZBN
+        - UST_IDNR
+        - CIF
+        - NIF
+        - CNPJ
+        - UID
+        - OTHER
+      example: EIN
+      nullable: true
+    businessRegistrationIssuingCountry:
+      type: string
+      description: >-
+        The country issuing the business registration in ISO-3166-1 alpha-3
+        format. Alpha-2 format is accepted by the API, but alpha-3 is highly
+        encouraged.
+
+
+        **Note: As of October 19th, 2026 this field will be required when
+        `businessRegistrationNumber` is provided.**
+
+
+        | Registration Type     | Supported Countries                |
+
+        |----------------------|------------------------------------|
+
+        | EIN                  | USA                                |
+
+        | CBN                  | CAN                                |
+
+        | NEQ                  | CAN                                |
+
+        | PROVINCIAL_NUMBER    | CAN                                |
+
+        | CRN                  | GBR, HKG                           |
+
+        | VAT                  | GBR, IRL, BRA, NLD                 |
+
+        | ACN                  | AUS                                |
+
+        | ABN                  | AUS                                |
+
+        | BRN                  | HKG                                |
+
+        | SIREN                | FRA                                |
+
+        | SIRET                | FRA                                |
+
+        | NZBN                 | NZL                                |
+
+        | UST_IDNR             | DEU                                |
+
+        | CIF                  | ESP                                |
+
+        | NIF                  | ESP                                |
+
+        | CNPJ                 | BRA                                |
+
+        | UID                  | CHE                                |
+
+        | OTHER                | Must Provide Country Code          |
+      example: USA
       nullable: true
     businessEntityTypeEnum:
       type: string
-      description: >-
-        The type of registered business. If no option is applicable, please
-        provide "SOLE_PROPRIETOR" as a value. Optional until early 2026;
-        required if `businessRegistrationNumber` is provided. Available starting
-        October 1st, 2025.
+      description: >
+        The type of registered business.
+
+
+        **Note: As of October 19th, 2026 submissions using a value other than
+        `SOLE_PROPRIETOR` must provide a value for `businessRegistrationNumber`,
+        `businessRegistrationType`, and `businessRegistrationIssuingCountry`. 
+
+        Submissions using `SOLE_PROPRIETOR` must _omit_
+        `businessRegistrationNumber`, `businessRegistrationType`, and
+        `businessRegistrationIssuingCountry`. Failure to adhere to these
+        constraints will result in a 400 Bad Request rejection.**
       enum:
         - SOLE_PROPRIETOR
         - PRIVATE_PROFIT
         - PUBLIC_PROFIT
         - NON_PROFIT
         - GOVERNMENT
-      nullable: true
+      example: PRIVATE_PROFIT
+      nullable: false
     helpMessageResponse:
       type: string
       description: A message that gets sent to users requesting help.
@@ -5770,22 +6333,8 @@ components:
       type: boolean
       description: Indicates whether the content is age-gated.
       example: false
-    additionalDenialReason:
-      properties:
-        statusCode:
-          $ref: '#/components/schemas/denialStatusCode'
-        reason:
-          $ref: '#/components/schemas/declineReasonDescription'
-        resubmitAllowed:
-          $ref: '#/components/schemas/resubmitAllowed'
-      required:
-        - statusCode
-        - reason
-        - resubmitAllowed
-      type: object
     internalTicketNumber:
       type: string
-      format: uuid
       description: >-
         Unique identifier (UUID) generated by Bandwidth to assist in tracking
         the verification status of a toll-free number - included in all webhook
@@ -5793,7 +6342,6 @@ components:
       example: acde070d-8c4c-4f0d-9d8a-162843c10333
     internalTicketNumberForWebhook:
       type: string
-      format: uuid
       description: >-
         Unique identifier (UUID) generated by Bandwidth to assist in tracking
         the verification status of a toll-free number.
@@ -5816,6 +6364,7 @@ components:
         - useCaseSummary
         - productionMessageContent
         - optInWorkflow
+        - businessEntityType
       properties:
         businessAddress:
           $ref: '#/components/schemas/address'
@@ -5860,12 +6409,16 @@ components:
           $ref: '#/components/schemas/businessRegistrationNumber'
         businessRegistrationType:
           $ref: '#/components/schemas/businessRegistrationTypeEnum'
+        businessRegistrationIssuingCountry:
+          $ref: '#/components/schemas/businessRegistrationIssuingCountry'
         businessEntityType:
           $ref: '#/components/schemas/businessEntityTypeEnum'
         helpMessageResponse:
           $ref: '#/components/schemas/helpMessageResponse'
         ageGatedContent:
           $ref: '#/components/schemas/ageGatedContent'
+        cvToken:
+          $ref: '#/components/schemas/cvTokenNullable'
     verificationUpdateRequest:
       type: object
       required:
@@ -5911,10 +6464,14 @@ components:
           $ref: '#/components/schemas/businessRegistrationTypeEnum'
         businessEntityType:
           $ref: '#/components/schemas/businessEntityTypeEnum'
+        businessRegistrationIssuingCountry:
+          $ref: '#/components/schemas/businessRegistrationIssuingCountry'
         helpMessageResponse:
           $ref: '#/components/schemas/helpMessageResponse'
         ageGatedContent:
           $ref: '#/components/schemas/ageGatedContent'
+        cvToken:
+          $ref: '#/components/schemas/cvTokenNullable'
     tfvBasicAuthentication:
       type: object
       properties:
@@ -5971,6 +6528,7 @@ components:
           description: >-
             An optional list of denial reasons in addition to
             declineReasonDescription when multiple reasons apply.
+          type: array
           items:
             $ref: '#/components/schemas/additionalDenialReason'
           example:
@@ -5980,7 +6538,6 @@ components:
             - statusCode: 513
               reason: Reason B
               resubmitAllowed: true
-          type: array
         declineReasonDescription:
           $ref: '#/components/schemas/declineReasonDescription'
         denialStatusCode:
@@ -6215,7 +6772,7 @@ components:
         errors:
           type: array
           items:
-            $ref: '#/components/schemas/error'
+            $ref: '#/components/schemas/webhookSubscriptionError'
         data:
           items:
             $ref: '#/components/schemas/webhookSubscription'
@@ -6241,7 +6798,7 @@ components:
             If more results exist than specified by 'size', this link return the
             last page of result.
           type: string
-    error:
+    webhookSubscriptionError:
       type: object
       properties:
         code:
@@ -6348,6 +6905,23 @@ components:
           $ref: '#/components/schemas/internalTicketNumber'
         declineReasonDescription:
           $ref: '#/components/schemas/declineReasonDescription'
+        denialStatusCode:
+          $ref: '#/components/schemas/denialStatusCodeNullable'
+        additionalDenialReasons:
+          description: >-
+            An optional list of denial reasons in addition to
+            declineReasonDescription when multiple reasons apply.
+          nullable: true
+          type: array
+          items:
+            $ref: '#/components/schemas/additionalDenialReason'
+          example:
+            - statusCode: 512
+              reason: Reason A
+              resubmitAllowed: true
+            - statusCode: 513
+              reason: Reason B
+              resubmitAllowed: true
         resubmitAllowed:
           $ref: '#/components/schemas/resubmitAllowed'
         createdDateTime:
@@ -6366,6 +6940,8 @@ components:
           $ref: '#/components/schemas/blocked'
         blockedReason:
           $ref: '#/components/schemas/blockedReason'
+        cvToken:
+          $ref: '#/components/schemas/cvTokenNullable'
     tfvSubmissionInfo:
       type: object
       properties:
@@ -6399,20 +6975,18 @@ components:
           $ref: '#/components/schemas/businessDba'
         businessRegistrationNumber:
           $ref: '#/components/schemas/businessRegistrationNumber'
-          description: >-
-            US Federal Tax ID Number (EIN) or Canada Business Number (CBN).
-            Available starting October 1st, 2025.
+          description: Government-issued business identifying number.
         businessRegistrationType:
           $ref: '#/components/schemas/businessRegistrationTypeEnum'
+          description: The type of business registration number.
+        businessRegistrationIssuingCountry:
+          $ref: '#/components/schemas/businessRegistrationIssuingCountry'
           description: >-
-            The type of business registration number. Available starting October
-            1st, 2025.
+            The country issuing the business registration in ISO-3166-1 alpha-3
+            format.
         businessEntityType:
           $ref: '#/components/schemas/businessEntityTypeEnum'
-          description: >-
-            The type of registered business. If no option is applicable, please
-            provide "SOLE_PROPRIETOR" as a value. Available starting October
-            1st, 2025.
+          description: The type of registered business.
     tfvStatusEnum:
       type: string
       enum:
@@ -6430,6 +7004,377 @@ components:
       nullable: true
       pattern: ^[ -~]{16,64}$
       type: string
+    cvTokenNullable:
+      type: string
+      description: >-
+        The token provided by Campaign Verify to validate your political use
+        case. Only required for 527 political organizations. If you are not a
+        527 political organization, this field should be omitted. Supplying an
+        empty string will likely result in rejection.
+      minLength: 0
+      maxLength: 500
+      nullable: true
+      example: >-
+        cv.user123|sess456|mno|tfree|read_write|X7yZ9aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVw
+    endpointId:
+      type: string
+      description: The unique ID of the endpoint.
+      example: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+    endpointStatusEnum:
+      type: string
+      enum:
+        - CONNECTED
+        - DISCONNECTED
+    deviceStatusEnum:
+      type: string
+      enum:
+        - CONNECTED
+        - DISCONNECTED
+    endpointTypeEnum:
+      type: string
+      enum:
+        - WEBRTC
+    endpointDirectionEnum:
+      type: string
+      enum:
+        - INBOUND
+        - OUTBOUND
+        - BIDIRECTIONAL
+    sipCredentials:
+      type: object
+      properties:
+        username:
+          type: string
+          description: The username for the SIP connection.
+          example: username
+        password:
+          type: string
+          description: The password for the SIP connection.
+          example: password
+    sipConnectionMetadata:
+      title: SIP Connection
+      type: object
+      properties:
+        ipAddress:
+          type: string
+          format: ipv4
+          description: The IP address of the SIP connection.
+          example: 192.168.0.0
+        port:
+          type: integer
+          description: The port of the SIP connection.
+          example: 5060
+        credentials:
+          $ref: '#/components/schemas/sipCredentials'
+        uuiHeader:
+          type: string
+          description: The User-to-User Information header for the SIP connection.
+          example: my-uui-header
+    webRtcConnectionMetadata:
+      title: WebRTC Connection
+      type: object
+    endpointToken:
+      type: string
+      description: >-
+        The json web token specific to the endpoint. Used to authenticate the
+        client with the media gateway.
+      example: xxxxx.yyyyy.zzzzz
+    endpointTag:
+      type: string
+      description: A tag for the endpoint.
+      example: my-tag
+      maximum: 1024
+    device:
+      type: object
+      properties:
+        deviceId:
+          type: string
+          description: The unique ID of the device.
+          example: d-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+        deviceName:
+          type: string
+          description: The name of the device.
+          maximum: 1024
+          example: David's iPhone
+        status:
+          $ref: '#/components/schemas/deviceStatusEnum'
+        creationTimestamp:
+          type: string
+          format: date-time
+          description: The time the device was created. In ISO-8601 format.
+          example: '2021-01-01T00:00:00Z'
+      required:
+        - deviceId
+        - status
+        - creationTimestamp
+    endpoints:
+      type: object
+      properties:
+        endpointId:
+          $ref: '#/components/schemas/endpointId'
+        type:
+          $ref: '#/components/schemas/endpointTypeEnum'
+        status:
+          $ref: '#/components/schemas/endpointStatusEnum'
+        creationTimestamp:
+          type: string
+          format: date-time
+          description: The time the endpoint was created. In ISO-8601 format.
+          example: '2021-01-01T00:00:00Z'
+        expirationTimestamp:
+          type: string
+          format: date-time
+          description: >-
+            The time the endpoint token will expire. In ISO-8601 format. Tokens
+            last 24 hours.
+          example: '2021-01-02T00:00:00Z'
+        tag:
+          $ref: '#/components/schemas/endpointTag'
+      required:
+        - endpointId
+        - type
+        - status
+        - creationTimestamp
+        - expirationTimestamp
+    endpoint:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/endpoints'
+        - type: object
+          properties:
+            devices:
+              type: array
+              items:
+                $ref: '#/components/schemas/device'
+    createWebRtcConnectionRequest:
+      allOf:
+        - $ref: '#/components/schemas/createEndpointRequestBase'
+        - type: object
+          properties:
+            connectionMetadata:
+              $ref: '#/components/schemas/webRtcConnectionMetadata'
+    createEndpointRequestBase:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/endpointTypeEnum'
+        direction:
+          $ref: '#/components/schemas/endpointDirectionEnum'
+        eventCallbackUrl:
+          type: string
+          format: uri
+          description: The URL to send event callbacks to.
+          example: https://myapp.com/callback
+        eventFallbackUrl:
+          type: string
+          format: uri
+          description: The URL to send event fallbacks to.
+          example: https://fallback.myapp.com/callback
+        tag:
+          $ref: '#/components/schemas/endpointTag'
+      required:
+        - type
+        - direction
+    createEndpointRequest:
+      oneOf:
+        - $ref: '#/components/schemas/createWebRtcConnectionRequest'
+      discriminator:
+        propertyName: type
+        mapping:
+          WEBRTC: '#/components/schemas/createWebRtcConnectionRequest'
+    createEndpointResponseData:
+      allOf:
+        - $ref: '#/components/schemas/endpoint'
+        - type: object
+          properties:
+            token:
+              $ref: '#/components/schemas/endpointToken'
+          required:
+            - token
+    endpointEventTypeEnum:
+      type: string
+      enum:
+        - DEVICE_CONNECTED
+        - DEVICE_DISCONNECTED
+    endpointEvent:
+      description: An event that occurred on an endpoint.
+      allOf:
+        - $ref: '#/components/schemas/endpoints'
+        - type: object
+          properties:
+            eventTime:
+              type: string
+              format: date-time
+              description: The time the event occurred. In ISO-8601 format.
+              example: '2021-01-01T00:00:00Z'
+            eventType:
+              $ref: '#/components/schemas/endpointEventTypeEnum'
+            device:
+              $ref: '#/components/schemas/device'
+          required:
+            - eventType
+            - eventTime
+    brtcLink:
+      type: object
+      properties:
+        href:
+          type: string
+          description: The full URL of the link.
+          example: >-
+            https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+        rel:
+          type: string
+          description: The relationship of the link to the current resource.
+          example: self
+        method:
+          type: string
+          description: The HTTP method to use when making the request.
+          example: GET
+    page:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+          description: The number of items per page.
+          minimum: 0
+          example: 10
+        totalElements:
+          type: integer
+          description: The total number of items.
+          minimum: 0
+          example: 100
+        totalPages:
+          type: integer
+          description: The total number of pages.
+          minimum: 0
+          example: 10
+        pageNumber:
+          type: integer
+          description: The current page number.
+          minimum: 0
+          example: 0
+      required:
+        - pageSize
+    brtcError:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: A unique identifier for the error.
+          example: 59512d87-7a92-4040-8e4a-78fb772019b9
+        type:
+          type: string
+          description: The type of error.
+          example: resource.not_found
+        description:
+          type: string
+          description: A description of the error.
+          example: The requested resource was not found.
+        code:
+          type: string
+          description: A code that uniquely identifies the error.
+          example: '404'
+        source:
+          $ref: '#/components/schemas/brtcErrorSource'
+      required:
+        - type
+        - description
+    brtcErrorSource:
+      type: object
+      properties:
+        parameter:
+          type: string
+          description: The URI parameter that caused the error.
+          example: accountId
+        field:
+          type: string
+          description: The request body field that caused the error.
+          example: accountId
+        header:
+          type: string
+          description: The header that caused the error.
+          example: Authorization
+        reference:
+          type: string
+          description: >-
+            The resource ID or path to the resource (or non-existent resource)
+            causing the error.
+          example: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+    listEndpointsResponse:
+      type: object
+      properties:
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/brtcLink'
+        page:
+          $ref: '#/components/schemas/page'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/endpoints'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/brtcError'
+      required:
+        - links
+        - data
+        - errors
+    endpointResponse:
+      type: object
+      properties:
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/brtcLink'
+        data:
+          $ref: '#/components/schemas/endpoint'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/brtcError'
+      required:
+        - links
+        - data
+        - errors
+    createEndpointResponse:
+      type: object
+      properties:
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/brtcLink'
+        data:
+          $ref: '#/components/schemas/createEndpointResponseData'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/brtcError'
+      required:
+        - links
+        - data
+        - errors
+    brtcErrorResponse:
+      type: object
+      properties:
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/brtcLink'
+        data:
+          type: object
+          nullable: true
+          additionalProperties: false
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/brtcError'
+      required:
+        - links
+        - data
+        - errors
   responses:
     createMessageResponse:
       description: Accepted
@@ -6644,6 +7589,23 @@ components:
               - type: internal-server-error
                 description: Internal server error. No further information available
                 source: {}
+    listMessagesTooManyRequestsError:
+      description: Too Many Requests
+      headers:
+        Retry-After:
+          description: The number of seconds to wait before retrying the request.
+          schema:
+            type: integer
+            example: 300
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/messagingRequestError'
+          example:
+            type: rate_limit_exceeded
+            description: >-
+              Rate limit exceeded. Wait for Retry-After time before sending
+              another request.
     createCallResponse:
       description: Created
       headers:
@@ -6914,6 +7876,10 @@ components:
               $ref: '#/components/examples/lookupCompleteWithDniExample'
             lookupCompleteExample:
               $ref: '#/components/examples/lookupCompleteExample'
+            lookupCompleteWithRcsExample:
+              $ref: '#/components/examples/lookupCompleteWithRcsExample'
+            lookupCompleteWithRcsErrorExample:
+              $ref: '#/components/examples/lookupCompleteWithRcsErrorExample'
             lookupPartialExample:
               $ref: '#/components/examples/lookupPartialExample'
             lookupFailedExample:
@@ -6925,8 +7891,8 @@ components:
           schema:
             $ref: '#/components/schemas/createAsyncBulkLookupResponse'
           examples:
-            lookupInProgressExample:
-              $ref: '#/components/examples/lookupInProgressExample'
+            lookupAcceptedExample:
+              $ref: '#/components/examples/lookupAcceptedExample'
     getAsyncBulkLookupResponse:
       description: OK
       content:
@@ -7081,6 +8047,116 @@ components:
           example:
             description: Service Unavailable Error.
             type: Service Unavailable
+    verifyPutResponse:
+      description: Accepted
+    listEndpointsResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/listEndpointsResponse'
+          examples:
+            listEndpointsResponseExample:
+              $ref: '#/components/examples/listEndpointsResponseExample'
+    createEndpointResponse:
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createEndpointResponse'
+          examples:
+            createEndpointResponseExample:
+              $ref: '#/components/examples/createEndpointResponseExample'
+    getEndpointResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/endpointResponse'
+          examples:
+            getEndpointResponseExample:
+              $ref: '#/components/examples/getEndpointResponseExample'
+    badRequestErrorResponse:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/brtcErrorResponse'
+          examples:
+            badRequestErrorExample:
+              $ref: '#/components/examples/badRequestErrorExample'
+    unauthorizedErrorResponse:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/brtcErrorResponse'
+          examples:
+            unauthorizedErrorExample:
+              $ref: '#/components/examples/unauthorizedErrorExample'
+    forbiddenErrorResponse:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/brtcErrorResponse'
+          examples:
+            forbiddenErrorExample:
+              $ref: '#/components/examples/forbiddenErrorExample'
+    notFoundErrorResponse:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/brtcErrorResponse'
+          examples:
+            notFoundErrorExample:
+              $ref: '#/components/examples/notFoundErrorExample'
+    methodNotAllowedErrorResponse:
+      description: Method Not Allowed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/brtcErrorResponse'
+          examples:
+            methodNotAllowedErrorExample:
+              $ref: '#/components/examples/methodNotAllowedErrorExample'
+    unsupportedMediaTypeErrorResponse:
+      description: Unsupported Media Type
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/brtcErrorResponse'
+          examples:
+            unsuppotedMediaTypeErrorExample:
+              $ref: '#/components/examples/unsupportedMediaTypeErrorExample'
+    tooManyRequestsErrorResponse:
+      description: Too Many Requests
+      headers:
+        Retry-After:
+          description: >-
+            The number of seconds the client should wait before making another
+            request.
+          required: true
+          schema:
+            type: integer
+            example: 900
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/brtcErrorResponse'
+          examples:
+            tooManyRequestsErrorExample:
+              $ref: '#/components/examples/tooManyRequestsErrorExample'
+    serviceUnavailableErrorResponse:
+      description: Service Unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/brtcErrorResponse'
+          examples:
+            serviceUnavailableErrorExample:
+              $ref: '#/components/examples/serviceUnavailableErrorExample'
   parameters:
     accountId:
       in: path
@@ -7088,7 +8164,13 @@ components:
       required: true
       schema:
         type: string
-      description: Your Bandwidth Account ID.
+      description: >
+        This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth
+        App. The older ID format (`u-be8dvafwrs63rwpm7pfil4b`) is deprecated.
+
+
+        **When migrating to OAuth authentication, you must use the 7-digit
+        Account ID.**
       example: '9900000'
     mediaId:
       in: path
@@ -7380,6 +8462,14 @@ components:
       example: true
       schema:
         type: boolean
+    accountId1:
+      name: accountId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Your Bandwidth Account ID.
+      example: '9900000'
     callId:
       name: callId
       in: path
@@ -7547,7 +8637,15 @@ components:
         type: string
       description: Filter results to calls with specified call Disconnect Cause.
       example: hangup
-    accountId1:
+    accountId2:
+      in: path
+      name: accountId
+      required: true
+      schema:
+        type: string
+      description: Your Bandwidth Account ID.
+      example: '9900000'
+    accountId3:
       in: path
       name: accountId
       required: true
@@ -7564,6 +8662,14 @@ components:
         format: uuid
         description: The phone number lookup request ID from Bandwidth.
         example: 004223a0-8b17-41b1-bf81-20732adf5590
+    accountId4:
+      in: path
+      name: accountId
+      required: true
+      schema:
+        type: string
+      description: Your Bandwidth Account ID.
+      example: '9900000'
     tfPhoneNumberPathParam:
       in: path
       name: phoneNumber
@@ -7580,6 +8686,53 @@ components:
         type: string
       description: Webhook subscription ID
       example: 7bt57JcsVYJrN9K1OcV1Nu
+    accountId5:
+      in: path
+      name: accountId
+      required: true
+      schema:
+        type: string
+      description: Your Bandwidth Account ID.
+      example: '9900000'
+    endpointId:
+      name: endpointId
+      in: path
+      required: true
+      schema:
+        type: string
+        example: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+      description: BRTC Endpoint ID.
+    endpointType:
+      name: type
+      in: query
+      schema:
+        $ref: '#/components/schemas/endpointTypeEnum'
+      description: The type of endpoint.
+    endpointStatus:
+      name: status
+      in: query
+      schema:
+        $ref: '#/components/schemas/endpointStatusEnum'
+      description: The status of the endpoint.
+    afterCursor:
+      name: afterCursor
+      in: query
+      schema:
+        type: string
+        example: TWF5IHRoZSBmb3JjZSBiZSB3aXRoIHlvdQ==
+      description: >-
+        The cursor to use for pagination. This is the value of the `next` link
+        in the previous response.
+    limit1:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 100
+        example: 2
+      description: The maximum number of endpoints to return in the response.
   examples:
     smsMessageReceivedCallbackExample:
       summary: An example of a sms message-received callback body.
@@ -7642,12 +8795,33 @@ components:
           media:
             - https://dev.bandwidth.com/images/bandwidth-logo.png
           tag: your tag here
+    messageSentCallbackExample:
+      summary: An example of a message-sent callback body.
+      value:
+        time: '2024-06-25T18:42:36.979456Z'
+        type: message-sent
+        to: '+15554443333'
+        description: Message sent to carrier
+        message:
+          id: 1593110555875xo7watq5px6rbe5d
+          owner: '+15552221111'
+          applicationId: cfd4fb83-7531-4acc-b471-42d0bb76a65c
+          time: '2024-06-25T18:42:35.876906Z'
+          segmentCount: 1
+          direction: out
+          to:
+            - '+15554443333'
+          from: '+15552221111'
+          text: ''
+          media:
+            - https://dev.bandwidth.com/images/bandwidth-logo.png
+          tag: v2 lab
     smsMessageDeliveredCallbackExample:
       summary: An example of a sms message-delivered callback body.
       value:
         type: message-delivered
         time: '2024-09-14T18:20:11.160744Z'
-        description: Message delivered to carrier.
+        description: Message delivered to handset.
         to: '+12345678902'
         message:
           id: 14762070468292kw2fuqty55yp2b2
@@ -7665,7 +8839,7 @@ components:
       value:
         type: message-delivered
         time: '2024-09-14T18:20:24.160544Z'
-        description: Message delivered to carrier.
+        description: Message delivered to handset.
         to: '+12345678902'
         message:
           id: 14762070468292kw2fuqty55yp2b2
@@ -7685,7 +8859,7 @@ components:
       value:
         type: message-delivered
         time: '2024-09-14T18:20:17.160544Z'
-        description: Message delivered to carrier.
+        description: Message delivered to handset.
         to: '+12345678902'
         message:
           id: 14762070468292kw2fuqty55yp2b2
@@ -7812,13 +8986,30 @@ components:
         phoneNumbers:
           - '+19196104423'
           - '+19196104424'
+    rcsAgentRequestExample:
+      summary: Number Lookup Request with Custom RCS Agent
+      value:
+        phoneNumbers:
+          - '+19196104423'
+          - '+19196104424'
+        rcsAgent: MyCustomRcsAgent
+    lookupAcceptedExample:
+      summary: Numbers Lookup Accepted
+      value:
+        links:
+          - href: >-
+              /accounts/9912345/phoneNumberLookup/bulk/004223a0-8b17-41b1-bf81-20732adf5590
+            rel: createdRequest
+            method: GET
+        data:
+          requestId: 004223a0-8b17-41b1-bf81-20732adf5590
+          status: IN_PROGRESS
+          results: []
+        errors: []
     lookupInProgressExample:
       summary: Numbers Lookup In Progress
       value:
-        links:
-          - href: href
-            rel: rel
-            method: GET
+        links: []
         data:
           requestId: 004223a0-8b17-41b1-bf81-20732adf5590
           status: IN_PROGRESS
@@ -7827,10 +9018,7 @@ components:
     lookupFailedExample:
       summary: Numbers Lookup Failed
       value:
-        links:
-          - href: href
-            rel: rel
-            method: GET
+        links: []
         data:
           requestId: 004223a0-8b17-41b1-bf81-20732adf5590
           status: FAILED
@@ -7847,10 +9035,7 @@ components:
     lookupPartialExample:
       summary: Numbers Lookup Partial Complete
       value:
-        links:
-          - href: href
-            rel: rel
-            method: GET
+        links: []
         data:
           requestId: 004223a0-8b17-41b1-bf81-20732adf5590
           status: PARTIAL_COMPLETE
@@ -7877,10 +9062,7 @@ components:
     lookupCompleteExample:
       summary: Numbers Lookup Complete (without DNI)
       value:
-        links:
-          - href: href
-            rel: rel
-            method: GET
+        links: []
         data:
           requestId: 004223a0-8b17-41b1-bf81-20732adf5590
           status: COMPLETE
@@ -7899,10 +9081,7 @@ components:
     lookupCompleteWithDniExample:
       summary: Numbers Lookup Complete (with DNI)
       value:
-        links:
-          - href: href
-            rel: rel
-            method: GET
+        links: []
         data:
           requestId: 20732adf-bf81-8b17-41b1-004223a05590
           status: COMPLETE
@@ -7917,7 +9096,7 @@ components:
               latestMessageDeliveryStatusDate: '2025-05-18'
             - phoneNumber: '+10072904498'
               countryCodeA3: USA
-              lineType: FIXED
+              lineType: MOBILE
               voiceProvider: VERIZON
               latestMessageDeliveryStatus: DEACTIVATED
               initialMessageDeliveryStatusDate: '2025-09-05'
@@ -7931,7 +9110,67 @@ components:
               deactivationDate: '2025-09-29 01:23:00'
               deactivationEvent: DEACTIVATED
               latestMessageDeliveryStatus: UNKNOWN
+            - phoneNumber: '+10072904500'
+              lineType: FIXED
+              countryCodeA3: USA
+              voiceProvider: VERIZON
+              deactivationReporter: Verizon Wireless
+              deactivationDate: '2025-09-29 01:23:00'
+              deactivationEvent: DEACTIVATED
+              latestMessageDeliveryStatus: NOT_ENABLED
         errors: []
+    lookupCompleteWithRcsExample:
+      summary: Numbers Lookup Complete (with RCS)
+      value:
+        links: []
+        data:
+          requestId: 004223a0-8b17-41b1-bf81-20732adf5590
+          status: COMPLETE
+          results:
+            - phoneNumber: '+10072904497'
+              lineType: MOBILE
+              messagingProvider: Verizon Wireless
+              voiceProvider: Verizon Wireless
+              countryCodeA3: USA
+              rcsEnabled: true
+            - phoneNumber: '+10072904498'
+              lineType: MOBILE
+              messagingProvider: T-Mobile USA
+              voiceProvider: T-Mobile USA
+              countryCodeA3: USA
+              rcsEnabled: false
+        errors: []
+    lookupCompleteWithRcsErrorExample:
+      summary: Numbers Lookup Complete (with RCS error)
+      value:
+        links: []
+        data:
+          requestId: 004223a0-8b17-41b1-bf81-20732adf5590
+          status: COMPLETE
+          results:
+            - phoneNumber: '+10072904497'
+              lineType: MOBILE
+              messagingProvider: Verizon Wireless
+              voiceProvider: Verizon Wireless
+              countryCodeA3: USA
+            - phoneNumber: '+10072904498'
+              lineType: MOBILE
+              messagingProvider: T-Mobile USA
+              voiceProvider: T-Mobile USA
+              countryCodeA3: USA
+        errors:
+          - code: RCS_SERVICE_UNAVAILABLE
+            type: rcs-error
+            description: An exception was thrown during the async RCS service call.
+            meta:
+              phoneNumbers:
+                - '+10072904497'
+          - code: MISSING_FROM_RESPONSE
+            type: rcs-error
+            description: The phone number was absent from the RCS service response.
+            meta:
+              phoneNumbers:
+                - '+10072904498'
     badRequestExample:
       summary: Example Bad Request Error
       value:
@@ -8004,6 +9243,205 @@ components:
               Unexpected error. Please contact Bandwidth Support if your
               requests are receiving this status code for an extended period of
               time.
+    listEndpointsResponseExample:
+      summary: List Endpoints Paginated Response
+      value:
+        links:
+          - href: >-
+              https://api.bandwidth.com/v2/accounts/5500123/endpoints?type=SIP&status=CONNECTED&limit=2
+            rel: self
+            method: GET
+          - href: >-
+              https://api.bandwidth.com/v2/accounts/5500123/endpoints?type=SIP&status=CONNECTED&limit=2&afterCursor=TWF5IHRoZSBmb3JjZSBiZSB3aXRoIHlvdQ==
+            rel: next
+            method: GET
+        page:
+          pageSize: 2
+          totalElements: 10
+          totalPages: 5
+          pageNumber: 0
+        data:
+          - endpointId: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+            type: WEBRTC
+            status: CONNECTED
+            creationTimestamp: '2021-01-01T00:00:00Z'
+            expirationTimestamp: '2021-01-02T00:00:00Z'
+            tag: my-tag
+          - endpointId: e-2cb0-4a07-b215-b22865662d85-15ac29a2-1331029c
+            type: WEBRTC
+            status: CONNECTED
+            creationTimestamp: '2021-01-01T00:00:00Z'
+            expirationTimestamp: '2021-01-02T00:00:00Z'
+            tag: my-tag
+        errors: []
+    createEndpointResponseExample:
+      summary: Create Endpoint Response
+      value:
+        links:
+          - href: >-
+              https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+            rel: endpoint
+            method: GET
+        data:
+          endpointId: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+          token: xxxxx.yyyyy.zzzzz
+          type: WEBRTC
+          status: CONNECTED
+          creationTimestamp: '2021-01-01T00:00:00Z'
+          expirationTimestamp: '2021-01-02T00:00:00Z'
+          devices: []
+          tag: my-tag
+        errors: []
+    getEndpointResponseExample:
+      summary: Get Endpoint Response
+      value:
+        links:
+          - href: >-
+              https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+            rel: self
+            method: GET
+        data:
+          endpointId: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+          type: WEBRTC
+          status: CONNECTED
+          creationTimestamp: '2021-01-01T00:00:00Z'
+          expirationTimestamp: '2021-01-02T00:00:00Z'
+          devices: []
+          tag: my-tag
+        errors: []
+    createSipEndpointRequestExample:
+      summary: SIP Endpoint Example
+      value:
+        type: SIP
+        connectionMetadata:
+          ipAddress: 0.0.0.0
+          port: 3000
+          credentials:
+            username: username
+            password: '********'
+          uuiHeader: 123456;encoding=jwt
+        direction: INBOUND
+        eventCallbackUrl: https://myEventCallbackUrl.com/callbacks/bandwidth
+        eventFallbackUrl: https://fallback.myEventCallbackUrl.com/callbacks/bandwidth
+        tag: '{"myTag": "myTagValue"}'
+    createWeRtcEndpointExample:
+      summary: WebRTC Endpoint Example
+      value:
+        type: WEBRTC
+        direction: BIDIRECTIONAL
+        eventCallbackUrl: https://myEventCallbackUrl.com/callbacks/bandwidth
+        eventFallbackUrl: https://fallback.myEventCallbackUrl.com/callbacks/bandwidth
+        tag: '{"myTag": "myTagValue"}'
+    updateEndpointBxmlRequestExample:
+      summary: Update Endpoint BXML Request Example
+      value: <Response><StartRecording /></Response>
+    endpointDisconnectedEventExample:
+      summary: Endpoint Disconnected Event
+      value:
+        endpointId: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+        type: WEBRTC
+        status: DISCONNECTED
+        creationTimestamp: '2021-01-01T00:00:00Z'
+        expirationTimestamp: '2021-01-02T00:00:00Z'
+        eventTime: '2021-01-01T00:00:00Z'
+        eventType: DEVICE_DISCONNECTED
+        tag: my-tag
+    badRequestErrorExample:
+      summary: Bad Request Error Example
+      value:
+        links: []
+        data: null
+        errors:
+          - id: 59512d87-7a92-4040-8e4a-78fb772019b9
+            type: invalid_parameter
+            description: accountId must not contain any characters other than numbers.
+            code: '400'
+            source:
+              parameter: accountId
+    unauthorizedErrorExample:
+      summary: Unauthorized Error Example
+      value:
+        links: []
+        data: null
+        errors:
+          - id: 59512d87-7a92-4040-8e4a-78fb772019b9
+            type: unauthorized
+            description: >-
+              The provided credentials are not authorized to access this
+              resource.
+            code: '401'
+            source:
+              header: Authorization
+    forbiddenErrorExample:
+      summary: Forbidden Error Example
+      value:
+        links: []
+        data: null
+        errors:
+          - id: 59512d87-7a92-4040-8e4a-78fb772019b9
+            type: forbidden
+            description: >-
+              The provided credentials are not authorized to access this
+              resource.
+            code: '403'
+            source:
+              header: Authorization
+    notFoundErrorExample:
+      summary: Not Found Error Example
+      value:
+        links: []
+        data: null
+        errors:
+          - id: 59512d87-7a92-4040-8e4a-78fb772019b9
+            type: resource_not_found
+            description: The requested resource was not found.
+            code: '404'
+            source:
+              reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+    methodNotAllowedErrorExample:
+      summary: Method Not Allowed Error Example
+      value:
+        links: []
+        data: null
+        errors:
+          - id: 59512d87-7a92-4040-8e4a-78fb772019b9
+            type: method_not_allowed
+            description: The requested method is not allowed on this resource.
+            code: '405'
+            source:
+              parameter: accountId
+    unsupportedMediaTypeErrorExample:
+      summary: Unsupported Media Type Error Example
+      value:
+        links: []
+        data: null
+        errors:
+          - id: 59512d87-7a92-4040-8e4a-78fb772019b9
+            type: unsupported_media_type
+            description: The provided media type is not supported.
+            code: '415'
+            source:
+              header: Content-Type
+    tooManyRequestsErrorExample:
+      summary: Too Many Requests Error Example
+      value:
+        links: []
+        data: null
+        errors:
+          - type: too_many_endpoints
+            description: >-
+              Too many endpoints. Please delete an existing endpoint or wait 24
+              hours for an endpoint to be removed.
+    serviceUnavailableErrorExample:
+      summary: Service Unavailable Error Example
+      value:
+        links: []
+        data: null
+        errors:
+          - id: 59512d87-7a92-4040-8e4a-78fb772019b9
+            type: service_unavailable
+            description: The service is currently unavailable.
+            code: '500'
   requestBodies:
     createMessageRequest:
       content:
@@ -8315,6 +9753,8 @@ components:
               $ref: '#/components/examples/singleNumberRequestExample'
             multipleNumberRequestExample:
               $ref: '#/components/examples/multipleNumberRequestExample'
+            rcsAgentRequestExample:
+              $ref: '#/components/examples/rcsAgentRequestExample'
     createAsyncBulkLookupRequest:
       description: Asynchronous bulk phone number lookup request.
       required: true
@@ -8359,6 +9799,30 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/webhookSubscriptionRequestSchema'
+    createEndpointRequest:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createEndpointRequest'
+          examples:
+            createWebRtcEndpointRequestExample:
+              $ref: '#/components/examples/createWeRtcEndpointExample'
+    updateEndpointBxmlRequest:
+      required: true
+      content:
+        application/xml:
+          schema:
+            type: string
+            description: >-
+              The BXML document to update the endpoint with. This BXML document
+              will be executed against the endpoint when it is updated.
+
+              For more information, please refer to our [BXML
+              documentation](/docs/voice/bxml/).
+          examples:
+            updateEndpointBxmlRequestExample:
+              $ref: '#/components/examples/updateEndpointBxmlRequestExample'
   securitySchemes:
     Basic:
       type: http
@@ -8371,6 +9835,12 @@ components:
 
 
         - Example: `Authorization: Basic ZGVtbZpwQDU1dzByZA==`
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.bandwidth.com/api/v1/oauth2/token
+          scopes: {}
   callbacks:
     inboundCallback:
       '{inboundCallbackUrl}':
@@ -8379,19 +9849,19 @@ components:
             required: true
             description: >-
               <p>This Inbound Message Webhook is an envelope containing either a
-              received (MO) message to your 
+              received (MO) message to your
 
               message-enabled Bandwidth telephone number or a multichannel
-              client's response to a suggestion response 
+              client's response to a suggestion response
 
-              or location request. 
+              or location request.
 
               <p>The payload type will be one of <code>message-received</code>,
               <code>suggestion-response</code>, or
-              <code>location-request-response</code>.
+              <code>requested-location-response</code>.
 
               <p>Note that <code>suggestion-response</code> and
-              <code>location-request-response</code> callback types are
+              <code>requested-location-response</code> callback types are
               pertinent only for RBM messages sent from the
               <code>/messages/multiChannel</code> endpoint.
 
@@ -8421,7 +9891,7 @@ components:
               information regarding a message sent (MT)
 
               from your message-enabled Bandwidth telephone number.
-               <p>The payload type will be one of <code>message-sending</code>, <code>message-delivered</code>, <code>message-failed</code> or <code>message-read</code>.
+               <p>The payload type will be one of <code>message-sending</code>, <code>message-sent</code>, <code>message-delivered</code>, <code>message-failed</code> or <code>message-read</code>.
                <p>Note that <code>message-read</code> callbacks are pertinent only for RBM messages sent from the <code>/messages/multiChannel</code> endpoint.
               </p><p>Please visit <a
               href='/docs/messaging/webhooks/'>Webhooks</a></p>
@@ -8432,6 +9902,8 @@ components:
                 examples:
                   messageSendingCallback:
                     $ref: '#/components/examples/messageSendingCallbackExample'
+                  messageSentCallback:
+                    $ref: '#/components/examples/messageSentCallbackExample'
                   smsMessageDeliveredCallback:
                     $ref: '#/components/examples/smsMessageDeliveredCallbackExample'
                   mmsMessageDeliveredCallback:
@@ -8486,3 +9958,17 @@ components:
               $ref: '#/components/responses/tfvServerErrorResponse'
             '503':
               $ref: '#/components/responses/tfvServiceUnavailableResponse'
+    endpointEvent:
+      '{request.body#/eventCallbackUrl}':
+        post:
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/endpointEvent'
+                examples:
+                  endpointDisconnectedEventExample:
+                    $ref: '#/components/examples/endpointDisconnectedEventExample'
+          responses:
+            '204':
+              description: Event was successfully received.

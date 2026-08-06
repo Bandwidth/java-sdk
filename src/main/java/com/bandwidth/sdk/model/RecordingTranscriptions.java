@@ -15,6 +15,7 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import java.util.Locale;
+import com.bandwidth.sdk.model.RecordingTranscriptionClip;
 import com.bandwidth.sdk.model.Transcription;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -60,6 +61,11 @@ public class RecordingTranscriptions {
   @javax.annotation.Nullable
   private List<Transcription> transcripts = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_CLIPS = "clips";
+  @SerializedName(SERIALIZED_NAME_CLIPS)
+  @javax.annotation.Nullable
+  private List<RecordingTranscriptionClip> clips = new ArrayList<>();
+
   public RecordingTranscriptions() {
   }
 
@@ -87,6 +93,33 @@ public class RecordingTranscriptions {
 
   public void setTranscripts(@javax.annotation.Nullable List<Transcription> transcripts) {
     this.transcripts = transcripts;
+  }
+
+
+  public RecordingTranscriptions clips(@javax.annotation.Nullable List<RecordingTranscriptionClip> clips) {
+    this.clips = clips;
+    return this;
+  }
+
+  public RecordingTranscriptions addClipsItem(RecordingTranscriptionClip clipsItem) {
+    if (this.clips == null) {
+      this.clips = new ArrayList<>();
+    }
+    this.clips.add(clipsItem);
+    return this;
+  }
+
+  /**
+   * A list of individual speech clips with speaker, timing, and confidence information.
+   * @return clips
+   */
+  @javax.annotation.Nullable
+  public List<RecordingTranscriptionClip> getClips() {
+    return clips;
+  }
+
+  public void setClips(@javax.annotation.Nullable List<RecordingTranscriptionClip> clips) {
+    this.clips = clips;
   }
 
   /**
@@ -144,13 +177,14 @@ public class RecordingTranscriptions {
       return false;
     }
     RecordingTranscriptions recordingTranscriptions = (RecordingTranscriptions) o;
-    return Objects.equals(this.transcripts, recordingTranscriptions.transcripts)&&
+    return Objects.equals(this.transcripts, recordingTranscriptions.transcripts) &&
+        Objects.equals(this.clips, recordingTranscriptions.clips)&&
         Objects.equals(this.additionalProperties, recordingTranscriptions.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(transcripts, additionalProperties);
+    return Objects.hash(transcripts, clips, additionalProperties);
   }
 
   @Override
@@ -158,6 +192,7 @@ public class RecordingTranscriptions {
     StringBuilder sb = new StringBuilder();
     sb.append("class RecordingTranscriptions {\n");
     sb.append("    transcripts: ").append(toIndentedString(transcripts)).append("\n");
+    sb.append("    clips: ").append(toIndentedString(clips)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -180,7 +215,7 @@ public class RecordingTranscriptions {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("transcripts"));
+    openapiFields = new HashSet<String>(Arrays.asList("transcripts", "clips"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -210,6 +245,20 @@ public class RecordingTranscriptions {
           // validate the optional field `transcripts` (array)
           for (int i = 0; i < jsonArraytranscripts.size(); i++) {
             Transcription.validateJsonElement(jsonArraytranscripts.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("clips") != null && !jsonObj.get("clips").isJsonNull()) {
+        JsonArray jsonArrayclips = jsonObj.getAsJsonArray("clips");
+        if (jsonArrayclips != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("clips").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `clips` to be an array in the JSON string but got `%s`", jsonObj.get("clips").toString()));
+          }
+
+          // validate the optional field `clips` (array)
+          for (int i = 0; i < jsonArrayclips.size(); i++) {
+            RecordingTranscriptionClip.validateJsonElement(jsonArrayclips.get(i));
           };
         }
       }
