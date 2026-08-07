@@ -76,7 +76,7 @@ public class MediaApi {
 
     /**
      * Build call for deleteMedia
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param mediaId Media ID to retrieve. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -161,7 +161,7 @@ public class MediaApi {
     /**
      * Delete Media
      * Deletes a media file from Bandwidth API server. Make sure you don&#39;t have any application scripts still using the media before you delete.  If you accidentally delete a media file you can immediately upload a new file with the same name.
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param mediaId Media ID to retrieve. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -186,7 +186,7 @@ public class MediaApi {
     /**
      * Delete Media
      * Deletes a media file from Bandwidth API server. Make sure you don&#39;t have any application scripts still using the media before you delete.  If you accidentally delete a media file you can immediately upload a new file with the same name.
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param mediaId Media ID to retrieve. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -213,7 +213,7 @@ public class MediaApi {
     /**
      * Delete Media (asynchronously)
      * Deletes a media file from Bandwidth API server. Make sure you don&#39;t have any application scripts still using the media before you delete.  If you accidentally delete a media file you can immediately upload a new file with the same name.
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param mediaId Media ID to retrieve. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -241,7 +241,7 @@ public class MediaApi {
     }
     /**
      * Build call for getMedia
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param mediaId Media ID to retrieve. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -327,7 +327,7 @@ public class MediaApi {
     /**
      * Get Media
      * Downloads a media file you previously uploaded.
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param mediaId Media ID to retrieve. (required)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -354,7 +354,7 @@ public class MediaApi {
     /**
      * Get Media
      * Downloads a media file you previously uploaded.
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param mediaId Media ID to retrieve. (required)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -382,7 +382,7 @@ public class MediaApi {
     /**
      * Get Media (asynchronously)
      * Downloads a media file you previously uploaded.
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param mediaId Media ID to retrieve. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -411,7 +411,7 @@ public class MediaApi {
     }
     /**
      * Build call for listMedia
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param continuationToken Continuation token used to retrieve subsequent media. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -495,7 +495,7 @@ public class MediaApi {
     /**
      * List Media
      * Gets a list of your media files. No query parameters are supported.
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param continuationToken Continuation token used to retrieve subsequent media. (optional)
      * @return List&lt;Media&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -522,7 +522,7 @@ public class MediaApi {
     /**
      * List Media
      * Gets a list of your media files. No query parameters are supported.
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param continuationToken Continuation token used to retrieve subsequent media. (optional)
      * @return ApiResponse&lt;List&lt;Media&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -550,7 +550,7 @@ public class MediaApi {
     /**
      * List Media (asynchronously)
      * Gets a list of your media files. No query parameters are supported.
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param continuationToken Continuation token used to retrieve subsequent media. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -579,7 +579,7 @@ public class MediaApi {
     }
     /**
      * Build call for uploadMedia
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param mediaId Media ID to retrieve. (required)
      * @param body  (required)
      * @param contentType The media type of the entity-body. (optional)
@@ -730,7 +730,7 @@ public class MediaApi {
     /**
      * Upload Media
      * Upload a file. You may add headers to the request in order to provide some control to your media file.  If a file is uploaded with the same name as a file that already exists under this account, the previous file will be overwritten.  A list of supported media types can be found at [Bandwidth Support](https://www.bandwidth.com/support/en/articles/12823220-what-mms-file-types-are-supported).
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param mediaId Media ID to retrieve. (required)
      * @param body  (required)
      * @param contentType The media type of the entity-body. (optional)
@@ -758,7 +758,7 @@ public class MediaApi {
     /**
      * Upload Media
      * Upload a file. You may add headers to the request in order to provide some control to your media file.  If a file is uploaded with the same name as a file that already exists under this account, the previous file will be overwritten.  A list of supported media types can be found at [Bandwidth Support](https://www.bandwidth.com/support/en/articles/12823220-what-mms-file-types-are-supported).
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param mediaId Media ID to retrieve. (required)
      * @param body  (required)
      * @param contentType The media type of the entity-body. (optional)
@@ -788,7 +788,7 @@ public class MediaApi {
     /**
      * Upload Media (asynchronously)
      * Upload a file. You may add headers to the request in order to provide some control to your media file.  If a file is uploaded with the same name as a file that already exists under this account, the previous file will be overwritten.  A list of supported media types can be found at [Bandwidth Support](https://www.bandwidth.com/support/en/articles/12823220-what-mms-file-types-are-supported).
-     * @param accountId Your Bandwidth Account ID. (required)
+     * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param mediaId Media ID to retrieve. (required)
      * @param body  (required)
      * @param contentType The media type of the entity-body. (optional)

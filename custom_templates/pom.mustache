@@ -63,6 +63,14 @@
                         <arg>-Xlint:all</arg>
                         <arg>-J-Xss4m</arg><!-- Compiling the generated JSON.java file may require larger stack size. -->
                     </compilerArgs>
+                    <!-- JDK 23+ no longer auto-discovers annotation processors on the classpath. -->
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
             <plugin>
@@ -329,7 +337,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.30</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -510,6 +518,7 @@
         <version.commons-io>2.14.0</version.commons-io>
         <commons-lang3-version>3.18.0</commons-lang3-version>
         <jaxb.version>4.0.0</jaxb.version>
+        <lombok.version>1.18.46</lombok.version>
         {{#openApiNullable}}
         <jackson-databind-nullable-version>0.2.7</jackson-databind-nullable-version>
         {{/openApiNullable}}
