@@ -49,7 +49,7 @@ public class StartTranscriptionVerbTest {
         @Test
         public void startTranscriptionVerbWorks() throws JAXBException {
                 JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
-                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><StartTranscription name=\"test_transcription\" tracks=\"INBOUND\" destination=\"testurl.com\" transcriptionEventUrl=\"eventurl.com\" transcriptionEventMethod=\"POST\" username=\"user\" password=\"pass\"><CustomParam name=\"name1\" value=\"value1\"/><CustomParam name=\"name2\" value=\"value2\"/></StartTranscription></Bxml>";
+                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><StartTranscription name=\"test_transcription\" tracks=\"INBOUND\" destination=\"testurl.com\" transcriptionEventUrl=\"eventurl.com\" transcriptionEventMethod=\"POST\" username=\"user\" password=\"pass\" stabilized=\"true\"><CustomParam name=\"name1\" value=\"value1\"/><CustomParam name=\"name2\" value=\"value2\"/></StartTranscription></Bxml>";
 
                 assertThat(new Bxml().with(startTranscription).toBxml(jaxbContext), is(expectedBxml));
         }
