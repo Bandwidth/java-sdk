@@ -43,6 +43,7 @@ public class Bxml {
             @XmlElement(name = PlayAudio.TYPE_NAME, type = PlayAudio.class),
             @XmlElement(name = Record.TYPE_NAME, type = Record.class),
             @XmlElement(name = Redirect.TYPE_NAME, type = Redirect.class),
+            @XmlElement(name = Refer.TYPE_NAME, type = Refer.class),
             @XmlElement(name = ResumeRecording.TYPE_NAME, type = ResumeRecording.class),
             @XmlElement(name = Ring.TYPE_NAME, type = Ring.class),
             @XmlElement(name = SendDtmf.TYPE_NAME, type = SendDtmf.class),
