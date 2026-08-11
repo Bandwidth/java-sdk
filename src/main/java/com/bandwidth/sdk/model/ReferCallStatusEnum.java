@@ -26,18 +26,18 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The recording state. Possible values:  &#x60;paused&#x60; to pause an active recording  &#x60;recording&#x60; to resume a paused recording
+ * The outcome of the REFER operation.
  */
-@JsonAdapter(RecordingStateEnum.Adapter.class)
-public enum RecordingStateEnum {
+@JsonAdapter(ReferCallStatusEnum.Adapter.class)
+public enum ReferCallStatusEnum {
   
-  PAUSED("paused"),
+  SUCCESS("success"),
   
-  RECORDING("recording");
+  FAILURE("failure");
 
   private String value;
 
-  RecordingStateEnum(String value) {
+  ReferCallStatusEnum(String value) {
     this.value = value;
   }
 
@@ -50,8 +50,8 @@ public enum RecordingStateEnum {
     return String.valueOf(value);
   }
 
-  public static RecordingStateEnum fromValue(String value) {
-    for (RecordingStateEnum b : RecordingStateEnum.values()) {
+  public static ReferCallStatusEnum fromValue(String value) {
+    for (ReferCallStatusEnum b : ReferCallStatusEnum.values()) {
       if (b.value.equalsIgnoreCase(value)) {
         return b;
       }
@@ -59,22 +59,22 @@ public enum RecordingStateEnum {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<RecordingStateEnum> {
+  public static class Adapter extends TypeAdapter<ReferCallStatusEnum> {
     @Override
-    public void write(final JsonWriter jsonWriter, final RecordingStateEnum enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final ReferCallStatusEnum enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public RecordingStateEnum read(final JsonReader jsonReader) throws IOException {
+    public ReferCallStatusEnum read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return RecordingStateEnum.fromValue(value);
+      return ReferCallStatusEnum.fromValue(value);
     }
   }
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
-    RecordingStateEnum.fromValue(value);
+    ReferCallStatusEnum.fromValue(value);
   }
 }
 

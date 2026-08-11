@@ -9265,59 +9265,59 @@ components:
       type: object
     messagesList:
       example:
-        totalCount: 100
         pageInfo:
-          prevPage: https://messaging.bandwidth.com/api/v2/users/accountId/messages?messageStatus=DLR_EXPIRED&nextPage=DLAPE902
-          nextPage: https://messaging.bandwidth.com/api/v2/users/accountId/messages?messageStatus=DLR_EXPIRED&prevPage=GL83PD3C
           prevPageToken: DLAPE902
+          nextPage: https://messaging.bandwidth.com/api/v2/users/accountId/messages?messageStatus=DLR_EXPIRED&prevPage=GL83PD3C
           nextPageToken: GL83PD3C
+          prevPage: https://messaging.bandwidth.com/api/v2/users/accountId/messages?messageStatus=DLR_EXPIRED&nextPage=DLAPE902
         messages:
-        - messageId: 1589228074636lm4k2je7j7jklbn2
-          accountId: "9900000"
+        - callingNumberCountryA3: USA
+          product: P2P
           sourceTn: "+15554443333"
-          destinationTn: "+15554442222"
-          messageStatus: RECEIVED
-          messageDirection: INBOUND
-          messageType: sms
-          segmentCount: 1
-          errorCode: 9902
-          receiveTime: 2020-04-07T14:03:07Z
-          carrierName: other
-          messageSize: 27
           messageLength: 18
-          attachmentCount: 1
+          campaignId: CJEUMDK
+          messageId: 1589228074636lm4k2je7j7jklbn2
+          errorCode: 9902
+          calledNumberCountryA3: USA
+          destinationTn: "+15554442222"
+          segmentCount: 1
+          messageStatus: RECEIVED
+          receiveTime: 2020-04-07T14:03:07Z
+          accountId: "9900000"
+          messageDirection: INBOUND
+          carrierLatency: 20
+          messageType: sms
+          carrierName: other
           recipientCount: 1
           campaignClass: T
-          campaignId: CJEUMDK
           bwLatency: 20
-          carrierLatency: 20
-          callingNumberCountryA3: USA
-          calledNumberCountryA3: USA
-          product: P2P
-          location: 123ID
-        - messageId: 1589228074636lm4k2je7j7jklbn2
-          accountId: "9900000"
-          sourceTn: "+15554443333"
-          destinationTn: "+15554442222"
-          messageStatus: RECEIVED
-          messageDirection: INBOUND
-          messageType: sms
-          segmentCount: 1
-          errorCode: 9902
-          receiveTime: 2020-04-07T14:03:07Z
-          carrierName: other
-          messageSize: 27
-          messageLength: 18
           attachmentCount: 1
+          location: 123ID
+          messageSize: 27
+        - callingNumberCountryA3: USA
+          product: P2P
+          sourceTn: "+15554443333"
+          messageLength: 18
+          campaignId: CJEUMDK
+          messageId: 1589228074636lm4k2je7j7jklbn2
+          errorCode: 9902
+          calledNumberCountryA3: USA
+          destinationTn: "+15554442222"
+          segmentCount: 1
+          messageStatus: RECEIVED
+          receiveTime: 2020-04-07T14:03:07Z
+          accountId: "9900000"
+          messageDirection: INBOUND
+          carrierLatency: 20
+          messageType: sms
+          carrierName: other
           recipientCount: 1
           campaignClass: T
-          campaignId: CJEUMDK
           bwLatency: 20
-          carrierLatency: 20
-          callingNumberCountryA3: USA
-          calledNumberCountryA3: USA
-          product: P2P
+          attachmentCount: 1
           location: 123ID
+          messageSize: 27
+        totalCount: 100
       properties:
         totalCount:
           description: "The total number of messages matched by the search. When the\
@@ -9334,29 +9334,29 @@ components:
       type: object
     listMessageItem:
       example:
-        messageId: 1589228074636lm4k2je7j7jklbn2
-        accountId: "9900000"
+        callingNumberCountryA3: USA
+        product: P2P
         sourceTn: "+15554443333"
-        destinationTn: "+15554442222"
-        messageStatus: RECEIVED
-        messageDirection: INBOUND
-        messageType: sms
-        segmentCount: 1
-        errorCode: 9902
-        receiveTime: 2020-04-07T14:03:07Z
-        carrierName: other
-        messageSize: 27
         messageLength: 18
-        attachmentCount: 1
+        campaignId: CJEUMDK
+        messageId: 1589228074636lm4k2je7j7jklbn2
+        errorCode: 9902
+        calledNumberCountryA3: USA
+        destinationTn: "+15554442222"
+        segmentCount: 1
+        messageStatus: RECEIVED
+        receiveTime: 2020-04-07T14:03:07Z
+        accountId: "9900000"
+        messageDirection: INBOUND
+        carrierLatency: 20
+        messageType: sms
+        carrierName: other
         recipientCount: 1
         campaignClass: T
-        campaignId: CJEUMDK
         bwLatency: 20
-        carrierLatency: 20
-        callingNumberCountryA3: USA
-        calledNumberCountryA3: USA
-        product: P2P
+        attachmentCount: 1
         location: 123ID
+        messageSize: 27
       properties:
         messageId:
           description: The message id
@@ -9466,10 +9466,10 @@ components:
       type: object
     pageInfo:
       example:
-        prevPage: https://messaging.bandwidth.com/api/v2/users/accountId/messages?messageStatus=DLR_EXPIRED&nextPage=DLAPE902
-        nextPage: https://messaging.bandwidth.com/api/v2/users/accountId/messages?messageStatus=DLR_EXPIRED&prevPage=GL83PD3C
         prevPageToken: DLAPE902
+        nextPage: https://messaging.bandwidth.com/api/v2/users/accountId/messages?messageStatus=DLR_EXPIRED&prevPage=GL83PD3C
         nextPageToken: GL83PD3C
+        prevPage: https://messaging.bandwidth.com/api/v2/users/accountId/messages?messageStatus=DLR_EXPIRED&nextPage=DLAPE902
       properties:
         prevPage:
           description: The link to the previous page for pagination.
@@ -9491,8 +9491,8 @@ components:
       type: object
     messagingRequestError:
       example:
-        type: type
         description: description
+        type: type
       properties:
         type:
           type: string
@@ -9505,8 +9505,6 @@ components:
       type: object
     createMessageRequestError:
       example:
-        type: type
-        description: description
         fieldErrors:
         - fieldName: from
           description: '''+invalid'' must be replaced with a valid E164 formatted
@@ -9514,6 +9512,8 @@ components:
         - fieldName: from
           description: '''+invalid'' must be replaced with a valid E164 formatted
             telephone number'
+        description: description
+        type: type
       properties:
         type:
           type: string
@@ -9534,8 +9534,8 @@ components:
       type: string
     media:
       example:
-        content: content
         contentLength: 1024
+        content: content
         mediaName: image.png
       properties:
         content:
@@ -9575,21 +9575,21 @@ components:
       type: string
     message:
       example:
-        id: 1589228074636lm4k2je7j7jklbn2
         owner: "+15554443333"
-        applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
-        time: 2024-12-02T20:15:57.278Z
-        segmentCount: 1
-        direction: in
-        to:
-        - "+15552223333"
-        from: "+15553332222"
         media:
         - https://dev.bandwidth.com/images/bandwidth-logo.png
+        priority: default
+        segmentCount: 1
+        from: "+15553332222"
+        expiration: 2021-02-01T11:29:18-05:00
+        id: 1589228074636lm4k2je7j7jklbn2
+        time: 2024-12-02T20:15:57.278Z
+        to:
+        - "+15552223333"
         text: Hello world
         tag: custom string
-        priority: default
-        expiration: 2021-02-01T11:29:18-05:00
+        applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
+        direction: in
       properties:
         id:
           description: The id of the message.
@@ -9740,105 +9740,125 @@ components:
       type: array
     createMultiChannelMessageResponse:
       example:
-        links: []
         data:
+          channelList:
+          - owner: owner
+            channel: RBM
+            from: BandwidthRBM
+            applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
+            content:
+              suggestions:
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              text: Hello world
+          - owner: owner
+            channel: RBM
+            from: BandwidthRBM
+            applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
+            content:
+              suggestions:
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              text: Hello world
+          - owner: owner
+            channel: RBM
+            from: BandwidthRBM
+            applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
+            content:
+              suggestions:
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              text: Hello world
+          - owner: owner
+            channel: RBM
+            from: BandwidthRBM
+            applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
+            content:
+              suggestions:
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              - postbackData: !!binary |-
+                  U0dWc2JHOGdkMjl5YkdRPQ==
+                text: Hello world
+                type: REPLY
+              text: Hello world
+          expiration: 2021-02-01T11:29:18-05:00
           id: 1589228074636lm4k2je7j7jklbn2
           time: 2025-01-01T18:20:16Z
-          direction: in
           to:
           - "+15554443333"
-          channelList:
-          - from: BandwidthRBM
-            applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
-            channel: RBM
-            content:
-              text: Hello world
-              suggestions:
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-            owner: owner
-          - from: BandwidthRBM
-            applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
-            channel: RBM
-            content:
-              text: Hello world
-              suggestions:
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-            owner: owner
-          - from: BandwidthRBM
-            applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
-            channel: RBM
-            content:
-              text: Hello world
-              suggestions:
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-            owner: owner
-          - from: BandwidthRBM
-            applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
-            channel: RBM
-            content:
-              text: Hello world
-              suggestions:
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-              - type: REPLY
-                text: Hello world
-                postbackData: SGVsbG8gd29ybGQ=
-            owner: owner
           tag: custom string
           priority: default
-          expiration: 2021-02-01T11:29:18-05:00
+          direction: in
+        links: []
         errors: []
       properties:
         links:
@@ -9856,23 +9876,23 @@ components:
       type: object
     multiChannelError:
       example:
-        links: []
         data: "{}"
+        links: []
         errors:
-        - type: type
-          description: description
+        - description: description
           source:
-            parameter: parameter
-            field: field
-            header: header
             reference: reference
-        - type: type
-          description: description
+            field: field
+            parameter: parameter
+            header: header
+          type: type
+        - description: description
           source:
-            parameter: parameter
-            field: field
-            header: header
             reference: reference
+            field: field
+            parameter: parameter
+            header: header
+          type: type
       properties:
         links:
           example: []
@@ -9897,13 +9917,13 @@ components:
       type: object
     errorObject:
       example:
-        type: type
         description: description
         source:
-          parameter: parameter
-          field: field
-          header: header
           reference: reference
+          field: field
+          parameter: parameter
+          header: header
+        type: type
       properties:
         type:
           description: A concise summary of the error used for categorization.
@@ -9921,10 +9941,10 @@ components:
     errorSource:
       description: "Specifies relevant sources of the error, if any."
       example:
-        parameter: parameter
-        field: field
-        header: header
         reference: reference
+        field: field
+        parameter: parameter
+        header: header
       properties:
         parameter:
           description: The relevant URI query parameter causing the error
@@ -9967,23 +9987,28 @@ components:
       uniqueItems: true
     rbmMessageContentText:
       example:
-        text: Hello world
         suggestions:
-        - type: REPLY
+        - postbackData: !!binary |-
+            U0dWc2JHOGdkMjl5YkdRPQ==
           text: Hello world
-          postbackData: SGVsbG8gd29ybGQ=
-        - type: REPLY
+          type: REPLY
+        - postbackData: !!binary |-
+            U0dWc2JHOGdkMjl5YkdRPQ==
           text: Hello world
-          postbackData: SGVsbG8gd29ybGQ=
-        - type: REPLY
+          type: REPLY
+        - postbackData: !!binary |-
+            U0dWc2JHOGdkMjl5YkdRPQ==
           text: Hello world
-          postbackData: SGVsbG8gd29ybGQ=
-        - type: REPLY
+          type: REPLY
+        - postbackData: !!binary |-
+            U0dWc2JHOGdkMjl5YkdRPQ==
           text: Hello world
-          postbackData: SGVsbG8gd29ybGQ=
-        - type: REPLY
+          type: REPLY
+        - postbackData: !!binary |-
+            U0dWc2JHOGdkMjl5YkdRPQ==
           text: Hello world
-          postbackData: SGVsbG8gd29ybGQ=
+          type: REPLY
+        text: Hello world
       properties:
         text:
           description: The text associated with the message. Must be 3270 characters
@@ -10215,16 +10240,18 @@ components:
       type: string
     rbmActionPostbackData:
       description: Base64 payload the customer receives when the reply is clicked.
-      example: SGVsbG8gd29ybGQ=
+      example: !!binary |-
+        U0dWc2JHOGdkMjl5YkdRPQ==
       format: byte
       maxLength: 2048
       title: Post Back Data
       type: string
     rbmActionBase:
       example:
-        type: REPLY
+        postbackData: !!binary |-
+          U0dWc2JHOGdkMjl5YkdRPQ==
         text: Hello world
-        postbackData: SGVsbG8gd29ybGQ=
+        type: REPLY
       properties:
         type:
           $ref: "#/components/schemas/rbmActionTypeEnum"
@@ -10236,7 +10263,8 @@ components:
           type: string
         postbackData:
           description: Base64 payload the customer receives when the reply is clicked.
-          example: SGVsbG8gd29ybGQ=
+          example: !!binary |-
+            U0dWc2JHOGdkMjl5YkdRPQ==
           format: byte
           maxLength: 2048
           title: Post Back Data
@@ -10408,28 +10436,33 @@ components:
       - $ref: "#/components/schemas/multiChannelChannelListRBMObject"
       - $ref: "#/components/schemas/multiChannelChannelListOwnerObject"
       example:
+        owner: owner
+        channel: RBM
         from: BandwidthRBM
         applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
-        channel: RBM
         content:
-          text: Hello world
           suggestions:
-          - type: REPLY
+          - postbackData: !!binary |-
+              U0dWc2JHOGdkMjl5YkdRPQ==
             text: Hello world
-            postbackData: SGVsbG8gd29ybGQ=
-          - type: REPLY
+            type: REPLY
+          - postbackData: !!binary |-
+              U0dWc2JHOGdkMjl5YkdRPQ==
             text: Hello world
-            postbackData: SGVsbG8gd29ybGQ=
-          - type: REPLY
+            type: REPLY
+          - postbackData: !!binary |-
+              U0dWc2JHOGdkMjl5YkdRPQ==
             text: Hello world
-            postbackData: SGVsbG8gd29ybGQ=
-          - type: REPLY
+            type: REPLY
+          - postbackData: !!binary |-
+              U0dWc2JHOGdkMjl5YkdRPQ==
             text: Hello world
-            postbackData: SGVsbG8gd29ybGQ=
-          - type: REPLY
+            type: REPLY
+          - postbackData: !!binary |-
+              U0dWc2JHOGdkMjl5YkdRPQ==
             text: Hello world
-            postbackData: SGVsbG8gd29ybGQ=
-        owner: owner
+            type: REPLY
+          text: Hello world
     multiChannelChannelListSMSResponseObject:
       allOf:
       - $ref: "#/components/schemas/multiChannelChannelListSMSObject"
@@ -10506,103 +10539,123 @@ components:
     multiChannelMessageResponseData:
       description: The data returned in a multichannel message response.
       example:
+        channelList:
+        - owner: owner
+          channel: RBM
+          from: BandwidthRBM
+          applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
+          content:
+            suggestions:
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            text: Hello world
+        - owner: owner
+          channel: RBM
+          from: BandwidthRBM
+          applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
+          content:
+            suggestions:
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            text: Hello world
+        - owner: owner
+          channel: RBM
+          from: BandwidthRBM
+          applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
+          content:
+            suggestions:
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            text: Hello world
+        - owner: owner
+          channel: RBM
+          from: BandwidthRBM
+          applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
+          content:
+            suggestions:
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            - postbackData: !!binary |-
+                U0dWc2JHOGdkMjl5YkdRPQ==
+              text: Hello world
+              type: REPLY
+            text: Hello world
+        expiration: 2021-02-01T11:29:18-05:00
         id: 1589228074636lm4k2je7j7jklbn2
         time: 2025-01-01T18:20:16Z
-        direction: in
         to:
         - "+15554443333"
-        channelList:
-        - from: BandwidthRBM
-          applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
-          channel: RBM
-          content:
-            text: Hello world
-            suggestions:
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-          owner: owner
-        - from: BandwidthRBM
-          applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
-          channel: RBM
-          content:
-            text: Hello world
-            suggestions:
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-          owner: owner
-        - from: BandwidthRBM
-          applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
-          channel: RBM
-          content:
-            text: Hello world
-            suggestions:
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-          owner: owner
-        - from: BandwidthRBM
-          applicationId: 93de2206-9669-4e07-948d-329f4b722ee2
-          channel: RBM
-          content:
-            text: Hello world
-            suggestions:
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-            - type: REPLY
-              text: Hello world
-              postbackData: SGVsbG8gd29ybGQ=
-          owner: owner
         tag: custom string
         priority: default
-        expiration: 2021-02-01T11:29:18-05:00
+        direction: in
       properties:
         id:
           description: The ID of the message.
@@ -10669,7 +10722,8 @@ components:
           type: string
         postbackData:
           description: Base64 payload the customer receives when the reply is clicked.
-          example: SGVsbG8gd29ybGQ=
+          example: !!binary |-
+            U0dWc2JHOGdkMjl5YkdRPQ==
           format: byte
           maxLength: 2048
           title: Post Back Data
@@ -10955,6 +11009,13 @@ components:
       - outbound
       example: inbound
       type: string
+    referCallStatusEnum:
+      description: The outcome of the REFER operation.
+      enum:
+      - success
+      - failure
+      example: success
+      type: string
     fileFormatEnum:
       description: The format that the recording is stored in.
       enum:
@@ -11178,27 +11239,27 @@ components:
       type: object
     createCallResponse:
       example:
-        applicationId: 04e88489-df02-4e34-a0ee-27a91849555f
-        accountId: "9900000"
         callId: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-        to: "+19195551234"
-        from: "+19195554321"
-        enqueuedTime: 2022-06-16T13:15:07.16Z
-        callUrl: https://voice.bandwidth.com/api/v2/accounts/9900000/calls/c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-        callTimeout: 30
-        callbackTimeout: 15
-        tag: My custom tag value
-        answerMethod: POST
         answerUrl: https://myServer.example/bandwidth/webhooks/answer
+        callUrl: https://voice.bandwidth.com/api/v2/accounts/9900000/calls/c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+        callbackTimeout: 15
         answerFallbackMethod: POST
         answerFallbackUrl: https://myFallbackServer.example/bandwidth/webhooks/answer
-        disconnectMethod: POST
-        disconnectUrl: https://myServer.example/bandwidth/webhooks/disconnect
-        username: mySecretUsername
-        password: mySecretPassword1!
-        fallbackUsername: mySecretUsername
-        fallbackPassword: mySecretPassword1!
+        callTimeout: 30
         priority: 5
+        disconnectMethod: POST
+        accountId: "9900000"
+        password: mySecretPassword1!
+        answerMethod: POST
+        enqueuedTime: 2022-06-16T13:15:07.16Z
+        disconnectUrl: https://myServer.example/bandwidth/webhooks/disconnect
+        from: "+19195554321"
+        fallbackPassword: mySecretPassword1!
+        to: "+19195551234"
+        tag: My custom tag value
+        applicationId: 04e88489-df02-4e34-a0ee-27a91849555f
+        username: mySecretUsername
+        fallbackUsername: mySecretUsername
       properties:
         applicationId:
           description: The id of the application associated with the `from` number.
@@ -11313,27 +11374,27 @@ components:
       type: object
     callState:
       example:
-        applicationId: 04e88489-df02-4e34-a0ee-27a91849555f
-        accountId: "9900000"
         callId: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+        answerTime: 2022-06-16T13:15:18.126Z
         parentCallId: c-25ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-        to: "+19195551234"
-        from: "+19195554321"
-        direction: inbound
-        state: disconnected
+        disconnectCause: disconnectCause
+        errorMessage: errorMessage
+        accountId: "9900000"
+        identity: eyJhbGciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cHM6Ly9idy1zaGFrZW4tY2VydC1wdWIuczMuYW1hem9uYXdzLmNvbS9iYW5kd2lkdGgtc2hha2VuLWNlcnRfMjAyMzA3MTYucGVtIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxOTg0MjgyMDI4MCJdfSwiaWF0IjoxNjU2NTM0MzM2LCJvcmlnIjp7InRuIjoiMTkxOTQ0NDI2ODMifSwib3JpZ2lkIjoiNDk0NTlhOGEtNDJmNi0zNTFjLTkzNjEtYWRmNTdhOWUwOGNhIn0.56un9sRw_uH-sbJvnUsqdevlVxbOVjn8MVlGTlBMicjaZuRRwxfiNp-C9zYCMKTTCbc-QdYPN05F61XNVN4D3w;info=<https://bw-shaken-cert-pub.s3.amazonaws.com/bandwidth-shaken-cert_20230716.pem>;alg=ES256;ppt=shaken
+        enqueuedTime: 2022-06-16T13:15:07.16Z
+        lastUpdate: 2022-06-16T13:15:18.314Z
         stirShaken:
           verstat: TN-Validation-Passed
           attestationIndicator: A
           originatingId: abc123
-        identity: eyJhbGciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cHM6Ly9idy1zaGFrZW4tY2VydC1wdWIuczMuYW1hem9uYXdzLmNvbS9iYW5kd2lkdGgtc2hha2VuLWNlcnRfMjAyMzA3MTYucGVtIn0.eyJhdHRlc3QiOiJBIiwiZGVzdCI6eyJ0biI6WyIxOTg0MjgyMDI4MCJdfSwiaWF0IjoxNjU2NTM0MzM2LCJvcmlnIjp7InRuIjoiMTkxOTQ0NDI2ODMifSwib3JpZ2lkIjoiNDk0NTlhOGEtNDJmNi0zNTFjLTkzNjEtYWRmNTdhOWUwOGNhIn0.56un9sRw_uH-sbJvnUsqdevlVxbOVjn8MVlGTlBMicjaZuRRwxfiNp-C9zYCMKTTCbc-QdYPN05F61XNVN4D3w;info=<https://bw-shaken-cert-pub.s3.amazonaws.com/bandwidth-shaken-cert_20230716.pem>;alg=ES256;ppt=shaken
-        enqueuedTime: 2022-06-16T13:15:07.16Z
+        from: "+19195554321"
         startTime: 2022-06-16T13:15:07.16Z
-        answerTime: 2022-06-16T13:15:18.126Z
+        to: "+19195551234"
+        state: disconnected
         endTime: 2022-06-16T13:15:18.314Z
-        disconnectCause: disconnectCause
-        errorMessage: errorMessage
         errorId: errorId
-        lastUpdate: 2022-06-16T13:15:18.314Z
+        applicationId: 04e88489-df02-4e34-a0ee-27a91849555f
+        direction: inbound
       properties:
         applicationId:
           description: The application id associated with the call.
@@ -11560,29 +11621,29 @@ components:
       type: object
     callRecordingMetadata:
       example:
-        applicationId: 04e88489-df02-4e34-a0ee-27a91849555f
-        accountId: "9900000"
         callId: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+        mediaUrl: https://voice.bandwidth.com/api/v2/accounts/9900000/conferences/conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9/recordings/r-fbe05094-9fd2afe9-bf5b-4c68-820a-41a01c1c5833/media
+        transcription:
+          completedTime: 2022-06-13T18:46:29.715Z
+          id: t-387bd648-18f3-4823-9d16-746bca0003c9
+          url: https://voice.bandwidth.com/api/v2/accounts/9900000/calls/c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85/recordings/r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85/transcription
+          status: completed
         parentCallId: c-95ac8d6e-1a31c52e-b38f-4198-93c1-51633ec68f8d
-        recordingId: r-fbe05094-9fd2afe9-bf5b-4c68-820a-41a01c1c5833
-        to: "+15555555555"
-        from: "+15555555555"
+        recordingName: my-recording-name
         transferCallerId: "+15555555555"
         transferTo: "+15555555555"
         duration: PT13.67S
-        direction: inbound
+        accountId: "9900000"
         channels: 1
+        from: "+15555555555"
         startTime: 2022-06-17T22:19:40.375Z
+        to: "+15555555555"
         endTime: 2022-06-17T22:20:00Z
+        applicationId: 04e88489-df02-4e34-a0ee-27a91849555f
+        recordingId: r-fbe05094-9fd2afe9-bf5b-4c68-820a-41a01c1c5833
         fileFormat: wav
+        direction: inbound
         status: completed
-        mediaUrl: https://voice.bandwidth.com/api/v2/accounts/9900000/conferences/conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9/recordings/r-fbe05094-9fd2afe9-bf5b-4c68-820a-41a01c1c5833/media
-        transcription:
-          id: t-387bd648-18f3-4823-9d16-746bca0003c9
-          status: completed
-          completedTime: 2022-06-13T18:46:29.715Z
-          url: https://voice.bandwidth.com/api/v2/accounts/9900000/calls/c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85/recordings/r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85/transcription
-        recordingName: my-recording-name
       properties:
         applicationId:
           description: The id of the application associated with the call.
@@ -11675,28 +11736,28 @@ components:
       type: object
     conference:
       example:
-        id: conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9
-        name: my-conference-name
-        createdTime: 2022-06-17T22:19:40.375Z
-        completedTime: 2022-06-17T22:20:00Z
-        conferenceEventUrl: https://myServer.example/bandwidth/webhooks/conferenceEvent
         conferenceEventMethod: POST
-        tag: my custom tag
         activeMembers:
         - callId: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+          callIdsToCoach:
+          - c-25ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
           conferenceId: conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9
           memberUrl: https://voice.bandwidth.com/api/v2/accounts/9900000/conferences/conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9/members/c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
           mute: false
           hold: false
-          callIdsToCoach:
-          - c-25ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         - callId: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+          callIdsToCoach:
+          - c-25ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
           conferenceId: conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9
           memberUrl: https://voice.bandwidth.com/api/v2/accounts/9900000/conferences/conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9/members/c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
           mute: false
           hold: false
-          callIdsToCoach:
-          - c-25ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+        conferenceEventUrl: https://myServer.example/bandwidth/webhooks/conferenceEvent
+        completedTime: 2022-06-17T22:20:00Z
+        name: my-conference-name
+        createdTime: 2022-06-17T22:19:40.375Z
+        id: conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9
+        tag: my custom tag
       properties:
         id:
           description: The Bandwidth-generated conference ID.
@@ -11794,12 +11855,12 @@ components:
     conferenceMember:
       example:
         callId: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+        callIdsToCoach:
+        - c-25ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         conferenceId: conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9
         memberUrl: https://voice.bandwidth.com/api/v2/accounts/9900000/conferences/conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9/members/c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         mute: false
         hold: false
-        callIdsToCoach:
-        - c-25ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
       properties:
         callId:
           description: The call id associated with the event.
@@ -11879,18 +11940,18 @@ components:
       type: object
     conferenceRecordingMetadata:
       example:
-        accountId: "9900000"
-        conferenceId: conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9
-        name: my-conference-name
-        recordingId: r-fbe05094-9fd2afe9-bf5b-4c68-820a-41a01c1c5833
         duration: PT13.67S
+        accountId: "9900000"
         channels: 1
+        mediaUrl: https://voice.bandwidth.com/api/v2/accounts/9900000/conferences/conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9/recordings/r-fbe05094-9fd2afe9-bf5b-4c68-820a-41a01c1c5833/media
+        conferenceId: conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9
+        recordingName: my-recording-name
+        name: my-conference-name
         startTime: 2022-06-17T22:19:40.375Z
         endTime: 2022-06-17T22:20:00Z
+        recordingId: r-fbe05094-9fd2afe9-bf5b-4c68-820a-41a01c1c5833
         fileFormat: wav
         status: completed
-        mediaUrl: https://voice.bandwidth.com/api/v2/accounts/9900000/conferences/conf-fe23a767-a75a5b77-20c5-4cca-b581-cbbf0776eca9/recordings/r-fbe05094-9fd2afe9-bf5b-4c68-820a-41a01c1c5833/media
-        recordingName: my-recording-name
       properties:
         accountId:
           description: The user account associated with the call.
@@ -12217,8 +12278,8 @@ components:
       type: object
     callTranscriptionResponse:
       example:
-        accountId: "9900000"
         callId: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+        accountId: "9900000"
         transcriptionId: t-3f758f24-c7a2fc78-7c91-401a-8b2e-e542f9c40d6b
         tracks:
         - detectedLanguage: en-US
@@ -12270,10 +12331,10 @@ components:
     recordingTranscriptionMetadata:
       description: "If the recording was transcribed, metadata about the transcription"
       example:
-        id: t-387bd648-18f3-4823-9d16-746bca0003c9
-        status: completed
         completedTime: 2022-06-13T18:46:29.715Z
+        id: t-387bd648-18f3-4823-9d16-746bca0003c9
         url: https://voice.bandwidth.com/api/v2/accounts/9900000/calls/c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85/recordings/r-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85/transcription
+        status: completed
       nullable: true
       properties:
         id:
@@ -12302,9 +12363,9 @@ components:
       type: object
     voiceApiError:
       example:
-        type: type
         description: description
         id: id
+        type: type
       properties:
         type:
           type: string
@@ -12323,8 +12384,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -12409,8 +12470,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -12503,8 +12564,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -12582,8 +12643,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -12624,8 +12685,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -12665,8 +12726,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -12720,8 +12781,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -12770,8 +12831,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -12807,8 +12868,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -12888,8 +12949,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -12998,8 +13059,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -13092,8 +13153,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -13195,8 +13256,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -13285,8 +13346,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -13363,8 +13424,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -13481,8 +13542,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -13602,8 +13663,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -13683,6 +13744,91 @@ components:
           example: "+15555555555"
           type: string
       type: object
+    referCompleteCallback:
+      description: "This event is sent to the referCompleteUrl of a call's <Refer>\
+        \ verb when the SIP REFER flow completes. On success, the call has been torn\
+        \ down and the BXML returned from this callback is ignored. On failure, the\
+        \ call remains active and the BXML returned from this callback is executed\
+        \ on the call."
+      properties:
+        eventType:
+          description: "The event type, value can be one of the following: answer,\
+            \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
+            \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
+            \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
+          example: bridgeComplete
+          type: string
+        eventTime:
+          description: "The approximate UTC date and time when the event was generated\
+            \ by the Bandwidth server, in ISO 8601 format. This may not be exactly\
+            \ the time of event execution."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
+          type: string
+        accountId:
+          description: The user account associated with the call.
+          example: "9900000"
+          type: string
+        applicationId:
+          description: The id of the application associated with the call.
+          example: 04e88489-df02-4e34-a0ee-27a91849555f
+          type: string
+        from:
+          description: The provided identifier of the caller. Must be a phone number
+            in E.164 format (e.g. +15555555555).
+          example: "+15555555555"
+          type: string
+        to:
+          description: "The phone number that received the call, in E.164 format (e.g.\
+            \ +15555555555)."
+          example: "+15555555555"
+          type: string
+        direction:
+          $ref: "#/components/schemas/callDirectionEnum"
+        callId:
+          description: The call id associated with the event.
+          example: c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+          type: string
+        callUrl:
+          description: The URL of the call associated with the event.
+          example: https://voice.bandwidth.com/api/v2/accounts/9900000/calls/c-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+          format: uri
+          type: string
+        startTime:
+          description: "Time the call was started, in ISO 8601 format."
+          example: 2022-06-17T22:19:40.375Z
+          format: date-time
+          type: string
+        answerTime:
+          description: "Time the call was answered, in ISO 8601 format."
+          example: 2022-06-17T22:20:00Z
+          format: date-time
+          nullable: true
+          type: string
+        tag:
+          description: "(optional) The tag specified on call creation. If no tag was\
+            \ specified or it was previously cleared, this field will not be present."
+          example: exampleTag
+          nullable: true
+          type: string
+        referCallStatus:
+          $ref: "#/components/schemas/referCallStatusEnum"
+        referSipResponseCode:
+          description: "(optional) The SIP response code returned for the REFER request\
+            \ itself (e.g. 202, 405, 603). Present when a SIP response was received\
+            \ for the REFER."
+          example: 202
+          type: integer
+        notifySipResponseCode:
+          description: "(optional) The final SIP response code reported via NOTIFY\
+            \ (message/sipfrag body). Present only when the caller's endpoint sent\
+            \ a final NOTIFY (e.g. 200, 404, 486, 503). Not present on NOTIFY timeout\
+            \ or when the REFER was rejected before a subscription was established."
+          example: 200
+          type: integer
+      type: object
     transcriptionAvailableCallback:
       description: The Transcription Available event is sent when the recording transcription
         is available to be downloaded.
@@ -13692,8 +13838,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -13805,8 +13951,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -13892,8 +14038,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -13998,8 +14144,8 @@ components:
             \ bridgeComplete, bridgeTargetComplete, conferenceCreated, conferenceRedirect,\
             \ conferenceMemberJoin, conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
             \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-            \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer,\
-            \ transferComplete, transferDisconnect."
+            \ recordingAvailable, redirect, referComplete, transcriptionAvailable,\
+            \ transferAnswer, transferComplete, transferDisconnect."
           example: bridgeComplete
           type: string
         eventTime:
@@ -14107,8 +14253,8 @@ components:
         \ bridgeTargetComplete, conferenceCreated, conferenceRedirect, conferenceMemberJoin,\
         \ conferenceMemberExit, conferenceCompleted, conferenceRecordingAvailable,\
         \ disconnect, dtmf, gather, initiate, machineDetectionComplete, recordingComplete,\
-        \ recordingAvailable, redirect, transcriptionAvailable, transferAnswer, transferComplete,\
-        \ transferDisconnect."
+        \ recordingAvailable, redirect, referComplete, transcriptionAvailable, transferAnswer,\
+        \ transferComplete, transferDisconnect."
       example: bridgeComplete
       type: string
     eventTime:
@@ -14248,6 +14394,19 @@ components:
       example: exampleTag
       nullable: true
       type: string
+    referSipResponseCode:
+      description: "(optional) The SIP response code returned for the REFER request\
+        \ itself (e.g. 202, 405, 603). Present when a SIP response was received for\
+        \ the REFER."
+      example: 202
+      type: integer
+    notifySipResponseCode:
+      description: "(optional) The final SIP response code reported via NOTIFY (message/sipfrag\
+        \ body). Present only when the caller's endpoint sent a final NOTIFY (e.g.\
+        \ 200, 404, 486, 503). Not present on NOTIFY timeout or when the REFER was\
+        \ rejected before a subscription was established."
+      example: 200
+      type: integer
     cause:
       description: "Reason the call failed - hangup, busy, timeout, cancel, rejected,\
         \ callback-error, invalid-bxml, application-error, account-limit, node-capacity-exceeded,\
@@ -14497,8 +14656,8 @@ components:
       type: object
     mfaRequestError:
       example:
-        error: 400 Request is malformed or invalid
         requestId: 354cc8a3-6701-461e-8fa7-8671703dd898
+        error: 400 Request is malformed or invalid
       properties:
         error:
           description: A message describing the error with your request.
@@ -14578,9 +14737,9 @@ components:
       type: string
     linkSchema:
       example:
-        href: /relative/uri
-        rel: aRelatedResource
         method: GET
+        rel: aRelatedResource
+        href: /relative/uri
       properties:
         href:
           description: URI of the link.
@@ -14599,14 +14758,14 @@ components:
     lookupErrorSchema:
       example:
         code: NO-MATCH
-        description: Example error description
-        type: NumberInventory
         meta:
+          code: 1001
+          message: Invalid TNs
           phoneNumbers:
           - "+13992077164"
           - "+19196104424"
-          message: Invalid TNs
-          code: 1001
+        description: Example error description
+        type: NumberInventory
       properties:
         code:
           description: Validation error code
@@ -14663,54 +14822,54 @@ components:
       type: object
     createSyncLookupResponse:
       example:
-        links: []
         data:
           requestId: 004223a0-8b17-41b1-bf81-20732adf5590
-          status: COMPLETE
           results:
-          - phoneNumber: "+10072904498"
-            lineType: MOBILE
+          - deactivationEvent: DEACTIVATED
             messagingProvider: Verizon Wireless
-            voiceProvider: Verizon Wireless
-            countryCodeA3: USA
-            deactivationReporter: deactivationReporter
             deactivationDate: 2025-06-20 18:35
-            deactivationEvent: DEACTIVATED
             latestMessageDeliveryStatus: ACTIVE
+            phoneNumber: "+10072904498"
+            countryCodeA3: USA
             initialMessageDeliveryStatusDate: 2025-06-20
-            latestMessageDeliveryStatusDate: 2025-06-21
             rcsEnabled: true
-          - phoneNumber: "+10072904498"
             lineType: MOBILE
-            messagingProvider: Verizon Wireless
-            voiceProvider: Verizon Wireless
-            countryCodeA3: USA
             deactivationReporter: deactivationReporter
-            deactivationDate: 2025-06-20 18:35
-            deactivationEvent: DEACTIVATED
-            latestMessageDeliveryStatus: ACTIVE
-            initialMessageDeliveryStatusDate: 2025-06-20
+            voiceProvider: Verizon Wireless
             latestMessageDeliveryStatusDate: 2025-06-21
+          - deactivationEvent: DEACTIVATED
+            messagingProvider: Verizon Wireless
+            deactivationDate: 2025-06-20 18:35
+            latestMessageDeliveryStatus: ACTIVE
+            phoneNumber: "+10072904498"
+            countryCodeA3: USA
+            initialMessageDeliveryStatusDate: 2025-06-20
             rcsEnabled: true
+            lineType: MOBILE
+            deactivationReporter: deactivationReporter
+            voiceProvider: Verizon Wireless
+            latestMessageDeliveryStatusDate: 2025-06-21
+          status: COMPLETE
+        links: []
         errors:
         - code: NO-MATCH
-          description: Example error description
-          type: NumberInventory
           meta:
+            code: 1001
+            message: Invalid TNs
             phoneNumbers:
             - "+13992077164"
             - "+19196104424"
-            message: Invalid TNs
-            code: 1001
+          description: Example error description
+          type: NumberInventory
         - code: NO-MATCH
-          description: Example error description
-          type: NumberInventory
           meta:
+            code: 1001
+            message: Invalid TNs
             phoneNumbers:
             - "+13992077164"
             - "+19196104424"
-            message: Invalid TNs
-            code: 1001
+          description: Example error description
+          type: NumberInventory
       properties:
         links:
           example: []
@@ -14726,35 +14885,35 @@ components:
       type: object
     createAsyncBulkLookupResponse:
       example:
-        links:
-        - href: /relative/uri
-          rel: aRelatedResource
-          method: GET
-        - href: /relative/uri
-          rel: aRelatedResource
-          method: GET
         data:
           requestId: 004223a0-8b17-41b1-bf81-20732adf5590
           status: COMPLETE
+        links:
+        - method: GET
+          rel: aRelatedResource
+          href: /relative/uri
+        - method: GET
+          rel: aRelatedResource
+          href: /relative/uri
         errors:
         - code: NO-MATCH
-          description: Example error description
-          type: NumberInventory
           meta:
+            code: 1001
+            message: Invalid TNs
             phoneNumbers:
             - "+13992077164"
             - "+19196104424"
-            message: Invalid TNs
-            code: 1001
+          description: Example error description
+          type: NumberInventory
         - code: NO-MATCH
-          description: Example error description
-          type: NumberInventory
           meta:
+            code: 1001
+            message: Invalid TNs
             phoneNumbers:
             - "+13992077164"
             - "+19196104424"
-            message: Invalid TNs
-            code: 1001
+          description: Example error description
+          type: NumberInventory
       properties:
         links:
           description: Links for pagination (if applicable)
@@ -14770,54 +14929,54 @@ components:
       type: object
     getAsyncBulkLookupResponse:
       example:
-        links: []
         data:
           requestId: 004223a0-8b17-41b1-bf81-20732adf5590
-          status: COMPLETE
           results:
-          - phoneNumber: "+10072904498"
-            lineType: MOBILE
+          - deactivationEvent: DEACTIVATED
             messagingProvider: Verizon Wireless
-            voiceProvider: Verizon Wireless
-            countryCodeA3: USA
-            deactivationReporter: deactivationReporter
             deactivationDate: 2025-06-20 18:35
-            deactivationEvent: DEACTIVATED
             latestMessageDeliveryStatus: ACTIVE
+            phoneNumber: "+10072904498"
+            countryCodeA3: USA
             initialMessageDeliveryStatusDate: 2025-06-20
-            latestMessageDeliveryStatusDate: 2025-06-21
             rcsEnabled: true
-          - phoneNumber: "+10072904498"
             lineType: MOBILE
-            messagingProvider: Verizon Wireless
-            voiceProvider: Verizon Wireless
-            countryCodeA3: USA
             deactivationReporter: deactivationReporter
-            deactivationDate: 2025-06-20 18:35
-            deactivationEvent: DEACTIVATED
-            latestMessageDeliveryStatus: ACTIVE
-            initialMessageDeliveryStatusDate: 2025-06-20
+            voiceProvider: Verizon Wireless
             latestMessageDeliveryStatusDate: 2025-06-21
+          - deactivationEvent: DEACTIVATED
+            messagingProvider: Verizon Wireless
+            deactivationDate: 2025-06-20 18:35
+            latestMessageDeliveryStatus: ACTIVE
+            phoneNumber: "+10072904498"
+            countryCodeA3: USA
+            initialMessageDeliveryStatusDate: 2025-06-20
             rcsEnabled: true
+            lineType: MOBILE
+            deactivationReporter: deactivationReporter
+            voiceProvider: Verizon Wireless
+            latestMessageDeliveryStatusDate: 2025-06-21
+          status: COMPLETE
+        links: []
         errors:
         - code: NO-MATCH
-          description: Example error description
-          type: NumberInventory
           meta:
+            code: 1001
+            message: Invalid TNs
             phoneNumbers:
             - "+13992077164"
             - "+19196104424"
-            message: Invalid TNs
-            code: 1001
+          description: Example error description
+          type: NumberInventory
         - code: NO-MATCH
-          description: Example error description
-          type: NumberInventory
           meta:
+            code: 1001
+            message: Invalid TNs
             phoneNumbers:
             - "+13992077164"
             - "+19196104424"
-            message: Invalid TNs
-            code: 1001
+          description: Example error description
+          type: NumberInventory
       properties:
         links:
           example: []
@@ -14833,27 +14992,27 @@ components:
       type: object
     lookupErrorResponse:
       example:
-        links: []
         data: "{}"
+        links: []
         errors:
         - code: NO-MATCH
-          description: Example error description
-          type: NumberInventory
           meta:
+            code: 1001
+            message: Invalid TNs
             phoneNumbers:
             - "+13992077164"
             - "+19196104424"
-            message: Invalid TNs
-            code: 1001
+          description: Example error description
+          type: NumberInventory
         - code: NO-MATCH
-          description: Example error description
-          type: NumberInventory
           meta:
+            code: 1001
+            message: Invalid TNs
             phoneNumbers:
             - "+13992077164"
             - "+19196104424"
-            message: Invalid TNs
-            code: 1001
+          description: Example error description
+          type: NumberInventory
       properties:
         links:
           example: []
@@ -14888,18 +15047,18 @@ components:
     lookupResult:
       description: Carrier information results for the specified telephone number.
       example:
-        phoneNumber: "+10072904498"
-        lineType: MOBILE
-        messagingProvider: Verizon Wireless
-        voiceProvider: Verizon Wireless
-        countryCodeA3: USA
-        deactivationReporter: deactivationReporter
-        deactivationDate: 2025-06-20 18:35
         deactivationEvent: DEACTIVATED
+        messagingProvider: Verizon Wireless
+        deactivationDate: 2025-06-20 18:35
         latestMessageDeliveryStatus: ACTIVE
+        phoneNumber: "+10072904498"
+        countryCodeA3: USA
         initialMessageDeliveryStatusDate: 2025-06-20
-        latestMessageDeliveryStatusDate: 2025-06-21
         rcsEnabled: true
+        lineType: MOBILE
+        deactivationReporter: deactivationReporter
+        voiceProvider: Verizon Wireless
+        latestMessageDeliveryStatusDate: 2025-06-21
       properties:
         phoneNumber:
           description: The telephone number in E.164 format.
@@ -15644,12 +15803,12 @@ components:
       type: object
     address:
       example:
-        name: Bandwidth Inc.
-        addr1: 2230 Bandmate Way
-        addr2: 2230 Bandmate Way
-        city: Raleigh
-        state: NC
         zip: "27606"
+        addr2: 2230 Bandmate Way
+        addr1: 2230 Bandmate Way
+        city: Raleigh
+        name: Bandwidth Inc.
+        state: NC
         url: https://www.example.com/path/to/resource
       nullable: false
       properties:
@@ -15719,11 +15878,11 @@ components:
       type: string
     optInWorkflow:
       example:
-        description: Opt In Flow
         imageUrls:
         - https://www.example.com/path/to/resource
         - https://www.example.com/path/to/resource
         confirmationResponse: Thank you for opting in!
+        description: Opt In Flow
       nullable: false
       properties:
         description:
@@ -15763,8 +15922,8 @@ components:
       example:
         firstName: John
         lastName: Doe
-        email: foo@bar.com
         phoneNumber: "+19192654500"
+        email: foo@bar.com
       nullable: false
       properties:
         firstName:
@@ -15861,41 +16020,41 @@ components:
       description: A list of all webhook subscriptions registered for this account
         ID for this particular feature (unpaginated).
       example:
+        data:
+        - accountId: "1234567"
+          createdDate: 2023-05-15T13:56:39.965Z
+          modifiedDate: 2023-05-15T13:56:39.965Z
+          callbackUrl: https://www.example.com/path/to/resource
+          id: 7hICGStfAfeGxEq3N0lQwO
+          type: TOLLFREE_VERIFICATION_STATUS
+          basicAuthentication:
+            password: password
+            username: username
+        - accountId: "1234567"
+          createdDate: 2023-05-15T13:56:39.965Z
+          modifiedDate: 2023-05-15T13:56:39.965Z
+          callbackUrl: https://www.example.com/path/to/resource
+          id: 7hICGStfAfeGxEq3N0lQwO
+          type: TOLLFREE_VERIFICATION_STATUS
+          basicAuthentication:
+            password: password
+            username: username
         links:
-          first: first
           next: next
           previous: previous
           last: last
+          first: first
         errors:
         - code: 0
-          description: description
           telephoneNumbers:
           - telephoneNumber: telephoneNumber
           - telephoneNumber: telephoneNumber
+          description: description
         - code: 0
-          description: description
           telephoneNumbers:
           - telephoneNumber: telephoneNumber
           - telephoneNumber: telephoneNumber
-        data:
-        - id: 7hICGStfAfeGxEq3N0lQwO
-          accountId: "1234567"
-          callbackUrl: https://www.example.com/path/to/resource
-          type: TOLLFREE_VERIFICATION_STATUS
-          basicAuthentication:
-            username: username
-            password: password
-          createdDate: 2023-05-15T13:56:39.965Z
-          modifiedDate: 2023-05-15T13:56:39.965Z
-        - id: 7hICGStfAfeGxEq3N0lQwO
-          accountId: "1234567"
-          callbackUrl: https://www.example.com/path/to/resource
-          type: TOLLFREE_VERIFICATION_STATUS
-          basicAuthentication:
-            username: username
-            password: password
-          createdDate: 2023-05-15T13:56:39.965Z
-          modifiedDate: 2023-05-15T13:56:39.965Z
+          description: description
       properties:
         links:
           $ref: "#/components/schemas/linksObject"
@@ -15912,10 +16071,10 @@ components:
       type: object
     linksObject:
       example:
-        first: first
         next: next
         previous: previous
         last: last
+        first: first
       properties:
         first:
           description: The first (or only) page of results matching the query.
@@ -15936,10 +16095,10 @@ components:
     webhookSubscriptionError:
       example:
         code: 0
-        description: description
         telephoneNumbers:
         - telephoneNumber: telephoneNumber
         - telephoneNumber: telephoneNumber
+        description: description
       properties:
         code:
           type: integer
@@ -15968,15 +16127,15 @@ components:
       description: Information about a webhook that Bandwidth should send upon the
         completion of event customer has subscribed to.
       example:
-        id: 7hICGStfAfeGxEq3N0lQwO
         accountId: "1234567"
-        callbackUrl: https://www.example.com/path/to/resource
-        type: TOLLFREE_VERIFICATION_STATUS
-        basicAuthentication:
-          username: username
-          password: password
         createdDate: 2023-05-15T13:56:39.965Z
         modifiedDate: 2023-05-15T13:56:39.965Z
+        callbackUrl: https://www.example.com/path/to/resource
+        id: 7hICGStfAfeGxEq3N0lQwO
+        type: TOLLFREE_VERIFICATION_STATUS
+        basicAuthentication:
+          password: password
+          username: username
       properties:
         id:
           example: 7hICGStfAfeGxEq3N0lQwO
@@ -16028,8 +16187,8 @@ components:
     tfvError:
       description: A generic error object.
       example:
-        type: Error Type
         description: Error Message
+        type: Error Type
         errors:
           field: error message
       properties:
@@ -16049,11 +16208,14 @@ components:
       type: object
     tfvStatus:
       example:
-        phoneNumber: "+18005555555"
-        status: VERIFIED
-        internalTicketNumber: acde070d-8c4c-4f0d-9d8a-162843c10333
+        blockedReason: Toll-free number was used to send spam messages
+        resubmitAllowed: true
+        createdDateTime: 2021-06-08T06:45:13Z
         declineReasonDescription: Invalid Information - Can't Validate URL - Website
           is not accessible / not available
+        internalTicketNumber: acde070d-8c4c-4f0d-9d8a-162843c10333
+        phoneNumber: "+18005555555"
+        blocked: true
         denialStatusCode: 511
         additionalDenialReasons:
         - statusCode: 512
@@ -16062,45 +16224,42 @@ components:
         - statusCode: 513
           reason: Reason B
           resubmitAllowed: true
-        resubmitAllowed: true
-        createdDateTime: 2021-06-08T06:45:13Z
         modifiedDateTime: 2021-06-08T06:45:13Z
         submission:
-          businessAddress:
-            name: Bandwidth Inc.
-            addr1: 2230 Bandmate Way
-            addr2: 2230 Bandmate Way
-            city: Raleigh
-            state: NC
-            zip: "27606"
-            url: https://www.example.com/path/to/resource
+          additionalInformation: Any additional information
+          termsAndConditionsUrl: http://your-company.com/termsAndConditions
+          businessDba: Another Company Name Inc.
           businessContact:
             firstName: John
             lastName: Doe
-            email: foo@bar.com
             phoneNumber: "+19192654500"
+            email: foo@bar.com
           messageVolume: 10000
-          useCase: 2FA
-          useCaseSummary: Text summarizing the use case for the toll-free number
-          productionMessageContent: Production message content
+          businessEntityType: PRIVATE_PROFIT
+          businessRegistrationType: EIN
+          privacyPolicyUrl: http://your-company.com/privacyPolicy
           optInWorkflow:
-            description: Opt In Flow
             imageUrls:
             - https://www.example.com/path/to/resource
             - https://www.example.com/path/to/resource
             confirmationResponse: Thank you for opting in!
-          additionalInformation: Any additional information
+            description: Opt In Flow
+          useCase: 2FA
           isvReseller: Test ISV
-          privacyPolicyUrl: http://your-company.com/privacyPolicy
-          termsAndConditionsUrl: http://your-company.com/termsAndConditions
-          businessDba: Another Company Name Inc.
           businessRegistrationNumber: 12-3456789
-          businessRegistrationType: EIN
+          productionMessageContent: Production message content
           businessRegistrationIssuingCountry: USA
-          businessEntityType: PRIVATE_PROFIT
-        blocked: true
-        blockedReason: Toll-free number was used to send spam messages
+          businessAddress:
+            zip: "27606"
+            addr2: 2230 Bandmate Way
+            addr1: 2230 Bandmate Way
+            city: Raleigh
+            name: Bandwidth Inc.
+            state: NC
+            url: https://www.example.com/path/to/resource
+          useCaseSummary: Text summarizing the use case for the toll-free number
         cvToken: cv.user123|sess456|mno|tfree|read_write|X7yZ9aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789aBcDeFgHiJkLmNoPqRsTuVw
+        status: VERIFIED
       properties:
         phoneNumber:
           description: Toll-free telephone number in E.164 format.
@@ -16183,38 +16342,38 @@ components:
       type: object
     tfvSubmissionInfo:
       example:
-        businessAddress:
-          name: Bandwidth Inc.
-          addr1: 2230 Bandmate Way
-          addr2: 2230 Bandmate Way
-          city: Raleigh
-          state: NC
-          zip: "27606"
-          url: https://www.example.com/path/to/resource
+        additionalInformation: Any additional information
+        termsAndConditionsUrl: http://your-company.com/termsAndConditions
+        businessDba: Another Company Name Inc.
         businessContact:
           firstName: John
           lastName: Doe
-          email: foo@bar.com
           phoneNumber: "+19192654500"
+          email: foo@bar.com
         messageVolume: 10000
-        useCase: 2FA
-        useCaseSummary: Text summarizing the use case for the toll-free number
-        productionMessageContent: Production message content
+        businessEntityType: PRIVATE_PROFIT
+        businessRegistrationType: EIN
+        privacyPolicyUrl: http://your-company.com/privacyPolicy
         optInWorkflow:
-          description: Opt In Flow
           imageUrls:
           - https://www.example.com/path/to/resource
           - https://www.example.com/path/to/resource
           confirmationResponse: Thank you for opting in!
-        additionalInformation: Any additional information
+          description: Opt In Flow
+        useCase: 2FA
         isvReseller: Test ISV
-        privacyPolicyUrl: http://your-company.com/privacyPolicy
-        termsAndConditionsUrl: http://your-company.com/termsAndConditions
-        businessDba: Another Company Name Inc.
         businessRegistrationNumber: 12-3456789
-        businessRegistrationType: EIN
+        productionMessageContent: Production message content
         businessRegistrationIssuingCountry: USA
-        businessEntityType: PRIVATE_PROFIT
+        businessAddress:
+          zip: "27606"
+          addr2: 2230 Bandmate Way
+          addr1: 2230 Bandmate Way
+          city: Raleigh
+          name: Bandwidth Inc.
+          state: NC
+          url: https://www.example.com/path/to/resource
+        useCaseSummary: Text summarizing the use case for the toll-free number
       properties:
         businessAddress:
           $ref: "#/components/schemas/address"
@@ -16416,10 +16575,10 @@ components:
       type: string
     device:
       example:
+        creationTimestamp: 2021-01-01T00:00:00Z
         deviceId: d-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         deviceName: David's iPhone
         status: CONNECTED
-        creationTimestamp: 2021-01-01T00:00:00Z
       properties:
         deviceId:
           description: The unique ID of the device.
@@ -16445,11 +16604,11 @@ components:
     endpoints:
       example:
         endpointId: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-        type: WEBRTC
-        status: CONNECTED
         creationTimestamp: 2021-01-01T00:00:00Z
         expirationTimestamp: 2021-01-02T00:00:00Z
         tag: my-tag
+        type: WEBRTC
+        status: CONNECTED
       properties:
         endpointId:
           description: The unique ID of the endpoint.
@@ -16492,21 +16651,21 @@ components:
             type: array
         type: object
       example:
+        devices:
+        - creationTimestamp: 2021-01-01T00:00:00Z
+          deviceId: d-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+          deviceName: David's iPhone
+          status: CONNECTED
+        - creationTimestamp: 2021-01-01T00:00:00Z
+          deviceId: d-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+          deviceName: David's iPhone
+          status: CONNECTED
         endpointId: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-        type: WEBRTC
-        status: CONNECTED
         creationTimestamp: 2021-01-01T00:00:00Z
         expirationTimestamp: 2021-01-02T00:00:00Z
         tag: my-tag
-        devices:
-        - deviceId: d-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-          deviceName: David's iPhone
-          status: CONNECTED
-          creationTimestamp: 2021-01-01T00:00:00Z
-        - deviceId: d-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-          deviceName: David's iPhone
-          status: CONNECTED
-          creationTimestamp: 2021-01-01T00:00:00Z
+        type: WEBRTC
+        status: CONNECTED
       type: object
     createWebRtcConnectionRequest:
       allOf:
@@ -16552,21 +16711,21 @@ components:
         - token
         type: object
       example:
+        devices:
+        - creationTimestamp: 2021-01-01T00:00:00Z
+          deviceId: d-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+          deviceName: David's iPhone
+          status: CONNECTED
+        - creationTimestamp: 2021-01-01T00:00:00Z
+          deviceId: d-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+          deviceName: David's iPhone
+          status: CONNECTED
         endpointId: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-        type: WEBRTC
-        status: CONNECTED
         creationTimestamp: 2021-01-01T00:00:00Z
         expirationTimestamp: 2021-01-02T00:00:00Z
         tag: my-tag
-        devices:
-        - deviceId: d-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-          deviceName: David's iPhone
-          status: CONNECTED
-          creationTimestamp: 2021-01-01T00:00:00Z
-        - deviceId: d-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-          deviceName: David's iPhone
-          status: CONNECTED
-          creationTimestamp: 2021-01-01T00:00:00Z
+        type: WEBRTC
+        status: CONNECTED
         token: xxxxx.yyyyy.zzzzz
     endpointEventTypeEnum:
       enum:
@@ -16593,9 +16752,9 @@ components:
       description: An event that occurred on an endpoint.
     brtcLink:
       example:
-        href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-        rel: self
         method: GET
+        rel: self
+        href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
       properties:
         href:
           description: The full URL of the link.
@@ -16612,10 +16771,10 @@ components:
       type: object
     page:
       example:
+        pageNumber: 0
+        totalPages: 10
         pageSize: 10
         totalElements: 100
-        totalPages: 10
-        pageNumber: 0
       properties:
         pageSize:
           description: The number of items per page.
@@ -16642,15 +16801,15 @@ components:
       type: object
     brtcError:
       example:
-        id: 59512d87-7a92-4040-8e4a-78fb772019b9
-        type: resource.not_found
-        description: The requested resource was not found.
         code: "404"
+        description: The requested resource was not found.
+        id: 59512d87-7a92-4040-8e4a-78fb772019b9
         source:
-          parameter: accountId
-          field: accountId
-          header: Authorization
           reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+          field: accountId
+          parameter: accountId
+          header: Authorization
+        type: resource.not_found
       properties:
         id:
           description: A unique identifier for the error.
@@ -16677,10 +16836,10 @@ components:
       type: object
     brtcErrorSource:
       example:
-        parameter: accountId
-        field: accountId
-        header: Authorization
         reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+        field: accountId
+        parameter: accountId
+        header: Authorization
       properties:
         parameter:
           description: The URI parameter that caused the error.
@@ -16702,50 +16861,50 @@ components:
       type: object
     listEndpointsResponse:
       example:
-        links:
-        - href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-          rel: self
-          method: GET
-        - href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-          rel: self
-          method: GET
-        page:
-          pageSize: 10
-          totalElements: 100
-          totalPages: 10
-          pageNumber: 0
         data:
         - endpointId: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-          type: WEBRTC
-          status: CONNECTED
           creationTimestamp: 2021-01-01T00:00:00Z
           expirationTimestamp: 2021-01-02T00:00:00Z
           tag: my-tag
+          type: WEBRTC
+          status: CONNECTED
         - endpointId: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-          type: WEBRTC
-          status: CONNECTED
           creationTimestamp: 2021-01-01T00:00:00Z
           expirationTimestamp: 2021-01-02T00:00:00Z
           tag: my-tag
+          type: WEBRTC
+          status: CONNECTED
+        links:
+        - method: GET
+          rel: self
+          href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+        - method: GET
+          rel: self
+          href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+        page:
+          pageNumber: 0
+          totalPages: 10
+          pageSize: 10
+          totalElements: 100
         errors:
-        - id: 59512d87-7a92-4040-8e4a-78fb772019b9
-          type: resource.not_found
+        - code: "404"
           description: The requested resource was not found.
-          code: "404"
+          id: 59512d87-7a92-4040-8e4a-78fb772019b9
           source:
-            parameter: accountId
-            field: accountId
-            header: Authorization
             reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-        - id: 59512d87-7a92-4040-8e4a-78fb772019b9
+            field: accountId
+            parameter: accountId
+            header: Authorization
           type: resource.not_found
+        - code: "404"
           description: The requested resource was not found.
-          code: "404"
+          id: 59512d87-7a92-4040-8e4a-78fb772019b9
           source:
-            parameter: accountId
-            field: accountId
-            header: Authorization
             reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+            field: accountId
+            parameter: accountId
+            header: Authorization
+          type: resource.not_found
       properties:
         links:
           items:
@@ -16768,48 +16927,48 @@ components:
       type: object
     endpointResponse:
       example:
-        links:
-        - href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-          rel: self
-          method: GET
-        - href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-          rel: self
-          method: GET
         data:
+          devices:
+          - creationTimestamp: 2021-01-01T00:00:00Z
+            deviceId: d-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+            deviceName: David's iPhone
+            status: CONNECTED
+          - creationTimestamp: 2021-01-01T00:00:00Z
+            deviceId: d-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+            deviceName: David's iPhone
+            status: CONNECTED
           endpointId: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-          type: WEBRTC
-          status: CONNECTED
           creationTimestamp: 2021-01-01T00:00:00Z
           expirationTimestamp: 2021-01-02T00:00:00Z
           tag: my-tag
-          devices:
-          - deviceId: d-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-            deviceName: David's iPhone
-            status: CONNECTED
-            creationTimestamp: 2021-01-01T00:00:00Z
-          - deviceId: d-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-            deviceName: David's iPhone
-            status: CONNECTED
-            creationTimestamp: 2021-01-01T00:00:00Z
+          type: WEBRTC
+          status: CONNECTED
+        links:
+        - method: GET
+          rel: self
+          href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+        - method: GET
+          rel: self
+          href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         errors:
-        - id: 59512d87-7a92-4040-8e4a-78fb772019b9
-          type: resource.not_found
+        - code: "404"
           description: The requested resource was not found.
-          code: "404"
+          id: 59512d87-7a92-4040-8e4a-78fb772019b9
           source:
-            parameter: accountId
-            field: accountId
-            header: Authorization
             reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-        - id: 59512d87-7a92-4040-8e4a-78fb772019b9
+            field: accountId
+            parameter: accountId
+            header: Authorization
           type: resource.not_found
+        - code: "404"
           description: The requested resource was not found.
-          code: "404"
+          id: 59512d87-7a92-4040-8e4a-78fb772019b9
           source:
-            parameter: accountId
-            field: accountId
-            header: Authorization
             reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+            field: accountId
+            parameter: accountId
+            header: Authorization
+          type: resource.not_found
       properties:
         links:
           items:
@@ -16828,49 +16987,49 @@ components:
       type: object
     createEndpointResponse:
       example:
-        links:
-        - href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-          rel: self
-          method: GET
-        - href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-          rel: self
-          method: GET
         data:
+          devices:
+          - creationTimestamp: 2021-01-01T00:00:00Z
+            deviceId: d-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+            deviceName: David's iPhone
+            status: CONNECTED
+          - creationTimestamp: 2021-01-01T00:00:00Z
+            deviceId: d-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+            deviceName: David's iPhone
+            status: CONNECTED
           endpointId: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-          type: WEBRTC
-          status: CONNECTED
           creationTimestamp: 2021-01-01T00:00:00Z
           expirationTimestamp: 2021-01-02T00:00:00Z
           tag: my-tag
-          devices:
-          - deviceId: d-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-            deviceName: David's iPhone
-            status: CONNECTED
-            creationTimestamp: 2021-01-01T00:00:00Z
-          - deviceId: d-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-            deviceName: David's iPhone
-            status: CONNECTED
-            creationTimestamp: 2021-01-01T00:00:00Z
+          type: WEBRTC
+          status: CONNECTED
           token: xxxxx.yyyyy.zzzzz
+        links:
+        - method: GET
+          rel: self
+          href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+        - method: GET
+          rel: self
+          href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         errors:
-        - id: 59512d87-7a92-4040-8e4a-78fb772019b9
-          type: resource.not_found
+        - code: "404"
           description: The requested resource was not found.
-          code: "404"
+          id: 59512d87-7a92-4040-8e4a-78fb772019b9
           source:
-            parameter: accountId
-            field: accountId
-            header: Authorization
             reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-        - id: 59512d87-7a92-4040-8e4a-78fb772019b9
+            field: accountId
+            parameter: accountId
+            header: Authorization
           type: resource.not_found
+        - code: "404"
           description: The requested resource was not found.
-          code: "404"
+          id: 59512d87-7a92-4040-8e4a-78fb772019b9
           source:
-            parameter: accountId
-            field: accountId
-            header: Authorization
             reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+            field: accountId
+            parameter: accountId
+            header: Authorization
+          type: resource.not_found
       properties:
         links:
           items:
@@ -16889,33 +17048,33 @@ components:
       type: object
     brtcErrorResponse:
       example:
-        links:
-        - href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-          rel: self
-          method: GET
-        - href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-          rel: self
-          method: GET
         data: "{}"
+        links:
+        - method: GET
+          rel: self
+          href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+        - method: GET
+          rel: self
+          href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
         errors:
-        - id: 59512d87-7a92-4040-8e4a-78fb772019b9
-          type: resource.not_found
+        - code: "404"
           description: The requested resource was not found.
-          code: "404"
+          id: 59512d87-7a92-4040-8e4a-78fb772019b9
           source:
-            parameter: accountId
-            field: accountId
-            header: Authorization
             reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
-        - id: 59512d87-7a92-4040-8e4a-78fb772019b9
+            field: accountId
+            parameter: accountId
+            header: Authorization
           type: resource.not_found
+        - code: "404"
           description: The requested resource was not found.
-          code: "404"
+          id: 59512d87-7a92-4040-8e4a-78fb772019b9
           source:
-            parameter: accountId
-            field: accountId
-            header: Authorization
             reference: e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
+            field: accountId
+            parameter: accountId
+            header: Authorization
+          type: resource.not_found
       properties:
         links:
           items:
@@ -16951,11 +17110,11 @@ components:
       - $ref: "#/components/schemas/rbmMessageContentRichCard"
     lookupErrorSchema_meta:
       example:
+        code: 1001
+        message: Invalid TNs
         phoneNumbers:
         - "+13992077164"
         - "+19196104424"
-        message: Invalid TNs
-        code: 1001
       properties:
         phoneNumbers:
           example:
@@ -16978,32 +17137,32 @@ components:
       description: The phone number lookup response data
       example:
         requestId: 004223a0-8b17-41b1-bf81-20732adf5590
-        status: COMPLETE
         results:
-        - phoneNumber: "+10072904498"
-          lineType: MOBILE
+        - deactivationEvent: DEACTIVATED
           messagingProvider: Verizon Wireless
-          voiceProvider: Verizon Wireless
-          countryCodeA3: USA
-          deactivationReporter: deactivationReporter
           deactivationDate: 2025-06-20 18:35
-          deactivationEvent: DEACTIVATED
           latestMessageDeliveryStatus: ACTIVE
+          phoneNumber: "+10072904498"
+          countryCodeA3: USA
           initialMessageDeliveryStatusDate: 2025-06-20
-          latestMessageDeliveryStatusDate: 2025-06-21
           rcsEnabled: true
-        - phoneNumber: "+10072904498"
           lineType: MOBILE
-          messagingProvider: Verizon Wireless
-          voiceProvider: Verizon Wireless
-          countryCodeA3: USA
           deactivationReporter: deactivationReporter
-          deactivationDate: 2025-06-20 18:35
-          deactivationEvent: DEACTIVATED
-          latestMessageDeliveryStatus: ACTIVE
-          initialMessageDeliveryStatusDate: 2025-06-20
+          voiceProvider: Verizon Wireless
           latestMessageDeliveryStatusDate: 2025-06-21
+        - deactivationEvent: DEACTIVATED
+          messagingProvider: Verizon Wireless
+          deactivationDate: 2025-06-20 18:35
+          latestMessageDeliveryStatus: ACTIVE
+          phoneNumber: "+10072904498"
+          countryCodeA3: USA
+          initialMessageDeliveryStatusDate: 2025-06-20
           rcsEnabled: true
+          lineType: MOBILE
+          deactivationReporter: deactivationReporter
+          voiceProvider: Verizon Wireless
+          latestMessageDeliveryStatusDate: 2025-06-21
+        status: COMPLETE
       properties:
         requestId:
           description: The phone number lookup request ID from Bandwidth.
@@ -17037,32 +17196,32 @@ components:
       description: The phone number lookup response data
       example:
         requestId: 004223a0-8b17-41b1-bf81-20732adf5590
-        status: COMPLETE
         results:
-        - phoneNumber: "+10072904498"
-          lineType: MOBILE
+        - deactivationEvent: DEACTIVATED
           messagingProvider: Verizon Wireless
-          voiceProvider: Verizon Wireless
-          countryCodeA3: USA
-          deactivationReporter: deactivationReporter
           deactivationDate: 2025-06-20 18:35
-          deactivationEvent: DEACTIVATED
           latestMessageDeliveryStatus: ACTIVE
+          phoneNumber: "+10072904498"
+          countryCodeA3: USA
           initialMessageDeliveryStatusDate: 2025-06-20
-          latestMessageDeliveryStatusDate: 2025-06-21
           rcsEnabled: true
-        - phoneNumber: "+10072904498"
           lineType: MOBILE
-          messagingProvider: Verizon Wireless
-          voiceProvider: Verizon Wireless
-          countryCodeA3: USA
           deactivationReporter: deactivationReporter
-          deactivationDate: 2025-06-20 18:35
-          deactivationEvent: DEACTIVATED
-          latestMessageDeliveryStatus: ACTIVE
-          initialMessageDeliveryStatusDate: 2025-06-20
+          voiceProvider: Verizon Wireless
           latestMessageDeliveryStatusDate: 2025-06-21
+        - deactivationEvent: DEACTIVATED
+          messagingProvider: Verizon Wireless
+          deactivationDate: 2025-06-20 18:35
+          latestMessageDeliveryStatus: ACTIVE
+          phoneNumber: "+10072904498"
+          countryCodeA3: USA
+          initialMessageDeliveryStatusDate: 2025-06-20
           rcsEnabled: true
+          lineType: MOBILE
+          deactivationReporter: deactivationReporter
+          voiceProvider: Verizon Wireless
+          latestMessageDeliveryStatusDate: 2025-06-21
+        status: COMPLETE
       properties:
         requestId:
           description: The phone number lookup request ID from Bandwidth.
@@ -17082,8 +17241,8 @@ components:
       description: "Basic authentication credentials are not required, but if present,\
         \ both username and password must be provided."
       example:
-        username: username
         password: password
+        username: username
       properties:
         username:
           maxLength: 100
