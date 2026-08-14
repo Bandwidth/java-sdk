@@ -14,7 +14,6 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import java.util.Locale;
 import com.bandwidth.sdk.model.MultiChannelActionCalendarEvent;
 import com.bandwidth.sdk.model.RbmActionBase;
 import com.bandwidth.sdk.model.RbmActionDial;
@@ -68,7 +67,7 @@ import com.google.gson.JsonParseException;
 
 import com.bandwidth.sdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class MultiChannelAction extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(MultiChannelAction.class.getName());
 

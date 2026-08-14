@@ -14,7 +14,6 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
-import java.util.Locale;
 import com.bandwidth.sdk.model.AdditionalDenialReason;
 import com.bandwidth.sdk.model.TfvStatusEnum;
 import com.bandwidth.sdk.model.TfvSubmissionInfo;
@@ -50,14 +49,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Locale;
 
 import com.bandwidth.sdk.JSON;
 
 /**
  * TfvStatus
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class TfvStatus {
   public static final String SERIALIZED_NAME_PHONE_NUMBER = "phoneNumber";
   @SerializedName(SERIALIZED_NAME_PHONE_NUMBER)
@@ -495,10 +493,7 @@ public class TfvStatus {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
@@ -522,29 +517,29 @@ public class TfvStatus {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!TfvStatus.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in TfvStatus is not found in the empty JSON string", TfvStatus.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in TfvStatus is not found in the empty JSON string", TfvStatus.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("phoneNumber") != null && !jsonObj.get("phoneNumber").isJsonNull()) && !jsonObj.get("phoneNumber").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `phoneNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phoneNumber").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `phoneNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phoneNumber").toString()));
       }
       // validate the optional field `status`
       if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
         TfvStatusEnum.validateJsonElement(jsonObj.get("status"));
       }
       if ((jsonObj.get("internalTicketNumber") != null && !jsonObj.get("internalTicketNumber").isJsonNull()) && !jsonObj.get("internalTicketNumber").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `internalTicketNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("internalTicketNumber").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `internalTicketNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("internalTicketNumber").toString()));
       }
       if ((jsonObj.get("declineReasonDescription") != null && !jsonObj.get("declineReasonDescription").isJsonNull()) && !jsonObj.get("declineReasonDescription").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `declineReasonDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("declineReasonDescription").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `declineReasonDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("declineReasonDescription").toString()));
       }
       if (jsonObj.get("additionalDenialReasons") != null && !jsonObj.get("additionalDenialReasons").isJsonNull()) {
         JsonArray jsonArrayadditionalDenialReasons = jsonObj.getAsJsonArray("additionalDenialReasons");
         if (jsonArrayadditionalDenialReasons != null) {
           // ensure the json data is an array
           if (!jsonObj.get("additionalDenialReasons").isJsonArray()) {
-            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `additionalDenialReasons` to be an array in the JSON string but got `%s`", jsonObj.get("additionalDenialReasons").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `additionalDenialReasons` to be an array in the JSON string but got `%s`", jsonObj.get("additionalDenialReasons").toString()));
           }
 
           // validate the optional field `additionalDenialReasons` (array)
@@ -558,10 +553,10 @@ public class TfvStatus {
         TfvSubmissionInfo.validateJsonElement(jsonObj.get("submission"));
       }
       if ((jsonObj.get("blockedReason") != null && !jsonObj.get("blockedReason").isJsonNull()) && !jsonObj.get("blockedReason").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `blockedReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("blockedReason").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `blockedReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("blockedReason").toString()));
       }
       if ((jsonObj.get("cvToken") != null && !jsonObj.get("cvToken").isJsonNull()) && !jsonObj.get("cvToken").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `cvToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cvToken").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `cvToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cvToken").toString()));
       }
   }
 
@@ -622,7 +617,7 @@ public class TfvStatus {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object
