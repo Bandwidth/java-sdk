@@ -1,5 +1,6 @@
 package com.bandwidth.sdk.unit.api;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import okhttp3.OkHttpClient;
@@ -12,6 +13,7 @@ import com.bandwidth.sdk.auth.RetryingOAuth;
 import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.hasKey;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -63,6 +65,38 @@ public class ApiClientTest {
         String customBasePath = "https://api.example.com";
         client.setBasePath(customBasePath);
         assertThat(customBasePath, equalTo(client.getBasePath()));
+    }
+
+    @Test
+    public void testSetTokenUrl() {
+        String customTokenUrl = "https://api.example.com/oauth2/token";
+        ApiClient client = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+        RetryingOAuth oauth = (RetryingOAuth) client.getAuthentication("OAuth2");
+
+        assertThat(oauth.getTokenUrl(), notNullValue());
+
+        client.setAccessToken("stale-access-token");
+        client.setTokenUrl(customTokenUrl);
+
+        assertThat(oauth.getTokenUrl(), equalTo(customTokenUrl));
+        assertThat(oauth.getAccessToken(), nullValue());
+    }
+
+    @Test
+    public void testSetTokenUrlWithInvalidUrl() {
+        ApiClient client = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> client.setTokenUrl("/oauth2/token"));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> client.setTokenUrl(null));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> client.setTokenUrl(""));
+    }
+
+    @Test
+    public void testSetTokenUrlWithoutOAuthConfigured() {
+        ApiClient client = new ApiClient();
+
+        Assertions.assertThrows(RuntimeException.class,
+                () -> client.setTokenUrl("https://api.example.com/oauth2/token"));
     }
 
     @Test
