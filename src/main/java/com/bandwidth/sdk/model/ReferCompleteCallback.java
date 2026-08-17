@@ -15,6 +15,7 @@ package com.bandwidth.sdk.model;
 
 import java.util.Objects;
 import com.bandwidth.sdk.model.CallDirectionEnum;
+import com.bandwidth.sdk.model.ReferCallStatusEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -50,10 +51,10 @@ import java.util.Set;
 import com.bandwidth.sdk.JSON;
 
 /**
- * The Redirect event is fired when a &lt;Redirect&gt; verb is executed. Its purpose is to get the next set of verbs from the calling application.
+ * This event is sent to the referCompleteUrl of a call&#39;s &lt;Refer&gt; verb when the SIP REFER flow completes. On success, the call has been torn down and the BXML returned from this callback is ignored. On failure, the call remains active and the BXML returned from this callback is executed on the call.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
-public class RedirectCallback {
+public class ReferCompleteCallback {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
   @javax.annotation.Nullable
@@ -99,16 +100,6 @@ public class RedirectCallback {
   @javax.annotation.Nullable
   private URI callUrl;
 
-  public static final String SERIALIZED_NAME_PARENT_CALL_ID = "parentCallId";
-  @SerializedName(SERIALIZED_NAME_PARENT_CALL_ID)
-  @javax.annotation.Nullable
-  private String parentCallId;
-
-  public static final String SERIALIZED_NAME_ENQUEUED_TIME = "enqueuedTime";
-  @SerializedName(SERIALIZED_NAME_ENQUEUED_TIME)
-  @javax.annotation.Nullable
-  private OffsetDateTime enqueuedTime;
-
   public static final String SERIALIZED_NAME_START_TIME = "startTime";
   @SerializedName(SERIALIZED_NAME_START_TIME)
   @javax.annotation.Nullable
@@ -124,20 +115,25 @@ public class RedirectCallback {
   @javax.annotation.Nullable
   private String tag;
 
-  public static final String SERIALIZED_NAME_TRANSFER_CALLER_ID = "transferCallerId";
-  @SerializedName(SERIALIZED_NAME_TRANSFER_CALLER_ID)
+  public static final String SERIALIZED_NAME_REFER_CALL_STATUS = "referCallStatus";
+  @SerializedName(SERIALIZED_NAME_REFER_CALL_STATUS)
   @javax.annotation.Nullable
-  private String transferCallerId;
+  private ReferCallStatusEnum referCallStatus;
 
-  public static final String SERIALIZED_NAME_TRANSFER_TO = "transferTo";
-  @SerializedName(SERIALIZED_NAME_TRANSFER_TO)
+  public static final String SERIALIZED_NAME_REFER_SIP_RESPONSE_CODE = "referSipResponseCode";
+  @SerializedName(SERIALIZED_NAME_REFER_SIP_RESPONSE_CODE)
   @javax.annotation.Nullable
-  private String transferTo;
+  private Integer referSipResponseCode;
 
-  public RedirectCallback() {
+  public static final String SERIALIZED_NAME_NOTIFY_SIP_RESPONSE_CODE = "notifySipResponseCode";
+  @SerializedName(SERIALIZED_NAME_NOTIFY_SIP_RESPONSE_CODE)
+  @javax.annotation.Nullable
+  private Integer notifySipResponseCode;
+
+  public ReferCompleteCallback() {
   }
 
-  public RedirectCallback eventType(@javax.annotation.Nullable String eventType) {
+  public ReferCompleteCallback eventType(@javax.annotation.Nullable String eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -156,7 +152,7 @@ public class RedirectCallback {
   }
 
 
-  public RedirectCallback eventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
+  public ReferCompleteCallback eventTime(@javax.annotation.Nullable OffsetDateTime eventTime) {
     this.eventTime = eventTime;
     return this;
   }
@@ -175,7 +171,7 @@ public class RedirectCallback {
   }
 
 
-  public RedirectCallback accountId(@javax.annotation.Nullable String accountId) {
+  public ReferCompleteCallback accountId(@javax.annotation.Nullable String accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -194,7 +190,7 @@ public class RedirectCallback {
   }
 
 
-  public RedirectCallback applicationId(@javax.annotation.Nullable String applicationId) {
+  public ReferCompleteCallback applicationId(@javax.annotation.Nullable String applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -213,7 +209,7 @@ public class RedirectCallback {
   }
 
 
-  public RedirectCallback from(@javax.annotation.Nullable String from) {
+  public ReferCompleteCallback from(@javax.annotation.Nullable String from) {
     this.from = from;
     return this;
   }
@@ -232,7 +228,7 @@ public class RedirectCallback {
   }
 
 
-  public RedirectCallback to(@javax.annotation.Nullable String to) {
+  public ReferCompleteCallback to(@javax.annotation.Nullable String to) {
     this.to = to;
     return this;
   }
@@ -251,7 +247,7 @@ public class RedirectCallback {
   }
 
 
-  public RedirectCallback direction(@javax.annotation.Nullable CallDirectionEnum direction) {
+  public ReferCompleteCallback direction(@javax.annotation.Nullable CallDirectionEnum direction) {
     this.direction = direction;
     return this;
   }
@@ -270,7 +266,7 @@ public class RedirectCallback {
   }
 
 
-  public RedirectCallback callId(@javax.annotation.Nullable String callId) {
+  public ReferCompleteCallback callId(@javax.annotation.Nullable String callId) {
     this.callId = callId;
     return this;
   }
@@ -289,7 +285,7 @@ public class RedirectCallback {
   }
 
 
-  public RedirectCallback callUrl(@javax.annotation.Nullable URI callUrl) {
+  public ReferCompleteCallback callUrl(@javax.annotation.Nullable URI callUrl) {
     this.callUrl = callUrl;
     return this;
   }
@@ -308,45 +304,7 @@ public class RedirectCallback {
   }
 
 
-  public RedirectCallback parentCallId(@javax.annotation.Nullable String parentCallId) {
-    this.parentCallId = parentCallId;
-    return this;
-  }
-
-  /**
-   * (optional) If the event is related to the B leg of a &lt;Transfer&gt;, the call id of the original call leg that executed the &lt;Transfer&gt;. Otherwise, this field will not be present.
-   * @return parentCallId
-   */
-  @javax.annotation.Nullable
-  public String getParentCallId() {
-    return parentCallId;
-  }
-
-  public void setParentCallId(@javax.annotation.Nullable String parentCallId) {
-    this.parentCallId = parentCallId;
-  }
-
-
-  public RedirectCallback enqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
-    this.enqueuedTime = enqueuedTime;
-    return this;
-  }
-
-  /**
-   * (optional) If call queueing is enabled and this is an outbound call, time the call was queued, in ISO 8601 format.
-   * @return enqueuedTime
-   */
-  @javax.annotation.Nullable
-  public OffsetDateTime getEnqueuedTime() {
-    return enqueuedTime;
-  }
-
-  public void setEnqueuedTime(@javax.annotation.Nullable OffsetDateTime enqueuedTime) {
-    this.enqueuedTime = enqueuedTime;
-  }
-
-
-  public RedirectCallback startTime(@javax.annotation.Nullable OffsetDateTime startTime) {
+  public ReferCompleteCallback startTime(@javax.annotation.Nullable OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -365,7 +323,7 @@ public class RedirectCallback {
   }
 
 
-  public RedirectCallback answerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
+  public ReferCompleteCallback answerTime(@javax.annotation.Nullable OffsetDateTime answerTime) {
     this.answerTime = answerTime;
     return this;
   }
@@ -384,7 +342,7 @@ public class RedirectCallback {
   }
 
 
-  public RedirectCallback tag(@javax.annotation.Nullable String tag) {
+  public ReferCompleteCallback tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
@@ -403,41 +361,60 @@ public class RedirectCallback {
   }
 
 
-  public RedirectCallback transferCallerId(@javax.annotation.Nullable String transferCallerId) {
-    this.transferCallerId = transferCallerId;
+  public ReferCompleteCallback referCallStatus(@javax.annotation.Nullable ReferCallStatusEnum referCallStatus) {
+    this.referCallStatus = referCallStatus;
     return this;
   }
 
   /**
-   * The phone number used as the from field of the B-leg call, in E.164 format (e.g. +15555555555).
-   * @return transferCallerId
+   * Get referCallStatus
+   * @return referCallStatus
    */
   @javax.annotation.Nullable
-  public String getTransferCallerId() {
-    return transferCallerId;
+  public ReferCallStatusEnum getReferCallStatus() {
+    return referCallStatus;
   }
 
-  public void setTransferCallerId(@javax.annotation.Nullable String transferCallerId) {
-    this.transferCallerId = transferCallerId;
+  public void setReferCallStatus(@javax.annotation.Nullable ReferCallStatusEnum referCallStatus) {
+    this.referCallStatus = referCallStatus;
   }
 
 
-  public RedirectCallback transferTo(@javax.annotation.Nullable String transferTo) {
-    this.transferTo = transferTo;
+  public ReferCompleteCallback referSipResponseCode(@javax.annotation.Nullable Integer referSipResponseCode) {
+    this.referSipResponseCode = referSipResponseCode;
     return this;
   }
 
   /**
-   * The phone number used as the to field of the B-leg call, in E.164 format (e.g. +15555555555).
-   * @return transferTo
+   * (optional) The SIP response code returned for the REFER request itself (e.g. 202, 405, 603). Present when a SIP response was received for the REFER.
+   * @return referSipResponseCode
    */
   @javax.annotation.Nullable
-  public String getTransferTo() {
-    return transferTo;
+  public Integer getReferSipResponseCode() {
+    return referSipResponseCode;
   }
 
-  public void setTransferTo(@javax.annotation.Nullable String transferTo) {
-    this.transferTo = transferTo;
+  public void setReferSipResponseCode(@javax.annotation.Nullable Integer referSipResponseCode) {
+    this.referSipResponseCode = referSipResponseCode;
+  }
+
+
+  public ReferCompleteCallback notifySipResponseCode(@javax.annotation.Nullable Integer notifySipResponseCode) {
+    this.notifySipResponseCode = notifySipResponseCode;
+    return this;
+  }
+
+  /**
+   * (optional) The final SIP response code reported via NOTIFY (message/sipfrag body). Present only when the caller&#39;s endpoint sent a final NOTIFY (e.g. 200, 404, 486, 503). Not present on NOTIFY timeout or when the REFER was rejected before a subscription was established.
+   * @return notifySipResponseCode
+   */
+  @javax.annotation.Nullable
+  public Integer getNotifySipResponseCode() {
+    return notifySipResponseCode;
+  }
+
+  public void setNotifySipResponseCode(@javax.annotation.Nullable Integer notifySipResponseCode) {
+    this.notifySipResponseCode = notifySipResponseCode;
   }
 
   /**
@@ -453,9 +430,9 @@ public class RedirectCallback {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the RedirectCallback instance itself
+   * @return the ReferCompleteCallback instance itself
    */
-  public RedirectCallback putAdditionalProperty(String key, Object value) {
+  public ReferCompleteCallback putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -494,24 +471,23 @@ public class RedirectCallback {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RedirectCallback redirectCallback = (RedirectCallback) o;
-    return Objects.equals(this.eventType, redirectCallback.eventType) &&
-        Objects.equals(this.eventTime, redirectCallback.eventTime) &&
-        Objects.equals(this.accountId, redirectCallback.accountId) &&
-        Objects.equals(this.applicationId, redirectCallback.applicationId) &&
-        Objects.equals(this.from, redirectCallback.from) &&
-        Objects.equals(this.to, redirectCallback.to) &&
-        Objects.equals(this.direction, redirectCallback.direction) &&
-        Objects.equals(this.callId, redirectCallback.callId) &&
-        Objects.equals(this.callUrl, redirectCallback.callUrl) &&
-        Objects.equals(this.parentCallId, redirectCallback.parentCallId) &&
-        Objects.equals(this.enqueuedTime, redirectCallback.enqueuedTime) &&
-        Objects.equals(this.startTime, redirectCallback.startTime) &&
-        Objects.equals(this.answerTime, redirectCallback.answerTime) &&
-        Objects.equals(this.tag, redirectCallback.tag) &&
-        Objects.equals(this.transferCallerId, redirectCallback.transferCallerId) &&
-        Objects.equals(this.transferTo, redirectCallback.transferTo)&&
-        Objects.equals(this.additionalProperties, redirectCallback.additionalProperties);
+    ReferCompleteCallback referCompleteCallback = (ReferCompleteCallback) o;
+    return Objects.equals(this.eventType, referCompleteCallback.eventType) &&
+        Objects.equals(this.eventTime, referCompleteCallback.eventTime) &&
+        Objects.equals(this.accountId, referCompleteCallback.accountId) &&
+        Objects.equals(this.applicationId, referCompleteCallback.applicationId) &&
+        Objects.equals(this.from, referCompleteCallback.from) &&
+        Objects.equals(this.to, referCompleteCallback.to) &&
+        Objects.equals(this.direction, referCompleteCallback.direction) &&
+        Objects.equals(this.callId, referCompleteCallback.callId) &&
+        Objects.equals(this.callUrl, referCompleteCallback.callUrl) &&
+        Objects.equals(this.startTime, referCompleteCallback.startTime) &&
+        Objects.equals(this.answerTime, referCompleteCallback.answerTime) &&
+        Objects.equals(this.tag, referCompleteCallback.tag) &&
+        Objects.equals(this.referCallStatus, referCompleteCallback.referCallStatus) &&
+        Objects.equals(this.referSipResponseCode, referCompleteCallback.referSipResponseCode) &&
+        Objects.equals(this.notifySipResponseCode, referCompleteCallback.notifySipResponseCode)&&
+        Objects.equals(this.additionalProperties, referCompleteCallback.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -520,7 +496,7 @@ public class RedirectCallback {
 
   @Override
   public int hashCode() {
-    return Objects.hash(eventType, eventTime, accountId, applicationId, from, to, direction, callId, callUrl, parentCallId, enqueuedTime, startTime, answerTime, tag, transferCallerId, transferTo, additionalProperties);
+    return Objects.hash(eventType, eventTime, accountId, applicationId, from, to, direction, callId, callUrl, startTime, answerTime, tag, referCallStatus, referSipResponseCode, notifySipResponseCode, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -533,7 +509,7 @@ public class RedirectCallback {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RedirectCallback {\n");
+    sb.append("class ReferCompleteCallback {\n");
     sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
     sb.append("    eventTime: ").append(toIndentedString(eventTime)).append("\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
@@ -543,13 +519,12 @@ public class RedirectCallback {
     sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("    callId: ").append(toIndentedString(callId)).append("\n");
     sb.append("    callUrl: ").append(toIndentedString(callUrl)).append("\n");
-    sb.append("    parentCallId: ").append(toIndentedString(parentCallId)).append("\n");
-    sb.append("    enqueuedTime: ").append(toIndentedString(enqueuedTime)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    answerTime: ").append(toIndentedString(answerTime)).append("\n");
     sb.append("    tag: ").append(toIndentedString(tag)).append("\n");
-    sb.append("    transferCallerId: ").append(toIndentedString(transferCallerId)).append("\n");
-    sb.append("    transferTo: ").append(toIndentedString(transferTo)).append("\n");
+    sb.append("    referCallStatus: ").append(toIndentedString(referCallStatus)).append("\n");
+    sb.append("    referSipResponseCode: ").append(toIndentedString(referSipResponseCode)).append("\n");
+    sb.append("    notifySipResponseCode: ").append(toIndentedString(notifySipResponseCode)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -569,7 +544,7 @@ public class RedirectCallback {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("eventType", "eventTime", "accountId", "applicationId", "from", "to", "direction", "callId", "callUrl", "parentCallId", "enqueuedTime", "startTime", "answerTime", "tag", "transferCallerId", "transferTo"));
+    openapiFields = new HashSet<String>(Arrays.asList("eventType", "eventTime", "accountId", "applicationId", "from", "to", "direction", "callId", "callUrl", "startTime", "answerTime", "tag", "referCallStatus", "referSipResponseCode", "notifySipResponseCode"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -579,12 +554,12 @@ public class RedirectCallback {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to RedirectCallback
+   * @throws IOException if the JSON Element is invalid with respect to ReferCompleteCallback
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!RedirectCallback.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in RedirectCallback is not found in the empty JSON string", RedirectCallback.openapiRequiredFields.toString()));
+        if (!ReferCompleteCallback.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in ReferCompleteCallback is not found in the empty JSON string", ReferCompleteCallback.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -613,17 +588,12 @@ public class RedirectCallback {
       if ((jsonObj.get("callUrl") != null && !jsonObj.get("callUrl").isJsonNull()) && !jsonObj.get("callUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `callUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callUrl").toString()));
       }
-      if ((jsonObj.get("parentCallId") != null && !jsonObj.get("parentCallId").isJsonNull()) && !jsonObj.get("parentCallId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `parentCallId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("parentCallId").toString()));
-      }
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));
       }
-      if ((jsonObj.get("transferCallerId") != null && !jsonObj.get("transferCallerId").isJsonNull()) && !jsonObj.get("transferCallerId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `transferCallerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transferCallerId").toString()));
-      }
-      if ((jsonObj.get("transferTo") != null && !jsonObj.get("transferTo").isJsonNull()) && !jsonObj.get("transferTo").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `transferTo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transferTo").toString()));
+      // validate the optional field `referCallStatus`
+      if (jsonObj.get("referCallStatus") != null && !jsonObj.get("referCallStatus").isJsonNull()) {
+        ReferCallStatusEnum.validateJsonElement(jsonObj.get("referCallStatus"));
       }
   }
 
@@ -631,16 +601,16 @@ public class RedirectCallback {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RedirectCallback.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RedirectCallback' and its subtypes
+       if (!ReferCompleteCallback.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ReferCompleteCallback' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RedirectCallback> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RedirectCallback.class));
+       final TypeAdapter<ReferCompleteCallback> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ReferCompleteCallback.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<RedirectCallback>() {
+       return (TypeAdapter<T>) new TypeAdapter<ReferCompleteCallback>() {
            @Override
-           public void write(JsonWriter out, RedirectCallback value) throws IOException {
+           public void write(JsonWriter out, ReferCompleteCallback value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -668,12 +638,12 @@ public class RedirectCallback {
            }
 
            @Override
-           public RedirectCallback read(JsonReader in) throws IOException {
+           public ReferCompleteCallback read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             RedirectCallback instance = thisAdapter.fromJsonTree(jsonObj);
+             ReferCompleteCallback instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -700,18 +670,18 @@ public class RedirectCallback {
   }
 
   /**
-   * Create an instance of RedirectCallback given an JSON string
+   * Create an instance of ReferCompleteCallback given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of RedirectCallback
-   * @throws IOException if the JSON string is invalid with respect to RedirectCallback
+   * @return An instance of ReferCompleteCallback
+   * @throws IOException if the JSON string is invalid with respect to ReferCompleteCallback
    */
-  public static RedirectCallback fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, RedirectCallback.class);
+  public static ReferCompleteCallback fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ReferCompleteCallback.class);
   }
 
   /**
-   * Convert an instance of RedirectCallback to an JSON string
+   * Convert an instance of ReferCompleteCallback to an JSON string
    *
    * @return JSON string
    */
