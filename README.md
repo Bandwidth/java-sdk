@@ -407,6 +407,22 @@ Authentication schemes defined for the API:
 - **Authorization URL**: 
 - **Scopes**: N/A
 
+<a id="custom-token-url"></a>
+### Custom Token URL
+
+By default, access tokens are requested from the token URL defined by the API. To use a different token endpoint, call `setTokenUrl` on the `ApiClient` before making a request:
+
+```java
+ApiClient client = new ApiClient("YOUR_CLIENT_ID", "YOUR_CLIENT_SECRET", null);
+client.setTokenUrl("https://your-token-endpoint.example.com/oauth2/token");
+```
+
+Pass that client to any API class as usual. Note that:
+
+- The value must be an absolute URL. Anything else throws an `IllegalArgumentException`.
+- Any access token already acquired from the previous token URL is discarded, so the next request acquires a new one from the endpoint you set.
+- The client must have been created with credentials (as above). Calling `setTokenUrl` on a client built without them throws a `RuntimeException`.
+
 
 ## Recommendation
 

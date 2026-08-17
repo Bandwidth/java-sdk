@@ -693,6 +693,26 @@ public class ApiClient {
         throw new RuntimeException("No OAuth2 authentication configured!");
     }
 
+    {{#hasOAuthMethods}}
+    /**
+     * Helper method to set the token URL for the first OAuth2 authentication.
+     * Any access token acquired from the previous token URL is discarded, so the
+     * next request will acquire a new one from the given endpoint.
+     *
+     * @param tokenUrl The token URL. The value must be an absolute URL.
+     * @throws java.lang.IllegalArgumentException If the token URL is not an absolute URL
+     */
+    public void setTokenUrl(String tokenUrl) {
+        for (Authentication auth : authentications.values()) {
+            if (auth instanceof RetryingOAuth) {
+                ((RetryingOAuth) auth).setTokenUrl(tokenUrl);
+                return;
+            }
+        }
+        throw new RuntimeException("No OAuth2 authentication configured!");
+    }
+    {{/hasOAuthMethods}}
+
     /**
      * Helper method to set credentials for AWSV4 Signature
      *
