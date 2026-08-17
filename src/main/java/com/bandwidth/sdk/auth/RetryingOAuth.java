@@ -45,6 +45,10 @@ public class RetryingOAuth extends OAuth implements Interceptor {
     private String clientId;
     private String clientSecret;
 
+    private String tokenUrl;
+    private OAuthFlow flow;
+    private Map<String, String> parameters;
+
     /**
      * @param client An OkHttp client
      * @param tokenRequestBuilder A token request builder
@@ -80,12 +84,10 @@ public class RetryingOAuth extends OAuth implements Interceptor {
         this(OAuthClientRequest.tokenLocation(tokenUrl));
         this.clientId = clientId;
         this.clientSecret = clientSecret;
-        setFlow(flow);
-        if (parameters != null) {
-            for (Map.Entry<String, String> entry : parameters.entrySet()) {
-                tokenRequestBuilder.setParameter(entry.getKey(), entry.getValue());
-            }
-        }
+        this.tokenUrl = tokenUrl;
+        this.flow = flow;
+        this.parameters = parameters;
+        buildTokenRequest();
     }
 
     /**
@@ -109,7 +111,17 @@ public class RetryingOAuth extends OAuth implements Interceptor {
         this(client, OAuthClientRequest.tokenLocation(tokenUrl));
         this.clientId = clientId;
         this.clientSecret = clientSecret;
-        setFlow(flow);
+        this.tokenUrl = tokenUrl;
+        this.flow = flow;
+        this.parameters = parameters;
+        buildTokenRequest();
+    }
+
+    private void buildTokenRequest() {
+        this.tokenRequestBuilder = OAuthClientRequest.tokenLocation(tokenUrl);
+        if (flow != null) {
+            setFlow(flow);
+        }
         if (parameters != null) {
             for (Map.Entry<String, String> entry : parameters.entrySet()) {
                 tokenRequestBuilder.setParameter(entry.getKey(), entry.getValue());
@@ -123,6 +135,7 @@ public class RetryingOAuth extends OAuth implements Interceptor {
      * @param flow The OAuth flow.
      */
     public void setFlow(OAuthFlow flow) {
+        this.flow = flow;
         switch(flow) {
             case ACCESS_CODE:
                 tokenRequestBuilder.setGrantType(GrantType.AUTHORIZATION_CODE);
@@ -229,6 +242,32 @@ public class RetryingOAuth extends OAuth implements Interceptor {
             }
         }
         return getAccessToken() == null || !getAccessToken().equals(requestAccessToken);
+    }
+
+    /**
+     * Gets the token URL used to acquire access tokens for this OAuth2 flow.
+     *
+     * @return The token URL
+     */
+    public String getTokenUrl() {
+        return tokenUrl;
+    }
+
+    /**
+     * Sets the token URL used to acquire access tokens for this OAuth2 flow.
+     * Any access token acquired from the previous token URL is discarded, so the
+     * next request will acquire a new one from the given endpoint.
+     *
+     * @param tokenUrl The token URL. The value must be an absolute URL.
+     * @throws java.lang.IllegalArgumentException If the token URL is not an absolute URL
+     */
+    public synchronized void setTokenUrl(String tokenUrl) {
+        if (tokenUrl == null || "".equals(tokenUrl) || !URI.create(tokenUrl).isAbsolute()) {
+            throw new IllegalArgumentException("OAuth2 token URL must be an absolute URL");
+        }
+        this.tokenUrl = tokenUrl;
+        buildTokenRequest();
+        setAccessToken(null);
     }
 
     /**

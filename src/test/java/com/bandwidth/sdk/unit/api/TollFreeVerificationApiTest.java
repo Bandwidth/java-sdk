@@ -18,9 +18,7 @@ import org.junit.jupiter.api.Test;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiResponse;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.api.TollFreeVerificationApi;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.model.Address;
 import com.bandwidth.sdk.model.BusinessEntityTypeEnum;
 import com.bandwidth.sdk.model.BusinessRegistrationTypeEnum;
@@ -51,9 +49,8 @@ import static org.hamcrest.CoreMatchers.is;
 
 @SuppressWarnings("null")
 public class TollFreeVerificationApiTest {
-    private static ApiClient defaultClient = Configuration.getDefaultApiClient();
-    private static HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private static TollFreeVerificationApi api = new TollFreeVerificationApi(defaultClient);
+    private static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    private static TollFreeVerificationApi api = new TollFreeVerificationApi(oauthClient);
 
     private static WebhookSubscriptionRequestSchema webhookSubscriptionRequestSchema = new WebhookSubscriptionRequestSchema()
             .basicAuthentication(new TfvBasicAuthentication()
@@ -64,8 +61,7 @@ public class TollFreeVerificationApiTest {
 
     @BeforeAll
     public static void setUp() {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
+        oauthClient.setAccessToken("abcd1234");
         api.setCustomBaseUrl("http://127.0.0.1:4010");
     }
 

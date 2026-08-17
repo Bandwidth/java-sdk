@@ -3,9 +3,7 @@ package com.bandwidth.sdk.unit.api;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiResponse;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.api.MediaApi;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.model.Media;
 
 import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
@@ -22,17 +20,15 @@ import org.junit.jupiter.api.Test;
 
 @SuppressWarnings("null")
 public class MediaApiTest {
-    private static ApiClient defaultClient = Configuration.getDefaultApiClient();
-    private static HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private static MediaApi api = new MediaApi(defaultClient);
+    private static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    private static MediaApi api = new MediaApi(oauthClient);
 
     private static File mediaData = new File("src/test/java/com/bandwidth/sdk/fixtures/java_cat.jpeg");
     private static String mediaName = "java_binary_media";
 
     @BeforeAll
     public static void setUp() {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
+        oauthClient.setAccessToken("abcd1234");
         api.setCustomBaseUrl("http://127.0.0.1:4010");
     }
 
