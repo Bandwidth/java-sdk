@@ -7,9 +7,7 @@ import org.mockito.internal.util.collections.Sets;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiResponse;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.api.MessagesApi;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.model.ListMessageDirectionEnum;
 import com.bandwidth.sdk.model.ListMessageItem;
 import com.bandwidth.sdk.model.Message;
@@ -33,9 +31,8 @@ import static org.hamcrest.CoreMatchers.is;
 
 @SuppressWarnings("null")
 public class MessagesApiTest {
-    public static ApiClient defaultClient = Configuration.getDefaultApiClient();
-    public static HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    public static MessagesApi api = new MessagesApi(defaultClient);
+    public static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    public static MessagesApi api = new MessagesApi(oauthClient);
 
     private static String messageText = "Java SDK Test Message";
     private static PriorityEnum messagePriority = PriorityEnum.HIGH;
@@ -43,8 +40,7 @@ public class MessagesApiTest {
 
     @BeforeAll
     public static void setUp() {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
+        oauthClient.setAccessToken("abcd1234");
         api.setCustomBaseUrl("http://127.0.0.1:4010");
     }
 

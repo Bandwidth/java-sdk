@@ -3,9 +3,7 @@ package com.bandwidth.sdk.unit.api;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiResponse;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.api.MultiChannelApi;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.model.CreateMultiChannelMessageResponse;
 import com.bandwidth.sdk.model.MessageDirectionEnum;
 import com.bandwidth.sdk.model.MultiChannelChannelListRequestObject;
@@ -33,14 +31,12 @@ import static org.hamcrest.CoreMatchers.is;
 
 @SuppressWarnings("null")
 public class MultiChannelApiTest {
-    private static ApiClient defaultClient = Configuration.getDefaultApiClient();
-    private static HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private static MultiChannelApi api = new MultiChannelApi(defaultClient);
+    private static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    private static MultiChannelApi api = new MultiChannelApi(oauthClient);
 
     @BeforeAll
     public static void setUp() {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
+        oauthClient.setAccessToken("abcd1234");
         api.setCustomBaseUrl("http://127.0.0.1:4010");
     }
 

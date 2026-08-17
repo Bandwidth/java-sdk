@@ -6,9 +6,7 @@ import org.junit.jupiter.api.Test;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiResponse;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.api.MfaApi;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.model.CodeRequest;
 import com.bandwidth.sdk.model.MessagingCodeResponse;
 import com.bandwidth.sdk.model.VerifyCodeRequest;
@@ -24,17 +22,15 @@ import static org.hamcrest.CoreMatchers.is;
 
 @SuppressWarnings("null")
 public class MfaApiTest {
-    private static ApiClient defaultClient = Configuration.getDefaultApiClient();
-    private static HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private static MfaApi api = new MfaApi(defaultClient);
+    private static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    private static MfaApi api = new MfaApi(oauthClient);
 
     private static String message = "Your temporary {NAME} {SCOPE} code is {CODE}";
     private static Integer digits = 6;
 
     @BeforeAll
     public static void setUp() {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
+        oauthClient.setAccessToken("abcd1234");
         api.setCustomBaseUrl("http://127.0.0.1:4010");
     }
 

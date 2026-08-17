@@ -16,9 +16,7 @@ package com.bandwidth.sdk.unit.api;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiResponse;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.api.PhoneNumberLookupApi;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.model.AsyncLookupRequest;
 import com.bandwidth.sdk.model.CompletedLookupStatusEnum;
 import com.bandwidth.sdk.model.CreateAsyncBulkLookupResponse;
@@ -53,14 +51,12 @@ import static org.hamcrest.CoreMatchers.is;
  */
 @SuppressWarnings("null")
 public class PhoneNumberLookupApiTest {
-    private static ApiClient defaultClient = Configuration.getDefaultApiClient();
-    private static HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private static PhoneNumberLookupApi api = new PhoneNumberLookupApi(defaultClient);
+    private static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    private static PhoneNumberLookupApi api = new PhoneNumberLookupApi(oauthClient);
 
     @BeforeAll
     public static void setUp() {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
+        oauthClient.setAccessToken("abcd1234");
         api.setCustomBaseUrl("http://127.0.0.1:4010");
     }
 

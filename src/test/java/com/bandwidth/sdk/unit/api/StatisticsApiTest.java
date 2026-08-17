@@ -21,6 +21,7 @@ public class StatisticsApiTest {
 
     @BeforeAll
     public static void setUp() {
+        oauthClient.setAccessToken("abcd1234");
         api.setCustomBaseUrl("http://127.0.0.1:4010");
     }
 
