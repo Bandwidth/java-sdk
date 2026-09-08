@@ -44,7 +44,7 @@ public class Example {
 
     MediaApi apiInstance = new MediaApi(defaultClient);
     String accountId = "9900000"; // String | This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (`u-be8dvafwrs63rwpm7pfil4b`) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.** 
-    String mediaId = "14762070468292kw2fuqty55yp2b2/0/bw.png"; // String | Media ID to retrieve.
+    String mediaId = "bw.png"; // String | The ID of the media file.
     try {
       apiInstance.deleteMedia(accountId, mediaId);
     } catch (ApiException e) {
@@ -63,7 +63,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  | |
-| **mediaId** | **String**| Media ID to retrieve. | |
+| **mediaId** | **String**| The ID of the media file. | |
 
 ### Return type
 
@@ -125,7 +125,7 @@ public class Example {
 
     MediaApi apiInstance = new MediaApi(defaultClient);
     String accountId = "9900000"; // String | This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (`u-be8dvafwrs63rwpm7pfil4b`) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.** 
-    String mediaId = "14762070468292kw2fuqty55yp2b2/0/bw.png"; // String | Media ID to retrieve.
+    String mediaId = "bw.png"; // String | The ID of the media file.
     try {
       File result = apiInstance.getMedia(accountId, mediaId);
       System.out.println(result);
@@ -145,7 +145,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  | |
-| **mediaId** | **String**| Media ID to retrieve. | |
+| **mediaId** | **String**| The ID of the media file. | |
 
 ### Return type
 
@@ -289,7 +289,7 @@ public class Example {
 
     MediaApi apiInstance = new MediaApi(defaultClient);
     String accountId = "9900000"; // String | This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (`u-be8dvafwrs63rwpm7pfil4b`) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.** 
-    String mediaId = "14762070468292kw2fuqty55yp2b2/0/bw.png"; // String | Media ID to retrieve.
+    String mediaId = "bw.png"; // String | The ID of the media file.
     File body = new File("/path/to/file"); // File | 
     String contentType = "audio/wav"; // String | The media type of the entity-body.
     String cacheControl = "no-cache"; // String | General-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain.
@@ -311,7 +311,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  | |
-| **mediaId** | **String**| Media ID to retrieve. | |
+| **mediaId** | **String**| The ID of the media file. | |
 | **body** | **File**|  | |
 | **contentType** | **String**| The media type of the entity-body. | [optional] |
 | **cacheControl** | **String**| General-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain. | [optional] |
