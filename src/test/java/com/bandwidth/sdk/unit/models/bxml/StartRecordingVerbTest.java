@@ -34,12 +34,14 @@ public class StartRecordingVerbTest {
             .tag("tag")
             .fileFormat("wav")
             .multiChannel(true)
+            .detectLanguage(true)
+            .recordingName("test-recording")
             .build();
 
     @Test
     public void startRecordingVerbWorks() throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
-        String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><StartRecording recordingAvailableUrl=\"https://example.com\" recordingAvailableMethod=\"POST\" transcribe=\"true\" transcriptionAvailableUrl=\"transcription-example.com\" username=\"user\" password=\"pass\" tag=\"tag\" fileFormat=\"wav\" multiChannel=\"true\"/></Bxml>";
+        String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><StartRecording recordingAvailableUrl=\"https://example.com\" recordingAvailableMethod=\"POST\" transcribe=\"true\" detectLanguage=\"true\" transcriptionAvailableUrl=\"transcription-example.com\" username=\"user\" password=\"pass\" tag=\"tag\" fileFormat=\"wav\" multiChannel=\"true\" recordingName=\"test-recording\"/></Bxml>";
 
         assertThat(new Bxml().with(startRecording).toBxml(jaxbContext), is(expectedBxml));
     }

@@ -53,6 +53,9 @@ import lombok.NoArgsConstructor;
  * @param uui (str, optional): The value of the User-To-User header to send within the outbound INVITE when forwarding to a SIP URI.
  *     Must include the encoding parameter as specified in RFC 7433. Only base64 and jwt encoding are currently allowed.
  *     This value, including the encoding specifier, may not exceed 256 characters.
+ * @param privacy (bool, optional): A boolean value to indicate that the calling number should be hidden. Use callerDisplayName to customize the name shown to the recipient. Default is false.
+ * @param callerDisplayName (str, optional): The caller display name to use when the call is created. May not exceed 256 characters nor contain control characters such as new lines.
+ *     If privacy is true, only the values Restricted, Anonymous, Private, or Unavailable are valid.
  */
 public class Forward implements Verb {
 
@@ -78,6 +81,12 @@ public class Forward implements Verb {
     @XmlAttribute
     @Builder.Default
     private DiversionReason diversionReason = DiversionReason.unknown;
+
+    @XmlAttribute
+    private Boolean privacy;
+
+    @XmlAttribute
+    private String callerDisplayName;
 
     @Override
     public String getVerbName() {

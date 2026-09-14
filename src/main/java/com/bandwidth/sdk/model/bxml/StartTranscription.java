@@ -40,6 +40,8 @@ import lombok.NoArgsConstructor;
  * @param username (str, optional): The username to send in the HTTP request to transcriptionEventUrl. If specified, the URLs must be TLS-encrypted (i.e., https).
  * @param password (str, optional): The password to send in the HTTP request to transcriptionEventUrl. If specified, the URLs must be TLS-encrypted (i.e., https).
  * @param stabilized (str, optional): Whether to send transcription update events to the specified destination only after they have become stable. Requires destination. Defaults to true.
+ * @param detectLanguage (bool, optional): Whether to detect the dominant language being spoken rather than assuming English. Default is false.
+ * @param preferredLanguages (str, optional): A comma-separated list of language locales to transcribe in, for example "en-US,es-US". Requires detectLanguage to be false, and accepts only one dialect per language. Defaults to en-US.
  *
  *        Nested Verbs:
  *        @param  CustomParam: (optional) You may specify up to 12 <CustomParam/> elements nested within a <StartTranscription> tag.
@@ -77,6 +79,12 @@ public class StartTranscription implements Verb {
    @XmlAttribute
    @Default
    protected Boolean stabilized = true;
+
+    @XmlAttribute
+    protected Boolean detectLanguage;
+
+    @XmlAttribute
+    protected String preferredLanguages;
 
     @XmlElements({
             @XmlElement(name = CustomParam.TYPE_NAME, type = CustomParam.class)
