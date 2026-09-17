@@ -25,12 +25,15 @@ public class RecordVerbTest {
      */
     Record record = Record.builder()
             .maxDuration(10)
+            .transcribe(true)
+            .detectLanguage(true)
+            .recordingName("test-recording")
             .build();
 
     @Test
     public void recordVerbWorks() throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
-        String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Record recordCompleteMethod=\"POST\" recordCompleteFallbackMethod=\"POST\" terminatingDigits=\"#\" maxDuration=\"10\" fileFormat=\"wav\" recordingAvailableMethod=\"POST\" silenceTimeout=\"0.0\"/></Bxml>";
+        String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Record recordCompleteMethod=\"POST\" recordCompleteFallbackMethod=\"POST\" terminatingDigits=\"#\" maxDuration=\"10\" fileFormat=\"wav\" recordingAvailableMethod=\"POST\" transcribe=\"true\" detectLanguage=\"true\" silenceTimeout=\"0.0\" recordingName=\"test-recording\"/></Bxml>";
 
         assertThat(new Bxml().with(record).toBxml(jaxbContext), is(expectedBxml));
     }

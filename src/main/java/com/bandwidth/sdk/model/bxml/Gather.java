@@ -51,6 +51,14 @@ import lombok.NoArgsConstructor;
  *     Default value is 5. Range: decimal values between 0 - 60.
  * @param repeatCount (int, optional): The number of times the audio prompt should be played if no digits are pressed. For example, if this value is 3, the nested audio clip will be played a maximum of three times.
  *     The delay between repetitions will be equal to first_digit_timeout. Default value is 1. repeat_count * number of verbs must not be greater than 20.
+ * @param input (str, optional): The input mode to collect from the caller: dtmf, speech, or dtmf_speech. Default value is dtmf.
+ * @param hints (str, optional): Words or phrases that improve speech recognition accuracy. Only used when input includes speech.
+ * @param language (str, optional): The language code to use for speech recognition. Only used when input includes speech.
+ * @param partialResultCallback (str, optional): URL to send the Partial Result event to as speech is recognized. May be a relative URL. Only used when input includes speech.
+ * @param partialResultCallbackMethod (str, optional): The HTTP method to use for the request to partialResultCallback. GET or POST. Default value is POST.
+ * @param profanityFilter (bool, optional): Whether profane words are filtered out of the transcription. Default value is true. Only used when input includes speech.
+ * @param speechModel (str, optional): The speech recognition model to use. Only used when input includes speech.
+ * @param speechTimeout (int, optional): Time (in seconds) to wait for speech input before terminating the Gather. Default value is 5.
  *
  * Nested Verbs:
  *     @param PlayAudio: (optional) Using the PlayAudio inside the Gather verb will play the media until a digit is received.
@@ -115,6 +123,30 @@ public class Gather implements Verb {
     @XmlAttribute
     @Default
     protected int repeatCount = DEFAULT_REPEAT_COUNT;
+
+    @XmlAttribute
+    protected String input;
+
+    @XmlAttribute
+    protected String hints;
+
+    @XmlAttribute
+    protected String language;
+
+    @XmlAttribute
+    protected String partialResultCallback;
+
+    @XmlAttribute
+    protected String partialResultCallbackMethod;
+
+    @XmlAttribute
+    protected Boolean profanityFilter;
+
+    @XmlAttribute
+    protected String speechModel;
+
+    @XmlAttribute
+    protected Integer speechTimeout;
 
     @Override
     public String getVerbName() {

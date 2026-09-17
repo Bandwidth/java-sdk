@@ -28,6 +28,7 @@ import lombok.NoArgsConstructor;
  *
  * @param endpoints (list[Endpoint], optional): List of endpoints to connect the call to.
  * @param eventCallbackUrl (str, optional): URL to send events to during the connection lifecycle. May be a relative URL.
+ * @param eventFallbackUrl (str, optional): A fallback url which, if provided, will be used to retry the event callback delivery in case eventCallbackUrl fails to respond.
  *
  */
 public class Connect implements Verb {
@@ -39,6 +40,9 @@ public class Connect implements Verb {
 
     @XmlAttribute
     protected URI eventCallbackUrl;
+
+    @XmlAttribute
+    protected URI eventFallbackUrl;
 
     @Override
     public String getVerbName() {

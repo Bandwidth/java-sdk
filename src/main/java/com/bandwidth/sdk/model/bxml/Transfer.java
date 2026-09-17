@@ -66,6 +66,7 @@ import lombok.NoArgsConstructor;
  *
  *       This parameter is considered only when diversionTreatment is set to stack. Defaults is unknown.
  *       Defaults to None.
+ * @param privacy (bool, optional): A boolean value to indicate that the calling number should be hidden. Use transferCallerDisplayName to customize the name shown to the recipient. Default is false.
  *
  */
 public class Transfer implements Verb {
@@ -127,6 +128,9 @@ public class Transfer implements Verb {
     @XmlAttribute
     @Default
     protected DiversionReason diversionReason = DiversionReason.unknown;
+
+    @XmlAttribute
+    protected Boolean privacy;
 
     @Override
     public String getVerbName() {

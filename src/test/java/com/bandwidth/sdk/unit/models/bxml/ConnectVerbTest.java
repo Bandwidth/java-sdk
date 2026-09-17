@@ -31,6 +31,7 @@ public class ConnectVerbTest {
     Connect connectWithCallback = Connect.builder()
             .endpoints(List.of(endpoint))
             .eventCallbackUrl(URI.create("https://example.com/callback"))
+            .eventFallbackUrl(URI.create("https://example.com/fallback"))
             .build();
 
     Connect connectWithoutCallback = Connect.builder()
@@ -40,7 +41,7 @@ public class ConnectVerbTest {
     @Test
     public void connectVerbWithCallbackWorks() throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
-        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Connect eventCallbackUrl=\"https://example.com/callback\"><Endpoint>test-endpoint-id</Endpoint></Connect></Bxml>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Connect eventCallbackUrl=\"https://example.com/callback\" eventFallbackUrl=\"https://example.com/fallback\"><Endpoint>test-endpoint-id</Endpoint></Connect></Bxml>";
 
         assertThat(new Bxml().with(connectWithCallback).toBxml(jaxbContext), is(expected));
     }
