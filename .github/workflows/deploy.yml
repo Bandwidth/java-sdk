@@ -52,21 +52,8 @@ jobs:
           gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
-      - name: Set OpenAPI Generator Version
-        run: |
-          OPENAPI_VERSION=$(jq .[\"generator-cli\"].version openapitools.json)
-          echo "OPENAPI_GENERATOR_VERSION=$OPENAPI_VERSION" >> $GITHUB_ENV
-        shell: bash
-
       - name: Generate SDK with Updated Version
-        uses: Bandwidth/generate-sdk-action@v4.1.0
-        with:
-          openapi-generator-version: ${{ env.OPENAPI_GENERATOR_VERSION }}
-          language: java
-          additional-properties: --additional-properties=artifactVersion=$RELEASE_VERSION
-
-      - name: Clean SDK
-        run: mvn clean
+        run: bash generate.sh --additional-properties=artifactVersion=$RELEASE_VERSION
 
       - name: Set Maven Project Version
         run: mvn versions:set -DnewVersion=$RELEASE_VERSION
