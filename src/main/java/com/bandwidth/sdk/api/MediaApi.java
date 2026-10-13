@@ -583,7 +583,7 @@ public class MediaApi {
      * @param mediaId The ID of the media file. (required)
      * @param body  (required)
      * @param contentType The media type of the entity-body. (optional)
-     * @param cacheControl General-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain. (optional)
+     * @param cacheControl Pass-through header stored with the media and returned when the media is retrieved by the user. Does not affect internal server caching behavior. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -729,12 +729,12 @@ public class MediaApi {
 
     /**
      * Upload Media
-     * Upload a file. You may add headers to the request in order to provide some control to your media file.  If a file is uploaded with the same name as a file that already exists under this account, the previous file will be overwritten.  A list of supported media types can be found at [Bandwidth Support](https://www.bandwidth.com/support/en/articles/12823220-what-mms-file-types-are-supported).
+     * Upload a file.  Filename should always be unique. Reusing filenames may result in the wrong media being sent.  A list of supported media types can be found at [Bandwidth Support](https://www.bandwidth.com/support/en/articles/12823220-what-mms-file-types-are-supported).
      * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param mediaId The ID of the media file. (required)
      * @param body  (required)
      * @param contentType The media type of the entity-body. (optional)
-     * @param cacheControl General-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain. (optional)
+     * @param cacheControl Pass-through header stored with the media and returned when the media is retrieved by the user. Does not affect internal server caching behavior. (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -757,12 +757,12 @@ public class MediaApi {
 
     /**
      * Upload Media
-     * Upload a file. You may add headers to the request in order to provide some control to your media file.  If a file is uploaded with the same name as a file that already exists under this account, the previous file will be overwritten.  A list of supported media types can be found at [Bandwidth Support](https://www.bandwidth.com/support/en/articles/12823220-what-mms-file-types-are-supported).
+     * Upload a file.  Filename should always be unique. Reusing filenames may result in the wrong media being sent.  A list of supported media types can be found at [Bandwidth Support](https://www.bandwidth.com/support/en/articles/12823220-what-mms-file-types-are-supported).
      * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param mediaId The ID of the media file. (required)
      * @param body  (required)
      * @param contentType The media type of the entity-body. (optional)
-     * @param cacheControl General-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain. (optional)
+     * @param cacheControl Pass-through header stored with the media and returned when the media is retrieved by the user. Does not affect internal server caching behavior. (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -787,12 +787,12 @@ public class MediaApi {
 
     /**
      * Upload Media (asynchronously)
-     * Upload a file. You may add headers to the request in order to provide some control to your media file.  If a file is uploaded with the same name as a file that already exists under this account, the previous file will be overwritten.  A list of supported media types can be found at [Bandwidth Support](https://www.bandwidth.com/support/en/articles/12823220-what-mms-file-types-are-supported).
+     * Upload a file.  Filename should always be unique. Reusing filenames may result in the wrong media being sent.  A list of supported media types can be found at [Bandwidth Support](https://www.bandwidth.com/support/en/articles/12823220-what-mms-file-types-are-supported).
      * @param accountId This is your 7-digit Bandwidth Account ID, as shown in the Bandwidth App. The older ID format (&#x60;u-be8dvafwrs63rwpm7pfil4b&#x60;) is deprecated.  **When migrating to OAuth authentication, you must use the 7-digit Account ID.**  (required)
      * @param mediaId The ID of the media file. (required)
      * @param body  (required)
      * @param contentType The media type of the entity-body. (optional)
-     * @param cacheControl General-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain. (optional)
+     * @param cacheControl Pass-through header stored with the media and returned when the media is retrieved by the user. Does not affect internal server caching behavior. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
