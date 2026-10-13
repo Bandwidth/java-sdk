@@ -24,7 +24,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The type of business registration number.  **Note: As of October 19th, 2026 this field will be required when &#x60;businessRegistrationNumber&#x60; is provided.** 
+ * The type of business registration number.  **As of October 19th, 2026 this field is required when &#x60;businessRegistrationNumber&#x60; is provided.** 
  */
 @JsonAdapter(BusinessRegistrationTypeEnum.Adapter.class)
 public enum BusinessRegistrationTypeEnum {

@@ -128,7 +128,7 @@ public class VerificationUpdateRequest {
 
   public static final String SERIALIZED_NAME_BUSINESS_ENTITY_TYPE = "businessEntityType";
   @SerializedName(SERIALIZED_NAME_BUSINESS_ENTITY_TYPE)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private BusinessEntityTypeEnum businessEntityType;
 
   public static final String SERIALIZED_NAME_BUSINESS_REGISTRATION_ISSUING_COUNTRY = "businessRegistrationIssuingCountry";
@@ -390,7 +390,7 @@ public class VerificationUpdateRequest {
   }
 
   /**
-   * Government-issued business identifying number.  **Note: As of October 19th, 2026 this field will be required when &#x60;businessEntityType&#x60; is _not_ &#x60;SOLE_PROPRIETOR&#x60;. If this field is provided, &#x60;businessRegistrationType&#x60; and &#x60;businessRegistrationIssuingCountry&#x60; are also required.** 
+   * Government-issued business identifying number.  **As of October 19th, 2026 this field is required when &#x60;businessEntityType&#x60; is _not_ &#x60;SOLE_PROPRIETOR&#x60;. If this field is provided, &#x60;businessRegistrationType&#x60; and &#x60;businessRegistrationIssuingCountry&#x60; are also required.** 
    * @return businessRegistrationNumber
    */
   @javax.annotation.Nullable
@@ -422,7 +422,7 @@ public class VerificationUpdateRequest {
   }
 
 
-  public VerificationUpdateRequest businessEntityType(@javax.annotation.Nullable BusinessEntityTypeEnum businessEntityType) {
+  public VerificationUpdateRequest businessEntityType(@javax.annotation.Nonnull BusinessEntityTypeEnum businessEntityType) {
     this.businessEntityType = businessEntityType;
     return this;
   }
@@ -431,12 +431,12 @@ public class VerificationUpdateRequest {
    * Get businessEntityType
    * @return businessEntityType
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public BusinessEntityTypeEnum getBusinessEntityType() {
     return businessEntityType;
   }
 
-  public void setBusinessEntityType(@javax.annotation.Nullable BusinessEntityTypeEnum businessEntityType) {
+  public void setBusinessEntityType(@javax.annotation.Nonnull BusinessEntityTypeEnum businessEntityType) {
     this.businessEntityType = businessEntityType;
   }
 
@@ -447,7 +447,7 @@ public class VerificationUpdateRequest {
   }
 
   /**
-   * The country issuing the business registration in ISO-3166-1 alpha-3 format. Alpha-2 format is accepted by the API, but alpha-3 is highly encouraged.  **Note: As of October 19th, 2026 this field will be required when &#x60;businessRegistrationNumber&#x60; is provided.**  | Registration Type     | Supported Countries                | |----------------------|------------------------------------| | EIN                  | USA                                | | CBN                  | CAN                                | | NEQ                  | CAN                                | | PROVINCIAL_NUMBER    | CAN                                | | CRN                  | GBR, HKG                           | | VAT                  | GBR, IRL, BRA, NLD                 | | ACN                  | AUS                                | | ABN                  | AUS                                | | BRN                  | HKG                                | | SIREN                | FRA                                | | SIRET                | FRA                                | | NZBN                 | NZL                                | | UST_IDNR             | DEU                                | | CIF                  | ESP                                | | NIF                  | ESP                                | | CNPJ                 | BRA                                | | UID                  | CHE                                | | OTHER                | Must Provide Country Code          |
+   * The country issuing the business registration in ISO-3166-1 alpha-3 format. Alpha-2 format is accepted by the API, but alpha-3 is highly encouraged.  **As of October 19th, 2026 this field is required when &#x60;businessRegistrationNumber&#x60; is provided.**  | Registration Type     | Supported Countries                | |----------------------|------------------------------------| | EIN                  | USA                                | | CBN                  | CAN                                | | NEQ                  | CAN                                | | PROVINCIAL_NUMBER    | CAN                                | | CRN                  | GBR, HKG                           | | VAT                  | GBR, IRL, BRA, NLD                 | | ACN                  | AUS                                | | ABN                  | AUS                                | | BRN                  | HKG                                | | SIREN                | FRA                                | | SIRET                | FRA                                | | NZBN                 | NZL                                | | UST_IDNR             | DEU                                | | CIF                  | ESP                                | | NIF                  | ESP                                | | CNPJ                 | BRA                                | | UID                  | CHE                                | | OTHER                | Must Provide Country Code          |
    * @return businessRegistrationIssuingCountry
    */
   @javax.annotation.Nullable
@@ -654,7 +654,7 @@ public class VerificationUpdateRequest {
     openapiFields = new HashSet<String>(Arrays.asList("businessAddress", "businessContact", "messageVolume", "useCase", "useCaseSummary", "productionMessageContent", "optInWorkflow", "additionalInformation", "isvReseller", "privacyPolicyUrl", "termsAndConditionsUrl", "businessDba", "businessRegistrationNumber", "businessRegistrationType", "businessEntityType", "businessRegistrationIssuingCountry", "helpMessageResponse", "ageGatedContent", "cvToken"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("businessAddress", "businessContact", "messageVolume", "useCase", "useCaseSummary", "productionMessageContent", "optInWorkflow"));
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("businessAddress", "businessContact", "messageVolume", "useCase", "useCaseSummary", "productionMessageContent", "optInWorkflow", "businessEntityType"));
   }
 
   /**
@@ -714,10 +714,8 @@ public class VerificationUpdateRequest {
       if (jsonObj.get("businessRegistrationType") != null && !jsonObj.get("businessRegistrationType").isJsonNull()) {
         BusinessRegistrationTypeEnum.validateJsonElement(jsonObj.get("businessRegistrationType"));
       }
-      // validate the optional field `businessEntityType`
-      if (jsonObj.get("businessEntityType") != null && !jsonObj.get("businessEntityType").isJsonNull()) {
-        BusinessEntityTypeEnum.validateJsonElement(jsonObj.get("businessEntityType"));
-      }
+      // validate the required field `businessEntityType`
+      BusinessEntityTypeEnum.validateJsonElement(jsonObj.get("businessEntityType"));
       if ((jsonObj.get("businessRegistrationIssuingCountry") != null && !jsonObj.get("businessRegistrationIssuingCountry").isJsonNull()) && !jsonObj.get("businessRegistrationIssuingCountry").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `businessRegistrationIssuingCountry` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessRegistrationIssuingCountry").toString()));
       }
