@@ -333,7 +333,7 @@ public class TollFreeVerificationApi {
 
     /**
      * Delete a Toll-Free Verification Submission
-     * Delete a toll-free verification submission for a toll-free number.
+     * Delete a toll-free verification submission for a toll-free number.  **Upcoming change (effective January 2027):** If a verification for the phone number is in progress, it will be cancelled and the submission will then be deleted asynchronously.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param phoneNumber Valid Toll-Free telephone number in E.164 format. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -358,7 +358,7 @@ public class TollFreeVerificationApi {
 
     /**
      * Delete a Toll-Free Verification Submission
-     * Delete a toll-free verification submission for a toll-free number.
+     * Delete a toll-free verification submission for a toll-free number.  **Upcoming change (effective January 2027):** If a verification for the phone number is in progress, it will be cancelled and the submission will then be deleted asynchronously.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param phoneNumber Valid Toll-Free telephone number in E.164 format. (required)
      * @return ApiResponse&lt;Void&gt;
@@ -385,7 +385,7 @@ public class TollFreeVerificationApi {
 
     /**
      * Delete a Toll-Free Verification Submission (asynchronously)
-     * Delete a toll-free verification submission for a toll-free number.
+     * Delete a toll-free verification submission for a toll-free number.  **Upcoming change (effective January 2027):** If a verification for the phone number is in progress, it will be cancelled and the submission will then be deleted asynchronously.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param phoneNumber Valid Toll-Free telephone number in E.164 format. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1066,6 +1066,7 @@ public class TollFreeVerificationApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict. A toll-free verification for the phone number is already in progress. </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
@@ -1135,7 +1136,7 @@ public class TollFreeVerificationApi {
 
     /**
      * Request Toll-Free Verification
-     * Submit a request for verification of a toll-free phone number.
+     * Submit a request for verification of a toll-free phone number.  **Upcoming change (effective January 2027):** If any phone number in the request already has a verification in progress, the request will be rejected with a &#x60;409 Conflict&#x60;. This check is all-or-nothing: if a single phone number conflicts, the entire request is rejected and **none** of the phone numbers in the request are submitted. Today, these requests are accepted with a &#x60;202&#x60;.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param verificationRequest Request for verification of a toll-free phone number. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1148,6 +1149,7 @@ public class TollFreeVerificationApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict. A toll-free verification for the phone number is already in progress. </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
@@ -1159,7 +1161,7 @@ public class TollFreeVerificationApi {
 
     /**
      * Request Toll-Free Verification
-     * Submit a request for verification of a toll-free phone number.
+     * Submit a request for verification of a toll-free phone number.  **Upcoming change (effective January 2027):** If any phone number in the request already has a verification in progress, the request will be rejected with a &#x60;409 Conflict&#x60;. This check is all-or-nothing: if a single phone number conflicts, the entire request is rejected and **none** of the phone numbers in the request are submitted. Today, these requests are accepted with a &#x60;202&#x60;.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param verificationRequest Request for verification of a toll-free phone number. (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1173,6 +1175,7 @@ public class TollFreeVerificationApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict. A toll-free verification for the phone number is already in progress. </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
@@ -1185,7 +1188,7 @@ public class TollFreeVerificationApi {
 
     /**
      * Request Toll-Free Verification (asynchronously)
-     * Submit a request for verification of a toll-free phone number.
+     * Submit a request for verification of a toll-free phone number.  **Upcoming change (effective January 2027):** If any phone number in the request already has a verification in progress, the request will be rejected with a &#x60;409 Conflict&#x60;. This check is all-or-nothing: if a single phone number conflicts, the entire request is rejected and **none** of the phone numbers in the request are submitted. Today, these requests are accepted with a &#x60;202&#x60;.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param verificationRequest Request for verification of a toll-free phone number. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1200,6 +1203,7 @@ public class TollFreeVerificationApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict. A toll-free verification for the phone number is already in progress. </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
@@ -1227,7 +1231,9 @@ public class TollFreeVerificationApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Cannot find the requested resource. </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict. A toll-free verification for the phone number is already in progress. </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
@@ -1303,7 +1309,7 @@ public class TollFreeVerificationApi {
 
     /**
      * Update Toll-Free Verification Request
-     * Updates a toll-free verification request. Submissions are only eligible for resubmission for 7 days within being processed and if resubmission is allowed (resubmitAllowed field is true).
+     * Updates a toll-free verification request. Submissions are only eligible for resubmission for 7 days within being processed and if resubmission is allowed (resubmitAllowed field is true). Returns a &#x60;404&#x60; if no verification request exists for the phone number, and a &#x60;400&#x60; if the existing request is not eligible for resubmission.  **Upcoming change (effective January 2027):** If a verification for the phone number is in progress, the update will be rejected with a &#x60;409 Conflict&#x60;.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param phoneNumber Valid Toll-Free telephone number in E.164 format. (required)
      * @param tfvSubmissionWrapper Update a request for verification of a toll-free phone number. (required)
@@ -1316,7 +1322,9 @@ public class TollFreeVerificationApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Cannot find the requested resource. </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict. A toll-free verification for the phone number is already in progress. </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
@@ -1328,7 +1336,7 @@ public class TollFreeVerificationApi {
 
     /**
      * Update Toll-Free Verification Request
-     * Updates a toll-free verification request. Submissions are only eligible for resubmission for 7 days within being processed and if resubmission is allowed (resubmitAllowed field is true).
+     * Updates a toll-free verification request. Submissions are only eligible for resubmission for 7 days within being processed and if resubmission is allowed (resubmitAllowed field is true). Returns a &#x60;404&#x60; if no verification request exists for the phone number, and a &#x60;400&#x60; if the existing request is not eligible for resubmission.  **Upcoming change (effective January 2027):** If a verification for the phone number is in progress, the update will be rejected with a &#x60;409 Conflict&#x60;.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param phoneNumber Valid Toll-Free telephone number in E.164 format. (required)
      * @param tfvSubmissionWrapper Update a request for verification of a toll-free phone number. (required)
@@ -1342,7 +1350,9 @@ public class TollFreeVerificationApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Cannot find the requested resource. </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict. A toll-free verification for the phone number is already in progress. </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
@@ -1355,7 +1365,7 @@ public class TollFreeVerificationApi {
 
     /**
      * Update Toll-Free Verification Request (asynchronously)
-     * Updates a toll-free verification request. Submissions are only eligible for resubmission for 7 days within being processed and if resubmission is allowed (resubmitAllowed field is true).
+     * Updates a toll-free verification request. Submissions are only eligible for resubmission for 7 days within being processed and if resubmission is allowed (resubmitAllowed field is true). Returns a &#x60;404&#x60; if no verification request exists for the phone number, and a &#x60;400&#x60; if the existing request is not eligible for resubmission.  **Upcoming change (effective January 2027):** If a verification for the phone number is in progress, the update will be rejected with a &#x60;409 Conflict&#x60;.
      * @param accountId Your Bandwidth Account ID. (required)
      * @param phoneNumber Valid Toll-Free telephone number in E.164 format. (required)
      * @param tfvSubmissionWrapper Update a request for verification of a toll-free phone number. (required)
@@ -1370,7 +1380,9 @@ public class TollFreeVerificationApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Cannot find the requested resource. </td><td>  -  </td></tr>
         <tr><td> 405 </td><td> Method Not Allowed </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict. A toll-free verification for the phone number is already in progress. </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
