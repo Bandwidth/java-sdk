@@ -55,6 +55,14 @@ public class TransferVerbTest {
                         .transferCallerDisplayName("Clark Kent")
                         .tag("test")
                         .build();
+        Transfer transferWithAttestationLevel = Transfer.builder()
+                        .destinations(List.of(phonenumber))
+                        .attestationLevel("A")
+                        .build();
+        Transfer transferWithIdentity = Transfer.builder()
+                        .destinations(List.of(phonenumber))
+                        .identity("eyJhbGciOiJFUzI1NiJ9.eyJhdHRlc3QiOiJBIn0.c2ln;info=<https://example.com/cert.pem>;ppt=\"shaken\"")
+                        .build();
 
         @Test
         public void transferVerbWorks() throws JAXBException {
@@ -64,5 +72,21 @@ public class TransferVerbTest {
 
                 assertThat(new Bxml().with(transfer1).toBxml(jaxbContext), is(expectedSipUriBxml));
                 assertThat(new Bxml().with(transfer2).toBxml(jaxbContext), is(expectedPhoneNumberBxml));
+        }
+
+        @Test
+        public void transferVerbAttestationLevelWorks() throws JAXBException {
+                JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
+                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Transfer callTimeout=\"300.0\" transferCompleteMethod=\"POST\" transferCompleteFallbackMethod=\"POST\" diversionTreatment=\"none\" diversionReason=\"unknown\" attestationLevel=\"A\"><PhoneNumber transferAnswerUrl=\"https://example.com/webhooks/transfer_answer\" transferAnswerMethod=\"POST\" transferAnswerFallbackMethod=\"POST\" transferDisconnectMethod=\"POST\" tag=\"test\" uui=\"test\">+19195551234</PhoneNumber></Transfer></Bxml>";
+
+                assertThat(new Bxml().with(transferWithAttestationLevel).toBxml(jaxbContext), is(expectedBxml));
+        }
+
+        @Test
+        public void transferVerbIdentityWorks() throws JAXBException {
+                JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
+                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Transfer callTimeout=\"300.0\" transferCompleteMethod=\"POST\" transferCompleteFallbackMethod=\"POST\" diversionTreatment=\"none\" diversionReason=\"unknown\" identity=\"eyJhbGciOiJFUzI1NiJ9.eyJhdHRlc3QiOiJBIn0.c2ln;info=&lt;https://example.com/cert.pem&gt;;ppt=&quot;shaken&quot;\"><PhoneNumber transferAnswerUrl=\"https://example.com/webhooks/transfer_answer\" transferAnswerMethod=\"POST\" transferAnswerFallbackMethod=\"POST\" transferDisconnectMethod=\"POST\" tag=\"test\" uui=\"test\">+19195551234</PhoneNumber></Transfer></Bxml>";
+
+                assertThat(new Bxml().with(transferWithIdentity).toBxml(jaxbContext), is(expectedBxml));
         }
 };
