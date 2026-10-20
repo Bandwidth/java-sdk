@@ -67,7 +67,7 @@ public class RbmActionOpenUrl {
   public static final String SERIALIZED_NAME_POSTBACK_DATA = "postbackData";
   @SerializedName(SERIALIZED_NAME_POSTBACK_DATA)
   @javax.annotation.Nonnull
-  private byte[] postbackData;
+  private String postbackData;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
@@ -125,21 +125,21 @@ public class RbmActionOpenUrl {
   }
 
 
-  public RbmActionOpenUrl postbackData(@javax.annotation.Nonnull byte[] postbackData) {
+  public RbmActionOpenUrl postbackData(@javax.annotation.Nonnull String postbackData) {
     this.postbackData = postbackData;
     return this;
   }
 
   /**
-   * Base64 payload the customer receives when the reply is clicked.
+   * Payload the customer receives when the reply is clicked.
    * @return postbackData
    */
   @javax.annotation.Nonnull
-  public byte[] getPostbackData() {
+  public String getPostbackData() {
     return postbackData;
   }
 
-  public void setPostbackData(@javax.annotation.Nonnull byte[] postbackData) {
+  public void setPostbackData(@javax.annotation.Nonnull String postbackData) {
     this.postbackData = postbackData;
   }
 
@@ -257,7 +257,7 @@ public class RbmActionOpenUrl {
     RbmActionOpenUrl rbmActionOpenUrl = (RbmActionOpenUrl) o;
     return Objects.equals(this.type, rbmActionOpenUrl.type) &&
         Objects.equals(this.text, rbmActionOpenUrl.text) &&
-        Arrays.equals(this.postbackData, rbmActionOpenUrl.postbackData) &&
+        Objects.equals(this.postbackData, rbmActionOpenUrl.postbackData) &&
         Objects.equals(this.url, rbmActionOpenUrl.url) &&
         Objects.equals(this.application, rbmActionOpenUrl.application) &&
         Objects.equals(this.webviewViewMode, rbmActionOpenUrl.webviewViewMode)&&
@@ -266,7 +266,7 @@ public class RbmActionOpenUrl {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, text, Arrays.hashCode(postbackData), url, application, webviewViewMode, additionalProperties);
+    return Objects.hash(type, text, postbackData, url, application, webviewViewMode, additionalProperties);
   }
 
   @Override
@@ -328,6 +328,9 @@ public class RbmActionOpenUrl {
       RbmActionTypeEnum.validateJsonElement(jsonObj.get("type"));
       if (!jsonObj.get("text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
+      }
+      if (!jsonObj.get("postbackData").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `postbackData` to be a primitive type in the JSON string but got `%s`", jsonObj.get("postbackData").toString()));
       }
       if (!jsonObj.get("url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));

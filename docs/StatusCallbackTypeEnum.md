@@ -15,5 +15,7 @@
 
 * `MESSAGE_READ` (value: `"message-read"`)
 
+* `SESSION_STARTED` (value: `"session-started"`)
+
 
 
