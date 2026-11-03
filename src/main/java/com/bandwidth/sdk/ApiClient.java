@@ -106,7 +106,6 @@ public class ApiClient {
         initHttpClient();
 
         // Setup authentications (key: authentication name, value: authentication).
-        authentications.put("Basic", new HttpBasicAuth());
         authentications.put("OAuth2", new OAuth());
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
@@ -123,7 +122,6 @@ public class ApiClient {
         httpClient = client;
 
         // Setup authentications (key: authentication name, value: authentication).
-        authentications.put("Basic", new HttpBasicAuth());
         authentications.put("OAuth2", new OAuth());
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
@@ -184,7 +182,6 @@ public class ApiClient {
         RetryingOAuth retryingOAuth = new RetryingOAuth(client, tokenUrl, clientId, OAuthFlow.APPLICATION, clientSecret, parameters);
         initHttpClient(client, Collections.<Interceptor>singletonList(retryingOAuth));
         authentications.put("OAuth2", retryingOAuth);
-        authentications.put("Basic", new HttpBasicAuth());
 
         authentications = Collections.unmodifiableMap(authentications);
     }
@@ -220,7 +217,6 @@ public class ApiClient {
         );
         initHttpClient(Collections.<Interceptor>singletonList(retryingOAuth));
         // Setup authentications (key: authentication name, value: authentication).
-        authentications.put("Basic", new HttpBasicAuth());
 
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);

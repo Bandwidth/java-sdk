@@ -93,11 +93,6 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("http://localhost");
     
-    // Configure HTTP basic authorization: Basic
-    HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    Basic.setUsername("YOUR USERNAME");
-    Basic.setPassword("YOUR PASSWORD");
-
     // Configure OAuth2 access token for authorization: OAuth2
     OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
     OAuth2.setAccessToken("YOUR ACCESS TOKEN");
@@ -397,11 +392,6 @@ Class | Method | HTTP request | Description
 
 
 Authentication schemes defined for the API:
-<a id="Basic"></a>
-### Basic
-
-- **Type**: HTTP basic authentication
-
 <a id="OAuth2"></a>
 ### OAuth2
 
