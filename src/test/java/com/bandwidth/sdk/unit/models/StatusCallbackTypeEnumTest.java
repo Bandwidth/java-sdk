@@ -34,6 +34,7 @@ public class StatusCallbackTypeEnumTest {
         assertThat(StatusCallbackTypeEnum.MESSAGE_DELIVERED.toString(), equalTo("message-delivered"));
         assertThat(StatusCallbackTypeEnum.MESSAGE_FAILED.toString(), equalTo("message-failed"));
         assertThat(StatusCallbackTypeEnum.MESSAGE_READ.toString(), equalTo("message-read"));
+        assertThat(StatusCallbackTypeEnum.SESSION_STARTED.toString(), equalTo("session-started"));
 
     }
 

@@ -17,6 +17,7 @@ import java.util.Objects;
 import com.bandwidth.sdk.model.MessageDirectionEnum;
 import com.bandwidth.sdk.model.MultiChannelMessageChannelEnum;
 import com.bandwidth.sdk.model.PriorityEnum;
+import com.bandwidth.sdk.model.RbmSession;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -123,6 +124,11 @@ public class StatusCallbackMessage {
   @SerializedName(SERIALIZED_NAME_CHANNEL)
   @javax.annotation.Nullable
   private MultiChannelMessageChannelEnum channel;
+
+  public static final String SERIALIZED_NAME_SESSION = "session";
+  @SerializedName(SERIALIZED_NAME_SESSION)
+  @javax.annotation.Nullable
+  private RbmSession session;
 
   public StatusCallbackMessage() {
   }
@@ -389,6 +395,25 @@ public class StatusCallbackMessage {
     this.channel = channel;
   }
 
+
+  public StatusCallbackMessage session(@javax.annotation.Nullable RbmSession session) {
+    this.session = session;
+    return this;
+  }
+
+  /**
+   * Get session
+   * @return session
+   */
+  @javax.annotation.Nullable
+  public RbmSession getSession() {
+    return session;
+  }
+
+  public void setSession(@javax.annotation.Nullable RbmSession session) {
+    this.session = session;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -456,13 +481,14 @@ public class StatusCallbackMessage {
         Objects.equals(this.tag, statusCallbackMessage.tag) &&
         Objects.equals(this.media, statusCallbackMessage.media) &&
         Objects.equals(this.priority, statusCallbackMessage.priority) &&
-        Objects.equals(this.channel, statusCallbackMessage.channel)&&
+        Objects.equals(this.channel, statusCallbackMessage.channel) &&
+        Objects.equals(this.session, statusCallbackMessage.session)&&
         Objects.equals(this.additionalProperties, statusCallbackMessage.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, owner, applicationId, time, segmentCount, direction, to, from, text, tag, media, priority, channel, additionalProperties);
+    return Objects.hash(id, owner, applicationId, time, segmentCount, direction, to, from, text, tag, media, priority, channel, session, additionalProperties);
   }
 
   @Override
@@ -482,6 +508,7 @@ public class StatusCallbackMessage {
     sb.append("    media: ").append(toIndentedString(media)).append("\n");
     sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
     sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
+    sb.append("    session: ").append(toIndentedString(session)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -501,7 +528,7 @@ public class StatusCallbackMessage {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("id", "owner", "applicationId", "time", "segmentCount", "direction", "to", "from", "text", "tag", "media", "priority", "channel"));
+    openapiFields = new HashSet<String>(Arrays.asList("id", "owner", "applicationId", "time", "segmentCount", "direction", "to", "from", "text", "tag", "media", "priority", "channel", "session"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(Arrays.asList("id", "owner", "applicationId", "time", "segmentCount", "direction", "to", "from"));
@@ -564,6 +591,10 @@ public class StatusCallbackMessage {
       // validate the optional field `channel`
       if (jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) {
         MultiChannelMessageChannelEnum.validateJsonElement(jsonObj.get("channel"));
+      }
+      // validate the optional field `session`
+      if (jsonObj.get("session") != null && !jsonObj.get("session").isJsonNull()) {
+        RbmSession.validateJsonElement(jsonObj.get("session"));
       }
   }
 

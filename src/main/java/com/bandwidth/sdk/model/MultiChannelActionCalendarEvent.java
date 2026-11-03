@@ -65,7 +65,7 @@ public class MultiChannelActionCalendarEvent {
   public static final String SERIALIZED_NAME_POSTBACK_DATA = "postbackData";
   @SerializedName(SERIALIZED_NAME_POSTBACK_DATA)
   @javax.annotation.Nonnull
-  private byte[] postbackData;
+  private String postbackData;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -128,21 +128,21 @@ public class MultiChannelActionCalendarEvent {
   }
 
 
-  public MultiChannelActionCalendarEvent postbackData(@javax.annotation.Nonnull byte[] postbackData) {
+  public MultiChannelActionCalendarEvent postbackData(@javax.annotation.Nonnull String postbackData) {
     this.postbackData = postbackData;
     return this;
   }
 
   /**
-   * Base64 payload the customer receives when the reply is clicked.
+   * Payload the customer receives when the reply is clicked.
    * @return postbackData
    */
   @javax.annotation.Nonnull
-  public byte[] getPostbackData() {
+  public String getPostbackData() {
     return postbackData;
   }
 
-  public void setPostbackData(@javax.annotation.Nonnull byte[] postbackData) {
+  public void setPostbackData(@javax.annotation.Nonnull String postbackData) {
     this.postbackData = postbackData;
   }
 
@@ -279,7 +279,7 @@ public class MultiChannelActionCalendarEvent {
     MultiChannelActionCalendarEvent multiChannelActionCalendarEvent = (MultiChannelActionCalendarEvent) o;
     return Objects.equals(this.type, multiChannelActionCalendarEvent.type) &&
         Objects.equals(this.text, multiChannelActionCalendarEvent.text) &&
-        Arrays.equals(this.postbackData, multiChannelActionCalendarEvent.postbackData) &&
+        Objects.equals(this.postbackData, multiChannelActionCalendarEvent.postbackData) &&
         Objects.equals(this.title, multiChannelActionCalendarEvent.title) &&
         Objects.equals(this.startTime, multiChannelActionCalendarEvent.startTime) &&
         Objects.equals(this.endTime, multiChannelActionCalendarEvent.endTime) &&
@@ -289,7 +289,7 @@ public class MultiChannelActionCalendarEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, text, Arrays.hashCode(postbackData), title, startTime, endTime, description, additionalProperties);
+    return Objects.hash(type, text, postbackData, title, startTime, endTime, description, additionalProperties);
   }
 
   @Override
@@ -352,6 +352,9 @@ public class MultiChannelActionCalendarEvent {
       RbmActionTypeEnum.validateJsonElement(jsonObj.get("type"));
       if (!jsonObj.get("text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
+      }
+      if (!jsonObj.get("postbackData").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `postbackData` to be a primitive type in the JSON string but got `%s`", jsonObj.get("postbackData").toString()));
       }
       if (!jsonObj.get("title").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));

@@ -24,6 +24,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -148,6 +150,16 @@ public class DisconnectCallback {
   @SerializedName(SERIALIZED_NAME_SIP_RESPONSE_CODE)
   @javax.annotation.Nullable
   private Integer sipResponseCode;
+
+  public static final String SERIALIZED_NAME_SIP_STATUS_LINE = "sipStatusLine";
+  @SerializedName(SERIALIZED_NAME_SIP_STATUS_LINE)
+  @javax.annotation.Nullable
+  private String sipStatusLine;
+
+  public static final String SERIALIZED_NAME_SIP_HEADERS = "sipHeaders";
+  @SerializedName(SERIALIZED_NAME_SIP_HEADERS)
+  @javax.annotation.Nullable
+  private Map<String, String> sipHeaders = new HashMap<>();
 
   public DisconnectCallback() {
   }
@@ -500,7 +512,7 @@ public class DisconnectCallback {
   }
 
   /**
-   * (optional) The SIP status code returned by Bandwidth&#39;s SBC when it rejected an outbound call&#39;s INVITE (e.g. 486 for busy, 603 for decline). Present only when an outbound call was rejected by the SBC.
+   * (optional) The SIP status code of the final response that rejected an outbound call&#39;s (or transferred leg&#39;s) INVITE (e.g. 486 for busy, 603 for decline). Present only when the call was rejected with a SIP response.
    * @return sipResponseCode
    */
   @javax.annotation.Nullable
@@ -510,6 +522,52 @@ public class DisconnectCallback {
 
   public void setSipResponseCode(@javax.annotation.Nullable Integer sipResponseCode) {
     this.sipResponseCode = sipResponseCode;
+  }
+
+
+  public DisconnectCallback sipStatusLine(@javax.annotation.Nullable String sipStatusLine) {
+    this.sipStatusLine = sipStatusLine;
+    return this;
+  }
+
+  /**
+   * (optional) The full SIP status line, exactly as received, of the final response that rejected an outbound call&#39;s INVITE. The reason phrase can help distinguish outcomes that share a status code, such as &#x60;603 Network Blocked&#x60; and &#x60;603 Decline&#x60;. Present only when an outbound call was rejected with a SIP response.
+   * @return sipStatusLine
+   */
+  @javax.annotation.Nullable
+  public String getSipStatusLine() {
+    return sipStatusLine;
+  }
+
+  public void setSipStatusLine(@javax.annotation.Nullable String sipStatusLine) {
+    this.sipStatusLine = sipStatusLine;
+  }
+
+
+  public DisconnectCallback sipHeaders(@javax.annotation.Nullable Map<String, String> sipHeaders) {
+    this.sipHeaders = sipHeaders;
+    return this;
+  }
+
+  public DisconnectCallback putSipHeadersItem(String key, String sipHeadersItem) {
+    if (this.sipHeaders == null) {
+      this.sipHeaders = new HashMap<>();
+    }
+    this.sipHeaders.put(key, sipHeadersItem);
+    return this;
+  }
+
+  /**
+   * (optional) Map of SIP headers, with lowercase keys (SIP headers are case-insensitive). On the Initiate callback, contains the customer-supplied X-* headers from the original INVITE; present only for inbound SIP URI calls with custom headers. On the Disconnect and Transfer Disconnect callbacks, contains a single &#x60;reason&#x60; key holding the raw, unmodified &#x60;Reason&#x60; header value from the final SIP response that rejected an outbound call (or transferred leg); present only when that response included a &#x60;Reason&#x60; header (for example, &#x60;v&#x3D;analytics1&#x60; call-analytics block information from a terminating carrier). If the response carries more than one &#x60;Reason&#x60; header, all values are returned in the order received, separated by &#x60;, &#x60;. Note - on the Initiate callback, keys preserve the original SIP header name in lowercase rather than Bandwidth&#39;s usual camelCase JSON convention, since these are passthrough values from the caller&#39;s SIP INVITE, not Bandwidth-defined fields. If the same header name is sent more than once in the INVITE, only the last value is kept. The example shown is for the Initiate callback; on the Disconnect and Transfer Disconnect callbacks the only key is &#x60;reason&#x60;.
+   * @return sipHeaders
+   */
+  @javax.annotation.Nullable
+  public Map<String, String> getSipHeaders() {
+    return sipHeaders;
+  }
+
+  public void setSipHeaders(@javax.annotation.Nullable Map<String, String> sipHeaders) {
+    this.sipHeaders = sipHeaders;
   }
 
   /**
@@ -585,7 +643,9 @@ public class DisconnectCallback {
         Objects.equals(this.errorId, disconnectCallback.errorId) &&
         Objects.equals(this.tag, disconnectCallback.tag) &&
         Objects.equals(this.sipCallId, disconnectCallback.sipCallId) &&
-        Objects.equals(this.sipResponseCode, disconnectCallback.sipResponseCode)&&
+        Objects.equals(this.sipResponseCode, disconnectCallback.sipResponseCode) &&
+        Objects.equals(this.sipStatusLine, disconnectCallback.sipStatusLine) &&
+        Objects.equals(this.sipHeaders, disconnectCallback.sipHeaders)&&
         Objects.equals(this.additionalProperties, disconnectCallback.additionalProperties);
   }
 
@@ -595,7 +655,7 @@ public class DisconnectCallback {
 
   @Override
   public int hashCode() {
-    return Objects.hash(eventType, eventTime, accountId, applicationId, from, to, callId, direction, callUrl, enqueuedTime, startTime, answerTime, endTime, cause, errorMessage, errorId, tag, sipCallId, sipResponseCode, additionalProperties);
+    return Objects.hash(eventType, eventTime, accountId, applicationId, from, to, callId, direction, callUrl, enqueuedTime, startTime, answerTime, endTime, cause, errorMessage, errorId, tag, sipCallId, sipResponseCode, sipStatusLine, sipHeaders, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -628,6 +688,8 @@ public class DisconnectCallback {
     sb.append("    tag: ").append(toIndentedString(tag)).append("\n");
     sb.append("    sipCallId: ").append(toIndentedString(sipCallId)).append("\n");
     sb.append("    sipResponseCode: ").append(toIndentedString(sipResponseCode)).append("\n");
+    sb.append("    sipStatusLine: ").append(toIndentedString(sipStatusLine)).append("\n");
+    sb.append("    sipHeaders: ").append(toIndentedString(sipHeaders)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -647,7 +709,7 @@ public class DisconnectCallback {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("eventType", "eventTime", "accountId", "applicationId", "from", "to", "callId", "direction", "callUrl", "enqueuedTime", "startTime", "answerTime", "endTime", "cause", "errorMessage", "errorId", "tag", "sipCallId", "sipResponseCode"));
+    openapiFields = new HashSet<String>(Arrays.asList("eventType", "eventTime", "accountId", "applicationId", "from", "to", "callId", "direction", "callUrl", "enqueuedTime", "startTime", "answerTime", "endTime", "cause", "errorMessage", "errorId", "tag", "sipCallId", "sipResponseCode", "sipStatusLine", "sipHeaders"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -705,6 +767,9 @@ public class DisconnectCallback {
       }
       if ((jsonObj.get("sipCallId") != null && !jsonObj.get("sipCallId").isJsonNull()) && !jsonObj.get("sipCallId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `sipCallId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sipCallId").toString()));
+      }
+      if ((jsonObj.get("sipStatusLine") != null && !jsonObj.get("sipStatusLine").isJsonNull()) && !jsonObj.get("sipStatusLine").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `sipStatusLine` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sipStatusLine").toString()));
       }
   }
 

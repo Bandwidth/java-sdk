@@ -72,6 +72,7 @@ public class JSON {
                         classByDiscriminatorValue.put("message-sending", com.bandwidth.sdk.model.StatusCallback.class);
                         classByDiscriminatorValue.put("message-sent", com.bandwidth.sdk.model.StatusCallback.class);
                         classByDiscriminatorValue.put("requested-location-response", com.bandwidth.sdk.model.InboundCallback.class);
+                        classByDiscriminatorValue.put("session-started", com.bandwidth.sdk.model.StatusCallback.class);
                         classByDiscriminatorValue.put("suggestion-response", com.bandwidth.sdk.model.InboundCallback.class);
                         classByDiscriminatorValue.put("callback", com.bandwidth.sdk.model.Callback.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
@@ -266,6 +267,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RbmMessageContentRichCard.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RbmMessageContentText.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RbmMessageMedia.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RbmSession.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RbmStandaloneCard.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RbmSuggestionResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bandwidth.sdk.model.RecordingAvailableCallback.CustomTypeAdapterFactory());

@@ -33,7 +33,7 @@ public class RbmActionOpenUrlTest {
     private final RbmActionOpenUrl model = new RbmActionOpenUrl()
             .type(RbmActionTypeEnum.OPEN_URL)
             .text("text")
-            .postbackData(new byte[]{1, 2, 3})
+            .postbackData("postbackData")
             .url(URI.create("https://bandwidth.com"))
             .application(RbmOpenUrlEnum.BROWSER)
             .webviewViewMode(RbmWebViewEnum.FULL);
@@ -67,7 +67,7 @@ public class RbmActionOpenUrlTest {
      */
     @Test
     public void postbackDataTest() {
-        assertThat(model.getPostbackData(), instanceOf(byte[].class));
+        assertThat(model.getPostbackData(), instanceOf(String.class));
     }
 
     /**
