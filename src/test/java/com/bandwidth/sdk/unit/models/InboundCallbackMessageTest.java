@@ -25,6 +25,7 @@ import com.bandwidth.sdk.model.MultiChannelMessageChannelEnum;
 import com.bandwidth.sdk.model.MultiChannelMessageContent;
 import com.bandwidth.sdk.model.PriorityEnum;
 import com.bandwidth.sdk.model.RbmLocationResponse;
+import com.bandwidth.sdk.model.RbmSession;
 import com.bandwidth.sdk.model.RbmSuggestionResponse;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -50,7 +51,8 @@ public class InboundCallbackMessageTest {
             .channel(MultiChannelMessageChannelEnum.SMS)
             .content(new MultiChannelMessageContent())
             .suggestionResponse(new RbmSuggestionResponse())
-            .locationResponse(new RbmLocationResponse());
+            .locationResponse(new RbmLocationResponse())
+            .session(new RbmSession());
 
     /**
      * Model tests for InboundCallbackMessage
@@ -186,6 +188,14 @@ public class InboundCallbackMessageTest {
     @Test
     public void locationResponseTest() {
         assertThat(model.getLocationResponse(), instanceOf(RbmLocationResponse.class));
+    }
+
+    /**
+     * Test the property 'session'
+     */
+    @Test
+    public void sessionTest() {
+        assertThat(model.getSession(), instanceOf(RbmSession.class));
     }
 
 }
