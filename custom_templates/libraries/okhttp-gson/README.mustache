@@ -87,16 +87,22 @@ Please follow the [installation](#installation) instruction and execute the foll
 {{#apiInfo}}{{#apis}}{{#-first}}{{#operations}}{{#operation}}{{#-first}}
 // Import classes:
 import {{{invokerPackage}}}.ApiClient;
-import {{{invokerPackage}}}.ApiException;
-import {{{invokerPackage}}}.Configuration;{{#hasAuthMethods}}
+import {{{invokerPackage}}}.ApiException;{{^hasOAuthMethods}}
+import {{{invokerPackage}}}.Configuration;{{/hasOAuthMethods}}{{#hasAuthMethods}}
 import {{{invokerPackage}}}.auth.*;{{/hasAuthMethods}}
 import {{{modelPackage}}}.*;
 import {{{package}}}.{{{classname}}};
 
 public class Example {
   public static void main(String[] args) {
+    {{#hasOAuthMethods}}
+    // Configure OAuth2 client credentials
+    ApiClient defaultClient = new ApiClient("YOUR_CLIENT_ID", "YOUR_CLIENT_SECRET", null);
+    {{/hasOAuthMethods}}
+    {{^hasOAuthMethods}}
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("{{{basePath}}}");
+    {{/hasOAuthMethods}}
     {{#withAWSV4Signature}}
     // Configure AWS Signature V4 authorization
     defaultClient.setAWS4Configuration("YOUR_ACCESS_KEY", "YOUR_SECRET_KEY", "REGION", "SERVICE")
@@ -114,16 +120,11 @@ public class Example {
     ApiKeyAuth {{{name}}} = (ApiKeyAuth) defaultClient.getAuthentication("{{{name}}}");
     {{{name}}}.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //{{{name}}}.setApiKeyPrefix("Token");{{/isApiKey}}{{#isOAuth}}
-    // Configure OAuth2 access token for authorization: {{{name}}}
-    OAuth {{{name}}} = (OAuth) defaultClient.getAuthentication("{{{name}}}");
-    {{{name}}}.setAccessToken("YOUR ACCESS TOKEN");{{/isOAuth}}
+    //{{{name}}}.setApiKeyPrefix("Token");{{/isApiKey}}
     {{/authMethods}}
     {{/hasAuthMethods}}
 
     {{{classname}}} apiInstance = new {{{classname}}}(defaultClient);
-    // Or create the instance with a your clientId and clientSecret (for OAuth2):
-    // {{{classname}}} apiInstance = new {{{classname}}}("YOUR_CLIENT_ID", "YOUR_CLIENT_SECRET", null);
 
     {{#allParams}}
     {{{dataType}}} {{{paramName}}} = {{{example}}}; // {{{dataType}}} | {{{description}}}
