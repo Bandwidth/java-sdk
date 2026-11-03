@@ -12,16 +12,13 @@
 
 package com.bandwidth.sdk.smoke;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiResponse;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.api.TollFreeVerificationApi;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
 
 import java.util.List;
 
@@ -33,15 +30,8 @@ import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 
 @SuppressWarnings("null")
 public class TollFreeVerificationApiTest {
-    private static ApiClient defaultClient = Configuration.getDefaultApiClient();
-    private static HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private static TollFreeVerificationApi api = new TollFreeVerificationApi(defaultClient);
-
-    @BeforeAll
-    public static void setUp() {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-    }
+    private static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    private static TollFreeVerificationApi api = new TollFreeVerificationApi(oauthClient);
 
     @Test
     @Disabled

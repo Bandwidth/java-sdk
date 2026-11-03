@@ -3,8 +3,6 @@ package com.bandwidth.sdk.smoke;
 import com.bandwidth.sdk.api.MessagesApi;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiClient;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.model.ListMessageDirectionEnum;
 import com.bandwidth.sdk.model.ListMessageItem;
 import com.bandwidth.sdk.model.Message;
@@ -35,9 +33,8 @@ import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
  */
 public class MessagesApiTest {
 
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private final MessagesApi api = new MessagesApi(defaultClient);
+    ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    private final MessagesApi api = new MessagesApi(oauthClient);
 
     // Setting up variables
     String accountId = BW_ACCOUNT_ID;
@@ -83,8 +80,6 @@ public class MessagesApiTest {
     @Test
     public void listMessagesTest() throws ApiException {
 
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
         MessagesList response = api.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus,
                 messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime, campaignId,
                 fromBwLatency, bwQueued, product, location, carrierQueued, fromCarrierLatency, callingNumberCountryA3,
@@ -109,8 +104,6 @@ public class MessagesApiTest {
     @Test
     public void listMessageBadRequestTest() {
 
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
         String pageToken = "gdEewhcJLQRB5"; // Bad Token
 
         ApiException exception = Assertions.assertThrows(ApiException.class,
@@ -123,21 +116,6 @@ public class MessagesApiTest {
 
     }
 
-    @Test
-    public void listMessageUnauthorizedTest() {
-
-        Basic.setUsername("bad_username");
-        Basic.setPassword("bad_password");
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.listMessages(accountId, messageId, sourceTn, destinationTn, messageStatus,
-                        messageDirection, carrierName, messageType, errorCode, fromDateTime, toDateTime,
-                        campaignId, fromBwLatency, bwQueued, product, location, carrierQueued,
-                        fromCarrierLatency, callingNumberCountryA3, calledNumberCountryA3, fromSegmentCount,
-                        toSegmentCount, fromMessageSize, toMessageSize, sort, pageToken, limit, false));
-        assertThat(exception.getCode(), is(401));
-    }
-
     /**
      * Create Message
      *
@@ -148,8 +126,6 @@ public class MessagesApiTest {
 
     @Test
     public void createMessageTest() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
         messageRequest.applicationId(applicationId);
         messageRequest.addToItem(USER_NUMBER);
         messageRequest.from(BW_NUMBER);
@@ -174,8 +150,6 @@ public class MessagesApiTest {
     @Test
     public void createMessageBadRequestTest() {
 
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
         messageRequest.applicationId(null);
         messageRequest.addToItem(USER_NUMBER);
         messageRequest.from(BW_NUMBER);
@@ -184,20 +158,5 @@ public class MessagesApiTest {
         ApiException exception = Assertions.assertThrows(ApiException.class,
                 () -> api.createMessage(accountId, messageRequest));
         assertThat(exception.getCode(), is(400));
-    }
-
-    @Test
-    public void createMessageUnauthorizedTest() {
-        Basic.setUsername("bad_username");
-        Basic.setPassword("bad_password");
-
-        messageRequest.applicationId(BW_MESSAGING_APPLICATION_ID);
-        messageRequest.addToItem(USER_NUMBER);
-        messageRequest.from(BW_NUMBER);
-        messageRequest.text("Sample Text");
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.createMessage(accountId, messageRequest));
-        assertThat(exception.getCode(), is(401));
     }
 }

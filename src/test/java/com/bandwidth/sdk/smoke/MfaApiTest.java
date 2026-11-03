@@ -4,13 +4,11 @@ import com.bandwidth.sdk.api.MfaApi;
 import com.bandwidth.sdk.ApiResponse;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiClient;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.model.CodeRequest;
 import com.bandwidth.sdk.model.MessagingCodeResponse;
 import com.bandwidth.sdk.model.VerifyCodeRequest;
 import com.bandwidth.sdk.model.VerifyCodeResponse;
 import com.bandwidth.sdk.model.VoiceCodeResponse;
-import com.bandwidth.sdk.Configuration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -24,15 +22,11 @@ import static org.hamcrest.Matchers.is;
 import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 
 public class MfaApiTest {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private final MfaApi api = new MfaApi(defaultClient);
+    ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    private final MfaApi api = new MfaApi(oauthClient);
 
     @Test
     public void successfulMfaGenerateMessagingCodeRequest() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         CodeRequest request = new CodeRequest();
         request.setTo(USER_NUMBER);
         request.setFrom(BW_NUMBER);
@@ -48,9 +42,6 @@ public class MfaApiTest {
 
     @Test
     public void successfulMfaGenerateVoiceCodeRequest() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         CodeRequest request = new CodeRequest();
         request.setTo(USER_NUMBER);
         request.setFrom(BW_NUMBER);
@@ -66,8 +57,6 @@ public class MfaApiTest {
 
     @Test
     public void successfulMfaVerifyCodeRequest() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
         BigDecimal expirationTime = new BigDecimal(3);
 
         // Generate a random TN for the setTo - otherwise we get heavily rate limited
@@ -89,9 +78,6 @@ public class MfaApiTest {
 
     @Test
     public void badRequest() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         CodeRequest badRequest = new CodeRequest();
         badRequest.setTo(USER_NUMBER);
         badRequest.setFrom(BW_NUMBER);
@@ -110,43 +96,4 @@ public class MfaApiTest {
                         badRequest));
         assertThat(voiceException.getCode(), is(400));
     }
-
-    @Test
-    public void unauthorizedRequest() throws ApiException {
-        Basic.setUsername(null);
-        Basic.setPassword(null);
-
-        CodeRequest request = new CodeRequest();
-        request.setTo(USER_NUMBER);
-        request.setFrom(BW_NUMBER);
-        request.setApplicationId(BW_VOICE_APPLICATION_ID);
-        request.setScope("scope");
-        request.setMessage("Your temporary {NAME} {SCOPE} code is {CODE}");
-        request.setDigits(6);
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.generateMessagingCodeWithHttpInfo(BW_ACCOUNT_ID,
-                        request));
-        assertThat(exception.getCode(), is(401));
-    }
-
-    @Test
-    public void forbiddenRequest() {
-        Basic.setUsername(FORBIDDEN_USERNAME);
-        Basic.setPassword("bad_password");
-
-        CodeRequest request = new CodeRequest();
-        request.setTo(USER_NUMBER);
-        request.setFrom(BW_NUMBER);
-        request.setApplicationId(BW_MESSAGING_APPLICATION_ID);
-        request.setScope("scope");
-        request.setMessage("Your temporary {NAME} {SCOPE} code is {CODE}");
-        request.setDigits(6);
-
-        ApiException exception = Assertions.assertThrows(ApiException.class,
-                () -> api.generateMessagingCodeWithHttpInfo(BW_ACCOUNT_ID,
-                        request));
-        assertThat(exception.getCode(), is(403));
-    }
-
 }

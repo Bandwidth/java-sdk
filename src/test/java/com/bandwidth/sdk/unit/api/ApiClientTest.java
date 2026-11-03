@@ -7,7 +7,7 @@ import okhttp3.OkHttpClient;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.JSON;
 import com.bandwidth.sdk.auth.Authentication;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
+import com.bandwidth.sdk.auth.OAuth;
 import com.bandwidth.sdk.auth.RetryingOAuth;
 
 import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
@@ -41,15 +41,16 @@ public class ApiClientTest {
 
     @Test
     public void testAuthentications() {
-        ApiClient basicClient = new ApiClient();
-        Map<String, Authentication> authentications = basicClient.getAuthentications();
+        ApiClient defaultClient = new ApiClient();
+        Map<String, Authentication> authentications = defaultClient.getAuthentications();
 
         ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
         Map<String, Authentication> oauthAuthentications = oauthClient.getAuthentications();
         
         assertThat(authentications, notNullValue());
-        assertThat(authentications, hasKey("Basic"));
-        assertThat(basicClient.getAuthentication("Basic"), instanceOf(HttpBasicAuth.class));
+        assertThat(authentications, not(hasKey("Basic")));
+        assertThat(authentications, hasKey("OAuth2"));
+        assertThat(defaultClient.getAuthentication("OAuth2"), instanceOf(OAuth.class));
 
         assertThat(oauthAuthentications, notNullValue());
         assertThat(oauthAuthentications, hasKey("OAuth2"));

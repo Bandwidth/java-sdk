@@ -1,8 +1,6 @@
 package com.bandwidth.sdk.utils;
 
 public final class TestingEnvironmentVariables {
-    public static final String BW_USERNAME = System.getenv("BW_USERNAME");
-    public static final String BW_PASSWORD = System.getenv("BW_PASSWORD");
     public static final String BW_CLIENT_ID = System.getenv("BW_CLIENT_ID");
     public static final String BW_CLIENT_SECRET = System.getenv("BW_CLIENT_SECRET");
     public static final String BW_ACCOUNT_ID = System.getenv("BW_ACCOUNT_ID");
@@ -15,8 +13,6 @@ public final class TestingEnvironmentVariables {
     public static final String ATT_NUMBER = System.getenv("ATT_NUMBER");
     public static final String T_MOBILE_NUMBER = System.getenv("T_MOBILE_NUMBER");
     public static final String USER_NUMBER = System.getenv("USER_NUMBER");
-    public static final String FORBIDDEN_USERNAME = System.getenv("BW_USERNAME_FORBIDDEN");
-    public static final String FORBIDDEN_PASSWORD = System.getenv("BW_PASSWORD_FORBIDDEN");
     public static final String MANTECA_ACTIVE_NUMBER = System.getenv("MANTECA_ACTIVE_NUMBER");
     public static final String MANTECA_IDLE_NUMBER = System.getenv("MANTECA_IDLE_NUMBER");
     public static final String MANTECA_BASE_URL = System.getenv("MANTECA_BASE_URL");
