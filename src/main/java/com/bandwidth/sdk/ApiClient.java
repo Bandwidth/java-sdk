@@ -54,7 +54,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.bandwidth.sdk.auth.Authentication;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.auth.HttpBearerAuth;
 import com.bandwidth.sdk.auth.ApiKeyAuth;
 import com.bandwidth.sdk.auth.OAuth;
@@ -514,35 +513,6 @@ public class ApiClient {
     }
 
 
-    /**
-     * Helper method to set username for the first HTTP basic authentication.
-     *
-     * @param username Username
-     */
-    public void setUsername(String username) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof HttpBasicAuth) {
-                ((HttpBasicAuth) auth).setUsername(username);
-                return;
-            }
-        }
-        throw new RuntimeException("No HTTP basic authentication configured!");
-    }
-
-    /**
-     * Helper method to set password for the first HTTP basic authentication.
-     *
-     * @param password Password
-     */
-    public void setPassword(String password) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof HttpBasicAuth) {
-                ((HttpBasicAuth) auth).setPassword(password);
-                return;
-            }
-        }
-        throw new RuntimeException("No HTTP basic authentication configured!");
-    }
 
     /**
      * Helper method to set API key value for the first API key authentication.
