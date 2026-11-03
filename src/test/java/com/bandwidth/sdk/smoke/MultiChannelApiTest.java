@@ -186,7 +186,7 @@ public class MultiChannelApiTest {
                                                 new MultiChannelAction(new RbmActionDial()
                                                         .type(RbmActionTypeEnum.DIAL_PHONE)
                                                         .text("Call Us")
-                                                        .postbackData(new byte[]{1, 2, 3})
+                                                        .postbackData("postbackData")
                                                         .phoneNumber(BW_NUMBER)
                                                 )
                                         ))
@@ -238,7 +238,7 @@ public class MultiChannelApiTest {
         assertThat(rbmActionDial.getType(), instanceOf(RbmActionTypeEnum.class));
         assertThat(rbmActionDial.getType(), equalTo(RbmActionTypeEnum.DIAL_PHONE));
         assertThat(rbmActionDial.getText(), instanceOf(String.class));
-        assertThat(rbmActionDial.getPostbackData(), instanceOf(byte[].class));
+        assertThat(rbmActionDial.getPostbackData(), instanceOf(String.class));
         assertThat(rbmActionDial.getPhoneNumber(), instanceOf(String.class));
         assertThat(channelListObject.getOwner(), equalTo(BW_NUMBER));
     }
@@ -260,7 +260,7 @@ public class MultiChannelApiTest {
                                                 new MultiChannelAction(new RbmActionDial()
                                                         .type(RbmActionTypeEnum.DIAL_PHONE)
                                                         .text("Call Us")
-                                                        .postbackData(new byte[]{1, 2, 3})
+                                                        .postbackData("postbackData")
                                                         .phoneNumber(BW_NUMBER)
                                                 )
                                         ))
@@ -315,7 +315,7 @@ public class MultiChannelApiTest {
         assertThat(rbmActionDial.getType(), instanceOf(RbmActionTypeEnum.class));
         assertThat(rbmActionDial.getType(), equalTo(RbmActionTypeEnum.DIAL_PHONE));
         assertThat(rbmActionDial.getText(), instanceOf(String.class));
-        assertThat(rbmActionDial.getPostbackData(), instanceOf(byte[].class));
+        assertThat(rbmActionDial.getPostbackData(), instanceOf(String.class));
         assertThat(rbmActionDial.getPhoneNumber(), instanceOf(String.class));
         assertThat(channelListObject.getOwner(), equalTo(BW_NUMBER));
     }
@@ -411,7 +411,7 @@ public class MultiChannelApiTest {
                                                                         new MultiChannelAction(new RbmActionDial()
                                                                                 .type(RbmActionTypeEnum.DIAL_PHONE)
                                                                                 .text("Call Us")
-                                                                                .postbackData(new byte[]{1, 2, 3})
+                                                                                .postbackData("postbackData")
                                                                                 .phoneNumber(BW_NUMBER)
                                                                         )
                                                                 )),
@@ -481,7 +481,7 @@ public class MultiChannelApiTest {
         assertThat(rbmActionDial.getType(), instanceOf(RbmActionTypeEnum.class));
         assertThat(rbmActionDial.getType(), equalTo(RbmActionTypeEnum.DIAL_PHONE));
         assertThat(rbmActionDial.getText(), instanceOf(String.class));
-        assertThat(rbmActionDial.getPostbackData(), instanceOf(byte[].class));
+        assertThat(rbmActionDial.getPostbackData(), instanceOf(String.class));
         assertThat(rbmActionDial.getPhoneNumber(), instanceOf(String.class));
         assertThat(rbmCard.getCardContents().get(0), instanceOf(RbmCardContent.class));
         RbmCardContent card2 = rbmCard.getCardContents().get(1);
