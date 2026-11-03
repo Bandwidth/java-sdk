@@ -59,7 +59,7 @@ public class RbmSuggestionResponse {
   public static final String SERIALIZED_NAME_POSTBACK_DATA = "postbackData";
   @SerializedName(SERIALIZED_NAME_POSTBACK_DATA)
   @javax.annotation.Nullable
-  private byte[] postbackData;
+  private String postbackData;
 
   public static final String SERIALIZED_NAME_PAIRED_MESSAGE_ID = "pairedMessageId";
   @SerializedName(SERIALIZED_NAME_PAIRED_MESSAGE_ID)
@@ -75,7 +75,7 @@ public class RbmSuggestionResponse {
   }
 
   /**
-   * The text associated with the suggestion response.
+   * The text of the suggestion the user tapped.
    * @return text
    */
   @javax.annotation.Nullable
@@ -88,21 +88,21 @@ public class RbmSuggestionResponse {
   }
 
 
-  public RbmSuggestionResponse postbackData(@javax.annotation.Nullable byte[] postbackData) {
+  public RbmSuggestionResponse postbackData(@javax.annotation.Nullable String postbackData) {
     this.postbackData = postbackData;
     return this;
   }
 
   /**
-   * Base64 payload the customer receives when the reply is clicked.
+   * Payload the customer receives when the reply is clicked.
    * @return postbackData
    */
   @javax.annotation.Nullable
-  public byte[] getPostbackData() {
+  public String getPostbackData() {
     return postbackData;
   }
 
-  public void setPostbackData(@javax.annotation.Nullable byte[] postbackData) {
+  public void setPostbackData(@javax.annotation.Nullable String postbackData) {
     this.postbackData = postbackData;
   }
 
@@ -181,7 +181,7 @@ public class RbmSuggestionResponse {
     }
     RbmSuggestionResponse rbmSuggestionResponse = (RbmSuggestionResponse) o;
     return Objects.equals(this.text, rbmSuggestionResponse.text) &&
-        Arrays.equals(this.postbackData, rbmSuggestionResponse.postbackData) &&
+        Objects.equals(this.postbackData, rbmSuggestionResponse.postbackData) &&
         Objects.equals(this.pairedMessageId, rbmSuggestionResponse.pairedMessageId)&&
         Objects.equals(this.additionalProperties, rbmSuggestionResponse.additionalProperties);
   }
@@ -192,7 +192,7 @@ public class RbmSuggestionResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, Arrays.hashCode(postbackData), pairedMessageId, additionalProperties);
+    return Objects.hash(text, postbackData, pairedMessageId, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -249,6 +249,9 @@ public class RbmSuggestionResponse {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull()) && !jsonObj.get("text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
+      }
+      if ((jsonObj.get("postbackData") != null && !jsonObj.get("postbackData").isJsonNull()) && !jsonObj.get("postbackData").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `postbackData` to be a primitive type in the JSON string but got `%s`", jsonObj.get("postbackData").toString()));
       }
       if ((jsonObj.get("pairedMessageId") != null && !jsonObj.get("pairedMessageId").isJsonNull()) && !jsonObj.get("pairedMessageId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `pairedMessageId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pairedMessageId").toString()));

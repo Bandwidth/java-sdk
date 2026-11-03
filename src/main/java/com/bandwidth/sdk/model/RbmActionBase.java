@@ -64,7 +64,7 @@ public class RbmActionBase {
   public static final String SERIALIZED_NAME_POSTBACK_DATA = "postbackData";
   @SerializedName(SERIALIZED_NAME_POSTBACK_DATA)
   @javax.annotation.Nonnull
-  private byte[] postbackData;
+  private String postbackData;
 
   public RbmActionBase() {
   }
@@ -107,21 +107,21 @@ public class RbmActionBase {
   }
 
 
-  public RbmActionBase postbackData(@javax.annotation.Nonnull byte[] postbackData) {
+  public RbmActionBase postbackData(@javax.annotation.Nonnull String postbackData) {
     this.postbackData = postbackData;
     return this;
   }
 
   /**
-   * Base64 payload the customer receives when the reply is clicked.
+   * Payload the customer receives when the reply is clicked.
    * @return postbackData
    */
   @javax.annotation.Nonnull
-  public byte[] getPostbackData() {
+  public String getPostbackData() {
     return postbackData;
   }
 
-  public void setPostbackData(@javax.annotation.Nonnull byte[] postbackData) {
+  public void setPostbackData(@javax.annotation.Nonnull String postbackData) {
     this.postbackData = postbackData;
   }
 
@@ -182,13 +182,13 @@ public class RbmActionBase {
     RbmActionBase rbmActionBase = (RbmActionBase) o;
     return Objects.equals(this.type, rbmActionBase.type) &&
         Objects.equals(this.text, rbmActionBase.text) &&
-        Arrays.equals(this.postbackData, rbmActionBase.postbackData)&&
+        Objects.equals(this.postbackData, rbmActionBase.postbackData)&&
         Objects.equals(this.additionalProperties, rbmActionBase.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, text, Arrays.hashCode(postbackData), additionalProperties);
+    return Objects.hash(type, text, postbackData, additionalProperties);
   }
 
   @Override
@@ -247,6 +247,9 @@ public class RbmActionBase {
       RbmActionTypeEnum.validateJsonElement(jsonObj.get("type"));
       if (!jsonObj.get("text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
+      }
+      if (!jsonObj.get("postbackData").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `postbackData` to be a primitive type in the JSON string but got `%s`", jsonObj.get("postbackData").toString()));
       }
   }
 

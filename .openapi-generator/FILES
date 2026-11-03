@@ -157,6 +157,7 @@ docs/RbmMessageContentRichCard.md
 docs/RbmMessageContentText.md
 docs/RbmMessageMedia.md
 docs/RbmOpenUrlEnum.md
+docs/RbmSession.md
 docs/RbmStandaloneCard.md
 docs/RbmSuggestionResponse.md
 docs/RbmWebViewEnum.md
@@ -404,6 +405,7 @@ src/main/java/com/bandwidth/sdk/model/RbmMessageContentRichCard.java
 src/main/java/com/bandwidth/sdk/model/RbmMessageContentText.java
 src/main/java/com/bandwidth/sdk/model/RbmMessageMedia.java
 src/main/java/com/bandwidth/sdk/model/RbmOpenUrlEnum.java
+src/main/java/com/bandwidth/sdk/model/RbmSession.java
 src/main/java/com/bandwidth/sdk/model/RbmStandaloneCard.java
 src/main/java/com/bandwidth/sdk/model/RbmSuggestionResponse.java
 src/main/java/com/bandwidth/sdk/model/RbmWebViewEnum.java

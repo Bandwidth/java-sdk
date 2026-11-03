@@ -64,7 +64,7 @@ public class RbmActionViewLocation {
   public static final String SERIALIZED_NAME_POSTBACK_DATA = "postbackData";
   @SerializedName(SERIALIZED_NAME_POSTBACK_DATA)
   @javax.annotation.Nonnull
-  private byte[] postbackData;
+  private String postbackData;
 
   public static final String SERIALIZED_NAME_LATITUDE = "latitude";
   @SerializedName(SERIALIZED_NAME_LATITUDE)
@@ -122,21 +122,21 @@ public class RbmActionViewLocation {
   }
 
 
-  public RbmActionViewLocation postbackData(@javax.annotation.Nonnull byte[] postbackData) {
+  public RbmActionViewLocation postbackData(@javax.annotation.Nonnull String postbackData) {
     this.postbackData = postbackData;
     return this;
   }
 
   /**
-   * Base64 payload the customer receives when the reply is clicked.
+   * Payload the customer receives when the reply is clicked.
    * @return postbackData
    */
   @javax.annotation.Nonnull
-  public byte[] getPostbackData() {
+  public String getPostbackData() {
     return postbackData;
   }
 
-  public void setPostbackData(@javax.annotation.Nonnull byte[] postbackData) {
+  public void setPostbackData(@javax.annotation.Nonnull String postbackData) {
     this.postbackData = postbackData;
   }
 
@@ -254,7 +254,7 @@ public class RbmActionViewLocation {
     RbmActionViewLocation rbmActionViewLocation = (RbmActionViewLocation) o;
     return Objects.equals(this.type, rbmActionViewLocation.type) &&
         Objects.equals(this.text, rbmActionViewLocation.text) &&
-        Arrays.equals(this.postbackData, rbmActionViewLocation.postbackData) &&
+        Objects.equals(this.postbackData, rbmActionViewLocation.postbackData) &&
         Objects.equals(this.latitude, rbmActionViewLocation.latitude) &&
         Objects.equals(this.longitude, rbmActionViewLocation.longitude) &&
         Objects.equals(this.label, rbmActionViewLocation.label)&&
@@ -263,7 +263,7 @@ public class RbmActionViewLocation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, text, Arrays.hashCode(postbackData), latitude, longitude, label, additionalProperties);
+    return Objects.hash(type, text, postbackData, latitude, longitude, label, additionalProperties);
   }
 
   @Override
@@ -325,6 +325,9 @@ public class RbmActionViewLocation {
       RbmActionTypeEnum.validateJsonElement(jsonObj.get("type"));
       if (!jsonObj.get("text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
+      }
+      if (!jsonObj.get("postbackData").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `postbackData` to be a primitive type in the JSON string but got `%s`", jsonObj.get("postbackData").toString()));
       }
       if (!jsonObj.get("latitude").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `latitude` to be a primitive type in the JSON string but got `%s`", jsonObj.get("latitude").toString()));
