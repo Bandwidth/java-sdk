@@ -19,7 +19,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 
-import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
+import static com.bandwidth.sdk.smoke.utils.TestingEnvironmentVariables.*;
 
 public class MfaApiTest {
     ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);

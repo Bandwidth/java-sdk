@@ -26,7 +26,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 
-import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
+import static com.bandwidth.sdk.smoke.utils.TestingEnvironmentVariables.*;
 
 @SuppressWarnings("null")
 public class TollFreeVerificationApiTest {

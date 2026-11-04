@@ -35,8 +35,8 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.beans.HasPropertyWithValue.hasProperty;
 
-import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
-import static com.bandwidth.sdk.utils.CallCleanup.Cleanup;
+import static com.bandwidth.sdk.smoke.utils.TestingEnvironmentVariables.*;
+import static com.bandwidth.sdk.smoke.utils.CallCleanup.Cleanup;
 
 @SuppressWarnings("null")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
