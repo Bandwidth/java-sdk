@@ -1,4 +1,4 @@
-package com.bandwidth.sdk.utils;
+package com.bandwidth.sdk.smoke.utils;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -10,7 +10,7 @@ import com.bandwidth.sdk.model.CallStateEnum;
 import com.bandwidth.sdk.model.UpdateCall;
 import com.bandwidth.sdk.ApiException;
 
-import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
+import static com.bandwidth.sdk.smoke.utils.TestingEnvironmentVariables.*;
 
 public class CallCleanup {
     private static int TEST_SLEEP = 5;

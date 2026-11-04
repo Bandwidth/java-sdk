@@ -38,7 +38,9 @@ import com.bandwidth.sdk.model.WebhookSubscriptionRequestSchema;
 import com.bandwidth.sdk.model.WebhookSubscriptionTypeEnum;
 import com.bandwidth.sdk.model.WebhookSubscriptionsListBody;
 
-import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
+import static com.bandwidth.sdk.unit.TestConstants.BW_CLIENT_ID;
+import static com.bandwidth.sdk.unit.TestConstants.BW_CLIENT_SECRET;
+import static com.bandwidth.sdk.unit.TestConstants.BW_ACCOUNT_ID;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.time.OffsetDateTime;

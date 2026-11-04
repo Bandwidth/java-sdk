@@ -1,4 +1,4 @@
-package com.bandwidth.sdk.utils;
+package com.bandwidth.sdk.smoke.utils;
 
 public final class TestingEnvironmentVariables {
     public static final String BW_CLIENT_ID = System.getenv("BW_CLIENT_ID");
