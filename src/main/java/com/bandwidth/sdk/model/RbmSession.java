@@ -31,6 +31,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -50,7 +51,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * RCS interactive session information for the message. An interactive session is a 24-hour window covering all Rich and Rich Media messages exchanged between an RCS agent and a specific end user mobile number. It is triggered when at least 4 messages are exchanged within 24 hours, at least 2 of them mobile-originated and at least 1 mobile-terminated. Only present on &#x60;message-delivered&#x60;, &#x60;message-received&#x60; and &#x60;session-started&#x60; callbacks for RBM messages of US agents with the Conversational billing category. Omitted for all other messages.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.27.0")
 public class RbmSession {
   public static final String SERIALIZED_NAME_CAN_INITIATE = "canInitiate";
   @SerializedName(SERIALIZED_NAME_CAN_INITIATE)
@@ -344,7 +345,9 @@ public class RbmSession {
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
                    JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
+                   if (jsonElement.isJsonNull()) {
+                     obj.add(entry.getKey(), JsonNull.INSTANCE);
+                   } else if (jsonElement.isJsonArray()) {
                      obj.add(entry.getKey(), jsonElement.getAsJsonArray());
                    } else {
                      obj.add(entry.getKey(), jsonElement.getAsJsonObject());

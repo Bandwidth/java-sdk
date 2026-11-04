@@ -67,7 +67,7 @@ import com.google.gson.JsonParseException;
 
 import com.bandwidth.sdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.27.0")
 public class MultiChannelAction extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(MultiChannelAction.class.getName());
 
@@ -131,45 +131,48 @@ public class MultiChannelAction extends AbstractOpenApiSchema {
                     Object deserialized = null;
                     JsonElement jsonElement = elementAdapter.read(in);
 
-                    JsonObject jsonObject = jsonElement.getAsJsonObject();
+                    // non-object payloads can still match a non-object anyOf schema below
+                    if (jsonElement.isJsonObject()) {
+                        JsonObject jsonObject = jsonElement.getAsJsonObject();
+                        JsonElement discriminatorElement = jsonObject.get("type");
 
-                    // use discriminator value for faster oneOf lookup
-                    MultiChannelAction newMultiChannelAction = new MultiChannelAction();
-                    if (jsonObject.get("type") == null) {
-                        log.log(Level.WARNING, "Failed to lookup discriminator value for MultiChannelAction as `type` was not found in the payload or the payload is empty.");
-                    } else  {
-                        // look up the discriminator value in the field `type`
-                        switch (jsonObject.get("type").getAsString()) {
-                            case "CREATE_CALENDAR_EVENT":
-                                deserialized = adapterMultiChannelActionCalendarEvent.fromJsonTree(jsonObject);
-                                newMultiChannelAction.setActualInstance(deserialized);
-                                return newMultiChannelAction;
-                            case "DIAL_PHONE":
-                                deserialized = adapterRbmActionDial.fromJsonTree(jsonObject);
-                                newMultiChannelAction.setActualInstance(deserialized);
-                                return newMultiChannelAction;
-                            case "OPEN_URL":
-                                deserialized = adapterRbmActionOpenUrl.fromJsonTree(jsonObject);
-                                newMultiChannelAction.setActualInstance(deserialized);
-                                return newMultiChannelAction;
-                            case "REPLY":
-                                deserialized = adapterRbmActionBase.fromJsonTree(jsonObject);
-                                newMultiChannelAction.setActualInstance(deserialized);
-                                return newMultiChannelAction;
-                            case "REQUEST_LOCATION":
-                                deserialized = adapterRbmActionBase.fromJsonTree(jsonObject);
-                                newMultiChannelAction.setActualInstance(deserialized);
-                                return newMultiChannelAction;
-                            case "SHOW_LOCATION":
-                                deserialized = adapterRbmActionViewLocation.fromJsonTree(jsonObject);
-                                newMultiChannelAction.setActualInstance(deserialized);
-                                return newMultiChannelAction;
-                            default:
-                                log.log(Level.WARNING, String.format(java.util.Locale.ROOT, "Failed to lookup discriminator value `%s` for MultiChannelAction. Possible values: CREATE_CALENDAR_EVENT DIAL_PHONE OPEN_URL REPLY REQUEST_LOCATION SHOW_LOCATION", jsonObject.get("type").getAsString()));
+                        // use discriminator value for faster anyOf lookup
+                        MultiChannelAction newMultiChannelAction = new MultiChannelAction();
+                        if (discriminatorElement == null || !discriminatorElement.isJsonPrimitive()) {
+                            log.log(Level.WARNING, "Failed to lookup discriminator value for MultiChannelAction as `type` is missing or is not a primitive type in the payload.");
+                        } else  {
+                            // look up the discriminator value in the field `type`
+                            switch (discriminatorElement.getAsString()) {
+                                case "CREATE_CALENDAR_EVENT":
+                                    deserialized = adapterMultiChannelActionCalendarEvent.fromJsonTree(jsonObject);
+                                    newMultiChannelAction.setActualInstance(deserialized);
+                                    return newMultiChannelAction;
+                                case "DIAL_PHONE":
+                                    deserialized = adapterRbmActionDial.fromJsonTree(jsonObject);
+                                    newMultiChannelAction.setActualInstance(deserialized);
+                                    return newMultiChannelAction;
+                                case "OPEN_URL":
+                                    deserialized = adapterRbmActionOpenUrl.fromJsonTree(jsonObject);
+                                    newMultiChannelAction.setActualInstance(deserialized);
+                                    return newMultiChannelAction;
+                                case "REPLY":
+                                    deserialized = adapterRbmActionBase.fromJsonTree(jsonObject);
+                                    newMultiChannelAction.setActualInstance(deserialized);
+                                    return newMultiChannelAction;
+                                case "REQUEST_LOCATION":
+                                    deserialized = adapterRbmActionBase.fromJsonTree(jsonObject);
+                                    newMultiChannelAction.setActualInstance(deserialized);
+                                    return newMultiChannelAction;
+                                case "SHOW_LOCATION":
+                                    deserialized = adapterRbmActionViewLocation.fromJsonTree(jsonObject);
+                                    newMultiChannelAction.setActualInstance(deserialized);
+                                    return newMultiChannelAction;
+                                default:
+                                    log.log(Level.WARNING, String.format(java.util.Locale.ROOT, "Failed to lookup discriminator value `%s` for MultiChannelAction. Possible values: CREATE_CALENDAR_EVENT DIAL_PHONE OPEN_URL REPLY REQUEST_LOCATION SHOW_LOCATION", discriminatorElement.getAsString()));
+                            }
                         }
                     }
 
-                    int match = 0;
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;
 

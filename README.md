@@ -2,7 +2,7 @@
 
 Bandwidth
 - API version: 1.0.0
-  - Generator version: 7.24.0
+  - Generator version: 7.27.0
 
 Bandwidth's Communication APIs
 
