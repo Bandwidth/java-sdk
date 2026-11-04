@@ -16,5 +16,3 @@ licenseName: MIT
 useEnumCaseInsensitive: true
 useOneOfDiscriminatorLookup: true
 templateDir: custom_templates
-typeMappings:
-  date-time-local: String

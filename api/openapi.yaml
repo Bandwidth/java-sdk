@@ -10013,7 +10013,7 @@ components:
     multiChannelError:
       example:
         links: []
-        data: "{}"
+        data: {}
         errors:
         - type: type
           description: description
@@ -15243,7 +15243,7 @@ components:
     lookupErrorResponse:
       example:
         links: []
-        data: "{}"
+        data: {}
         errors:
         - code: NO-MATCH
           description: Example error description
@@ -17304,7 +17304,7 @@ components:
         - href: https://api.bandwidth.com/v2/accounts/5500123/endpoints/e-15ac29a2-1331029c-2cb0-4a07-b215-b22865662d85
           rel: self
           method: GET
-        data: "{}"
+        data: {}
         errors:
         - id: 59512d87-7a92-4040-8e4a-78fb772019b9
           type: resource.not_found
