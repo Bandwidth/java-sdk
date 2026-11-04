@@ -10,7 +10,8 @@ import com.bandwidth.sdk.auth.Authentication;
 import com.bandwidth.sdk.auth.OAuth;
 import com.bandwidth.sdk.auth.RetryingOAuth;
 
-import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
+import static com.bandwidth.sdk.unit.TestConstants.BW_CLIENT_ID;
+import static com.bandwidth.sdk.unit.TestConstants.BW_CLIENT_SECRET;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;

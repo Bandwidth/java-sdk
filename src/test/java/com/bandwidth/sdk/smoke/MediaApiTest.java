@@ -20,7 +20,7 @@ import java.util.UUID;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
+import static com.bandwidth.sdk.smoke.utils.TestingEnvironmentVariables.*;
 
 @TestMethodOrder(OrderAnnotation.class)
 public class MediaApiTest {

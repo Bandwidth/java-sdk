@@ -26,7 +26,7 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.matchesRegex;
 import static org.hamcrest.Matchers.contains;
 
-import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
+import static com.bandwidth.sdk.smoke.utils.TestingEnvironmentVariables.*;
 
 /**
  * API tests for MessagesApi
