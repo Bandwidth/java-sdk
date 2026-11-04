@@ -3,9 +3,7 @@ package com.bandwidth.sdk.smoke;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiResponse;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.api.MultiChannelApi;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.model.MultiChannelMessageRequest;
 import com.bandwidth.sdk.model.MultiChannelMessageResponseData;
 import com.bandwidth.sdk.model.MultiChannelChannelListRequestObject;
@@ -40,7 +38,6 @@ import com.bandwidth.sdk.model.RbmMessageCarouselCard;
 import com.bandwidth.sdk.model.RbmMessageContentFile;
 import com.bandwidth.sdk.model.RbmMessageContentRichCard;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -59,15 +56,8 @@ import static org.hamcrest.CoreMatchers.is;
 
 @SuppressWarnings("null")
 public class MultiChannelApiTest {
-    private static ApiClient defaultClient = Configuration.getDefaultApiClient();
-    private static HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private static MultiChannelApi api = new MultiChannelApi(defaultClient);
-
-    @BeforeAll
-    public static void setUp() {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-    }
+    private static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    private static MultiChannelApi api = new MultiChannelApi(oauthClient);
 
     @Test
     public void createMultiChannelSMSMessageTest() throws ApiException {

@@ -31,11 +31,6 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("http://localhost");
     
-    // Configure HTTP basic authorization: Basic
-    HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    Basic.setUsername("YOUR USERNAME");
-    Basic.setPassword("YOUR PASSWORD");
-
     // Configure OAuth2 access token for authorization: OAuth2
     OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
     OAuth2.setAccessToken("YOUR ACCESS TOKEN");
@@ -70,7 +65,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -114,11 +109,6 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("http://localhost");
     
-    // Configure HTTP basic authorization: Basic
-    HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    Basic.setUsername("YOUR USERNAME");
-    Basic.setPassword("YOUR PASSWORD");
-
     // Configure OAuth2 access token for authorization: OAuth2
     OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
     OAuth2.setAccessToken("YOUR ACCESS TOKEN");
@@ -205,7 +195,7 @@ public class Example {
 
 ### Authorization
 
-[Basic](../README.md#Basic), [OAuth2](../README.md#OAuth2)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 

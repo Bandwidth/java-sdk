@@ -4,9 +4,7 @@ import com.bandwidth.sdk.api.MediaApi;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiResponse;
 import com.bandwidth.sdk.ApiClient;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.model.Media;
-import com.bandwidth.sdk.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -26,9 +24,8 @@ import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
 
 @TestMethodOrder(OrderAnnotation.class)
 public class MediaApiTest {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private final MediaApi api = new MediaApi(defaultClient);
+    ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    private final MediaApi api = new MediaApi(oauthClient);
 
     private static String mediaPath = "src/test/java/com/bandwidth/sdk/fixtures/";
     private static String mediaFile = "java_cat.jpeg";
@@ -47,9 +44,6 @@ public class MediaApiTest {
     @Test
     @Order(1)
     public void uploadMedia() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         // okhttp3.Call call = api.uploadMediaValidateBeforeCall(BW_ACCOUNT_ID, mediaId,
         // media, contentType, cacheControl, null);
         ApiResponse<Void> response = api.uploadMediaWithHttpInfo(BW_ACCOUNT_ID, mediaId, media,
@@ -63,8 +57,6 @@ public class MediaApiTest {
     @Test
     @Order(2)
     public void listMedia() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
         ApiResponse<List<Media>> response = api.listMediaWithHttpInfo(BW_ACCOUNT_ID, null);
 
         assertThat(response.getStatusCode(), is(200));
@@ -73,9 +65,6 @@ public class MediaApiTest {
     @Test
     @Order(3)
     public void getMedia() throws ApiException, IOException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         ApiResponse<File> response = api.getMediaWithHttpInfo(BW_ACCOUNT_ID, mediaId);
 
         assertThat(response.getStatusCode(), is(200));
@@ -85,9 +74,6 @@ public class MediaApiTest {
     @Test
     @Order(4)
     public void deleteMedia() throws ApiException {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-
         ApiResponse<Void> response = api.deleteMediaWithHttpInfo(BW_ACCOUNT_ID, mediaId);
         assertThat(response.getStatusCode(), is(204));
     }

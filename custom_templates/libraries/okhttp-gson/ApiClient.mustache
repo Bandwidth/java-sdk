@@ -60,7 +60,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import {{invokerPackage}}.auth.Authentication;
+{{#hasHttpBasicMethods}}
 import {{invokerPackage}}.auth.HttpBasicAuth;
+{{/hasHttpBasicMethods}}
 import {{invokerPackage}}.auth.HttpBearerAuth;
 import {{invokerPackage}}.auth.ApiKeyAuth;
 {{#hasOAuthMethods}}
@@ -616,6 +618,7 @@ public class ApiClient {
     }
     {{/hasHttpBearerMethods}}
 
+    {{#hasHttpBasicMethods}}
     /**
      * Helper method to set username for the first HTTP basic authentication.
      *
@@ -645,6 +648,7 @@ public class ApiClient {
         }
         throw new RuntimeException("No HTTP basic authentication configured!");
     }
+    {{/hasHttpBasicMethods}}
 
     /**
      * Helper method to set API key value for the first API key authentication.

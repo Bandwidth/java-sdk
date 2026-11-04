@@ -253,7 +253,6 @@ src/main/java/com/bandwidth/sdk/api/TollFreeVerificationApi.java
 src/main/java/com/bandwidth/sdk/api/TranscriptionsApi.java
 src/main/java/com/bandwidth/sdk/auth/ApiKeyAuth.java
 src/main/java/com/bandwidth/sdk/auth/Authentication.java
-src/main/java/com/bandwidth/sdk/auth/HttpBasicAuth.java
 src/main/java/com/bandwidth/sdk/auth/HttpBearerAuth.java
 src/main/java/com/bandwidth/sdk/auth/OAuth.java
 src/main/java/com/bandwidth/sdk/auth/OAuthFlow.java
