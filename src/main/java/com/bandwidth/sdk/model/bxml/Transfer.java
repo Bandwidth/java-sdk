@@ -67,6 +67,8 @@ import lombok.NoArgsConstructor;
  *       This parameter is considered only when diversionTreatment is set to stack. Defaults is unknown.
  *       Defaults to None.
  * @param privacy (bool, optional): A boolean value to indicate that the calling number should be hidden. Use transferCallerDisplayName to customize the name shown to the recipient. Default is false.
+ * @param attestationLevel (str, optional): The STIR/SHAKEN attestation level to sign the transferred call with. Can be A, B, or C. Only applies to accounts using the Hosted Signing Service. Cannot be combined with identity. Defaults to None.
+ * @param identity (str, optional): A SIP Identity header value (PASSporT) signed by you, sent unmodified on the transferred call. Max length 2000 characters. Cannot be combined with attestationLevel. Defaults to None.
  *
  */
 public class Transfer implements Verb {
@@ -131,6 +133,12 @@ public class Transfer implements Verb {
 
     @XmlAttribute
     protected Boolean privacy;
+
+    @XmlAttribute
+    protected String attestationLevel;
+
+    @XmlAttribute
+    protected String identity;
 
     @Override
     public String getVerbName() {
