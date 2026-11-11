@@ -47,6 +47,8 @@ public class TransferVerbTest {
                         .transferCallerId("+19195554321")
                         .tag("test")
                         .privacy(true)
+                        .requestedAttestationLevel("A")
+                        .identity("eyJhbGciOiJFUzI1NiJ9.eyJhdHRlc3QiOiJBIn0.c2ln;info=<https://example.com/cert.pem>;ppt=\"shaken\"")
                         .build();
         Transfer transfer2 = Transfer.builder()
                         .callTimeout(15d)
@@ -55,38 +57,14 @@ public class TransferVerbTest {
                         .transferCallerDisplayName("Clark Kent")
                         .tag("test")
                         .build();
-        Transfer transferWithRequestedAttestationLevel = Transfer.builder()
-                        .destinations(List.of(phonenumber))
-                        .requestedAttestationLevel("A")
-                        .build();
-        Transfer transferWithIdentity = Transfer.builder()
-                        .destinations(List.of(phonenumber))
-                        .identity("eyJhbGciOiJFUzI1NiJ9.eyJhdHRlc3QiOiJBIn0.c2ln;info=<https://example.com/cert.pem>;ppt=\"shaken\"")
-                        .build();
 
         @Test
         public void transferVerbWorks() throws JAXBException {
                 JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
-                String expectedSipUriBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Transfer transferCallerId=\"+19195554321\" callTimeout=\"15.0\" transferCompleteMethod=\"POST\" transferCompleteFallbackMethod=\"POST\" tag=\"test\" diversionTreatment=\"none\" diversionReason=\"unknown\" privacy=\"true\"><SipUri uui=\"test\" transferAnswerUrl=\"https://example.com/webhooks/transfer_answer\" transferAnswerMethod=\"POST\" transferAnswerFallbackMethod=\"POST\" transferDisconnectMethod=\"POST\" tag=\"test\">sip@bw.com</SipUri></Transfer></Bxml>";
+                String expectedSipUriBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Transfer transferCallerId=\"+19195554321\" callTimeout=\"15.0\" transferCompleteMethod=\"POST\" transferCompleteFallbackMethod=\"POST\" tag=\"test\" diversionTreatment=\"none\" diversionReason=\"unknown\" privacy=\"true\" requestedAttestationLevel=\"A\" identity=\"eyJhbGciOiJFUzI1NiJ9.eyJhdHRlc3QiOiJBIn0.c2ln;info=&lt;https://example.com/cert.pem&gt;;ppt=&quot;shaken&quot;\"><SipUri uui=\"test\" transferAnswerUrl=\"https://example.com/webhooks/transfer_answer\" transferAnswerMethod=\"POST\" transferAnswerFallbackMethod=\"POST\" transferDisconnectMethod=\"POST\" tag=\"test\">sip@bw.com</SipUri></Transfer></Bxml>";
                 String expectedPhoneNumberBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Transfer transferCallerId=\"+19195554321\" transferCallerDisplayName=\"Clark Kent\" callTimeout=\"15.0\" transferCompleteMethod=\"POST\" transferCompleteFallbackMethod=\"POST\" tag=\"test\" diversionTreatment=\"none\" diversionReason=\"unknown\"><PhoneNumber transferAnswerUrl=\"https://example.com/webhooks/transfer_answer\" transferAnswerMethod=\"POST\" transferAnswerFallbackMethod=\"POST\" transferDisconnectMethod=\"POST\" tag=\"test\" uui=\"test\">+19195551234</PhoneNumber></Transfer></Bxml>";
 
                 assertThat(new Bxml().with(transfer1).toBxml(jaxbContext), is(expectedSipUriBxml));
                 assertThat(new Bxml().with(transfer2).toBxml(jaxbContext), is(expectedPhoneNumberBxml));
-        }
-
-        @Test
-        public void transferVerbRequestedAttestationLevelWorks() throws JAXBException {
-                JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
-                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Transfer callTimeout=\"300.0\" transferCompleteMethod=\"POST\" transferCompleteFallbackMethod=\"POST\" diversionTreatment=\"none\" diversionReason=\"unknown\" requestedAttestationLevel=\"A\"><PhoneNumber transferAnswerUrl=\"https://example.com/webhooks/transfer_answer\" transferAnswerMethod=\"POST\" transferAnswerFallbackMethod=\"POST\" transferDisconnectMethod=\"POST\" tag=\"test\" uui=\"test\">+19195551234</PhoneNumber></Transfer></Bxml>";
-
-                assertThat(new Bxml().with(transferWithRequestedAttestationLevel).toBxml(jaxbContext), is(expectedBxml));
-        }
-
-        @Test
-        public void transferVerbIdentityWorks() throws JAXBException {
-                JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
-                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Transfer callTimeout=\"300.0\" transferCompleteMethod=\"POST\" transferCompleteFallbackMethod=\"POST\" diversionTreatment=\"none\" diversionReason=\"unknown\" identity=\"eyJhbGciOiJFUzI1NiJ9.eyJhdHRlc3QiOiJBIn0.c2ln;info=&lt;https://example.com/cert.pem&gt;;ppt=&quot;shaken&quot;\"><PhoneNumber transferAnswerUrl=\"https://example.com/webhooks/transfer_answer\" transferAnswerMethod=\"POST\" transferAnswerFallbackMethod=\"POST\" transferDisconnectMethod=\"POST\" tag=\"test\" uui=\"test\">+19195551234</PhoneNumber></Transfer></Bxml>";
-
-                assertThat(new Bxml().with(transferWithIdentity).toBxml(jaxbContext), is(expectedBxml));
         }
 };
