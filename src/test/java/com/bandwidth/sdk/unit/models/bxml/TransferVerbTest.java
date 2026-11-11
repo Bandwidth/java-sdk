@@ -55,9 +55,9 @@ public class TransferVerbTest {
                         .transferCallerDisplayName("Clark Kent")
                         .tag("test")
                         .build();
-        Transfer transferWithAttestationLevel = Transfer.builder()
+        Transfer transferWithRequestedAttestationLevel = Transfer.builder()
                         .destinations(List.of(phonenumber))
-                        .attestationLevel("A")
+                        .requestedAttestationLevel("A")
                         .build();
         Transfer transferWithIdentity = Transfer.builder()
                         .destinations(List.of(phonenumber))
@@ -75,11 +75,11 @@ public class TransferVerbTest {
         }
 
         @Test
-        public void transferVerbAttestationLevelWorks() throws JAXBException {
+        public void transferVerbRequestedAttestationLevelWorks() throws JAXBException {
                 JAXBContext jaxbContext = JAXBContext.newInstance(Bxml.class);
-                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Transfer callTimeout=\"300.0\" transferCompleteMethod=\"POST\" transferCompleteFallbackMethod=\"POST\" diversionTreatment=\"none\" diversionReason=\"unknown\" attestationLevel=\"A\"><PhoneNumber transferAnswerUrl=\"https://example.com/webhooks/transfer_answer\" transferAnswerMethod=\"POST\" transferAnswerFallbackMethod=\"POST\" transferDisconnectMethod=\"POST\" tag=\"test\" uui=\"test\">+19195551234</PhoneNumber></Transfer></Bxml>";
+                String expectedBxml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Bxml><Transfer callTimeout=\"300.0\" transferCompleteMethod=\"POST\" transferCompleteFallbackMethod=\"POST\" diversionTreatment=\"none\" diversionReason=\"unknown\" requestedAttestationLevel=\"A\"><PhoneNumber transferAnswerUrl=\"https://example.com/webhooks/transfer_answer\" transferAnswerMethod=\"POST\" transferAnswerFallbackMethod=\"POST\" transferDisconnectMethod=\"POST\" tag=\"test\" uui=\"test\">+19195551234</PhoneNumber></Transfer></Bxml>";
 
-                assertThat(new Bxml().with(transferWithAttestationLevel).toBxml(jaxbContext), is(expectedBxml));
+                assertThat(new Bxml().with(transferWithRequestedAttestationLevel).toBxml(jaxbContext), is(expectedBxml));
         }
 
         @Test
