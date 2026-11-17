@@ -7,15 +7,15 @@ import okhttp3.OkHttpClient;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.JSON;
 import com.bandwidth.sdk.auth.Authentication;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
+import com.bandwidth.sdk.auth.OAuth;
 import com.bandwidth.sdk.auth.RetryingOAuth;
 
-import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
+import static com.bandwidth.sdk.unit.TestConstants.BW_CLIENT_ID;
+import static com.bandwidth.sdk.unit.TestConstants.BW_CLIENT_SECRET;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.Matchers.hasKey;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.sameInstance;
 import static org.hamcrest.Matchers.not;
@@ -41,18 +41,18 @@ public class ApiClientTest {
 
     @Test
     public void testAuthentications() {
-        ApiClient basicClient = new ApiClient();
-        Map<String, Authentication> authentications = basicClient.getAuthentications();
+        ApiClient defaultClient = new ApiClient();
+        Map<String, Authentication> authentications = defaultClient.getAuthentications();
 
         ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
         Map<String, Authentication> oauthAuthentications = oauthClient.getAuthentications();
         
         assertThat(authentications, notNullValue());
-        assertThat(authentications, hasKey("Basic"));
-        assertThat(basicClient.getAuthentication("Basic"), instanceOf(HttpBasicAuth.class));
+        assertThat(authentications.keySet(), contains("OAuth2"));
+        assertThat(defaultClient.getAuthentication("OAuth2"), instanceOf(OAuth.class));
 
         assertThat(oauthAuthentications, notNullValue());
-        assertThat(oauthAuthentications, hasKey("OAuth2"));
+        assertThat(oauthAuthentications.keySet(), contains("OAuth2"));
         assertThat(oauthClient.getAuthentication("OAuth2"), instanceOf(RetryingOAuth.class));
     }
 

@@ -30,6 +30,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -49,7 +50,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * RbmActionViewLocation
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.27.0")
 public class RbmActionViewLocation {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -64,7 +65,7 @@ public class RbmActionViewLocation {
   public static final String SERIALIZED_NAME_POSTBACK_DATA = "postbackData";
   @SerializedName(SERIALIZED_NAME_POSTBACK_DATA)
   @javax.annotation.Nonnull
-  private byte[] postbackData;
+  private String postbackData;
 
   public static final String SERIALIZED_NAME_LATITUDE = "latitude";
   @SerializedName(SERIALIZED_NAME_LATITUDE)
@@ -122,21 +123,21 @@ public class RbmActionViewLocation {
   }
 
 
-  public RbmActionViewLocation postbackData(@javax.annotation.Nonnull byte[] postbackData) {
+  public RbmActionViewLocation postbackData(@javax.annotation.Nonnull String postbackData) {
     this.postbackData = postbackData;
     return this;
   }
 
   /**
-   * Base64 payload the customer receives when the reply is clicked.
+   * Payload the customer receives when the reply is clicked.
    * @return postbackData
    */
   @javax.annotation.Nonnull
-  public byte[] getPostbackData() {
+  public String getPostbackData() {
     return postbackData;
   }
 
-  public void setPostbackData(@javax.annotation.Nonnull byte[] postbackData) {
+  public void setPostbackData(@javax.annotation.Nonnull String postbackData) {
     this.postbackData = postbackData;
   }
 
@@ -254,7 +255,7 @@ public class RbmActionViewLocation {
     RbmActionViewLocation rbmActionViewLocation = (RbmActionViewLocation) o;
     return Objects.equals(this.type, rbmActionViewLocation.type) &&
         Objects.equals(this.text, rbmActionViewLocation.text) &&
-        Arrays.equals(this.postbackData, rbmActionViewLocation.postbackData) &&
+        Objects.equals(this.postbackData, rbmActionViewLocation.postbackData) &&
         Objects.equals(this.latitude, rbmActionViewLocation.latitude) &&
         Objects.equals(this.longitude, rbmActionViewLocation.longitude) &&
         Objects.equals(this.label, rbmActionViewLocation.label)&&
@@ -263,7 +264,7 @@ public class RbmActionViewLocation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, text, Arrays.hashCode(postbackData), latitude, longitude, label, additionalProperties);
+    return Objects.hash(type, text, postbackData, latitude, longitude, label, additionalProperties);
   }
 
   @Override
@@ -326,6 +327,9 @@ public class RbmActionViewLocation {
       if (!jsonObj.get("text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
       }
+      if (!jsonObj.get("postbackData").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `postbackData` to be a primitive type in the JSON string but got `%s`", jsonObj.get("postbackData").toString()));
+      }
       if (!jsonObj.get("latitude").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `latitude` to be a primitive type in the JSON string but got `%s`", jsonObj.get("latitude").toString()));
       }
@@ -366,7 +370,9 @@ public class RbmActionViewLocation {
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
                    JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
+                   if (jsonElement.isJsonNull()) {
+                     obj.add(entry.getKey(), JsonNull.INSTANCE);
+                   } else if (jsonElement.isJsonArray()) {
                      obj.add(entry.getKey(), jsonElement.getAsJsonArray());
                    } else {
                      obj.add(entry.getKey(), jsonElement.getAsJsonObject());

@@ -23,6 +23,7 @@ import java.util.List;
 import com.bandwidth.sdk.model.MessageDirectionEnum;
 import com.bandwidth.sdk.model.MultiChannelMessageChannelEnum;
 import com.bandwidth.sdk.model.PriorityEnum;
+import com.bandwidth.sdk.model.RbmSession;
 import com.bandwidth.sdk.model.StatusCallbackMessage;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -45,7 +46,8 @@ public class StatusCallbackMessageTest {
             .tag("tag")
             .media(new ArrayList<>())
             .priority(PriorityEnum.DEFAULT)
-            .channel(MultiChannelMessageChannelEnum.SMS);
+            .channel(MultiChannelMessageChannelEnum.SMS)
+            .session(new RbmSession());
 
     /**
      * Model tests for StatusCallbackMessage
@@ -157,6 +159,14 @@ public class StatusCallbackMessageTest {
     @Test
     public void channelTest() {
         assertThat(model.getChannel(), instanceOf(MultiChannelMessageChannelEnum.class));
+    }
+
+    /**
+     * Test the property 'session'
+     */
+    @Test
+    public void sessionTest() {
+        assertThat(model.getSession(), instanceOf(RbmSession.class));
     }
 
 }

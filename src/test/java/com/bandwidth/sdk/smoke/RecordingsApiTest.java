@@ -41,8 +41,8 @@ import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
-import static com.bandwidth.sdk.utils.CallCleanup.Cleanup;
+import static com.bandwidth.sdk.smoke.utils.TestingEnvironmentVariables.*;
+import static com.bandwidth.sdk.smoke.utils.CallCleanup.Cleanup;
 
 @SuppressWarnings("null")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)

@@ -30,6 +30,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -49,7 +50,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * RbmActionBase
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.27.0")
 public class RbmActionBase {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -64,7 +65,7 @@ public class RbmActionBase {
   public static final String SERIALIZED_NAME_POSTBACK_DATA = "postbackData";
   @SerializedName(SERIALIZED_NAME_POSTBACK_DATA)
   @javax.annotation.Nonnull
-  private byte[] postbackData;
+  private String postbackData;
 
   public RbmActionBase() {
   }
@@ -107,21 +108,21 @@ public class RbmActionBase {
   }
 
 
-  public RbmActionBase postbackData(@javax.annotation.Nonnull byte[] postbackData) {
+  public RbmActionBase postbackData(@javax.annotation.Nonnull String postbackData) {
     this.postbackData = postbackData;
     return this;
   }
 
   /**
-   * Base64 payload the customer receives when the reply is clicked.
+   * Payload the customer receives when the reply is clicked.
    * @return postbackData
    */
   @javax.annotation.Nonnull
-  public byte[] getPostbackData() {
+  public String getPostbackData() {
     return postbackData;
   }
 
-  public void setPostbackData(@javax.annotation.Nonnull byte[] postbackData) {
+  public void setPostbackData(@javax.annotation.Nonnull String postbackData) {
     this.postbackData = postbackData;
   }
 
@@ -182,13 +183,13 @@ public class RbmActionBase {
     RbmActionBase rbmActionBase = (RbmActionBase) o;
     return Objects.equals(this.type, rbmActionBase.type) &&
         Objects.equals(this.text, rbmActionBase.text) &&
-        Arrays.equals(this.postbackData, rbmActionBase.postbackData)&&
+        Objects.equals(this.postbackData, rbmActionBase.postbackData)&&
         Objects.equals(this.additionalProperties, rbmActionBase.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, text, Arrays.hashCode(postbackData), additionalProperties);
+    return Objects.hash(type, text, postbackData, additionalProperties);
   }
 
   @Override
@@ -248,6 +249,9 @@ public class RbmActionBase {
       if (!jsonObj.get("text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
       }
+      if (!jsonObj.get("postbackData").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `postbackData` to be a primitive type in the JSON string but got `%s`", jsonObj.get("postbackData").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -279,7 +283,9 @@ public class RbmActionBase {
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
                    JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
+                   if (jsonElement.isJsonNull()) {
+                     obj.add(entry.getKey(), JsonNull.INSTANCE);
+                   } else if (jsonElement.isJsonArray()) {
                      obj.add(entry.getKey(), jsonElement.getAsJsonArray());
                    } else {
                      obj.add(entry.getKey(), jsonElement.getAsJsonObject());

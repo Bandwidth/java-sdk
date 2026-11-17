@@ -62,7 +62,7 @@ import com.google.gson.JsonParseException;
 
 import com.bandwidth.sdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.27.0")
 public class MultiChannelChannelListResponseObject extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(MultiChannelChannelListResponseObject.class.getName());
 
@@ -112,33 +112,36 @@ public class MultiChannelChannelListResponseObject extends AbstractOpenApiSchema
                     Object deserialized = null;
                     JsonElement jsonElement = elementAdapter.read(in);
 
-                    JsonObject jsonObject = jsonElement.getAsJsonObject();
+                    // non-object payloads can still match a non-object anyOf schema below
+                    if (jsonElement.isJsonObject()) {
+                        JsonObject jsonObject = jsonElement.getAsJsonObject();
+                        JsonElement discriminatorElement = jsonObject.get("channel");
 
-                    // use discriminator value for faster oneOf lookup
-                    MultiChannelChannelListResponseObject newMultiChannelChannelListResponseObject = new MultiChannelChannelListResponseObject();
-                    if (jsonObject.get("channel") == null) {
-                        log.log(Level.WARNING, "Failed to lookup discriminator value for MultiChannelChannelListResponseObject as `channel` was not found in the payload or the payload is empty.");
-                    } else  {
-                        // look up the discriminator value in the field `channel`
-                        switch (jsonObject.get("channel").getAsString()) {
-                            case "MMS":
-                                deserialized = adapterMultiChannelChannelListMMSResponseObject.fromJsonTree(jsonObject);
-                                newMultiChannelChannelListResponseObject.setActualInstance(deserialized);
-                                return newMultiChannelChannelListResponseObject;
-                            case "RBM":
-                                deserialized = adapterMultiChannelChannelListRBMResponseObject.fromJsonTree(jsonObject);
-                                newMultiChannelChannelListResponseObject.setActualInstance(deserialized);
-                                return newMultiChannelChannelListResponseObject;
-                            case "SMS":
-                                deserialized = adapterMultiChannelChannelListSMSResponseObject.fromJsonTree(jsonObject);
-                                newMultiChannelChannelListResponseObject.setActualInstance(deserialized);
-                                return newMultiChannelChannelListResponseObject;
-                            default:
-                                log.log(Level.WARNING, String.format(java.util.Locale.ROOT, "Failed to lookup discriminator value `%s` for MultiChannelChannelListResponseObject. Possible values: MMS RBM SMS", jsonObject.get("channel").getAsString()));
+                        // use discriminator value for faster anyOf lookup
+                        MultiChannelChannelListResponseObject newMultiChannelChannelListResponseObject = new MultiChannelChannelListResponseObject();
+                        if (discriminatorElement == null || !discriminatorElement.isJsonPrimitive()) {
+                            log.log(Level.WARNING, "Failed to lookup discriminator value for MultiChannelChannelListResponseObject as `channel` is missing or is not a primitive type in the payload.");
+                        } else  {
+                            // look up the discriminator value in the field `channel`
+                            switch (discriminatorElement.getAsString()) {
+                                case "MMS":
+                                    deserialized = adapterMultiChannelChannelListMMSResponseObject.fromJsonTree(jsonObject);
+                                    newMultiChannelChannelListResponseObject.setActualInstance(deserialized);
+                                    return newMultiChannelChannelListResponseObject;
+                                case "RBM":
+                                    deserialized = adapterMultiChannelChannelListRBMResponseObject.fromJsonTree(jsonObject);
+                                    newMultiChannelChannelListResponseObject.setActualInstance(deserialized);
+                                    return newMultiChannelChannelListResponseObject;
+                                case "SMS":
+                                    deserialized = adapterMultiChannelChannelListSMSResponseObject.fromJsonTree(jsonObject);
+                                    newMultiChannelChannelListResponseObject.setActualInstance(deserialized);
+                                    return newMultiChannelChannelListResponseObject;
+                                default:
+                                    log.log(Level.WARNING, String.format(java.util.Locale.ROOT, "Failed to lookup discriminator value `%s` for MultiChannelChannelListResponseObject. Possible values: MMS RBM SMS", discriminatorElement.getAsString()));
+                            }
                         }
                     }
 
-                    int match = 0;
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;
 

@@ -30,7 +30,7 @@ public class MultiChannelActionCalendarEventTest {
     private final MultiChannelActionCalendarEvent model = new MultiChannelActionCalendarEvent()
             .type(RbmActionTypeEnum.REPLY)
             .text("text")
-            .postbackData(new byte[]{1, 2, 3})
+            .postbackData("postbackData")
             .title("title")
             .startTime(OffsetDateTime.now())
             .endTime(OffsetDateTime.now())
@@ -65,7 +65,7 @@ public class MultiChannelActionCalendarEventTest {
      */
     @Test
     public void postbackDataTest() {
-        assertThat(model.getPostbackData(), instanceOf(byte[].class));
+        assertThat(model.getPostbackData(), instanceOf(String.class));
     }
 
     /**

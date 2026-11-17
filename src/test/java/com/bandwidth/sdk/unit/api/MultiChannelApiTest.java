@@ -24,7 +24,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
+import static com.bandwidth.sdk.unit.TestConstants.BW_CLIENT_ID;
+import static com.bandwidth.sdk.unit.TestConstants.BW_CLIENT_SECRET;
+import static com.bandwidth.sdk.unit.TestConstants.BW_ACCOUNT_ID;
+import static com.bandwidth.sdk.unit.TestConstants.BW_NUMBER;
+import static com.bandwidth.sdk.unit.TestConstants.USER_NUMBER;
+import static com.bandwidth.sdk.unit.TestConstants.BW_MESSAGING_APPLICATION_ID;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;

@@ -19,6 +19,7 @@ import com.bandwidth.sdk.model.MultiChannelMessageChannelEnum;
 import com.bandwidth.sdk.model.MultiChannelMessageContent;
 import com.bandwidth.sdk.model.PriorityEnum;
 import com.bandwidth.sdk.model.RbmLocationResponse;
+import com.bandwidth.sdk.model.RbmSession;
 import com.bandwidth.sdk.model.RbmSuggestionResponse;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -41,6 +42,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -60,7 +62,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * InboundCallbackMessage
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.27.0")
 public class InboundCallbackMessage {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -126,6 +128,11 @@ public class InboundCallbackMessage {
   @SerializedName(SERIALIZED_NAME_CHANNEL)
   @javax.annotation.Nullable
   private MultiChannelMessageChannelEnum channel;
+
+  public static final String SERIALIZED_NAME_SESSION = "session";
+  @SerializedName(SERIALIZED_NAME_SESSION)
+  @javax.annotation.Nullable
+  private RbmSession session;
 
   public static final String SERIALIZED_NAME_CONTENT = "content";
   @SerializedName(SERIALIZED_NAME_CONTENT)
@@ -408,6 +415,25 @@ public class InboundCallbackMessage {
   }
 
 
+  public InboundCallbackMessage session(@javax.annotation.Nullable RbmSession session) {
+    this.session = session;
+    return this;
+  }
+
+  /**
+   * Get session
+   * @return session
+   */
+  @javax.annotation.Nullable
+  public RbmSession getSession() {
+    return session;
+  }
+
+  public void setSession(@javax.annotation.Nullable RbmSession session) {
+    this.session = session;
+  }
+
+
   public InboundCallbackMessage content(@javax.annotation.Nullable MultiChannelMessageContent content) {
     this.content = content;
     return this;
@@ -532,6 +558,7 @@ public class InboundCallbackMessage {
         Objects.equals(this.media, inboundCallbackMessage.media) &&
         Objects.equals(this.priority, inboundCallbackMessage.priority) &&
         Objects.equals(this.channel, inboundCallbackMessage.channel) &&
+        Objects.equals(this.session, inboundCallbackMessage.session) &&
         Objects.equals(this.content, inboundCallbackMessage.content) &&
         Objects.equals(this.suggestionResponse, inboundCallbackMessage.suggestionResponse) &&
         Objects.equals(this.locationResponse, inboundCallbackMessage.locationResponse)&&
@@ -540,7 +567,7 @@ public class InboundCallbackMessage {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, owner, applicationId, time, segmentCount, direction, to, from, text, tag, media, priority, channel, content, suggestionResponse, locationResponse, additionalProperties);
+    return Objects.hash(id, owner, applicationId, time, segmentCount, direction, to, from, text, tag, media, priority, channel, session, content, suggestionResponse, locationResponse, additionalProperties);
   }
 
   @Override
@@ -560,6 +587,7 @@ public class InboundCallbackMessage {
     sb.append("    media: ").append(toIndentedString(media)).append("\n");
     sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
     sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
+    sb.append("    session: ").append(toIndentedString(session)).append("\n");
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    suggestionResponse: ").append(toIndentedString(suggestionResponse)).append("\n");
     sb.append("    locationResponse: ").append(toIndentedString(locationResponse)).append("\n");
@@ -582,7 +610,7 @@ public class InboundCallbackMessage {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("id", "owner", "applicationId", "time", "segmentCount", "direction", "to", "from", "text", "tag", "media", "priority", "channel", "content", "suggestionResponse", "locationResponse"));
+    openapiFields = new HashSet<String>(Arrays.asList("id", "owner", "applicationId", "time", "segmentCount", "direction", "to", "from", "text", "tag", "media", "priority", "channel", "session", "content", "suggestionResponse", "locationResponse"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(Arrays.asList("id", "owner", "applicationId", "time", "segmentCount", "direction", "to", "from"));
@@ -646,6 +674,10 @@ public class InboundCallbackMessage {
       if (jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) {
         MultiChannelMessageChannelEnum.validateJsonElement(jsonObj.get("channel"));
       }
+      // validate the optional field `session`
+      if (jsonObj.get("session") != null && !jsonObj.get("session").isJsonNull()) {
+        RbmSession.validateJsonElement(jsonObj.get("session"));
+      }
       // validate the optional field `content`
       if (jsonObj.get("content") != null && !jsonObj.get("content").isJsonNull()) {
         MultiChannelMessageContent.validateJsonElement(jsonObj.get("content"));
@@ -689,7 +721,9 @@ public class InboundCallbackMessage {
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
                    JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
+                   if (jsonElement.isJsonNull()) {
+                     obj.add(entry.getKey(), JsonNull.INSTANCE);
+                   } else if (jsonElement.isJsonArray()) {
                      obj.add(entry.getKey(), jsonElement.getAsJsonArray());
                    } else {
                      obj.add(entry.getKey(), jsonElement.getAsJsonObject());

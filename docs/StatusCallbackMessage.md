@@ -21,6 +21,7 @@ Message payload schema within a callback
 |**media** | **List&lt;URI&gt;** | Optional media, not applicable for sms |  [optional] |
 |**priority** | **PriorityEnum** |  |  [optional] |
 |**channel** | **MultiChannelMessageChannelEnum** |  |  [optional] |
+|**session** | [**RbmSession**](RbmSession.md) |  |  [optional] |
 
 
 

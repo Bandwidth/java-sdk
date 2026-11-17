@@ -18,7 +18,13 @@ import com.bandwidth.sdk.model.MachineDetectionModeEnum;
 import com.bandwidth.sdk.model.UpdateCall;
 import com.google.gson.internal.LinkedTreeMap;
 
-import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
+import static com.bandwidth.sdk.unit.TestConstants.BW_CLIENT_ID;
+import static com.bandwidth.sdk.unit.TestConstants.BW_CLIENT_SECRET;
+import static com.bandwidth.sdk.unit.TestConstants.BW_ACCOUNT_ID;
+import static com.bandwidth.sdk.unit.TestConstants.BW_NUMBER;
+import static com.bandwidth.sdk.unit.TestConstants.USER_NUMBER;
+import static com.bandwidth.sdk.unit.TestConstants.BW_VOICE_APPLICATION_ID;
+import static com.bandwidth.sdk.unit.TestConstants.BASE_CALLBACK_URL;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.CoreMatchers.instanceOf;

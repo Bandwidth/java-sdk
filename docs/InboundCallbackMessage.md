@@ -20,6 +20,7 @@
 |**media** | **List&lt;URI&gt;** | Optional media, not applicable for sms |  [optional] |
 |**priority** | **PriorityEnum** |  |  [optional] |
 |**channel** | **MultiChannelMessageChannelEnum** |  |  [optional] |
+|**session** | [**RbmSession**](RbmSession.md) |  |  [optional] |
 |**content** | [**MultiChannelMessageContent**](MultiChannelMessageContent.md) |  |  [optional] |
 |**suggestionResponse** | [**RbmSuggestionResponse**](RbmSuggestionResponse.md) |  |  [optional] |
 |**locationResponse** | [**RbmLocationResponse**](RbmLocationResponse.md) |  |  [optional] |

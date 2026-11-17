@@ -20,6 +20,7 @@ import com.bandwidth.sdk.model.LineTypeEnum;
 import com.bandwidth.sdk.model.LookupResult;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -35,7 +36,7 @@ public class LookupResultTest {
             .voiceProvider("TestVoiceProvider")
             .countryCodeA3("USA")
             .deactivationReporter("TestReporter")
-            .deactivationDate("2023-01-01T00:00:00Z")
+            .deactivationDate(LocalDateTime.of(2025, 6, 20, 18, 35))
             .deactivationEvent(DeactivationEventEnum.DEACTIVATED)
             .latestMessageDeliveryStatus(LatestMessageDeliveryStatusEnum.ACTIVE)
             .initialMessageDeliveryStatusDate(LocalDate.of(2025, 1, 1))
@@ -104,7 +105,7 @@ public class LookupResultTest {
      */
     @Test
     public void deactivationDateTest() {
-        assertThat(model.getDeactivationDate(), instanceOf(String.class));
+        assertThat(model.getDeactivationDate(), instanceOf(LocalDateTime.class));
     }
 
     /**

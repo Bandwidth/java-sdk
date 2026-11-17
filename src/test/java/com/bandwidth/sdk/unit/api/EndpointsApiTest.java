@@ -23,7 +23,9 @@ import org.junit.jupiter.api.Test;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
+import static com.bandwidth.sdk.unit.TestConstants.BW_CLIENT_ID;
+import static com.bandwidth.sdk.unit.TestConstants.BW_CLIENT_SECRET;
+import static com.bandwidth.sdk.unit.TestConstants.BW_ACCOUNT_ID;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.equalTo;

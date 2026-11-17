@@ -2,7 +2,7 @@
 
 Bandwidth
 - API version: 1.0.0
-  - Generator version: 7.24.0
+  - Generator version: 7.27.0
 
 Bandwidth's Communication APIs
 
@@ -83,28 +83,17 @@ Please follow the [installation](#installation) instruction and execute the foll
 // Import classes:
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.auth.*;
 import com.bandwidth.sdk.model.*;
 import com.bandwidth.sdk.api.CallsApi;
 
 public class Example {
   public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    // Configure OAuth2 client credentials
+    ApiClient defaultClient = new ApiClient("YOUR_CLIENT_ID", "YOUR_CLIENT_SECRET", null);
     
-    // Configure HTTP basic authorization: Basic
-    HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    Basic.setUsername("YOUR USERNAME");
-    Basic.setPassword("YOUR PASSWORD");
-
-    // Configure OAuth2 access token for authorization: OAuth2
-    OAuth OAuth2 = (OAuth) defaultClient.getAuthentication("OAuth2");
-    OAuth2.setAccessToken("YOUR ACCESS TOKEN");
 
     CallsApi apiInstance = new CallsApi(defaultClient);
-    // Or create the instance with a your clientId and clientSecret (for OAuth2):
-    // CallsApi apiInstance = new CallsApi("YOUR_CLIENT_ID", "YOUR_CLIENT_SECRET", null);
 
     String accountId = "9900000"; // String | Your Bandwidth Account ID.
     CreateCall createCall = new CreateCall(); // CreateCall | JSON object containing information to create an outbound call
@@ -334,6 +323,7 @@ Class | Method | HTTP request | Description
  - [RbmMessageContentText](docs/RbmMessageContentText.md)
  - [RbmMessageMedia](docs/RbmMessageMedia.md)
  - [RbmOpenUrlEnum](docs/RbmOpenUrlEnum.md)
+ - [RbmSession](docs/RbmSession.md)
  - [RbmStandaloneCard](docs/RbmStandaloneCard.md)
  - [RbmSuggestionResponse](docs/RbmSuggestionResponse.md)
  - [RbmWebViewEnum](docs/RbmWebViewEnum.md)
@@ -396,11 +386,6 @@ Class | Method | HTTP request | Description
 
 
 Authentication schemes defined for the API:
-<a id="Basic"></a>
-### Basic
-
-- **Type**: HTTP basic authentication
-
 <a id="OAuth2"></a>
 ### OAuth2
 

@@ -24,6 +24,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -33,6 +34,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -52,7 +54,7 @@ import com.bandwidth.sdk.JSON;
 /**
  * Carrier information results for the specified telephone number.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.27.0")
 public class LookupResult {
   public static final String SERIALIZED_NAME_PHONE_NUMBER = "phoneNumber";
   @SerializedName(SERIALIZED_NAME_PHONE_NUMBER)
@@ -87,7 +89,7 @@ public class LookupResult {
   public static final String SERIALIZED_NAME_DEACTIVATION_DATE = "deactivationDate";
   @SerializedName(SERIALIZED_NAME_DEACTIVATION_DATE)
   @javax.annotation.Nullable
-  private String deactivationDate;
+  private LocalDateTime deactivationDate;
 
   public static final String SERIALIZED_NAME_DEACTIVATION_EVENT = "deactivationEvent";
   @SerializedName(SERIALIZED_NAME_DEACTIVATION_EVENT)
@@ -231,7 +233,7 @@ public class LookupResult {
   }
 
 
-  public LookupResult deactivationDate(@javax.annotation.Nullable String deactivationDate) {
+  public LookupResult deactivationDate(@javax.annotation.Nullable LocalDateTime deactivationDate) {
     this.deactivationDate = deactivationDate;
     return this;
   }
@@ -241,11 +243,11 @@ public class LookupResult {
    * @return deactivationDate
    */
   @javax.annotation.Nullable
-  public String getDeactivationDate() {
+  public LocalDateTime getDeactivationDate() {
     return deactivationDate;
   }
 
-  public void setDeactivationDate(@javax.annotation.Nullable String deactivationDate) {
+  public void setDeactivationDate(@javax.annotation.Nullable LocalDateTime deactivationDate) {
     this.deactivationDate = deactivationDate;
   }
 
@@ -534,7 +536,9 @@ public class LookupResult {
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
                    JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
+                   if (jsonElement.isJsonNull()) {
+                     obj.add(entry.getKey(), JsonNull.INSTANCE);
+                   } else if (jsonElement.isJsonArray()) {
                      obj.add(entry.getKey(), jsonElement.getAsJsonArray());
                    } else {
                      obj.add(entry.getKey(), jsonElement.getAsJsonObject());

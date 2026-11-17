@@ -28,7 +28,7 @@ public class RbmActionViewLocationTest {
     private final RbmActionViewLocation model = new RbmActionViewLocation()
             .type(RbmActionTypeEnum.SHOW_LOCATION)
             .text("text")
-            .postbackData(new byte[]{1, 2, 3})
+            .postbackData("postbackData")
             .latitude(1.0)
             .longitude(1.0)
             .label("label");
@@ -62,7 +62,7 @@ public class RbmActionViewLocationTest {
      */
     @Test
     public void postBackDataTest() {
-        assertThat(model.getPostbackData(), instanceOf(byte[].class));
+        assertThat(model.getPostbackData(), instanceOf(String.class));
     }
 
     /**

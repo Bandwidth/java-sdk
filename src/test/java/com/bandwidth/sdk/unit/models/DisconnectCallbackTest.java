@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import java.net.URI;
 import java.time.OffsetDateTime;
+import java.util.Map;
 import com.bandwidth.sdk.model.DisconnectCallback;
 import com.bandwidth.sdk.model.CallDirectionEnum;
 
@@ -45,7 +46,9 @@ public class DisconnectCallbackTest {
             .errorId("errorId")
             .tag("tag")
             .sipCallId("sipCallId")
-            .sipResponseCode(200);
+            .sipResponseCode(603)
+            .sipStatusLine("SIP/2.0 603 Network Blocked")
+            .sipHeaders(Map.of("reason", "v=analytics1"));
 
     /**
      * Model tests for DisconnectCallback
@@ -205,5 +208,21 @@ public class DisconnectCallbackTest {
     @Test
     public void sipResponseCodeTest() {
         assertThat(model.getSipResponseCode(), instanceOf(Integer.class));
+    }
+
+    /**
+     * Test the property 'sipStatusLine'
+     */
+    @Test
+    public void sipStatusLineTest() {
+        assertThat(model.getSipStatusLine(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'sipHeaders'
+     */
+    @Test
+    public void sipHeadersTest() {
+        assertThat(model.getSipHeaders(), instanceOf(Map.class));
     }
 }

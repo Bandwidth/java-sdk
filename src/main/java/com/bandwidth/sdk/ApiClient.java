@@ -54,7 +54,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.bandwidth.sdk.auth.Authentication;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.auth.HttpBearerAuth;
 import com.bandwidth.sdk.auth.ApiKeyAuth;
 import com.bandwidth.sdk.auth.OAuth;
@@ -106,7 +105,6 @@ public class ApiClient {
         initHttpClient();
 
         // Setup authentications (key: authentication name, value: authentication).
-        authentications.put("Basic", new HttpBasicAuth());
         authentications.put("OAuth2", new OAuth());
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
@@ -123,7 +121,6 @@ public class ApiClient {
         httpClient = client;
 
         // Setup authentications (key: authentication name, value: authentication).
-        authentications.put("Basic", new HttpBasicAuth());
         authentications.put("OAuth2", new OAuth());
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
@@ -184,7 +181,6 @@ public class ApiClient {
         RetryingOAuth retryingOAuth = new RetryingOAuth(client, tokenUrl, clientId, OAuthFlow.APPLICATION, clientSecret, parameters);
         initHttpClient(client, Collections.<Interceptor>singletonList(retryingOAuth));
         authentications.put("OAuth2", retryingOAuth);
-        authentications.put("Basic", new HttpBasicAuth());
 
         authentications = Collections.unmodifiableMap(authentications);
     }
@@ -220,7 +216,6 @@ public class ApiClient {
         );
         initHttpClient(Collections.<Interceptor>singletonList(retryingOAuth));
         // Setup authentications (key: authentication name, value: authentication).
-        authentications.put("Basic", new HttpBasicAuth());
 
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
@@ -488,6 +483,17 @@ public class ApiClient {
     }
 
     /**
+     * <p>Set LocalDateTimeFormat.</p>
+     *
+     * @param dateFormat a {@link java.time.format.DateTimeFormatter} object
+     * @return a {@link com.bandwidth.sdk.ApiClient} object
+     */
+    public ApiClient setLocalDateTimeFormat(DateTimeFormatter dateFormat) {
+        JSON.setLocalDateTimeFormat(dateFormat);
+        return this;
+    }
+
+    /**
      * <p>Set LenientOnJson.</p>
      *
      * @param lenientOnJson a boolean
@@ -518,35 +524,6 @@ public class ApiClient {
     }
 
 
-    /**
-     * Helper method to set username for the first HTTP basic authentication.
-     *
-     * @param username Username
-     */
-    public void setUsername(String username) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof HttpBasicAuth) {
-                ((HttpBasicAuth) auth).setUsername(username);
-                return;
-            }
-        }
-        throw new RuntimeException("No HTTP basic authentication configured!");
-    }
-
-    /**
-     * Helper method to set password for the first HTTP basic authentication.
-     *
-     * @param password Password
-     */
-    public void setPassword(String password) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof HttpBasicAuth) {
-                ((HttpBasicAuth) auth).setPassword(password);
-                return;
-            }
-        }
-        throw new RuntimeException("No HTTP basic authentication configured!");
-    }
 
     /**
      * Helper method to set API key value for the first API key authentication.
@@ -832,6 +809,46 @@ public class ApiClient {
         } else {
             return String.valueOf(param);
         }
+    }
+
+    /**
+     * Format the given parameter object as an ASCII-safe JSON string.
+     *
+     * @param param Parameter
+     * @return JSON representation of the parameter
+     */
+    public String parameterToJsonString(Object param) {
+        if (param == null) {
+            return "";
+        }
+        String json = JSON.serialize(param);
+        int firstUnsafe = -1;
+        for (int i = 0; i < json.length(); i++) {
+            if (json.charAt(i) >= 0x7f) {
+                firstUnsafe = i;
+                break;
+            }
+        }
+        if (firstUnsafe == -1) {
+            return json;
+        }
+
+        StringBuilder escaped = new StringBuilder(json.length());
+        escaped.append(json, 0, firstUnsafe);
+        for (int i = firstUnsafe; i < json.length(); i++) {
+            char c = json.charAt(i);
+            if (c >= 0x7f) {
+                escaped.append("\\u");
+                escaped.append(Character.forDigit((c >> 12) & 0xf, 16));
+                escaped.append(Character.forDigit((c >> 8) & 0xf, 16));
+                escaped.append(Character.forDigit((c >> 4) & 0xf, 16));
+                escaped.append(Character.forDigit(c & 0xf, 16));
+            } else {
+                escaped.append(c);
+            }
+        }
+
+        return escaped.toString();
     }
 
     /**

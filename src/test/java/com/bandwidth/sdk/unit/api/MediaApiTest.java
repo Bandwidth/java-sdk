@@ -6,7 +6,9 @@ import com.bandwidth.sdk.ApiResponse;
 import com.bandwidth.sdk.api.MediaApi;
 import com.bandwidth.sdk.model.Media;
 
-import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
+import static com.bandwidth.sdk.unit.TestConstants.BW_CLIENT_ID;
+import static com.bandwidth.sdk.unit.TestConstants.BW_CLIENT_SECRET;
+import static com.bandwidth.sdk.unit.TestConstants.BW_ACCOUNT_ID;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;

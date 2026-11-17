@@ -3,9 +3,7 @@ package com.bandwidth.sdk.smoke;
 import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiResponse;
-import com.bandwidth.sdk.Configuration;
 import com.bandwidth.sdk.api.MultiChannelApi;
-import com.bandwidth.sdk.auth.HttpBasicAuth;
 import com.bandwidth.sdk.model.MultiChannelMessageRequest;
 import com.bandwidth.sdk.model.MultiChannelMessageResponseData;
 import com.bandwidth.sdk.model.MultiChannelChannelListRequestObject;
@@ -40,7 +38,6 @@ import com.bandwidth.sdk.model.RbmMessageCarouselCard;
 import com.bandwidth.sdk.model.RbmMessageContentFile;
 import com.bandwidth.sdk.model.RbmMessageContentRichCard;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -50,7 +47,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-import static com.bandwidth.sdk.utils.TestingEnvironmentVariables.*;
+import static com.bandwidth.sdk.smoke.utils.TestingEnvironmentVariables.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.Matchers.contains;
@@ -59,15 +56,8 @@ import static org.hamcrest.CoreMatchers.is;
 
 @SuppressWarnings("null")
 public class MultiChannelApiTest {
-    private static ApiClient defaultClient = Configuration.getDefaultApiClient();
-    private static HttpBasicAuth Basic = (HttpBasicAuth) defaultClient.getAuthentication("Basic");
-    private static MultiChannelApi api = new MultiChannelApi(defaultClient);
-
-    @BeforeAll
-    public static void setUp() {
-        Basic.setUsername(BW_USERNAME);
-        Basic.setPassword(BW_PASSWORD);
-    }
+    private static ApiClient oauthClient = new ApiClient(BW_CLIENT_ID, BW_CLIENT_SECRET, null);
+    private static MultiChannelApi api = new MultiChannelApi(oauthClient);
 
     @Test
     public void createMultiChannelSMSMessageTest() throws ApiException {
@@ -186,7 +176,7 @@ public class MultiChannelApiTest {
                                                 new MultiChannelAction(new RbmActionDial()
                                                         .type(RbmActionTypeEnum.DIAL_PHONE)
                                                         .text("Call Us")
-                                                        .postbackData(new byte[]{1, 2, 3})
+                                                        .postbackData("postbackData")
                                                         .phoneNumber(BW_NUMBER)
                                                 )
                                         ))
@@ -238,7 +228,7 @@ public class MultiChannelApiTest {
         assertThat(rbmActionDial.getType(), instanceOf(RbmActionTypeEnum.class));
         assertThat(rbmActionDial.getType(), equalTo(RbmActionTypeEnum.DIAL_PHONE));
         assertThat(rbmActionDial.getText(), instanceOf(String.class));
-        assertThat(rbmActionDial.getPostbackData(), instanceOf(byte[].class));
+        assertThat(rbmActionDial.getPostbackData(), instanceOf(String.class));
         assertThat(rbmActionDial.getPhoneNumber(), instanceOf(String.class));
         assertThat(channelListObject.getOwner(), equalTo(BW_NUMBER));
     }
@@ -260,7 +250,7 @@ public class MultiChannelApiTest {
                                                 new MultiChannelAction(new RbmActionDial()
                                                         .type(RbmActionTypeEnum.DIAL_PHONE)
                                                         .text("Call Us")
-                                                        .postbackData(new byte[]{1, 2, 3})
+                                                        .postbackData("postbackData")
                                                         .phoneNumber(BW_NUMBER)
                                                 )
                                         ))
@@ -315,7 +305,7 @@ public class MultiChannelApiTest {
         assertThat(rbmActionDial.getType(), instanceOf(RbmActionTypeEnum.class));
         assertThat(rbmActionDial.getType(), equalTo(RbmActionTypeEnum.DIAL_PHONE));
         assertThat(rbmActionDial.getText(), instanceOf(String.class));
-        assertThat(rbmActionDial.getPostbackData(), instanceOf(byte[].class));
+        assertThat(rbmActionDial.getPostbackData(), instanceOf(String.class));
         assertThat(rbmActionDial.getPhoneNumber(), instanceOf(String.class));
         assertThat(channelListObject.getOwner(), equalTo(BW_NUMBER));
     }
@@ -411,7 +401,7 @@ public class MultiChannelApiTest {
                                                                         new MultiChannelAction(new RbmActionDial()
                                                                                 .type(RbmActionTypeEnum.DIAL_PHONE)
                                                                                 .text("Call Us")
-                                                                                .postbackData(new byte[]{1, 2, 3})
+                                                                                .postbackData("postbackData")
                                                                                 .phoneNumber(BW_NUMBER)
                                                                         )
                                                                 )),
@@ -481,7 +471,7 @@ public class MultiChannelApiTest {
         assertThat(rbmActionDial.getType(), instanceOf(RbmActionTypeEnum.class));
         assertThat(rbmActionDial.getType(), equalTo(RbmActionTypeEnum.DIAL_PHONE));
         assertThat(rbmActionDial.getText(), instanceOf(String.class));
-        assertThat(rbmActionDial.getPostbackData(), instanceOf(byte[].class));
+        assertThat(rbmActionDial.getPostbackData(), instanceOf(String.class));
         assertThat(rbmActionDial.getPhoneNumber(), instanceOf(String.class));
         assertThat(rbmCard.getCardContents().get(0), instanceOf(RbmCardContent.class));
         RbmCardContent card2 = rbmCard.getCardContents().get(1);

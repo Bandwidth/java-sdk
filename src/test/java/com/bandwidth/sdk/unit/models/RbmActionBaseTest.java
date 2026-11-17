@@ -28,7 +28,7 @@ public class RbmActionBaseTest {
     private final RbmActionBase model = new RbmActionBase()
             .type(RbmActionTypeEnum.REPLY)
             .text("text")
-            .postbackData(new byte[]{1, 2, 3});
+            .postbackData("postbackData");
 
     /**
      * Model tests for RbmActionBase
@@ -59,7 +59,7 @@ public class RbmActionBaseTest {
      */
     @Test
     public void postbackDataTest() {
-        assertThat(model.getPostbackData(), instanceOf(byte[].class));
+        assertThat(model.getPostbackData(), instanceOf(String.class));
     }
 
 }
