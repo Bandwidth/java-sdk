@@ -8,6 +8,7 @@ docs/AdditionalDenialReason.md
 docs/Address.md
 docs/AnswerCallback.md
 docs/AsyncLookupRequest.md
+docs/AttestationLevelEnum.md
 docs/BlockedWebhook.md
 docs/BridgeCompleteCallback.md
 docs/BridgeTargetCompleteCallback.md
@@ -264,6 +265,7 @@ src/main/java/com/bandwidth/sdk/model/AdditionalDenialReason.java
 src/main/java/com/bandwidth/sdk/model/Address.java
 src/main/java/com/bandwidth/sdk/model/AnswerCallback.java
 src/main/java/com/bandwidth/sdk/model/AsyncLookupRequest.java
+src/main/java/com/bandwidth/sdk/model/AttestationLevelEnum.java
 src/main/java/com/bandwidth/sdk/model/BlockedWebhook.java
 src/main/java/com/bandwidth/sdk/model/BridgeCompleteCallback.java
 src/main/java/com/bandwidth/sdk/model/BridgeTargetCompleteCallback.java

@@ -14,6 +14,7 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import com.bandwidth.sdk.model.AttestationLevelEnum;
 import com.bandwidth.sdk.model.CallbackMethodEnum;
 import com.bandwidth.sdk.model.MachineDetectionConfiguration;
 import com.google.gson.TypeAdapter;
@@ -79,6 +80,16 @@ public class CreateCall {
   @SerializedName(SERIALIZED_NAME_UUI)
   @javax.annotation.Nullable
   private String uui;
+
+  public static final String SERIALIZED_NAME_REQUESTED_ATTESTATION_LEVEL = "requestedAttestationLevel";
+  @SerializedName(SERIALIZED_NAME_REQUESTED_ATTESTATION_LEVEL)
+  @javax.annotation.Nullable
+  private AttestationLevelEnum requestedAttestationLevel;
+
+  public static final String SERIALIZED_NAME_IDENTITY = "identity";
+  @SerializedName(SERIALIZED_NAME_IDENTITY)
+  @javax.annotation.Nullable
+  private String identity;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
@@ -255,6 +266,44 @@ public class CreateCall {
 
   public void setUui(@javax.annotation.Nullable String uui) {
     this.uui = uui;
+  }
+
+
+  public CreateCall requestedAttestationLevel(@javax.annotation.Nullable AttestationLevelEnum requestedAttestationLevel) {
+    this.requestedAttestationLevel = requestedAttestationLevel;
+    return this;
+  }
+
+  /**
+   * The STIR/SHAKEN attestation level (&#x60;A&#x60;, &#x60;B&#x60;, or &#x60;C&#x60;) you request Bandwidth sign this call with. Applies to outbound calls to US destinations only, and only to accounts that use the &lt;a href&#x3D;&#39;/docs/voice/stir-shaken/hosted-signing-service&#39;&gt;Hosted Signing Service&lt;/a&gt;; it is ignored for all other accounts. If omitted, the attestation policy configured on your account is used.  Cannot be combined with &#x60;identity&#x60;. A request that includes both is rejected with a &#x60;400&#x60;, as is any value other than &#x60;A&#x60;, &#x60;B&#x60;, or &#x60;C&#x60;.
+   * @return requestedAttestationLevel
+   */
+  @javax.annotation.Nullable
+  public AttestationLevelEnum getRequestedAttestationLevel() {
+    return requestedAttestationLevel;
+  }
+
+  public void setRequestedAttestationLevel(@javax.annotation.Nullable AttestationLevelEnum requestedAttestationLevel) {
+    this.requestedAttestationLevel = requestedAttestationLevel;
+  }
+
+
+  public CreateCall identity(@javax.annotation.Nullable String identity) {
+    this.identity = identity;
+    return this;
+  }
+
+  /**
+   * A complete SIP &#x60;Identity&#x60; header value that you signed yourself. It must be a valid STIR/SHAKEN PASSporT and may not exceed 2000 characters. Bandwidth sends it unmodified on the outbound call and does not sign the call. Bandwidth checks only the format and size of the value, not the signature. Applies to outbound calls to US destinations only.  Cannot be combined with &#x60;requestedAttestationLevel&#x60;. A request that includes both, or a value that is too long or not in the expected format, is rejected with a &#x60;400&#x60;.
+   * @return identity
+   */
+  @javax.annotation.Nullable
+  public String getIdentity() {
+    return identity;
+  }
+
+  public void setIdentity(@javax.annotation.Nullable String identity) {
+    this.identity = identity;
   }
 
 
@@ -627,6 +676,8 @@ public class CreateCall {
         Objects.equals(this.privacy, createCall.privacy) &&
         Objects.equals(this.displayName, createCall.displayName) &&
         Objects.equals(this.uui, createCall.uui) &&
+        Objects.equals(this.requestedAttestationLevel, createCall.requestedAttestationLevel) &&
+        Objects.equals(this.identity, createCall.identity) &&
         Objects.equals(this.applicationId, createCall.applicationId) &&
         Objects.equals(this.answerUrl, createCall.answerUrl) &&
         Objects.equals(this.answerMethod, createCall.answerMethod) &&
@@ -652,7 +703,7 @@ public class CreateCall {
 
   @Override
   public int hashCode() {
-    return Objects.hash(to, from, privacy, displayName, uui, applicationId, answerUrl, answerMethod, username, password, answerFallbackUrl, answerFallbackMethod, fallbackUsername, fallbackPassword, disconnectUrl, disconnectMethod, callTimeout, callbackTimeout, machineDetection, priority, tag, additionalProperties);
+    return Objects.hash(to, from, privacy, displayName, uui, requestedAttestationLevel, identity, applicationId, answerUrl, answerMethod, username, password, answerFallbackUrl, answerFallbackMethod, fallbackUsername, fallbackPassword, disconnectUrl, disconnectMethod, callTimeout, callbackTimeout, machineDetection, priority, tag, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -671,6 +722,8 @@ public class CreateCall {
     sb.append("    privacy: ").append(toIndentedString(privacy)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    uui: ").append(toIndentedString(uui)).append("\n");
+    sb.append("    requestedAttestationLevel: ").append(toIndentedString(requestedAttestationLevel)).append("\n");
+    sb.append("    identity: ").append(toIndentedString(identity)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    answerUrl: ").append(toIndentedString(answerUrl)).append("\n");
     sb.append("    answerMethod: ").append(toIndentedString(answerMethod)).append("\n");
@@ -706,7 +759,7 @@ public class CreateCall {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("to", "from", "privacy", "displayName", "uui", "applicationId", "answerUrl", "answerMethod", "username", "password", "answerFallbackUrl", "answerFallbackMethod", "fallbackUsername", "fallbackPassword", "disconnectUrl", "disconnectMethod", "callTimeout", "callbackTimeout", "machineDetection", "priority", "tag"));
+    openapiFields = new HashSet<String>(Arrays.asList("to", "from", "privacy", "displayName", "uui", "requestedAttestationLevel", "identity", "applicationId", "answerUrl", "answerMethod", "username", "password", "answerFallbackUrl", "answerFallbackMethod", "fallbackUsername", "fallbackPassword", "disconnectUrl", "disconnectMethod", "callTimeout", "callbackTimeout", "machineDetection", "priority", "tag"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(Arrays.asList("to", "from", "applicationId", "answerUrl"));
@@ -743,6 +796,13 @@ public class CreateCall {
       }
       if ((jsonObj.get("uui") != null && !jsonObj.get("uui").isJsonNull()) && !jsonObj.get("uui").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `uui` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uui").toString()));
+      }
+      // validate the optional field `requestedAttestationLevel`
+      if (jsonObj.get("requestedAttestationLevel") != null && !jsonObj.get("requestedAttestationLevel").isJsonNull()) {
+        AttestationLevelEnum.validateJsonElement(jsonObj.get("requestedAttestationLevel"));
+      }
+      if ((jsonObj.get("identity") != null && !jsonObj.get("identity").isJsonNull()) && !jsonObj.get("identity").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `identity` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identity").toString()));
       }
       if (!jsonObj.get("applicationId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `applicationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("applicationId").toString()));
