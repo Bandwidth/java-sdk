@@ -7,6 +7,7 @@ import com.bandwidth.sdk.ApiClient;
 import com.bandwidth.sdk.ApiException;
 import com.bandwidth.sdk.ApiResponse;
 import com.bandwidth.sdk.api.CallsApi;
+import com.bandwidth.sdk.model.AttestationLevelEnum;
 import com.bandwidth.sdk.model.CallDirectionEnum;
 import com.bandwidth.sdk.model.CallState;
 import com.bandwidth.sdk.model.CallStateEnum;
@@ -47,6 +48,7 @@ public class CallsApiTest {
     private static URI disconnectUrl = URI.create(BASE_CALLBACK_URL);
     private static Double callTimeout = 30.0;
     private static Double callbackTimeout = 15.0;
+    private static String identity = "eyJhbGciOiJFUzI1NiJ9.eyJhdHRlc3QiOiJBIn0.c2ln;info=<https://cert.example/cert.pem>;alg=ES256;ppt=\"shaken\"";
 
     @BeforeAll
     public static void setUp() {
@@ -78,7 +80,9 @@ public class CallsApiTest {
                 .disconnectMethod(disconnectMethod)
                 .machineDetection(machineDetectionConfiguration)
                 .callTimeout(callTimeout)
-                .callbackTimeout(callbackTimeout);
+                .callbackTimeout(callbackTimeout)
+                .requestedAttestationLevel(AttestationLevelEnum.B)
+                .identity(identity);
 
         ApiResponse<CreateCallResponse> response = api.createCallWithHttpInfo(BW_ACCOUNT_ID, createCall);
 

@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import java.net.URI;
 import com.bandwidth.sdk.model.CreateCall;
+import com.bandwidth.sdk.model.AttestationLevelEnum;
 import com.bandwidth.sdk.model.CallbackMethodEnum;
 import com.bandwidth.sdk.model.MachineDetectionConfiguration;
 
@@ -32,6 +33,8 @@ public class CreateCallTest {
             .privacy(true)
             .displayName("displayName")
             .uui("uui")
+            .requestedAttestationLevel(AttestationLevelEnum.B)
+            .identity("eyJhbGciOiJFUzI1NiJ9.eyJhdHRlc3QiOiJBIn0.c2ln;info=<https://cert.example/cert.pem>;alg=ES256;ppt=\"shaken\"")
             .applicationId("applicationId")
             .answerUrl(URI.create("http://example.com"))
             .answerMethod(CallbackMethodEnum.POST)
@@ -95,6 +98,22 @@ public class CreateCallTest {
     @Test
     public void uuiTest() {
         assertThat(model.getUui(), instanceOf(String.class));
+    }
+
+    /**
+     * Test the property 'requestedAttestationLevel'
+     */
+    @Test
+    public void requestedAttestationLevelTest() {
+        assertThat(model.getRequestedAttestationLevel(), instanceOf(AttestationLevelEnum.class));
+    }
+
+    /**
+     * Test the property 'identity'
+     */
+    @Test
+    public void identityTest() {
+        assertThat(model.getIdentity(), instanceOf(String.class));
     }
 
     /**

@@ -14,6 +14,7 @@
 package com.bandwidth.sdk.model;
 
 import java.util.Objects;
+import com.bandwidth.sdk.model.AttestationLevelEnum;
 import com.bandwidth.sdk.model.CallbackMethodEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -159,6 +160,16 @@ public class CreateCallResponse {
   @SerializedName(SERIALIZED_NAME_PRIORITY)
   @javax.annotation.Nullable
   private Integer priority;
+
+  public static final String SERIALIZED_NAME_REQUESTED_ATTESTATION_LEVEL = "requestedAttestationLevel";
+  @SerializedName(SERIALIZED_NAME_REQUESTED_ATTESTATION_LEVEL)
+  @javax.annotation.Nullable
+  private AttestationLevelEnum requestedAttestationLevel;
+
+  public static final String SERIALIZED_NAME_IDENTITY = "identity";
+  @SerializedName(SERIALIZED_NAME_IDENTITY)
+  @javax.annotation.Nullable
+  private String identity;
 
   public CreateCallResponse() {
   }
@@ -561,6 +572,44 @@ public class CreateCallResponse {
     this.priority = priority;
   }
 
+
+  public CreateCallResponse requestedAttestationLevel(@javax.annotation.Nullable AttestationLevelEnum requestedAttestationLevel) {
+    this.requestedAttestationLevel = requestedAttestationLevel;
+    return this;
+  }
+
+  /**
+   * The &#x60;requestedAttestationLevel&#x60; provided in the Create Call request, if any. This is the level you requested, which can differ from the level the call is ultimately signed with.
+   * @return requestedAttestationLevel
+   */
+  @javax.annotation.Nullable
+  public AttestationLevelEnum getRequestedAttestationLevel() {
+    return requestedAttestationLevel;
+  }
+
+  public void setRequestedAttestationLevel(@javax.annotation.Nullable AttestationLevelEnum requestedAttestationLevel) {
+    this.requestedAttestationLevel = requestedAttestationLevel;
+  }
+
+
+  public CreateCallResponse identity(@javax.annotation.Nullable String identity) {
+    this.identity = identity;
+    return this;
+  }
+
+  /**
+   * The &#x60;identity&#x60; value provided in the Create Call request, if any.
+   * @return identity
+   */
+  @javax.annotation.Nullable
+  public String getIdentity() {
+    return identity;
+  }
+
+  public void setIdentity(@javax.annotation.Nullable String identity) {
+    this.identity = identity;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -636,7 +685,9 @@ public class CreateCallResponse {
         Objects.equals(this.password, createCallResponse.password) &&
         Objects.equals(this.fallbackUsername, createCallResponse.fallbackUsername) &&
         Objects.equals(this.fallbackPassword, createCallResponse.fallbackPassword) &&
-        Objects.equals(this.priority, createCallResponse.priority)&&
+        Objects.equals(this.priority, createCallResponse.priority) &&
+        Objects.equals(this.requestedAttestationLevel, createCallResponse.requestedAttestationLevel) &&
+        Objects.equals(this.identity, createCallResponse.identity)&&
         Objects.equals(this.additionalProperties, createCallResponse.additionalProperties);
   }
 
@@ -646,7 +697,7 @@ public class CreateCallResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(applicationId, accountId, callId, to, from, enqueuedTime, callUrl, callTimeout, callbackTimeout, tag, answerMethod, answerUrl, answerFallbackMethod, answerFallbackUrl, disconnectMethod, disconnectUrl, username, password, fallbackUsername, fallbackPassword, priority, additionalProperties);
+    return Objects.hash(applicationId, accountId, callId, to, from, enqueuedTime, callUrl, callTimeout, callbackTimeout, tag, answerMethod, answerUrl, answerFallbackMethod, answerFallbackUrl, disconnectMethod, disconnectUrl, username, password, fallbackUsername, fallbackPassword, priority, requestedAttestationLevel, identity, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -681,6 +732,8 @@ public class CreateCallResponse {
     sb.append("    fallbackUsername: ").append(toIndentedString(fallbackUsername)).append("\n");
     sb.append("    fallbackPassword: ").append(toIndentedString(fallbackPassword)).append("\n");
     sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
+    sb.append("    requestedAttestationLevel: ").append(toIndentedString(requestedAttestationLevel)).append("\n");
+    sb.append("    identity: ").append(toIndentedString(identity)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -700,7 +753,7 @@ public class CreateCallResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("applicationId", "accountId", "callId", "to", "from", "enqueuedTime", "callUrl", "callTimeout", "callbackTimeout", "tag", "answerMethod", "answerUrl", "answerFallbackMethod", "answerFallbackUrl", "disconnectMethod", "disconnectUrl", "username", "password", "fallbackUsername", "fallbackPassword", "priority"));
+    openapiFields = new HashSet<String>(Arrays.asList("applicationId", "accountId", "callId", "to", "from", "enqueuedTime", "callUrl", "callTimeout", "callbackTimeout", "tag", "answerMethod", "answerUrl", "answerFallbackMethod", "answerFallbackUrl", "disconnectMethod", "disconnectUrl", "username", "password", "fallbackUsername", "fallbackPassword", "priority", "requestedAttestationLevel", "identity"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(Arrays.asList("applicationId", "accountId", "callId", "to", "from", "callUrl", "answerMethod", "answerUrl", "disconnectMethod"));
@@ -779,6 +832,13 @@ public class CreateCallResponse {
       }
       if ((jsonObj.get("fallbackPassword") != null && !jsonObj.get("fallbackPassword").isJsonNull()) && !jsonObj.get("fallbackPassword").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `fallbackPassword` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fallbackPassword").toString()));
+      }
+      // validate the optional field `requestedAttestationLevel`
+      if (jsonObj.get("requestedAttestationLevel") != null && !jsonObj.get("requestedAttestationLevel").isJsonNull()) {
+        AttestationLevelEnum.validateJsonElement(jsonObj.get("requestedAttestationLevel"));
+      }
+      if ((jsonObj.get("identity") != null && !jsonObj.get("identity").isJsonNull()) && !jsonObj.get("identity").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `identity` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identity").toString()));
       }
   }
 

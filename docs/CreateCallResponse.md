@@ -28,6 +28,8 @@
 |**fallbackUsername** | **String** | Basic auth username. |  [optional] |
 |**fallbackPassword** | **String** | Basic auth password. |  [optional] |
 |**priority** | **Integer** | The priority of this call over other calls from your account. |  [optional] |
+|**requestedAttestationLevel** | **AttestationLevelEnum** | The &#x60;requestedAttestationLevel&#x60; provided in the Create Call request, if any. This is the level you requested, which can differ from the level the call is ultimately signed with. |  [optional] |
+|**identity** | **String** | The &#x60;identity&#x60; value provided in the Create Call request, if any. |  [optional] |
 
 
 

@@ -17,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import com.bandwidth.sdk.model.CreateCallResponse;
+import com.bandwidth.sdk.model.AttestationLevelEnum;
 import com.bandwidth.sdk.model.CallbackMethodEnum;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -47,7 +48,9 @@ public class CreateCallResponseTest {
             .password("password")
             .fallbackUsername("fallbackUsername")
             .fallbackPassword("fallbackPassword")
-            .priority(1);
+            .priority(1)
+            .requestedAttestationLevel(AttestationLevelEnum.B)
+            .identity("eyJhbGciOiJFUzI1NiJ9.eyJhdHRlc3QiOiJBIn0.c2ln;info=<https://cert.example/cert.pem>;alg=ES256;ppt=\"shaken\"");
 
     /**
      * Model tests for CreateCallResponse
@@ -223,6 +226,22 @@ public class CreateCallResponseTest {
     @Test
     public void priorityTest() {
         assertThat(model.getPriority(), instanceOf(Integer.class));
+    }
+
+    /**
+     * Test the property 'requestedAttestationLevel'
+     */
+    @Test
+    public void requestedAttestationLevelTest() {
+        assertThat(model.getRequestedAttestationLevel(), instanceOf(AttestationLevelEnum.class));
+    }
+
+    /**
+     * Test the property 'identity'
+     */
+    @Test
+    public void identityTest() {
+        assertThat(model.getIdentity(), instanceOf(String.class));
     }
 
 }
